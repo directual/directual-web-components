@@ -2,7 +2,7 @@
   "name": "directual-fps-components",
   "version": "1.0.0",
   "description": "fps components",
-  "author": "Navalikhin",
+  "author": "Navalikhin Nikita",
   "license": "MIT",
   "repository": "Navalikhin/directual-fps-components",
   "main": "dist/index.js",
