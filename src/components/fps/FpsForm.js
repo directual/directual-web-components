@@ -1,7 +1,9 @@
 import React from 'react'
 import styles from '../../styles.module.css'
+import icon from './../../icons/fps-form.svg'
 
-export class FpsForm extends React.Component {
+class FpsForm extends React.Component {
+
   constructor(props) {
     super(props)
     this.state = {
@@ -22,13 +24,13 @@ export class FpsForm extends React.Component {
       error: nextProps.data.error,
       isSuccessWrite: nextProps.data.isSuccessWrite,
       loading: false
-    });
-    this.forceUpdate();
+    })
+    this.forceUpdate()
   }
 
   sendMsg = (msg) => {
     const message = { ...msg, _id: 'form_' + this.props.id }
-    this.setState({loading:true})
+    this.setState({ loading: true })
     console.log(message)
     if (this.props.onEvent) {
       this.props.onEvent(message)
@@ -55,7 +57,7 @@ export class FpsForm extends React.Component {
       }
     })
     this.setState({ modelError: modelErrorCopy })
-    if(containsError){
+    if (containsError) {
       console.log(modelErrorCopy)
     }
     if (!containsError) {
@@ -88,5 +90,16 @@ export class FpsForm extends React.Component {
       </div>
     )
   }
+}
+
+FpsForm.settings = {
+  icon: icon,
+  name: "Form",
+  sysName: 'FpsForm',
+  form: [
+    {name: "Select SL", sysName:"sl", type:"api-enpoint"},
+    {name: "Success text", sysName:"successText", type: "input"},
+    {name: "Form name", sysName:'formName', type: "input"},
+  ]
 }
 export default FpsForm

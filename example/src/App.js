@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FpsHtml, FpsTable, FpsForm } from 'directual-fps-components'
+import { FpsHtml, FpsCards, FpsForm } from 'directual-fps-components'
 import 'directual-fps-components/dist/index.css'
 
 const App = () => {
@@ -134,7 +134,7 @@ const App = () => {
     FpsHtml:
     <FpsHtml data={exampleDataHtml}/>
     FpsTable:
-    <FpsTable data={exampleTable}/>
+    <FpsCards data={exampleTable}/>
     FpsForm:
     <FpsForm data={exampleForm}/>
 

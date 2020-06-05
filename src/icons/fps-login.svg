@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="109px" height="109px" viewBox="0 0 109 109" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>fps-login</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="FEB/component/signin">
+            <g id="fps-login">
+                <g id="Group">
+                    <rect id="Rectangle" fill="#E4531C" x="0" y="0" width="109" height="109" rx="19"></rect>
+                    <g id=".platform/icon/permission" transform="translate(11.000000, 12.000000)" fill="#FFFFFF">
+                        <g id="Combined-Shape">
+                            <path d="M45.6875,16.125 C53.1088263,16.125 59.125,22.1411737 59.125,29.5625 C59.125,36.0632231 54.5088423,41.4857848 48.3756405,42.7310713 L48.375,67.1875 C48.375,68.6717653 47.1717653,69.875 45.6875,69.875 C44.2032347,69.875 43,68.6717653 43,67.1875 L43,64.5 L37.625,64.5 C36.1407347,64.5 34.9375,63.2967653 34.9375,61.8125 C34.9375,60.3282347 36.1407347,59.125 37.625,59.125 L43,59.125 L43.000359,42.7312742 C36.8666593,41.4863739 32.25,36.0635762 32.25,29.5625 C32.25,22.1411737 38.2661737,16.125 45.6875,16.125 Z M45.6875,21.5 C41.2347042,21.5 37.625,25.1097042 37.625,29.5625 C37.625,34.0152958 41.2347042,37.625 45.6875,37.625 C50.1402958,37.625 53.75,34.0152958 53.75,29.5625 C53.75,25.1097042 50.1402958,21.5 45.6875,21.5 Z"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

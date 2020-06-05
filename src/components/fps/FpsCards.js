@@ -1,7 +1,8 @@
 import React from 'react'
 import styles from '../../styles.module.css'
+import icon from './../../icons/fps-cards.svg'
 
-export default function ({ data, onEvent, id }) {
+function FpsCards({ data, onEvent, id }) {
   const tableHeader = data.headers || []
   const tableData = data.data || []
   const totalPages = data.totalPages || 0
@@ -45,3 +46,14 @@ export default function ({ data, onEvent, id }) {
     </div>
   )
 }
+FpsCards.settings = {
+  icon: icon,
+  name: 'Cards view',
+  sysName: 'FpsTable',
+  form: [
+    { name: 'Select SL', sysName: 'sl', type: 'api-enpoint' },
+    { name: 'pageSize', sysName: 'successText', type: 'input' },
+    { name: 'headerField', sysName: 'headerField', type: 'input' }
+  ]
+}
+export default FpsCards

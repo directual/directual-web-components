@@ -5,7 +5,7 @@ import {
   PageIsEmpty,
 } from './components/fps/FpsSystem'
 import FpsLogin from './components/fps/FpsLogin'
-import FpsTable from './components/fps/FpsTable'
+import FpsCards from './components/fps/FpsCards'
 import FpsHtml from './components/fps/FpsHtml'
 import FpsForm from './components/fps/FpsForm'
 
@@ -15,7 +15,7 @@ export {
   FpsIsEmpty,
   PageIsEmpty,
   FpsLogin,
-  FpsTable,
+  FpsCards,
   FpsHtml,
   FpsForm
 }
