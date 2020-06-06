@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import styles from '../../styles.module.css'
+import icon from './../../icons/fps-form.svg'
 
-export default function ({ data, onEvent, id }) {
+function FpsForm({ data, onEvent, id }) {
   const successText = data.successText || 'success'
   const formName = data.formName || 'formName'
-  const error = data.error
   const isSuccessWrite = data.isSuccessWrite
   const fileds = data.fileds || []
 
@@ -70,3 +70,14 @@ export default function ({ data, onEvent, id }) {
     </div>
   )
 }
+FpsForm.settings = {
+  icon: icon,
+  name: 'Form',
+  sysName: 'FpsForm',
+  form: [
+    { name: 'Select SL', sysName: 'sl', type: 'api-enpoint' },
+    { name: 'Success text', sysName: 'successText', type: 'input' },
+    { name: 'Form name', sysName: 'formName', type: 'input' }
+  ]
+}
+export default FpsForm
