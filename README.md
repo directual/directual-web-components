@@ -2,7 +2,7 @@
 
 > fps components
 
-[![NPM](https://img.shields.io/npm/v/directual-fps-components.svg)](https://www.npmjs.com/package/directual-fps-components) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/directual-web-components.svg)](https://www.npmjs.com/package/directual-fps-components) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
@@ -15,8 +15,8 @@ npm install --save directual-fps-components
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'directual-fps-components'
-import 'directual-fps-components/dist/index.css'
+import MyComponent from 'directual-web-components'
+import 'directual-web-components/dist/index.css'
 
 class Example extends Component {
   render() {
