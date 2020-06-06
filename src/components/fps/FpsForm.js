@@ -42,13 +42,19 @@ export default function ({ data, onEvent, id }) {
       sendMsg(model)
     }
   }
+  data.error =
+    data.error && data.error == '403'
+      ? 'You have no permissions for viewing form'
+      : data.error
+  data.error =
+    data.error && data.error == '511' ? 'Form is not configured' : data.error
 
   return (
     <div className={styles.test}>
       <h1>{formName}</h1>
       {loading && <div>loading...</div>}
 
-      {error && <div>error:{error}</div>}
+      {data.error && <div>error:{data.error}</div>}
       {isSuccessWrite && <div>{successText}</div>}
       {!isSuccessWrite && (
         <form onSubmit={submit}>

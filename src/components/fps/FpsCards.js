@@ -14,8 +14,16 @@ function FpsCards({ data, onEvent, id }) {
     }
   }
 
+  data.error =
+    data.error && data.error == '403'
+      ? 'You have no permissions for viewing form'
+      : data.error
+  data.error =
+    data.error && data.error == '511' ? 'Form is not configured' : data.error
+
   return (
     <div className='wrap'>
+      {data.error && <div>error:{data.error}</div>}
       <div className='cards-view'>
         <div className='cards-list'>
           {tableData.length === 0 && <div> Table is empty</div>}
