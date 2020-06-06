@@ -59,7 +59,7 @@ FpsCards.settings = {
   name: 'Cards view',
   sysName: 'FpsTable',
   form: [
-    { name: 'Select SL', sysName: 'sl', type: 'api-enpoint' },
+    { name: 'Select SL', sysName: 'sl', type: 'api-endpoint' },
     { name: 'pageSize', sysName: 'successText', type: 'input' },
     { name: 'headerField', sysName: 'headerField', type: 'input' }
   ]

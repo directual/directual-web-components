@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { FpsHtml, FpsCards, FpsForm } from 'directual-fps-components'
-import 'directual-fps-components/dist/index.css'
+import { FpsHtml, FpsCards, FpsForm } from 'directual-web-components'
+import 'directual-web-components/dist/index.css'
 
 const App = () => {
   //return <ExampleComponent text="Create React Library Example 😄" />
