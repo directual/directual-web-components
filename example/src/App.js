@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FpsHtml, FpsCards, FpsForm } from 'directual-web-components'
+import { FpsHtml, FpsCards, FpsForm, MainMenu, Theme } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
 const App = () => {
@@ -131,12 +131,15 @@ const App = () => {
   }
 
   return <div>
-    FpsHtml:
+    {/* FpsHtml:
     <FpsHtml data={exampleDataHtml}/>
     FpsTable:
     <FpsCards data={exampleTable}/>
     FpsForm:
-    <FpsForm data={exampleForm}/>
+    <FpsForm data={exampleForm}/> */}
+
+    <MainMenu />
+    <Theme />
 
   </div>
 }

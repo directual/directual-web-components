@@ -8,6 +8,8 @@ import FpsLogin from './components/fps/FpsLogin'
 import FpsCards from './components/fps/FpsCards'
 import FpsHtml from './components/fps/FpsHtml'
 import FpsForm from './components/fps/FpsForm'
+import MainMenu from './components/fps/mainmenu/mainmenu'
+import Theme from './components/fps/theme/theme'
 
 export {
   Fps404,
@@ -17,5 +19,7 @@ export {
   FpsLogin,
   FpsCards,
   FpsHtml,
-  FpsForm
+  FpsForm,
+  MainMenu,
+  Theme,
 }
