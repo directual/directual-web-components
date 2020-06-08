@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { FpsHtml, FpsCards, FpsForm, MainMenu, Theme } from 'directual-web-components'
+import { FpsHtml, FpsCards, FpsForm, MainMenu, 
+  Theme, ComponentDetails, FpsWrapper, ContentWrapper } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
 const App = () => {
@@ -130,18 +131,91 @@ const App = () => {
     'isSuccessWrite': false
   }
 
-  return <div>
-    {/* FpsHtml:
-    <FpsHtml data={exampleDataHtml}/>
-    FpsTable:
-    <FpsCards data={exampleTable}/>
-    FpsForm:
-    <FpsForm data={exampleForm}/> */}
+  return (
+    <FpsWrapper>
+      {/* FpsHtml:
+      <FpsHtml data={exampleDataHtml}/>
+      FpsTable:
+      <FpsCards data={exampleTable}/>
+      FpsForm:
+      <FpsForm data={exampleForm}/> */}
+      <MainMenu
+        logoUrl='https://api.alfa.directual.com/fileUploaded/directual-site/32e12a82-222f-477a-acda-b23018cedbf6.svg'
+        menu={
+          [
+            {
+              title: 'What is it?',
+              path: '/',
+              icon: 'info'
+            },
+            {
+              subheader: true,
+              title: 'Directual Components'
+            },
+            {
+              title: 'Article',
+              path: '/',
+              icon: 'paragraph'
+            },
+            {
+              title: 'Table view',
+              path: '/',
+              icon: 'database'
+            },
+            {
+              title: 'Cards view',
+              path: '/',
+              icon: 'cards'
+            },
+            {
+              title: 'Form',
+              path: '/',
+              icon: 'edit'
+            },
+            {
+              title: 'Theme management',
+              path: '/',
+              icon: 'styles'
+            },
+            {
+              title: 'Log in / Sign up / Profile',
+              path: '/',
+              icon: 'user'
+            },
+            {
+              title: 'Chat (soon)',
+              path: '/',
+              icon: 'bubble',
+              disabled: true
+            },
+            {
+              title: 'Billing (soon)',
+              path: '/',
+              icon: 'creditcard',
+              disabled: true
+            },
+            {
+              subheader: true,
+              title: 'Design System'
+            },
+            {
+              title: 'Directual icons',
+              path: '/',
+              icon: 'babai'
+            },
+            {
+              title: 'Fonts',
+              path: '/',
+              icon: 'sort'
+            },
+          ]}
+      />
+      <ContentWrapper>
+        <ComponentDetails />
+      </ContentWrapper>
 
-    <MainMenu />
-    <Theme />
-
-  </div>
+    </FpsWrapper>
+  )
 }
 
 export default App

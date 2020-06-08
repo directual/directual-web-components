@@ -1,8 +1,13 @@
-* {
+:global * {
   margin: 0;
   padding: 0;
   border-collapse: collapse;
   list-style-type: none;
+}
+:global html,
+:global body,
+:global #root {
+  height: 100%;
 }
 @font-face {
   font-family: 'Lato';
@@ -50,44 +55,40 @@
     --h3-font-size: 20px;
   }
 }
-body {
+:global body {
   font-family: var(--main-font-family);
   font-size: var(--text-font-size);
   font-weight: var(--text-font-weight);
 }
-strong {
+:global strong {
   font-weight: var(--strong-font-weight);
 }
-h1 {
+:global h1 {
   font-family: var(--headers-font-family);
   font-size: var(--h1-font-size);
 }
-h2 {
+:global h2 {
   font-family: var(--headers-font-family);
   font-size: var(--h2-font-size);
 }
-h3 {
+:global h3 {
   font-family: var(--headers-font-family);
   font-size: var(--h3-font-size);
 }
-a {
+:global a {
   transition: 0.5s;
   text-decoration: none;
 }
-a:hover {
+:global a:hover {
   transition: 0.5s;
 }
-button {
+:global button {
   font-family: var(--main-font-family);
   font-size: var(--text-font-size);
 }
-input {
+:global input {
   font-family: var(--main-font-family);
   font-size: var(--text-font-size);
-}
-.alert {
-  font-size: var(--text-small-size);
-  text-align: center;
 }
 @font-face {
   font-family: 'directual-icons';
@@ -96,331 +97,333 @@ input {
   font-weight: normal;
   font-style: normal;
 }
-.icon {
-  color: red;
+:global .icon {
+  display: flex;
+  align-items: center;
 }
-.icon:before {
+:global .icon:before {
   font-family: 'directual-icons';
   content: "\e908";
+  font-size: var(--h2-font-size);
 }
-.icon-actions:before {
+:global .icon-actions:before {
   content: "\e901";
 }
-.icon-application:before {
+:global .icon-application:before {
   content: "\e902";
 }
-.icon-arrowDown:before {
+:global .icon-arrowDown:before {
   content: "\e903";
 }
-.icon-arrowLeft:before {
+:global .icon-arrowLeft:before {
   content: "\e904";
 }
-.icon-arrowRight:before {
+:global .icon-arrowRight:before {
   content: "\e905";
 }
-.icon-arrowUp:before {
+:global .icon-arrowUp:before {
   content: "\e907";
 }
-.icon-babai:before {
+:global .icon-babai:before {
   content: "\e908";
 }
-.icon-back:before {
+:global .icon-back:before {
   content: "\e909";
 }
-.icon-ban:before {
+:global .icon-ban:before {
   content: "\e90a";
 }
-.icon-bellActive:before {
+:global .icon-bellActive:before {
   content: "\e90b";
 }
-.icon-bell:before {
+:global .icon-bell:before {
   content: "\e90c";
 }
-.icon-bookmarkFill:before {
+:global .icon-bookmarkFill:before {
   content: "\e90d";
 }
-.icon-bookmark:before {
+:global .icon-bookmark:before {
   content: "\e90e";
 }
-.icon-boolean:before {
+:global .icon-boolean:before {
   content: "\e90f";
 }
-.icon-bracketsArray:before {
+:global .icon-bracketsArray:before {
   content: "\e910";
 }
-.icon-brackets:before {
+:global .icon-brackets:before {
   content: "\e911";
 }
-.icon-bubble:before {
+:global .icon-bubble:before {
   content: "\e912";
 }
-.icon-bug:before {
+:global .icon-bug:before {
   content: "\e913";
 }
-.icon-calendar:before {
+:global .icon-calendar:before {
   content: "\e914";
 }
-.icon-chart:before {
+:global .icon-chart:before {
   content: "\e915";
 }
-.icon-clip:before {
+:global .icon-clip:before {
   content: "\e916";
 }
-.icon-clocks:before {
+:global .icon-clocks:before {
   content: "\e917";
 }
-.icon-close:before {
+:global .icon-close:before {
   content: "\e918";
 }
-.icon-codeArray:before {
+:global .icon-codeArray:before {
   content: "\e919";
 }
-.icon-collapse:before {
+:global .icon-collapse:before {
   content: "\e91a";
 }
-.icon-comment:before {
+:global .icon-comment:before {
   content: "\e91b";
 }
-.icon-configure:before {
+:global .icon-configure:before {
   content: "\e91c";
 }
-.icon-copy:before {
+:global .icon-copy:before {
   content: "\e91d";
 }
-.icon-creditcard:before {
+:global .icon-creditcard:before {
   content: "\e91e";
 }
-.icon-dashboard:before {
+:global .icon-dashboard:before {
   content: "\e91f";
 }
-.icon-database:before {
+:global .icon-database:before {
   content: "\e920";
 }
-.icon-delete:before {
+:global .icon-delete:before {
   content: "\e921";
 }
-.icon-detailsAlt:before {
+:global .icon-detailsAlt:before {
   content: "\e922";
 }
-.icon-details:before {
+:global .icon-details:before {
   content: "\e923";
 }
-.icon-done:before {
+:global .icon-done:before {
   content: "\e924";
 }
-.icon-down:before {
+:global .icon-down:before {
   content: "\e925";
 }
-.icon-download:before {
+:global .icon-download:before {
   content: "\e926";
 }
-.icon-edit:before {
+:global .icon-edit:before {
   content: "\e927";
 }
-.icon-expand:before {
+:global .icon-expand:before {
   content: "\e928";
 }
-.icon-export:before {
+:global .icon-export:before {
   content: "\e929";
 }
-.icon-filterFill:before {
+:global .icon-filterFill:before {
   content: "\e92a";
 }
-.icon-filter:before {
+:global .icon-filter:before {
   content: "\e92b";
 }
-.icon-folder:before {
+:global .icon-folder:before {
   content: "\e92c";
 }
-.icon-forward:before {
+:global .icon-forward:before {
   content: "\e92d";
 }
-.icon-gates:before {
+:global .icon-gates:before {
   content: "\e92e";
 }
-.icon-cards:before {
+:global .icon-cards:before {
   content: "\e92f";
 }
-.icon-help:before {
+:global .icon-help:before {
   content: "\e930";
 }
-.icon-hide:before {
+:global .icon-hide:before {
   content: "\e931";
 }
-.icon-history:before {
+:global .icon-history:before {
   content: "\e932";
 }
-.icon-hook:before {
+:global .icon-hook:before {
   content: "\e933";
 }
-.icon-id:before {
+:global .icon-id:before {
   content: "\e934";
 }
-.icon-import:before {
+:global .icon-import:before {
   content: "\e936";
 }
-.icon-info:before {
+:global .icon-info:before {
   content: "\e937";
 }
-.icon-keynote:before {
+:global .icon-keynote:before {
   content: "\e938";
 }
-.icon-license:before {
+:global .icon-license:before {
   content: "\e939";
 }
-.icon-list:before {
+:global .icon-list:before {
   content: "\e93a";
 }
-.icon-lock:before {
+:global .icon-lock:before {
   content: "\e93b";
 }
-.icon-logoutAlt:before {
+:global .icon-logoutAlt:before {
   content: "\e93c";
 }
-.icon-logout:before {
+:global .icon-logout:before {
   content: "\e93d";
 }
-.icon-love:before {
+:global .icon-love:before {
   content: "\e93e";
 }
-.icon-mail:before {
+:global .icon-mail:before {
   content: "\e93f";
 }
-.icon-menu:before {
+:global .icon-menu:before {
   content: "\e940";
 }
-.icon-minus:before {
+:global .icon-minus:before {
   content: "\e941";
 }
-.icon-mobile:before {
+:global .icon-mobile:before {
   content: "\e942";
 }
-.icon-move:before {
+:global .icon-move:before {
   content: "\e943";
 }
-.icon-nocode:before {
+:global .icon-nocode:before {
   content: "\e944";
 }
-.icon-num:before {
+:global .icon-num:before {
   content: "\e945";
 }
-.icon-number:before {
+:global .icon-number:before {
   content: "\e946";
 }
-.icon-ovalFill:before {
+:global .icon-ovalFill:before {
   content: "\e947";
 }
-.icon-oval:before {
+:global .icon-oval:before {
   content: "\e948";
 }
-.icon-paragraph:before {
+:global .icon-paragraph:before {
   content: "\e949";
 }
-.icon-permission:before {
+:global .icon-permission:before {
   content: "\e94a";
 }
-.icon-pinned:before {
+:global .icon-pinned:before {
   content: "\e94b";
 }
-.icon-playFill:before {
+:global .icon-playFill:before {
   content: "\e94c";
 }
-.icon-play:before {
+:global .icon-play:before {
   content: "\e94d";
 }
-.icon-plug:before {
+:global .icon-plug:before {
   content: "\e94e";
 }
-.icon-plus:before {
+:global .icon-plus:before {
   content: "\e94f";
 }
-.icon-refresh:before {
+:global .icon-refresh:before {
   content: "\e950";
 }
-.icon-restore:before {
+:global .icon-restore:before {
   content: "\e951";
 }
-.icon-rhombusFill:before {
+:global .icon-rhombusFill:before {
   content: "\e952";
 }
-.icon-rhombus:before {
+:global .icon-rhombus:before {
   content: "\e953";
 }
-.icon-rocket:before {
+:global .icon-rocket:before {
   content: "\e954";
 }
-.icon-search:before {
+:global .icon-search:before {
   content: "\e955";
 }
-.icon-settings:before {
+:global .icon-settings:before {
   content: "\e956";
 }
-.icon-shield:before {
+:global .icon-shield:before {
   content: "\e957";
 }
-.icon-sms:before {
+:global .icon-sms:before {
   content: "\e958";
 }
-.icon-sort:before {
+:global .icon-sort:before {
   content: "\e959";
 }
-.icon-stopFill:before {
+:global .icon-stopFill:before {
   content: "\e95a";
 }
-.icon-stop:before {
+:global .icon-stop:before {
   content: "\e95b";
 }
-.icon-string:before {
+:global .icon-string:before {
   content: "\e95c";
 }
-.icon-styles:before {
+:global .icon-styles:before {
   content: "\e95d";
 }
-.icon-tag:before {
+:global .icon-tag:before {
   content: "\e95e";
 }
-.icon-telegram:before {
+:global .icon-telegram:before {
   content: "\e95f";
 }
-.icon-tune:before {
+:global .icon-tune:before {
   content: "\e960";
 }
-.icon-unlock:before {
+:global .icon-unlock:before {
   content: "\e961";
 }
-.icon-unpinned:before {
+:global .icon-unpinned:before {
   content: "\e962";
 }
-.icon-unplug:before {
+:global .icon-unplug:before {
   content: "\e963";
 }
-.icon-up:before {
+:global .icon-up:before {
   content: "\e964";
 }
-.icon-upload:before {
+:global .icon-upload:before {
   content: "\e965";
 }
-.icon-user:before {
+:global .icon-user:before {
   content: "\e966";
 }
-.icon-version:before {
+:global .icon-version:before {
   content: "\e967";
 }
-.icon-view:before {
+:global .icon-view:before {
   content: "\e968";
 }
-.icon-warning:before {
+:global .icon-warning:before {
   content: "\e969";
 }
-.icon-webhook:before {
+:global .icon-webhook:before {
   content: "\e96a";
 }
 /*-- VARIABLES --*/
 :root {
-  --border-radius: 25px;
   /* DEFAULT GRAY-BLUE SCHEME */
+  --border-radius: 25px;
   --button-border-color: #8E8E8E;
-  --field-border-color: #aaa;
+  --field-border-color: #AAAAAA;
   --table-border-color: rgba(0, 0, 0, 0.12);
   --accent-color: #058efc;
   --secondary-accent-color: #0062BD;
@@ -428,8 +431,7 @@ input {
   --background-color: #ffffff;
   --secondary-background-color: #eeeeee;
   --font-color: #333333;
-  --alert-color: #333;
-  --code-color: #333;
+  --code-color: #333333;
   --code-color-background: #eeeeee;
   --error-color: #FF525B;
   --error-color-light: #FFD6D8;
@@ -440,14 +442,14 @@ input {
   --label-color: #FEE3B0;
   --label-text-color: #333;
 }
-.debug {
+:global .dd-debug {
   font-family: 'Courier New', Courier, monospace;
   color: darkred;
   padding: 10px;
   border: solid 1px red;
   font-size: 14px;
 }
-.debug:before {
+:global .dd-debug:before {
   content: "debug";
   font-weight: bold;
   padding-right: 10px;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 // import {
 //     NavLink
 // } from 'react-router-dom'
@@ -6,29 +6,40 @@ import React from 'react'
 // import { Backdrop } from '../primitive/primitiveComponents'
 // import { LogInLogOutButton } from '../rbac/rbac'
 
-import './mainmenu.css'
-import '../theme/theme.css'
+import styles from './mainmenu.module.css'
+
+export function Backdrop(props) {
+    return <div className={styles.backdrop} onClick={props.onClick}></div>
+}
 
 export default function MainMenu(props) {
-
+    const [showMM, setShowMM] = useState(false)
+    const [showBackdrop, setShowBackdrop] = useState(false)
+    const hideMM = () => {
+        setShowBackdrop(false);
+        setShowMM(false)
+    }
     return (
         <React.Fragment>
-            <div className="dd-show-mobile-button"
-            //style={{width:'50px', height:'50px', backgroundColor:'red' }}
-            ></div>
-            <div className="dd-mainmenu">
-                <div className="dd-hide-mobile-menu-button"></div>
-                <div className="dd-mainmenu-logo" style={{ backgroundImage: `url(${props.logoUrl})` }} />
-                <ul className="dd-mainmenu-list">
-                    <li className="mm-subheader">Subheader</li>
-                    <li className="mm-item">
-                        <a className="mm-item-link icon icon-babai">
-                            Dashboard</a>
-                        <a className="mm-item-link icon icon-babai">
-                            Dashboard</a>
-                        <a className="mm-item-link icon icon-babai">
-                            Dashboard</a>
-                    </li>
+            {showBackdrop && <Backdrop onClick={hideMM}/>}
+            <div className={styles.show_mobile_menu}
+                onClick={() => { setShowMM(true); setShowBackdrop(true)}}></div>
+            <div className={`${styles.mainmenu} ${showMM && styles.show}`}>
+                <div className={styles.hide_mobile_menu}
+                    onClick={hideMM}></div>
+                <div className={styles.logo} style={{ backgroundImage: `url(${props.logoUrl})` }} />
+                <ul className={styles.list}>
+                    {props.menu.map(item => (
+                        item.subheader ?
+                            <li className={styles.subheader}>{item.title}</li> :
+                            <li className={`${styles.item} ${item.disabled && styles.disabled}`}>
+                                <a 
+                                    className={`active icon ${item.icon && `icon-${item.icon}`}`}
+                                    onClick={hideMM}
+                                >
+                                    {item.title}</a>
+                            </li>
+                    ))}
                 </ul>
             </div>
 

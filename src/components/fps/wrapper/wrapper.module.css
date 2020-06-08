@@ -1,0 +1,14 @@
+.wrapper {
+    height: 100%;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+}
+
+.content_wrapper {
+    background-color: var(--secondary-background-color);
+    padding: 32px;
+    flex-grow: 2;
+    overflow: auto;
+
+}

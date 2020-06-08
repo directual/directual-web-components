@@ -1,12 +1,16 @@
 // GLOBAL REFRESH
 
+:global{
+
 * {margin: 0; padding: 0; border-collapse: collapse; list-style-type: none}
+html, body, #root {height: 100%;}
+}
 
 // FONTS 
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap');
 
-:root {
+:root { 
 	--headers-font-family: 'Montserrat', sans-serif;
 	--main-font-family: 'Lato', sans-serif;
 	--strong-font-weight: 700;
@@ -40,55 +44,50 @@
 }
 
 // Typography
+:global {
+    body {
+        font-family: var( --main-font-family);
+        font-size: var( --text-font-size);
+        font-weight: var( --text-font-weight);
+    }
 
-body {
-    font-family: var( --main-font-family);
-	font-size: var( --text-font-size);
-	font-weight: var( --text-font-weight);
-}
+    strong {
+        font-weight: var(--strong-font-weight);
+    }
 
-strong {
-	font-weight: var(--strong-font-weight);
-}
+    h1 {
+        font-family: var( --headers-font-family);
+        font-size: var( --h1-font-size);
+    }
 
-h1 {
-	font-family: var( --headers-font-family);
-	font-size: var( --h1-font-size);
-}
+    h2 {
+        font-family: var( --headers-font-family);
+        font-size: var( --h2-font-size);
+    }
 
-h2 {
-	font-family: var( --headers-font-family);
-	font-size: var( --h2-font-size);
-}
+    h3 {
+        font-family: var( --headers-font-family);
+        font-size: var( --h3-font-size);
+    }
 
-h3 {
-	font-family: var( --headers-font-family);
-	font-size: var( --h3-font-size);
-}
+    a {
+        transition: .5s;
+        text-decoration: none;
+    }
+    a:hover {
+        transition: .5s;
+    }
 
-a {
-	transition: .5s;
-	text-decoration: none;
-}
-a:hover {
-	transition: .5s;
-}
+    button {
+        font-family: var( --main-font-family);
+        font-size: var( --text-font-size);
+    }
 
-button {
-	font-family: var( --main-font-family);
-    font-size: var( --text-font-size);
+    input {
+        font-family: var( --main-font-family);
+        font-size: var( --text-font-size);
+    }
 }
-
-input {
-	font-family: var( --main-font-family);
-    font-size: var( --text-font-size);
-}
-
-.alert {
-	font-size: var(--text-small-size);
-	text-align: center;
-}
-
 
 // ICONS
 
@@ -103,11 +102,15 @@ input {
     font-style: normal;
 }
 
-.icon {color:red}
-
+:global {
+.icon {
+    display: flex;
+    align-items: center;
+}
 .icon:before {
     font-family: 'directual-icons';
     content: "\e908";
+    font-size: var(--h2-font-size);
 }
 .icon-actions:before {content: "\e901";}
 .icon-application:before {content: "\e902";}
@@ -213,46 +216,64 @@ input {
 .icon-view:before {content: "\e968";}
 .icon-warning:before {content: "\e969";}
 .icon-webhook:before {content: "\e96a";}
-        
+   
+}
+
 // COLOR SCHEME
 
 /*-- VARIABLES --*/
 :root {
-    --border-radius: 25px;
     
     /* DEFAULT GRAY-BLUE SCHEME */
+
+    //Borders
+    --border-radius: 25px;
     --button-border-color: #8E8E8E;
-    --field-border-color: #aaa;
+    --field-border-color: #AAAAAA;
     --table-border-color: rgba(0,0,0,.12);
+
+    //Main accent color
     --accent-color: #058efc;
     --secondary-accent-color: #0062BD;
     --button-accent-color: #fff;
+
+    // Backgroungd and font colors
     --background-color: #ffffff;
     --secondary-background-color: #eeeeee;
     --font-color: #333333;
-    --alert-color: #333;
-    --code-color: #333;
+
+    //Code
+    --code-color: #333333;
     --code-color-background: #eeeeee;
+    
+    // Hints
     --error-color: #FF525B;
     --error-color-light: #FFD6D8; 
     --alert-color: #ECA910;
     --alert-color-light: #F9DFA4;
     --ok-color: #00C197;
     --ok-color-light: #D6F8E5;
+
+    // Labels (tags)
     --label-color: #FEE3B0;
     --label-text-color: #333;
   }
 
-.debug
- {
-    font-family: 'Courier New', Courier, monospace;
-    color: darkred;
-    padding: 10px;
-    border:solid 1px red;
-    font-size: 14px;
+
+// DEBUG
+
+:global {
+    .dd-debug
+    {
+        font-family: 'Courier New', Courier, monospace;
+        color: darkred;
+        padding: 10px;
+        border:solid 1px red;
+        font-size: 14px;
+    }
+    .dd-debug:before {
+        content:"debug";
+        font-weight: bold;
+        padding-right: 10px;
   }
-  .debug:before {
-    content:"debug";
-    font-weight: bold;
-    padding-right: 10px;
-  }
+}
