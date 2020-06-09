@@ -71,7 +71,7 @@ function FpsTable({ data, onEvent, id }) {
                     {currentPage != 0 && 
                     <button onClick={() => sendMsg({ page: currentPage - 1 })}>❮ Prev</button>}
                     {currentPage != totalPages && 
-                    <button onClick={() => sendMsg({ page: currentPage - 1 })}>Next ❯</button>}
+                    <button onClick={() => sendMsg({ page: currentPage + 1 })}>Next ❯</button>}
                 </div>
             </div>
 

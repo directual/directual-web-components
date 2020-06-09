@@ -142,7 +142,7 @@ const App = () => {
       <FpsForm data={exampleForm}/> */}
       <MainMenu
         title='directual-site'
-        //logoUrl='https://api.alfa.directual.com/fileUploaded/directual-site/32e12a82-222f-477a-acda-b23018cedbf6.svg'
+        logoUrl='https://api.alfa.directual.com/fileUploaded/directual-site/32e12a82-222f-477a-acda-b23018cedbf6.svg'
         currentRoute='/test'
         menu={[
           { "name": "test", "route": "/test", "link":link }, 
