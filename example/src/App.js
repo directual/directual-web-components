@@ -1,7 +1,6 @@
 import React from 'react'
-
-import { FpsHtml, FpsCards, FpsForm, MainMenu, 
-  Theme, ComponentDetails, FpsWrapper, ContentWrapper } from 'directual-web-components'
+import { FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, 
+  FpsTheme, ComponentDetails, FpsWrapper, ContentWrapper } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
 const App = () => {
@@ -154,12 +153,12 @@ const App = () => {
             },
             {
               title: 'Article',
-              path: '/',
+              path: '/article',
               icon: 'paragraph'
             },
             {
               title: 'Table view',
-              path: '/',
+              path: '/table',
               icon: 'database'
             },
             {
@@ -211,7 +210,11 @@ const App = () => {
           ]}
       />
       <ContentWrapper>
-        <ComponentDetails />
+
+        {/* <ComponentDetails /> */}
+
+        <FpsTable data={exampleTable}/>
+
       </ContentWrapper>
 
     </FpsWrapper>

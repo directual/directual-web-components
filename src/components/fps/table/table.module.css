@@ -1,0 +1,38 @@
+.table h1 {
+  margin-bottom: 12px;
+}
+.table .table_wrapper {
+  background-color: var(--background-color);
+  padding: 6px;
+  border-radius: var(--border-radius);
+  overflow: auto;
+}
+.table table {
+  min-width: 100%;
+}
+.table table td {
+  padding: 12px 12px;
+  border-top: solid 1px var(--table-border-color);
+}
+.table table thead td {
+  font-weight: var(--strong-font-weight);
+  border: none;
+  opacity: 0.5;
+}
+.table .pagination {
+  border-top: solid 1px var(--table-border-color);
+  padding: 12px;
+  font-size: var(--text-very-small-size);
+  display: flex;
+  align-items: center;
+}
+.table .pagination div {
+  margin-right: 18px;
+  opacity: 0.4;
+}
+.table .pagination button {
+  margin-right: 18px;
+  font-size: var(--text-very-small-size);
+  padding: 2px 6px;
+  cursor: pointer;
+}

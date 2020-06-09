@@ -51,5 +51,9 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "react-router-dom": "^5.2.0",
+    "react-table": "^7.1.0"
+  }
 }

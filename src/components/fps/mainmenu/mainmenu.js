@@ -1,7 +1,4 @@
 import React, {useState, useEffect} from 'react'
-// import {
-//     NavLink
-// } from 'react-router-dom'
 // import { authContext } from '../../../auth'
 // import { Backdrop } from '../primitive/primitiveComponents'
 // import { LogInLogOutButton } from '../rbac/rbac'
@@ -36,6 +33,7 @@ export default function MainMenu(props) {
                                 <a 
                                     className={`active icon ${item.icon && `icon-${item.icon}`}`}
                                     onClick={hideMM}
+                                    //to={item.path}
                                 >
                                     {item.title}</a>
                             </li>

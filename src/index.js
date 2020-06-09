@@ -9,8 +9,9 @@ import FpsCards from './components/fps/FpsCards'
 import FpsHtml from './components/fps/FpsHtml'
 import FpsForm from './components/fps/FpsForm'
 import MainMenu from './components/fps/mainmenu/mainmenu'
-import Theme from './components/fps/theme/theme'
+import FpsTheme from './components/fps/theme/theme'
 import ComponentDetails from './components/fps/componentdetails/componentdetails'
+import FpsTable from './components/fps/table/table'
 import {FpsWrapper, ContentWrapper} from './components/fps/wrapper/wrapper'
 
 export {
@@ -23,8 +24,9 @@ export {
   FpsHtml,
   FpsForm,
   MainMenu,
-  Theme,
+  FpsTheme,
   ComponentDetails,
   FpsWrapper,
-  ContentWrapper
+  ContentWrapper,
+  FpsTable
 }
