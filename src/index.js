@@ -4,6 +4,7 @@ import {
   FpsIsEmpty,
   PageIsEmpty,
 } from './components/fps/FpsSystem'
+import FpsH1 from './components/fps/FpsH1'
 import FpsLogin from './components/fps/FpsLogin'
 import FpsCards from './components/fps/FpsCards'
 import FpsHtml from './components/fps/FpsHtml'
@@ -28,5 +29,6 @@ export {
   ComponentDetails,
   FpsWrapper,
   ContentWrapper,
-  FpsTable
+  FpsTable,
+  FpsH1
 }
