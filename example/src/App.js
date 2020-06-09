@@ -1,6 +1,8 @@
 import React from 'react'
-import { FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, 
-  FpsTheme, ComponentDetails, FpsWrapper, ContentWrapper } from 'directual-web-components'
+import {
+  FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable,
+  FpsTheme, ComponentDetails, FpsWrapper, ContentWrapper
+} from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
 const App = () => {
@@ -129,7 +131,7 @@ const App = () => {
     'error': null,
     'isSuccessWrite': false
   }
-
+  const link = <a href="https://ya.ru">Hello</a>;
   return (
     <FpsWrapper>
       {/* FpsHtml:
@@ -139,83 +141,24 @@ const App = () => {
       FpsForm:
       <FpsForm data={exampleForm}/> */}
       <MainMenu
-        logoUrl='https://api.alfa.directual.com/fileUploaded/directual-site/32e12a82-222f-477a-acda-b23018cedbf6.svg'
-        menu={
-          [
-            {
-              title: 'What is it?',
-              path: '/',
-              icon: 'info'
-            },
-            {
-              subheader: true,
-              title: 'Directual Components'
-            },
-            {
-              title: 'Article',
-              path: '/article',
-              icon: 'paragraph'
-            },
-            {
-              title: 'Table view',
-              path: '/table',
-              icon: 'database'
-            },
-            {
-              title: 'Cards view',
-              path: '/',
-              icon: 'cards'
-            },
-            {
-              title: 'Form',
-              path: '/',
-              icon: 'edit'
-            },
-            {
-              title: 'Theme management',
-              path: '/',
-              icon: 'styles'
-            },
-            {
-              title: 'Log in / Sign up / Profile',
-              path: '/',
-              icon: 'user'
-            },
-            {
-              title: 'Chat (soon)',
-              path: '/',
-              icon: 'bubble',
-              disabled: true
-            },
-            {
-              title: 'Billing (soon)',
-              path: '/',
-              icon: 'creditcard',
-              disabled: true
-            },
-            {
-              subheader: true,
-              title: 'Design System'
-            },
-            {
-              title: 'Directual icons',
-              path: '/',
-              icon: 'babai'
-            },
-            {
-              title: 'Fonts',
-              path: '/',
-              icon: 'sort'
-            },
-          ]}
-      />
-      <ContentWrapper>
+        title='directual-site'
+        //logoUrl='https://api.alfa.directual.com/fileUploaded/directual-site/32e12a82-222f-477a-acda-b23018cedbf6.svg'
+        currentRoute='/test'
+        menu={[
+          { "name": "test", "route": "/test", "link":link }, 
+          { "name": "test3", "route": "/3" }, 
+          { "name": "Subheader", "subheader": "true"},
+          { "name": "Table", "route": "/table" }
+        ]}
 
-        {/* <ComponentDetails /> */}
+          />
+          <ContentWrapper>
 
-        <FpsTable data={exampleTable}/>
+            {/* <ComponentDetails /> */}
 
-      </ContentWrapper>
+            <FpsTable data={exampleTable} />
+
+          </ContentWrapper>
 
     </FpsWrapper>
   )

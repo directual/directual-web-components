@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 // import { authContext } from '../../../auth'
 // import { Backdrop } from '../primitive/primitiveComponents'
 // import { LogInLogOutButton } from '../rbac/rbac'
+// import Link from 'next/link'
 
 import styles from './mainmenu.module.css'
 
@@ -24,18 +25,19 @@ export default function MainMenu(props) {
             <div className={`${styles.mainmenu} ${showMM && styles.show}`}>
                 <div className={styles.hide_mobile_menu}
                     onClick={hideMM}></div>
-                <div className={styles.logo} style={{ backgroundImage: `url(${props.logoUrl})` }} />
+                {props.logoUrl ? 
+                    <div className={styles.logo} style={{ backgroundImage: `url(${props.logoUrl})` }} />:
+                    <div className={styles.title}>{props.title}</div>
+                }
                 <ul className={styles.list}>
                     {props.menu.map(item => (
-                        item.subheader ?
-                            <li className={styles.subheader}>{item.title}</li> :
-                            <li className={`${styles.item} ${item.disabled && styles.disabled}`}>
-                                <a 
-                                    className={`active icon ${item.icon && `icon-${item.icon}`}`}
-                                    onClick={hideMM}
-                                    //to={item.path}
-                                >
-                                    {item.title}</a>
+                        item.subheader == 'true' ?
+                            <li className={styles.subheader}>{item.name}</li> :
+                            <li 
+                                onClick={hideMM}
+                                className={`${styles.item} ${props.currentRoute == item.route && styles.active} 
+                                ${item.disabled && styles.disabled} icon ${item.icon ? `icon-${item.icon}`: `icon-forward`}`}>
+                                {item.link}
                             </li>
                     ))}
                 </ul>

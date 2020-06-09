@@ -53,6 +53,7 @@
     "dist"
   ],
   "dependencies": {
+    "next": "^9.4.4",
     "react-router-dom": "^5.2.0",
     "react-table": "^7.1.0"
   }

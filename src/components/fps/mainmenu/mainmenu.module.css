@@ -5,8 +5,20 @@
   margin: 32px 32px 12px 32px;
   flex-shrink: 0;
 }
+.title {
+  margin: 32px 32px 12px 32px;
+  flex-shrink: 0;
+  border: solid 1px var(--field-border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  opacity: 0.4;
+  border-radius: 4px;
+}
 @media all and (max-width: 415px) {
-  .logo {
+  .logo,
+  .title {
     margin-right: 90px;
   }
 }
@@ -59,7 +71,7 @@
   display: flex;
   flex-direction: column;
   max-width: 350px;
-  max-height: 100%;
+  height: 100%;
   z-index: 200;
 }
 .mainmenu .list {
@@ -88,6 +100,36 @@
   font-size: var(--text-small-size);
   font-weight: var(--strong-font-weight);
 }
+@media all and (max-width: 415px) {
+  li.item {
+    border-left: solid 3px rgba(0, 0, 0, 0);
+    margin-left: 0;
+    padding-left: 21px;
+  }
+  li.item.active {
+    border-right: solid 3px rgba(0, 0, 0, 0);
+    border-left: solid 3px var(--accent-color);
+  }
+}
+.item {
+  margin: 24px 0 24px 24px;
+  padding-right: 24px;
+  opacity: 0.6;
+  border-right: solid 3px rgba(0, 0, 0, 0);
+  transition: 0.3s;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.item:before {
+  font-size: 36px !important;
+  opacity: 1;
+  margin-right: 12px;
+}
+.item:hover {
+  opacity: 1;
+}
 .item.disabled {
   opacity: 0.25 !important;
 }
@@ -95,35 +137,20 @@
   cursor: default;
   opacity: 1;
 }
+.item.active {
+  color: var(--font-color);
+  opacity: 1;
+  transition: 0.3s;
+  border-right: solid 3px var(--accent-color);
+}
+.item.active:before {
+  color: var(--accent-color);
+  opacity: 1;
+}
 .item a {
-  margin: 24px 0 24px 24px;
-  padding-right: 24px;
   display: block;
   text-decoration: none;
   color: var(--font-color);
-  opacity: 0.6;
-  min-width: 200px;
-  display: flex;
-  align-items: center;
-  border-right: solid 3px rgba(0, 0, 0, 0);
-  cursor: pointer;
-}
-.item a:hover {
-  opacity: 1;
-}
-.item a:before {
-  font-size: 36px;
-  opacity: 1;
-  margin-right: 12px;
-}
-.item a.active {
-  color: var(--font-color);
-  opacity: 1;
-  border-right: solid 3px var(--accent-color);
-}
-.item a.active:before {
-  color: var(--accent-color);
-  opacity: 1;
 }
 .backdrop {
   position: fixed;
