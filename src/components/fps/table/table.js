@@ -4,6 +4,7 @@ import {
     usePagination
 } from 'react-table'
 import styles from './table.module.css'
+import SomethingWentWrong from '../SomethingWentWrong/SomethingWentWrong'
 
 function FpsTable({ data, onEvent, id }) {
     const tableHeader = data.headers || []
@@ -62,6 +63,10 @@ function FpsTable({ data, onEvent, id }) {
                 </table>
                 {data.error && <div>error:{data.error}</div>}
                 {tableData.length === 0 && <div> Table is empty</div>}
+                <SomethingWentWrong 
+                    icon='warning' 
+                    message='Something went totally wrong'      
+                    />
                 {totalPages > 0 &&
                 <div className={styles.pagination}>
                     <div>pageSize: {pageSize}</div>

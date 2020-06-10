@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {
-  FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button,
+  FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong,
   FpsTheme, ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
@@ -8,7 +8,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  useLocation
 } from 'react-router-dom'
 
 
@@ -138,10 +139,12 @@ const App = (props) => {
     'error': null,
     'isSuccessWrite': false
   }
+
   
   return (
     <FpsWrapper>
       <Router>
+
         <MainMenu
           title='directual-design'
           logoUrl='https://api.alfa.directual.com/fileUploaded/directual-site/32e12a82-222f-477a-acda-b23018cedbf6.svg'

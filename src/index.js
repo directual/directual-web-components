@@ -17,6 +17,7 @@ import {FpsWrapper, ContentWrapper} from './components/fps/wrapper/wrapper'
 import Input from './components/fps/dataentry/input/input'
 import Button from './components/fps/button/button'
 import ActionPanel from './components/fps/actionspanel/actionspanel'
+import SomethingWentWrong from './components/fps/SomethingWentWrong/SomethingWentWrong'
 
 export {
   Fps404,
@@ -36,5 +37,6 @@ export {
   FpsH1,
   Input,
   Button,
-  ActionPanel
+  ActionPanel,
+  SomethingWentWrong
 }
