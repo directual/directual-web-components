@@ -57,7 +57,7 @@ function FpsCards({ data, onEvent, id }) {
 FpsCards.settings = {
   icon: icon,
   name: 'Cards view',
-  sysName: 'FpsTable',
+  sysName: 'FpsCards',
   form: [
     { name: 'Select SL', sysName: 'sl', type: 'api-endpoint' },
     { name: 'pageSize', sysName: 'successText', type: 'input' },

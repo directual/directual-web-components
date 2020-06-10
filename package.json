@@ -1,6 +1,6 @@
 {
   "name": "directual-web-components",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "fps components",
   "author": "Navalikhin Nikita",
   "license": "MIT",
@@ -25,7 +25,8 @@
     "bump": "npm version patch -m \"Release v%s\" && git push && git push --tags"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.0.0",
+    "react-table": "^7.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
@@ -54,7 +55,7 @@
   ],
   "dependencies": {
     "next": "^9.4.4",
-    "react-router-dom": "^5.2.0",
-    "react-table": "^7.1.0"
+    "react-table": "^7.1.0",
+    "react-router-dom": "^5.2.0"
   }
 }
