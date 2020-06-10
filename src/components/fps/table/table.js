@@ -46,9 +46,6 @@ function FpsTable({ data, onEvent, id }) {
 
     return (
         <div className={styles.table}>
-            <h1>Table</h1>
-            {data.error && <div>error:{data.error}</div>}
-            {tableData.length === 0 && <div> Table is empty</div>}
             <div className={styles.table_wrapper}>
                 <table>
                     <thead>
@@ -63,6 +60,9 @@ function FpsTable({ data, onEvent, id }) {
                             </tr>))}
                     </tbody>
                 </table>
+                {data.error && <div>error:{data.error}</div>}
+                {tableData.length === 0 && <div> Table is empty</div>}
+                {totalPages > 0 &&
                 <div className={styles.pagination}>
                     <div>pageSize: {pageSize}</div>
                     <div>totalPages: {totalPages}</div>
@@ -72,7 +72,7 @@ function FpsTable({ data, onEvent, id }) {
                     <button onClick={() => sendMsg({ page: currentPage - 1 })}>❮ Prev</button>}
                     {currentPage != totalPages && 
                     <button onClick={() => sendMsg({ page: currentPage + 1 })}>Next ❯</button>}
-                </div>
+                </div>}
             </div>
 
             {/* <table {...getTableProps()}>

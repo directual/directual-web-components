@@ -1,0 +1,28 @@
+.panel {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+}
+.panel button {
+  margin: 0 6px 6px 0;
+}
+.panel.border {
+  border: solid 1px var(--field-border-color);
+  padding: 12px 6px 6px 12px;
+  border-radius: var(--border-radius);
+}
+.panel.border .title {
+  left: calc(var(--border-radius) + 4px);
+}
+.panel.with_title {
+  padding-top: 16px;
+}
+.panel .title {
+  position: absolute;
+  background-color: var(--secondary-background-color);
+  font-size: var(--text-small-size);
+  top: -10px;
+  left: 4px;
+  padding: 0 3px;
+  color: var(--button-border-color);
+}
