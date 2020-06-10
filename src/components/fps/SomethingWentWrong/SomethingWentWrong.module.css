@@ -1,0 +1,17 @@
+.sww {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 0;
+}
+.sww .title {
+  opacity: 0.3;
+  font-size: var(--h3-font-size);
+}
+.sww .title.icon {
+  display: flex;
+  flex-direction: column;
+}
+.sww .title.icon:before {
+  font-size: calc(var(--h1-font-size) * 1.5);
+}

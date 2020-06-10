@@ -1,1 +1,17 @@
- 
+ .sww {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     padding:36px 0;
+     .title {
+        opacity: .3;
+        font-size: var( --h3-font-size);
+        &.icon {
+            display: flex;
+            flex-direction: column;
+            &:before {
+                font-size: calc(var( --h1-font-size) * 1.5);
+            }
+        }
+     }
+ }

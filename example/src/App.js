@@ -13,15 +13,31 @@ import {
 } from 'react-router-dom'
 
 
-function MainMenuTest () {
+function MainMenuWrapper () {
   let location = useLocation()
 
-  return <div>main menu {JSON.stringify(location)}</div>
-}
+  return (
+  <MainMenu
+    title='directual-design'
+    logoUrl='https://api.alfa.directual.com/fileUploaded/directual-site/32e12a82-222f-477a-acda-b23018cedbf6.svg'
+    currentRoute={location.pathname || '/'}
+    menu={[
+      { name: "What?", route: "/", icon: "info", link: <Link to="/">What is it?</Link> },
+      { name: "Components", subheader: true },
+      { name: "Article", route: "/article", icon: "paragraph", link: <Link to="/article">Article</Link> },
+      { name: "Table view", route: "/table", icon: "database", link: <Link to="/table">Table view</Link> },
+      { name: "Cards view", route: "/cards", icon: "cards", link: <Link to="/cards">Cards view</Link> },
+      { name: "Form", route: "/form", icon: "edit", link: <Link to="/form">Form</Link> },
+      { name: "Theme management", route: "/theme", icon: "styles", link: <Link to="/theme">Theme management</Link> },
+      { name: "Sign In / Sign Up / Profile", route: "/profile", icon: "user", link: <Link to="/profile">Sign In / Sign Up / Profile</Link> },
+      { name: "Chat (soon)", route: "/chat", icon: "bubble", disabled: true },
+      { name: "Calculator (soon)", route: "/calc", icon: "actions", disabled: true },
+      { name: "Design system", subheader: true },
+      { name: "Directual Icons", route: "/system-icons", icon: "babai", link: <Link to="/icons">Directual Icons</Link> },
+      { name: "Buttons", route: "/system-button", icon: "play", link: <Link to="/system-button">Action panel, Buttons</Link> }
+    ]}
 
-function MainBodyTest () {
-
-  return <MainMenuTest />
+  /> )
 }
 
 const App = (props) => {
@@ -156,28 +172,9 @@ const App = (props) => {
     <FpsWrapper>
       <Router>
 
-        <MainMenuTest />
-        <MainMenu
-          title='directual-design'
-          logoUrl='https://api.alfa.directual.com/fileUploaded/directual-site/32e12a82-222f-477a-acda-b23018cedbf6.svg'
-          currentRoute={window.location.pathname || '/'}
-          menu={[
-            { name: "What?", route: "/", icon: "info", link: <Link to="/">What is it?</Link> },
-            { name: "Components", subheader: true },
-            { name: "Article", route: "/article", icon: "paragraph", link: <Link to="/article">Article</Link> },
-            { name: "Table view", route: "/table", icon: "database", link: <Link to="/table">Table view</Link> },
-            { name: "Cards view", route: "/cards", icon: "cards", link: <Link to="/cards">Cards view</Link> },
-            { name: "Form", route: "/form", icon: "edit", link: <Link to="/form">Form</Link> },
-            { name: "Theme management", route: "/theme", icon: "styles", link: <Link to="/theme">Theme management</Link> },
-            { name: "Sign In / Sign Up / Profile", route: "/profile", icon: "user", link: <Link to="/profile">Sign In / Sign Up / Profile</Link> },
-            { name: "Chat (soon)", route: "/chat", icon: "bubble", disabled: true },
-            { name: "Calculator (soon)", route: "/calc", icon: "actions", disabled: true },
-            { name: "Design system", subheader: true },
-            { name: "Directual Icons", route: "/system-icons", icon: "babai", link: <Link to="/icons">Directual Icons</Link> },
-            { name: "Buttons", route: "/system-button", icon: "play", link: <Link to="/system-button">Action panel, Buttons</Link> }
-          ]}
+        <MainMenuWrapper />
 
-        />
+
         <ContentWrapper>
 
           <Switch>
@@ -198,24 +195,26 @@ const App = (props) => {
               <h1>Cards</h1>
               <FpsCards data={exampleTable}/>
             </Route>
+
             <Route exact path="/system-button">
               <h1>Action panels, Buttons</h1>
               <ActionPanel margin={36}>
                 <Button>Regular button</Button>
                 <Button accent>Accent button</Button>
-                <Button icon="babai">Icon button</Button>
+                <Button icon="play">Icon button</Button>
               </ActionPanel>
               <ActionPanel title='Action panel with title and border' border margin={36}>
                 <Button>Regular button</Button>
                 <Button accent>Accent button</Button>
-                <Button icon="babai">Icon button</Button>
+                <Button icon="play">Icon button</Button>
               </ActionPanel>
               <ActionPanel title='Action panel with title only' margin={36}>
-                <Button icon="babai" accent>Icon accent button</Button>
+                <Button icon="play" accent>Icon accent button</Button>
                 <Button disabled>Disabled button</Button>
               </ActionPanel>
               <ComponentDetails />
             </Route>
+
           </Switch>
 
 

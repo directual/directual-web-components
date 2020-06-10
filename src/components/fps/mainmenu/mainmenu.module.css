@@ -31,6 +31,7 @@
   justify-content: center;
   right: 18px;
   top: 18px;
+  z-index: 101;
 }
 .show_mobile_menu:before {
   font-family: "directual-icons";

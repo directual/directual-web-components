@@ -3,6 +3,10 @@ import styles from './SomethingWentWrong.module.css'
 
 export default function SomethingWentWrong(props) {
     return (
-        <div>SomethingWentWrong</div>
+        <div className={styles.sww}>
+            <div 
+                className={`${styles.title} ${props.icon && `${styles.icon} icon icon-${props.icon}`}`}>
+                    {props.message}</div>
+        </div>
     )
 }

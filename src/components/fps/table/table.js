@@ -61,23 +61,28 @@ function FpsTable({ data, onEvent, id }) {
                             </tr>))}
                     </tbody>
                 </table>
-                {data.error && <div>error:{data.error}</div>}
-                {tableData.length === 0 && <div> Table is empty</div>}
-                <SomethingWentWrong 
-                    icon='warning' 
-                    message='Something went totally wrong'      
-                    />
+                {data.error &&
+                    <SomethingWentWrong
+                        icon='warning'
+                        message={data.error}
+                    />}
+                {tableData.length === 0 &&
+                    <SomethingWentWrong
+                        icon='ban'
+                        message='Table is empty'
+                    />}
+
                 {totalPages > 0 &&
-                <div className={styles.pagination}>
-                    <div>pageSize: {pageSize}</div>
-                    <div>totalPages: {totalPages}</div>
-                    <div>totalObjects: ~{totalPages * pageSize}</div>
-                    <div>currentPage: {currentPage}</div>
-                    {currentPage != 0 && 
-                    <button onClick={() => sendMsg({ page: currentPage - 1 })}>❮ Prev</button>}
-                    {currentPage != totalPages && 
-                    <button onClick={() => sendMsg({ page: currentPage + 1 })}>Next ❯</button>}
-                </div>}
+                    <div className={styles.pagination}>
+                        <div>pageSize: {pageSize}</div>
+                        <div>totalPages: {totalPages}</div>
+                        <div>totalObjects: ~{totalPages * pageSize}</div>
+                        <div>currentPage: {currentPage}</div>
+                        {currentPage != 0 &&
+                            <button onClick={() => sendMsg({ page: currentPage - 1 })}>❮ Prev</button>}
+                        {currentPage != totalPages &&
+                            <button onClick={() => sendMsg({ page: currentPage + 1 })}>Next ❯</button>}
+                    </div>}
             </div>
 
             {/* <table {...getTableProps()}>
@@ -111,10 +116,10 @@ FpsTable.settings = {
     name: 'Table view',
     sysName: 'FpsTable',
     form: [
-      { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
-      { name: 'Page size', sysName: 'successText', type: 'input' },
-      //{ name: 'Global Filtering', sysName: 'globalFilteringOn', type: 'switch' },
-      //{ name: 'Sorting', sysName: 'sortingOn', type: 'switch' },
+        { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
+        { name: 'Page size', sysName: 'successText', type: 'input' },
+        //{ name: 'Global Filtering', sysName: 'globalFilteringOn', type: 'switch' },
+        //{ name: 'Sorting', sysName: 'sortingOn', type: 'switch' },
     ]
-  }
-  export default FpsTable
+}
+export default FpsTable
