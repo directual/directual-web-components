@@ -13,6 +13,17 @@ import {
 } from 'react-router-dom'
 
 
+function MainMenuTest () {
+  let location = useLocation()
+
+  return <div>main menu {JSON.stringify(location)}</div>
+}
+
+function MainBodyTest () {
+
+  return <MainMenuTest />
+}
+
 const App = (props) => {
   //return <ExampleComponent text="Create React Library Example 😄" />
   let exampleDataHtml = {
@@ -140,11 +151,12 @@ const App = (props) => {
     'isSuccessWrite': false
   }
 
-  
+
   return (
     <FpsWrapper>
       <Router>
 
+        <MainMenuTest />
         <MainMenu
           title='directual-design'
           logoUrl='https://api.alfa.directual.com/fileUploaded/directual-site/32e12a82-222f-477a-acda-b23018cedbf6.svg'
@@ -206,7 +218,7 @@ const App = (props) => {
             </Route>
           </Switch>
 
-          
+
 
         </ContentWrapper>
       </Router>
