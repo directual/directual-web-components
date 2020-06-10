@@ -1,8 +1,4 @@
 import React, {useState, useEffect} from 'react'
-// import { authContext } from '../../../auth'
-// import { Backdrop } from '../primitive/primitiveComponents'
-// import { LogInLogOutButton } from '../rbac/rbac'
-// import Link from 'next/link'
 
 import styles from './mainmenu.module.css'
 
@@ -31,13 +27,15 @@ export default function MainMenu(props) {
                 }
                 <ul className={styles.list}>
                     {props.menu.map(item => (
-                        item.subheader == 'true' ?
+                        item.subheader == 'true' || item.subheader == true ?
                             <li className={styles.subheader}>{item.name}</li> :
                             <li 
                                 onClick={hideMM}
                                 className={`${styles.item} ${props.currentRoute == item.route && styles.active} 
                                 ${item.disabled && styles.disabled} icon ${item.icon ? `icon-${item.icon}`: `icon-forward`}`}>
-                                {item.link}
+                                {item.link ? item.link:
+                                <a href={!item.disabled && item.route}>{item.name}</a>
+                                }
                             </li>
                     ))}
                 </ul>

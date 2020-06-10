@@ -131,7 +131,6 @@ const App = () => {
     'error': null,
     'isSuccessWrite': false
   }
-  const link = <a href="https://ya.ru">Hello</a>;
   return (
     <FpsWrapper>
       {/* FpsHtml:
@@ -141,14 +140,21 @@ const App = () => {
       FpsForm:
       <FpsForm data={exampleForm}/> */}
       <MainMenu
-        title='directual-site'
+        title='directual-design'
         logoUrl='https://api.alfa.directual.com/fileUploaded/directual-site/32e12a82-222f-477a-acda-b23018cedbf6.svg'
-        currentRoute='/test'
+        currentRoute='/'
         menu={[
-          { "name": "test", "route": "/test", "link":link }, 
-          { "name": "test3", "route": "/3" }, 
-          { "name": "Subheader", "subheader": "true"},
-          { "name": "Table", "route": "/table" }
+          { name: "What is it?", route: "/", icon:"info"}, 
+          { name: "Components", subheader: true},
+          { name: "Article", route: "/article", icon:"paragraph" }, 
+          { name: "Table view", route: "/table", icon:"database" },
+          { name: "Cards view", route: "/cards", icon:"cards" },
+          { name: "Theme management", route: "/icon", icon:"styles" },
+          { name: "Sign In / Sign Up / Profile", route: "/icon", icon:"user" },
+          { name: "Chat (soon)", route: "/chat", icon:"bubble", disabled: true },
+          { name: "Calculator (soon)", route: "/calc", icon:"actions", disabled: true },
+          { name: "Design system", subheader: true},
+          { name: "Directual Icons", route: "/icons", icon:"babai" }
         ]}
 
           />
