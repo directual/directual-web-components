@@ -47,6 +47,7 @@ function FpsTable({ data, onEvent, id }) {
 
     return (
         <div className={styles.table}>
+            {data.headerField && <h2>{data.headerField}</h2>}
             <div className={styles.table_wrapper}>
                 <table>
                     <thead>

@@ -1,6 +1,9 @@
 .table h1 {
   margin-bottom: 12px;
 }
+.table h2 {
+  padding-bottom: 12px;
+}
 .table .table_wrapper {
   background-color: var(--background-color);
   padding: 6px;

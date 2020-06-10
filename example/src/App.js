@@ -12,6 +12,9 @@ import {
   useLocation
 } from 'react-router-dom'
 
+//pages:
+import ButtonsPage from './pages/buttons'
+
 
 function MainMenuWrapper () {
   let location = useLocation()
@@ -197,22 +200,7 @@ const App = (props) => {
             </Route>
 
             <Route exact path="/system-button">
-              <h1>Action panels, Buttons</h1>
-              <ActionPanel margin={36}>
-                <Button>Regular button</Button>
-                <Button accent>Accent button</Button>
-                <Button icon="play">Icon button</Button>
-              </ActionPanel>
-              <ActionPanel title='Action panel with title and border' border margin={36}>
-                <Button>Regular button</Button>
-                <Button accent>Accent button</Button>
-                <Button icon="play">Icon button</Button>
-              </ActionPanel>
-              <ActionPanel title='Action panel with title only' margin={36}>
-                <Button icon="play" accent>Icon accent button</Button>
-                <Button disabled>Disabled button</Button>
-              </ActionPanel>
-              <ComponentDetails />
+              <ButtonsPage />
             </Route>
 
           </Switch>
