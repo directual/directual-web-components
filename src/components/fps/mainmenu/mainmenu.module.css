@@ -151,7 +151,9 @@
 .item a {
   display: block;
   text-decoration: none;
-  color: var(--font-color);
+  flex-grow: 2;
+  color: var(--font-color) !important;
+  padding: 10px 0;
 }
 .backdrop {
   position: fixed;

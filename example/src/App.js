@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {
-  FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong,
-  FpsTheme, ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel
+  FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input,
+  FpsTheme, ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 import {
@@ -32,12 +32,13 @@ function MainMenuWrapper () {
       { name: "Cards view", route: "/cards", icon: "cards", link: <Link to="/cards">Cards view</Link> },
       { name: "Form", route: "/form", icon: "edit", link: <Link to="/form">Form</Link> },
       { name: "Theme management", route: "/theme", icon: "styles", link: <Link to="/theme">Theme management</Link> },
-      { name: "Sign In / Sign Up / Profile", route: "/profile", icon: "user", link: <Link to="/profile">Sign In / Sign Up / Profile</Link> },
+      { name: "Sign In / Sign Up / Profile", route: "/profile", icon: "user", link: <Link to="/profile">Sign in, Sign up, Profile</Link> },
       { name: "Chat (soon)", route: "/chat", icon: "bubble", disabled: true },
       { name: "Calculator (soon)", route: "/calc", icon: "actions", disabled: true },
       { name: "Design system", subheader: true },
-      { name: "Directual Icons", route: "/system-icons", icon: "babai", link: <Link to="/icons">Directual Icons</Link> },
-      { name: "Buttons", route: "/system-button", icon: "play", link: <Link to="/system-button">Action panel, Buttons</Link> }
+      { name: "Directual Icons", route: "/system-icons", icon: "babai", link: <Link to="/system-icons">Directual icons</Link> },
+      { name: "Buttons", route: "/system-button", icon: "play", link: <Link to="/system-button">Action panel, Buttons</Link> },
+      { name: "Inputs", route: "/system-data-entry", icon: "import", link: <Link to="/system-data-entry">Data entry</Link> }
     ]}
 
   /> )
@@ -170,6 +171,10 @@ const App = (props) => {
     'isSuccessWrite': false
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
 
   return (
     <FpsWrapper>
@@ -198,9 +203,18 @@ const App = (props) => {
               <h1>Cards</h1>
               <FpsCards data={exampleTable}/>
             </Route>
+            <Route exact path="/theme">
+              <h1>Theme management</h1>
+              <FpsTheme themes={['classic', 'tiffany', 'dark-mint', 'warm-night']}/>
+            </Route>
 
             <Route exact path="/system-button">
               <ButtonsPage />
+            </Route>
+            <Route exact path="/system-data-entry">
+              <h1>Inputs, Selects. etc.</h1>
+              <Input />
+
             </Route>
 
           </Switch>

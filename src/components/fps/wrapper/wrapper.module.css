@@ -10,8 +10,12 @@
     padding: 32px;
     flex-grow: 2;
     overflow: auto;
-
 }
+
+.content_wrapper h1 {
+    margin-bottom: 24px;
+}
+
 @media all and (max-width: 415px) { 
     .content_wrapper {
         padding: 24px;

@@ -8,7 +8,7 @@ import 'directual-web-components/dist/index.css'
 export default function ButtonsPage() {
     return (
         <React.Fragment>
-            <h1>Action panels, Buttons</h1>
+            <h1>Action panel, Buttons</h1>
             <ActionPanel margin={36}>
                 <Button>Regular button</Button>
                 <Button accent>Accent button</Button>

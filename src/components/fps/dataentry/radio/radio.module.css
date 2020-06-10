@@ -1,9 +1,9 @@
-.dd-radio {
+.radio {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-.dd-radio label {
+.radio label {
   display: flex;
   align-items: center;
   height: 32px;
@@ -11,10 +11,10 @@
   font-weight: var(--text-font-weight) !important;
   cursor: pointer;
 }
-.dd-radio label:hover input {
+.radio label:hover input {
   border: solid 4px var(--field-border-color);
 }
-.dd-radio label input {
+.radio label input {
   width: 20px;
   height: 20px;
   -webkit-appearance: none;
@@ -25,9 +25,9 @@
   margin: 6px 11px 6px 1px;
   outline: none;
 }
-.dd-radio label input:checked {
+.radio label input:checked {
   border: solid 4px var(--accent-color);
 }
-.dd-radio label input:active {
+.radio label input:active {
   border: solid 4px var(--font-color);
 }

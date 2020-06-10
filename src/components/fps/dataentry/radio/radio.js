@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import './radio.css'
+import styles from './radio.module.css'
 
-export function Radio(props) {
+export default function Radio(props) {
     const [selectedOption, setSelectedOption] = useState(props.defaultValue);
     return (
-        <div className="dd-radio">
+        <div className={styles.radio}>
             {props.options && props.options.map(option =>
                 <label>
                     <input

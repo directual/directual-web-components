@@ -259,6 +259,19 @@ html, body, #root {height: 100%;}
     --label-text-color: #333;
   }
 
+:global {
+    body {
+        color: var(--font-color);
+        background-color: var(--background-color);
+      }
+      a {
+        color: var(--accent-color);
+      }
+      a:hover {
+        color: var(--secondary-accent-color);
+      }
+}
+
 
 // DEBUG
 

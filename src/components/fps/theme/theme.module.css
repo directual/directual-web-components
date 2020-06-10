@@ -442,6 +442,16 @@
   --label-color: #FEE3B0;
   --label-text-color: #333;
 }
+:global body {
+  color: var(--font-color);
+  background-color: var(--background-color);
+}
+:global a {
+  color: var(--accent-color);
+}
+:global a:hover {
+  color: var(--secondary-accent-color);
+}
 :global .dd-debug {
   font-family: 'Courier New', Courier, monospace;
   color: darkred;

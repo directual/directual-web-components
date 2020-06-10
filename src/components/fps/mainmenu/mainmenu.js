@@ -13,6 +13,7 @@ export default function MainMenu(props) {
         setShowBackdrop(false);
         setShowMM(false)
     }
+
     return (
         <React.Fragment>
             {showBackdrop && <Backdrop onClick={hideMM}/>}
