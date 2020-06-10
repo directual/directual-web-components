@@ -28,15 +28,20 @@
   color: var(--button-accent-color);
   border-color: var(--secondary-accent-color);
 }
+.button.accent:active {
+  background-color: var(--font-color);
+  color: var(--background-color);
+  border-color: var(--font-color);
+}
 .button:hover {
   padding: 0 17px;
   border-width: 2px;
   transition: 0;
 }
 .button:active {
-  background-color: var(--font-color);
+  background-color: var(--button-border-color);
   color: var(--background-color);
-  border-color: var(--font-color);
+  border-color: var(--button-border-color);
 }
 .button.icon:before {
   font-size: 28px;

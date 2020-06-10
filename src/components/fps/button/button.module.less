@@ -28,6 +28,11 @@
             color: var(--button-accent-color);
             border-color: var(--secondary-accent-color);
         }
+        &:active {
+            background-color: var(--font-color);
+            color: var(--background-color);
+            border-color: var(--font-color);
+        }
     }
     &:hover {
         padding: 0 17px;
@@ -35,9 +40,9 @@
         transition: 0;
     }
     &:active {
-        background-color: var(--font-color);
+        background-color: var(--button-border-color);
         color: var(--background-color);
-        border-color: var(--font-color);
+        border-color: var(--button-border-color);
     }
     &.icon {
         &:before {
