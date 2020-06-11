@@ -22,7 +22,7 @@ export default function Input(props) {
 
     const handleChange = (e) => {
         setValue(e)
-        props.required && setWarningMesg({});
+        props.required && setWarningMesg({})
     }
 
     const handleChangeNumber = (e) => {
@@ -31,7 +31,7 @@ export default function Input(props) {
     }
     useEffect(()=> {
         props.type == 'number' && props.positive && value < 0 && setValue(0)
-
+        props.onChange && props.onChange(value)
     }, [ value ])
 
     // useEffect(
@@ -97,7 +97,7 @@ export default function Input(props) {
                     <input
                         className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]}`}
                         type={pwdVisible}
-                        onChange={e => setValue(e.target.value)}
+                        onChange={e => handleChange(e.target.value)}
                         value={value}
                         onBlur={checkValue}
                         placeholder={props.placeholder} />

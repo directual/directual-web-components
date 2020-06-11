@@ -30,6 +30,13 @@
   font-display: swap;
   src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE7g4.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Source Code Pro Regular'), local('SourceCodePro-Regular'), url(https://fonts.gstatic.com/s/sourcecodepro/v11/HI_SiYsKILxRpg3hIP6sJ7fM7PqVOg.ttf) format('truetype');
+}
 :root {
   --headers-font-family: 'Montserrat', sans-serif;
   --main-font-family: 'Lato', sans-serif;
@@ -59,6 +66,9 @@
   font-family: var(--main-font-family);
   font-size: var(--text-font-size);
   font-weight: var(--text-font-weight);
+}
+:global code {
+  font-family: 'Source Code Pro', monospace;
 }
 :global strong {
   font-weight: var(--strong-font-weight);
@@ -178,6 +188,9 @@
 }
 :global .icon-codeArray:before {
   content: "\e919";
+}
+:global .icon-codeXML:before {
+  content: "\e96e";
 }
 :global .icon-collapse:before {
   content: "\e91a";

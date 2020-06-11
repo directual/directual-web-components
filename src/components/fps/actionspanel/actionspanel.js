@@ -7,8 +7,10 @@ export default function ActionPanel(props) {
             className={`${styles.panel} ${props.border && styles.border} ${props.title && styles.with_title}`}
             style={
                 {
-                    marginTop: props.margin,
-                    marginBottom: props.margin
+                    marginTop: props.margin.top,
+                    marginBottom: props.margin.bottom,
+                    marginLeft: props.margin.left,
+                    marginRight: props.margin.right
                 }
             }
         >
