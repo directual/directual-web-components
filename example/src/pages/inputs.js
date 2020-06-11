@@ -16,12 +16,14 @@ export default function InputsPage() {
     placeholder='Placeholder'
     type='string'
     required
-/>`} />
+    width={400}
+    />`} />
             <Input
                 label='Input (required)'
                 placeholder='Placeholder'
                 type='string'
                 required
+                width={400}
             />
 
             <CodeSnippet code=
@@ -30,12 +32,14 @@ export default function InputsPage() {
     placeholder='Placeholder'
     defaultValue='default value'
     type='string'
-/>`} />
+    width={400}
+    />`} />
             <Input
                 label='Input (not required + default value)'
                 placeholder='Placeholder'
                 defaultValue='default value'
                 type='string'
+                width={400}
             />
 
 <CodeSnippet code=
@@ -45,13 +49,15 @@ export default function InputsPage() {
     defaultValue='default value'
     type='string'
     disabled
-/>`} />
+    width={400}
+    />`} />
             <Input
                 label='Input disabled'
                 placeholder='Placeholder'
                 defaultValue='default value'
                 type='string'
                 disabled
+                width={400}
             />
 
 <CodeSnippet code=
@@ -60,12 +66,14 @@ export default function InputsPage() {
     placeholder='Enter your email address'
     type='email'
     required
-/>`} />
+    width={400}
+    />`} />
             <Input
                 label='Email (with validation)'
                 placeholder='Enter your email address'
                 type='email'
                 required
+                width={400}
             />
 
             <CodeSnippet code=
@@ -75,13 +83,15 @@ export default function InputsPage() {
     type='textarea'
     rows={4}
     required
-/>`} />
+    width={400}
+    />`} />
             <Input
                 label='Textarea (required)'
                 placeholder='Placeholder for textarea'
                 type='textarea'
                 rows={4}
                 required
+                width={400}
             />
 
             <CodeSnippet code=
@@ -89,11 +99,13 @@ export default function InputsPage() {
     label='Numbers'
     placeholder='How old are you'
     type='number'
-/>`} />
+    width={400}
+    />`} />
             <Input
                 label='Numbers'
                 placeholder='How old are you'
                 type='number'
+                width={400}
             />
 
             <CodeSnippet code=
@@ -103,29 +115,31 @@ export default function InputsPage() {
     type='number'
     defaultValue={0}
     positive
-/>`} />
+    width={400}
+    />`} />
             <Input
                 label='Numbers, positive only'
                 placeholder='How old are you'
                 type='number'
                 defaultValue={0}
                 positive
+                width={400}
             />
 
             <CodeSnippet code=
                 {`<Input
     label='Password (required)'
     placeholder='Type your password'
-    defaultValue=''
     type='password'
     required
-/>`} />
+    width={400}
+    />`} />
             <Input
                 label='Password (required)'
                 placeholder='Type your password'
-                defaultValue=''
                 type='password'
                 required
+                width={400}
             />
             <ComponentDetails data={
                 {
@@ -143,6 +157,7 @@ export default function InputsPage() {
                         { prop: 'disabled', type: 'boolean', desc: 'Disable input', eg: 'disabled = {false}' },
                         { prop: 'icon', type: 'directual icon', desc: 'Icon from Directual icons', eg: 'icon = \'warning\'' },
                         { prop: 'defaultValue', type: 'string', desc: 'Default input value', eg: 'defaultValue = \'hello world\'' },
+                        { prop: 'width', type: 'number', desc: 'Input max-width', eg: 'width={150}' },
                         { prop: 'placeholder', type: 'string', desc: 'Placeholder', eg: 'placeholder = \'type here\'' },
                         { prop: 'required', type: 'boolean', desc: 'Required field, throws a warning if empty', eg: 'required = {true}' },
                         { prop: 'rows', type: 'number', desc: 'For type = \'textarea\' only! Number of rows', eg: 'rows = {8}' },

@@ -11,6 +11,10 @@ export function SetTheme() {
 }
 
 export default function FpsTheme(props) {
+
+    const logoDarkTheme = props.logoDarkTheme || ''
+    const logoLightTheme = props.logoLightTheme || ''
+
     let currentTheme = localStorage.getItem('dd-theme')
     !currentTheme && (currentTheme = 'classic')
 

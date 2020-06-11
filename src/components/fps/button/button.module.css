@@ -16,7 +16,7 @@
 }
 .button.disabled {
   cursor: not-allowed;
-  opacity: 0.3;
+  opacity: 0.4;
 }
 .button.accent {
   border-color: var(--accent-color);
@@ -33,12 +33,12 @@
   color: var(--background-color);
   border-color: var(--font-color);
 }
-.button:hover {
+.button:hover:not(.disabled) {
   padding: 0 17px;
   border-width: 2px;
   transition: 0;
 }
-.button:active {
+.button:active:not(.disabled) {
   background-color: var(--button-border-color);
   color: var(--background-color);
   border-color: var(--button-border-color);

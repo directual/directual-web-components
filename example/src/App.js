@@ -201,7 +201,6 @@ const App = (props) => {
             </Route>
             <Route exact path="/cards">
               <h1>Cards</h1>
-              <FpsCards data={exampleTable}/>
             </Route>
             <Route exact path="/theme">
               <h1>Theme management</h1>

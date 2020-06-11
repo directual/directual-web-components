@@ -65,7 +65,7 @@ export default function Input(props) {
     // [value])
 
     return (
-        <div className={styles.input_wrapper} style={{width:props.width || 'auto'}}>
+        <div className={styles.input_wrapper} style={{maxWidth:props.width || 'auto'}}>
             <label>{props.label}</label>
             {/* value: {value} */}
 
