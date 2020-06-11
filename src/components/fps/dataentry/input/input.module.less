@@ -1,1 +1,98 @@
- 
+ .input_wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 24px;
+    label {
+        font-size: var(--text-small-size);
+        opacity: .7;
+        padding-bottom: 6px;
+        font-weight: var(--h1-font-weight);
+    }
+    .field_wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        position: relative;
+        .clear {
+            position: absolute;
+            opacity: .3;
+            cursor: pointer;
+            transition: .5s;
+            top:9px;
+            right:9px;
+            &:before {
+                font-size: 32px;}
+            &:hover {
+                opacity: .8;
+                transition: .5s;
+            }
+        }
+    }
+    textarea {
+        resize: none;
+        &.field {
+            height: auto !important;
+            padding: 18px 36px 18px 18px;
+            &:hover, &:focus, &:active, &.ok, &.error {
+            padding: 17px 35px 17px 17px;
+            }
+        }
+    }
+    .field {
+        outline: none;
+        border:solid 1px var( --field-border-color);
+        border-radius: var( --border-radius);
+        background-color: var(--background-color);
+        display: flex;
+        height: 48px;
+        align-items: center;
+        padding: 0 36px 0 18px;
+        color: var(--font-color);
+        &.error {
+            border-width: 2px;
+            height: 46px;
+            padding: 0 17px;
+            border-color: var(--error-color);
+        }
+        &.ok {
+            border-width: 2px;
+            height: 46px;
+            padding: 0 17px;
+            border-color: var(--ok-color);
+        }
+        &:hover {
+            border-width: 2px;
+            height: 46px;
+            padding: 0 17px;
+        }
+        &:focus {
+            border-width: 2px;
+            height: 46px;
+            padding: 0 17px;
+            border-color: var(--accent-color);
+        }
+        &:active {
+            height: 46px;
+            padding: 0 17px;
+            border: solid 2px var(--font-color);
+        }
+        &::placeholder {
+            opacity:.5;
+            color: var(--font-color);
+            font-size: var(--text-small-size);
+        }
+    }
+    .status {
+        font-size: var(--text-small-size);
+        opacity: .7;
+        margin: 3px 0 0 12px;
+        &.ok {
+            color:var(--ok-color);
+        }
+        &.error {
+            color:var(--error-color);
+        }
+    }
+ }

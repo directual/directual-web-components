@@ -86,7 +86,8 @@
   font-family: var(--main-font-family);
   font-size: var(--text-font-size);
 }
-:global input {
+:global input,
+:global textarea {
   font-family: var(--main-font-family);
   font-size: var(--text-font-size);
 }
