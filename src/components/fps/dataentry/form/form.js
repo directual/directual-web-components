@@ -65,7 +65,7 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
       {isSuccessWrite && <div>{successText}</div>}
 
       {!isSuccessWrite && (
-        <form onSubmit={submit} style={{width: formWidth ? formWidth : 'auto'}}>
+        <form onSubmit={submit} style={{maxWidth: formWidth ? formWidth : 'auto'}}>
           {fileds.map((field) => (
             <div>
               <Input

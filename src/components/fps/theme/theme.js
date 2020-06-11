@@ -109,7 +109,6 @@ export default function FpsTheme(props) {
             document.documentElement.style.setProperty('--alert-color-light', '#745b0e')
             document.documentElement.style.setProperty('--ok-color', '#76ab24')
             document.documentElement.style.setProperty('--ok-color-light', '#476927')
-            document.documentElement.style.setProperty('--border-radius', '25px')
             document.documentElement.style.setProperty('--label-color', '#ce9306')
             document.documentElement.style.setProperty('--label-text-color', 'rgba(255,255,255,.85)')
         }
