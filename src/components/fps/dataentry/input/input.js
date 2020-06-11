@@ -48,7 +48,7 @@ export default function Input(props) {
                     <input
                         className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]}`}
                         type="text"
-                        onChange={e => handleChange(e)}
+                        onChange={e => handleChange(e.target.value)}
                         value={value}
                         onBlur={checkValue}
                         placeholder={props.placeholder}
@@ -82,7 +82,7 @@ export default function Input(props) {
                         className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]}`}
                         type="text"
                         rows={props.rows || 3}
-                        onChange={e => handleChange(e)}
+                        onChange={e => handleChange(e.target.value)}
                         value={value}
                         onBlur={checkValue}
                         placeholder={props.placeholder}

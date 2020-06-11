@@ -48,8 +48,30 @@ export default function InputsPage() {
                 type='password'
                 required
             />
+            <ComponentDetails data={
+                {
+                    headerField: 'Input props',
+                    headers: [
+                        { sysName: 'prop', name: 'Property' },
+                        { sysName: 'type', name: 'Type' },
+                        { sysName: 'desc', name: 'Description' },
+                        { sysName: 'eg', name: 'Example' }
+                    ],
+                    data: [
+                        { prop: 'label', type: 'string', desc: 'Field label', eg:'label = \'Email\'' },
+                        { prop: 'type', type: 'text, number, password, textarea', desc: 'Data type', eg:'type = \'text\'' },
+                        { prop: 'disabled', type: 'boolean', desc: 'Disable input', eg:'disabled = {false}' },
+                        { prop: 'icon', type: 'directual icon', desc: 'Icon from Directual icons', eg:'icon = \'warning\'' },
+                        { prop: 'defaultValue', type: 'string', desc: 'Default input value', eg:'defaultValue = \'hello world\'' },
+                        { prop: 'placeholder', type: 'string', desc: 'Placeholder', eg:'placeholder = \'type here\'' },
+                        { prop: 'required', type: 'boolean', desc: 'Required field, throws a warning if empty', eg:'required = {true}' },
+                        { prop: 'rows', type: 'number', desc: 'For type = \'textarea\' only! Number of textarea rows', eg:'rows = {8}' },
+                        { prop: 'positive', type: 'boolean', desc: 'For type = \'number\' only!', eg:'positive = {true}' },
+                    ]
+                }
+            } />
             <Input
-                label='Radio station (default value)'
+                label='Radio station (with default value)'
                 type='radio'
                 defaultValue='option2'
                 options={
