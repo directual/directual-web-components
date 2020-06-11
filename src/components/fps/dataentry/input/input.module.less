@@ -63,9 +63,14 @@
         &.field {
             height: auto !important;
             padding: 18px 36px 18px 18px;
-            &:hover, &:focus, &:active, &.ok, &.error {
+            &:hover:not(.disabled), &:focus:not(.disabled), &:active:not(.disabled), &.ok, &.error {
             padding: 17px 35px 17px 17px;
             }
+        }
+        &.disabled {
+            background-color: var(--table-border-color);
+            cursor: not-allowed;
+            color: var(--field-border-color);
         }
     }
     .field {
@@ -78,6 +83,11 @@
         align-items: center;
         padding: 0 36px 0 18px;
         color: var(--font-color);
+        &.disabled {
+            background-color: var(--table-border-color);
+            cursor: not-allowed;
+            color: var(--field-border-color);
+        }
         &.error {
             border-width: 2px;
             height: 46px;
@@ -90,18 +100,18 @@
             padding: 0 17px;
             border-color: var(--ok-color);
         }
-        &:hover {
+        &:hover:not(.disabled) {
             border-width: 2px;
             height: 46px;
             padding: 0 17px;
         }
-        &:focus {
+        &:focus:not(.disabled) {
             border-width: 2px;
             height: 46px;
             padding: 0 17px;
             border-color: var(--accent-color);
         }
-        &:active {
+        &:active:not(.disabled) {
             height: 46px;
             padding: 0 17px;
             border: solid 2px var(--font-color);

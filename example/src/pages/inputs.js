@@ -38,6 +38,36 @@ export default function InputsPage() {
                 type='text'
             />
 
+<CodeSnippet code=
+                {`<Input
+    label='Input disabled'
+    placeholder='Placeholder'
+    defaultValue='default value'
+    type='text'
+    disabled
+/>`} />
+            <Input
+                label='Input disabled'
+                placeholder='Placeholder'
+                defaultValue='default value'
+                type='text'
+                disabled
+            />
+
+<CodeSnippet code=
+                {`<Input
+    label='Email (with validation)'
+    placeholder='Enter youe email address'
+    type='email'
+    required
+/>`} />
+            <Input
+                label='Email (with validation)'
+                placeholder='Enter youe email address'
+                type='email'
+                required
+            />
+
             <CodeSnippet code=
                 {`<Input
     label='Textarea (required)'
@@ -59,13 +89,11 @@ export default function InputsPage() {
     label='Numbers'
     placeholder='How old are you'
     type='number'
-    defaultValue={0}
 />`} />
             <Input
                 label='Numbers'
                 placeholder='How old are you'
                 type='number'
-                defaultValue={0}
             />
 
             <CodeSnippet code=
@@ -111,7 +139,7 @@ export default function InputsPage() {
                     data: [
                         { prop: 'onChange', type: 'function', desc: 'handles field\'s value', eg: 'onChange = {value => handleChange(value)}' },
                         { prop: 'label', type: 'string', desc: 'Field label', eg: 'label = \'Email\'' },
-                        { prop: 'type', type: 'text, number, password, textarea', desc: 'Data type', eg: 'type = \'text\'' },
+                        { prop: 'type', type: 'text, number, password, textarea, email', desc: 'Data type', eg: 'type = \'text\'' },
                         { prop: 'disabled', type: 'boolean', desc: 'Disable input', eg: 'disabled = {false}' },
                         { prop: 'icon', type: 'directual icon', desc: 'Icon from Directual icons', eg: 'icon = \'warning\'' },
                         { prop: 'defaultValue', type: 'string', desc: 'Default input value', eg: 'defaultValue = \'hello world\'' },

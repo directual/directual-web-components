@@ -69,12 +69,17 @@
   height: auto !important;
   padding: 18px 36px 18px 18px;
 }
-.input_wrapper textarea.field:hover,
-.input_wrapper textarea.field:focus,
-.input_wrapper textarea.field:active,
+.input_wrapper textarea.field:hover:not(.disabled),
+.input_wrapper textarea.field:focus:not(.disabled),
+.input_wrapper textarea.field:active:not(.disabled),
 .input_wrapper textarea.field.ok,
 .input_wrapper textarea.field.error {
   padding: 17px 35px 17px 17px;
+}
+.input_wrapper textarea.disabled {
+  background-color: var(--table-border-color);
+  cursor: not-allowed;
+  color: var(--field-border-color);
 }
 .input_wrapper .field {
   outline: none;
@@ -86,6 +91,11 @@
   align-items: center;
   padding: 0 36px 0 18px;
   color: var(--font-color);
+}
+.input_wrapper .field.disabled {
+  background-color: var(--table-border-color);
+  cursor: not-allowed;
+  color: var(--field-border-color);
 }
 .input_wrapper .field.error {
   border-width: 2px;
@@ -99,18 +109,18 @@
   padding: 0 17px;
   border-color: var(--ok-color);
 }
-.input_wrapper .field:hover {
+.input_wrapper .field:hover:not(.disabled) {
   border-width: 2px;
   height: 46px;
   padding: 0 17px;
 }
-.input_wrapper .field:focus {
+.input_wrapper .field:focus:not(.disabled) {
   border-width: 2px;
   height: 46px;
   padding: 0 17px;
   border-color: var(--accent-color);
 }
-.input_wrapper .field:active {
+.input_wrapper .field:active:not(.disabled) {
   height: 46px;
   padding: 0 17px;
   border: solid 2px var(--font-color);

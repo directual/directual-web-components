@@ -13,6 +13,19 @@ export default function Input(props) {
             setWarningMesg({});
     }
 
+    const checkEmailValue = () => {
+        (!value && props.required) ?
+            setWarningMesg({ type: 'error', msg: 'This field is required' }) :
+            setWarningMesg({});
+        (value && !validateEmail(value)) &&
+            setWarningMesg({ type: 'error', msg: 'Email format is wrong' })
+    }
+
+    const validateEmail = (email) => {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+
     const clearValue = () => {
         setValue('')
         props.required ?
@@ -26,13 +39,13 @@ export default function Input(props) {
     }
 
     const handleChangeNumber = (e) => {
-        !isNaN(parseInt(e)) ? setValue(parseInt(e)): setValue('')
+        !isNaN(parseInt(e)) ? setValue(parseInt(e)) : setValue('')
         !isNaN(parseInt(e)) && props.required && setWarningMesg({});
     }
-    useEffect(()=> {
+    useEffect(() => {
         props.type == 'number' && props.positive && value < 0 && setValue(0)
         props.onChange && props.onChange(value)
-    }, [ value ])
+    }, [value])
 
     // useEffect(
     //     () => checkValue(), 
@@ -46,14 +59,31 @@ export default function Input(props) {
             {props.type == 'text' &&
                 <div className={styles.field_wrapper}>
                     <input
-                        className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]}`}
+                        disabled={props.disabled}
+                        className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
                         type="text"
                         onChange={e => handleChange(e.target.value)}
                         value={value}
                         onBlur={checkValue}
                         placeholder={props.placeholder}
                     />
-                    {value &&
+                    {value && !props.disabled &&
+                        <div className={`${styles.clear} icon icon-close`}
+                            onClick={clearValue}></div>}
+                </div>}
+
+            {props.type == 'email' &&
+                <div className={styles.field_wrapper}>
+                    <input
+                        disabled={props.disabled}
+                        className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
+                        type="text"
+                        onChange={e => handleChange(e.target.value)}
+                        value={value}
+                        onBlur={checkEmailValue}
+                        placeholder={props.placeholder}
+                    />
+                    {value && !props.disabled &&
                         <div className={`${styles.clear} icon icon-close`}
                             onClick={clearValue}></div>}
                 </div>}
@@ -61,25 +91,28 @@ export default function Input(props) {
             {props.type == 'number' &&
                 <div className={styles.field_wrapper}>
                     <input
-                        className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]}`}
+                        className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
+                        disabled={props.disabled}
                         type="text"
                         onChange={e => handleChangeNumber(e.target.value)}
                         value={value}
                         onBlur={checkValue}
                         placeholder={props.placeholder}
                     />
-                    <div className={`${styles.plus} icon icon-up`}
-                        onClick={() => handleChangeNumber(value + 1)}></div>
-                    {props.positive && value > 0 && <div className={`${styles.minus} icon icon-down`}
-                        onClick={() => handleChangeNumber(value - 1)}></div>}
-                    {!props.positive && <div className={`${styles.minus} icon icon-down`}
-                        onClick={() => handleChangeNumber(value - 1)}></div>}
+                    {!props.disabled && <React.Fragment>
+                        <div className={`${styles.plus} icon icon-up`}
+                            onClick={() => handleChangeNumber(value + 1)}></div>
+                        {props.positive && value > 0 && <div className={`${styles.minus} icon icon-down`}
+                            onClick={() => handleChangeNumber(value - 1)}></div>}
+                        {!props.positive && <div className={`${styles.minus} icon icon-down`}
+                            onClick={() => handleChangeNumber(value - 1)}></div>}</React.Fragment>}
                 </div>}
 
             {props.type == 'textarea' &&
                 <div className={styles.field_wrapper}>
                     <textarea
-                        className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]}`}
+                        disabled={props.disabled}
+                        className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                         type="text"
                         rows={props.rows || 3}
                         onChange={e => handleChange(e.target.value)}
@@ -95,6 +128,7 @@ export default function Input(props) {
             {props.type == 'password' &&
                 <div className={styles.field_wrapper}>
                     <input
+                        disabled={props.disabled}
                         className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]}`}
                         type={pwdVisible}
                         onChange={e => handleChange(e.target.value)}
