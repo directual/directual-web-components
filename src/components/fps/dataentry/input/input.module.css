@@ -32,6 +32,36 @@
   opacity: 0.8;
   transition: 0.5s;
 }
+.input_wrapper .field_wrapper .plus {
+  position: absolute;
+  opacity: 0.3;
+  cursor: pointer;
+  transition: 0.5s;
+  top: 1px;
+  right: 10px;
+}
+.input_wrapper .field_wrapper .plus:before {
+  font-size: 30px;
+}
+.input_wrapper .field_wrapper .plus:hover {
+  opacity: 0.9;
+  transition: 0.5s;
+}
+.input_wrapper .field_wrapper .minus {
+  position: absolute;
+  opacity: 0.3;
+  cursor: pointer;
+  transition: 0.5s;
+  top: 20px;
+  right: 10px;
+}
+.input_wrapper .field_wrapper .minus:before {
+  font-size: 30px;
+}
+.input_wrapper .field_wrapper .minus:hover {
+  opacity: 0.9;
+  transition: 0.5s;
+}
 .input_wrapper textarea {
   resize: none;
 }

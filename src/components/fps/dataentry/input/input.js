@@ -21,9 +21,18 @@ export default function Input(props) {
     }
 
     const handleChange = (e) => {
-        setValue(e.target.value)
+        setValue(e)
         props.required && setWarningMesg({});
     }
+
+    const handleChangeNumber = (e) => {
+        !isNaN(parseInt(e)) ? setValue(parseInt(e)): setValue('')
+        !isNaN(parseInt(e)) && props.required && setWarningMesg({});
+    }
+    useEffect(()=> {
+        props.type == 'number' && props.positive && value < 0 && setValue(0)
+
+    }, [ value ])
 
     // useEffect(
     //     () => checkValue(), 
@@ -47,6 +56,24 @@ export default function Input(props) {
                     {value &&
                         <div className={`${styles.clear} icon icon-close`}
                             onClick={clearValue}></div>}
+                </div>}
+
+            {props.type == 'number' &&
+                <div className={styles.field_wrapper}>
+                    <input
+                        className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]}`}
+                        type="text"
+                        onChange={e => handleChangeNumber(e.target.value)}
+                        value={value}
+                        onBlur={checkValue}
+                        placeholder={props.placeholder}
+                    />
+                    <div className={`${styles.plus} icon icon-up`}
+                        onClick={() => handleChangeNumber(value + 1)}></div>
+                    {props.positive && value > 0 && <div className={`${styles.minus} icon icon-down`}
+                        onClick={() => handleChangeNumber(value - 1)}></div>}
+                    {!props.positive && <div className={`${styles.minus} icon icon-down`}
+                        onClick={() => handleChangeNumber(value - 1)}></div>}
                 </div>}
 
             {props.type == 'textarea' &&
@@ -82,13 +109,13 @@ export default function Input(props) {
                             onClick={() => setPwdVisible('password')}></div>}
                 </div>}
 
-                {props.type == 'radio' &&
-                    <Radio
-                        onChange={e => setValue(e.target.value)}
-                        defaultValue={props.defaultValue}
-                        options={props.options}
-                    />
-                }
+            {props.type == 'radio' &&
+                <Radio
+                    onChange={e => setValue(e.target.value)}
+                    defaultValue={props.defaultValue}
+                    options={props.options}
+                />
+            }
             {warningMsg &&
                 <div className={`${styles.status} ${styles[warningMsg.type]}`}>{warningMsg.msg}</div>}
         </div>
