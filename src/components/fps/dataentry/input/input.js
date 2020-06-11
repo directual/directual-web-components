@@ -34,16 +34,29 @@ export default function Input(props) {
     }
 
     const handleChange = (e) => {
+        props.onChange && props.onChange(e)
         setValue(e)
         props.required && setWarningMesg({})
     }
 
     const handleChangeNumber = (e) => {
-        !isNaN(parseInt(e)) ? setValue(parseInt(e)) : setValue('')
-        !isNaN(parseInt(e)) && props.required && setWarningMesg({});
+        console.log(e)
+        console.log(parseInt(e))
+        console.log(!isNaN(parseInt(e)))
+        if (isNaN(parseInt(e))) 
+            { 
+                setValue('0');  
+            } else {
+            props.positive && parseInt(e) < 0 && setValue('0');
+            props.positive && parseInt(e) >= 0 && setValue(parseInt(e));
+            !props.positive && setValue(parseInt(e));
+        }
+        // if (!isNaN(parseInt(e))) {
+        //     props.onChange && props.onChange(e)
+        //     props.required && setWarningMesg({})
+        // } else {setValue('')}
     }
     useEffect(() => {
-        props.type == 'number' && props.positive && value < 0 && setValue(0)
         props.onChange && props.onChange(value)
     }, [value])
 
@@ -52,11 +65,11 @@ export default function Input(props) {
     // [value])
 
     return (
-        <div className={styles.input_wrapper}>
+        <div className={styles.input_wrapper} style={{width:props.width || 'auto'}}>
             <label>{props.label}</label>
             {/* value: {value} */}
 
-            {props.type == 'text' &&
+            {props.type == 'string' &&
                 <div className={styles.field_wrapper}>
                     <input
                         disabled={props.disabled}
@@ -99,13 +112,14 @@ export default function Input(props) {
                         onBlur={checkValue}
                         placeholder={props.placeholder}
                     />
+                    
                     {!props.disabled && <React.Fragment>
                         <div className={`${styles.plus} icon icon-up`}
-                            onClick={() => handleChangeNumber(value + 1)}></div>
+                            onClick={() => handleChangeNumber(parseInt(value) + 1)}></div>
                         {props.positive && value > 0 && <div className={`${styles.minus} icon icon-down`}
-                            onClick={() => handleChangeNumber(value - 1)}></div>}
+                            onClick={() => handleChangeNumber(parseInt(value) - 1)}></div>}
                         {!props.positive && <div className={`${styles.minus} icon icon-down`}
-                            onClick={() => handleChangeNumber(value - 1)}></div>}</React.Fragment>}
+                            onClick={() => handleChangeNumber(parseInt(value) - 1)}></div>}</React.Fragment>}
                 </div>}
 
             {props.type == 'textarea' &&

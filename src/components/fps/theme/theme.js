@@ -1,6 +1,7 @@
 import React from 'react'
 import './theme.module.css'
 import Radio from '../dataentry/radio/radio'
+import Input from '../dataentry/input/input'
 
 // Theming
 export function SetTheme() {
@@ -12,6 +13,14 @@ export function SetTheme() {
 export default function FpsTheme(props) {
     let currentTheme = localStorage.getItem('dd-theme')
     !currentTheme && (currentTheme = 'classic')
+
+    let currentBR = localStorage.getItem('dd-br')
+    !currentBR && (currentBR = '25')
+
+    const setBR = radius => {
+        localStorage.setItem('dd-br', radius)
+        document.documentElement.style.setProperty('--border-radius', radius + 'px')
+    }
 
     const setTheme = theme => {
         localStorage.setItem('dd-theme', theme)
@@ -34,7 +43,6 @@ export default function FpsTheme(props) {
             document.documentElement.style.setProperty('--alert-color-light', '#F9DFA4')
             document.documentElement.style.setProperty('--ok-color', '#00C197')
             document.documentElement.style.setProperty('--ok-color-light', '#D6F8E5')
-            document.documentElement.style.setProperty('--border-radius', '25px')
             document.documentElement.style.setProperty('--label-color', '#B9E0CB')
             document.documentElement.style.setProperty('--label-text-color', '#333')
         }
@@ -57,7 +65,6 @@ export default function FpsTheme(props) {
             document.documentElement.style.setProperty('--alert-color-light', '#F9DFA4')
             document.documentElement.style.setProperty('--ok-color', '#00C197')
             document.documentElement.style.setProperty('--ok-color-light', '#D6F8E5')
-            document.documentElement.style.setProperty('--border-radius', '25px')
             document.documentElement.style.setProperty('--label-color', '#FFCCA9')
             document.documentElement.style.setProperty('--label-text-color', '#333')
         }
@@ -80,7 +87,6 @@ export default function FpsTheme(props) {
             document.documentElement.style.setProperty('--alert-color-light', '#665846')
             document.documentElement.style.setProperty('--ok-color', '#00C197')
             document.documentElement.style.setProperty('--ok-color-light', '#346266')
-            document.documentElement.style.setProperty('--border-radius', '25px')
             document.documentElement.style.setProperty('--label-color', '#2f00ff')
             document.documentElement.style.setProperty('--label-text-color', 'rgba(255,255,255,.85)')
         }
@@ -113,6 +119,9 @@ export default function FpsTheme(props) {
     currentTheme && setTheme(currentTheme)
     const changeTheme = e => setTheme(e.target.value)
 
+    currentBR && setBR(currentBR)
+    const changeBR = e => setBR(e)
+
     const options =
         [
             {
@@ -139,11 +148,20 @@ export default function FpsTheme(props) {
         <React.Fragment>
             {!props.initial &&
                 <React.Fragment>
+                    <h2 style={{marginBottom:18}}>Color scheme</h2>
                     <Radio
                         onChange={changeTheme}
                         defaultValue={currentTheme}
                         options={userOptions}
                     />
+                    <h2 style={{marginBottom:18, marginTop:32}}>Border radius</h2>
+                    <Input 
+                        width={150}
+                        label='Border radius in pixels'
+                        type='number' 
+                        positive 
+                        onChange={changeBR} 
+                        defaultValue={currentBR} />
                 </React.Fragment>}
         </React.Fragment>
     )

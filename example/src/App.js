@@ -197,8 +197,7 @@ const App = (props) => {
               <h1>Article</h1>
             </Route>
             <Route exact path="/form">
-              <h1>Form</h1>
-              <FpsForm data={exampleForm}/>
+              <FpsForm data={exampleForm} formWidth={400}/>
             </Route>
             <Route exact path="/cards">
               <h1>Cards</h1>

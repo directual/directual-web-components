@@ -14,13 +14,13 @@ export default function InputsPage() {
                 {`<Input
     label='Input (required)'
     placeholder='Placeholder'
-    type='text'
+    type='string'
     required
 />`} />
             <Input
                 label='Input (required)'
                 placeholder='Placeholder'
-                type='text'
+                type='string'
                 required
             />
 
@@ -29,13 +29,13 @@ export default function InputsPage() {
     label='Input (not required + default value)'
     placeholder='Placeholder'
     defaultValue='default value'
-    type='text'
+    type='string'
 />`} />
             <Input
                 label='Input (not required + default value)'
                 placeholder='Placeholder'
                 defaultValue='default value'
-                type='text'
+                type='string'
             />
 
 <CodeSnippet code=
@@ -43,27 +43,27 @@ export default function InputsPage() {
     label='Input disabled'
     placeholder='Placeholder'
     defaultValue='default value'
-    type='text'
+    type='string'
     disabled
 />`} />
             <Input
                 label='Input disabled'
                 placeholder='Placeholder'
                 defaultValue='default value'
-                type='text'
+                type='string'
                 disabled
             />
 
 <CodeSnippet code=
                 {`<Input
     label='Email (with validation)'
-    placeholder='Enter youe email address'
+    placeholder='Enter your email address'
     type='email'
     required
 />`} />
             <Input
                 label='Email (with validation)'
-                placeholder='Enter youe email address'
+                placeholder='Enter your email address'
                 type='email'
                 required
             />
@@ -139,7 +139,7 @@ export default function InputsPage() {
                     data: [
                         { prop: 'onChange', type: 'function', desc: 'handles field\'s value', eg: 'onChange = {value => handleChange(value)}' },
                         { prop: 'label', type: 'string', desc: 'Field label', eg: 'label = \'Email\'' },
-                        { prop: 'type', type: 'text, number, password, textarea, email', desc: 'Data type', eg: 'type = \'text\'' },
+                        { prop: 'type', type: 'string, number, password, textarea, email', desc: 'Data type', eg: 'type = \'text\'' },
                         { prop: 'disabled', type: 'boolean', desc: 'Disable input', eg: 'disabled = {false}' },
                         { prop: 'icon', type: 'directual icon', desc: 'Icon from Directual icons', eg: 'icon = \'warning\'' },
                         { prop: 'defaultValue', type: 'string', desc: 'Default input value', eg: 'defaultValue = \'hello world\'' },
