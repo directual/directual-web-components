@@ -10,12 +10,12 @@ function List(props) {
 
     return (
         <React.Fragment>
-            {props.options.length > 0 && props.focus &&
+            {props.options && props.options.length > 0 && props.focus &&
                 <li className={styles.options_counter}>
                     {props.options.length} option{`${props.options.length > 1 ? 's':''}`}</li>}
 
             <ul className={`${styles.list} ${styles.flat}`}>
-                {props.options.length == 0 &&
+                {props.options && props.options.length == 0 &&
                     <SomethingWentWrong icon='ban'
                         message={`No options${props.filter ? ` like \"${props.filter}\"` : ''}`} />}
                 {props.options && props.options.map(option => 
@@ -24,6 +24,7 @@ function List(props) {
                         ${styles.option}
                         ${props.current && props.current.id == option.id && styles.selected}
                         ${props.selected && props.selected.id == option.id && styles.keySelected}
+                        ${props.iconOptions && `${styles.optionIcon} icon icon-${option.icon}`}
                         `}
                         //ref={refs[option.id]}
                         key={option.id}
@@ -38,7 +39,7 @@ function List(props) {
 
 export default function Select(props) {
     const [focus, setFocus] = useState(false);
-    const [value, setValue] = useState();
+    const [value, setValue] = useState(props.defaultValue || null);
     const inputEl = useRef(null);
     const [filter, setFilter] = useState('')
     const [filteredOptions, setFilteredOptions] = useState(props.options || [])
@@ -60,14 +61,15 @@ export default function Select(props) {
             };
         }, [ref]);
     }
-    useEffect(() => { focus && inputEl.current.focus(); setFilter('') }, [focus])
+    useEffect(() => { focus && inputEl.current.focus(); setFilter(''); setKeySelected() }, [focus])
 
     useEffect(() => { props.onChange(value); setKeySelected() }, [value])
 
+    let FO;
     useEffect(() => {
-        let FO = props.options.filter(el => {
+        if (props.options) { FO = props.options.filter(el => {
             return String(el.title).toLowerCase().match(new RegExp(String(filter).toLowerCase()))
-        })
+        })}
         setFilteredOptions(FO)
         setKeySelected('')
     }, [filter])
@@ -100,8 +102,10 @@ export default function Select(props) {
                 onClick={() => { !focus && setFocus(true) }}
                 ref={selectRef}
             >
-                {props.icon &&
-                <div className={`${styles.icon} icon icon-${props.icon}`}></div>}
+                {props.icon && !props.iconOptions &&
+                    <div className={`${styles.icon} icon icon-${props.icon}`}></div>}
+                {props.iconOptions &&
+                    <div className={`${styles.icon} icon icon-${value.icon}`}></div>}
                 
                 <div className={`${styles.icon_wrapper}`}>
                     {!value && !filter &&
@@ -129,6 +133,7 @@ export default function Select(props) {
                     filter={filter}
                     focus={focus}
                     selected={keySelected}
+                    iconOptions={props.iconOptions}
                 />
             </div>
 

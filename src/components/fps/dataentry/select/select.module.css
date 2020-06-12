@@ -138,6 +138,7 @@
   background-color: var(--background-color);
   z-index: 100;
   margin-top: 0;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
 }
 .select_wrapper .select_field .list.flat {
   width: 100%;
@@ -147,6 +148,9 @@
   margin: 2px;
   border-radius: var(--border-radius);
   cursor: pointer;
+}
+.select_wrapper .select_field .list .option.optionIcon {
+  padding: 2px 8px;
 }
 .select_wrapper .select_field .list .option:hover {
   background: var(--secondary-background-color);
@@ -158,6 +162,9 @@
 .select_wrapper .select_field .list .option.keySelected {
   padding: 6px 10px;
   border: solid 2px var(--font-color);
+}
+.select_wrapper .select_field .list .option.keySelected.optionIcon {
+  padding: 0px 6px;
 }
 .select_wrapper .select_field .list .option:active:not(.disabled) {
   background: var(--font-color);

@@ -140,7 +140,11 @@
             background-color: var(--background-color);
             z-index: 100;
             margin-top: 0;
+            box-shadow: 0 5px 12px rgba(0,0,0,.15);
             .option {
+                &.optionIcon {
+                    padding:2px 8px;
+                }
                 padding:8px 12px;
                 margin:2px;
                 border-radius: var( --border-radius);
@@ -157,6 +161,9 @@
                 &.keySelected {
                     padding:6px 10px;
                     border: solid 2px var(--font-color);
+                    &.optionIcon {
+                        padding:0px 6px;
+                    }
                 }
                 &:active:not(.disabled) {
                     background: var(--font-color);

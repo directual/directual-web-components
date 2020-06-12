@@ -15,6 +15,7 @@ import {
 //pages:
 import ButtonsPage from './pages/buttons'
 import InputsPage from './pages/inputs'
+import IconsPage from './pages/icons'
 
 
 function MainMenuWrapper () {
@@ -209,6 +210,9 @@ const App = (props) => {
 
             <Route exact path="/system-button">
               <ButtonsPage />
+            </Route>
+            <Route exact path="/system-icons">
+              <IconsPage />
             </Route>
             <Route exact path="/system-data-entry">
               <InputsPage />

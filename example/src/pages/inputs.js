@@ -9,7 +9,7 @@ export default function InputsPage() {
     return (
         <React.Fragment>
             <h1>Data entry</h1>
-            <h2 style={{marginBottom:24, marginTop:12}}>Selects</h2>
+            <h2 style={{ marginBottom: 24, marginTop: 12 }}>Selects</h2>
             <CodeSnippet code=
                 {`<Input
     label='Simple select'
@@ -34,7 +34,8 @@ export default function InputsPage() {
             { id: 13, title: 'The talent? Go sign it' },
             { id: 14, title: 'But first, wine and dine it' },
             { id: 15, title: 'It’s tedious work' },
-            { id: 16, title: 'With a talented jerk' }
+            { id: 16, title: 'With a talented jerk' },
+            { id: 17, title: 'Good timing? To win it You gotta be in it. Just never be late To quit or cut bait.' }
         ]
     }
 />`} />
@@ -42,7 +43,7 @@ export default function InputsPage() {
                 label='Simple select'
                 width={400}
                 type='select'
-                placeholder='Placeholder'
+                placeholder='Choose the line'
                 icon='database'
                 options={
                     [
@@ -61,12 +62,37 @@ export default function InputsPage() {
                         { id: 13, title: 'The talent? Go sign it' },
                         { id: 14, title: 'But first, wine and dine it' },
                         { id: 15, title: 'It’s tedious work' },
-                        { id: 16, title: 'With a talented jerk' }
+                        { id: 16, title: 'With a talented jerk' },
+                        { id: 17, title: 'Good timing? To win it You gotta be in it. Just never be late To quit or cut bait.' }
                     ]
                 }
-                />
+            />
 
-            <h2 style={{marginBottom:24, marginTop:36}}>Inputs</h2>
+            <ComponentDetails data={
+                {
+                    headerField: 'Select props',
+                    headers: [
+                        { sysName: 'prop', name: 'Property' },
+                        { sysName: 'type', name: 'Type' },
+                        { sysName: 'desc', name: 'Description' },
+                        { sysName: 'eg', name: 'Example' }
+                    ],
+                    data: [
+                        { prop: 'type', type: 'string', desc: 'select', eg: 'type = \'select\'' },
+                        { prop: 'onChange', type: 'function', desc: 'handles field\'s value', eg: 'onChange = {value => handleChange(value)}' },
+                        { prop: 'label', type: 'string', desc: 'Field label', eg: 'label = \'Email\'' },
+                        { prop: 'disabled', type: 'boolean', desc: 'Disable input', eg: 'disabled = {false}' },
+                        { prop: 'icon', type: 'directual icon', desc: 'Icon from Directual icons', eg: 'icon = \'warning\'' },
+                        { prop: 'width', type: 'number', desc: 'Input max-width', eg: 'width={150}' },
+                        { prop: 'placeholder', type: 'string', desc: 'Placeholder', eg: 'placeholder = \'type here\'' },
+                        { prop: 'options', type: 'array of Objects {id, title}', desc: 'Options', eg: 'options = {[{id: 1, title:\'one\'}, {id: 2, title:\'two\'}]}' },
+                        { prop: 'defaultValue', type: 'string', desc: 'Default input value', eg: 'defaultValue = {{id: 1, title:\'one\'}}' },
+                        { prop: 'iconOptions', type: 'boolean', desc: 'use icons for each option {{id: 1, title:\'one\', icon:\'play\'}}', eg: 'iconOptions = {true}' },
+                    ]
+                }
+            } />
+
+            <h2 style={{ marginBottom: 24, marginTop: 36 }}>Inputs</h2>
             <CodeSnippet code=
                 {`<Input
     label='Input (required)'
@@ -99,7 +125,7 @@ export default function InputsPage() {
                 width={400}
             />
 
-<CodeSnippet code=
+            <CodeSnippet code=
                 {`<Input
     label='Input disabled'
     placeholder='Placeholder'
@@ -117,7 +143,7 @@ export default function InputsPage() {
                 width={400}
             />
 
-<CodeSnippet code=
+            <CodeSnippet code=
                 {`<Input
     label='Email (with validation)'
     placeholder='Enter your email address'
@@ -222,7 +248,7 @@ export default function InputsPage() {
                     ]
                 }
             } />
-            <h2 style={{marginBottom:24, marginTop:36}}>Radio</h2>
+            <h2 style={{ marginBottom: 24, marginTop: 36 }}>Radio</h2>
 
             <CodeSnippet code=
                 {`<Input

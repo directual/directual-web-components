@@ -169,6 +169,8 @@ export default function Input(props) {
                     placeholder={props.placeholder}
                     options={props.options}
                     icon={props.icon}
+                    defaultValue={props.defaultValue}
+                    iconOptions={props.iconOptions}
                     onChange={e => props.onChange && props.onChange(e)}
                     />
             }
