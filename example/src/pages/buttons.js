@@ -24,16 +24,23 @@ export default function ButtonsPage() {
 
             <CodeSnippet code=
                 {`<ActionPanel 
-    title='Action panel with title and border' 
+    title='Action panel with title and border, column' 
+    column 
+    width={300} 
     border 
     margin={{ top: 6, bottom: 12 }}>
-        <Button>Regular button</Button>
-        <Button accent>Accent button</Button>
+        <Button accent icon='babai'>Regular button</Button>
+        <Button socialGoogle>Google button</Button>
         <Button icon="play">Icon button</Button>
 </ActionPanel>`} />
-            <ActionPanel title='Action panel with title and border' border margin={{ top: 6, bottom: 12 }}>
-                <Button>Regular button</Button>
-                <Button accent>Accent button</Button>
+            <ActionPanel 
+                title='Action panel with title and border, column' 
+                column 
+                width={300} 
+                border 
+                margin={{ top: 6, bottom: 12 }}>
+                <Button accent icon='bellActive'>Accent icon button</Button>
+                <Button socialGoogle>Google button</Button>
                 <Button icon="play">Icon button</Button>
             </ActionPanel>
 
@@ -42,11 +49,11 @@ export default function ButtonsPage() {
                 {`<ActionPanel 
     title='Action panel with title' 
     margin={{top:6, bottom:12}}>
-        <Button icon="play" accent>Icon accent button</Button>
+        <Button danger icon='delete'>Danger button</Button>
         <Button disabled>Disabled button</Button>
 </ActionPanel>`} />
             <ActionPanel title='Action panel with title' margin={{ top: 6, bottom: 12 }}>
-                <Button icon="play" accent>Icon accent button</Button>
+                <Button danger icon='delete'>Danger button</Button>
                 <Button disabled>Disabled button</Button>
             </ActionPanel>
 
@@ -64,6 +71,8 @@ export default function ButtonsPage() {
                         { prop: 'title', type: 'string', desc: 'Panel title', eg: 'title = \'Hello world!\'' },
                         { prop: 'margin', type: 'object {top, left, bottom, right}', desc: 'Margins, in pixels', eg: 'margin: {{top:12, bottom:24}}' },
                         { prop: 'border', type: 'boolean', desc: 'Panel border', eg: 'border = {true}' },
+                        { prop: 'width', type: 'number', desc: 'Max-width in pixels', eg: 'width = {300}' },
+                        { prop: 'column', type: 'boolean', desc: 'Buttons in column (in raw by default)', eg: 'column = {true}' },
                     ]
                 }
             } />
@@ -81,6 +90,8 @@ export default function ButtonsPage() {
                         { prop: 'accent', type: 'boolean', desc: 'Accent color', eg: 'accent = {true}' },
                         { prop: 'disabled', type: 'boolean', desc: 'Disable button', eg: 'disabled = {false}' },
                         { prop: 'icon', type: 'directual icon', desc: 'Icon from Directual icons', eg: 'icon = \'warning\'' },
+                        { prop: 'danger', type: 'boolean', desc: 'Danger action (e.g. delete)', eg: 'danger = {true}' },
+                        { prop: 'socialGoogle', type: 'boolean', desc: 'Google icon', eg: 'socialGoogle = {true}' },
                     ]
                 }
             } />

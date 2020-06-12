@@ -19,6 +19,17 @@
         cursor: not-allowed;
         opacity: .4;
     }
+    &.socialGoogle {
+        &:before {
+            content: "";
+            display: flex;
+            height: 18px;
+            width: 18px;
+            margin-right: 6px;
+            background: url('https://api.alfa.directual.com/fileUploaded/directual-site/d2381fee-b864-469a-835d-d8f5bba71f93.svg') center center no-repeat;
+            background-size: contain;
+        }
+    }
     &.accent {
         border-color:var( --accent-color);
         background-color: var(--accent-color);
@@ -29,9 +40,21 @@
             border-color: var(--secondary-accent-color);
         }
         &:active {
-            background-color: var(--font-color);
-            color: var(--background-color);
-            border-color: var(--font-color);
+            background-color: var(--font-color) !important;
+            color: var(--background-color) !important;
+            border-color: var(--font-color) !important;
+        }
+    }
+    &.danger {
+        &:hover {
+            background-color: var(--error-color);
+            color: var(--button-accent-color);
+            border-color: var(--error-color);
+        }
+        &:active {
+            background-color: var(--font-color) !important;
+            color: var(--background-color) !important;
+            border-color: var(--font-color) !important;
         }
     }
     &:hover:not(.disabled) {

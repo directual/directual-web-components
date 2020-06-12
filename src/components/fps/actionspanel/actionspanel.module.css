@@ -14,6 +14,12 @@
 .panel.border .title {
   left: calc(var(--border-radius) + 4px);
 }
+.panel.column {
+  flex-direction: column;
+}
+.panel.column button {
+  margin-right: 0;
+}
 .panel.with_title {
   padding-top: 16px;
 }

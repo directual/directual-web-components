@@ -4,13 +4,18 @@ import styles from './actionspanel.module.css'
 export default function ActionPanel(props) {
     return (
         <div
-            className={`${styles.panel} ${props.border && styles.border} ${props.title && styles.with_title}`}
+            className={`${styles.panel} 
+                ${props.border && styles.border} 
+                ${props.title && styles.with_title}
+                ${props.column && styles.column}
+                `}
             style={
                 {
                     marginTop: props.margin && props.margin.top,
                     marginBottom: props.margin && props.margin.bottom,
                     marginLeft: props.margin && props.margin.left,
-                    marginRight: props.margin && props.margin.right
+                    marginRight: props.margin && props.margin.right,
+                    maxWidth: props.width
                 }
             }
         >
