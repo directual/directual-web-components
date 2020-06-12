@@ -103,29 +103,29 @@
 .input_wrapper .field.error {
   border-width: 2px;
   height: 46px;
-  padding: 0 17px;
+  padding: 0 35px 0 17px;
   border-color: var(--error-color);
 }
 .input_wrapper .field.ok {
   border-width: 2px;
   height: 46px;
-  padding: 0 17px;
+  padding: 0 35px 0 17px;
   border-color: var(--ok-color);
 }
 .input_wrapper .field:hover:not(.disabled) {
   border-width: 2px;
   height: 46px;
-  padding: 0 17px;
+  padding: 0 35px 0 17px;
 }
 .input_wrapper .field:focus:not(.disabled) {
   border-width: 2px;
   height: 46px;
-  padding: 0 17px;
+  padding: 0 35px 0 17px;
   border-color: var(--accent-color);
 }
 .input_wrapper .field:active:not(.disabled) {
   height: 46px;
-  padding: 0 17px;
+  padding: 0 35px 0 17px;
   border: solid 2px var(--font-color);
 }
 .input_wrapper .field::placeholder {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from './input.module.css'
 import Radio from '../radio/radio'
+import Select from '../select/select'
 
 export default function Input(props) {
     const [value, setValue] = useState(props.defaultValue)
@@ -43,10 +44,9 @@ export default function Input(props) {
         console.log(e)
         console.log(parseInt(e))
         console.log(!isNaN(parseInt(e)))
-        if (isNaN(parseInt(e))) 
-            { 
-                setValue('0');  
-            } else {
+        if (isNaN(parseInt(e))) {
+            setValue('0');
+        } else {
             props.positive && parseInt(e) < 0 && setValue('0');
             props.positive && parseInt(e) >= 0 && setValue(parseInt(e));
             !props.positive && setValue(parseInt(e));
@@ -65,7 +65,7 @@ export default function Input(props) {
     // [value])
 
     return (
-        <div className={styles.input_wrapper} style={{maxWidth:props.width || 'auto'}}>
+        <div className={styles.input_wrapper} style={{ maxWidth: props.width || 'auto' }}>
             <label>{props.label}</label>
             {/* value: {value} */}
 
@@ -91,7 +91,7 @@ export default function Input(props) {
                         disabled={props.disabled}
                         className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
                         type="text"
-                        onChange={e => handleChange(e.target.value)}
+                        onChange={e => handleChange(String(e.target.value).toLowerCase())}
                         value={value}
                         onBlur={checkEmailValue}
                         placeholder={props.placeholder}
@@ -112,7 +112,7 @@ export default function Input(props) {
                         onBlur={checkValue}
                         placeholder={props.placeholder}
                     />
-                    
+
                     {!props.disabled && <React.Fragment>
                         <div className={`${styles.plus} icon icon-up`}
                             onClick={() => handleChangeNumber(parseInt(value) + 1)}></div>
@@ -163,6 +163,14 @@ export default function Input(props) {
                     defaultValue={props.defaultValue}
                     options={props.options}
                 />
+            }
+            {props.type == 'select' &&
+                <Select 
+                    placeholder={props.placeholder}
+                    options={props.options}
+                    icon={props.icon}
+                    onChange={e => props.onChange && props.onChange(e)}
+                    />
             }
             {warningMsg &&
                 <div className={`${styles.status} ${styles[warningMsg.type]}`}>{warningMsg.msg}</div>}

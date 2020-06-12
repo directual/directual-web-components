@@ -20,6 +20,7 @@ import ActionPanel from './components/fps/actionspanel/actionspanel'
 import SomethingWentWrong from './components/fps/SomethingWentWrong/SomethingWentWrong'
 import Radio from './components/fps/dataentry/radio/radio'
 import CodeSnippet from './components/fps/codesnippet/codesnippet'
+import Select from './components/fps/dataentry/select/select'
 
 export {
   Fps404,
@@ -43,5 +44,6 @@ export {
   SomethingWentWrong,
   Radio,
   SetTheme,
-  CodeSnippet
+  CodeSnippet,
+  Select
 }
