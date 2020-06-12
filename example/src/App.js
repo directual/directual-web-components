@@ -205,7 +205,7 @@ const App = (props) => {
             </Route>
             <Route exact path="/theme">
               <h1>Theme management</h1>
-              <FpsTheme themes={['classic', 'tiffany', 'dark-mint', 'warm-night']}/>
+              <FpsTheme themeName='dd' themes={['classic', 'tiffany', 'dark-mint', 'warm-night']}/>
             </Route>
 
             <Route exact path="/system-button">

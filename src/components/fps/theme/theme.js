@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './theme.module.css'
 import Radio from '../dataentry/radio/radio'
 import Input from '../dataentry/input/input'
@@ -11,23 +11,24 @@ export function SetTheme() {
 }
 
 export default function FpsTheme(props) {
+    const [themeName,setThemeName] = useState(props.themeName || 'dd')
 
     const logoDarkTheme = props.logoDarkTheme || ''
     const logoLightTheme = props.logoLightTheme || ''
 
-    let currentTheme = localStorage.getItem('dd-theme')
+    let currentTheme = localStorage.getItem(themeName + '-theme')
     !currentTheme && (currentTheme = 'classic')
 
-    let currentBR = localStorage.getItem('dd-br')
+    let currentBR = localStorage.getItem(themeName + '-br')
     !currentBR && (currentBR = '25')
 
     const setBR = radius => {
-        localStorage.setItem('dd-br', radius)
+        localStorage.setItem(themeName + '-br', radius)
         document.documentElement.style.setProperty('--border-radius', radius + 'px')
     }
 
     const setTheme = theme => {
-        localStorage.setItem('dd-theme', theme)
+        localStorage.setItem(themeName + '-theme', theme)
         if (theme === 'classic') {
             document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
             document.documentElement.style.setProperty('--field-border-color', '#aaa')
@@ -151,6 +152,12 @@ export default function FpsTheme(props) {
         <React.Fragment>
             {!props.initial &&
                 <React.Fragment>
+                    <Input 
+                        width={150}
+                        label='Theme name'
+                        type='string' 
+                        disabled
+                        defaultValue={themeName} />
                     <h2 style={{marginBottom:18}}>Color scheme</h2>
                     <Radio
                         onChange={changeTheme}
