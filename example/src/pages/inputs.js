@@ -19,14 +19,22 @@ export default function InputsPage() {
     icon='database'
     options={
         [
-            { id: 1, title: 'Option 1 Option 1Option 1Option 1 Option 1 Option 1 OptionOptionOptionOptionOptionOptionOptionOptionOption' },
-            { id: 2, title: 'Option 2' },
-            { id: 3, title: 'mOption 3' },
-            { id: 4, title: 'Option 4' },
-            { id: 5, title: 'Option 5' },
-            { id: 6, title: 'Option 6' },
-            { id: 7, title: 'Option 7' },
-            { id: 8, title: 'Option 8' }
+            { id: 1, title: 'Good fortune? The fact is' },
+            { id: 2, title: 'The more that you practise' },
+            { id: 3, title: 'The harder you sweat' },
+            { id: 4, title: 'The luckier you get' },
+            { id: 5, title: 'Ideas? We’ve had ’em' },
+            { id: 6, title: 'Since Eve mated Adam' },
+            { id: 7, title: 'But take it from me' },
+            { id: 8, title: 'Execution’s the key' },
+            { id: 9, title: 'The money? Just pester' },
+            { id: 10, title: 'A likely investor' },
+            { id: 11, title: 'To get what you need' },
+            { id: 12, title: 'You toady to greed' },
+            { id: 13, title: 'The talent? Go sign it' },
+            { id: 14, title: 'But first, wine and dine it' },
+            { id: 15, title: 'It’s tedious work' },
+            { id: 16, title: 'With a talented jerk' }
         ]
     }
 />`} />
@@ -38,14 +46,22 @@ export default function InputsPage() {
                 icon='database'
                 options={
                     [
-                        { id: 1, title: 'Option 1 Option 1Option 1Option 1 Option 1 Option 1 OptionOptionOptionOptionOptionOptionOptionOptionOption' },
-                        { id: 2, title: 'Option 2' },
-                        { id: 3, title: 'mOption 3' },
-                        { id: 4, title: 'Option 4' },
-                        { id: 5, title: 'Option 5' },
-                        { id: 6, title: 'Option 6' },
-                        { id: 7, title: 'Option 7' },
-                        { id: 8, title: 'Option 8' }
+                        { id: 1, title: 'Good fortune? The fact is' },
+                        { id: 2, title: 'The more that you practise' },
+                        { id: 3, title: 'The harder you sweat' },
+                        { id: 4, title: 'The luckier you get' },
+                        { id: 5, title: 'Ideas? We’ve had ’em' },
+                        { id: 6, title: 'Since Eve mated Adam' },
+                        { id: 7, title: 'But take it from me' },
+                        { id: 8, title: 'Execution’s the key' },
+                        { id: 9, title: 'The money? Just pester' },
+                        { id: 10, title: 'A likely investor' },
+                        { id: 11, title: 'To get what you need' },
+                        { id: 12, title: 'You toady to greed' },
+                        { id: 13, title: 'The talent? Go sign it' },
+                        { id: 14, title: 'But first, wine and dine it' },
+                        { id: 15, title: 'It’s tedious work' },
+                        { id: 16, title: 'With a talented jerk' }
                     ]
                 }
                 />

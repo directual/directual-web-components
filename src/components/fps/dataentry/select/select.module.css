@@ -155,6 +155,10 @@
   background-color: var(--accent-color);
   color: var(--button-accent-color);
 }
+.select_wrapper .select_field .list .option.keySelected {
+  padding: 6px 10px;
+  border: solid 2px var(--font-color);
+}
 .select_wrapper .select_field .list .option:active:not(.disabled) {
   background: var(--font-color);
   color: var(--background-color);

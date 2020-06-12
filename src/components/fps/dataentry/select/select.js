@@ -3,22 +3,29 @@ import styles from './select.module.css'
 import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
 
 function List(props) {
+
+    //   useEffect(() => {
+    //     props.selected && refs[props.selected.id].current.scrollTo(0, 500);
+    //   })
+
     return (
         <React.Fragment>
             {props.options.length > 0 && props.focus &&
                 <li className={styles.options_counter}>
                     {props.options.length} option{`${props.options.length > 1 ? 's':''}`}</li>}
-            <ul className={`${styles.list} ${styles.flat}`}>
 
+            <ul className={`${styles.list} ${styles.flat}`}>
                 {props.options.length == 0 &&
                     <SomethingWentWrong icon='ban'
                         message={`No options${props.filter ? ` like \"${props.filter}\"` : ''}`} />}
-                {props.options && props.options.map(option =>
+                {props.options && props.options.map(option => 
                     <li
                         className={`
                         ${styles.option}
                         ${props.current && props.current.id == option.id && styles.selected}
+                        ${props.selected && props.selected.id == option.id && styles.keySelected}
                         `}
+                        //ref={refs[option.id]}
                         key={option.id}
                         onClick={() => { props.chooseOption(option); props.onClick() }}
                     >
@@ -35,7 +42,9 @@ export default function Select(props) {
     const inputEl = useRef(null);
     const [filter, setFilter] = useState('')
     const [filteredOptions, setFilteredOptions] = useState(props.options || [])
+    const [keySelected, setKeySelected] = useState()
     const selectRef = useRef(null);
+    
     useOutsideAlerter(selectRef);
 
     function useOutsideAlerter(ref) {
@@ -53,12 +62,34 @@ export default function Select(props) {
     }
     useEffect(() => { focus && inputEl.current.focus(); setFilter('') }, [focus])
 
+    useEffect(() => { props.onChange(value); setKeySelected() }, [value])
+
     useEffect(() => {
         let FO = props.options.filter(el => {
             return String(el.title).toLowerCase().match(new RegExp(String(filter).toLowerCase()))
         })
         setFilteredOptions(FO)
+        setKeySelected('')
     }, [filter])
+
+    let currentPosition;
+    const handleKeyboard = (e) => {
+        if (focus) {
+            currentPosition = filteredOptions.indexOf(keySelected)
+            console.log(e.key + ' key: ' + currentPosition)
+            keySelected && filteredOptions && e.key == 'ArrowUp' && currentPosition == 0 &&
+                setKeySelected('')
+            keySelected && filteredOptions && e.key == 'ArrowDown' && currentPosition < filteredOptions.length &&
+                setKeySelected(filteredOptions[currentPosition + 1])
+            keySelected && filteredOptions && e.key == 'ArrowUp' && currentPosition > 0 &&
+                setKeySelected(filteredOptions[currentPosition - 1])
+            !keySelected && filteredOptions && e.key == 'ArrowDown' &&
+                setKeySelected(filteredOptions[0])
+            if (keySelected && filteredOptions && e.key == 'Enter')
+                { setValue(keySelected); setFocus(false) }
+            
+        }
+    }
 
     return (
         <div className={styles.select_wrapper} style={{ maxWidth: props.width || 'auto' }}>
@@ -80,6 +111,7 @@ export default function Select(props) {
                         <div className={styles.currentValue}>{value.title}</div>}
                     {focus &&
                         <input
+                            onKeyDown={handleKeyboard}
                             type="text"
                             ref={inputEl}
                             className={styles.filter}
@@ -90,12 +122,13 @@ export default function Select(props) {
                 </div>
                 <div onClick={() => setFocus(!focus)} className={`${styles.arrow} icon icon-down ${focus && styles.twist}`}></div>
                 <List
-                    chooseOption={option => { setValue(option); props.onChange(value) }}
+                    chooseOption={option => setValue(option)}
                     current={value}
                     onClick={() => { setFocus(false) }}
                     options={filteredOptions}
                     filter={filter}
                     focus={focus}
+                    selected={keySelected}
                 />
             </div>
 
