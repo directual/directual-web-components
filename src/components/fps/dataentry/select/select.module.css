@@ -144,6 +144,7 @@
   width: 100%;
 }
 .select_wrapper .select_field .list .option {
+  flex-shrink: 0;
   padding: 8px 12px;
   margin: 2px;
   border-radius: var(--border-radius);
