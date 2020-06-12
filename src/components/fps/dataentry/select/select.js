@@ -7,7 +7,7 @@ function List(props) {
         <React.Fragment>
             {props.options.length > 0 && props.focus &&
                 <li className={styles.options_counter}>
-                    {props.options.length} options</li>}
+                    {props.options.length} option{`${props.options.length > 1 ? 's':''}`}</li>}
             <ul className={`${styles.list} ${styles.flat}`}>
 
                 {props.options.length == 0 &&

@@ -8,7 +8,28 @@ import 'directual-web-components/dist/index.css'
 export default function InputsPage() {
     return (
         <React.Fragment>
-            <h1>Inputs, Selects, Checkboxes etc.</h1>
+            <h1>Data entry</h1>
+            <h2 style={{marginBottom:24, marginTop:12}}>Selects</h2>
+            <CodeSnippet code=
+                {`<Input
+    label='Simple select'
+    width={400}
+    type='select'
+    placeholder='Placeholder'
+    icon='database'
+    options={
+        [
+            { id: 1, title: 'Option 1 Option 1Option 1Option 1 Option 1 Option 1 OptionOptionOptionOptionOptionOptionOptionOptionOption' },
+            { id: 2, title: 'Option 2' },
+            { id: 3, title: 'mOption 3' },
+            { id: 4, title: 'Option 4' },
+            { id: 5, title: 'Option 5' },
+            { id: 6, title: 'Option 6' },
+            { id: 7, title: 'Option 7' },
+            { id: 8, title: 'Option 8' }
+        ]
+    }
+/>`} />
             <Input
                 label='Simple select'
                 width={400}
@@ -28,6 +49,8 @@ export default function InputsPage() {
                     ]
                 }
                 />
+
+            <h2 style={{marginBottom:24, marginTop:36}}>Inputs</h2>
             <CodeSnippet code=
                 {`<Input
     label='Input (required)'
@@ -183,6 +206,7 @@ export default function InputsPage() {
                     ]
                 }
             } />
+            <h2 style={{marginBottom:24, marginTop:36}}>Radio</h2>
 
             <CodeSnippet code=
                 {`<Input
