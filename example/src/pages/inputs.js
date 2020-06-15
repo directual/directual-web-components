@@ -70,38 +70,38 @@ export default function InputsPage() {
             />
             <CodeSnippet code=
 {`<Input
-label='Multiple select'
-width={700}
-type='multiselect'
-placeholder='Choose the values'
-defaultValue={
-    [
-        { id: 3, title: 'The harder you sweat' },
-        { id: 13, title: 'The talent? Go sign it' }
-    ]
-}
-icon='database'
-options={
-    [
-        { id: 1, title: 'Good fortune? The fact is' },
-        { id: 2, title: 'The more that you practise' },
-        { id: 3, title: 'The harder you sweat' },
-        { id: 4, title: 'The luckier you get' },
-        { id: 5, title: 'Ideas? We’ve had ’em' },
-        { id: 6, title: 'Since Eve mated Adam' },
-        { id: 7, title: 'But take it from me' },
-        { id: 8, title: 'Execution’s the key' },
-        { id: 9, title: 'The money? Just pester' },
-        { id: 10, title: 'A likely investor' },
-        { id: 11, title: 'To get what you need' },
-        { id: 12, title: 'You toady to greed' },
-        { id: 13, title: 'The talent? Go sign it' },
-        { id: 14, title: 'But first, wine and dine it' },
-        { id: 15, title: 'It’s tedious work' },
-        { id: 16, title: 'With a talented jerk' },
-        { id: 17, title: 'Good timing? To win it You gotta be in it. Just never be late To quit or cut bait.' }
-    ]
-}
+    label='Multiple select'
+    width={700}
+    type='multiselect'
+    placeholder='Choose the values'
+    defaultValue={
+        [
+            { id: 3, title: 'The harder you sweat' },
+            { id: 13, title: 'The talent? Go sign it' }
+        ]
+    }
+    icon='database'
+    options={
+        [
+            { id: 1, title: 'Good fortune? The fact is' },
+            { id: 2, title: 'The more that you practise' },
+            { id: 3, title: 'The harder you sweat' },
+            { id: 4, title: 'The luckier you get' },
+            { id: 5, title: 'Ideas? We’ve had ’em' },
+            { id: 6, title: 'Since Eve mated Adam' },
+            { id: 7, title: 'But take it from me' },
+            { id: 8, title: 'Execution’s the key' },
+            { id: 9, title: 'The money? Just pester' },
+            { id: 10, title: 'A likely investor' },
+            { id: 11, title: 'To get what you need' },
+            { id: 12, title: 'You toady to greed' },
+            { id: 13, title: 'The talent? Go sign it' },
+            { id: 14, title: 'But first, wine and dine it' },
+            { id: 15, title: 'It’s tedious work' },
+            { id: 16, title: 'With a talented jerk' },
+            { id: 17, title: 'Good timing? To win it You gotta be in it. Just never be late To quit or cut bait.' }
+        ]
+    }
 />`} />
 
             <Input
@@ -149,7 +149,7 @@ options={
                         { sysName: 'eg', name: 'Example' }
                     ],
                     data: [
-                        { prop: 'type', type: 'string', desc: 'select', eg: 'type = \'select\'' },
+                        { prop: 'type', type: 'select, multiselect', desc: 'select type', eg: 'type = \'select\'' },
                         { prop: 'onChange', type: 'function', desc: 'handles field\'s value', eg: 'onChange = {value => handleChange(value)}' },
                         { prop: 'label', type: 'string', desc: 'Field label', eg: 'label = \'Email\'' },
                         { prop: 'disabled', type: 'boolean', desc: 'Disable input', eg: 'disabled = {false}' },

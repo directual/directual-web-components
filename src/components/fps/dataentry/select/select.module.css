@@ -71,7 +71,7 @@
   color: var(--font-color);
 }
 .select_wrapper .select_field .multilist li .title_item {
-  padding: 6px 0 6px 6px;
+  padding: 6px;
   white-space: nowrap;
   max-width: 150px;
   overflow: hidden;

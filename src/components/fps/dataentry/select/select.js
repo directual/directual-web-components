@@ -25,8 +25,6 @@ function List(props) {
             left: 0,
             behavior: 'smooth'
           });
-          console.log('current = ' + scrollDivRef.current.scrollTop)
-        
     }
 
       useEffect(() => {
@@ -63,7 +61,7 @@ function List(props) {
                             !props.multi && props.chooseOption(option)
                             props.current && props.current.length >= 0 && props.current.filter(i => i.id == option.id).length == 0 ?
                             props.chooseOption(option) :
-                            props.removeOption(props.current.filter(i => i.id == option.id)[0])
+                            props.current && props.current.length >= 0 && props.removeOption(props.current.filter(i => i.id == option.id)[0])
                             props.onClick() }}
                     >
                         {option.title}
@@ -186,9 +184,10 @@ export default function Select(props) {
                         {value && value.length > 0 && value.map((item) =>
                             <li title={item.title}>
                                 <div className={styles.title_item}>{item.title}</div>
+                                {!props.disabled &&
                                 <div className={`${styles.delete_item} icon icon-close`}
                                     onClick={(e) => {e.stopPropagation(); removeOption(item)}}
-                                ></div>    
+                                ></div>}
                             </li>
                         )}
                         
@@ -196,6 +195,7 @@ export default function Select(props) {
                             {!filter && <div>{props.placeholder ? props.placeholder : 'Select the value'}</div>}
                             {focus &&
                             <input
+                                disabled={props.disabled}
                                 onKeyDown={handleKeyboard}
                                 type="text"
                                 ref={inputEl}
