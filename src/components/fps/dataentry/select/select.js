@@ -102,7 +102,16 @@ export default function Select(props) {
     const handleKeyboard = (e) => {
         if (focus) {
             currentPosition = filteredOptions.indexOf(keySelected)
-            //console.log(e.key + ' key: ' + currentPosition)
+            console.log(e.key + ' key: ' + currentPosition)
+            if (e.key == 'Backspace' && props.multi) {
+                let array = value || []
+                array.pop()
+                setValue(array)
+                forceUpdate()
+            }
+            if (e.key == 'Backspace' && !props.multi) {
+                setValue('')
+            }
             keySelected && filteredOptions && e.key == 'ArrowUp' && currentPosition == 0 &&
                 setKeySelected('')
             keySelected && filteredOptions && e.key == 'ArrowDown' && currentPosition < filteredOptions.length &&
