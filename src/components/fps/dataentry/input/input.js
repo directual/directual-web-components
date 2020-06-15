@@ -75,6 +75,7 @@ export default function Input(props) {
             props.type != 'password' &&
             props.type != 'radio' &&
             props.type != 'select' &&
+            props.type != 'multiselect' &&
                 <div className={styles.field_wrapper}>
                     <input
                         disabled={props.disabled}
@@ -148,7 +149,7 @@ export default function Input(props) {
                 <div className={styles.field_wrapper}>
                     <input
                         disabled={props.disabled}
-                        className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]}`}
+                        className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                         type={pwdVisible}
                         onChange={e => handleChange(e.target.value)}
                         value={value}
@@ -174,8 +175,21 @@ export default function Input(props) {
                     placeholder={props.placeholder}
                     options={props.options}
                     icon={props.icon}
+                    disabled={props.disabled}
                     defaultValue={props.defaultValue}
                     iconOptions={props.iconOptions}
+                    onChange={e => props.onChange && props.onChange(e)}
+                    />
+            }
+            {props.type == 'multiselect' &&
+                <Select 
+                    placeholder={props.placeholder}
+                    options={props.options}
+                    icon={props.icon}
+                    disabled={props.disabled}
+                    multi
+                    defaultValue={props.defaultValue}
+                    //iconOptions={props.iconOptions}
                     onChange={e => props.onChange && props.onChange(e)}
                     />
             }
