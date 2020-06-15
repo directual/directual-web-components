@@ -36,11 +36,12 @@ function List(props) {
             let rect = scrollDivRef.current.getBoundingClientRect()
             freeSpace = window.innerHeight - (selectHolder.current.getBoundingClientRect().top + selectHolder.current.getBoundingClientRect().height)
             //console.log(freeSpace)
-            if (count > 8) { maxListHeight = 8 * 40 }
+            if (count > 10) { maxListHeight = 10 * 40 }
             //if (maxListHeight > freeSpace) { maxListHeight = freeSpace - 5 }
-            if (maxListHeight > freeSpace && freeSpace >= 4 * 40) { maxListHeight = freeSpace - 30 }
+            if (maxListHeight > freeSpace && freeSpace >= 4 * 40) { maxListHeight = freeSpace - 32 }
             (freeSpace < 4 * 40) ? pos = 'top' : pos = 'bottom'
-            console.log('pos: ' + pos + ' height: ' + maxListHeight) }
+            //console.log('pos: ' + pos + ' height: ' + maxListHeight) 
+        }
         return {
             position: pos,
             height: maxListHeight
@@ -144,7 +145,7 @@ export default function Select(props) {
     const handleKeyboard = (e) => {
         if (focus) {
             currentPosition = filteredOptions.indexOf(keySelected)
-            console.log(e.key + ' key: ' + currentPosition)
+            //console.log(e.key + ' key: ' + currentPosition)
             if (e.key == 'Backspace' && props.multi && filter == '') {
                 let array = value || []
                 array.pop()

@@ -166,7 +166,7 @@ export default function InputsPage() {
             } />
 
             <Input
-                label='Simple select'
+                label='Check the select dropdown position/size'
                 width={400}
                 type='select'
                 placeholder='Choose the line'
