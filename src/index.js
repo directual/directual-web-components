@@ -10,7 +10,7 @@ import FpsCards from './components/fps/FpsCards'
 import FpsHtml from './components/fps/FpsHtml'
 import FpsForm from './components/fps/dataentry/form/form'
 import MainMenu from './components/fps/mainmenu/mainmenu'
-import FpsTheme, {SetTheme} from './components/fps/theme/theme'
+//import FpsTheme, {SetTheme} from './components/fps/theme/theme'
 import ComponentDetails from './components/fps/componentdetails/componentdetails'
 import FpsTable from './components/fps/table/table'
 import {FpsWrapper, ContentWrapper} from './components/fps/wrapper/wrapper'
@@ -32,7 +32,7 @@ export {
   FpsHtml,
   FpsForm,
   MainMenu,
-  FpsTheme,
+  //FpsTheme,
   ComponentDetails,
   FpsWrapper,
   ContentWrapper,
@@ -43,7 +43,7 @@ export {
   ActionPanel,
   SomethingWentWrong,
   Radio,
-  SetTheme,
+  //SetTheme,
   CodeSnippet,
   Select
 }
