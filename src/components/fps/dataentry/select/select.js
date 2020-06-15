@@ -11,6 +11,15 @@ function useForceUpdate() {
   }
 
 function List(props) {
+    const scrollDivRef = useRef(null)
+
+    const scrollList = (position) => {
+        scrollDivRef.current.scrollTo({
+            top: position,
+            left: 0,
+            behavior: 'smooth'
+          });
+    }
 
     //   useEffect(() => {
     //     props.selected && refs[props.selected.id].current.scrollTo(0, 500);
@@ -26,33 +35,30 @@ function List(props) {
                     }
                     </li>}
 
-            <ul className={`${styles.list} ${styles.flat}`}>
+            <ul className={`${styles.list} ${styles.flat}`} ref={scrollDivRef}>
                 {props.options && props.options.length == 0 &&
                     <SomethingWentWrong icon='ban'
                         message={`No options${props.filter ? ` like \"${props.filter}\"` : ''}`} />}
 
-                {/* {JSON.stringify(props.current)} */}
                 
                 {props.options && props.options.map(option => 
                     <li
                         className={`
-                        ${styles.option}
-                        ${props.current && props.current.id == option.id && styles.selected}
-                        ${props.selected && props.selected.id == option.id && styles.keySelected}
-                        ${props.current && props.current.length > 0 && props.current.indexOf(option) != -1 && styles.selected}
-                        ${props.iconOptions && `${styles.optionIcon} icon icon-${option.icon}`}
+                            ${styles.option}
+                            ${props.current && props.current.id == option.id && styles.selected}
+                            ${props.selected && props.selected.id == option.id && styles.keySelected}
+                            ${props.current && props.current.length > 0 && props.current.filter(i => i.id == option.id).length > 0 && styles.selected}
+                            ${props.iconOptions && `${styles.optionIcon} icon icon-${option.icon}`}
                         `}
                         //ref={refs[option.id]}
                         key={option.id}
                         onClick={() => {
                             !props.multi && props.chooseOption(option)
-                            props.current && props.current.length >= 0 && props.current.indexOf(option) == -1 ?
+                            props.current && props.current.length >= 0 && props.current.filter(i => i.id == option.id).length == 0 ?
                             props.chooseOption(option) :
-                            props.removeOption(option)
+                            props.removeOption(props.current.filter(i => i.id == option.id)[0])
                             props.onClick() }}
                     >
-                        {/* {props.current && props.current.length > 0 && props.current.indexOf(option)}
-                        {JSON.stringify(option)} */}
                         {option.title}
                         </li>
                 )}
@@ -103,13 +109,13 @@ export default function Select(props) {
         if (focus) {
             currentPosition = filteredOptions.indexOf(keySelected)
             console.log(e.key + ' key: ' + currentPosition)
-            if (e.key == 'Backspace' && props.multi) {
+            if (e.key == 'Backspace' && props.multi && filter=='') {
                 let array = value || []
                 array.pop()
                 setValue(array)
                 forceUpdate()
             }
-            if (e.key == 'Backspace' && !props.multi) {
+            if (e.key == 'Backspace' && !props.multi && filter=='') {
                 setValue('')
             }
             keySelected && filteredOptions && e.key == 'ArrowUp' && currentPosition == 0 &&
@@ -122,8 +128,8 @@ export default function Select(props) {
                 setKeySelected(filteredOptions[0])
             if (keySelected && filteredOptions && e.key == 'Enter')
                 { 
-                    if (value && value.length >= 0 && value.indexOf(keySelected) == -1) {chooseOption(keySelected);} 
-                    else {props.multi && removeOption(keySelected);} 
+                    if (value && value.length >= 0 && value.filter(i => i.id == keySelected.id) == 0) {chooseOption(keySelected)} 
+                    else {props.multi && removeOption(value.filter(i => i.id == keySelected.id)[0])} 
                     !props.multi && chooseOption(keySelected); 
                     
                     setFocus(false) }

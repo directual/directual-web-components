@@ -45,7 +45,7 @@ export default function InputsPage() {
                 type='select'
                 placeholder='Choose the line'
                 icon='database'
-                //defaultValue = { {id: 3, title: 'The harder you sweat'} }
+                defaultValue = {{id: 3, title: 'The harder you sweat'}}
                 options={
                     [
                         { id: 1, title: 'Good fortune? The fact is' },
@@ -71,7 +71,7 @@ export default function InputsPage() {
             <CodeSnippet code=
 {`<Input
 label='Multiple select'
-width={600}
+width={700}
 type='multiselect'
 placeholder='Choose the values'
 defaultValue={
@@ -106,13 +106,13 @@ options={
 
             <Input
                 label='Multiple select'
-                width={600}
+                width={700}
                 type='multiselect'
                 placeholder='Choose the values'
                 defaultValue={
                     [
-                        { id: 3, title: 'The harder you sweat' },
-                        { id: 13, title: 'The talent? Go sign it' }
+                        { id: 1, title: 'Good fortune? The fact is' },
+                        { id: 3, title: 'The harder you sweat' }
                     ]
                 }
                 icon='database'
