@@ -16,19 +16,22 @@ export default function FpsTheme(props) {
     const logoDarkTheme = props.logoDarkTheme || ''
     const logoLightTheme = props.logoLightTheme || ''
 
-    let currentTheme = localStorage.getItem(themeName + '-theme')
+    let currentTheme
+
+    if (typeof window !== 'undefined') { currentTheme = localStorage.getItem(themeName + '-theme') }
     !currentTheme && (currentTheme = 'classic')
 
-    let currentBR = localStorage.getItem(themeName + '-br')
+    let currentBR
+    if (typeof window !== 'undefined') { currentBR = localStorage.getItem(themeName + '-br') }
     !currentBR && (currentBR = '25')
 
     const setBR = radius => {
-        localStorage.setItem(themeName + '-br', radius)
+        if (typeof window !== 'undefined') { localStorage.setItem(themeName + '-br', radius) }
         document.documentElement.style.setProperty('--border-radius', radius + 'px')
     }
 
     const setTheme = theme => {
-        localStorage.setItem(themeName + '-theme', theme)
+        if (typeof window !== 'undefined') { localStorage.setItem(themeName + '-theme', theme) }
         if (theme === 'classic') {
             document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
             document.documentElement.style.setProperty('--field-border-color', '#aaa')
