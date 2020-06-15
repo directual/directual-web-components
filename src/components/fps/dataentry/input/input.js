@@ -69,7 +69,12 @@ export default function Input(props) {
             <label>{props.label}</label>
             {/* value: {value} */}
 
-            {props.type == 'string' &&
+            {props.type != 'email' &&
+            props.type != 'number' &&
+            props.type != 'textarea' &&
+            props.type != 'password' &&
+            props.type != 'radio' &&
+            props.type != 'select' &&
                 <div className={styles.field_wrapper}>
                     <input
                         disabled={props.disabled}

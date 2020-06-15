@@ -71,7 +71,7 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
               <Input
                 label={field.sysName}
                 placeholder={field.name}
-                type={`${typesMatching[field.dataType] ? typesMatching[field.dataType] : 'string'}`}
+                type={`${typesMatching[field.dataType]=='id' ? `select` : typesMatching[field.dataType]}`}
                 onChange={value => onChange(field.sysName, value)}
               />
               {modelError[field.sysName] && <b>{modelError[field.sysName]}</b>}
