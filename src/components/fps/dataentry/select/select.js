@@ -5,48 +5,76 @@ import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
 function useForceUpdate() {
     const [, setTick] = useState(0);
     const update = useCallback(() => {
-      setTick(tick => tick + 1);
+        setTick(tick => tick + 1);
     }, [])
     return update;
-  }
+}
 
 function List(props) {
     const scrollDivRef = useRef(null)
+    const selectHolder = useRef(null)
 
     let itemHeight
     const scrollList = (num, count) => {
         let rect = scrollDivRef.current.getBoundingClientRect()
         itemHeight = scrollDivRef.current.scrollHeight / count
         let calcScroll
-        if ((num - 1) * itemHeight < scrollDivRef.current.scrollTop) {calcScroll = itemHeight * num}
-        if ((num + 1) * itemHeight > (scrollDivRef.current.scrollTop + rect.height)) {calcScroll = itemHeight * (num - rect.height/itemHeight + 1)}
+        if ((num - 1) * itemHeight < scrollDivRef.current.scrollTop) { calcScroll = itemHeight * num }
+        if ((num + 1) * itemHeight > (scrollDivRef.current.scrollTop + rect.height)) { calcScroll = itemHeight * (num - rect.height / itemHeight + 1) }
         scrollDivRef.current.scrollTo({
             top: calcScroll,
             left: 0,
             behavior: 'smooth'
-          });
+        });
     }
 
-      useEffect(() => {
-        props.selected && scrollList(props.options.indexOf(props.selected),props.options.length)
-      })
+    const positionList = (count) => {
+        let pos = 'bottom'
+        let maxListHeight = 200;
+        let freeSpace;
+        if (scrollDivRef.current && selectHolder.current) {
+            let rect = scrollDivRef.current.getBoundingClientRect()
+            freeSpace = window.innerHeight - (selectHolder.current.getBoundingClientRect().top + selectHolder.current.getBoundingClientRect().height)
+            //console.log(freeSpace)
+            if (count > 8) { maxListHeight = 8 * 40 }
+            //if (maxListHeight > freeSpace) { maxListHeight = freeSpace - 5 }
+            if (maxListHeight > freeSpace && freeSpace >= 4 * 40) { maxListHeight = freeSpace - 30 }
+            (freeSpace < 4 * 40) ? pos = 'top' : pos = 'bottom'
+            console.log('pos: ' + pos + ' height: ' + maxListHeight) }
+        return {
+            position: pos,
+            height: maxListHeight
+        }
+    }
+
+    useEffect(() => {
+        props.selected && scrollList(props.options.indexOf(props.selected), props.options.length)
+    })
 
     return (
-        <React.Fragment>
+        <div ref={selectHolder}>
             {props.options && props.options.length > 0 && props.focus && !props.disabled &&
                 <li className={styles.options_counter}>
-                    
+
                     {props.current && props.current.length > 0 ? `${props.current.length}/${props.options.length} chosen` :
-                    <React.Fragment>{props.options.length} option{`${props.options.length > 1 ? 's':''}`}</React.Fragment>
+                        <React.Fragment>{props.options.length} option{`${props.options.length > 1 ? 's' : ''}`}</React.Fragment>
                     }
-                    </li>}
-                
-            <ul className={`${styles.list} ${styles.flat}`} ref={scrollDivRef}>
+                </li>}
+            <ul className={`${styles.list} ${styles.flat}`}
+                ref={scrollDivRef}
+                style={
+                    {
+                        maxHeight: positionList(props.options.length).height,
+                        top: positionList(props.options.length).position == 'bottom' ? '100%': 'auto',
+                        bottom: [positionList(props.options.length).position] == 'top' ? '100%': 'auto'
+                    }
+                }
+            >
                 {props.options && props.options.length == 0 &&
                     <SomethingWentWrong icon='ban'
                         message={`No options${props.filter ? ` like \"${props.filter}\"` : ''}`} />}
 
-                {props.options && props.options.map(option => 
+                {props.options && props.options.map(option =>
                     <li
                         className={`
                             ${styles.option}
@@ -60,15 +88,16 @@ function List(props) {
                         onClick={() => {
                             !props.multi && props.chooseOption(option)
                             props.current && props.current.length >= 0 && props.current.filter(i => i.id == option.id).length == 0 ?
-                            props.chooseOption(option) :
-                            props.current && props.current.length >= 0 && props.removeOption(props.current.filter(i => i.id == option.id)[0])
-                            props.onClick() }}
+                                props.chooseOption(option) :
+                                props.current && props.current.length >= 0 && props.removeOption(props.current.filter(i => i.id == option.id)[0])
+                            props.onClick()
+                        }}
                     >
                         {option.title}
-                        </li>
+                    </li>
                 )}
             </ul>
-        </React.Fragment>
+        </div>
     )
 }
 
@@ -80,7 +109,7 @@ export default function Select(props) {
     const [filteredOptions, setFilteredOptions] = useState(props.options || [])
     const [keySelected, setKeySelected] = useState()
     const selectRef = useRef(null);
-    
+
     useOutsideAlerter(selectRef);
 
     function useOutsideAlerter(ref) {
@@ -102,9 +131,11 @@ export default function Select(props) {
 
     let FO;
     useEffect(() => {
-        if (props.options) { FO = props.options.filter(el => {
-            return String(el.title).toLowerCase().match(new RegExp(String(filter).toLowerCase()))
-        })}
+        if (props.options) {
+            FO = props.options.filter(el => {
+                return String(el.title).toLowerCase().match(new RegExp(String(filter).toLowerCase()))
+            })
+        }
         setFilteredOptions(FO)
         setKeySelected('')
     }, [filter])
@@ -114,13 +145,13 @@ export default function Select(props) {
         if (focus) {
             currentPosition = filteredOptions.indexOf(keySelected)
             console.log(e.key + ' key: ' + currentPosition)
-            if (e.key == 'Backspace' && props.multi && filter=='') {
+            if (e.key == 'Backspace' && props.multi && filter == '') {
                 let array = value || []
                 array.pop()
                 setValue(array)
                 forceUpdate()
             }
-            if (e.key == 'Backspace' && !props.multi && filter=='') {
+            if (e.key == 'Backspace' && !props.multi && filter == '') {
                 setValue('')
             }
             keySelected && filteredOptions && e.key == 'ArrowUp' && currentPosition == 0 &&
@@ -131,14 +162,14 @@ export default function Select(props) {
                 setKeySelected(filteredOptions[currentPosition - 1])
             !keySelected && filteredOptions && e.key == 'ArrowDown' &&
                 setKeySelected(filteredOptions[0])
-            if (keySelected && filteredOptions && e.key == 'Enter')
-                { 
-                    if (value && value.length >= 0 && value.filter(i => i.id == keySelected.id) == 0) {chooseOption(keySelected)} 
-                    else {props.multi && removeOption(value.filter(i => i.id == keySelected.id)[0])} 
-                    !props.multi && chooseOption(keySelected); 
-                    
-                    setFocus(false) }
-            
+            if (keySelected && filteredOptions && e.key == 'Enter') {
+                if (value && value.length >= 0 && value.filter(i => i.id == keySelected.id) == 0) { chooseOption(keySelected) }
+                else { props.multi && removeOption(value.filter(i => i.id == keySelected.id)[0]) }
+                !props.multi && chooseOption(keySelected);
+
+                setFocus(false)
+            }
+
         }
     }
 
@@ -154,10 +185,10 @@ export default function Select(props) {
     }
 
     const removeOption = (option) => {
-        if (props.multi) { 
+        if (props.multi) {
             let arr = value || []
             if (arr.indexOf(option) != -1) {
-                arr.splice(arr.indexOf(option),1)
+                arr.splice(arr.indexOf(option), 1)
                 console.log('removing...' + option.title)
                 setValue(arr)
                 forceUpdate()
@@ -185,50 +216,50 @@ export default function Select(props) {
                             <li title={item.title}>
                                 <div className={styles.title_item}>{item.title}</div>
                                 {!props.disabled &&
-                                <div className={`${styles.delete_item} icon icon-close`}
-                                    onClick={(e) => {e.stopPropagation(); removeOption(item)}}
-                                ></div>}
+                                    <div className={`${styles.delete_item} icon icon-close`}
+                                        onClick={(e) => { e.stopPropagation(); removeOption(item) }}
+                                    ></div>}
                             </li>
                         )}
-                        
+
                         <li className={styles.multiplaceholder}>
                             {!filter && <div>{props.placeholder ? props.placeholder : 'Select the value'}</div>}
                             {focus &&
+                                <input
+                                    disabled={props.disabled}
+                                    onKeyDown={handleKeyboard}
+                                    type="text"
+                                    ref={inputEl}
+                                    className={styles.filter}
+                                    value={filter}
+                                    onChange={e => setFilter(e.target.value)}
+                                />}
+                        </li>
+
+                    </ul>
+                }
+
+                <div className={`${styles.value_wrapper}`}>
+
+                    {!props.multi && <React.Fragment>
+                        {!value && !filter &&
+                            <div className={`${styles.placeholder}`}>
+                                {props.placeholder ? props.placeholder : 'Select the value'}</div>}
+                        {value && !filter &&
+                            <div className={styles.currentValue}>{value.title}</div>}
+                        {focus &&
                             <input
-                                disabled={props.disabled}
                                 onKeyDown={handleKeyboard}
                                 type="text"
                                 ref={inputEl}
                                 className={styles.filter}
                                 value={filter}
                                 onChange={e => setFilter(e.target.value)}
-                            />}
-                        </li>
-                        
-                    </ul>
-                }
-                
-                <div className={`${styles.value_wrapper}`}>
-
-                    {!props.multi && <React.Fragment>
-                    {!value && !filter &&
-                        <div className={`${styles.placeholder}`}>
-                            {props.placeholder ? props.placeholder : 'Select the value'}</div>}
-                    {value && !filter &&
-                        <div className={styles.currentValue}>{value.title}</div>}
-                    {focus &&
-                        <input
-                            onKeyDown={handleKeyboard}
-                            type="text"
-                            ref={inputEl}
-                            className={styles.filter}
-                            value={filter}
-                            onChange={e => setFilter(e.target.value)}
-                        />
-                    }</React.Fragment>}
+                            />
+                        }</React.Fragment>}
                 </div>
                 {!props.disabled &&
-                <div onClick={() => { setFocus(!focus)}} className={`${styles.arrow} icon icon-down ${focus && styles.twist}`}></div>}
+                    <div onClick={() => { setFocus(!focus) }} className={`${styles.arrow} icon icon-down ${focus && styles.twist}`}></div>}
                 <List
                     chooseOption={option => chooseOption(option)}
                     removeOption={option => removeOption(option)}

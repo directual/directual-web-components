@@ -45,7 +45,7 @@ export default function InputsPage() {
                 type='select'
                 placeholder='Choose the line'
                 icon='database'
-                defaultValue = {{id: 3, title: 'The harder you sweat'}}
+                defaultValue={{ id: 3, title: 'The harder you sweat' }}
                 options={
                     [
                         { id: 1, title: 'Good fortune? The fact is' },
@@ -69,11 +69,12 @@ export default function InputsPage() {
                 }
             />
             <CodeSnippet code=
-{`<Input
+                {`<Input
     label='Multiple select'
     width={700}
     type='multiselect'
     placeholder='Choose the values'
+    required
     defaultValue={
         [
             { id: 3, title: 'The harder you sweat' },
@@ -109,6 +110,7 @@ export default function InputsPage() {
                 width={700}
                 type='multiselect'
                 placeholder='Choose the values'
+                required
                 defaultValue={
                     [
                         { id: 1, title: 'Good fortune? The fact is' },
@@ -162,6 +164,36 @@ export default function InputsPage() {
                     ]
                 }
             } />
+
+            <Input
+                label='Simple select'
+                width={400}
+                type='select'
+                placeholder='Choose the line'
+                icon='database'
+                defaultValue={{ id: 3, title: 'The harder you sweat' }}
+                options={
+                    [
+                        { id: 1, title: 'Good fortune? The fact is' },
+                        { id: 2, title: 'The more that you practise' },
+                        { id: 3, title: 'The harder you sweat' },
+                        { id: 4, title: 'The luckier you get' },
+                        { id: 5, title: 'Ideas? We’ve had ’em' },
+                        { id: 6, title: 'Since Eve mated Adam' },
+                        { id: 7, title: 'But take it from me' },
+                        { id: 8, title: 'Execution’s the key' },
+                        { id: 9, title: 'The money? Just pester' },
+                        { id: 10, title: 'A likely investor' },
+                        { id: 11, title: 'To get what you need' },
+                        { id: 12, title: 'You toady to greed' },
+                        { id: 13, title: 'The talent? Go sign it' },
+                        { id: 14, title: 'But first, wine and dine it' },
+                        { id: 15, title: 'It’s tedious work' },
+                        { id: 16, title: 'With a talented jerk' },
+                        { id: 17, title: 'Good timing? To win it You gotta be in it. Just never be late To quit or cut bait.' }
+                    ]
+                }
+            />
 
             <h2 style={{ marginBottom: 24, marginTop: 36 }}>Inputs</h2>
             <CodeSnippet code=
