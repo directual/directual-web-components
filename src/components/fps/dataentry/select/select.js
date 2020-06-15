@@ -13,17 +13,25 @@ function useForceUpdate() {
 function List(props) {
     const scrollDivRef = useRef(null)
 
-    const scrollList = (position) => {
+    let itemHeight
+    const scrollList = (num, count) => {
+        let rect = scrollDivRef.current.getBoundingClientRect()
+        itemHeight = scrollDivRef.current.scrollHeight / count
+        let calcScroll
+        if ((num - 1) * itemHeight < scrollDivRef.current.scrollTop) {calcScroll = itemHeight * num}
+        if ((num + 1) * itemHeight > (scrollDivRef.current.scrollTop + rect.height)) {calcScroll = itemHeight * (num - rect.height/itemHeight + 1)}
         scrollDivRef.current.scrollTo({
-            top: position,
+            top: calcScroll,
             left: 0,
             behavior: 'smooth'
           });
+          console.log('current = ' + scrollDivRef.current.scrollTop)
+        
     }
 
-    //   useEffect(() => {
-    //     props.selected && refs[props.selected.id].current.scrollTo(0, 500);
-    //   })
+      useEffect(() => {
+        props.selected && scrollList(props.options.indexOf(props.selected),props.options.length)
+      })
 
     return (
         <React.Fragment>
@@ -34,13 +42,12 @@ function List(props) {
                     <React.Fragment>{props.options.length} option{`${props.options.length > 1 ? 's':''}`}</React.Fragment>
                     }
                     </li>}
-
+                
             <ul className={`${styles.list} ${styles.flat}`} ref={scrollDivRef}>
                 {props.options && props.options.length == 0 &&
                     <SomethingWentWrong icon='ban'
                         message={`No options${props.filter ? ` like \"${props.filter}\"` : ''}`} />}
 
-                
                 {props.options && props.options.map(option => 
                     <li
                         className={`
