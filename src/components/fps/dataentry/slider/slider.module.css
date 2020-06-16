@@ -1,0 +1,65 @@
+.slider_wrapper {
+  display: flex;
+  height: 4px;
+  padding: 18px 0;
+  min-width: 100px;
+}
+.slider_wrapper .line {
+  background: var(--table-border-color);
+  height: 4px;
+  width: 100%;
+  border-radius: 6px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+}
+.slider_wrapper .line .fill {
+  border-radius: 6px;
+  height: 4px;
+  background: var(--accent-color);
+  position: absolute;
+  z-index: 2;
+}
+.slider_wrapper .line .knob {
+  background: var(--accent-color);
+  height: 16px;
+  width: 16px;
+  position: absolute;
+  border-radius: 24px;
+  transition: 0.5s;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: ew-resize;
+  transform: translate(-8px, 0);
+}
+.slider_wrapper .line .knob .value {
+  opacity: 0.3;
+  transform: translate(0, -20px);
+  font-size: var(--text-very-small-size);
+  transition: 0.5s;
+  user-select: none;
+  white-space: nowrap;
+}
+.slider_wrapper .line .knob:hover {
+  transform: translate(-9px, 0);
+  height: 18px;
+  width: 18px;
+  transition: 0.5s;
+}
+.slider_wrapper .line .knob:hover .value {
+  opacity: 1;
+  transition: 0.5s;
+}
+.slider_wrapper .line .knob:active {
+  background-color: var(--secondary-accent-color);
+}
+.slider_wrapper .line .knob.rightKnob {
+  transform: translate(8px, 0);
+}
+.slider_wrapper .line .knob.rightKnob:hover {
+  transform: translate(9px, 0);
+  transition: 0.5s;
+}

@@ -20,6 +20,8 @@ import SomethingWentWrong from './components/fps/SomethingWentWrong/SomethingWen
 import Radio from './components/fps/dataentry/radio/radio'
 import CodeSnippet from './components/fps/codesnippet/codesnippet'
 import Select from './components/fps/dataentry/select/select'
+import Slider from './components/fps/dataentry/slider/slider'
+import Datepicker from './components/fps/dataentry/datepicker/datepicker'
 
 import FpsTheme, {SetTheme} from './components/fps/theme/theme'
 
@@ -43,10 +45,12 @@ export {
   ActionPanel,
   SomethingWentWrong,
   Radio,
+  Datepicker,
 
   FpsTheme,
   SetTheme,
 
   CodeSnippet,
-  Select
+  Select,
+  Slider
 }

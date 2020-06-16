@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {
-    FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, Select,
-    FpsTheme, ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, CodeSnippet
+    FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, Select, Datepicker,
+    FpsTheme, ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, CodeSnippet, Slider
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
@@ -9,6 +9,16 @@ export default function InputsPage() {
     return (
         <React.Fragment>
             <h1>Data entry</h1>
+            <Datepicker />
+            <hr />
+            <Slider 
+                value={20} 
+                //secondValue={70} 
+                width={400} 
+                min={100} 
+                max={1000} 
+                unitName='$' />
+
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Selects</h2>
             <CodeSnippet code=
                 {`<Input
@@ -74,7 +84,6 @@ export default function InputsPage() {
     width={700}
     type='multiselect'
     placeholder='Choose the values'
-    required
     defaultValue={
         [
             { id: 3, title: 'The harder you sweat' },
@@ -110,14 +119,14 @@ export default function InputsPage() {
                 width={700}
                 type='multiselect'
                 placeholder='Choose the values'
-                required
+                //required
                 defaultValue={
                     [
                         { id: 1, title: 'Good fortune? The fact is' },
                         { id: 3, title: 'The harder you sweat' }
                     ]
                 }
-                icon='database'
+                //icon='database'
                 options={
                     [
                         { id: 1, title: 'Good fortune? The fact is' },
@@ -170,7 +179,7 @@ export default function InputsPage() {
                 width={400}
                 type='select'
                 placeholder='Choose the line'
-                icon='database'
+                //icon='database'
                 defaultValue={{ id: 3, title: 'The harder you sweat' }}
                 options={
                     [
@@ -396,6 +405,8 @@ export default function InputsPage() {
                     ]
                 }
             />
+
+            <h2 style={{ marginBottom: 24, marginTop: 36 }}>Slider</h2>
         </React.Fragment>
     )
 }
