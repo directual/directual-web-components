@@ -11,18 +11,33 @@ export default function InputsPage() {
         <React.Fragment>
             <h1>Data entry</h1>
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Range sliders</h2>
-            <Slider
-                value={20}
-                //secondValue={70} 
-                width={400}
-                min={100}
-                max={1000}
-                unitName='$' />
+            <Input
+                type="slider"
+                width={500}
+                label="Range slider"
+                defaultValue = {200}
+                secondDefaultValue = {450}
+                min = {0}
+                max= {600}
+                step = {10}
+                unitName='₽'
+            />
+
+            <Input
+                type="slider"
+                width={500}
+                label="Slider"
+                defaultValue = {300}
+                min = {200}
+                max= {1000}
+                step = {1}
+                unitName='$'
+            />
 
             <h2 style={{ marginBottom: 0, marginTop: 12 }}>Date and time</h2>
             <p style={{ marginBottom: 24, marginTop: 12 }}>
                 Adapted <a href="https://github.com/YouCanBookMe/react-datetime" target="_blank">
-                React-datetime</a> component</p>
+                    React-datetime</a> component</p>
             <CodeSnippet code=
                 {`<Input
     type="date"

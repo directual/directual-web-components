@@ -3,6 +3,7 @@ import styles from './input.module.css'
 import Radio from '../radio/radio'
 import Select from '../select/select'
 import Datepicker from '../datepicker/datepicker'
+import Slider from '../slider/slider'
 
 export default function Input(props) {
     const [value, setValue] = useState(props.defaultValue)
@@ -78,6 +79,7 @@ export default function Input(props) {
             props.type != 'select' &&
             props.type != 'multiselect' &&
             props.type != 'date' &&
+            props.type != 'slider' &&
                 <div className={styles.field_wrapper}>
                     <input
                         disabled={props.disabled}
@@ -192,6 +194,15 @@ export default function Input(props) {
                     dateFormat={props.dateFormat}
                     timeFormat = {props.timeFormat}
                 />
+            }
+            {props.type == 'slider' &&
+                <Slider
+                    value={props.defaultValue}
+                    secondValue={props.secondDefaultValue} 
+                    min={props.min}
+                    max={props.max}
+                    step={props.step}
+                    unitName={props.unitName} />
             }
             {props.type == 'multiselect' &&
                 <Select 

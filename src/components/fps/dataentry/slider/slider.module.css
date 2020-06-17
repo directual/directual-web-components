@@ -27,7 +27,6 @@
   width: 16px;
   position: absolute;
   border-radius: 24px;
-  transition: 0.5s;
   z-index: 3;
   display: flex;
   align-items: center;
@@ -36,7 +35,7 @@
   transform: translate(-8px, 0);
 }
 .slider_wrapper .line .knob .value {
-  opacity: 0.3;
+  opacity: 0.4;
   transform: translate(0, -20px);
   font-size: var(--text-very-small-size);
   transition: 0.5s;
