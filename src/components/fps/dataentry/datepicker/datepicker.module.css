@@ -1,0 +1,273 @@
+:global .rdt {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+:global .rdt.rdtOpen:after {
+  color: var(--accent-color);
+  opacity: 1;
+}
+:global .rdt * {
+  border-radius: var(--border-radius);
+}
+:global .rdt:after {
+  content: "\e914";
+  font-family: 'directual-icons';
+  font-size: var(--h2-font-size);
+  position: absolute;
+  right: 12px;
+  opacity: 0.5;
+}
+:global .form-control {
+  outline: none;
+  border: solid 1px var(--field-border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  display: flex;
+  height: 48px;
+  align-items: center;
+  padding: 0 36px 0 18px;
+  color: var(--font-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  flex-grow: 2;
+}
+:global .form-control[disabled] {
+  background-color: var(--table-border-color);
+  cursor: not-allowed;
+  color: var(--field-border-color);
+}
+:global .form-control:hover:not([disabled]) {
+  border-width: 2px;
+  height: 46px;
+  padding: 0 35px 0 17px;
+}
+:global .form-control:focus:not([disabled]) {
+  border-width: 2px;
+  height: 46px;
+  padding: 0 35px 0 17px;
+  border-color: var(--accent-color);
+}
+:global .form-control:active:not([disabled]) {
+  height: 46px;
+  padding: 0 35px 0 17px;
+  border: solid 2px var(--font-color);
+}
+:global .form-control::placeholder {
+  opacity: 0.5;
+  color: var(--font-color);
+  font-size: var(--text-small-size);
+}
+:global .rdtPicker {
+  display: none;
+  position: absolute;
+  top: 100%;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+  width: 250px;
+  padding: 4px;
+  margin-top: 1px;
+  z-index: 200 !important;
+  border: solid 1px var(--field-border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+:global .rdtOpen .rdtPicker {
+  display: block;
+}
+:global .rdtStatic .rdtPicker {
+  box-shadow: none;
+  position: static;
+}
+:global .rdtPicker .rdtTimeToggle {
+  text-align: center;
+}
+:global .rdtPicker table {
+  width: 100%;
+  margin: 0;
+}
+:global .rdtPicker td,
+:global .rdtPicker th {
+  text-align: center;
+  height: 28px;
+  padding: 4px 0;
+}
+:global .rdtPicker td {
+  cursor: pointer;
+  opacity: 0.6;
+}
+:global .rdtPicker td.rdtDay:hover,
+:global .rdtPicker td.rdtHour:hover,
+:global .rdtPicker td.rdtMinute:hover,
+:global .rdtPicker td.rdtSecond:hover,
+:global .rdtPicker .rdtTimeToggle:hover {
+  background: var(--secondary-background-color);
+  cursor: pointer;
+  opacity: 1;
+}
+:global .rdtPicker td.rdtOld,
+:global .rdtPicker td.rdtNew {
+  color: #999999;
+}
+:global .rdtPicker td.rdtToday {
+  position: relative;
+}
+:global .rdtPicker td.rdtToday:before {
+  content: '';
+  display: inline-block;
+  border-left: 7px solid transparent;
+  border-bottom: 7px solid var(--button-border-color);
+  border-top-color: var(--button-border-color);
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+}
+:global .rdtPicker td.rdtActive,
+:global .rdtPicker td.rdtActive:hover {
+  background-color: var(--accent-color);
+  color: #fff;
+  text-shadow: 0 -1px 0 var(--accent-color);
+}
+:global .rdtPicker td.rdtActive.rdtToday:before {
+  border-bottom-color: var(--table-border-color);
+}
+:global .rdtPicker td.rdtDisabled,
+:global .rdtPicker td.rdtDisabled:hover {
+  background: none;
+  color: #999999;
+  cursor: not-allowed;
+}
+:global .rdtPicker td span.rdtOld {
+  color: #999999;
+}
+:global .rdtPicker td span.rdtDisabled,
+:global .rdtPicker td span.rdtDisabled:hover {
+  background: none;
+  color: #999999;
+  cursor: not-allowed;
+}
+:global .rdtPicker th {
+  border-bottom: 1px solid var(--table-border-color);
+}
+:global .rdtPicker .dow {
+  width: 14.2857%;
+  border-bottom: none;
+  cursor: default;
+}
+:global .rdtPicker th.rdtSwitch {
+  width: 100px;
+}
+:global .rdtPicker th.rdtNext,
+:global .rdtPicker th.rdtPrev {
+  font-size: 21px;
+  vertical-align: top;
+  width: 35px;
+}
+:global .rdtPrev span,
+:global .rdtNext span {
+  display: block;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Chrome/Safari/Opera */
+  -khtml-user-select: none;
+  /* Konqueror */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+}
+:global .rdtPicker th.rdtDisabled,
+:global .rdtPicker th.rdtDisabled:hover {
+  background: none;
+  color: #999999;
+  cursor: not-allowed;
+}
+:global .rdtPicker thead tr:first-child th {
+  cursor: pointer;
+}
+:global .rdtPicker thead tr:first-child th:hover {
+  background: var(--secondary-background-color);
+}
+:global .rdtPicker tfoot {
+  border-top: 1px solid var(--table-border-color);
+}
+:global .rdtPicker button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+:global .rdtPicker button:hover {
+  background-color: var(--secondary-background-color);
+}
+:global .rdtPicker thead button {
+  width: 100%;
+  height: 100%;
+}
+:global td.rdtMonth,
+:global td.rdtYear {
+  height: 50px;
+  width: 25%;
+  cursor: pointer;
+}
+:global td.rdtMonth:hover,
+:global td.rdtYear:hover {
+  background: var(--secondary-background-color);
+  opacity: 1;
+}
+:global .rdtCounters {
+  display: inline-block;
+}
+:global .rdtCounters > div {
+  float: left;
+}
+:global .rdtCounter {
+  height: 100px;
+}
+:global .rdtCounter {
+  width: 40px;
+}
+:global .rdtCounterSeparator {
+  line-height: 100px;
+}
+:global .rdtCounter .rdtBtn {
+  height: 40%;
+  line-height: 40px;
+  cursor: pointer;
+  display: block;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Chrome/Safari/Opera */
+  -khtml-user-select: none;
+  /* Konqueror */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+}
+:global .rdtCounter .rdtBtn:hover {
+  background: var(--secondary-background-color);
+  opacity: 1;
+}
+:global .rdtCounter .rdtCount {
+  height: 20%;
+  font-size: 1.2em;
+}
+:global .rdtMilli {
+  vertical-align: middle;
+  padding-left: 8px;
+  width: 48px;
+}
+:global .rdtMilli input {
+  width: 100%;
+  font-size: 1.2em;
+  margin-top: 37px;
+}
+:global .rdtTime td {
+  cursor: default;
+  opacity: 1;
+}

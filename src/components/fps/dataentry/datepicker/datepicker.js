@@ -5,19 +5,16 @@ import * as Datetime from 'react-datetime'
 import styles from './datepicker.module.css'
 
 export default function Datepicker(props) {
-    
-    const [value, setValue] = useState()
-
-
     return (
         <div className={styles.calendar}>
-            <Datetime />
-            {/* <DateTimePicker
-            onChange={onChange}
-            value={value && value.date}
-            locale='en'
-            calendarClassName={styles.cal_wrapper}
-            /> */}
+            <Datetime 
+                inputProps={{ 
+                    placeholder: props.placeholder, 
+                    disabled: props.disabled, 
+                    defaultValue: props.defaultValue 
+                }}
+                onChange={props.onChange}
+            />
         </div>
     )
 }

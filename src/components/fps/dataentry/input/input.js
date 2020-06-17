@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './input.module.css'
 import Radio from '../radio/radio'
 import Select from '../select/select'
+import Datepicker from '../datepicker/datepicker'
 
 export default function Input(props) {
     const [value, setValue] = useState(props.defaultValue)
@@ -76,6 +77,7 @@ export default function Input(props) {
             props.type != 'radio' &&
             props.type != 'select' &&
             props.type != 'multiselect' &&
+            props.type != 'date' &&
                 <div className={styles.field_wrapper}>
                     <input
                         disabled={props.disabled}
@@ -180,6 +182,14 @@ export default function Input(props) {
                     iconOptions={props.iconOptions}
                     onChange={e => props.onChange && props.onChange(e)}
                     />
+            }
+            {props.type == 'date' &&
+                <Datepicker 
+                    onChange={e => props.onChange && props.onChange(e)}
+                    disabled={props.disabled}
+                    placeholder={props.placeholder}
+                    defaultValue={props.defaultValue}
+                />
             }
             {props.type == 'multiselect' &&
                 <Select 

@@ -9,8 +9,7 @@ export default function InputsPage() {
     return (
         <React.Fragment>
             <h1>Data entry</h1>
-            <Datepicker />
-            <hr />
+            <h2 style={{ marginBottom: 24, marginTop: 12 }}>Range sliders</h2>
             <Slider 
                 value={20} 
                 //secondValue={70} 
@@ -19,6 +18,21 @@ export default function InputsPage() {
                 max={1000} 
                 unitName='$' />
 
+            <h2 style={{ marginBottom: 24, marginTop: 12 }}>Date and time</h2>
+            <CodeSnippet code=
+                {`<Input 
+    type="date" 
+    width={400}
+    label='Date and time picker'
+    placeholder='Select date'
+/>`} />
+            <Input 
+                type="date" 
+                width={400}
+                label='Date and time picker'
+                placeholder='Select date'
+
+            />
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Selects</h2>
             <CodeSnippet code=
                 {`<Input
@@ -406,7 +420,6 @@ export default function InputsPage() {
                 }
             />
 
-            <h2 style={{ marginBottom: 24, marginTop: 36 }}>Slider</h2>
         </React.Fragment>
     )
 }
