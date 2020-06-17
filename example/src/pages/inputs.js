@@ -6,33 +6,83 @@ import {
 import 'directual-web-components/dist/index.css'
 
 export default function InputsPage() {
+    const [value, setValue] = useState()
     return (
         <React.Fragment>
             <h1>Data entry</h1>
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Range sliders</h2>
-            <Slider 
-                value={20} 
+            <Slider
+                value={20}
                 //secondValue={70} 
-                width={400} 
-                min={100} 
-                max={1000} 
+                width={400}
+                min={100}
+                max={1000}
                 unitName='$' />
 
-            <h2 style={{ marginBottom: 24, marginTop: 12 }}>Date and time</h2>
+            <h2 style={{ marginBottom: 0, marginTop: 12 }}>Date and time</h2>
+            <p style={{ marginBottom: 24, marginTop: 12 }}>
+                Adapted <a href="https://github.com/YouCanBookMe/react-datetime" target="_blank">
+                React-datetime</a> component</p>
             <CodeSnippet code=
-                {`<Input 
-    type="date" 
+                {`<Input
+    type="date"
+    width={400}
+    label='Date picker'
+    placeholder='Select date'
+    dateFormat='D, MMM, YYYY' // default 'D, MMM, YYYY'
+    timeFormat='' // hide time
+/>`} />
+            <Input
+                type="date"
+                width={400}
+                label='Date picker'
+                placeholder='Select date'
+                dateFormat='D, MMM, YYYY' // default 'D, MMM, YYYY'
+                timeFormat='' // hide time
+            />
+            <CodeSnippet code=
+                {`<Input
+    type="date"
     width={400}
     label='Date and time picker'
     placeholder='Select date'
+    dateFormat='D, MMM, YYYY' // default 'D, MMM, YYYY'
+    timeFormat=' hh:mm A' //default ' h:mm a'
+    defaultValue='2020-06-10T21:00:00.000Z'
 />`} />
-            <Input 
-                type="date" 
+            <Input
+                type="date"
                 width={400}
                 label='Date and time picker'
                 placeholder='Select date'
-
+                dateFormat='D, MMM, YYYY' // default 'D, MMM, YYYY'
+                timeFormat=' hh:mm A' //default ' h:mm a'
+                defaultValue='2020-06-10T21:00:00.000Z'
             />
+
+            <ComponentDetails data={
+                {
+                    headerField: 'Date and time picker props',
+                    headers: [
+                        { sysName: 'prop', name: 'Property' },
+                        { sysName: 'type', name: 'Type' },
+                        { sysName: 'desc', name: 'Description' },
+                        { sysName: 'eg', name: 'Example' }
+                    ],
+                    data: [
+                        { prop: 'type', type: 'date', desc: 'select type', eg: 'type = \'date\'' },
+                        { prop: 'onChange', type: 'function', desc: 'handles field\'s value', eg: 'onChange = {value => handleChange(value)}' },
+                        { prop: 'label', type: 'string', desc: 'Field label', eg: 'label = \'Email\'' },
+                        { prop: 'disabled', type: 'boolean', desc: 'Disable input', eg: 'disabled = {false}' },
+                        { prop: 'width', type: 'number', desc: 'Input max-width', eg: 'width={150}' },
+                        { prop: 'placeholder', type: 'string', desc: 'Placeholder', eg: 'placeholder = \'type here\'' },
+                        { prop: 'defaultValue', type: 'string', desc: 'Default input value', eg: 'defaultValue = {{id: 1, title:\'one\'}}' },
+                        { prop: 'dateFormat', type: 'Moment.js date format', desc: 'https://momentjs.com/docs/#/displaying/format/', eg: 'dateFormat=\'D, MMM, YYYY\'' },
+                        { prop: 'timeFormat', type: 'Moment.js time format', desc: 'Important! Set timeFormat=\'\' if you want to hide time', eg: 'timeFormat=\'hh:mm A\'' },
+                    ]
+                }
+            } />
+
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Selects</h2>
             <CodeSnippet code=
                 {`<Input

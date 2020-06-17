@@ -189,6 +189,8 @@ export default function Input(props) {
                     disabled={props.disabled}
                     placeholder={props.placeholder}
                     defaultValue={props.defaultValue}
+                    dateFormat={props.dateFormat}
+                    timeFormat = {props.timeFormat}
                 />
             }
             {props.type == 'multiselect' &&
