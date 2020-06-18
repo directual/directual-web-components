@@ -22,3 +22,6 @@
   font-size: var(--text-very-small-size);
   font-family: 'Source Code Pro', monospace;
 }
+.showhide:before {
+  font-size: calc(var(--text-very-small-size) * 1.5);
+}
