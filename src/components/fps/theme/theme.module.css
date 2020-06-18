@@ -462,6 +462,7 @@
 }
 :global a {
   color: var(--accent-color);
+  cursor: pointer;
 }
 :global a:hover {
   color: var(--secondary-accent-color);

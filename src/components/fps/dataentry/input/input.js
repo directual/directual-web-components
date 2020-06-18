@@ -43,15 +43,17 @@ export default function Input(props) {
     }
 
     const handleChangeNumber = (e) => {
-        console.log(e)
-        console.log(parseInt(e))
-        console.log(!isNaN(parseInt(e)))
+        // console.log(e)
+        // console.log(parseInt(e))
+        // console.log(!isNaN(parseInt(e)))
         if (isNaN(parseInt(e))) {
             setValue('0');
         } else {
             props.positive && parseInt(e) < 0 && setValue('0');
             props.positive && parseInt(e) >= 0 && setValue(parseInt(e));
             !props.positive && setValue(parseInt(e));
+            //parseInt(e) < props.min && setValue(props.min)
+            //parseInt(e) > props.max && setValue(props.min)
         }
         // if (!isNaN(parseInt(e))) {
         //     props.onChange && props.onChange(e)
@@ -72,14 +74,14 @@ export default function Input(props) {
             {/* value: {value} */}
 
             {props.type != 'email' &&
-            props.type != 'number' &&
-            props.type != 'textarea' &&
-            props.type != 'password' &&
-            props.type != 'radio' &&
-            props.type != 'select' &&
-            props.type != 'multiselect' &&
-            props.type != 'date' &&
-            props.type != 'slider' &&
+                props.type != 'number' &&
+                props.type != 'textarea' &&
+                props.type != 'password' &&
+                props.type != 'radio' &&
+                props.type != 'select' &&
+                props.type != 'multiselect' &&
+                props.type != 'date' &&
+                props.type != 'slider' &&
                 <div className={styles.field_wrapper}>
                     <input
                         disabled={props.disabled}
@@ -175,7 +177,7 @@ export default function Input(props) {
                 />
             }
             {props.type == 'select' &&
-                <Select 
+                <Select
                     placeholder={props.placeholder}
                     options={props.options}
                     icon={props.icon}
@@ -183,29 +185,31 @@ export default function Input(props) {
                     defaultValue={props.defaultValue}
                     iconOptions={props.iconOptions}
                     onChange={e => props.onChange && props.onChange(e)}
-                    />
+                />
             }
             {props.type == 'date' &&
-                <Datepicker 
+                <Datepicker
                     onChange={e => props.onChange && props.onChange(e)}
                     disabled={props.disabled}
                     placeholder={props.placeholder}
                     defaultValue={props.defaultValue}
                     dateFormat={props.dateFormat}
-                    timeFormat = {props.timeFormat}
+                    timeFormat={props.timeFormat}
                 />
             }
             {props.type == 'slider' &&
                 <Slider
-                    value={props.defaultValue}
-                    secondValue={props.secondDefaultValue} 
+                    value={value}
+                    secondValue={props.secondDefaultValue}
                     min={props.min}
                     max={props.max}
                     step={props.step}
+                    onChange={e => setValue(e)}
                     unitName={props.unitName} />
+
             }
             {props.type == 'multiselect' &&
-                <Select 
+                <Select
                     placeholder={props.placeholder}
                     options={props.options}
                     icon={props.icon}
@@ -214,7 +218,7 @@ export default function Input(props) {
                     defaultValue={props.defaultValue}
                     //iconOptions={props.iconOptions}
                     onChange={e => props.onChange && props.onChange(e)}
-                    />
+                />
             }
             {warningMsg &&
                 <div className={`${styles.status} ${styles[warningMsg.type]}`}>{warningMsg.msg}</div>}

@@ -11,6 +11,18 @@ export default function InputsPage() {
         <React.Fragment>
             <h1>Data entry</h1>
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Range sliders</h2>
+            <CodeSnippet code=
+                {`<Input
+    type="slider"
+    width={500}
+    label="Range slider"
+    defaultValue = {200}
+    secondDefaultValue = {450}
+    min = {0}
+    max= {600}
+    step = {10}
+    unitName='€'
+/>`} />
             <Input
                 type="slider"
                 width={500}
@@ -20,9 +32,20 @@ export default function InputsPage() {
                 min = {0}
                 max= {600}
                 step = {10}
-                unitName='₽'
+                unitName='€'
             />
 
+            <CodeSnippet code=
+                {`<Input
+    type="slider"
+    width={500}
+    label="Slider"
+    defaultValue = {300}
+    min = {200}
+    max= {1000}
+    step = {1}
+    unitName='$'
+/>`} />
             <Input
                 type="slider"
                 width={500}
@@ -33,6 +56,31 @@ export default function InputsPage() {
                 step = {1}
                 unitName='$'
             />
+
+<ComponentDetails data={
+                {
+                    headerField: 'Slider props',
+                    headers: [
+                        { sysName: 'prop', name: 'Property' },
+                        { sysName: 'type', name: 'Type' },
+                        { sysName: 'desc', name: 'Description' },
+                        { sysName: 'eg', name: 'Example' }
+                    ],
+                    data: [
+                        { prop: 'onChange', type: 'function', desc: 'handles field\'s value', eg: 'onChange = {value => handleChange(value)}' },
+                        { prop: 'label', type: 'string', desc: 'Field label', eg: 'label = \'Email\'' },
+                        { prop: 'type', type: 'slider', desc: 'Data type', eg: 'type = \'slider\'' },
+                        { prop: 'disabled', type: 'boolean', desc: 'Disable input', eg: 'disabled = {false}' },
+                        { prop: 'defaultValue', type: 'number', desc: 'Default value', eg: 'defaultValue = {250}' },
+                        { prop: 'secondDefaultValue', type: 'number', desc: 'Default second range value', eg: 'secondDefaultValue = {800}' },
+                        { prop: 'width', type: 'number', desc: 'Slider max-width', eg: 'width={400}' },
+                        { prop: 'min', type: 'number', desc: 'Min value', eg: 'min={100}' },
+                        { prop: 'max', type: 'number', desc: 'Max value', eg: 'max={1000}' },
+                        { prop: 'step', type: 'number', desc: 'step', eg: 'step={10}' },
+                        { prop: 'unitName', type: 'string', desc: 'units', eg: 'unitName=\'$\'' },
+                    ]
+                }
+            } />
 
             <h2 style={{ marginBottom: 0, marginTop: 12 }}>Date and time</h2>
             <p style={{ marginBottom: 24, marginTop: 12 }}>

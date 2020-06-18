@@ -60,5 +60,4 @@
 }
 .slider_wrapper .line .knob.rightKnob:hover {
   transform: translate(9px, 0);
-  transition: 0.5s;
 }

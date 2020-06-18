@@ -1,6 +1,6 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect, useRef, useCallback} from 'react'
 import styles from './slider.module.css'
-
+import Input from '../input/input'
 
 
 // export default function Slider(props) {
@@ -11,8 +11,7 @@ import styles from './slider.module.css'
 
 
 
-import InputRange from 'react-input-range';
-
+//import InputRange from 'react-input-range';
 
 export default function Slider(props) {
     const percentToValue = x => {
@@ -28,6 +27,9 @@ export default function Slider(props) {
     const [left,setLeft] = useState(props.value)
     const [right,setRight] = useState(props.secondValue)
     const sliderBar = useRef(null)
+
+    useEffect (()=>setLeft(props.value), [props.value])
+    useEffect (()=>setRight(props.secondValue), [props.secondValue])
 
     const onMouseDownHandlerLeft = (e) => {
         function disableSelect(event) {
@@ -54,11 +56,35 @@ export default function Slider(props) {
         })  
     }
 
+    const onTouchDownHandlerLeft = (e) => {
+        function disableSelect(event) {
+            event.preventDefault();
+        }
+        const setPosition = e => {
+            let calcLeft = e.touches[0].clientX;
+            if (sliderBar.current) {
+                let rect = sliderBar.current.getBoundingClientRect()
+                calcLeft = (max-min)*(e.touches[0].clientX - rect.left)/rect.width + min
+                if (calcLeft > left) {calcLeft = Math.floor(calcLeft/step)*step}
+                if (calcLeft < left) {calcLeft = (Math.floor(calcLeft/step)+1)*step}
+                if (calcLeft < min) {calcLeft = min}
+                if (calcLeft > right) {calcLeft = right}
+                if (calcLeft > max) {calcLeft = max}
+            }
+            setLeft(calcLeft);
+        }
+        window.addEventListener("touchmove", setPosition);
+        window.addEventListener('selectstart', disableSelect);
+        window.addEventListener("touchend", e => {
+            window.removeEventListener("touchmove", setPosition)
+            window.removeEventListener('selectstart', disableSelect);
+        })  
+    }
+
     const onMouseDownHandlerRight = (e) => {
         function disableSelect(event) {
             event.preventDefault();
         }
-        console.log('right')
         const setPosition = e => {
             let calcRight = e.clientX;
             if (sliderBar.current) {
@@ -72,12 +98,39 @@ export default function Slider(props) {
             }
             setRight(calcRight);
         }
+        //alert('touch')
         window.addEventListener("mousemove", setPosition);
         window.addEventListener('selectstart', disableSelect);
         window.addEventListener("mouseup", e => {
             window.removeEventListener("mousemove", setPosition)
             window.removeEventListener('selectstart', disableSelect);
-        })  
+        }) 
+    }
+
+    const onTouchDownHandlerRight = (e) => {
+        function disableSelect(event) {
+            event.preventDefault();
+        }
+        const setPosition = e => {
+            let calcRight = e.touches[0].clientX;
+            if (sliderBar.current) {
+                let rect = sliderBar.current.getBoundingClientRect()
+                calcRight = (max-min)*(e.touches[0].clientX - rect.left)/rect.width + min
+                if (calcRight > left) {calcRight = Math.floor(calcRight/step)*step}
+                if (calcRight < left) {calcRight = (Math.floor(calcRight/step)+1)*step}
+                if (calcRight < left) {calcRight = left}
+                if (calcRight > max) {calcRight = max}
+                if (calcRight < min) {calcRight = min}
+            }
+            setRight(calcRight);
+        }
+
+        window.addEventListener("touchmove", setPosition);
+        window.addEventListener('selectstart', disableSelect);
+        window.addEventListener("touchend", e => {
+            window.removeEventListener("touchmove", setPosition)
+            window.removeEventListener('selectstart', disableSelect);
+        }) 
     }
 
     const onMouseUpHandler = (e) => {
@@ -95,7 +148,7 @@ export default function Slider(props) {
             <div className={styles.line}>
                 <div 
                     className={`${styles.leftKnob} ${styles.knob}`}
-                    //draggable="false"
+                    onTouchStart={onTouchDownHandlerLeft}
                     onMouseDown={onMouseDownHandlerLeft}
                     style={{
                         left:`${valueToPercent(left)}%`
@@ -123,6 +176,7 @@ export default function Slider(props) {
                 {props.secondValue &&
                 <div className={`${styles.rightKnob} ${styles.knob}`}
                     onMouseDown={onMouseDownHandlerRight}
+                    onTouchStart={onTouchDownHandlerRight}
                     style={{
                         right:`${100-valueToPercent(right)}%`
                     }}>

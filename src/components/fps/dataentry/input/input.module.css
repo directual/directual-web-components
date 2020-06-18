@@ -144,3 +144,10 @@
 .input_wrapper .status.error {
   color: var(--error-color);
 }
+.slider_field_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.slider_field_wrapper .slider_values {
+  margin-top: 12px;
+}
