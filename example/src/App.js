@@ -29,15 +29,15 @@ function MainMenuWrapper () {
     menu={[
       { name: "What?", route: "/", icon: "info", link: <Link to="/">What is it?</Link> },
       { name: "Components", subheader: true },
-      { name: "Article", route: "/article", icon: "paragraph", link: <Link to="/article">Article</Link> },
+      { name: "Sign In / Sign Up / Profile", route: "/profile", icon: "user", link: <Link to="/profile">Sign in, Sign up, Profile</Link> },
       { name: "Table view", route: "/table", icon: "database", link: <Link to="/table">Table view</Link> },
       { name: "Cards view", route: "/cards", icon: "cards", link: <Link to="/cards">Cards view</Link> },
       { name: "Form", route: "/form", icon: "edit", link: <Link to="/form">Form</Link> },
       { name: "Theme management", route: "/theme", icon: "styles", link: <Link to="/theme">Theme management</Link> },
-      { name: "Sign In / Sign Up / Profile", route: "/profile", icon: "user", link: <Link to="/profile">Sign in, Sign up, Profile</Link> },
       { name: "Chat (soon)", route: "/chat", icon: "bubble", disabled: true },
       { name: "Calculator (soon)", route: "/calc", icon: "actions", disabled: true },
       { name: "Design system", subheader: true },
+      { name: "Typography", route: "/system-typography", icon: "paragraph", link: <Link to="/system-typography">Typography</Link> },
       { name: "Directual Icons", route: "/system-icons", icon: "babai", link: <Link to="/system-icons">Directual icons</Link> },
       { name: "Buttons", route: "/system-button", icon: "play", link: <Link to="/system-button">Action panel, Buttons</Link> },
       { name: "Inputs", route: "/system-data-entry", icon: "import", link: <Link to="/system-data-entry">Data entry</Link> }
@@ -194,9 +194,6 @@ const App = (props) => {
             <Route exact path="/">
               <h1>What is it</h1>
             </Route>
-            <Route exact path="/article">
-              <h1>Article</h1>
-            </Route>
             <Route exact path="/form">
               <FpsForm data={exampleForm} formWidth={400}/>
             </Route>
@@ -208,6 +205,9 @@ const App = (props) => {
               <FpsTheme themeName='dd' themes={['classic', 'tiffany', 'dark-mint', 'warm-night']}/>
             </Route>
 
+            <Route exact path="/system-typography">
+              <h1>Typography</h1>
+            </Route>
             <Route exact path="/system-button">
               <ButtonsPage />
             </Route>
