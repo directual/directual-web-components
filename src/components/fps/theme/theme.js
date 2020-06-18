@@ -26,11 +26,13 @@ export default function FpsTheme(props) {
 
     const setBR = radius => {
         if (typeof window !== 'undefined') { localStorage.setItem(themeName + '-br', radius) }
+        if(!document) return
         document.documentElement.style.setProperty('--border-radius', radius + 'px')
     }
 
     const setTheme = theme => {
         if (typeof window !== 'undefined') { localStorage.setItem(themeName + '-theme', theme) }
+        if(!document) return
         if (theme === 'classic') {
             document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
             document.documentElement.style.setProperty('--field-border-color', '#aaa')
@@ -149,15 +151,15 @@ export default function FpsTheme(props) {
         ]
 
     const userOptions = (props.themes && options.filter(option => props.themes.indexOf(option.value) != -1)) || options
-    
+
     return (
         <React.Fragment>
             {!props.initial &&
                 <React.Fragment>
-                    <Input 
+                    <Input
                         width={150}
                         label='Theme name'
-                        type='string' 
+                        type='string'
                         disabled
                         defaultValue={themeName} />
                     <h2 style={{marginBottom:18}}>Color scheme</h2>
@@ -167,12 +169,12 @@ export default function FpsTheme(props) {
                         options={userOptions}
                     />
                     <h2 style={{marginBottom:18, marginTop:32}}>Border radius</h2>
-                    <Input 
+                    <Input
                         width={150}
                         label='Border radius in pixels'
-                        type='number' 
-                        positive 
-                        onChange={changeBR} 
+                        type='number'
+                        positive
+                        onChange={changeBR}
                         defaultValue={currentBR} />
                 </React.Fragment>}
         </React.Fragment>
