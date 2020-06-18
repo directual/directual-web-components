@@ -1,13 +1,13 @@
-# directual-fps-components
+# directual-web-components
 
 > fps components
 
-[![NPM](https://img.shields.io/npm/v/directual-web-components.svg)](https://www.npmjs.com/package/directual-fps-components) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/directual-web-components.svg)](https://www.npmjs.com/package/directual-web-components) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save directual-fps-components
+npm install --save directual-web-components
 ```
 
 ## Usage
@@ -27,4 +27,4 @@ class Example extends Component {
 
 ## License
 
-MIT © [Navalikhin](https://github.com/Navalikhin)
+MIT © [Directual](https://github.com/directual)
