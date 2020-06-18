@@ -31,6 +31,7 @@ function MainMenuWrapper () {
       { name: "Components", subheader: true },
       { name: "Sign In / Sign Up / Profile", route: "/profile", icon: "user", link: <Link to="/profile">Sign in, Sign up, Profile</Link> },
       { name: "Table view", route: "/table", icon: "database", link: <Link to="/table">Table view</Link> },
+      { name: "List view", route: "/list", icon: "list", link: <Link to="/list">List view</Link> },
       { name: "Cards view", route: "/cards", icon: "cards", link: <Link to="/cards">Cards view</Link> },
       { name: "Form", route: "/form", icon: "edit", link: <Link to="/form">Form</Link> },
       { name: "Theme management", route: "/theme", icon: "styles", link: <Link to="/theme">Theme management</Link> },
