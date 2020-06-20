@@ -15,6 +15,12 @@
         flex-direction: column;
         align-items: stretch;
         position: relative;
+        .input_icon_wrapper {
+            opacity: .5;
+            position: absolute;
+            left:8px;
+            top:8px
+        }
         .clear {
             position: absolute;
             opacity: .3;
@@ -86,6 +92,9 @@
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
+        &.icon {
+            padding-left: 40px;
+        }
         &.disabled {
             background-color: var(--table-border-color);
             cursor: not-allowed;
@@ -96,28 +105,43 @@
             height: 46px;
             padding: 0 35px 0 17px;
             border-color: var(--error-color);
+            &.icon {
+                padding-left: 39px;
+            }
         }
         &.ok {
             border-width: 2px;
             height: 46px;
             padding: 0 35px 0 17px;
             border-color: var(--ok-color);
+            &.icon {
+                padding-left: 39px;
+            }
         }
         &:hover:not(.disabled) {
             border-width: 2px;
             height: 46px;
             padding: 0 35px 0 17px;
+            &.icon {
+                padding-left: 39px;
+            }
         }
         &:focus:not(.disabled) {
             border-width: 2px;
             height: 46px;
             padding: 0 35px 0 17px;
             border-color: var(--accent-color);
+            &.icon {
+                padding-left: 39px;
+            }
         }
         &:active:not(.disabled) {
             height: 46px;
             padding: 0 35px 0 17px;
             border: solid 2px var(--font-color);
+            &.icon {
+                padding-left: 39px;
+            }
         }
         &::placeholder {
             opacity:.5;

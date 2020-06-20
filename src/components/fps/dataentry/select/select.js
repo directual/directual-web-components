@@ -52,6 +52,9 @@ function List(props) {
         props.selected && scrollList(props.options.indexOf(props.selected), props.options.length)
     })
 
+    const noOptions = <SomethingWentWrong icon='ban'
+    message={`No options${props.filter ? ` like \"${props.filter}\"` : ''}`} />
+
     return (
         <div ref={selectHolder}>
             {props.options && props.options.length > 0 && props.focus && !props.disabled &&
@@ -65,15 +68,16 @@ function List(props) {
                 ref={scrollDivRef}
                 style={
                     {
-                        maxHeight: positionList(props.options.length).height,
-                        top: positionList(props.options.length).position == 'bottom' ? '100%': 'auto',
-                        bottom: [positionList(props.options.length).position] == 'top' ? '100%': 'auto'
+                        maxHeight: positionList(props.options ? props.options.length : 1).height,
+                        top: positionList(props.options ? props.options.length : 1).position == 'bottom' ? '100%' : 'auto',
+                        bottom: [positionList(props.options ? props.options.length : 1).position] == 'top' ? '100%' : 'auto'
                     }
                 }
             >
-                {props.options && props.options.length == 0 &&
-                    <SomethingWentWrong icon='ban'
-                        message={`No options${props.filter ? ` like \"${props.filter}\"` : ''}`} />}
+
+                {!props.options && noOptions}
+
+                {props.options && props.options.length == 0 && noOptions}
 
                 {props.options && props.options.map(option =>
                     <li
@@ -110,6 +114,8 @@ export default function Select(props) {
     const [filteredOptions, setFilteredOptions] = useState(props.options || [])
     const [keySelected, setKeySelected] = useState()
     const selectRef = useRef(null);
+
+    useEffect(()=>{setValue(props.defaultValue)},[props.defaultValue])
 
     useOutsideAlerter(selectRef);
 

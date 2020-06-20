@@ -16,6 +16,8 @@ export default function Input(props) {
             setWarningMesg({});
     }
 
+    useEffect(()=>{setValue(props.defaultValue)},[props.defaultValue])
+
     const checkEmailValue = () => {
         (!value && props.required) ?
             setWarningMesg({ type: 'error', msg: 'This field is required' }) :
@@ -83,9 +85,10 @@ export default function Input(props) {
                 props.type != 'date' &&
                 props.type != 'slider' &&
                 <div className={styles.field_wrapper}>
+                    {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
                     <input
                         disabled={props.disabled}
-                        className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
+                        className={`${styles.field} ${props.icon && styles.icon} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
                         type="text"
                         onChange={e => handleChange(e.target.value)}
                         value={value}

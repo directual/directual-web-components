@@ -17,6 +17,12 @@
   align-items: stretch;
   position: relative;
 }
+.input_wrapper .field_wrapper .input_icon_wrapper {
+  opacity: 0.5;
+  position: absolute;
+  left: 8px;
+  top: 8px;
+}
 .input_wrapper .field_wrapper .clear {
   position: absolute;
   opacity: 0.3;
@@ -95,6 +101,9 @@
   -moz-appearance: none;
   appearance: none;
 }
+.input_wrapper .field.icon {
+  padding-left: 40px;
+}
 .input_wrapper .field.disabled {
   background-color: var(--table-border-color);
   cursor: not-allowed;
@@ -106,16 +115,25 @@
   padding: 0 35px 0 17px;
   border-color: var(--error-color);
 }
+.input_wrapper .field.error.icon {
+  padding-left: 39px;
+}
 .input_wrapper .field.ok {
   border-width: 2px;
   height: 46px;
   padding: 0 35px 0 17px;
   border-color: var(--ok-color);
 }
+.input_wrapper .field.ok.icon {
+  padding-left: 39px;
+}
 .input_wrapper .field:hover:not(.disabled) {
   border-width: 2px;
   height: 46px;
   padding: 0 35px 0 17px;
+}
+.input_wrapper .field:hover:not(.disabled).icon {
+  padding-left: 39px;
 }
 .input_wrapper .field:focus:not(.disabled) {
   border-width: 2px;
@@ -123,10 +141,16 @@
   padding: 0 35px 0 17px;
   border-color: var(--accent-color);
 }
+.input_wrapper .field:focus:not(.disabled).icon {
+  padding-left: 39px;
+}
 .input_wrapper .field:active:not(.disabled) {
   height: 46px;
   padding: 0 35px 0 17px;
   border: solid 2px var(--font-color);
+}
+.input_wrapper .field:active:not(.disabled).icon {
+  padding-left: 39px;
 }
 .input_wrapper .field::placeholder {
   opacity: 0.5;

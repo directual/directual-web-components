@@ -27,11 +27,11 @@ export default function InputsPage() {
                 type="slider"
                 width={500}
                 label="Range slider"
-                defaultValue = {200}
-                secondDefaultValue = {450}
-                min = {0}
-                max= {600}
-                step = {10}
+                defaultValue={200}
+                secondDefaultValue={450}
+                min={0}
+                max={600}
+                step={10}
                 unitName='€'
             />
 
@@ -50,14 +50,14 @@ export default function InputsPage() {
                 type="slider"
                 width={500}
                 label="Slider"
-                defaultValue = {300}
-                min = {200}
-                max= {1000}
-                step = {1}
+                defaultValue={300}
+                min={200}
+                max={1000}
+                step={1}
                 unitName='$'
             />
 
-<ComponentDetails data={
+            <ComponentDetails data={
                 {
                     headerField: 'Slider props',
                     headers: [
@@ -149,7 +149,7 @@ export default function InputsPage() {
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Selects</h2>
             <CodeSnippet code=
                 {`<Input
-    label='Simple select'
+    label='Select with icon'
     width={400}
     type='select'
     placeholder='Placeholder'
@@ -177,7 +177,7 @@ export default function InputsPage() {
     }
 />`} />
             <Input
-                label='Simple select'
+                label='Select with icon'
                 width={400}
                 type='select'
                 placeholder='Choose the line'
@@ -204,6 +204,15 @@ export default function InputsPage() {
                         { id: 17, title: 'Good timing? To win it You gotta be in it. Just never be late To quit or cut bait.' }
                     ]
                 }
+            />
+
+            <Input
+                label='Select with no options'
+                width={400}
+                type='select'
+                placeholder='Choose the line'
+                defaultValue=''
+                options=''
             />
             <CodeSnippet code=
                 {`<Input
@@ -341,8 +350,9 @@ export default function InputsPage() {
     width={400}
     />`} />
             <Input
-                label='Input (required)'
+                label='Input (required, with icon)'
                 placeholder='Placeholder'
+                icon='license'
                 type='string'
                 required
                 width={400}

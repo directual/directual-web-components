@@ -91,7 +91,6 @@ FpsForm.settings = {
   sysName: 'FpsForm',
   form: [
     { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
-    { name: 'Success text', sysName: 'successText', type: 'input' },
-    { name: 'Form name', sysName: 'formName', type: 'input' }
+    { name: 'Form title', sysName: 'formName', type: 'input' }
   ]
 }
