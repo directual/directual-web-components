@@ -29,7 +29,8 @@
     "react": "^16.0.0",
     "react-table": "^7.1.0",
     "react-datetime": "^2.16.3",
-    "moment": "^2.26.0"
+    "moment": "^2.26.0",
+    "react-dropzone": "^11.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
@@ -57,9 +58,10 @@
     "dist"
   ],
   "dependencies": {
+    "moment": "^2.26.0",
     "react-datetime": "^2.16.3",
+    "react-dropzone": "^11.0.1",
     "react-router-dom": "^5.2.0",
-    "react-table": "^7.1.0",
-    "moment": "^2.26.0"
+    "react-table": "^7.1.0"
   }
 }

@@ -1,9 +1,8 @@
 .input_wrapper {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 .input_wrapper label {
   font-size: var(--text-small-size);
@@ -101,6 +100,9 @@
   -moz-appearance: none;
   appearance: none;
 }
+.input_wrapper .field::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
 .input_wrapper .field.icon {
   padding-left: 40px;
 }
@@ -174,4 +176,11 @@
 }
 .slider_field_wrapper .slider_values {
   margin-top: 12px;
+}
+.input_group {
+  display: flex;
+  justify-content: space-between;
+}
+.input_group .input_wrapper {
+  width: calc(50% - 6px);
 }

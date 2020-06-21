@@ -111,6 +111,7 @@
 :global .icon {
   display: flex;
   align-items: center;
+  font-family: var(--main-font-family) !important;
 }
 :global .icon:before {
   font-family: 'directual-icons';

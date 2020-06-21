@@ -140,6 +140,7 @@
   opacity: 1;
   transition: 0.5s;
   height: auto;
+  margin: 0;
   overflow-y: auto;
   overflow-x: hidden;
   border: solid 1px var(--field-border-color);

@@ -5,6 +5,14 @@ import Select from '../select/select'
 import Datepicker from '../datepicker/datepicker'
 import Slider from '../slider/slider'
 
+export function InputGroup(props) {
+    return (
+        <div className={styles.input_group} style={{ maxWidth: props.width || 'auto' }}>
+            {props.children}
+        </div>
+    )
+}
+
 export default function Input(props) {
     const [value, setValue] = useState(props.defaultValue)
     const [pwdVisible, setPwdVisible] = useState('password')
@@ -16,7 +24,7 @@ export default function Input(props) {
             setWarningMesg({});
     }
 
-    useEffect(()=>{setValue(props.defaultValue)},[props.defaultValue])
+    useEffect(() => { setValue(props.defaultValue) }, [props.defaultValue])
 
     const checkEmailValue = () => {
         (!value && props.required) ?
@@ -43,6 +51,13 @@ export default function Input(props) {
         setValue(e)
         props.required && setWarningMesg({})
     }
+
+    const handleChangeDecimalNumber = (e) => {
+        props.onChange && props.onChange(e)
+        setValue(e)
+        props.required && setWarningMesg({})
+    }
+
 
     const handleChangeNumber = (e) => {
         // console.log(e)
@@ -84,6 +99,7 @@ export default function Input(props) {
                 props.type != 'multiselect' &&
                 props.type != 'date' &&
                 props.type != 'slider' &&
+                props.type != 'decimal' &&
                 <div className={styles.field_wrapper}>
                     {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
                     <input
@@ -116,12 +132,25 @@ export default function Input(props) {
                             onClick={clearValue}></div>}
                 </div>}
 
+            {props.type == 'decimal' &&
+                <div className={styles.field_wrapper}>
+                    <input
+                        className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
+                        disabled={props.disabled}
+                        type="number"
+                        onChange={e => {handleChangeDecimalNumber(e.target.value)}}
+                        value={value}
+                        onBlur={checkValue}
+                        placeholder={props.placeholder}
+                    />
+                </div>}
+
             {props.type == 'number' &&
                 <div className={styles.field_wrapper}>
                     <input
                         className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                         disabled={props.disabled}
-                        type="text"
+                        type="number"
                         onChange={e => handleChangeNumber(e.target.value)}
                         value={value}
                         onBlur={checkValue}

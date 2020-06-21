@@ -1,9 +1,9 @@
  .input_wrapper {
-    width: 100%;
+    //width: 100%;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    margin-bottom: 24px;
+    margin-bottom: 18px;
     label {
         font-size: var(--text-small-size);
         opacity: .7;
@@ -92,6 +92,9 @@
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
         &.icon {
             padding-left: 40px;
         }
@@ -167,5 +170,13 @@
      flex-direction: column;
      .slider_values {
          margin-top: 12px;
+     }
+ }
+
+ .input_group {
+     display: flex;
+     justify-content: space-between;
+     .input_wrapper {
+         width: calc(50% - 6px);
      }
  }

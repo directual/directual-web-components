@@ -1,6 +1,6 @@
 # directual-web-components
 
-> fps components
+> Directual Design components
 
 [![NPM](https://img.shields.io/npm/v/directual-web-components.svg)](https://www.npmjs.com/package/directual-web-components) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 

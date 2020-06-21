@@ -132,7 +132,7 @@ export default function IconsPage() {
                         { id: 104, title: 'warning', icon: 'warning' },
                         { id: 105, title: 'webhook', icon: 'webhook' },
                         { id: 106, title: 'zoom-to-fit', icon: 'zoom-to-fit' },
-                        { id: 107, title: 'dashboard', icon: 'dashboard' },
+                        { id: 107, title: 'dashboard', icon: 'dashboard' }
                     ]}
             />
         </React.Fragment>

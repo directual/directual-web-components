@@ -3,9 +3,9 @@ import './theme.module.css'
 import Radio from '../dataentry/radio/radio'
 import Input from '../dataentry/input/input'
 
-export function SetTheme() {
+export function SetTheme(props) {
     return (
-        <FpsTheme initial />
+        <FpsTheme initial themeName={props.themeName} />
     )
 }
 

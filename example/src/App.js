@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, FpsTheme,
-  ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio
+  ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, SignIn, SignUp
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 import {
@@ -18,33 +18,49 @@ import InputsPage from './pages/inputs'
 import IconsPage from './pages/icons'
 
 
-function MainMenuWrapper () {
+function MainMenuWrapper() {
   let location = useLocation()
 
-  return (
-  <MainMenu
-    title='directual-design'
-    logoUrl='https://api.alfa.directual.com/fileUploaded/directual-site/32e12a82-222f-477a-acda-b23018cedbf6.svg'
-    currentRoute={location.pathname || '/'}
-    menu={[
-      { name: "What?", route: "/", icon: "info", link: <Link to="/">What is it?</Link> },
-      { name: "Components", subheader: true },
-      { name: "Sign In / Sign Up / Profile", route: "/profile", icon: "user", link: <Link to="/profile">Sign in, Sign up, Profile</Link> },
-      { name: "Table view", route: "/table", icon: "database", link: <Link to="/table">Table view</Link> },
-      { name: "List view", route: "/list", icon: "list", link: <Link to="/list">List view</Link> },
-      { name: "Cards view", route: "/cards", icon: "cards", link: <Link to="/cards">Cards view</Link> },
-      { name: "Form", route: "/form", icon: "edit", link: <Link to="/form">Form</Link> },
-      { name: "Theme management", route: "/theme", icon: "styles", link: <Link to="/theme">Theme management</Link> },
-      { name: "Chat (soon)", route: "/chat", icon: "bubble", disabled: true },
-      { name: "Calculator (soon)", route: "/calc", icon: "actions", disabled: true },
-      { name: "Design system", subheader: true },
-      { name: "Typography", route: "/system-typography", icon: "paragraph", link: <Link to="/system-typography">Typography</Link> },
-      { name: "Directual Icons", route: "/system-icons", icon: "babai", link: <Link to="/system-icons">Directual icons</Link> },
-      { name: "Buttons", route: "/system-button", icon: "play", link: <Link to="/system-button">Action panel, Buttons</Link> },
-      { name: "Inputs", route: "/system-data-entry", icon: "import", link: <Link to="/system-data-entry">Data entry</Link> }
-    ]}
+  const [logoUrl, setlogoUrl] = useState('https://api.directual.com/fileUploaded/directual-site/316aba91-8ee2-4f35-aca8-260f5de08abd.svg')
 
-  /> )
+
+  useEffect(()=>{
+    let currentTheme
+    if (typeof window !== 'undefined') { currentTheme = localStorage.getItem('dd-theme') }
+    !currentTheme && (currentTheme = 'classic')
+    if (currentTheme == 'dark-mint' || currentTheme == 'warm-night') {
+      setlogoUrl('https://api.directual.com/fileUploaded/directual-site/6e2942aa-c7c8-4ab0-8e14-0e54f5461183.svg')
+    }
+    if (currentTheme == 'classic' || currentTheme == 'tiffany') {
+      setlogoUrl('https://api.directual.com/fileUploaded/directual-site/316aba91-8ee2-4f35-aca8-260f5de08abd.svg')
+    }
+  })
+
+
+  return (
+    <MainMenu
+      title='directual-design'
+      logoUrl={logoUrl}
+      currentRoute={location.pathname || '/'}
+      menu={[
+        { name: "What?", route: "/", icon: "info", link: <Link to="/">What is it?</Link> },
+        { name: "Components", subheader: true },
+        { name: "Sign In / Sign Up / Profile", route: "/profile", icon: "user", link: <Link to="/profile">Sign in, Sign up, Profile</Link> },
+        { name: "Table view", route: "/table", icon: "database", link: <Link to="/table">Table view</Link> },
+        { name: "List view", route: "/list", icon: "list", link: <Link to="/list">List view</Link> },
+        { name: "Cards view", route: "/cards", icon: "cards", link: <Link to="/cards">Cards view</Link> },
+        { name: "Form", route: "/form", icon: "edit", link: <Link to="/form">Form</Link> },
+        { name: "Theme management", route: "/theme", icon: "styles", link: <Link to="/theme">Theme management</Link> },
+        { name: "Chat (soon)", route: "/chat", icon: "bubble", disabled: true },
+        { name: "Calculator (soon)", route: "/calc", icon: "actions", disabled: true },
+        { name: "Design system", subheader: true },
+        { name: "Typography", route: "/system-typography", icon: "paragraph", link: <Link to="/system-typography">Typography</Link> },
+        { name: "Directual Icons", route: "/system-icons", icon: "babai", link: <Link to="/system-icons">Directual icons</Link> },
+        { name: "Buttons", route: "/system-button", icon: "play", link: <Link to="/system-button">Action panel, Buttons</Link> },
+        { name: "Inputs", route: "/system-data-entry", icon: "import", link: <Link to="/system-data-entry">Data entry</Link> }
+      ]}
+
+    />)
 }
 
 const App = (props) => {
@@ -174,10 +190,7 @@ const App = (props) => {
     'isSuccessWrite': false
   }
 
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
+  const themeName = 'dd'
 
   return (
     <FpsWrapper>
@@ -186,7 +199,7 @@ const App = (props) => {
         <MainMenuWrapper />
 
 
-        <ContentWrapper>
+        <ContentWrapper themeName={themeName}>
 
           <Switch>
             <Route exact path="/table">
@@ -196,14 +209,28 @@ const App = (props) => {
               <h1>What is it</h1>
             </Route>
             <Route exact path="/form">
-              <FpsForm data={exampleForm} formWidth={400}/>
+              <FpsForm data={exampleForm} formWidth={400} />
+            </Route>
+            <Route exact path="/profile">
+              <SignIn 
+                header='Sign in'
+                width={400}
+                google
+              />
+            <br />
+            <SignUp 
+                header='Sign up'
+                width={400}
+                google
+                />  
+              
             </Route>
             <Route exact path="/cards">
               <h1>Cards</h1>
             </Route>
             <Route exact path="/theme">
               <h1>Theme management</h1>
-              <FpsTheme themeName='dd' themes={['classic', 'tiffany', 'dark-mint', 'warm-night']}/>
+              <FpsTheme themeName={themeName} themes={['classic', 'tiffany', 'dark-mint', 'warm-night']} />
             </Route>
 
             <Route exact path="/system-typography">

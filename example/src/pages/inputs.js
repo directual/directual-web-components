@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {
-    FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, Select, Datepicker,
-    FpsTheme, ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, CodeSnippet, Slider
+    FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, Select, Datepicker, InputGroup,
+    FpsTheme, ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, CodeSnippet, Slider, FileUpload
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
@@ -10,6 +10,7 @@ export default function InputsPage() {
     return (
         <React.Fragment>
             <h1>Data entry</h1>
+            <FileUpload />
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Range sliders</h2>
             <CodeSnippet code=
                 {`<Input
@@ -374,6 +375,31 @@ export default function InputsPage() {
                 width={400}
             />
 
+<CodeSnippet code=
+                {`<InputGroup width={400}>
+    <Input
+        label='First name'
+        type='string'
+        icon='user'
+    />
+    <Input
+        label='Last name'
+        type='select'
+    />
+</InputGroup>`} />
+
+            <InputGroup width={400}>
+                <Input
+                    label='First name'
+                    type='string'
+                    icon='user'
+                />
+                <Input
+                    label='Last name'
+                    type='select'
+                />
+            </InputGroup>
+
             <CodeSnippet code=
                 {`<Input
     label='Input disabled'
@@ -460,6 +486,21 @@ export default function InputsPage() {
 
             <CodeSnippet code=
                 {`<Input
+    label='Decimal number'
+    placeholder='Enter value'
+    type='decimal'
+    width={400}
+/>`} />
+
+            <Input
+                label='Decimal number'
+                placeholder='Enter value'
+                type='decimal'
+                width={400}
+            />
+
+            <CodeSnippet code=
+                {`<Input
     label='Password (required)'
     placeholder='Type your password'
     type='password'
@@ -485,7 +526,7 @@ export default function InputsPage() {
                     data: [
                         { prop: 'onChange', type: 'function', desc: 'handles field\'s value', eg: 'onChange = {value => handleChange(value)}' },
                         { prop: 'label', type: 'string', desc: 'Field label', eg: 'label = \'Email\'' },
-                        { prop: 'type', type: 'string, number, password, textarea, email', desc: 'Data type', eg: 'type = \'text\'' },
+                        { prop: 'type', type: 'string, number, decimal, password, textarea, email', desc: 'Data type', eg: 'type = \'text\'' },
                         { prop: 'disabled', type: 'boolean', desc: 'Disable input', eg: 'disabled = {false}' },
                         { prop: 'icon', type: 'directual icon', desc: 'Icon from Directual icons', eg: 'icon = \'warning\'' },
                         { prop: 'defaultValue', type: 'string', desc: 'Default input value', eg: 'defaultValue = \'hello world\'' },

@@ -13,7 +13,7 @@ import MainMenu from './components/fps/mainmenu/mainmenu'
 import ComponentDetails from './components/fps/componentdetails/componentdetails'
 import FpsTable from './components/fps/table/table'
 import {FpsWrapper, ContentWrapper} from './components/fps/wrapper/wrapper'
-import Input from './components/fps/dataentry/input/input'
+import Input, {InputGroup} from './components/fps/dataentry/input/input'
 import Button from './components/fps/button/button'
 import ActionPanel from './components/fps/actionspanel/actionspanel'
 import SomethingWentWrong from './components/fps/SomethingWentWrong/SomethingWentWrong'
@@ -22,6 +22,8 @@ import CodeSnippet from './components/fps/codesnippet/codesnippet'
 import Select from './components/fps/dataentry/select/select'
 import Slider from './components/fps/dataentry/slider/slider'
 import Datepicker from './components/fps/dataentry/datepicker/datepicker'
+import FileUpload from './components/fps/dataentry/fileupload/fileupload'
+import {SignIn, SignUp, Profile} from './components/fps/profile/profile'
 
 import FpsTheme, {SetTheme} from './components/fps/theme/theme'
 
@@ -46,11 +48,14 @@ export {
   SomethingWentWrong,
   Radio,
   Datepicker,
-
+  FileUpload,
+  InputGroup,
   FpsTheme,
   SetTheme,
-
+  SignIn,
+  Profile,
   CodeSnippet,
   Select,
-  Slider
+  Slider,
+  SignUp
 }

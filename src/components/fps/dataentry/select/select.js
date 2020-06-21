@@ -115,7 +115,7 @@ export default function Select(props) {
     const [keySelected, setKeySelected] = useState()
     const selectRef = useRef(null);
 
-    useEffect(()=>{setValue(props.defaultValue)},[props.defaultValue])
+    //useEffect(()=>{setValue(props.defaultValue)},[props.defaultValue])
 
     useOutsideAlerter(selectRef);
 
@@ -215,7 +215,7 @@ export default function Select(props) {
                 {props.icon && !props.iconOptions &&
                     <div className={`${styles.icon} icon icon-${props.icon}`}></div>}
                 {props.iconOptions &&
-                    <div className={`${styles.icon} icon icon-${value.icon}`}></div>}
+                    <div className={`${styles.icon} icon icon-${value && value.icon}`}></div>}
 
                 {props.multi &&
                     <ul className={styles.multilist}>

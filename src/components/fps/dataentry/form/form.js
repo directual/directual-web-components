@@ -4,6 +4,14 @@ import Input from '../input/input'
 import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
 
+export function FormSection(props) {
+  return (
+    <div className={styles.FormSection}>
+      <span>{props.title}</span>
+    </div>
+  )
+}
+
 export default function FpsForm({ data, onEvent, id, formWidth }) {
   const successText = data.successText || 'success'
   const formName = data.formName || 'formName'

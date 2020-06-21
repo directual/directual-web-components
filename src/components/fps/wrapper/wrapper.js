@@ -13,7 +13,7 @@ export function FpsWrapper(props) {
 export function ContentWrapper(props) {
     return (
         <React.Fragment>
-            <SetTheme />
+            <SetTheme themeName={props.themeName}/>
             <div className={styles.content_wrapper}>
                 {props.children}
             </div>
