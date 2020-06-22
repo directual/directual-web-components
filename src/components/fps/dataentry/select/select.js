@@ -115,15 +115,8 @@ export default function Select(props) {
     const [keySelected, setKeySelected] = useState()
     const selectRef = useRef(null);
 
-    //const prevValue = usePrevious(value)
-
-    function usePrevious(value) {
-        const ref = useRef();
-        useEffect(() => {
-          ref.current = value;
-        }, [value]);
-        return ref.current;
-      }
+    const forceUpdate = useForceUpdate();
+    
     
     useEffect(()=>{ !value && setValue(props.defaultValue)},[props.defaultValue])
 
@@ -155,7 +148,7 @@ export default function Select(props) {
         }
         setFilteredOptions(FO)
         setKeySelected('')
-    }, [filter])
+    }, [filter, props.options])
 
     let currentPosition;
     const handleKeyboard = (e) => {
@@ -190,7 +183,6 @@ export default function Select(props) {
         }
     }
 
-    const forceUpdate = useForceUpdate();
 
     const chooseOption = (option) => {
         !props.multi && setValue(option)
