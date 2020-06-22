@@ -115,7 +115,17 @@ export default function Select(props) {
     const [keySelected, setKeySelected] = useState()
     const selectRef = useRef(null);
 
-    //useEffect(()=>{setValue(props.defaultValue)},[props.defaultValue])
+    //const prevValue = usePrevious(value)
+
+    function usePrevious(value) {
+        const ref = useRef();
+        useEffect(() => {
+          ref.current = value;
+        }, [value]);
+        return ref.current;
+      }
+    
+    useEffect(()=>{ !value && setValue(props.defaultValue)},[props.defaultValue])
 
     useOutsideAlerter(selectRef);
 
@@ -205,6 +215,11 @@ export default function Select(props) {
 
     return (
         <div className={styles.select_wrapper} style={{ maxWidth: props.width || 'auto' }}>
+            {/* <hr />
+            {JSON.stringify(value)}
+            <hr />
+            {JSON.stringify(prevValue)}
+            <hr /> */}
             <div
                 id='selectElement'
                 className=

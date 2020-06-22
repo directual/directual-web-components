@@ -8,6 +8,8 @@ import styles from './iconsPage.module.css'
 
 export default function IconsPage() {
     const [icon,setIcon] = useState('babai')
+
+
     return (
         <React.Fragment>
             <h1>Directual icons</h1>
@@ -22,7 +24,7 @@ export default function IconsPage() {
                 type="select" 
                 placeholder="Choose icon"  
                 width={300}
-                defaultValue={{ id: 7, title: 'babai' }}
+                defaultValue=''
                 onChange={value => {value && setIcon(value.title)}}
                 iconOptions
                 options={
