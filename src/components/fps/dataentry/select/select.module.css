@@ -131,6 +131,9 @@
   padding: 6px 35px 6px 17px;
   border-color: var(--accent-color);
 }
+.select_wrapper .select_field.focus:not(.disabled) .placeholder {
+  padding-right: 50px;
+}
 .select_wrapper .select_field.focus:not(.disabled) .currentValue {
   opacity: 0.35;
   transition: 0.5s;

@@ -13,10 +13,13 @@ export function FormSection(props) {
 }
 
 export default function FpsForm({ data, onEvent, id, formWidth }) {
-  const successText = data.successText || 'success'
-  const formName = data.formName || 'formName'
+  const successText = data.successText || 'Success'
+  const formName = data.formName || ''
+  const formDesc = data.formDesc || ''
+  const formButton = data.formButton || 'Submit'
   const isSuccessWrite = data.isSuccessWrite
   const fileds = data.fileds || []
+  const params = data.params || {}
 
   const [model, setModel] = useState({})
   const [loading, setLoading] = useState(false)
@@ -59,34 +62,72 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
   data.error =
     data.error && data.error == '511' ? 'Form is not configured' : data.error
 
-  const typesMatching = {
-    number: 'number',
-    email: 'email'
+    fileds.forEach((field) => {
+      if (!params.fields[field.sysName]) {
+        params.fields[field.sysName] = {
+          include: true,
+          hidden: false,
+          required: false,
+          isTextarea: false,
+          textareaRows: 4,
+          defaultValue: '',
+          isPositive: false,
+          quickSearch: true,
+          allowAddLinks: false,
+          dateTimeOn: true
+        }
+      }
+    })
+
+  const typesMatching = (field) => {
+    const matching = {
+      number: 'number',
+      email: 'email',
+      string: 'string',
+      link: 'select',
+      arrayLink: 'multiselect',
+      boolean: 'boolean',
+      date: 'date',
+    }
+    if (matching[field.dataType] == 'string' && params.fields[field.sysName].isTextarea) { return 'textarea' }
+    return matching[field.dataType]
   }
+
+  
 
   return (
     <div className={styles.test}>
-      <h1>{formName}</h1>
+      {formName && <h1>{formName}</h1>}
+      {formDesc &&
+        <p style={{ maxWidth: formWidth ? formWidth : 'auto', marginBottom: 22 }}>
+          {formDesc}</p>}
 
       {loading && <div>loading...</div>}
-      {data.error && <div>error:{data.error}</div>}
+      {data.error && <div>error: {data.error}</div>}
+
       {isSuccessWrite && <div>{successText}</div>}
 
       {!isSuccessWrite && (
-        <form onSubmit={submit} style={{maxWidth: formWidth ? formWidth : 'auto'}}>
-          {fileds.map((field) => (
+        <form onSubmit={submit} style={{ maxWidth: formWidth ? formWidth : 'auto' }}>
+          {fileds.map((field) => ( params.fields[field.sysName].include &&
             <div>
               <Input
-                label={field.sysName}
-                placeholder={field.name}
-                type={`${typesMatching[field.dataType]=='id' ? `select` : typesMatching[field.dataType]}`}
+                label={!data.placeholder ? field.name : ''}
+                placeholder={data.placeholder ? field.name : ''}
+                required={params.fields[field.sysName].required}
+                positive={params.fields[field.sysName].isPositive}
+                defaultValue={params.fields[field.sysName].defaultValue}
+                timeFormat={`${params.fields[field.sysName].dateTimeOn ? ' hh:mm A' : ''}`}
+                //placeholder={field.name}
+                type={typesMatching(field)}
+                rows={params.fields[field.sysName].textareaRows}
                 onChange={value => onChange(field.sysName, value)}
               />
               {modelError[field.sysName] && <b>{modelError[field.sysName]}</b>}
             </div>
           ))}
           <ActionPanel>
-            <Button accent>Submit</Button>
+            <Button accent>{formButton}</Button>
           </ActionPanel>
         </form>
       )}
@@ -99,6 +140,9 @@ FpsForm.settings = {
   sysName: 'FpsForm',
   form: [
     { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
-    { name: 'Form title', sysName: 'formName', type: 'input' }
+    { name: 'Form title', sysName: 'formName', type: 'input' },
+    { name: 'Form description', sysName: 'formDesc', type: 'input' },
+    { name: 'Submit button text', sysName: 'formButton', type: 'input' },
+    { name: 'Labels or Placeholders', sysName: 'placeholder', type: 'select' }
   ]
 }

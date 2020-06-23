@@ -375,7 +375,7 @@ export default function InputsPage() {
                 width={400}
             />
 
-<CodeSnippet code=
+            <CodeSnippet code=
                 {`<InputGroup width={400}>
     <Input
         label='First name'
@@ -579,6 +579,45 @@ export default function InputsPage() {
                         {
                             value: 'option3',
                             label: 'Option 3'
+                        }
+                    ]
+                }
+            />
+
+<CodeSnippet code=
+                {`<Input
+    label='Radio station (disabled)'
+    type='radio'
+    disabled
+    defaultValue='option2'
+    options={
+        [
+            {
+                value: 'option1',
+                label: 'Option 1'
+            },
+            {
+                value: 'option2',
+                label: 'Option 2'
+            }
+        ]
+    }
+/>`} />
+
+            <Input
+                label='Radio station (disabled)'
+                type='radio'
+                disabled
+                defaultValue='option2'
+                options={
+                    [
+                        {
+                            value: 'option1',
+                            label: 'Option 1'
+                        },
+                        {
+                            value: 'option2',
+                            label: 'Option 2'
                         }
                     ]
                 }

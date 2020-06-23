@@ -3,6 +3,21 @@
   flex-direction: column;
   align-items: flex-start;
 }
+.radio.disabled label {
+  cursor: not-allowed;
+  color: var(--field-border-color);
+}
+.radio.disabled input {
+  cursor: not-allowed;
+  border: solid 1px var(--field-border-color);
+}
+.radio.disabled input:hover {
+  border: solid 1px var(--field-border-color);
+}
+.radio.disabled input:checked {
+  border: solid 4px var(--accent-color);
+  opacity: 0.5;
+}
 .radio label {
   display: flex;
   align-items: center;

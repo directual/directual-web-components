@@ -87,7 +87,7 @@ export default function Input(props) {
 
     return (
         <div className={styles.input_wrapper} style={{ maxWidth: props.width || 'auto' }}>
-            <label>{props.label}</label>
+            {props.label && <label>{props.label}{props.required && '*'}</label>}
             {/* value: {value} */}
 
             {props.type != 'email' &&
@@ -206,6 +206,7 @@ export default function Input(props) {
                     onChange={e => setValue(e.target.value)}
                     defaultValue={props.defaultValue}
                     options={props.options}
+                    disabled={props.disabled}
                 />
             }
             {props.type == 'select' &&
