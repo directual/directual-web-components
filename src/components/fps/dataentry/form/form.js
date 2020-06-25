@@ -105,9 +105,14 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
       link: 'select',
       arrayLink: 'multiselect',
       boolean: 'radio',
-      date: 'date',
+      date: 'date'
     }
-    if (matching[field.dataType] == 'string' && params.fields[field.sysName].isTextarea) { return 'textarea' }
+    if (
+      matching[field.dataType] == 'string' &&
+      params.fields[field.sysName].isTextarea
+    ) {
+      return 'textarea'
+    }
     return matching[field.dataType]
   }
 
@@ -129,9 +134,11 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
   return (
     <div className={styles.test}>
       {formName && <h1>{formName}</h1>}
-      {formDesc &&
-        <p style={{ maxWidth: formWidth ? formWidth : 'auto', marginBottom: 22 }}>
-          {formDesc}</p>}
+      {formDesc && (
+        <p style={{ maxWidth: formWidth || 'auto', marginBottom: 22 }}>
+          {formDesc}
+        </p>
+      )}
 
       {loading && <div>loading...</div>}
       {data.error && <div>error: {data.error}</div>}
@@ -171,6 +178,7 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
                   placeholder={data.placeholder ? field.name : ''}
                   required={field.params.required}
                   positive={field.params.isPositive}
+                  options={field.params.searchData || []}
                   defaultValue={field.params.defaultValue}
                   timeFormat={`${field.params.dateTimeOn ? ' hh:mm A' : ''}`}
                   //placeholder={field.name}
@@ -190,7 +198,7 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
   )
 }
 FpsForm.settings = {
-  //icon: icon,
+  // icon: icon,
   name: 'Form',
   sysName: 'FpsForm',
   form: [

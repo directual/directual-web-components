@@ -40,7 +40,7 @@ function List(props) {
             //if (maxListHeight > freeSpace) { maxListHeight = freeSpace - 5 }
             if (maxListHeight > freeSpace && freeSpace >= 4 * 40) { maxListHeight = freeSpace - 32 }
             (freeSpace < 4 * 40) ? pos = 'top' : pos = 'bottom'
-            //console.log('pos: ' + pos + ' height: ' + maxListHeight) 
+            //console.log('pos: ' + pos + ' height: ' + maxListHeight)
         }
         return {
             position: pos,
@@ -89,7 +89,7 @@ function List(props) {
                             ${props.iconOptions && `${styles.optionIcon} icon icon-${option.icon}`}
                         `}
                         //ref={refs[option.id]}
-                        key={option.id}
+                        key={option.key}
                         onClick={() => {
                             !props.multi && props.chooseOption(option)
                             props.current && props.current.length >= 0 && props.current.filter(i => i.id == option.id).length == 0 ?
@@ -98,7 +98,7 @@ function List(props) {
                             props.onClick()
                         }}
                     >
-                        {option.title}
+                        {option.value}
                     </li>
                 )}
             </ul>
