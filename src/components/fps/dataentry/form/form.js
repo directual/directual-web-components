@@ -84,7 +84,7 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
   })
 
   //Hidden fields from URL query params:
-  const queryString = window.location.search;
+  const queryString = typeof window !== 'undefined' ? window.location.search: '';
   const urlParams = new URLSearchParams(queryString);
   let hiddenFieldsValues
   for (const hiddenField in hiddenFields) {
