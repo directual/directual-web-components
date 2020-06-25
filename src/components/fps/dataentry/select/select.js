@@ -83,18 +83,18 @@ function List(props) {
                     <li
                         className={`
                             ${styles.option}
-                            ${props.current && props.current.id == option.id && styles.selected}
-                            ${props.selected && props.selected.id == option.id && styles.keySelected}
-                            ${props.current && props.current.length > 0 && props.current.filter(i => i.id == option.id).length > 0 && styles.selected}
+                            ${props.current && props.current.key == option.key && styles.selected}
+                            ${props.selected && props.selected.key == option.key && styles.keySelected}
+                            ${props.current && props.current.length > 0 && props.current.filter(i => i.key == option.key).length > 0 && styles.selected}
                             ${props.iconOptions && `${styles.optionIcon} icon icon-${option.icon}`}
                         `}
-                        //ref={refs[option.id]}
+                        //ref={refs[option.key]}
                         key={option.key}
                         onClick={() => {
                             !props.multi && props.chooseOption(option)
-                            props.current && props.current.length >= 0 && props.current.filter(i => i.id == option.id).length == 0 ?
+                            props.current && props.current.length >= 0 && props.current.filter(i => i.key == option.key).length == 0 ?
                                 props.chooseOption(option) :
-                                props.current && props.current.length >= 0 && props.removeOption(props.current.filter(i => i.id == option.id)[0])
+                                props.current && props.current.length >= 0 && props.removeOption(props.current.filter(i => i.key == option.key)[0])
                             props.onClick()
                         }}
                     >
@@ -108,7 +108,7 @@ function List(props) {
 
 export default function Select(props) {
     const [focus, setFocus] = useState(false);
-    const [value, setValue] = useState(props.defaultValue || null);
+    const [value, setValue] = useState(props.defaultValue || (props.multi && []) || null);
     const inputEl = useRef(null);
     const [filter, setFilter] = useState('')
     const [filteredOptions, setFilteredOptions] = useState(props.options || [])
@@ -142,6 +142,7 @@ export default function Select(props) {
         //!focus &&  props.checkValue()
     }, [focus])
 
+
     useEffect(() => { 
         console.log('hey, new value:'); 
         console.log(value); 
@@ -154,7 +155,7 @@ export default function Select(props) {
     useEffect(() => {
         if (props.options) {
             FO = props.options.filter(el => {
-                return String(el.title).toLowerCase().match(new RegExp(String(filter).toLowerCase()))
+                return String(el.value).toLowerCase().match(new RegExp(String(filter).toLowerCase()))
             })
         }
         setFilteredOptions(FO)
@@ -167,11 +168,10 @@ export default function Select(props) {
             currentPosition = filteredOptions.indexOf(keySelected)
             //console.log(e.key + ' key: ' + currentPosition)
             if (e.key == 'Backspace' && props.multi && filter == '') {
-                let array = value || []
+                let array = [...value] || []
                 array.pop()
-                setValue(array)
                 props.onChange(array);
-                forceUpdate()
+                //forceUpdate()
             }
             if (e.key == 'Backspace' && !props.multi && filter == '') {
                 setValue('')
@@ -186,8 +186,8 @@ export default function Select(props) {
             !keySelected && filteredOptions && e.key == 'ArrowDown' &&
                 setKeySelected(filteredOptions[0])
             if (keySelected && filteredOptions && e.key == 'Enter') {
-                if (value && value.length >= 0 && value.filter(i => i.id == keySelected.id) == 0) { chooseOption(keySelected) }
-                else { props.multi && removeOption(value.filter(i => i.id == keySelected.id)[0]) }
+                if (value && value.length >= 0 && value.filter(i => i.key == keySelected.key) == 0) { chooseOption(keySelected) }
+                else { props.multi && removeOption(value.filter(i => i.key == keySelected.key)[0]) }
                 !props.multi && chooseOption(keySelected);
 
                 setFocus(false)
@@ -200,7 +200,7 @@ export default function Select(props) {
     const chooseOption = (option) => {
         !props.multi && setValue(option)
         if (props.multi) {
-            let arr = value || []
+            let arr = [...value] || []
             arr.indexOf(option) == -1 && arr.push(option)
             setValue(arr)
             props.onChange(arr);
@@ -209,13 +209,10 @@ export default function Select(props) {
 
     const removeOption = (option) => {
         if (props.multi) {
-            let arr = value || []
+            let arr = [...value] || []
             if (arr.indexOf(option) != -1) {
                 arr.splice(arr.indexOf(option), 1)
-                //console.log('removing...' + option.title)
                 setValue(arr)
-                forceUpdate()
-                props.onChange(arr);
 
             }
         }
@@ -223,9 +220,9 @@ export default function Select(props) {
 
     return (
         <div className={styles.select_wrapper} style={{ maxWidth: props.width || 'auto' }}>
-            {/* <hr />
+            {/* <div className="debug">
             {JSON.stringify(value)}
-            <hr /> */}
+            </div> */}
             <div
                 id='selectElement'
                 className=
@@ -241,8 +238,8 @@ export default function Select(props) {
                 {props.multi &&
                     <ul className={styles.multilist}>
                         {value && value.length > 0 && value.map((item) =>
-                            <li title={item.title}>
-                                <div className={styles.title_item}>{item.title}</div>
+                            <li title={item.value}>
+                                <div className={styles.title_item}>{item.value}</div>
                                 {!props.disabled &&
                                     <div className={`${styles.delete_item} icon icon-close`}
                                         onClick={(e) => { e.stopPropagation(); removeOption(item) }}
@@ -274,7 +271,7 @@ export default function Select(props) {
                             <div className={`${styles.placeholder}`}>
                                 {props.placeholder ? props.placeholder : 'Select the value'}</div>}
                         {value && !filter &&
-                            <div className={styles.currentValue}>{value.title}</div>}
+                            <div className={styles.currentValue}>{value.value}</div>}
                         {focus &&
                             <input
                                 onKeyDown={handleKeyboard}

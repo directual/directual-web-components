@@ -10,7 +10,7 @@ export default function InputsPage() {
     return (
         <React.Fragment>
             <h1>Data entry</h1>
-            <FileUpload />
+            {/* <FileUpload /> */}
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Range sliders</h2>
             <CodeSnippet code=
                 {`<Input
@@ -28,8 +28,7 @@ export default function InputsPage() {
                 type="slider"
                 width={500}
                 label="Range slider"
-                defaultValue={200}
-                secondDefaultValue={450}
+                defaultValue={{firstValue: 200, secondValue:400}}
                 min={0}
                 max={600}
                 step={10}
@@ -51,7 +50,7 @@ export default function InputsPage() {
                 type="slider"
                 width={500}
                 label="Slider"
-                defaultValue={300}
+                defaultValue={{firstValue: 300}}
                 min={200}
                 max={1000}
                 step={1}
@@ -140,7 +139,7 @@ export default function InputsPage() {
                         { prop: 'disabled', type: 'boolean', desc: 'Disable input', eg: 'disabled = {false}' },
                         { prop: 'width', type: 'number', desc: 'Input max-width', eg: 'width={150}' },
                         { prop: 'placeholder', type: 'string', desc: 'Placeholder', eg: 'placeholder = \'type here\'' },
-                        { prop: 'defaultValue', type: 'string', desc: 'Default input value', eg: 'defaultValue = {{id: 1, title:\'one\'}}' },
+                        { prop: 'defaultValue', type: 'string', desc: 'Default input value', eg: 'defaultValue = {{key: 1, title:\'one\'}}' },
                         { prop: 'dateFormat', type: 'Moment.js date format', desc: 'https://momentjs.com/docs/#/displaying/format/', eg: 'dateFormat=\'D, MMM, YYYY\'' },
                         { prop: 'timeFormat', type: 'Moment.js time format', desc: 'Important! Set timeFormat=\'\' if you want to hide time', eg: 'timeFormat=\'hh:mm A\'' },
                     ]
@@ -157,23 +156,23 @@ export default function InputsPage() {
     icon='database'
     options={
         [
-            { id: 1, title: 'Good fortune? The fact is' },
-            { id: 2, title: 'The more that you practise' },
-            { id: 3, title: 'The harder you sweat' },
-            { id: 4, title: 'The luckier you get' },
-            { id: 5, title: 'Ideas? We’ve had ’em' },
-            { id: 6, title: 'Since Eve mated Adam' },
-            { id: 7, title: 'But take it from me' },
-            { id: 8, title: 'Execution’s the key' },
-            { id: 9, title: 'The money? Just pester' },
-            { id: 10, title: 'A likely investor' },
-            { id: 11, title: 'To get what you need' },
-            { id: 12, title: 'You toady to greed' },
-            { id: 13, title: 'The talent? Go sign it' },
-            { id: 14, title: 'But first, wine and dine it' },
-            { id: 15, title: 'It’s tedious work' },
-            { id: 16, title: 'With a talented jerk' },
-            { id: 17, title: 'Good timing? To win it You gotta be in it. Just never be late To quit or cut bait.' }
+            { key: 1, value: 'Good fortune? The fact is' },
+            { key: 2, value: 'The more that you practise' },
+            { key: 3, value: 'The harder you sweat' },
+            { key: 4, value: 'The luckier you get' },
+            { key: 5, value: 'Ideas? We’ve had ’em' },
+            { key: 6, value: 'Since Eve mated Adam' },
+            { key: 7, value: 'But take it from me' },
+            { key: 8, value: 'Execution’s the key' },
+            { key: 9, value: 'The money? Just pester' },
+            { key: 10, value: 'A likely investor' },
+            { key: 11, value: 'To get what you need' },
+            { key: 12, value: 'You toady to greed' },
+            { key: 13, value: 'The talent? Go sign it' },
+            { key: 14, value: 'But first, wine and dine it' },
+            { key: 15, value: 'It’s tedious work' },
+            { key: 16, value: 'With a talented jerk' },
+            { key: 17, value: 'Good timing? To win it You gotta be in it. Just never be late To quit or cut bait.' }
         ]
     }
 />`} />
@@ -184,26 +183,13 @@ export default function InputsPage() {
                 type='select'
                 placeholder='Choose the line'
                 icon='database'
-                //defaultValue={{ id: 3, title: 'The harder you sweat' }}
+                //defaultValue={{ key: 3, title: 'The harder you sweat' }}
                 options={
                     [
-                        { id: 1, title: 'Good fortune? The fact is' },
-                        { id: 2, title: 'The more that you practise' },
-                        { id: 3, title: 'The harder you sweat' },
-                        { id: 4, title: 'The luckier you get' },
-                        { id: 5, title: 'Ideas? We’ve had ’em' },
-                        { id: 6, title: 'Since Eve mated Adam' },
-                        { id: 7, title: 'But take it from me' },
-                        { id: 8, title: 'Execution’s the key' },
-                        { id: 9, title: 'The money? Just pester' },
-                        { id: 10, title: 'A likely investor' },
-                        { id: 11, title: 'To get what you need' },
-                        { id: 12, title: 'You toady to greed' },
-                        { id: 13, title: 'The talent? Go sign it' },
-                        { id: 14, title: 'But first, wine and dine it' },
-                        { id: 15, title: 'It’s tedious work' },
-                        { id: 16, title: 'With a talented jerk' },
-                        { id: 17, title: 'Good timing? To win it You gotta be in it. Just never be late To quit or cut bait.' }
+                        {"key":"ddfdfsdsds","value":"1ddfdfsdsds"},
+                        {"key":"test","value":"1test"}
+                        // {key:"ddfdfsdsds",value:"1ddfdfsdsds"},
+                        // {key:"test",value:"1test"}
                     ]
                 }
             />
@@ -225,30 +211,30 @@ export default function InputsPage() {
     required
     defaultValue={
         [
-            { id: 3, title: 'The harder you sweat' },
-            { id: 13, title: 'The talent? Go sign it' }
+            { key: 3, value: 'The harder you sweat' },
+            { key: 13, value: 'The talent? Go sign it' }
         ]
     }
     icon='database'
     options={
         [
-            { id: 1, title: 'Good fortune? The fact is' },
-            { id: 2, title: 'The more that you practise' },
-            { id: 3, title: 'The harder you sweat' },
-            { id: 4, title: 'The luckier you get' },
-            { id: 5, title: 'Ideas? We’ve had ’em' },
-            { id: 6, title: 'Since Eve mated Adam' },
-            { id: 7, title: 'But take it from me' },
-            { id: 8, title: 'Execution’s the key' },
-            { id: 9, title: 'The money? Just pester' },
-            { id: 10, title: 'A likely investor' },
-            { id: 11, title: 'To get what you need' },
-            { id: 12, title: 'You toady to greed' },
-            { id: 13, title: 'The talent? Go sign it' },
-            { id: 14, title: 'But first, wine and dine it' },
-            { id: 15, title: 'It’s tedious work' },
-            { id: 16, title: 'With a talented jerk' },
-            { id: 17, title: 'Good timing? To win it You gotta be in it. Just never be late To quit or cut bait.' }
+            { key: 1, value: 'Good fortune? The fact is' },
+            { key: 2, value: 'The more that you practise' },
+            { key: 3, value: 'The harder you sweat' },
+            { key: 4, value: 'The luckier you get' },
+            { key: 5, value: 'Ideas? We’ve had ’em' },
+            { key: 6, value: 'Since Eve mated Adam' },
+            { key: 7, value: 'But take it from me' },
+            { key: 8, value: 'Execution’s the key' },
+            { key: 9, value: 'The money? Just pester' },
+            { key: 10, value: 'A likely investor' },
+            { key: 11, value: 'To get what you need' },
+            { key: 12, value: 'You toady to greed' },
+            { key: 13, value: 'The talent? Go sign it' },
+            { key: 14, value: 'But first, wine and dine it' },
+            { key: 15, value: 'It’s tedious work' },
+            { key: 16, value: 'With a talented jerk' },
+            { key: 17, value: 'Good timing? To win it You gotta be in it. Just never be late To quit or cut bait.' }
         ]
     }
 />`} />
@@ -258,33 +244,33 @@ export default function InputsPage() {
                 width={700}
                 type='multiselect'
                 placeholder='Choose the values'
-                //required
+                required
                 defaultValue={
                     [
-                        { id: 1, title: 'Good fortune? The fact is' },
-                        { id: 3, title: 'The harder you sweat' }
+                        { key: 1, value: 'Good fortune? The fact is' },
+                        { key: 3, value: 'The harder you sweat' }
                     ]
                 }
-                //icon='database'
+                icon='database'
                 options={
                     [
-                        { id: 1, title: 'Good fortune? The fact is' },
-                        { id: 2, title: 'The more that you practise' },
-                        { id: 3, title: 'The harder you sweat' },
-                        { id: 4, title: 'The luckier you get' },
-                        { id: 5, title: 'Ideas? We’ve had ’em' },
-                        { id: 6, title: 'Since Eve mated Adam' },
-                        { id: 7, title: 'But take it from me' },
-                        { id: 8, title: 'Execution’s the key' },
-                        { id: 9, title: 'The money? Just pester' },
-                        { id: 10, title: 'A likely investor' },
-                        { id: 11, title: 'To get what you need' },
-                        { id: 12, title: 'You toady to greed' },
-                        { id: 13, title: 'The talent? Go sign it' },
-                        { id: 14, title: 'But first, wine and dine it' },
-                        { id: 15, title: 'It’s tedious work' },
-                        { id: 16, title: 'With a talented jerk' },
-                        { id: 17, title: 'Good timing? To win it You gotta be in it. Just never be late To quit or cut bait.' }
+                        { key: 1, value: 'Good fortune? The fact is' },
+                        { key: 2, value: 'The more that you practise' },
+                        { key: 3, value: 'The harder you sweat' },
+                        { key: 4, value: 'The luckier you get' },
+                        { key: 5, value: 'Ideas? We’ve had ’em' },
+                        { key: 6, value: 'Since Eve mated Adam' },
+                        { key: 7, value: 'But take it from me' },
+                        { key: 8, value: 'Execution’s the key' },
+                        { key: 9, value: 'The money? Just pester' },
+                        { key: 10, value: 'A likely investor' },
+                        { key: 11, value: 'To get what you need' },
+                        { key: 12, value: 'You toady to greed' },
+                        { key: 13, value: 'The talent? Go sign it' },
+                        { key: 14, value: 'But first, wine and dine it' },
+                        { key: 15, value: 'It’s tedious work' },
+                        { key: 16, value: 'With a talented jerk' },
+                        { key: 17, value: 'Good timing? To win it You gotta be in it. Just never be late To quit or cut bait.' }
                     ]
                 }
             />
@@ -306,9 +292,9 @@ export default function InputsPage() {
                         { prop: 'icon', type: 'directual icon', desc: 'Icon from Directual icons', eg: 'icon = \'warning\'' },
                         { prop: 'width', type: 'number', desc: 'Input max-width', eg: 'width={150}' },
                         { prop: 'placeholder', type: 'string', desc: 'Placeholder', eg: 'placeholder = \'type here\'' },
-                        { prop: 'options', type: 'array of Objects {id, title}', desc: 'Options', eg: 'options = {[{id: 1, title:\'one\'}, {id: 2, title:\'two\'}]}' },
-                        { prop: 'defaultValue', type: 'string', desc: 'Default input value', eg: 'defaultValue = {{id: 1, title:\'one\'}}' },
-                        { prop: 'iconOptions', type: 'boolean', desc: 'use icons for each option {{id: 1, title:\'one\', icon:\'play\'}}', eg: 'iconOptions = {true}' },
+                        { prop: 'options', type: 'array of Objects {id, title}', desc: 'Options', eg: 'options = {[{key: 1, title:\'one\'}, {key: 2, title:\'two\'}]}' },
+                        { prop: 'defaultValue', type: 'string', desc: 'Default input value', eg: 'defaultValue = {{key: 1, title:\'one\'}}' },
+                        { prop: 'iconOptions', type: 'boolean', desc: 'use icons for each option {{key: 1, title:\'one\', icon:\'play\'}}', eg: 'iconOptions = {true}' },
                     ]
                 }
             } />
@@ -319,26 +305,26 @@ export default function InputsPage() {
                 type='select'
                 placeholder='Choose the line'
                 //icon='database'
-                defaultValue={{ id: 3, title: 'The harder you sweat' }}
+                defaultValue={{ key: 3, value: 'The harder you sweat' }}
                 options={
                     [
-                        { id: 1, title: 'Good fortune? The fact is' },
-                        { id: 2, title: 'The more that you practise' },
-                        { id: 3, title: 'The harder you sweat' },
-                        { id: 4, title: 'The luckier you get' },
-                        { id: 5, title: 'Ideas? We’ve had ’em' },
-                        { id: 6, title: 'Since Eve mated Adam' },
-                        { id: 7, title: 'But take it from me' },
-                        { id: 8, title: 'Execution’s the key' },
-                        { id: 9, title: 'The money? Just pester' },
-                        { id: 10, title: 'A likely investor' },
-                        { id: 11, title: 'To get what you need' },
-                        { id: 12, title: 'You toady to greed' },
-                        { id: 13, title: 'The talent? Go sign it' },
-                        { id: 14, title: 'But first, wine and dine it' },
-                        { id: 15, title: 'It’s tedious work' },
-                        { id: 16, title: 'With a talented jerk' },
-                        { id: 17, title: 'Good timing? To win it You gotta be in it. Just never be late To quit or cut bait.' }
+                        { key: 1, value: 'Good fortune? The fact is' },
+                        { key: 2, value: 'The more that you practise' },
+                        { key: 3, value: 'The harder you sweat' },
+                        { key: 4, value: 'The luckier you get' },
+                        { key: 5, value: 'Ideas? We’ve had ’em' },
+                        { key: 6, value: 'Since Eve mated Adam' },
+                        { key: 7, value: 'But take it from me' },
+                        { key: 8, value: 'Execution’s the key' },
+                        { key: 9, value: 'The money? Just pester' },
+                        { key: 10, value: 'A likely investor' },
+                        { key: 11, value: 'To get what you need' },
+                        { key: 12, value: 'You toady to greed' },
+                        { key: 13, value: 'The talent? Go sign it' },
+                        { key: 14, value: 'But first, wine and dine it' },
+                        { key: 15, value: 'It’s tedious work' },
+                        { key: 16, value: 'With a talented jerk' },
+                        { key: 17, value: 'Good timing? To win it You gotta be in it. Just never be late To quit or cut bait.' }
                     ]
                 }
             />
@@ -591,7 +577,6 @@ export default function InputsPage() {
     label='Radio station (disabled)'
     type='radio'
     disabled
-    defaultValue='option2'
     options={
         [
             {
@@ -610,7 +595,7 @@ export default function InputsPage() {
                 label='Radio station (disabled)'
                 type='radio'
                 disabled
-                defaultValue='option2'
+                //defaultValue='option2'
                 options={
                     [
                         {

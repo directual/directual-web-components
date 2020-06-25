@@ -19,10 +19,7 @@ export default function Input(props) {
     const [warningMsg, setWarningMesg] = useState(props.warning || {})
 
     const checkValue = () => {
-        console.log('checking value...');
-        console.log(value);
-        console.log(props.required);
-        (!value && props.required) ?
+        ((!value || (value && value.length == 0)) && props.required) ?
             setWarningMesg({ type: 'error', msg: 'This field is required' }) :
             setWarningMesg({});
     }
@@ -76,20 +73,21 @@ export default function Input(props) {
         }
     }
     useEffect(() => {
-        console.log('useEffect')
         props.onChange && props.onChange(value);
         props.type == 'select'  && props.required && value != props.defaultValue && checkValue();
-        props.type == 'multiselect' && console.log('useEffect!')
+        props.type == 'multiselect' && props.required && value != props.defaultValue && checkValue();
     }, [value])
 
     // useEffect(
     //     () => checkValue(), 
     // [value])
+    
 
     return (
         <div className={styles.input_wrapper} style={{ maxWidth: props.width || 'auto' }}>
             {props.label && <label>{props.label}{props.required && '*'}</label>}
-            <span className="debug"> value: {JSON.stringify(value)}</span>
+            
+            {/* <span className="debug"> value: {JSON.stringify(value)}</span> */}
 
             {props.type != 'email' &&
                 props.type != 'number' &&
@@ -219,7 +217,7 @@ export default function Input(props) {
                     disabled={props.disabled}
                     defaultValue={props.defaultValue}
                     iconOptions={props.iconOptions}
-                    onChange={e => e && setValue(e.id)}
+                    onChange={e => setValue(e)}
                 />
             }
             {props.type == 'multiselect' &&
@@ -232,12 +230,12 @@ export default function Input(props) {
                     multi
                     defaultValue={props.defaultValue}
                     iconOptions={props.iconOptions}
-                    onChange={ e => {e && setValue(e.map(i => {return i.id})) }}
+                    onChange={ e => setValue(e)}
                 />
             }
             {props.type == 'date' &&
                 <Datepicker
-                    onChange={e => props.onChange && props.onChange(e)}
+                    onChange={e => {setValue(e); props.onChange && props.onChange(e)}}
                     disabled={props.disabled}
                     placeholder={props.placeholder}
                     defaultValue={props.defaultValue}
@@ -248,8 +246,7 @@ export default function Input(props) {
             }
             {props.type == 'slider' &&
                 <Slider
-                    value={value}
-                    secondValue={props.secondDefaultValue}
+                    defaultValue={props.defaultValue}
                     min={props.min}
                     max={props.max}
                     step={props.step}

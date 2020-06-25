@@ -198,7 +198,7 @@ const App = (props) => {
           "quickSearch": true,
           "allowAddLinks": true,
           "dateTimeOn": true,
-          "searchData":[{"key":"ddfdfsdsds","value":"ddfdfsdsds"},{"key":"test","value":"test"}]
+          "searchData":[{"key":"ddfdfsdsds","value":"1ddfdfsdsds"},{"key":"test","value":"1test"}]
         },
         "arrayLink": {
           "include": true,
@@ -211,7 +211,7 @@ const App = (props) => {
           "quickSearch": true,
           "allowAddLinks": true,
           "dateTimeOn": true,
-          "searchData":[{"key":"ddfdfsdsds","value":"ddfdfsdsds"},{"key":"test","value":"test"}]
+          "searchData":[{"key":"ddfdfsdsds","value":"2ddfdfsdsds"},{"key":"test","value":"2test"}]
         },
         "boolean": {
           "include": true,

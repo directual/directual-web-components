@@ -24,12 +24,15 @@ export default function Slider(props) {
     const min = props.min || 0
     const max = props.max || 100
     const step = props.step || 1
-    const [left,setLeft] = useState(props.value)
-    const [right,setRight] = useState(props.secondValue)
+    const [left,setLeft] = useState(props.defaultValue && props.defaultValue.firstValue)
+    const [right,setRight] = useState(props.defaultValue && props.defaultValue.secondValue)
     const sliderBar = useRef(null)
 
-    useEffect (()=>setLeft(props.value), [props.value])
-    useEffect (()=>setRight(props.secondValue), [props.secondValue])
+    useEffect (()=>{!right ? props.onChange({firstValue:left}) : props.onChange({firstValue:left, secondValue:right})}, [left])
+    useEffect (()=>{props.onChange({firstValue:left, secondValue:right})}, [right])
+
+    useEffect (()=>{ setLeft(props.defaultValue.firstValue) }, [props.defaultValue])
+    useEffect (()=>{ props.defaultValue.secondValue && setRight(props.defaultValue.secondValue) }, [props.defaultValue])
 
     const onMouseDownHandlerLeft = (e) => {
         function disableSelect(event) {
@@ -133,10 +136,6 @@ export default function Slider(props) {
         }) 
     }
 
-    const onMouseUpHandler = (e) => {
-        window.removeEventListener("mousemove", () => {})   
-    }
-
     return (
         <React.Fragment>
             {/* min: {min}<br />
@@ -156,7 +155,7 @@ export default function Slider(props) {
                         <div className={styles.value}>{left}{props.unitName}</div>
                     </div>
                 
-                {props.secondValue ?
+                {props.defaultValue.secondValue ?
                 <div className={styles.fill} 
                     style={{
                             left:`${valueToPercent(left)}%`,
@@ -173,7 +172,7 @@ export default function Slider(props) {
 
             </div>
                 }
-                {props.secondValue &&
+                {props.defaultValue.secondValue &&
                 <div className={`${styles.rightKnob} ${styles.knob}`}
                     onMouseDown={onMouseDownHandlerRight}
                     onTouchStart={onTouchDownHandlerRight}
