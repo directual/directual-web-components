@@ -3,7 +3,7 @@ import styles from './form.module.css'
 import Input from '../input/input'
 import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
-//import icon from 'https://api.alfa.directual.com/fileUploaded/directual-site/8f0c371f-bd89-4dff-8abf-77f0640a323d.svg'
+import icon from './../../../../icons/fps-cards.svg'
 
 export function FormSection(props) {
   return (
@@ -27,6 +27,9 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
   const [loading, setLoading] = useState(false)
   const [modelError, setModelError] = useState({})
 
+  console.log('---------- form data: -------------')
+  console.log(data)
+
 
   const sendMsg = (msg) => {
     const message = { ...msg, _id: 'form_' + id }
@@ -42,16 +45,17 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
     var containsError = false
     var modelErrorCopy = {}
     fileds.forEach((fields) => {
-      if (!model[fields.sysName] || model[fields.sysName] === '') {
-        modelErrorCopy[fields.sysName] = 'Please, fill the form'
-        containsError = true
-      }
+      // if (!model[fields.sysName] || model[fields.sysName] === '') {
+      //   modelErrorCopy[fields.sysName] = 'Please, fill the form'
+      //   containsError = true
+      // }
     })
     setModelError(modelErrorCopy)
     if (!containsError) {
       sendMsg(model)
     }
   }
+
   data.error =
     data.error && data.error == '403'
       ? 'You have no permissions for viewing form'
@@ -175,8 +179,8 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
                 <Input
                   sysName={field.sysName}
                   validationHandler={validationHandler}
-                  label={!data.placeholder ? field.name : ''}
-                  placeholder={data.placeholder ? field.name : ''}
+                  label={data.placeholder != "true" ? field.name : ''}
+                  placeholder={data.placeholder == "true" ? field.name : ''}
                   required={field.params.required}
                   positive={field.params.isPositive}
                   options={field.params.searchData || []}
@@ -199,7 +203,7 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
   )
 }
 FpsForm.settings = {
-  //icon: icon,
+  icon: icon,
   name: 'Form',
   sysName: 'FpsForm',
   form: [

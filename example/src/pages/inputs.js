@@ -17,11 +17,10 @@ export default function InputsPage() {
     type="slider"
     width={500}
     label="Range slider"
-    defaultValue = {200}
-    secondDefaultValue = {450}
-    min = {0}
-    max= {600}
-    step = {10}
+    defaultValue={{firstValue: 200, secondValue:400}}
+    min={0}
+    max={600}
+    step={10}
     unitName='€'
 />`} />
             <Input
@@ -40,10 +39,10 @@ export default function InputsPage() {
     type="slider"
     width={500}
     label="Slider"
-    defaultValue = {300}
-    min = {200}
-    max= {1000}
-    step = {1}
+    defaultValue={{firstValue: 300}}
+    min={200}
+    max={1000}
+    step={1}
     unitName='$'
 />`} />
             <Input

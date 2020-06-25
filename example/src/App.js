@@ -143,7 +143,8 @@ const App = (props) => {
     "successText": null,
     "formButton": 'послать',
     "formDesc": 'Если есть олимпиада по математике, то почему нет паралимпиады по математике? В ней бы участвовали гуманитарии, а все восхищались бы их мужеством.',
-    //"placeholder": true,
+    "placeholder": "false",
+    "maxWidth": "300",
     "params": {
       "result": {
         "resultMessageField": "textarea",
@@ -562,7 +563,7 @@ const App = (props) => {
               <h1>What is it</h1>
             </Route>
             <Route exact path="/form">
-              <FpsForm data={exampleForm} formWidth={500} />
+              <FpsForm data={exampleForm} formWidth={exampleForm.maxWidth || 'auto'} />
             </Route>
             <Route exact path="/profile">
               <SignIn
