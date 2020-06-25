@@ -3,7 +3,7 @@ import styles from './form.module.css'
 import Input from '../input/input'
 import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
-import icon from './../../icons/fps-form.svg'
+import icon from 'https://api.alfa.directual.com/fileUploaded/directual-site/8f0c371f-bd89-4dff-8abf-77f0640a323d.svg'
 
 export function FormSection(props) {
   return (
