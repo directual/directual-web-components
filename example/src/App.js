@@ -135,7 +135,7 @@ const App = (props) => {
     'error': null
   }
 
-  
+
 
   let exampleForm = {
     "sl": "FPStest",
@@ -197,7 +197,8 @@ const App = (props) => {
           "isPositive": false,
           "quickSearch": true,
           "allowAddLinks": true,
-          "dateTimeOn": true
+          "dateTimeOn": true,
+          "searchData":[{"key":"ddfdfsdsds","value":"ddfdfsdsds"},{"key":"test","value":"test"}]
         },
         "arrayLink": {
           "include": true,
@@ -209,7 +210,8 @@ const App = (props) => {
           "isPositive": false,
           "quickSearch": true,
           "allowAddLinks": true,
-          "dateTimeOn": true
+          "dateTimeOn": true,
+          "searchData":[{"key":"ddfdfsdsds","value":"ddfdfsdsds"},{"key":"test","value":"test"}]
         },
         "boolean": {
           "include": true,
@@ -298,7 +300,8 @@ const App = (props) => {
         "typeVariable": {},
         "linkType": false,
         "linkOrArrayLinkType": true,
-        "arrayLink": true
+        "arrayLink": true,
+        "searchData":[{"key":"ddfdfsdsds","value":"ddfdfsdsds"},{"key":"test","value":"test"}]
       },
       {
         "sysName": "boolean",
@@ -562,18 +565,18 @@ const App = (props) => {
               <FpsForm data={exampleForm} formWidth={500} />
             </Route>
             <Route exact path="/profile">
-              <SignIn 
+              <SignIn
                 header='Sign in'
                 width={400}
                 google
               />
             <br />
-            <SignUp 
+            <SignUp
                 header='Sign up'
                 width={400}
                 google
-                />  
-              
+                />
+
             </Route>
             <Route exact path="/cards">
               <h1>Cards</h1>

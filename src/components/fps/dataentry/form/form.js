@@ -62,22 +62,22 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
   data.error =
     data.error && data.error == '511' ? 'Form is not configured' : data.error
 
-    fileds.forEach((field) => {
-      if (!params.fields[field.sysName]) {
-        params.fields[field.sysName] = {
-          include: true,
-          hidden: false,
-          required: false,
-          isTextarea: false,
-          textareaRows: 4,
-          defaultValue: '',
-          isPositive: false,
-          quickSearch: true,
-          allowAddLinks: false,
-          dateTimeOn: true
-        }
+  fileds.forEach((field) => {
+    if (!params.fields[field.sysName]) {
+      params.fields[field.sysName] = {
+        include: true,
+        hidden: false,
+        required: false,
+        isTextarea: false,
+        textareaRows: 4,
+        defaultValue: '',
+        isPositive: false,
+        quickSearch: true,
+        allowAddLinks: false,
+        dateTimeOn: true
       }
-    })
+    }
+  })
 
   const typesMatching = (field) => {
     const matching = {
@@ -87,20 +87,25 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
       link: 'select',
       arrayLink: 'multiselect',
       boolean: 'boolean',
-      date: 'date',
+      date: 'date'
     }
-    if (matching[field.dataType] == 'string' && params.fields[field.sysName].isTextarea) { return 'textarea' }
+    if (
+      matching[field.dataType] == 'string' &&
+      params.fields[field.sysName].isTextarea
+    ) {
+      return 'textarea'
+    }
     return matching[field.dataType]
   }
-
-  
 
   return (
     <div className={styles.test}>
       {formName && <h1>{formName}</h1>}
-      {formDesc &&
-        <p style={{ maxWidth: formWidth ? formWidth : 'auto', marginBottom: 22 }}>
-          {formDesc}</p>}
+      {formDesc && (
+        <p style={{ maxWidth: formWidth || 'auto', marginBottom: 22 }}>
+          {formDesc}
+        </p>
+      )}
 
       {loading && <div>loading...</div>}
       {data.error && <div>error: {data.error}</div>}
@@ -108,24 +113,32 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
       {isSuccessWrite && <div>{successText}</div>}
 
       {!isSuccessWrite && (
-        <form onSubmit={submit} style={{ maxWidth: formWidth ? formWidth : 'auto' }}>
-          {fileds.map((field) => ( params.fields[field.sysName].include &&
-            <div>
-              <Input
-                label={!data.placeholder ? field.name : ''}
-                placeholder={data.placeholder ? field.name : ''}
-                required={params.fields[field.sysName].required}
-                positive={params.fields[field.sysName].isPositive}
-                defaultValue={params.fields[field.sysName].defaultValue}
-                timeFormat={`${params.fields[field.sysName].dateTimeOn ? ' hh:mm A' : ''}`}
-                //placeholder={field.name}
-                type={typesMatching(field)}
-                rows={params.fields[field.sysName].textareaRows}
-                onChange={value => onChange(field.sysName, value)}
-              />
-              {modelError[field.sysName] && <b>{modelError[field.sysName]}</b>}
-            </div>
-          ))}
+        <form onSubmit={submit} style={{ maxWidth: formWidth || 'auto' }}>
+          {fileds.map(
+            (field) =>
+              params.fields[field.sysName].include && (
+                <div>
+                  <Input
+                    label={!data.placeholder ? field.name : ''}
+                    placeholder={data.placeholder ? field.name : ''}
+                    required={params.fields[field.sysName].required}
+                    positive={params.fields[field.sysName].isPositive}
+                    defaultValue={params.fields[field.sysName].defaultValue}
+                    options={params.fields[field.sysName].searchData || []}
+                    timeFormat={`${
+                      params.fields[field.sysName].dateTimeOn ? ' hh:mm A' : ''
+                    }`}
+                    // placeholder={field.name}
+                    type={typesMatching(field)}
+                    rows={params.fields[field.sysName].textareaRows}
+                    onChange={(value) => onChange(field.sysName, value)}
+                  />
+                  {modelError[field.sysName] && (
+                    <b>{modelError[field.sysName]}</b>
+                  )}
+                </div>
+              )
+          )}
           <ActionPanel>
             <Button accent>{formButton}</Button>
           </ActionPanel>
@@ -135,7 +148,7 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
   )
 }
 FpsForm.settings = {
-  //icon: icon,
+  // icon: icon,
   name: 'Form',
   sysName: 'FpsForm',
   form: [
