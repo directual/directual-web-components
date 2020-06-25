@@ -3,6 +3,7 @@ import styles from './form.module.css'
 import Input from '../input/input'
 import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
+import icon from './../../icons/fps-form.svg'
 
 export function FormSection(props) {
   return (
@@ -198,14 +199,15 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
   )
 }
 FpsForm.settings = {
-  // icon: icon,
+  icon: icon,
   name: 'Form',
   sysName: 'FpsForm',
   form: [
     { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
     { name: 'Form title', sysName: 'formName', type: 'input' },
-    { name: 'Form description', sysName: 'formDesc', type: 'input' },
+    { name: 'Form description', sysName: 'formDesc', type: 'textarea' },
     { name: 'Submit button text', sysName: 'formButton', type: 'input' },
-    { name: 'Labels or Placeholders', sysName: 'placeholder', type: 'select' }
+    { name: 'Labels or Placeholders', sysName: 'placeholder', type: 'labelOrPlaceholder' },
+    { name: 'Form max width, px', sysName: 'maxWidth', type: 'number' },
   ]
 }
