@@ -10,7 +10,7 @@ export default function Datepicker(props) {
     let timeFormat;
     if (typeof props.timeFormat == 'string') {timeFormat = props.timeFormat}
     if (typeof props.timeFormat == 'undefined') {timeFormat = ' h:mm a'}
-    console.log(typeof props.timeFormat)
+    //console.log(typeof props.timeFormat)
     return (
         <div className={styles.calendar}>
             <Datetime 

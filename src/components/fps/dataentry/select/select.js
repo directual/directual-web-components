@@ -118,7 +118,7 @@ export default function Select(props) {
     const forceUpdate = useForceUpdate();
     
     
-    useEffect(()=>{ !value && setValue(props.defaultValue)},[props.defaultValue])
+    //useEffect(()=>{ !value && setValue(props.defaultValue)},[props.defaultValue])
 
     useOutsideAlerter(selectRef);
 
@@ -135,9 +135,20 @@ export default function Select(props) {
             };
         }, [ref]);
     }
-    useEffect(() => { focus && inputEl.current.focus(); setFilter(''); setKeySelected() }, [focus])
+    useEffect(() => { 
+        focus && inputEl.current.focus(); 
+        setFilter(''); 
+        setKeySelected()
+        //!focus &&  props.checkValue()
+    }, [focus])
 
-    useEffect(() => { props.onChange(value); setKeySelected() }, [value])
+    useEffect(() => { 
+        console.log('hey, new value:'); 
+        console.log(value); 
+        props.onChange(value); 
+        setKeySelected();
+    }, 
+    [value])
 
     let FO;
     useEffect(() => {
@@ -152,17 +163,19 @@ export default function Select(props) {
 
     let currentPosition;
     const handleKeyboard = (e) => {
-        if (focus) {
+        if (focus && filteredOptions) {
             currentPosition = filteredOptions.indexOf(keySelected)
             //console.log(e.key + ' key: ' + currentPosition)
             if (e.key == 'Backspace' && props.multi && filter == '') {
                 let array = value || []
                 array.pop()
                 setValue(array)
+                props.onChange(array);
                 forceUpdate()
             }
             if (e.key == 'Backspace' && !props.multi && filter == '') {
                 setValue('')
+                props.onChange('');
             }
             keySelected && filteredOptions && e.key == 'ArrowUp' && currentPosition == 0 &&
                 setKeySelected('')
@@ -190,6 +203,7 @@ export default function Select(props) {
             let arr = value || []
             arr.indexOf(option) == -1 && arr.push(option)
             setValue(arr)
+            props.onChange(arr);
         }
     }
 
@@ -198,9 +212,11 @@ export default function Select(props) {
             let arr = value || []
             if (arr.indexOf(option) != -1) {
                 arr.splice(arr.indexOf(option), 1)
-                console.log('removing...' + option.title)
+                //console.log('removing...' + option.title)
                 setValue(arr)
                 forceUpdate()
+                props.onChange(arr);
+
             }
         }
     }
@@ -209,13 +225,11 @@ export default function Select(props) {
         <div className={styles.select_wrapper} style={{ maxWidth: props.width || 'auto' }}>
             {/* <hr />
             {JSON.stringify(value)}
-            <hr />
-            {JSON.stringify(prevValue)}
             <hr /> */}
             <div
                 id='selectElement'
                 className=
-                {`${styles.select_field} ${focus && styles.focus} ${props.disabled && styles.disabled}`}
+                {`${styles.select_field} ${props.warning == 'error' ? styles.error : ''} ${focus && styles.focus} ${props.disabled && styles.disabled}`}
                 onClick={() => { !focus && setFocus(true) }}
                 ref={selectRef}
             >

@@ -32,12 +32,12 @@
   background-color: var(--accent-color);
   color: var(--button-accent-color);
 }
-.button.accent:hover {
+.button.accent:hover:not(.disabled) {
   background-color: var(--secondary-accent-color);
   color: var(--button-accent-color);
   border-color: var(--secondary-accent-color);
 }
-.button.accent:active {
+.button.accent:active:not(.disabled) {
   background-color: var(--font-color) !important;
   color: var(--background-color) !important;
   border-color: var(--font-color) !important;

@@ -151,9 +151,9 @@ const App = (props) => {
       },
       "fields": {
         "textarea": {
-          "include": true,
-          "hidden": false,
-          "required": true,
+          "include": false,
+          "hidden": true,
+          "required": false,
           "isTextarea": false,
           "textareaRows": 4,
           "defaultValue": "",
@@ -190,7 +190,7 @@ const App = (props) => {
         "link": {
           "include": true,
           "hidden": false,
-          "required": true,
+          "required": false,
           "isTextarea": false,
           "textareaRows": 4,
           "defaultValue": "",
@@ -202,7 +202,7 @@ const App = (props) => {
         "arrayLink": {
           "include": true,
           "hidden": false,
-          "required": true,
+          "required": false,
           "isTextarea": false,
           "textareaRows": 4,
           "defaultValue": "",
@@ -234,11 +234,11 @@ const App = (props) => {
           "quickSearch": true,
           "allowAddLinks": false,
           "dateTimeOn": false
-        },
+        }, 
         "email": {
           "include": true,
           "hidden": false,
-          "required": true,
+          "required": false,
           "isTextarea": false,
           "textareaRows": 4,
           "defaultValue": "",

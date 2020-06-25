@@ -178,12 +178,13 @@ export default function InputsPage() {
     }
 />`} />
             <Input
-                label='Select with icon'
+                label='Select with icon, required'
                 width={400}
+                required
                 type='select'
                 placeholder='Choose the line'
                 icon='database'
-                defaultValue={{ id: 3, title: 'The harder you sweat' }}
+                //defaultValue={{ id: 3, title: 'The harder you sweat' }}
                 options={
                     [
                         { id: 1, title: 'Good fortune? The fact is' },
@@ -221,6 +222,7 @@ export default function InputsPage() {
     width={700}
     type='multiselect'
     placeholder='Choose the values'
+    required
     defaultValue={
         [
             { id: 3, title: 'The harder you sweat' },

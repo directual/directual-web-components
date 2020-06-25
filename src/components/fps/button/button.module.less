@@ -34,12 +34,12 @@
         border-color:var( --accent-color);
         background-color: var(--accent-color);
         color: (var(--button-accent-color));
-        &:hover {
+        &:hover:not(.disabled) {
             background-color: var(--secondary-accent-color);
             color: var(--button-accent-color);
             border-color: var(--secondary-accent-color);
         }
-        &:active {
+        &:active:not(.disabled) {
             background-color: var(--font-color) !important;
             color: var(--background-color) !important;
             border-color: var(--font-color) !important;

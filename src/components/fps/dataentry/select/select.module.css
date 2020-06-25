@@ -148,6 +148,11 @@
   overflow-x: hidden;
   border: solid 1px var(--field-border-color);
 }
+.select_wrapper .select_field.error {
+  border-width: 2px;
+  padding: 6px 35px 6px 17px;
+  border-color: var(--error-color);
+}
 .select_wrapper .select_field:active:not(.disabled) {
   padding: 6px 35px 6px 17px;
   border: solid 2px var(--font-color);

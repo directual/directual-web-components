@@ -19,18 +19,25 @@ export default function Input(props) {
     const [warningMsg, setWarningMesg] = useState(props.warning || {})
 
     const checkValue = () => {
+        console.log('checking value...');
+        console.log(value);
+        console.log(props.required);
         (!value && props.required) ?
             setWarningMesg({ type: 'error', msg: 'This field is required' }) :
             setWarningMesg({});
     }
 
+    useEffect(()=>{
+        warningMsg.type == 'error' ? props.validationHandler && props.validationHandler(props.sysName, false): props.validationHandler && props.validationHandler(props.sysName, true)
+    }, [warningMsg])
+
     useEffect(() => { setValue(props.defaultValue) }, [props.defaultValue])
 
-    const checkEmailValue = () => {
-        (!value && props.required) ?
+    const checkEmailValue = (v) => {
+        (!v && props.required) ?
             setWarningMesg({ type: 'error', msg: 'This field is required' }) :
             setWarningMesg({});
-        (value && !validateEmail(value)) &&
+        (v && !validateEmail(v)) &&
             setWarningMesg({ type: 'error', msg: 'Email format is wrong' })
     }
 
@@ -60,25 +67,19 @@ export default function Input(props) {
 
 
     const handleChangeNumber = (e) => {
-        // console.log(e)
-        // console.log(parseInt(e))
-        // console.log(!isNaN(parseInt(e)))
         if (isNaN(parseInt(e))) {
             setValue('0');
         } else {
-            props.positive && parseInt(e) < 0 && setValue('0');
+            props.positive && parseInt(e) < 0 && setValue(0);
             props.positive && parseInt(e) >= 0 && setValue(parseInt(e));
             !props.positive && setValue(parseInt(e));
-            //parseInt(e) < props.min && setValue(props.min)
-            //parseInt(e) > props.max && setValue(props.min)
         }
-        // if (!isNaN(parseInt(e))) {
-        //     props.onChange && props.onChange(e)
-        //     props.required && setWarningMesg({})
-        // } else {setValue('')}
     }
     useEffect(() => {
-        props.onChange && props.onChange(value)
+        console.log('useEffect')
+        props.onChange && props.onChange(value);
+        props.type == 'select'  && props.required && value != props.defaultValue && checkValue();
+        props.type == 'multiselect' && console.log('useEffect!')
     }, [value])
 
     // useEffect(
@@ -88,7 +89,7 @@ export default function Input(props) {
     return (
         <div className={styles.input_wrapper} style={{ maxWidth: props.width || 'auto' }}>
             {props.label && <label>{props.label}{props.required && '*'}</label>}
-            {/* value: {value} */}
+            <span className="debug"> value: {JSON.stringify(value)}</span>
 
             {props.type != 'email' &&
                 props.type != 'number' &&
@@ -122,9 +123,9 @@ export default function Input(props) {
                         disabled={props.disabled}
                         className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
                         type="text"
-                        onChange={e => handleChange(String(e.target.value).toLowerCase())}
+                        onChange={e => { handleChange(String(e.target.value).toLowerCase()); e && checkEmailValue(e.target.value)} }
                         value={value}
-                        onBlur={checkEmailValue}
+                        onBlur={e => checkEmailValue(e.target.value)}
                         placeholder={props.placeholder}
                     />
                     {value && !props.disabled &&
@@ -211,13 +212,27 @@ export default function Input(props) {
             }
             {props.type == 'select' &&
                 <Select
+                    warning={warningMsg.type}    
                     placeholder={props.placeholder}
                     options={props.options}
                     icon={props.icon}
                     disabled={props.disabled}
                     defaultValue={props.defaultValue}
                     iconOptions={props.iconOptions}
-                    onChange={e => props.onChange && props.onChange(e)}
+                    onChange={e => e && setValue(e.id)}
+                />
+            }
+            {props.type == 'multiselect' &&
+                <Select
+                    warning={warningMsg.type}    
+                    placeholder={props.placeholder}
+                    options={props.options}
+                    icon={props.icon}
+                    disabled={props.disabled}
+                    multi
+                    defaultValue={props.defaultValue}
+                    iconOptions={props.iconOptions}
+                    onChange={ e => {e && setValue(e.map(i => {return i.id})) }}
                 />
             }
             {props.type == 'date' &&
@@ -228,6 +243,7 @@ export default function Input(props) {
                     defaultValue={props.defaultValue}
                     dateFormat={props.dateFormat}
                     timeFormat={props.timeFormat}
+                    checkValue={checkValue}
                 />
             }
             {props.type == 'slider' &&
@@ -241,18 +257,7 @@ export default function Input(props) {
                     unitName={props.unitName} />
 
             }
-            {props.type == 'multiselect' &&
-                <Select
-                    placeholder={props.placeholder}
-                    options={props.options}
-                    icon={props.icon}
-                    disabled={props.disabled}
-                    multi
-                    defaultValue={props.defaultValue}
-                    //iconOptions={props.iconOptions}
-                    onChange={e => props.onChange && props.onChange(e)}
-                />
-            }
+            
             {warningMsg &&
                 <div className={`${styles.status} ${styles[warningMsg.type]}`}>{warningMsg.msg}</div>}
         </div>
