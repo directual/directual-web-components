@@ -17,6 +17,8 @@ export default function Datepicker(props) {
                 defaultValue = {props.defaultValue && moment(props.defaultValue).format(dateFormat + timeFormat)}
                 dateFormat = {dateFormat}
                 timeFormat = {timeFormat}
+                onBlur={props.onBlur}
+                closeOnSelect={props.closeOnSelect}
                 inputProps={{ 
                     placeholder: props.placeholder, 
                     disabled: props.disabled,

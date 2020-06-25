@@ -100,6 +100,7 @@ export default function InputsPage() {
                 width={400}
                 label='Date picker'
                 placeholder='Select date'
+                required
                 dateFormat='D, MMM, YYYY' // default 'D, MMM, YYYY'
                 timeFormat='' // hide time
             />

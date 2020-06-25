@@ -22,8 +22,10 @@ export default function Input(props) {
         console.log('checking...');
         // console.log(value);
         // console.log(!value);
+        // console.log(value !== 0);
+        // console.log(props.required);
         // console.log(value.length);
-        ((!value || (value && value.length == 0)) && value != 0 && props.required) ?
+        ((!value || (value && value.length == 0)) && (value != 0) && props.required) ?
             setWarningMesg({ type: 'error', msg: 'This field is required' }) :
             setWarningMesg({});
     }
@@ -248,7 +250,8 @@ export default function Input(props) {
                     defaultValue={props.defaultValue}
                     dateFormat={props.dateFormat}
                     timeFormat={props.timeFormat}
-                    checkValue={checkValue}
+                    onBlur={checkValue}
+                    closeOnSelect={true}
                 />
             }
             {props.type == 'slider' &&
