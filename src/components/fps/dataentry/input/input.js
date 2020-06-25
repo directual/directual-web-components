@@ -19,7 +19,11 @@ export default function Input(props) {
     const [warningMsg, setWarningMesg] = useState(props.warning || {})
 
     const checkValue = () => {
-        ((!value || (value && value.length == 0)) && props.required) ?
+        console.log('checking...');
+        // console.log(value);
+        // console.log(!value);
+        // console.log(value.length);
+        ((!value || (value && value.length == 0)) && value != 0 && props.required) ?
             setWarningMesg({ type: 'error', msg: 'This field is required' }) :
             setWarningMesg({});
     }
@@ -64,8 +68,11 @@ export default function Input(props) {
 
 
     const handleChangeNumber = (e) => {
+        // props.onChange && props.onChange(e)
+        // setValue(e)
+        // props.required && setWarningMesg({})
         if (isNaN(parseInt(e))) {
-            setValue('0');
+            setValue(null);
         } else {
             props.positive && parseInt(e) < 0 && setValue(0);
             props.positive && parseInt(e) >= 0 && setValue(parseInt(e));
