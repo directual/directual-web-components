@@ -124,12 +124,12 @@ export default function IconsPage() {
     return (
         <React.Fragment>
             <h1>Directual icons</h1>
-            {/* <button onClick={()=>setDefVal('4')}>
+            <button onClick={()=>setDefVal('4')}>
                 4
             </button>
             <button onClick={()=>setDefVal('5')}>
                 5
-            </button> */}
+            </button>
             {icon &&
             <div style={{marginTop:32}}>
                 <div 

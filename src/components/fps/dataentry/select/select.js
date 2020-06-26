@@ -109,11 +109,14 @@ function List(props) {
 export default function Select(props) {
 
     function convertDefaultValue(def) {
-        if(!props.options) {return null;}
+        if(!props.options) {console.log('ошибка 1'); return null;}
         if(!props.multi && def) {
+            console.log('ошибка 2');
             return props.options.filter(i=>i.key == def)[0]}
         if(props.multi && def) {
+            console.log('ошибка 3');
             return def.map(j => props.options.filter(i=>i.key == j)[0] )}
+        console.log('ошибка 4');
     }
 
     const [focus, setFocus] = useState(false);
@@ -127,7 +130,7 @@ export default function Select(props) {
     // const forceUpdate = useForceUpdate();
     
 
-    useEffect(()=>{setValue(convertDefaultValue(props.defaultValue))},[props.defaultValue])
+    useEffect(()=>{console.log('вроде обновилось'); setValue(convertDefaultValue(props.defaultValue))},[props.defaultValue])
 
     useOutsideAlerter(selectRef);
 
