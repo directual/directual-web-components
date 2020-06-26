@@ -156,16 +156,18 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
 
       {/* Custon response processing: */}
       {data.params.result.isSuccessField && <React.Fragment>
-        {data.response && data.response[data.params.result.isSuccessField.key] == 'false' && <React.Fragment>
+        {data.response && !data.response[data.params.result.isSuccessField.key] && <React.Fragment>
           <Hint title='Sync scenario negative response' error>{data.params.result.resultMessageField && data.response[data.params.result.resultMessageField.key]}</Hint>
-          <Button icon='edit' onClick={()=>{
-            setShowForm(true);
-
-          }}>Edit my form response</Button>
           </React.Fragment>}
-        {data.response && data.response[data.params.result.isSuccessField.key] == 'true' &&
+        {data.response && data.response[data.params.result.isSuccessField.key] &&
           <Hint title='Sync scenario positive response' ok>{data.params.result.resultMessageField && data.response[data.params.result.resultMessageField.key]}</Hint>}
       </React.Fragment>}
+
+      {/* Обнулить! */}
+      <Button icon='refresh' onClick={()=>{
+        setShowForm(true);
+        data.response = {}
+      }}>Submit again</Button>
 
       {showForm && !loading && (
         <form onSubmit={submit} style={{ maxWidth: formWidth ? parseInt(formWidth) : 'auto' }}>
