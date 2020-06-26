@@ -141,12 +141,12 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
       data.params.result.resultMessageField ||
       data.params.result.resultTitleField) { sync = true }
     let isSuccess = ''
-    if (sync && data.response) { isSuccess = data.response[0][data.params.result.isSuccessField.key] }
+    if (sync && data.response && data.params.result.isSuccessField) { isSuccess = data.response[0][data.params.result.isSuccessField.key] }
     let answerTitle = ''
-    if (sync && data.response) { answerTitle = data.response[0][data.params.result.resultTitleField.key] }
+    if (sync && data.response && data.params.result.resultTitleField) { answerTitle = data.response[0][data.params.result.resultTitleField.key] }
     if (sync && data.response && !answerTitle) { answerTitle = isSuccess ? 'Success' : 'Error'}
     let answerText = ''
-    if (sync && data.response) { answerText = data.response[0][data.params.result.resultMessageField.key] }
+    if (sync && data.response && data.params.result.resultMessageField) { answerText = data.response[0][data.params.result.resultMessageField.key] }
     return {
       sync,
       isSuccess,
