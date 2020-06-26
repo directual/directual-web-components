@@ -238,8 +238,8 @@ export default function FpsForm({ data, onEvent, id }) {
                   rows={field.params.textareaRows}
                   onChange={value => {
                     typesMatching(field) == 'select' && onChange(field.sysName, value.key);
-                    typesMatching(field) == 'multiselect' && (typeof value == 'array') && onChange(field.sysName, value.map(i=>i.key));
-                    typesMatching(field) == 'select' && typesMatching(field) != 'multiselect' && onChange(field.sysName, value)
+                    typesMatching(field) == 'multiselect' && value && onChange(field.sysName, value.map(i=>i.key));
+                    typesMatching(field) != 'select' && typesMatching(field) != 'multiselect' && onChange(field.sysName, value)
                   }}
                 />}
               {/* {modelError[field.sysName] && <b>{modelError[field.sysName]}</b>} */}
