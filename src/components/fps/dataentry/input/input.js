@@ -17,6 +17,8 @@ export default function Input(props) {
     const [value, setValue] = useState(props.defaultValue)
     const [pwdVisible, setPwdVisible] = useState('password')
     const [warningMsg, setWarningMesg] = useState(props.warning || {})
+    const [defVal,setDefVal] = useState(props.defaultValue || '')
+
 
     const checkValue = () => {
         console.log('checking...');
@@ -34,7 +36,7 @@ export default function Input(props) {
         warningMsg.type == 'error' ? props.validationHandler && props.validationHandler(props.sysName, false): props.validationHandler && props.validationHandler(props.sysName, true)
     }, [warningMsg])
 
-    useEffect(() => { setValue(props.defaultValue) }, [props.defaultValue])
+    useEffect(() => {setValue(props.defaultValue); setDefVal(props.defaultValue) }, [props.defaultValue])
 
     const checkEmailValue = (v) => {
         (!v && props.required) ?
@@ -224,7 +226,7 @@ export default function Input(props) {
                     options={props.options}
                     icon={props.icon}
                     disabled={props.disabled}
-                    defaultValue={props.defaultValue}
+                    defaultValue={defVal}
                     iconOptions={props.iconOptions}
                     onChange={e => setValue(e)}
                 />
@@ -237,7 +239,7 @@ export default function Input(props) {
                     icon={props.icon}
                     disabled={props.disabled}
                     multi
-                    defaultValue={props.defaultValue}
+                    defaultValue={defVal}
                     iconOptions={props.iconOptions}
                     onChange={ e => setValue(e)}
                 />

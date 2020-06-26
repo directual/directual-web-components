@@ -127,7 +127,7 @@ export default function Select(props) {
     // const forceUpdate = useForceUpdate();
     
 
-    useEffect(()=>{ !value && setValue(convertDefaultValue(props.defaultValue))},[props.defaultValue])
+    useEffect(()=>{setValue(convertDefaultValue(props.defaultValue))},[props.defaultValue])
 
     useOutsideAlerter(selectRef);
 
@@ -197,7 +197,7 @@ export default function Select(props) {
         console.log('change!')
         value && !props.multi && props.onChange(value.key)
         value && value.length > 0 && props.onChange(value.map(i=>i.key))
-        !value || value.length == 0 && props.onChange(null)
+        if (!value || value.length == 0) { props.onChange(null); console.log('обнуляем!')}
     }, [value])
 
 
