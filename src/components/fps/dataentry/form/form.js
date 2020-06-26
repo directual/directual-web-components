@@ -27,10 +27,10 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
   const [model, setModel] = useState({})
   const [isValid, setIsValid] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [showForm,setShowForm] = useState(true)
+  const [showForm, setShowForm] = useState(true)
 
   console.log('------------ form data: -------------')
-  console.log(formWidth)
+  console.log(data)
 
 
   const sendMsg = (msg) => {
@@ -82,7 +82,7 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
   })
 
   //Hidden fields from URL query params:
-  const queryString = typeof window !== 'undefined' ? window.location.search: '';
+  const queryString = typeof window !== 'undefined' ? window.location.search : '';
   const urlParams = new URLSearchParams(queryString);
   let hiddenFieldsValues
   for (const hiddenField in hiddenFields) {
@@ -114,7 +114,7 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
     return matching[field.dataType]
   }
 
-// Validation:
+  // Validation:
   useEffect(() => {
     setIsValid(true)
     fileds.forEach(field => {
@@ -128,7 +128,7 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
     if (fileds) { fileds[fileds.indexOf(fileds.filter(f => f.sysName == field)[0])].isValid = valid }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     if (data.error || data.response) {
       setLoading(false)
     }
@@ -144,11 +144,28 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
       )}
 
       {loading && <Loader>Loading...</Loader>}
-      {data.error && 
+
+      {data.error &&
         <Hint title='Form Error' error>{data.error}</Hint>}
 
-      {isSuccessWrite && <div>{successText}</div>}
+      {/* Standard response processing: */}
+      {!data.params.result.isSuccessField && <React.Fragment>
+        {isSuccessWrite && <Hint title='Success' ok>{successText}</Hint>}
+      </React.Fragment>}
 
+
+      {/* Custon response processing: */}
+      {data.params.result.isSuccessField && <React.Fragment>
+        {data.response && data.response[data.params.result.isSuccessField.key] == 'false' && <React.Fragment>
+          <Hint title='Sync scenario negative response' error>{data.params.result.resultMessageField && data.response[data.params.result.resultMessageField.key]}</Hint>
+          <Button icon='edit' onClick={()=>{
+            setShowForm(true);
+
+          }}>Edit my form response</Button>
+          </React.Fragment>}
+        {data.response && data.response[data.params.result.isSuccessField.key] == 'true' &&
+          <Hint title='Sync scenario positive response' ok>{data.params.result.resultMessageField && data.response[data.params.result.resultMessageField.key]}</Hint>}
+      </React.Fragment>}
 
       {showForm && !loading && (
         <form onSubmit={submit} style={{ maxWidth: formWidth ? parseInt(formWidth) : 'auto' }}>
