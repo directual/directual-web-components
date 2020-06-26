@@ -156,6 +156,11 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
 
       {/* Custon response processing: */}
       {data.params.result.isSuccessField && <React.Fragment>
+        {JSON.stringify(data)}<hr />
+        Название поля с флагом: {data.params.result.isSuccessField.key}<br />
+        Название поля с текстом: {data.params.result.resultMessageField.key}<br />
+        Значение поля с флагом: {data.response[data.params.result.resultMessageField.key]}<br />
+        Значение поля с текстом: {data.response[data.params.result.resultMessageField.key]}<br />
         {data.response && !data.response[data.params.result.isSuccessField.key] && <React.Fragment>
           <Hint title='Sync scenario negative response' error>{data.params.result.resultMessageField && data.response[data.params.result.resultMessageField.key]}</Hint>
           </React.Fragment>}
@@ -164,10 +169,10 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
       </React.Fragment>}
 
       {/* Обнулить! */}
+      {!showForm && !loading &&
       <Button icon='refresh' onClick={()=>{
         setShowForm(true);
-        data.response = {}
-      }}>Submit again</Button>
+      }}>Submit again</Button>}
 
       {showForm && !loading && (
         <form onSubmit={submit} style={{ maxWidth: formWidth ? parseInt(formWidth) : 'auto' }}>
