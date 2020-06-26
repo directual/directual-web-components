@@ -99,6 +99,7 @@ export default function Input(props) {
             {props.label && <label>{props.label}{props.required && '*'}</label>}
             
             <span className="debug"> value: {JSON.stringify(value)}</span>
+            <span className="debug"> defVal: {JSON.stringify(defVal)}</span>
 
             {props.type != 'email' &&
                 props.type != 'number' &&

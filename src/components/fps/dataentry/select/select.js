@@ -127,7 +127,7 @@ export default function Select(props) {
     // const forceUpdate = useForceUpdate();
     
 
-    useEffect(()=>{props.defaultValue && setValue(convertDefaultValue(props.defaultValue))},[props.defaultValue])
+    useEffect(()=>{setValue(convertDefaultValue(props.defaultValue))},[props.defaultValue])
 
     useOutsideAlerter(selectRef);
 
