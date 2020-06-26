@@ -2,13 +2,13 @@ import React, { useState, useEffect, useRef, useCallback } from 'react'
 import styles from './select.module.css'
 import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
 
-function useForceUpdate() {
-    const [, setTick] = useState(0);
-    const update = useCallback(() => {
-        setTick(tick => tick + 1);
-    }, [])
-    return update;
-}
+// function useForceUpdate() {
+//     const [, setTick] = useState(0);
+//     const update = useCallback(() => {
+//         setTick(tick => tick + 1);
+//     }, [])
+//     return update;
+// }
 
 function List(props) {
     const scrollDivRef = useRef(null)
@@ -124,7 +124,7 @@ export default function Select(props) {
     const [keySelected, setKeySelected] = useState()
     const selectRef = useRef(null);
 
-    const forceUpdate = useForceUpdate();
+    // const forceUpdate = useForceUpdate();
     
 
     useEffect(()=>{ !value && setValue(convertDefaultValue(props.defaultValue))},[props.defaultValue])
@@ -148,7 +148,6 @@ export default function Select(props) {
         focus && inputEl.current.focus(); 
         setFilter(''); 
         setKeySelected()
-        //!focus &&  props.checkValue()
     }, [focus])
 
     let FO;
@@ -166,7 +165,6 @@ export default function Select(props) {
     const handleKeyboard = (e) => {
         if (focus && filteredOptions) {
             currentPosition = filteredOptions.indexOf(keySelected)
-            //console.log(e.key + ' key: ' + currentPosition)
             if (e.key == 'Backspace' && props.multi && filter == '') {
                 let array = [...value] || []
                 array.pop();
@@ -200,9 +198,6 @@ export default function Select(props) {
         value && !props.multi && props.onChange(value.key)
         value && value.length > 0 && props.onChange(value.map(i=>i.key))
         !value || value.length == 0 && props.onChange(null)
-        // value && props.onChange(value.map(i=>i.key))
-        // value && props.onChange(value.map(i=>i.key))
-        //value && typeof value == 'array' && props.onChange(value.map(i=>i.key));
     }, [value])
 
 
@@ -228,9 +223,9 @@ export default function Select(props) {
 
     return (
         <div className={styles.select_wrapper} style={{ maxWidth: props.width || 'auto' }}>
-            {/* <div className="debug">
-            {JSON.stringify(value)}<br />
-            </div> */}
+            <div className="debug">
+            select value: {JSON.stringify(value)}<br />
+            </div>
             <div
                 id='selectElement'
                 className=
