@@ -113,8 +113,9 @@ export default function Select(props) {
         if(!props.multi && def) {
             console.log('ошибка 2');
             console.log(props.options);
-            console.log(props.options.filter(i=>i.key == def)[0]);
-            return props.options.filter(i=>i.key == def)[0]}
+            let D = props.options.filter(i=>i.key == def)[0];
+            console.log(D);
+            return D; }
         if(props.multi && def) {
             console.log('ошибка 3');
             return def.map(j => props.options.filter(i=>i.key == j)[0] )}
@@ -132,7 +133,12 @@ export default function Select(props) {
     // const forceUpdate = useForceUpdate();
     
 
-    useEffect(()=>{console.log('вроде обновилось'); setValue(convertDefaultValue(props.defaultValue))},[props.defaultValue])
+    useEffect(()=>{
+        console.log('обновляем...'); 
+        let D = convertDefaultValue(props.defaultValue); 
+        setValue(D)
+        console.log('вроде обновилось'); 
+    },[props.defaultValue])
 
     useOutsideAlerter(selectRef);
 
