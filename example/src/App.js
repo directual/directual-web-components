@@ -16,6 +16,7 @@ import {
 import ButtonsPage from './pages/buttons'
 import InputsPage from './pages/inputs'
 import IconsPage from './pages/icons'
+import TypoPage from './pages/typo'
 
 
 function MainMenuWrapper() {
@@ -144,7 +145,7 @@ const App = (props) => {
     "formButton": 'послать',
     "formDesc": 'Если есть олимпиада по математике, то почему нет паралимпиады по математике? В ней бы участвовали гуманитарии, а все восхищались бы их мужеством.',
     "placeholder": "false",
-    "maxWidth": "300",
+    "maxWidth": "500",
     "params": {
       "result": {
         "resultMessageField": "textarea",
@@ -589,6 +590,7 @@ const App = (props) => {
 
             <Route exact path="/system-typography">
               <h1>Typography</h1>
+              <TypoPage />
             </Route>
             <Route exact path="/system-button">
               <ButtonsPage />

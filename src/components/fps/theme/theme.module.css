@@ -477,6 +477,12 @@
 :global a:hover {
   color: var(--secondary-accent-color);
 }
+:global code {
+  color: var(--code-color);
+  background-color: var(--code-color-background);
+  border-radius: 4px;
+  padding: 0px 2px;
+}
 :global .dd-debug {
   font-family: 'Courier New', Courier, monospace;
   color: darkred;

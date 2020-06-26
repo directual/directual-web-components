@@ -3,6 +3,8 @@ import styles from './form.module.css'
 import Input from '../input/input'
 import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
+import Hint from '../../hint/hint'
+import Loader from '../../loader/loader'
 import icon from './../../../../icons/fps-cards.svg'
 
 export function FormSection(props) {
@@ -25,15 +27,16 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
   const [model, setModel] = useState({})
   const [isValid, setIsValid] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [modelError, setModelError] = useState({})
+  const [showForm,setShowForm] = useState(true)
 
-  console.log('---------- form data: -------------')
-  console.log(data)
+  console.log('------------ form data: -------------')
+  console.log(formWidth)
 
 
   const sendMsg = (msg) => {
     const message = { ...msg, _id: 'form_' + id }
     setLoading(true)
+    setShowForm(false)
     if (onEvent) {
       onEvent(message)
     }
@@ -41,19 +44,9 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
 
   const submit = (e) => {
     e.preventDefault()
+    console.log('submitting...')
     console.log(model)
-    var containsError = false
-    var modelErrorCopy = {}
-    fileds.forEach((fields) => {
-      // if (!model[fields.sysName] || model[fields.sysName] === '') {
-      //   modelErrorCopy[fields.sysName] = 'Please, fill the form'
-      //   containsError = true
-      // }
-    })
-    setModelError(modelErrorCopy)
-    if (!containsError) {
-      sendMsg(model)
-    }
+    sendMsg(model)
   }
 
   data.error =
@@ -121,11 +114,10 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
     return matching[field.dataType]
   }
 
-
+// Validation:
   useEffect(() => {
     setIsValid(true)
     fileds.forEach(field => {
-      //console.log(field);
       field.isValid == false && setIsValid(false);
       field.params.required && !model[field.sysName] && field.params.include &&
         !field.params.hidden && setIsValid(false)
@@ -136,23 +128,30 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
     if (fileds) { fileds[fileds.indexOf(fileds.filter(f => f.sysName == field)[0])].isValid = valid }
   }
 
+  useEffect(()=>{
+    if (data.error || data.response) {
+      setLoading(false)
+    }
+  }, [data.error, data.response])
+
   return (
     <div className={styles.test}>
       {formName && <h1>{formName}</h1>}
       {formDesc && (
-        <p style={{ maxWidth: formWidth || 'auto', marginBottom: 22 }}>
+        <p style={{ maxWidth: parseInt(formWidth) || 'auto', marginBottom: 22 }}>
           {formDesc}
         </p>
       )}
 
-      {loading && <div>loading...</div>}
-      {data.error && <div>error: {data.error}</div>}
+      {loading && <Loader>Loading...</Loader>}
+      {data.error && 
+        <Hint title='Form Error' error>{data.error}</Hint>}
 
       {isSuccessWrite && <div>{successText}</div>}
 
 
-      {!isSuccessWrite && (
-        <form onSubmit={submit} style={{ maxWidth: formWidth ? formWidth : 'auto' }}>
+      {showForm && !loading && (
+        <form onSubmit={submit} style={{ maxWidth: formWidth ? parseInt(formWidth) : 'auto' }}>
           {fileds.map((field) => (field.params.include && !field.params.hidden &&
             <div>
               {typesMatching(field) == 'radio' &&
@@ -186,12 +185,11 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
                   options={field.params.searchData || []}
                   defaultValue={field.params.defaultValue}
                   timeFormat={`${field.params.dateTimeOn ? ' hh:mm A' : ''}`}
-                  //placeholder={field.name}
                   type={typesMatching(field)}
                   rows={field.params.textareaRows}
                   onChange={value => onChange(field.sysName, value)}
                 />}
-              {modelError[field.sysName] && <b>{modelError[field.sysName]}</b>}
+              {/* {modelError[field.sysName] && <b>{modelError[field.sysName]}</b>} */}
             </div>
           ))}
           <ActionPanel>

@@ -12,6 +12,8 @@
 .code code {
   padding: 12px 0;
   display: block;
+  background-color: #333;
+  color: #fff;
 }
 .code.show {
   height: auto;

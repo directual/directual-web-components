@@ -24,6 +24,8 @@ import Slider from './components/fps/dataentry/slider/slider'
 import Datepicker from './components/fps/dataentry/datepicker/datepicker'
 import FileUpload from './components/fps/dataentry/fileupload/fileupload'
 import {SignIn, SignUp, Profile} from './components/fps/profile/profile'
+import Hint from './components/fps/hint/hint'
+import Loader from './components/fps/loader/loader'
 
 import FpsTheme, {SetTheme} from './components/fps/theme/theme'
 
@@ -57,5 +59,7 @@ export {
   CodeSnippet,
   Select,
   Slider,
-  SignUp
+  SignUp,
+  Hint,
+  Loader
 }
