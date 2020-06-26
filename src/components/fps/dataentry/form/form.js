@@ -159,8 +159,8 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
         {JSON.stringify(data)}<hr />
         Название поля с флагом: {data.params.result.isSuccessField.key}<br />
         Название поля с текстом: {data.params.result.resultMessageField.key}<br />
-        Значение поля с флагом: {data.response[data.params.result.resultMessageField.key]}<br />
-        Значение поля с текстом: {data.response[data.params.result.resultMessageField.key]}<br />
+        Значение поля с флагом: {data.response && data.response[data.params.result.resultMessageField.key]}<br />
+        Значение поля с текстом: {data.response && data.response[data.params.result.resultMessageField.key]}<br />
         {data.response && !data.response[data.params.result.isSuccessField.key] && <React.Fragment>
           <Hint title='Sync scenario negative response' error>{data.params.result.resultMessageField && data.response[data.params.result.resultMessageField.key]}</Hint>
           </React.Fragment>}
