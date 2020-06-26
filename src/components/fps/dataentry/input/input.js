@@ -98,8 +98,8 @@ export default function Input(props) {
         <div className={styles.input_wrapper} style={{ maxWidth: props.width || 'auto' }}>
             {props.label && <label>{props.label}{props.required && '*'}</label>}
             
-            <span className="debug"> value: {JSON.stringify(value)}</span>
-            <span className="debug"> defVal: {JSON.stringify(defVal)}</span>
+            {/* <span className="debug"> value: {JSON.stringify(value)}</span>
+            <span className="debug"> defVal: {JSON.stringify(defVal)}</span> */}
 
             {props.type != 'email' &&
                 props.type != 'number' &&
