@@ -16,10 +16,11 @@ export function FormSection(props) {
 }
 
 export default function FpsForm({ data, onEvent, id, formWidth }) {
-  const successText = data.successText || 'Success'
+  const successText = data.successText || 'Submitted successfully'
   const formName = data.formName || ''
   const formDesc = data.formDesc || ''
   const formButton = data.formButton || 'Submit'
+  const formButtonResubmit = data.formButtonResubmit || 'Submit again'
   const isSuccessWrite = data.isSuccessWrite
   const fileds = data.fileds || []
   const params = data.params || {}
@@ -134,10 +135,30 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
     }
   }, [data.error, data.response])
 
+  const getResultAnswer = () => {
+    let sync = false
+    if (data.params.result.isSuccessField ||
+      data.params.result.resultMessageField ||
+      data.params.result.resultTitleField) { sync = true }
+    let isSuccess = ''
+    if (sync && data.response) { isSuccess = data.response[0][data.params.result.isSuccessField.key] }
+    let answerTitle = ''
+    if (sync && data.response) { answerTitle = data.response[0][data.params.result.resultTitleField.key] }
+    if (sync && data.response && !answerTitle) { answerTitle = isSuccess ? 'Success' : 'Error'}
+    let answerText = ''
+    if (sync && data.response) { answerText = data.response[0][data.params.result.resultMessageField.key] }
+    return {
+      sync,
+      isSuccess,
+      answerTitle,
+      answerText
+    }
+  }
+
   return (
     <div className={styles.test}>
       {formName && <h1>{formName}</h1>}
-      {formDesc && (
+      {formDesc && showForm && (
         <p style={{ maxWidth: parseInt(formWidth) || 'auto', marginBottom: 22 }}>
           {formDesc}
         </p>
@@ -149,31 +170,27 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
         <Hint title='Form Error' error>{data.error}</Hint>}
 
       {/* Standard response processing: */}
-      {!data.params.result.isSuccessField && <React.Fragment>
-        {isSuccessWrite && <Hint title='Success' ok>{successText}</Hint>}
+      {!showForm && !getResultAnswer().sync && <React.Fragment>
+        {isSuccessWrite && <Hint title='Thank you' ok>{successText}</Hint>}
       </React.Fragment>}
 
 
       {/* Custon response processing: */}
-      {data.params.result.isSuccessField && <React.Fragment>
-        Название поля с флагом: {data.params.result.isSuccessField.key}<br />
-        Название поля с текстом: {data.params.result.resultMessageField.key}<br />
-        Значение поля с флагом: {data.response && data.response[0][data.params.result.resultMessageField.key]}<br />
-        Значение поля с текстом: {data.response && data.response[0][data.params.result.resultMessageField.key]}<br />
-        {data.response && !data.response[0][data.params.result.isSuccessField.key] && <React.Fragment>
-          <Hint title='Sync scenario negative response' error>{data.params.result.resultMessageField && data.response[0][data.params.result.resultMessageField.key]}</Hint>
-          </React.Fragment>}
-        {data.response && data.response[0][data.params.result.isSuccessField.key] &&
-          <Hint title='Sync scenario positive response' ok>{data.params.result.resultMessageField && data.response[0][data.params.result.resultMessageField.key]}</Hint>}
+      {!showForm && getResultAnswer().sync && <React.Fragment>
+        {data.response && !getResultAnswer().isSuccess && <React.Fragment>
+          <Hint title={getResultAnswer().answerTitle} error>{getResultAnswer().answerText}</Hint>
+        </React.Fragment>}
+        {data.response && getResultAnswer().isSuccess &&
+          <Hint title={getResultAnswer().answerTitle} ok>{getResultAnswer().answerText}</Hint>}
       </React.Fragment>}
 
       {/* Обнулить! */}
       {!showForm && !loading &&
-      <Button icon='refresh' onClick={()=>{
-        setShowForm(true);
-        data.response == [];
-        data.error = '';
-      }}>Submit again</Button>}
+        <Button icon='refresh' onClick={() => {
+          setShowForm(true);
+          data.response == [];
+          data.error = '';
+        }}>{formButtonResubmit}</Button>}
 
       {showForm && !loading && (
         <form onSubmit={submit} style={{ maxWidth: formWidth ? parseInt(formWidth) : 'auto' }}>
@@ -234,6 +251,7 @@ FpsForm.settings = {
     { name: 'Form title', sysName: 'formName', type: 'input' },
     { name: 'Form description', sysName: 'formDesc', type: 'textarea' },
     { name: 'Submit button text', sysName: 'formButton', type: 'input' },
+    { name: 'Re-submit button text', sysName: 'formButtonResubmit', type: 'input' },
     { name: 'Labels or Placeholders', sysName: 'placeholder', type: 'labelOrPlaceholder' },
     { name: 'Form max width, px', sysName: 'maxWidth', type: 'number' },
   ]
