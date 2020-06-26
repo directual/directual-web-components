@@ -85,7 +85,7 @@ function List(props) {
                             ${styles.option}
                             ${props.current && props.current.key == option.key && styles.selected}
                             ${props.selected && props.selected.key == option.key && styles.keySelected}
-                            ${props.current && props.current.length > 0 && props.current.filter(i => i.key == option.key).length > 0 && styles.selected}
+                            ${(props.current && props.current.length > 0) && props.current.filter(i => i.key == option.key).length > 0 && styles.selected}
                             ${props.iconOptions && `${styles.optionIcon} icon icon-${option.icon}`}
                         `}
                         //ref={refs[option.key]}
@@ -168,10 +168,10 @@ export default function Select(props) {
             if (e.key == 'Backspace' && props.multi && filter == '') {
                 let array = [...value] || []
                 array.pop();
-                setValue(array);
+                array.length >=1 ? setValue(array) : setValue('null_#!)#!(*&');
             }
             if (e.key == 'Backspace' && !props.multi && filter == '') {
-                setValue(null)
+                setValue('null_#!)#!(*&')
             }
             keySelected && filteredOptions && e.key == 'ArrowUp' && currentPosition == 0 &&
                 setKeySelected('')
@@ -195,9 +195,9 @@ export default function Select(props) {
     useEffect(()=> {
         setKeySelected();
         console.log('change!')
-        value && !props.multi && props.onChange(value.key)
-        value && value.length > 0 && props.onChange(value.map(i=>i.key))
-        if (!value || value.length == 0) { props.onChange(null); console.log('обнуляем!')}
+        value && value != 'null_#!)#!(*&' && !props.multi && props.onChange(value.key)
+        value && value != 'null_#!)#!(*&' && value.length > 0 && props.onChange(value.map(i=>i.key))
+        if (value == 'null_#!)#!(*&') { props.onChange(null); console.log('обнуляем!')}
     }, [value])
 
 
@@ -216,7 +216,7 @@ export default function Select(props) {
             let arr = [...value] || []
             if (arr.indexOf(option) != -1) {
                 arr.splice(arr.indexOf(option), 1)
-                setValue(arr)
+                arr.length >= 1 ? setValue(arr): setValue('null_#!)#!(*&')
             }
         }
     }
@@ -240,7 +240,7 @@ export default function Select(props) {
 
                 {props.multi &&
                     <ul className={styles.multilist}>
-                        {value && value.length > 0 && value.map((item) =>
+                        {value && value != 'null_#!)#!(*&' && value.length > 0 && value.map((item) =>
                             <li title={item.value}>
                                 <div className={styles.title_item}>{item.value}</div>
                                 {!props.disabled &&
@@ -291,7 +291,7 @@ export default function Select(props) {
                 <List
                     chooseOption={option => chooseOption(option)}
                     removeOption={option => removeOption(option)}
-                    current={value}
+                    current={value != 'null_#!)#!(*&' ? value : null}
                     onClick={() => { setFocus(false) }}
                     options={filteredOptions}
                     filter={filter}
