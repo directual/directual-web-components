@@ -140,6 +140,13 @@ export default function Select(props) {
         console.log('вроде обновилось'); 
     },[props.defaultValue])
 
+    useEffect(()=>{
+        console.log('обновляем... опции'); 
+        let D = convertDefaultValue(props.defaultValue); 
+        setValue(D)
+        console.log('вроде обновилось'); 
+    },[props.options])
+
     useOutsideAlerter(selectRef);
 
     function useOutsideAlerter(ref) {
