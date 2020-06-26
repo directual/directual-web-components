@@ -5,7 +5,7 @@ import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
 import Hint from '../../hint/hint'
 import Loader from '../../loader/loader'
-import icon from './../../../../icons/fps-cards.svg'
+import icon from './../../../../icons/fps-form.svg'
 
 export function FormSection(props) {
   return (
@@ -15,7 +15,7 @@ export function FormSection(props) {
   )
 }
 
-export default function FpsForm({ data, onEvent, id, formWidth }) {
+export default function FpsForm({ data, onEvent, id }) {
   const successText = data.successText || 'Submitted successfully'
   const formName = data.formName || ''
   const formDesc = data.formDesc || ''
@@ -24,6 +24,7 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
   const isSuccessWrite = data.isSuccessWrite
   const fileds = data.fileds || []
   const params = data.params || {}
+  const formWidth = (data.maxWidth && parseInt(data.maxWidth)) || 'auto'
 
   const [model, setModel] = useState({})
   const [isValid, setIsValid] = useState(false)
@@ -32,6 +33,9 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
 
   console.log('------------ form data: -------------')
   console.log(data)
+
+  console.log('------------ form model: -------------')
+  console.log(model)
 
 
   const sendMsg = (msg) => {
@@ -140,7 +144,7 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
     if (data.params.result.isSuccessField ||
       data.params.result.resultMessageField ||
       data.params.result.resultTitleField) { sync = true }
-    let isSuccess = ''
+    let isSuccess = true
     if (sync && data.response && data.params.result.isSuccessField) { isSuccess = data.response[0][data.params.result.isSuccessField.key] }
     let answerTitle = ''
     if (sync && data.response && data.params.result.resultTitleField) { answerTitle = data.response[0][data.params.result.resultTitleField.key] }
@@ -155,11 +159,13 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
     }
   }
 
+  
+
   return (
     <div className={styles.test}>
       {formName && <h1>{formName}</h1>}
       {formDesc && showForm && (
-        <p style={{ maxWidth: parseInt(formWidth) || 'auto', marginBottom: 22 }}>
+        <p style={{ maxWidth: formWidth, marginBottom: 22 }}>
           {formDesc}
         </p>
       )}
@@ -184,21 +190,22 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
           <Hint title={getResultAnswer().answerTitle} ok>{getResultAnswer().answerText}</Hint>}
       </React.Fragment>}
 
-      {/* Обнулить! */}
       {!showForm && !loading &&
         <Button icon='refresh' onClick={() => {
           setShowForm(true);
+          console.log('Обнулить!')
           data.response == [];
           data.error = '';
+          getResultAnswer().isSuccess && setModel({})
         }}>{formButtonResubmit}</Button>}
 
       {showForm && !loading && (
-        <form onSubmit={submit} style={{ maxWidth: formWidth ? parseInt(formWidth) : 'auto' }}>
+        <form onSubmit={submit} style={{ maxWidth: formWidth }}>
           {fileds.map((field) => (field.params.include && !field.params.hidden &&
             <div>
               {typesMatching(field) == 'radio' &&
                 <Input type='radio'
-                  //defaultValue={false}
+                  defaultValue={model[field.sysName]}
                   label={field.name}
                   onChange={value => onChange(field.sysName, value)}
                   options={
@@ -225,11 +232,15 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
                   required={field.params.required}
                   positive={field.params.isPositive}
                   options={field.params.searchData || []}
-                  defaultValue={field.params.defaultValue}
+                  defaultValue={model[field.sysName] || field.params.defaultValue}
                   timeFormat={`${field.params.dateTimeOn ? ' hh:mm A' : ''}`}
                   type={typesMatching(field)}
                   rows={field.params.textareaRows}
-                  onChange={value => onChange(field.sysName, value)}
+                  onChange={value => {
+                    typesMatching(field) == 'select' && onChange(field.sysName, value.key);
+                    typesMatching(field) == 'multiselect' && (typeof value == 'array') && onChange(field.sysName, value.map(i=>i.key));
+                    typesMatching(field) == 'select' && typesMatching(field) != 'multiselect' && onChange(field.sysName, value)
+                  }}
                 />}
               {/* {modelError[field.sysName] && <b>{modelError[field.sysName]}</b>} */}
             </div>

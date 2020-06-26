@@ -564,7 +564,7 @@ const App = (props) => {
               <h1>What is it</h1>
             </Route>
             <Route exact path="/form">
-              <FpsForm data={exampleForm} formWidth={exampleForm.maxWidth || 'auto'} />
+              <FpsForm data={exampleForm}/>
             </Route>
             <Route exact path="/profile">
               <SignIn
