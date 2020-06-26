@@ -110,9 +110,9 @@ export default function Select(props) {
 
     function convertDefaultValue(def) {
         if(!props.options) {return null;}
-        if(!props.multi) {
+        if(!props.multi && def) {
             return props.options.filter(i=>i.key == def)[0]}
-        if(props.multi) {
+        if(props.multi && def) {
             return def.map(j => props.options.filter(i=>i.key == j)[0] )}
     }
 

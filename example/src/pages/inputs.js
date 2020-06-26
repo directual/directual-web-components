@@ -251,9 +251,9 @@ export default function InputsPage() {
                 //         { key: 3, value: 'The harder you sweat' }
                 //     ]
                 // }
-                defaultValue={
-                    [1,3]
-                }
+                // defaultValue={
+                //     [1,3]
+                // }
                 icon='database'
                 options={
                     [
