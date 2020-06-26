@@ -166,17 +166,17 @@ export default function FpsForm({ data, onEvent, id, formWidth }) {
 
       {loading && <Loader>Loading...</Loader>}
 
-      {data.error &&
+      {data.error && !loading &&
         <Hint title='Form Error' error>{data.error}</Hint>}
 
       {/* Standard response processing: */}
-      {!showForm && !getResultAnswer().sync && <React.Fragment>
+      {!showForm && !loading && !getResultAnswer().sync && <React.Fragment>
         {isSuccessWrite && <Hint title='Thank you' ok>{successText}</Hint>}
       </React.Fragment>}
 
 
       {/* Custon response processing: */}
-      {!showForm && getResultAnswer().sync && <React.Fragment>
+      {!showForm && !loading && getResultAnswer().sync && <React.Fragment>
         {data.response && !getResultAnswer().isSuccess && <React.Fragment>
           <Hint title={getResultAnswer().answerTitle} error>{getResultAnswer().answerText}</Hint>
         </React.Fragment>}
