@@ -245,11 +245,14 @@ export default function InputsPage() {
                 type='multiselect'
                 placeholder='Choose the values'
                 required
+                // defaultValue={
+                //     [
+                //         { key: 1, value: 'Good fortune? The fact is' },
+                //         { key: 3, value: 'The harder you sweat' }
+                //     ]
+                // }
                 defaultValue={
-                    [
-                        { key: 1, value: 'Good fortune? The fact is' },
-                        { key: 3, value: 'The harder you sweat' }
-                    ]
+                    [1,3]
                 }
                 icon='database'
                 options={
@@ -305,7 +308,7 @@ export default function InputsPage() {
                 type='select'
                 placeholder='Choose the line'
                 //icon='database'
-                defaultValue={{ key: 3, value: 'The harder you sweat' }}
+                defaultValue={3}
                 options={
                     [
                         { key: 1, value: 'Good fortune? The fact is' },

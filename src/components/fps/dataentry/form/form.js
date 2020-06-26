@@ -31,8 +31,8 @@ export default function FpsForm({ data, onEvent, id }) {
   const [loading, setLoading] = useState(false)
   const [showForm, setShowForm] = useState(true)
 
-  console.log('------------ form data: -------------')
-  console.log(data)
+  // console.log('------------ form data: -------------')
+  // console.log(data)
 
   console.log('------------ form model: -------------')
   console.log(model)
@@ -50,7 +50,7 @@ export default function FpsForm({ data, onEvent, id }) {
   const submit = (e) => {
     e.preventDefault()
     console.log('submitting...')
-    console.log(model)
+    
     sendMsg(model)
   }
 
@@ -224,6 +224,8 @@ export default function FpsForm({ data, onEvent, id }) {
                 />
               }
               {typesMatching(field) != 'radio' &&
+              <div>
+                {JSON.stringify(model[field.sysName])}
                 <Input
                   sysName={field.sysName}
                   validationHandler={validationHandler}
@@ -236,12 +238,10 @@ export default function FpsForm({ data, onEvent, id }) {
                   timeFormat={`${field.params.dateTimeOn ? ' hh:mm A' : ''}`}
                   type={typesMatching(field)}
                   rows={field.params.textareaRows}
-                  onChange={value => {
-                    typesMatching(field) == 'select' && onChange(field.sysName, value.key);
-                    typesMatching(field) == 'multiselect' && value && onChange(field.sysName, value.map(i=>i.key));
-                    typesMatching(field) != 'select' && typesMatching(field) != 'multiselect' && onChange(field.sysName, value)
-                  }}
-                />}
+                  onChange={value => onChange(field.sysName, value)}
+                />
+                </div>
+                }
               {/* {modelError[field.sysName] && <b>{modelError[field.sysName]}</b>} */}
             </div>
           ))}

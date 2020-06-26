@@ -107,8 +107,17 @@ function List(props) {
 }
 
 export default function Select(props) {
+
+    function convertDefaultValue(def) {
+        if(!props.options) {return null;}
+        if(!props.multi) {
+            return props.options.filter(i=>i.key == def)[0]}
+        if(props.multi) {
+            return def.map(j => props.options.filter(i=>i.key == j)[0] )}
+    }
+
     const [focus, setFocus] = useState(false);
-    const [value, setValue] = useState(props.defaultValue || (props.multi && []) || null);
+    const [value, setValue] = useState(convertDefaultValue(props.defaultValue) || (props.multi && []) || null);
     const inputEl = useRef(null);
     const [filter, setFilter] = useState('')
     const [filteredOptions, setFilteredOptions] = useState(props.options || [])
@@ -117,8 +126,8 @@ export default function Select(props) {
 
     const forceUpdate = useForceUpdate();
     
-    
-    useEffect(()=>{ !value && setValue(props.defaultValue)},[props.defaultValue])
+
+    useEffect(()=>{ !value && setValue(convertDefaultValue(props.defaultValue))},[props.defaultValue])
 
     useOutsideAlerter(selectRef);
 
@@ -142,15 +151,6 @@ export default function Select(props) {
         //!focus &&  props.checkValue()
     }, [focus])
 
-
-    useEffect(() => { 
-        console.log('hey, new value:'); 
-        console.log(value); 
-        props.onChange(value); 
-        setKeySelected();
-    }, 
-    [value])
-
     let FO;
     useEffect(() => {
         if (props.options) {
@@ -169,13 +169,11 @@ export default function Select(props) {
             //console.log(e.key + ' key: ' + currentPosition)
             if (e.key == 'Backspace' && props.multi && filter == '') {
                 let array = [...value] || []
-                array.pop()
-                props.onChange(array);
-                //forceUpdate()
+                array.pop();
+                setValue(array);
             }
             if (e.key == 'Backspace' && !props.multi && filter == '') {
-                setValue('')
-                props.onChange('');
+                setValue(null)
             }
             keySelected && filteredOptions && e.key == 'ArrowUp' && currentPosition == 0 &&
                 setKeySelected('')
@@ -196,6 +194,18 @@ export default function Select(props) {
         }
     }
 
+    useEffect(()=> {
+        setKeySelected();
+        console.log('change!')
+        value && !props.multi && props.onChange(value.key)
+        value && value.length > 0 && props.onChange(value.map(i=>i.key))
+        !value || value.length == 0 && props.onChange(null)
+        // value && props.onChange(value.map(i=>i.key))
+        // value && props.onChange(value.map(i=>i.key))
+        //value && typeof value == 'array' && props.onChange(value.map(i=>i.key));
+    }, [value])
+
+
 
     const chooseOption = (option) => {
         !props.multi && setValue(option)
@@ -203,7 +213,6 @@ export default function Select(props) {
             let arr = [...value] || []
             arr.indexOf(option) == -1 && arr.push(option)
             setValue(arr)
-            props.onChange(arr);
         }
     }
 
@@ -213,7 +222,6 @@ export default function Select(props) {
             if (arr.indexOf(option) != -1) {
                 arr.splice(arr.indexOf(option), 1)
                 setValue(arr)
-
             }
         }
     }
@@ -221,7 +229,7 @@ export default function Select(props) {
     return (
         <div className={styles.select_wrapper} style={{ maxWidth: props.width || 'auto' }}>
             {/* <div className="debug">
-            {JSON.stringify(value)}
+            {JSON.stringify(value)}<br />
             </div> */}
             <div
                 id='selectElement'
