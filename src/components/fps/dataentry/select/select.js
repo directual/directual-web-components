@@ -112,6 +112,8 @@ export default function Select(props) {
         if(!props.options) {console.log('ошибка 1'); return null;}
         if(!props.multi && def) {
             console.log('ошибка 2');
+            console.log(props.options);
+            console.log(props.options.filter(i=>i.key == def)[0]);
             return props.options.filter(i=>i.key == def)[0]}
         if(props.multi && def) {
             console.log('ошибка 3');
