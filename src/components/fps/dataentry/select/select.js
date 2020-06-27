@@ -115,10 +115,11 @@ export default function Select(props) {
             return D; }
         if(props.multi && def) {
             return def.map(j => props.options.filter(i=>i.key == j)[0] )}
+        return props.multi ? [] : null
     }
 
     const [focus, setFocus] = useState(false);
-    const [value, setValue] = useState(convertDefaultValue(props.defaultValue) || (props.multi && []) || null);
+    const [value, setValue] = useState( (props.defaultValue && convertDefaultValue(props.defaultValue)) || (props.multi && []) || null);
     const inputEl = useRef(null);
     const [filter, setFilter] = useState('')
     const [filteredOptions, setFilteredOptions] = useState(props.options || [])
@@ -175,12 +176,12 @@ export default function Select(props) {
         if (focus && filteredOptions) {
             currentPosition = filteredOptions.indexOf(keySelected)
             if (e.key == 'Backspace' && props.multi && filter == '') {
-                let array = [...value] || []
+                let array = value ? [...value] : []
                 array.pop();
-                array.length >=1 ? setValue(array) : setValue('null_#!)#!(*&');
+                array.length >=1 ? setValue(array) : setValue([]);
             }
             if (e.key == 'Backspace' && !props.multi && filter == '') {
-                setValue('null_#!)#!(*&')
+                setValue(null)
             }
             keySelected && filteredOptions && e.key == 'ArrowUp' && currentPosition == 0 &&
                 setKeySelected('')
@@ -204,9 +205,9 @@ export default function Select(props) {
     useEffect(()=> {
         setKeySelected();
         console.log('change!')
-        value && value != 'null_#!)#!(*&' && !props.multi && props.onChange(value.key)
-        value && value != 'null_#!)#!(*&' && value.length > 0 && props.onChange(value.map(i=>i.key))
-        if (value == 'null_#!)#!(*&') { props.onChange(null); console.log('обнуляем!')}
+        value && !props.multi && props.onChange(value.key)
+        value && value.length > 0 && props.onChange(value.map(i=>i.key))
+        if (!value || value.length == 0) { props.onChange(null); console.log('обнуляем!')}
     }, [value])
 
 
@@ -214,7 +215,7 @@ export default function Select(props) {
     const chooseOption = (option) => {
         !props.multi && setValue(option)
         if (props.multi) {
-            let arr = [...value] || []
+            let arr = value ? [...value] : []
             arr.indexOf(option) == -1 && arr.push(option)
             setValue(arr)
         }
@@ -225,7 +226,7 @@ export default function Select(props) {
             let arr = [...value] || []
             if (arr.indexOf(option) != -1) {
                 arr.splice(arr.indexOf(option), 1)
-                arr.length >= 1 ? setValue(arr): setValue('null_#!)#!(*&')
+                arr.length >= 1 ? setValue(arr): setValue(null)
             }
         }
     }
@@ -249,7 +250,7 @@ export default function Select(props) {
 
                 {props.multi &&
                     <ul className={styles.multilist}>
-                        {value && value != 'null_#!)#!(*&' && value.length > 0 && value.map((item) =>
+                        {value && value.length > 0 && value.map((item) =>
                             <li title={item.value}>
                                 <div className={styles.title_item}>{item.value}</div>
                                 {!props.disabled &&
@@ -300,7 +301,7 @@ export default function Select(props) {
                 <List
                     chooseOption={option => chooseOption(option)}
                     removeOption={option => removeOption(option)}
-                    current={value != 'null_#!)#!(*&' ? value : null}
+                    current={value}
                     onClick={() => { setFocus(false) }}
                     options={filteredOptions}
                     filter={filter}

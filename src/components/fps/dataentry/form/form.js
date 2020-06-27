@@ -196,7 +196,7 @@ export default function FpsForm({ data, onEvent, id }) {
           console.log('Обнулить!')
           data.response == [];
           data.error = '';
-          getResultAnswer().isSuccess && setModel({})
+          getResultAnswer().isSuccess && !data.error && setModel({})
         }}>{formButtonResubmit}</Button>}
 
       {showForm && !loading && (

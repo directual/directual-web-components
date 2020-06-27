@@ -17,7 +17,7 @@ export default function Input(props) {
     const [value, setValue] = useState(props.defaultValue)
     const [pwdVisible, setPwdVisible] = useState('password')
     const [warningMsg, setWarningMesg] = useState(props.warning || {})
-    const [defVal,setDefVal] = useState(props.defaultValue || '')
+    const [defVal,setDefVal] = useState(props.defaultValue)
 
 
     const checkValue = () => {
@@ -72,9 +72,6 @@ export default function Input(props) {
 
 
     const handleChangeNumber = (e) => {
-        // props.onChange && props.onChange(e)
-        // setValue(e)
-        // props.required && setWarningMesg({})
         if (isNaN(parseInt(e))) {
             setValue(null);
         } else {
@@ -88,10 +85,6 @@ export default function Input(props) {
         props.type == 'select'  && props.required && value != props.defaultValue && checkValue();
         props.type == 'multiselect' && props.required && value != props.defaultValue && checkValue();
     }, [value])
-
-    // useEffect(
-    //     () => checkValue(), 
-    // [value])
     
 
     return (
