@@ -152,6 +152,10 @@ export default function FpsTheme(props) {
 
     const userOptions = (props.themes && options.filter(option => props.themes.indexOf(option.value) != -1)) || options
 
+    useEffect(()=>{
+      setTheme(props.themeName)
+    }, [])
+
     return (
         <React.Fragment>
             {!props.initial &&
