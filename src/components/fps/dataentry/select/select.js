@@ -207,7 +207,7 @@ export default function Select(props) {
         console.log('change!')
         value && !props.multi && props.onChange(value.key)
         value && value.length > 0 && props.onChange(value.map(i=>i.key))
-        if (!value || value.length == 0) { props.onChange(null); console.log('обнуляем!')}
+        if (!value || value.length == 0) { props.onChange(null);}
     }, [value])
 
 

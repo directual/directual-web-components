@@ -34,8 +34,8 @@ export default function FpsForm({ data, onEvent, id }) {
   // console.log('------------ form data: -------------')
   // console.log(data)
 
-  console.log('------------ form model: -------------')
-  console.log(model)
+  // console.log('------------ form model: -------------')
+  // console.log(model)
 
 
   const sendMsg = (msg) => {
@@ -190,7 +190,7 @@ export default function FpsForm({ data, onEvent, id }) {
           <Hint title={getResultAnswer().answerTitle} ok>{getResultAnswer().answerText}</Hint>}
       </React.Fragment>}
 
-      {!showForm && !loading &&
+      {!showForm && !loading && !data.error &&
         <Button icon='refresh' onClick={() => {
           setShowForm(true);
           console.log('Обнулить!')

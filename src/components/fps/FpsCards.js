@@ -54,14 +54,14 @@ function FpsCards({ data, onEvent, id }) {
     </div>
   )
 }
-FpsCards.settings = {
-  icon: icon,
-  name: 'Cards view',
-  sysName: 'FpsCards',
-  form: [
-    { name: 'Select SL', sysName: 'sl', type: 'api-endpoint' },
-    { name: 'pageSize', sysName: 'successText', type: 'input' },
-    { name: 'headerField', sysName: 'headerField', type: 'input' }
-  ]
-}
+// FpsCards.settings = {
+//   icon: icon,
+//   name: 'Cards view',
+//   sysName: 'FpsCards',
+//   form: [
+//     { name: 'Select SL', sysName: 'sl', type: 'api-endpoint' },
+//     { name: 'pageSize', sysName: 'successText', type: 'input' },
+//     { name: 'headerField', sysName: 'headerField', type: 'input' }
+//   ]
+// }
 export default FpsCards
