@@ -37,8 +37,8 @@ export default function FpsForm({ data, onEvent, id }) {
   // console.log('------------ form data: -------------')
   // console.log(data)
 
-  // console.log('------------ form model: -------------')
-  // console.log(model)
+  console.log('------------ form model: -------------')
+  console.log(model)
 
   function sortFields(arr) {
     arr.forEach((field, i) => {
@@ -95,7 +95,8 @@ export default function FpsForm({ data, onEvent, id }) {
 
 
   
-
+console.log('hidden:')
+console.log(hiddenFields)
   //Hidden fields from URL query params:
   const queryString = typeof window !== 'undefined' ? window.location.search : '';
   const urlParams = new URLSearchParams(queryString);
@@ -235,6 +236,7 @@ export default function FpsForm({ data, onEvent, id }) {
               }
               {typesMatching(field) != 'radio' &&
                 <div>
+                  {field.weight}
                   <Input
                     sysName={field.sysName}
                     validationHandler={validationHandler}
