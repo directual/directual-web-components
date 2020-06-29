@@ -163,7 +163,8 @@ const App = (props) => {
           "quickSearch": true,
           "allowAddLinks": false,
           "dateTimeOn": true,
-          "placeholder": true
+          "placeholder": true,
+          "weight":4
         },
         "number": {
           "include": true,
@@ -175,7 +176,8 @@ const App = (props) => {
           "isPositive": true,
           "quickSearch": true,
           "allowAddLinks": false,
-          "dateTimeOn": true
+          "dateTimeOn": true,
+          "weight":2
         },
         // "datetime": {
         //   "include": true,
@@ -200,7 +202,8 @@ const App = (props) => {
           "quickSearch": true,
           "allowAddLinks": true,
           "dateTimeOn": true,
-          "searchData":[{"key":"ddfdfsdsds","value":"1ddfdfsdsds"},{"key":"test","value":"1test"}]
+          "searchData":[{"key":"ddfdfsdsds","value":"1ddfdfsdsds"},{"key":"test","value":"1test"}],
+          "weight":10
         },
         "arrayLink": {
           "include": true,

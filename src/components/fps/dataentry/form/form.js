@@ -16,26 +16,58 @@ export function FormSection(props) {
 }
 
 export default function FpsForm({ data, onEvent, id }) {
-  const successText = data.successText || 'Submitted successfully'
-  const formName = data.formName || ''
-  const formDesc = data.formDesc || ''
-  const formButton = data.formButton || 'Submit'
-  const formButtonResubmit = data.formButtonResubmit || 'Submit again'
-  const isSuccessWrite = data.isSuccessWrite
-  const fileds = data.fileds || []
-  const params = data.params || {}
-  const formWidth = (data.maxWidth && parseInt(data.maxWidth)) || 'auto'
+
+  let hiddenFields = {}
 
   const [model, setModel] = useState({})
   const [isValid, setIsValid] = useState(false)
   const [loading, setLoading] = useState(false)
   const [showForm, setShowForm] = useState(true)
 
+  const successText = data.successText || 'Submitted successfully'
+  const formName = data.formName || ''
+  const formDesc = data.formDesc || ''
+  const formButton = data.formButton || 'Submit'
+  const formButtonResubmit = data.formButtonResubmit || 'Submit again'
+  const isSuccessWrite = data.isSuccessWrite
+  const params = data.params || {}
+  const fileds = sortFields(data.fileds) || []
+  const formWidth = (data.maxWidth && parseInt(data.maxWidth)) || 'auto'
+
   // console.log('------------ form data: -------------')
   // console.log(data)
 
   // console.log('------------ form model: -------------')
   // console.log(model)
+
+  function sortFields(arr) {
+    arr.forEach((field, i) => {
+      if (!params.fields[field.sysName]) {
+        params.fields[field.sysName] = {
+          include: true,
+          hidden: false,
+          required: false,
+          isTextarea: false,
+          textareaRows: 4,
+          defaultValue: '',
+          isPositive: false,
+          quickSearch: true,
+          allowAddLinks: false,
+          dateTimeOn: true,
+          isValid: true,
+          weight: 0
+        }
+      } else {
+        if (params.fields[field.sysName].hidden) {
+          hiddenFields[field.sysName] = true
+        }
+      }
+      arr[i].params = params.fields[field.sysName]
+      arr[i].weight = arr[i].params.weight || 0;
+    })
+    
+    return arr.sort((a,b)=>b.weight-a.weight)
+  }
 
 
   const sendMsg = (msg) => {
@@ -50,7 +82,7 @@ export default function FpsForm({ data, onEvent, id }) {
   const submit = (e) => {
     e.preventDefault()
     console.log('submitting...')
-    
+
     sendMsg(model)
   }
 
@@ -61,30 +93,8 @@ export default function FpsForm({ data, onEvent, id }) {
   data.error =
     data.error && data.error == '511' ? 'Form is not configured' : data.error
 
-  let hiddenFields = {}
 
-  fileds.forEach((field, i) => {
-    if (!params.fields[field.sysName]) {
-      params.fields[field.sysName] = {
-        include: true,
-        hidden: false,
-        required: false,
-        isTextarea: false,
-        textareaRows: 4,
-        defaultValue: '',
-        isPositive: false,
-        quickSearch: true,
-        allowAddLinks: false,
-        dateTimeOn: true,
-        isValid: true
-      }
-    } else {
-      if (params.fields[field.sysName].hidden) {
-        hiddenFields[field.sysName] = true
-      }
-    }
-    fileds[i].params = params.fields[field.sysName]
-  })
+  
 
   //Hidden fields from URL query params:
   const queryString = typeof window !== 'undefined' ? window.location.search : '';
@@ -148,7 +158,7 @@ export default function FpsForm({ data, onEvent, id }) {
     if (sync && data.response && data.params.result.isSuccessField) { isSuccess = data.response[0][data.params.result.isSuccessField] }
     let answerTitle = ''
     if (sync && data.response && data.params.result.resultTitleField) { answerTitle = data.response[0][data.params.result.resultTitleField] }
-    if (sync && data.response && !answerTitle) { answerTitle = isSuccess ? 'Success' : 'Error'}
+    if (sync && data.response && !answerTitle) { answerTitle = isSuccess ? 'Success' : 'Error' }
     let answerText = ''
     if (sync && data.response && data.params.result.resultMessageField) { answerText = data.response[0][data.params.result.resultMessageField] }
     return {
@@ -159,7 +169,7 @@ export default function FpsForm({ data, onEvent, id }) {
     }
   }
 
-  
+
 
   return (
     <div className={styles.test}>
@@ -224,23 +234,23 @@ export default function FpsForm({ data, onEvent, id }) {
                 />
               }
               {typesMatching(field) != 'radio' &&
-              <div>
-                <Input
-                  sysName={field.sysName}
-                  validationHandler={validationHandler}
-                  label={data.placeholder != "true" ? field.name : ''}
-                  placeholder={data.placeholder == "true" ? field.name : ''}
-                  required={field.params.required}
-                  positive={field.params.isPositive}
-                  options={field.params.searchData || []}
-                  defaultValue={model[field.sysName] || field.params.defaultValue}
-                  timeFormat={`${field.params.dateTimeOn ? ' hh:mm A' : ''}`}
-                  type={typesMatching(field)}
-                  rows={field.params.textareaRows}
-                  onChange={value => onChange(field.sysName, value)}
-                />
+                <div>
+                  <Input
+                    sysName={field.sysName}
+                    validationHandler={validationHandler}
+                    label={data.placeholder != "true" ? field.name : ''}
+                    placeholder={data.placeholder == "true" ? field.name : ''}
+                    required={field.params.required}
+                    positive={field.params.isPositive}
+                    options={field.params.searchData || []}
+                    defaultValue={model[field.sysName] || field.params.defaultValue}
+                    timeFormat={`${field.params.dateTimeOn ? ' hh:mm A' : ''}`}
+                    type={typesMatching(field)}
+                    rows={field.params.textareaRows}
+                    onChange={value => onChange(field.sysName, value)}
+                  />
                 </div>
-                }
+              }
               {/* {modelError[field.sysName] && <b>{modelError[field.sysName]}</b>} */}
             </div>
           ))}
