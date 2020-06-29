@@ -17,6 +17,12 @@ export function ContentWrapper(props) {
             <div className={styles.content_wrapper} id={props.id || undefined}>
                 {props.children}
             </div>
+            <div className={styles.diretualFooter}>
+                <a target="_blank" className={styles.logo} href="https://directual.com?ref=fps_footer">
+                    <img src="https://api.alfa.directual.com/fileUploaded/directual-site/d23ba583-1053-454d-a05d-337e20d1bb82.svg" />
+                </a>
+                <span>Made on <a target="_blank" href="https://directual.com?ref=fps_footer">Directual</a></span>
+            </div>
         </React.Fragment>
     )
 }

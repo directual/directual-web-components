@@ -21,3 +21,30 @@
         padding: 24px;
     }
 }
+
+.diretualFooter {
+    position: absolute;
+    background-color: var(--background-color);
+    border-top:solid 1px var(--field-border-color);
+    padding:5px 8px;
+    bottom: 0;
+    left:0;
+    right: 0;
+    z-index: 1000;
+    font-size: var(--text-small-size);
+    color: var(--field-border-color);
+    display: flex;
+    justify-content: space-between;
+}
+.logo {
+    display: block;
+    opacity: .6;
+    transition: .5s;
+}
+.logo:hover {
+    opacity: 1;
+}
+.logo img{
+     height: 15px;  
+     display: block; 
+}
