@@ -236,7 +236,6 @@ console.log(hiddenFields)
               }
               {typesMatching(field) != 'radio' &&
                 <div>
-                  {field.weight}
                   <Input
                     sysName={field.sysName}
                     validationHandler={validationHandler}
