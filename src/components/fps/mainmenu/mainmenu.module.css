@@ -73,7 +73,6 @@
   flex-direction: column;
   max-width: 350px;
   height: 100%;
-  z-index: 200;
 }
 .mainmenu .list {
   padding-bottom: 32px;

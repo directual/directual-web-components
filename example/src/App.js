@@ -548,6 +548,12 @@ const App = (props) => {
     "response": null
   }
 
+  let basicTheme ={
+    colorScheme: 'classic',
+    radius: 25
+}
+  const [currentTheme,setCurrentTheme] = useState(basicTheme)
+
   return (
     <FpsWrapper>
       <Router>
@@ -555,7 +561,7 @@ const App = (props) => {
         <MainMenuWrapper />
 
 
-        <ContentWrapper themeName={'tiffany'}>
+        <ContentWrapper themeName={currentTheme}>
 
           <Switch>
             <Route exact path="/table">
@@ -586,7 +592,10 @@ const App = (props) => {
             </Route>
             <Route exact path="/theme">
               <h1>Theme management</h1>
-              <FpsTheme themes={['classic', 'tiffany', 'dark-mint', 'warm-night']} />
+              <FpsTheme 
+                onChange={value => {setCurrentTheme(value)}}
+                defaultValue={currentTheme}
+                themes={['classic', 'tiffany', 'darkMint', 'warmNight', 'hacker']} />
             </Route>
 
             <Route exact path="/system-typography">

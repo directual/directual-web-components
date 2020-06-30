@@ -53,7 +53,7 @@ function List(props) {
     })
 
     const noOptions = <SomethingWentWrong icon='ban'
-    message={`No options${props.filter ? ` like \"${props.filter}\"` : ''}`} />
+        message={`No options${props.filter ? ` like \"${props.filter}\"` : ''}`} />
 
     return (
         <div ref={selectHolder}>
@@ -109,17 +109,19 @@ function List(props) {
 export default function Select(props) {
 
     function convertDefaultValue(def) {
-        if(!props.options) {return null;}
-        if(!props.multi && def) {
-            let D = props.options.filter(i=>i.key == def)[0];
-            return D; }
-        if(props.multi && def) {
-            return def.map(j => props.options.filter(i=>i.key == j)[0] )}
+        if (!props.options) { return null; }
+        if (!props.multi && def) {
+            let D = props.options.filter(i => i.key == def)[0];
+            return D;
+        }
+        if (props.multi && def) {
+            return def.map(j => props.options.filter(i => i.key == j)[0])
+        }
         return props.multi ? [] : null
     }
 
     const [focus, setFocus] = useState(false);
-    const [value, setValue] = useState( (props.defaultValue && convertDefaultValue(props.defaultValue)) || (props.multi && []) || null);
+    const [value, setValue] = useState((props.defaultValue && convertDefaultValue(props.defaultValue)) || (props.multi && []) || null);
     const inputEl = useRef(null);
     const [filter, setFilter] = useState('')
     const [filteredOptions, setFilteredOptions] = useState(props.options || [])
@@ -127,17 +129,17 @@ export default function Select(props) {
     const selectRef = useRef(null);
 
     // const forceUpdate = useForceUpdate();
-    
 
-    useEffect(()=>{
-        let D = convertDefaultValue(props.defaultValue); 
+
+    useEffect(() => {
+        let D = convertDefaultValue(props.defaultValue);
         setValue(D)
-    },[props.defaultValue])
+    }, [props.defaultValue])
 
-    useEffect(()=>{
-        let D = convertDefaultValue(props.defaultValue); 
+    useEffect(() => {
+        let D = convertDefaultValue(props.defaultValue);
         !value && setValue(D)
-    },[props.options])
+    }, [props.options])
 
     useOutsideAlerter(selectRef);
 
@@ -154,9 +156,9 @@ export default function Select(props) {
             };
         }, [ref]);
     }
-    useEffect(() => { 
-        focus && inputEl.current.focus(); 
-        setFilter(''); 
+    useEffect(() => {
+        focus && inputEl.current.focus();
+        setFilter('');
         setKeySelected()
     }, [focus])
 
@@ -178,7 +180,7 @@ export default function Select(props) {
             if (e.key == 'Backspace' && props.multi && filter == '') {
                 let array = value ? [...value] : []
                 array.pop();
-                array.length >=1 ? setValue(array) : setValue([]);
+                array.length >= 1 ? setValue(array) : setValue([]);
             }
             if (e.key == 'Backspace' && !props.multi && filter == '') {
                 setValue(null)
@@ -192,8 +194,10 @@ export default function Select(props) {
             !keySelected && filteredOptions && e.key == 'ArrowDown' &&
                 setKeySelected(filteredOptions[0])
             if (keySelected && filteredOptions && e.key == 'Enter') {
+                console.log('сука блять')
+                console.log(keySelected)
                 if (value && value.length >= 0 && value.filter(i => i.key == keySelected.key) == 0) { chooseOption(keySelected) }
-                else { props.multi && removeOption(value.filter(i => i.key == keySelected.key)[0]) }
+                else { value && value.length >= 0 && props.multi && removeOption(value.filter(i => i.key == keySelected.key)[0]) }
                 !props.multi && chooseOption(keySelected);
 
                 setFocus(false)
@@ -202,17 +206,18 @@ export default function Select(props) {
         }
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         setKeySelected();
         console.log('change!')
         value && !props.multi && props.onChange(value.key)
-        value && value.length > 0 && props.onChange(value.map(i=>i.key))
-        if (!value || value.length == 0) { props.onChange(null);}
+        value && value.length > 0 && props.onChange(value.map(i => i.key))
+        if (!value || value.length == 0) { props.onChange(null); }
     }, [value])
 
 
 
     const chooseOption = (option) => {
+        console.log('click')
         !props.multi && setValue(option)
         if (props.multi) {
             let arr = value ? [...value] : []
@@ -223,11 +228,9 @@ export default function Select(props) {
 
     const removeOption = (option) => {
         if (props.multi) {
-            let arr = [...value] || []
-            if (arr.indexOf(option) != -1) {
-                arr.splice(arr.indexOf(option), 1)
-                arr.length >= 1 ? setValue(arr): setValue(null)
-            }
+            let array = value ? [...value] : []
+            array.pop();
+            array.length >= 1 ? setValue(array) : setValue([]);
         }
     }
 

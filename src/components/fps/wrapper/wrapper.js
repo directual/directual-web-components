@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import styles from './wrapper.module.css'
 import {SetTheme} from '../theme/theme'
 
@@ -10,10 +10,15 @@ export function FpsWrapper(props) {
     )
 }
 
+
+
 export function ContentWrapper(props) {
+    const [currentTheme,setCurrentTheme] = useState(props.themeName)
+    useEffect(()=>{setCurrentTheme(props.themeName)},[props.themeName])
     return (
         <React.Fragment>
-            <SetTheme themeName={props.themeName}/>
+            <SetTheme themeName={currentTheme}/>
+            {/* <SetTheme themeName={props.themeName}/> */}
             <div className={styles.content_wrapper} id={props.id || undefined}>
                 {props.children}
             </div>

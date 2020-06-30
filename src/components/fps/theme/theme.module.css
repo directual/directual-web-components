@@ -101,12 +101,6 @@
   font-family: var(--main-font-family);
   font-size: var(--text-font-size);
 }
-:global .debug {
-  padding: 5px;
-  display: block;
-  color: red;
-  border: solid 1px red;
-}
 @font-face {
   font-family: 'directual-icons';
   src: url('https://api.alfa.directual.com/fileUploaded/directual-site/7fbcea4a-afce-414c-8978-8d7c44add850.eot');

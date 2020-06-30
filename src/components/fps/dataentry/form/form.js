@@ -37,8 +37,10 @@ export default function FpsForm({ data, onEvent, id }) {
   // console.log('------------ form data: -------------')
   // console.log(data)
 
-  console.log('------------ form model: -------------')
-  console.log(model)
+  // console.log('------------ form model: -------------')
+  // console.log(model)
+
+  //console.log('rerender')
 
   function sortFields(arr) {
     arr.forEach((field, i) => {
@@ -65,8 +67,8 @@ export default function FpsForm({ data, onEvent, id }) {
       arr[i].params = params.fields[field.sysName]
       arr[i].weight = arr[i].params.weight || 0;
     })
-    
-    return arr.sort((a,b)=>b.weight-a.weight)
+
+    return arr.sort((a, b) => b.weight - a.weight)
   }
 
 
@@ -94,9 +96,7 @@ export default function FpsForm({ data, onEvent, id }) {
     data.error && data.error == '511' ? 'Form is not configured' : data.error
 
 
-  
-console.log('hidden:')
-console.log(hiddenFields)
+
   //Hidden fields from URL query params:
   const queryString = typeof window !== 'undefined' ? window.location.search : '';
   const urlParams = new URLSearchParams(queryString);
@@ -134,10 +134,10 @@ console.log(hiddenFields)
   useEffect(() => {
     setIsValid(true)
     fileds.forEach(field => {
-      field.isValid == false && setIsValid(false);
-      field.params.required && !model[field.sysName] && field.params.include &&
-        !field.params.hidden && setIsValid(false)
-    })
+      if (field.isValid == false) { setIsValid(false);}
+      if (field.params.required && !model[field.sysName] && field.params.include && !field.params.hidden) { setIsValid(false); }
+    }
+    )
   }, [model])
 
   const validationHandler = (field, valid) => {
@@ -218,6 +218,7 @@ console.log(hiddenFields)
                 <Input type='radio'
                   defaultValue={model[field.sysName]}
                   label={field.name}
+                  required={field.params.required}
                   onChange={value => onChange(field.sysName, value)}
                   options={
                     [
@@ -244,7 +245,8 @@ console.log(hiddenFields)
                     required={field.params.required}
                     positive={field.params.isPositive}
                     options={field.params.searchData || []}
-                    defaultValue={model[field.sysName] || field.params.defaultValue}
+                    //defaultValue={model[field.sysName] || field.params.defaultValue}
+                    defaultValue={field.params.defaultValue}
                     timeFormat={`${field.params.dateTimeOn ? ' hh:mm A' : ''}`}
                     type={typesMatching(field)}
                     rows={field.params.textareaRows}

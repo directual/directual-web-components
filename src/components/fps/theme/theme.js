@@ -1,39 +1,21 @@
-import React, {useState, useEffect} from 'react'
-import './theme.module.css'
+import React, { useState, useEffect } from 'react'
+import styles from './theme.module.css'
 import Radio from '../dataentry/radio/radio'
 import Input from '../dataentry/input/input'
 
-export function SetTheme(props) {
-    return (
-        <FpsTheme initial themeName={props.themeName} />
-    )
-}
+export function SetTheme({ themeName }) {
 
-export default function FpsTheme(props) {
-    const [themeName,setThemeName] = useState(props.themeName || 'dd')
+    // themeName is like {colors:'tiffany',radius:10}
 
-    const logoDarkTheme = props.logoDarkTheme || ''
-    const logoLightTheme = props.logoLightTheme || ''
-
-    let currentTheme
-
-    if (typeof window !== 'undefined') { currentTheme = localStorage.getItem(themeName + '-theme') }
-    !currentTheme && (currentTheme = 'classic')
-
-    let currentBR
-    if (typeof window !== 'undefined') { currentBR = localStorage.getItem(themeName + '-br') }
-    !currentBR && (currentBR = '25')
-
-    const setBR = radius => {
-        if (typeof window === 'undefined') return
-        if (typeof window !== 'undefined') { localStorage.setItem(themeName + '-br', radius) }
-        document.documentElement.style.setProperty('--border-radius', radius + 'px')
-    }
+    useEffect(() => {
+        if (themeName) {
+            setTheme(themeName)
+        }
+    }, [themeName])
 
     const setTheme = theme => {
-        if (typeof window !== 'undefined') { localStorage.setItem(themeName + '-theme', theme) }
-        if (typeof window === 'undefined') return
-        if (theme === 'classic') {
+        document.documentElement.style.setProperty('--border-radius', (theme.radius ? theme.radius : '25') + 'px')
+        if (theme.colorScheme === 'classic') {
             document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
             document.documentElement.style.setProperty('--field-border-color', '#aaa')
             document.documentElement.style.setProperty('--table-border-color', 'rgba(0,0,0,.12)')
@@ -55,7 +37,7 @@ export default function FpsTheme(props) {
             document.documentElement.style.setProperty('--label-color', '#B9E0CB')
             document.documentElement.style.setProperty('--label-text-color', '#333')
         }
-        if (theme === 'tiffany') {
+        if (theme.colorScheme === 'tiffany') {
             document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
             document.documentElement.style.setProperty('--field-border-color', '#aaa')
             document.documentElement.style.setProperty('--table-border-color', 'rgba(0,0,0,.12)')
@@ -77,7 +59,7 @@ export default function FpsTheme(props) {
             document.documentElement.style.setProperty('--label-color', '#FFCCA9')
             document.documentElement.style.setProperty('--label-text-color', '#333')
         }
-        if (theme === 'dark-mint') {
+        if (theme.colorScheme === 'darkMint') {
             document.documentElement.style.setProperty('--button-border-color', '#2f00ff')
             document.documentElement.style.setProperty('--field-border-color', 'rgba(255,255,255,.2)')
             document.documentElement.style.setProperty('--table-border-color', 'rgba(255,255,255,.2)')
@@ -99,7 +81,7 @@ export default function FpsTheme(props) {
             document.documentElement.style.setProperty('--label-color', '#2f00ff')
             document.documentElement.style.setProperty('--label-text-color', 'rgba(255,255,255,.85)')
         }
-        if (theme === 'warm-night') {
+        if (theme.colorScheme === 'warmNight') {
             document.documentElement.style.setProperty('--button-border-color', '#ce9306')
             document.documentElement.style.setProperty('--field-border-color', 'rgba(255,255,255,.2)')
             document.documentElement.style.setProperty('--table-border-color', 'rgba(255,255,255,.2)')
@@ -122,65 +104,125 @@ export default function FpsTheme(props) {
             document.documentElement.style.setProperty('--label-text-color', 'rgba(255,255,255,.85)')
         }
 
+        if (theme.colorScheme === 'hacker') {
+            document.documentElement.style.setProperty('--button-border-color', '#ce9306')
+            document.documentElement.style.setProperty('--field-border-color', 'rgba(255,255,255,.2)')
+            document.documentElement.style.setProperty('--table-border-color', 'rgba(255,255,255,.2)')
+            document.documentElement.style.setProperty('--accent-color', '#60FF00')
+            document.documentElement.style.setProperty('--secondary-accent-color', '#3FA700')
+            document.documentElement.style.setProperty('--button-accent-color', ' #000000')
+            document.documentElement.style.setProperty('--background-color', '#333333')
+            document.documentElement.style.setProperty('--secondary-background-color', '#000000')
+            document.documentElement.style.setProperty('--font-color', '#fff')
+            document.documentElement.style.setProperty('--hint-color', '#fff')
+            document.documentElement.style.setProperty('--code-color', '#333')
+            document.documentElement.style.setProperty('--code-color-background', 'rgba(255,255,255,0.7)')
+            document.documentElement.style.setProperty('--error-color', '#ce4144')
+            document.documentElement.style.setProperty('--error-color-light', '#763136')
+            document.documentElement.style.setProperty('--alert-color', '#cd9300')
+            document.documentElement.style.setProperty('--alert-color-light', '#745b0e')
+            document.documentElement.style.setProperty('--ok-color', '#76ab24')
+            document.documentElement.style.setProperty('--ok-color-light', '#476927')
+            document.documentElement.style.setProperty('--label-color', '#F8E71C')
+            document.documentElement.style.setProperty('--label-text-color', 'rgba(0,0,0,.85)')
+        }
+
     }
+    return null
+}
 
-    currentTheme && setTheme(currentTheme)
-    const changeTheme = e => setTheme(e.target.value)
 
-    currentBR && setBR(currentBR)
-    const changeBR = e => setBR(e)
+
+export default function FpsTheme(props) {
+    // const [themeName, setThemeName] = useState(props.themeName || 'dd')
+
+    // const logoDarkTheme = props.logoDarkTheme || ''
+    // const logoLightTheme = props.logoLightTheme || ''
+
+    // let currentTheme
+
+    // if (typeof window !== 'undefined') { currentTheme = localStorage.getItem(themeName + '-theme') }
+    // !currentTheme && (currentTheme = 'classic')
+
+    // let currentBR
+    // if (typeof window !== 'undefined') { currentBR = localStorage.getItem(themeName + '-br') }
+    // !currentBR && (currentBR = '25')
+
+    // const setBR = radius => {
+    //     if (typeof window === 'undefined') return
+    //     if (typeof window !== 'undefined') { localStorage.setItem(themeName + '-br', radius) }
+    // }
+
+
+
+    // currentTheme && setTheme(currentTheme)
+    // const changeTheme = e => setTheme(e.target.value)
+
+    // currentBR && setBR(currentBR)
+    // const changeBR = e => setBR(e)
+
+    // const userOptions = (props.themes && options.filter(option => props.themes.indexOf(option.value) != -1)) || options
 
     const options =
         [
             {
                 value: 'classic',
-                label: 'Directual Blue, light theme'
+                label: 'Directual Blue',
+                image: 'https://api.alfa.directual.com/fileUploaded/directual-site/50790519-1bd7-4fcb-ac77-b6ad2fe8e161.svg'
             },
             {
                 value: 'tiffany',
-                label: 'Tiffany Blue, light theme'
+                label: 'Tiffany Blue',
+                image: 'https://api.alfa.directual.com/fileUploaded/directual-site/9eb3e82a-2293-47f6-992e-899daaaa6369.svg'
             },
             {
-                value: 'dark-mint',
-                label: 'Denim-Mint, dark theme'
+                value: 'darkMint',
+                label: 'Denim-Mint',
+                image: 'https://api.alfa.directual.com/fileUploaded/directual-site/d200bdab-d4af-44f2-b5e9-e3e3b15d94d2.svg'
             },
             {
-                value: 'warm-night',
-                label: 'Warm Night, dark theme'
+                value: 'warmNight',
+                label: 'Warm Night',
+                image: 'https://api.alfa.directual.com/fileUploaded/directual-site/037fb9e9-b9b5-4e0d-b335-1ce331b112b9.svg'
+            },
+            {
+                value: 'hacker',
+                label: 'Hacker Style',
+                image: 'https://api.alfa.directual.com/fileUploaded/directual-site/de91e0cc-62d1-4d89-ae59-264368763397.svg'
             }
         ]
 
     const userOptions = (props.themes && options.filter(option => props.themes.indexOf(option.value) != -1)) || options
 
+    const [selectedColorScheme, setSelectedColorScheme] = useState(
+        {
+            colorScheme: props.defaultValue.colorScheme || options[0].value,
+            radius: 25
+        }
+    )
+
     useEffect(()=>{
-      setTheme(props.themeName)
-    }, [])
+        selectedColorScheme && props.onChange && props.onChange(selectedColorScheme)
+    },[selectedColorScheme])
 
     return (
         <React.Fragment>
-            {!props.initial &&
-                <React.Fragment>
-                    <Input
-                        width={150}
-                        label='Theme name'
-                        type='string'
-                        disabled
-                        defaultValue={themeName} />
-                    <h2 style={{marginBottom:18}}>Color scheme</h2>
-                    <Radio
-                        onChange={changeTheme}
-                        defaultValue={currentTheme}
-                        options={userOptions}
-                    />
-                    <h2 style={{marginBottom:18, marginTop:32}}>Border radius</h2>
-                    <Input
-                        width={150}
-                        label='Border radius in pixels'
-                        type='number'
-                        positive
-                        onChange={changeBR}
-                        defaultValue={currentBR} />
-                </React.Fragment>}
+            <Input
+                type='radio'
+                label='Choose color scheme'
+                radioImages
+                options={userOptions}
+                defaultValue={selectedColorScheme.colorScheme}
+                onChange={value => setSelectedColorScheme({...selectedColorScheme, colorScheme: value})}
+            />
+            <Input
+                type='number'
+                label='Border radius'
+                positive
+                width={150}
+                defaultValue={selectedColorScheme.radius}
+                onChange={value => value ? setSelectedColorScheme({...selectedColorScheme, radius: value}) : setSelectedColorScheme({...selectedColorScheme, radius: 0})}
+            />
         </React.Fragment>
     )
 }

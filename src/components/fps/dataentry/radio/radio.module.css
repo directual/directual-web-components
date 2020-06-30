@@ -18,6 +18,30 @@
   border: solid 4px var(--accent-color);
   opacity: 0.5;
 }
+.radio .radioImages {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 6px;
+}
+.radio .radioImages label {
+  background-color: var(--background-color);
+  padding: 12px;
+  margin: 0 12px 12px 0;
+  width: 160px;
+  display: block;
+  height: auto;
+  border-radius: var(--border-radius);
+}
+.radio .radioImages label .label {
+  display: flex;
+  align-items: center;
+  padding-bottom: 12px;
+}
+.radio .radioImages label img {
+  display: block;
+  width: 146px;
+  margin: 0 auto 12px auto;
+}
 .radio label {
   display: flex;
   align-items: center;

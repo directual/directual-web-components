@@ -79,6 +79,7 @@ export default function Input(props) {
             props.positive && parseInt(e) >= 0 && setValue(parseInt(e));
             !props.positive && setValue(parseInt(e));
         }
+        checkValue()
     }
     useEffect(() => {
         props.onChange && props.onChange(value);
@@ -202,8 +203,8 @@ export default function Input(props) {
         <div className={styles.input_wrapper} style={{ maxWidth: props.width || 'auto' }}>
             {props.label && <label>{props.label}{props.required && '*'}</label>}
             
-            {/* <span className="debug"> value: {JSON.stringify(value)}</span>
-            <span className="debug"> defVal: {JSON.stringify(defVal)}</span> */}
+            {/* <span className="dd-debug"> value: {JSON.stringify(value)}</span>
+            <span className="dd-debug"> defVal: {JSON.stringify(defVal)}</span> */}
 
             {props.type != 'email' &&
                 props.type != 'number' &&
@@ -275,7 +276,7 @@ export default function Input(props) {
 
                     {!props.disabled && <React.Fragment>
                         <div className={`${styles.plus} icon icon-up`}
-                            onClick={() => handleChangeNumber(parseInt(value) + 1)}></div>
+                            onClick={() => { if (value) { handleChangeNumber(parseInt(value) + 1) } else { handleChangeNumber(1); } }}></div>
                         {props.positive && value > 0 && <div className={`${styles.minus} icon icon-down`}
                             onClick={() => handleChangeNumber(parseInt(value) - 1)}></div>}
                         {!props.positive && <div className={`${styles.minus} icon icon-down`}
@@ -323,6 +324,7 @@ export default function Input(props) {
                     defaultValue={props.defaultValue}
                     options={props.options}
                     disabled={props.disabled}
+                    radioImages={props.radioImages}
                 />
             }
             {props.type == 'select' &&
