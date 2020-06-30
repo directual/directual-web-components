@@ -18,12 +18,12 @@
 
 @media all and (max-width: 415px) { 
     .content_wrapper {
-        padding: 24px;
+        padding: 24px 24px 46px 24px;
     }
 }
 
 .diretualFooter {
-    position: absolute;
+    position: fixed;
     background-color: var(--background-color);
     border-top:solid 1px var(--field-border-color);
     padding:5px 8px;
