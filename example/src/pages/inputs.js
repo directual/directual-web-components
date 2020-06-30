@@ -27,7 +27,7 @@ export default function InputsPage() {
                 type="slider"
                 width={500}
                 label="Range slider"
-                defaultValue={{firstValue: 200, secondValue:400}}
+                defaultValue={{ firstValue: 200, secondValue: 400 }}
                 min={0}
                 max={600}
                 step={10}
@@ -49,7 +49,7 @@ export default function InputsPage() {
                 type="slider"
                 width={500}
                 label="Slider"
-                defaultValue={{firstValue: 300}}
+                defaultValue={{ firstValue: 300 }}
                 min={200}
                 max={1000}
                 step={1}
@@ -159,20 +159,7 @@ export default function InputsPage() {
             { key: 1, value: 'Good fortune? The fact is' },
             { key: 2, value: 'The more that you practise' },
             { key: 3, value: 'The harder you sweat' },
-            { key: 4, value: 'The luckier you get' },
-            { key: 5, value: 'Ideas? We’ve had ’em' },
-            { key: 6, value: 'Since Eve mated Adam' },
-            { key: 7, value: 'But take it from me' },
-            { key: 8, value: 'Execution’s the key' },
-            { key: 9, value: 'The money? Just pester' },
-            { key: 10, value: 'A likely investor' },
-            { key: 11, value: 'To get what you need' },
-            { key: 12, value: 'You toady to greed' },
-            { key: 13, value: 'The talent? Go sign it' },
-            { key: 14, value: 'But first, wine and dine it' },
-            { key: 15, value: 'It’s tedious work' },
-            { key: 16, value: 'With a talented jerk' },
-            { key: 17, value: 'Good timing? To win it You gotta be in it. Just never be late To quit or cut bait.' }
+            { key: 4, value: 'The luckier you get' }
         ]
     }
 />`} />
@@ -183,13 +170,12 @@ export default function InputsPage() {
                 type='select'
                 placeholder='Choose the line'
                 icon='database'
-                //defaultValue={{ key: 3, title: 'The harder you sweat' }}
                 options={
                     [
-                        {"key":"ddfdfsdsds","value":"1ddfdfsdsds"},
-                        {"key":"test","value":"1test"}
-                        // {key:"ddfdfsdsds",value:"1ddfdfsdsds"},
-                        // {key:"test",value:"1test"}
+                        { key: 1, value: 'Good fortune? The fact is' },
+                        { key: 2, value: 'The more that you practise' },
+                        { key: 3, value: 'The harder you sweat' },
+                        { key: 4, value: 'The luckier you get' }
                     ]
                 }
             />
@@ -208,13 +194,8 @@ export default function InputsPage() {
     width={700}
     type='multiselect'
     placeholder='Choose the values'
+    defaultValue={[2,5]}
     required
-    defaultValue={
-        [
-            { key: 3, value: 'The harder you sweat' },
-            { key: 13, value: 'The talent? Go sign it' }
-        ]
-    }
     icon='database'
     options={
         [
@@ -244,16 +225,8 @@ export default function InputsPage() {
                 width={700}
                 type='multiselect'
                 placeholder='Choose the values'
+                defaultValue={[2,5]}
                 required
-                // defaultValue={
-                //     [
-                //         { key: 1, value: 'Good fortune? The fact is' },
-                //         { key: 3, value: 'The harder you sweat' }
-                //     ]
-                // }
-                // defaultValue={
-                //     [1,3]
-                // }
                 icon='database'
                 options={
                     [
@@ -575,7 +548,7 @@ export default function InputsPage() {
                 }
             />
 
-<CodeSnippet code=
+            <CodeSnippet code=
                 {`<Input
     label='Radio station (disabled)'
     type='radio'

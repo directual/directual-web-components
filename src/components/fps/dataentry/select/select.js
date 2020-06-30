@@ -136,7 +136,7 @@ export default function Select(props) {
 
     useEffect(()=>{
         let D = convertDefaultValue(props.defaultValue); 
-        setValue(D)
+        !value && setValue(D)
     },[props.options])
 
     useOutsideAlerter(selectRef);

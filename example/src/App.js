@@ -548,8 +548,6 @@ const App = (props) => {
     "response": null
   }
 
-  const themeName = 'dd'
-
   return (
     <FpsWrapper>
       <Router>
@@ -557,7 +555,7 @@ const App = (props) => {
         <MainMenuWrapper />
 
 
-        <ContentWrapper themeName={themeName}>
+        <ContentWrapper themeName={'tiffany'}>
 
           <Switch>
             <Route exact path="/table">
@@ -588,7 +586,7 @@ const App = (props) => {
             </Route>
             <Route exact path="/theme">
               <h1>Theme management</h1>
-              <FpsTheme themeName={themeName} themes={['classic', 'tiffany', 'dark-mint', 'warm-night']} />
+              <FpsTheme themes={['classic', 'tiffany', 'dark-mint', 'warm-night']} />
             </Route>
 
             <Route exact path="/system-typography">

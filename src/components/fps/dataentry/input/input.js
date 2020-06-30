@@ -82,9 +82,120 @@ export default function Input(props) {
     }
     useEffect(() => {
         props.onChange && props.onChange(value);
-        props.type == 'select'  && props.required && value != props.defaultValue && checkValue();
+        props.type == 'select' && props.required && value != props.defaultValue && checkValue();
+        props.type == 'icon' && props.required && value != props.defaultValue && checkValue();
         props.type == 'multiselect' && props.required && value != props.defaultValue && checkValue();
     }, [value])
+
+
+    const icon_options=
+        [
+            { key: 'babai', value: 'babai', icon: 'babai' },
+            { key: 'actions', value: 'actions', icon: 'actions' },
+            { key: 'application', value: 'application', icon: 'application' },
+            { key: 'arrowDown', value: 'arrowDown', icon: 'arrowDown' },
+            { key: 'arrowLeft', value: 'arrowLeft', icon: 'arrowLeft' },
+            { key: 'arrowRight', value: 'arrowRight', icon: 'arrowRight' },
+            { key: 'arrowUp', value: 'arrowUp', icon: 'arrowUp' },
+            { key: 'back', value: 'back', icon: 'back' },
+            { key: 'ban', value: 'ban', icon: 'ban' },
+            { key: 'bellActive', value: 'bellActive', icon: 'bellActive' },
+            { key: 'bell', value: 'bell', icon: 'bell' },
+            { key: 'bookmarkFill', value: 'bookmarkFill', icon: 'bookmarkFill' },
+            { key: 'bookmark', value: 'bookmark', icon: 'bookmark' },
+            { key: 'boolean', value: 'boolean', icon: 'boolean' },
+            { key: 'bracketsArray', value: 'bracketsArray', icon: 'bracketsArray' },
+            { key: 'brackets', value: 'brackets', icon: 'brackets' },
+            { key: 'bubble', value: 'bubble', icon: 'bubble' },
+            { key: 'bug', value: 'bug', icon: 'bug' },
+            { key: 'calendar', value: 'calendar', icon: 'calendar' },
+            { key: 'chart', value: 'chart', icon: 'chart' },
+            { key: 'clip', value: 'clip', icon: 'clip' },
+            { key: 'clocks', value: 'clocks', icon: 'clocks' },
+            { key: 'close', value: 'close', icon: 'close' },
+            { key: 'codeArray', value: 'codeArray', icon: 'codeArray' },
+            { key: 'codeXML', value: 'codeXML', icon: 'codeXML' },
+            { key: 'collapse', value: 'collapse', icon: 'collapse' },
+            { key: 'comment', value: 'comment', icon: 'comment' },
+            { key: 'configure', value: 'configure', icon: 'configure' },
+            { key: 'copy', value: 'copy', icon: 'copy' },
+            { key: 'creditcard', value: 'creditcard', icon: 'creditcard' },
+            { key: 'database', value: 'database', icon: 'database' },
+            { key: 'delete', value: 'delete', icon: 'delete' },
+            { key: 'detailsAlt', value: 'detailsAlt', icon: 'detailsAlt' },
+            { key: 'details', value: 'details', icon: 'details' },
+            { key: 'down', value: 'down', icon: 'down' },
+            { key: 'download', value: 'download', icon: 'download' },
+            { key: 'edit', value: 'edit', icon: 'edit' },
+            { key: 'expand', value: 'expand', icon: 'expand' },
+            { key: 'export', value: 'export', icon: 'export' },
+            { key: 'filterFill', value: 'filterFill', icon: 'filterFill' },
+            { key: 'filter', value: 'filter', icon: 'filter' },
+            { key: 'folder', value: 'folder', icon: 'folder' },
+            { key: 'forward', value: 'forward', icon: 'forward' },
+            { key: 'gates', value: 'gates', icon: 'gates' },
+            { key: 'cards', value: 'cards', icon: 'cards' },
+            { key: 'help', value: 'help', icon: 'help' },
+            { key: 'hide', value: 'hide', icon: 'hide' },
+            { key: 'history', value: 'history', icon: 'history' },
+            { key: 'hook', value: 'hook', icon: 'hook' },
+            { key: 'id', value: 'id', icon: 'id' },
+            { key: 'import', value: 'import', icon: 'import' },
+            { key: 'info', value: 'info', icon: 'info' },
+            { key: 'keynote', value: 'keynote', icon: 'keynote' },
+            { key: 'license', value: 'license', icon: 'license' },
+            { key: 'list', value: 'list', icon: 'list' },
+            { key: 'lock', value: 'lock', icon: 'lock' },
+            { key: 'logoutAlt', value: 'logoutAlt', icon: 'logoutAlt' },
+            { key: 'logout', value: 'logout', icon: 'logout' },
+            { key: 'love', value: 'love', icon: 'love' },
+            { key: 'mail', value: 'mail', icon: 'mail' },
+            { key: 'menu', value: 'menu', icon: 'menu' },
+            { key: 'minus', value: 'minus', icon: 'minus' },
+            { key: 'mobile', value: 'mobile', icon: 'mobile' },
+            { key: 'move', value: 'move', icon: 'move' },
+            { key: 'nocode', value: 'nocode', icon: 'nocode' },
+            { key: 'num', value: 'num', icon: 'num' },
+            { key: 'number', value: 'number', icon: 'number' },
+            { key: 'ovalFill', value: 'ovalFill', icon: 'ovalFill' },
+            { key: 'oval', value: 'oval', icon: 'oval' },
+            { key: 'paragraph', value: 'paragraph', icon: 'paragraph' },
+            { key: 'permission', value: 'permission', icon: 'permission' },
+            { key: 'pinned', value: 'pinned', icon: 'pinned' },
+            { key: 'playFill', value: 'playFill', icon: 'playFill' },
+            { key: 'play', value: 'play', icon: 'play' },
+            { key: 'plug', value: 'plug', icon: 'plug' },
+            { key: 'plus', value: 'plus', icon: 'plus' },
+            { key: 'refresh', value: 'refresh', icon: 'refresh' },
+            { key: 'restore', value: 'restore', icon: 'restore' },
+            { key: 'rhombusFill', value: 'rhombusFill', icon: 'rhombusFill' },
+            { key: 'rhombus', value: 'rhombus', icon: 'rhombus' },
+            { key: 'rocket', value: 'rocket', icon: 'rocket' },
+            { key: 'search', value: 'search', icon: 'search' },
+            { key: 'settings', value: 'settings', icon: 'settings' },
+            { key: 'shield', value: 'shield', icon: 'shield' },
+            { key: 'sms', value: 'sms', icon: 'sms' },
+            { key: 'sort', value: 'sort', icon: 'sort' },
+            { key: 'stopFill', value: 'stopFill', icon: 'stopFill' },
+            { key: 'stop', value: 'stop', icon: 'stop' },
+            { key: 'string', value: 'string', icon: 'string' },
+            { key: 'styles', value: 'styles', icon: 'styles' },
+            { key: 'tag', value: 'tag', icon: 'tag' },
+            { key: 'telegram', value: 'telegram', icon: 'telegram' },
+            { key: 'tune', value: 'tune', icon: 'tune' },
+            { key: 'unlock', value: 'unlock', icon: 'unlock' },
+            { key: 'unpinned', value: 'unpinned', icon: 'unpinned' },
+            { key: 'unplug', value: 'unplug', icon: 'unplug' },
+            { key: 'up', value: 'up', icon: 'up' },
+            { key: 'upload', value: 'upload', icon: 'upload' },
+            { key: 'user', value: 'user', icon: 'user' },
+            { key: 'version', value: 'version', icon: 'version' },
+            { key: 'view', value: 'view', icon: 'view' },
+            { key: 'warning', value: 'warning', icon: 'warning' },
+            { key: 'webhook', value: 'webhook', icon: 'webhook' },
+            { key: 'zoom-to-fit', value: 'zoom-to-fit', icon: 'zoom-to-fit' },
+            { key: 'dashboard', value: 'dashboard', icon: 'dashboard' }
+        ]
     
 
     return (
@@ -96,6 +207,7 @@ export default function Input(props) {
 
             {props.type != 'email' &&
                 props.type != 'number' &&
+                props.type != 'icon' &&
                 props.type != 'textarea' &&
                 props.type != 'password' &&
                 props.type != 'radio' &&
@@ -235,6 +347,18 @@ export default function Input(props) {
                     multi
                     defaultValue={defVal}
                     iconOptions={props.iconOptions}
+                    onChange={ e => setValue(e)}
+                />
+            }
+            {props.type == 'icon' &&
+                <Select
+                    warning={warningMsg.type}    
+                    placeholder={props.placeholder || 'Choose icon'}
+                    options={icon_options}
+                    icon={props.icon}
+                    disabled={props.disabled}
+                    defaultValue={defVal}
+                    iconOptions
                     onChange={ e => setValue(e)}
                 />
             }
