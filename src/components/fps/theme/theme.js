@@ -8,14 +8,14 @@ export function SetTheme({ themeName }) {
     // themeName is like {colors:'tiffany',radius:10}
 
     useEffect(() => {
-        if (themeName) {
-            setTheme(themeName)
-        }
+        if (themeName.colorScheme) {
+            setTheme(themeName.colorScheme, themeName.radius || 25)
+        } else {setTheme(themeName, 25)}
     }, [themeName])
 
-    const setTheme = theme => {
-        document.documentElement.style.setProperty('--border-radius', (theme.radius ? theme.radius : '25') + 'px')
-        if (theme.colorScheme === 'classic') {
+    const setTheme = (colorScheme,radius) => {
+        document.documentElement.style.setProperty('--border-radius', radius + 'px')
+        if (colorScheme === 'classic') {
             document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
             document.documentElement.style.setProperty('--field-border-color', '#aaa')
             document.documentElement.style.setProperty('--table-border-color', 'rgba(0,0,0,.12)')
@@ -37,7 +37,7 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--label-color', '#B9E0CB')
             document.documentElement.style.setProperty('--label-text-color', '#333')
         }
-        if (theme.colorScheme === 'tiffany') {
+        if (colorScheme === 'tiffany') {
             document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
             document.documentElement.style.setProperty('--field-border-color', '#aaa')
             document.documentElement.style.setProperty('--table-border-color', 'rgba(0,0,0,.12)')
@@ -59,7 +59,7 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--label-color', '#FFCCA9')
             document.documentElement.style.setProperty('--label-text-color', '#333')
         }
-        if (theme.colorScheme === 'darkMint') {
+        if (colorScheme === 'darkMint') {
             document.documentElement.style.setProperty('--button-border-color', '#2f00ff')
             document.documentElement.style.setProperty('--field-border-color', 'rgba(255,255,255,.2)')
             document.documentElement.style.setProperty('--table-border-color', 'rgba(255,255,255,.2)')
@@ -81,7 +81,7 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--label-color', '#2f00ff')
             document.documentElement.style.setProperty('--label-text-color', 'rgba(255,255,255,.85)')
         }
-        if (theme.colorScheme === 'warmNight') {
+        if (colorScheme === 'warmNight') {
             document.documentElement.style.setProperty('--button-border-color', '#ce9306')
             document.documentElement.style.setProperty('--field-border-color', 'rgba(255,255,255,.2)')
             document.documentElement.style.setProperty('--table-border-color', 'rgba(255,255,255,.2)')
@@ -104,7 +104,7 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--label-text-color', 'rgba(255,255,255,.85)')
         }
 
-        if (theme.colorScheme === 'hacker') {
+        if (colorScheme === 'hacker') {
             document.documentElement.style.setProperty('--button-border-color', '#ce9306')
             document.documentElement.style.setProperty('--field-border-color', 'rgba(255,255,255,.2)')
             document.documentElement.style.setProperty('--table-border-color', 'rgba(255,255,255,.2)')
