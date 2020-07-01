@@ -5,6 +5,8 @@ import {
 } from 'react-table'
 import styles from './table.module.css'
 import SomethingWentWrong from '../SomethingWentWrong/SomethingWentWrong'
+import icon from './../../../icons/fps-table.svg'
+
 
 function FpsTable({ data, onEvent, id }) {
     const tableHeader = data.headers || []
@@ -113,7 +115,7 @@ function FpsTable({ data, onEvent, id }) {
     )
 }
 FpsTable.settings = {
-    //icon: icon,
+    icon: icon,
     name: 'Table view',
     sysName: 'FpsTable',
     form: [
