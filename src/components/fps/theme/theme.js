@@ -197,7 +197,7 @@ export default function FpsTheme(props) {
     const [selectedColorScheme, setSelectedColorScheme] = useState(
         {
             colorScheme: props.defaultValue.colorScheme || options[0].value,
-            radius: 25
+            radius: props.defaultValue.radius || 25
         }
     )
 

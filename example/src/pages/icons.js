@@ -23,6 +23,7 @@ export default function IconsPage() {
                 type='icon'
                 onChange={e=>e && setIcon(e)}
                 required
+                width={300}
             />
 
            
