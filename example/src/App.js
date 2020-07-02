@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {
   FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, FpsTheme,
-  ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, SignIn, SignUp
+  ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, SignIn, SignUp, Media, CodeSnippet
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 import {
@@ -57,15 +57,15 @@ function MainMenuWrapper() {
         { name: "Design system", subheader: true },
         { name: "Typography", route: "/system-typography", icon: "paragraph", link: <Link to="/system-typography">Typography</Link> },
         { name: "Directual Icons", route: "/system-icons", icon: "babai", link: <Link to="/system-icons">Directual icons</Link> },
-        { name: "Buttons", route: "/system-button", icon: "play", link: <Link to="/system-button">Action panel, Buttons</Link> },
-        { name: "Inputs", route: "/system-data-entry", icon: "import", link: <Link to="/system-data-entry">Data entry</Link> }
+        { name: "Buttons", route: "/system-button", icon: "done", link: <Link to="/system-button">Action panel, Buttons</Link> },
+        { name: "Data entry", route: "/system-data-entry", icon: "import", link: <Link to="/system-data-entry">Data entry</Link> },
+        { name: "Media", route: "/system-media", icon: "play", link: <Link to="/system-media">Media</Link> }
       ]}
 
     />)
 }
 
 const App = (props) => {
-  //return <ExampleComponent text="Create React Library Example 😄" />
   let exampleDataHtml = {
     html: '<b>test</b>'
   }
@@ -153,10 +153,10 @@ const App = (props) => {
       },
       "fields": {
         "textarea": {
-          "include": false,
-          "hidden": true,
+          "include": true,
+          "hidden": false,
           "required": false,
-          "isTextarea": false,
+          "isTextarea": true,
           "textareaRows": 4,
           "defaultValue": "",
           "isPositive": false,
@@ -179,18 +179,6 @@ const App = (props) => {
           "dateTimeOn": true,
           "weight":2
         },
-        // "datetime": {
-        //   "include": true,
-        //   "hidden": false,
-        //   "required": false,
-        //   "isTextarea": false,
-        //   "textareaRows": 4,
-        //   "defaultValue": "",
-        //   "isPositive": false,
-        //   "quickSearch": true,
-        //   "allowAddLinks": false,
-        //   "dateTimeOn": true
-        // },
         "link": {
           "include": true,
           "hidden": false,
@@ -202,7 +190,7 @@ const App = (props) => {
           "quickSearch": true,
           "allowAddLinks": true,
           "dateTimeOn": true,
-          "searchData":[{"key":"ddfdfsdsds","value":"1ddfdfsdsds"},{"key":"test","value":"1test"}],
+          "searchData":[{"key":"1","value":"option 1"},{"key":"2","value":"option 2"}],
           "weight":10
         },
         "arrayLink": {
@@ -216,7 +204,7 @@ const App = (props) => {
           "quickSearch": true,
           "allowAddLinks": true,
           "dateTimeOn": true,
-          "searchData":[{"key":"ddfdfsdsds","value":"2ddfdfsdsds"},{"key":"test","value":"2test"}]
+          "searchData":[{"key":"1","value":"option 1"},{"key":"2","value":"option 2"}],
         },
         "boolean": {
           "include": true,
@@ -270,7 +258,7 @@ const App = (props) => {
           "include": true,
           "hidden": false,
           "required": false,
-          "isTextarea": true,
+          "isTextarea": false,
           "textareaRows": 5,
           "defaultValue": "",
           "isPositive": false,
@@ -589,6 +577,7 @@ const App = (props) => {
             </Route>
             <Route exact path="/cards">
               <h1>Cards</h1>
+              <FpsCards data={exampleTable} />
             </Route>
             <Route exact path="/theme">
               <h1>Theme management</h1>
@@ -610,6 +599,12 @@ const App = (props) => {
             </Route>
             <Route exact path="/system-data-entry">
               <InputsPage />
+            </Route>
+            <Route exact path="/system-media">
+              <h1>Media</h1>
+              <h2>Youtube</h2>
+              <CodeSnippet code="<Media type='video' source='https://www.youtube.com/watch?v=JAwEWLP-G_M' width='550' height='300'/>" />
+              <Media type='video' source="https://www.youtube.com/watch?v=JAwEWLP-G_M" width='550' height='300'/>
             </Route>
 
           </Switch>

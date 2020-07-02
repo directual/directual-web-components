@@ -201,7 +201,7 @@ export default function FpsForm({ data, onEvent, id }) {
           <Hint title={getResultAnswer().answerTitle} ok>{getResultAnswer().answerText}</Hint>}
       </React.Fragment>}
 
-      {!showForm && !loading && !data.error &&
+      {!showForm && !loading && data.error != 'You have no permissions for viewing form' && data.error != 'Form is not configured' &&
         <Button icon='refresh' onClick={() => {
           setShowForm(true);
           console.log('Обнулить!')
@@ -257,9 +257,10 @@ export default function FpsForm({ data, onEvent, id }) {
               {/* {modelError[field.sysName] && <b>{modelError[field.sysName]}</b>} */}
             </div>
           ))}
+          {!data.error &&
           <ActionPanel>
             <Button accent disabled={!isValid}>{formButton}</Button>
-          </ActionPanel>
+          </ActionPanel>}
         </form>
       )}
     </div>

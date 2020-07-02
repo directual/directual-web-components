@@ -126,6 +126,7 @@ export default function Input(props) {
             { key: 'detailsAlt', value: 'detailsAlt', icon: 'detailsAlt' },
             { key: 'details', value: 'details', icon: 'details' },
             { key: 'down', value: 'down', icon: 'down' },
+            { key: 'done', value: 'done', icon: 'done' },
             { key: 'download', value: 'download', icon: 'download' },
             { key: 'edit', value: 'edit', icon: 'edit' },
             { key: 'expand', value: 'expand', icon: 'expand' },

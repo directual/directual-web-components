@@ -25,6 +25,7 @@ import FileUpload from './components/fps/dataentry/fileupload/fileupload'
 import {SignIn, SignUp, Profile} from './components/fps/profile/profile'
 import Hint from './components/fps/hint/hint'
 import Loader from './components/fps/loader/loader'
+import Media from './components/fps/media/media'
 
 import FpsTheme, {SetTheme} from './components/fps/theme/theme'
 
@@ -59,5 +60,6 @@ export {
   Slider,
   SignUp,
   Hint,
-  Loader
+  Loader,
+  Media
 }
