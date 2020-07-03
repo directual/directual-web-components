@@ -14,7 +14,7 @@ export default function InputsPage() {
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Range sliders</h2>
             <CodeSnippet code=
                 {`<Input
-    type="slider"
+    type="range"
     width={500}
     label="Range slider"
     defaultValue={{firstValue: 200, secondValue:400}}
@@ -24,7 +24,7 @@ export default function InputsPage() {
     unitName='€'
 />`} />
             <Input
-                type="slider"
+                type="range"
                 width={500}
                 label="Range slider"
                 defaultValue={{ firstValue: 200, secondValue: 400 }}

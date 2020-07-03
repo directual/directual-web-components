@@ -119,13 +119,26 @@ export default function FpsForm({ data, onEvent, id }) {
       link: 'select',
       arrayLink: 'multiselect',
       boolean: 'radio',
-      date: 'date'
+      date: 'date',
+      json: 'json'
     }
     if (
       matching[field.dataType] == 'string' &&
       params.fields[field.sysName].isTextarea
     ) {
       return 'textarea'
+    }
+    if (
+      field.dataType == 'json' &&
+      params.fields[field.sysName].jsonDisplay == 'range'
+    ) {
+      return 'range'
+    }
+    if (
+      field.dataType == 'json' &&
+      params.fields[field.sysName].jsonDisplay == 'slider'
+    ) {
+      return 'range'
     }
     return matching[field.dataType]
   }
@@ -251,6 +264,10 @@ export default function FpsForm({ data, onEvent, id }) {
                     type={typesMatching(field)}
                     rows={field.params.textareaRows}
                     onChange={value => onChange(field.sysName, value)}
+                    min={field.params && field.params.range && field.params.range.min}
+                    max={field.params && field.params.range && field.params.range.max}
+                    step={field.params && field.params.range && field.params.range.step}
+                    unitName={field.params && field.params.range && field.params.range.unitName}
                   />
                 </div>
               }

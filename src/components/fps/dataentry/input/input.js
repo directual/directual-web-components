@@ -225,6 +225,7 @@ export default function Input(props) {
                 props.type != 'multiselect' &&
                 props.type != 'date' &&
                 props.type != 'slider' &&
+                props.type != 'range' &&
                 props.type != 'decimal' &&
                 <div className={styles.field_wrapper}>
                     {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
@@ -386,6 +387,16 @@ export default function Input(props) {
                 />
             }
             {props.type == 'slider' &&
+                <Slider
+                    defaultValue={props.defaultValue}
+                    min={props.min}
+                    max={props.max}
+                    step={props.step}
+                    onChange={e => setValue(e)}
+                    unitName={props.unitName} />
+
+            }
+            {props.type == 'range' &&
                 <Slider
                     defaultValue={props.defaultValue}
                     min={props.min}

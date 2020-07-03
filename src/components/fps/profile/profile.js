@@ -27,11 +27,13 @@ export function SignIn( {width, header, google, onSubmit}) {
             </React.Fragment>}
             <Input
                 type='email'
+                required
                 label='Email address'
                 onChange={value => setLoginDetails({...loginDetails, login:value})}
             />
             <Input
                 type='password'
+                required
                 label='Password'
                 onChange={value => setLoginDetails({...loginDetails, password:value})}
             />
