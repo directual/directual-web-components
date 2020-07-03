@@ -17,7 +17,7 @@ export default function Input(props) {
     const [value, setValue] = useState(props.defaultValue)
     const [pwdVisible, setPwdVisible] = useState('password')
     const [warningMsg, setWarningMesg] = useState(props.warning || {})
-    const [defVal,setDefVal] = useState(props.defaultValue)
+    const [defVal, setDefVal] = useState(props.defaultValue)
 
 
     const checkValue = () => {
@@ -32,11 +32,11 @@ export default function Input(props) {
             setWarningMesg({});
     }
 
-    useEffect(()=>{
-        warningMsg.type == 'error' ? props.validationHandler && props.validationHandler(props.sysName, false): props.validationHandler && props.validationHandler(props.sysName, true)
+    useEffect(() => {
+        warningMsg.type == 'error' ? props.validationHandler && props.validationHandler(props.sysName, false) : props.validationHandler && props.validationHandler(props.sysName, true)
     }, [warningMsg])
 
-    useEffect(() => {setValue(props.defaultValue); setDefVal(props.defaultValue) }, [props.defaultValue])
+    useEffect(() => { setValue(props.defaultValue); setDefVal(props.defaultValue) }, [props.defaultValue])
 
     const checkEmailValue = (v) => {
         (!v && props.required) ?
@@ -89,7 +89,7 @@ export default function Input(props) {
     }, [value])
 
 
-    const icon_options=
+    const icon_options =
         [
             { key: 'babai', value: 'babai', icon: 'babai' },
             { key: 'actions', value: 'actions', icon: 'actions' },
@@ -97,6 +97,7 @@ export default function Input(props) {
             { key: 'arrowDown', value: 'arrowDown', icon: 'arrowDown' },
             { key: 'arrowLeft', value: 'arrowLeft', icon: 'arrowLeft' },
             { key: 'arrowRight', value: 'arrowRight', icon: 'arrowRight' },
+            { key: 'arrowRightMany', value: 'arrowRightMany', icon: 'arrowRightMany' },
             { key: 'arrowUp', value: 'arrowUp', icon: 'arrowUp' },
             { key: 'back', value: 'back', icon: 'back' },
             { key: 'ban', value: 'ban', icon: 'ban' },
@@ -115,6 +116,7 @@ export default function Input(props) {
             { key: 'clocks', value: 'clocks', icon: 'clocks' },
             { key: 'close', value: 'close', icon: 'close' },
             { key: 'codeArray', value: 'codeArray', icon: 'codeArray' },
+            { key: 'code', value: 'code', icon: 'code' },
             { key: 'codeXML', value: 'codeXML', icon: 'codeXML' },
             { key: 'collapse', value: 'collapse', icon: 'collapse' },
             { key: 'comment', value: 'comment', icon: 'comment' },
@@ -198,12 +200,18 @@ export default function Input(props) {
             { key: 'zoom-to-fit', value: 'zoom-to-fit', icon: 'zoom-to-fit' },
             { key: 'dashboard', value: 'dashboard', icon: 'dashboard' }
         ]
-    
+
 
     return (
-        <div className={styles.input_wrapper} style={{ maxWidth: props.width || 'auto' }}>
+        <div className={styles.input_wrapper}
+            style={
+                {
+                    maxWidth: props.width || 'auto',
+                    marginBottom: props.nomargin ? 0 : 18
+                }
+            }>
             {props.label && <label>{props.label}{props.required && '*'}</label>}
-            
+
             {/* <span className="dd-debug"> value: {JSON.stringify(value)}</span>
             <span className="dd-debug"> defVal: {JSON.stringify(defVal)}</span> */}
 
@@ -240,7 +248,7 @@ export default function Input(props) {
                         disabled={props.disabled}
                         className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
                         type="text"
-                        onChange={e => { handleChange(String(e.target.value).toLowerCase()); e && checkEmailValue(e.target.value)} }
+                        onChange={e => { handleChange(String(e.target.value).toLowerCase()); e && checkEmailValue(e.target.value) }}
                         value={value}
                         onBlur={e => checkEmailValue(e.target.value)}
                         placeholder={props.placeholder}
@@ -256,7 +264,7 @@ export default function Input(props) {
                         className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                         disabled={props.disabled}
                         type="number"
-                        onChange={e => {handleChangeDecimalNumber(e.target.value)}}
+                        onChange={e => { handleChangeDecimalNumber(e.target.value) }}
                         value={value}
                         onBlur={checkValue}
                         placeholder={props.placeholder}
@@ -330,7 +338,7 @@ export default function Input(props) {
             }
             {props.type == 'select' &&
                 <Select
-                    warning={warningMsg.type}    
+                    warning={warningMsg.type}
                     placeholder={props.placeholder}
                     options={props.options}
                     icon={props.icon}
@@ -342,7 +350,7 @@ export default function Input(props) {
             }
             {props.type == 'multiselect' &&
                 <Select
-                    warning={warningMsg.type}    
+                    warning={warningMsg.type}
                     placeholder={props.placeholder}
                     options={props.options}
                     icon={props.icon}
@@ -350,24 +358,24 @@ export default function Input(props) {
                     multi
                     defaultValue={defVal}
                     iconOptions={props.iconOptions}
-                    onChange={ e => setValue(e)}
+                    onChange={e => setValue(e)}
                 />
             }
             {props.type == 'icon' &&
                 <Select
-                    warning={warningMsg.type}    
+                    warning={warningMsg.type}
                     placeholder={props.placeholder || 'Choose icon'}
                     options={icon_options}
                     icon={props.icon}
                     disabled={props.disabled}
                     defaultValue={defVal}
                     iconOptions
-                    onChange={ e => setValue(e)}
+                    onChange={e => setValue(e)}
                 />
             }
             {props.type == 'date' &&
                 <Datepicker
-                    onChange={e => {setValue(e); props.onChange && props.onChange(e)}}
+                    onChange={e => { setValue(e); props.onChange && props.onChange(e) }}
                     disabled={props.disabled}
                     placeholder={props.placeholder}
                     defaultValue={props.defaultValue}
@@ -387,7 +395,7 @@ export default function Input(props) {
                     unitName={props.unitName} />
 
             }
-            
+
             {warningMsg &&
                 <div className={`${styles.status} ${styles[warningMsg.type]}`}>{warningMsg.msg}</div>}
         </div>

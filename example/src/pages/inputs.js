@@ -167,13 +167,14 @@ export default function InputsPage() {
                 label='Select with icon, required'
                 width={400}
                 required
+                iconOptions
                 type='select'
                 placeholder='Choose the line'
                 icon='database'
                 options={
                     [
                         { key: 1, value: 'Good fortune? The fact is' },
-                        { key: 2, value: 'The more that you practise' },
+                        { key: 2, value: 'The more that you practise', icon: 'code' },
                         { key: 3, value: 'The harder you sweat' },
                         { key: 4, value: 'The luckier you get' }
                     ]

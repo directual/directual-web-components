@@ -86,7 +86,7 @@ function List(props) {
                             ${props.current && props.current.key == option.key && styles.selected}
                             ${props.selected && props.selected.key == option.key && styles.keySelected}
                             ${(props.current && props.current.length > 0) && props.current.filter(i => i.key == option.key).length > 0 && styles.selected}
-                            ${props.iconOptions && `${styles.optionIcon} icon icon-${option.icon}`}
+                            ${props.iconOptions && option.icon && `${styles.optionIcon} icon icon-${option.icon}`}
                         `}
                         //ref={refs[option.key]}
                         key={option.key}
@@ -246,9 +246,9 @@ export default function Select(props) {
                 onClick={() => { !focus && setFocus(true) }}
                 ref={selectRef}
             >
-                {props.icon && !props.iconOptions &&
+                {props.icon && !(value && value.icon && props.iconOptions) &&
                     <div className={`${styles.icon} icon icon-${props.icon}`}></div>}
-                {props.iconOptions &&
+                {props.iconOptions && value && value.icon &&
                     <div className={`${styles.icon} icon icon-${value && value.icon}`}></div>}
 
                 {props.multi &&

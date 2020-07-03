@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  margin-bottom: 18px;
 }
 .input_wrapper label {
   font-size: var(--text-small-size);
@@ -92,9 +91,9 @@
   border-radius: var(--border-radius);
   background-color: var(--background-color);
   display: flex;
-  height: 48px;
+  height: 46px;
   align-items: center;
-  padding: 0 36px 0 18px;
+  padding: 1px 36px 1px 18px;
   color: var(--font-color);
   -webkit-appearance: none;
   -moz-appearance: none;
