@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {
   FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, FpsTheme,
-  ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, SignIn, SignUp, Media, CodeSnippet
+  ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, SignIn, SignUp, Media, CodeSnippet,
+  Dnd
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 import {
@@ -59,7 +60,8 @@ function MainMenuWrapper() {
         { name: "Directual Icons", route: "/system-icons", icon: "babai", link: <Link to="/system-icons">Directual icons</Link> },
         { name: "Buttons", route: "/system-button", icon: "done", link: <Link to="/system-button">Action panel, Buttons</Link> },
         { name: "Data entry", route: "/system-data-entry", icon: "import", link: <Link to="/system-data-entry">Data entry</Link> },
-        { name: "Media", route: "/system-media", icon: "play", link: <Link to="/system-media">Media</Link> }
+        { name: "Media", route: "/system-media", icon: "play", link: <Link to="/system-media">Media</Link> },
+        { name: "Drag'n'drop", route: "/system-dnd", icon: "copy", link: <Link to="/system-dnd">Drag'n'drop</Link> }
       ]}
 
     />)
@@ -693,6 +695,9 @@ const App = (props) => {
             </Route>
             <Route exact path="/system-data-entry">
               <InputsPage />
+            </Route>
+            <Route exact path="/system-dnd">
+              <Dnd />
             </Route>
             <Route exact path="/system-media">
               <h1>Media</h1>

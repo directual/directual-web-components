@@ -27,6 +27,8 @@ import Hint from './components/fps/hint/hint'
 import Loader from './components/fps/loader/loader'
 import Media from './components/fps/media/media'
 
+import {Dnd} from './components/fps/dnd/dndList'
+
 import FpsTheme, {SetTheme} from './components/fps/theme/theme'
 
 export {
@@ -61,5 +63,7 @@ export {
   SignUp,
   Hint,
   Loader,
-  Media
+  Media,
+
+  Dnd,
 }

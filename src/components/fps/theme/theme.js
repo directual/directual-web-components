@@ -13,6 +13,9 @@ export function SetTheme({ themeName }) {
         } else {setTheme(themeName, 25)}
     }, [themeName])
 
+    
+    
+
     const setTheme = (colorScheme,radius) => {
         document.documentElement.style.setProperty('--border-radius', radius + 'px')
         if (colorScheme === 'classic') {
@@ -205,6 +208,13 @@ export default function FpsTheme(props) {
         selectedColorScheme && props.onChange && props.onChange(selectedColorScheme)
     },[selectedColorScheme])
 
+    const fontHeaders = [
+        {key: 'Montserrat', value: 'Montserrat Black'}
+    ]
+    const fontText = [
+        {key: 'Lato', value: 'Lato'}
+    ]
+
     return (
         <React.Fragment>
             <Input
@@ -222,6 +232,22 @@ export default function FpsTheme(props) {
                 width={150}
                 defaultValue={selectedColorScheme.radius}
                 onChange={value => value ? setSelectedColorScheme({...selectedColorScheme, radius: value}) : setSelectedColorScheme({...selectedColorScheme, radius: 0})}
+            />
+            <Input
+                type="select"
+                label="Headers font face"
+                defaultValue='Montserrat'
+                options={fontHeaders}
+                width={300}
+                disabled
+            />
+            <Input
+                type="select"
+                label="Text font face"
+                defaultValue='Lato'
+                options={fontText}
+                width={300}
+                disabled
             />
         </React.Fragment>
     )

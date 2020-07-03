@@ -293,6 +293,7 @@ export default function Select(props) {
                                 onKeyDown={handleKeyboard}
                                 type="text"
                                 ref={inputEl}
+                                disabled={props.disabled}
                                 className={styles.filter}
                                 value={filter}
                                 onChange={e => setFilter(e.target.value)}
