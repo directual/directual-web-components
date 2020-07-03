@@ -11,11 +11,15 @@ export function Profile(props) {
     )
 }
 
-export function SignIn(props) {
+export function SignIn( {width, header, google, onSubmit}) {
+    const submit = () => {
+        onSubmit(loginDetails)
+    }
+    const [loginDetails,setLoginDetails] = useState({})
     return (
-        <div className={styles.signinform} style={{ maxWidth: props.width || 'auto' }}>
-            {props.header && <h1>{props.header}</h1>}
-            {props.google && <React.Fragment>
+        <form className={styles.signinform} style={{ maxWidth: width || 'auto' }}>
+            {header && <h1>{header}</h1>}
+            {google && <React.Fragment>
                 <ActionPanel column margin={{ top: 0, bottom: 18 }}>
                     <Button socialGoogle>Sign In with Google</Button>
                 </ActionPanel>
@@ -24,15 +28,17 @@ export function SignIn(props) {
             <Input
                 type='email'
                 label='Email address'
+                onChange={value => setLoginDetails({...loginDetails, login:value})}
             />
             <Input
                 type='password'
                 label='Password'
+                onChange={value => setLoginDetails({...loginDetails, password:value})}
             />
             <ActionPanel column margin={{ top: 0, bottom: 18 }}>
-                <Button accent icon='permission'>Sign In</Button>
+                <Button onClick={submit} accent icon='permission'>Sign In</Button>
             </ActionPanel>
-        </div>
+        </form>
     )
 }
 
