@@ -14,6 +14,6 @@ RUN ls -la
 # production environment
 FROM nginx:stable-alpine
 COPY ./default.conf /etc/nginx/conf.d/
-COPY --from=build /app/example/build /usr/share/nginx/html
+COPY --from=0 /app/example/build /usr/share/nginx/html
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
