@@ -8,6 +8,8 @@ RUN npm install
 RUN cd /app/example
 RUN npm install
 RUN npm run build
+RUN pwd
+RUN ls -la
 
 # production environment
 FROM nginx:stable-alpine
