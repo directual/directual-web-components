@@ -5,7 +5,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 COPY . /app
 RUN npm install
-RUN cd /app/example
+WORKDIR /app/example
 RUN npm install
 RUN npm run build
 RUN pwd
