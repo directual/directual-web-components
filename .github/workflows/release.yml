@@ -22,10 +22,7 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: cd example
-      - run: npm install
-      - run: npm build
-      - name: Build example
+      - name: build docker design project
         uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
