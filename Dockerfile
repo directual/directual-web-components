@@ -5,7 +5,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 COPY . /app
 RUN npm install
-RUN cd example
+RUN cd /app/example
 RUN npm install
 RUN npm run build
 
