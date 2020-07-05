@@ -53,14 +53,14 @@ export default function FpsForm({ data, onEvent, id }) {
   const formButton = data.formButton || 'Submit'
   const formButtonResubmit = data.formButtonResubmit || 'Submit again'
   const isSuccessWrite = data.isSuccessWrite
-  let params = data.params || {}
-  const fileds = sortFields(data.fields) || []
+  const params = data.params || {}
+  const fileds = sortFields(data.fileds) || []
   const formWidth = (data.maxWidth && parseInt(data.maxWidth)) || 'auto'
 
   
 
-  // console.log('------------ form data: -------------')
-  // console.log(data)
+  console.log('------------ form data: -------------')
+  console.log(data)
 
   // console.log('------------ form model: -------------')
   // console.log(model)
@@ -68,7 +68,10 @@ export default function FpsForm({ data, onEvent, id }) {
   //console.log('rerender')
 
   function sortFields(arr) {
-    if (!arr) { return null }
+    console.log('=============')
+    console.log('начали')
+    console.log(arr)
+    if (!arr) {console.log('закончили'); return null }
     if (!params.fields) {params = {...params, fields:{}}}
     arr.forEach((field, i) => {
       if (!params.fields[field.sysName]) {
@@ -81,7 +84,8 @@ export default function FpsForm({ data, onEvent, id }) {
       arr[i].params = params.fields[field.sysName]
       arr[i].weight = arr[i].params.weight || 0;
     })
-
+    console.log('ой')
+    console.log(arr)
     return arr.sort((a, b) => a.weight - b.weight)
   }
 

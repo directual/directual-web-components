@@ -140,97 +140,356 @@ const App = (props) => {
 
   let exampleForm = 
   {
-    "sl": "SubmitSurveyJune",
-    "pageSize": 10,
+    "sl": "FPStest",
     "formName": "",
-    "formDesc": "",
-    "formButton": "",
+    "formDesc": null,
+    "formButton": null,
     "placeholder": "",
-    "maxWidth": "",
+    "maxWidth": null,
+    "formButtonResubmit": null,
     "params": {
       "result": {
         "resultTitleField": null,
         "resultMessageField": null,
         "isSuccessField": null
+      },
+      "fields": {
+        "arrayLink": {
+          "include": true,
+          "hidden": false,
+          "required": false,
+          "isTextarea": false,
+          "textareaRows": 4,
+          "defaultValue": "",
+          "isPositive": false,
+          "quickSearch": false,
+          "allowAddLinks": false,
+          "dateTimeOn": true,
+          "isValid": true,
+          "weight": 2,
+          "jsonDisplay": "default",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unitName": ""
+          }
+        },
+        "boolean": {
+          "include": true,
+          "hidden": false,
+          "required": false,
+          "isTextarea": false,
+          "textareaRows": 4,
+          "defaultValue": "",
+          "isPositive": false,
+          "quickSearch": true,
+          "allowAddLinks": false,
+          "dateTimeOn": true,
+          "isValid": true,
+          "weight": 0,
+          "jsonDisplay": "default",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unitName": ""
+          }
+        },
+        "file": {
+          "include": true,
+          "hidden": false,
+          "required": false,
+          "isTextarea": false,
+          "textareaRows": 4,
+          "defaultValue": "",
+          "isPositive": false,
+          "quickSearch": true,
+          "allowAddLinks": false,
+          "dateTimeOn": true,
+          "isValid": true,
+          "weight": 1,
+          "jsonDisplay": "default",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unitName": ""
+          }
+        },
+        "link": {
+          "include": true,
+          "hidden": false,
+          "required": false,
+          "isTextarea": false,
+          "textareaRows": 4,
+          "defaultValue": "",
+          "isPositive": false,
+          "quickSearch": false,
+          "allowAddLinks": false,
+          "dateTimeOn": true,
+          "isValid": true,
+          "weight": 3,
+          "jsonDisplay": "default",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unitName": ""
+          }
+        },
+        "range": {
+          "include": true,
+          "hidden": false,
+          "required": false,
+          "isTextarea": false,
+          "textareaRows": 4,
+          "defaultValue": "",
+          "isPositive": false,
+          "quickSearch": true,
+          "allowAddLinks": false,
+          "dateTimeOn": true,
+          "isValid": true,
+          "weight": 4,
+          "jsonDisplay": "default",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unitName": ""
+          }
+        },
+        "slider": {
+          "include": true,
+          "hidden": false,
+          "required": false,
+          "isTextarea": false,
+          "textareaRows": 4,
+          "defaultValue": "",
+          "isPositive": false,
+          "quickSearch": true,
+          "allowAddLinks": false,
+          "dateTimeOn": true,
+          "isValid": true,
+          "weight": 5,
+          "jsonDisplay": "default",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unitName": ""
+          }
+        },
+        "textarea": {
+          "include": true,
+          "hidden": false,
+          "required": false,
+          "isTextarea": false,
+          "textareaRows": 4,
+          "defaultValue": "",
+          "isPositive": false,
+          "quickSearch": true,
+          "allowAddLinks": false,
+          "dateTimeOn": true,
+          "isValid": true,
+          "weight": 6,
+          "jsonDisplay": "default",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unitName": ""
+          }
+        }
       }
     },
-    "fields": [
+    "fileds": [
       {
-        "sysName": "Comment",
+        "sysName": "arrayLink",
+        "name": "Choose the list",
+        "dataType": "arrayLink",
+        "id": "98971592207319616",
+        "link": "CountriesISO",
+        "group": "0",
+        "tags": null,
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 7,
+        "linkIndexFieldSysName": [],
+        "defaultValue": null,
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "json": false,
+        "linkOrArrayLinkType": true,
+        "linkType": false,
+        "arrayLink": true,
+        "indexExists": false,
+        "typeVariable": {}
+      },
+      {
+        "sysName": "boolean",
+        "name": "Yes or No",
+        "dataType": "boolean",
+        "id": "24111592207305471",
+        "link": "",
+        "group": "0",
+        "tags": null,
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 5,
+        "linkIndexFieldSysName": [],
+        "defaultValue": null,
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "json": false,
+        "linkOrArrayLinkType": false,
+        "linkType": false,
+        "arrayLink": false,
+        "indexExists": false,
+        "typeVariable": {}
+      },
+      {
+        "sysName": "file",
+        "name": "Upload file",
+        "dataType": "file",
+        "id": "97721592207344049",
+        "link": "",
+        "group": "0",
+        "tags": null,
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 8,
+        "linkIndexFieldSysName": [],
+        "defaultValue": null,
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "json": false,
+        "linkOrArrayLinkType": false,
+        "linkType": false,
+        "arrayLink": false,
+        "indexExists": false,
+        "typeVariable": {}
+      },
+      {
+        "sysName": "link",
+        "name": "Choose something",
+        "dataType": "link",
+        "id": "53881592207319107",
+        "link": "CountriesISO",
+        "group": "0",
+        "tags": null,
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 6,
+        "linkIndexFieldSysName": [],
+        "defaultValue": null,
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "json": false,
+        "linkOrArrayLinkType": true,
+        "linkType": true,
+        "arrayLink": false,
+        "indexExists": false,
+        "typeVariable": {}
+      },
+      {
+        "sysName": "range",
+        "name": "Range",
+        "dataType": "json",
+        "id": "84271593795280716",
+        "link": "",
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 12,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "json": true,
+        "linkOrArrayLinkType": false,
+        "linkType": false,
+        "arrayLink": false,
+        "indexExists": false,
+        "typeVariable": {}
+      },
+      {
+        "sysName": "slider",
+        "name": "Slider",
+        "dataType": "json",
+        "id": "83631593795280077",
+        "link": "",
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 11,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "json": true,
+        "linkOrArrayLinkType": false,
+        "linkType": false,
+        "arrayLink": false,
+        "indexExists": false,
+        "typeVariable": {}
+      },
+      {
+        "sysName": "textarea",
+        "name": "Text area",
         "dataType": "string",
-        "name": "Any other comments?"
-      },
-      {
-        "sysName": "CompanyDescr",
-        "dataType": "string",
-        "name": "Please, describe your company business"
-      },
-      {
-        "sysName": "CompanyName",
-        "dataType": "string",
-        "name": "Name of your company"
-      },
-      {
-        "sysName": "Companysize",
-        "dataType": "link",
-        "name": "Your company size"
-      },
-      {
-        "sysName": "Industry",
-        "dataType": "link",
-        "name": "Company industry"
-      },
-      {
-        "sysName": "New_or_existing",
-        "dataType": "link",
-        "name": "Are you going to build something new, or improve existing IT-system?"
-      },
-      {
-        "sysName": "Position",
-        "dataType": "link",
-        "name": "Your position"
-      },
-      {
-        "sysName": "Programming_comment",
-        "dataType": "string",
-        "name": "What programming languages do you know?"
-      },
-      {
-        "sysName": "Programming_skill",
-        "dataType": "link",
-        "name": "Evaluate your programming skill level"
-      },
-      {
-        "sysName": "SizeofIT",
-        "dataType": "link",
-        "name": "Size of IT department"
-      },
-      {
-        "sysName": "Time_devote",
-        "dataType": "link",
-        "name": "How much time you ready to devote to learn something which solves your problem?"
-      },
-      {
-        "sysName": "Type_of_edu_meterials",
-        "dataType": "string",
-        "name": "What format of educational materials would you prefer"
-      },
-      {
-        "sysName": "What_problem",
-        "dataType": "link",
-        "name": "What problem do you try to solve with Directual?"
-      },
-      {
-        "sysName": "id",
-        "dataType": "id",
-        "name": "id"
-      },
-      {
-        "sysName": "user_id",
-        "dataType": "link",
-        "name": "user"
+        "id": "97731592207240400",
+        "link": null,
+        "group": "0",
+        "tags": null,
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 3,
+        "linkIndexFieldSysName": [],
+        "defaultValue": null,
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "json": false,
+        "linkOrArrayLinkType": false,
+        "linkType": false,
+        "arrayLink": false,
+        "indexExists": false,
+        "typeVariable": {}
       }
-    ]
+    ],
+    "error": null,
+    "isSuccessWrite": false,
+    "response": null
   }
 
   let exampleForm1 = {
