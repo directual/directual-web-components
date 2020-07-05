@@ -59,8 +59,8 @@ export default function FpsForm({ data, onEvent, id }) {
 
   
 
-  console.log('------------ form data: -------------')
-  console.log(data)
+  // console.log('------------ form data: -------------')
+  // console.log(data)
 
   // console.log('------------ form model: -------------')
   // console.log(model)
@@ -68,10 +68,8 @@ export default function FpsForm({ data, onEvent, id }) {
   //console.log('rerender')
 
   function sortFields(arr) {
-    console.log('=============')
-    console.log('начали')
     console.log(arr)
-    if (!arr) {console.log('закончили'); return null }
+    if (!arr) { return null }
     if (!params.fields) {params = {...params, fields:{}}}
     arr.forEach((field, i) => {
       if (!params.fields[field.sysName]) {
@@ -84,8 +82,6 @@ export default function FpsForm({ data, onEvent, id }) {
       arr[i].params = params.fields[field.sysName]
       arr[i].weight = arr[i].params.weight || 0;
     })
-    console.log('ой')
-    console.log(arr)
     return arr.sort((a, b) => a.weight - b.weight)
   }
 
