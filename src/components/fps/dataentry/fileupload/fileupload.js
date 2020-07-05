@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import Dropzone from 'react-dropzone'
 import styles from './fileupload.module.css'
 
 
