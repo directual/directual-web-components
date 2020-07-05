@@ -138,9 +138,102 @@ const App = (props) => {
     'error': null
   }
 
+  let exampleForm = 
+  {
+    "sl": "SubmitSurveyJune",
+    "pageSize": 10,
+    "formName": "",
+    "formDesc": "",
+    "formButton": "",
+    "placeholder": "",
+    "maxWidth": "",
+    "params": {
+      "result": {
+        "resultTitleField": null,
+        "resultMessageField": null,
+        "isSuccessField": null
+      }
+    },
+    "fields": [
+      {
+        "sysName": "Comment",
+        "dataType": "string",
+        "name": "Any other comments?"
+      },
+      {
+        "sysName": "CompanyDescr",
+        "dataType": "string",
+        "name": "Please, describe your company business"
+      },
+      {
+        "sysName": "CompanyName",
+        "dataType": "string",
+        "name": "Name of your company"
+      },
+      {
+        "sysName": "Companysize",
+        "dataType": "link",
+        "name": "Your company size"
+      },
+      {
+        "sysName": "Industry",
+        "dataType": "link",
+        "name": "Company industry"
+      },
+      {
+        "sysName": "New_or_existing",
+        "dataType": "link",
+        "name": "Are you going to build something new, or improve existing IT-system?"
+      },
+      {
+        "sysName": "Position",
+        "dataType": "link",
+        "name": "Your position"
+      },
+      {
+        "sysName": "Programming_comment",
+        "dataType": "string",
+        "name": "What programming languages do you know?"
+      },
+      {
+        "sysName": "Programming_skill",
+        "dataType": "link",
+        "name": "Evaluate your programming skill level"
+      },
+      {
+        "sysName": "SizeofIT",
+        "dataType": "link",
+        "name": "Size of IT department"
+      },
+      {
+        "sysName": "Time_devote",
+        "dataType": "link",
+        "name": "How much time you ready to devote to learn something which solves your problem?"
+      },
+      {
+        "sysName": "Type_of_edu_meterials",
+        "dataType": "string",
+        "name": "What format of educational materials would you prefer"
+      },
+      {
+        "sysName": "What_problem",
+        "dataType": "link",
+        "name": "What problem do you try to solve with Directual?"
+      },
+      {
+        "sysName": "id",
+        "dataType": "id",
+        "name": "id"
+      },
+      {
+        "sysName": "user_id",
+        "dataType": "link",
+        "name": "user"
+      }
+    ]
+  }
 
-
-  let exampleForm = {
+  let exampleForm1 = {
     "sl": "FPStest",
     "formName": 'Форма',
     "successText": null,

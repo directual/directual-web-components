@@ -17,6 +17,29 @@ export function FormSection(props) {
 
 export default function FpsForm({ data, onEvent, id }) {
 
+  const defaultParam =
+  {
+    include: true,
+    hidden: false,
+    required: false,
+    isTextarea: false,
+    textareaRows: 4,
+    defaultValue: '',
+    isPositive: false,
+    quickSearch: true,
+    allowAddLinks: false,
+    dateTimeOn: true,
+    isValid: true,
+    weight: 0,
+    jsonDisplay: 'default',
+    range: {
+      min: 0,
+      max: 100,
+      step: 1,
+      unitName: ''
+    }
+  }
+
   let hiddenFields = {}
 
   const [model, setModel] = useState({})
@@ -30,12 +53,14 @@ export default function FpsForm({ data, onEvent, id }) {
   const formButton = data.formButton || 'Submit'
   const formButtonResubmit = data.formButtonResubmit || 'Submit again'
   const isSuccessWrite = data.isSuccessWrite
-  const params = data.params || {}
-  const fileds = sortFields(data.fileds) || []
+  let params = data.params || {}
+  const fileds = sortFields(data.fields) || []
   const formWidth = (data.maxWidth && parseInt(data.maxWidth)) || 'auto'
 
-  // console.log('------------ form data: -------------')
-  // console.log(data)
+  
+
+  console.log('------------ form data: -------------')
+  console.log(data)
 
   // console.log('------------ form model: -------------')
   // console.log(model)
@@ -43,22 +68,11 @@ export default function FpsForm({ data, onEvent, id }) {
   //console.log('rerender')
 
   function sortFields(arr) {
+    if (!arr) { return null }
+    if (!params.fields) {params = {...params, fields:{}}}
     arr.forEach((field, i) => {
       if (!params.fields[field.sysName]) {
-        params.fields[field.sysName] = {
-          include: true,
-          hidden: false,
-          required: false,
-          isTextarea: false,
-          textareaRows: 4,
-          defaultValue: '',
-          isPositive: false,
-          quickSearch: true,
-          allowAddLinks: false,
-          dateTimeOn: true,
-          isValid: true,
-          weight: 0
-        }
+        params.fields[field.sysName] = defaultParam
       } else {
         if (params.fields[field.sysName].hidden) {
           hiddenFields[field.sysName] = true
@@ -68,7 +82,7 @@ export default function FpsForm({ data, onEvent, id }) {
       arr[i].weight = arr[i].params.weight || 0;
     })
 
-    return arr.sort((a, b) => b.weight - a.weight)
+    return arr
   }
 
 
