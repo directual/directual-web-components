@@ -59,8 +59,8 @@ export default function FpsForm({ data, onEvent, id }) {
 
   
 
-  console.log('------------ form data: -------------')
-  console.log(data)
+  // console.log('------------ form data: -------------')
+  // console.log(data)
 
   // console.log('------------ form model: -------------')
   // console.log(model)
@@ -82,7 +82,7 @@ export default function FpsForm({ data, onEvent, id }) {
       arr[i].weight = arr[i].params.weight || 0;
     })
 
-    return arr
+    return arr.sort((a, b) => a.weight - b.weight)
   }
 
 
