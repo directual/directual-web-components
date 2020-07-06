@@ -1,6 +1,6 @@
 {
   "name": "directual-web-components",
-  "version": "1.0.79",
+  "version": "1.0.83",
   "description": "fps components",
   "author": "Directual",
   "license": "MIT",
@@ -30,6 +30,7 @@
     "react-table": "^7.1.0",
     "react-datetime": "^2.16.3",
     "moment": "^2.26.0",
+    "react-dropzone": "^11.0.1",
     "react-beautiful-dnd": "^13.0.0"
   },
   "devDependencies": {
@@ -58,10 +59,11 @@
     "dist"
   ],
   "dependencies": {
-    "react": "^16.0.0",
     "moment": "^2.26.0",
+    "react": "^16.0.0",
     "react-beautiful-dnd": "^13.0.0",
     "react-datetime": "^2.16.3",
+    "react-dropzone": "^11.0.1",
     "react-table": "^7.1.0"
   }
 }
