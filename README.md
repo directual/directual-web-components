@@ -27,4 +27,4 @@ class Example extends Component {
 
 ## License
 
-MIT © [Directual](https://github.com/directual)
+Apache 2.0 © [Directual](https://github.com/directual), 2020
