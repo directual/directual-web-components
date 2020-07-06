@@ -1,3 +1,5 @@
+![Directual + React](https://api.alfa.directual.com/fileUploaded/directual-site/11eb37d9-698f-43ae-afbf-4e4e9afc4d0b.jpg)
+
 [Directual.design](https://directual.design)
 
 # directual-web-components
