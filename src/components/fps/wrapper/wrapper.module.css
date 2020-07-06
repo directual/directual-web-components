@@ -32,19 +32,29 @@
     right: 0;
     z-index: 20;
     font-size: var(--text-small-size);
-    color: var(--field-border-color);
+    /* color: var(--field-border-color); */
     display: flex;
     justify-content: space-between;
 }
+.diretualFooter span.madeon {
+    opacity: .3;
+}
+.diretualFooter a {opacity: .6;}
+.diretualFooter a:hover {opacity: 1;}
 .logo {
-    display: block;
+    display: flex;
     opacity: .6;
     transition: .5s;
+    height: 15px;
+    align-items: center;
+    width: 60px;
+    justify-content: center;
 }
 .logo:hover {
     opacity: 1;
 }
 .logo img{
-     height: 15px;  
+     height: 30px;
      display: block; 
+     transform: scale(0.5)
 }

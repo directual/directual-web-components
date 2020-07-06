@@ -1,23 +1,9 @@
-.code {
-  background-color: #333;
-  color: #fff;
-  font-family: 'Source Code Pro', monospace;
-  overflow: hidden;
-  margin: 6px 0 0 0;
-  height: 0;
-  padding: 0 12px;
+.codepiece {
+  margin: 6px 0 24px 0;
   font-size: var(--text-small-size);
-  overflow: auto;
 }
-.code code {
-  padding: 12px 0;
-  display: block;
-  background-color: #333;
-  color: #fff;
-}
-.code.show {
-  height: auto;
-  margin: 6px 0 12px 0;
+.codepiece code {
+  background: transparent;
 }
 .showhide {
   cursor: pointer;

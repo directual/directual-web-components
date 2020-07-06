@@ -113,9 +113,13 @@ html, body, #root {height: 100%;}
     align-items: center;
     font-family: var( --main-font-family) !important;
 }
+.inline.icon {display: inline;}
+.inline.icon:before {
+    font-size: calc(var(--h2-font-size)/1.5);
+}
 .icon:before {
     font-family: 'directual-icons';
-    content: "\e908";
+    content: "";
     font-size: var(--h2-font-size);
 }
 .icon-actions:before {content: "\e901";}
@@ -281,7 +285,7 @@ html, body, #root {height: 100%;}
     a:hover {
         color: var(--secondary-accent-color);
     }
-    code {
+    p code {
         color: var(--code-color);
         background-color: var(--code-color-background);
         border-radius: 4px;

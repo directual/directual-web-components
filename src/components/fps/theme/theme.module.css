@@ -113,9 +113,15 @@
   align-items: center;
   font-family: var(--main-font-family) !important;
 }
+:global .inline.icon {
+  display: inline;
+}
+:global .inline.icon:before {
+  font-size: calc(var(--h2-font-size)/1.5);
+}
 :global .icon:before {
   font-family: 'directual-icons';
-  content: "\e908";
+  content: "";
   font-size: var(--h2-font-size);
 }
 :global .icon-actions:before {
@@ -477,7 +483,7 @@
 :global a:hover {
   color: var(--secondary-accent-color);
 }
-:global code {
+:global p code {
   color: var(--code-color);
   background-color: var(--code-color-background);
   border-radius: 4px;

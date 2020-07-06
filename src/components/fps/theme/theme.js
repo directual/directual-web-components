@@ -30,7 +30,7 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--font-color', '#333333')
             document.documentElement.style.setProperty('--hint-color', '#333')
             document.documentElement.style.setProperty('--code-color', '#333')
-            document.documentElement.style.setProperty('--code-color-background', '#eeeeee')
+            document.documentElement.style.setProperty('--code-color-background', '#fff')
             document.documentElement.style.setProperty('--error-color', '#FF525B')
             document.documentElement.style.setProperty('--error-color-light', '#FFD6D8')
             document.documentElement.style.setProperty('--alert-color', '#ECA910')
@@ -52,7 +52,7 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--font-color', '#333333')
             document.documentElement.style.setProperty('--hint-color', '#333')
             document.documentElement.style.setProperty('--code-color', '#333')
-            document.documentElement.style.setProperty('--code-color-background', '#eeeeee')
+            document.documentElement.style.setProperty('--code-color-background', '#fff')
             document.documentElement.style.setProperty('--error-color', '#FF525B')
             document.documentElement.style.setProperty('--error-color-light', '#FFD6D8')
             document.documentElement.style.setProperty('--alert-color', '#ECA910')
@@ -108,11 +108,11 @@ export function SetTheme({ themeName }) {
         }
 
         if (colorScheme === 'hacker') {
-            document.documentElement.style.setProperty('--button-border-color', '#ce9306')
+            document.documentElement.style.setProperty('--button-border-color', '#F8E71C')
             document.documentElement.style.setProperty('--field-border-color', 'rgba(255,255,255,.2)')
             document.documentElement.style.setProperty('--table-border-color', 'rgba(255,255,255,.2)')
             document.documentElement.style.setProperty('--accent-color', '#60FF00')
-            document.documentElement.style.setProperty('--secondary-accent-color', '#3FA700')
+            document.documentElement.style.setProperty('--secondary-accent-color', '#98fe5b')
             document.documentElement.style.setProperty('--button-accent-color', ' #000000')
             document.documentElement.style.setProperty('--background-color', '#333333')
             document.documentElement.style.setProperty('--secondary-background-color', '#000000')

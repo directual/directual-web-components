@@ -1,0 +1,20 @@
+.article h1 {
+    margin-bottom: 24px;
+}
+.article h2 {
+    margin-bottom: 18px;
+}
+.article p {
+    margin-bottom: var(--text-font-size);
+    line-height: calc(1.5 * var(--text-font-size));
+}
+.article li {
+    margin-bottom: var(--text-font-size);
+    margin-left: calc(1.2 * var(--text-font-size));
+    line-height: calc(1.5 * var(--text-font-size));
+    list-style-type: disc;
+}
+.article img {
+    max-width: 100%;
+    margin-bottom: 18px;
+}

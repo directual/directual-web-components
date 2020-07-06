@@ -68,7 +68,7 @@ export default function FpsForm({ data, onEvent, id }) {
   //console.log('rerender')
 
   function sortFields(arr) {
-    console.log(arr)
+    //console.log(arr)
     if (!arr) { return null }
     if (!params.fields) {params = {...params, fields:{}}}
     arr.forEach((field, i) => {

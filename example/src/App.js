@@ -18,25 +18,23 @@ import ButtonsPage from './pages/buttons'
 import InputsPage from './pages/inputs'
 import IconsPage from './pages/icons'
 import TypoPage from './pages/typo'
+import WhatIsIt from './pages/wtf'
 
 
-function MainMenuWrapper() {
+function MainMenuWrapper(props) {
   let location = useLocation()
 
-  const [logoUrl, setlogoUrl] = useState('https://api.directual.com/fileUploaded/directual-site/316aba91-8ee2-4f35-aca8-260f5de08abd.svg')
-
+  const [logoUrl, setlogoUrl] = useState('https://api.alfa.directual.com/fileUploaded/directual-site/31f7185d-f0cc-4063-bc59-1ca46d9f8b7c.svg')
 
   useEffect(()=>{
-    let currentTheme
-    if (typeof window !== 'undefined') { currentTheme = localStorage.getItem('dd-theme') }
-    !currentTheme && (currentTheme = 'classic')
-    if (currentTheme == 'dark-mint' || currentTheme == 'warm-night') {
-      setlogoUrl('https://api.directual.com/fileUploaded/directual-site/6e2942aa-c7c8-4ab0-8e14-0e54f5461183.svg')
+
+    if (props.themeName.colorScheme == 'darkMint' || props.themeName.colorScheme == 'warmNight' || props.themeName.colorScheme == 'hacker') {
+      setlogoUrl('https://api.alfa.directual.com/fileUploaded/directual-site/b652c768-32eb-4309-bc7f-974863107528.svg')
     }
-    if (currentTheme == 'classic' || currentTheme == 'tiffany') {
-      setlogoUrl('https://api.directual.com/fileUploaded/directual-site/316aba91-8ee2-4f35-aca8-260f5de08abd.svg')
+    if (props.themeName.colorScheme == 'classic' || props.themeName.colorScheme == 'tiffany') {
+      setlogoUrl('https://api.alfa.directual.com/fileUploaded/directual-site/31f7185d-f0cc-4063-bc59-1ca46d9f8b7c.svg')
     }
-  })
+  }, [props.themeName])
 
 
   return (
@@ -50,18 +48,18 @@ function MainMenuWrapper() {
         { name: "Sign In / Sign Up / Profile", route: "/profile", icon: "user", link: <Link to="/profile">Sign in, Sign up, Profile</Link> },
         { name: "Form", route: "/form", icon: "edit", link: <Link to="/form">Form</Link> },
         { name: "Theme management", route: "/theme", icon: "styles", link: <Link to="/theme">Theme management</Link> },
-        { name: "Table view", route: "/table", icon: "database", link: <Link to="/table">Table view</Link> },
-        { name: "List view (soon)", route: "/list", icon: "list", disabled: true },
-        { name: "Cards view (soon)", route: "/cards", icon: "cards", disabled: true },
+        { name: "Table (in progress)", route: "/table", icon: "database", link: <Link to="/table">Table (in progress)</Link> },
+        // { name: "List view (soon)", route: "/list", icon: "list", disabled: true },
+        { name: "Cards (soon)", route: "/cards", icon: "cards", disabled: true },
         { name: "Chat (soon)", route: "/chat", icon: "bubble", disabled: true },
-        { name: "Calculator (soon)", route: "/calc", icon: "actions", disabled: true },
+        // { name: "Calculator (soon)", route: "/calc", icon: "actions", disabled: true },
         { name: "Design system", subheader: true },
         { name: "Typography", route: "/system-typography", icon: "paragraph", link: <Link to="/system-typography">Typography</Link> },
         { name: "Directual Icons", route: "/system-icons", icon: "babai", link: <Link to="/system-icons">Directual icons</Link> },
         { name: "Buttons", route: "/system-button", icon: "done", link: <Link to="/system-button">Action panel, Buttons</Link> },
         { name: "Data entry", route: "/system-data-entry", icon: "import", link: <Link to="/system-data-entry">Data entry</Link> },
         { name: "Media", route: "/system-media", icon: "play", link: <Link to="/system-media">Media</Link> },
-        { name: "Drag'n'drop", route: "/system-dnd", icon: "copy", link: <Link to="/system-dnd">Drag'n'drop</Link> }
+        // { name: "Drag'n'drop", route: "/system-dnd", icon: "copy", link: <Link to="/system-dnd">Drag'n'drop</Link> }
       ]}
 
     />)
@@ -141,11 +139,11 @@ const App = (props) => {
   let exampleForm = 
   {
     "sl": "FPStest",
-    "formName": "",
-    "formDesc": null,
+    "formName": "Submit the form",
+    "formDesc": 'A form with several fields, including text fields, sliders, radios, selects The result can be processed syncronically.',
     "formButton": null,
     "placeholder": "",
-    "maxWidth": null,
+    "maxWidth": 450,
     "formButtonResubmit": null,
     "params": {
       "result": {
@@ -165,6 +163,7 @@ const App = (props) => {
           "quickSearch": false,
           "allowAddLinks": false,
           "dateTimeOn": true,
+          "searchData":[{"key":"option1","value":"Option 1"},{"key":"option2","value":"Option 2"}],
           "isValid": true,
           "weight": 2,
           "jsonDisplay": "default",
@@ -187,7 +186,7 @@ const App = (props) => {
           "allowAddLinks": false,
           "dateTimeOn": true,
           "isValid": true,
-          "weight": 0,
+          "weight": 3,
           "jsonDisplay": "default",
           "range": {
             "min": 0,
@@ -220,6 +219,7 @@ const App = (props) => {
         "link": {
           "include": true,
           "hidden": false,
+          "searchData":[{"key":"option1","value":"Option 1"},{"key":"option2","value":"Option 2"}],
           "required": false,
           "isTextarea": false,
           "textareaRows": 4,
@@ -244,14 +244,14 @@ const App = (props) => {
           "required": false,
           "isTextarea": false,
           "textareaRows": 4,
-          "defaultValue": "",
+          "defaultValue": {firstValue:10,secondValue:40},
           "isPositive": false,
           "quickSearch": true,
           "allowAddLinks": false,
           "dateTimeOn": true,
           "isValid": true,
-          "weight": 4,
-          "jsonDisplay": "default",
+          "weight": 0,
+          "jsonDisplay": "range",
           "range": {
             "min": 0,
             "max": 100,
@@ -265,26 +265,26 @@ const App = (props) => {
           "required": false,
           "isTextarea": false,
           "textareaRows": 4,
-          "defaultValue": "",
+          "defaultValue": {firstValue:20},
           "isPositive": false,
           "quickSearch": true,
           "allowAddLinks": false,
           "dateTimeOn": true,
           "isValid": true,
-          "weight": 5,
-          "jsonDisplay": "default",
+          "weight": 0,
+          "jsonDisplay": "slider",
           "range": {
             "min": 0,
             "max": 100,
-            "step": 1,
-            "unitName": ""
+            "step": 10,
+            "unitName": " $"
           }
         },
         "textarea": {
           "include": true,
           "hidden": false,
           "required": false,
-          "isTextarea": false,
+          "isTextarea": true,
           "textareaRows": 4,
           "defaultValue": "",
           "isPositive": false,
@@ -292,7 +292,7 @@ const App = (props) => {
           "allowAddLinks": false,
           "dateTimeOn": true,
           "isValid": true,
-          "weight": 6,
+          "weight": 0,
           "jsonDisplay": "default",
           "range": {
             "min": 0,
@@ -985,26 +985,30 @@ const App = (props) => {
   }
 
   let basicTheme ={
-    colorScheme: 'classic',
-    radius: 25
-}
+    colorScheme: localStorage.getItem('dd-theme-color') || 'classic',
+    radius: localStorage.getItem('dd-theme-radius') || 25
+  }
+
   const [currentTheme,setCurrentTheme] = useState(basicTheme)
+
+  useEffect(()=>{
+    localStorage.setItem('dd-theme-color', currentTheme.colorScheme)
+    localStorage.setItem('dd-theme-radius', currentTheme.radius)
+  }, [currentTheme])
+
+
 
   return (
     <FpsWrapper>
       <Router>
-
-        <MainMenuWrapper />
-
-
+        <MainMenuWrapper themeName={currentTheme} />
         <ContentWrapper themeName={currentTheme}>
-
           <Switch>
             <Route exact path="/table">
               <FpsTable data={exampleTable} />
             </Route>
             <Route exact path="/">
-              <h1>What is it</h1>
+              <WhatIsIt />
             </Route>
             <Route exact path="/form">
               <FpsForm data={exampleForm}/>
