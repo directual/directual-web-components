@@ -211,6 +211,8 @@ export default function Input(props) {
                 }
             }>
             {props.label && <label>{props.label}{props.required && '*'}</label>}
+            {props.description &&
+                <div className={styles.description}>{props.description}</div>}
 
             {/* <span className="dd-debug"> value: {JSON.stringify(value)}</span>
             <span className="dd-debug"> defVal: {JSON.stringify(defVal)}</span> */}
@@ -236,7 +238,7 @@ export default function Input(props) {
                         onChange={e => handleChange(e.target.value)}
                         value={value}
                         onBlur={checkValue}
-                        placeholder={props.placeholder}
+                        placeholder={`${props.placeholder}`}
                     />
                     {value && !props.disabled &&
                         <div className={`${styles.clear} icon icon-close`}
@@ -409,6 +411,7 @@ export default function Input(props) {
 
             {warningMsg &&
                 <div className={`${styles.status} ${styles[warningMsg.type]}`}>{warningMsg.msg}</div>}
+            
         </div>
     )
 }

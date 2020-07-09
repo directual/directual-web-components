@@ -31,7 +31,7 @@ function MainMenuWrapper(props) {
     if (props.themeName.colorScheme == 'darkMint' || props.themeName.colorScheme == 'warmNight' || props.themeName.colorScheme == 'hacker') {
       setlogoUrl('https://api.alfa.directual.com/fileUploaded/directual-site/b652c768-32eb-4309-bc7f-974863107528.svg')
     }
-    if (props.themeName.colorScheme == 'classic' || props.themeName.colorScheme == 'tiffany') {
+    if (props.themeName.colorScheme == 'classic' || props.themeName.colorScheme == 'tiffany' || props.themeName.colorScheme == 'white') {
       setlogoUrl('https://api.alfa.directual.com/fileUploaded/directual-site/31f7185d-f0cc-4063-bc59-1ca46d9f8b7c.svg')
     }
   }, [props.themeName])
@@ -155,12 +155,13 @@ const App = (props) => {
         "arrayLink": {
           "include": true,
           "hidden": false,
+          "description": 'Пролетарии всех стран соединяйтесь!',
           "required": false,
           "isTextarea": false,
           "textareaRows": 4,
           "defaultValue": "",
           "isPositive": false,
-          "quickSearch": false,
+          "quickSearch": true,
           "allowAddLinks": false,
           "dateTimeOn": true,
           "searchData":[{"key":"option1","value":"Option 1"},{"key":"option2","value":"Option 2"}],
@@ -225,7 +226,7 @@ const App = (props) => {
           "textareaRows": 4,
           "defaultValue": "",
           "isPositive": false,
-          "quickSearch": false,
+          "quickSearch": true,
           "allowAddLinks": false,
           "dateTimeOn": true,
           "isValid": true,
@@ -1036,7 +1037,7 @@ const App = (props) => {
               <FpsTheme 
                 onChange={value => {setCurrentTheme(value)}}
                 defaultValue={currentTheme}
-                themes={['classic', 'tiffany', 'darkMint', 'warmNight', 'hacker']} />
+                themes={['classic', 'white',  'tiffany', 'darkMint', 'warmNight', 'hacker']} />
             </Route>
 
             <Route exact path="/system-typography">

@@ -25,7 +25,7 @@
 .diretualFooter {
     position: fixed;
     background-color: var(--background-color);
-    border-top:solid 1px var(--field-border-color);
+    border-top:solid 1px var(--background-contrast-color);
     padding:5px 8px;
     bottom: 0;
     left:0;

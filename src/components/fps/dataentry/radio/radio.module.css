@@ -25,6 +25,7 @@
 }
 .radio .radioImages label {
   background-color: var(--background-color);
+  border: solid 1px var(--background-contrast-color);
   padding: 12px;
   margin: 0 12px 12px 0;
   width: 160px;

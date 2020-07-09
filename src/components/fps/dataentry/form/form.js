@@ -137,6 +137,18 @@ export default function FpsForm({ data, onEvent, id }) {
       json: 'json'
     }
     if (
+      matching[field.dataType] == 'select' &&
+      !params.fields[field.sysName].quickSearch
+    ) {
+      return 'string'
+    }
+    if (
+      matching[field.dataType] == 'multiselect' &&
+      !params.fields[field.sysName].quickSearch
+    ) {
+      return 'string'
+    }
+    if (
       matching[field.dataType] == 'string' &&
       params.fields[field.sysName].isTextarea
     ) {
@@ -268,8 +280,9 @@ export default function FpsForm({ data, onEvent, id }) {
                     sysName={field.sysName}
                     validationHandler={validationHandler}
                     label={data.placeholder != "true" ? field.name : ''}
-                    placeholder={data.placeholder == "true" ? field.name : ''}
+                    placeholder={`${data.placeholder == "true" ? `${field.name} ${props.required && '*'}` : ''}`}
                     required={field.params.required}
+                    description={field.params.description}
                     positive={field.params.isPositive}
                     options={field.params.searchData || []}
                     //defaultValue={model[field.sysName] || field.params.defaultValue}
