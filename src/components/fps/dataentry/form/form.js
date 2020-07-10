@@ -282,7 +282,7 @@ export default function FpsForm({ data, onEvent, id }) {
                     sysName={field.sysName}
                     validationHandler={validationHandler}
                     label={data.placeholder != "true" ? field.name : ''}
-                    placeholder={`${data.placeholder == "true" ? `${field.name} ${props.required && '*'}` : ''}`}
+                    placeholder={`${data.placeholder == "true" ? `${field.name} ${field.params.required && '*'}` : ''}`}
                     required={field.params.required}
                     description={field.params.description}
                     positive={field.params.isPositive}
