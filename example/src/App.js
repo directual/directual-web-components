@@ -155,7 +155,7 @@ const App = (props) => {
         "arrayLink": {
           "include": true,
           "hidden": false,
-          "description": 'Пролетарии всех стран соединяйтесь!',
+          "description": 'Field description',
           "required": false,
           "isTextarea": false,
           "textareaRows": 4,
