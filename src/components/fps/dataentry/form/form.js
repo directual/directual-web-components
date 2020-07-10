@@ -53,7 +53,7 @@ export default function FpsForm({ data, onEvent, id }) {
   const formButton = data.formButton || 'Submit'
   const formButtonResubmit = data.formButtonResubmit || 'Submit again'
   const isSuccessWrite = data.isSuccessWrite
-  const params = data.params || {}
+  let params = data.params || {}
   const fileds = sortFields(data.fileds) || []
   const formWidth = (data.maxWidth && parseInt(data.maxWidth)) || 'auto'
 
@@ -67,7 +67,7 @@ export default function FpsForm({ data, onEvent, id }) {
 
   //console.log('rerender')
   function sortFields(arr) {
-    return arr;
+    //return arr;
     //console.log(arr)
     if (!arr) { return null }
     if (!params.fields) {
