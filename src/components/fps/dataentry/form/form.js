@@ -57,7 +57,7 @@ export default function FpsForm({ data, onEvent, id }) {
   const fileds = sortFields(data.fileds) || []
   const formWidth = (data.maxWidth && parseInt(data.maxWidth)) || 'auto'
 
-  
+
 
   // console.log('------------ form data: -------------')
   // console.log(data)
@@ -66,11 +66,13 @@ export default function FpsForm({ data, onEvent, id }) {
   // console.log(model)
 
   //console.log('rerender')
-
   function sortFields(arr) {
+    return arr;
     //console.log(arr)
     if (!arr) { return null }
-    if (!params.fields) {params = {...params, fields:{}}}
+    if (!params.fields) {
+      params = {...params, fields:{}}
+    }
     arr.forEach((field, i) => {
       if (!params.fields[field.sysName]) {
         params.fields[field.sysName] = defaultParam

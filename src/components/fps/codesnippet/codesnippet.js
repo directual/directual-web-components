@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './codesnippet.module.css'
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { tomorrowNightBlue } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { tomorrowNightBlue } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 export default function CodeSnippet(props) {
     const [showCode, setShowCode] = useState(props.expanded || false)
@@ -12,7 +12,7 @@ export default function CodeSnippet(props) {
             {showCode &&
                 <a className={`${styles.showhide} icon icon-codeXML`} onClick={() => setShowCode(!showCode)}>Hide code</a>}
             {/* <pre className={`${styles.code} ${showCode && styles.show}`}><code>{props.code}</code></pre> */}
-            {showCode && 
+            {showCode &&
             <SyntaxHighlighter language="javascript" style={tomorrowNightBlue}>
                 {props.code}
             </SyntaxHighlighter>}
