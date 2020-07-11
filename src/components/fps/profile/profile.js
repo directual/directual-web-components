@@ -140,7 +140,7 @@ function ProfileBody({ user, onSave }) {
                 label='Phone'
                 type='phone'
                 defaultValue={`${data.phone || ''}`}
-                onChange={value => value && setData({ ...data, phone: value })}
+                onChange={value => value ? setData({ ...data, phone: value }): undefined}
             />
             <Input
                 label='Email'
@@ -149,14 +149,30 @@ function ProfileBody({ user, onSave }) {
                 defaultValue={data.email}
                 description="email can't be changed"
             />
+            <Input
+                label='Role'
+                disabled
+                defaultValue={data.role}
+            />
             <FormSection title='Authorisation' />
             <div className={styles.socialAcc}>
                 <label>Social account</label>
-                <div className={styles.google}>{data.email}</div>
+                {data.socialGoogle ?
+                    <div className={styles.google}>
+                        <span className={styles.googleAcc}>
+                            <span>
+                                {data.socialGoogle}
+                            </span></span>
+                        <a className={styles.disconnect}
+                            onClick={() => setData({ ...data, socialGoogle: null })}
+                        >disconnect</a></div> :
+                    <div>none</div>}
             </div>
             <Input
                 label='New password'
                 type='password'
+                defaultValue={`${data.newPassword || ''}`}
+                onChange={value => value ? setData({ ...data, newPassword: value }): undefined}
             />
             {/* <div className="dd-debug">
             {JSON.stringify(data)}</div> */}

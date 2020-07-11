@@ -989,7 +989,9 @@ const App = (props) => {
     profilePicture: 'https://images.unsplash.com/photo-1574158622682-e40e69881006?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
     firstName: 'Jack',
     lastName: 'Russel',
-    email: 'jack@directual.com'
+    email: 'jack@directual.com',
+    role: 'admin',
+    socialGoogle: 'jack@directual.com'
 }
 
   let basicTheme ={
