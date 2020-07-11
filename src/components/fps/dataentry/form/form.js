@@ -10,7 +10,9 @@ import icon from './../../../../icons/fps-form.svg'
 export function FormSection(props) {
   return (
     <div className={styles.FormSection}>
+      <div className={styles.FormSectionLine} />
       <span>{props.title}</span>
+      <div className={styles.FormSectionLine} />
     </div>
   )
 }

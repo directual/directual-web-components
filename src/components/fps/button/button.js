@@ -8,6 +8,7 @@ export default function Button(props) {
         onClick={!props.disabled && props.onClick}
         className={`${styles.button} 
             ${props.accent && styles.accent} 
+            ${props.className && props.className} 
             ${props.disabled && styles.disabled}
             ${props.icon && `${styles.icon} icon icon-${props.icon}`}
             ${props.socialGoogle && `${styles.socialGoogle}`}

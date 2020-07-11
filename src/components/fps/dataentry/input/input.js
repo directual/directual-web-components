@@ -238,7 +238,7 @@ export default function Input(props) {
                         onChange={e => handleChange(e.target.value)}
                         value={value}
                         onBlur={checkValue}
-                        placeholder={`${props.placeholder}`}
+                        placeholder={`${props.placeholder ? props.placeholder: ''}`}
                     />
                     {value && !props.disabled &&
                         <div className={`${styles.clear} icon icon-close`}
@@ -248,13 +248,14 @@ export default function Input(props) {
             {props.type == 'email' &&
                 <div className={styles.field_wrapper}>
                     <input
+                        autocomplete="off"
                         disabled={props.disabled}
                         className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
                         type="text"
                         onChange={e => { handleChange(String(e.target.value).toLowerCase()); e && checkEmailValue(e.target.value) }}
                         value={value}
                         onBlur={e => checkEmailValue(e.target.value)}
-                        placeholder={props.placeholder}
+                        placeholder={`${props.placeholder ? props.placeholder: ''}`}
                     />
                     {value && !props.disabled &&
                         <div className={`${styles.clear} icon icon-close`}
@@ -270,7 +271,7 @@ export default function Input(props) {
                         onChange={e => { handleChangeDecimalNumber(e.target.value) }}
                         value={value}
                         onBlur={checkValue}
-                        placeholder={props.placeholder}
+                        placeholder={`${props.placeholder ? props.placeholder: ''}`}
                     />
                 </div>}
 
@@ -283,7 +284,7 @@ export default function Input(props) {
                         onChange={e => handleChangeNumber(e.target.value)}
                         value={value}
                         onBlur={checkValue}
-                        placeholder={props.placeholder}
+                        placeholder={`${props.placeholder ? props.placeholder: ''}`}
                     />
 
                     {!props.disabled && <React.Fragment>
@@ -305,7 +306,7 @@ export default function Input(props) {
                         onChange={e => handleChange(e.target.value)}
                         value={value}
                         onBlur={checkValue}
-                        placeholder={props.placeholder}
+                        placeholder={`${props.placeholder ? props.placeholder: ''}`}
                     />
                     {value &&
                         <div className={`${styles.clear} icon icon-close`}
@@ -315,13 +316,14 @@ export default function Input(props) {
             {props.type == 'password' &&
                 <div className={styles.field_wrapper}>
                     <input
+                        autocomplete="new-password"
                         disabled={props.disabled}
                         className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                         type={pwdVisible}
                         onChange={e => handleChange(e.target.value)}
                         value={value}
                         onBlur={checkValue}
-                        placeholder={props.placeholder} />
+                        placeholder={`${props.placeholder ? props.placeholder: ''}`} />
                     {pwdVisible == 'password' &&
                         <div className={`${styles.clear} icon icon-view`}
                             onClick={() => setPwdVisible('text')}></div>}

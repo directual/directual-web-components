@@ -1,13 +1,15 @@
 .FormSection {
-  margin: 24px 0 24px 0;
-  border-top: solid 1px var(--table-border-color);
+  margin: 32px 0 18px 0;
   display: flex;
   justify-content: center;
 }
 .FormSection span {
-  background: var(--secondary-background-color);
   margin-top: -9px;
   padding: 0 9px;
   color: var(--field-border-color);
   font-size: var(--text-small-size);
+}
+.FormSection .FormSectionLine {
+  border-top: solid 1px var(--table-border-color);
+  flex-grow: 2;
 }

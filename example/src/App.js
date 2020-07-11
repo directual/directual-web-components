@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {
   FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, FpsTheme,
   ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, SignIn, SignUp, Media, CodeSnippet,
-  Dnd
+  Dnd, Profile
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 import {
@@ -985,6 +985,13 @@ const App = (props) => {
     "response": null
   }
 
+  const exampleUser = {
+    profilePicture: 'https://images.unsplash.com/photo-1574158622682-e40e69881006?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
+    firstName: 'Jack',
+    lastName: 'Russel',
+    email: 'jack@directual.com'
+}
+
   let basicTheme ={
     colorScheme: localStorage.getItem('dd-theme-color') || 'classic',
     radius: localStorage.getItem('dd-theme-radius') || 25
@@ -1015,12 +1022,15 @@ const App = (props) => {
               <FpsForm data={exampleForm}/>
             </Route>
             <Route exact path="/profile">
+            <Profile 
+                width={600}
+                user={exampleUser}
+                />
               <SignIn
                 header='Sign in'
                 width={400}
                 google
               />
-            <br />
             <SignUp
                 header='Sign up'
                 width={400}

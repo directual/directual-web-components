@@ -1,0 +1,63 @@
+.profileHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.profileHeader .profilePicture {
+  background-color: var(--label-color);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  margin-right: 12px;
+  border: solid 1px var(--field-border-color);
+}
+.profileHeader .profilePicture .profileImageHolder {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+}
+.profileHeader h1 {
+  margin: 0;
+}
+.profileHeader .noName {
+  opacity: 0.3;
+}
+.profileBody {
+  background-color: var(--background-color);
+  padding: 24px;
+  border-radius: var(--border-radius);
+  border: solid 1px var(--background-contrast-color);
+}
+.logOut {
+  margin: 12px 0 18px 0;
+}
+.socialAcc {
+  margin-bottom: 18px;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+}
+.socialAcc label {
+  font-size: var(--text-small-size);
+  opacity: 0.7;
+  font-weight: var(--h1-font-weight);
+  padding-bottom: 8px;
+}
+.socialAcc .google {
+  display: flex;
+  align-items: center;
+}
+.socialAcc .google:before {
+  content: "";
+  display: flex;
+  height: 18px;
+  width: 18px;
+  margin-right: 6px;
+  background: url(https://api.alfa.directual.com/fileUploaded/directual-site/d2381fee-b864-469a-835d-d8f5bba71f93.svg) center center no-repeat;
+  background-size: contain;
+}

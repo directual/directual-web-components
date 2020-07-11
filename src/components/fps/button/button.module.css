@@ -42,12 +42,12 @@
   color: var(--background-color) !important;
   border-color: var(--font-color) !important;
 }
-.button.danger:hover {
+.button.danger:hover:not(.disabled) {
   background-color: var(--error-color);
   color: var(--button-accent-color);
   border-color: var(--error-color);
 }
-.button.danger:active {
+.button.danger:active:not(.disabled) {
   background-color: var(--font-color) !important;
   color: var(--background-color) !important;
   border-color: var(--font-color) !important;
