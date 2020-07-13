@@ -22,14 +22,14 @@ export default function Input(props) {
 
     const checkValue = () => {
         console.log('checking...');
-        // console.log(value);
-        // console.log(!value);
-        // console.log(value !== 0);
-        // console.log(props.required);
-        // console.log(value.length);
         ((!value || (value && value.length == 0)) && (value != 0) && props.required) ?
             setWarningMesg({ type: 'error', msg: 'This field is required' }) :
             setWarningMesg({});
+    }
+
+    const [searchValue, setSearchValue] = useState()
+    const checkSearchValue = () => {
+        (value != searchValue && value) ? setWarningMesg({ type: 'warning', msg: 'Press Enter to search...' }) : setWarningMesg({});
     }
 
     useEffect(() => {
@@ -87,7 +87,6 @@ export default function Input(props) {
         props.type == 'icon' && props.required && value != props.defaultValue && checkValue();
         props.type == 'multiselect' && props.required && value != props.defaultValue && checkValue();
     }, [value])
-
 
     const icon_options =
         [
@@ -219,6 +218,7 @@ export default function Input(props) {
 
             {props.type != 'email' &&
                 props.type != 'number' &&
+                props.type != 'search' &&
                 props.type != 'icon' &&
                 props.type != 'textarea' &&
                 props.type != 'password' &&
@@ -235,10 +235,11 @@ export default function Input(props) {
                         disabled={props.disabled}
                         className={`${styles.field} ${props.icon && styles.icon} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
                         type="text"
-                        onChange={e => handleChange(e.target.value)}
+                        onKeyPress={e => { e.key == 'Enter' ? props.onPressEnter(value) : undefined }}
+                        onChange={e => { handleChange(e.target.value); }}
                         value={value}
                         onBlur={checkValue}
-                        placeholder={`${props.placeholder ? props.placeholder: ''}`}
+                        placeholder={`${props.placeholder ? props.placeholder : ''}`}
                     />
                     {value && !props.disabled &&
                         <div className={`${styles.clear} icon icon-close`}
@@ -255,11 +256,35 @@ export default function Input(props) {
                         onChange={e => { handleChange(String(e.target.value).toLowerCase()); e && checkEmailValue(e.target.value) }}
                         value={value}
                         onBlur={e => checkEmailValue(e.target.value)}
-                        placeholder={`${props.placeholder ? props.placeholder: ''}`}
+                        placeholder={`${props.placeholder ? props.placeholder : ''}`}
                     />
                     {value && !props.disabled &&
                         <div className={`${styles.clear} icon icon-close`}
                             onClick={clearValue}></div>}
+                </div>}
+
+            {props.type == 'search' &&
+                <div className={styles.field_wrapper}>
+                    <div className={`${styles.input_icon_wrapper} icon icon-search`} />
+                    <input
+                        disabled={props.disabled}
+                        className={`${styles.field} ${styles.icon} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
+                        type="text"
+                        onKeyPress={e => {
+                            if (e.key == 'Enter') {
+                                props.onPressEnter(value);
+                                setSearchValue(value);
+                                setWarningMesg({})
+                            }
+                        }}
+                        onChange={e => { handleChange(e.target.value); }}
+                        value={value}
+                        onBlur={checkSearchValue}
+                        placeholder={`${props.placeholder ? props.placeholder : ''}`}
+                    />
+                    {value && !props.disabled &&
+                        <div className={`${styles.clear} icon icon-close`}
+                            onClick={() => { clearValue(); props.onClear() }}></div>}
                 </div>}
 
             {props.type == 'decimal' &&
@@ -271,22 +296,23 @@ export default function Input(props) {
                         onChange={e => { handleChangeDecimalNumber(e.target.value) }}
                         value={value}
                         onBlur={checkValue}
-                        placeholder={`${props.placeholder ? props.placeholder: ''}`}
+                        placeholder={`${props.placeholder ? props.placeholder : ''}`}
                     />
                 </div>}
 
             {props.type == 'number' &&
                 <div className={styles.field_wrapper}>
-                    <input
-                        className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
-                        disabled={props.disabled}
-                        type="number"
-                        onChange={e => handleChangeNumber(e.target.value)}
-                        value={value}
-                        onBlur={checkValue}
-                        placeholder={`${props.placeholder ? props.placeholder: ''}`}
-                    />
-
+                        <input
+                            className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
+                            disabled={props.disabled}
+                            type="number"
+                            onChange={e => handleChangeNumber(e.target.value)}
+                            value={value}
+                            onBlur={checkValue}
+                            placeholder={`${props.placeholder ? props.placeholder : ''}`}
+                        />
+                        
+                        {/* {props.unitName && <div className={styles.unitName}>{props.unitName}</div>} */}
                     {!props.disabled && <React.Fragment>
                         <div className={`${styles.plus} icon icon-up`}
                             onClick={() => { if (value) { handleChangeNumber(parseInt(value) + 1) } else { handleChangeNumber(1); } }}></div>
@@ -306,7 +332,7 @@ export default function Input(props) {
                         onChange={e => handleChange(e.target.value)}
                         value={value}
                         onBlur={checkValue}
-                        placeholder={`${props.placeholder ? props.placeholder: ''}`}
+                        placeholder={`${props.placeholder ? props.placeholder : ''}`}
                     />
                     {value &&
                         <div className={`${styles.clear} icon icon-close`}
@@ -323,7 +349,7 @@ export default function Input(props) {
                         onChange={e => handleChange(e.target.value)}
                         value={value}
                         onBlur={checkValue}
-                        placeholder={`${props.placeholder ? props.placeholder: ''}`} />
+                        placeholder={`${props.placeholder ? props.placeholder : ''}`} />
                     {pwdVisible == 'password' &&
                         <div className={`${styles.clear} icon icon-view`}
                             onClick={() => setPwdVisible('text')}></div>}
@@ -413,7 +439,7 @@ export default function Input(props) {
 
             {warningMsg &&
                 <div className={`${styles.status} ${styles[warningMsg.type]}`}>{warningMsg.msg}</div>}
-            
+
         </div>
     )
 }

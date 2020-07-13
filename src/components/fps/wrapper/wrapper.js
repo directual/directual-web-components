@@ -31,9 +31,10 @@ export function ContentWrapper(props) {
     return (
         <React.Fragment>
             <SetTheme themeName={currentTheme}/>
-            {/* <SetTheme themeName={props.themeName}/> */}
-            <div className={styles.content_wrapper} id={props.id || undefined}>
-                {props.children}
+            <div className={styles.outer_content_wrapper}>
+                <div className={styles.content_wrapper} id={props.id || undefined}>
+                    {props.children}
+                </div>
             </div>
             <div className={styles.diretualFooter}>
                 <a target="_blank" className={styles.logo} href="https://directual.com?ref=fps_footer">

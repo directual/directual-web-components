@@ -33,7 +33,7 @@
   cursor: pointer;
   transition: 0.5s;
   opacity: 0.6;
-  font-weight: var(--h1-font-weight);
+  font-weight: var(--strong-font-weight);
 }
 .tabMenuItem.current {
   opacity: 1;

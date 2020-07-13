@@ -7,7 +7,7 @@
   font-size: var(--text-small-size);
   opacity: 0.7;
   padding-bottom: 6px;
-  font-weight: var(--h1-font-weight);
+  font-weight: var(--strong-font-weight);
 }
 .input_wrapper .field_wrapper {
   display: flex;
@@ -20,6 +20,9 @@
   position: absolute;
   left: 8px;
   top: 8px;
+}
+.input_wrapper .field_wrapper .input_icon_wrapper:before {
+  font-size: 32px;
 }
 .input_wrapper .field_wrapper .clear {
   position: absolute;
@@ -77,7 +80,8 @@
 .input_wrapper textarea.field:focus:not(.disabled),
 .input_wrapper textarea.field:active:not(.disabled),
 .input_wrapper textarea.field.ok,
-.input_wrapper textarea.field.error {
+.input_wrapper textarea.field.error,
+.input_wrapper textarea.field.warning {
   padding: 17px 35px 17px 17px;
 }
 .input_wrapper textarea.disabled {
@@ -93,11 +97,14 @@
   display: flex;
   height: 46px;
   align-items: center;
-  padding: 1px 36px 1px 18px;
+  padding: 1px 40px 1px 18px;
   color: var(--font-color);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+.input_wrapper .field[type=number] {
+  text-align: right;
 }
 .input_wrapper .field::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -113,16 +120,25 @@
 .input_wrapper .field.error {
   border-width: 2px;
   height: 46px;
-  padding: 0 35px 0 17px;
+  padding: 0 39px 0 17px;
   border-color: var(--error-color);
 }
 .input_wrapper .field.error.icon {
   padding-left: 39px;
 }
+.input_wrapper .field.warning {
+  border-width: 2px;
+  height: 46px;
+  padding: 0 39px 0 17px;
+  border-color: var(--alert-color);
+}
+.input_wrapper .field.warning.icon {
+  padding-left: 39px;
+}
 .input_wrapper .field.ok {
   border-width: 2px;
   height: 46px;
-  padding: 0 35px 0 17px;
+  padding: 0 39px 0 17px;
   border-color: var(--ok-color);
 }
 .input_wrapper .field.ok.icon {
@@ -131,7 +147,7 @@
 .input_wrapper .field:hover:not(.disabled) {
   border-width: 2px;
   height: 46px;
-  padding: 0 35px 0 17px;
+  padding: 0 39px 0 17px;
 }
 .input_wrapper .field:hover:not(.disabled).icon {
   padding-left: 39px;
@@ -139,7 +155,7 @@
 .input_wrapper .field:focus:not(.disabled) {
   border-width: 2px;
   height: 46px;
-  padding: 0 35px 0 17px;
+  padding: 0 39px 0 17px;
   border-color: var(--accent-color);
 }
 .input_wrapper .field:focus:not(.disabled).icon {
@@ -147,7 +163,7 @@
 }
 .input_wrapper .field:active:not(.disabled) {
   height: 46px;
-  padding: 0 35px 0 17px;
+  padding: 0 39px 0 17px;
   border: solid 2px var(--font-color);
 }
 .input_wrapper .field:active:not(.disabled).icon {
@@ -174,6 +190,9 @@
 .input_wrapper .status.error {
   color: var(--error-color);
 }
+.input_wrapper .status.warning {
+  color: var(--alert-color);
+}
 .slider_field_wrapper {
   display: flex;
   flex-direction: column;
@@ -187,4 +206,7 @@
 }
 .input_group .input_wrapper {
   width: calc(50% - 6px);
+}
+.numberUnits {
+  display: flex;
 }

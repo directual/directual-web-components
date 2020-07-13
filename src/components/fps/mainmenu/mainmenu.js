@@ -1,10 +1,8 @@
 import React, {useState, useEffect} from 'react'
-
+import Backdrop from '../backdrop/backdrop'
 import styles from './mainmenu.module.css'
 
-export function Backdrop(props) {
-    return <div className={styles.backdrop} onClick={props.onClick}></div>
-}
+
 
 export default function MainMenu(props) {
     const [showMM, setShowMM] = useState(false)
@@ -16,7 +14,7 @@ export default function MainMenu(props) {
 
     return (
         <React.Fragment>
-            {showBackdrop && <Backdrop onClick={hideMM}/>}
+            {showBackdrop && <Backdrop top onClick={hideMM}/>}
             <div className={styles.show_mobile_menu}
                 onClick={() => { setShowMM(true); setShowBackdrop(true)}}></div>
             <div className={`${styles.mainmenu} ${showMM && styles.show}`}>

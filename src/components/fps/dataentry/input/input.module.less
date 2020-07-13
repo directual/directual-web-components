@@ -7,7 +7,7 @@
         font-size: var(--text-small-size);
         opacity: .7;
         padding-bottom: 6px;
-        font-weight: var(--h1-font-weight);
+        font-weight: var(--strong-font-weight);
     }
     .field_wrapper {
         display: flex;
@@ -18,7 +18,10 @@
             opacity: .5;
             position: absolute;
             left:8px;
-            top:8px
+            top:8px;
+            &:before {
+                font-size:32px;
+            }
         }
         .clear {
             position: absolute;
@@ -68,7 +71,7 @@
         &.field {
             height: auto !important;
             padding: 18px 36px 18px 18px;
-            &:hover:not(.disabled), &:focus:not(.disabled), &:active:not(.disabled), &.ok, &.error {
+            &:hover:not(.disabled), &:focus:not(.disabled), &:active:not(.disabled), &.ok, &.error, &.warning {
             padding: 17px 35px 17px 17px;
             }
         }
@@ -79,6 +82,9 @@
         }
     }
     .field {
+        &[type=number] {
+            text-align: right;
+        }
         outline: none;
         border:solid 1px var( --field-border-color);
         border-radius: var( --border-radius);
@@ -86,7 +92,7 @@
         display: flex;
         height: 46px;
         align-items: center;
-        padding: 1px 36px 1px 18px;
+        padding: 1px 40px 1px 18px;
         color: var(--font-color);
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -105,8 +111,17 @@
         &.error {
             border-width: 2px;
             height: 46px;
-            padding: 0 35px 0 17px;
+            padding: 0 39px 0 17px;
             border-color: var(--error-color);
+            &.icon {
+                padding-left: 39px;
+            }
+        }
+        &.warning {
+            border-width: 2px;
+            height: 46px;
+            padding: 0 39px 0 17px;
+            border-color: var(--alert-color);
             &.icon {
                 padding-left: 39px;
             }
@@ -114,7 +129,7 @@
         &.ok {
             border-width: 2px;
             height: 46px;
-            padding: 0 35px 0 17px;
+            padding: 0 39px 0 17px;
             border-color: var(--ok-color);
             &.icon {
                 padding-left: 39px;
@@ -123,7 +138,7 @@
         &:hover:not(.disabled) {
             border-width: 2px;
             height: 46px;
-            padding: 0 35px 0 17px;
+            padding: 0 39px 0 17px;
             &.icon {
                 padding-left: 39px;
             }
@@ -131,7 +146,7 @@
         &:focus:not(.disabled) {
             border-width: 2px;
             height: 46px;
-            padding: 0 35px 0 17px;
+            padding: 0 39px 0 17px;
             border-color: var(--accent-color);
             &.icon {
                 padding-left: 39px;
@@ -139,7 +154,7 @@
         }
         &:active:not(.disabled) {
             height: 46px;
-            padding: 0 35px 0 17px;
+            padding: 0 39px 0 17px;
             border: solid 2px var(--font-color);
             &.icon {
                 padding-left: 39px;
@@ -166,6 +181,9 @@
         &.error {
             color:var(--error-color);
         }
+        &.warning {
+            color:var(--alert-color);
+        }
     }
  }
 
@@ -183,4 +201,8 @@
      .input_wrapper {
          width: calc(50% - 6px);
      }
+ }
+
+ .numberUnits {
+     display: flex;
  }

@@ -58,7 +58,7 @@
 .socialAcc label {
   font-size: var(--text-small-size);
   opacity: 0.7;
-  font-weight: var(--h1-font-weight);
+  font-weight: var(--headers-font-weight);
   padding-bottom: 8px;
 }
 .socialAcc .google {

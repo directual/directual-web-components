@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from './theme.module.css'
 import Radio from '../dataentry/radio/radio'
-import Input from '../dataentry/input/input'
+import Input, { InputGroup } from '../dataentry/input/input'
 
 export function SetTheme({ themeName }) {
 
@@ -9,14 +9,18 @@ export function SetTheme({ themeName }) {
 
     useEffect(() => {
         if (themeName.colorScheme) {
-            setTheme(themeName.colorScheme, themeName.radius || 25)
-        } else {setTheme(themeName, 25)}
+            setTheme(themeName.colorScheme, themeName.radius || 25, themeName.headersFont || 'Montserrat', themeName.fontText || 'Lato', themeName.headersFontWeight || '700', themeName.bodyFontWeight || '400')
+        } else { setTheme(themeName, 25, 'Montserrat', 'Lato', '700', '400') }
     }, [themeName])
 
-    
-    
 
-    const setTheme = (colorScheme,radius) => {
+
+
+    const setTheme = (colorScheme, radius, headersFont, fontText, headersFontWeight, bodyFontWeight) => {
+        document.documentElement.style.setProperty('--headers-font-weight', headersFontWeight)
+        document.documentElement.style.setProperty('--text-font-weight', bodyFontWeight)
+        document.documentElement.style.setProperty('--headers-font-family', "'" + headersFont + "'" + ', sans-serif')
+        document.documentElement.style.setProperty('--main-font-family', "'" + fontText + "'" + ', sans-serif')
         document.documentElement.style.setProperty('--border-radius', radius + 'px')
         if (colorScheme === 'white') {
             document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
@@ -204,19 +208,33 @@ export default function FpsTheme(props) {
     const [selectedColorScheme, setSelectedColorScheme] = useState(
         {
             colorScheme: props.defaultValue.colorScheme || options[0].value,
-            radius: props.defaultValue.radius || 25
+            radius: props.defaultValue.radius || 25,
+            headersFont: props.defaultValue.headersFont || 'Montserrat',
+            fontText: props.defaultValue.fontText || 'Lato',
+            headersFontWeight: props.defaultValue.headersFontWeight || '700',
+            bodyFontWeight: props.defaultValue.bodyFontWeight || '400'
         }
     )
 
-    useEffect(()=>{
+    useEffect(() => {
         selectedColorScheme && props.onChange && props.onChange(selectedColorScheme)
-    },[selectedColorScheme])
+    }, [selectedColorScheme])
 
-    const fontHeaders = [
-        {key: 'Montserrat', value: 'Montserrat Black'}
+    const fontFaces = [
+        { key: 'Montserrat', value: 'Montserrat' },
+        { key: 'Lato', value: 'Lato' },
+        { key: 'Merriweather', value: 'Merriweather' },
+        { key: 'Oswald', value: 'Oswald' },
+        { key: 'Rubik', value: 'Rubik' },
+        { key: 'Ubuntu', value: 'Ubuntu' },
+        { key: 'Courier New', value: 'Courier New' },
     ]
-    const fontText = [
-        {key: 'Lato', value: 'Lato'}
+    const fontWeights = [
+        { key: '900', value: 'Black 900' },
+        { key: '700', value: 'Bold 700' },
+        { key: '500', value: 'Medium 500' },
+        { key: '400', value: 'Regular 400' },
+        { key: '300', value: 'Light 300' },
     ]
 
     return (
@@ -227,32 +245,51 @@ export default function FpsTheme(props) {
                 radioImages
                 options={userOptions}
                 defaultValue={selectedColorScheme.colorScheme}
-                onChange={value => setSelectedColorScheme({...selectedColorScheme, colorScheme: value})}
+                onChange={value => setSelectedColorScheme({ ...selectedColorScheme, colorScheme: value })}
             />
             <Input
                 type='number'
                 label='Border radius'
                 positive
-                width={150}
+                unitName='px'
+                width={100}
                 defaultValue={selectedColorScheme.radius}
-                onChange={value => value ? setSelectedColorScheme({...selectedColorScheme, radius: value}) : setSelectedColorScheme({...selectedColorScheme, radius: 0})}
+                onChange={value => value ? setSelectedColorScheme({ ...selectedColorScheme, radius: value }) : setSelectedColorScheme({ ...selectedColorScheme, radius: 'none' })}
             />
-            <Input
-                type="select"
-                label="Headers font face"
-                defaultValue='Montserrat'
-                options={fontHeaders}
-                width={300}
-                disabled
-            />
-            <Input
-                type="select"
-                label="Text font face"
-                defaultValue='Lato'
-                options={fontText}
-                width={300}
-                disabled
-            />
+            <InputGroup
+                width={500}>
+                <Input
+                    type="select"
+                    label="Headers font face"
+                    defaultValue={selectedColorScheme.headersFont}
+                    options={fontFaces}
+                    onChange={value => setSelectedColorScheme({ ...selectedColorScheme, headersFont: value })}
+                />
+                <Input
+                    type='select'
+                    label="Headers font weight"
+                    options={fontWeights}
+                    defaultValue={selectedColorScheme.headersFontWeight}
+                    onChange={value => setSelectedColorScheme({ ...selectedColorScheme, headersFontWeight: value })}
+                />
+            </InputGroup>
+            <InputGroup
+                width={500}>
+                <Input
+                    type="select"
+                    label="Text font face"
+                    defaultValue={selectedColorScheme.fontText}
+                    options={fontFaces}
+                    onChange={value => setSelectedColorScheme({ ...selectedColorScheme, fontText: value })}
+                />
+                <Input
+                    type='select'
+                    label="Text font weight"
+                    options={fontWeights}
+                    defaultValue={selectedColorScheme.bodyFontWeight}
+                    onChange={value => setSelectedColorScheme({ ...selectedColorScheme, bodyFontWeight: value })}
+                />
+            </InputGroup>
         </React.Fragment>
     )
 }

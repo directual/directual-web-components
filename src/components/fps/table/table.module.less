@@ -1,10 +1,5 @@
  .table {
-     h1 {
-         margin-bottom: 12px;
-     }
-     h2 {
-        padding-bottom: 12px;
-    }
+     //position: relative;
      .table_wrapper {
         background-color: var(--background-color);
         padding: 6px;
@@ -43,4 +38,85 @@
             cursor: pointer;
         }
     }
+    .tableTitle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        h1,h2 {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: 0;
+        }
+    }
+ }
+ .firstObjectCard {
+    position: absolute;
+    top:18px;
+    left: 0;
+    bottom: 18px;
+    right: 18px;
+ }
+ .objectCard {
+    position: absolute;
+    top:-1px;
+    left: 17px;
+    bottom: -1px;
+    right: -1px;
+    // top:48px;
+    // left: 48px;
+    // bottom: 48px;
+    // right: 48px;
+    overflow: visible;
+    padding:24px 24px 24px 12px;
+    border-radius: var(--border-radius);
+    border: solid 1px var(--background-contrast-color);
+    background-color: var(--background-color);
+    z-index: 101;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+    .objectCardHeader {
+        display: flex;
+        align-items: center;
+        .closeObjectCard {
+            cursor: pointer;
+            margin-right: 12px;
+            opacity: .5;
+            transition: .5s;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+    .objectCardBody {
+        padding:24px 24px 24px 46px
+    }
+}
+
+ @media all and (max-width: 415px) { 
+    .firstObjectCard {
+        position: absolute;
+        top:12px;
+        left: -6px;
+        bottom: 12px;
+        right: 12px;
+     }
+    .objectCard {
+        padding:12px;
+        .objectCardBody {
+            padding:24px 24px 24px 12px
+        }
+    }
+    .table div.tableTitle {
+        flex-direction: column;
+        align-items: stretch;
+        h1, h2 {
+            max-width: 100%;
+            margin-bottom: 12px;
+        }
+    }
+ }
+
+ .hidden {
+     visibility: hidden;
  }

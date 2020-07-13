@@ -10,6 +10,20 @@
   height: 100%;
 }
 @font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Source Code Pro Regular'), local('SourceCodePro-Regular'), url(https://fonts.gstatic.com/s/sourcecodepro/v11/HI_SiYsKILxRpg3hIP6sJ7fM7PqVOg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Lato Light'), local('Lato-Light'), url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh7USew8.ttf) format('truetype');
+}
+@font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
@@ -24,6 +38,55 @@
   src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh6UVew8.ttf) format('truetype');
 }
 @font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: local('Lato Black'), local('Lato-Black'), url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh50Xew8.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Merriweather';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Merriweather Light'), local('Merriweather-Light'), url(https://fonts.gstatic.com/s/merriweather/v21/u-4n0qyriQwlOrhSvowK_l521wRpXw.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Merriweather';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Merriweather Regular'), local('Merriweather-Regular'), url(https://fonts.gstatic.com/s/merriweather/v21/u-440qyriQwlOrhSvowK_l5Oew.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Merriweather';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Merriweather Bold'), local('Merriweather-Bold'), url(https://fonts.gstatic.com/s/merriweather/v21/u-4n0qyriQwlOrhSvowK_l52xwNpXw.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Merriweather';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: local('Merriweather Black'), local('Merriweather-Black'), url(https://fonts.gstatic.com/s/merriweather/v21/u-4n0qyriQwlOrhSvowK_l52_wFpXw.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Montserrat Light'), local('Montserrat-Light'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_cJD7g4.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm45xW4.ttf) format('truetype');
+}
+@font-face {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 700;
@@ -31,26 +94,94 @@
   src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE7g4.ttf) format('truetype');
 }
 @font-face {
-  font-family: 'Source Code Pro';
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: local('Montserrat Black'), local('Montserrat-Black'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_epG7g4.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/oswald/v35/TK3_WkUHHAIjg75cFRf3bXL8LICs169vgUE.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Oswald';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('Source Code Pro Regular'), local('SourceCodePro-Regular'), url(https://fonts.gstatic.com/s/sourcecodepro/v11/HI_SiYsKILxRpg3hIP6sJ7fM7PqVOg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/oswald/v35/TK3_WkUHHAIjg75cFRf3bXL8LICs1_FvgUE.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/oswald/v35/TK3_WkUHHAIjg75cFRf3bXL8LICs1xZogUE.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Rubik Light'), local('Rubik-Light'), url(https://fonts.gstatic.com/s/rubik/v9/iJWHBXyIfDnIV7Fqj1ma.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Rubik'), local('Rubik-Regular'), url(https://fonts.gstatic.com/s/rubik/v9/iJWKBXyIfDnIV4nG.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Rubik Bold'), local('Rubik-Bold'), url(https://fonts.gstatic.com/s/rubik/v9/iJWHBXyIfDnIV7F6iFma.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: local('Rubik Black'), local('Rubik-Black'), url(https://fonts.gstatic.com/s/rubik/v9/iJWHBXyIfDnIV7FCilma.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Ubuntu Light'), local('Ubuntu-Light'), url(https://fonts.gstatic.com/s/ubuntu/v14/4iCv6KVjbNBYlgoC1CzTtw.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Ubuntu Regular'), local('Ubuntu-Regular'), url(https://fonts.gstatic.com/s/ubuntu/v14/4iCs6KVjbNBYlgo6eA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Ubuntu Bold'), local('Ubuntu-Bold'), url(https://fonts.gstatic.com/s/ubuntu/v14/4iCv6KVjbNBYlgoCxCvTtw.ttf) format('truetype');
 }
 :root {
   --headers-font-family: 'Montserrat', sans-serif;
   --main-font-family: 'Lato', sans-serif;
-  --strong-font-weight: 700;
+  --strong-font-weight: 600;
+  --text-font-size: 16px;
   --text-small-size: 14px;
   --text-very-small-size: 12px;
-  --text-font-size: 16px;
   --text-font-weight: 400;
+  --headers-font-weight: 700;
   --h1-font-size: 42px;
-  --h1-font-weight: 700;
   --h2-font-size: 32px;
-  --h2-font-weight: 700;
   --h3-font-size: 24px;
-  --h3-font-weight: 700;
 }
 @media all and (max-width: 415px) {
   :root {
@@ -76,18 +207,24 @@
 :global h1 {
   font-family: var(--headers-font-family);
   font-size: var(--h1-font-size);
+  font-weight: var(--headers-font-weight);
 }
 :global h2 {
   font-family: var(--headers-font-family);
   font-size: var(--h2-font-size);
+  font-weight: var(--headers-font-weight);
 }
 :global h3 {
   font-family: var(--headers-font-family);
   font-size: var(--h3-font-size);
+  font-weight: var(--headers-font-weight);
 }
 :global a {
   transition: 0.5s;
   text-decoration: none;
+}
+:global p {
+  line-height: calc(1.6 * var(--text-font-size));
 }
 :global a:hover {
   transition: 0.5s;

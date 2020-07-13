@@ -13,7 +13,7 @@ export default function WhatIsIt() {
             <p>Directual Design is an open-source React-components library and the part
                 of <a href="http://directual.com/?ref=directul.design">Directual</a> low-code platform.
             </p><p>It is not yet another components library like Material UI. 
-                Directual Design is scpecially designed for building components for Directual <a href="https://readme.directual.com/web-pages/portal">web-page builder</a>.
+                Directual Design is specially designed for building components for Directual <a href="https://readme.directual.com/web-pages/portal">web-page builder</a>.
              </p>
              <p>There are two parts of the components library:</p>
              <ul>

@@ -74,8 +74,12 @@ const App = (props) => {
 
   let exampleTable = {
     'sl': 'countries',
-    'pageSize': '10',
-    'headerField': '',
+    'tableTitle': 'Пролетарии всех стран соединяйтесь',
+    'desktopView': 'table',
+    'mobileView': 'cards',
+    'pageSize': '25',
+    'tableFilters': 'true',
+    'tableQuickSearch': 'true',
     'headers': [{
       'sysName': 'Name',
       'name': 'Country name',
@@ -132,7 +136,8 @@ const App = (props) => {
     }, { 'Name': 'Angola', 'id': 'AO' }, { 'Name': 'Anguilla', 'id': 'AI' }, {
       'Name': 'Antarctica',
       'id': 'AQ'
-    }, { 'Name': 'Antigua and Barbuda', 'id': 'AG' }],
+    }, { 'Name': 'Antigua and Barbuda', 'id': 'AG' }, 
+    { 'Name': 'Antigua and Barbuda', 'id': 'AG' }],
     'totalPages': 25,
     'pageNumber': 0,
     'error': null
@@ -991,8 +996,8 @@ const App = (props) => {
 
   const exampleTabs = [
     { key: '1', title: 'Tab 1', content: <div>Tab content 1</div> },
-    { key: '2', title: 'Tab 2', content: <Loader>Loading...</Loader> },
-    { key: '3', disabled: true, title: 'Tab 3(disabled)', content: <div>Tab content 3</div> }
+    { key: '2', title: 'Tab 2', content: <div>Tab content 2</div> },
+    { key: '3', disabled: true, title: 'Tab 3 (disabled)', content: <div>Tab content 3</div> }
   ]
 
   const exampleUser = {
@@ -1006,7 +1011,11 @@ const App = (props) => {
 
   let basicTheme = {
     colorScheme: localStorage.getItem('dd-theme-color') || 'classic',
-    radius: localStorage.getItem('dd-theme-radius') || 25
+    radius: localStorage.getItem('dd-theme-radius') || 25,
+    headersFont: localStorage.getItem('dd-theme-headersFont') || 'Montserrat',
+    fontText: localStorage.getItem('dd-theme-fontText') || 'Lato',
+    headersFontWeight: localStorage.getItem('dd-theme-headersFontWeight') || '700',
+    bodyFontWeight: localStorage.getItem('dd-theme-bodyFontWeight') || '400'
   }
 
   const [currentTheme, setCurrentTheme] = useState(basicTheme)
@@ -1014,6 +1023,10 @@ const App = (props) => {
   useEffect(() => {
     localStorage.setItem('dd-theme-color', currentTheme.colorScheme)
     localStorage.setItem('dd-theme-radius', currentTheme.radius)
+    localStorage.setItem('dd-theme-headersFont', currentTheme.headersFont)
+    localStorage.setItem('dd-theme-fontText', currentTheme.fontText)
+    localStorage.setItem('dd-theme-headersFontWeight', currentTheme.headersFontWeight)
+    localStorage.setItem('dd-theme-bodyFontWeight', currentTheme.bodyFontWeight)
   }, [currentTheme])
 
 
@@ -1079,8 +1092,9 @@ const App = (props) => {
               <Dnd />
             </Route>
             <Route exact path="/system-layout">
-              <h1>Tabs</h1>
-                  <TabsPane tabs={exampleTabs} currentTabKey={1} fixedScroll={false} />
+              <h1>Layout</h1>
+              <h2>Tabs</h2>
+              <TabsPane tabs={exampleTabs} currentTabKey={1} fixedScroll={false} />
             </Route>
             <Route exact path="/system-media">
               <h1>Media</h1>

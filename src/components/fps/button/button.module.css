@@ -13,6 +13,7 @@
   outline: none;
   transition: 0;
   white-space: nowrap;
+  font-weight: var(--text-font-weight);
 }
 .button.disabled {
   cursor: not-allowed;

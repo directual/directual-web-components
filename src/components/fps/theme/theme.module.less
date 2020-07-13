@@ -8,28 +8,24 @@ html, body, #root {height: 100%;}
 
 // FONTS 
 
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Merriweather:wght@300;400;700;900&family=Montserrat:wght@300;400;700;900&family=Oswald:wght@300;400;700&family=Rubik:wght@300;400;700;900&family=Ubuntu:wght@300;400;700&display=swap');
 
 :root { 
 	--headers-font-family: 'Montserrat', sans-serif;
 	--main-font-family: 'Lato', sans-serif;
-	--strong-font-weight: 700;
+	--strong-font-weight: 600;
 	
+	--text-font-size: 16px;
 	--text-small-size: 14px;
 	--text-very-small-size: 12px;
 
-	--text-font-size: 16px;
     --text-font-weight: 400;
+	--headers-font-weight: 700;
     
     --h1-font-size: 42px;
-	--h1-font-weight: 700;
-	
     --h2-font-size: 32px;
-	--h2-font-weight: 700;
-	
     --h3-font-size: 24px;
-	--h3-font-weight: 700;
 	
 }
 
@@ -40,7 +36,7 @@ html, body, #root {height: 100%;}
 		--text-very-small-size: 12px;
 		--h1-font-size: 32px;
 		--h2-font-size: 26px;
-		--h3-font-size: 20px;
+        --h3-font-size: 20px;
 	}
 }
 
@@ -63,21 +59,27 @@ html, body, #root {height: 100%;}
     h1 {
         font-family: var( --headers-font-family);
         font-size: var( --h1-font-size);
+        font-weight: var(--headers-font-weight);
     }
 
     h2 {
         font-family: var( --headers-font-family);
         font-size: var( --h2-font-size);
+        font-weight: var(--headers-font-weight);
     }
 
     h3 {
         font-family: var( --headers-font-family);
         font-size: var( --h3-font-size);
+        font-weight: var(--headers-font-weight);
     }
 
     a {
         transition: .5s;
         text-decoration: none;
+    }
+    p {
+        line-height: calc(1.6 * var( --text-font-size));
     }
     a:hover {
         transition: .5s;
