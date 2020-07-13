@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {
   FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, FpsTheme,
   ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, SignIn, SignUp, Media, CodeSnippet,
-  Dnd, Profile
+  Dnd, Profile, TabsPane, Loader
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 import {
@@ -19,6 +19,7 @@ import InputsPage from './pages/inputs'
 import IconsPage from './pages/icons'
 import TypoPage from './pages/typo'
 import WhatIsIt from './pages/wtf'
+import { reduceHooks } from 'react-table'
 
 
 function MainMenuWrapper(props) {
@@ -26,7 +27,7 @@ function MainMenuWrapper(props) {
 
   const [logoUrl, setlogoUrl] = useState('https://api.alfa.directual.com/fileUploaded/directual-site/31f7185d-f0cc-4063-bc59-1ca46d9f8b7c.svg')
 
-  useEffect(()=>{
+  useEffect(() => {
 
     if (props.themeName.colorScheme == 'darkMint' || props.themeName.colorScheme == 'warmNight' || props.themeName.colorScheme == 'hacker') {
       setlogoUrl('https://api.alfa.directual.com/fileUploaded/directual-site/b652c768-32eb-4309-bc7f-974863107528.svg')
@@ -59,6 +60,7 @@ function MainMenuWrapper(props) {
         { name: "Buttons", route: "/system-button", icon: "done", link: <Link to="/system-button">Action panel, Buttons</Link> },
         { name: "Data entry", route: "/system-data-entry", icon: "import", link: <Link to="/system-data-entry">Data entry</Link> },
         { name: "Media", route: "/system-media", icon: "play", link: <Link to="/system-media">Media</Link> },
+        { name: "Layout", route: "/system-layout", icon: "dashboard", link: <Link to="/system-layout">Layout</Link> },
         // { name: "Drag'n'drop", route: "/system-dnd", icon: "copy", link: <Link to="/system-dnd">Drag'n'drop</Link> }
       ]}
 
@@ -136,7 +138,7 @@ const App = (props) => {
     'error': null
   }
 
-  let exampleForm = 
+  let exampleForm =
   {
     "sl": "FPStest",
     "formName": "Submit the form",
@@ -164,7 +166,7 @@ const App = (props) => {
           "quickSearch": true,
           "allowAddLinks": false,
           "dateTimeOn": true,
-          "searchData":[{"key":"option1","value":"Option 1"},{"key":"option2","value":"Option 2"}],
+          "searchData": [{ "key": "option1", "value": "Option 1" }, { "key": "option2", "value": "Option 2" }],
           "isValid": true,
           "weight": 2,
           "jsonDisplay": "default",
@@ -220,7 +222,7 @@ const App = (props) => {
         "link": {
           "include": true,
           "hidden": false,
-          "searchData":[{"key":"option1","value":"Option 1"},{"key":"option2","value":"Option 2"}],
+          "searchData": [{ "key": "option1", "value": "Option 1" }, { "key": "option2", "value": "Option 2" }],
           "required": false,
           "isTextarea": false,
           "textareaRows": 4,
@@ -245,7 +247,7 @@ const App = (props) => {
           "required": false,
           "isTextarea": false,
           "textareaRows": 4,
-          "defaultValue": {firstValue:10,secondValue:40},
+          "defaultValue": { firstValue: 10, secondValue: 40 },
           "isPositive": false,
           "quickSearch": true,
           "allowAddLinks": false,
@@ -266,7 +268,7 @@ const App = (props) => {
           "required": false,
           "isTextarea": false,
           "textareaRows": 4,
-          "defaultValue": {firstValue:20},
+          "defaultValue": { firstValue: 20 },
           "isPositive": false,
           "quickSearch": true,
           "allowAddLinks": false,
@@ -513,19 +515,19 @@ const App = (props) => {
           "required": false,
           "isTextarea": true,
           "textareaRows": 4,
-          "defaultValue": {firstValue: 20, secondValue:60},
+          "defaultValue": { firstValue: 20, secondValue: 60 },
           "isPositive": false,
           "quickSearch": true,
           "allowAddLinks": false,
           "dateTimeOn": true,
           "placeholder": true,
-          "weight":12,
+          "weight": 12,
           "jsonDisplay": "range",
           "range": {
-            "min":0,
-            "max":200,
-            "step":10,
-            "unitName":" руб."
+            "min": 0,
+            "max": 200,
+            "step": 10,
+            "unitName": " руб."
           }
         },
         "slider": {
@@ -534,19 +536,19 @@ const App = (props) => {
           "required": false,
           "isTextarea": true,
           "textareaRows": 4,
-          "defaultValue": {firstValue: 100},
+          "defaultValue": { firstValue: 100 },
           "isPositive": false,
           "quickSearch": true,
           "allowAddLinks": false,
           "dateTimeOn": true,
           "placeholder": true,
-          "weight":11,
+          "weight": 11,
           "jsonDisplay": "slider",
           "range": {
-            "min":0,
-            "max":200,
-            "step":10,
-            "unitName":"$"
+            "min": 0,
+            "max": 200,
+            "step": 10,
+            "unitName": "$"
           }
         },
         "textarea": {
@@ -561,7 +563,7 @@ const App = (props) => {
           "allowAddLinks": false,
           "dateTimeOn": true,
           "placeholder": true,
-          "weight":4
+          "weight": 4
         },
         "number": {
           "include": true,
@@ -574,7 +576,7 @@ const App = (props) => {
           "quickSearch": true,
           "allowAddLinks": false,
           "dateTimeOn": true,
-          "weight":2
+          "weight": 2
         },
         "link": {
           "include": true,
@@ -587,8 +589,8 @@ const App = (props) => {
           "quickSearch": true,
           "allowAddLinks": true,
           "dateTimeOn": true,
-          "searchData":[{"key":"1","value":"option 1"},{"key":"2","value":"option 2"}],
-          "weight":10
+          "searchData": [{ "key": "1", "value": "option 1" }, { "key": "2", "value": "option 2" }],
+          "weight": 10
         },
         "arrayLink": {
           "include": true,
@@ -601,7 +603,7 @@ const App = (props) => {
           "quickSearch": true,
           "allowAddLinks": true,
           "dateTimeOn": true,
-          "searchData":[{"key":"1","value":"option 1"},{"key":"2","value":"option 2"}],
+          "searchData": [{ "key": "1", "value": "option 1" }, { "key": "2", "value": "option 2" }],
         },
         "boolean": {
           "include": true,
@@ -626,7 +628,7 @@ const App = (props) => {
           "quickSearch": true,
           "allowAddLinks": false,
           "dateTimeOn": false
-        }, 
+        },
         "email": {
           "include": true,
           "hidden": false,
@@ -691,7 +693,7 @@ const App = (props) => {
         "linkType": false,
         "linkOrArrayLinkType": true,
         "arrayLink": true,
-        "searchData":[{"key":"ddfdfsdsds","value":"ddfdfsdsds"},{"key":"test","value":"test"}]
+        "searchData": [{ "key": "ddfdfsdsds", "value": "ddfdfsdsds" }, { "key": "test", "value": "test" }]
       },
       {
         "sysName": "boolean",
@@ -985,6 +987,14 @@ const App = (props) => {
     "response": null
   }
 
+
+
+  const exampleTabs = [
+    { key: '1', title: 'Tab 1', content: <div>Tab content 1</div> },
+    { key: '2', title: 'Tab 2', content: <Loader>Loading...</Loader> },
+    { key: '3', disabled: true, title: 'Tab 3(disabled)', content: <div>Tab content 3</div> }
+  ]
+
   const exampleUser = {
     profilePicture: 'https://images.unsplash.com/photo-1574158622682-e40e69881006?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
     firstName: 'Jack',
@@ -992,16 +1002,16 @@ const App = (props) => {
     email: 'jack@directual.com',
     role: 'admin',
     socialGoogle: 'jack@directual.com'
-}
+  }
 
-  let basicTheme ={
+  let basicTheme = {
     colorScheme: localStorage.getItem('dd-theme-color') || 'classic',
     radius: localStorage.getItem('dd-theme-radius') || 25
   }
 
-  const [currentTheme,setCurrentTheme] = useState(basicTheme)
+  const [currentTheme, setCurrentTheme] = useState(basicTheme)
 
-  useEffect(()=>{
+  useEffect(() => {
     localStorage.setItem('dd-theme-color', currentTheme.colorScheme)
     localStorage.setItem('dd-theme-radius', currentTheme.radius)
   }, [currentTheme])
@@ -1021,23 +1031,23 @@ const App = (props) => {
               <WhatIsIt />
             </Route>
             <Route exact path="/form">
-              <FpsForm data={exampleForm}/>
+              <FpsForm data={exampleForm} />
             </Route>
             <Route exact path="/profile">
-            <Profile 
+              <Profile
                 width={600}
                 user={exampleUser}
-                />
+              />
               <SignIn
                 header='Sign in'
                 width={400}
                 google
               />
-            <SignUp
+              <SignUp
                 header='Sign up'
                 width={400}
                 google
-                />
+              />
 
             </Route>
             <Route exact path="/cards">
@@ -1046,10 +1056,10 @@ const App = (props) => {
             </Route>
             <Route exact path="/theme">
               <h1>Theme management</h1>
-              <FpsTheme 
-                onChange={value => {setCurrentTheme(value)}}
+              <FpsTheme
+                onChange={value => { setCurrentTheme(value) }}
                 defaultValue={currentTheme}
-                themes={['classic', 'white',  'tiffany', 'darkMint', 'warmNight', 'hacker']} />
+                themes={['classic', 'white', 'tiffany', 'darkMint', 'warmNight', 'hacker']} />
             </Route>
 
             <Route exact path="/system-typography">
@@ -1068,11 +1078,15 @@ const App = (props) => {
             <Route exact path="/system-dnd">
               <Dnd />
             </Route>
+            <Route exact path="/system-layout">
+              <h1>Tabs</h1>
+                  <TabsPane tabs={exampleTabs} currentTabKey={1} fixedScroll={false} />
+            </Route>
             <Route exact path="/system-media">
               <h1>Media</h1>
               <h2>Youtube</h2>
               <CodeSnippet code="<Media type='video' source='https://www.youtube.com/watch?v=JAwEWLP-G_M' width='550' height='300'/>" />
-              <Media type='video' source="https://www.youtube.com/watch?v=JAwEWLP-G_M" width='550' height='300'/>
+              <Media type='video' source="https://www.youtube.com/watch?v=JAwEWLP-G_M" width='550' height='300' />
             </Route>
 
           </Switch>

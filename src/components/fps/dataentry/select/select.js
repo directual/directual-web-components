@@ -2,14 +2,6 @@ import React, { useState, useEffect, useRef, useCallback } from 'react'
 import styles from './select.module.css'
 import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
 
-// function useForceUpdate() {
-//     const [, setTick] = useState(0);
-//     const update = useCallback(() => {
-//         setTick(tick => tick + 1);
-//     }, [])
-//     return update;
-// }
-
 function List(props) {
     const scrollDivRef = useRef(null)
     const selectHolder = useRef(null)
