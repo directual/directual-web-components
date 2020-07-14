@@ -81,12 +81,12 @@ function FpsTable({ data, onEvent, id }) {
 
             <FpsTableActionPanel />
 
-            <Table
+            {/* <Table
                 data={data}
                 onEvent={onEvent}
                 id={id}
                 onClick={val => setShowObject(val)}
-            />
+            /> */}
 
         </div>
     )
