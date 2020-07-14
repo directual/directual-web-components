@@ -41,7 +41,7 @@ export function Table({ data, onEvent, id, onClick }) {
                                 <td>
                                     {(i == 0 && onClick) ?
                                         <a onClick={() => onClick(row.id)}>{row[column.sysName]}</a> :
-                                        <span>{row[column.sysName]}</span>}
+                                        <span>{JSON.stringify(row[column.sysName])}</span>}
                                 </td>))}
                         </tr>))}
                 </tbody>
