@@ -82,9 +82,9 @@
         }
     }
     .field {
-        &[type=number] {
-            text-align: right;
-        }
+        // &[type=number] {
+        //     text-align: right;
+        // }
         outline: none;
         border:solid 1px var( --field-border-color);
         border-radius: var( --border-radius);
@@ -203,6 +203,18 @@
      }
  }
 
- .numberUnits {
-     display: flex;
+ .fieldUnitsWrapper {
+     //display: flex;
+     padding-right: 30px;
+     position: relative;
+     .field_wrapper {
+         //float: left;
+     }
+     .unitName {
+        position: absolute;
+        left: 100%;
+        margin-left: -24px;
+        top:14px;
+        opacity: .6;
+     }
  }

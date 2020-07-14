@@ -149,8 +149,8 @@ const App = (props) => {
     "formName": "Submit the form",
     "formDesc": 'A form with several fields, including text fields, sliders, radios, selects The result can be processed syncronically.',
     "formButton": null,
-    "placeholder": "",
-    "maxWidth": 450,
+    "placeholder": "false",
+    "maxWidth": 500,
     "formButtonResubmit": null,
     "params": {
       "result": {
@@ -185,7 +185,7 @@ const App = (props) => {
         "boolean": {
           "include": true,
           "hidden": false,
-          "required": false,
+          "required": true,
           "isTextarea": false,
           "textareaRows": 4,
           "defaultValue": "",
@@ -995,7 +995,7 @@ const App = (props) => {
 
 
   const exampleTabs = [
-    { key: '1', title: 'Tab 1', content: <div>Tab content 1</div> },
+    { key: '1', title: 'Tab number 1', content: <div>Tab content 1</div> },
     { key: '2', title: 'Tab 2', content: <div>Tab content 2</div> },
     { key: '3', disabled: true, title: 'Tab 3 (disabled)', content: <div>Tab content 3</div> }
   ]
@@ -1038,7 +1038,7 @@ const App = (props) => {
         <ContentWrapper themeName={currentTheme}>
           <Switch>
             <Route exact path="/table">
-              <FpsTable data={exampleTable} />
+              <FpsTable data={exampleTable}/>
             </Route>
             <Route exact path="/">
               <WhatIsIt />

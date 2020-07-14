@@ -82,9 +82,9 @@ export default function InputsPage() {
             } />
 
             <h2 style={{ marginBottom: 0, marginTop: 12 }}>Date and time</h2>
-            <p style={{ marginBottom: 24, marginTop: 12 }}>
+            {/* <p style={{ marginBottom: 24, marginTop: 12 }}>
                 Adapted <a href="https://github.com/YouCanBookMe/react-datetime" target="_blank">
-                    React-datetime</a> component</p>
+                    React-datetime</a> component</p> */}
             <CodeSnippet code=
                 {`<Input
     type="date"
@@ -500,6 +500,7 @@ export default function InputsPage() {
                         { prop: 'required', type: 'boolean', desc: 'Required field, throws a warning if empty', eg: 'required = {true}' },
                         { prop: 'rows', type: 'number', desc: 'For type = \'textarea\' only! Number of rows', eg: 'rows = {8}' },
                         { prop: 'positive', type: 'boolean', desc: 'For type = \'number\' only!', eg: 'positive = {true}' },
+                        { prop: 'unitName', type: 'string', desc: 'for example, px, or $', eg: 'unitName = \'$\'' },
                     ]
                 }
             } />

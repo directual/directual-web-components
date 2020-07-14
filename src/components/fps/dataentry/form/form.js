@@ -67,10 +67,7 @@ export default function FpsForm({ data, onEvent, id }) {
   // console.log('------------ form model: -------------')
   // console.log(model)
 
-  //console.log('rerender')
   function sortFields(arr) {
-    //return arr;
-    //console.log(arr)
     if (!arr) { return null }
     if (!params.fields) {
       params = {...params, fields:{}}
@@ -235,7 +232,7 @@ export default function FpsForm({ data, onEvent, id }) {
       </React.Fragment>}
 
 
-      {/* Custon response processing: */}
+      {/* Custom response processing: */}
       {!showForm && !loading && getResultAnswer().sync && <React.Fragment>
         {data.response && !getResultAnswer().isSuccess && <React.Fragment>
           <Hint title={getResultAnswer().answerTitle} error>{getResultAnswer().answerText}</Hint>
@@ -283,7 +280,7 @@ export default function FpsForm({ data, onEvent, id }) {
                   <Input
                     sysName={field.sysName}
                     validationHandler={validationHandler}
-                    label={data.placeholder != "true" ? field.name : ''}
+                    label={(data.placeholder != "true" || typesMatching(field) == 'slider' || typesMatching(field) == 'range') ? field.name : ''}
                     placeholder={`${data.placeholder == "true"?`${field.name}${field.params.required?'*':''}`:''}`}
                     required={field.params.required}
                     description={field.params.description}

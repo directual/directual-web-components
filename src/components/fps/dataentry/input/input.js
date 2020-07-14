@@ -301,7 +301,8 @@ export default function Input(props) {
                 </div>}
 
             {props.type == 'number' &&
-                <div className={styles.field_wrapper}>
+                <div className={`${props.unitName && styles.fieldUnitsWrapper}`}>
+                    <div className={styles.field_wrapper}>
                         <input
                             className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                             disabled={props.disabled}
@@ -311,16 +312,19 @@ export default function Input(props) {
                             onBlur={checkValue}
                             placeholder={`${props.placeholder ? props.placeholder : ''}`}
                         />
-                        
-                        {/* {props.unitName && <div className={styles.unitName}>{props.unitName}</div>} */}
-                    {!props.disabled && <React.Fragment>
-                        <div className={`${styles.plus} icon icon-up`}
-                            onClick={() => { if (value) { handleChangeNumber(parseInt(value) + 1) } else { handleChangeNumber(1); } }}></div>
-                        {props.positive && value > 0 && <div className={`${styles.minus} icon icon-down`}
-                            onClick={() => handleChangeNumber(parseInt(value) - 1)}></div>}
-                        {!props.positive && <div className={`${styles.minus} icon icon-down`}
-                            onClick={() => handleChangeNumber(parseInt(value) - 1)}></div>}</React.Fragment>}
-                </div>}
+
+
+                        {!props.disabled && <React.Fragment>
+                            <div className={`${styles.plus} icon icon-up`}
+                                onClick={() => { if (value) { handleChangeNumber(parseInt(value) + 1) } else { handleChangeNumber(1); } }}></div>
+                            {props.positive && value > 0 && <div className={`${styles.minus} icon icon-down`}
+                                onClick={() => handleChangeNumber(parseInt(value) - 1)}></div>}
+                            {!props.positive && <div className={`${styles.minus} icon icon-down`}
+                                onClick={() => handleChangeNumber(parseInt(value) - 1)}></div>}</React.Fragment>}
+                    </div>
+                    {props.unitName && <div className={styles.unitName}>{props.unitName}</div>}
+                </div>
+            }
 
             {props.type == 'textarea' &&
                 <div className={styles.field_wrapper}>

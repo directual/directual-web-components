@@ -10,6 +10,7 @@ export default function Button(props) {
             ${props.accent && styles.accent} 
             ${props.className && props.className} 
             ${props.disabled && styles.disabled}
+            ${!props.children && styles.empty}
             ${props.icon && `${styles.icon} icon icon-${props.icon}`}
             ${props.socialGoogle && `${styles.socialGoogle}`}
             ${props.danger && `${styles.danger}`}

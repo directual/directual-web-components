@@ -10,7 +10,8 @@ import FpsHtml from './components/fps/FpsHtml'
 import FpsForm from './components/fps/dataentry/form/form'
 import MainMenu from './components/fps/mainmenu/mainmenu'
 import ComponentDetails from './components/fps/componentdetails/componentdetails'
-import FpsTable from './components/fps/table/table'
+import FpsTable from './components/fps/table/FpsTable'
+import { Table } from './components/fps/table/table'
 import { FpsWrapper, ContentWrapper } from './components/fps/wrapper/wrapper'
 import Input, { InputGroup } from './components/fps/dataentry/input/input'
 import Button from './components/fps/button/button'
@@ -27,7 +28,7 @@ import Hint from './components/fps/hint/hint'
 import Loader from './components/fps/loader/loader'
 import Media from './components/fps/media/media'
 import Article from './components/fps/article/article'
-import TabsPane from'./components/fps/layout/tabpane/tabpane'
+import TabsPane from './components/fps/layout/tabpane/tabpane'
 import { Dnd } from './components/fps/dnd/dndList'
 
 import FpsTheme, { SetTheme } from './components/fps/theme/theme'
@@ -67,5 +68,6 @@ export {
   Loader,
   Media,
   Article,
-  Dnd
+  Dnd,
+  Table
 }

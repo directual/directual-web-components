@@ -67,3 +67,8 @@
   font-size: 28px;
   margin-left: -6px;
 }
+.button.empty.icon:before {
+  font-size: 32px;
+  margin-left: -9px;
+  margin-right: -9px;
+}

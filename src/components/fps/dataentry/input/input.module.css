@@ -103,9 +103,6 @@
   -moz-appearance: none;
   appearance: none;
 }
-.input_wrapper .field[type=number] {
-  text-align: right;
-}
 .input_wrapper .field::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
@@ -207,6 +204,14 @@
 .input_group .input_wrapper {
   width: calc(50% - 6px);
 }
-.numberUnits {
-  display: flex;
+.fieldUnitsWrapper {
+  padding-right: 30px;
+  position: relative;
+}
+.fieldUnitsWrapper .unitName {
+  position: absolute;
+  left: 100%;
+  margin-left: -24px;
+  top: 14px;
+  opacity: 0.6;
 }

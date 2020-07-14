@@ -1,12 +1,11 @@
- .table {
-     //position: relative;
+
      .table_wrapper {
         background-color: var(--background-color);
         padding: 6px;
         border-radius: var(--border-radius);
         overflow: auto; 
         border: solid 1px var(--background-contrast-color);
-     }
+     
      table {
         min-width: 100%;
         
@@ -38,19 +37,8 @@
             cursor: pointer;
         }
     }
-    .tableTitle {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 12px;
-        h1,h2 {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin: 0;
-        }
-    }
- }
+}
+ 
  .firstObjectCard {
     position: absolute;
     top:18px;
@@ -89,7 +77,20 @@
         }
     }
     .objectCardBody {
-        padding:24px 24px 24px 46px
+        padding:24px 24px 24px 44px
+    }
+}
+
+.tableTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    h1,h2 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 0 !important;
     }
 }
 
@@ -107,12 +108,12 @@
             padding:24px 24px 24px 12px
         }
     }
-    .table div.tableTitle {
+    div.tableTitle {
         flex-direction: column;
         align-items: stretch;
         h1, h2 {
             max-width: 100%;
-            margin-bottom: 12px;
+            margin-bottom: 12px !important;
         }
     }
  }
@@ -120,3 +121,5 @@
  .hidden {
      visibility: hidden;
  }
+
+ 

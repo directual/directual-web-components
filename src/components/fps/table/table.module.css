@@ -1,51 +1,38 @@
-.table .table_wrapper {
+.table_wrapper {
   background-color: var(--background-color);
   padding: 6px;
   border-radius: var(--border-radius);
   overflow: auto;
   border: solid 1px var(--background-contrast-color);
 }
-.table table {
+.table_wrapper table {
   min-width: 100%;
 }
-.table table td {
+.table_wrapper table td {
   padding: 12px 12px;
   border-top: solid 1px var(--table-border-color);
 }
-.table table thead td {
+.table_wrapper table thead td {
   font-weight: var(--strong-font-weight);
   border: none;
   opacity: 0.5;
 }
-.table .pagination {
+.table_wrapper .pagination {
   border-top: solid 1px var(--table-border-color);
   padding: 12px;
   font-size: var(--text-very-small-size);
   display: flex;
   align-items: center;
 }
-.table .pagination div {
+.table_wrapper .pagination div {
   margin-right: 18px;
   opacity: 0.4;
 }
-.table .pagination button {
+.table_wrapper .pagination button {
   margin-right: 18px;
   font-size: var(--text-very-small-size);
   padding: 2px 6px;
   cursor: pointer;
-}
-.table .tableTitle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-.table .tableTitle h1,
-.table .tableTitle h2 {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin: 0;
 }
 .firstObjectCard {
   position: absolute;
@@ -82,7 +69,20 @@
   opacity: 1;
 }
 .objectCard .objectCardBody {
-  padding: 24px 24px 24px 46px;
+  padding: 24px 24px 24px 44px;
+}
+.tableTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.tableTitle h1,
+.tableTitle h2 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0 !important;
 }
 @media all and (max-width: 415px) {
   .firstObjectCard {
@@ -98,14 +98,14 @@
   .objectCard .objectCardBody {
     padding: 24px 24px 24px 12px;
   }
-  .table div.tableTitle {
+  div.tableTitle {
     flex-direction: column;
     align-items: stretch;
   }
-  .table div.tableTitle h1,
-  .table div.tableTitle h2 {
+  div.tableTitle h1,
+  div.tableTitle h2 {
     max-width: 100%;
-    margin-bottom: 12px;
+    margin-bottom: 12px !important;
   }
 }
 .hidden {

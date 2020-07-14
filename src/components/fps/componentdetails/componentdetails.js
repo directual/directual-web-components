@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './componentdetails.module.css'
-import FpsTable from '../table/table'
+import { Table } from '../table/table'
 
 export default function ComponentDetails(props) {
     const [show, setShow] = useState(false)
@@ -10,7 +10,8 @@ export default function ComponentDetails(props) {
                 <a className={`icon icon-codeArray`} onClick={() => setShow(!show)}>{!show ? 'Show ' : 'Hide '} {props.data.headerField}</a>
             </div>
             {show &&
-                <FpsTable data={props.data} />}
+                <Table 
+                    data={props.data} />}
         </div>
     )
 }

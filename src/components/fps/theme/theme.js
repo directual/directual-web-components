@@ -252,7 +252,7 @@ export default function FpsTheme(props) {
                 label='Border radius'
                 positive
                 unitName='px'
-                width={100}
+                width={150}
                 defaultValue={selectedColorScheme.radius}
                 onChange={value => value ? setSelectedColorScheme({ ...selectedColorScheme, radius: value }) : setSelectedColorScheme({ ...selectedColorScheme, radius: 'none' })}
             />
