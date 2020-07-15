@@ -212,9 +212,10 @@ export default function Input(props) {
             {props.label && <label>{props.label}{props.required && '*'}</label>}
             {props.description &&
                 <div className={styles.description}>{props.description}</div>}
-
-            {/* <span className="dd-debug"> value: {JSON.stringify(value)}</span>
-            <span className="dd-debug"> defVal: {JSON.stringify(defVal)}</span> */}
+            {props.debug && <div>
+                <div className="dd-debug"> value: {JSON.stringify(value)}</div>
+                <div className="dd-debug"> defVal: {JSON.stringify(defVal)}</div>
+            </div>}
 
             {props.type != 'email' &&
                 props.type != 'number' &&
@@ -364,11 +365,16 @@ export default function Input(props) {
 
             {props.type == 'radio' &&
                 <Radio
-                    onChange={e => setValue(e.target.value)}
+                    onChange={e => e ? (e.target ? setValue(e.target.value) : setValue(e)): setValue(null)}
                     defaultValue={props.defaultValue}
                     options={props.options}
                     disabled={props.disabled}
+                    placeholder={props.placeholder}
                     radioImages={props.radioImages}
+                    customOption={props.customOption}
+                    customOptionLabel={props.customOptionLabel}
+                    customOptionType={props.customOptionType}
+                    customOptionPlaceholder={props.customOptionPlaceholder}
                 />
             }
             {props.type == 'select' &&

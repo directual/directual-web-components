@@ -43,4 +43,5 @@
     top:12px;
     opacity: 0.2;
     transition: .5s;
+    white-space: nowrap;
 }

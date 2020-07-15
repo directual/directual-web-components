@@ -72,75 +72,351 @@ const App = (props) => {
     html: '<b>test</b>'
   }
 
-  let exampleTable = {
-    'sl': 'countries',
+  let exampleTable =
+  {
+    "sl": "getBooks_FPS",
+    "pageSize": "10",
     'tableTitle': 'Пролетарии всех стран соединяйтесь',
     'desktopView': 'table',
     'mobileView': 'cards',
     'pageSize': '25',
     'tableFilters': 'true',
     'tableQuickSearch': 'true',
-    'headers': [{
-      'sysName': 'Name',
-      'name': 'Country name',
-      'dataType': 'string',
-      'id': '91001588873211198',
-      'link': null,
-      'group': '0',
-      'tags': null,
-      'indexing': false,
-      'ordering': false,
-      'description': null,
-      'weight': null,
-      'order': 1,
-      'linkIndexFieldSysName': [],
-      'defaultValue': null,
-      'constraints': null,
-      'synthetic': false,
-      'json': false,
-      'linkType': false,
-      'indexExists': false,
-      'typeVariable': {},
-      'linkOrArrayLinkType': false,
-      'arrayLink': false
-    }, {
-      'sysName': 'id',
-      'name': 'id',
-      'dataType': 'id',
-      'id': '0',
-      'link': '',
-      'group': '0',
-      'tags': '',
-      'indexing': false,
-      'ordering': false,
-      'description': null,
-      'weight': null,
-      'order': 0,
-      'linkIndexFieldSysName': [],
-      'defaultValue': '',
-      'constraints': null,
-      'synthetic': false,
-      'json': false,
-      'linkType': false,
-      'indexExists': false,
-      'typeVariable': {},
-      'linkOrArrayLinkType': false,
-      'arrayLink': false
-    }],
-    'data': [{ 'Name': 'Afghanistan', 'id': 'AF' }, { 'Name': 'Åland Islands', 'id': 'AX' }, {
-      'Name': 'Albania',
-      'id': 'AL'
-    }, { 'Name': 'Algeria', 'id': 'DZ' }, { 'Name': 'American Samoa', 'id': 'AS' }, {
-      'Name': 'Andorra',
-      'id': 'AD'
-    }, { 'Name': 'Angola', 'id': 'AO' }, { 'Name': 'Anguilla', 'id': 'AI' }, {
-      'Name': 'Antarctica',
-      'id': 'AQ'
-    }, { 'Name': 'Antigua and Barbuda', 'id': 'AG' }, 
-    { 'Name': 'Antigua and Barbuda', 'id': 'AG' }],
-    'totalPages': 25,
-    'pageNumber': 0,
-    'error': null
+    "headerField": null,
+    "params": "",
+    "headers": [
+      {
+        "sysName": "author_id",
+        "name": "Author",
+        "dataType": "link",
+        "id": "81201585132056810",
+        "link": "Authors",
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 4,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "json": false,
+        "linkOrArrayLinkType": true,
+        "linkType": true,
+        "arrayLink": false,
+        "indexExists": false,
+        "typeVariable": {}
+      },
+      {
+        "sysName": "genre",
+        "name": "Genre",
+        "dataType": "string",
+        "id": "89311585132044726",
+        "link": "",
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 3,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "json": false,
+        "linkOrArrayLinkType": false,
+        "linkType": false,
+        "arrayLink": false,
+        "indexExists": false,
+        "typeVariable": {}
+      },
+      {
+        "sysName": "title",
+        "name": "Title",
+        "dataType": "string",
+        "id": "24751585132012036",
+        "link": "",
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 1,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "json": false,
+        "linkOrArrayLinkType": false,
+        "linkType": false,
+        "arrayLink": false,
+        "indexExists": false,
+        "typeVariable": {}
+      },
+      {
+        "sysName": "year",
+        "name": "Year",
+        "dataType": "number",
+        "id": "81761585132035625",
+        "link": "",
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 2,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "json": false,
+        "linkOrArrayLinkType": false,
+        "linkType": false,
+        "arrayLink": false,
+        "indexExists": false,
+        "typeVariable": {}
+      }
+    ],
+    "data": [
+      {
+        "year": 1791,
+        "author_id": {
+          "first_name": "James",
+          "country": "Scotland",
+          "books_ids": [
+            {
+              "year": 1791,
+              "title": "Life of Samuel Johnson",
+              "genre": "Biography",
+              "id": "1"
+            }
+          ],
+          "last_name": "Boswell",
+          "birth_year": 1740
+        },
+        "genre": "Biography",
+        "title": "Life of Samuel Johnson"
+      },
+      {
+        "year": 1869,
+        "author_id": {
+          "first_name": "Leo",
+          "country": "Russia",
+          "books_ids": [
+            {
+              "year": 1869,
+              "title": "War and Peace",
+              "genre": "Novel",
+              "id": "2"
+            },
+            {
+              "year": 1877,
+              "title": "Anna Karenina",
+              "genre": "Novel",
+              "id": "3"
+            },
+            {
+              "title": "The Cossacks",
+              "year": 1863,
+              "genre": "Novella",
+              "id": "4"
+            }
+          ],
+          "last_name": "Tolstoy",
+          "birth_year": 1828
+        },
+        "genre": "Novel",
+        "title": "War and Peace"
+      },
+      {
+        "year": 1877,
+        "author_id": {
+          "first_name": "Leo",
+          "country": "Russia",
+          "books_ids": [
+            {
+              "year": 1869,
+              "title": "War and Peace",
+              "genre": "Novel",
+              "id": "2"
+            },
+            {
+              "year": 1877,
+              "title": "Anna Karenina",
+              "genre": "Novel",
+              "id": "3"
+            },
+            {
+              "title": "The Cossacks",
+              "year": 1863,
+              "genre": "Novella",
+              "id": "4"
+            }
+          ],
+          "last_name": "Tolstoy",
+          "birth_year": 1828
+        },
+        "genre": "Novel",
+        "title": "Anna Karenina"
+      },
+      {
+        "year": 1863,
+        "author_id": {
+          "first_name": "Leo",
+          "country": "Russia",
+          "books_ids": [
+            {
+              "year": 1869,
+              "title": "War and Peace",
+              "genre": "Novel",
+              "id": "2"
+            },
+            {
+              "year": 1877,
+              "title": "Anna Karenina",
+              "genre": "Novel",
+              "id": "3"
+            },
+            {
+              "title": "The Cossacks",
+              "year": 1863,
+              "genre": "Novella",
+              "id": "4"
+            }
+          ],
+          "last_name": "Tolstoy",
+          "birth_year": 1828
+        },
+        "genre": "Novella",
+        "title": "The Cossacks"
+      },
+      {
+        "year": 1866,
+        "author_id": {
+          "first_name": "Fyodor",
+          "country": "Russia",
+          "books_ids": [
+            {
+              "title": "Crime and Punishment",
+              "year": 1866,
+              "genre": "Novel",
+              "id": "5"
+            },
+            {
+              "year": 1880,
+              "genre": "Novel",
+              "title": "The Brothers Karamazov",
+              "id": "6"
+            }
+          ],
+          "last_name": "Dostoevsky",
+          "birth_year": 1821
+        },
+        "genre": "Novel",
+        "title": "Crime and Punishment"
+      },
+      {
+        "year": 1880,
+        "author_id": {
+          "first_name": "Fyodor",
+          "country": "Russia",
+          "books_ids": [
+            {
+              "title": "Crime and Punishment",
+              "year": 1866,
+              "genre": "Novel",
+              "id": "5"
+            },
+            {
+              "year": 1880,
+              "genre": "Novel",
+              "title": "The Brothers Karamazov",
+              "id": "6"
+            }
+          ],
+          "last_name": "Dostoevsky",
+          "birth_year": 1821
+        },
+        "genre": "Novel",
+        "title": "The Brothers Karamazov"
+      },
+      {
+        "year": 1927,
+        "author_id": {
+          "first_name": "Ernest",
+          "country": "U.S.",
+          "books_ids": [
+            {
+              "year": 1927,
+              "title": "The Sun Also Rises",
+              "genre": "Novel",
+              "id": "7"
+            },
+            {
+              "title": "The Old Man and the Sea",
+              "year": 1951,
+              "genre": "Novel",
+              "id": "8"
+            }
+          ],
+          "last_name": "Hemingway",
+          "birth_year": 1899
+        },
+        "genre": "Novel",
+        "title": "The Sun Also Rises"
+      },
+      {
+        "year": 1951,
+        "author_id": {
+          "first_name": "Ernest",
+          "country": "U.S.",
+          "books_ids": [
+            {
+              "year": 1927,
+              "title": "The Sun Also Rises",
+              "genre": "Novel",
+              "id": "7"
+            },
+            {
+              "title": "The Old Man and the Sea",
+              "year": 1951,
+              "genre": "Novel",
+              "id": "8"
+            }
+          ],
+          "last_name": "Hemingway",
+          "birth_year": 1899
+        },
+        "genre": "Novel",
+        "title": "The Old Man and the Sea"
+      },
+      {
+        "genre": "Science",
+        "title": "Mathematical Principles of Natural Philosophy",
+        "year": 1687
+      },
+      {
+        "title": "Gulliver’s Travels",
+        "year": 1726,
+        "genre": "Novel"
+      }
+    ],
+    "totalPages": 2,
+    "pageNumber": 0,
+    "error": null
   }
 
   let exampleForm =
@@ -194,6 +470,7 @@ const App = (props) => {
           "allowAddLinks": false,
           "dateTimeOn": true,
           "isValid": true,
+          "booleanOptions":['True','False'],
           "weight": 3,
           "jsonDisplay": "default",
           "range": {
@@ -203,7 +480,7 @@ const App = (props) => {
             "unitName": ""
           }
         },
-        "file": {
+        "radio": {
           "include": true,
           "hidden": false,
           "required": false,
@@ -217,6 +494,17 @@ const App = (props) => {
           "isValid": true,
           "weight": 1,
           "jsonDisplay": "default",
+          "stringDisplay": "radioStation",
+          "customOption": "true",
+          "customOptionLabel": "My option",
+          "customOptionType": "datetime", //date, datetime, string, number, email, decimal
+          "customOptionPlaceholder": "Describe your option",
+          "multipleChoice": [
+            { "value": 'option1', "label": 'Option 1'},
+            { "value": 'option2', "label": 'Option 2'},
+            { "value": 'option3', "label": 'Option 3'},
+            { "value": 'option4', "label": 'Option 4'},
+          ],
           "range": {
             "min": 0,
             "max": 100,
@@ -365,9 +653,9 @@ const App = (props) => {
         "typeVariable": {}
       },
       {
-        "sysName": "file",
-        "name": "Upload file",
-        "dataType": "file",
+        "sysName": "radio",
+        "name": "Radio station",
+        "dataType": "string",
         "id": "97721592207344049",
         "link": "",
         "group": "0",
@@ -1038,7 +1326,7 @@ const App = (props) => {
         <ContentWrapper themeName={currentTheme}>
           <Switch>
             <Route exact path="/table">
-              <FpsTable data={exampleTable}/>
+              <FpsTable data={exampleTable} />
             </Route>
             <Route exact path="/">
               <WhatIsIt />

@@ -133,7 +133,7 @@ export default function FpsForm({ data, onEvent, id }) {
       string: 'string',
       link: 'select',
       arrayLink: 'multiselect',
-      boolean: 'radio',
+      boolean: 'boolean',
       date: 'date',
       json: 'json'
     }
@@ -154,6 +154,12 @@ export default function FpsForm({ data, onEvent, id }) {
       params.fields[field.sysName].isTextarea
     ) {
       return 'textarea'
+    }
+    if (
+      matching[field.dataType] == 'string' &&
+      params.fields[field.sysName].stringDisplay == 'radioStation'
+    ) {
+      return 'radio'
     }
     if (
       field.dataType == 'json' &&
@@ -254,7 +260,7 @@ export default function FpsForm({ data, onEvent, id }) {
         <form onSubmit={submit} style={{ maxWidth: formWidth }}>
           {fileds.map((field) => (field.params.include && !field.params.hidden &&
             <div>
-              {typesMatching(field) == 'radio' &&
+              {typesMatching(field) == 'boolean' &&
                 <Input type='radio'
                   defaultValue={model[field.sysName]}
                   label={field.name}
@@ -264,20 +270,21 @@ export default function FpsForm({ data, onEvent, id }) {
                     [
                       {
                         value: true,
-                        label: 'Yes'
+                        label: field.params.booleanOptions[0] || 'Yes'
                       },
                       {
                         value: false,
-                        label: 'No'
+                        label: field.params.booleanOptions[1] || 'No'
                       }
 
                     ]
                   }
                 />
               }
-              {typesMatching(field) != 'radio' &&
+              {typesMatching(field) != 'boolean' &&
                 <div>
                   <Input
+                    //debug
                     sysName={field.sysName}
                     validationHandler={validationHandler}
                     label={(data.placeholder != "true" || typesMatching(field) == 'slider' || typesMatching(field) == 'range') ? field.name : ''}
@@ -285,7 +292,12 @@ export default function FpsForm({ data, onEvent, id }) {
                     required={field.params.required}
                     description={field.params.description}
                     positive={field.params.isPositive}
-                    options={field.params.searchData || []}
+                    customOption={field.params.customOption}
+                    customOptionType={field.params.customOptionType}
+                    customOptionLabel={field.params.customOptionLabel}
+                    customOptionPlaceholder={field.params.customOptionPlaceholder}
+                    options={typesMatching(field) == 'select' ? (field.params.searchData || []) :
+                    (field.params.multipleChoice || [])}
                     //defaultValue={model[field.sysName] || field.params.defaultValue}
                     defaultValue={field.params.defaultValue}
                     timeFormat={`${field.params.dateTimeOn ? ' hh:mm A' : ''}`}

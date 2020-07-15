@@ -30,6 +30,7 @@ import Media from './components/fps/media/media'
 import Article from './components/fps/article/article'
 import TabsPane from './components/fps/layout/tabpane/tabpane'
 import { Dnd } from './components/fps/dnd/dndList'
+import Checkbox from './components/fps/dataentry/checkbox/checkbox'
 
 import FpsTheme, { SetTheme } from './components/fps/theme/theme'
 
@@ -38,6 +39,7 @@ export {
   Fps500,
   FpsIsEmpty,
   PageIsEmpty,
+  Checkbox,
   FpsLogin,
   FpsCards,
   FpsHtml,

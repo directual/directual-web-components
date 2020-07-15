@@ -66,6 +66,12 @@
     .objectCardHeader {
         display: flex;
         align-items: center;
+        overflow: hidden;
+        h2 {
+            overflow: hidden;
+            text-overflow: ellipsis;
+           // white-space: nowrap;
+        }
         .closeObjectCard {
             cursor: pointer;
             margin-right: 12px;
@@ -91,6 +97,16 @@
         overflow: hidden;
         text-overflow: ellipsis;
         margin-bottom: 0 !important;
+        transition: .5s;
+    }
+    .tableActions {
+        display: flex;
+        button {
+            //margin-left: 6px;
+        }
+        .tableQuickSearchField {
+            margin-left: 6px;
+        }
     }
 }
 

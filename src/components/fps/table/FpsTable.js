@@ -13,35 +13,36 @@ import ActionPanel from '../actionspanel/actionspanel'
 import Button from '../button/button'
 
 
-function FpsTableTitle({ tableQuickSearch, tableTitle, onSearch }) {
+function FpsTableTitle({ tableQuickSearch, tableTitle, tableFilters, onFilter, onSearch }) {
+    const [showSearch, setShowSearch] = useState(false)
+    const [showFilters, setShowFilters] = useState(false)
     return (
         <div className={styles.tableTitle}>
             {tableTitle && <h1>{tableTitle}</h1>}
-            {tableQuickSearch &&
-                <div className={styles.tableSearch}>
-                    <Input
-                        type='search'
-                        placeholder='Search...'
-                        onPressEnter={value => {
-                            onSearch(value)
-                        }}
-                        tip='Press Enter for searching'
-                        onClear={() => {
-                            onSearch('')
-                        }}
-                        nomargin />
+            {(tableQuickSearch || tableFilters) &&
+                <div className={styles.tableActions}>
+                    <Button icon='filter'></Button>
+                    <div className={styles.tableQuickSearchField}>
+                        {showSearch ?
+                            <Input
+                                type='search'
+                                placeholder='Search...'
+                                width={300}
+                                onPressEnter={value => {
+                                    onSearch(value)
+                                }}
+                                tip='Press Enter for searching'
+                                onClear={() => {
+                                    onSearch('')
+                                    setShowSearch(false)
+                                }}
+                                nomargin />
+                            : 
+                            <Button icon='search'
+                                onClick={()=>setShowSearch(true)}></Button>
+                        }
+                    </div>
                 </div>}
-        </div>
-    )
-}
-
-function FpsTableActionPanel() {
-    return (
-        <div className={styles.tableActionsPanel}>
-            <ActionPanel margin={{ top: 0, bottom: 6 }}>
-                <Button accent icon='love'></Button>
-                <Button icon='actions'></Button>
-            </ActionPanel>
         </div>
     )
 }
@@ -51,6 +52,7 @@ function FpsTable({ data, onEvent, id }) {
 
     const tableTitle = data.tableTitle || null
     const tableQuickSearch = data.tableQuickSearch || null
+    const tableFilters = data.tableFilters || null
 
     const [showObject, setShowObject] = useState()
     const handleCloseShowObject = () => {
@@ -71,22 +73,23 @@ function FpsTable({ data, onEvent, id }) {
                 <React.Fragment>
                     <Backdrop onClick={handleCloseShowObject} hoverable />
                     <div className={styles.firstObjectCard}>
-                        <ObjectCard onClose={handleCloseShowObject} id={showObject} /></div>
+                        <ObjectCard onClose={handleCloseShowObject} object={showObject} /></div>
                 </React.Fragment>}
 
             <FpsTableTitle
                 tableTitle={tableTitle}
+                tableFilters={tableFilters}
                 tableQuickSearch={tableQuickSearch}
-                onSearch={value => search(value)} />
+                onSearch={value => search(value)}
+                onFilter={() => { }}
+            />
 
-            <FpsTableActionPanel />
-
-            {/* <Table
+            <Table
                 data={data}
                 onEvent={onEvent}
                 id={id}
-                onClick={val => setShowObject(val)}
-            /> */}
+                onClick={val => { setShowObject(val) }}
+            />
 
         </div>
     )

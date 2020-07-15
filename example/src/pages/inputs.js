@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {
     FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, Select, Datepicker, InputGroup,
-    FpsTheme, ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, CodeSnippet, Slider, FileUpload
+    FpsTheme, ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, CodeSnippet, Slider, FileUpload,
+    Checkbox
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
@@ -10,6 +11,22 @@ export default function InputsPage() {
     return (
         <React.Fragment>
             <h1>Data entry</h1>
+            <h2 style={{ marginBottom: 24, marginTop: 36 }}>Checkbox</h2>
+
+            <Checkbox
+                label='Печенеги'
+
+            />
+
+            <Checkbox
+                label='Половцы'
+            />
+
+            <Checkbox
+                customOption
+                customOptionType='date'
+                />
+
             {/* <FileUpload /> */}
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Range sliders</h2>
             <CodeSnippet code=
@@ -226,7 +243,7 @@ export default function InputsPage() {
                 width={700}
                 type='multiselect'
                 placeholder='Choose the values'
-                defaultValue={[2,5]}
+                defaultValue={[2, 5]}
                 required
                 icon='database'
                 options={
@@ -574,6 +591,43 @@ export default function InputsPage() {
                 type='radio'
                 disabled
                 //defaultValue='option2'
+                options={
+                    [
+                        {
+                            value: 'option1',
+                            label: 'Option 1'
+                        },
+                        {
+                            value: 'option2',
+                            label: 'Option 2'
+                        }
+                    ]
+                }
+            />
+            <CodeSnippet code=
+                {`<Input
+    label='Radio station with a custom option'
+    type='radio'
+    customOption
+    placeholder='Other'
+    options={
+        [
+            {
+                value: 'option1',
+                label: 'Option 1'
+            },
+            {
+                value: 'option2',
+                label: 'Option 2'
+            }
+        ]
+    }
+/>`} />
+            <Input
+                label='Radio station with a custom option'
+                type='radio'
+                customOption
+                placeholder='Other'
                 options={
                     [
                         {

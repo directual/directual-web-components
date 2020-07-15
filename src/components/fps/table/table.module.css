@@ -58,6 +58,11 @@
 .objectCard .objectCardHeader {
   display: flex;
   align-items: center;
+  overflow: hidden;
+}
+.objectCard .objectCardHeader h2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .objectCard .objectCardHeader .closeObjectCard {
   cursor: pointer;
@@ -83,6 +88,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: 0 !important;
+  transition: 0.5s;
+}
+.tableTitle .tableActions {
+  display: flex;
+}
+.tableTitle .tableActions .tableQuickSearchField {
+  margin-left: 6px;
 }
 @media all and (max-width: 415px) {
   .firstObjectCard {

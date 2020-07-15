@@ -37,12 +37,31 @@ export function Table({ data, onEvent, id, onClick }) {
                 <tbody>
                     {tableData.map((row) => (
                         <tr>
-                            {tableHeader.map((column, i) => (
-                                <td>
-                                    {(i == 0 && onClick) ?
-                                        <a onClick={() => onClick(row.id)}>{row[column.sysName]}</a> :
-                                        <span>{JSON.stringify(row[column.sysName])}</span>}
-                                </td>))}
+                            {tableHeader.map((column, i) => {
+                                const columnDataType = tableHeader.filter(header => header.sysName == column.sysName)[0].dataType;
+                                return (
+                                    <td>
+                                        {(i == 0 && onClick) ?
+                                            <a onClick={() => onClick(row)}>
+                                                {` ${(columnDataType == 'link' ||
+                                                    columnDataType == 'arrayLink') &&
+                                                    row[column.sysName] ?
+                                                    'Link-object' // todo
+                                                    :
+                                                    row[column.sysName] || '—'
+                                                    }`}
+                                            </a> :
+                                            <span>
+                                                {` ${(columnDataType == 'link' ||
+                                                    columnDataType == 'arrayLink') &&
+                                                    row[column.sysName] ?
+                                                    'Link-object' // todo
+                                                    :
+                                                    row[column.sysName] || '—'
+                                                    }`}</span>}
+                                    </td>)
+                            }
+                            )}
                         </tr>))}
                 </tbody>
             </table>

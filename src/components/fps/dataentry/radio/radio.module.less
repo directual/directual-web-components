@@ -1,7 +1,9 @@
 .radio {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    .radio_flex {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
     &.disabled {
         //background-color: var(--table-border-color);
         
@@ -9,7 +11,7 @@
             cursor: not-allowed;
             color: var(--field-border-color);
         }
-        input {
+        input[type=radio] {
             cursor: not-allowed;
             border: solid 1px var(--field-border-color);
             &:hover {
@@ -55,10 +57,10 @@
         opacity: 1 !important;
         font-weight: var(--text-font-weight) !important;
         cursor: pointer;
-        &:hover input {
+        &:hover input[type=radio] {
             border: solid 4px var(--field-border-color);
         }
-        input {
+        input[type=radio] {
             width: 20px;
             height: 20px;
             -webkit-appearance: none;

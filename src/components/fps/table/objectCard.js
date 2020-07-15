@@ -10,14 +10,14 @@ export function ObjectCard(props) {
                 <div className={styles.objectCardHeader}>
                     <div onClick={props.onClose}
                         className={`${styles.closeObjectCard} icon icon-back ${showLinkedObject && styles.hidden}`}></div>
-                    <h2>{props.id}</h2>
+                    <h2>{props.object ? props.object.title: ''}</h2>
                 </div>
                 <div className={styles.objectCardBody}>
                     <a onClick={() => setShowLinkedObject(true)}>Click me</a>
                 </div>
                 {showLinkedObject &&
                     <React.Fragment>
-                        <Backdrop onClick={() => setShowLinkedObject(false)} hoverable rounded label={props.id} />
+                        <Backdrop onClick={() => setShowLinkedObject(false)} hoverable rounded label={props.object ? props.object.title: ''} />
                         <ObjectCard onClose={() => setShowLinkedObject(false)} />
                     </React.Fragment>}
             </div>
