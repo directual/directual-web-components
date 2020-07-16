@@ -23,6 +23,7 @@ export default function OptionsHandler({defaultValue, objectStructure, onChange,
                             return (
                                 <Input
                                     key={i + '-' + property}
+                                    width={width/2 || 'auto'}
                                     placeholder={property}
                                     className={styles.optionListInput}
                                     defaultValue={options[i][property]}

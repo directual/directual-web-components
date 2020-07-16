@@ -727,7 +727,7 @@ export default function InputsPage() {
 />`} />
 
             <OptionsHandler
-                width={600}
+                //width={300}
                 margin={{ top: 24, bottom: 24 }}
                 defaultValue={[
                     { key: '1', value: 'val 1' },
