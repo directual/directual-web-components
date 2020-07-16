@@ -4,6 +4,7 @@ import Radio from '../radio/radio'
 import Select from '../select/select'
 import Datepicker from '../datepicker/datepicker'
 import Slider from '../slider/slider'
+import Checkbox from '../checkbox/checkbox'
 
 export function InputGroup(props) {
     return (
@@ -218,6 +219,7 @@ export default function Input(props) {
             </div>}
 
             {props.type != 'email' &&
+                props.type != 'checkboxGroup' &&
                 props.type != 'number' &&
                 props.type != 'search' &&
                 props.type != 'icon' &&
@@ -330,6 +332,7 @@ export default function Input(props) {
             {props.type == 'textarea' &&
                 <div className={styles.field_wrapper}>
                     <textarea
+                        autoFocus={props.autoFocus}
                         disabled={props.disabled}
                         className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                         type="text"
@@ -347,6 +350,7 @@ export default function Input(props) {
             {props.type == 'password' &&
                 <div className={styles.field_wrapper}>
                     <input
+                        autoFocus={props.autoFocus}
                         autocomplete="new-password"
                         disabled={props.disabled}
                         className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
@@ -365,7 +369,7 @@ export default function Input(props) {
 
             {props.type == 'radio' &&
                 <Radio
-                    onChange={e => e ? (e.target ? setValue(e.target.value) : setValue(e)): setValue(null)}
+                    onChange={e => e ? (e.target ? setValue(e.target.value) : setValue(e)) : setValue(null)}
                     defaultValue={props.defaultValue}
                     options={props.options}
                     disabled={props.disabled}
@@ -445,6 +449,33 @@ export default function Input(props) {
                     onChange={e => setValue(e)}
                     unitName={props.unitName} />
 
+            }
+            {props.type == 'checkboxGroup' &&
+                <React.Fragment>
+                    {props.options && props.options.map(option => {
+                        console.log(option)
+                        return (
+                            <div className={styles.checkbox_wrapper}>
+                                <Checkbox
+                                    label={option.label}
+                                    onChange={val => setValue({ ...value, [option.label]: val })}
+                                />
+                            </div>
+                        )
+                    })}
+                    {props.customOption &&
+                        <div className={styles.checkbox_wrapper}>
+                            <Checkbox
+                                customOption
+                                label={props.customOptionLabel}
+                                customOptionType={props.customOptionType}
+                                onChange={val => setValue({ ...value, customOption: val })}
+                                customOptionPlaceholder={props.customOptionPlaceholder}
+                            />
+                        </div>
+                    }
+
+                </React.Fragment>
             }
 
             {warningMsg &&

@@ -1,7 +1,7 @@
  
  .cb_wrap {
      display: flex;
- }
+ 
  
  .checkbox {
      &.disabled {
@@ -10,6 +10,9 @@
      }
      display: flex;
      align-items: center;
+     font-weight: var( --text-font-weight);
+     font-size: var(--text-font-size);
+     opacity: 1;
      cursor: pointer;
      .cb_wrapper {
          position: relative;
@@ -63,4 +66,8 @@
             }
         }
      }
+ }
+}
+ .customOptionWrapper {
+     margin-top: 8px;
  }

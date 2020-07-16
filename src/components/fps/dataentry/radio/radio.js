@@ -11,8 +11,8 @@ export default function Radio(props) {
     let customOptionType = props.customOptionType || 'string'
     const customOptionPlaceholder = props.customOptionPlaceholder || ''
     let timeFormat;
-    timeFormat = customOptionType == 'date' &&  'hh:mm A'
-    timeFormat = customOptionType == 'datetime' &&  ''
+    timeFormat = customOptionType == 'datetime' &&  'hh:mm A'
+    timeFormat = customOptionType == 'date' &&  ''
     if (customOptionType == 'datetime') {customOptionType = 'date'}
     
 
@@ -83,13 +83,8 @@ export default function Radio(props) {
                     >
                         <input
                             type="radio"
-                            //value={option.value}
                             disabled={props.disabled}
                             checked={customOption}
-                        // onChange={e => {
-                        //     props.onChange && props.onChange(e)
-                        //     setSelectedOption(option.value)
-                        // }}
                         />
                         {customOptionLabel}
                     </label></div>
@@ -101,8 +96,6 @@ export default function Radio(props) {
                             onChange={val => {
                                 setCustomOptionVal(val)
                                 setSelectedOption('custom: ' + val);
-                                //props.onChange && props.onChange('custom: ' + val);
-                                //val ? setCustomOption(true) : setCustomOption(false);
                             }}
                             type={customOptionType}
                             value={customOptionVal}

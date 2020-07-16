@@ -135,6 +135,7 @@ export default function FpsForm({ data, onEvent, id }) {
       arrayLink: 'multiselect',
       boolean: 'boolean',
       date: 'date',
+      decimal: 'decimal',
       json: 'json'
     }
     if (
@@ -160,6 +161,12 @@ export default function FpsForm({ data, onEvent, id }) {
       params.fields[field.sysName].stringDisplay == 'radioStation'
     ) {
       return 'radio'
+    }
+    if (
+      matching[field.dataType] == 'string' &&
+      params.fields[field.sysName].stringDisplay == 'checkboxGroup'
+    ) {
+      return 'checkboxGroup'
     }
     if (
       field.dataType == 'json' &&

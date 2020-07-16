@@ -1,26 +1,29 @@
 .cb_wrap {
   display: flex;
 }
-.checkbox {
+.cb_wrap .checkbox {
   display: flex;
   align-items: center;
+  font-weight: var(--text-font-weight);
+  font-size: var(--text-font-size);
+  opacity: 1;
   cursor: pointer;
 }
-.checkbox.disabled {
+.cb_wrap .checkbox.disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-.checkbox .cb_wrapper {
+.cb_wrap .checkbox .cb_wrapper {
   position: relative;
   padding-right: 12px;
 }
-.checkbox .cb_wrapper input[type=checkbox] {
+.cb_wrap .checkbox .cb_wrapper input[type=checkbox] {
   position: absolute;
   height: 1px;
   width: 1px;
   visibility: hidden;
 }
-.checkbox .cb_wrapper .pretty_checkbox {
+.cb_wrap .checkbox .cb_wrapper .pretty_checkbox {
   background-color: var(--background-color);
   height: 20px;
   width: 20px;
@@ -31,26 +34,29 @@
   border: solid 1px var(--field-border-color);
   border-radius: 4px;
 }
-.checkbox .cb_wrapper .pretty_checkbox.checked {
+.cb_wrap .checkbox .cb_wrapper .pretty_checkbox.checked {
   background-color: var(--accent-color);
   border-color: var(--accent-color);
 }
-.checkbox .cb_wrapper .pretty_checkbox.checked:before {
+.cb_wrap .checkbox .cb_wrapper .pretty_checkbox.checked:before {
   font-size: 22px;
 }
-.checkbox:hover:not(.disabled) .cb_wrapper .pretty_checkbox {
+.cb_wrap .checkbox:hover:not(.disabled) .cb_wrapper .pretty_checkbox {
   border: solid 2px var(--field-border-color);
   height: 18px;
   width: 18px;
 }
-.checkbox:hover:not(.disabled) .cb_wrapper .pretty_checkbox.checked {
+.cb_wrap .checkbox:hover:not(.disabled) .cb_wrapper .pretty_checkbox.checked {
   background-color: var(--accent-color);
   border-color: var(--accent-color);
 }
-.checkbox:active:not(.disabled) .cb_wrapper .pretty_checkbox {
+.cb_wrap .checkbox:active:not(.disabled) .cb_wrapper .pretty_checkbox {
   background-color: var(--font-color);
 }
-.checkbox:active:not(.disabled) .cb_wrapper .pretty_checkbox.checked {
+.cb_wrap .checkbox:active:not(.disabled) .cb_wrapper .pretty_checkbox.checked {
   background-color: var(--font-color);
   border-color: var(--font-color);
+}
+.customOptionWrapper {
+  margin-top: 8px;
 }

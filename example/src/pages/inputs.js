@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
     FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, Select, Datepicker, InputGroup,
     FpsTheme, ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, CodeSnippet, Slider, FileUpload,
@@ -11,21 +11,7 @@ export default function InputsPage() {
     return (
         <React.Fragment>
             <h1>Data entry</h1>
-            <h2 style={{ marginBottom: 24, marginTop: 36 }}>Checkbox</h2>
 
-            <Checkbox
-                label='Печенеги'
-
-            />
-
-            <Checkbox
-                label='Половцы'
-            />
-
-            <Checkbox
-                customOption
-                customOptionType='date'
-                />
 
             {/* <FileUpload /> */}
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Range sliders</h2>
@@ -610,6 +596,10 @@ export default function InputsPage() {
     type='radio'
     customOption
     placeholder='Other'
+    width={400}
+    customOptionType='textarea'
+    customOptionLabel='Something else...'
+    customOptionPlaceholder='Please, describe your option'
     options={
         [
             {
@@ -627,7 +617,10 @@ export default function InputsPage() {
                 label='Radio station with a custom option'
                 type='radio'
                 customOption
-                placeholder='Other'
+                width={400}
+                customOptionType='textarea'
+                customOptionLabel='Something else...'
+                customOptionPlaceholder='Please, describe your option'
                 options={
                     [
                         {
@@ -641,6 +634,81 @@ export default function InputsPage() {
                     ]
                 }
             />
+
+            <h2 style={{ marginBottom: 24, marginTop: 36 }}>Checkboxes</h2>
+            <CodeSnippet code=
+                {`<Checkbox
+    label='Click me'
+/>`} />
+            <Checkbox
+                label='Click me'
+            /><br />
+            <CodeSnippet code=
+                {`<Checkbox
+    label='Checkbox with custom option'
+    customOption
+    customOptionType='date' // string, date, datetime, number, decimal, textarea, email
+    customOptionPlaceholder='Tell us...'
+/>`} />
+            <Checkbox
+                label='Checkbox with custom option'
+                customOption
+                customOptionType='date'
+                customOptionPlaceholder='Tell us...'
+            /><br />
+
+            <CodeSnippet code=
+                {`<Input
+    label='Checkbox group with a custom option'
+    type='checkboxGroup'
+    customOption
+    width={500}
+    customOptionType='textarea'
+    customOptionLabel='Something else...'
+    customOptionPlaceholder='Please, describe your option'
+    options={
+        [
+            {
+                value: 'option1',
+                label: 'Option 1'
+            },
+            {
+                value: 'option2',
+                label: 'Option 2'
+            },
+            {
+                value: 'option3',
+                label: 'Option 3'
+            }
+        ]
+    }
+/>`} />
+            <Input
+                label='Checkbox group with a custom option'
+                type='checkboxGroup'
+                customOption
+                width={500}
+                customOptionType='textarea'
+                customOptionLabel='Something else...'
+                customOptionPlaceholder='Please, describe your option'
+                options={
+                    [
+                        {
+                            value: 'option1',
+                            label: 'Option 1'
+                        },
+                        {
+                            value: 'option2',
+                            label: 'Option 2'
+                        },
+                        {
+                            value: 'option3',
+                            label: 'Option 3'
+                        }
+                    ]
+                }
+            />
+
 
         </React.Fragment>
     )

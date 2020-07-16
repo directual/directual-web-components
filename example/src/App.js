@@ -494,16 +494,46 @@ const App = (props) => {
           "isValid": true,
           "weight": 1,
           "jsonDisplay": "default",
-          "stringDisplay": "radioStation",
+          "stringDisplay": "radioStation", //radioStation, checkboxGroup
           "customOption": "true",
           "customOptionLabel": "My option",
-          "customOptionType": "datetime", //date, datetime, string, number, email, decimal
+          "customOptionType": "datetime", //date, datetime, string, number, email, decimal, textarea
           "customOptionPlaceholder": "Describe your option",
           "multipleChoice": [
             { "value": 'option1', "label": 'Option 1'},
             { "value": 'option2', "label": 'Option 2'},
             { "value": 'option3', "label": 'Option 3'},
             { "value": 'option4', "label": 'Option 4'},
+          ],
+          "range": {
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unitName": ""
+          }
+        },
+        "checkbox": {
+          "include": true,
+          "hidden": false,
+          "required": false,
+          "isTextarea": false,
+          "textareaRows": 4,
+          "defaultValue": "",
+          "isPositive": false,
+          "quickSearch": true,
+          "allowAddLinks": false,
+          "dateTimeOn": true,
+          "isValid": true,
+          "weight": 1,
+          "jsonDisplay": "default",
+          "stringDisplay": "checkboxGroup", //radioStation, checkboxGroup
+          "customOption": "true",
+          "customOptionLabel": "My option",
+          "customOptionType": "textarea", //date, datetime, string, number, email, decimal, textarea
+          "customOptionPlaceholder": "Describe your option",
+          "multipleChoice": [
+            { "value": 'option1', "label": 'Option 1'},
+            { "value": 'option2', "label": 'Option 2'},
           ],
           "range": {
             "min": 0,
@@ -657,6 +687,32 @@ const App = (props) => {
         "name": "Radio station",
         "dataType": "string",
         "id": "97721592207344049",
+        "link": "",
+        "group": "0",
+        "tags": null,
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 8,
+        "linkIndexFieldSysName": [],
+        "defaultValue": null,
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "json": false,
+        "linkOrArrayLinkType": false,
+        "linkType": false,
+        "arrayLink": false,
+        "indexExists": false,
+        "typeVariable": {}
+      },
+      {
+        "sysName": "checkbox",
+        "name": "Checkboxes group",
+        "dataType": "string",
+        "id": "9772159220734404",
         "link": "",
         "group": "0",
         "tags": null,
