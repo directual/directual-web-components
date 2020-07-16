@@ -201,13 +201,29 @@ export default function Input(props) {
             { key: 'dashboard', value: 'dashboard', icon: 'dashboard' }
         ]
 
-
+    let inputMargins = {
+        marginTop:0,
+        marginBottom:0
+    }
+    if (props.equalMargin) {
+        inputMargins.marginBottom = props.equalMargin || 6;
+        inputMargins.marginTop = props.equalMargin || 6;
+    }
+    if (props.nomargin) {
+        inputMargins.marginBottom = 0;
+        inputMargins.marginTop = 0;
+    }
+    if (!props.nomargin && !props.equalMargin) {
+        inputMargins.marginBottom = 16;
+        inputMargins.marginTop = 0;
+    }
     return (
         <div className={styles.input_wrapper}
             style={
                 {
                     maxWidth: props.width || 'auto',
-                    marginBottom: props.nomargin ? 0 : 18
+                    marginBottom: inputMargins.marginBottom,
+                    marginTop: inputMargins.marginTop
                 }
             }>
             {props.label && <label>{props.label}{props.required && '*'}</label>}
