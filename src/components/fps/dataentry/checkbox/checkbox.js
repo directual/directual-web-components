@@ -3,7 +3,7 @@ import styles from './checkbox.module.css'
 import Input from '../input/input'
 
 export default function Checkbox(props) {
-    const defaultValue = props.defaultValue || false
+    const defaultValue = props.checked || props.defaultValue || false
     const label = props.label || 'Option'
     const disabled = props.disabled || false
 
@@ -31,8 +31,8 @@ export default function Checkbox(props) {
     }, [checked])
 
     return (
-        <React.Fragment>
-            <div className={styles.cb_wrap}>
+        <div className={`${props.className || ''}`}>
+            <div className={`${styles.cb_wrap}`}>
                 <label
                     className={`${styles.checkbox} ${disabled && styles.disabled}`}
                     onClick={e => { if (!disabled) { e.preventDefault(); setChecked(!checked) } }}
@@ -59,6 +59,6 @@ export default function Checkbox(props) {
                     />
                 </div>
             }
-        </React.Fragment>
+        </div>
     )
 }
