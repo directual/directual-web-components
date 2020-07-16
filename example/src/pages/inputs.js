@@ -684,6 +684,7 @@ export default function InputsPage() {
     }
 />`} />
             <Input
+                debug
                 label='Checkbox group with a custom option'
                 type='checkboxGroup'
                 customOption

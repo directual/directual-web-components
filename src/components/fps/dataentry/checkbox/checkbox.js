@@ -25,17 +25,23 @@ export default function Checkbox(props) {
         props.onChange && customOption && props.onChange(customOptionVal);
     }, [customOptionVal])
 
-    useEffect(() => {
-        props.onChange && !customOption && props.onChange(checked);
-        props.onChange && customOption && !checked && props.onChange(null);
-    }, [checked])
+    // useEffect(() => {
+        
+    // }, [checked])
 
     return (
         <div className={`${props.className || ''}`}>
             <div className={`${styles.cb_wrap}`}>
                 <label
                     className={`${styles.checkbox} ${disabled && styles.disabled}`}
-                    onClick={e => { if (!disabled) { e.preventDefault(); setChecked(!checked) } }}
+                    onClick={e => {
+                        if (!disabled) {
+                            e.preventDefault();
+                            props.onChange && !customOption && props.onChange(!checked);
+                            props.onChange && customOption && checked && props.onChange(null);
+                            setChecked(!checked)
+                        }
+                    }}
                 >
                     <div className={styles.cb_wrapper}>
                         <input
