@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {
   FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, FpsTheme,
   ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, SignIn, SignUp, Media, CodeSnippet,
-  Dnd, Profile, TabsPane, Loader
+  Dnd, Profile, TabsPane, Loader, optionsHandler
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 import {
@@ -492,12 +492,12 @@ const App = (props) => {
           "allowAddLinks": false,
           "dateTimeOn": true,
           "isValid": true,
+          "unitName": '',
           "weight": 1,
-          "jsonDisplay": "default",
-          "stringDisplay": "radioStation", //radioStation, checkboxGroup
+          "jsonDisplay": "radioStation", // default, range, slider, radioStation, checkboxGroup
           "customOption": "true",
           "customOptionLabel": "My option",
-          "customOptionType": "datetime", //date, datetime, string, number, email, decimal, textarea
+          "customOptionType": "datetime", //date, datetime, string, number, email, decimal, textarea, 
           "customOptionPlaceholder": "Describe your option",
           "multipleChoice": [
             { "value": 'option1', "label": 'Option 1'},
@@ -525,8 +525,7 @@ const App = (props) => {
           "dateTimeOn": true,
           "isValid": true,
           "weight": 1,
-          "jsonDisplay": "default",
-          "stringDisplay": "checkboxGroup", //radioStation, checkboxGroup
+          "jsonDisplay": "checkboxGroup", // default, range, slider, radioStation, checkboxGroup
           "customOption": "true",
           "customOptionLabel": "My option",
           "customOptionType": "textarea", //date, datetime, string, number, email, decimal, textarea
@@ -539,7 +538,6 @@ const App = (props) => {
             "min": 0,
             "max": 100,
             "step": 1,
-            "unitName": ""
           }
         },
         "link": {
@@ -561,7 +559,6 @@ const App = (props) => {
             "min": 0,
             "max": 100,
             "step": 1,
-            "unitName": ""
           }
         },
         "range": {
@@ -576,13 +573,13 @@ const App = (props) => {
           "allowAddLinks": false,
           "dateTimeOn": true,
           "isValid": true,
+          "unitName": " %",
           "weight": 0,
           "jsonDisplay": "range",
           "range": {
             "min": 0,
-            "max": 100,
-            "step": 1,
-            "unitName": ""
+            "max": 146,
+            "step": 1
           }
         },
         "slider": {
@@ -598,17 +595,18 @@ const App = (props) => {
           "dateTimeOn": true,
           "isValid": true,
           "weight": 0,
+          "unitName": " $",
           "jsonDisplay": "slider",
           "range": {
             "min": 0,
             "max": 100,
-            "step": 10,
-            "unitName": " $"
+            "step": 10
           }
         },
         "textarea": {
           "include": true,
           "hidden": false,
+          "unitName": '$',
           "required": false,
           "isTextarea": true,
           "textareaRows": 4,
@@ -685,7 +683,7 @@ const App = (props) => {
       {
         "sysName": "radio",
         "name": "Radio station",
-        "dataType": "string",
+        "dataType": "json",
         "id": "97721592207344049",
         "link": "",
         "group": "0",
@@ -711,7 +709,7 @@ const App = (props) => {
       {
         "sysName": "checkbox",
         "name": "Checkboxes group",
-        "dataType": "string",
+        "dataType": "json",
         "id": "9772159220734404",
         "link": "",
         "group": "0",
@@ -814,8 +812,8 @@ const App = (props) => {
       },
       {
         "sysName": "textarea",
-        "name": "Text area",
-        "dataType": "string",
+        "name": "Price",
+        "dataType": "decimal",
         "id": "97731592207240400",
         "link": null,
         "group": "0",

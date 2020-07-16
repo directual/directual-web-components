@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {
     FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, Select, Datepicker, InputGroup,
     FpsTheme, ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, CodeSnippet, Slider, FileUpload,
-    Checkbox
+    Checkbox, OptionsHandler
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
@@ -710,6 +710,35 @@ export default function InputsPage() {
                     ]
                 }
             />
+            <h2>Options handler</h2>
+
+            <CodeSnippet code=
+                {`<OptionsHandler
+    width={600}
+    margin={{ top: 24, bottom: 24 }}
+    defaultValue={[
+        { key: '1', value: 'val 1' },
+        { key: '2', value: 'val 2' },
+        { key: '3', value: 'val 3' },
+    ]}
+    objectStructure={['key', 'value']}
+    addButtonText='More'
+    onChange={value => {}}
+/>`} />
+
+            <OptionsHandler
+                width={600}
+                margin={{ top: 24, bottom: 24 }}
+                defaultValue={[
+                    { key: '1', value: 'val 1' },
+                    { key: '2', value: 'val 2' },
+                    { key: '3', value: 'val 3' },
+                ]}
+                objectStructure={['key', 'value']}
+                addButtonText='More'
+                onChange={value => { }}
+            />
+
 
 
         </React.Fragment>

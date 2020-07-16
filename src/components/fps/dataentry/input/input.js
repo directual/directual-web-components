@@ -202,8 +202,8 @@ export default function Input(props) {
         ]
 
     let inputMargins = {
-        marginTop:0,
-        marginBottom:0
+        marginTop: 0,
+        marginBottom: 0
     }
     if (props.equalMargin) {
         inputMargins.marginBottom = props.equalMargin || 6;
@@ -218,7 +218,7 @@ export default function Input(props) {
         inputMargins.marginTop = 0;
     }
     return (
-        <div className={styles.input_wrapper}
+        <div className={`${styles.input_wrapper} ${props.className}`}
             style={
                 {
                     maxWidth: props.width || 'auto',
@@ -252,11 +252,16 @@ export default function Input(props) {
                     {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
                     <input
                         disabled={props.disabled}
-                        className={`${styles.field} ${props.icon && styles.icon} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
+                        key={props.key}
+                        className=
+                            {`${styles.field} 
+                            ${props.icon && styles.icon} 
+                            ${warningMsg.type && styles[warningMsg.type]}
+                            ${props.disabled && styles.disabled}`}
                         type="text"
                         onKeyPress={e => { e.key == 'Enter' ? props.onPressEnter(value) : undefined }}
                         onChange={e => { handleChange(e.target.value); }}
-                        value={value}
+                        value={value || ''}
                         onBlur={checkValue}
                         placeholder={`${props.placeholder ? props.placeholder : ''}`}
                     />
@@ -307,16 +312,22 @@ export default function Input(props) {
                 </div>}
 
             {props.type == 'decimal' &&
-                <div className={styles.field_wrapper}>
-                    <input
-                        className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
-                        disabled={props.disabled}
-                        type="number"
-                        onChange={e => { handleChangeDecimalNumber(e.target.value) }}
-                        value={value}
-                        onBlur={checkValue}
-                        placeholder={`${props.placeholder ? props.placeholder : ''}`}
-                    />
+                <div className={`${props.unitName && styles.fieldUnitsWrapper}`}>
+                    <div className={styles.field_wrapper}>
+                        <input
+                            className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
+                            disabled={props.disabled}
+                            type="number"
+                            onChange={e => { handleChangeDecimalNumber(e.target.value) }}
+                            value={value}
+                            onBlur={checkValue}
+                            placeholder={`${props.placeholder ? props.placeholder : ''}`}
+                        />
+                        {value && !props.disabled &&
+                            <div className={`${styles.clear} icon icon-close`}
+                                onClick={clearValue}></div>}
+                    </div>
+                    {props.unitName && <div className={styles.unitName}>{props.unitName}</div>}
                 </div>}
 
             {props.type == 'number' &&
@@ -469,7 +480,6 @@ export default function Input(props) {
             {props.type == 'checkboxGroup' &&
                 <React.Fragment>
                     {props.options && props.options.map(option => {
-                        console.log(option)
                         return (
                             <div className={styles.checkbox_wrapper}>
                                 <Checkbox
@@ -494,7 +504,7 @@ export default function Input(props) {
                 </React.Fragment>
             }
 
-            {warningMsg &&
+            {warningMsg.msg &&
                 <div className={`${styles.status} ${styles[warningMsg.type]}`}>{warningMsg.msg}</div>}
 
         </div>

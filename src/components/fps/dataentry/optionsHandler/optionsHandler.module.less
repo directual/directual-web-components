@@ -1,0 +1,24 @@
+ 
+ .option {
+     display: flex;
+     align-items: center;
+     margin-bottom: 8px;
+     .optionListButton {
+        cursor: pointer;
+        opacity: .4;
+        transition: .5s;
+        margin-left: -4px;
+        &:hover {
+             opacity: .8;
+         }
+     }
+     .optionListInput {
+        margin-right: 6px;
+        flex-grow: 2;
+     }
+ }
+ @media all and (max-width: 415px) { 
+    .optionListInput {
+        width: 100px;
+    }
+}

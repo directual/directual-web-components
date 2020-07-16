@@ -31,6 +31,7 @@ import Article from './components/fps/article/article'
 import TabsPane from './components/fps/layout/tabpane/tabpane'
 import { Dnd } from './components/fps/dnd/dndList'
 import Checkbox from './components/fps/dataentry/checkbox/checkbox'
+import OptionsHandler from './components/fps/dataentry/optionsHandler/optionsHandler'
 
 import FpsTheme, { SetTheme } from './components/fps/theme/theme'
 
@@ -40,6 +41,7 @@ export {
   FpsIsEmpty,
   PageIsEmpty,
   Checkbox,
+  OptionsHandler,
   FpsLogin,
   FpsCards,
   FpsHtml,

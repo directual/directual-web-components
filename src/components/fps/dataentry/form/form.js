@@ -71,7 +71,7 @@ export default function FpsForm({ data, onEvent, id }) {
   function sortFields(arr) {
     if (!arr) { return null }
     if (!params.fields) {
-      params = {...params, fields:{}}
+      params = { ...params, fields: {} }
     }
     arr.forEach((field, i) => {
       if (!params.fields[field.sysName]) {
@@ -158,14 +158,14 @@ export default function FpsForm({ data, onEvent, id }) {
       return 'textarea'
     }
     if (
-      matching[field.dataType] == 'string' &&
-      params.fields[field.sysName].stringDisplay == 'radioStation'
+      matching[field.dataType] == 'json' &&
+      params.fields[field.sysName].jsonDisplay == 'radioStation'
     ) {
       return 'radio'
     }
     if (
-      matching[field.dataType] == 'string' &&
-      params.fields[field.sysName].stringDisplay == 'checkboxGroup'
+      matching[field.dataType] == 'json' &&
+      params.fields[field.sysName].jsonDisplay == 'checkboxGroup'
     ) {
       return 'checkboxGroup'
     }
@@ -188,7 +188,7 @@ export default function FpsForm({ data, onEvent, id }) {
   useEffect(() => {
     setIsValid(true)
     fileds.forEach(field => {
-      if (field.isValid == false) { setIsValid(false);}
+      if (field.isValid == false) { setIsValid(false); }
       if (field.params.required && !model[field.sysName] && field.params.include && !field.params.hidden) { setIsValid(false); }
     }
     )
@@ -272,6 +272,7 @@ export default function FpsForm({ data, onEvent, id }) {
                 <Input type='radio'
                   defaultValue={model[field.sysName]}
                   label={field.name}
+                  description={field.params.description}
                   required={field.params.required}
                   onChange={value => onChange(field.sysName, value)}
                   options={
@@ -296,7 +297,7 @@ export default function FpsForm({ data, onEvent, id }) {
                     sysName={field.sysName}
                     validationHandler={validationHandler}
                     label={(data.placeholder != "true" || typesMatching(field) == 'slider' || typesMatching(field) == 'range') ? field.name : ''}
-                    placeholder={`${data.placeholder == "true"?`${field.name}${field.params.required?'*':''}`:''}`}
+                    placeholder={`${data.placeholder == "true" ? `${field.name}${field.params.required ? '*' : ''}` : ''}`}
                     required={field.params.required}
                     description={field.params.description}
                     positive={field.params.isPositive}
@@ -305,7 +306,7 @@ export default function FpsForm({ data, onEvent, id }) {
                     customOptionLabel={field.params.customOptionLabel}
                     customOptionPlaceholder={field.params.customOptionPlaceholder}
                     options={typesMatching(field) == 'select' ? (field.params.searchData || []) :
-                    (field.params.multipleChoice || [])}
+                      (field.params.multipleChoice || [])}
                     //defaultValue={model[field.sysName] || field.params.defaultValue}
                     defaultValue={field.params.defaultValue}
                     timeFormat={`${field.params.dateTimeOn ? ' hh:mm A' : ''}`}
@@ -315,7 +316,7 @@ export default function FpsForm({ data, onEvent, id }) {
                     min={field.params && field.params.range && field.params.range.min}
                     max={field.params && field.params.range && field.params.range.max}
                     step={field.params && field.params.range && field.params.range.step}
-                    unitName={field.params && field.params.range && field.params.range.unitName}
+                    unitName={field.params && field.params.unitName}
                   />
                 </div>
               }
@@ -323,9 +324,9 @@ export default function FpsForm({ data, onEvent, id }) {
             </div>
           ))}
           {!data.error &&
-          <ActionPanel>
-            <Button accent disabled={!isValid}>{formButton}</Button>
-          </ActionPanel>}
+            <ActionPanel>
+              <Button accent disabled={!isValid}>{formButton}</Button>
+            </ActionPanel>}
         </form>
       )}
     </div>
