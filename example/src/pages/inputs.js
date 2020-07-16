@@ -652,8 +652,9 @@ export default function InputsPage() {
 />`} />
             <Checkbox
                 label='Checkbox with custom option'
+                defaultValue='Hello world!'
                 customOption
-                customOptionType='date'
+                customOptionType='textarea'
                 customOptionPlaceholder='Tell us...'
             /><br />
 
@@ -684,7 +685,7 @@ export default function InputsPage() {
     }
 />`} />
             <Input
-                debug
+                //debug
                 label='Checkbox group with a custom option'
                 type='checkboxGroup'
                 customOption
