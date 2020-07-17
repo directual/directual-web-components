@@ -25,9 +25,9 @@ export default function Checkbox(props) {
         props.onChange && customOption && props.onChange(customOptionVal);
     }, [customOptionVal])
 
-    // useEffect(() => {
-        
-    // }, [checked])
+    useEffect(() => {
+        setChecked(props.checked || props.defaultValue)
+    }, [props.checked, props.defaultValue])
 
     return (
         <div className={`${props.className || ''}`}>
