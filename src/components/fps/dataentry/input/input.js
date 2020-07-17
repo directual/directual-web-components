@@ -214,7 +214,7 @@ export default function Input(props) {
         inputMargins.marginTop = 0;
     }
     if (!props.nomargin && !props.equalMargin) {
-        inputMargins.marginBottom = 16;
+        inputMargins.marginBottom = 22;
         inputMargins.marginTop = 0;
     }
     return (
