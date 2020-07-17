@@ -526,7 +526,7 @@ const App = (props) => {
           "isValid": true,
           "weight": 1,
           "jsonDisplay": "checkboxGroup", // default, range, slider, radioStation, checkboxGroup
-          "customOption": "true",
+          "customOption": false,
           "customOptionLabel": "My option",
           "customOptionType": "textarea", //date, datetime, string, number, email, decimal, textarea
           "customOptionPlaceholder": "Describe your option",

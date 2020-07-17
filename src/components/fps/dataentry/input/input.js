@@ -254,7 +254,7 @@ export default function Input(props) {
                         disabled={props.disabled}
                         key={props.key}
                         className=
-                            {`${styles.field} 
+                        {`${styles.field} 
                             ${props.icon && styles.icon} 
                             ${warningMsg.type && styles[warningMsg.type]}
                             ${props.disabled && styles.disabled}`}
@@ -484,7 +484,12 @@ export default function Input(props) {
                             <div className={styles.checkbox_wrapper}>
                                 <Checkbox
                                     label={option.label}
-                                    onChange={val => setValue({ ...value, [option.label]: val })}
+                                    onChange={val => {
+                                        const saveValue = { ...value }
+                                        if (val) { saveValue[option.value] = val }
+                                        else { delete saveValue[option.value] }
+                                        setValue(saveValue)
+                                    }}
                                 />
                             </div>
                         )
@@ -495,7 +500,12 @@ export default function Input(props) {
                                 customOption
                                 label={props.customOptionLabel}
                                 customOptionType={props.customOptionType}
-                                onChange={val => setValue({ ...value, customOption: val })}
+                                onChange={val => {
+                                    const saveValue = { ...value }
+                                    if (val) { saveValue.customOption = val }
+                                        else { delete saveValue.customOption }
+                                    setValue(saveValue)
+                                }}
                                 customOptionPlaceholder={props.customOptionPlaceholder}
                             />
                         </div>

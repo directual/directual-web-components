@@ -57,7 +57,7 @@ export default function Checkbox(props) {
                     <Input
                         disabled={props.disabled}
                         placeholder={customOptionPlaceholder}
-                        defaultValue={defaultValue}
+                        defaultValue={defaultValue || ''}
                         timeFormat={timeFormat}
                         onChange={val => setCustomOptionVal(val)}
                         type={customOptionType}

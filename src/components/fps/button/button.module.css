@@ -54,7 +54,7 @@
   border-color: var(--font-color) !important;
 }
 .button:hover:not(.disabled) {
-  padding: 0 17px;
+  padding: 0 17px !important;
   border-width: 2px;
   transition: 0;
 }
