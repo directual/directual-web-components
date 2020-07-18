@@ -305,7 +305,7 @@ export default function FpsForm({ data, onEvent, id }) {
                     customOptionType={field.params.customOptionType}
                     customOptionLabel={field.params.customOptionLabel}
                     customOptionPlaceholder={field.params.customOptionPlaceholder}
-                    options={typesMatching(field) == 'select' ? (field.params.searchData || []) :
+                    options={(typesMatching(field) == 'select' || typesMatching(field) == 'multiselect') ? (field.params.searchData || []) :
                       (field.params.multipleChoice || [])}
                     //defaultValue={model[field.sysName] || field.params.defaultValue}
                     defaultValue={field.params.defaultValue}
