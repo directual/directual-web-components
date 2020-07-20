@@ -12,28 +12,29 @@ export default function WhatIsIt() {
             <h2>What is it?</h2>
             <p>Directual Design is an open-source React-components library and the part
                 of <a href="http://directual.com/?ref=directul.design">Directual</a> low-code platform.
-            </p><p>It is not yet another components library like Material UI. 
-                Directual Design is specially designed for building components for Directual <a href="https://readme.directual.com/web-pages/portal">web-page builder</a>.
+            </p><p>It is not yet another React-library like Material UI. 
+                Directual Design is specially designed for creating components for Directual <a href="https://readme.directual.com/web-pages/portal">web-page builder</a>.
              </p>
              <p>There are two parts of the components library:</p>
              <ul>
-                 <li><strong>Design System</strong> includes such basic controls as buttons, inputs, selects, icons, hints,
-                etc.</li>
-                <li><strong>Web-pages components</strong> include significant components like form, table, cards, chat, payments, canban board, etc. These you can find creating your app on Directual platform.</li>
+                 <li><strong>Design System</strong> includes such basic controls as buttons, inputs, selects, icons, hints, etc</li>
+                <li><strong>Web-pages components</strong> include significant ones such as form, table, cards, chat, payments, kanban board, etc. Creating your app on Directual platform you can find them.</li>
              </ul>
-            <p>Feel free to use Directual Design components in your React-based projects, as well as to become a contributor creating new components.</p>
+            <p>Feel free to use Directual Design library in your React-based projects, as well as to become a contributor building new components.</p>
             <p>Github repo:
                 <a className="inline icon icon-export" href="https://github.com/directual/directual-web-components#readme" target="_blank">directual-web-components</a></p>
             <h2>Motivation</h2>
-            <p>Directual has always been a perfect tool for setting up backend for web and mobile apps. The combination of React + Directual seems to be
-                the best choice for developing complex web app. Bearing in mind Directual motto to <strong>let people create</strong>, our team
-                started creating web-page builder as a part of Dirctual platform. Having that, non-technical builders will be able to develop their apps. 
+            <p>Directual has always been a perfect tool for setting up backend for web and mobile apps. 
+                The combination of React + Directual seems to be the best choice for developing complex 
+                web app. Bearing in mind Directual motto—<b>let people create</b>—our team started creating 
+                web-page builder as a part of Directual platform. Having that, non-technical makers will be 
+                able to develop their apps.
             </p><p>
             The variety of use cases in front-end development of user-interface controls is immense. That motivated us to make our front-end part of the platform <strong>open source</strong>.
                 We called that project Directual Design. It stands on the following principles:
             </p>
             <ul>
-                <li>Providing developers with high-quality React-components which they can apply in their projects. You are
+                <li>Providing developers with high-quality React-components which could be applied in their projects. You are
                     free to choose any backend technology, but <a href="https://readme.directual.com/directual-react-js/boilerplate-for-react-js">Directual has proved</a> to be the highly efficient one.
                 </li>
                 <li>
@@ -41,7 +42,7 @@ export default function WhatIsIt() {
                 </li>
             </ul>
             <h2>Using the library</h2>
-            <p>Probably, more than 90% of Directual users will deal with Directual Design components on Directual web-page builder. If you are a developer and want to use the library in your React-app, here is the way:</p>
+            <p>Probably, more than 90% of Directual users will deal with Directual Design components on Directual web-page builder. If you are a developer and want to use the library in your React-app, here the way is:</p>
             <p>Installation: <code>npm install directual-web-components</code></p>
             <p>Example of usage:</p>
             <CodeSnippet expanded code={`import React from 'react'
