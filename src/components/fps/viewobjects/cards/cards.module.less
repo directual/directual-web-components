@@ -1,0 +1,103 @@
+ .cardsWrapper {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+     margin-top: 18px;
+ }
+ 
+ .card {
+    margin-bottom:18px;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    .cardInnerWrapper {
+        background-color: var(--background-color);
+        border-radius: var(--border-radius);
+        border: solid 1px var(--background-contrast-color);
+        padding: 1px;
+        width: calc(100% - 2px);
+        overflow: hidden;
+        cursor: pointer;
+        &:hover {
+            width: 100%;
+            padding: 0;
+            border:solid 2px var( --field-border-color);
+        }
+        &:active {
+            width: 100%;
+            padding: 0;
+            border: solid 2px var(--font-color);
+        }
+        .cardText {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            .details {
+                opacity: .5;
+                cursor: pointer;
+                position: absolute;
+                top:12px;
+                right: 6px;
+                transition: .5s;
+                &:hover {
+                    opacity: 1;
+                }
+            }
+            .cardHeader {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .cardHeaderComment {
+                font-size: var(--text-small-size);
+                margin-top: 6px;
+                opacity: .6;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .cardBodyText {
+                margin-top: 12px;
+            }
+        }
+    }
+ }
+
+ .firstObjectCard {
+    position: absolute;
+    top:18px;
+    left: 0;
+    bottom: 18px;
+    right: 18px;
+ }
+
+
+
+ // CSS GRID:
+ @media all and (min-width: 2300px) { 
+    .card {
+        width: calc(20% - 2px - 12px);
+    }
+ }
+ @media all and (min-width: 1900px) and (max-width: 2299px) { 
+    .card {
+        width: calc(25% - 2px - 12px);
+    }
+ }
+ @media all and (min-width: 1400px) and (max-width: 1899px) { 
+    .card {
+        width: calc(33.3% - 2px - 10px);
+    }
+ }
+ @media all and (min-width: 1000px) and (max-width: 1399px) { 
+    .card {
+        width: calc(50% - 2px - 7px);
+    }
+ }
+ @media all and (max-width: 999px) { 
+    .card {
+        width: calc(100%);
+        margin-bottom:12px !important;
+    }
+ }

@@ -95,7 +95,7 @@
   border-radius: var(--border-radius);
   background-color: var(--background-color);
   display: flex;
-  height: 46px;
+  height: 44px;
   align-items: center;
   padding: 1px 40px 1px 18px;
   color: var(--font-color);
@@ -116,7 +116,6 @@
 }
 .input_wrapper .field.error {
   border-width: 2px;
-  height: 46px;
   padding: 0 39px 0 17px;
   border-color: var(--error-color);
 }
@@ -125,7 +124,6 @@
 }
 .input_wrapper .field.warning {
   border-width: 2px;
-  height: 46px;
   padding: 0 39px 0 17px;
   border-color: var(--alert-color);
 }
@@ -134,7 +132,6 @@
 }
 .input_wrapper .field.ok {
   border-width: 2px;
-  height: 46px;
   padding: 0 39px 0 17px;
   border-color: var(--ok-color);
 }
@@ -143,7 +140,6 @@
 }
 .input_wrapper .field:hover:not(.disabled) {
   border-width: 2px;
-  height: 46px;
   padding: 0 39px 0 17px;
 }
 .input_wrapper .field:hover:not(.disabled).icon {
@@ -151,7 +147,6 @@
 }
 .input_wrapper .field:focus:not(.disabled) {
   border-width: 2px;
-  height: 46px;
   padding: 0 39px 0 17px;
   border-color: var(--accent-color);
 }
@@ -159,7 +154,6 @@
   padding-left: 39px;
 }
 .input_wrapper .field:active:not(.disabled) {
-  height: 46px;
   padding: 0 39px 0 17px;
   border: solid 2px var(--font-color);
 }

@@ -8,9 +8,38 @@
 .table_wrapper table {
   min-width: 100%;
 }
+.table_wrapper table tr:hover .expand {
+  opacity: 0.5;
+}
+.table_wrapper table tr .expand {
+  width: 0;
+  opacity: 0.1;
+  transition: 0.5s;
+  cursor: pointer;
+  margin-right: 6px;
+}
+.table_wrapper table tr .expand:hover {
+  opacity: 1;
+}
 .table_wrapper table td {
   padding: 12px 12px;
   border-top: solid 1px var(--table-border-color);
+}
+.table_wrapper table td .previewLink {
+  display: inline-block;
+  font-size: var(--text-small-size);
+  background-color: var(--label-color);
+  color: var(--label-text-color);
+  border-radius: 4px;
+  padding: 2px 4px;
+  margin: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+.table_wrapper table td .previewLink .noname {
+  opacity: 0.5;
 }
 .table_wrapper table thead td {
   font-weight: var(--strong-font-weight);

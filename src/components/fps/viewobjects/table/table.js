@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import styles from './table.module.css'
-import SomethingWentWrong from '../SomethingWentWrong/SomethingWentWrong'
+import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
 
-export function Table({ data, onEvent, id, onClick }) {
+export function Table({ data, onEvent, id, onExpand }) {
     const tableHeader = data.headers || []
     const tableData = data.data || []
     const pageSize = data.pageSize || 0
@@ -26,40 +26,59 @@ export function Table({ data, onEvent, id, onClick }) {
     data.error =
         data.error && data.error == '511' ? 'Table is not configured' : data.error
 
+    const renderTableCell = (cellData, type) => {
+        switch (type) {
+            case 'alink':
+                return (
+                    <span className={`${styles.previewLink}`}>
+                        <span className={styles.noname}>no display name</span>
+                    </span>)
+            case 'link':
+                return (
+                    <span>
+                        <span className={`${styles.previewLink}`}>
+                            <span className={styles.noname}>no display name</span>
+                        </span>
+                    </span>)
+            default:
+                return <span>{cellData}</span>
+        }
+
+    }
+
     return (
         <div className={styles.table_wrapper}>
             <table>
                 <thead>
                     <tr>
+                        {onExpand && <td></td>}
                         {tableHeader.map(column => (<td>{column.name}</td>))}
                     </tr>
                 </thead>
                 <tbody>
                     {tableData.map((row) => (
                         <tr>
+                            {onExpand &&
+                                <td>
+                                    <span className={`${styles.expand} icon icon-expand`}
+                                        onClick={() => onExpand(row)} />
+                                </td>
+                            }
                             {tableHeader.map((column, i) => {
                                 const columnDataType = tableHeader.filter(header => header.sysName == column.sysName)[0].dataType;
-                                return (
-                                    <td>
-                                        {(i == 0 && onClick) ?
-                                            <a onClick={() => onClick(row)}>
-                                                {` ${(columnDataType == 'link' ||
-                                                    columnDataType == 'arrayLink') &&
-                                                    row[column.sysName] ?
-                                                    'Link-object' // todo
-                                                    :
-                                                    row[column.sysName] || '—'
-                                                    }`}
-                                            </a> :
-                                            <span>
-                                                {` ${(columnDataType == 'link' ||
-                                                    columnDataType == 'arrayLink') &&
-                                                    row[column.sysName] ?
-                                                    'Link-object' // todo
-                                                    :
-                                                    row[column.sysName] || '—'
-                                                    }`}</span>}
-                                    </td>)
+                                return <td>{renderTableCell(row[column.sysName], columnDataType)}</td>
+                                // 
+                                //     {!row[column.sysName] && <span>—</span>}
+                                //     {columnDataType == 'link' && row[column.sysName] &&
+                                //         <span className={styles.previewLink}>Link Object</span>}
+                                //     {columnDataType == 'arrayLink' && row[column.sysName] &&
+
+                                //         <span className={styles.previewLink}>Link Object</span>
+
+                                //         }
+                                //     {columnDataType != 'arrayLink' && columnDataType != 'link' && row[column.sysName] &&
+                                //         <span>{row[column.sysName]}</span>}
+                                // </td>
                             }
                             )}
                         </tr>))}

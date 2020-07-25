@@ -181,8 +181,8 @@
   --text-font-weight: 400;
   --headers-font-weight: 700;
   --h1-font-size: 42px;
-  --h2-font-size: 32px;
-  --h3-font-size: 24px;
+  --h2-font-size: 30px;
+  --h3-font-size: 22px;
 }
 @media all and (max-width: 415px) {
   :root {

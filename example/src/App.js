@@ -49,10 +49,11 @@ function MainMenuWrapper(props) {
         { name: "Sign In / Sign Up / Profile", route: "/profile", icon: "user", link: <Link to="/profile">Sign in, Sign up, Profile</Link> },
         { name: "Form", route: "/form", icon: "edit", link: <Link to="/form">Form</Link> },
         { name: "Theme management", route: "/theme", icon: "styles", link: <Link to="/theme">Theme management</Link> },
+        { name: "Cards (soon)", route: "/cards", icon: "cards", link: <Link to="/cards">Cards (in progress)</Link> },
         { name: "Table (in progress)", route: "/table", icon: "database", link: <Link to="/table">Table (in progress)</Link> },
         // { name: "List view (soon)", route: "/list", icon: "list", disabled: true },
-        { name: "Cards (soon)", route: "/cards", icon: "cards", disabled: true },
         { name: "Chat (soon)", route: "/chat", icon: "bubble", disabled: true },
+        { name: "Comments (soon)", route: "/comments", icon: "version", disabled: true },
         // { name: "Calculator (soon)", route: "/calc", icon: "actions", disabled: true },
         { name: "Design system", subheader: true },
         { name: "Typography", route: "/system-typography", icon: "paragraph", link: <Link to="/system-typography">Typography</Link> },
@@ -1406,7 +1407,6 @@ const App = (props) => {
 
             </Route>
             <Route exact path="/cards">
-              <h1>Cards</h1>
               <FpsCards data={exampleTable} />
             </Route>
             <Route exact path="/theme">

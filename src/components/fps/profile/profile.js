@@ -3,7 +3,7 @@ import styles from './profile.module.css'
 import Input, { InputGroup } from '../dataentry/input/input'
 import ActionPanel from '../actionspanel/actionspanel'
 import Button from '../button/button'
-import { FormSection } from '../dataentry/form/form'
+import { FormSection } from '../dataentry/form/FpsForm'
 
 export function SignIn({ width, header, google, onSubmit }) {
     const submit = () => {

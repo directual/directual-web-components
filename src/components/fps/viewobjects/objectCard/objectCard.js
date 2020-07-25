@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import styles from './table.module.css'
-import Backdrop from '../backdrop/backdrop'
+import styles from '../table/table.module.css'
+import Backdrop from '../../backdrop/backdrop'
 
 export function ObjectCard(props) {
     const [showLinkedObject, setShowLinkedObject] = useState(false)

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './componentdetails.module.css'
-import { Table } from '../table/table'
+import { Table } from '../viewobjects/table/table'
 
 export default function ComponentDetails(props) {
     const [show, setShow] = useState(false)

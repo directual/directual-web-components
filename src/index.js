@@ -5,13 +5,13 @@ import {
   PageIsEmpty
 } from './components/fps/FpsSystem'
 import FpsLogin from './components/fps/FpsLogin'
-import FpsCards from './components/fps/FpsCards'
+import FpsCards from './components/fps/viewobjects/cards/FpsCards'
 import FpsHtml from './components/fps/FpsHtml'
-import FpsForm from './components/fps/dataentry/form/form'
+import FpsForm from './components/fps/dataentry/form/FpsForm'
 import MainMenu from './components/fps/mainmenu/mainmenu'
 import ComponentDetails from './components/fps/componentdetails/componentdetails'
-import FpsTable from './components/fps/table/FpsTable'
-import { Table } from './components/fps/table/table'
+import FpsTable from './components/fps/viewobjects/table/FpsTable'
+import { Table } from './components/fps/viewobjects/table/table'
 import { FpsWrapper, ContentWrapper } from './components/fps/wrapper/wrapper'
 import Input, { InputGroup } from './components/fps/dataentry/input/input'
 import Button from './components/fps/button/button'
@@ -31,7 +31,7 @@ import Article from './components/fps/article/article'
 import TabsPane from './components/fps/layout/tabpane/tabpane'
 import { Dnd } from './components/fps/dnd/dndList'
 import Checkbox from './components/fps/dataentry/checkbox/checkbox'
-import OptionsHandler from './components/fps/dataentry/optionsHandler/optionsHandler'
+import OptionsHandler, {AdvancedOptionsHandler} from './components/fps/dataentry/optionsHandler/optionsHandler'
 
 import FpsTheme, { SetTheme } from './components/fps/theme/theme'
 
@@ -39,6 +39,7 @@ export {
   Fps404,
   Fps500,
   FpsIsEmpty,
+  AdvancedOptionsHandler,
   PageIsEmpty,
   Checkbox,
   OptionsHandler,

@@ -1,51 +1,10 @@
 import React, { useState } from 'react'
-import {
-    useTable,
-    usePagination
-} from 'react-table'
 import styles from './table.module.css'
-import icon from './../../../icons/fps-table.svg'
-import Input from '../dataentry/input/input'
-import Backdrop from '../backdrop/backdrop'
+import icon from './../../../../icons/fps-table.svg'
+import Backdrop from '../../backdrop/backdrop'
 import { Table } from './table'
-import { ObjectCard } from './objectCard'
-import ActionPanel from '../actionspanel/actionspanel'
-import Button from '../button/button'
-
-
-function FpsTableTitle({ tableQuickSearch, tableTitle, tableFilters, onFilter, onSearch }) {
-    const [showSearch, setShowSearch] = useState(false)
-    const [showFilters, setShowFilters] = useState(false)
-    return (
-        <div className={styles.tableTitle}>
-            {tableTitle && <h1>{tableTitle}</h1>}
-            {(tableQuickSearch || tableFilters) &&
-                <div className={styles.tableActions}>
-                    <Button icon='filter'></Button>
-                    <div className={styles.tableQuickSearchField}>
-                        {showSearch ?
-                            <Input
-                                type='search'
-                                placeholder='Search...'
-                                width={300}
-                                onPressEnter={value => {
-                                    onSearch(value)
-                                }}
-                                tip='Press Enter for searching'
-                                onClear={() => {
-                                    onSearch('')
-                                    setShowSearch(false)
-                                }}
-                                nomargin />
-                            : 
-                            <Button icon='search'
-                                onClick={()=>setShowSearch(true)}></Button>
-                        }
-                    </div>
-                </div>}
-        </div>
-    )
-}
+import { ObjectCard } from '../objectCard/objectCard'
+import { TableTitle } from '../tableTitle/TableTitle'
 
 function FpsTable({ data, onEvent, id }) {
     if (!data) { data = {} }
@@ -67,7 +26,7 @@ function FpsTable({ data, onEvent, id }) {
         // todo: оживить поиск
     }
     return (
-        <div className={styles.fpsTable}>
+        <React.Fragment>
 
             {showObject &&
                 <React.Fragment>
@@ -76,7 +35,7 @@ function FpsTable({ data, onEvent, id }) {
                         <ObjectCard onClose={handleCloseShowObject} object={showObject} /></div>
                 </React.Fragment>}
 
-            <FpsTableTitle
+            <TableTitle
                 tableTitle={tableTitle}
                 tableFilters={tableFilters}
                 tableQuickSearch={tableQuickSearch}
@@ -88,10 +47,10 @@ function FpsTable({ data, onEvent, id }) {
                 data={data}
                 onEvent={onEvent}
                 id={id}
-                onClick={val => { setShowObject(val) }}
+                onExpand={val => { setShowObject(val) }}
             />
 
-        </div>
+        </React.Fragment>
     )
 }
 FpsTable.settings = {

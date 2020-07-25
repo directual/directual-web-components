@@ -303,7 +303,7 @@ export default function Input(props) {
                         }}
                         onChange={e => { handleChange(e.target.value); }}
                         value={value}
-                        onBlur={checkSearchValue}
+                        onBlur={props.searchOnEnter ? checkSearchValue: undefined}
                         placeholder={`${props.placeholder ? props.placeholder : ''}`}
                     />
                     {value && !props.disabled &&

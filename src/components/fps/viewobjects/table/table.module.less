@@ -8,10 +8,43 @@
      
      table {
         min-width: 100%;
+
+        
+        tr {
+            &:hover .expand {
+                opacity: .5;
+            }
+            .expand {
+                width: 0;
+                opacity: .1;
+                transition: .5s;
+                cursor: pointer;
+                margin-right: 6px;
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
         
         td {
             padding: 12px 12px;
-            border-top: solid 1px var(--table-border-color)
+            border-top: solid 1px var(--table-border-color);
+            .previewLink {
+                display: inline-block;
+                font-size: var(--text-small-size);
+                background-color: var(--label-color);
+                color: var(--label-text-color);
+                border-radius: 4px;
+                padding: 2px 4px;
+                margin: 2px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 200px;
+                .noname {
+                    opacity: .5;
+                }
+            }
         }
         thead td
         {
