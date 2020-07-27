@@ -13,10 +13,12 @@ function FpsCards({ data, onEvent, id }) {
     const tableQuickSearch = data.tableQuickSearch || null
     const tableFilters = data.tableFilters || null
 
+    const tableFieldScheme = data.fieldScheme || []
+    const tableStructures = data.structures || {}
+
     const [showObject, setShowObject] = useState()
     const handleCloseShowObject = () => {
-        setShowObject(false)
-    }
+        setShowObject(false)}
 
     const search = value => {
         value ?
@@ -32,7 +34,12 @@ function FpsCards({ data, onEvent, id }) {
                 <React.Fragment>
                     <Backdrop onClick={handleCloseShowObject} hoverable />
                     <div className={styles.firstObjectCard}>
-                        <ObjectCard onClose={handleCloseShowObject} object={showObject} /></div>
+                        <ObjectCard 
+                            onClose={handleCloseShowObject} 
+                            object={showObject} 
+                            tableFieldScheme={tableFieldScheme}
+                            tableStructures={tableStructures}
+                            /></div>
                 </React.Fragment>}
 
             <TableTitle
@@ -59,12 +66,10 @@ FpsCards.settings = {
     sysName: 'FpsCards',
     form: [
         { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
-        { name: 'Table title', sysName: 'tableTitle', type: 'input' },
-        { name: 'Desktop view', sysName: 'desktopView', type: 'tableView' },
-        { name: 'Mobile view', sysName: 'mobileView', type: 'tableView' },
+        { name: 'List title', sysName: 'tableTitle', type: 'input' },
         { name: 'Page size', sysName: 'pageSize', type: 'number' },
-        { name: 'Filters', sysName: 'tableFilters', type: 'boolean' },
-        { name: 'Quick serch', sysName: 'tableQuickSearch', type: 'boolean' },
+        // { name: 'Filters', sysName: 'tableFilters', type: 'on_off' },
+        // { name: 'Quick search', sysName: 'tableQuickSearch', type: 'on_off' },
     ]
 }
 export default FpsCards

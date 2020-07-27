@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './optionsHandler.module.css'
 import Input, { InputGroup } from '../input/input'
 import Button from '../../button/button'
+import ActionPanel from '../../actionspanel/actionspanel'
 
 export default function OptionsHandler({ defaultValue, objectStructure, onChange, width, margin, debug, addButtonText }) {
     const [options, setOptions] = useState(defaultValue)
@@ -49,6 +50,7 @@ export default function OptionsHandler({ defaultValue, objectStructure, onChange
                 )
             })}
             <Button
+                small
                 icon='plus'
                 onClick={() => {
                     const saveOptions = options ? [...options] : [];
@@ -60,7 +62,56 @@ export default function OptionsHandler({ defaultValue, objectStructure, onChange
     )
 }
 
-export function AdvancedOptionsHandler({ defaultValue, objectStructure, onChange, width, margin, debug, addButtonText }) {
+const filterExample = [
+    {
+        "exp": "all",    // “all” — эквивалент “и”; “any” — эквивалент “или”
+        "filters": [
+            {
+                "exp": "==", // оператор сравнения
+                "field": "number1", // поле, которое сравниваем
+                "value": "1", // со значением (можно использовать шаблонизатор и структуры {{WebUser}}, {{HttpRequest}}
+                "isExp": false // флаг выполнения value как JS-выражения
+            },
+            {
+                "exp": "", // оператор сравнения
+                "field": "", // поле, которое сравниваем
+                "value": "1", // со значением (можно использовать шаблонизатор и структуры {{WebUser}}, {{HttpRequest}}
+                "isExp": false // флаг выполнения value как JS-выражения
+            }
+        ]
+    }
+]
+
+const dataFields = [
+    {
+        sysName: 'helloWorld',
+        name: 'Привет мир',
+        filters: [
+            { key: 'is...', value: '==' },
+            { key: 'is not...', value: '!=' },
+            { key: 'like...', value: 'like' },
+            { key: 'is empty...', value: 'isEmpty' },
+            { key: 'is not empty...', value: 'isNotNull' },
+            { key: 'any of...', value: 'in' },
+            { key: 'regular expression...', value: 'regExp' }
+        ]
+    },
+    {
+        sysName: 'goodbyeMoscow',
+        name: 'До свиданья, Москва',
+        filters: [
+            { key: 'is...', value: '==' },
+            { key: 'is not...', value: '!=' },
+            { key: 'is empty...', value: 'isEmpty' },
+            { key: 'is not empty...', value: 'isNotNull' },
+            { key: 'contains any of...', value: 'arrayContainsAny' },
+            { key: 'contains all of...', value: 'arrayContainsAll' }
+        ]
+    }
+]
+
+export function AdvancedOptionsHandler({ defaultValue, objectStructure, onChange, width, margin, debug, addButtonText, clearButtonText }) {
+    const [options, setOptions] = useState(defaultValue)
     return (
         <div className={styles.optionsList}
             style={
@@ -70,7 +121,34 @@ export function AdvancedOptionsHandler({ defaultValue, objectStructure, onChange
                     marginBottom: margin ? margin.bottom : 0,
                 }
             }>
-                oh
+            <div className={styles.advOption}>
+                <Input
+                    type='select'
+                    placeholder='Select the field'
+                    className={styles.advancedOptionListInput}
+                    nomargin />
+                <Input
+                    type='select'
+                    placeholder='Comparison operator'
+                    className={styles.advancedOptionListInput}
+                    nomargin />
+                <Input className={`${styles.advancedOptionListInput} ${styles.wide}`} nomargin />
+                <div
+                    className={`${styles.optionListButton} icon icon-delete`}
+                ></div>
+            </div>
+            <ActionPanel>
+                <Button
+                    small
+                    icon='plus'
+                >{addButtonText || 'Add row'}</Button>
+                <Button
+                    small
+                    icon='ban'
+                    danger
+                >{clearButtonText || 'Delete all'}</Button>
+            </ActionPanel>
+
         </div>
     )
 }

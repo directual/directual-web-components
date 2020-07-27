@@ -7,8 +7,10 @@ export default function Button(props) {
         <button
         onClick={!props.disabled && props.onClick}
         className={`${styles.button} 
+            ${props.small && styles.small}
+            ${props.verySmall && styles.verySmall}
             ${props.accent && styles.accent} 
-            ${props.className && props.className} 
+            ${props.className} 
             ${props.disabled && styles.disabled}
             ${!props.children && styles.empty}
             ${props.icon && `${styles.icon} icon icon-${props.icon}`}

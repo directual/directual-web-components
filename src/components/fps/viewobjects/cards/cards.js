@@ -4,8 +4,13 @@ import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
 import ExpandedText from '../../expandedText/expandedText'
 
 export function Cards({ data, onEvent, id, onExpand }) {
-    const tableHeader = data.headers || []
+    const tableHeaders = data.headers || []
     const tableData = data.data || []
+    const tableParams = data.params || {
+        cardHeaderComment: '',
+        cardBodyText: ''
+    }
+
     const pageSize = data.pageSize || 0
     const totalPages = data.totalPages || 0
     const desktopView = data.desktopView || null
@@ -20,6 +25,23 @@ export function Cards({ data, onEvent, id, onExpand }) {
         }
     }
 
+    const tableFieldScheme = data.fieldScheme || []
+    const tableStructures = data.structures || {}
+
+    const getInitialStructureParams = () => {
+        const randomField = tableHeaders.filter(field => (field.dataType != 'link' && field.dataType != 'arrayLink'))[0].sysName
+        const id = tableFieldScheme.filter(field => randomField == field[0])[0][1] || null
+        const name = id && tableStructures[id] && tableStructures[id].name
+        const viewName = id && tableStructures[id] && Object.values(JSON.parse(tableStructures[id].jsonViewIdSettings)).map(i => i = i.sysName)
+        return (
+            {
+                id,
+                name,
+                viewName
+            }
+        )
+    }
+
     data.error =
         data.error && data.error == '403'
             ? 'You have no permissions for viewing form'
@@ -30,25 +52,42 @@ export function Cards({ data, onEvent, id, onExpand }) {
 
     return (
         <div className={styles.cardsWrapper}>
-            {tableData.map((row) => (
-                <div className={styles.card}>
-                    <div
-                        className={`${styles.cardInnerWrapper} ${styles.horizontal}`}
-                        onClick={() => onExpand(row)}>
-                        <div className={styles.cardImage}></div>
-                        <div className={styles.cardText}>
-                            <div className={`${styles.details} icon icon-details`}></div>
-                            <h3 className={styles.cardHeader}>Card Header</h3>
-                            <div className={styles.cardHeaderComment}>Card header comment</div>
-                            <ExpandedText textLength={150} className={styles.cardBodyText}>
-                                Moscow was fast asleep when, seven time zones to the east, 
-                                tens of thousands of people took to the streets chanting 
-                                “We are the authority here!” and “Moscow, listen to us!” 
-                                Some 30,000 people marched through Khabarovsk.
-                            </ExpandedText>
+            {tableData.map((row, i) => {
+                const cardHeader = getInitialStructureParams().viewName && getInitialStructureParams().viewName.map(i => row[i]).join(' ')
+
+                return (
+                    <div key={i} className={`${styles.card} ${styles[tableParams.cardListLayout]}`}>
+                        <div
+                            className={`${styles.cardInnerWrapper} 
+                                ${styles[tableParams.cardImageType]} 
+                                ${tableParams.invertColors && styles.invertColors}
+                                `}
+                            onClick={() => onExpand(row)}>
+                            {tableParams.cardImageField &&    
+                            <div className={`${styles.cardImage}`}
+                                style={{
+                                    backgroundImage: `url(${row[tableParams.cardImageField]})`,
+                                    width: (tableParams.cardImageType == "left" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) : 'auto',
+                                    height: (tableParams.cardImageType == "top" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) : 'auto',
+                                }}
+                            >
+                                {!row[tableParams.cardImageField] && <span className='icon icon-ban'>no&nbsp;picture</span>}
+                            </div> }
+                            <div className={styles.cardText}>
+                                <div className={`${styles.details} icon icon-details`}></div>
+                                <h3 className={styles.cardHeader}>
+                                    {cardHeader.length > 1 ? cardHeader : 'no visible name'}
+                                </h3>
+                                {row[tableParams.cardHeaderComment] && <div className={styles.cardHeaderComment}>
+                                    {row[tableParams.cardHeaderComment]}
+                                </div>}
+                                {row[tableParams.cardBodyText] && <ExpandedText textLength={120} className={styles.cardBodyText}>
+                                    {row[tableParams.cardBodyText]}
+                                </ExpandedText> }
+                            </div>
                         </div>
-                    </div>
-                </div>))}
+                    </div>)
+            })}
             {data.error &&
                 <SomethingWentWrong
                     icon='warning'

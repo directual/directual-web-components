@@ -4,6 +4,11 @@ import Backdrop from '../../backdrop/backdrop'
 
 export function ObjectCard(props) {
     const [showLinkedObject, setShowLinkedObject] = useState(false)
+
+    console.log('------object:---------')
+    console.log(props.object)
+    console.log(props.tableFieldScheme)
+
     return (
         <React.Fragment>
             <div className={styles.objectCard}>

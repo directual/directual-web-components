@@ -292,7 +292,12 @@ export default function Input(props) {
                     <div className={`${styles.input_icon_wrapper} icon icon-search`} />
                     <input
                         disabled={props.disabled}
-                        className={`${styles.field} ${styles.icon} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
+                        className={`
+                        ${styles.field} 
+                        ${styles.icon} 
+                        ${props.inputClassName}
+                        ${warningMsg.type && styles[warningMsg.type]}
+                        ${props.disabled && styles.disabled}`}
                         type="text"
                         onKeyPress={e => {
                             if (e.key == 'Enter') {

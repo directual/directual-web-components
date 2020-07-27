@@ -13,15 +13,19 @@ export function TableTitle({ tableQuickSearch, tableTitle, tableFilters, onFilte
                 {tableTitle && <h1>{tableTitle}</h1>}
                 {(tableQuickSearch || tableFilters) &&
                     <div className={styles.tableActions}>
-                        <Button
+                        {/* фильтры в 0.1 версии спрячем */}
+                        {/* <Button
                             icon={`${!showFilters ? 'filter' : 'filterFill'}`}
                             onClick={() => setShowFilters(!showFilters)}
-                        ></Button>
-                        <div className={styles.tableQuickSearchField}>
+                        >{`${!showFilters ? 'Show filters' : 'Hide filters'}`}</Button> */}
+
+                        {/* поиск в 0.1 версии спрячем */}
+                        {/* <div className={styles.tableQuickSearchField}>
                             {showSearch ?
                                 <Input
                                     type='search'
                                     searchOnEnter={true}
+                                    inputClassName={styles.quickSearchInput}
                                     placeholder='Search...'
                                     width={300}
                                     onPressEnter={value => {
@@ -37,7 +41,7 @@ export function TableTitle({ tableQuickSearch, tableTitle, tableFilters, onFilte
                                 <Button icon='search'
                                     onClick={() => setShowSearch(true)}></Button>
                             }
-                        </div>
+                        </div> */}
                     </div>}
 
             </div>

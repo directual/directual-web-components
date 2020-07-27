@@ -125,6 +125,9 @@
 .tableTitle .tableActions .tableQuickSearchField {
   margin-left: 6px;
 }
+.tableTitle .tableActions .quickSearchInput {
+  width: calc(100% - 82px);
+}
 @media all and (max-width: 415px) {
   .firstObjectCard {
     position: absolute;

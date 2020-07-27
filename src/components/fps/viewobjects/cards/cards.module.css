@@ -1,11 +1,13 @@
 .cardsWrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-top: 18px;
+  margin-right: -18px;
 }
 .card {
   margin-bottom: 18px;
+  margin-right: 18px;
   display: flex;
   justify-content: stretch;
   align-items: stretch;
@@ -19,6 +21,79 @@
   overflow: hidden;
   cursor: pointer;
 }
+.card .cardInnerWrapper .cardImage {
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
+.card .cardInnerWrapper .cardImage span {
+  display: none;
+  flex-direction: column;
+  margin-top: -6px;
+}
+.card .cardInnerWrapper.cover {
+  position: relative;
+  color: #fff;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+.card .cardInnerWrapper.cover .cardImage {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--field-border-color);
+}
+.card .cardInnerWrapper.cover .cardText {
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100%;
+}
+.card .cardInnerWrapper.left {
+  display: flex;
+}
+.card .cardInnerWrapper.left .cardImage {
+  background-color: var(--field-border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--background-color);
+}
+.card .cardInnerWrapper.left .cardImage span {
+  opacity: 0.5;
+  display: flex;
+}
+.card .cardInnerWrapper.leftCircle {
+  display: flex;
+}
+.card .cardInnerWrapper.leftCircle .cardImage {
+  background-color: var(--field-border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--background-color);
+  border-radius: 100%;
+  margin: 12px 0 12px 12px;
+}
+.card .cardInnerWrapper.leftCircle .cardImage span {
+  opacity: 0.5;
+  display: flex;
+}
+.card .cardInnerWrapper.top {
+  display: flex;
+  flex-direction: column;
+}
+.card .cardInnerWrapper.top .cardImage {
+  background-color: var(--field-border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--background-color);
+}
+.card .cardInnerWrapper.top .cardImage span {
+  opacity: 0.5;
+  display: flex;
+}
 .card .cardInnerWrapper:hover {
   width: 100%;
   padding: 0;
@@ -30,10 +105,13 @@
   border: solid 2px var(--font-color);
 }
 .card .cardInnerWrapper .cardText {
-  padding: 18px;
+  padding: 18px 26px 18px 18px;
   display: flex;
   flex-direction: column;
   position: relative;
+  flex-grow: 2;
+  overflow: hidden;
+  z-index: 2;
 }
 .card .cardInnerWrapper .cardText .details {
   opacity: 0.5;
@@ -69,29 +147,38 @@
   bottom: 18px;
   right: 18px;
 }
+.card.list {
+  width: calc(100% - 18px);
+}
 @media all and (min-width: 2300px) {
-  .card {
-    width: calc(20% - 2px - 12px);
+  .card.grid {
+    width: calc(20% - 18px);
   }
 }
 @media all and (min-width: 1900px) and (max-width: 2299px) {
-  .card {
-    width: calc(25% - 2px - 12px);
+  .card.grid {
+    width: calc(25% - 18px);
   }
 }
 @media all and (min-width: 1400px) and (max-width: 1899px) {
-  .card {
-    width: calc(33.3% - 2px - 10px);
+  .card.grid {
+    width: calc(33.3% - 18px);
   }
 }
 @media all and (min-width: 1000px) and (max-width: 1399px) {
-  .card {
-    width: calc(50% - 2px - 7px);
+  .card.grid {
+    width: calc(50% - 18px);
   }
 }
 @media all and (max-width: 999px) {
-  .card {
-    width: calc(100%);
+  .card.grid {
+    width: calc(100% - 18px);
     margin-bottom: 12px !important;
+  }
+  .card.list {
+    margin-bottom: 12px !important;
+  }
+  .leftCircle .cardImage {
+    margin: 8px 0 8px 8px !important;
   }
 }

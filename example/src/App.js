@@ -76,15 +76,17 @@ const App = (props) => {
   let exampleTable =
   {
     "sl": "getBooks_FPS",
+    "tableTitle": "Котики",
     "pageSize": "10",
-    'tableTitle': 'Пролетарии всех стран соединяйтесь',
-    'desktopView': 'table',
-    'mobileView': 'cards',
-    'pageSize': '25',
-    'tableFilters': 'true',
-    'tableQuickSearch': 'true',
     "headerField": null,
-    "params": "",
+    "params": {
+      "cardListLayout": "grid", // grid, list
+      "cardHeaderComment": "year",
+      "cardBodyText": "genre",
+      "cardImageField": "image",
+      "cardImageType": "leftCircle", // none, top, left, cover, leftCircle
+      "cardImageSize": 100, // width for left, height for top, width+height for leftCircle
+      },
     "headers": [
       {
         "sysName": "author_id",
@@ -105,12 +107,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
+        "linkType": true,
+        "typeVariable": {},
+        "indexExists": false,
         "json": false,
         "linkOrArrayLinkType": true,
-        "linkType": true,
-        "arrayLink": false,
-        "indexExists": false,
-        "typeVariable": {}
+        "arrayLink": false
       },
       {
         "sysName": "genre",
@@ -131,12 +133,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
+        "linkType": false,
+        "typeVariable": {},
+        "indexExists": false,
         "json": false,
         "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
-        "typeVariable": {}
+        "arrayLink": false
       },
       {
         "sysName": "title",
@@ -157,12 +159,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
+        "linkType": false,
+        "typeVariable": {},
+        "indexExists": false,
         "json": false,
         "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
-        "typeVariable": {}
+        "arrayLink": false
       },
       {
         "sysName": "year",
@@ -183,12 +185,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
+        "linkType": false,
+        "typeVariable": {},
+        "indexExists": false,
         "json": false,
         "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
-        "typeVariable": {}
+        "arrayLink": false
       }
     ],
     "data": [
@@ -208,6 +210,7 @@ const App = (props) => {
           "last_name": "Boswell",
           "birth_year": 1740
         },
+        "image": "https://images.unsplash.com/photo-1493406300581-484b937cdc41?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "genre": "Biography",
         "title": "Life of Samuel Johnson"
       },
@@ -240,6 +243,7 @@ const App = (props) => {
           "birth_year": 1828
         },
         "genre": "Novel",
+        "image": "https://images.unsplash.com/photo-1511044568932-338cba0ad803?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "title": "War and Peace"
       },
       {
@@ -271,6 +275,7 @@ const App = (props) => {
           "birth_year": 1828
         },
         "genre": "Novel",
+        "image": "https://images.unsplash.com/photo-1574158622682-e40e69881006?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "title": "Anna Karenina"
       },
       {
@@ -301,7 +306,8 @@ const App = (props) => {
           "last_name": "Tolstoy",
           "birth_year": 1828
         },
-        "genre": "Novella",
+        "genre": "If you want to use reduce or a loop for some reason, you have to add a check to see if the current loop element is the last one or not. But just use join, it's one line of code to get what you want. ",
+        "image": "https://images.unsplash.com/photo-1488015795646-7e22a773d72a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "title": "The Cossacks"
       },
       {
@@ -327,6 +333,7 @@ const App = (props) => {
           "birth_year": 1821
         },
         "genre": "Novel",
+        "image": "https://images.unsplash.com/photo-1533738699159-d0c68059bb61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "title": "Crime and Punishment"
       },
       {
@@ -352,6 +359,7 @@ const App = (props) => {
           "birth_year": 1821
         },
         "genre": "Novel",
+        "image": "https://images.unsplash.com/photo-1558859798-fc50246989cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "title": "The Brothers Karamazov"
       },
       {
@@ -377,6 +385,7 @@ const App = (props) => {
           "birth_year": 1899
         },
         "genre": "Novel",
+        //"image": "https://images.unsplash.com/photo-1472491235688-bdc81a63246e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "title": "The Sun Also Rises"
       },
       {
@@ -402,22 +411,169 @@ const App = (props) => {
           "birth_year": 1899
         },
         "genre": "Novel",
+        "image": "https://images.unsplash.com/photo-1568035105640-89538ccccd24?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "title": "The Old Man and the Sea"
       },
       {
         "genre": "Science",
         "title": "Mathematical Principles of Natural Philosophy",
-        "year": 1687
+        "year": 1687,
+        "image": "https://images.unsplash.com/photo-1557948206-7478d769f813?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
       },
       {
         "title": "Gulliver’s Travels",
         "year": 1726,
-        "genre": "Novel"
+        "genre": "Novel",
+        "image": "https://images.unsplash.com/photo-1507984211203-76701d7bb120?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
       }
     ],
     "totalPages": 2,
     "pageNumber": 0,
-    "error": null
+    "error": null,
+    "fieldScheme": [
+      [
+        "author_id.birth_year",
+        1295819
+      ],
+      [
+        "author_id.books_ids.genre",
+        1295858
+      ],
+      [
+        "author_id.books_ids.title",
+        1295858
+      ],
+      [
+        "author_id.books_ids.year",
+        1295858
+      ],
+      [
+        "author_id.country",
+        1295819
+      ],
+      [
+        "author_id.first_name",
+        1295819
+      ],
+      [
+        "author_id.last_name",
+        1295819
+      ],
+      [
+        "genre",
+        1295858
+      ],
+      [
+        "title",
+        1295858
+      ],
+      [
+        "year",
+        1295858
+      ]
+    ],
+    "structures": {
+      "1295819": {
+        "networkID": 2621,
+        "id": 1295819,
+        "dateCreated": "2020-03-25T10:28:14Z",
+        "hidden": false,
+        "dateHidden": null,
+        "name": "Authors",
+        "sysName": "Authors",
+        "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"birth_year\",\"name\":\"Year of birth\",\"dataType\":\"number\",\"id\":\"23361585132128552\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"last_name\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"54861585132109303\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"first_name\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"56761585132098323\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"books_ids\",\"name\":\"Books\",\"dataType\":\"arrayLink\",\"id\":\"92841585132143841\",\"link\":\"Books\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true},{\"sysName\":\"country\",\"name\":\"Country\",\"dataType\":\"string\",\"id\":\"96371585132109899\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false}]",
+        "jsonGroupSettings": null,
+        "jsonViewIdSettings": "[{\"sysName\":\"first_name\"},{\"sysName\":\"last_name\"}]",
+        "jsonSettings": null,
+        "jsonNativeIndexSettings": null,
+        "indexEnabled": false,
+        "lastIndexUpdate": 0,
+        "indexName": "",
+        "dateChanged": "2020-03-25T10:32:54Z",
+        "createBy": 3476,
+        "changedBy": 3476,
+        "_settings": null,
+        "_nativeIndexSettings": null,
+        "objectIDSysName": "id",
+        "innerIDField": {
+          "sysName": "id",
+          "name": "id",
+          "dataType": "id",
+          "id": "0",
+          "link": "",
+          "group": "0",
+          "tags": "",
+          "indexing": false,
+          "ordering": false,
+          "description": null,
+          "weight": null,
+          "order": 0,
+          "linkIndexFieldSysName": [],
+          "defaultValue": "",
+          "constraints": null,
+          "synthetic": false,
+          "format": null,
+          "formatOptions": null,
+          "linkType": false,
+          "typeVariable": {},
+          "indexExists": false,
+          "json": false,
+          "linkOrArrayLinkType": false,
+          "arrayLink": false
+        },
+        "folderId": null
+      },
+      "1295858": {
+        "networkID": 2621,
+        "id": 1295858,
+        "dateCreated": "2020-03-25T10:22:06Z",
+        "hidden": false,
+        "dateHidden": null,
+        "name": "Books",
+        "sysName": "Books",
+        "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"date\",\"name\":\"date\",\"dataType\":\"date\",\"id\":\"17781586365675109\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"title\",\"name\":\"Title\",\"dataType\":\"string\",\"id\":\"24751585132012036\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"image\",\"name\":\"image\",\"dataType\":\"file\",\"id\":\"59701594730297293\",\"link\":\"\",\"group\":\"1585332461783\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"author_id\",\"name\":\"Author\",\"dataType\":\"link\",\"id\":\"81201585132056810\",\"link\":\"Authors\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"year\",\"name\":\"Year\",\"dataType\":\"number\",\"id\":\"81761585132035625\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"datedql\",\"name\":\"date\",\"dataType\":\"date\",\"id\":\"83881587302273838\",\"link\":\"\",\"group\":\"1585332461783\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"boolean\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"85921587303259528\",\"link\":\"\",\"group\":\"1585332461783\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"genre\",\"name\":\"Genre\",\"dataType\":\"string\",\"id\":\"89311585132044726\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"approved\",\"name\":\"approved\",\"dataType\":\"boolean\",\"id\":\"98821586526700880\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}}]",
+        "jsonGroupSettings": "[{\"id\":1585332461783,\"name\":\"Details\",\"order\":0}]",
+        "jsonViewIdSettings": "[{\"sysName\":\"title\"},{\"sysName\":\"year\"}]",
+        "jsonSettings": null,
+        "jsonNativeIndexSettings": null,
+        "indexEnabled": true,
+        "lastIndexUpdate": 0,
+        "indexName": "",
+        "dateChanged": "2020-07-14T12:38:30Z",
+        "createBy": 3476,
+        "changedBy": 1,
+        "_settings": null,
+        "_nativeIndexSettings": null,
+        "objectIDSysName": "id",
+        "innerIDField": {
+          "sysName": "id",
+          "name": "id",
+          "dataType": "id",
+          "id": "0",
+          "link": "",
+          "group": "0",
+          "tags": "",
+          "indexing": false,
+          "ordering": false,
+          "description": null,
+          "weight": null,
+          "order": 0,
+          "linkIndexFieldSysName": [],
+          "defaultValue": "",
+          "constraints": null,
+          "synthetic": false,
+          "format": null,
+          "formatOptions": null,
+          "linkType": false,
+          "typeVariable": {},
+          "indexExists": false,
+          "json": false,
+          "linkOrArrayLinkType": false,
+          "arrayLink": false
+        },
+        "folderId": null
+      }
+    }
   }
 
   let exampleForm =

@@ -2,7 +2,6 @@
   background-color: var(--background-color);
   padding: 6px;
   border-radius: var(--border-radius);
-  overflow: auto;
   border: solid 1px var(--background-contrast-color);
   margin-bottom: 12px;
   padding: 18px;
