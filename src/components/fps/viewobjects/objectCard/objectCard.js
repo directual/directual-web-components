@@ -21,12 +21,12 @@ export function ObjectCard(props) {
     //----------------------
 
     const transformTableFieldScheme = (sysname, tableFieldScheme) => {
-        console.log('transformTableFieldScheme')
-        let newTableFieldScheme = tableFieldScheme.filter(i=>i[0].startsWith(sysname + '.'))
-        newTableFieldScheme.forEach(i=>i[0] = i[0].substring(sysname.length + 1)) //Это дерьмо изменяет props.tableFieldScheme!
+        let newTableFieldScheme = [...tableFieldScheme].filter(i=>i[0].startsWith(sysname + '.'))
+        newTableFieldScheme.forEach(i=>i[0] = i[0].substring(sysname.length + 1)) // это меняет props.tableFieldScheme
         console.log(newTableFieldScheme)
         return newTableFieldScheme
     }
+    transformTableFieldScheme('author_id',props.tableFieldScheme)
 
     // Gathers current structure info:
     const getStructure = (obj, tableFieldScheme, tableStructures) => {
