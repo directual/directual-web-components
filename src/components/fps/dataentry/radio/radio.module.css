@@ -28,10 +28,11 @@
   border: solid 1px var(--background-contrast-color);
   padding: 12px;
   margin: 0 12px 12px 0;
-  width: 160px;
+  width: 146px;
   display: block;
   height: auto;
   border-radius: var(--border-radius);
+  font-size: var(--text-small-size);
 }
 .radio .radioImages label .label {
   display: flex;
@@ -40,7 +41,7 @@
 }
 .radio .radioImages label img {
   display: block;
-  width: 146px;
+  width: 130px;
   margin: 0 auto 12px auto;
 }
 .radio label {

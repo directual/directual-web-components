@@ -78,7 +78,6 @@ const App = (props) => {
     "sl": "getBooks_FPS",
     "tableTitle": "Котики",
     "pageSize": "10",
-    "headerField": null,
     "params": {
       "cardListLayout": "grid", // grid, list
       "cardHeaderComment": "year",
@@ -86,6 +85,7 @@ const App = (props) => {
       "cardImageField": "image",
       "cardImageType": "leftCircle", // none, top, left, cover, leftCircle
       "cardImageSize": 100, // width for left, height for top, width+height for leftCircle
+      "objectView": {} // object view settings
       },
     "headers": [
       {

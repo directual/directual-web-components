@@ -89,7 +89,8 @@
     // left: 48px;
     // bottom: 48px;
     // right: 48px;
-    overflow: visible;
+    //overflow: visible;
+    overflow: auto;
     padding:24px 24px 24px 12px;
     border-radius: var(--border-radius);
     border: solid 1px var(--background-contrast-color);
@@ -172,6 +173,33 @@
 
  .hidden {
      visibility: hidden;
+ }
+
+ .objFieldWrapper {
+     margin-bottom: 18px;
+     .label {
+         opacity: .5;
+         font-size: var(--text-small-size);
+         display: block;
+         padding-bottom: 3px;
+     }
+     .novalue {
+         opacity: .5;
+     }
+     .linkFieldWrapper {
+         display: flex;
+         flex-wrap: wrap;
+         margin-bottom: -6px;
+         a {
+             margin: 0px 6px 6px 0;
+             border: solid 1px var(--accent-color);
+             border-radius: 4px;
+             padding: 2px 4px;
+             &:hover {
+                 border-color: var(--secondary-accent-color);
+             }
+         }
+     }
  }
 
  

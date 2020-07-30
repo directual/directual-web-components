@@ -27,13 +27,11 @@ function List(props) {
         if (scrollDivRef.current && selectHolder.current) {
             let rect = scrollDivRef.current.getBoundingClientRect()
             freeSpace = window.innerHeight - (selectHolder.current.getBoundingClientRect().top + selectHolder.current.getBoundingClientRect().height)
-            //console.log(freeSpace)
             if (count > 10) { maxListHeight = 10 * 40 }
-            //if (maxListHeight > freeSpace) { maxListHeight = freeSpace - 5 }
             if (maxListHeight > freeSpace && freeSpace >= 4 * 40) { maxListHeight = freeSpace - 32 }
             (freeSpace < 4 * 40) ? pos = 'top' : pos = 'bottom'
-            //console.log('pos: ' + pos + ' height: ' + maxListHeight)
         }
+        if (props.bottomSelect) {pos = 'top'}
         return {
             position: pos,
             height: maxListHeight
@@ -298,6 +296,7 @@ export default function Select(props) {
                     chooseOption={option => chooseOption(option)}
                     removeOption={option => removeOption(option)}
                     current={value}
+                    bottomSelect={props.bottomSelect}
                     onClick={() => { setFocus(false) }}
                     options={filteredOptions}
                     filter={filter}

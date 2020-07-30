@@ -187,6 +187,7 @@ export default function InputsPage() {
             <Input
                 label='Select with no options'
                 width={400}
+                bottomSelect
                 type='select'
                 placeholder='Choose the line'
                 defaultValue=''

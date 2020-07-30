@@ -419,6 +419,7 @@ export default function Input(props) {
                     placeholder={props.placeholder}
                     options={props.options}
                     icon={props.icon}
+                    bottomSelect={props.bottomSelect}
                     disabled={props.disabled}
                     defaultValue={defVal}
                     iconOptions={props.iconOptions}
@@ -430,6 +431,7 @@ export default function Input(props) {
                     warning={warningMsg.type}
                     placeholder={props.placeholder}
                     options={props.options}
+                    bottomSelect={props.bottomSelect}
                     icon={props.icon}
                     disabled={props.disabled}
                     multi
@@ -443,6 +445,7 @@ export default function Input(props) {
                     warning={warningMsg.type}
                     placeholder={props.placeholder || 'Choose icon'}
                     options={icon_options}
+                    bottomSelect={props.bottomSelect}
                     icon={props.icon}
                     disabled={props.disabled}
                     defaultValue={defVal}
