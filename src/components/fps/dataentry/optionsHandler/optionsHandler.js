@@ -110,7 +110,7 @@ const dataFields = [
     }
 ]
 
-export function AdvancedOptionsHandler({ defaultValue, objectStructure, onChange, width, margin, debug, addButtonText, clearButtonText }) {
+export function AdvancedOptionsHandler({ defaultValue, applyButtonText, objectStructure, onChange, width, margin, debug, addButtonText, clearButtonText }) {
     const [options, setOptions] = useState(defaultValue)
     return (
         <div className={styles.optionsList}
@@ -138,6 +138,11 @@ export function AdvancedOptionsHandler({ defaultValue, objectStructure, onChange
                 ></div>
             </div>
             <ActionPanel>
+                <Button
+                    small
+                    icon='done'
+                    accent
+                >{applyButtonText || 'apply'}</Button>
                 <Button
                     small
                     icon='plus'

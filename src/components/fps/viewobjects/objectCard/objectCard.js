@@ -4,17 +4,18 @@ import Backdrop from '../../backdrop/backdrop'
 
 export function ObjectCard(props) {
     const [showLinkedObject, setShowLinkedObject] = useState(false)
+    const [linkedObject, setLinkedObject] = useState({})
+    const [linkedObjectStruct, setLinkedObjectStruct] = useState()
 
 
-  useEffect(() => {
-    console.log('------object:---------')
-    console.log(props.object)
-    console.log(props.tableFieldScheme) // вот тут уже выдается измененный объект (см ниже функцию transformTableFieldScheme)
-    console.log(props.tableStructures)
-    console.log('-------------')
-
-    transformTableFieldScheme('author_id',[...props.tableFieldScheme])
-  }, [])
+    useEffect(() => {
+        console.log('------object:---------')
+        console.log(props.object)
+        // console.log(props.tableFieldScheme) // вот тут уже выдается измененный объект (см ниже функцию transformTableFieldScheme)
+        // console.log(props.tableStructures)
+        // console.log('-------------')
+        //transformTableFieldScheme('author_id',[...props.tableFieldScheme])
+    }, [])
 
     // press 'Esc' for closing a popup:
     const handleUserKeyPress = (e) => {
@@ -23,16 +24,16 @@ export function ObjectCard(props) {
 
     useEffect(() => {
         window.addEventListener('keydown', handleUserKeyPress);
-        return () => {window.removeEventListener('keydown', handleUserKeyPress);};
+        return () => { window.removeEventListener('keydown', handleUserKeyPress); };
     }, [handleUserKeyPress]);
     //----------------------
 
     const transformTableFieldScheme = (sysname, tableFieldScheme) => {
-        console.log('transformTableFieldScheme ' + sysname)
-        let newTableFieldScheme = tableFieldScheme.filter(i=>i[0].startsWith(sysname + '.'))
+        // console.log('transformTableFieldScheme ' + sysname)
+        let newTableFieldScheme = tableFieldScheme.filter(i => i[0].startsWith(sysname + '.'))
         var deepClone = JSON.parse(JSON.stringify(newTableFieldScheme))
-        deepClone.forEach(i=>i[0] = i[0].substring(sysname.length + 1)) // это меняет props.tableFieldScheme
-        console.log(deepClone)
+        deepClone.forEach(i => i[0] = i[0].substring(sysname.length + 1)) // это меняет props.tableFieldScheme
+        // console.log(deepClone)
         return deepClone
     }
 
@@ -78,11 +79,7 @@ export function ObjectCard(props) {
 
     const getLinkName = (sysname, obj) => {
         const structure = getStructure(obj, transformTableFieldScheme(sysname, props.tableFieldScheme), props.tableStructures)
-        console.log('debug')
-        console.log(structure)
-        console.log(sysname)
-        console.log(obj)
-        const linkName =  structure.visibleName && structure.visibleName.map(field => obj[field]).join(' ')
+        const linkName = structure.visibleName && structure.visibleName.map(field => obj[field]).join(' ')
         return linkName || 'No visible name'
     }
 
@@ -106,14 +103,29 @@ export function ObjectCard(props) {
                             {!field.value && <span className={styles.novalue}>—</span>}
                             {(field.dataType == 'link') &&
                                 <div className={styles.linkFieldWrapper}>
-                                    <a>{getLinkName(field.sysName, field.value)}</a>
+                                    <a
+                                        onClick={() => {
+                                            setLinkedObject(field.value)
+                                            setLinkedObjectStruct(transformTableFieldScheme(field.sysName, props.tableFieldScheme))
+                                            setShowLinkedObject(true)
+                                        }}
+                                    >{getLinkName(field.sysName, field.value)}</a>
                                 </div>
                             }
                             {(field.dataType == 'arrayLink') &&
                                 <div className={styles.linkFieldWrapper}>
-                                    <a>однажды в суровую</a>
-                                    <a>зимнюю пору</a>
-                                    <a>я из лесу вышел</a>
+                                    {field.value && field.value.map(link => {
+                                        console.log('arrayLinkobj:')
+                                        console.log(link)
+                                        return (
+                                            <a
+                                                onClick={() => {
+                                                    setLinkedObject(link)
+                                                    setLinkedObjectStruct(transformTableFieldScheme(field.sysName, props.tableFieldScheme))
+                                                    setShowLinkedObject(true)
+                                                }}
+                                            >{getLinkName(field.sysName, link)}</a>)
+                                    })}
                                 </div>
                             }
                             {field.dataType != 'link' && field.dataType != 'arrayLink' &&
@@ -125,8 +137,16 @@ export function ObjectCard(props) {
                 </div>
                 {showLinkedObject &&
                     <React.Fragment>
-                        <Backdrop onClick={() => setShowLinkedObject(false)} hoverable rounded label={props.object ? props.object.title : ''} />
-                        <ObjectCard onClose={() => setShowLinkedObject(false)} />
+                        <Backdrop onClick={() => setShowLinkedObject(false)} hoverable rounded
+                            label={structure.visibleName ? structure.visibleName.map(headerField => object[headerField].value).join(' ')
+                                :
+                                'No visible name'} />
+                        <ObjectCard
+                            onClose={() => setShowLinkedObject(false)}
+                            object={linkedObject}
+                            tableFieldScheme={linkedObjectStruct}
+                            tableStructures={props.tableStructures}
+                        />
                     </React.Fragment>}
             </div>
 

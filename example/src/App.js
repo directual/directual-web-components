@@ -78,6 +78,8 @@ const App = (props) => {
     "sl": "getBooks_FPS",
     "tableTitle": "Котики",
     "pageSize": "10",
+    "tableFilters": true,
+    "tableQuickSearch": true,
     "params": {
       "cardListLayout": "grid", // grid, list
       "cardHeaderComment": "year",

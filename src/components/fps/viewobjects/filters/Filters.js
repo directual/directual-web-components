@@ -85,7 +85,7 @@ const expressions = {
 export default function Filters(props) {
     return (
         <div className={styles.filtersWrapper}>
-            <AdvancedOptionsHandler addButtonText='Add filter' clearButtonText='Clear filters'/>
+            <AdvancedOptionsHandler addButtonText='Add filter' applyButtonText='Apply filters' clearButtonText='Clear filters'/>
         </div>
     )
 }
