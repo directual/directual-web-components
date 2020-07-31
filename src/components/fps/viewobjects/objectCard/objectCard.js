@@ -5,15 +5,22 @@ import Backdrop from '../../backdrop/backdrop'
 export function ObjectCard(props) {
     const [showLinkedObject, setShowLinkedObject] = useState(false)
 
+
+  useEffect(() => {
     console.log('------object:---------')
     console.log(props.object)
     console.log(props.tableFieldScheme) // вот тут уже выдается измененный объект (см ниже функцию transformTableFieldScheme)
     console.log(props.tableStructures)
     console.log('-------------')
 
+    transformTableFieldScheme('author_id',[...props.tableFieldScheme])
+  }, [])
+
     // press 'Esc' for closing a popup:
     const handleUserKeyPress = (e) => {
-        e.key == 'Escape' && props.onClose()}
+        e.key == 'Escape' && props.onClose()
+    }
+
     useEffect(() => {
         window.addEventListener('keydown', handleUserKeyPress);
         return () => {window.removeEventListener('keydown', handleUserKeyPress);};
@@ -21,12 +28,14 @@ export function ObjectCard(props) {
     //----------------------
 
     const transformTableFieldScheme = (sysname, tableFieldScheme) => {
-        let newTableFieldScheme = [...tableFieldScheme].filter(i=>i[0].startsWith(sysname + '.'))
-        newTableFieldScheme.forEach(i=>i[0] = i[0].substring(sysname.length + 1)) // это меняет props.tableFieldScheme
-        console.log(newTableFieldScheme)
-        return newTableFieldScheme
+        console.log('transformTableFieldScheme ' + sysname)
+        let newTableFieldScheme = tableFieldScheme.filter(i=>i[0].startsWith(sysname + '.'))
+        var deepClone = JSON.parse(JSON.stringify(newTableFieldScheme))
+        deepClone.forEach(i=>i[0] = i[0].substring(sysname.length + 1)) // это меняет props.tableFieldScheme
+        console.log(deepClone)
+        return deepClone
     }
-    transformTableFieldScheme('author_id',props.tableFieldScheme)
+
 
     // Gathers current structure info:
     const getStructure = (obj, tableFieldScheme, tableStructures) => {
@@ -34,7 +43,7 @@ export function ObjectCard(props) {
         for (const field in obj) {
             if (typeof obj[field] != 'object') {
                 if (tableFieldScheme.filter(i => i[0] == field).length > 0) {
-                    structure.id = tableFieldScheme.filter(i => i[0] == field)[0][1]
+                    structure.id = tableFieldScheme.filter(i => i[0] === field)[0][1]
                 }
             }
         }
@@ -46,7 +55,7 @@ export function ObjectCard(props) {
         }
         return structure
     }
-    const structure = getStructure(props.object, props.tableFieldScheme, props.tableStructures)
+    const structure = getStructure(props.object, [...props.tableFieldScheme], props.tableStructures)
     //-----------------------------
 
     //Gathers current object info (e.g. sysName, type):
