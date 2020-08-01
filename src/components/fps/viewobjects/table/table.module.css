@@ -159,10 +159,11 @@
   margin-bottom: 18px;
 }
 .objFieldWrapper .label {
-  opacity: 0.5;
+  opacity: 0.7;
   font-size: var(--text-small-size);
   display: block;
-  padding-bottom: 3px;
+  padding-bottom: 6px;
+  font-weight: var(--strong-font-weight);
 }
 .objFieldWrapper .novalue {
   opacity: 0.5;

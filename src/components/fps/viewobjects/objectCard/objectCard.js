@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import styles from '../table/table.module.css'
 import Backdrop from '../../backdrop/backdrop'
+import ActionPanel from '../../actionspanel/actionspanel'
+import Button from '../../button/button'
+import Input from '../../dataentry/input/input'
+import { FormSection } from '../../dataentry/form/FpsForm'
 
 export function ObjectCard(props) {
     const [showLinkedObject, setShowLinkedObject] = useState(false)
@@ -11,10 +15,6 @@ export function ObjectCard(props) {
     useEffect(() => {
         console.log('------object:---------')
         console.log(props.object)
-        // console.log(props.tableFieldScheme) // вот тут уже выдается измененный объект (см ниже функцию transformTableFieldScheme)
-        // console.log(props.tableStructures)
-        // console.log('-------------')
-        //transformTableFieldScheme('author_id',[...props.tableFieldScheme])
     }, [])
 
     // press 'Esc' for closing a popup:
@@ -65,11 +65,13 @@ export function ObjectCard(props) {
         if (props.object && structure) {
             for (const field in props.object) {
                 object[field] = {}
-                object[field].value = props.object[field]
-                let fieldStructure = structure.fieldStructure.filter(i => i.sysName == field)[0]
-                object[field].name = fieldStructure.name
-                object[field].sysName = field
-                object[field].dataType = fieldStructure.dataType
+                if (structure.fieldStructure) {
+                    object[field].value = props.object[field]
+                    let fieldStructure = structure.fieldStructure.filter(i => i.sysName == field)[0]
+                    object[field].name = fieldStructure.name
+                    object[field].sysName = field
+                    object[field].dataType = fieldStructure.dataType
+                }
             }
         }
         return object
@@ -83,6 +85,21 @@ export function ObjectCard(props) {
         return linkName || 'No visible name'
     }
 
+    const isEditable = field => {
+        if (props.writeFields && field.sysName && props.writeFields.indexOf(field.sysName) != -1) { return true } else { return false }
+    }
+
+    const matchInputType = type => {
+        const types = {
+            number: 'number',
+            date: 'date'
+            //boolean: 'radio',
+        }
+        return types[type] || 'string'
+    }
+
+    const [model, setModel] = useState(props.object)
+
     return (
         <React.Fragment>
             <div className={styles.objectCard}>
@@ -90,7 +107,7 @@ export function ObjectCard(props) {
                     <div onClick={props.onClose}
                         className={`${styles.closeObjectCard} icon icon-back ${showLinkedObject && styles.hidden}`}></div>
                     <h2>
-                        {structure.visibleName ? structure.visibleName.map(headerField => object[headerField].value).join(' ')
+                        {structure.visibleName ? structure.visibleName.map(headerField => object[headerField] ? object[headerField].value : null).join(' ')
                             :
                             'No visible name'}
                     </h2>
@@ -98,10 +115,26 @@ export function ObjectCard(props) {
                 <div className={styles.objectCardBody}>
                     {Object.values(object).map(field =>
                         <div key={field.sysName} className={styles.objFieldWrapper}>
-                            <span className={styles.label}>
-                                {field.name || field.sysName}</span>
-                            {!field.value && <span className={styles.novalue}>—</span>}
-                            {(field.dataType == 'link') &&
+                            {field.dataType != 'link' && field.dataType != 'arrayLink' && <React.Fragment>
+                                {!isEditable(field) ?
+                                    <React.Fragment>
+                                        <span className={styles.label}>
+                                            {field.name || field.sysName}</span>
+                                        {!field.value && <span className={styles.novalue}>—</span>}
+                                        <span>{field && field.value}</span>
+                                    </React.Fragment> :
+                                    <Input
+                                        type={matchInputType(field.dataType)}
+                                        label={field.name || field.sysName}
+                                        defaultValue={model[field.sysName]}
+                                        onChange={value => setModel({ ...model, [field.sysName]: value })}
+                                    />
+                                }
+                            </React.Fragment>}
+
+                            {(field.dataType == 'link') && <React.Fragment>
+                                <span className={styles.label}>
+                                    {field.name || field.sysName}</span>
                                 <div className={styles.linkFieldWrapper}>
                                     <a
                                         onClick={() => {
@@ -111,14 +144,16 @@ export function ObjectCard(props) {
                                         }}
                                     >{getLinkName(field.sysName, field.value)}</a>
                                 </div>
+                            </React.Fragment>
                             }
-                            {(field.dataType == 'arrayLink') &&
+                            {(field.dataType == 'arrayLink') && <React.Fragment>
+                                <span className={styles.label}>
+                                    {field.name || field.sysName}</span>
                                 <div className={styles.linkFieldWrapper}>
-                                    {field.value && field.value.map(link => {
-                                        console.log('arrayLinkobj:')
-                                        console.log(link)
+                                    {field.value && field.value.map((link, i) => {
                                         return (
                                             <a
+                                                key={i}
                                                 onClick={() => {
                                                     setLinkedObject(link)
                                                     setLinkedObjectStruct(transformTableFieldScheme(field.sysName, props.tableFieldScheme))
@@ -127,18 +162,32 @@ export function ObjectCard(props) {
                                             >{getLinkName(field.sysName, link)}</a>)
                                     })}
                                 </div>
+                            </React.Fragment>
                             }
-                            {field.dataType != 'link' && field.dataType != 'arrayLink' &&
-                                <span>{field.value}</span>}
+
                         </div>
                     )}
 
                     {/* <a onClick={() => setShowLinkedObject(true)}>Click me</a> */}
+                    {props.writeFields && props.writeFields.length > 0 &&
+                        <React.Fragment>
+                            <ActionPanel margin={{ top: 24, bottom: 12 }}>
+                                <Button disabled={JSON.stringify(model) === JSON.stringify(props.object)} accent icon='done'>
+                                    Save changes</Button>
+                                <Button danger icon='ban'
+                                    onClick={() => setModel(props.object)}
+                                    disabled={JSON.stringify(model) === JSON.stringify(props.object)}>
+                                    Discard changes</Button>
+                            </ActionPanel>
+
+                            <FormSection title='Danger zone' />
+                            <Button icon='delete' danger>Delete</Button>
+                        </React.Fragment>}
                 </div>
                 {showLinkedObject &&
                     <React.Fragment>
                         <Backdrop onClick={() => setShowLinkedObject(false)} hoverable rounded
-                            label={structure.visibleName ? structure.visibleName.map(headerField => object[headerField].value).join(' ')
+                            label={structure.visibleName ? structure.visibleName.map(headerField => object[headerField] ? object[headerField].value : null).join(' ')
                                 :
                                 'No visible name'} />
                         <ObjectCard

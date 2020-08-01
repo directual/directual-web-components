@@ -74,7 +74,7 @@ export function Cards({ data, onEvent, id, onExpand }) {
                                 {!row[tableParams.cardImageField] && <span className='icon icon-ban'>no&nbsp;picture</span>}
                             </div> }
                             <div className={styles.cardText}>
-                                <div className={`${styles.details} icon icon-details`}></div>
+                                {/* <div className={`${styles.details} icon icon-details`}></div> */}
                                 <h3 className={styles.cardHeader}>
                                     {cardHeader.length > 1 ? cardHeader : 'no visible name'}
                                 </h3>

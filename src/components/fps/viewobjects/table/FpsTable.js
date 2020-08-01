@@ -12,6 +12,10 @@ function FpsTable({ data, onEvent, id }) {
     const tableTitle = data.tableTitle || null
     const tableQuickSearch = data.tableQuickSearch || null
     const tableFilters = data.tableFilters || null
+    const writeFields = data.writeFields || []
+
+    const tableFieldScheme = data.fieldScheme || []
+    const tableStructures = data.structures || {}
 
     const [showObject, setShowObject] = useState()
     const handleCloseShowObject = () => {
@@ -32,7 +36,13 @@ function FpsTable({ data, onEvent, id }) {
                 <React.Fragment>
                     <Backdrop onClick={handleCloseShowObject} hoverable />
                     <div className={styles.firstObjectCard}>
-                        <ObjectCard onClose={handleCloseShowObject} object={showObject} /></div>
+                        <ObjectCard
+                            onClose={handleCloseShowObject}
+                            object={showObject}
+                            tableFieldScheme={tableFieldScheme}
+                            tableStructures={tableStructures}
+                            writeFields={writeFields}
+                        /></div>
                 </React.Fragment>}
 
             <TableTitle

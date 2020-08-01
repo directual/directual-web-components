@@ -12,6 +12,7 @@ function FpsCards({ data, onEvent, id }) {
     const tableTitle = data.tableTitle || null
     const tableQuickSearch = data.tableQuickSearch || null
     const tableFilters = data.tableFilters || null
+    const writeFields = data.writeFields || []
 
     const tableFieldScheme = data.fieldScheme || []
     const tableStructures = data.structures || {}
@@ -39,6 +40,7 @@ function FpsCards({ data, onEvent, id }) {
                             object={showObject} 
                             tableFieldScheme={tableFieldScheme}
                             tableStructures={tableStructures}
+                            writeFields={writeFields}
                             /></div>
                 </React.Fragment>}
 

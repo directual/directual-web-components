@@ -195,243 +195,290 @@ const App = (props) => {
         "arrayLink": false
       }
     ],
-    "data": [
+    "data": 
+    [
       {
         "year": 1791,
+        "genre": "Biography",
+        "title": "Life of Samuel Johnson",
         "author_id": {
           "first_name": "James",
           "country": "Scotland",
           "books_ids": [
             {
-              "year": 1791,
-              "title": "Life of Samuel Johnson",
               "genre": "Biography",
-              "id": "1"
+              "id": "1",
+              "author_id": {
+                "first_name": "James"
+              },
+              "title": "Life of Samuel Johnson"
             }
           ],
           "last_name": "Boswell",
           "birth_year": 1740
-        },
-        "image": "https://images.unsplash.com/photo-1493406300581-484b937cdc41?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-        "genre": "Biography",
-        "title": "Life of Samuel Johnson"
+        }
       },
       {
         "year": 1869,
+        "genre": "Novel",
+        "title": "War and Peace",
         "author_id": {
           "first_name": "Leo",
           "country": "Russia",
           "books_ids": [
             {
+              "genre": "Novel",
               "year": 1869,
-              "title": "War and Peace",
-              "genre": "Novel",
-              "id": "2"
+              "id": "2",
+              "author_id": {
+                "first_name": "Leo"
+              },
+              "title": "War and Peace"
             },
             {
+              "genre": "Novel",
               "year": 1877,
-              "title": "Anna Karenina",
-              "genre": "Novel",
-              "id": "3"
+              "id": "3",
+              "author_id": {
+                "first_name": "Leo"
+              },
+              "title": "Anna Karenina"
             },
             {
-              "title": "The Cossacks",
-              "year": 1863,
               "genre": "Novella",
-              "id": "4"
+              "year": 1863,
+              "id": "4",
+              "author_id": {
+                "first_name": "Leo"
+              },
+              "title": "The Cossacks"
             }
           ],
           "last_name": "Tolstoy",
           "birth_year": 1828
-        },
-        "genre": "Novel",
-        "image": "https://images.unsplash.com/photo-1511044568932-338cba0ad803?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-        "title": "War and Peace"
+        }
       },
       {
         "year": 1877,
+        "genre": "Novel",
+        "title": "Anna Karenina",
         "author_id": {
           "first_name": "Leo",
           "country": "Russia",
           "books_ids": [
             {
+              "genre": "Novel",
               "year": 1869,
-              "title": "War and Peace",
-              "genre": "Novel",
-              "id": "2"
+              "id": "2",
+              "author_id": {
+                "first_name": "Leo"
+              },
+              "title": "War and Peace"
             },
             {
+              "genre": "Novel",
               "year": 1877,
-              "title": "Anna Karenina",
-              "genre": "Novel",
-              "id": "3"
+              "id": "3",
+              "author_id": {
+                "first_name": "Leo"
+              },
+              "title": "Anna Karenina"
             },
             {
-              "title": "The Cossacks",
-              "year": 1863,
               "genre": "Novella",
-              "id": "4"
+              "year": 1863,
+              "id": "4",
+              "author_id": {
+                "first_name": "Leo"
+              },
+              "title": "The Cossacks"
             }
           ],
           "last_name": "Tolstoy",
           "birth_year": 1828
-        },
-        "genre": "Novel",
-        "image": "https://images.unsplash.com/photo-1574158622682-e40e69881006?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-        "title": "Anna Karenina"
+        }
       },
       {
         "year": 1863,
+        "genre": "Novella",
+        "title": "The Cossacks",
         "author_id": {
           "first_name": "Leo",
           "country": "Russia",
           "books_ids": [
             {
+              "genre": "Novel",
               "year": 1869,
-              "title": "War and Peace",
-              "genre": "Novel",
-              "id": "2"
+              "id": "2",
+              "author_id": {
+                "first_name": "Leo"
+              },
+              "title": "War and Peace"
             },
             {
+              "genre": "Novel",
               "year": 1877,
-              "title": "Anna Karenina",
-              "genre": "Novel",
-              "id": "3"
+              "id": "3",
+              "author_id": {
+                "first_name": "Leo"
+              },
+              "title": "Anna Karenina"
             },
             {
-              "title": "The Cossacks",
-              "year": 1863,
               "genre": "Novella",
-              "id": "4"
+              "year": 1863,
+              "id": "4",
+              "author_id": {
+                "first_name": "Leo"
+              },
+              "title": "The Cossacks"
             }
           ],
           "last_name": "Tolstoy",
           "birth_year": 1828
-        },
-        "genre": "If you want to use reduce or a loop for some reason, you have to add a check to see if the current loop element is the last one or not. But just use join, it's one line of code to get what you want. ",
-        "image": "https://images.unsplash.com/photo-1488015795646-7e22a773d72a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-        "title": "The Cossacks"
+        }
       },
       {
         "year": 1866,
+        "genre": "Novel",
+        "title": "Crime and Punishment",
         "author_id": {
           "first_name": "Fyodor",
           "country": "Russia",
           "books_ids": [
             {
-              "title": "Crime and Punishment",
-              "year": 1866,
               "genre": "Novel",
-              "id": "5"
+              "year": 1866,
+              "id": "5",
+              "author_id": {
+                "first_name": "Fyodor"
+              },
+              "title": "Crime and Punishment"
             },
             {
-              "year": 1880,
               "genre": "Novel",
-              "title": "The Brothers Karamazov",
-              "id": "6"
+              "year": 1880,
+              "id": "6",
+              "author_id": {
+                "first_name": "Fyodor"
+              },
+              "title": "The Brothers Karamazov"
             }
           ],
           "last_name": "Dostoevsky",
           "birth_year": 1821
-        },
-        "genre": "Novel",
-        "image": "https://images.unsplash.com/photo-1533738699159-d0c68059bb61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-        "title": "Crime and Punishment"
+        }
       },
       {
         "year": 1880,
+        "genre": "Novel",
+        "title": "The Brothers Karamazov",
         "author_id": {
           "first_name": "Fyodor",
           "country": "Russia",
           "books_ids": [
             {
-              "title": "Crime and Punishment",
-              "year": 1866,
               "genre": "Novel",
-              "id": "5"
+              "year": 1866,
+              "id": "5",
+              "author_id": {
+                "first_name": "Fyodor"
+              },
+              "title": "Crime and Punishment"
             },
             {
-              "year": 1880,
               "genre": "Novel",
-              "title": "The Brothers Karamazov",
-              "id": "6"
+              "year": 1880,
+              "id": "6",
+              "author_id": {
+                "first_name": "Fyodor"
+              },
+              "title": "The Brothers Karamazov"
             }
           ],
           "last_name": "Dostoevsky",
           "birth_year": 1821
-        },
-        "genre": "Novel",
-        "image": "https://images.unsplash.com/photo-1558859798-fc50246989cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-        "title": "The Brothers Karamazov"
+        }
       },
       {
         "year": 1927,
+        "genre": "Novel",
+        "title": "The Sun Also Rises",
         "author_id": {
           "first_name": "Ernest",
           "country": "U.S.",
           "books_ids": [
             {
-              "year": 1927,
-              "title": "The Sun Also Rises",
               "genre": "Novel",
-              "id": "7"
+              "year": 1927,
+              "id": "7",
+              "author_id": {
+                "first_name": "Ernest"
+              },
+              "title": "The Sun Also Rises"
             },
             {
-              "title": "The Old Man and the Sea",
-              "year": 1951,
               "genre": "Novel",
-              "id": "8"
+              "year": 1951,
+              "id": "8",
+              "author_id": {
+                "first_name": "Ernest"
+              },
+              "title": "The Old Man and the Sea"
             }
           ],
           "last_name": "Hemingway",
           "birth_year": 1899
-        },
-        "genre": "Novel",
-        //"image": "https://images.unsplash.com/photo-1472491235688-bdc81a63246e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-        "title": "The Sun Also Rises"
+        }
       },
       {
         "year": 1951,
+        "genre": "Novel",
+        "title": "The Old Man and the Sea",
         "author_id": {
           "first_name": "Ernest",
           "country": "U.S.",
           "books_ids": [
             {
-              "year": 1927,
-              "title": "The Sun Also Rises",
               "genre": "Novel",
-              "id": "7"
+              "year": 1927,
+              "id": "7",
+              "author_id": {
+                "first_name": "Ernest"
+              },
+              "title": "The Sun Also Rises"
             },
             {
-              "title": "The Old Man and the Sea",
-              "year": 1951,
               "genre": "Novel",
-              "id": "8"
+              "year": 1951,
+              "id": "8",
+              "author_id": {
+                "first_name": "Ernest"
+              },
+              "title": "The Old Man and the Sea"
             }
           ],
           "last_name": "Hemingway",
           "birth_year": 1899
-        },
-        "genre": "Novel",
-        "image": "https://images.unsplash.com/photo-1568035105640-89538ccccd24?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-        "title": "The Old Man and the Sea"
+        }
       },
       {
         "genre": "Science",
         "title": "Mathematical Principles of Natural Philosophy",
-        "year": 1687,
-        "image": "https://images.unsplash.com/photo-1557948206-7478d769f813?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+        "year": 1687
       },
       {
         "title": "Gulliver’s Travels",
         "year": 1726,
-        "genre": "Novel",
-        "image": "https://images.unsplash.com/photo-1507984211203-76701d7bb120?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+        "genre": "Novel"
       }
     ],
     "totalPages": 2,
     "pageNumber": 0,
     "error": null,
+    "writeFields": [
+      "author_id","genre","title","year"
+    ],
     "fieldScheme": [
       [
         "author_id.birth_year",
