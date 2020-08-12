@@ -41,6 +41,13 @@ function FpsCards({ data, onEvent, id }) {
         }
     }
 
+    useEffect(() => {
+        console.log(data)
+        if (data.error || data.response) {
+          setLoading(false)
+        }
+      }, [data.error, data.response])
+
     const submit = (model) => {
         console.log('submitting...')
 
