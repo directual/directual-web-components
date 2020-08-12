@@ -5,17 +5,21 @@ import ActionPanel from '../../actionspanel/actionspanel'
 import Button from '../../button/button'
 import Input from '../../dataentry/input/input'
 import { FormSection } from '../../dataentry/form/FpsForm'
+import Loader from '../../loader/loader'
 
 export function ObjectCard(props) {
     const [showLinkedObject, setShowLinkedObject] = useState(false)
     const [linkedObject, setLinkedObject] = useState({})
     const [linkedObjectStruct, setLinkedObjectStruct] = useState()
+    const [model, setModel] = useState(props.object)
 
 
-    useEffect(() => {
-        console.log('------object:---------')
-        console.log(props.object)
-    }, [])
+    // useEffect(() => {
+    //     console.log('------object:---------')
+    //     console.log(props.object)
+    //     console.log('------------ form model: -------------')
+    //     console.log(model)
+    // }, [model])
 
     // press 'Esc' for closing a popup:
     const handleUserKeyPress = (e) => {
@@ -29,11 +33,9 @@ export function ObjectCard(props) {
     //----------------------
 
     const transformTableFieldScheme = (sysname, tableFieldScheme) => {
-        // console.log('transformTableFieldScheme ' + sysname)
         let newTableFieldScheme = tableFieldScheme.filter(i => i[0].startsWith(sysname + '.'))
         var deepClone = JSON.parse(JSON.stringify(newTableFieldScheme))
         deepClone.forEach(i => i[0] = i[0].substring(sysname.length + 1)) // это меняет props.tableFieldScheme
-        // console.log(deepClone)
         return deepClone
     }
 
@@ -97,8 +99,8 @@ export function ObjectCard(props) {
         }
         return types[type] || 'string'
     }
+    const [confirmDelete, setConfirmDelete] = useState(false)
 
-    const [model, setModel] = useState(props.object)
 
     return (
         <React.Fragment>
@@ -171,17 +173,28 @@ export function ObjectCard(props) {
                     {/* <a onClick={() => setShowLinkedObject(true)}>Click me</a> */}
                     {props.writeFields && props.writeFields.length > 0 &&
                         <React.Fragment>
-                            <ActionPanel margin={{ top: 24, bottom: 12 }}>
-                                <Button disabled={JSON.stringify(model) === JSON.stringify(props.object)} accent icon='done'>
-                                    Save changes</Button>
-                                <Button danger icon='ban'
-                                    onClick={() => setModel(props.object)}
-                                    disabled={JSON.stringify(model) === JSON.stringify(props.object)}>
-                                    Discard changes</Button>
-                            </ActionPanel>
+                            {props.loading ? <Loader>Saving...</Loader> :
+                                <React.Fragment>
+                                    <ActionPanel margin={{ top: 24, bottom: 12 }}>
+                                        <Button
+                                            disabled={JSON.stringify(model) === JSON.stringify(props.object)}
+                                            accent
+                                            icon='done'
+                                            onClick={() => props.submit(model)}>
+                                            Save changes</Button>
+                                        <Button danger icon='ban'
+                                            onClick={() => setModel(props.object)}
+                                            disabled={JSON.stringify(model) === JSON.stringify(props.object)}>
+                                            Discard changes</Button>
+                                    </ActionPanel>
 
-                            <FormSection title='Danger zone' />
-                            <Button icon='delete' danger>Delete</Button>
+                                    {/* <FormSection title='Danger zone' />
+                                    {!confirmDelete ?
+                                        <Button icon='delete' onClick={() => setConfirmDelete(true)} danger>Delete</Button> :
+                                        <Button icon='delete' onClick={() => { props.submit(model); props.onClose() }} danger>I'm totally sure, delete</Button>
+                                    } */}
+                                </React.Fragment>}
+
                         </React.Fragment>}
                 </div>
                 {showLinkedObject &&

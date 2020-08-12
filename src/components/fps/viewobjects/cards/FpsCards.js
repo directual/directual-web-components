@@ -19,7 +19,11 @@ function FpsCards({ data, onEvent, id }) {
 
     const [showObject, setShowObject] = useState()
     const handleCloseShowObject = () => {
-        setShowObject(false)}
+        setShowObject(false);
+        setLoading(false)
+    }
+
+    const [loading, setLoading] = useState(false)
 
     const search = value => {
         value ?
@@ -28,6 +32,30 @@ function FpsCards({ data, onEvent, id }) {
             alert('Сбрасываем поиск')
         // todo: оживить поиск
     }
+
+    const sendMsg = (msg) => {
+        const message = { ...msg, _id: 'form_' + id }
+        setLoading(true)
+        if (onEvent) {
+            onEvent(message)
+        }
+    }
+
+    const submit = (model) => {
+        console.log('submitting...')
+
+        // removing links, arraylinks (for a while)
+        if (model) {
+            for (const field in model) {
+                if (typeof model[field] == 'object') { delete model[field]}
+            }
+        } 
+        // todo: сделать нормальную работу с ссылками и массивами ссылок
+        console.log(model)
+        setLoading(true)
+        sendMsg(model)
+    }
+
     return (
         <React.Fragment>
 
@@ -35,13 +63,15 @@ function FpsCards({ data, onEvent, id }) {
                 <React.Fragment>
                     <Backdrop onClick={handleCloseShowObject} hoverable />
                     <div className={styles.firstObjectCard}>
-                        <ObjectCard 
-                            onClose={handleCloseShowObject} 
-                            object={showObject} 
+                        <ObjectCard
+                            onClose={handleCloseShowObject}
+                            object={showObject}
+                            submit={submit}
+                            loading={loading}
                             tableFieldScheme={tableFieldScheme}
                             tableStructures={tableStructures}
                             writeFields={writeFields}
-                            /></div>
+                        /></div>
                 </React.Fragment>}
 
             <TableTitle
@@ -54,8 +84,6 @@ function FpsCards({ data, onEvent, id }) {
 
             <Cards
                 data={data}
-                onEvent={onEvent}
-                id={id}
                 onExpand={val => { setShowObject(val) }}
             />
 

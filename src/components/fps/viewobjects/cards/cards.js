@@ -44,7 +44,7 @@ export function Cards({ data, onEvent, id, onExpand }) {
 
     data.error =
         data.error && data.error == '403'
-            ? 'You have no permissions for viewing form'
+            ? 'You have no permissions'
             : data.error
     data.error =
         data.error && data.error == '511' ? 'Table is not configured' : data.error

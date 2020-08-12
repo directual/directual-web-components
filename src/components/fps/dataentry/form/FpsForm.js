@@ -64,9 +64,9 @@ export default function FpsForm({ data, onEvent, id }) {
   // console.log('------------ form data: -------------')
   // console.log(data)
 
-  // console.log('------------ form model: -------------')
-  // console.log(model)
-  console.log('rerender')
+  console.log('------------ form model: -------------')
+  console.log(model)
+  //console.log('rerender')
 
   function sortFields(arr) {
     if (!arr) { return null }
@@ -100,7 +100,6 @@ export default function FpsForm({ data, onEvent, id }) {
   const submit = (e) => {
     e.preventDefault()
     console.log('submitting...')
-
     sendMsg(model)
   }
 
