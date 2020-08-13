@@ -88,7 +88,9 @@ export function ObjectCard(props) {
     }
 
     const isEditable = field => {
-        if (props.writeFields && field.sysName && props.writeFields.indexOf(field.sysName) != -1) { return true } else { return false }
+        if (props.writeFields && props.writeFields.indexOf('id') != -1 &&
+            field.sysName &&
+            props.writeFields.indexOf(field.sysName) != -1) { return true } else { return false }
     }
 
     const matchInputType = type => {
@@ -117,22 +119,32 @@ export function ObjectCard(props) {
                 <div className={styles.objectCardBody}>
                     {Object.values(object).map(field =>
                         <div key={field.sysName} className={styles.objFieldWrapper}>
-                            {field.dataType != 'link' && field.dataType != 'arrayLink' && <React.Fragment>
-                                {!isEditable(field) ?
-                                    <React.Fragment>
-                                        <span className={styles.label}>
-                                            {field.name || field.sysName}</span>
-                                        {!field.value && <span className={styles.novalue}>—</span>}
-                                        <span>{field && field.value}</span>
-                                    </React.Fragment> :
-                                    <Input
-                                        type={matchInputType(field.dataType)}
-                                        label={field.name || field.sysName}
-                                        defaultValue={model[field.sysName]}
-                                        onChange={value => setModel({ ...model, [field.sysName]: value })}
-                                    />
-                                }
-                            </React.Fragment>}
+                            {field.dataType != 'link' &&
+                                field.dataType != 'arrayLink' &&
+                                field.dataType != 'id' && <React.Fragment>
+                                    {!isEditable(field) ?
+                                        <React.Fragment>
+                                            <span className={styles.label}>
+                                                {field.name || field.sysName}</span>
+                                            {!field.value && <span className={styles.novalue}>—</span>}
+                                            <span>{field && field.value}</span>
+                                        </React.Fragment> :
+                                        <Input
+                                            type={matchInputType(field.dataType)}
+                                            label={field.name || field.sysName}
+                                            defaultValue={model[field.sysName]}
+                                            onChange={value => setModel({ ...model, [field.sysName]: value })}
+                                        />
+                                    }
+                                </React.Fragment>}
+
+                            {field.dataType == 'id' && props.isDisplayID && <React.Fragment>
+                                <span className={styles.label}>
+                                    {field.name || field.sysName}</span>
+                                {!field.value && <span className={styles.novalue}>—</span>}
+                                <span>{field && field.value}</span>
+                            </React.Fragment>
+                            }
 
                             {(field.dataType == 'link') && <React.Fragment>
                                 <span className={styles.label}>
@@ -174,6 +186,7 @@ export function ObjectCard(props) {
                     {props.writeFields && props.writeFields.length > 0 &&
                         <React.Fragment>
                             {props.loading ? <Loader>Saving...</Loader> :
+                                (props.writeFields && props.writeFields.indexOf('id') != -1 && props.writeFields.length > 0) &&
                                 <React.Fragment>
                                     <ActionPanel margin={{ top: 24, bottom: 12 }}>
                                         <Button

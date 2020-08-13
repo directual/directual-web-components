@@ -56,8 +56,7 @@ function FpsCards({ data, onEvent, id }) {
             for (const field in model) {
                 if (typeof model[field] == 'object') { delete model[field]}  // removing links, arraylinks (for a while)
                 // todo: сделать нормальную работу с ссылками и массивами ссылок
-                
-                if (writeFields.indexOf(field) != 1) { delete model[field] } // removing fields not for writing
+                if (writeFields.indexOf(field) == -1) { delete model[field] } // removing fields not for writing
             }
         } 
     
@@ -77,6 +76,7 @@ function FpsCards({ data, onEvent, id }) {
                             onClose={handleCloseShowObject}
                             object={showObject}
                             submit={submit}
+                            params={data.params}
                             loading={loading}
                             tableFieldScheme={tableFieldScheme}
                             tableStructures={tableStructures}

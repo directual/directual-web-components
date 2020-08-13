@@ -83,6 +83,7 @@ const App = (props) => {
     "params": {
       "cardListLayout": "grid", // grid, list
       "deleteField": "is_hidden",
+      "isDisplayID": false,
       "cardHeaderComment": "year",
       "cardBodyText": "genre",
       "cardImageField": "image",
@@ -478,7 +479,7 @@ const App = (props) => {
     "pageNumber": 0,
     "error": null,
     "writeFields": [
-      "author_id","genre","title","year"
+      "author_id","title","year","id"
     ],
     "fieldScheme": [
       [
