@@ -12,7 +12,7 @@ export function ObjectCard(props) {
     const [linkedObject, setLinkedObject] = useState({})
     const [linkedObjectStruct, setLinkedObjectStruct] = useState()
     const [model, setModel] = useState(props.object)
-    const [currentObject,setCurrentObject] = useState(props.object)
+    const [currentObject, setCurrentObject] = useState(props.object)
 
     // useEffect(() => {
     //     console.log('------object:---------')
@@ -124,10 +124,25 @@ export function ObjectCard(props) {
                                 field.dataType != 'id' && <React.Fragment>
                                     {!isEditable(field) ?
                                         <React.Fragment>
-                                            <span className={styles.label}>
-                                                {field.name || field.sysName}</span>
-                                            {!field.value && <span className={styles.novalue}>—</span>}
-                                            <span>{field && field.value}</span>
+                                            {field.dataType != 'boolean' ? <React.Fragment>
+                                                <span className={styles.label}>
+                                                    {field.name || field.sysName}</span>
+                                                {!field.value && <span className={styles.novalue}>—</span>}
+                                                <span>{field && field.value}</span>
+                                            </React.Fragment> :
+                                                <Input
+                                                    type={matchInputType(field.dataType)}
+                                                    disabled
+                                                    label={field.name || field.sysName}
+                                                    defaultValue={model[field.sysName]}
+                                                    options={
+                                                        [
+                                                            { value: true, label: 'Yes' },
+                                                            { value: false, label: 'No' },
+                                                        ]
+                                                    }
+                                                />
+                                            }
                                         </React.Fragment> :
                                         <Input
                                             type={matchInputType(field.dataType)}
@@ -135,8 +150,8 @@ export function ObjectCard(props) {
                                             defaultValue={model[field.sysName]}
                                             options={
                                                 [
-                                                    {value:'true', label: 'Yes'},
-                                                    {value:'false', label: 'No'},
+                                                    { value: 'true', label: 'Yes' },
+                                                    { value: 'false', label: 'No' },
                                                 ]
                                             }
                                             onChange={value => setModel({ ...model, [field.sysName]: value })}
