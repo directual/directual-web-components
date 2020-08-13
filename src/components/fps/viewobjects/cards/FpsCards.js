@@ -34,6 +34,7 @@ function FpsCards({ data, onEvent, id }) {
     }
 
     const sendMsg = (msg) => {
+        console.log('running sendMsg')
         const message = { ...msg, _id: 'form_' + id }
         setLoading(true)
         if (onEvent) {
@@ -42,11 +43,12 @@ function FpsCards({ data, onEvent, id }) {
     }
 
     useEffect(() => {
+        console.log('data has been changed')
         console.log(data)
         if (data.error || data.response) {
           setLoading(false)
         }
-      }, [data.error, data.response])
+      }, [data])
 
     const submit = (model) => {
         console.log('submitting...')
@@ -59,7 +61,7 @@ function FpsCards({ data, onEvent, id }) {
         } 
         // todo: сделать нормальную работу с ссылками и массивами ссылок
         console.log(model)
-        setLoading(true)
+        //setLoading(true)
         sendMsg(model)
     }
 
