@@ -12,7 +12,7 @@ export function ObjectCard(props) {
     const [linkedObject, setLinkedObject] = useState({})
     const [linkedObjectStruct, setLinkedObjectStruct] = useState()
     const [model, setModel] = useState(props.object)
-
+    const [currentObject,setCurrentObject] = useState(props.object)
 
     // useEffect(() => {
     //     console.log('------object:---------')
@@ -96,8 +96,8 @@ export function ObjectCard(props) {
     const matchInputType = type => {
         const types = {
             number: 'number',
-            date: 'date'
-            //boolean: 'radio',
+            date: 'date',
+            boolean: 'radio',
         }
         return types[type] || 'string'
     }
@@ -133,6 +133,12 @@ export function ObjectCard(props) {
                                             type={matchInputType(field.dataType)}
                                             label={field.name || field.sysName}
                                             defaultValue={model[field.sysName]}
+                                            options={
+                                                [
+                                                    {value:'true', label: 'Yes'},
+                                                    {value:'false', label: 'No'},
+                                                ]
+                                            }
                                             onChange={value => setModel({ ...model, [field.sysName]: value })}
                                         />
                                     }
@@ -190,14 +196,14 @@ export function ObjectCard(props) {
                                 <React.Fragment>
                                     <ActionPanel margin={{ top: 24, bottom: 12 }}>
                                         <Button
-                                            disabled={JSON.stringify(model) === JSON.stringify(props.object)}
+                                            disabled={JSON.stringify(model) === JSON.stringify(currentObject)}
                                             accent
                                             icon='done'
-                                            onClick={() => props.submit(model)}>
+                                            onClick={() => { props.submit(model); setCurrentObject(model) }}>
                                             Save changes</Button>
                                         <Button danger icon='ban'
-                                            onClick={() => setModel(props.object)}
-                                            disabled={JSON.stringify(model) === JSON.stringify(props.object)}>
+                                            onClick={() => setModel(currentObject)}
+                                            disabled={JSON.stringify(model) === JSON.stringify(currentObject)}>
                                             Discard changes</Button>
                                     </ActionPanel>
 
