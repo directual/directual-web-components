@@ -45,9 +45,13 @@ function FpsCards({ data, onEvent, id }) {
     useEffect(() => {
         console.log('data has been changed')
         console.log(data)
-        if (data.error || data.response) {
+        if (data.isSuccessWrite) {
           setLoading(false)
         }
+        if (!data.isSuccessWrite && data.writeError) {
+            setLoading(false)
+            alert(writeError)
+          }
       }, [data])
 
     const submit = (model) => {
@@ -59,9 +63,7 @@ function FpsCards({ data, onEvent, id }) {
                 if (writeFields.indexOf(field) == -1) { delete model[field] } // removing fields not for writing
             }
         } 
-    
         console.log(model)
-        //setLoading(true)
         sendMsg(model)
     }
 
