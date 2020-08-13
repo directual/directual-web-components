@@ -52,14 +52,15 @@ function FpsCards({ data, onEvent, id }) {
 
     const submit = (model) => {
         console.log('submitting...')
-
-        // removing links, arraylinks (for a while)
         if (model) {
             for (const field in model) {
-                if (typeof model[field] == 'object') { delete model[field]}
+                if (typeof model[field] == 'object') { delete model[field]}  // removing links, arraylinks (for a while)
+                // todo: сделать нормальную работу с ссылками и массивами ссылок
+                
+                if (writeFields.indexOf(field) != 1) { delete model[field] } // removing fields not for writing
             }
         } 
-        // todo: сделать нормальную работу с ссылками и массивами ссылок
+    
         console.log(model)
         //setLoading(true)
         sendMsg(model)
