@@ -5,6 +5,7 @@ import { TableTitle } from '../tableTitle/TableTitle'
 import icon from './../../../../icons/fps-cards.svg'
 import Backdrop from '../../backdrop/backdrop'
 import { Cards } from './cards'
+import Loader from '../../loader/loader'
 
 function FpsCards({ data, onEvent, id }) {
     if (!data) { data = {} }
@@ -18,9 +19,10 @@ function FpsCards({ data, onEvent, id }) {
     const tableStructures = data.structures || {}
 
     const [showObject, setShowObject] = useState()
+
     const handleCloseShowObject = () => {
         setShowObject(false);
-        setLoading(false)
+        //setLoading(false)
     }
 
     const [loading, setLoading] = useState(false)
@@ -93,11 +95,12 @@ function FpsCards({ data, onEvent, id }) {
                 onSearch={value => search(value)}
                 onFilter={() => { }}
             />
-
+            {loading ? <Loader>Loading...</Loader>: 
             <Cards
                 data={data}
                 onExpand={val => { setShowObject(val) }}
-            />
+            />}
+
 
         </React.Fragment>
     )

@@ -124,34 +124,23 @@ export function ObjectCard(props) {
                                 field.dataType != 'id' && <React.Fragment>
                                     {!isEditable(field) ?
                                         <React.Fragment>
-                                            {field.dataType != 'boolean' ? <React.Fragment>
-                                                <span className={styles.label}>
-                                                    {field.name || field.sysName}</span>
-                                                {!field.value && <span className={styles.novalue}>—</span>}
-                                                <span>{field && field.value}</span>
-                                            </React.Fragment> :
-                                                <Input
-                                                    type={matchInputType(field.dataType)}
-                                                    disabled
-                                                    label={field.name || field.sysName}
-                                                    defaultValue={model[field.sysName]}
-                                                    options={
-                                                        [
-                                                            { value: true, label: 'Yes' },
-                                                            { value: false, label: 'No' },
-                                                        ]
-                                                    }
-                                                />
-                                            }
+
+                                            <span className={styles.label}>
+                                                {field.name || field.sysName}</span>
+                                            {!field.value && <span className={styles.novalue}>—</span>}
+                                            {field.dataType != 'boolean' ?
+                                                <span>{field && field.value}</span> :
+                                                <span>{field && (field.value ? 'Yes' : 'No')}</span>}
+
                                         </React.Fragment> :
                                         <Input
                                             type={matchInputType(field.dataType)}
                                             label={field.name || field.sysName}
-                                            defaultValue={model[field.sysName]}
+                                            defaultValue={(model[field.sysName] == 'true' || model[field.sysName] == true) ? true : false}
                                             options={
                                                 [
-                                                    { value: 'true', label: 'Yes' },
-                                                    { value: 'false', label: 'No' },
+                                                    { value: true, label: 'Yes' },
+                                                    { value: false, label: 'No' },
                                                 ]
                                             }
                                             onChange={value => setModel({ ...model, [field.sysName]: value })}
@@ -207,7 +196,7 @@ export function ObjectCard(props) {
                     {props.writeFields && props.writeFields.length > 0 &&
                         <React.Fragment>
                             {props.loading ? <Loader>Saving...</Loader> :
-                                (props.writeFields && props.writeFields.indexOf('id') != -1 && props.writeFields.length > 0) &&
+                                (props.writeFields && props.writeFields.indexOf('id') != -1 && props.writeFields.length > 1) &&
                                 <React.Fragment>
                                     <ActionPanel margin={{ top: 24, bottom: 12 }}>
                                         <Button
@@ -221,12 +210,14 @@ export function ObjectCard(props) {
                                             disabled={JSON.stringify(model) === JSON.stringify(currentObject)}>
                                             Discard changes</Button>
                                     </ActionPanel>
-
-                                    {/* <FormSection title='Danger zone' />
-                                    {!confirmDelete ?
-                                        <Button icon='delete' onClick={() => setConfirmDelete(true)} danger>Delete</Button> :
-                                        <Button icon='delete' onClick={() => { props.submit(model); props.onClose() }} danger>I'm totally sure, delete</Button>
-                                    } */}
+                                    {(props.params.deleteField && props.writeFields && props.writeFields.indexOf(props.params.deleteField) != -1) &&
+                                    <React.Fragment>
+                                        <FormSection title='Danger zone' />
+                                        {!confirmDelete ?
+                                            <Button icon='delete' onClick={() => setConfirmDelete(true)} danger>Delete</Button> :
+                                            <Button icon='delete' onClick={() => { props.submit({[props.params.deleteField]:false}); props.onClose() }} danger>I'm totally sure, delete</Button>
+                                        }
+                                    </React.Fragment>}
                                 </React.Fragment>}
 
                         </React.Fragment>}

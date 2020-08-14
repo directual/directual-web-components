@@ -82,8 +82,8 @@ const App = (props) => {
     "tableQuickSearch": true,
     "params": {
       "cardListLayout": "grid", // grid, list
-      "deleteField": "is_hidden",
       "isDisplayID": false,
+      "deleteField": "year",
       "cardHeaderComment": "year",
       "cardBodyText": "genre",
       "cardImageField": "image",
@@ -200,7 +200,7 @@ const App = (props) => {
     "data": 
     [
       {
-        "year": "false",
+        "year": false,
         "genre": "Biography",
         "title": "Life of Samuel Johnson",
         "author_id": {
@@ -479,7 +479,7 @@ const App = (props) => {
     "pageNumber": 0,
     "error": null,
     "writeFields": [
-      "author_id","title","year","id"
+      "author_id","year","id"
     ],
     "fieldScheme": [
       [
