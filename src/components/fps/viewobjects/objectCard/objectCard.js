@@ -127,10 +127,10 @@ export function ObjectCard(props) {
 
                                             <span className={styles.label}>
                                                 {field.name || field.sysName}</span>
-                                            {!field.value && <span className={styles.novalue}>—</span>}
+                                            {!field.value && field.dataType != 'boolean' && <span className={styles.novalue}>—</span>}
                                             {field.dataType != 'boolean' ?
                                                 <span>{field && field.value}</span> :
-                                                <span>{field && (field.value ? 'Yes' : 'No')}</span>}
+                                                <span className={`icon icon-${field && (field.value ? `done` : `ban`)}`}>{field && (field.value ? 'Yes' : 'No')}</span>}
 
                                         </React.Fragment> :
                                         <Input
@@ -210,14 +210,14 @@ export function ObjectCard(props) {
                                             disabled={JSON.stringify(model) === JSON.stringify(currentObject)}>
                                             Discard changes</Button>
                                     </ActionPanel>
-                                    {(props.params.deleteField && props.writeFields && props.writeFields.indexOf(props.params.deleteField) != -1) &&
-                                    <React.Fragment>
-                                        <FormSection title='Danger zone' />
-                                        {!confirmDelete ?
-                                            <Button icon='delete' onClick={() => setConfirmDelete(true)} danger>Delete</Button> :
-                                            <Button icon='delete' onClick={() => { props.submit({[props.params.deleteField]:false}); props.onClose() }} danger>I'm totally sure, delete</Button>
-                                        }
-                                    </React.Fragment>}
+                                    {(props.params.deleteField && object.id && props.writeFields && props.writeFields.indexOf(props.params.deleteField) != -1) &&
+                                        <React.Fragment>
+                                            <FormSection title='Danger zone' />
+                                            {!confirmDelete ?
+                                                <Button icon='delete' onClick={() => setConfirmDelete(true)} danger>Delete</Button> :
+                                                <Button icon='delete' onClick={() => { props.submit({ [props.params.deleteField]: false, id: object.id.value }); props.onClose() }} danger>I'm totally sure, delete</Button>
+                                            }
+                                        </React.Fragment>}
                                 </React.Fragment>}
 
                         </React.Fragment>}
