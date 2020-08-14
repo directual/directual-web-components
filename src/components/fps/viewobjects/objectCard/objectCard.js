@@ -136,7 +136,7 @@ export function ObjectCard(props) {
                                         <Input
                                             type={matchInputType(field.dataType)}
                                             label={field.name || field.sysName}
-                                            defaultValue={(model[field.sysName] == 'true' || model[field.sysName] == true) ? true : false}
+                                            defaultValue={field.dataType == 'boolean' ? ((model[field.sysName] == 'true' || model[field.sysName] == true) ? true : false): model[field.sysName]}
                                             options={
                                                 [
                                                     { value: true, label: 'Yes' },

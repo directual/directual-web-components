@@ -52,7 +52,7 @@ function FpsCards({ data, onEvent, id }) {
         }
         if (!data.isSuccessWrite && data.writeError) {
             setLoading(false)
-            alert(writeError)
+            alert(data.writeError)
           }
       }, [data])
 
@@ -101,6 +101,7 @@ function FpsCards({ data, onEvent, id }) {
                 onExpand={val => { setShowObject(val) }}
             />}
 
+            
 
         </React.Fragment>
     )

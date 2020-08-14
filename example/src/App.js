@@ -479,7 +479,7 @@ const App = (props) => {
     "pageNumber": 0,
     "error": null,
     "writeFields": [
-      "author_id","year","id"
+      "author_id","year","id","genre"
     ],
     "fieldScheme": [
       [
