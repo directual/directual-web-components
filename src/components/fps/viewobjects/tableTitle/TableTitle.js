@@ -14,10 +14,10 @@ export function TableTitle({ tableQuickSearch, tableTitle, tableFilters, onFilte
                 {tableFilters &&
                     <div className={styles.tableActions}>
                         {/* фильтры в 0.1 версии спрячем */}
-                        <Button
+                        {/* <Button
                             icon={`${!showFilters ? 'filter' : 'filterFill'}`}
                             onClick={() => setShowFilters(!showFilters)}
-                        >{`${!showFilters ? 'Show filters' : 'Hide filters'}`}</Button>
+                        >{`${!showFilters ? 'Show filters' : 'Hide filters'}`}</Button> */}
 
                         {/* поиск в 0.1 версии спрячем */}
                         {/* <div className={styles.tableQuickSearchField}>

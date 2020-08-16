@@ -475,8 +475,8 @@ const App = (props) => {
         "genre": "Novel"
       }
     ],
-    "totalPages": 2,
-    "pageNumber": 0,
+    "totalPages": 5,
+    "pageNumber": 2,
     "error": null,
     "writeFields": [
       "author_id","year","id","genre"

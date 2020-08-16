@@ -7,9 +7,7 @@ export function Table({ data, onEvent, id, onExpand }) {
     const tableData = data.data || []
     const pageSize = data.pageSize || 0
     const totalPages = data.totalPages || 0
-    const desktopView = data.desktopView || null
-    const mobileView = data.mobileView || null
-    const currentPage = data.currentPage || 0
+    const currentPage = data.pageNumber || 0
     const tableFilters = data.tableFilters || null
 
     const sendMsg = (msg) => {

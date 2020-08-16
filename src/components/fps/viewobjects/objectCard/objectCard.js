@@ -215,7 +215,7 @@ export function ObjectCard(props) {
                                             <FormSection title='Danger zone' />
                                             {!confirmDelete ?
                                                 <Button icon='delete' onClick={() => setConfirmDelete(true)} danger>Delete</Button> :
-                                                <Button icon='delete' onClick={() => { props.submit({ [props.params.deleteField]: false, id: object.id.value }); props.onClose() }} danger>I'm totally sure, delete</Button>
+                                                <Button icon='delete' onClick={() => { props.submit({ [props.params.deleteField]: true, id: object.id.value }); props.onClose() }} danger>I'm totally sure, delete</Button>
                                             }
                                         </React.Fragment>}
                                 </React.Fragment>}

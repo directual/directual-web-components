@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './cards.module.css'
 import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
 import ExpandedText from '../../expandedText/expandedText'
+import { Paging } from '../paging/paging'
 
 export function Cards({ data, onEvent, id, onExpand }) {
     const tableHeaders = data.headers || []
@@ -13,9 +14,7 @@ export function Cards({ data, onEvent, id, onExpand }) {
 
     const pageSize = data.pageSize || 0
     const totalPages = data.totalPages || 0
-    const desktopView = data.desktopView || null
-    const mobileView = data.mobileView || null
-    const currentPage = data.currentPage || 0
+    const currentPage = data.pageNumber || 0
     const tableFilters = data.tableFilters || null
 
     const sendMsg = (msg) => {
@@ -51,53 +50,66 @@ export function Cards({ data, onEvent, id, onExpand }) {
 
 
     return (
-        <div className={styles.cardsWrapper}>
-            {tableData.map((row, i) => {
-                const cardHeader = getInitialStructureParams().viewName && getInitialStructureParams().viewName.map(i => row[i]).join(' ')
+        <React.Fragment>
+            <div className={styles.cardsWrapper}>
+                {tableData.map((row, i) => {
+                    const cardHeader = getInitialStructureParams().viewName && getInitialStructureParams().viewName.map(i => row[i]).join(' ')
 
-                return (
-                    <div key={i} className={`${styles.card} ${styles[tableParams.cardListLayout]}`}>
-                        <div
-                            className={`${styles.cardInnerWrapper} 
+                    return (
+                        <div key={i} className={`${styles.card} ${styles[tableParams.cardListLayout]}`}>
+                            <div
+                                className={`${styles.cardInnerWrapper} 
                                 ${styles[tableParams.cardImageType]} 
                                 ${tableParams.invertColors && styles.invertColors}
                                 `}
-                            onClick={() => onExpand(row)}>
-                            {tableParams.cardImageField &&    
-                            <div className={`${styles.cardImage}`}
-                                style={{
-                                    backgroundImage: `url(${row[tableParams.cardImageField]})`,
-                                    width: (tableParams.cardImageType == "left" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) : 'auto',
-                                    height: (tableParams.cardImageType == "top" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) : 'auto',
-                                }}
-                            >
-                                {!row[tableParams.cardImageField] && <span className='icon icon-ban'>no&nbsp;picture</span>}
-                            </div> }
-                            <div className={styles.cardText}>
-                                {/* <div className={`${styles.details} icon icon-details`}></div> */}
-                                <h3 className={styles.cardHeader}>
-                                    {cardHeader.length > 1 ? cardHeader : 'no visible name'}
-                                </h3>
-                                {row[tableParams.cardHeaderComment] && <div className={styles.cardHeaderComment}>
-                                    {row[tableParams.cardHeaderComment]}
-                                </div>}
-                                {row[tableParams.cardBodyText] && <ExpandedText textLength={120} className={styles.cardBodyText}>
-                                    {row[tableParams.cardBodyText]}
-                                </ExpandedText> }
+                                onClick={() => onExpand(row)}>
+                                {tableParams.cardImageField &&
+                                    <div className={`${styles.cardImage}`}
+                                        style={{
+                                            backgroundImage: `url(${row[tableParams.cardImageField]})`,
+                                            width: (tableParams.cardImageType == "left" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) : 'auto',
+                                            height: (tableParams.cardImageType == "top" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) : 'auto',
+                                        }}
+                                    >
+                                        {!row[tableParams.cardImageField] && <span className='icon icon-ban'>no&nbsp;picture</span>}
+                                    </div>}
+                                <div className={styles.cardText}>
+                                    {/* <div className={`${styles.details} icon icon-details`}></div> */}
+                                    <h3 className={styles.cardHeader}>
+                                        {cardHeader.length > 1 ? cardHeader : 'no visible name'}
+                                    </h3>
+                                    {row[tableParams.cardHeaderComment] && <div className={styles.cardHeaderComment}>
+                                        {row[tableParams.cardHeaderComment]}
+                                    </div>}
+                                    {row[tableParams.cardBodyText] && <ExpandedText textLength={120} className={styles.cardBodyText}>
+                                        {row[tableParams.cardBodyText]}
+                                    </ExpandedText>}
+                                </div>
                             </div>
-                        </div>
-                    </div>)
-            })}
-            {data.error &&
-                <SomethingWentWrong
-                    icon='warning'
-                    message={data.error}
-                />}
-            {tableData.length === 0 && !data.error &&
-                <SomethingWentWrong
-                    icon='ban'
-                    message='Table is empty'
-                />}
-        </div>
+                        </div>)
+                })}
+                {data.error &&
+                    <SomethingWentWrong
+                        icon='warning'
+                        message={data.error}
+                    />}
+                {tableData.length === 0 && !data.error &&
+                    <SomethingWentWrong
+                        icon='ban'
+                        message='Table is empty'
+                    />}
+
+
+            </div>
+            {totalPages > 0 &&
+                <div className={styles.pagination}>
+                    <Paging
+                        sendMsg={sendMsg}
+                        pageSize={pageSize}
+                        totalPages={totalPages}
+                        currentPage={currentPage}
+                    />
+                </div>}
+        </React.Fragment>
     )
 }
