@@ -99,6 +99,8 @@ function FpsCards({ data, onEvent, id }) {
             <Cards
                 data={data}
                 onExpand={val => { setShowObject(val) }}
+                onEvent={onEvent}
+                id={id}
             />}
 
             
