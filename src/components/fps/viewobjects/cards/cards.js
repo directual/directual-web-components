@@ -4,7 +4,7 @@ import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
 import ExpandedText from '../../expandedText/expandedText'
 import { Paging } from '../paging/paging'
 
-export function Cards({ data, onEvent, id, onExpand }) {
+export function Cards({ data, onEvent, id, onExpand, loading, setLoading }) {
     const tableHeaders = data.headers || []
     const tableData = data.data || []
     const tableParams = data.params || {
@@ -108,6 +108,8 @@ export function Cards({ data, onEvent, id, onExpand }) {
                         pageSize={pageSize}
                         totalPages={totalPages}
                         currentPage={currentPage}
+                        setLoading={setLoading}
+                        loading={loading}
                     />
                 </div>}
         </React.Fragment>

@@ -5,7 +5,6 @@ import { TableTitle } from '../tableTitle/TableTitle'
 import icon from './../../../../icons/fps-cards.svg'
 import Backdrop from '../../backdrop/backdrop'
 import { Cards } from './cards'
-import Loader from '../../loader/loader'
 
 function FpsCards({ data, onEvent, id }) {
     if (!data) { data = {} }
@@ -47,11 +46,12 @@ function FpsCards({ data, onEvent, id }) {
     useEffect(() => {
         console.log('data has been changed')
         console.log(data)
+        setLoading(false)
         if (data.isSuccessWrite) {
-          setLoading(false)
+          //setLoading(false)
         }
         if (!data.isSuccessWrite && data.writeError) {
-            setLoading(false)
+            //setLoading(false)
             alert(data.writeError)
           }
       }, [data])
@@ -93,15 +93,17 @@ function FpsCards({ data, onEvent, id }) {
                 tableFilters={tableFilters}
                 tableQuickSearch={tableQuickSearch}
                 onSearch={value => search(value)}
+                loading={loading}
                 onFilter={() => { }}
             />
-            {loading ? <Loader>Loading...</Loader>: 
             <Cards
                 data={data}
                 onExpand={val => { setShowObject(val) }}
                 onEvent={onEvent}
                 id={id}
-            />}
+                loading={loading}
+                setLoading={value => setLoading(value)}
+            />
 
             
 

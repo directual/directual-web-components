@@ -3,14 +3,21 @@ import styles from '../table/table.module.css'
 import Button from '../../button/button'
 import Filters from '../filters/Filters'
 import Input from '../../dataentry/input/input'
+import Loader from '../../loader/loader'
 
-export function TableTitle({ tableQuickSearch, tableTitle, tableFilters, onFilter, onSearch }) {
+export function TableTitle({ tableQuickSearch, tableTitle, tableFilters, onFilter, onSearch, loading }) {
     const [showSearch, setShowSearch] = useState(false)
     const [showFilters, setShowFilters] = useState(false)
     return (
         <React.Fragment>
             <div className={styles.tableTitle}>
-                {tableTitle && <h1>{tableTitle}</h1>}
+                {tableTitle ? <h1>
+                    {loading ? <Loader>Loading...</Loader>:
+                    <span>{tableTitle}</span>}
+                    </h1>:
+                    <React.Fragment>{loading && <Loader>Loading...</Loader>}</React.Fragment>
+                    }
+                
                 {tableFilters &&
                     <div className={styles.tableActions}>
                         {/* фильтры в 0.1 версии спрячем */}

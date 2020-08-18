@@ -2,14 +2,14 @@ import React from 'react'
 import styles from './paging.module.css'
 import Button from '../../button/button'
 
-export function Paging({ sendMsg, pageSize, totalPages, currentPage }) {
+export function Paging({ sendMsg, pageSize, totalPages, currentPage, setLoading }) {
     return (
         <div className={styles.paging}>
             {currentPage != 0 &&
-                <Button small onClick={() => sendMsg({ page: currentPage - 1 })}>❮ Prev</Button>
+                <Button disabled={loading} small onClick={() => {setLoading(true); sendMsg({ page: currentPage - 1 })}}>❮ Prev</Button>
                 }
-            {currentPage != totalPages &&
-                <Button small onClick={() => sendMsg({ page: currentPage + 1 })}>Next ❯</Button>
+            {currentPage < (totalPages - 1) &&
+                <Button disabled={loading} small onClick={() => {setLoading(true); sendMsg({ page: currentPage + 1 })}}>Next ❯</Button>
                 }
             <div>pageSize: {pageSize}</div>
             <div>totalPages: {totalPages}</div>

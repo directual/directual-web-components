@@ -147,8 +147,7 @@ export function ObjectCard(props) {
                                         />
                                     }
                                 </React.Fragment>}
-
-                            {field.dataType == 'id' && props.isDisplayID && <React.Fragment>
+                            {field.dataType == 'id' && props.params.isDisplayID && <React.Fragment>
                                 <span className={styles.label}>
                                     {field.name || field.sysName}</span>
                                 {!field.value && <span className={styles.novalue}>—</span>}
