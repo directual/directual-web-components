@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './paging.module.css'
 import Button from '../../button/button'
 
-export function Paging({ sendMsg, pageSize, totalPages, currentPage, setLoading }) {
+export function Paging({ sendMsg, pageSize, totalPages, currentPage, setLoading, loading }) {
     return (
         <div className={styles.paging}>
             {currentPage != 0 &&
