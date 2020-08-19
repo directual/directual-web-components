@@ -65,8 +65,10 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--alert-color-light', '#F9DFA4')
             document.documentElement.style.setProperty('--ok-color', '#00C197')
             document.documentElement.style.setProperty('--ok-color-light', '#D6F8E5')
-            document.documentElement.style.setProperty('--label-color', '#B9E0CB')
-            document.documentElement.style.setProperty('--label-text-color', '#333')
+            document.documentElement.style.setProperty('--label-color', '#26BE99')
+            //document.documentElement.style.setProperty('--label-color', '#B9E0CB')
+            document.documentElement.style.setProperty('--label-text-color', '#fff')
+            //document.documentElement.style.setProperty('--label-text-color', '#333')
         }
         if (colorScheme === 'tiffany') {
             document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')

@@ -140,6 +140,7 @@
                 transition: .5s;
                 margin-right: 66px;
             }
+            .subselect { .list {opacity: 0;}}
             .list {
                 opacity: 1;
                 transition: .5s;
@@ -237,6 +238,77 @@
                 &:active:not(.disabled) {
                     background: var(--font-color);
                     color: var(--background-color);
+                }
+            }
+        }
+    }
+}
+
+.subselect {
+    position: absolute;
+    top:10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    height: 31px;
+    border-radius: calc(var(--border-radius) / 2);
+    background-color: var(--label-color);
+    color: var(--label-text-color);
+    font-size: var(--text-very-small-size);
+    z-index: 10;
+    cursor: pointer;
+    .select_wrapper {
+        .select_field {
+            background:none;
+            border:none !important;
+            padding: 0 26px 0 9px !important;
+            height: 100% !important;
+            min-height: auto !important;
+            color: var(--label-text-color) !important;
+        }
+        .arrow {
+            color: var(--label-text-color);
+            opacity: .6;
+            top:4px;
+            right: 4px;
+            &:before {font-size: 22px;}
+        }
+        .options_counter {
+            display: none !important;
+        }
+        .placeholder {
+            padding: 0 !important;
+            color: var(--label-text-color);
+            font-size: var(--text-very-small-size);
+        }
+        .currentValue {
+            margin: 0 !important;
+            opacity: 1 !important;
+        }
+        .value_wrapper {
+            min-width: 50px !important;
+            opacity: 1 !important;
+            .filter {
+                color: var(--label-text-color);
+                font-size: var(--text-very-small-size);
+            }
+        }
+        .noOptionsSmall {
+            padding: 6px;
+            opacity: .5;
+        }
+        .list {
+            border-radius: calc(var(--border-radius) / 2);
+            background-color: var(--label-color);
+            color: var(--label-text-color);
+            border: none !important;
+            .option {
+                border-radius: calc(var(--border-radius) / 2);
+                &:hover {
+                    background: rgba(0,0,0,.25);
+                }
+                &.selected {
+                    background: rgba(0,0,0,.50);
                 }
             }
         }

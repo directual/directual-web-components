@@ -11,7 +11,64 @@ export default function InputsPage() {
     return (
         <React.Fragment>
             <h1>Data entry</h1>
-            
+
+            <h2 style={{ marginBottom: 24, marginTop: 12 }}>Special platform selects</h2>
+            <CodeSnippet code=
+                {`<Input
+    label='Select with subselect'
+    width={400}
+    subSelect={
+        {
+            all: false, // show for all the options
+            keys: [2, 4], // show only for these options
+            defaultValue: 'sub1',
+            options: [
+                { key: 'sub1', value: 'to objects' },
+                { key: 'sub2', value: 'pick one' },
+            ]
+        }
+    }
+    onChangeSubselect={e => {}}
+    type='select'
+    placeholder='Choose the line'
+    icon='database'
+    options={
+        [
+            { key: 1, value: 'Good fortune? The fact is' },
+            { key: 2, value: 'The more that you practise' },
+            { key: 3, value: 'The harder you sweat' },
+            { key: 4, value: 'The luckier you get' }
+        ]
+    }
+/>`} />
+            <Input
+                label='Select with subselect'
+                width={400}
+                subSelect={
+                    {
+                        all: false,
+                        keys: [2, 4],
+                        defaultValue: 'sub1',
+                        options: [
+                            { key: 'sub1', value: 'to objects' },
+                            { key: 'sub2', value: 'pick one' },
+                        ]
+                    }
+                }
+                onChangeSubselect={e => {console.log(e)}}
+                type='select'
+                placeholder='Choose the line'
+                icon='database'
+                options={
+                    [
+                        { key: 1, value: 'Good fortune? The fact is' },
+                        { key: 2, value: 'The more that you practise' },
+                        { key: 3, value: 'The harder you sweat' },
+                        { key: 4, value: 'The luckier you get' }
+                    ]
+                }
+            />
+
             {/* <h2>File upload</h2>
             <FileUpload /> */}
 

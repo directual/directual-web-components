@@ -139,6 +139,9 @@
   transition: 0.5s;
   margin-right: 66px;
 }
+.select_wrapper .select_field.focus:not(.disabled) .subselect .list {
+  opacity: 0;
+}
 .select_wrapper .select_field.focus:not(.disabled) .list {
   opacity: 1;
   transition: 0.5s;
@@ -231,4 +234,74 @@
 .select_wrapper .select_field .list .option:active:not(.disabled) {
   background: var(--font-color);
   color: var(--background-color);
+}
+.subselect {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  height: 31px;
+  border-radius: calc(var(--border-radius) / 2);
+  background-color: var(--label-color);
+  color: var(--label-text-color);
+  font-size: var(--text-very-small-size);
+  z-index: 10;
+  cursor: pointer;
+}
+.subselect .select_wrapper .select_field {
+  background: none;
+  border: none !important;
+  padding: 0 26px 0 9px !important;
+  height: 100% !important;
+  min-height: auto !important;
+  color: var(--label-text-color) !important;
+}
+.subselect .select_wrapper .arrow {
+  color: var(--label-text-color);
+  opacity: 0.6;
+  top: 4px;
+  right: 4px;
+}
+.subselect .select_wrapper .arrow:before {
+  font-size: 22px;
+}
+.subselect .select_wrapper .options_counter {
+  display: none !important;
+}
+.subselect .select_wrapper .placeholder {
+  padding: 0 !important;
+  color: var(--label-text-color);
+  font-size: var(--text-very-small-size);
+}
+.subselect .select_wrapper .currentValue {
+  margin: 0 !important;
+  opacity: 1 !important;
+}
+.subselect .select_wrapper .value_wrapper {
+  min-width: 50px !important;
+  opacity: 1 !important;
+}
+.subselect .select_wrapper .value_wrapper .filter {
+  color: var(--label-text-color);
+  font-size: var(--text-very-small-size);
+}
+.subselect .select_wrapper .noOptionsSmall {
+  padding: 6px;
+  opacity: 0.5;
+}
+.subselect .select_wrapper .list {
+  border-radius: calc(var(--border-radius) / 2);
+  background-color: var(--label-color);
+  color: var(--label-text-color);
+  border: none !important;
+}
+.subselect .select_wrapper .list .option {
+  border-radius: calc(var(--border-radius) / 2);
+}
+.subselect .select_wrapper .list .option:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+.subselect .select_wrapper .list .option.selected {
+  background: rgba(0, 0, 0, 0.5);
 }

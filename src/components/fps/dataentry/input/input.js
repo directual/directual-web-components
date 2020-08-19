@@ -424,6 +424,8 @@ export default function Input(props) {
                     defaultValue={defVal}
                     iconOptions={props.iconOptions}
                     onChange={e => setValue(e)}
+                    subSelect={props.subSelect}
+                    onChangeSubselect={props.onChangeSubselect}
                 />
             }
             {props.type == 'multiselect' &&

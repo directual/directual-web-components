@@ -42,8 +42,9 @@ function List(props) {
         props.selected && scrollList(props.options.indexOf(props.selected), props.options.length)
     })
 
-    const noOptions = <SomethingWentWrong icon='ban'
-        message={`No options${props.filter ? ` like \"${props.filter}\"` : ''}`} />
+    const noOptions = !props.thisIsSubSelect ? <SomethingWentWrong icon='ban'
+        message={`No options${props.filter ? ` like \"${props.filter}\"` : ''}`} /> :
+        <span className={styles.noOptionsSmall}>No options</span>
 
     return (
         <div ref={selectHolder}>
@@ -198,7 +199,7 @@ export default function Select(props) {
 
     useEffect(() => {
         setKeySelected();
-        console.log('change!')
+        //console.log('change!')
         value && !props.multi && props.onChange(value.key)
         value && value.length > 0 && props.onChange(value.map(i => i.key))
         if (!value || value.length == 0) { props.onChange(null); }
@@ -207,7 +208,7 @@ export default function Select(props) {
 
 
     const chooseOption = (option) => {
-        console.log('click')
+        //console.log('click')
         !props.multi && setValue(option)
         if (props.multi) {
             let arr = value ? [...value] : []
@@ -240,7 +241,21 @@ export default function Select(props) {
                     <div className={`${styles.icon} icon icon-${props.icon}`}></div>}
                 {props.iconOptions && value && value.icon &&
                     <div className={`${styles.icon} icon icon-${value && value.icon}`}></div>}
-
+                {(props.subSelect && (props.subSelect.all || (value && value.key && props.subSelect.keys.filter(i=>i == value.key).length > 0))) && 
+                     <div className={styles.subselect}
+                        onClick={e => {
+                            e.stopPropagation()
+                        }}>
+                         <Select 
+                            onChange={e=>{}}
+                            options={props.subSelect.options}
+                            placeholder='choose'
+                            thisIsSubSelect
+                            defaultValue={props.subSelect.defaultValue}
+                            onChange={props.onChangeSubselect ? props.onChangeSubselect: undefined}
+                         />
+                     </div>
+                }
                 {props.multi &&
                     <ul className={styles.multilist}>
                         {value && value.length > 0 && value.map((item) =>
@@ -305,6 +320,7 @@ export default function Select(props) {
                     disabled={props.disabled}
                     iconOptions={props.iconOptions}
                     multi={props.multi}
+                    thisIsSubSelect={props.thisIsSubSelect}
                 />
             </div>
 
