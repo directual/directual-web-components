@@ -226,7 +226,7 @@
                 }
                 &.selected {
                     background-color: var(--accent-color);
-                    color: (var(--button-accent-color));
+                    color: var(--button-accent-color);
                 }
                 &.keySelected {
                     padding:6px 10px;
@@ -306,9 +306,11 @@
                 border-radius: calc(var(--border-radius) / 2);
                 &:hover {
                     background: rgba(0,0,0,.25);
+                    color: var(--label-text-color);
                 }
                 &.selected {
-                    background: rgba(0,0,0,.50);
+                    background: rgba(0,0,0,.5);
+                    color: var(--label-text-color);
                 }
             }
         }
