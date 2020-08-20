@@ -218,9 +218,12 @@ export default function Select(props) {
     }
 
     const removeOption = (option) => {
+        //console.log(option)
         if (props.multi) {
             let array = value ? [...value] : []
-            array.pop();
+            let index = array.indexOf(option)
+            array.splice(index,1)
+            //array.pop();
             array.length >= 1 ? setValue(array) : setValue([]);
         }
     }

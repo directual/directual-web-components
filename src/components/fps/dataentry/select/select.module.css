@@ -39,6 +39,7 @@
   flex-wrap: wrap;
   margin-bottom: -6px;
   align-items: flex-start;
+  min-width: calc(100% - 26px);
 }
 .select_wrapper .select_field .multilist li {
   display: flex;
@@ -130,6 +131,9 @@
   border-width: 2px;
   padding: 6px 35px 6px 17px;
   border-color: var(--accent-color);
+}
+.select_wrapper .select_field.focus:not(.disabled) .multilist {
+  min-width: calc(100% - 56px);
 }
 .select_wrapper .select_field.focus:not(.disabled) .placeholder {
   padding-right: 50px;

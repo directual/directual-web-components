@@ -33,12 +33,14 @@
         appearance: none;
         cursor: text;
         //position: relative;
+
         .multilist {
             display: flex;
             //margin-left: -6px;
             flex-wrap: wrap;
             margin-bottom: -6px;
             align-items: flex-start;
+            min-width: calc(100% - 26px);
             li {
                 display: flex;
                 border-radius: calc(var(--border-radius) / 2);
@@ -132,6 +134,9 @@
             border-width: 2px;
             padding: 6px 35px 6px 17px;
             border-color: var(--accent-color);
+            .multilist {
+                min-width: calc(100% - 56px);
+            }
             .placeholder {
                 padding-right: 50px;
             }
