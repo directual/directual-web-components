@@ -50,7 +50,7 @@ function MainMenuWrapper(props) {
         { name: "Form", route: "/form", icon: "edit", link: <Link to="/form">Form</Link> },
         { name: "Theme management", route: "/theme", icon: "styles", link: <Link to="/theme">Theme management</Link> },
         { name: "Cards (soon)", route: "/cards", icon: "cards", link: <Link to="/cards">Cards (in progress)</Link> },
-        { name: "Table (in progress)", route: "/table", icon: "database", link: <Link to="/table">Table (in progress)</Link> },
+        { name: "Table (in progress)", route: "/table", icon: "database" ,disabled: true },
         // { name: "List view (soon)", route: "/list", icon: "list", disabled: true },
         { name: "Chat (soon)", route: "/chat", icon: "bubble", disabled: true },
         { name: "Comments (soon)", route: "/comments", icon: "version", disabled: true },
@@ -76,18 +76,18 @@ const App = (props) => {
   let exampleTable =
   {
     "sl": "getBooks_FPS",
-    "tableTitle": "Котики",
+    "tableTitle": "List with background images",
     "pageSize": "10",
     "tableFilters": true,
     "tableQuickSearch": true,
     "params": {
       "cardListLayout": "grid", // grid, list
       "isDisplayID": true,
-      "deleteField": "year",
+      "deleteField": "",
       "cardHeaderComment": "year",
       "cardBodyText": "genre",
       "cardImageField": "image",
-      "cardImageType": "leftCircle", // none, top, left, cover, leftCircle
+      "cardImageType": "cover", // none, top, left, cover, leftCircle
       "cardImageSize": 100, // width for left, height for top, width+height for leftCircle
       "objectView": {} // object view settings
       },
@@ -200,9 +200,10 @@ const App = (props) => {
     "data": 
     [
       {
-        "year": false,
+        "year": 1760,
         "genre": "Biography",
         "title": "Life of Samuel Johnson",
+        "image": "https://images.unsplash.com/photo-1598145164978-64796c5e8c4d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "author_id": {
           "first_name": "James",
           "country": "Scotland",
@@ -224,6 +225,7 @@ const App = (props) => {
         "year": 1869,
         "genre": "Novel",
         "title": "War and Peace",
+        "image": "https://images.unsplash.com/photo-1520116468816-95b69f847357?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "author_id": {
           "first_name": "Leo",
           "country": "Russia",
@@ -264,6 +266,7 @@ const App = (props) => {
         "year": 1877,
         "genre": "Novel",
         "title": "Anna Karenina",
+        "image": "https://images.unsplash.com/photo-1519789110007-0e751882be76?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "author_id": {
           "first_name": "Leo",
           "country": "Russia",
@@ -304,6 +307,7 @@ const App = (props) => {
         "year": 1863,
         "genre": "Novella",
         "title": "The Cossacks",
+        "image": "https://images.unsplash.com/photo-1526810209977-4708ffb9c873?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "author_id": {
           "first_name": "Leo",
           "country": "Russia",
@@ -344,6 +348,7 @@ const App = (props) => {
         "year": 1866,
         "genre": "Novel",
         "title": "Crime and Punishment",
+        "image": "https://images.unsplash.com/photo-1484804959297-65e7c19d7c9f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "author_id": {
           "first_name": "Fyodor",
           "country": "Russia",
@@ -375,6 +380,7 @@ const App = (props) => {
         "year": 1880,
         "genre": "Novel",
         "title": "The Brothers Karamazov",
+        "image": "https://images.unsplash.com/photo-1513737567531-bc431c8e5e85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "author_id": {
           "first_name": "Fyodor",
           "country": "Russia",
@@ -406,6 +412,7 @@ const App = (props) => {
         "year": 1927,
         "genre": "Novel",
         "title": "The Sun Also Rises",
+        "image": "https://images.unsplash.com/photo-1472108482137-8df36ccf0d7b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "author_id": {
           "first_name": "Ernest",
           "country": "U.S.",
@@ -437,6 +444,7 @@ const App = (props) => {
         "year": 1951,
         "genre": "Novel",
         "title": "The Old Man and the Sea",
+        "image": "https://images.unsplash.com/photo-1531579766052-06ad0bb58728?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "author_id": {
           "first_name": "Ernest",
           "country": "U.S.",
@@ -467,16 +475,18 @@ const App = (props) => {
       {
         "genre": "Science",
         "title": "Mathematical Principles of Natural Philosophy",
+        "image": "https://images.unsplash.com/photo-1503293962593-47247718a17a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "year": 1687
       },
       {
         "title": "Gulliver’s Travels",
         "year": 1726,
+        "image": "https://images.unsplash.com/photo-1529029411565-e04366ee3cc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "genre": "Novel"
       }
     ],
-    "totalPages": 5,
-    "pageNumber": 2,
+    "totalPages": 3,
+    "pageNumber": 1,
     "error": null,
     "writeFields": [
       "author_id","year","id","genre"
@@ -582,7 +592,571 @@ const App = (props) => {
         "dateHidden": null,
         "name": "Books",
         "sysName": "Books",
-        "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"date\",\"name\":\"date\",\"dataType\":\"date\",\"id\":\"17781586365675109\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"title\",\"name\":\"Title\",\"dataType\":\"string\",\"id\":\"24751585132012036\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"image\",\"name\":\"image\",\"dataType\":\"file\",\"id\":\"59701594730297293\",\"link\":\"\",\"group\":\"1585332461783\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"author_id\",\"name\":\"Author\",\"dataType\":\"link\",\"id\":\"81201585132056810\",\"link\":\"Authors\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"year\",\"name\":\"Year\",\"dataType\":\"boolean\",\"id\":\"81761585132035625\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"datedql\",\"name\":\"date\",\"dataType\":\"date\",\"id\":\"83881587302273838\",\"link\":\"\",\"group\":\"1585332461783\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"boolean\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"85921587303259528\",\"link\":\"\",\"group\":\"1585332461783\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"genre\",\"name\":\"Genre\",\"dataType\":\"string\",\"id\":\"89311585132044726\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"approved\",\"name\":\"approved\",\"dataType\":\"boolean\",\"id\":\"98821586526700880\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}}]",
+        "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"date\",\"name\":\"date\",\"dataType\":\"date\",\"id\":\"17781586365675109\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"title\",\"name\":\"Title\",\"dataType\":\"string\",\"id\":\"24751585132012036\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"image\",\"name\":\"image\",\"dataType\":\"file\",\"id\":\"59701594730297293\",\"link\":\"\",\"group\":\"1585332461783\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"author_id\",\"name\":\"Author\",\"dataType\":\"link\",\"id\":\"81201585132056810\",\"link\":\"Authors\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"year\",\"name\":\"Year\",\"dataType\":\"number\",\"id\":\"81761585132035625\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"datedql\",\"name\":\"date\",\"dataType\":\"date\",\"id\":\"83881587302273838\",\"link\":\"\",\"group\":\"1585332461783\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"boolean\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"85921587303259528\",\"link\":\"\",\"group\":\"1585332461783\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"genre\",\"name\":\"Genre\",\"dataType\":\"string\",\"id\":\"89311585132044726\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"approved\",\"name\":\"approved\",\"dataType\":\"boolean\",\"id\":\"98821586526700880\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}}]",
+        "jsonGroupSettings": "[{\"id\":1585332461783,\"name\":\"Details\",\"order\":0}]",
+        "jsonViewIdSettings": "[{\"sysName\":\"title\"},{\"sysName\":\"year\"}]",
+        "jsonSettings": null,
+        "jsonNativeIndexSettings": null,
+        "indexEnabled": true,
+        "lastIndexUpdate": 0,
+        "indexName": "",
+        "dateChanged": "2020-07-14T12:38:30Z",
+        "createBy": 3476,
+        "changedBy": 1,
+        "_settings": null,
+        "_nativeIndexSettings": null,
+        "objectIDSysName": "id",
+        "innerIDField": {
+          "sysName": "id",
+          "name": "id",
+          "dataType": "id",
+          "id": "0",
+          "link": "",
+          "group": "0",
+          "tags": "",
+          "indexing": false,
+          "ordering": false,
+          "description": null,
+          "weight": null,
+          "order": 0,
+          "linkIndexFieldSysName": [],
+          "defaultValue": "",
+          "constraints": null,
+          "synthetic": false,
+          "format": null,
+          "formatOptions": null,
+          "linkType": false,
+          "typeVariable": {},
+          "indexExists": false,
+          "json": false,
+          "linkOrArrayLinkType": false,
+          "arrayLink": false
+        },
+        "folderId": null
+      }
+    }
+  }
+
+  let exampleTable2 =
+  {
+    "sl": "getBooks_FPS",
+    "tableTitle": "List with circled images, list view",
+    "pageSize": "10",
+    "tableFilters": true,
+    "tableQuickSearch": true,
+    "params": {
+      "cardListLayout": "list", // grid, list
+      "isDisplayID": false,
+      "deleteField": "",
+      "cardHeaderComment": "year",
+      "cardBodyText": "genre",
+      "cardImageField": "image",
+      "cardImageType": "leftCircle", // none, top, left, cover, leftCircle
+      "cardImageSize": 120, // width for left, height for top, width+height for leftCircle
+      "objectView": {} // object view settings
+      },
+    "headers": [
+      {
+        "sysName": "author_id",
+        "name": "Author",
+        "dataType": "link",
+        "id": "81201585132056810",
+        "link": "Authors",
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 4,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "linkType": true,
+        "typeVariable": {},
+        "indexExists": false,
+        "json": false,
+        "linkOrArrayLinkType": true,
+        "arrayLink": false
+      },
+      {
+        "sysName": "genre",
+        "name": "Genre",
+        "dataType": "string",
+        "id": "89311585132044726",
+        "link": "",
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 3,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "linkType": false,
+        "typeVariable": {},
+        "indexExists": false,
+        "json": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false
+      },
+      {
+        "sysName": "title",
+        "name": "Title",
+        "dataType": "string",
+        "id": "24751585132012036",
+        "link": "",
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 1,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "linkType": false,
+        "typeVariable": {},
+        "indexExists": false,
+        "json": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false
+      },
+      {
+        "sysName": "year",
+        "name": "Year",
+        "dataType": "number",
+        "id": "81761585132035625",
+        "link": "",
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 2,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "linkType": false,
+        "typeVariable": {},
+        "indexExists": false,
+        "json": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false
+      }
+    ],
+    "data": 
+    [
+      {
+        "year": 1760,
+        "genre": "Biography",
+        "title": "Life of Samuel Johnson",
+        "image": "https://images.unsplash.com/photo-1598145164978-64796c5e8c4d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+        "author_id": {
+          "first_name": "James",
+          "country": "Scotland",
+          "books_ids": [
+            {
+              "genre": "Biography",
+              "id": "1",
+              "author_id": {
+                "first_name": "James"
+              },
+              "title": "Life of Samuel Johnson"
+            }
+          ],
+          "last_name": "Boswell",
+          "birth_year": 1740
+        }
+      },
+      {
+        "year": 1869,
+        "genre": "Novel",
+        "title": "War and Peace",
+        "image": "https://images.unsplash.com/photo-1520116468816-95b69f847357?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+        "author_id": {
+          "first_name": "Leo",
+          "country": "Russia",
+          "books_ids": [
+            {
+              "genre": "Novel",
+              "year": 1869,
+              "id": "2",
+              "author_id": {
+                "first_name": "Leo"
+              },
+              "title": "War and Peace"
+            },
+            {
+              "genre": "Novel",
+              "year": 1877,
+              "id": "3",
+              "author_id": {
+                "first_name": "Leo"
+              },
+              "title": "Anna Karenina"
+            },
+            {
+              "genre": "Novella",
+              "year": 1863,
+              "id": "4",
+              "author_id": {
+                "first_name": "Leo"
+              },
+              "title": "The Cossacks"
+            }
+          ],
+          "last_name": "Tolstoy",
+          "birth_year": 1828
+        }
+      },
+      {
+        "year": 1877,
+        "genre": "Novel",
+        "title": "Anna Karenina",
+        "image": "https://images.unsplash.com/photo-1519789110007-0e751882be76?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+        "author_id": {
+          "first_name": "Leo",
+          "country": "Russia",
+          "books_ids": [
+            {
+              "genre": "Novel",
+              "year": 1869,
+              "id": "2",
+              "author_id": {
+                "first_name": "Leo"
+              },
+              "title": "War and Peace"
+            },
+            {
+              "genre": "Novel",
+              "year": 1877,
+              "id": "3",
+              "author_id": {
+                "first_name": "Leo"
+              },
+              "title": "Anna Karenina"
+            },
+            {
+              "genre": "Novella",
+              "year": 1863,
+              "id": "4",
+              "author_id": {
+                "first_name": "Leo"
+              },
+              "title": "The Cossacks"
+            }
+          ],
+          "last_name": "Tolstoy",
+          "birth_year": 1828
+        }
+      },
+      {
+        "year": 1863,
+        "genre": "Novella",
+        "title": "The Cossacks",
+        "image": "https://images.unsplash.com/photo-1526810209977-4708ffb9c873?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+        "author_id": {
+          "first_name": "Leo",
+          "country": "Russia",
+          "books_ids": [
+            {
+              "genre": "Novel",
+              "year": 1869,
+              "id": "2",
+              "author_id": {
+                "first_name": "Leo"
+              },
+              "title": "War and Peace"
+            },
+            {
+              "genre": "Novel",
+              "year": 1877,
+              "id": "3",
+              "author_id": {
+                "first_name": "Leo"
+              },
+              "title": "Anna Karenina"
+            },
+            {
+              "genre": "Novella",
+              "year": 1863,
+              "id": "4",
+              "author_id": {
+                "first_name": "Leo"
+              },
+              "title": "The Cossacks"
+            }
+          ],
+          "last_name": "Tolstoy",
+          "birth_year": 1828
+        }
+      },
+      {
+        "year": 1866,
+        "genre": "Novel",
+        "title": "Crime and Punishment",
+        "image": "https://images.unsplash.com/photo-1484804959297-65e7c19d7c9f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+        "author_id": {
+          "first_name": "Fyodor",
+          "country": "Russia",
+          "books_ids": [
+            {
+              "genre": "Novel",
+              "year": 1866,
+              "id": "5",
+              "author_id": {
+                "first_name": "Fyodor"
+              },
+              "title": "Crime and Punishment"
+            },
+            {
+              "genre": "Novel",
+              "year": 1880,
+              "id": "6",
+              "author_id": {
+                "first_name": "Fyodor"
+              },
+              "title": "The Brothers Karamazov"
+            }
+          ],
+          "last_name": "Dostoevsky",
+          "birth_year": 1821
+        }
+      },
+      {
+        "year": 1880,
+        "genre": "Novel",
+        "title": "The Brothers Karamazov",
+        "image": "https://images.unsplash.com/photo-1513737567531-bc431c8e5e85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+        "author_id": {
+          "first_name": "Fyodor",
+          "country": "Russia",
+          "books_ids": [
+            {
+              "genre": "Novel",
+              "year": 1866,
+              "id": "5",
+              "author_id": {
+                "first_name": "Fyodor"
+              },
+              "title": "Crime and Punishment"
+            },
+            {
+              "genre": "Novel",
+              "year": 1880,
+              "id": "6",
+              "author_id": {
+                "first_name": "Fyodor"
+              },
+              "title": "The Brothers Karamazov"
+            }
+          ],
+          "last_name": "Dostoevsky",
+          "birth_year": 1821
+        }
+      },
+      {
+        "year": 1927,
+        "genre": "Novel",
+        "title": "The Sun Also Rises",
+        "image": "https://images.unsplash.com/photo-1472108482137-8df36ccf0d7b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+        "author_id": {
+          "first_name": "Ernest",
+          "country": "U.S.",
+          "books_ids": [
+            {
+              "genre": "Novel",
+              "year": 1927,
+              "id": "7",
+              "author_id": {
+                "first_name": "Ernest"
+              },
+              "title": "The Sun Also Rises"
+            },
+            {
+              "genre": "Novel",
+              "year": 1951,
+              "id": "8",
+              "author_id": {
+                "first_name": "Ernest"
+              },
+              "title": "The Old Man and the Sea"
+            }
+          ],
+          "last_name": "Hemingway",
+          "birth_year": 1899
+        }
+      },
+      {
+        "year": 1951,
+        "genre": "Novel",
+        "title": "The Old Man and the Sea",
+        "image": "https://images.unsplash.com/photo-1531579766052-06ad0bb58728?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+        "author_id": {
+          "first_name": "Ernest",
+          "country": "U.S.",
+          "books_ids": [
+            {
+              "genre": "Novel",
+              "year": 1927,
+              "id": "7",
+              "author_id": {
+                "first_name": "Ernest"
+              },
+              "title": "The Sun Also Rises"
+            },
+            {
+              "genre": "Novel",
+              "year": 1951,
+              "id": "8",
+              "author_id": {
+                "first_name": "Ernest"
+              },
+              "title": "The Old Man and the Sea"
+            }
+          ],
+          "last_name": "Hemingway",
+          "birth_year": 1899
+        }
+      },
+      {
+        "genre": "Science",
+        "title": "Mathematical Principles of Natural Philosophy",
+        "image": "https://images.unsplash.com/photo-1503293962593-47247718a17a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+        "year": 1687
+      },
+      {
+        "title": "Gulliver’s Travels",
+        "year": 1726,
+        "image": "https://images.unsplash.com/photo-1529029411565-e04366ee3cc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+        "genre": "Novel"
+      }
+    ],
+    "totalPages": 3,
+    "pageNumber": 1,
+    "error": null,
+    "writeFields": [
+      "author_id","year","id","genre"
+    ],
+    "fieldScheme": [
+      [
+        "author_id.birth_year",
+        1295819
+      ],
+      [
+        "author_id.books_ids.genre",
+        1295858
+      ],
+      [
+        "author_id.books_ids.title",
+        1295858
+      ],
+      [
+        "author_id.books_ids.year",
+        1295858
+      ],
+      [
+        "author_id.country",
+        1295819
+      ],
+      [
+        "author_id.first_name",
+        1295819
+      ],
+      [
+        "author_id.last_name",
+        1295819
+      ],
+      [
+        "genre",
+        1295858
+      ],
+      [
+        "title",
+        1295858
+      ],
+      [
+        "year",
+        1295858
+      ]
+    ],
+    "structures": {
+      "1295819": {
+        "networkID": 2621,
+        "id": 1295819,
+        "dateCreated": "2020-03-25T10:28:14Z",
+        "hidden": false,
+        "dateHidden": null,
+        "name": "Authors",
+        "sysName": "Authors",
+        "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"birth_year\",\"name\":\"Year of birth\",\"dataType\":\"number\",\"id\":\"23361585132128552\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"last_name\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"54861585132109303\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"first_name\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"56761585132098323\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"books_ids\",\"name\":\"Books\",\"dataType\":\"arrayLink\",\"id\":\"92841585132143841\",\"link\":\"Books\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true},{\"sysName\":\"country\",\"name\":\"Country\",\"dataType\":\"string\",\"id\":\"96371585132109899\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false}]",
+        "jsonGroupSettings": null,
+        "jsonViewIdSettings": "[{\"sysName\":\"first_name\"},{\"sysName\":\"last_name\"}]",
+        "jsonSettings": null,
+        "jsonNativeIndexSettings": null,
+        "indexEnabled": false,
+        "lastIndexUpdate": 0,
+        "indexName": "",
+        "dateChanged": "2020-03-25T10:32:54Z",
+        "createBy": 3476,
+        "changedBy": 3476,
+        "_settings": null,
+        "_nativeIndexSettings": null,
+        "objectIDSysName": "id",
+        "innerIDField": {
+          "sysName": "id",
+          "name": "id",
+          "dataType": "id",
+          "id": "0",
+          "link": "",
+          "group": "0",
+          "tags": "",
+          "indexing": false,
+          "ordering": false,
+          "description": null,
+          "weight": null,
+          "order": 0,
+          "linkIndexFieldSysName": [],
+          "defaultValue": "",
+          "constraints": null,
+          "synthetic": false,
+          "format": null,
+          "formatOptions": null,
+          "linkType": false,
+          "typeVariable": {},
+          "indexExists": false,
+          "json": false,
+          "linkOrArrayLinkType": false,
+          "arrayLink": false
+        },
+        "folderId": null
+      },
+      "1295858": {
+        "networkID": 2621,
+        "id": 1295858,
+        "dateCreated": "2020-03-25T10:22:06Z",
+        "hidden": false,
+        "dateHidden": null,
+        "name": "Books",
+        "sysName": "Books",
+        "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"date\",\"name\":\"date\",\"dataType\":\"date\",\"id\":\"17781586365675109\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"title\",\"name\":\"Title\",\"dataType\":\"string\",\"id\":\"24751585132012036\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"image\",\"name\":\"image\",\"dataType\":\"file\",\"id\":\"59701594730297293\",\"link\":\"\",\"group\":\"1585332461783\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"author_id\",\"name\":\"Author\",\"dataType\":\"link\",\"id\":\"81201585132056810\",\"link\":\"Authors\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"year\",\"name\":\"Year\",\"dataType\":\"number\",\"id\":\"81761585132035625\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"datedql\",\"name\":\"date\",\"dataType\":\"date\",\"id\":\"83881587302273838\",\"link\":\"\",\"group\":\"1585332461783\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"boolean\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"85921587303259528\",\"link\":\"\",\"group\":\"1585332461783\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"genre\",\"name\":\"Genre\",\"dataType\":\"string\",\"id\":\"89311585132044726\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"approved\",\"name\":\"approved\",\"dataType\":\"boolean\",\"id\":\"98821586526700880\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}}]",
         "jsonGroupSettings": "[{\"id\":1585332461783,\"name\":\"Details\",\"order\":0}]",
         "jsonViewIdSettings": "[{\"sysName\":\"title\"},{\"sysName\":\"year\"}]",
         "jsonSettings": null,
@@ -1615,6 +2189,8 @@ const App = (props) => {
             </Route>
             <Route exact path="/cards">
               <FpsCards data={exampleTable} />
+              <br /><br />
+              <FpsCards data={exampleTable2} />
             </Route>
             <Route exact path="/theme">
               <h1>Theme management</h1>

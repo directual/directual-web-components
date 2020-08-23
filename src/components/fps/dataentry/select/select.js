@@ -185,8 +185,6 @@ export default function Select(props) {
             !keySelected && filteredOptions && e.key == 'ArrowDown' &&
                 setKeySelected(filteredOptions[0])
             if (keySelected && filteredOptions && e.key == 'Enter') {
-                console.log('сука блять')
-                console.log(keySelected)
                 if (value && value.length >= 0 && value.filter(i => i.key == keySelected.key) == 0) { chooseOption(keySelected) }
                 else { value && value.length >= 0 && props.multi && removeOption(value.filter(i => i.key == keySelected.key)[0]) }
                 !props.multi && chooseOption(keySelected);
@@ -199,7 +197,6 @@ export default function Select(props) {
 
     useEffect(() => {
         setKeySelected();
-        //console.log('change!')
         value && !props.multi && props.onChange(value.key)
         value && value.length > 0 && props.onChange(value.map(i => i.key))
         if (!value || value.length == 0) { props.onChange(null); }
@@ -208,7 +205,6 @@ export default function Select(props) {
 
 
     const chooseOption = (option) => {
-        //console.log('click')
         !props.multi && setValue(option)
         if (props.multi) {
             let arr = value ? [...value] : []
@@ -218,12 +214,10 @@ export default function Select(props) {
     }
 
     const removeOption = (option) => {
-        //console.log(option)
         if (props.multi) {
             let array = value ? [...value] : []
             let index = array.indexOf(option)
             array.splice(index,1)
-            //array.pop();
             array.length >= 1 ? setValue(array) : setValue([]);
         }
     }
