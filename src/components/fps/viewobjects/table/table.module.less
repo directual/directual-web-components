@@ -85,22 +85,22 @@
     left: 17px;
     bottom: -1px;
     right: -1px;
-    // top:48px;
-    // left: 48px;
-    // bottom: 48px;
-    // right: 48px;
-    //overflow: visible;
-    overflow: auto;
-    padding:24px 24px 24px 12px;
+    overflow: hidden;
+    //padding:24px 24px 24px 12px;
+    display: flex;
+    flex-direction: column;
     border-radius: var(--border-radius);
     border: solid 1px var(--background-contrast-color);
     background-color: var(--background-color);
     z-index: 101;
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+
     .objectCardHeader {
         display: flex;
+        flex-shrink: 0;
         align-items: center;
         overflow: hidden;
+        padding: 24px 24px 12px 12px;
         h2 {
             overflow: hidden;
             text-overflow: ellipsis;
@@ -117,7 +117,21 @@
         }
     }
     .objectCardBody {
-        padding:24px 24px 24px 44px
+        margin:12px 24px 24px 44px;
+        //border: solid 1px green;
+        overflow: auto;
+        &.bordered {
+            border-top:solid 1px var(--field-border-color)
+        }
+    }
+    .fieldValue {
+        display: block;
+        overflow: hidden;
+        max-width: 100%;
+        text-overflow: ellipsis;
+        // debug:
+        // height: 500px;
+        // border:solid 1px red
     }
 }
 
@@ -156,9 +170,9 @@
         right: 12px;
      }
     .objectCard {
-        padding:12px;
+        //padding:12px;
         .objectCardBody {
-            padding:24px 24px 24px 12px
+            margin:12px 24px 24px 24px
         }
     }
     div.tableTitle {
@@ -202,5 +216,7 @@
          }
      }
  }
+
+ 
 
  

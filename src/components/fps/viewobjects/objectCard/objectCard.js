@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styles from '../table/table.module.css'
 import Backdrop from '../../backdrop/backdrop'
 import ActionPanel from '../../actionspanel/actionspanel'
@@ -103,6 +103,14 @@ export function ObjectCard(props) {
     }
     const [confirmDelete, setConfirmDelete] = useState(false)
 
+    const scrollDivRef = useRef(null)
+    const [showBorder, setShowBorder] = useState(false)
+
+    const handleScroll = () => {
+        scrollDivRef.current.scrollTop >= 10 ?
+            setShowBorder(true) :
+            setShowBorder(false)
+    }
 
     return (
         <React.Fragment>
@@ -116,7 +124,14 @@ export function ObjectCard(props) {
                             'No visible name'}
                     </h2>
                 </div>
-                <div className={styles.objectCardBody}>
+                <div 
+                    ref={scrollDivRef}
+                    onScroll={handleScroll}
+                    className=
+                    {`
+                        ${styles.objectCardBody} 
+                        ${showBorder && styles.bordered}
+                    `}>
                     {Object.values(object).map(field =>
                         <div key={field.sysName} className={styles.objFieldWrapper}>
                             {field.dataType != 'link' &&
@@ -129,14 +144,14 @@ export function ObjectCard(props) {
                                                 {field.name || field.sysName}</span>
                                             {!field.value && field.dataType != 'boolean' && <span className={styles.novalue}>—</span>}
                                             {field.dataType != 'boolean' ?
-                                                <span>{field && field.value}</span> :
+                                                <span className={styles.fieldValue}>{field && field.value}</span> :
                                                 <span className={`icon icon-${field && (field.value ? `done` : `ban`)}`}>{field && (field.value ? 'Yes' : 'No')}</span>}
 
                                         </React.Fragment> :
                                         <Input
                                             type={matchInputType(field.dataType)}
                                             label={field.name || field.sysName}
-                                            defaultValue={field.dataType == 'boolean' ? ((model[field.sysName] == 'true' || model[field.sysName] == true) ? true : false): model[field.sysName]}
+                                            defaultValue={field.dataType == 'boolean' ? ((model[field.sysName] == 'true' || model[field.sysName] == true) ? true : false) : model[field.sysName]}
                                             options={
                                                 [
                                                     { value: true, label: 'Yes' },
@@ -147,7 +162,7 @@ export function ObjectCard(props) {
                                         />
                                     }
                                 </React.Fragment>}
-                            {field.dataType == 'id' && props.params.isDisplayID && <React.Fragment>
+                            {field.dataType == 'id' && props.params && props.params.isDisplayID && <React.Fragment>
                                 <span className={styles.label}>
                                     {field.name || field.sysName}</span>
                                 {!field.value && <span className={styles.novalue}>—</span>}
@@ -155,7 +170,7 @@ export function ObjectCard(props) {
                             </React.Fragment>
                             }
 
-                            {(field.dataType == 'link') && <React.Fragment>
+                            {(field.dataType == 'link' && field.value) && <React.Fragment>
                                 <span className={styles.label}>
                                     {field.name || field.sysName}</span>
                                 <div className={styles.linkFieldWrapper}>

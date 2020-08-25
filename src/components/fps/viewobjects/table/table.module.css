@@ -76,8 +76,9 @@
   left: 17px;
   bottom: -1px;
   right: -1px;
-  overflow: auto;
-  padding: 24px 24px 24px 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   border-radius: var(--border-radius);
   border: solid 1px var(--background-contrast-color);
   background-color: var(--background-color);
@@ -86,8 +87,10 @@
 }
 .objectCard .objectCardHeader {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   overflow: hidden;
+  padding: 24px 24px 12px 12px;
 }
 .objectCard .objectCardHeader h2 {
   overflow: hidden;
@@ -103,7 +106,17 @@
   opacity: 1;
 }
 .objectCard .objectCardBody {
-  padding: 24px 24px 24px 44px;
+  margin: 12px 24px 24px 44px;
+  overflow: auto;
+}
+.objectCard .objectCardBody.bordered {
+  border-top: solid 1px var(--field-border-color);
+}
+.objectCard .fieldValue {
+  display: block;
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
 }
 .tableTitle {
   display: flex;
@@ -136,11 +149,8 @@
     bottom: 12px;
     right: 12px;
   }
-  .objectCard {
-    padding: 12px;
-  }
   .objectCard .objectCardBody {
-    padding: 24px 24px 24px 12px;
+    margin: 12px 24px 24px 24px;
   }
   div.tableTitle {
     flex-direction: column;
