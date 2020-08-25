@@ -187,7 +187,7 @@ export function ObjectCard(props) {
                                             type='string'
                                             //label={`Edit ${field.name || field.sysName}`}
                                             description={`Edit ${field.name || field.sysName} (value of the link field is object ID)`}
-                                            defaultValue={props.object[field.sysName].id}
+                                            defaultValue={currentObject[field.sysName].id}
                                             onChange={value => setModel({ ...model, [field.sysName]: value })}
                                         />
                                     </div>
@@ -216,7 +216,7 @@ export function ObjectCard(props) {
                                             type='string'
                                             //label={`Edit ${field.name || field.sysName}`}
                                             description={`Edit ${field.name || field.sysName} (value of the arrayLink field is object IDs, comma separated)`}
-                                            defaultValue={props.object[field.sysName] && props.object[field.sysName].map(i=>i.id).join(',')}
+                                            defaultValue={currentObject[field.sysName] && currentObject[field.sysName].map(i=>i.id).join(',')}
                                             onChange={value => setModel({ ...model, [field.sysName]: value.split(',') })}
                                         />
                                     </div>
