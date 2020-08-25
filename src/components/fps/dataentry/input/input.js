@@ -5,6 +5,7 @@ import Select from '../select/select'
 import Datepicker from '../datepicker/datepicker'
 import Slider from '../slider/slider'
 import Checkbox from '../checkbox/checkbox'
+import StructureField from '../structurefield/structurefield'
 
 export function InputGroup(props) {
     return (
@@ -53,7 +54,7 @@ export default function Input(props) {
     }
 
     const clearValue = () => {
-        setValue('')
+        submit('')
         props.required ?
             setWarningMesg({ type: 'error', msg: 'This field is required' }) :
             setWarningMesg({});
@@ -61,33 +62,41 @@ export default function Input(props) {
 
     const handleChange = (e) => {
         props.onChange && props.onChange(e)
-        setValue(e)
+        submit(e)
         props.required && setWarningMesg({})
     }
 
     const handleChangeDecimalNumber = (e) => {
         props.onChange && props.onChange(e)
-        setValue(e)
+        submit(e)
         props.required && setWarningMesg({})
     }
 
 
     const handleChangeNumber = (e) => {
         if (isNaN(parseInt(e))) {
-            setValue(null);
+            submit(null);
         } else {
-            props.positive && parseInt(e) < 0 && setValue(0);
-            props.positive && parseInt(e) >= 0 && setValue(parseInt(e));
-            !props.positive && setValue(parseInt(e));
+            props.positive && parseInt(e) < 0 && submit(0);
+            props.positive && parseInt(e) >= 0 && submit(parseInt(e));
+            !props.positive && submit(parseInt(e));
         }
         checkValue()
     }
-    useEffect(() => {
-        props.onChange && props.onChange(value);
+    // useEffect(() => {
+    //     props.onChange && props.onChange(value);
+    //     props.type == 'select' && props.required && value != props.defaultValue && checkValue();
+    //     props.type == 'icon' && props.required && value != props.defaultValue && checkValue();
+    //     props.type == 'multiselect' && props.required && value != props.defaultValue && checkValue();
+    // }, [value])
+
+    const submit = val => {
+        setValue(val)
+        props.onChange && props.onChange(val);
         props.type == 'select' && props.required && value != props.defaultValue && checkValue();
         props.type == 'icon' && props.required && value != props.defaultValue && checkValue();
         props.type == 'multiselect' && props.required && value != props.defaultValue && checkValue();
-    }, [value])
+    }
 
     const icon_options =
         [
@@ -241,6 +250,7 @@ export default function Input(props) {
                 props.type != 'icon' &&
                 props.type != 'textarea' &&
                 props.type != 'password' &&
+                props.type != 'structurefield'&&
                 props.type != 'radio' &&
                 props.type != 'select' &&
                 props.type != 'multiselect' &&
@@ -401,7 +411,7 @@ export default function Input(props) {
 
             {props.type == 'radio' &&
                 <Radio
-                    onChange={e => e ? (e.target ? setValue(e.target.value) : setValue(e)) : setValue(null)}
+                    onChange={e => e ? (e.target ? submit(e.target.value) : submit(e)) : submit(null)}
                     defaultValue={props.defaultValue}
                     options={props.options}
                     disabled={props.disabled}
@@ -423,7 +433,7 @@ export default function Input(props) {
                     disabled={props.disabled}
                     defaultValue={defVal}
                     iconOptions={props.iconOptions}
-                    onChange={e => setValue(e)}
+                    onChange={e => submit(e)}
                     subSelect={props.subSelect}
                     onChangeSubselect={props.onChangeSubselect}
                 />
@@ -439,7 +449,7 @@ export default function Input(props) {
                     multi
                     defaultValue={defVal}
                     iconOptions={props.iconOptions}
-                    onChange={e => setValue(e)}
+                    onChange={e => submit(e)}
                 />
             }
             {props.type == 'icon' &&
@@ -452,7 +462,7 @@ export default function Input(props) {
                     disabled={props.disabled}
                     defaultValue={defVal}
                     iconOptions
-                    onChange={e => setValue(e)}
+                    onChange={e => submit(e)}
                 />
             }
             {props.type == 'date' &&
@@ -466,6 +476,9 @@ export default function Input(props) {
                     onBlur={checkValue}
                     closeOnSelect={true}
                 />
+            }
+            {props.type == 'structurefield' &&
+                <StructureField />
             }
             {props.type == 'slider' &&
                 <Slider
@@ -498,7 +511,7 @@ export default function Input(props) {
                                         const saveValue = { ...value }
                                         if (val) { saveValue[option.value] = val }
                                         else { delete saveValue[option.value] }
-                                        setValue(saveValue)
+                                        submit(saveValue)
                                     }}
                                 />
                             </div>
@@ -514,7 +527,7 @@ export default function Input(props) {
                                     const saveValue = { ...value }
                                     if (val) { saveValue.customOption = val }
                                         else { delete saveValue.customOption }
-                                    setValue(saveValue)
+                                        submit(saveValue)
                                 }}
                                 customOptionPlaceholder={props.customOptionPlaceholder}
                             />

@@ -171,10 +171,10 @@ export default function Select(props) {
             if (e.key == 'Backspace' && props.multi && filter == '') {
                 let array = value ? [...value] : []
                 array.pop();
-                array.length >= 1 ? setValue(array) : setValue([]);
+                array.length >= 1 ? submit(array) : submit([]);
             }
             if (e.key == 'Backspace' && !props.multi && filter == '') {
-                setValue(null)
+                submit(null)
             }
             keySelected && filteredOptions && e.key == 'ArrowUp' && currentPosition == 0 &&
                 setKeySelected('')
@@ -197,19 +197,27 @@ export default function Select(props) {
 
     useEffect(() => {
         setKeySelected();
-        value && !props.multi && props.onChange(value.key)
-        value && value.length > 0 && props.onChange(value.map(i => i.key))
-        if (!value || value.length == 0) { props.onChange(null); }
+        // value && !props.multi && props.onChange(value.key)
+        // value && value.length > 0 && props.onChange(value.map(i => i.key))
+        // if (!value || value.length == 0) { props.onChange(null); }
     }, [value])
+
+    const submit = (val) => {
+        setValue(val)
+        setKeySelected();
+        val && !props.multi && props.onChange(val.key)
+        val && val.length > 0 && props.onChange(val.map(i => i.key))
+        if (!val || val.length == 0) { props.onChange(null); }
+    }
 
 
 
     const chooseOption = (option) => {
-        !props.multi && setValue(option)
+        !props.multi && submit(option)
         if (props.multi) {
             let arr = value ? [...value] : []
             arr.indexOf(option) == -1 && arr.push(option)
-            setValue(arr)
+            submit(arr)
         }
     }
 
@@ -218,7 +226,7 @@ export default function Select(props) {
             let array = value ? [...value] : []
             let index = array.indexOf(option)
             array.splice(index,1)
-            array.length >= 1 ? setValue(array) : setValue([]);
+            array.length >= 1 ? submit(array) : submit([]);
         }
     }
 

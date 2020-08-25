@@ -14,12 +14,12 @@ export function ObjectCard(props) {
     const [model, setModel] = useState(props.object)
     const [currentObject, setCurrentObject] = useState(props.object)
 
-    // useEffect(() => {
-    //     console.log('------object:---------')
-    //     console.log(props.object)
-    //     console.log('------------ form model: -------------')
-    //     console.log(model)
-    // }, [model])
+    useEffect(() => {
+        console.log('------object:---------')
+        console.log(currentObject)
+        console.log('------------ form model: -------------')
+        console.log(model)
+    }, [model])
 
     // press 'Esc' for closing a popup:
     const handleUserKeyPress = (e) => {
@@ -187,7 +187,7 @@ export function ObjectCard(props) {
                                             type='string'
                                             //label={`Edit ${field.name || field.sysName}`}
                                             description={`Edit ${field.name || field.sysName} (value of the link field is object ID)`}
-                                            defaultValue={currentObject[field.sysName].id}
+                                            defaultValue={currentObject[field.sysName] && (currentObject[field.sysName].id || currentObject[field.sysName])}
                                             onChange={value => setModel({ ...model, [field.sysName]: value })}
                                         />
                                     </div>
@@ -216,7 +216,7 @@ export function ObjectCard(props) {
                                             type='string'
                                             //label={`Edit ${field.name || field.sysName}`}
                                             description={`Edit ${field.name || field.sysName} (value of the arrayLink field is object IDs, comma separated)`}
-                                            defaultValue={currentObject[field.sysName] && currentObject[field.sysName].map(i=>i.id).join(',')}
+                                            defaultValue={currentObject[field.sysName] && ( currentObject[field.sysName][0].id ? currentObject[field.sysName].map(i=>i.id).join(','): currentObject[field.sysName][0])}
                                             onChange={value => setModel({ ...model, [field.sysName]: value.split(',') })}
                                         />
                                     </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {
     FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, Select, Datepicker, InputGroup,
     FpsTheme, ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, CodeSnippet, Slider, FileUpload,
-    Checkbox, OptionsHandler
+    Checkbox, OptionsHandler, StructureField
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
@@ -13,6 +13,11 @@ export default function InputsPage() {
             <h1>Data entry</h1>
 
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Special platform selects</h2>
+
+            <Input 
+                label='Structure field'
+                type='structurefield' />
+
             <CodeSnippet code=
                 {`<Input
     label='Select with subselect'
