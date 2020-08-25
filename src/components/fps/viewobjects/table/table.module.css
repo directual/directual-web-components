@@ -118,6 +118,9 @@
   max-width: 100%;
   text-overflow: ellipsis;
 }
+.objectCard .editLink {
+  margin: 12px 3px 0 0;
+}
 .tableTitle {
   display: flex;
   align-items: center;

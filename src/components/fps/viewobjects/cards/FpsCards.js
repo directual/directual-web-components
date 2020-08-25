@@ -60,7 +60,7 @@ function FpsCards({ data, onEvent, id }) {
         console.log('submitting...')
         if (model) {
             for (const field in model) {
-                if (typeof model[field] == 'object') { delete model[field]}  // removing links, arraylinks (for a while)
+                if (typeof model[field] == 'object') { delete model[field]}  // removing links not foe writing
                 // todo: сделать нормальную работу с ссылками и массивами ссылок
                 if (writeFields.indexOf(field) == -1) { delete model[field] } // removing fields not for writing
             }

@@ -82,7 +82,7 @@ const App = (props) => {
     "tableQuickSearch": true,
     "params": {
       "cardListLayout": "grid", // grid, list
-      "isDisplayID": true,
+      "isDisplayID": false,
       "deleteField": "",
       "cardHeaderComment": "year",
       "cardBodyText": "genre",
@@ -205,6 +205,7 @@ const App = (props) => {
         "title": "Life of Samuel Johnson",
         "image": "https://images.unsplash.com/photo-1598145164978-64796c5e8c4d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "author_id": {
+          "id": "2",
           "first_name": "James",
           "country": "Scotland",
           "books_ids": [
@@ -219,7 +220,7 @@ const App = (props) => {
           ],
           "last_name": "Boswell",
           "birth_year": 1740
-        }
+        },
       },
       {
         "year": 1869,

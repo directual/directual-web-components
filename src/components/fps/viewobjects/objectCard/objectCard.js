@@ -124,7 +124,7 @@ export function ObjectCard(props) {
                             'No visible name'}
                     </h2>
                 </div>
-                <div 
+                <div
                     ref={scrollDivRef}
                     onScroll={handleScroll}
                     className=
@@ -169,7 +169,6 @@ export function ObjectCard(props) {
                                 <span>{field && field.value}</span>
                             </React.Fragment>
                             }
-
                             {(field.dataType == 'link' && field.value) && <React.Fragment>
                                 <span className={styles.label}>
                                     {field.name || field.sysName}</span>
@@ -182,13 +181,24 @@ export function ObjectCard(props) {
                                         }}
                                     >{getLinkName(field.sysName, field.value)}</a>
                                 </div>
+                                {isEditable(field) && props.object[field.sysName].id &&
+                                    <div className={styles.editLink}>
+                                        <Input
+                                            type='string'
+                                            //label={`Edit ${field.name || field.sysName}`}
+                                            description={`Edit ${field.name || field.sysName} (value of the link field is object ID)`}
+                                            defaultValue={props.object[field.sysName].id}
+                                            onChange={value => setModel({ ...model, [field.sysName]: value })}
+                                        />
+                                    </div>
+                                }
                             </React.Fragment>
                             }
                             {(field.dataType == 'arrayLink') && <React.Fragment>
                                 <span className={styles.label}>
                                     {field.name || field.sysName}</span>
                                 <div className={styles.linkFieldWrapper}>
-                                    {field.value && field.value.map((link, i) => {
+                                    {field.value &&  field.value.map((link, i) => {
                                         return (
                                             <a
                                                 key={i}
@@ -200,6 +210,17 @@ export function ObjectCard(props) {
                                             >{getLinkName(field.sysName, link)}</a>)
                                     })}
                                 </div>
+                                {isEditable(field) && props.object[field.sysName] && props.object[field.sysName][0] && props.object[field.sysName][0].id &&
+                                    <div className={styles.editLink}>
+                                        <Input
+                                            type='string'
+                                            //label={`Edit ${field.name || field.sysName}`}
+                                            description={`Edit ${field.name || field.sysName} (value of the arrayLink field is object IDs, comma separated)`}
+                                            defaultValue={props.object[field.sysName] && props.object[field.sysName].map(i=>i.id).join(',')}
+                                            onChange={value => setModel({ ...model, [field.sysName]: value.split(',') })}
+                                        />
+                                    </div>
+                                }
                             </React.Fragment>
                             }
 
@@ -245,6 +266,7 @@ export function ObjectCard(props) {
                         <ObjectCard
                             onClose={() => setShowLinkedObject(false)}
                             object={linkedObject}
+                            params={{...props.params, isDisplayID: true}}
                             tableFieldScheme={linkedObjectStruct}
                             tableStructures={props.tableStructures}
                         />
