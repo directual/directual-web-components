@@ -1,0 +1,161 @@
+.select_wrapper {
+    position: relative;
+    &:hover .arrow{
+        opacity: .8;
+        transition: .5s;
+    }
+    .arrow {
+        position: absolute;
+        opacity: .3;
+        cursor: pointer;
+        transition: .5s;
+        top:9px;
+        right:9px;
+        &.twist {
+            transform: rotate(180deg)
+        }
+        &:before {
+            font-size: 32px;}
+    }
+    .select_field {
+        outline: none;
+        border:solid 1px var( --field-border-color);
+        border-radius: var( --border-radius);
+        background-color: var(--background-color);
+        display: flex;
+        //height: 48px;
+        align-items: center;
+        padding: 7px 36px 7px 18px;
+        min-height: 36px;
+        color: var(--font-color);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: text;
+        &.disabled {
+            background-color: var(--table-border-color);
+            cursor: not-allowed;
+            color: var(--field-border-color);
+        }
+        &.error {
+            border-width: 2px;
+            //height: 46px;
+            padding: 6px 35px 6px 17px;
+            border-color: var(--error-color);
+        }
+        &.ok {
+            border-width: 2px;
+            padding: 6px 35px 6px 17px;
+            border-color: var(--ok-color);
+        }
+        &:hover:not(.disabled) {
+            border-width: 2px;
+            padding: 6px 35px 6px 17px;
+        }
+        &.focus:not(.disabled) {
+            border-width: 2px;
+            padding: 6px 35px 6px 17px;
+            border-color: var(--accent-color);
+            .placeholder {
+                padding-right: 50px;
+            }
+            .list {
+                opacity: 1;
+                transition: .5s;
+                height: auto;
+                margin: 0;
+                overflow-y: auto;
+                overflow-x: hidden;
+                border:solid 1px var( --field-border-color);
+            }
+        }
+        .list {
+            display: flex;
+            opacity: 0;
+            transition: .5s;
+            height: 0;
+            border:solid 1px rgba(0,0,0,0);
+            overflow: hidden;
+            position: absolute;
+            top:100%;
+            left:0;
+            flex-direction: column;
+            border-radius: var( --border-radius);
+            background-color: var(--background-color);
+            z-index: 100;
+            margin-top: 0;
+            box-shadow: 0 5px 12px rgba(0,0,0,.15);
+        }
+        &.error {
+            border-width: 2px;
+            padding: 6px 35px 6px 17px;
+            border-color: var(--error-color);
+        }
+        &:active:not(.disabled) {
+            padding: 6px 35px 6px 17px;
+            border: solid 2px var(--font-color);
+        }
+        .icon {
+            margin-left: -8px;
+            opacity: .5;
+        }
+        .filterFields {
+            position: absolute;
+            right: 40px;
+            color: var(--label-color);
+            opacity: .3;
+            transition: .5s;
+        }
+        .value_wrapper {
+            position: relative;
+            .placeholder {
+                opacity:.5;
+                color: var(--font-color);
+                font-size: var(--text-small-size);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .currentField {
+                display: flex;
+                flex-direction: column;
+                white-space: nowrap;
+                opacity: 1;
+                //transition: .5s;
+                &.transparent {
+                    opacity: 0;
+                }
+                //font-size: var(--text-small-size);
+                .objectDetails {
+                    padding-top:2px;
+                    color: var(--button-border-color);
+                    font-family: 'Source Code Pro', monospace;
+                    &.small {
+                        font-size: var(--text-very-small-size);
+                    }
+                    span {
+                        color: var(--accent-color);
+                    }
+                }
+            }
+            .filter {
+                border:none;
+                outline: none;
+                position: absolute;
+                left: 0;
+                top: 50%;
+                margin-top:-10px;
+                display: block;
+                background: transparent;
+                //background: red;
+                color: var(--font-color);
+                min-width: 170px;
+                &::placeholder {
+                    opacity:.5;
+                    color: var(--font-color);
+                    font-size: var(--text-small-size);
+                }
+            }
+        }
+    }
+}

@@ -644,7 +644,7 @@ const App = (props) => {
     "tableTitle": "List with circled images, list view",
     "pageSize": "10",
     "tableFilters": true,
-    "tableQuickSearch": true,
+    "tableQuickSearch": false,
     "params": {
       "cardListLayout": "list", // grid, list
       "isDisplayID": false,

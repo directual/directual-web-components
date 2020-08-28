@@ -147,6 +147,7 @@ export default function Select(props) {
             };
         }, [ref]);
     }
+    
     useEffect(() => {
         focus && inputEl.current.focus();
         setFilter('');

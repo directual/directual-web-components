@@ -18,7 +18,7 @@ export function TableTitle({ tableQuickSearch, tableTitle, tableFilters, onFilte
                     <React.Fragment>{loading && <Loader>Loading...</Loader>}</React.Fragment>
                     }
                 
-                {tableFilters &&
+                {tableQuickSearch &&
                     <div className={styles.tableActions}>
                         {/* фильтры в 0.1 версии спрячем */}
                         {/* <Button
@@ -27,7 +27,7 @@ export function TableTitle({ tableQuickSearch, tableTitle, tableFilters, onFilte
                         >{`${!showFilters ? 'Show filters' : 'Hide filters'}`}</Button> */}
 
                         {/* поиск в 0.1 версии спрячем */}
-                        {/* <div className={styles.tableQuickSearchField}>
+                        <div className={styles.tableQuickSearchField}>
                             {showSearch ?
                                 <Input
                                     type='search'
@@ -48,7 +48,7 @@ export function TableTitle({ tableQuickSearch, tableTitle, tableFilters, onFilte
                                 <Button icon='search'
                                     onClick={() => setShowSearch(true)}></Button>
                             }
-                        </div> */}
+                        </div>
                     </div>}
 
             </div>

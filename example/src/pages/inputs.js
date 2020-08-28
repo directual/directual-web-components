@@ -16,6 +16,12 @@ export default function InputsPage() {
 
             <Input 
                 label='Structure field'
+                width={700}
+                placeholder='Choose the object field'
+                icon='database'
+                filterFields
+                description='That is a new FormField component for the platform'
+                //disabled
                 type='structurefield' />
 
             <CodeSnippet code=
@@ -49,6 +55,7 @@ export default function InputsPage() {
             <Input
                 label='Select with subselect'
                 width={400}
+                description='That component is needed for some complex cases'
                 subSelect={
                     {
                         all: false,

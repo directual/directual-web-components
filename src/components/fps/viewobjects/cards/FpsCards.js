@@ -21,21 +21,25 @@ function FpsCards({ data, onEvent, id }) {
 
     const handleCloseShowObject = () => {
         setShowObject(false);
-        //setLoading(false)
     }
 
     const [loading, setLoading] = useState(false)
 
     const search = value => {
-        value ?
-            alert('Поиск пока не работает. А ищем мы ' + value)
-            :
-            alert('Сбрасываем поиск')
-        // todo: оживить поиск
+        if (value) {
+            const fieldsDQL = data.headers && data.headers.map(i => i.sysName);
+            const requestDQL = fieldsDQL.map(i=>i + ' like ' + "'" + value + "'").join(' OR ')
+            console.log('DQL = ' + requestDQL)
+            sendMsg({dql: requestDQL})
+        } else {
+            sendMsg({dql: ''})
+        }
+        if (onEvent) {
+            onEvent(message)
+        }
     }
 
     const sendMsg = (msg) => {
-        console.log('running sendMsg')
         const message = { ...msg, _id: 'form_' + id }
         setLoading(true)
         if (onEvent) {
@@ -44,27 +48,25 @@ function FpsCards({ data, onEvent, id }) {
     }
 
     useEffect(() => {
-        console.log('data has been changed')
-        console.log(data)
         setLoading(false)
         if (data.isSuccessWrite) {
-          //setLoading(false)
+            //setLoading(false)
         }
         if (!data.isSuccessWrite && data.writeError) {
             //setLoading(false)
             alert(data.writeError)
-          }
-      }, [data])
+            //todo: сделать отображение ошибки рядом с карточками, а не алертом
+        }
+    }, [data])
 
     const submit = (model) => {
         console.log('submitting...')
         if (model) {
             for (const field in model) {
-                if (typeof model[field] == 'object') { delete model[field]}  // removing links not foe writing
-                // todo: сделать нормальную работу с ссылками и массивами ссылок
+                if (typeof model[field] == 'object') { delete model[field] }  // removing links
                 if (writeFields.indexOf(field) == -1) { delete model[field] } // removing fields not for writing
             }
-        } 
+        }
         console.log(model)
         sendMsg(model)
     }
@@ -105,7 +107,7 @@ function FpsCards({ data, onEvent, id }) {
                 setLoading={value => setLoading(value)}
             />
 
-            
+
 
         </React.Fragment>
     )

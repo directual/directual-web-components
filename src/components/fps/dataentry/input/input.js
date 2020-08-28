@@ -478,7 +478,15 @@ export default function Input(props) {
                 />
             }
             {props.type == 'structurefield' &&
-                <StructureField />
+                <StructureField 
+                    defaultValue={defVal}
+                    disabled={props.disabled}
+                    filterFields={props.filterFields}
+                    filterPlaceholder={props.filterPlaceholder || 'Type to filter fields'}
+                    icon={props.icon}
+                    placeholder={props.placeholder || 'Choose object field'}
+                    onChange={e => submit(e)}
+                />
             }
             {props.type == 'slider' &&
                 <Slider

@@ -127,28 +127,28 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: local('Rubik Light'), local('Rubik-Light'), url(https://fonts.gstatic.com/s/rubik/v9/iJWHBXyIfDnIV7Fqj1ma.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/rubik/v10/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-WYi1UA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Rubik';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('Rubik'), local('Rubik-Regular'), url(https://fonts.gstatic.com/s/rubik/v9/iJWKBXyIfDnIV4nG.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/rubik/v10/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-B4i1UA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Rubik';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local('Rubik Bold'), local('Rubik-Bold'), url(https://fonts.gstatic.com/s/rubik/v9/iJWHBXyIfDnIV7F6iFma.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/rubik/v10/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-4I-1UA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Rubik';
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: local('Rubik Black'), local('Rubik-Black'), url(https://fonts.gstatic.com/s/rubik/v9/iJWHBXyIfDnIV7FCilma.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/rubik/v10/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-ro-1UA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Ubuntu';
@@ -608,8 +608,8 @@
   --alert-color-light: #F9DFA4;
   --ok-color: #00C197;
   --ok-color-light: #D6F8E5;
-  --label-color: #FEE3B0;
-  --label-text-color: #333;
+  --label-color: #26BE99;
+  --label-text-color: #fff;
 }
 :global body {
   color: var(--font-color);
