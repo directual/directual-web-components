@@ -3,7 +3,6 @@
 }
 .select_wrapper:hover .arrow {
   opacity: 0.8;
-  transition: 0.5s;
 }
 .select_wrapper .arrow {
   position: absolute;
@@ -19,6 +18,23 @@
 .select_wrapper .arrow:before {
   font-size: 32px;
 }
+.select_wrapper .clearValue {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  opacity: 0.3;
+  transition: 0.5s;
+  top: 12px;
+  right: 48px;
+  cursor: pointer;
+  font-size: var(--text-small-size);
+}
+.select_wrapper .clearValue.moved {
+  right: 72px;
+}
+.select_wrapper .clearValue:hover {
+  opacity: 0.8;
+}
 .select_wrapper .select_field {
   outline: none;
   border: solid 1px var(--field-border-color);
@@ -27,6 +43,7 @@
   display: flex;
   align-items: center;
   padding: 7px 36px 7px 18px;
+  overflow-x: auto;
   min-height: 36px;
   color: var(--font-color);
   -webkit-appearance: none;
@@ -67,7 +84,7 @@
   height: auto;
   margin: 0;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: auto;
   border: solid 1px var(--field-border-color);
 }
 .select_wrapper .select_field .list {
@@ -80,12 +97,117 @@
   position: absolute;
   top: 100%;
   left: 0;
-  flex-direction: column;
   border-radius: var(--border-radius);
   background-color: var(--background-color);
   z-index: 100;
   margin-top: 0;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+  max-width: 100%;
+  min-width: 200px;
+  max-height: 350px;
+}
+.select_wrapper .select_field .list .structFields {
+  padding: 4px 4px 4px 4px;
+  flex-shrink: 0;
+  min-width: 200px;
+  max-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.select_wrapper .select_field .list .structFields ul {
+  overflow: auto;
+}
+.select_wrapper .select_field .list .structFields ul.bordered {
+  border-top: solid 1px var(--field-border-color);
+}
+.select_wrapper .select_field .list .structFields.odd {
+  background: var(--secondary-background-color);
+}
+.select_wrapper .select_field .list .structFields .structName {
+  font-size: var(--text-small-size);
+  opacity: 0.4;
+  padding: 6px 10px 6px 10px;
+  font-weight: var(--strong-font-weight);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.select_wrapper .select_field .list .structFields .option {
+  min-width: 200px;
+  max-width: 350px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-radius: var(--border-radius);
+  padding: 6px 28px 6px 12px;
+  cursor: pointer;
+  font-size: var(--text-small-size);
+  position: relative;
+}
+.select_wrapper .select_field .list .structFields .option .goToLink {
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  margin-top: -15px;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+.select_wrapper .select_field .list .structFields .option:hover .goToLink {
+  opacity: 1;
+}
+.select_wrapper .select_field .list .structFields .option .objectName,
+.select_wrapper .select_field .list .structFields .option .objectDetails {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.select_wrapper .select_field .list .structFields .option:hover {
+  background: var(--table-border-color);
+}
+.select_wrapper .select_field .list .structFields .option.selected {
+  background-color: var(--accent-color);
+  color: var(--button-accent-color);
+}
+.select_wrapper .select_field .list .structFields .option.selected .sysName,
+.select_wrapper .select_field .list .structFields .option.selected .dataType {
+  color: var(--background-color);
+}
+.select_wrapper .select_field .list .structFields .option.selected .objectDetails {
+  color: var(--background-color);
+}
+.select_wrapper .select_field .list .structFields .option.keySelected {
+  padding: 6px 10px;
+  border: solid 2px var(--font-color);
+}
+.select_wrapper .select_field .list .structFields .option.keySelected.optionIcon {
+  padding: 0px 6px;
+}
+.select_wrapper .select_field .list .structFields .option:active:not(.disabled) {
+  background: var(--font-color);
+  color: var(--background-color);
+}
+.select_wrapper .select_field .list .structFields .option:active:not(.disabled) .sysName,
+.select_wrapper .select_field .list .structFields .option:active:not(.disabled) .dataType {
+  color: var(--background-color);
+}
+.select_wrapper .select_field .list .structFields .option:active:not(.disabled) .objectDetails {
+  color: var(--background-color);
+}
+.select_wrapper .select_field .list .structFields .option .sysName {
+  font-family: 'Source Code Pro', monospace;
+  color: var(--accent-color);
+}
+.select_wrapper .select_field .list .structFields .option .objectDetails {
+  padding-top: 2px;
+  color: var(--button-border-color);
+  font-family: 'Source Code Pro', monospace;
+}
+.select_wrapper .select_field .list .structFields .option .objectDetails .sysName {
+  font-size: var(--text-very-small-size);
+}
+.select_wrapper .select_field .list .structFields .option .objectDetails .dataType {
+  font-size: var(--text-very-small-size);
 }
 .select_wrapper .select_field.error {
   border-width: 2px;
@@ -123,6 +245,7 @@
   flex-direction: column;
   white-space: nowrap;
   opacity: 1;
+  font-size: var(--text-small-size);
 }
 .select_wrapper .select_field .value_wrapper .currentField.transparent {
   opacity: 0;

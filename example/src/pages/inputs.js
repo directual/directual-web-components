@@ -8,18 +8,130 @@ import 'directual-web-components/dist/index.css'
 
 export default function InputsPage() {
     const [value, setValue] = useState()
+
+    const testFields = [
+        {
+            structName: 'WebUsers',
+            fields: [
+                {
+                    sysName: 'foo1',
+                    name: 'First Name',
+                    dataType: 'json',
+                    link: ''
+                },
+                {
+                    sysName: 'lastName',
+                    name: 'Last Name',
+                    dataType: 'string',
+                },
+                {
+                    sysName: 'foo',
+                    name: 'Foo',
+                    dataType: 'link',
+                    link: 'TMessageIn'
+                }
+            ]
+        },
+        {
+            structName: 'TMessageIn',
+            fields: [
+                {
+                    sysName: 'firstName',
+                    name: 'First Name',
+                    dataType: 'json',
+                    link: ''
+                },
+                {
+                    sysName: 'messageID',
+                    name: 'Еще одна линка',
+                    dataType: 'link',
+                    link: 'TChat'
+                },
+                {
+                    sysName: 'bar',
+                    name: 'Bar',
+                    dataType: 'json',
+                    link: ''
+                },
+                {
+                    sysName: 'one',
+                    name: 'hello',
+                    dataType: 'decimal',
+                },
+                {
+                    sysName: 'two',
+                    name: 'world',
+                    dataType: 'decimal',
+                },
+                {
+                    sysName: 'twenty_one',
+                    name: "It's",
+                    dataType: 'decimal',
+                },
+                {
+                    sysName: 'three',
+                    name: 'nice',
+                    dataType: 'decimal',
+                },
+                {
+                    sysName: 'four',
+                    name: 'to see',
+                    dataType: 'decimal',
+                },
+                {
+                    sysName: 'five',
+                    name: 'you again',
+                    dataType: 'decimal',
+                }
+            ]
+        },
+        {
+            structName: 'TChat',
+            fields: [
+                {
+                    sysName: 'firstName',
+                    name: 'First Name',
+                    dataType: 'json',
+                    link: ''
+                },
+                {
+                    sysName: 'barr',
+                    name: 'Bar',
+                    dataType: 'json',
+                    link: ''
+                },
+                {
+                    sysName: 'ssylka',
+                    name: 'Ssylka',
+                    dataType: 'link',
+                    link: 'TMessageIn'
+                },
+                {
+                    sysName: 'messageID33',
+                    name: 'Message ID 2',
+                    dataType: 'decimal',
+                }
+            ]
+        }
+    ]
+
     return (
         <React.Fragment>
             <h1>Data entry</h1>
 
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Special platform selects</h2>
-
-            <Input 
+            <Input
                 label='Structure field'
                 width={700}
+                //debug
+                fields={testFields}
+                structSysName='WebUsers'
+                //defaultValue='foo.five'
+                onChange={e => console.log(e)}
                 placeholder='Choose the object field'
                 icon='database'
-                filterFields
+                //filterFields={['string', 'link']}
+                //filterLinkFields='TMessageIn'
                 description='That is a new FormField component for the platform'
                 //disabled
                 type='structurefield' />
@@ -67,7 +179,7 @@ export default function InputsPage() {
                         ]
                     }
                 }
-                onChangeSubselect={e => {console.log(e)}}
+                onChangeSubselect={e => { console.log(e) }}
                 type='select'
                 placeholder='Choose the line'
                 icon='database'

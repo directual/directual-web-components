@@ -239,8 +239,8 @@ export default function Input(props) {
             {props.description &&
                 <div className={styles.description}>{props.description}</div>}
             {props.debug && <div>
-                <div className="dd-debug"> value: {JSON.stringify(value)}</div>
-                <div className="dd-debug"> defVal: {JSON.stringify(defVal)}</div>
+                <div className="dd-debug">value: {JSON.stringify(value)}</div>
+                {/* <div className="dd-debug"> defVal: {JSON.stringify(defVal)}</div> */}
             </div>}
 
             {props.type != 'email' &&
@@ -250,7 +250,7 @@ export default function Input(props) {
                 props.type != 'icon' &&
                 props.type != 'textarea' &&
                 props.type != 'password' &&
-                props.type != 'structurefield'&&
+                props.type != 'structurefield' &&
                 props.type != 'radio' &&
                 props.type != 'select' &&
                 props.type != 'multiselect' &&
@@ -318,7 +318,7 @@ export default function Input(props) {
                         }}
                         onChange={e => { handleChange(e.target.value); }}
                         value={value}
-                        onBlur={props.searchOnEnter ? checkSearchValue: undefined}
+                        onBlur={props.searchOnEnter ? checkSearchValue : undefined}
                         placeholder={`${props.placeholder ? props.placeholder : ''}`}
                     />
                     {value && !props.disabled &&
@@ -478,10 +478,13 @@ export default function Input(props) {
                 />
             }
             {props.type == 'structurefield' &&
-                <StructureField 
+                <StructureField
                     defaultValue={defVal}
                     disabled={props.disabled}
+                    structSysName={props.structSysName}
+                    fields={props.fields}
                     filterFields={props.filterFields}
+                    filterLinkFields={props.filterLinkFields}
                     filterPlaceholder={props.filterPlaceholder || 'Type to filter fields'}
                     icon={props.icon}
                     placeholder={props.placeholder || 'Choose object field'}
@@ -534,8 +537,8 @@ export default function Input(props) {
                                 onChange={val => {
                                     const saveValue = { ...value }
                                     if (val) { saveValue.customOption = val }
-                                        else { delete saveValue.customOption }
-                                        submit(saveValue)
+                                    else { delete saveValue.customOption }
+                                    submit(saveValue)
                                 }}
                                 customOptionPlaceholder={props.customOptionPlaceholder}
                             />
