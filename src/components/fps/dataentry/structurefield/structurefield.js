@@ -138,13 +138,42 @@ function ListFields(props) {
     }
 
     useEffect(() => {
-        scrollListRight()
-    }, [props.value])
+        scrollListRight();
+        positionList();
+    }, [props.value, props.filter])
+
+
+    const [listPosition, setListPosition] = useState('bottom')
+    const [listHeight, setListHeight] = useState(350)
+
+    const positionList = () => {
+        let pos = 'bottom'
+        let maxListHeight = listPosition;
+        let freeSpace;
+        if (listHolder.current) {
+            let rect = listHolder.current.getBoundingClientRect()
+            freeSpace = window.innerHeight - listHolder.current.getBoundingClientRect().top - 30
+            console.log(freeSpace)
+            if (freeSpace > 500) {maxListHeight = 400} else {maxListHeight = freeSpace}
+            if (freeSpace < 100) {maxListHeight = 350; pos = 'top' }
+        }
+        if (props.bottomSelect) {pos = 'top'}
+        setListPosition(pos)
+        setListHeight(maxListHeight)
+    }
 
 
     return (
         <div ref={listHolder}
-            className={styles.list}>
+            className={styles.list}
+                style={
+                    {
+                        maxHeight: listHeight,
+                        top: listPosition == 'bottom' ? '100%' : 'auto',
+                        bottom: listPosition == 'top' ? '100%' : 'auto'
+                    }
+                }
+            >
             <StructListFields
                 odd={false}
                 fields={props.fields}

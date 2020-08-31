@@ -120,10 +120,26 @@ export default function InputsPage() {
             <h1>Data entry</h1>
 
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Special platform selects</h2>
+
+            <CodeSnippet code=
+                {`<Input
+    label='Structure field'
+    width={700}
+    fields={testFields}
+    structSysName='WebUsers'
+    //defaultValue='foo.bar'
+    onChange={e => console.log(e)}
+    placeholder='Choose the object field'
+    icon='database'
+    //filterFields={['string', 'link']}
+    //filterLinkFields='TMessageIn'
+    description='That is a new FormField component for the platform'
+    //disabled
+    type='structurefield' />`} />
+
             <Input
                 label='Structure field'
                 width={700}
-                //debug
                 fields={testFields}
                 structSysName='WebUsers'
                 //defaultValue='foo.five'
