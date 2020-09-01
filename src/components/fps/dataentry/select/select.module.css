@@ -1,4 +1,5 @@
 .select_wrapper {
+  line-height: normal !important;
   position: relative;
 }
 .select_wrapper:hover .arrow {

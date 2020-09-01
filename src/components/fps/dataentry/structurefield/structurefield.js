@@ -99,7 +99,7 @@ export default function StructureField(props) {
                     }
                 </div>
                 {/* clear */}
-                {!props.disabled && value && focus && <div onClick={e => {e.stopPropagation(); setValue(null) }} className={`${styles.clearValue} icon icon-ban ${(props.filterFields || props.filterLinkFields) && styles.moved}`}>clear</div>}
+                {!props.disabled && value && focus && <div onClick={e => {e.stopPropagation(); setValue(null); props.onChoose(null,false) }} className={`${styles.clearValue} icon icon-ban ${(props.filterFields || props.filterLinkFields) && styles.moved}`}>clear</div>}
 
 
                 {/* filter */}
@@ -153,7 +153,6 @@ function ListFields(props) {
         if (listHolder.current) {
             let rect = listHolder.current.getBoundingClientRect()
             freeSpace = window.innerHeight - listHolder.current.getBoundingClientRect().top - 30
-            console.log(freeSpace)
             if (freeSpace > 500) {maxListHeight = 400} else {maxListHeight = freeSpace}
             if (freeSpace < 100) {maxListHeight = 350; pos = 'top' }
         }
@@ -268,7 +267,7 @@ function StructListFields(props) {
                                 return (
                                     <li className={`${styles.option} ${currentField == field.sysName && styles.selected}`}
                                         onClick={() => {
-                                            props.onChoose(field.sysName, (field.dataType != 'link' || props.filterLinkFields))
+                                            props.onChoose(field.sysName, (field.dataType != 'link' || (props.filterLinkFields && true)))
                                         }}
                                     >
                                         <div className={styles.objectName}>
