@@ -146,7 +146,7 @@ export default function InputsPage() {
                 onChange={e => console.log(e)}
                 placeholder='Choose the object field'
                 icon='database'
-                //filterFields={['string', 'link']}
+                filterFields={['string', 'link', 'decimal']}
                 //filterLinkFields='TMessageIn'
                 description='That is a new FormField component for the platform'
                 //disabled

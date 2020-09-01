@@ -99,7 +99,7 @@ export default function StructureField(props) {
                     }
                 </div>
                 {/* clear */}
-                {!props.disabled && value && focus && <div onClick={e => {e.stopPropagation(); setValue(null); props.onChoose(null,false) }} className={`${styles.clearValue} icon icon-ban ${(props.filterFields || props.filterLinkFields) && styles.moved}`}>clear</div>}
+                {!props.disabled && value && focus && <div onClick={e => { e.stopPropagation(); setValue(null); props.onChange(null); setFocus(false) }} className={`${styles.clearValue} icon icon-ban ${(props.filterFields || props.filterLinkFields) && styles.moved}`}>Clear</div>}
 
 
                 {/* filter */}
@@ -153,10 +153,10 @@ function ListFields(props) {
         if (listHolder.current) {
             let rect = listHolder.current.getBoundingClientRect()
             freeSpace = window.innerHeight - listHolder.current.getBoundingClientRect().top - 30
-            if (freeSpace > 500) {maxListHeight = 400} else {maxListHeight = freeSpace}
-            if (freeSpace < 100) {maxListHeight = 350; pos = 'top' }
+            if (freeSpace > 500) { maxListHeight = 400 } else { maxListHeight = freeSpace }
+            if (freeSpace < 100) { maxListHeight = 350; pos = 'top' }
         }
-        if (props.bottomSelect) {pos = 'top'}
+        if (props.bottomSelect) { pos = 'top' }
         setListPosition(pos)
         setListHeight(maxListHeight)
     }
@@ -165,14 +165,14 @@ function ListFields(props) {
     return (
         <div ref={listHolder}
             className={styles.list}
-                style={
-                    {
-                        maxHeight: listHeight,
-                        top: listPosition == 'bottom' ? '100%' : 'auto',
-                        bottom: listPosition == 'top' ? '100%' : 'auto'
-                    }
+            style={
+                {
+                    maxHeight: listHeight,
+                    top: listPosition == 'bottom' ? '100%' : 'auto',
+                    bottom: listPosition == 'top' ? '100%' : 'auto'
                 }
-            >
+            }
+        >
             <StructListFields
                 odd={false}
                 fields={props.fields}
@@ -235,14 +235,20 @@ function StructListFields(props) {
     }
 
     useEffect(() => {
-        if (fields && props.filter && isLast()) {
+        if (fields && (props.filter || props.filterFields) && isLast()) {
             const SaveFiltFields = fields.filter(el => {
-                return String(el.sysName).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())) ||
+                return (String(el.sysName).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())) ||
                     String(el.name).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())) ||
-                    String(el.dataType).toLowerCase().match(new RegExp(String(props.filter).toLowerCase()))
+                    String(el.dataType).toLowerCase().match(new RegExp(String(props.filter).toLowerCase()))) 
+                    && (!props.filterFields || props.filterFields.indexOf(el.dataType) != -1)
             })
             setFilteredFields(SaveFiltFields)
-        } else { setFilteredFields(fields) }
+        } else { 
+            const SaveFiltFields2 = fields.filter(el => {
+                return (!props.filterFields || props.filterFields.indexOf(el.dataType) != -1)
+            })
+            setFilteredFields(SaveFiltFields2)
+        }
     }, [props.filter, props.value])
 
     const onChoose = (e, close) => {
@@ -262,29 +268,28 @@ function StructListFields(props) {
                         if (currentField == field.sysName) {
                             scrollToSelected(i)
                         }
-                        if (!props.filterFields || props.filterFields.indexOf(field.dataType) != -1) {
-                            if ((props.filterLinkFields && field.link == props.filterLinkFields) || !props.filterLinkFields) {
-                                return (
-                                    <li className={`${styles.option} ${currentField == field.sysName && styles.selected}`}
-                                        onClick={() => {
-                                            props.onChoose(field.sysName, (field.dataType != 'link' || (props.filterLinkFields && true)))
-                                        }}
-                                    >
-                                        <div className={styles.objectName}>
-                                            {`${field.name ? field.name : ''}`}
-                                            {!field.name && <span className={styles.sysName}>{`{{`}{field.sysName}{`}}`}</span>}
-                                        </div>
-                                        <div className={`${styles.objectDetails} ${field.name && styles.small}`}>
-                                            {field.name && <span className={styles.sysName}>{`{{`}{field.sysName}{`}} `}</span>}
-                                            <span className={styles.dataType}>{`${field.dataType}${field.dataType == 'link' && field.link ? ` → ${field.link}` : ''}`}</span></div>
-                                        {field.dataType == 'link' && !props.filterLinkFields &&
-                                            <div className={`${styles.goToLink} icon icon-forward`}></div>}
-                                    </li>
-                                )
-                            }
+                        if ((props.filterLinkFields && field.link == props.filterLinkFields) || !props.filterLinkFields) {
+                            return (
+                                <li className={`${styles.option} ${currentField == field.sysName && styles.selected}`}
+                                    onClick={() => {
+                                        props.onChoose(field.sysName, (field.dataType != 'link' || (props.filterLinkFields && true)))
+                                    }}
+                                >
+                                    <div className={styles.objectName}>
+                                        {`${field.name ? field.name : ''}`}
+                                        {!field.name && <span className={styles.sysName}>{`{{`}{field.sysName}{`}}`}</span>}
+                                    </div>
+                                    <div className={`${styles.objectDetails} ${field.name && styles.small}`}>
+                                        {field.name && <span className={styles.sysName}>{`{{`}{field.sysName}{`}} `}</span>}
+                                        <span className={styles.dataType}>{`${field.dataType}${field.dataType == 'link' && field.link ? ` → ${field.link}` : ''}`}</span></div>
+                                    {field.dataType == 'link' && !props.filterLinkFields &&
+                                        <div className={`${styles.goToLink} icon icon-forward`}></div>}
+                                </li>
+                            )
                         }
+
                     })}
-                    {(!filteredFields || filteredFields.length == 0) && <SomethingWentWrong icon='ban' message='No fields' />}
+                    {(!filteredFields || filteredFields.length == 0) && <SomethingWentWrong icon='ban' message={`No fields${(props.filterFields && !props.filter) ? ` of types: ${props.filterFields.join(', ')}`:``}`} />}
                     {props.filterLinkFields && (!fields.filter(i => i.link == props.filterLinkFields) || fields.filter(i => i.link == props.filterLinkFields).length == 0) &&
                         <SomethingWentWrong icon='ban' message={`No links to ${props.filterLinkFields}`} />
                     }

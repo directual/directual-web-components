@@ -1,6 +1,7 @@
 .select_wrapper {
   line-height: normal !important;
   position: relative;
+  flex-shrink: 0;
 }
 .select_wrapper:hover .arrow {
   opacity: 0.8;
@@ -29,6 +30,9 @@
   right: 48px;
   cursor: pointer;
   font-size: var(--text-small-size);
+}
+.select_wrapper .clearValue:before {
+  margin-right: -3px;
 }
 .select_wrapper .clearValue.moved {
   right: 72px;

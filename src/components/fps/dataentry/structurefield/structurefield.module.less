@@ -1,6 +1,7 @@
 .select_wrapper {
     line-height: normal !important;
     position: relative;
+    flex-shrink: 0;
     &:hover .arrow{
         opacity: .8;
     }
@@ -26,6 +27,9 @@
         transition: .5s;
         top:12px;
         right:48px;
+        &:before {
+            margin-right: -3px;
+        }
         cursor: pointer;
         font-size: var(--text-small-size);
         &.moved {
