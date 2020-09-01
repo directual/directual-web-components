@@ -249,12 +249,14 @@ function StructListFields(props) {
             })
             setFilteredFields(SaveFiltFields2)
         }
-    }, [props.filter, props.value])
+    }, [props.filter, props.value, fields])
 
     const onChoose = (e, close) => {
         const newValue = props.value.split('.')[0] + '.' + e
         props.onChoose(newValue, close)
     }
+
+    //console.log(fields)
 
     return (
         <React.Fragment>
