@@ -16,9 +16,9 @@ export default function Radio(props) {
     if (customOptionType == 'datetime') {customOptionType = 'date'}
     
 
-    useEffect(() => {
-        props.onChange && props.onChange('custom: ' + customOptionVal)
-    }, [customOptionVal])
+    // useEffect(() => {
+    //     props.onChange && props.onChange('custom: ' + customOptionVal)
+    // }, [customOptionVal])
 
     const submitCustomOption = () => {
         customOption && props.onChange && props.onChange('custom: ' + customOptionVal)
@@ -78,6 +78,7 @@ export default function Radio(props) {
                             if (!props.disabled) {
                                 setCustomOption(true);
                                 setSelectedOption(customOptionVal);
+                                submitCustomOption()
                             }
                         }}
                     >
