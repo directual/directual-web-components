@@ -1,6 +1,7 @@
 .tabsPane {
   display: flex;
   flex-direction: column;
+  font-size: var(--text-font-size);
 }
 .tabsPane.fixedScroll {
   display: flex;
@@ -14,9 +15,11 @@
   display: flex;
   flex-shrink: 0;
   margin-bottom: 18px;
+  font-size: var(--text-font-size);
   overflow: auto;
 }
 .tabWrapper {
+  font-size: var(--text-font-size);
   display: none;
   border-top: solid 1px transparent;
   transition: 0.5s;
@@ -28,6 +31,7 @@
   border-top: solid 1px var(--field-border-color);
 }
 .tabMenuItem {
+  font-size: var(--text-font-size);
   padding: 18px 0 16px 0;
   margin-right: 24px;
   border-bottom: solid 2px transparent;

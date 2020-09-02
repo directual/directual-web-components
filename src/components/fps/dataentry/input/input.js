@@ -376,7 +376,7 @@ export default function Input(props) {
                     <textarea
                         autoFocus={props.autoFocus}
                         disabled={props.disabled}
-                        className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
+                        className={`${styles.field} ${props.disabled && styles.disabled} ${props.code && styles.code} ${warningMsg.type && styles[warningMsg.type]}`}
                         type="text"
                         rows={props.rows || 3}
                         onChange={e => handleChange(e.target.value)}

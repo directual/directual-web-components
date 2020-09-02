@@ -155,14 +155,14 @@ export default function InputsPage() {
                 width={700}
                 fields={testFields}
                 structSysName='WebUsers'
-                //defaultValue='foo.five'
+                defaultValue='foo.five'
                 onChange={e => console.log(e)}
                 placeholder='Choose the object field'
                 icon='database'
                 //filterFields={['string', 'link', 'decimal']}
                 //filterLinkFields='TMessageIn'
                 description='That is a new FormField component for the platform'
-                //disabled
+                disabled
                 type='structurefield' />
 
             <CodeSnippet code=
@@ -628,7 +628,25 @@ export default function InputsPage() {
                 placeholder='Placeholder for textarea'
                 type='textarea'
                 rows={4}
-                required
+                width={400}
+            />
+
+<CodeSnippet code=
+                {`<Input
+    label='Textarea (code)'
+    placeholder='Placeholder for textarea'
+    type='textarea'
+    rows={4}
+    code
+    width={400}
+    />`} />
+            <Input
+                label='Textarea (code)'
+                placeholder='Placeholder for textarea'
+                type='textarea'
+                code
+                defaultValue="import React, {useEffect, useState} from 'React'"
+                rows={4}
                 width={400}
             />
 

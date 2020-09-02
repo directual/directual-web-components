@@ -66,7 +66,7 @@ export default function StructureField(props) {
                     ${props.warning == 'error' ? styles.error : ''} 
                     ${focus && styles.focus} 
                     ${props.disabled && styles.disabled}`}
-                onClick={() => { !focus && setFocus(true) }}
+                onClick={() => { !focus && !props.disabled && setFocus(true) }}
                 ref={selectRef} >
 
                 {props.icon && !(value && value.icon && props.iconOptions) &&

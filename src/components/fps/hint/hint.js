@@ -10,7 +10,7 @@ export default function Hint(props) {
             style={
                 {
                     marginTop: (props.margin && props.margin.top) || 24,
-                    marginBottom: (props.margin && props.margin.bottom) || 24,
+                    marginBottom: (props.margin && props.margin.bottom) || 24
                 }
             }
             className={`${styles.hint} ${props.ok && styles.ok} ${props.error && styles.error}`}>
