@@ -847,7 +847,7 @@ export default function InputsPage() {
                 label='Radio station with a custom option'
                 type='radio'
                 customOption
-                debug
+                //debug
                 width={400}
                 customOptionType='textarea'
                 customOptionLabel='Something else...'
