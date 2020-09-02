@@ -20,9 +20,9 @@ export default function Radio(props) {
         props.onChange && props.onChange('custom: ' + customOptionVal)
     }, [customOptionVal])
 
-    useEffect(() => {
+    const submitCustomOption = () => {
         customOption && props.onChange && props.onChange('custom: ' + customOptionVal)
-    }, [customOption])
+    }
 
     return (
         <div className={`${styles.radio} ${props.disabled && styles.disabled}`}>
@@ -96,6 +96,7 @@ export default function Radio(props) {
                             onChange={val => {
                                 setCustomOptionVal(val)
                                 setSelectedOption('custom: ' + val);
+                                submitCustomOption()
                             }}
                             type={customOptionType}
                             value={customOptionVal}
