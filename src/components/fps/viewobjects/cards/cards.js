@@ -31,7 +31,7 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading }) {
         const randomField = tableHeaders.filter(field => (field.dataType != 'link' && field.dataType != 'arrayLink'))[0].sysName
         const id = tableFieldScheme.filter(field => randomField == field[0])[0][1] || null
         const name = id && tableStructures[id] && tableStructures[id].name
-        const viewName = id && tableStructures[id] && Object.values(JSON.parse(tableStructures[id].jsonViewIdSettings)).map(i => i = i.sysName)
+        const viewName = id && tableStructures[id] && (tableStructures[id].jsonViewIdSettings ? (Object.values(JSON.parse(tableStructures[id].jsonViewIdSettings || [])).map(i => i = i.sysName)) : [])
         return (
             {
                 id,
@@ -53,7 +53,7 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading }) {
         <React.Fragment>
             <div className={styles.cardsWrapper}>
                 {tableData.map((row, i) => {
-                    const cardHeader = getInitialStructureParams().viewName && getInitialStructureParams().viewName.map(i => row[i]).join(' ')
+                    const cardHeader = getInitialStructureParams().viewName && getInitialStructureParams().viewName && (getInitialStructureParams().viewName.length > 1 ? getInitialStructureParams().viewName.map(i => row[i]).join(' '): 'No visible name')
 
                     return (
                         <div key={i} className={`${styles.card} ${styles[tableParams.cardListLayout]}`}>

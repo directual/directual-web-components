@@ -53,7 +53,7 @@ export function ObjectCard(props) {
         if (structure.id && tableStructures[structure.id]) {
             structure.sysName = tableStructures[structure.id].sysName
             structure.name = tableStructures[structure.id].name
-            structure.visibleName = Object.values(JSON.parse(tableStructures[structure.id].jsonViewIdSettings)).map(i => i = i.sysName)
+            structure.visibleName = tableStructures[structure.id] && (tableStructures[structure.id].jsonViewIdSettings ? Object.values(JSON.parse(tableStructures[structure.id].jsonViewIdSettings)).map(i => i = i.sysName): [])
             structure.fieldStructure = JSON.parse(tableStructures[structure.id].jsonObject)
         }
         return structure
