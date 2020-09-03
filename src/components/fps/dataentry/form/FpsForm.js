@@ -138,47 +138,49 @@ export default function FpsForm({ data, onEvent, id }) {
       decimal: 'decimal',
       json: 'json'
     }
-    if (
-      matching[field.dataType] == 'select' &&
-      !params.fields[field.sysName].quickSearch
-    ) {
-      return 'string'
-    }
-    if (
-      matching[field.dataType] == 'multiselect' &&
-      !params.fields[field.sysName].quickSearch
-    ) {
-      return 'string'
-    }
-    if (
-      matching[field.dataType] == 'string' &&
-      params.fields[field.sysName].isTextarea
-    ) {
-      return 'textarea'
-    }
-    if (
-      matching[field.dataType] == 'json' &&
-      params.fields[field.sysName].jsonDisplay == 'radioStation'
-    ) {
-      return 'radio'
-    }
-    if (
-      matching[field.dataType] == 'json' &&
-      params.fields[field.sysName].jsonDisplay == 'checkboxGroup'
-    ) {
-      return 'checkboxGroup'
-    }
-    if (
-      field.dataType == 'json' &&
-      params.fields[field.sysName].jsonDisplay == 'range'
-    ) {
-      return 'range'
-    }
-    if (
-      field.dataType == 'json' &&
-      params.fields[field.sysName].jsonDisplay == 'slider'
-    ) {
-      return 'range'
+    if (field) {
+      if (
+        matching[field.dataType] == 'select' &&
+        !params.fields[field.sysName].quickSearch
+      ) {
+        return 'string'
+      }
+      if (
+        matching[field.dataType] == 'multiselect' &&
+        !params.fields[field.sysName].quickSearch
+      ) {
+        return 'string'
+      }
+      if (
+        matching[field.dataType] == 'string' &&
+        params.fields[field.sysName].isTextarea
+      ) {
+        return 'textarea'
+      }
+      if (
+        matching[field.dataType] == 'json' &&
+        params.fields[field.sysName].jsonDisplay == 'radioStation'
+      ) {
+        return 'radio'
+      }
+      if (
+        matching[field.dataType] == 'json' &&
+        params.fields[field.sysName].jsonDisplay == 'checkboxGroup'
+      ) {
+        return 'checkboxGroup'
+      }
+      if (
+        field.dataType == 'json' &&
+        params.fields[field.sysName].jsonDisplay == 'range'
+      ) {
+        return 'range'
+      }
+      if (
+        field.dataType == 'json' &&
+        params.fields[field.sysName].jsonDisplay == 'slider'
+      ) {
+        return 'range'
+      }
     }
     return matching[field.dataType]
   }

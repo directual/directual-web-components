@@ -10,6 +10,8 @@ export default function StructureField(props) {
     const inputEl = useRef(null);
     const [filter, setFilter] = useState('')
 
+    useEffect(()=>{setValue(props.defaultValue)}, [props.defaultValue])
+
     useOutsideAlerter(selectRef);
     function useOutsideAlerter(ref) {
         useEffect(() => {
@@ -66,6 +68,12 @@ export default function StructureField(props) {
                     ${props.warning == 'error' ? styles.error : ''} 
                     ${focus && styles.focus} 
                     ${props.disabled && styles.disabled}`}
+                style={
+                    {
+                        maxHeight: props.fixHeight,
+                        minHeight: props.fixHeight
+                    }
+                }
                 onClick={() => { !focus && !props.disabled && setFocus(true) }}
                 ref={selectRef} >
 
@@ -115,6 +123,7 @@ export default function StructureField(props) {
                     structSysName={props.structSysName}
                     filterFields={props.filterFields}
                     filterLinkFields={props.filterLinkFields}
+                    noPropagation={props.noPropagation}
                     value={value}
                     onChoose={(e, close) => { setValue(e); props.onChange(e), close && setFocus(false) }}
                 />
@@ -179,6 +188,7 @@ function ListFields(props) {
                 filter={props.filter}
                 structSysName={props.structSysName}
                 filterLinkFields={props.filterLinkFields}
+                noPropagation={props.noPropagation}
                 filterFields={props.filterFields}
                 value={props.value}
                 onChoose={(e, close) => props.onChoose(e, close)}
@@ -239,11 +249,11 @@ function StructListFields(props) {
             const SaveFiltFields = fields.filter(el => {
                 return (String(el.sysName).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())) ||
                     String(el.name).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())) ||
-                    String(el.dataType).toLowerCase().match(new RegExp(String(props.filter).toLowerCase()))) 
+                    String(el.dataType).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())))
                     && (!props.filterFields || props.filterFields.indexOf(el.dataType) != -1)
             })
             setFilteredFields(SaveFiltFields)
-        } else { 
+        } else {
             const SaveFiltFields2 = fields.filter(el => {
                 return (!props.filterFields || props.filterFields.indexOf(el.dataType) != -1)
             })
@@ -274,7 +284,7 @@ function StructListFields(props) {
                             return (
                                 <li className={`${styles.option} ${currentField == field.sysName && styles.selected}`}
                                     onClick={() => {
-                                        props.onChoose(field.sysName, (field.dataType != 'link' || (props.filterLinkFields && true)))
+                                        props.onChoose(field.sysName, (field.dataType != 'link' || (props.filterLinkFields && true) || (props.noPropagation && true)))
                                     }}
                                 >
                                     <div className={styles.objectName}>
@@ -284,20 +294,20 @@ function StructListFields(props) {
                                     <div className={`${styles.objectDetails} ${field.name && styles.small}`}>
                                         {field.name && <span className={styles.sysName}>{`{{`}{field.sysName}{`}} `}</span>}
                                         <span className={styles.dataType}>{`${field.dataType}${field.dataType == 'link' && field.link ? ` → ${field.link}` : ''}`}</span></div>
-                                    {field.dataType == 'link' && !props.filterLinkFields &&
+                                    {field.dataType == 'link' && !props.filterLinkFields && !props.noPropagation &&
                                         <div className={`${styles.goToLink} icon icon-forward`}></div>}
                                 </li>
                             )
                         }
 
                     })}
-                    {(!filteredFields || filteredFields.length == 0) && <SomethingWentWrong icon='ban' message={`No fields${(props.filterFields && !props.filter) ? ` of types: ${props.filterFields.join(', ')}`:``}`} />}
+                    {(!filteredFields || filteredFields.length == 0) && <SomethingWentWrong icon='ban' message={`No fields${(props.filterFields && !props.filter) ? ` of types: ${props.filterFields.join(', ')}` : ``}`} />}
                     {props.filterLinkFields && (!fields.filter(i => i.link == props.filterLinkFields) || fields.filter(i => i.link == props.filterLinkFields).length == 0) &&
                         <SomethingWentWrong icon='ban' message={`No links to ${props.filterLinkFields}`} />
                     }
                 </ul>
             </div>
-            {props.value && !props.filterLinkFields && (shiftPath() || getFieldDetails(currentField, props.structSysName).dataType == 'link') &&
+            {props.value && !props.filterLinkFields && !props.noPropagation && (shiftPath() || getFieldDetails(currentField, props.structSysName).dataType == 'link') &&
                 <StructListFields
                     fields={props.fields}
                     filter={props.filter}

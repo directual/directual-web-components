@@ -9,6 +9,8 @@ import 'directual-web-components/dist/index.css'
 export default function InputsPage() {
     const [value, setValue] = useState()
 
+    const [testDefValue, setTestDefValue] = useState('foo.five')
+
     const testFields = [
         {
             structName: 'WebUsers',
@@ -149,20 +151,22 @@ export default function InputsPage() {
     description='That is a new FormField component for the platform'
     //disabled
     type='structurefield' />`} />
-
             <Input
                 label='Structure field'
                 width={700}
+                //fixHeight={100}
+                //debug
                 fields={testFields}
                 structSysName='WebUsers'
-                defaultValue='foo.five'
+                //defaultValue={testDefValue}
                 onChange={e => console.log(e)}
                 placeholder='Choose the object field'
                 icon='database'
-                //filterFields={['string', 'link', 'decimal']}
+                //noPropagation
+                filterFields={['string', 'link']}
                 //filterLinkFields='TMessageIn'
                 description='That is a new FormField component for the platform'
-                disabled
+                //disabled
                 type='structurefield' />
 
             <CodeSnippet code=
@@ -201,6 +205,7 @@ export default function InputsPage() {
                     {
                         all: false,
                         keys: [2, 4],
+                        placeholder: 'parse array',
                         defaultValue: 'sub1',
                         options: [
                             { key: 'sub1', value: 'to objects' },

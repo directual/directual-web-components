@@ -240,7 +240,7 @@ export default function Input(props) {
                 <div className={styles.description}>{props.description}</div>}
             {props.debug && <div>
                 <div className="dd-debug">value: {JSON.stringify(value)}</div>
-                {/* <div className="dd-debug"> defVal: {JSON.stringify(defVal)}</div> */}
+                <div className="dd-debug"> defVal: {JSON.stringify(defVal)}</div>
             </div>}
 
             {props.type != 'email' &&
@@ -480,7 +480,9 @@ export default function Input(props) {
             {props.type == 'structurefield' &&
                 <StructureField
                     defaultValue={defVal}
+                    fixHeight={props.fixHeight}
                     disabled={props.disabled}
+                    noPropagation={props.noPropagation}
                     structSysName={props.structSysName}
                     fields={props.fields}
                     filterFields={props.filterFields}
