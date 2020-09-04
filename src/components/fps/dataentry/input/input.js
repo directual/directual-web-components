@@ -551,6 +551,9 @@ export default function Input(props) {
                 </React.Fragment>
             }
 
+            {props.tip &&
+                <div className={styles.status}>{props.tip}</div>}
+
             {warningMsg.msg &&
                 <div className={`${styles.status} ${styles[warningMsg.type]}`}>{warningMsg.msg}</div>}
 

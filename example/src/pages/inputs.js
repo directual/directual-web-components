@@ -158,6 +158,7 @@ export default function InputsPage() {
                 //debug
                 fields={testFields}
                 onChooseLinkStructSysName={e => console.log(e)}
+                //tip='подсказко'
                 structSysName='WebUsers'
                 //defaultValue={testDefValue}
                 onChange={e => console.log(e)}
