@@ -80,7 +80,7 @@ export default function StructureField(props) {
                 {props.icon && !(value && value.icon && props.iconOptions) &&
                     <div className={`${styles.icon} icon icon-${props.icon}`}></div>}
 
-                <div className={`${styles.value_wrapper}`}>
+                <div className={`${styles.value_wrapper} ${(props.filterFields || props.filterLinkFields) && styles.narrow}`}>
                     {!value && !focus &&
                         <div className={`${styles.placeholder}`}>
                             {props.placeholder ? props.placeholder : 'Select the value'}</div>}
@@ -125,7 +125,9 @@ export default function StructureField(props) {
                     filterLinkFields={props.filterLinkFields}
                     noPropagation={props.noPropagation}
                     value={value}
-                    onChoose={(e, close) => { setValue(e); props.onChange(e), close && setFocus(false) }}
+                    onChoose={(e, close, struct) => { setValue(e); props.onChange(e); close && setFocus(false); 
+                        props.onChooseLinkStructSysName && struct && props.onChooseLinkStructSysName(struct) 
+                    }}
                 />
             </div>
 
@@ -191,7 +193,7 @@ function ListFields(props) {
                 noPropagation={props.noPropagation}
                 filterFields={props.filterFields}
                 value={props.value}
-                onChoose={(e, close) => props.onChoose(e, close)}
+                onChoose={(e, close, struct) => props.onChoose(e, close, struct)}
             />
         </div>
     )
@@ -261,9 +263,9 @@ function StructListFields(props) {
         }
     }, [props.filter, props.value, fields])
 
-    const onChoose = (e, close) => {
+    const onChoose = (e, close, struct) => {
         const newValue = props.value.split('.')[0] + '.' + e
-        props.onChoose(newValue, close)
+        props.onChoose(newValue, close, struct)
     }
 
     //console.log(fields)
@@ -282,9 +284,9 @@ function StructListFields(props) {
                         }
                         if ((props.filterLinkFields && field.link == props.filterLinkFields) || !props.filterLinkFields) {
                             return (
-                                <li className={`${styles.option} ${currentField == field.sysName && styles.selected}`}
+                                <li key={field.sysName} className={`${styles.option} ${currentField == field.sysName && styles.selected}`}
                                     onClick={() => {
-                                        props.onChoose(field.sysName, (field.dataType != 'link' || (props.filterLinkFields && true) || (props.noPropagation && true)))
+                                        props.onChoose(field.sysName, (field.dataType != 'link' || (props.filterLinkFields && true) || (props.noPropagation && true)), field.link || '')
                                     }}
                                 >
                                     <div className={styles.objectName}>
@@ -293,7 +295,7 @@ function StructListFields(props) {
                                     </div>
                                     <div className={`${styles.objectDetails} ${field.name && styles.small}`}>
                                         {field.name && <span className={styles.sysName}>{`{{`}{field.sysName}{`}} `}</span>}
-                                        <span className={styles.dataType}>{`${field.dataType}${field.dataType == 'link' && field.link ? ` → ${field.link}` : ''}`}</span></div>
+                                        <span className={styles.dataType}>{`${field.dataType}${field.link ? ` → ${field.link}` : ''}`}</span></div>
                                     {field.dataType == 'link' && !props.filterLinkFields && !props.noPropagation &&
                                         <div className={`${styles.goToLink} icon icon-forward`}></div>}
                                 </li>
@@ -311,7 +313,7 @@ function StructListFields(props) {
                 <StructListFields
                     fields={props.fields}
                     filter={props.filter}
-                    onChoose={(e, close) => onChoose(e, close)}
+                    onChoose={(e, close, struct) => onChoose(e, close, struct)}
                     odd={!props.odd}
                     structSysName={getFieldDetails(currentField, props.structSysName).link}
                     filterFields={props.filterFields}

@@ -23,6 +23,8 @@
         display: flex;
         align-items: center;
         opacity: .3;
+        background:#fff;
+        border-radius: 10px;
         cursor: pointer;
         transition: .5s;
         top:9px;
@@ -117,7 +119,7 @@
                 padding: 4px 4px 4px 4px;
                 flex-shrink: 0;
                 min-width: 200px;
-                max-height: 100%;
+                max-width: calc(100% - 8px);
                 overflow: hidden;
                 display: flex;
                 flex-direction: column;
@@ -239,6 +241,14 @@
         }
         .value_wrapper {
             position: relative;
+            overflow: hidden;
+            min-height: 20px;
+            //display: flex;
+            //align-items: center;
+            flex-grow: 2;
+            &.narrow {
+                margin-right: 30px;
+            }
             .placeholder {
                 opacity:.5;
                 color: var(--font-color);
@@ -246,6 +256,7 @@
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                margin-top: 3px;
             }
             .currentField {
                 display: flex;
@@ -256,6 +267,10 @@
                 font-size: var(--text-small-size);
                 &.transparent {
                     opacity: 0;
+                }
+                .objectName, .objectDetails {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
                 //font-size: var(--text-small-size);
                 .objectDetails {
