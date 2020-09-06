@@ -6,7 +6,7 @@ import { Paging } from '../paging/paging'
 
 export function Cards({ data, onEvent, id, onExpand, loading, setLoading }) {
     const tableHeaders = data.headers || []
-    const tableData = data.data || []
+    const tableData = enrichTableDataWithWriteFields(data) || []
     const tableParams = data.params || {
         cardHeaderComment: '',
         cardBodyText: ''
@@ -27,11 +27,28 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading }) {
     const tableFieldScheme = data.fieldScheme || []
     const tableStructures = data.structures || {}
 
+    function enrichTableDataWithWriteFields(data) {
+        console.log('enrich')
+        console.log(data.writeFields)
+        console.log(data.data)
+        let saveData = [...data.data]
+        saveData.forEach(field => {
+            data.writeFields && data.writeFields.forEach(writeField => {
+                if (!field[writeField]) { field[writeField] = '' }
+            })
+        })
+        console.log(saveData)
+        console.log('enrich finish')
+
+        return saveData
+    }
+
     const getInitialStructureParams = () => {
         const randomField = tableHeaders.filter(field => (field.dataType != 'link' && field.dataType != 'arrayLink'))[0].sysName
         const id = tableFieldScheme.filter(field => randomField == field[0])[0][1] || null
         const name = id && tableStructures[id] && tableStructures[id].name
         const viewName = id && tableStructures[id] && (tableStructures[id].jsonViewIdSettings ? (Object.values(JSON.parse(tableStructures[id].jsonViewIdSettings || [])).map(i => i = i.sysName)) : [])
+        //console.log('viewName = ' + viewName)
         return (
             {
                 id,
@@ -53,8 +70,7 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading }) {
         <React.Fragment>
             <div className={styles.cardsWrapper}>
                 {tableData.map((row, i) => {
-                    const cardHeader = getInitialStructureParams().viewName && getInitialStructureParams().viewName && (getInitialStructureParams().viewName.length > 1 ? getInitialStructureParams().viewName.map(i => row[i]).join(' '): 'No visible name')
-
+                    const cardHeader = getInitialStructureParams().viewName && getInitialStructureParams().viewName && (getInitialStructureParams().viewName.length > 0 ? getInitialStructureParams().viewName.map(i => row[i]).join(' ') : 'No visible name')
                     return (
                         <div key={i} className={`${styles.card} ${styles[tableParams.cardListLayout]}`}>
                             <div

@@ -64,8 +64,8 @@ export default function FpsForm({ data, onEvent, id }) {
   // console.log('------------ form data: -------------')
   // console.log(data)
 
-  console.log('------------ form model: -------------')
-  console.log(model)
+  // console.log('------------ form model: -------------')
+  // console.log(model)
   //console.log('rerender')
 
   function sortFields(arr) {

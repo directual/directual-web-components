@@ -15,10 +15,10 @@ export function ObjectCard(props) {
     const [currentObject, setCurrentObject] = useState(props.object)
 
     useEffect(() => {
-        console.log('------object:---------')
-        console.log(currentObject)
-        console.log('------------ form model: -------------')
-        console.log(model)
+        // console.log('------object:---------')
+        // console.log(currentObject)
+        // console.log('------------ form model: -------------')
+        // console.log(model)
     }, [model])
 
     // press 'Esc' for closing a popup:
@@ -139,7 +139,6 @@ export function ObjectCard(props) {
                                 field.dataType != 'id' && <React.Fragment>
                                     {!isEditable(field) ?
                                         <React.Fragment>
-
                                             <span className={styles.label}>
                                                 {field.name || field.sysName}</span>
                                             {!field.value && field.dataType != 'boolean' && <span className={styles.novalue}>—</span>}
