@@ -485,6 +485,7 @@ export default function Input(props) {
                     noPropagation={props.noPropagation}
                     structSysName={props.structSysName}
                     onChooseLinkStructSysName={props.onChooseLinkStructSysName}
+                    onChooseType={props.onChooseType}
                     fields={props.fields}
                     filterFields={props.filterFields}
                     filterLinkFields={props.filterLinkFields}

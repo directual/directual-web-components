@@ -157,6 +157,7 @@ export default function InputsPage() {
                 //fixHeight={100}
                 //debug
                 fields={testFields}
+                onChooseType={e => console.log(e)}
                 onChooseLinkStructSysName={e => console.log(e)}
                 //tip='подсказко'
                 structSysName='WebUsers'

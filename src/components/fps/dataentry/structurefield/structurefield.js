@@ -54,8 +54,8 @@ export default function StructureField(props) {
         }
         let displayValue = {
             sysName: val,
-            name: getFieldDetails(objPath[objPath.length - 1], currentStruct) ? getFieldDetails(objPath[objPath.length - 1], currentStruct).name : 'хз',
-            dataType: getFieldDetails(objPath[objPath.length - 1], currentStruct) ? getFieldDetails(objPath[objPath.length - 1], currentStruct).dataType : 'хз',
+            name: getFieldDetails(objPath[objPath.length - 1], currentStruct) ? getFieldDetails(objPath[objPath.length - 1], currentStruct).name : 'unknown',
+            dataType: getFieldDetails(objPath[objPath.length - 1], currentStruct) ? getFieldDetails(objPath[objPath.length - 1], currentStruct).dataType : 'unknown',
             struct: currentStruct
         }
         return displayValue
@@ -125,8 +125,9 @@ export default function StructureField(props) {
                     filterLinkFields={props.filterLinkFields}
                     noPropagation={props.noPropagation}
                     value={value}
-                    onChoose={(e, close, struct) => { setValue(e); props.onChange(e); close && setFocus(false); 
-                        props.onChooseLinkStructSysName && struct && props.onChooseLinkStructSysName(struct) 
+                    onChoose={(e, close, struct, type) => { setValue(e); props.onChange(e); close && setFocus(false); 
+                        props.onChooseLinkStructSysName && struct && props.onChooseLinkStructSysName(struct);
+                        props.onChooseType && props.onChooseType(type)
                     }}
                 />
             </div>
@@ -193,7 +194,7 @@ function ListFields(props) {
                 noPropagation={props.noPropagation}
                 filterFields={props.filterFields}
                 value={props.value}
-                onChoose={(e, close, struct) => props.onChoose(e, close, struct)}
+                onChoose={(e, close, struct, type) => props.onChoose(e, close, struct, type)}
             />
         </div>
     )
@@ -263,9 +264,9 @@ function StructListFields(props) {
         }
     }, [props.filter, props.value, fields])
 
-    const onChoose = (e, close, struct) => {
+    const onChoose = (e, close, struct, type) => {
         const newValue = props.value.split('.')[0] + '.' + e
-        props.onChoose(newValue, close, struct)
+        props.onChoose(newValue, close, struct, type)
     }
 
     //console.log(fields)
@@ -286,7 +287,7 @@ function StructListFields(props) {
                             return (
                                 <li key={field.sysName} className={`${styles.option} ${currentField == field.sysName && styles.selected}`}
                                     onClick={() => {
-                                        props.onChoose(field.sysName, (field.dataType != 'link' || (props.filterLinkFields && true) || (props.noPropagation && true)), field.link || '')
+                                        props.onChoose(field.sysName, (field.dataType != 'link' || (props.filterLinkFields && true) || (props.noPropagation && true)), field.link || '', field.dataType)
                                     }}
                                 >
                                     <div className={styles.objectName}>
