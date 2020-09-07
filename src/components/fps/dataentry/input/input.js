@@ -493,6 +493,7 @@ export default function Input(props) {
                     icon={props.icon}
                     placeholder={props.placeholder || 'Choose object field'}
                     onChange={e => submit(e)}
+                    onChangeExtended={props.onChangeExtended}
                 />
             }
             {props.type == 'slider' &&

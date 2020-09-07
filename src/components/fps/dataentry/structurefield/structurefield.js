@@ -107,7 +107,7 @@ export default function StructureField(props) {
                     }
                 </div>
                 {/* clear */}
-                {!props.disabled && value && focus && <div onClick={e => { e.stopPropagation(); setValue(null); props.onChange(null); setFocus(false) }} className={`${styles.clearValue} icon icon-ban ${(props.filterFields || props.filterLinkFields) && styles.moved}`}>Clear</div>}
+                {!props.disabled && value && focus && <div onClick={e => { e.stopPropagation(); setValue(null); props.onChange(null); props.onChangeExtended && props.onChangeExtended(null); setFocus(false) }} className={`${styles.clearValue} icon icon-ban ${(props.filterFields || props.filterLinkFields) && styles.moved}`}>Clear</div>}
 
 
                 {/* filter */}
@@ -127,7 +127,8 @@ export default function StructureField(props) {
                     value={value}
                     onChoose={(e, close, struct, type) => { setValue(e); props.onChange(e); close && setFocus(false); 
                         props.onChooseLinkStructSysName && struct && props.onChooseLinkStructSysName(struct);
-                        props.onChooseType && props.onChooseType(type)
+                        props.onChooseType && props.onChooseType(type);
+                        props.onChangeExtended && props.onChangeExtended(e,struct,type)
                     }}
                 />
             </div>

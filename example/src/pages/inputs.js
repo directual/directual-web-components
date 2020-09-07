@@ -162,7 +162,8 @@ export default function InputsPage() {
                 //tip='подсказко'
                 structSysName='WebUsers'
                 //defaultValue={testDefValue}
-                onChange={e => console.log(e)}
+                //onChange={value => console.log(value)}
+                onChangeExtended={(value, struct, type) => console.log(value + ', ' + struct + ', ' + type)}
                 placeholder='Choose the object field'
                 icon='database'
                 //noPropagation
