@@ -38,23 +38,56 @@ export default function ButtonsPage() {
                 column 
                 width={300} 
                 border 
-                margin={{ top: 6, bottom: 12 }}>
+                margin={{ top: 6, bottom: 24 }}>
                 <Button accent icon='bellActive'>Accent icon button</Button>
+                <Button socialGoogle>Google button</Button>
+                <Button icon="play">Icon button</Button>
+            </ActionPanel>
+
+            <CodeSnippet code=
+                {`<ActionPanel 
+    title='Align right side panel' 
+    width={500} 
+    alignRight
+    border 
+    margin={{ top: 6, bottom: 24 }}>
+    <Button accent>Accent button</Button>
+    <Button socialGoogle>Google button</Button>
+    <Button icon="play">Icon button</Button>
+</ActionPanel>`} />
+            <ActionPanel 
+                title='Align right side panel' 
+                width={500} 
+                alignRight
+                border 
+                margin={{ top: 6, bottom: 24 }}>
+                <Button accent>Accent button</Button>
                 <Button socialGoogle>Google button</Button>
                 <Button icon="play">Icon button</Button>
             </ActionPanel>
 
 
             <CodeSnippet code=
-                {`<ActionPanel 
-    title='Action panel with title' 
-    margin={{top:6, bottom:12}}>
-        <Button danger icon='delete'>Danger button</Button>
-        <Button disabled>Disabled button</Button>
+                {`<ActionPanel title='Action panel with title' margin={{ top: 6, bottom: 24 }}>
+    <Button link='http://ya.ru' newWindow danger icon='done'>Danger button</Button>
+    <Button disabled>Disabled button</Button>
 </ActionPanel>`} />
-            <ActionPanel title='Action panel with title' margin={{ top: 6, bottom: 12 }}>
-                <Button danger icon='delete'>Danger button</Button>
+            <ActionPanel title='Action panel with title' margin={{ top: 6, bottom: 24 }}>
+                <Button link='http://ya.ru' newWindow danger icon='done'>Danger button</Button>
                 <Button disabled>Disabled button</Button>
+            </ActionPanel>
+
+            <CodeSnippet code=
+                {`<ActionPanel title='Icon only buttons' margin={{ top: 6, bottom: 24 }}>
+    <Button danger icon='delete' />
+    <Button icon='babai' transparent />
+    <Button link='http://ya.ru' newWindow icon='bellActive' transparent inverseColor />
+</ActionPanel>`} />
+
+            <ActionPanel title='Icon only buttons' margin={{ top: 6, bottom: 24 }}>
+                <Button danger icon='delete' />
+                <Button icon='babai' transparent />
+                <Button link='http://ya.ru' newWindow icon='bellActive' transparent inverseColor />
             </ActionPanel>
 
 
@@ -73,6 +106,7 @@ export default function ButtonsPage() {
                         { prop: 'border', type: 'boolean', desc: 'Panel border', eg: 'border = {true}' },
                         { prop: 'width', type: 'number', desc: 'Max-width in pixels', eg: 'width = {300}' },
                         { prop: 'column', type: 'boolean', desc: 'Buttons in column (in raw by default)', eg: 'column = {true}' },
+                        { prop: 'alignRight', type: 'boolean', desc: 'Buttons aligned to the right side', eg: 'alignRight = {true}' },
                     ]
                 }
             } />

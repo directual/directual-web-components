@@ -1,3 +1,10 @@
+a.button {
+  height: 44px;
+  transition: 0s !important;
+}
+a.button:hover:not(.disabled):not(.transparent) {
+  height: 44px;
+}
 .button {
   display: flex;
   height: 48px;
@@ -5,13 +12,14 @@
   align-items: center;
   padding: 1px 18px;
   text-decoration: none;
+  font-size: var(--text-font-size);
   color: var(--font-color);
   border: solid 1px var(--button-border-color);
   border-radius: var(--border-radius);
   background-color: var(--background-color);
   cursor: pointer;
   outline: none;
-  transition: 0;
+  transition: 0s;
   white-space: nowrap;
   font-weight: var(--text-font-weight);
 }
@@ -41,7 +49,7 @@
 }
 .button.accent:hover:not(.disabled) {
   background-color: var(--secondary-accent-color);
-  color: var(--button-accent-color);
+  color: var(--button-accent-color) !important;
   border-color: var(--secondary-accent-color);
 }
 .button.accent:active:not(.disabled) {
@@ -49,9 +57,35 @@
   color: var(--background-color) !important;
   border-color: var(--font-color) !important;
 }
+.button.transparent {
+  padding: 2px 10px;
+  border: none;
+  background: transparent;
+}
+.button.transparent:hover:not(.disabled) {
+  background: transparent;
+}
+.button.transparent:active:not(.disabled) {
+  background: transparent;
+}
+.button.transparent.empty {
+  opacity: 0.6;
+  transition: 0.5s;
+}
+.button.transparent.empty:hover {
+  opacity: 1;
+}
+.button.transparent.empty.icon:before {
+  font-size: 42px;
+  margin-left: -9px;
+  margin-right: -9px;
+}
+.button.inverseColor {
+  color: var(--button-accent-color);
+}
 .button.danger:hover:not(.disabled) {
   background-color: var(--error-color);
-  color: var(--button-accent-color);
+  color: var(--button-accent-color) !important;
   border-color: var(--error-color);
 }
 .button.danger:active:not(.disabled) {
@@ -59,13 +93,14 @@
   color: var(--background-color) !important;
   border-color: var(--font-color) !important;
 }
-.button:hover:not(.disabled) {
+.button:hover:not(.disabled):not(.transparent) {
   height: 48px;
   padding: 0 17px !important;
   border-width: 2px;
   transition: 0;
+  color: var(--font-color);
 }
-.button:active:not(.disabled) {
+.button:active:not(.disabled):not(.transparent) {
   background-color: var(--button-border-color);
   color: var(--background-color);
   border-color: var(--button-border-color);

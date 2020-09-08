@@ -3,8 +3,16 @@
   position: relative;
   flex-wrap: wrap;
 }
-.panel button {
+.panel button,
+.panel a {
   margin: 0 6px 6px 0;
+}
+.panel.alignRight {
+  justify-content: flex-end;
+}
+.panel.alignRight button,
+.panel.alignRight a {
+  margin: 0 0 6px 6px;
 }
 .panel.border {
   border: solid 1px var(--field-border-color);
@@ -17,7 +25,8 @@
 .panel.column {
   flex-direction: column;
 }
-.panel.column button {
+.panel.column button,
+.panel.column a {
   margin-right: 0;
 }
 .panel.with_title {

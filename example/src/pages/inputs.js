@@ -30,12 +30,12 @@ export default function InputsPage() {
                     sysName: 'foo',
                     name: 'Foo',
                     dataType: 'link',
-                    link: 'TMessageIn_TMessageIn_TMessageIn_TMessageIn'
+                    link: 'TMessageIn'
                 }
             ]
         },
         {
-            structName: 'TMessageIn_TMessageIn_TMessageIn_TMessageIn',
+            structName: 'TMessageIn',
             fields: [
                 {
                     sysName: 'firstName',
@@ -107,7 +107,7 @@ export default function InputsPage() {
                     sysName: 'ssylka',
                     name: 'Ssylka',
                     dataType: 'link',
-                    link: 'TMessageIn_TMessageIn_TMessageIn_TMessageIn'
+                    link: 'TMessageIn'
                 },
                 {
                     sysName: 'messageID33',
@@ -153,7 +153,7 @@ export default function InputsPage() {
     type='structurefield' />`} />
             <Input
                 label='Structure field'
-                width={250}
+                width={500}
                 //fixHeight={100}
                 //debug
                 fields={testFields}

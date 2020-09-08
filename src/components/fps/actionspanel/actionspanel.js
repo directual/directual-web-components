@@ -8,6 +8,7 @@ export default function ActionPanel(props) {
                 ${props.border && styles.border} 
                 ${props.title && styles.with_title}
                 ${props.column && styles.column}
+                ${props.alignRight && styles.alignRight}
                 `}
             style={
                 {

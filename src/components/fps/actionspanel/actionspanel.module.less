@@ -2,8 +2,14 @@
     display: flex;
     position: relative;
     flex-wrap: wrap;
-    button {
+    button, a {
         margin: 0 6px 6px 0;
+    }
+    &.alignRight {
+        justify-content: flex-end;
+        button, a {
+            margin: 0 0 6px 6px;
+        }
     }
     &.border {
         border:solid 1px var( --field-border-color);
@@ -15,7 +21,7 @@
     }
     &.column {
         flex-direction: column;
-        button {
+        button, a {
             margin-right: 0;
         }
     }
