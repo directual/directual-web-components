@@ -2309,8 +2309,8 @@ const App = (props) => {
 
             </Route>
             <Route exact path="/cards">
-              <FpsCards data={exampleFormHH} />
-              <br /><br />
+              {/* <FpsCards data={exampleFormHH} />
+              <br /><br /> */}
               <FpsCards data={exampleTable} />
               <br /><br />
               <FpsCards data={exampleTable2} />

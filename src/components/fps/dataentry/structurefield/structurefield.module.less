@@ -51,6 +51,7 @@
         align-items: center;
         padding: 7px 36px 7px 18px;
         overflow-x: auto;
+        overflow-y: hidden;
         min-height: 36px;
         color: var(--font-color);
         -webkit-appearance: none;
@@ -111,13 +112,15 @@
             margin-top: 0;
             box-shadow: 0 5px 12px rgba(0,0,0,.15);
 
-            max-width: 100%;
-            min-width: 200px;
+            // max-width: 100%;
+            // min-width: 200px;
             //max-height: 350px;
+            width: 100%;
 
             .structFields {
                 padding: 4px 4px 4px 4px;
                 flex-shrink: 0;
+                flex-grow: 2;
                 min-width: 200px;
                 max-width: calc(100% - 8px);
                 overflow: hidden;
@@ -145,7 +148,7 @@
                 }
                 .option {
                     min-width: 200px;
-                    max-width: 350px;
+                    //max-width: 350px;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
