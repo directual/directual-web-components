@@ -74,7 +74,7 @@
 }
 .input_wrapper textarea.field {
   height: auto !important;
-  padding: 18px 36px 18px 18px;
+  padding: 14px 36px 14px 18px;
 }
 .input_wrapper textarea.field:hover:not(.disabled),
 .input_wrapper textarea.field:focus:not(.disabled),
@@ -82,7 +82,7 @@
 .input_wrapper textarea.field.ok,
 .input_wrapper textarea.field.error,
 .input_wrapper textarea.field.warning {
-  padding: 17px 35px 17px 17px;
+  padding: 13px 35px 13px 17px;
 }
 .input_wrapper textarea.disabled {
   background-color: var(--table-border-color);
