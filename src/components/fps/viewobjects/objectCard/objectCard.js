@@ -112,6 +112,10 @@ export function ObjectCard(props) {
             setShowBorder(false)
     }
 
+    const checkLineBreaks = line => {
+        return (line.match(/\n/g) || []).length;
+    }
+
     return (
         <React.Fragment>
             <div className={styles.objectCard}>
@@ -147,19 +151,29 @@ export function ObjectCard(props) {
                                                 <span className={`icon icon-${field && (field.value ? `done` : `ban`)}`}>{field && (field.value ? 'Yes' : 'No')}</span>}
 
                                         </React.Fragment> :
-                                        <Input
-                                            type={matchInputType(field.dataType)}
-                                            label={field.name || field.sysName}
-                                            defaultValue={field.dataType == 'boolean' ? ((model[field.sysName] == 'true' || model[field.sysName] == true) ? true : false) : model[field.sysName]}
-                                            options={
-                                                [
-                                                    { value: true, label: 'Yes' },
-                                                    { value: false, label: 'No' },
-                                                ]
-                                            }
-                                            onChange={value => setModel({ ...model, [field.sysName]: value })}
-                                        />
-                                    }
+                                        <React.Fragment>
+                                            {field.dataType == 'string' ?
+                                                <Input
+                                                    type='textarea'
+                                                    rows={checkLineBreaks(model[field.sysName]) > 10 ? 10 : checkLineBreaks(model[field.sysName]) + 1}
+                                                    label={field.name || field.sysName}
+                                                    defaultValue={model[field.sysName]}
+                                                    onChange={value => setModel({ ...model, [field.sysName]: value })}
+                                                />
+                                                :
+                                                <Input
+                                                    type={matchInputType(field.dataType)}
+                                                    label={field.name || field.sysName}
+                                                    defaultValue={field.dataType == 'boolean' ? ((model[field.sysName] == 'true' || model[field.sysName] == true) ? true : false) : model[field.sysName]}
+                                                    options={
+                                                        [
+                                                            { value: true, label: 'Yes' },
+                                                            { value: false, label: 'No' },
+                                                        ]
+                                                    }
+                                                    onChange={value => setModel({ ...model, [field.sysName]: value })}
+                                                />}
+                                        </React.Fragment>}
                                 </React.Fragment>}
                             {field.dataType == 'id' && props.params && props.params.isDisplayID && <React.Fragment>
                                 <span className={styles.label}>
