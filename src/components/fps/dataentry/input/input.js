@@ -471,6 +471,7 @@ export default function Input(props) {
                     disabled={props.disabled}
                     placeholder={props.placeholder}
                     defaultValue={props.defaultValue}
+                    utc={props.utc}
                     dateFormat={props.dateFormat}
                     timeFormat={props.timeFormat}
                     onBlur={checkValue}

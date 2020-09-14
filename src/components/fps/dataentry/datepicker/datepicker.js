@@ -14,9 +14,10 @@ export default function Datepicker(props) {
     return (
         <div className={styles.calendar}>
             <Datetime 
-                defaultValue = {props.defaultValue && moment(props.defaultValue).format(dateFormat + timeFormat)}
+                defaultValue = {props.defaultValue && moment(moment(props.defaultValue).format(dateFormat + timeFormat)).zone("00:00")}
                 dateFormat = {dateFormat}
                 timeFormat = {timeFormat}
+                utc={props.utc}
                 onBlur={props.onBlur}
                 closeOnSelect={props.closeOnSelect}
                 inputProps={{ 

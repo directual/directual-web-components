@@ -340,6 +340,8 @@ export default function InputsPage() {
                 type="date"
                 width={400}
                 label='Date and time picker'
+                //debug
+                utc
                 placeholder='Select date'
                 dateFormat='D, MMM, YYYY' // default 'D, MMM, YYYY'
                 timeFormat=' hh:mm A' //default ' h:mm a'
