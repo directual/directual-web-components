@@ -146,9 +146,10 @@
                 transition: .5s;
                 margin-right: 66px;
             }
-            .subselect { .list {opacity: 0;}}
+            .subselect { .list {opacity: 0; z-index: 0;}}
             .list {
                 opacity: 1;
+                z-index: 200;
                 transition: .5s;
                 height: auto;
                 margin: 0;
@@ -202,6 +203,7 @@
             }            
             display: flex;
             opacity: 0;
+            z-index: 0;
             transition: .5s;
             height: 0;
             border:solid 1px rgba(0,0,0,0);
@@ -212,7 +214,7 @@
             flex-direction: column;
             border-radius: var( --border-radius);
             background-color: var(--background-color);
-            z-index: 100;
+            //z-index: 100;
             margin-top: 0;
             box-shadow: 0 5px 12px rgba(0,0,0,.15);
             .option {

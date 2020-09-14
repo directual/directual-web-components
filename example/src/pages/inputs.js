@@ -167,7 +167,7 @@ export default function InputsPage() {
                 placeholder='Choose the object field'
                 icon='database'
                 //noPropagation
-                filterFields={['string', 'link']}
+                //filterFields={['string', 'link']}
                 //filterLinkFields='TMessageIn'
                 description='That is a new FormField component for the platform'
                 //disabled
