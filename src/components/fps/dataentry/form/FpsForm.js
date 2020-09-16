@@ -122,8 +122,18 @@ export default function FpsForm({ auth, data, onEvent, id }) {
     hiddenFieldsValues = { ...hiddenFieldsValues, [hiddenField]: urlParams.get(hiddenField) }
   }
 
+  //Hidden auth
+  const userAuth = auth ? auth.user : null
+  const userRole = auth ? auth.role : null
+  const includeAuth = data && data.params && data.params.auth && data.params.auth.isPerson
+  const userAuthField = data && data.params && data.params.auth && data.params.auth.userIdField
+  let hiddenAuth = {}
+  if (includeAuth && userAuth && userAuthField) {
+    hiddenAuth[userAuthField] = userAuth
+  }
+
   const onChange = (field, value) => {
-    const modelCopy = { ...model, ...hiddenFieldsValues }
+    const modelCopy = { ...model, ...hiddenFieldsValues, ...hiddenAuth }
     modelCopy[field] = value
     setModel(modelCopy)
   }

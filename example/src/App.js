@@ -1202,6 +1202,13 @@ const App = (props) => {
     }
   }
 
+  let authExample ={
+    isAuth: true,
+    role: "admin",
+    token: "a256c0c6-6aa1-4706-afad-521d0d37e3f3",
+    user: "pavel@directial.com"
+  }
+
   let exampleForm =
   {
     "sl": "FPStest",
@@ -1212,6 +1219,10 @@ const App = (props) => {
     "maxWidth": 500,
     "formButtonResubmit": null,
     "params": {
+      "auth": {
+        "isPerson": true,
+        "userIdField": "textarea"
+      },
       "result": {
         "resultTitleField": null,
         "resultMessageField": null,
@@ -1596,7 +1607,7 @@ const App = (props) => {
       {
         "sysName": "textarea",
         "name": "Price",
-        "dataType": "decimal",
+        "dataType": "string",
         "id": "97731592207240400",
         "link": null,
         "group": "0",
@@ -2289,7 +2300,7 @@ const App = (props) => {
               <WhatIsIt />
             </Route>
             <Route exact path="/form">
-              <FpsForm data={exampleForm} />
+              <FpsForm data={exampleForm} auth={authExample}/>
             </Route>
             <Route exact path="/profile">
               <Profile
