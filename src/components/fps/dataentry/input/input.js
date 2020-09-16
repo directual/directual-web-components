@@ -431,6 +431,7 @@ export default function Input(props) {
                     icon={props.icon}
                     bottomSelect={props.bottomSelect}
                     disabled={props.disabled}
+                    displayKey={props.displayKey}
                     defaultValue={defVal}
                     iconOptions={props.iconOptions}
                     onChange={e => submit(e)}
@@ -445,6 +446,7 @@ export default function Input(props) {
                     options={props.options}
                     bottomSelect={props.bottomSelect}
                     icon={props.icon}
+                    displayKey={props.displayKey}
                     disabled={props.disabled}
                     multi
                     defaultValue={defVal}
@@ -459,6 +461,7 @@ export default function Input(props) {
                     options={icon_options}
                     bottomSelect={props.bottomSelect}
                     icon={props.icon}
+                    displayKey={props.displayKey}
                     disabled={props.disabled}
                     defaultValue={defVal}
                     iconOptions

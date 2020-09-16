@@ -221,6 +221,7 @@ export default function InputsPage() {
                 type='select'
                 placeholder='Choose the line'
                 icon='database'
+                displayKey
                 options={
                     [
                         { key: 1, value: 'Good fortune? The fact is' },

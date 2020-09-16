@@ -235,6 +235,9 @@
                 &.selected {
                     background-color: var(--accent-color);
                     color: var(--button-accent-color);
+                    .displayKey {
+                        color: var(--button-accent-color);
+                    }
                 }
                 &.keySelected {
                     padding:6px 10px;
@@ -246,6 +249,9 @@
                 &:active:not(.disabled) {
                     background: var(--font-color);
                     color: var(--background-color);
+                    .displayKey {
+                        color: var(--button-accent-color);
+                    }
                 }
             }
         }
@@ -323,4 +329,10 @@
             }
         }
     }
+}
+
+.displayKey {
+    font-size: var(--text-small-size);
+    font-family: 'Source Code Pro', monospace;
+    color:var(--accent-color)
 }

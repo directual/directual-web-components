@@ -31,7 +31,7 @@ function List(props) {
             if (maxListHeight > freeSpace && freeSpace >= 4 * 40) { maxListHeight = freeSpace - 32 }
             (freeSpace < 4 * 40) ? pos = 'top' : pos = 'bottom'
         }
-        if (props.bottomSelect) {pos = 'top'}
+        if (props.bottomSelect) { pos = 'top' }
         return {
             position: pos,
             height: maxListHeight
@@ -90,6 +90,9 @@ function List(props) {
                         }}
                     >
                         {option.value}
+                        <span className={styles.displayKey}>
+                            {`${props.displayKey ? ` {{${option.key}}}` : ''}`}
+                        </span>
                     </li>
                 )}
             </ul>
@@ -147,7 +150,7 @@ export default function Select(props) {
             };
         }, [ref]);
     }
-    
+
     useEffect(() => {
         focus && inputEl.current.focus();
         setFilter('');
@@ -226,7 +229,7 @@ export default function Select(props) {
         if (props.multi) {
             let array = value ? [...value] : []
             let index = array.indexOf(option)
-            array.splice(index,1)
+            array.splice(index, 1)
             array.length >= 1 ? submit(array) : submit([]);
         }
     }
@@ -247,20 +250,20 @@ export default function Select(props) {
                     <div className={`${styles.icon} icon icon-${props.icon}`}></div>}
                 {props.iconOptions && value && value.icon &&
                     <div className={`${styles.icon} icon icon-${value && value.icon}`}></div>}
-                {(props.subSelect && (props.subSelect.all || (value && value.key && props.subSelect.keys.filter(i=>i == value.key).length > 0))) && 
-                     <div className={styles.subselect}
+                {(props.subSelect && (props.subSelect.all || (value && value.key && props.subSelect.keys.filter(i => i == value.key).length > 0))) &&
+                    <div className={styles.subselect}
                         onClick={e => {
                             e.stopPropagation()
                         }}>
-                         <Select 
-                            onChange={e=>{}}
+                        <Select
+                            onChange={e => { }}
                             options={props.subSelect.options}
                             placeholder={props.subSelect.placeholder || 'choose'}
                             thisIsSubSelect
                             defaultValue={props.subSelect.defaultValue}
-                            onChange={props.onChangeSubselect ? props.onChangeSubselect: undefined}
-                         />
-                     </div>
+                            onChange={props.onChangeSubselect ? props.onChangeSubselect : undefined}
+                        />
+                    </div>
                 }
                 {props.multi &&
                     <ul className={styles.multilist}>
@@ -298,7 +301,11 @@ export default function Select(props) {
                             <div className={`${styles.placeholder}`}>
                                 {props.placeholder ? props.placeholder : 'Select the value'}</div>}
                         {value && !filter &&
-                            <div className={styles.currentValue}>{value.value}</div>}
+                            <div className={styles.currentValue}>{value.value}
+                                <span className={styles.displayKey}>
+                                    {`${props.displayKey ? ` {{${value.key}}}` : ''}`}
+                                </span>
+                            </div>}
                         {focus &&
                             <input
                                 onKeyDown={handleKeyboard}
@@ -320,6 +327,7 @@ export default function Select(props) {
                     bottomSelect={props.bottomSelect}
                     onClick={() => { setFocus(false) }}
                     options={filteredOptions}
+                    displayKey={props.displayKey}
                     filter={filter}
                     focus={focus}
                     selected={keySelected}

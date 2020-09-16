@@ -231,6 +231,9 @@
   background-color: var(--accent-color);
   color: var(--button-accent-color);
 }
+.select_wrapper .select_field .list .option.selected .displayKey {
+  color: var(--button-accent-color);
+}
 .select_wrapper .select_field .list .option.keySelected {
   padding: 6px 10px;
   border: solid 2px var(--font-color);
@@ -241,6 +244,9 @@
 .select_wrapper .select_field .list .option:active:not(.disabled) {
   background: var(--font-color);
   color: var(--background-color);
+}
+.select_wrapper .select_field .list .option:active:not(.disabled) .displayKey {
+  color: var(--button-accent-color);
 }
 .subselect {
   position: absolute;
@@ -313,4 +319,9 @@
 .subselect .select_wrapper .list .option.selected {
   background: rgba(0, 0, 0, 0.5);
   color: var(--label-text-color);
+}
+.displayKey {
+  font-size: var(--text-small-size);
+  font-family: 'Source Code Pro', monospace;
+  color: var(--accent-color);
 }
