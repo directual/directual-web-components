@@ -92,8 +92,8 @@ function FpsCards({ data, onEvent, id }) {
 
             <TableTitle
                 tableTitle={tableTitle}
-                tableFilters={tableFilters}
-                tableQuickSearch={tableQuickSearch}
+                //tableQuickSearch={tableQuickSearch}
+                tableQuickSearch={true}
                 onSearch={value => search(value)}
                 loading={loading}
                 onFilter={() => { }}
@@ -121,7 +121,7 @@ FpsCards.settings = {
         { name: 'List title', sysName: 'tableTitle', type: 'input' },
         { name: 'Page size', sysName: 'pageSize', type: 'number' },
         // { name: 'Filters', sysName: 'tableFilters', type: 'on_off' },
-        // { name: 'Quick search', sysName: 'tableQuickSearch', type: 'on_off' },
+        { name: 'Quick search', sysName: 'tableQuickSearch', type: 'on_off' },
     ]
 }
 export default FpsCards
