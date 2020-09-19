@@ -16,10 +16,10 @@ export function InputGroup(props) {
 }
 
 export default function Input(props) {
-    const [value, setValue] = useState(props.defaultValue)
+    const [value, setValue] = useState(props.defaultValue || props.value)
     const [pwdVisible, setPwdVisible] = useState('password')
     const [warningMsg, setWarningMesg] = useState(props.warning || {})
-    const [defVal, setDefVal] = useState(props.defaultValue)
+    const [defVal, setDefVal] = useState(props.defaultValue|| props.value)
 
 
     const checkValue = () => {
@@ -38,7 +38,7 @@ export default function Input(props) {
         warningMsg.type == 'error' ? props.validationHandler && props.validationHandler(props.sysName, false) : props.validationHandler && props.validationHandler(props.sysName, true)
     }, [warningMsg])
 
-    useEffect(() => { setValue(props.defaultValue); setDefVal(props.defaultValue) }, [props.defaultValue])
+    useEffect(() => { setValue(defVal); setDefVal(defVal) }, [defVal])
 
     const checkEmailValue = (v) => {
         (!v && props.required) ?
@@ -93,9 +93,9 @@ export default function Input(props) {
     const submit = val => {
         setValue(val)
         props.onChange && props.onChange(val);
-        props.type == 'select' && props.required && value != props.defaultValue && checkValue();
-        props.type == 'icon' && props.required && value != props.defaultValue && checkValue();
-        props.type == 'multiselect' && props.required && value != props.defaultValue && checkValue();
+        props.type == 'select' && props.required && value != defVal && checkValue();
+        props.type == 'icon' && props.required && value != defVal && checkValue();
+        props.type == 'multiselect' && props.required && value != defVal && checkValue();
     }
 
     const icon_options =
@@ -412,7 +412,7 @@ export default function Input(props) {
             {props.type == 'radio' &&
                 <Radio
                     onChange={e => e ? (e.target ? submit(e.target.value) : submit(e)) : submit(null)}
-                    defaultValue={props.defaultValue}
+                    defaultValue={defVal}
                     options={props.options}
                     disabled={props.disabled}
                     placeholder={props.placeholder}
@@ -473,7 +473,7 @@ export default function Input(props) {
                     onChange={e => { setValue(e); props.onChange && props.onChange(e) }}
                     disabled={props.disabled}
                     placeholder={props.placeholder}
-                    defaultValue={props.defaultValue}
+                    defaultValue={defVal}
                     utc={props.utc}
                     dateFormat={props.dateFormat}
                     timeFormat={props.timeFormat}
@@ -502,7 +502,7 @@ export default function Input(props) {
             }
             {props.type == 'slider' &&
                 <Slider
-                    defaultValue={props.defaultValue}
+                    defaultValue={defVal}
                     min={props.min}
                     max={props.max}
                     step={props.step}
@@ -512,7 +512,7 @@ export default function Input(props) {
             }
             {props.type == 'range' &&
                 <Slider
-                    defaultValue={props.defaultValue}
+                    defaultValue={defVal}
                     min={props.min}
                     max={props.max}
                     step={props.step}
