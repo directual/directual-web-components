@@ -263,6 +263,9 @@ export default function Input(props) {
                     <input
                         disabled={props.disabled}
                         key={props.key}
+                        style={{
+                            height: props.height || 44
+                        }}
                         className=
                         {`${styles.field} 
                             ${props.icon && styles.icon} 

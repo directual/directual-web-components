@@ -546,6 +546,7 @@ export default function InputsPage() {
                 label='Input (required, with icon)'
                 placeholder='Placeholder'
                 icon='license'
+                //height={48}
                 type='string'
                 required
                 width={400}
