@@ -156,7 +156,7 @@ export default function InputsPage() {
                 label='Structure field'
                 width={500}
                 //fixHeight={100}
-                debug
+                //debug
                 fields={testFields}
                 onChooseType={e => console.log(e)}
                 onChooseLinkStructSysName={e => console.log(e)}
