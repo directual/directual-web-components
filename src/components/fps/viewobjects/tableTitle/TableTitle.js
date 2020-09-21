@@ -35,10 +35,10 @@ export function TableTitle({ tableQuickSearch, tableTitle, tableFilters, onFilte
                                     inputClassName={styles.quickSearchInput}
                                     placeholder='Search...'
                                     width={300}
+                                    debug
                                     onPressEnter={value => {
                                         onSearch(value)
                                     }}
-                                    tip='Press Enter for searching'
                                     onClear={() => {
                                         onSearch('')
                                         setShowSearch(false)
