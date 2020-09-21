@@ -151,17 +151,18 @@ export default function InputsPage() {
     description='That is a new FormField component for the platform'
     //disabled
     type='structurefield' />`} />
+    {testDefValue}
             <Input
                 label='Structure field'
                 width={500}
                 //fixHeight={100}
-                //debug
+                debug
                 fields={testFields}
                 onChooseType={e => console.log(e)}
                 onChooseLinkStructSysName={e => console.log(e)}
                 //tip='подсказко'
                 structSysName='WebUsers'
-                //defaultValue={testDefValue}
+                defaultValue={testDefValue}
                 //onChange={value => console.log(value)}
                 onChangeExtended={(value, struct, type) => console.log(value + ', ' + struct + ', ' + type)}
                 placeholder='Choose the object field'

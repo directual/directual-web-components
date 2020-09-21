@@ -19,7 +19,7 @@ export default function Input(props) {
     const [value, setValue] = useState(props.defaultValue || props.value)
     const [pwdVisible, setPwdVisible] = useState('password')
     const [warningMsg, setWarningMesg] = useState(props.warning || {})
-    const [defVal, setDefVal] = useState(props.defaultValue|| props.value)
+    const [defVal, setDefVal] = useState(props.defaultValue || props.value)
 
 
     const checkValue = () => {
@@ -38,7 +38,10 @@ export default function Input(props) {
         warningMsg.type == 'error' ? props.validationHandler && props.validationHandler(props.sysName, false) : props.validationHandler && props.validationHandler(props.sysName, true)
     }, [warningMsg])
 
-    useEffect(() => { setValue(defVal); setDefVal(defVal) }, [defVal])
+    useEffect(() => {
+        if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal)) 
+            { setValue(props.defaultValue); setDefVal(props.defaultValue) }
+    }, [props.defaultValue])
 
     const checkEmailValue = (v) => {
         (!v && props.required) ?
