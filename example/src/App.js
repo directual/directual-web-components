@@ -76,7 +76,7 @@ const App = (props) => {
   let exampleTable =
   {
     "sl": "getBooks_FPS",
-    "tableTitle": "List with background images",
+    //"tableTitle": "List with background images",
     "pageSize": "10",
     "tableFilters": true,
     "tableQuickSearch": true,
@@ -201,7 +201,7 @@ const App = (props) => {
     [
       {
         "year": 1760,
-        //"genre": "Biography",
+        "genre": "Biography",
         "title": "Life of Samuel Johnson",
         "image": "https://images.unsplash.com/photo-1598145164978-64796c5e8c4d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "author_id": {

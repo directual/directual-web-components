@@ -31,7 +31,7 @@ export default function Input(props) {
 
     const [searchValue, setSearchValue] = useState()
     const checkSearchValue = () => {
-        (value != searchValue && value) ? setWarningMesg({ type: 'warning', msg: 'Press Enter to search...' }) : setWarningMesg({});
+        (value != searchValue) ? setWarningMesg({ type: 'warning', msg: 'Press Enter to search...' }) : setWarningMesg({});
     }
 
     useEffect(() => {

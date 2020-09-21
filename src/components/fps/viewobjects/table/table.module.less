@@ -140,6 +140,10 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 12px;
+    overflow: hidden;
+    .tableTitleWrapper {
+        overflow: hidden;
+    }
     h1,h2 {
         white-space: nowrap;
         overflow: hidden;
@@ -180,7 +184,21 @@
         align-items: stretch;
         h1, h2 {
             max-width: 100%;
-            margin-bottom: 12px !important;
+            //margin-bottom: 12px !important;
+        }
+    }
+    .tableTitle {
+        .tableTitleWrapper {
+            margin-bottom: 12px;
+        }
+        .tableActions {
+            .tableQuickSearchField {
+                margin: 0;
+                width: 100%;
+            }
+            .quickSearchInput {
+                //width: calc(100% - 8px);
+            }
         }
     }
  }
@@ -215,6 +233,16 @@
              }
          }
      }
+ }
+
+ .titleSearch {
+     opacity: .6;
+ }
+
+ .subtitle, .titleSearch {
+    height: 40px;
+    display: flex;
+    align-items: flex-end;
  }
 
  

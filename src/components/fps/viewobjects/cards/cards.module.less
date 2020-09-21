@@ -4,6 +4,21 @@
      justify-content: flex-start;
      margin-top: 18px;
      margin-right: -18px;
+     &.emptyTable {
+        justify-content: center;
+        align-items: center;
+        background-color: var(--background-color);
+        margin-bottom: 12px;
+        border-radius: var(--border-radius);
+     }
+     &.loading {
+         opacity: .4;
+         .card {
+             .cardInnerWrapper {
+                 cursor: not-allowed;
+             }
+         }
+     }
  }
  
  .card {

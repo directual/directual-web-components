@@ -3,8 +3,9 @@ import styles from './cards.module.css'
 import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
 import ExpandedText from '../../expandedText/expandedText'
 import { Paging } from '../paging/paging'
+import style from 'react-syntax-highlighter/dist/esm/styles/hljs/agate'
 
-export function Cards({ data, onEvent, id, onExpand, loading, setLoading }) {
+export function Cards({ data, onEvent, id, onExpand, loading, setLoading, searchValue }) {
     const tableHeaders = data.headers || []
     const tableData = enrichTableDataWithWriteFields(data) || []
     const tableParams = data.params || {
@@ -68,7 +69,7 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading }) {
 
     return (
         <React.Fragment>
-            <div className={styles.cardsWrapper}>
+            <div className={`${styles.cardsWrapper} ${(data.error || tableData.length === 0) && styles.emptyTable} ${loading && styles.loading}`}>
                 {tableData.map((row, i) => {
                     const cardHeader = getInitialStructureParams().viewName && getInitialStructureParams().viewName && (getInitialStructureParams().viewName.length > 0 ? getInitialStructureParams().viewName.map(i => row[i]).join(' ') : 'No visible name')
                     return (
@@ -78,7 +79,7 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading }) {
                                 ${styles[tableParams.cardImageType]} 
                                 ${tableParams.invertColors && styles.invertColors}
                                 `}
-                                onClick={() => onExpand(row)}>
+                                onClick={() => !loading && onExpand(row)}>
                                 {tableParams.cardImageField &&
                                     <div className={`${styles.cardImage}`}
                                         style={{
@@ -112,7 +113,7 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading }) {
                 {tableData.length === 0 && !data.error &&
                     <SomethingWentWrong
                         icon='ban'
-                        message='Table is empty'
+                        message={`${searchValue ? `No object found for 'searchValue'` : `No objects`}`}
                     />}
 
 

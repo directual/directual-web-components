@@ -5,19 +5,22 @@ import Filters from '../filters/Filters'
 import Input from '../../dataentry/input/input'
 import Loader from '../../loader/loader'
 
-export function TableTitle({ tableQuickSearch, tableTitle, tableFilters, onFilter, onSearch, loading }) {
-    const [showSearch, setShowSearch] = useState(false)
+export function TableTitle({ tableQuickSearch, tableTitle, tableFilters, onFilter, onSearch, loading, searchValue }) {
+    const [showSearch, setShowSearch] = useState(true)
     const [showFilters, setShowFilters] = useState(false)
     return (
         <React.Fragment>
             <div className={styles.tableTitle}>
-                {tableTitle ? <h1>
-                    {loading ? <Loader>Loading...</Loader>:
-                    <span>{tableTitle}</span>}
-                    </h1>:
-                    <React.Fragment>{loading && <Loader>Loading...</Loader>}</React.Fragment>
+                <div className={styles.tableTitleWrapper}>
+                    {tableTitle && <h1><span>{tableTitle}</span></h1>}
+
+                    {loading && <div className={styles.subtitle}><Loader>Loading...</Loader></div>}
+                    {searchValue && !loading &&
+                        <div className={styles.titleSearch}>
+                        Searching: <strong>{searchValue}</strong>
+                        </div>
                     }
-                
+                </div>
                 {tableQuickSearch &&
                     <div className={styles.tableActions}>
                         {/* фильтры в 0.1 версии спрячем */}
@@ -33,14 +36,14 @@ export function TableTitle({ tableQuickSearch, tableTitle, tableFilters, onFilte
                                     searchOnEnter={true}
                                     inputClassName={styles.quickSearchInput}
                                     placeholder='Search...'
-                                    width={300}
-                                    debug
+                                    //debug
+                                    //width={300}
                                     onPressEnter={value => {
                                         onSearch(value)
                                     }}
                                     onClear={() => {
                                         onSearch('')
-                                        setShowSearch(false)
+                                        //setShowSearch(false)
                                     }}
                                     nomargin />
                                 :

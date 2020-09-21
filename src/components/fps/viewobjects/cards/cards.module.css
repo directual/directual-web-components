@@ -5,6 +5,19 @@
   margin-top: 18px;
   margin-right: -18px;
 }
+.cardsWrapper.emptyTable {
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-color);
+  margin-bottom: 12px;
+  border-radius: var(--border-radius);
+}
+.cardsWrapper.loading {
+  opacity: 0.4;
+}
+.cardsWrapper.loading .card .cardInnerWrapper {
+  cursor: not-allowed;
+}
 .card {
   margin-bottom: 18px;
   margin-right: 18px;

@@ -24,14 +24,17 @@ function FpsCards({ data, onEvent, id }) {
     }
 
     const [loading, setLoading] = useState(false)
+    const [searchValue, setSearchValue] = useState()
 
     const search = value => {
         if (value) {
+            setSearchValue(value)
             const fieldsDQL = data.headers && data.headers.map(i => i.sysName);
             const requestDQL = fieldsDQL.map(i=>i + ' like ' + "'" + value + "'").join(' OR ')
-            console.log('DQL = ' + requestDQL)
+            //console.log('DQL = ' + requestDQL)
             sendMsg({dql: requestDQL})
         } else {
+            setSearchValue('')
             sendMsg({dql: ''})
         }
         if (onEvent) {
@@ -54,8 +57,8 @@ function FpsCards({ data, onEvent, id }) {
         }
         if (!data.isSuccessWrite && data.writeError) {
             //setLoading(false)
-            alert(data.writeError)
-            //todo: сделать отображение ошибки рядом с карточками, а не алертом
+            console.log('data writeError')
+            console.log(data.writeError)
         }
     }, [data])
 
@@ -93,6 +96,7 @@ function FpsCards({ data, onEvent, id }) {
             <TableTitle
                 tableTitle={tableTitle}
                 //tableQuickSearch={tableQuickSearch}
+                searchValue={searchValue}
                 tableQuickSearch={true}
                 onSearch={value => search(value)}
                 loading={loading}
@@ -100,6 +104,7 @@ function FpsCards({ data, onEvent, id }) {
             />
             <Cards
                 data={data}
+                searchValue={searchValue}
                 onExpand={val => { setShowObject(val) }}
                 onEvent={onEvent}
                 id={id}
