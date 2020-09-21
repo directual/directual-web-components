@@ -3,7 +3,6 @@ import styles from './cards.module.css'
 import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
 import ExpandedText from '../../expandedText/expandedText'
 import { Paging } from '../paging/paging'
-import style from 'react-syntax-highlighter/dist/esm/styles/hljs/agate'
 
 export function Cards({ data, onEvent, id, onExpand, loading, setLoading, searchValue }) {
     const tableHeaders = data.headers || []
