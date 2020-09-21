@@ -315,9 +315,9 @@ export default function Input(props) {
                         type="text"
                         onKeyPress={e => {
                             if (e.key == 'Enter') {
-                                props.onPressEnter(value);
                                 setSearchValue(value);
                                 setWarningMesg({})
+                                props.onPressEnter(value);
                             }
                         }}
                         onChange={e => { handleChange(e.target.value); }}

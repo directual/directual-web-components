@@ -26,7 +26,6 @@ export function TableTitle({ tableQuickSearch, tableTitle, tableFilters, onFilte
                             onClick={() => setShowFilters(!showFilters)}
                         >{`${!showFilters ? 'Show filters' : 'Hide filters'}`}</Button> */}
 
-                        {/* поиск в 0.1 версии спрячем */}
                         <div className={styles.tableQuickSearchField}>
                             {showSearch ?
                                 <Input
