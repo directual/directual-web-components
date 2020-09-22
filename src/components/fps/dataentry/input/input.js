@@ -492,6 +492,7 @@ export default function Input(props) {
                 <StructureField
                     defaultValue={defVal}
                     fixHeight={props.fixHeight}
+                    hideSysFields={props.hideSysFields}
                     disabled={props.disabled}
                     noPropagation={props.noPropagation}
                     structSysName={props.structSysName}

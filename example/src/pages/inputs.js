@@ -9,7 +9,7 @@ import 'directual-web-components/dist/index.css'
 export default function InputsPage() {
     const [value, setValue] = useState()
 
-    const [testDefValue, setTestDefValue] = useState('foo.five')
+    const [testDefValue, setTestDefValue] = useState('four')
 
     const testFields = [
         {
@@ -38,6 +38,24 @@ export default function InputsPage() {
             structName: 'TMessageIn',
             fields: [
                 {
+                    sysName: '@who',
+                    name: 'First Name',
+                    dataType: 'json',
+                    link: ''
+                },
+                {
+                    sysName: '@dateCreated',
+                    name: 'First Name',
+                    dataType: 'json',
+                    link: ''
+                },
+                {
+                    sysName: '@dateChanged',
+                    name: 'First Name',
+                    dataType: 'json',
+                    link: ''
+                },
+                {
                     sysName: 'firstName',
                     name: 'First Name',
                     dataType: 'json',
@@ -57,6 +75,24 @@ export default function InputsPage() {
                 },
                 {
                     sysName: 'one',
+                    name: 'hello',
+                    dataType: 'link',
+                    link: 'TUser'
+                },
+                {
+                    sysName: 'one1',
+                    name: 'hello',
+                    dataType: 'link',
+                    link: 'TUser'
+                },
+                {
+                    sysName: 'one2',
+                    name: 'hello',
+                    dataType: 'link',
+                    link: 'TUser'
+                },
+                {
+                    sysName: 'one3',
                     name: 'hello',
                     dataType: 'link',
                     link: 'TUser'
@@ -151,17 +187,18 @@ export default function InputsPage() {
     description='That is a new FormField component for the platform'
     //disabled
     type='structurefield' />`} />
-    {testDefValue}
+    {/* {testDefValue} */}
             <Input
                 label='Structure field'
                 width={500}
                 //fixHeight={100}
                 //debug
                 fields={testFields}
+                //hideSysFields
                 onChooseType={e => console.log(e)}
                 onChooseLinkStructSysName={e => console.log(e)}
                 //tip='подсказко'
-                structSysName='WebUsers'
+                structSysName='TMessageIn'
                 defaultValue={testDefValue}
                 //onChange={value => console.log(value)}
                 onChangeExtended={(value, struct, type) => console.log(value + ', ' + struct + ', ' + type)}

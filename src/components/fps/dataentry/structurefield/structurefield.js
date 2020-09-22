@@ -120,6 +120,7 @@ export default function StructureField(props) {
                 <ListFields
                     fields={props.fields}
                     filter={filter}
+                    hideSysFields={props.hideSysFields}
                     structSysName={props.structSysName}
                     filterFields={props.filterFields}
                     filterLinkFields={props.filterLinkFields}
@@ -190,6 +191,7 @@ function ListFields(props) {
                 odd={false}
                 fields={props.fields}
                 filter={props.filter}
+                hideSysFields={props.hideSysFields}
                 structSysName={props.structSysName}
                 filterLinkFields={props.filterLinkFields}
                 noPropagation={props.noPropagation}
@@ -239,7 +241,8 @@ function StructListFields(props) {
         return fieldDetails
     }
 
-    const fields = props.fields && props.structSysName && props.fields.filter(i => i.structName == props.structSysName) && props.fields.filter(i => i.structName == props.structSysName)[0].fields
+    const fields = props.fields && props.structSysName && 
+        props.fields.filter(i => i.structName == props.structSysName) && props.fields.filter(i => i.structName == props.structSysName)[0].fields
     const currentField = props.value && props.value.split('.')[0]
 
     const [filteredFields, setFilteredFields] = useState(fields)
@@ -255,11 +258,13 @@ function StructListFields(props) {
                     String(el.name).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())) ||
                     String(el.dataType).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())))
                     && (!props.filterFields || props.filterFields.indexOf(el.dataType) != -1)
+                    && ( !props.hideSysFields || (props.hideSysFields && el.sysName != '@who' && el.sysName != '@dateCreated' && el.sysName != '@dateChanged'))
             })
             setFilteredFields(SaveFiltFields)
         } else {
             const SaveFiltFields2 = fields.filter(el => {
-                return (!props.filterFields || props.filterFields.indexOf(el.dataType) != -1)
+                return (!props.filterFields || props.filterFields.indexOf(el.dataType) != -1) 
+                && ( !props.hideSysFields || (props.hideSysFields && el.sysName != '@who' && el.sysName != '@dateCreated' && el.sysName != '@dateChanged'))
             })
             setFilteredFields(SaveFiltFields2)
         }
@@ -281,6 +286,7 @@ function StructListFields(props) {
                     className={`${showBorder && styles.bordered}`}
                 >
                     {filteredFields && filteredFields.map((field, i) => {
+                        console.log('handleScroll rerender')
                         if (currentField == field.sysName) {
                             scrollToSelected(i)
                         }
