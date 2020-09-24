@@ -164,6 +164,30 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--label-text-color', 'rgba(0,0,0,.85)')
         }
 
+        if (colorScheme === 'raspberry') {
+            document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
+            document.documentElement.style.setProperty('--field-border-color', '#eaafa7')
+            document.documentElement.style.setProperty('--table-border-color', 'rgba(0,0,0,.12)')
+            document.documentElement.style.setProperty('--accent-color', '#db004a')
+            document.documentElement.style.setProperty('--secondary-accent-color', '#d40037')
+            document.documentElement.style.setProperty('--button-accent-color', '#fff')
+            document.documentElement.style.setProperty('--background-color', '#ffffff')
+            document.documentElement.style.setProperty('--background-contrast-color', '#f5e8e4')
+            document.documentElement.style.setProperty('--secondary-background-color', '#f5e8e4')
+            document.documentElement.style.setProperty('--font-color', '#333333')
+            document.documentElement.style.setProperty('--hint-color', '#333')
+            document.documentElement.style.setProperty('--code-color', '#333')
+            document.documentElement.style.setProperty('--code-color-background', '#fff')
+            document.documentElement.style.setProperty('--error-color', '#FF525B')
+            document.documentElement.style.setProperty('--error-color-light', '#FFD6D8')
+            document.documentElement.style.setProperty('--alert-color', '#ECA910')
+            document.documentElement.style.setProperty('--alert-color-light', '#F9DFA4')
+            document.documentElement.style.setProperty('--ok-color', '#00C197')
+            document.documentElement.style.setProperty('--ok-color-light', '#D6F8E5')
+            document.documentElement.style.setProperty('--label-color', '#a6e97a')
+            document.documentElement.style.setProperty('--label-text-color', 'rgba(0,0,0,.5)')
+        }
+
     }
     return null
 }
@@ -202,7 +226,12 @@ export default function FpsTheme(props) {
                 value: 'hacker',
                 label: 'Hacker Style',
                 image: 'https://api.alfa.directual.com/fileUploaded/directual-site/de91e0cc-62d1-4d89-ae59-264368763397.svg'
-            }
+            },
+            {
+                value: 'raspberry',
+                label: 'Raspberry',
+                image: 'https://api.alfa.directual.com/fileUploaded/directual-site/b2eee4fa-fbbb-4f83-a2f4-bbcb248f481e.svg'
+            },
         ]
 
     const userOptions = (props.themes && options.filter(option => props.themes.indexOf(option.value) != -1)) || options
@@ -253,6 +282,7 @@ export default function FpsTheme(props) {
                 type='number'
                 label='Border radius'
                 positive
+                height={props.height}
                 unitName='px'
                 width={150}
                 defaultValue={selectedColorScheme.radius}
@@ -263,12 +293,14 @@ export default function FpsTheme(props) {
                 <Input
                     type="select"
                     label="Headers font face"
+                    height={props.height}
                     defaultValue={selectedColorScheme.headersFont}
                     options={fontFaces}
                     onChange={value => setSelectedColorScheme({ ...selectedColorScheme, headersFont: value })}
                 />
                 <Input
                     type='select'
+                    height={props.height}
                     label="Headers font weight"
                     options={fontWeights}
                     defaultValue={selectedColorScheme.headersFontWeight}
@@ -280,6 +312,7 @@ export default function FpsTheme(props) {
                 <Input
                     type="select"
                     label="Text font face"
+                    height={props.height}
                     defaultValue={selectedColorScheme.fontText}
                     options={fontFaces}
                     onChange={value => setSelectedColorScheme({ ...selectedColorScheme, fontText: value })}
@@ -287,6 +320,7 @@ export default function FpsTheme(props) {
                 <Input
                     type='select'
                     label="Text font weight"
+                    height={props.height}
                     options={fontWeights}
                     defaultValue={selectedColorScheme.bodyFontWeight}
                     onChange={value => setSelectedColorScheme({ ...selectedColorScheme, bodyFontWeight: value })}

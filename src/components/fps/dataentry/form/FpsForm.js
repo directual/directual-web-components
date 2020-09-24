@@ -122,6 +122,20 @@ export default function FpsForm({ auth, data, onEvent, id }) {
     hiddenFieldsValues = { ...hiddenFieldsValues, [hiddenField]: urlParams.get(hiddenField) }
   }
 
+  //Get Object ID to edit
+  const eidtID = urlParams.get('@editObject') || null; 
+
+  const fetchObjectFields = (id) => {
+    //TODO: fetch data from the object
+    //const modelCopy = {...model, fetchedFields, id: id}
+    //setModel(modelCopy)
+  }
+
+  if (eidtID) {
+    console.log(`fetching object (id = ${eidtID}) field...`)
+    fetchObjectFields(eidtID)
+  }
+
   //Hidden auth
   const userAuth = auth ? auth.user : null
   const userRole = auth ? auth.role : null

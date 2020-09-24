@@ -23,7 +23,8 @@ export function ContentWrapper(props) {
       if (props.themeName.colorScheme == 'darkMint' || props.themeName.colorScheme == 'warmNight' || props.themeName.colorScheme == 'hacker') {
         setlogoUrl('https://api.alfa.directual.com/fileUploaded/directual-site/0ec2892d-c7a8-46ac-8500-6b5069563d21.svg')
       }
-      if (props.themeName.colorScheme == 'classic' || props.themeName.colorScheme == 'tiffany' || props.themeName.colorScheme == 'white') {
+      if (props.themeName.colorScheme == 'classic' || props.themeName.colorScheme == 'tiffany' || 
+      props.themeName.colorScheme == 'white' || props.themeName.colorScheme ==  'raspberry') {
         setlogoUrl('https://api.alfa.directual.com/fileUploaded/directual-site/8b09feb3-0e52-45cc-b776-b0a7f9fc4a0e.svg')
       }
     }, [props.themeName])

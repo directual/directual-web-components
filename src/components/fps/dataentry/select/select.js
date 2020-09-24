@@ -243,6 +243,9 @@ export default function Select(props) {
                 id='selectElement'
                 className=
                 {`${styles.select_field} ${props.warning == 'error' ? styles.error : ''} ${focus && styles.focus} ${props.disabled && styles.disabled}`}
+                style={{
+                    minHeight: props.height || 36
+                }}
                 onClick={() => { !focus && setFocus(true) }}
                 ref={selectRef}
             >

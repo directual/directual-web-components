@@ -3,6 +3,8 @@
     line-height: normal;
     display: flex;
     flex-direction: column;
+    font-size: var(--text-font-size);
+    line-height: 1em;
     align-items: stretch;
     label {
         font-size: var(--text-small-size);
@@ -19,7 +21,7 @@
             opacity: .5;
             position: absolute;
             left:8px;
-            top:8px;
+            top:16px;
             &:before {
                 font-size:32px;
             }
@@ -29,7 +31,7 @@
             opacity: .3;
             cursor: pointer;
             transition: .5s;
-            top:9px;
+            top:16px;
             right:9px;
             &:before {
                 font-size: 32px;}
@@ -43,7 +45,7 @@
             opacity: .3;
             cursor: pointer;
             transition: .5s;
-            top:1px;
+            top:6px;
             right:10px;
             &:before {
                 font-size: 30px;}
@@ -57,7 +59,7 @@
             opacity: .3;
             cursor: pointer;
             transition: .5s;
-            top:20px;
+            top:26px;
             right:10px;
             &:before {
                 font-size: 30px;}
@@ -95,6 +97,7 @@
         border:solid 1px var( --field-border-color);
         border-radius: var( --border-radius);
         background-color: var(--background-color);
+        font-size: var(--text-font-size);
         display: flex;
         height: 44px;
         align-items: center;
