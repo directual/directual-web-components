@@ -52,13 +52,7 @@ export default function InputsPage() {
                 {
                     sysName: '@dateCreated',
                     name: 'First Name',
-                    dataType: 'json',
-                    link: ''
-                },
-                {
-                    sysName: '@dateChanged',
-                    name: 'First Name',
-                    dataType: 'json',
+                    dataType: 'string',
                     link: ''
                 },
                 {
@@ -82,8 +76,8 @@ export default function InputsPage() {
                 {
                     sysName: 'one',
                     name: 'hello',
-                    dataType: 'link',
-                    link: 'TUser'
+                    dataType: 'string',
+                    link: ''
                 },
                 {
                     sysName: 'one1',
@@ -212,7 +206,7 @@ export default function InputsPage() {
                 placeholder='Choose the object field'
                 icon='database'
                 //noPropagation
-                //filterFields={['string', 'link']}
+                //filterFields={['string', 'json', 'id']}
                 //filterLinkFields='TMessageIn'
                 description='That is a new FormField component for the platform'
                 //disabled

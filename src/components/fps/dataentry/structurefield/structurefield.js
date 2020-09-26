@@ -267,16 +267,19 @@ function StructListFields(props) {
                         String(el.name).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())) ||
                         String(el.dataType).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())))
                         && (!props.filterFields || props.filterFields.indexOf(el.dataType) != -1)
-                        && (!props.hideId || (props.hideId && el.dataType == 'id'))
+                        && (!props.hideId || (props.hideId && el.dataType != 'id'))
                         && (!props.hideSysFields || (props.hideSysFields && el.sysName != '@who' && el.sysName != '@dateCreated' && el.sysName != '@dateChanged'))
                 }
             })
             setFilteredFields(SaveFiltFields)
         } else {
             const SaveFiltFields2 = fields.filter(el => {
-                return (!props.filterFields || props.filterFields.indexOf(el.dataType) != -1)
-                    && (!props.hideSysFields || (props.hideSysFields && el.sysName != '@who' && el.sysName != '@dateCreated' && el.sysName != '@dateChanged'))
+                return (
+                    (!props.filterFields || props.filterFields.indexOf(el.dataType) != -1)
                     && (!props.hideId || (props.hideId && el.dataType != 'id'))
+                    && (!props.hideSysFields || (props.hideSysFields && el.sysName != '@who' && el.sysName != '@dateCreated' && el.sysName != '@dateChanged'))
+                )
+
             })
             setFilteredFields(SaveFiltFields2)
         }
