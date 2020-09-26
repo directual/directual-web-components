@@ -6,6 +6,7 @@ import Datepicker from '../datepicker/datepicker'
 import Slider from '../slider/slider'
 import Checkbox from '../checkbox/checkbox'
 import StructureField from '../structurefield/structurefield'
+import ErrorBoundary from '../../errorBoundary/errorBoundary'
 
 export function InputGroup(props) {
     return (
@@ -39,8 +40,7 @@ export default function Input(props) {
     }, [warningMsg])
 
     useEffect(() => {
-        if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal)) 
-            { setValue(props.defaultValue); setDefVal(props.defaultValue) }
+        if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal)) { setValue(props.defaultValue); setDefVal(props.defaultValue) }
     }, [props.defaultValue])
 
     const checkEmailValue = (v) => {
@@ -229,351 +229,356 @@ export default function Input(props) {
         inputMargins.marginBottom = 22;
         inputMargins.marginTop = 0;
     }
-    return (
-        <div className={`${styles.input_wrapper} ${props.className}`}
-            style={
-                {
-                    maxWidth: props.width || 'auto',
-                    marginBottom: inputMargins.marginBottom,
-                    marginTop: inputMargins.marginTop
-                }
-            }>
-            {props.label && <label>{props.label}{props.required && '*'}</label>}
-            {props.description &&
-                <div className={styles.description}>{props.description}</div>}
-            {props.debug && <div>
-                <div className="dd-debug">searchValue: {JSON.stringify(searchValue)}</div>
-                <div className="dd-debug">value: {JSON.stringify(value)}</div>
-                <div className="dd-debug"> defVal: {JSON.stringify(defVal)}</div>
-            </div>}
 
-            {props.type != 'email' &&
-                props.type != 'checkboxGroup' &&
-                props.type != 'number' &&
-                props.type != 'search' &&
-                props.type != 'icon' &&
-                props.type != 'textarea' &&
-                props.type != 'password' &&
-                props.type != 'structurefield' &&
-                props.type != 'radio' &&
-                props.type != 'select' &&
-                props.type != 'multiselect' &&
-                props.type != 'date' &&
-                props.type != 'slider' &&
-                props.type != 'range' &&
-                props.type != 'decimal' &&
-                <div className={styles.field_wrapper}>
-                    {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
-                    <input
-                        disabled={props.disabled}
-                        key={props.key}
-                        style={{
-                            height: props.height || 44
-                        }}
-                        className=
-                        {`${styles.field} 
+
+    return (
+        <ErrorBoundary>
+            <div className={`${styles.input_wrapper} ${props.className}`}
+                style={
+                    {
+                        maxWidth: props.width || 'auto',
+                        marginBottom: inputMargins.marginBottom,
+                        marginTop: inputMargins.marginTop
+                    }
+                }>
+                {props.label && <label>{props.label}{props.required && '*'}</label>}
+                {props.description &&
+                    <div className={styles.description}>{props.description}</div>}
+                {props.debug && <div>
+                    <div className="dd-debug">searchValue: {JSON.stringify(searchValue)}</div>
+                    <div className="dd-debug">value: {JSON.stringify(value)}</div>
+                    <div className="dd-debug"> defVal: {JSON.stringify(defVal)}</div>
+                </div>}
+
+                {props.type != 'email' &&
+                    props.type != 'checkboxGroup' &&
+                    props.type != 'number' &&
+                    props.type != 'search' &&
+                    props.type != 'icon' &&
+                    props.type != 'textarea' &&
+                    props.type != 'password' &&
+                    props.type != 'structurefield' &&
+                    props.type != 'radio' &&
+                    props.type != 'select' &&
+                    props.type != 'multiselect' &&
+                    props.type != 'date' &&
+                    props.type != 'slider' &&
+                    props.type != 'range' &&
+                    props.type != 'decimal' &&
+                    <div className={styles.field_wrapper}>
+                        {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
+                        <input
+                            disabled={props.disabled}
+                            key={props.key}
+                            style={{
+                                height: props.height || 44
+                            }}
+                            className=
+                            {`${styles.field} 
                             ${props.icon && styles.icon} 
                             ${warningMsg.type && styles[warningMsg.type]}
                             ${props.disabled && styles.disabled}`}
-                        type="text"
-                        onKeyPress={e => { e.key == 'Enter' ? props.onPressEnter(value) : undefined }}
-                        onChange={e => { handleChange(e.target.value); }}
-                        value={value || ''}
-                        onBlur={checkValue}
-                        placeholder={`${props.placeholder ? props.placeholder : ''}`}
-                    />
-                    {value && !props.disabled &&
-                        <div className={`${styles.clear} icon icon-close`}
-                            onClick={clearValue}></div>}
-                </div>}
-
-            {props.type == 'email' &&
-                <div className={styles.field_wrapper}>
-                    <input
-                        autocomplete="off"
-                        disabled={props.disabled}
-                        className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
-                        type="text"
-                        onChange={e => { handleChange(String(e.target.value).toLowerCase()); e && checkEmailValue(e.target.value) }}
-                        value={value}
-                        onBlur={e => checkEmailValue(e.target.value)}
-                        placeholder={`${props.placeholder ? props.placeholder : ''}`}
-                    />
-                    {value && !props.disabled &&
-                        <div className={`${styles.clear} icon icon-close`}
-                            onClick={clearValue}></div>}
-                </div>}
-
-            {props.type == 'search' &&
-                <div className={styles.field_wrapper}>
-                    <div className={`${styles.input_icon_wrapper} icon icon-search`} />
-                    <input
-                        disabled={props.disabled}
-                        className={`
-                        ${styles.field} 
-                        ${styles.icon} 
-                        ${props.inputClassName}
-                        ${warningMsg.type && styles[warningMsg.type]}
-                        ${props.disabled && styles.disabled}`}
-                        type="text"
-                        onKeyPress={e => {
-                            if (e.key == 'Enter') {
-                                setSearchValue(value);
-                                setWarningMesg({})
-                                props.onPressEnter(value);
-                            }
-                        }}
-                        onChange={e => { handleChange(e.target.value); }}
-                        value={value}
-                        onBlur={props.searchOnEnter ? checkSearchValue : undefined}
-                        placeholder={`${props.placeholder ? props.placeholder : ''}`}
-                    />
-                    {value && !props.disabled &&
-                        <div className={`${styles.clear} icon icon-close`}
-                            onClick={() => { clearValue(); props.onClear() }}></div>}
-                </div>}
-
-            {props.type == 'decimal' &&
-                <div className={`${props.unitName && styles.fieldUnitsWrapper}`}>
-                    <div className={styles.field_wrapper}>
-                        <input
-                            className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
-                            disabled={props.disabled}
-                            type="number"
-                            onChange={e => { handleChangeDecimalNumber(e.target.value) }}
-                            value={value}
+                            type="text"
+                            onKeyPress={e => { e.key == 'Enter' ? props.onPressEnter(value) : undefined }}
+                            onChange={e => { handleChange(e.target.value); }}
+                            value={value || ''}
                             onBlur={checkValue}
                             placeholder={`${props.placeholder ? props.placeholder : ''}`}
                         />
                         {value && !props.disabled &&
                             <div className={`${styles.clear} icon icon-close`}
                                 onClick={clearValue}></div>}
-                    </div>
-                    {props.unitName && <div className={styles.unitName}>{props.unitName}</div>}
-                </div>}
+                    </div>}
 
-            {props.type == 'number' &&
-                <div className={`${props.unitName && styles.fieldUnitsWrapper}`}>
+                {props.type == 'email' &&
                     <div className={styles.field_wrapper}>
                         <input
-                            className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
+                            autocomplete="off"
                             disabled={props.disabled}
-                            type="number"
-                            onChange={e => handleChangeNumber(e.target.value)}
+                            className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
+                            type="text"
+                            onChange={e => { handleChange(String(e.target.value).toLowerCase()); e && checkEmailValue(e.target.value) }}
+                            value={value}
+                            onBlur={e => checkEmailValue(e.target.value)}
+                            placeholder={`${props.placeholder ? props.placeholder : ''}`}
+                        />
+                        {value && !props.disabled &&
+                            <div className={`${styles.clear} icon icon-close`}
+                                onClick={clearValue}></div>}
+                    </div>}
+
+                {props.type == 'search' &&
+                    <div className={styles.field_wrapper}>
+                        <div className={`${styles.input_icon_wrapper} icon icon-search`} />
+                        <input
+                            disabled={props.disabled}
+                            className={`
+                        ${styles.field} 
+                        ${styles.icon} 
+                        ${props.inputClassName}
+                        ${warningMsg.type && styles[warningMsg.type]}
+                        ${props.disabled && styles.disabled}`}
+                            type="text"
+                            onKeyPress={e => {
+                                if (e.key == 'Enter') {
+                                    setSearchValue(value);
+                                    setWarningMesg({})
+                                    props.onPressEnter(value);
+                                }
+                            }}
+                            onChange={e => { handleChange(e.target.value); }}
+                            value={value}
+                            onBlur={props.searchOnEnter ? checkSearchValue : undefined}
+                            placeholder={`${props.placeholder ? props.placeholder : ''}`}
+                        />
+                        {value && !props.disabled &&
+                            <div className={`${styles.clear} icon icon-close`}
+                                onClick={() => { clearValue(); props.onClear() }}></div>}
+                    </div>}
+
+                {props.type == 'decimal' &&
+                    <div className={`${props.unitName && styles.fieldUnitsWrapper}`}>
+                        <div className={styles.field_wrapper}>
+                            <input
+                                className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
+                                disabled={props.disabled}
+                                type="number"
+                                onChange={e => { handleChangeDecimalNumber(e.target.value) }}
+                                value={value}
+                                onBlur={checkValue}
+                                placeholder={`${props.placeholder ? props.placeholder : ''}`}
+                            />
+                            {value && !props.disabled &&
+                                <div className={`${styles.clear} icon icon-close`}
+                                    onClick={clearValue}></div>}
+                        </div>
+                        {props.unitName && <div className={styles.unitName}>{props.unitName}</div>}
+                    </div>}
+
+                {props.type == 'number' &&
+                    <div className={`${props.unitName && styles.fieldUnitsWrapper}`}>
+                        <div className={styles.field_wrapper}>
+                            <input
+                                className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
+                                disabled={props.disabled}
+                                type="number"
+                                onChange={e => handleChangeNumber(e.target.value)}
+                                value={value}
+                                onBlur={checkValue}
+                                placeholder={`${props.placeholder ? props.placeholder : ''}`}
+                            />
+
+
+                            {!props.disabled && <React.Fragment>
+                                <div className={`${styles.plus} icon icon-up`}
+                                    onClick={() => { if (value) { handleChangeNumber(parseInt(value) + 1) } else { handleChangeNumber(1); } }}></div>
+                                {props.positive && value > 0 && <div className={`${styles.minus} icon icon-down`}
+                                    onClick={() => handleChangeNumber(parseInt(value) - 1)}></div>}
+                                {!props.positive && <div className={`${styles.minus} icon icon-down`}
+                                    onClick={() => handleChangeNumber(parseInt(value) - 1)}></div>}</React.Fragment>}
+                        </div>
+                        {props.unitName && <div className={styles.unitName}>{props.unitName}</div>}
+                    </div>
+                }
+
+                {props.type == 'textarea' &&
+                    <div className={styles.field_wrapper}>
+                        <textarea
+                            autoFocus={props.autoFocus}
+                            disabled={props.disabled}
+                            className={`${styles.field} ${props.disabled && styles.disabled} ${props.code && styles.code} ${warningMsg.type && styles[warningMsg.type]}`}
+                            type="text"
+                            rows={props.rows || 3}
+                            onChange={e => handleChange(e.target.value)}
                             value={value}
                             onBlur={checkValue}
                             placeholder={`${props.placeholder ? props.placeholder : ''}`}
                         />
+                        {value &&
+                            <div className={`${styles.clear} icon icon-close`}
+                                onClick={clearValue}></div>}
+                    </div>}
 
+                {props.type == 'password' &&
+                    <div className={styles.field_wrapper}>
+                        <input
+                            autoFocus={props.autoFocus}
+                            autocomplete="new-password"
+                            disabled={props.disabled}
+                            className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
+                            type={pwdVisible}
+                            onChange={e => handleChange(e.target.value)}
+                            value={value}
+                            onBlur={checkValue}
+                            placeholder={`${props.placeholder ? props.placeholder : ''}`} />
+                        {pwdVisible == 'password' &&
+                            <div className={`${styles.clear} icon icon-view`}
+                                onClick={() => setPwdVisible('text')}></div>}
+                        {pwdVisible == 'text' &&
+                            <div className={`${styles.clear} icon icon-hide`}
+                                onClick={() => setPwdVisible('password')}></div>}
+                    </div>}
 
-                        {!props.disabled && <React.Fragment>
-                            <div className={`${styles.plus} icon icon-up`}
-                                onClick={() => { if (value) { handleChangeNumber(parseInt(value) + 1) } else { handleChangeNumber(1); } }}></div>
-                            {props.positive && value > 0 && <div className={`${styles.minus} icon icon-down`}
-                                onClick={() => handleChangeNumber(parseInt(value) - 1)}></div>}
-                            {!props.positive && <div className={`${styles.minus} icon icon-down`}
-                                onClick={() => handleChangeNumber(parseInt(value) - 1)}></div>}</React.Fragment>}
-                    </div>
-                    {props.unitName && <div className={styles.unitName}>{props.unitName}</div>}
-                </div>
-            }
-
-            {props.type == 'textarea' &&
-                <div className={styles.field_wrapper}>
-                    <textarea
-                        autoFocus={props.autoFocus}
+                {props.type == 'radio' &&
+                    <Radio
+                        onChange={e => e ? (e.target ? submit(e.target.value) : submit(e)) : submit(null)}
+                        defaultValue={defVal}
+                        options={props.options}
                         disabled={props.disabled}
-                        className={`${styles.field} ${props.disabled && styles.disabled} ${props.code && styles.code} ${warningMsg.type && styles[warningMsg.type]}`}
-                        type="text"
-                        rows={props.rows || 3}
-                        onChange={e => handleChange(e.target.value)}
-                        value={value}
-                        onBlur={checkValue}
-                        placeholder={`${props.placeholder ? props.placeholder : ''}`}
+                        placeholder={props.placeholder}
+                        radioImages={props.radioImages}
+                        customOption={props.customOption}
+                        customOptionLabel={props.customOptionLabel}
+                        customOptionType={props.customOptionType}
+                        customOptionPlaceholder={props.customOptionPlaceholder}
                     />
-                    {value &&
-                        <div className={`${styles.clear} icon icon-close`}
-                            onClick={clearValue}></div>}
-                </div>}
-
-            {props.type == 'password' &&
-                <div className={styles.field_wrapper}>
-                    <input
-                        autoFocus={props.autoFocus}
-                        autocomplete="new-password"
+                }
+                {props.type == 'select' &&
+                    <Select
+                        warning={warningMsg.type}
+                        placeholder={props.placeholder}
+                        options={props.options}
+                        icon={props.icon}
+                        height={props.height}
+                        bottomSelect={props.bottomSelect}
                         disabled={props.disabled}
-                        className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
-                        type={pwdVisible}
-                        onChange={e => handleChange(e.target.value)}
-                        value={value}
+                        displayKey={props.displayKey}
+                        defaultValue={defVal}
+                        iconOptions={props.iconOptions}
+                        onChange={e => submit(e)}
+                        subSelect={props.subSelect}
+                        onChangeSubselect={props.onChangeSubselect}
+                    />
+                }
+                {props.type == 'multiselect' &&
+                    <Select
+                        warning={warningMsg.type}
+                        placeholder={props.placeholder}
+                        options={props.options}
+                        bottomSelect={props.bottomSelect}
+                        icon={props.icon}
+                        height={props.height}
+                        displayKey={props.displayKey}
+                        disabled={props.disabled}
+                        multi
+                        defaultValue={defVal}
+                        iconOptions={props.iconOptions}
+                        onChange={e => submit(e)}
+                    />
+                }
+                {props.type == 'icon' &&
+                    <Select
+                        warning={warningMsg.type}
+                        placeholder={props.placeholder || 'Choose icon'}
+                        options={icon_options}
+                        bottomSelect={props.bottomSelect}
+                        height={props.height}
+                        icon={props.icon}
+                        displayKey={props.displayKey}
+                        disabled={props.disabled}
+                        defaultValue={defVal}
+                        iconOptions
+                        onChange={e => submit(e)}
+                    />
+                }
+                {props.type == 'date' &&
+                    <Datepicker
+                        onChange={e => { setValue(e); props.onChange && props.onChange(e) }}
+                        disabled={props.disabled}
+                        placeholder={props.placeholder}
+                        defaultValue={defVal}
+                        utc={props.utc}
+                        dateFormat={props.dateFormat}
+                        timeFormat={props.timeFormat}
                         onBlur={checkValue}
-                        placeholder={`${props.placeholder ? props.placeholder : ''}`} />
-                    {pwdVisible == 'password' &&
-                        <div className={`${styles.clear} icon icon-view`}
-                            onClick={() => setPwdVisible('text')}></div>}
-                    {pwdVisible == 'text' &&
-                        <div className={`${styles.clear} icon icon-hide`}
-                            onClick={() => setPwdVisible('password')}></div>}
-                </div>}
+                        closeOnSelect={true}
+                    />
+                }
+                {props.type == 'structurefield' &&
+                    <StructureField
+                        defaultValue={defVal}
+                        fixHeight={props.fixHeight}
+                        hideSysFields={props.hideSysFields}
+                        hideId={props.hideId}
+                        disabled={props.disabled}
+                        noPropagation={props.noPropagation}
+                        structSysName={props.structSysName}
+                        onChooseLinkStructSysName={props.onChooseLinkStructSysName}
+                        onChooseType={props.onChooseType}
+                        fields={props.fields}
+                        filterFields={props.filterFields}
+                        filterLinkFields={props.filterLinkFields}
+                        filterPlaceholder={props.filterPlaceholder || 'Type to filter fields'}
+                        icon={props.icon}
+                        placeholder={props.placeholder || 'Choose object field'}
+                        onChange={e => submit(e)}
+                        onChangeExtended={props.onChangeExtended}
+                    />
+                }
+                {props.type == 'slider' &&
+                    <Slider
+                        defaultValue={defVal}
+                        min={props.min}
+                        max={props.max}
+                        step={props.step}
+                        onChange={e => setValue(e)}
+                        unitName={props.unitName} />
 
-            {props.type == 'radio' &&
-                <Radio
-                    onChange={e => e ? (e.target ? submit(e.target.value) : submit(e)) : submit(null)}
-                    defaultValue={defVal}
-                    options={props.options}
-                    disabled={props.disabled}
-                    placeholder={props.placeholder}
-                    radioImages={props.radioImages}
-                    customOption={props.customOption}
-                    customOptionLabel={props.customOptionLabel}
-                    customOptionType={props.customOptionType}
-                    customOptionPlaceholder={props.customOptionPlaceholder}
-                />
-            }
-            {props.type == 'select' &&
-                <Select
-                    warning={warningMsg.type}
-                    placeholder={props.placeholder}
-                    options={props.options}
-                    icon={props.icon}
-                    height={props.height}
-                    bottomSelect={props.bottomSelect}
-                    disabled={props.disabled}
-                    displayKey={props.displayKey}
-                    defaultValue={defVal}
-                    iconOptions={props.iconOptions}
-                    onChange={e => submit(e)}
-                    subSelect={props.subSelect}
-                    onChangeSubselect={props.onChangeSubselect}
-                />
-            }
-            {props.type == 'multiselect' &&
-                <Select
-                    warning={warningMsg.type}
-                    placeholder={props.placeholder}
-                    options={props.options}
-                    bottomSelect={props.bottomSelect}
-                    icon={props.icon}
-                    height={props.height}
-                    displayKey={props.displayKey}
-                    disabled={props.disabled}
-                    multi
-                    defaultValue={defVal}
-                    iconOptions={props.iconOptions}
-                    onChange={e => submit(e)}
-                />
-            }
-            {props.type == 'icon' &&
-                <Select
-                    warning={warningMsg.type}
-                    placeholder={props.placeholder || 'Choose icon'}
-                    options={icon_options}
-                    bottomSelect={props.bottomSelect}
-                    height={props.height}
-                    icon={props.icon}
-                    displayKey={props.displayKey}
-                    disabled={props.disabled}
-                    defaultValue={defVal}
-                    iconOptions
-                    onChange={e => submit(e)}
-                />
-            }
-            {props.type == 'date' &&
-                <Datepicker
-                    onChange={e => { setValue(e); props.onChange && props.onChange(e) }}
-                    disabled={props.disabled}
-                    placeholder={props.placeholder}
-                    defaultValue={defVal}
-                    utc={props.utc}
-                    dateFormat={props.dateFormat}
-                    timeFormat={props.timeFormat}
-                    onBlur={checkValue}
-                    closeOnSelect={true}
-                />
-            }
-            {props.type == 'structurefield' &&
-                <StructureField
-                    defaultValue={defVal}
-                    fixHeight={props.fixHeight}
-                    hideSysFields={props.hideSysFields}
-                    disabled={props.disabled}
-                    noPropagation={props.noPropagation}
-                    structSysName={props.structSysName}
-                    onChooseLinkStructSysName={props.onChooseLinkStructSysName}
-                    onChooseType={props.onChooseType}
-                    fields={props.fields}
-                    filterFields={props.filterFields}
-                    filterLinkFields={props.filterLinkFields}
-                    filterPlaceholder={props.filterPlaceholder || 'Type to filter fields'}
-                    icon={props.icon}
-                    placeholder={props.placeholder || 'Choose object field'}
-                    onChange={e => submit(e)}
-                    onChangeExtended={props.onChangeExtended}
-                />
-            }
-            {props.type == 'slider' &&
-                <Slider
-                    defaultValue={defVal}
-                    min={props.min}
-                    max={props.max}
-                    step={props.step}
-                    onChange={e => setValue(e)}
-                    unitName={props.unitName} />
+                }
+                {props.type == 'range' &&
+                    <Slider
+                        defaultValue={defVal}
+                        min={props.min}
+                        max={props.max}
+                        step={props.step}
+                        onChange={e => setValue(e)}
+                        unitName={props.unitName} />
 
-            }
-            {props.type == 'range' &&
-                <Slider
-                    defaultValue={defVal}
-                    min={props.min}
-                    max={props.max}
-                    step={props.step}
-                    onChange={e => setValue(e)}
-                    unitName={props.unitName} />
-
-            }
-            {props.type == 'checkboxGroup' &&
-                <React.Fragment>
-                    {props.options && props.options.map(option => {
-                        return (
+                }
+                {props.type == 'checkboxGroup' &&
+                    <React.Fragment>
+                        {props.options && props.options.map(option => {
+                            return (
+                                <div className={styles.checkbox_wrapper}>
+                                    <Checkbox
+                                        label={option.label}
+                                        onChange={val => {
+                                            const saveValue = { ...value }
+                                            if (val) { saveValue[option.value] = val }
+                                            else { delete saveValue[option.value] }
+                                            submit(saveValue)
+                                        }}
+                                    />
+                                </div>
+                            )
+                        })}
+                        {props.customOption &&
                             <div className={styles.checkbox_wrapper}>
                                 <Checkbox
-                                    label={option.label}
+                                    customOption
+                                    label={props.customOptionLabel}
+                                    customOptionType={props.customOptionType}
                                     onChange={val => {
                                         const saveValue = { ...value }
-                                        if (val) { saveValue[option.value] = val }
-                                        else { delete saveValue[option.value] }
+                                        if (val) { saveValue.customOption = val }
+                                        else { delete saveValue.customOption }
                                         submit(saveValue)
                                     }}
+                                    customOptionPlaceholder={props.customOptionPlaceholder}
                                 />
                             </div>
-                        )
-                    })}
-                    {props.customOption &&
-                        <div className={styles.checkbox_wrapper}>
-                            <Checkbox
-                                customOption
-                                label={props.customOptionLabel}
-                                customOptionType={props.customOptionType}
-                                onChange={val => {
-                                    const saveValue = { ...value }
-                                    if (val) { saveValue.customOption = val }
-                                    else { delete saveValue.customOption }
-                                    submit(saveValue)
-                                }}
-                                customOptionPlaceholder={props.customOptionPlaceholder}
-                            />
-                        </div>
-                    }
+                        }
 
-                </React.Fragment>
-            }
+                    </React.Fragment>
+                }
 
-            {props.tip &&
-                <div className={styles.status}>{props.tip}</div>}
+                {props.tip &&
+                    <div className={styles.status}>{props.tip}</div>}
 
-            {warningMsg.msg &&
-                <div className={`${styles.status} ${styles[warningMsg.type]}`}>{warningMsg.msg}</div>}
+                {warningMsg.msg &&
+                    <div className={`${styles.status} ${styles[warningMsg.type]}`}>{warningMsg.msg}</div>}
 
-        </div>
+            </div>
+        </ErrorBoundary>
     )
 }

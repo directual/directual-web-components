@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {
     FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, Select, Datepicker, InputGroup,
     FpsTheme, ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, CodeSnippet, Slider, FileUpload,
-    Checkbox, OptionsHandler, StructureField
+    Checkbox, OptionsHandler, StructureField, ErrorBoundary
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
@@ -37,6 +37,12 @@ export default function InputsPage() {
         {
             structName: 'TMessageIn',
             fields: [
+                {
+                    sysName: 'id',
+                    name: 'ID',
+                    dataType: 'id',
+                    link: ''
+                },
                 {
                     sysName: '@who',
                     name: 'First Name',
@@ -194,7 +200,8 @@ export default function InputsPage() {
                 //fixHeight={100}
                 //debug
                 fields={testFields}
-                //hideSysFields
+                hideSysFields
+                hideId
                 onChooseType={e => console.log(e)}
                 onChooseLinkStructSysName={e => console.log(e)}
                 //tip='подсказко'

@@ -33,11 +33,13 @@ import { Dnd } from './components/fps/dnd/dndList'
 import Checkbox from './components/fps/dataentry/checkbox/checkbox'
 import OptionsHandler, {AdvancedOptionsHandler} from './components/fps/dataentry/optionsHandler/optionsHandler'
 import StructureField from './components/fps/dataentry/structurefield/structurefield'
+import ErrorBoundary from './components/fps/errorBoundary/errorBoundary'
 
 import FpsTheme, { SetTheme } from './components/fps/theme/theme'
 
 export {
   Fps404,
+  ErrorBoundary,
   Fps500,
   FpsIsEmpty,
   AdvancedOptionsHandler,
