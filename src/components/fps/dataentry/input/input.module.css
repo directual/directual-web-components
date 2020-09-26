@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   font-size: var(--text-font-size);
-  line-height: 1em;
   align-items: stretch;
 }
 .input_wrapper label {
@@ -22,7 +21,7 @@
   opacity: 0.5;
   position: absolute;
   left: 8px;
-  top: 16px;
+  top: 9px;
 }
 .input_wrapper .field_wrapper .input_icon_wrapper:before {
   font-size: 32px;
@@ -32,7 +31,7 @@
   opacity: 0.3;
   cursor: pointer;
   transition: 0.5s;
-  top: 16px;
+  top: 9px;
   right: 9px;
 }
 .input_wrapper .field_wrapper .clear:before {
@@ -47,7 +46,7 @@
   opacity: 0.3;
   cursor: pointer;
   transition: 0.5s;
-  top: 6px;
+  top: 0px;
   right: 10px;
 }
 .input_wrapper .field_wrapper .plus:before {
@@ -62,7 +61,7 @@
   opacity: 0.3;
   cursor: pointer;
   transition: 0.5s;
-  top: 26px;
+  top: 16px;
   right: 10px;
 }
 .input_wrapper .field_wrapper .minus:before {
