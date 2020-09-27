@@ -97,7 +97,7 @@
   line-height: 1.5;
 }
 .input_wrapper .field {
-  outline: none;
+  outline: none !important;
   border: solid 1px var(--field-border-color);
   border-radius: var(--border-radius);
   background-color: var(--background-color);

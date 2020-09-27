@@ -7,7 +7,7 @@ import {
 import FpsLogin from './components/fps/FpsLogin'
 import FpsCards from './components/fps/viewobjects/cards/FpsCards'
 import FpsHtml from './components/fps/FpsHtml'
-import FpsForm from './components/fps/dataentry/form/FpsForm'
+import FpsForm, { FormSection } from './components/fps/dataentry/form/FpsForm'
 import MainMenu from './components/fps/mainmenu/mainmenu'
 import ComponentDetails from './components/fps/componentdetails/componentdetails'
 import FpsTable from './components/fps/viewobjects/table/FpsTable'
@@ -65,6 +65,7 @@ export {
   Datepicker,
   FileUpload,
   InputGroup,
+  FormSection,
   FpsTheme,
   SetTheme,
   SignIn,

@@ -1,5 +1,5 @@
 .radio {
-  outline: none;
+  outline: none !important;
 }
 .radio .radio_flex {
   display: flex;
@@ -69,7 +69,7 @@
   border-radius: 50%;
   border: solid 1px var(--field-border-color);
   margin: 6px 11px 6px 1px;
-  outline: none;
+  outline: none !important;
 }
 .radio label input[type=radio]:checked {
   border: solid 4px var(--accent-color);
