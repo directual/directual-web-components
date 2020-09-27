@@ -187,7 +187,7 @@ export default function InputsPage() {
     description='That is a new FormField component for the platform'
     //disabled
     type='structurefield' />`} />
-    {/* {testDefValue} */}
+            {/* {testDefValue} */}
             <Input
                 label='Structure field'
                 width={500}
@@ -584,6 +584,9 @@ export default function InputsPage() {
             <Input
                 label='Input (required, with icon)'
                 placeholder='Placeholder'
+                // data={{
+                //     errors: [1,2,3]
+                // }}
                 icon='license'
                 //height={48}
                 type='string'
@@ -644,9 +647,45 @@ export default function InputsPage() {
             <Input
                 label='Input disabled'
                 placeholder='Placeholder'
-                defaultValue='default value'
+                defaultValue='default value default value default value default value default value'
                 type='string'
                 disabled
+                width={400}
+            />
+            <CodeSnippet code=
+                {`<Input
+    label='Input code'
+    placeholder='Placeholder'
+    defaultValue='I am code style input'
+    type='string'
+    code
+    width={400}
+/>`} />
+            <Input
+                label='Input code'
+                placeholder='Placeholder'
+                defaultValue='I am code style input'
+                type='string'
+                code
+                width={400}
+            />
+<CodeSnippet code=
+                {`<Input
+    label='Input code'
+    placeholder='Placeholder'
+    defaultValue='I am code style input'
+    type='string'
+    code
+    copy
+    width={400}
+/>`} />
+            <Input
+                label='Input code'
+                placeholder='Placeholder'
+                defaultValue='I am code style input'
+                type='string'
+                code
+                copy
                 width={400}
             />
 
@@ -683,7 +722,7 @@ export default function InputsPage() {
                 width={400}
             />
 
-<CodeSnippet code=
+            <CodeSnippet code=
                 {`<Input
     label='Textarea (code)'
     placeholder='Placeholder for textarea'

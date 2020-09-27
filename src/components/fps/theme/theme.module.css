@@ -15,91 +15,91 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('Source Code Pro Regular'), local('SourceCodePro-Regular'), url(https://fonts.gstatic.com/s/sourcecodepro/v11/HI_SiYsKILxRpg3hIP6sJ7fM7PqVOg.ttf) format('truetype');
+  src: local('Source Code Pro Regular'), local('SourceCodePro-Regular'), url(https://fonts.gstatic.com/s/sourcecodepro/v13/HI_SiYsKILxRpg3hIP6sJ7fM7PqVOg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: local('Lato Light'), local('Lato-Light'), url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh7USew8.ttf) format('truetype');
+  src: local('Lato Light'), local('Lato-Light'), url(https://fonts.gstatic.com/s/lato/v17/S6u9w4BMUTPHh7USew8.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHvxk.ttf) format('truetype');
+  src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v17/S6uyw4BMUTPHvxk.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh6UVew8.ttf) format('truetype');
+  src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v17/S6u9w4BMUTPHh6UVew8.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: local('Lato Black'), local('Lato-Black'), url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh50Xew8.ttf) format('truetype');
+  src: local('Lato Black'), local('Lato-Black'), url(https://fonts.gstatic.com/s/lato/v17/S6u9w4BMUTPHh50Xew8.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Merriweather';
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: local('Merriweather Light'), local('Merriweather-Light'), url(https://fonts.gstatic.com/s/merriweather/v21/u-4n0qyriQwlOrhSvowK_l521wRpXw.ttf) format('truetype');
+  src: local('Merriweather Light'), local('Merriweather-Light'), url(https://fonts.gstatic.com/s/merriweather/v22/u-4n0qyriQwlOrhSvowK_l521wRpXw.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Merriweather';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('Merriweather Regular'), local('Merriweather-Regular'), url(https://fonts.gstatic.com/s/merriweather/v21/u-440qyriQwlOrhSvowK_l5Oew.ttf) format('truetype');
+  src: local('Merriweather Regular'), local('Merriweather-Regular'), url(https://fonts.gstatic.com/s/merriweather/v22/u-440qyriQwlOrhSvowK_l5Oew.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Merriweather';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local('Merriweather Bold'), local('Merriweather-Bold'), url(https://fonts.gstatic.com/s/merriweather/v21/u-4n0qyriQwlOrhSvowK_l52xwNpXw.ttf) format('truetype');
+  src: local('Merriweather Bold'), local('Merriweather-Bold'), url(https://fonts.gstatic.com/s/merriweather/v22/u-4n0qyriQwlOrhSvowK_l52xwNpXw.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Merriweather';
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: local('Merriweather Black'), local('Merriweather-Black'), url(https://fonts.gstatic.com/s/merriweather/v21/u-4n0qyriQwlOrhSvowK_l52_wFpXw.ttf) format('truetype');
+  src: local('Merriweather Black'), local('Merriweather-Black'), url(https://fonts.gstatic.com/s/merriweather/v22/u-4n0qyriQwlOrhSvowK_l52_wFpXw.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: local('Montserrat Light'), local('Montserrat-Light'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_cJD7g4.ttf) format('truetype');
+  src: local('Montserrat Light'), local('Montserrat-Light'), url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_cJD7g4.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm45xW4.ttf) format('truetype');
+  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v15/JTUSjIg1_i6t8kCHKm45xW4.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE7g4.ttf) format('truetype');
+  src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_dJE7g4.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: local('Montserrat Black'), local('Montserrat-Black'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_epG7g4.ttf) format('truetype');
+  src: local('Montserrat Black'), local('Montserrat-Black'), url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_epG7g4.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Oswald';
@@ -155,21 +155,21 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: local('Ubuntu Light'), local('Ubuntu-Light'), url(https://fonts.gstatic.com/s/ubuntu/v14/4iCv6KVjbNBYlgoC1CzTtw.ttf) format('truetype');
+  src: local('Ubuntu Light'), local('Ubuntu-Light'), url(https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoC1CzTtw.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Ubuntu';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('Ubuntu Regular'), local('Ubuntu-Regular'), url(https://fonts.gstatic.com/s/ubuntu/v14/4iCs6KVjbNBYlgo6eA.ttf) format('truetype');
+  src: local('Ubuntu Regular'), local('Ubuntu-Regular'), url(https://fonts.gstatic.com/s/ubuntu/v15/4iCs6KVjbNBYlgo6eA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Ubuntu';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local('Ubuntu Bold'), local('Ubuntu-Bold'), url(https://fonts.gstatic.com/s/ubuntu/v14/4iCv6KVjbNBYlgoCxCvTtw.ttf) format('truetype');
+  src: local('Ubuntu Bold'), local('Ubuntu-Bold'), url(https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoCxCvTtw.ttf) format('truetype');
 }
 :root {
   --headers-font-family: 'Montserrat', sans-serif;
@@ -241,8 +241,8 @@
 }
 @font-face {
   font-family: 'directual-icons';
-  src: url('https://api.alfa.directual.com/fileUploaded/directual-site/6254cfba-0a8b-463f-b3d2-02ba79a049b9.eot');
-  src: url('https://api.alfa.directual.com/fileUploaded/directual-site/6254cfba-0a8b-463f-b3d2-02ba79a049b9.eot') format('embedded-opentype'), url('https://api.alfa.directual.com/fileUploaded/directual-site/591ae07c-bc27-4ab2-a477-6a71a7ad5043.woff') format('woff'), url('https://api.alfa.directual.com/fileUploaded/directual-site/a0df72ee-30e0-41f9-9a37-7353e03fed9c.ttf') format('truetype'), url('https://api.alfa.directual.com/fileUploaded/directual-site/77a2f264-a992-4db8-934d-3600b4743b19.svg') format('svg');
+  src: url('https://api.alfa.directual.com/fileUploaded/directual-site/4f175a46-ef5d-4cea-9d8c-ddae83102388.eot');
+  src: url('https://api.alfa.directual.com/fileUploaded/directual-site/4f175a46-ef5d-4cea-9d8c-ddae83102388.eot') format('embedded-opentype'), url('https://api.alfa.directual.com/fileUploaded/directual-site/f8113148-e36b-445e-9038-94f9604065b4.woff') format('woff'), url('https://api.alfa.directual.com/fileUploaded/directual-site/9751010c-2469-4951-84ed-6bd32a2de1f3.ttf') format('truetype'), url('https://api.alfa.directual.com/fileUploaded/directual-site/ed6b4c26-24a0-470a-8cf2-501501cfbb53.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -585,6 +585,15 @@
 }
 :global .icon-zoom-to-fit:before {
   content: "\e96f";
+}
+:global .icon-academy:before {
+  content: "\e900";
+}
+:global .icon-path:before {
+  content: "\e971";
+}
+:global .icon-bellMute:before {
+  content: "\e972";
 }
 /*-- VARIABLES --*/
 :root {

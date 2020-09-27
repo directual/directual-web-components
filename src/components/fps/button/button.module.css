@@ -7,7 +7,7 @@ a.button:hover:not(.disabled):not(.transparent) {
 }
 .button {
   display: flex;
-  height: 48px;
+  height: 44px;
   justify-content: center;
   align-items: center;
   padding: 1px 18px;
@@ -94,7 +94,7 @@ a.button:hover:not(.disabled):not(.transparent) {
   border-color: var(--font-color) !important;
 }
 .button:hover:not(.disabled):not(.transparent) {
-  height: 48px;
+  height: 44px;
   padding: 0 17px !important;
   border-width: 2px;
   transition: 0;

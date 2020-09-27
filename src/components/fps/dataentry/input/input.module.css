@@ -114,13 +114,18 @@
 .input_wrapper .field::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
+.input_wrapper .field.code {
+  font-family: 'Source Code Pro', monospace;
+  font-size: var(--text-small-size);
+  line-height: 1.5;
+}
 .input_wrapper .field.icon {
   padding-left: 40px;
 }
 .input_wrapper .field.disabled {
-  background-color: var(--table-border-color);
   cursor: not-allowed;
-  color: var(--field-border-color);
+  padding: 1px 18px 1px 18px;
+  opacity: 0.6;
 }
 .input_wrapper .field.error {
   border-width: 2px;
