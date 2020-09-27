@@ -8,6 +8,9 @@ export default function Button(props) {
             {!props.link ?
                 <button
                     onClick={!props.disabled && props.onClick}
+                    style={{
+                        height: props.height || 48
+                    }}
                     className={`${styles.button} 
                         ${props.small && styles.small}
                         ${props.verySmall && styles.verySmall}
@@ -38,6 +41,9 @@ export default function Button(props) {
                     ${props.inverseColor && `${styles.inverseColor}`}
                     ${props.transparent && `${styles.transparent}`}
                     `}
+                    style={{
+                        height: props.height || 48
+                    }}
                     href={!props.disabled && props.link}
                     target={props.newWindow && '_blank'}
                 >
