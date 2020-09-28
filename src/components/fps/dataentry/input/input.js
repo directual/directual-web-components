@@ -46,8 +46,6 @@ export default function Input(props) {
     }
 
     useEffect(() => {
-        console.log('Ура')
-        console.log(props)
         if (props.data && props.data.errors && props.data.errors.length > 0 ) {
             setWarningMesg({ type: 'error' })
         }

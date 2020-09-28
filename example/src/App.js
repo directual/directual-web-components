@@ -82,7 +82,7 @@ const App = (props) => {
     "tableQuickSearch": true,
     "params": {
       "cardListLayout": "grid", // grid, list
-      "isDisplayID": false,
+      "isDisplayID": true,
       "deleteField": "",
       "cardHeaderComment": "year",
       "cardBodyText": "genre",

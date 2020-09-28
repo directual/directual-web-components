@@ -19,6 +19,7 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading, search
 
     const sendMsg = (msg) => {
         const message = { ...msg, _id: id }
+        console.log(message)
         if (onEvent) {
             onEvent(message)
         }
@@ -27,19 +28,14 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading, search
     const tableFieldScheme = data.fieldScheme || []
     const tableStructures = data.structures || {}
 
+    // обогащаем поля теми, что не пришли по данным, но мы их можем писать:
     function enrichTableDataWithWriteFields(data) {
-        console.log('enrich')
-        console.log(data.writeFields)
-        console.log(data.data)
         let saveData = [...data.data]
         saveData.forEach(field => {
             data.writeFields && data.writeFields.forEach(writeField => {
                 if (!field[writeField]) { field[writeField] = '' }
             })
         })
-        console.log(saveData)
-        console.log('enrich finish')
-
         return saveData
     }
 
