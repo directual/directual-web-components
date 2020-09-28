@@ -15,6 +15,9 @@ export default function Radio(props) {
     timeFormat = customOptionType == 'date' &&  ''
     if (customOptionType == 'datetime') {customOptionType = 'date'}
     
+    useEffect(() => {
+        if (JSON.stringify(props.defaultValue) != JSON.stringify(selectedOption)) { setSelectedOption(props.defaultValue); }
+    }, [props.defaultValue])
 
     // useEffect(() => {
     //     props.onChange && props.onChange('custom: ' + customOptionVal)
@@ -26,6 +29,8 @@ export default function Radio(props) {
 
     return (
         <div className={`${styles.radio} ${props.disabled && styles.disabled}`}>
+            {selectedOption}
+            {props.defaultValue}
             <div className={`${styles.radio_flex}`}>
                 {!props.radioImages && <React.Fragment>
                     {props.options && props.options.map(option =>

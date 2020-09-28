@@ -9,7 +9,7 @@ import 'directual-web-components/dist/index.css'
 export default function InputsPage() {
     const [value, setValue] = useState()
 
-    const [testDefValue, setTestDefValue] = useState('four')
+    const [testDefValue, setTestDefValue] = useState('option1')
 
     const testFields = [
         {
@@ -200,7 +200,7 @@ export default function InputsPage() {
                 onChooseLinkStructSysName={e => console.log(e)}
                 //tip='подсказко'
                 structSysName='TMessageIn'
-                defaultValue={testDefValue}
+                //defaultValue={testDefValue}
                 //onChange={value => console.log(value)}
                 onChangeExtended={(value, struct, type) => console.log(value + ', ' + struct + ', ' + type)}
                 placeholder='Choose the object field'

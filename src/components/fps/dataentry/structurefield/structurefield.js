@@ -334,7 +334,7 @@ function StructListFields(props) {
                     }
                 </ul>
             </div>
-            {props.value && !props.filterLinkFields && !props.noPropagation && (shiftPath() || getFieldDetails(currentField, props.structSysName).dataType == 'link') &&
+            {props.value && !props.filterLinkFields && !props.noPropagation && (shiftPath() || (getFieldDetails(currentField, props.structSysName) && getFieldDetails(currentField, props.structSysName).dataType == 'link')) &&
                 <StructListFields
                     fields={props.fields}
                     filter={props.filter}
