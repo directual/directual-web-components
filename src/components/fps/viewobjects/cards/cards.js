@@ -40,10 +40,10 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading, search
     }
 
     const getInitialStructureParams = () => {
-        const randomField = tableHeaders.filter(field => (field.dataType != 'link' && field.dataType != 'arrayLink'))[0].sysName
+        const randomField = tableHeaders.filter(field => (field.dataType != 'link' && field.dataType != 'arrayLink'))[0] && tableHeaders.filter(field => (field.dataType != 'link' && field.dataType != 'arrayLink'))[0].sysName
         const id = tableFieldScheme.filter(field => randomField == field[0])[0][1] || null
         const name = id && tableStructures[id] && tableStructures[id].name
-        const viewName = id && tableStructures[id] && (tableStructures[id].jsonViewIdSettings ? (Object.values(JSON.parse(tableStructures[id].jsonViewIdSettings || [])).map(i => i = i.sysName)) : [])
+        const viewName = id && tableStructures[id] && (tableStructures[id].jsonViewIdSettings ? (Object.values(JSON.parse(tableStructures[id].jsonViewIdSettings || [])).map(i => i = i && i.sysName)) : [])
         //console.log('viewName = ' + viewName)
         return (
             {
