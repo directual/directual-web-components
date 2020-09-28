@@ -29,8 +29,6 @@ export default function Radio(props) {
 
     return (
         <div className={`${styles.radio} ${props.disabled && styles.disabled}`}>
-            {selectedOption}
-            {props.defaultValue}
             <div className={`${styles.radio_flex}`}>
                 {!props.radioImages && <React.Fragment>
                     {props.options && props.options.map(option =>
