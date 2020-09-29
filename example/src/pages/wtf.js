@@ -59,8 +59,7 @@ return
             <h2>Building new components for Web-page builder</h2>
             <p>There is Directual web-page builder API (it is called <code>fps-api</code>), which
                 adds components to the platform and renders settings-form based on <code>.settings</code> method. Example:</p>
-            <CodeSnippet expanded code={`
-export function FpsForm(props) {
+            <CodeSnippet expanded code={`export function FpsForm(props) {
     // component body
 }
 FpsForm.settings = {

@@ -1,6 +1,7 @@
 a.button {
   height: 48px;
   transition: 0s !important;
+  text-decoration: none !important;
 }
 a.button:hover:not(.disabled):not(.transparent) {
   height: 48px;

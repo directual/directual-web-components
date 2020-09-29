@@ -41,6 +41,11 @@ function MainMenuWrapper(props) {
   return (
     <MainMenu
       title='directual-design'
+      showUserButtons={true}
+      //loggedIn={true}
+      loggedIn={false}
+      logInButton={{ name: "Sign in", route: "/profile", icon: "logoutAlt", link: <Link to="/profile">Sign in</Link> }}
+      profileButton={{ name: "Profile", route: "/profile", icon: "user", link: <Link to="/profile">Profile</Link> }}
       logoUrl={logoUrl}
       currentRoute={location.pathname || '/'}
       menu={[
@@ -51,10 +56,8 @@ function MainMenuWrapper(props) {
         { name: "Theme management", route: "/theme", icon: "styles", link: <Link to="/theme">Theme management</Link> },
         { name: "Cards", route: "/cards", icon: "cards", link: <Link to="/cards">Cards view</Link> },
         { name: "Table (soon)", route: "/table", icon: "database" ,disabled: true },
-        // { name: "List view (soon)", route: "/list", icon: "list", disabled: true },
         { name: "Chat (soon)", route: "/chat", icon: "bubble", disabled: true },
         { name: "Comments (soon)", route: "/comments", icon: "version", disabled: true },
-        // { name: "Calculator (soon)", route: "/calc", icon: "actions", disabled: true },
         { name: "Design system", subheader: true },
         { name: "Typography", route: "/system-typography", icon: "paragraph", link: <Link to="/system-typography">Typography</Link> },
         { name: "Directual Icons", route: "/system-icons", icon: "babai", link: <Link to="/system-icons">Directual icons</Link> },
@@ -62,7 +65,6 @@ function MainMenuWrapper(props) {
         { name: "Data entry", route: "/system-data-entry", icon: "import", link: <Link to="/system-data-entry">Data entry</Link> },
         { name: "Media", route: "/system-media", icon: "play", link: <Link to="/system-media">Media</Link> },
         { name: "Layout", route: "/system-layout", icon: "dashboard", link: <Link to="/system-layout">Layout</Link> },
-        // { name: "Drag'n'drop", route: "/system-dnd", icon: "copy", link: <Link to="/system-dnd">Drag'n'drop</Link> }
       ]}
 
     />)

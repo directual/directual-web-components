@@ -22,6 +22,75 @@
     margin-right: 90px;
   }
 }
+.menuButton {
+  display: flex;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  padding: 1px 24px 1px 18px;
+  text-decoration: none;
+  font-size: var(--text-font-size);
+  color: var(--font-color);
+  border: solid 1px var(--button-border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  cursor: pointer;
+  outline: none;
+  transition: 0s;
+  white-space: nowrap;
+  font-weight: var(--text-font-weight);
+}
+.menuButton:hover {
+  height: 48px;
+  padding: 0 23px 0 17px !important;
+  border-width: 2px;
+  transition: 0;
+  color: var(--font-color);
+}
+.menuButton:active {
+  background-color: var(--button-border-color);
+  color: var(--background-color);
+  border-color: var(--button-border-color);
+}
+.menuButton:active a {
+  color: var(--background-color) !important;
+}
+.menuButton.accent {
+  border-color: var(--accent-color);
+  background-color: var(--accent-color);
+  color: var(--button-accent-color);
+}
+.menuButton.accent a {
+  color: var(--button-accent-color);
+}
+.menuButton.accent a:hover {
+  color: var(--button-accent-color);
+}
+.menuButton.accent:hover:not(.disabled) {
+  background-color: var(--secondary-accent-color);
+  color: var(--button-accent-color) !important;
+  border-color: var(--secondary-accent-color);
+}
+.menuButton.accent:active:not(.disabled) {
+  background-color: var(--font-color) !important;
+  color: var(--background-color) !important;
+  border-color: var(--font-color) !important;
+}
+.menuButton.accent:active:not(.disabled) a {
+  color: var(--background-color);
+}
+.menuButton.accent:active:not(.disabled) a:hover {
+  color: var(--background-color);
+}
+.menuButton a {
+  color: var(--font-color);
+  text-decoration: none !important;
+  transition: 0s;
+}
+.menuButton a:hover {
+  color: var(--font-color);
+  transition: 0s;
+}
 .show_mobile_menu {
   position: absolute;
   width: 40px;
@@ -76,7 +145,16 @@
   height: 100%;
 }
 .mainmenu .list {
-  padding-bottom: 32px;
+  flex-grow: 2;
+}
+.mainmenu .menuFooter {
+  padding-bottom: 48px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.mainmenu .menuFooter .menuFooterButton {
+  padding-top: 24px;
+  display: flex;
 }
 @media all and (max-width: 415px) {
   .mainmenu {
@@ -88,6 +166,9 @@
     transition: 0.4s;
     transition-timing-function: cubic-bezier(0.81, 0.12, 0.55, 1.4);
     padding-right: 40px;
+  }
+  .mainmenu .menuFooter {
+    padding-bottom: 24px;
   }
   .mainmenu.show {
     transform: translateX(40px);
