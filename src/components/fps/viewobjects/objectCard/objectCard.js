@@ -35,7 +35,7 @@ export function ObjectCard(props) {
     const transformTableFieldScheme = (sysname, tableFieldScheme) => {
         let newTableFieldScheme = tableFieldScheme.filter(i => i[0].startsWith(sysname + '.'))
         var deepClone = JSON.parse(JSON.stringify(newTableFieldScheme))
-        deepClone.forEach(i => i[0] = i[0].substring(sysname.length + 1)) // это меняет props.tableFieldScheme
+        deepClone.forEach(i => i[0] = i[0].substring(sysname.length + 1))
         return deepClone
     }
 
@@ -123,7 +123,11 @@ export function ObjectCard(props) {
                     <div onClick={props.onClose}
                         className={`${styles.closeObjectCard} icon icon-back ${showLinkedObject && styles.hidden}`}></div>
                     <h2>
-                        {structure.visibleName ? structure.visibleName.map(headerField => object[headerField] ? object[headerField].value : null).join(' ')
+                        {structure.visibleName ? structure.visibleName.map(headerField => object[headerField] ? 
+                        typeof object[headerField].value == 'object' ? 
+                        getLinkName(headerField,object[headerField].value) 
+                        : object[headerField].value
+                        : null).join(' ')
                             :
                             'No visible name'}
                     </h2>

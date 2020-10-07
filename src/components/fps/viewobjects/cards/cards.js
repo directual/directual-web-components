@@ -60,12 +60,49 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading, search
     data.error =
         data.error && data.error == '511' ? 'Table is not configured' : data.error
 
+    // Gathers current structure info:
+    const getStructure = (obj, tableFieldScheme, tableStructures) => {
+        let structure = {}
+        for (const field in obj) {
+            if (typeof obj[field] != 'object') {
+                if (tableFieldScheme.filter(i => i[0] == field).length > 0) {
+                    structure.id = tableFieldScheme.filter(i => i[0] === field)[0][1]
+                }
+            }
+        }
+        if (structure.id && tableStructures[structure.id]) {
+            structure.sysName = tableStructures[structure.id].sysName
+            structure.name = tableStructures[structure.id].name
+            structure.visibleName = tableStructures[structure.id] && (tableStructures[structure.id].jsonViewIdSettings ? Object.values(JSON.parse(tableStructures[structure.id].jsonViewIdSettings)).map(i => i = i.sysName) : [])
+            structure.fieldStructure = JSON.parse(tableStructures[structure.id].jsonObject)
+        }
+        return structure
+    }
+
+    const transformTableFieldScheme = (sysname, tableFieldScheme) => {
+        let newTableFieldScheme = tableFieldScheme.filter(i => i[0].startsWith(sysname + '.'))
+        var deepClone = JSON.parse(JSON.stringify(newTableFieldScheme))
+        deepClone.forEach(i => i[0] = i[0].substring(sysname.length + 1))
+        return deepClone
+    }
+
+    const getLinkName = (sysname, obj) => {
+        const structure = getStructure(obj, transformTableFieldScheme(sysname, tableFieldScheme), tableStructures)
+        const linkName = structure.visibleName && structure.visibleName.map(field => obj[field]).join(' ')
+        return linkName || 'No visible name'
+    }
+
 
     return (
         <React.Fragment>
             <div className={`${styles.cardsWrapper} ${(data.error || tableData.length === 0) && styles.emptyTable} ${loading && styles.loading}`}>
                 {tableData.map((row, i) => {
-                    const cardHeader = getInitialStructureParams().viewName && getInitialStructureParams().viewName && (getInitialStructureParams().viewName.length > 0 ? getInitialStructureParams().viewName.map(i => row[i]).join(' ') : 'No visible name')
+                    const cardHeader = getInitialStructureParams().viewName && getInitialStructureParams().viewName && 
+                        (getInitialStructureParams().viewName.length > 0 ? 
+                            getInitialStructureParams().viewName.map(i => typeof row[i] == 'object' ? 
+                                getLinkName(i,row[i]) 
+                            : row[i]).join(' ') 
+                        : 'No visible name')
                     return (
                         <div key={i} className={`${styles.card} ${styles[tableParams.cardListLayout]}`}>
                             <div
