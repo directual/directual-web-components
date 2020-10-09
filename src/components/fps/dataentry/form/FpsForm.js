@@ -6,6 +6,7 @@ import ActionPanel from '../../actionspanel/actionspanel'
 import Hint from '../../hint/hint'
 import Loader from '../../loader/loader'
 import icon from './../../../../icons/fps-form.svg'
+import { ComponentWrapper } from './../../wrapper/wrapper'
 
 export function FormSection(props) {
   return (
@@ -125,13 +126,20 @@ export default function FpsForm({ auth, data, onEvent, id }) {
   //Get Object ID to edit
   const eidtID = urlParams.get('@editObject') || null; 
 
-  const fetchObjectFields = (id) => {
-    //TODO: fetch data from the object
+  const [fetchedObj,setFetchetObj] = useState(false)
+
+  const fetchObjectFields = (objId) => {
+    setFetchetObj(true)
+    const message = { dql: 'id = ' + objId, _id: 'form_' + id }
+    if (onEvent) {
+      onEvent(message)
+    }
+
     //const modelCopy = {...model, fetchedFields, id: id}
     //setModel(modelCopy)
   }
 
-  if (eidtID) {
+  if (eidtID && !fetchedObj) {
     console.log(`fetching object (id = ${eidtID}) field...`)
     fetchObjectFields(eidtID)
   }
@@ -254,7 +262,7 @@ export default function FpsForm({ auth, data, onEvent, id }) {
 
 
   return (
-    <div className={styles.test}>
+    <ComponentWrapper>
       {formName && <h1>{formName}</h1>}
       {formDesc && showForm && (
         <p style={{ maxWidth: formWidth, marginBottom: 22 }}>
@@ -356,7 +364,7 @@ export default function FpsForm({ auth, data, onEvent, id }) {
             </ActionPanel>}
         </form>
       )}
-    </div>
+    </ComponentWrapper>
   )
 }
 FpsForm.settings = {

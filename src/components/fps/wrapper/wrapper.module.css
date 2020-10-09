@@ -25,9 +25,16 @@
     margin-bottom: 24px;
 }
 
+.componentWrapper {
+    margin-bottom: 32px;
+}
+
 @media all and (max-width: 415px) { 
     .content_wrapper {
         padding: 24px 24px 46px 24px;
+    }
+    .componentWrapper {
+        margin-bottom: 24px;
     }
 }
 

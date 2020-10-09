@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './paging.module.css'
 import Button from '../../button/button'
+import Loader from '../../loader/loader'
 
 export function Paging({ sendMsg, pageSize, totalPages, currentPage, setLoading, loading }) {
     return (
@@ -15,8 +16,11 @@ export function Paging({ sendMsg, pageSize, totalPages, currentPage, setLoading,
             <div>totalPages: </div>
             <div>totalObjects: ~{totalPages * pageSize}</div>
             <div>currentPage: </div> */}
-            <div>page <strong>{currentPage + 1}</strong> of <strong>{totalPages}</strong></div>
-            
+            {!loading ?
+                <div>page <strong>{currentPage + 1}</strong> of <strong>{totalPages}</strong></div>
+                :
+                <Loader>Loading...</Loader>
+            }
         </div>
     )
 }

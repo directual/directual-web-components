@@ -14,7 +14,7 @@ export function TableTitle({ tableQuickSearch, tableTitle, tableFilters, onFilte
                 <div className={styles.tableTitleWrapper}>
                     {tableTitle && <h1><span>{tableTitle}</span></h1>}
 
-                    {loading && <div className={styles.subtitle}><Loader>Loading...</Loader></div>}
+                    {loading && searchValue && <div className={styles.subtitle}><Loader>Loading...</Loader></div>}
                     {searchValue && !loading &&
                         <div className={styles.titleSearch}>
                         Searching: <strong>{searchValue}</strong>

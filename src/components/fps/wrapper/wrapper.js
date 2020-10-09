@@ -10,7 +10,13 @@ export function FpsWrapper(props) {
     )
 }
 
-
+export function ComponentWrapper(props) {
+    return (
+        <div className={styles.componentWrapper}>
+            {props.children}
+        </div>
+    )
+}
 
 export function ContentWrapper(props) {
     const [currentTheme,setCurrentTheme] = useState(props.themeName)

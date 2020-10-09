@@ -5,6 +5,7 @@ import { TableTitle } from '../tableTitle/TableTitle'
 import icon from './../../../../icons/fps-cards.svg'
 import Backdrop from '../../backdrop/backdrop'
 import { Cards } from './cards'
+import { ComponentWrapper } from '../../wrapper/wrapper'
 
 function FpsCards({ data, onEvent, id }) {
     if (!data) { data = {} }
@@ -75,7 +76,7 @@ function FpsCards({ data, onEvent, id }) {
     }
 
     return (
-        <React.Fragment>
+        <ComponentWrapper>
 
             {showObject &&
                 <React.Fragment>
@@ -114,7 +115,7 @@ function FpsCards({ data, onEvent, id }) {
 
 
 
-        </React.Fragment>
+    </ComponentWrapper>
     )
 }
 FpsCards.settings = {

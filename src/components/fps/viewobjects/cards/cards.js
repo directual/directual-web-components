@@ -95,8 +95,8 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading, search
 
     return (
         <React.Fragment>
-            <div className={`${styles.cardsWrapper} ${(data.error || tableData.length === 0) && styles.emptyTable} ${loading && styles.loading}`}>
-                {tableData.map((row, i) => {
+            <div className={`${styles.cardsWrapper} ${(data.error || tableData.length === 0 || tableHeaders.length === 0) && styles.emptyTable} ${loading && styles.loading}`}>
+                {(tableData.length != 0 && tableHeaders.length != 0) && tableData.map((row, i) => {
                     const cardHeader = getInitialStructureParams().viewName && getInitialStructureParams().viewName && 
                         (getInitialStructureParams().viewName.length > 0 ? 
                             getInitialStructureParams().viewName.map(i => typeof row[i] == 'object' ? 
@@ -140,16 +140,17 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading, search
                     <SomethingWentWrong
                         icon='warning'
                         message={data.error}
-                    />}
-                {tableData.length === 0 && !data.error &&
-                    <SomethingWentWrong
+                    />
+                    }
+                {(tableData.length === 0 || tableHeaders.length === 0) && !data.error &&
+                <SomethingWentWrong
                         icon='ban'
                         message={`${searchValue ? `No object found for 'searchValue'` : `No objects`}`}
                     />}
 
 
             </div>
-            {totalPages > 0 &&
+            {totalPages > 0 && tableData.length != 0 && tableHeaders.length != 0 &&
                 <div className={styles.pagination}>
                     <Paging
                         sendMsg={sendMsg}
