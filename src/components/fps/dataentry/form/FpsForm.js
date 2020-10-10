@@ -62,13 +62,13 @@ export default function FpsForm({ auth, data, onEvent, id }) {
 
 
 
-  // console.log('------------ form data: -------------')
-  // console.log(data)
-  // console.log('------------ auth: -------------')
-  // console.log(auth)
+  console.log('------------ form data: -------------')
+  console.log(data)
+  console.log('------------ auth: -------------')
+  console.log(auth)
+  console.log('------------ form model: -------------')
+  console.log(model)
 
-  // console.log('------------ form model: -------------')
-  // console.log(model)
   //console.log('rerender')
 
   function sortFields(arr) {
@@ -124,9 +124,9 @@ export default function FpsForm({ auth, data, onEvent, id }) {
   }
 
   //Get Object ID to edit
-  const eidtID = urlParams.get('@editObject') || null; 
+  const eidtID = urlParams.get('@editObject') || null;
 
-  const [fetchedObj,setFetchetObj] = useState(false)
+  const [fetchedObj, setFetchetObj] = useState(false)
 
   const fetchObjectFields = (objId) => {
     setFetchetObj(true)
@@ -135,8 +135,7 @@ export default function FpsForm({ auth, data, onEvent, id }) {
       onEvent(message)
     }
 
-    //const modelCopy = {...model, fetchedFields, id: id}
-    //setModel(modelCopy)
+
   }
 
   if (eidtID && !fetchedObj) {
@@ -152,12 +151,6 @@ export default function FpsForm({ auth, data, onEvent, id }) {
   let hiddenAuth = {}
   if (includeAuth && userAuth && userAuthField) {
     hiddenAuth[userAuthField] = userAuth
-  }
-
-  const onChange = (field, value) => {
-    const modelCopy = { ...model, ...hiddenFieldsValues, ...hiddenAuth }
-    modelCopy[field] = value
-    setModel(modelCopy)
   }
 
   const typesMatching = (field) => {
@@ -260,11 +253,26 @@ export default function FpsForm({ auth, data, onEvent, id }) {
   }
 
   // object editing
+  let fetchedObjectFields= {}
   const getFieldValue = (sysName, dataType) => {
-    if (dataType == 'arrayLink') {
-      return data.data[0][sysName].split(',')
+    if (!data.data) { return } else {
+      let getFieldVal
+      if (dataType == 'arrayLink') {
+        getFieldVal = data.data[0][sysName].split(',')
+      } else {
+        getFieldVal = data.data[0][sysName]
+      }
+      if (eidtID && (getFieldVal || getFieldVal === false)) { // отдельно проверку на false для boolean полей
+        fetchedObjectFields = {...fetchedObjectFields, id: eidtID, [sysName]: getFieldVal}
+      }
+      return getFieldVal
     }
-    return data.data[0][sysName]
+  }
+
+  const onChange = (field, value) => {
+    const modelCopy = { ...model, ...hiddenFieldsValues, ...hiddenAuth, ...fetchedObjectFields }
+    modelCopy[field] = value
+    setModel(modelCopy)
   }
 
 

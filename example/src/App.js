@@ -1293,7 +1293,7 @@ const App = (props) => {
           "required": false,
           "isTextarea": false,
           "textareaRows": 4,
-          "defaultValue": {"customOption":"2020-10-09T00:00:00.000Z"},
+          //"defaultValue": {"customOption":"2020-10-09T00:00:00.000Z"},
           "isPositive": false,
           "quickSearch": true,
           "allowAddLinks": false,
