@@ -308,10 +308,10 @@ export default function FpsForm({ auth, data, onEvent, id }) {
       {!showForm && !loading && data.error != 'You have no permissions for viewing form' && data.error != 'Form is not configured' &&
         <Button icon='refresh' onClick={() => {
           setShowForm(true);
-          //console.log('Обнулить!')
           data.response == [];
           data.error = '';
-          getResultAnswer().isSuccess && !data.error && setModel({})
+          fetchObjectFields(eidtID)
+          getResultAnswer().isSuccess && !data.error && setModel({ ...hiddenFieldsValues, ...hiddenAuth, ...fetchedObjectFields }) // TODO : скрытые поля, авторизация и фетч
         }}>{formButtonResubmit}</Button>}
 
       {showForm && !loading && (
