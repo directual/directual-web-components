@@ -35,9 +35,9 @@ export default function Input(props) {
             var successful = document.execCommand('copy');
             var msg = successful ? 'successful' : 'unsuccessful';
             console.log('Copying text command was ' + msg);
-          } catch (err) {
+        } catch (err) {
             console.log('Oops, unable to copy');
-          }
+        }
     }
 
     const [searchValue, setSearchValue] = useState()
@@ -46,7 +46,7 @@ export default function Input(props) {
     }
 
     useEffect(() => {
-        if (props.data && props.data.errors && props.data.errors.length > 0 ) {
+        if (props.data && props.data.errors && props.data.errors.length > 0) {
             setWarningMesg({ type: 'error' })
         }
     }, [props])
@@ -507,7 +507,7 @@ export default function Input(props) {
                     utc={props.utc}
                     dateFormat={props.dateFormat}
                     timeFormat={props.timeFormat}
-                    onBlur={checkValue}
+                    //onBlur={checkValue}
                     closeOnSelect={true}
                 />
             }
@@ -559,6 +559,7 @@ export default function Input(props) {
                             <div className={styles.checkbox_wrapper}>
                                 <Checkbox
                                     label={option.label}
+                                    defaultValue={typeof props.defaultValue == 'object' && props.defaultValue[option.value]}
                                     onChange={val => {
                                         const saveValue = { ...value }
                                         if (val) { saveValue[option.value] = val }
@@ -574,11 +575,15 @@ export default function Input(props) {
                             <Checkbox
                                 customOption
                                 label={props.customOptionLabel}
+                                defaultValue={(typeof props.defaultValue == 'object' && props.defaultValue.customOption) && true}
                                 customOptionType={props.customOptionType}
-                                onChange={val => {
+                                customOptionDefaultValue={typeof props.defaultValue == 'object' && props.defaultValue.customOption}
+                                onChange={ (val, customVal) => {
                                     const saveValue = { ...value }
-                                    if (val) { saveValue.customOption = val }
+                                    if (val) { saveValue.customOption = customVal }
                                     else { delete saveValue.customOption }
+                                    console.log(val)
+                                    console.log(customVal)
                                     submit(saveValue)
                                 }}
                                 customOptionPlaceholder={props.customOptionPlaceholder}

@@ -31,8 +31,8 @@ export default function Slider(props) {
     useEffect (()=>{!right ? props.onChange({firstValue:left}) : props.onChange({firstValue:left, secondValue:right})}, [left])
     useEffect (()=>{props.onChange({firstValue:left, secondValue:right})}, [right])
 
-    useEffect (()=>{ setLeft(props.defaultValue.firstValue) }, [props.defaultValue])
-    useEffect (()=>{ props.defaultValue.secondValue && setRight(props.defaultValue.secondValue) }, [props.defaultValue])
+    useEffect (()=>{ props.defaultValue && setLeft(props.defaultValue.firstValue) }, [props.defaultValue])
+    useEffect (()=>{ props.defaultValue && props.defaultValue.secondValue && setRight(props.defaultValue.secondValue) }, [props.defaultValue])
 
     const onMouseDownHandlerLeft = (e) => {
         function disableSelect(event) {
@@ -155,7 +155,7 @@ export default function Slider(props) {
                         <div className={styles.value}>{left}{props.unitName}</div>
                     </div>
                 
-                {props.defaultValue.secondValue ?
+                {props.defaultValue && props.defaultValue.secondValue ?
                 <div className={styles.fill} 
                     style={{
                             left:`${valueToPercent(left)}%`,
@@ -172,7 +172,7 @@ export default function Slider(props) {
 
             </div>
                 }
-                {props.defaultValue.secondValue &&
+                {props.defaultValue && props.defaultValue.secondValue &&
                 <div className={`${styles.rightKnob} ${styles.knob}`}
                     onMouseDown={onMouseDownHandlerRight}
                     onTouchStart={onTouchDownHandlerRight}

@@ -4,8 +4,14 @@ import Input from '../input/input'
 
 export default function Radio(props) {
     const [selectedOption, setSelectedOption] = useState(props.defaultValue);
-    const [customOption, setCustomOption] = useState(null)
-    const [customOptionVal, setCustomOptionVal] = useState(null)
+    const [customOption, setCustomOption] = useState(typeof props.defaultValue == 'object' ? true : false)
+    const [customOptionVal, setCustomOptionVal] = 
+        useState(props.defaultValue && typeof props.defaultValue == 'object' && props.defaultValue.customOption)
+
+    // console.log('ОХУЕТЬ ДАЙТЕ ДВЕ')
+    // console.log(props.defaultValue)
+    // console.log(typeof props.defaultValue)
+    // typeof props.defaultValue == 'object' && console.log(props.defaultValue.custom)
 
     const customOptionLabel = props.customOptionLabel || 'Other option'
     let customOptionType = props.customOptionType || 'string'
@@ -15,17 +21,23 @@ export default function Radio(props) {
     timeFormat = customOptionType == 'date' &&  ''
     if (customOptionType == 'datetime') {customOptionType = 'date'}
     
+    const submitCustomOption = (val) => {
+        const coval = val || customOptionVal
+        customOption && props.onChange && props.onChange({customOption: coval})
+    }
+
     useEffect(() => {
         if (JSON.stringify(props.defaultValue) != JSON.stringify(selectedOption)) { setSelectedOption(props.defaultValue); }
     }, [props.defaultValue])
 
-    // useEffect(() => {
-    //     props.onChange && props.onChange('custom: ' + customOptionVal)
-    // }, [customOptionVal])
+    useEffect(() => {
+        if (!customOption) {
+            setCustomOptionVal(null)
+            submitCustomOption(null)
+        }
+    }, [customOption])
 
-    const submitCustomOption = () => {
-        customOption && props.onChange && props.onChange('custom: ' + customOptionVal)
-    }
+    
 
     return (
         <div className={`${styles.radio} ${props.disabled && styles.disabled}`}>
@@ -81,7 +93,7 @@ export default function Radio(props) {
                             if (!props.disabled) {
                                 setCustomOption(true);
                                 setSelectedOption(customOptionVal);
-                                submitCustomOption()
+                                submitCustomOption(null)
                             }
                         }}
                     >
@@ -98,12 +110,12 @@ export default function Radio(props) {
                             placeholder={customOptionPlaceholder}
                             timeFormat={timeFormat}
                             onChange={val => {
-                                setCustomOptionVal(val)
-                                setSelectedOption('custom: ' + val);
-                                submitCustomOption()
+                                setCustomOptionVal(val);
+                                setSelectedOption({customOption: val});
+                                submitCustomOption(val);
                             }}
                             type={customOptionType}
-                            value={customOptionVal}
+                            defaultValue={customOptionVal}
                             nomargin />}
                 </React.Fragment>
             }

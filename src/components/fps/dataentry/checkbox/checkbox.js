@@ -18,11 +18,11 @@ export default function Checkbox(props) {
 
     const [checked, setChecked] = useState(defaultValue)
 
-    const [customOptionVal, setCustomOptionVal] = useState(null)
+    const [customOptionVal, setCustomOptionVal] = useState(props.customOptionDefaultValue)
 
     useEffect(() => {
         props.onChangeCustomOption && props.onChangeCustomOption(customOptionVal)
-        props.onChange && customOption && props.onChange(customOptionVal);
+        props.onChange && customOption && props.onChange(checked, customOptionVal);
     }, [customOptionVal])
 
     useEffect(() => {
@@ -38,7 +38,7 @@ export default function Checkbox(props) {
                         if (!disabled) {
                             e.preventDefault();
                             props.onChange && !customOption && props.onChange(!checked);
-                            props.onChange && customOption && checked && props.onChange(null);
+                            props.onChange && customOption && props.onChange(!checked, customOptionVal);
                             setChecked(!checked)
                         }
                     }}
@@ -57,7 +57,7 @@ export default function Checkbox(props) {
                     <Input
                         disabled={props.disabled}
                         placeholder={customOptionPlaceholder}
-                        defaultValue={defaultValue || ''}
+                        defaultValue={customOptionVal}
                         timeFormat={timeFormat}
                         onChange={val => setCustomOptionVal(val)}
                         type={customOptionType}

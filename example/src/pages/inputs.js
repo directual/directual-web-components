@@ -1007,10 +1007,11 @@ export default function InputsPage() {
     }
 />`} />
             <Input
-                //debug
+                debug
                 label='Checkbox group with a custom option'
                 type='checkboxGroup'
                 customOption
+                defaultValue={{"option3":true,"customOption":"dd"}}
                 width={500}
                 customOptionType='textarea'
                 customOptionLabel='Something else...'

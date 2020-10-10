@@ -1219,6 +1219,17 @@ const App = (props) => {
     "formButton": null,
     "placeholder": "false",
     "maxWidth": 500,
+    "data": [
+      {
+        "arrayLink": "option1,option2",
+        "link": "option2",
+        "radio": "",
+        "boolean": false,
+        "checkbox": {"option2":true},
+        "textarea": "Crime and Punishment",
+        "range": { "firstValue": 20, "secondValue": 70 }
+      }
+    ],
     "formButtonResubmit": null,
     "params": {
       "auth": {
@@ -1282,7 +1293,7 @@ const App = (props) => {
           "required": false,
           "isTextarea": false,
           "textareaRows": 4,
-          "defaultValue": "",
+          "defaultValue": {"customOption":"2020-10-09T00:00:00.000Z"},
           "isPositive": false,
           "quickSearch": true,
           "allowAddLinks": false,

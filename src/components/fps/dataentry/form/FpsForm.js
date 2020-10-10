@@ -62,13 +62,13 @@ export default function FpsForm({ auth, data, onEvent, id }) {
 
 
 
-  console.log('------------ form data: -------------')
-  console.log(data)
-  console.log('------------ auth: -------------')
-  console.log(auth)
+  // console.log('------------ form data: -------------')
+  // console.log(data)
+  // console.log('------------ auth: -------------')
+  // console.log(auth)
 
-  console.log('------------ form model: -------------')
-  console.log(model)
+  // console.log('------------ form model: -------------')
+  // console.log(model)
   //console.log('rerender')
 
   function sortFields(arr) {
@@ -259,6 +259,13 @@ export default function FpsForm({ auth, data, onEvent, id }) {
     }
   }
 
+  // object editing
+  const getFieldValue = (sysName, dataType) => {
+    if (dataType == 'arrayLink') {
+      return data.data[0][sysName].split(',')
+    }
+    return data.data[0][sysName]
+  }
 
 
   return (
@@ -293,7 +300,7 @@ export default function FpsForm({ auth, data, onEvent, id }) {
       {!showForm && !loading && data.error != 'You have no permissions for viewing form' && data.error != 'Form is not configured' &&
         <Button icon='refresh' onClick={() => {
           setShowForm(true);
-          console.log('Обнулить!')
+          //console.log('Обнулить!')
           data.response == [];
           data.error = '';
           getResultAnswer().isSuccess && !data.error && setModel({})
@@ -303,9 +310,10 @@ export default function FpsForm({ auth, data, onEvent, id }) {
         <form onSubmit={submit} style={{ maxWidth: formWidth }}>
           {fileds.map((field) => (field.params.include && !field.params.hidden &&
             <div>
+              {/* <div className='debug'>{field.sysName} value: {JSON.stringify(getFieldValue(field.sysName))}</div> */}
               {typesMatching(field) == 'boolean' &&
                 <Input type='radio'
-                  defaultValue={model[field.sysName]}
+                  defaultValue={getFieldValue(field.sysName)}
                   label={field.name}
                   description={field.params.description}
                   required={field.params.required}
@@ -342,8 +350,7 @@ export default function FpsForm({ auth, data, onEvent, id }) {
                     customOptionPlaceholder={field.params.customOptionPlaceholder}
                     options={(typesMatching(field) == 'select' || typesMatching(field) == 'multiselect') ? (field.params.searchData || []) :
                       (field.params.multipleChoice || [])}
-                    //defaultValue={model[field.sysName] || field.params.defaultValue}
-                    defaultValue={field.params.defaultValue}
+                    defaultValue={getFieldValue(field.sysName, field.dataType) || field.params.defaultValue}
                     timeFormat={`${field.params.dateTimeOn ? ' hh:mm A' : ''}`}
                     type={typesMatching(field)}
                     rows={field.params.textareaRows}
@@ -352,6 +359,7 @@ export default function FpsForm({ auth, data, onEvent, id }) {
                     max={field.params && field.params.range && field.params.range.max}
                     step={field.params && field.params.range && field.params.range.step}
                     unitName={field.params && field.params.unitName}
+                    utc
                   />
                 </div>
               }
