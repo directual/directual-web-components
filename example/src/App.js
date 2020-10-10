@@ -1224,7 +1224,7 @@ const App = (props) => {
         "arrayLink": "option1,option2",
         "link": "option2",
         "radio": "",
-        "boolean": false,
+        "boolean": true,
         "checkbox": {"option2":true},
         "textarea": "Crime and Punishment",
         "range": { "firstValue": 20, "secondValue": 70 }

@@ -217,7 +217,7 @@ export default function FpsForm({ auth, data, onEvent, id }) {
     setIsValid(true)
     fileds.forEach(field => {
       if (field.isValid == false) { setIsValid(false); }
-      if (field.params.required && !model[field.sysName] && field.params.include && !field.params.hidden) { setIsValid(false); }
+      if (field.params.required && !model[field.sysName] && !model[field.sysName] !== false && field.params.include && !field.params.hidden) { setIsValid(false); }
     }
     )
   }, [model])
@@ -287,7 +287,7 @@ export default function FpsForm({ auth, data, onEvent, id }) {
 
       {loading && <Loader>Loading...</Loader>}
 
-      {data.error && !loading &&
+      {data.error && !loading && data.error != 'dql is not allowed for write' &&  // dql это КОСТЫЛЬ — убрать когда пофиксим на API
         <Hint title='Form Error' error>{data.error}</Hint>}
 
       {/* Standard response processing: */}
@@ -374,7 +374,7 @@ export default function FpsForm({ auth, data, onEvent, id }) {
               {/* {modelError[field.sysName] && <b>{modelError[field.sysName]}</b>} */}
             </div>
           ))}
-          {!data.error &&
+          {(!data.error || data.error == 'dql is not allowed for write') &&  // dql это КОСТЫЛЬ — убрать когда пофиксим на API
             <ActionPanel>
               <Button accent disabled={!isValid}>{formButton}</Button>
             </ActionPanel>}
