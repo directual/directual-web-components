@@ -1221,7 +1221,7 @@ const App = (props) => {
     "maxWidth": 500,
     "data": [
       {
-        "arrayLink": "option1,option2",
+        //"arrayLink": "option1,option2",
         "link": "option2",
         "radio": "",
         "boolean": true,

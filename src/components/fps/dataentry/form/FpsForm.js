@@ -258,9 +258,9 @@ export default function FpsForm({ auth, data, onEvent, id }) {
     if (!data.data) { return } else {
       let getFieldVal
       if (dataType == 'arrayLink') {
-        getFieldVal = data.data[0][sysName].split(',')
+        getFieldVal = data.data[0] && data.data[0][sysName] && data.data[0][sysName].split(',')
       } else {
-        getFieldVal = data.data[0][sysName]
+        getFieldVal = data.data[0] && data.data[0][sysName]
       }
       if (eidtID && (getFieldVal || getFieldVal === false)) { // отдельно проверку на false для boolean полей
         fetchedObjectFields = {...fetchedObjectFields, id: eidtID, [sysName]: getFieldVal}
