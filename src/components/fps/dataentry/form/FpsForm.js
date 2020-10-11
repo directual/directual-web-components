@@ -253,12 +253,19 @@ export default function FpsForm({ auth, data, onEvent, id }) {
   }
 
   // object editing
-  let fetchedObjectFields= {}
+  let fetchedObjectFields = {}
   const getFieldValue = (sysName, dataType) => {
     if (!data.data) { return } else {
-      let getFieldVal = data.data[0] && data.data[0][sysName]
+      let getFieldVal
+      if (dataType == 'json' && data.data[0] && data.data[0][sysName]) {
+        if (data.data[0] && typeof data.data[0][sysName] == 'string') {
+          console.log('АГА')
+          getFieldVal = JSON.parse(data.data[0][sysName])
+          console.log(getFieldVal)
+        } else { getFieldVal = data.data[0] && data.data[0][sysName] }
+      } else { getFieldVal = data.data[0] && data.data[0][sysName] }
       if (eidtID && (getFieldVal || getFieldVal === false)) { // отдельно проверку на false для boolean полей
-        fetchedObjectFields = {...fetchedObjectFields, id: eidtID, [sysName]: getFieldVal}
+        fetchedObjectFields = { ...fetchedObjectFields, id: eidtID, [sysName]: getFieldVal }
       }
       return getFieldVal
     }
@@ -313,7 +320,7 @@ export default function FpsForm({ auth, data, onEvent, id }) {
         <form onSubmit={submit} style={{ maxWidth: formWidth }}>
           {fileds.map((field) => (field.params.include && !field.params.hidden &&
             <div>
-              {/* <div className='debug'>{field.sysName} value: {JSON.stringify(getFieldValue(field.sysName))}</div> */}
+              <div className='debug'>{field.sysName} value: {JSON.stringify(getFieldValue(field.sysName))}</div>
               {typesMatching(field) == 'boolean' &&
                 <Input type='radio'
                   defaultValue={getFieldValue(field.sysName)}

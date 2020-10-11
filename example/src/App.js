@@ -1222,12 +1222,12 @@ const App = (props) => {
     "data": [
       {
         //"arrayLink": "option1,option2",
+        "range": "{\"firstValue\":40,\"secondValue\":90}",
         "link": "option2",
         "radio": "",
         "boolean": true,
         "checkbox": {"option2":true},
         "textarea": "Crime and Punishment",
-        "range": { "firstValue": 20, "secondValue": 70 }
       }
     ],
     "formButtonResubmit": null,
