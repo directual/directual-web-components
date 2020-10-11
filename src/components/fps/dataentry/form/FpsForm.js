@@ -320,7 +320,7 @@ export default function FpsForm({ auth, data, onEvent, id }) {
         <form onSubmit={submit} style={{ maxWidth: formWidth }}>
           {fileds.map((field) => (field.params.include && !field.params.hidden &&
             <div>
-              <div className='debug'>{field.sysName} value: {JSON.stringify(getFieldValue(field.sysName))}</div>
+              {/* <div className='debug'>{field.sysName} value: {JSON.stringify(getFieldValue(field.sysName))}</div> */}
               {typesMatching(field) == 'boolean' &&
                 <Input type='radio'
                   defaultValue={getFieldValue(field.sysName)}
