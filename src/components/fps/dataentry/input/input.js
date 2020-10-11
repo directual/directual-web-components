@@ -538,7 +538,7 @@ export default function Input(props) {
                     min={props.min}
                     max={props.max}
                     step={props.step}
-                    onChange={e => setValue(e)}
+                    onChange={e => { submit(e)}}
                     unitName={props.unitName} />
 
             }
@@ -548,7 +548,7 @@ export default function Input(props) {
                     min={props.min}
                     max={props.max}
                     step={props.step}
-                    onChange={e => setValue(e)}
+                    onChange={e => { submit(e)}}
                     unitName={props.unitName} />
 
             }

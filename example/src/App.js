@@ -1389,13 +1389,13 @@ const App = (props) => {
             "step": 1
           }
         },
-        "slider": {
+        "slider1": {
           "include": true,
           "hidden": false,
           "required": false,
           "isTextarea": false,
           "textareaRows": 4,
-          "defaultValue": { firstValue: 20 },
+          //"defaultValue": { firstValue: 20 },
           "isPositive": false,
           "quickSearch": true,
           "allowAddLinks": false,
@@ -1592,8 +1592,8 @@ const App = (props) => {
         "typeVariable": {}
       },
       {
-        "sysName": "slider",
-        "name": "Slider",
+        "sysName": "slider1",
+        "name": "Slide",
         "dataType": "json",
         "id": "83631593795280077",
         "link": "",
