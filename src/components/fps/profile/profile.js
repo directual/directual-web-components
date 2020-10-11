@@ -5,7 +5,7 @@ import ActionPanel from '../actionspanel/actionspanel'
 import Button from '../button/button'
 import { FormSection } from '../dataentry/form/FpsForm'
 
-export function SignIn({ width, header, google, onSubmit }) {
+export function SignIn({ width, header, google, onSubmit, userNameFormat }) {
     const submit = () => {
         onSubmit(loginDetails)
     }
@@ -20,7 +20,7 @@ export function SignIn({ width, header, google, onSubmit }) {
                 <FormSection title='Or' />
             </React.Fragment>}
             <Input
-                type='email'
+                type={userNameFormat || 'email'}
                 required
                 label='Email address'
                 onChange={value => setLoginDetails({ ...loginDetails, login: value })}
