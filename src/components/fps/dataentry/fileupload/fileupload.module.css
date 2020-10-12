@@ -81,19 +81,29 @@
   flex-direction: column;
   align-items: stretch;
   font-size: var(--text-small-size);
-  padding: 12px 18px;
+  padding: 4px 12px;
 }
 .multipleUpload li {
   display: flex;
-  opacity: 0.5;
   transition: 0.5s;
+  align-items: center;
+  height: 28px;
 }
-.multipleUpload li:hover {
+.multipleUpload li:hover span {
   opacity: 1;
 }
 .multipleUpload li span {
   flex-grow: 2;
+  opacity: 0.5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .multipleUpload li .delete {
+  opacity: 0.3;
   cursor: pointer;
+  transition: 0.5s;
+}
+.multipleUpload li .delete:hover {
+  opacity: 0.9;
 }
