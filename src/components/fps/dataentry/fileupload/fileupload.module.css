@@ -1,0 +1,99 @@
+.dropzone {
+  border: dashed 2px var(--field-border-color);
+  cursor: pointer;
+  padding: 6px;
+  outline: none;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+}
+.dropzone:hover {
+  border: solid 2px var(--field-border-color);
+  padding: 6px;
+}
+.dropzone:active {
+  border: solid 2px var(--font-color);
+  padding: 6px;
+}
+.dropzone input {
+  outline: none;
+}
+.progress {
+  height: 44px;
+  border: solid 1px var(--field-border-color);
+  flex-shrink: 0;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  padding: 0 1px;
+  background-color: var(--background-color);
+}
+.progress .line {
+  background: var(--table-border-color);
+  height: 4px;
+  border-radius: 6px;
+  flex-grow: 2;
+  margin: 0 6px 0 18px;
+  position: relative;
+}
+.progress .line .ready {
+  height: 4px;
+  border-radius: 6px;
+  background: var(--accent-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.progress .cancel {
+  opacity: 0.3;
+  margin-right: 6px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.progress .cancel:hover {
+  opacity: 0.9;
+}
+.uploaded {
+  height: 44px;
+  border: solid 1px var(--field-border-color);
+  flex-shrink: 0;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  padding: 0 6px 0 10px;
+  background-color: var(--background-color);
+}
+.uploaded .fileName {
+  flex-grow: 2;
+}
+.uploaded .delete {
+  opacity: 0.3;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.uploaded .delete:hover {
+  opacity: 0.9;
+}
+.multipleUpload {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  font-size: var(--text-small-size);
+  padding: 12px 18px;
+}
+.multipleUpload li {
+  display: flex;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+.multipleUpload li:hover {
+  opacity: 1;
+}
+.multipleUpload li span {
+  flex-grow: 2;
+}
+.multipleUpload li .delete {
+  cursor: pointer;
+}

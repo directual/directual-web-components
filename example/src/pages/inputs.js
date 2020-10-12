@@ -168,7 +168,12 @@ export default function InputsPage() {
 
     return (
         <React.Fragment>
+
             <h1>Data entry</h1>
+
+            <h2>File upload</h2>
+            <br />
+            <FileUpload />
 
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Special platform selects</h2>
 
@@ -187,7 +192,6 @@ export default function InputsPage() {
     description='That is a new FormField component for the platform'
     //disabled
     type='structurefield' />`} />
-            {/* {testDefValue} */}
             <Input
                 label='Structure field'
                 width={500}
@@ -271,8 +275,7 @@ export default function InputsPage() {
                 }
             />
 
-            {/* <h2>File upload</h2>
-            <FileUpload /> */}
+            
 
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Range sliders</h2>
             <CodeSnippet code=

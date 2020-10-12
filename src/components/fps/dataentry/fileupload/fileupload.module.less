@@ -1,0 +1,102 @@
+.dropzone {
+    border:dashed 2px var(--field-border-color);
+    cursor: pointer;
+    padding: 6px;
+    outline: none;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    &:hover {
+        border:solid 2px var(--field-border-color);
+        padding: 6px;
+    }
+    &:active {
+        border:solid 2px var(--font-color);
+        padding: 6px;
+    }
+    input {
+        outline: none;
+    }
+}
+
+.progress {
+    height: 44px;
+    border:solid 1px var(--field-border-color);
+    flex-shrink: 0;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    padding: 0 1px;
+    background-color: var(--background-color);
+    .line {
+        background: var(--table-border-color);
+        height: 4px;
+        border-radius: 6px;
+        flex-grow: 2;
+        margin: 0 6px 0 18px;
+        position: relative;
+        .ready {
+            height: 4px;
+            border-radius: 6px;
+            background: var(--accent-color);
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+    }
+    .cancel {
+        opacity: .3;
+        margin-right: 6px;
+        cursor: pointer;
+        transition: .5s;
+        &:hover {
+            opacity: .9;
+        }
+    }
+}
+
+.uploaded {
+    height: 44px;
+    border:solid 1px var(--field-border-color);
+    flex-shrink: 0;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    padding: 0 6px 0 10px;
+    background-color: var(--background-color);
+    .fileName {
+        flex-grow: 2;
+    }
+    .delete {
+        opacity: .3;
+        cursor: pointer;
+        transition: .5s;
+        &:hover {
+            opacity: .9;
+        }
+    }
+}
+
+.multipleUpload {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    font-size: var(--text-small-size);
+    padding: 12px 18px;
+    li {
+        display: flex;
+        opacity: .5;
+        transition: .5s;
+        &:hover {
+            opacity: 1;
+        }
+        span {
+            flex-grow: 2;
+        }
+        .delete {
+            cursor: pointer;
+        }
+    }
+}
