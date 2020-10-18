@@ -259,9 +259,7 @@ export default function FpsForm({ auth, data, onEvent, id }) {
       let getFieldVal
       if (dataType == 'json' && data.data[0] && data.data[0][sysName]) {
         if (data.data[0] && typeof data.data[0][sysName] == 'string') {
-          console.log('АГА')
           getFieldVal = JSON.parse(data.data[0][sysName])
-          console.log(getFieldVal)
         } else { getFieldVal = data.data[0] && data.data[0][sysName] }
       } else { getFieldVal = data.data[0] && data.data[0][sysName] }
       if (eidtID && (getFieldVal || getFieldVal === false)) { // отдельно проверку на false для boolean полей

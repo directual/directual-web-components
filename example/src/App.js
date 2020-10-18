@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {
   FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, FpsTheme,
   ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, SignIn, SignUp, Media, CodeSnippet,
-  Dnd, Profile, TabsPane, Loader, optionsHandler
+  Dnd, Profile, TabsPane, Loader, optionsHandler, Fps400
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 import {
@@ -1227,15 +1227,15 @@ const App = (props) => {
         "radio": "",
         "boolean": true,
         "checkbox": {"option2":true},
-        "textarea": "Crime and Punishment",
+        //"textarea": "Crime and Punishment",
       }
     ],
     "formButtonResubmit": null,
     "params": {
-      "auth": {
-        "isPerson": true,
-        "userIdField": "textarea"
-      },
+      // "auth": {
+      //   "isPerson": true,
+      //   "userIdField": "textarea"
+      // },
       "result": {
         "resultTitleField": null,
         "resultMessageField": null,
@@ -1417,7 +1417,7 @@ const App = (props) => {
           "required": false,
           "isTextarea": true,
           "textareaRows": 4,
-          "defaultValue": "",
+          "defaultValue": 124,
           "isPositive": false,
           "quickSearch": true,
           "allowAddLinks": false,
@@ -1620,7 +1620,7 @@ const App = (props) => {
       {
         "sysName": "textarea",
         "name": "Price",
-        "dataType": "string",
+        "dataType": "number",
         "id": "97731592207240400",
         "link": null,
         "group": "0",
@@ -2367,6 +2367,8 @@ const App = (props) => {
               <h1>Layout</h1>
               <h2>Tabs</h2>
               <TabsPane tabs={exampleTabs} currentTabKey={1} fixedScroll={false} />
+              <h2 style={{marginTop:32, marginBottom:32}}>400 error</h2>
+              <Fps400 app='hz.directual.app'/>
             </Route>
             <Route exact path="/system-media">
               <h1>Media</h1>
