@@ -9,7 +9,6 @@ export function SignIn({ width, header, google, onSubmit, userNameFormat }) {
     const submit = () => {
         onSubmit(loginDetails)
     }
-    const [loginDetails, setLoginDetails] = useState({})
 
     const userNameLabel = userNameFormat == 'email' ? 'Email address' : 
         userNameFormat == 'phone' ? 'Phone number' : 'Login'
@@ -19,6 +18,8 @@ export function SignIn({ width, header, google, onSubmit, userNameFormat }) {
     const queryString = typeof window !== 'undefined' ? window.location.search : '';
     const urlParams = new URLSearchParams(queryString);
     const defaultLogin = urlParams.get('login') || null;
+
+    const [loginDetails, setLoginDetails] = useState({login: defaultLogin})
 
     return (
         <form className={styles.signinform} style={{ maxWidth: width || 'auto' }}>
