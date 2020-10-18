@@ -30,7 +30,7 @@ export function SignIn({ width, header, google, onSubmit, userNameFormat }) {
                 <FormSection title='Or' />
             </React.Fragment>}
             <Input
-                type={userNameFormat || 'email'}
+                type={userNameFormat || 'string'}
                 required
                 defaultValue={defaultLogin}
                 label={userNameLabel}

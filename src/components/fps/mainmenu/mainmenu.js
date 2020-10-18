@@ -26,10 +26,11 @@ export default function MainMenu(props) {
                 }
                 <ul className={styles.list}>
                     {props.menu.map(item => (
-                        item.subheader == 'true' || item.subheader == true ?
+                        !item.hidden && (item.subheader == 'true' || item.subheader == true) ?
                             <li
                                 key={item.name}
                                 className={styles.subheader}>{item.name}</li> :
+                            !item.hidden && 
                             <li
                                 key={item.name}
                                 onClick={hideMM}
