@@ -66,6 +66,11 @@
                 background-color: rgba(0,0,0,.4);
                 height: 100%;
             }
+            .linkText {
+                border-color: #fff !important;
+                color: #fff !important;
+                opacity: .8;
+            }
         }
         &.left {
             display: flex;
@@ -115,7 +120,7 @@
         &:hover {
             width: 100%;
             padding: 0;
-            border:solid 2px var( --field-border-color);
+            border:solid 2px var(--field-border-color);
         }
         &:active {
             width: 100%;
@@ -129,6 +134,7 @@
             position: relative;
             flex-grow: 2;
             overflow: hidden;
+            align-items: flex-start;
             z-index: 2;
             .details {
                 opacity: .5;
@@ -156,6 +162,27 @@
             }
             .cardBodyText {
                 margin-top: 12px;
+            }
+            .headerArray {
+                display: flex;
+                flex-wrap: wrap;
+                div {
+                    flex-shrink: 0;
+                }
+            }
+            .linkText {
+                border:solid 1px var(--accent-color);
+                color:var(--accent-color);
+                padding: 3px 9px;
+            }
+            .labelText, .linkText {
+                margin-right: 4px;
+                border-radius: calc(var(--border-radius) / 2);
+            }
+            .labelText {
+                color:var(--label-text-color);
+                background-color: var(--label-color);
+                padding: 4px 9px;
             }
         }
     }

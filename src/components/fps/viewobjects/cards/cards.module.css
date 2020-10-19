@@ -63,6 +63,11 @@
   background-color: rgba(0, 0, 0, 0.4);
   height: 100%;
 }
+.card .cardInnerWrapper.cover .linkText {
+  border-color: #fff !important;
+  color: #fff !important;
+  opacity: 0.8;
+}
 .card .cardInnerWrapper.left {
   display: flex;
 }
@@ -125,6 +130,7 @@
   position: relative;
   flex-grow: 2;
   overflow: hidden;
+  align-items: flex-start;
   z-index: 2;
 }
 .card .cardInnerWrapper .cardText .details {
@@ -153,6 +159,28 @@
 }
 .card .cardInnerWrapper .cardText .cardBodyText {
   margin-top: 12px;
+}
+.card .cardInnerWrapper .cardText .headerArray {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card .cardInnerWrapper .cardText .headerArray div {
+  flex-shrink: 0;
+}
+.card .cardInnerWrapper .cardText .linkText {
+  border: solid 1px var(--accent-color);
+  color: var(--accent-color);
+  padding: 3px 9px;
+}
+.card .cardInnerWrapper .cardText .labelText,
+.card .cardInnerWrapper .cardText .linkText {
+  margin-right: 4px;
+  border-radius: calc(var(--border-radius) / 2);
+}
+.card .cardInnerWrapper .cardText .labelText {
+  color: var(--label-text-color);
+  background-color: var(--label-color);
+  padding: 4px 9px;
 }
 .firstObjectCard {
   position: absolute;

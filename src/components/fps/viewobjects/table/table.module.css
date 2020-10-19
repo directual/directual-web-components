@@ -199,8 +199,8 @@
 .objFieldWrapper .linkFieldWrapper a {
   margin: 0px 6px 6px 0;
   border: solid 1px var(--accent-color);
-  border-radius: 4px;
-  padding: 2px 4px;
+  padding: 3px 9px;
+  border-radius: calc(var(--border-radius) / 2);
 }
 .objFieldWrapper .linkFieldWrapper a:hover {
   border-color: var(--secondary-accent-color);

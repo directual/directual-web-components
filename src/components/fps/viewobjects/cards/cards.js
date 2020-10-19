@@ -97,20 +97,37 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading, search
         <React.Fragment>
             <div className={`${styles.cardsWrapper} ${(data.error || tableData.length === 0 || tableHeaders.length === 0) && styles.emptyTable} ${loading && styles.loading}`}>
                 {(tableData.length != 0 && tableHeaders.length != 0) && tableData.map((row, i) => {
-                    const cardHeader = getInitialStructureParams().viewName && getInitialStructureParams().viewName && 
-                        (getInitialStructureParams().viewName.length > 0 ? 
-                            getInitialStructureParams().viewName.map(i => typeof row[i] == 'object' ? 
-                                getLinkName(i,row[i]) 
-                            : row[i]).join(' ') 
-                        : 'No visible name')
+
+                    // в этой хуете мы подтягиваем для Заголовка, Подзаголовка и Текста карточки visible name если поле типа link/arrayLink
+                    const cardHeader = getInitialStructureParams().viewName && getInitialStructureParams().viewName &&
+                        (getInitialStructureParams().viewName.length > 0 ?
+                            getInitialStructureParams().viewName.map(i => typeof row[i] == 'object' ?
+                                getLinkName(i, row[i])
+                                : row[i]).join(' ')
+                            : 'No visible name')
+                    const cardHeaderComment = row && (typeof row[tableParams.cardHeaderComment] == 'object' ?
+                        !Array.isArray(row[tableParams.cardHeaderComment]) ?
+                            getLinkName(tableParams.cardHeaderComment, row[tableParams.cardHeaderComment])
+                            : row[tableParams.cardHeaderComment].map(i => getLinkName(tableParams.cardHeaderComment, i))
+                        : row[tableParams.cardHeaderComment])
+
+                    const cardBodyText = row && (typeof row[tableParams.cardBodyText] == 'object' ?
+                        !Array.isArray(row[tableParams.cardBodyText]) ?
+                            getLinkName(tableParams.cardBodyText, row[tableParams.cardBodyText])
+                            : row[tableParams.cardBodyText].map(i => getLinkName(tableParams.cardBodyText, i))
+                        : row[tableParams.cardBodyText])
+                    // ==================================
+
                     return (
                         <div key={i} className={`${styles.card} ${styles[tableParams.cardListLayout]}`}>
                             <div
-                                className={`${styles.cardInnerWrapper} 
-                                ${styles[tableParams.cardImageType]} 
+                                className={`${styles.cardInnerWrapper}
+                                ${styles[tableParams.cardImageType]}
                                 ${tableParams.invertColors && styles.invertColors}
                                 `}
                                 onClick={() => !loading && onExpand(row)}>
+                                
+                                {/* Картинка карточки */}
                                 {tableParams.cardImageField &&
                                     <div className={`${styles.cardImage}`}
                                         style={{
@@ -121,17 +138,44 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading, search
                                     >
                                         {!row[tableParams.cardImageField] && <span className='icon icon-ban'>no&nbsp;picture</span>}
                                     </div>}
+                                
+                                {/* Текст карточки */}
                                 <div className={styles.cardText}>
                                     {/* <div className={`${styles.details} icon icon-details`}></div> */}
                                     <h3 className={styles.cardHeader}>
-                                        {cardHeader.length > 1 ? cardHeader : 'no visible name'}
+                                        {cardHeader.length > 1 ? cardHeader : 'No visible name'}
                                     </h3>
-                                    {row[tableParams.cardHeaderComment] && <div className={styles.cardHeaderComment}>
-                                        {row[tableParams.cardHeaderComment]}
-                                    </div>}
-                                    {row[tableParams.cardBodyText] && <ExpandedText textLength={120} className={styles.cardBodyText}>
-                                        {row[tableParams.cardBodyText]}
-                                    </ExpandedText>}
+
+                                    {cardHeaderComment && (
+                                        // если Array, то это у нас либо список labels, либо arrayLink
+                                        // также чекаем на то, что это link/arrayLink, тогда добавляем классом linkText рамочку
+                                        // для labels рамочка добавляется классом labelText
+                                        !Array.isArray(cardHeaderComment) ?
+                                            <div className={`${styles.cardHeaderComment} ${typeof row[tableParams.cardHeaderComment] == 'object' && styles.linkText}`}>
+                                                {cardHeaderComment}
+                                            </div> :
+                                            <div className={`${styles.headerArray} ${styles.cardHeaderComment}`}>
+                                                {cardHeaderComment.map(i =>
+                                                    <div className={`${typeof row[tableParams.cardHeaderComment][0] == 'object' ? styles.linkText : styles.labelText}`}>
+                                                        {i}
+                                                    </div>)}
+                                            </div>
+
+                                    )}
+                                    {cardBodyText && (
+                                        // все также как у cardHeaderComment
+                                        !Array.isArray(cardBodyText) ?
+                                            <ExpandedText className={`${styles.cardBodyText} ${typeof row[tableParams.cardBodyText] == 'object' && styles.linkText}`}>
+                                                {cardBodyText}
+                                            </ExpandedText> :
+                                            <div className={`${styles.headerArray} ${styles.cardBodyText}`}>
+                                                {cardBodyText.map(i =>
+                                                    <div className={`${typeof row[tableParams.cardBodyText][0] == 'object' ? styles.linkText : styles.labelText}`}>
+                                                        {i}
+                                                    </div>)}
+                                            </div>
+
+                                    )}
                                 </div>
                             </div>
                         </div>)
@@ -141,9 +185,9 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading, search
                         icon='warning'
                         message={data.error}
                     />
-                    }
+                }
                 {(tableData.length === 0 || tableHeaders.length === 0) && !data.error &&
-                <SomethingWentWrong
+                    <SomethingWentWrong
                         icon='ban'
                         message={`${searchValue ? `No object found for 'searchValue'` : `No objects`}`}
                     />}
