@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {
   FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, FpsTheme,
   ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, SignIn, SignUp, Media, CodeSnippet,
-  Dnd, Profile, TabsPane, Loader, optionsHandler, Fps400
+  Dnd, Profile, TabsPane, Loader, optionsHandler, Fps400, ImageButtons
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 import {
@@ -19,6 +19,7 @@ import InputsPage from './pages/inputs'
 import IconsPage from './pages/icons'
 import TypoPage from './pages/typo'
 import WhatIsIt from './pages/wtf'
+import LayoutPage from './pages/layout'
 import { reduceHooks } from 'react-table'
 
 
@@ -204,8 +205,8 @@ const App = (props) => {
     [
       {
         "year": 1760,
-        "genre": "Biography",
-        "title": "Life of Samuel Johnson",
+        "genre": "Biog\nraphy",
+        "title": "Life\nof\nSamuel\nJohnson",
         "image": "https://images.unsplash.com/photo-1598145164978-64796c5e8c4d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "author_id": {
           "id": "2",
@@ -2263,13 +2264,6 @@ const App = (props) => {
   }
 
 
-
-  const exampleTabs = [
-    { key: '1', title: 'Tab number 1', content: <div>Tab content 1</div> },
-    { key: '2', title: 'Tab 2', content: <div>Tab content 2</div> },
-    { key: '3', disabled: true, title: 'Tab 3 (disabled)', content: <div>Tab content 3</div> }
-  ]
-
   const exampleUser = {
     profilePicture: 'https://images.unsplash.com/photo-1574158622682-e40e69881006?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
     firstName: 'Jack',
@@ -2363,11 +2357,7 @@ const App = (props) => {
               <Dnd />
             </Route>
             <Route exact path="/system-layout">
-              <h1>Layout</h1>
-              <h2>Tabs</h2>
-              <TabsPane tabs={exampleTabs} currentTabKey={1} fixedScroll={false} />
-              <h2 style={{marginTop:32, marginBottom:32}}>400 error</h2>
-              <Fps400 app='hz.directual.app'/>
+              <LayoutPage />
             </Route>
             <Route exact path="/system-media">
               <h1>Media</h1>
@@ -2377,8 +2367,6 @@ const App = (props) => {
             </Route>
 
           </Switch>
-
-
 
         </ContentWrapper>
       </Router>

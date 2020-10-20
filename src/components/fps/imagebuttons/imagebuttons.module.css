@@ -1,0 +1,28 @@
+.imageList {
+  display: flex;
+  flex-wrap: wrap;
+}
+.imageList li {
+  flex-shrink: 0;
+  opacity: 0.9;
+  transition: 0.4s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.imageList li:hover {
+  opacity: 1;
+}
+.imageList li .img {
+  width: 70%;
+  height: 70%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.imageList li .img img {
+  max-width: 100%;
+  max-height: 100%;
+}

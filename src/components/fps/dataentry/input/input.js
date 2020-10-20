@@ -23,7 +23,7 @@ export default function Input(props) {
     const inputEl = useRef(null);
 
     const checkValue = () => {
-        console.log('checking...');
+        // console.log('checking...');
         ((!value || (value && value.length == 0)) && (value != 0) && props.required) ?
             setWarningMesg({ type: 'error', msg: 'This field is required' }) :
             setWarningMesg({});
@@ -582,8 +582,8 @@ export default function Input(props) {
                                     const saveValue = { ...value }
                                     if (val) { saveValue.customOption = customVal }
                                     else { delete saveValue.customOption }
-                                    console.log(val)
-                                    console.log(customVal)
+                                    // console.log(val)
+                                    // console.log(customVal)
                                     submit(saveValue)
                                 }}
                                 customOptionPlaceholder={props.customOptionPlaceholder}

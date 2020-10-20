@@ -34,6 +34,7 @@ import Checkbox from './components/fps/dataentry/checkbox/checkbox'
 import OptionsHandler, {AdvancedOptionsHandler} from './components/fps/dataentry/optionsHandler/optionsHandler'
 import StructureField from './components/fps/dataentry/structurefield/structurefield'
 import { Fps400 } from './components/fps/errors/errors'
+import { ImageButtons } from './components/fps/imagebuttons/imagebuttons'
 
 import FpsTheme, { SetTheme } from './components/fps/theme/theme'
 
@@ -80,5 +81,6 @@ export {
   Media,
   Article,
   Dnd,
-  Table
+  Table,
+  ImageButtons
 }

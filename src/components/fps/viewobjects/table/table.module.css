@@ -117,6 +117,7 @@
   overflow: hidden;
   max-width: 100%;
   text-overflow: ellipsis;
+  white-space: pre-line;
 }
 .objectCard .editLink {
   margin: 12px 3px 0 0;
