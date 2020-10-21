@@ -314,6 +314,9 @@ export default function Input(props) {
                         disabled={props.disabled}
                         className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
                         type="text"
+                        style={{
+                            height: props.height || 44
+                        }}
                         onChange={e => { handleChange(String(e.target.value).toLowerCase()); e && checkEmailValue(e.target.value) }}
                         value={value}
                         onBlur={e => checkEmailValue(e.target.value)}
@@ -329,6 +332,9 @@ export default function Input(props) {
                     <div className={`${styles.input_icon_wrapper} icon icon-search`} />
                     <input
                         disabled={props.disabled}
+                        style={{
+                            height: props.height || 44
+                        }}
                         className={`
                         ${styles.field} 
                         ${styles.icon} 
@@ -360,6 +366,9 @@ export default function Input(props) {
                             className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                             disabled={props.disabled}
                             type="number"
+                            style={{
+                                height: props.height || 44
+                            }}
                             onChange={e => { handleChangeDecimalNumber(e.target.value) }}
                             value={value}
                             onBlur={checkValue}
@@ -379,6 +388,9 @@ export default function Input(props) {
                             className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                             disabled={props.disabled}
                             type="number"
+                            style={{
+                                height: props.height || 44
+                            }}
                             onChange={e => handleChangeNumber(e.target.value)}
                             value={value}
                             onBlur={checkValue}
@@ -422,6 +434,9 @@ export default function Input(props) {
                         autoFocus={props.autoFocus}
                         autocomplete="new-password"
                         disabled={props.disabled}
+                        style={{
+                            height: props.height || 44
+                        }}
                         className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                         type={pwdVisible}
                         onChange={e => handleChange(e.target.value)}
