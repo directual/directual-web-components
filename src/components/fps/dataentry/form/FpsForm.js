@@ -64,8 +64,8 @@ export default function FpsForm({ auth, data, onEvent, id }) {
 
   console.log('------------ form data: -------------')
   console.log(data)
-  // console.log('------------ auth: -------------')
-  // console.log(auth)
+  console.log('------------ auth: -------------')
+  console.log(auth)
   console.log('------------ form model: -------------')
   console.log(model)
 
@@ -124,7 +124,13 @@ export default function FpsForm({ auth, data, onEvent, id }) {
   }
 
   //Get Object ID to edit
-  const eidtID = urlParams.get('@editObject') || null;
+  let eidtID
+
+  if (data.params.edit && auth.isAuth && auth.user) {
+    eidtID = auth.user // если стоит галка, то забираем айди из юзера
+  }
+
+  eidtID = urlParams.get('@editObject') || eidtID; // если задаем в URL, приоритет выше
 
   const [fetchedObj, setFetchetObj] = useState(false)
 

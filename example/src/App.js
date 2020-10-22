@@ -1239,6 +1239,7 @@ const App = (props) => {
       //   "isPerson": true,
       //   "userIdField": "textarea"
       // },
+      "edit": true,
       "result": {
         "resultTitleField": null,
         "resultMessageField": null,
