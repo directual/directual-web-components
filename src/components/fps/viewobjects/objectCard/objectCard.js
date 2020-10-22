@@ -80,7 +80,6 @@ export function ObjectCard(props) {
     }
     const object = composeObject()
     //------------------------------
-
     const getLinkName = (sysname, obj) => {
         const structure = getStructure(obj, transformTableFieldScheme(sysname, props.tableFieldScheme), props.tableStructures)
         const linkName = structure.visibleName && structure.visibleName.map(field => obj[field]).join(' ')
@@ -88,7 +87,8 @@ export function ObjectCard(props) {
     }
 
     const isEditable = field => {
-        if (props.writeFields && props.writeFields.indexOf('id') != -1 &&
+        console.log(object)
+        if (props.writeFields && props.writeFields.indexOf('id') != -1 && object.id && object.id.value &&
             field.sysName &&
             props.writeFields.indexOf(field.sysName) != -1) { return true } else { return false }
     }
@@ -123,11 +123,11 @@ export function ObjectCard(props) {
                     <div onClick={props.onClose}
                         className={`${styles.closeObjectCard} icon icon-back ${showLinkedObject && styles.hidden}`}></div>
                     <h2>
-                        {structure.visibleName ? structure.visibleName.map(headerField => object[headerField] ? 
-                        typeof object[headerField].value == 'object' ? 
-                        getLinkName(headerField,object[headerField].value) 
-                        : object[headerField].value
-                        : null).join(' ')
+                        {structure.visibleName ? structure.visibleName.map(headerField => object[headerField] ?
+                            typeof object[headerField].value == 'object' ?
+                                getLinkName(headerField, object[headerField].value)
+                                : object[headerField].value
+                            : null).join(' ')
                             :
                             'No visible name'}
                     </h2>
@@ -141,6 +141,7 @@ export function ObjectCard(props) {
                         ${showBorder && styles.bordered}
                     `}>
                     {Object.values(object).map(field =>
+                        ((props.params && props.params.deleteField !== field.sysName) && (field.dataType !== 'id' || props.params.isDisplayID)) && 
                         <div key={field.sysName} className={styles.objFieldWrapper}>
                             {field.dataType != 'link' &&
                                 field.dataType != 'arrayLink' &&
@@ -179,12 +180,13 @@ export function ObjectCard(props) {
                                                 />}
                                         </React.Fragment>}
                                 </React.Fragment>}
-                            {field.dataType == 'id' && props.params && props.params.isDisplayID && <React.Fragment>
-                                <span className={styles.label}>
-                                    {field.name || field.sysName}</span>
-                                {!field.value && <span className={styles.novalue}>—</span>}
-                                <span>{field && field.value}</span>
-                            </React.Fragment>
+                            {field.dataType == 'id' && props.params && props.params.isDisplayID &&
+                                <React.Fragment>
+                                    <span className={styles.label}>
+                                        {field.name || field.sysName}</span>
+                                    {!field.value && <span className={styles.novalue}>—</span>}
+                                    <span>{field && field.value}</span>
+                                </React.Fragment>
                             }
                             {field.dataType == 'link' &&
                                 //field.value && 

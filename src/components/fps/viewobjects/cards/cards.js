@@ -143,7 +143,7 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading, search
                                 <div className={styles.cardText}>
                                     {/* <div className={`${styles.details} icon icon-details`}></div> */}
                                     <h3 className={styles.cardHeader}>
-                                        {cardHeader.length > 1 ? cardHeader : 'No visible name'}
+                                        {cardHeader.length > 0 ? cardHeader : 'No visible name'}
                                     </h3>
 
                                     {cardHeaderComment && (
@@ -189,7 +189,7 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading, search
                 {(tableData.length === 0 || tableHeaders.length === 0) && !data.error &&
                     <SomethingWentWrong
                         icon='ban'
-                        message={`${searchValue ? `No object found for 'searchValue'` : `No objects`}`}
+                        message={`${searchValue ? `No object found for ${searchValue}` : `No objects`}`}
                     />}
 
 
