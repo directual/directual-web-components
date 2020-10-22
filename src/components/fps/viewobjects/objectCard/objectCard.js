@@ -257,7 +257,7 @@ export function ObjectCard(props) {
                     {props.writeFields && props.writeFields.length > 0 &&
                         <React.Fragment>
                             {props.loading ? <Loader>Saving...</Loader> :
-                                (props.writeFields && props.writeFields.indexOf('id') != -1 && props.writeFields.length > 1) &&
+                                (props.writeFields && props.writeFields.indexOf('id') != -1 && props.writeFields.length > 1) && object.id && object.id.value &&
                                 <React.Fragment>
                                     <ActionPanel margin={{ top: 24, bottom: 12 }}>
                                         <Button

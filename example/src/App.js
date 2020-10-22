@@ -205,7 +205,7 @@ const App = (props) => {
     [
       {
         "year": 1,
-        "id":'aaa',
+        //"id":'aaa',
         "genre": "Biog\nraphy",
         "title": "Life\nof\nSamuel\nJohnson",
         "image": "https://images.unsplash.com/photo-1598145164978-64796c5e8c4d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
