@@ -269,16 +269,9 @@ export default function FpsForm({ auth, data, onEvent, id }) {
     }
   }
 
-  const [initialFetching, setInitialFetching] = useState(true)
 
   const onChange = (field, value) => {
-    let modelCopy 
-    if (initialFetching) {
-      modelCopy = { ...model, ...hiddenFieldsValues, ...hiddenAuth, ...fetchedObjectFields };
-      setInitialFetching(false)
-    } else {
-      modelCopy = { ...model };
-    }
+    let modelCopy = { ...fetchedObjectFields, ...hiddenFieldsValues, ...hiddenAuth, ...model }; // model в конце! Иначе нахуй перетирается все что ввели
     modelCopy[field] = value
     setModel(modelCopy)
   }
