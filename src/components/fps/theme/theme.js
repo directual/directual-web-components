@@ -275,7 +275,7 @@ export default function FpsTheme(props) {
     const [dummyText,setDummyText] = useState('The quick brown fox jumps over the lazy dog')
 
     return (
-        <React.Fragment>
+        <div className={styles.themeSettings}>
             <Input
                 type='radio'
                 label='Choose color scheme'
@@ -342,15 +342,18 @@ export default function FpsTheme(props) {
             <h1
                 style={{
                     fontFamily: selectedColorScheme.headersFont,
-                    fontWeight: selectedColorScheme.headersFontWeight
+                    fontWeight: selectedColorScheme.headersFontWeight,
+                    padding: 0,
                 }}
             >{dummyText}</h1>
             <p
                 style={{
                     fontFamily: selectedColorScheme.fontText,
-                    fontWeight: selectedColorScheme.bodyFontWeight
+                    fontWeight: selectedColorScheme.bodyFontWeight,
+                    padding: 0,
+                    margin: 0
                 }}
             >{dummyText}! {dummyText}? {dummyText}.</p>
-        </React.Fragment>
+        </div>
     )
 }

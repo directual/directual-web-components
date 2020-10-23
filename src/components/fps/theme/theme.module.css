@@ -736,3 +736,6 @@
   font-weight: bold;
   padding-right: 10px;
 }
+.themeSettings {
+  line-height: normal;
+}
