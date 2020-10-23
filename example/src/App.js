@@ -87,7 +87,7 @@ const App = (props) => {
       "cardListLayout": "grid", // grid, list
       "isDisplayID": false,
       "deleteField": "year",
-      "cardHeaderComment": "year", // check link fields on the card
+      "cardHeaderComment": "title", // check link fields on the card
       "cardBodyText": "author_id", 
       //"cardBodyText": "genre",
       "cardImageField": "image",
@@ -204,8 +204,8 @@ const App = (props) => {
     "data": 
     [
       {
-        "year": 1,
-        //"id":'aaa',
+        "year": 2020,
+        "id":'aaa',
         "genre": "Biog\nraphy",
         "title": "Life\nof\nSamuel\nJohnson",
         "image": "https://images.unsplash.com/photo-1598145164978-64796c5e8c4d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",

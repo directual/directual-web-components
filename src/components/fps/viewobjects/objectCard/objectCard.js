@@ -6,6 +6,7 @@ import Button from '../../button/button'
 import Input from '../../dataentry/input/input'
 import { FormSection } from '../../dataentry/form/FpsForm'
 import Loader from '../../loader/loader'
+import TabsPane from '../../layout/tabpane/tabpane'
 
 export function ObjectCard(props) {
     const [showLinkedObject, setShowLinkedObject] = useState(false)
@@ -14,12 +15,7 @@ export function ObjectCard(props) {
     const [model, setModel] = useState(props.object)
     const [currentObject, setCurrentObject] = useState(props.object)
 
-    useEffect(() => {
-        // console.log('------object:---------')
-        // console.log(currentObject)
-        // console.log('------------ form model: -------------')
-        // console.log(model)
-    }, [model])
+    const showTabs = false
 
     // press 'Esc' for closing a popup:
     const handleUserKeyPress = (e) => {
@@ -87,7 +83,6 @@ export function ObjectCard(props) {
     }
 
     const isEditable = field => {
-        console.log(object)
         if (props.writeFields && props.writeFields.indexOf('id') != -1 && object.id && object.id.value &&
             field.sysName &&
             props.writeFields.indexOf(field.sysName) != -1) { return true } else { return false }
@@ -116,6 +111,151 @@ export function ObjectCard(props) {
         return (line.match(/\n/g) || []).length;
     }
 
+    const noTabs =
+        <React.Fragment>
+            {Object.values(object).map(field =>
+                ((props.params && props.params.deleteField !== field.sysName) && (field.dataType !== 'id' || props.params.isDisplayID)) &&
+                <div key={field.sysName} className={styles.objFieldWrapper}>
+                    {field.dataType != 'link' &&
+                        field.dataType != 'arrayLink' &&
+                        field.dataType != 'id' && <React.Fragment>
+                            {!isEditable(field) ?
+                                <React.Fragment>
+                                    <span className={styles.label}>
+                                        {field.name || field.sysName}</span>
+                                    {!field.value && field.dataType != 'boolean' && <span className={styles.novalue}>—</span>}
+                                    {field.dataType != 'boolean' ?
+                                        <span className={styles.fieldValue}>{field && field.value}</span> :
+                                        <span className={`icon icon-${field && (field.value ? `done` : `ban`)}`}>{field && (field.value ? 'Yes' : 'No')}</span>}
+
+                                </React.Fragment> :
+                                <React.Fragment>
+                                    {field.dataType == 'string' ?
+                                        <Input
+                                            type='textarea'
+                                            rows={checkLineBreaks(model[field.sysName]) > 10 ? 10 : checkLineBreaks(model[field.sysName]) + 1}
+                                            label={field.name || field.sysName}
+                                            defaultValue={model[field.sysName]}
+                                            onChange={value => setModel({ ...model, [field.sysName]: value })}
+                                        />
+                                        :
+                                        <Input
+                                            type={matchInputType(field.dataType)}
+                                            label={field.name || field.sysName}
+                                            defaultValue={field.dataType == 'boolean' ? ((model[field.sysName] == 'true' || model[field.sysName] == true) ? true : false) : model[field.sysName]}
+                                            options={
+                                                [
+                                                    { value: true, label: 'Yes' },
+                                                    { value: false, label: 'No' },
+                                                ]
+                                            }
+                                            onChange={value => setModel({ ...model, [field.sysName]: value })}
+                                        />}
+                                </React.Fragment>}
+                        </React.Fragment>}
+                    {field.dataType == 'id' && props.params && props.params.isDisplayID &&
+                        <React.Fragment>
+                            <span className={styles.label}>
+                                {field.name || field.sysName}</span>
+                            {!field.value && <span className={styles.novalue}>—</span>}
+                            <span>{field && field.value}</span>
+                        </React.Fragment>
+                    }
+                    {field.dataType == 'link' &&
+                        //field.value && 
+                        <React.Fragment>
+                            {field.value &&
+                                <React.Fragment>
+                                    <span className={styles.label}>
+                                        {field.name || field.sysName}</span>
+                                    <div className={styles.linkFieldWrapper}>
+                                        <a
+                                            onClick={() => {
+                                                setLinkedObject(field.value)
+                                                setLinkedObjectStruct(transformTableFieldScheme(field.sysName, props.tableFieldScheme))
+                                                setShowLinkedObject(true)
+                                            }}
+                                        >{getLinkName(field.sysName, field.value)}</a>
+                                    </div>
+                                </React.Fragment>}
+                            {isEditable(field) &&
+                                // props.object[field.sysName].id &&
+                                <div className={styles.editLink}>
+                                    <Input
+                                        type='string'
+                                        label={!field.value ? (field.name || field.sysName) : ''}
+                                        tip={`Edit ${field.name || field.sysName} (value of the link field is object ID)`}
+                                        defaultValue={currentObject[field.sysName] && (currentObject[field.sysName].id || currentObject[field.sysName])}
+                                        onChange={value => setModel({ ...model, [field.sysName]: value })}
+                                    />
+                                </div>
+                            }
+                        </React.Fragment>
+                    }
+                    {field.dataType == 'arrayLink' && <React.Fragment>
+                        <span className={styles.label}>
+                            {field.name || field.sysName}</span>
+                        <div className={styles.linkFieldWrapper}>
+                            {field.value && field.value.map((link, i) => {
+                                return (
+                                    <a
+                                        key={i}
+                                        onClick={() => {
+                                            setLinkedObject(link)
+                                            setLinkedObjectStruct(transformTableFieldScheme(field.sysName, props.tableFieldScheme))
+                                            setShowLinkedObject(true)
+                                        }}
+                                    >{getLinkName(field.sysName, link)}</a>)
+                            })}
+                        </div>
+                        {isEditable(field) &&
+                            //props.object[field.sysName] && props.object[field.sysName][0] && props.object[field.sysName][0].id &&
+                            <div className={styles.editLink}>
+                                <Input
+                                    type='string'
+                                    //label={`Edit ${field.name || field.sysName}`}
+                                    tip={`Edit ${field.name || field.sysName} (value of the arrayLink field is object IDs, comma separated)`}
+                                    defaultValue={currentObject[field.sysName] && (currentObject[field.sysName][0].id ? currentObject[field.sysName].map(i => i.id).join(',') : currentObject[field.sysName].join(','))}
+                                    onChange={value => setModel({ ...model, [field.sysName]: value.split(',') })}
+                                />
+                            </div>
+                        }
+                    </React.Fragment>
+                    }
+
+                </div>
+            )}
+
+            {props.writeFields && props.writeFields.length > 0 &&
+                <React.Fragment>
+                    {props.loading ? <Loader>Saving...</Loader> :
+                        (props.writeFields && props.writeFields.indexOf('id') != -1 && props.writeFields.length > 1) && object.id && object.id.value &&
+                        <React.Fragment>
+                            <ActionPanel margin={{ top: 24, bottom: 12 }}>
+                                <Button
+                                    disabled={JSON.stringify(model) === JSON.stringify(currentObject)}
+                                    accent
+                                    icon='done'
+                                    onClick={() => { props.submit(model); setCurrentObject(model) }}>
+                                    Save changes</Button>
+                                <Button danger icon='ban'
+                                    onClick={() => setModel(currentObject)}
+                                    disabled={JSON.stringify(model) === JSON.stringify(currentObject)}>
+                                    Discard changes</Button>
+                            </ActionPanel>
+                            {(props.params.deleteField && object.id && props.writeFields && props.writeFields.indexOf(props.params.deleteField) != -1) &&
+                                <React.Fragment>
+                                    <FormSection title='Danger zone' />
+                                    {!confirmDelete ?
+                                        <Button icon='delete' onClick={() => setConfirmDelete(true)} danger>Delete</Button> :
+                                        <Button icon='delete' onClick={() => { props.submit({ [props.params.deleteField]: true, id: object.id.value }); props.onClose() }} danger>I'm totally sure, delete</Button>
+                                    }
+                                </React.Fragment>}
+                        </React.Fragment>}
+
+                </React.Fragment>}
+        </React.Fragment>
+
     return (
         <React.Fragment>
             <div className={styles.objectCard}>
@@ -132,6 +272,7 @@ export function ObjectCard(props) {
                             'No visible name'}
                     </h2>
                 </div>
+
                 <div
                     ref={scrollDivRef}
                     onScroll={handleScroll}
@@ -139,150 +280,24 @@ export function ObjectCard(props) {
                     {`
                         ${styles.objectCardBody} 
                         ${showBorder && styles.bordered}
+                        ${!showTabs && styles.notabs}
                     `}>
-                    {Object.values(object).map(field =>
-                        ((props.params && props.params.deleteField !== field.sysName) && (field.dataType !== 'id' || props.params.isDisplayID)) && 
-                        <div key={field.sysName} className={styles.objFieldWrapper}>
-                            {field.dataType != 'link' &&
-                                field.dataType != 'arrayLink' &&
-                                field.dataType != 'id' && <React.Fragment>
-                                    {!isEditable(field) ?
-                                        <React.Fragment>
-                                            <span className={styles.label}>
-                                                {field.name || field.sysName}</span>
-                                            {!field.value && field.dataType != 'boolean' && <span className={styles.novalue}>—</span>}
-                                            {field.dataType != 'boolean' ?
-                                                <span className={styles.fieldValue}>{field && field.value}</span> :
-                                                <span className={`icon icon-${field && (field.value ? `done` : `ban`)}`}>{field && (field.value ? 'Yes' : 'No')}</span>}
-
-                                        </React.Fragment> :
-                                        <React.Fragment>
-                                            {field.dataType == 'string' ?
-                                                <Input
-                                                    type='textarea'
-                                                    rows={checkLineBreaks(model[field.sysName]) > 10 ? 10 : checkLineBreaks(model[field.sysName]) + 1}
-                                                    label={field.name || field.sysName}
-                                                    defaultValue={model[field.sysName]}
-                                                    onChange={value => setModel({ ...model, [field.sysName]: value })}
-                                                />
-                                                :
-                                                <Input
-                                                    type={matchInputType(field.dataType)}
-                                                    label={field.name || field.sysName}
-                                                    defaultValue={field.dataType == 'boolean' ? ((model[field.sysName] == 'true' || model[field.sysName] == true) ? true : false) : model[field.sysName]}
-                                                    options={
-                                                        [
-                                                            { value: true, label: 'Yes' },
-                                                            { value: false, label: 'No' },
-                                                        ]
-                                                    }
-                                                    onChange={value => setModel({ ...model, [field.sysName]: value })}
-                                                />}
-                                        </React.Fragment>}
-                                </React.Fragment>}
-                            {field.dataType == 'id' && props.params && props.params.isDisplayID &&
-                                <React.Fragment>
-                                    <span className={styles.label}>
-                                        {field.name || field.sysName}</span>
-                                    {!field.value && <span className={styles.novalue}>—</span>}
-                                    <span>{field && field.value}</span>
-                                </React.Fragment>
-                            }
-                            {field.dataType == 'link' &&
-                                //field.value && 
-                                <React.Fragment>
-                                    {field.value &&
-                                        <React.Fragment>
-                                            <span className={styles.label}>
-                                                {field.name || field.sysName}</span>
-                                            <div className={styles.linkFieldWrapper}>
-                                                <a
-                                                    onClick={() => {
-                                                        setLinkedObject(field.value)
-                                                        setLinkedObjectStruct(transformTableFieldScheme(field.sysName, props.tableFieldScheme))
-                                                        setShowLinkedObject(true)
-                                                    }}
-                                                >{getLinkName(field.sysName, field.value)}</a>
-                                            </div>
-                                        </React.Fragment>}
-                                    {isEditable(field) &&
-                                        // props.object[field.sysName].id &&
-                                        <div className={styles.editLink}>
-                                            <Input
-                                                type='string'
-                                                label={!field.value ? (field.name || field.sysName) : ''}
-                                                tip={`Edit ${field.name || field.sysName} (value of the link field is object ID)`}
-                                                defaultValue={currentObject[field.sysName] && (currentObject[field.sysName].id || currentObject[field.sysName])}
-                                                onChange={value => setModel({ ...model, [field.sysName]: value })}
-                                            />
-                                        </div>
-                                    }
-                                </React.Fragment>
-                            }
-                            {field.dataType == 'arrayLink' && <React.Fragment>
-                                <span className={styles.label}>
-                                    {field.name || field.sysName}</span>
-                                <div className={styles.linkFieldWrapper}>
-                                    {field.value && field.value.map((link, i) => {
-                                        return (
-                                            <a
-                                                key={i}
-                                                onClick={() => {
-                                                    setLinkedObject(link)
-                                                    setLinkedObjectStruct(transformTableFieldScheme(field.sysName, props.tableFieldScheme))
-                                                    setShowLinkedObject(true)
-                                                }}
-                                            >{getLinkName(field.sysName, link)}</a>)
-                                    })}
-                                </div>
-                                {isEditable(field) &&
-                                    //props.object[field.sysName] && props.object[field.sysName][0] && props.object[field.sysName][0].id &&
-                                    <div className={styles.editLink}>
-                                        <Input
-                                            type='string'
-                                            //label={`Edit ${field.name || field.sysName}`}
-                                            tip={`Edit ${field.name || field.sysName} (value of the arrayLink field is object IDs, comma separated)`}
-                                            defaultValue={currentObject[field.sysName] && (currentObject[field.sysName][0].id ? currentObject[field.sysName].map(i => i.id).join(',') : currentObject[field.sysName].join(','))}
-                                            onChange={value => setModel({ ...model, [field.sysName]: value.split(',') })}
-                                        />
-                                    </div>
-                                }
-                            </React.Fragment>
-                            }
-
-                        </div>
-                    )}
-
-                    {/* <a onClick={() => setShowLinkedObject(true)}>Click me</a> */}
-                    {props.writeFields && props.writeFields.length > 0 &&
-                        <React.Fragment>
-                            {props.loading ? <Loader>Saving...</Loader> :
-                                (props.writeFields && props.writeFields.indexOf('id') != -1 && props.writeFields.length > 1) && object.id && object.id.value &&
-                                <React.Fragment>
-                                    <ActionPanel margin={{ top: 24, bottom: 12 }}>
-                                        <Button
-                                            disabled={JSON.stringify(model) === JSON.stringify(currentObject)}
-                                            accent
-                                            icon='done'
-                                            onClick={() => { props.submit(model); setCurrentObject(model) }}>
-                                            Save changes</Button>
-                                        <Button danger icon='ban'
-                                            onClick={() => setModel(currentObject)}
-                                            disabled={JSON.stringify(model) === JSON.stringify(currentObject)}>
-                                            Discard changes</Button>
-                                    </ActionPanel>
-                                    {(props.params.deleteField && object.id && props.writeFields && props.writeFields.indexOf(props.params.deleteField) != -1) &&
-                                        <React.Fragment>
-                                            <FormSection title='Danger zone' />
-                                            {!confirmDelete ?
-                                                <Button icon='delete' onClick={() => setConfirmDelete(true)} danger>Delete</Button> :
-                                                <Button icon='delete' onClick={() => { props.submit({ [props.params.deleteField]: true, id: object.id.value }); props.onClose() }} danger>I'm totally sure, delete</Button>
-                                            }
-                                        </React.Fragment>}
-                                </React.Fragment>}
-
-                        </React.Fragment>}
+                    {!showTabs && noTabs}  
+                    {showTabs && 
+                    <TabsPane
+                        tabs={[
+                            { key: '1', title: 'General', content: noTabs },
+                            { key: '2', title: 'Users', content: <div>Раз</div> },
+                            { key: '3', title: 'Actions', content: <div>Два</div> },
+                        ]}
+                        currentTabKey={1}
+                        fixedScroll
+                    />}
                 </div>
+
+
+
+
                 {showLinkedObject &&
                     <React.Fragment>
                         <Backdrop onClick={() => setShowLinkedObject(false)} hoverable rounded

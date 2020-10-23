@@ -117,9 +117,12 @@
         }
     }
     .objectCardBody {
-        margin:12px 24px 24px 44px;
+        margin:-5px 24px 19px 44px;
         //border: solid 1px green;
         overflow: auto;
+        &.notabs {
+            margin:12px 24px 24px 44px;
+        }
         &.bordered {
             border-top:solid 1px var(--field-border-color)
         }
@@ -154,9 +157,6 @@
     }
     .tableActions {
         display: flex;
-        button {
-            //margin-left: 6px;
-        }
         .tableQuickSearchField {
             margin-left: 6px;
         }
@@ -177,7 +177,10 @@
     .objectCard {
         //padding:12px;
         .objectCardBody {
-            margin:12px 24px 24px 24px
+            margin:-5px 24px 19px 24px;
+            &.notabs {
+                margin:12px 24px 24px 24px;
+            }
         }
     }
     div.tableTitle {
