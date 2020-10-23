@@ -128,9 +128,13 @@ export default function FpsForm({ auth, data, onEvent, id }) {
 
   if (data.params.edit && auth.isAuth && auth.user) {
     eidtID = auth.user // если стоит галка, то забираем айди из юзера
+    console.log('берем айди из юзера')
+    console.log(eidtID)
   }
 
   eidtID = urlParams.get('@editObject') || eidtID; // если задаем в URL, приоритет выше
+  console.log('editing object')
+  console.log(eidtID)
 
   const [fetchedObj, setFetchetObj] = useState(false)
 
@@ -269,6 +273,8 @@ export default function FpsForm({ auth, data, onEvent, id }) {
         } else { getFieldVal = data.data[0] && data.data[0][sysName] }
       } else { getFieldVal = data.data[0] && data.data[0][sysName] }
       if (eidtID && (getFieldVal || getFieldVal === false)) { // отдельно проверку на false для boolean полей
+        console.log('тут кажись какая-то хуйня происходит')
+        console.log(eidtID)
         fetchedObjectFields = { ...fetchedObjectFields, id: eidtID, [sysName]: getFieldVal }
       }
       return getFieldVal
