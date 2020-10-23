@@ -127,7 +127,7 @@ FpsCards.settings = {
         { name: 'List title', sysName: 'tableTitle', type: 'input' },
         { name: 'Page size', sysName: 'pageSize', type: 'number' },
         // { name: 'Filters', sysName: 'tableFilters', type: 'on_off' },
-        { name: 'Quick search', sysName: 'tableQuickSearch', type: 'on_off' },
+        // { name: 'Quick search', sysName: 'tableQuickSearch', type: 'on_off' },
     ]
 }
 export default FpsCards

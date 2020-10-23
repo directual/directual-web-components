@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './theme.module.css'
 import Radio from '../dataentry/radio/radio'
 import Input, { InputGroup } from '../dataentry/input/input'
+import { FormSection } from '../dataentry/form/FpsForm'
 
 export function SetTheme({ themeName }) {
 
@@ -259,6 +260,9 @@ export default function FpsTheme(props) {
         { key: 'Rubik', value: 'Rubik' },
         { key: 'Ubuntu', value: 'Ubuntu' },
         { key: 'Courier New', value: 'Courier New' },
+        { key: 'Cuprum', value: 'Cuprum' },
+        { key: 'Nunito', value: 'Nunito' },
+        { key: 'Playfair Display', value: 'Playfair Display' },
     ]
     const fontWeights = [
         { key: '900', value: 'Black 900' },
@@ -267,6 +271,8 @@ export default function FpsTheme(props) {
         { key: '400', value: 'Regular 400' },
         { key: '300', value: 'Light 300' },
     ]
+
+    const [dummyText,setDummyText] = useState('The quick brown fox jumps over the lazy dog')
 
     return (
         <React.Fragment>
@@ -326,6 +332,25 @@ export default function FpsTheme(props) {
                     onChange={value => setSelectedColorScheme({ ...selectedColorScheme, bodyFontWeight: value })}
                 />
             </InputGroup>
+            <FormSection title='Example' />
+            <Input 
+                defaultValue={dummyText}
+                onChange={value=>setDummyText(value)}
+                label='Dummy text'
+                width={500}
+            />
+            <h1
+                style={{
+                    fontFamily: selectedColorScheme.headersFont,
+                    fontWeight: selectedColorScheme.headersFontWeight
+                }}
+            >{dummyText}</h1>
+            <p
+                style={{
+                    fontFamily: selectedColorScheme.fontText,
+                    fontWeight: selectedColorScheme.bodyFontWeight
+                }}
+            >{dummyText}! {dummyText}? {dummyText}.</p>
         </React.Fragment>
     )
 }
