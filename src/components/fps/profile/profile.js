@@ -10,7 +10,7 @@ export function SignIn({ width, header, google, onSubmit, userNameFormat }) {
         onSubmit(loginDetails)
     }
 
-    const userNameLabel = userNameFormat == 'email' ? 'Email address' : 
+    const userNameLabel = userNameFormat == 'email' ? 'Email address' :
         userNameFormat == 'phone' ? 'Phone number' : 'Login'
 
     // Hidden login:
@@ -97,13 +97,14 @@ export function SignUp(props) {
 export function Profile(props) {
     return (
         <div style={{ maxWidth: props.width || 'auto' }}>
-            <ProfileHeader
+          {props.user && <ProfileHeader
                 pictureUrl={props.user.profilePicture}
-                fullName={`${props.user.firstName} ${props.user.lastName}`} />
-            <ProfileBody
-                user={props.user} />
+                fullName={`${props.user.firstName} ${props.user.lastName}`} /> }
+          {props.user && <ProfileBody
+                user={props.user} /> }
             <div className={styles.logOut}>
-                <Button icon='logout'>Log out</Button></div>
+              <div onClick={()=>props.logOut()}>logoout</div>
+                <Button icon='logout' >Log out</Button></div>
         </div>
     )
 }
