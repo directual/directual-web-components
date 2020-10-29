@@ -62,8 +62,8 @@ export default function FpsForm({ auth, data, onEvent, id }) {
 
 
 
-  // console.log('------------ form data: -------------')
-  // console.log(data)
+  console.log('------------ form data: -------------')
+  console.log(data)
   // console.log('------------ auth: -------------')
   // console.log(auth)
   console.log('------------ form model: -------------')
@@ -260,19 +260,39 @@ export default function FpsForm({ auth, data, onEvent, id }) {
 
   // object editing
   let fetchedObjectFields = {}
-  const getFieldValue = (sysName, dataType, field) => {
+  const getFieldValue = (sysName, dataType) => {
     if (!data.data) { return } else {
       let getFieldVal
       if (dataType == 'json' && data.data[0] && data.data[0][sysName]) {
-        if (data.data[0] && data.data[0][sysName].value && params.fields[sysName].jsonDisplay == 'radioStation') {
-          getFieldVal = data.data[0][sysName].value
-          // try {
-          //   getFieldVal = JSON.parse(data.data[0][sysName])
-          // }
-          // catch (e) {
-          //   console.log(e);
-          // }
-        } else { getFieldVal = data.data[0] && data.data[0][sysName] }
+        
+        // try {
+        //   getFieldVal = JSON.parse(data.data[0][sysName])
+        // }
+        // catch (e) {
+        //   console.log(e);
+        // }
+
+        if (data.data[0] && data.data[0][sysName] && params.fields[sysName].jsonDisplay == 'radioStation') {
+          try {
+            getFieldVal = JSON.parse(data.data[0][sysName])
+          }
+          catch (e) {
+            console.log(e);
+          }
+          getFieldVal = getFieldVal
+        } else { 
+          if (data.data[0] && typeof data.data[0][sysName] == 'string')
+          {
+            try {
+                getFieldVal = JSON.parse(data.data[0][sysName])
+              }
+              catch (e) {
+                console.log(e);
+              }
+          } else {
+          getFieldVal = data.data[0] && data.data[0][sysName] }
+
+        }
       } else { getFieldVal = data.data[0] && data.data[0][sysName] }
       if (eidtID && (getFieldVal || getFieldVal === false)) { // отдельно проверку на false для boolean полей
         fetchedObjectFields = { ...fetchedObjectFields, id: eidtID, [sysName]: getFieldVal }
@@ -372,16 +392,22 @@ export default function FpsForm({ auth, data, onEvent, id }) {
                     customOptionPlaceholder={field.params.customOptionPlaceholder}
                     options={(typesMatching(field) == 'select' || typesMatching(field) == 'multiselect') ? (field.params.searchData || []) :
                       (field.params.multipleChoice || [])}
-                    defaultValue={getFieldValue(field.sysName, field.dataType, field) || field.params.defaultValue}
+                    defaultValue={
+                      params.fields[field.sysName].jsonDisplay == 'radioStation' ? 
+                        ((getFieldValue(field.sysName, field.dataType) && getFieldValue(field.sysName, field.dataType).value)
+                        || field.params.defaultValue) :
+                      (getFieldValue(field.sysName, field.dataType) || field.params.defaultValue)
+                    }
                     timeFormat={`${field.params.dateTimeOn ? ' hh:mm A' : ''}`}
                     type={typesMatching(field)}
                     rows={field.params.textareaRows}
-                    onChange={value => { 
+                    onChange={value => {
                       let correctedValue
                       if (params.fields[field.sysName].jsonDisplay == 'radioStation' && typeof value == 'string') {
                         correctedValue = { value: value }
                       } else { correctedValue = value }
-                      onChange(field.sysName, correctedValue) }}
+                      onChange(field.sysName, correctedValue)
+                    }}
                     min={field.params && field.params.range && field.params.range.min}
                     max={field.params && field.params.range && field.params.range.max}
                     step={field.params && field.params.range && field.params.range.step}

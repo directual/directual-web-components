@@ -2589,9 +2589,9 @@ const App = (props) => {
         "range": "{\"firstValue\":40,\"secondValue\":90}",
         "link": "option2",
         //"radio": "option1",
-        "radio": {"value":"option1"},
+        "radio": "{\"value\":\"option1\"}",
         "boolean": true,
-        "checkbox": {"option2":true},
+        "checkbox": "{\"option2\":true}",
         //"textarea": "Crime and Punishment",
       }
     ],
