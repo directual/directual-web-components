@@ -76,6 +76,7 @@ const App = (props) => {
     html: '<b>test</b>'
   }
 
+
   let exampleTable =
   {
     "sl": "getBooks_FPS",

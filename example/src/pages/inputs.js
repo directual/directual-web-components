@@ -420,12 +420,13 @@ export default function InputsPage() {
     label='Select with icon'
     width={400}
     type='select'
+    iconOptions
     placeholder='Placeholder'
     icon='database'
     options={
         [
             { key: 1, value: 'Good fortune? The fact is' },
-            { key: 2, value: 'The more that you practise' },
+            { key: 2, value: 'The more that you practise', icon: 'code'  },
             { key: 3, value: 'The harder you sweat' },
             { key: 4, value: 'The luckier you get' }
         ]

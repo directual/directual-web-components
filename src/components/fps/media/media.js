@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styles from './media.module.css'
+import icon from './../../../icons/fps-video.svg'
 
 function YouTubeGetID(url) {
     var ID = '';
@@ -39,3 +40,13 @@ export default function Media({ type, source, width, height }) {
         </React.Fragment>
     )
 }
+Media.settings = {
+    icon: icon,
+    name: 'Video',
+    sysName: 'FpsVideo',
+    form: [
+      { name: 'Youtube link', sysName: 'source', type: 'string' },
+      { name: 'Width', sysName: 'width', type: 'number positive', unitName: 'px' },
+      { name: 'Height', sysName: 'height', type: 'number positive', unitName: 'px' },
+    ]
+  }

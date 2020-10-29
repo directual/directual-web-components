@@ -15,7 +15,7 @@ export function ObjectCard(props) {
     const [model, setModel] = useState(props.object)
     const [currentObject, setCurrentObject] = useState(props.object)
 
-    const showTabs = false
+    const showTabs = true
 
     // press 'Esc' for closing a popup:
     const handleUserKeyPress = (e) => {
