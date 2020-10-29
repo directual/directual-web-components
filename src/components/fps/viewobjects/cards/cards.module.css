@@ -146,6 +146,7 @@
 }
 .card .cardInnerWrapper .cardText .cardHeader {
   white-space: nowrap;
+  max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
 }

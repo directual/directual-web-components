@@ -21,7 +21,7 @@ function TabsMenu({ tabs, currentTabKey, onClick }) {
     return (
         <ul className={styles.tabsMenu}>
             {tabs && tabs.map(tab =>
-            <React.Fragment>
+            <React.Fragment key={tab.key}>
                 {!tab.hidden &&
                 <div
                     onClick={() => (tab.key && !tab.disabled) && onClick(tab.key)}

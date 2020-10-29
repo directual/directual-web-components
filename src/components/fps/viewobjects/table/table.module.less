@@ -223,6 +223,12 @@
      .novalue {
          opacity: .5;
      }
+     .description {
+        font-size: var(--text-small-size);
+        opacity: 0.6;
+        margin: 3px 0 9px 0px;
+        display: block;
+    }
      .linkFieldWrapper {
          display: flex;
          flex-wrap: wrap;
@@ -236,6 +242,55 @@
                  border-color: var(--secondary-accent-color);
              }
          }
+     }
+     .cardImage {
+         background-color: var(--field-border-color);
+         display: flex;
+         overflow: hidden;
+         align-items: center;
+         justify-content: center;
+         background-size: contain;
+         background-position: center center;
+         background-repeat: no-repeat;
+         margin-bottom: 12px;
+         position: relative;
+         .noPic {
+             font-size: var(--text-small-size);
+             color: var(--background-color);
+             opacity: .5;
+         }
+         .editPic {
+             position: absolute;
+             background: var(--accent-color);
+             opacity: 0;
+             width: 100%;
+             height: 100%;
+             align-items: center;
+             justify-content: center;
+             cursor: pointer;
+             transition: .5s;
+             &:hover {
+                opacity: .35;
+             }
+             &:before {
+                 color: var(--button-accent-color);
+                 font-size: 80px;
+             }
+         }
+     }
+     .cardFile {
+         display: flex;
+         align-items: center;
+         margin-bottom: 12px;
+         .download {
+            background-color: var(--label-color);
+            color: var(--label-text-color);
+            border-radius: var(--border-radius);
+            height: 48px;
+            padding: 0 22px 0 16px;
+            margin-right: 6px;
+         }
+         
      }
  }
 

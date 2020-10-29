@@ -119,7 +119,7 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading, search
                     // ==================================
 
                     return (
-                        <div key={i} className={`${styles.card} ${styles[tableParams.cardListLayout]}`}>
+                        <div key={i} className={`${styles.card} ${styles[tableParams.cardListLayout || 'grid']}`}>
                             <div
                                 className={`${styles.cardInnerWrapper}
                                 ${styles[tableParams.cardImageType]}

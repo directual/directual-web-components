@@ -198,6 +198,12 @@
 .objFieldWrapper .novalue {
   opacity: 0.5;
 }
+.objFieldWrapper .description {
+  font-size: var(--text-small-size);
+  opacity: 0.6;
+  margin: 3px 0 9px 0px;
+  display: block;
+}
 .objFieldWrapper .linkFieldWrapper {
   display: flex;
   flex-wrap: wrap;
@@ -211,6 +217,54 @@
 }
 .objFieldWrapper .linkFieldWrapper a:hover {
   border-color: var(--secondary-accent-color);
+}
+.objFieldWrapper .cardImage {
+  background-color: var(--field-border-color);
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin-bottom: 12px;
+  position: relative;
+}
+.objFieldWrapper .cardImage .noPic {
+  font-size: var(--text-small-size);
+  color: var(--background-color);
+  opacity: 0.5;
+}
+.objFieldWrapper .cardImage .editPic {
+  position: absolute;
+  background: var(--accent-color);
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.objFieldWrapper .cardImage .editPic:hover {
+  opacity: 0.35;
+}
+.objFieldWrapper .cardImage .editPic:before {
+  color: var(--button-accent-color);
+  font-size: 80px;
+}
+.objFieldWrapper .cardFile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.objFieldWrapper .cardFile .download {
+  background-color: var(--label-color);
+  color: var(--label-text-color);
+  border-radius: var(--border-radius);
+  height: 48px;
+  padding: 0 22px 0 16px;
+  margin-right: 6px;
 }
 .titleSearch {
   opacity: 0.6;

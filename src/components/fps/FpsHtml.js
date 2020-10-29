@@ -1,16 +1,17 @@
 import React from 'react'
-import styles from '../../styles.module.css'
 import icon from './../../icons/fps-rich-text.svg'
 import { ComponentWrapper } from './wrapper/wrapper'
+import Article from './article/article'
 
 function FpsHtml({ data }) {
   const html = data.html || ''
   return (
     <ComponentWrapper>
-      <div
-        className={styles.fpsHtml}
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+      <Article>
+        <div
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+      </Article>
     </ComponentWrapper>
   )
 }

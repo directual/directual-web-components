@@ -15,7 +15,12 @@ export function ObjectCard(props) {
     const [model, setModel] = useState(props.object)
     const [currentObject, setCurrentObject] = useState(props.object)
 
-    const showTabs = true
+    // support previous component version:
+    const oldFashioned = !props.params.data ? true : false
+
+    console.log('==============props.params==============')
+    console.log(props.params)
+    console.log(oldFashioned)
 
     // press 'Esc' for closing a popup:
     const handleUserKeyPress = (e) => {
@@ -75,8 +80,28 @@ export function ObjectCard(props) {
         return object
     }
     const object = composeObject()
+
+    // arrange tabs:
+    let cardTabs = []
+    if (props.params.data) {
+        cardTabs = props.params.data.columnOrder.map(tab => {
+            let fieldDetails = {}
+            for (const field in props.params.data.fieldParams) {
+                fieldDetails[field] = props.params.data.fieldParams[field]
+            }
+            for (const field in props.params.data.fields) {
+                fieldDetails[field] = { ...fieldDetails[field], ...props.params.data.fields[field] }
+            }
+            return {
+                key: tab,
+                title: props.params.data.columns[tab].title,
+                content: composeTabContent(props.params.data.columns[tab].fieldIds, fieldDetails, props.params.deleteField)
+            }
+        })
+    }
+
     //------------------------------
-    const getLinkName = (sysname, obj) => {
+    function getLinkName(sysname, obj) {
         const structure = getStructure(obj, transformTableFieldScheme(sysname, props.tableFieldScheme), props.tableStructures)
         const linkName = structure.visibleName && structure.visibleName.map(field => obj[field]).join(' ')
         return linkName || 'No visible name'
@@ -162,7 +187,6 @@ export function ObjectCard(props) {
                         </React.Fragment>
                     }
                     {field.dataType == 'link' &&
-                        //field.value && 
                         <React.Fragment>
                             {field.value &&
                                 <React.Fragment>
@@ -178,6 +202,7 @@ export function ObjectCard(props) {
                                         >{getLinkName(field.sysName, field.value)}</a>
                                     </div>
                                 </React.Fragment>}
+
                             {isEditable(field) &&
                                 // props.object[field.sysName].id &&
                                 <div className={styles.editLink}>
@@ -244,6 +269,7 @@ export function ObjectCard(props) {
                                     Discard changes</Button>
                             </ActionPanel>
                             {(props.params.deleteField && object.id && props.writeFields && props.writeFields.indexOf(props.params.deleteField) != -1) &&
+                                // удаление
                                 <React.Fragment>
                                     <FormSection title='Danger zone' />
                                     {!confirmDelete ?
@@ -256,64 +282,346 @@ export function ObjectCard(props) {
                 </React.Fragment>}
         </React.Fragment>
 
+    // ============================= Generating Tab content ============================
+    function composeTabContent(fields, fieldParams, deleteField) {
+        return (
+            <React.Fragment>
+                {fields.map(fieldSysName => {
+                    let field = fieldParams[fieldSysName]
+                    field = {
+                        ...field,
+                        name: field.content,
+                        sysName: field.id
+                    }
+                    if (field.id == 'action__delete') return <ActionDelete
+                        submit={() => {
+                            props.submit({ [deleteField]: true, id: object.id.value });
+                            props.onClose()
+                        }} />
+                    if (!field.include || !object[field.sysName] || field.sysName == deleteField) { return null }
+                    return <CardField
+                        //debug
+                        model={model}
+                        field={field}
+                        object={object}
+                        setModel={value => setModel(value)}
+                        setLinkedObject={setLinkedObject}
+                        setShowLinkedObject={setShowLinkedObject}
+                        getLinkName={getLinkName}
+                        setLinkedObjectStruct={fieldSysName =>
+                            setLinkedObjectStruct(transformTableFieldScheme(fieldSysName, props.tableFieldScheme))}
+                    />
+                })}
+                
+                {fields.filter(i => 
+                    fieldParams[i].write == true
+                    && fieldParams[i].include == true
+                    && fieldParams[i].id != deleteField
+                ) && fields.filter(i => 
+                    fieldParams[i].write == true
+                    && fieldParams[i].include == true
+                    && fieldParams[i].id != deleteField
+                ).length > 0 &&
+                    <SaveCard
+                        model={model}
+                        currentObject={currentObject}
+                        submit={props.submit}
+                        setCurrentObject={setCurrentObject}
+                        setModel={setModel}
+                    />
+                }
+            </React.Fragment>
+        )
+    }
+
     return (
-        <React.Fragment>
-            <div className={styles.objectCard}>
-                <div className={styles.objectCardHeader}>
-                    <div onClick={props.onClose}
-                        className={`${styles.closeObjectCard} icon icon-back ${showLinkedObject && styles.hidden}`}></div>
-                    <h2>
-                        {structure.visibleName ? structure.visibleName.map(headerField => object[headerField] ?
-                            typeof object[headerField].value == 'object' ?
-                                getLinkName(headerField, object[headerField].value)
-                                : object[headerField].value
-                            : null).join(' ')
-                            :
-                            'No visible name'}
-                    </h2>
-                </div>
-
-                <div
-                    ref={scrollDivRef}
-                    onScroll={handleScroll}
-                    className=
-                    {`
-                        ${styles.objectCardBody} 
-                        ${showBorder && styles.bordered}
-                        ${!showTabs && styles.notabs}
-                    `}>
-                    {!showTabs && noTabs}  
-                    {showTabs && 
-                    <TabsPane
-                        tabs={[
-                            { key: '1', title: 'General', content: noTabs },
-                            { key: '2', title: 'Users', content: <div>Раз</div> },
-                            { key: '3', title: 'Actions', content: <div>Два</div> },
-                        ]}
-                        currentTabKey={1}
-                        fixedScroll
-                    />}
-                </div>
-
-
-
-
-                {showLinkedObject &&
-                    <React.Fragment>
-                        <Backdrop onClick={() => setShowLinkedObject(false)} hoverable rounded
-                            label={structure.visibleName ? structure.visibleName.map(headerField => object[headerField] ? object[headerField].value : null).join(' ')
-                                :
-                                'No visible name'} />
-                        <ObjectCard
-                            onClose={() => setShowLinkedObject(false)}
-                            object={linkedObject}
-                            params={{ ...props.params, isDisplayID: true }}
-                            tableFieldScheme={linkedObjectStruct}
-                            tableStructures={props.tableStructures}
-                        />
-                    </React.Fragment>}
+        <div className={styles.objectCard}>
+            <div className={styles.objectCardHeader}>
+                <div onClick={props.onClose}
+                    className={`${styles.closeObjectCard} icon icon-back ${showLinkedObject && styles.hidden}`}></div>
+                <h2>
+                    {structure.visibleName ? structure.visibleName.map(headerField => object[headerField] ?
+                        typeof object[headerField].value == 'object' ?
+                            getLinkName(headerField, object[headerField].value)
+                            : object[headerField].value
+                        : null).join(' ')
+                        :
+                        'No visible name'}
+                </h2>
             </div>
 
+            <div
+                ref={scrollDivRef}
+                onScroll={handleScroll}
+                className=
+                {`
+                        ${styles.objectCardBody} 
+                        ${showBorder && styles.bordered}
+                        ${oldFashioned && styles.notabs}
+                        ${cardTabs.length == 1 && styles.notabs}
+                    `}>
+                {oldFashioned && noTabs}
+                {!oldFashioned && cardTabs.length > 1 &&
+                    <TabsPane
+                        tabs={cardTabs}
+                        currentTabKey={cardTabs[0].key}
+                        fixedScroll
+                    />}
+                {!oldFashioned && cardTabs.length == 1 &&
+                    cardTabs[0].content}
+            </div>
+
+            {showLinkedObject &&
+                <React.Fragment>
+                    <Backdrop onClick={() => setShowLinkedObject(false)} hoverable rounded
+                        label={structure.visibleName ? structure.visibleName.map(headerField => object[headerField] ? object[headerField].value : null).join(' ')
+                            :
+                            'No visible name'} />
+                    <ObjectCard
+                        onClose={() => setShowLinkedObject(false)}
+                        object={linkedObject}
+                        params={{ isDisplayID: true }}
+                        tableFieldScheme={linkedObjectStruct}
+                        tableStructures={props.tableStructures}
+                    />
+                </React.Fragment>}
+        </div>
+    )
+}
+
+
+function CardField({ field, object, model, setModel, debug,
+    setLinkedObject, setLinkedObjectStruct, setShowLinkedObject, getLinkName }) {
+    const [edit, setEdit] = useState(false)
+
+    const checkLineBreaks = line => {
+        return (line.match(/\n/g) || []).length;
+    }
+
+    const getResolution = line => {
+        const regex = /\....?.?.?$/g;
+        const found = line.match(regex);
+        return found[0] || null
+    }
+
+    return (
+        <div key={field.sysName} className={styles.objFieldWrapper}>
+
+            {debug && <div>
+                <p className='dd-debug'>{JSON.stringify(field)}</p>
+                <p className='dd-debug'><b>object: </b>{JSON.stringify(object[field.sysName])}</p></div>}
+
+            {/* КАРТИНКИ */}
+            {field.dataType == 'file' && field.read && field.fileImage &&
+                <React.Fragment>
+                    <span className={styles.label}>
+                        {field.name || field.sysName}</span>
+                    <div className={styles.cardImage}
+                        style={{
+                            width: field.fileImageSize || 200,
+                            height: field.fileImageSize || 200,
+                            backgroundImage: `url(${object[field.sysName].value})`,
+                            borderRadius: field.fileImageFormat == 'circle' ? (field.fileImageSize || 200) : 0
+                        }}
+                    >
+                        {field.write && <div
+                            className={`${styles.editPic} icon icon-edit`}
+                            onClick={() => setEdit(!edit)}
+                        ></div>}
+                        {!object[field.sysName].value && <span className={styles.noPic}>no picture</span>}
+                    </div>
+                </React.Fragment>}
+
+            {/* ФАЙЛЫ */}
+            {field.dataType == 'file' && field.read && !field.fileImage &&
+                <React.Fragment>
+                    <span className={styles.label}>
+                        {field.name || field.sysName}</span>
+                    <div className={styles.cardFile}>
+                        {model[field.sysName] &&
+                            <a href={model[field.sysName]} target="_blank" className={`${styles.download} icon icon-download`}>
+                                <span>Download <code>{' ' + getResolution(model[field.sysName]) || 'file'}</code></span>
+                            </a>}
+                        <Button icon={`${model[field.sysName] ? 'refresh' : 'upload'}`} small onClick={() => setEdit(!edit)}>
+                            {model[field.sysName] ? 'Change file' : 'Upload file'}</Button>
+                    </div>
+                </React.Fragment>}
+
+            {/* ЗАГРУЗКА ФАЙЛА ИЛИ КАРТИНКИ */}
+            {field.dataType == 'file' && edit &&
+                <Input
+                    label={!field.read && (field.name || field.sysName)}
+                    icon='clip'
+                    description={field.descriptionFlag && field.description}
+                    placeholder='Enter file URL'
+                    defaultValue={model[field.sysName]}
+                    onChange={value => setModel({ ...model, [field.sysName]: value })}
+                />}
+            {/* ========================== */}
+
+            {/* СТРОКИ */}
+            { (field.dataType == 'string') &&
+                <React.Fragment>
+                    {field.write ?
+                        <Input
+                            type='textarea'
+                            description={field.descriptionFlag && field.description}
+                            rows={checkLineBreaks(model[field.sysName]) > 10 ? 10 : checkLineBreaks(model[field.sysName]) + 1}
+                            label={field.name || field.sysName}
+                            defaultValue={model[field.sysName]}
+                            onChange={value => setModel({ ...model, [field.sysName]: value })}
+                        /> :
+                        <FieldReadOnly field={field} object={object}
+                            weblink={{
+                                flag: field.weblinkFlag,
+                                weblink: field.weblink
+                            }} />
+                    }
+                </React.Fragment>}
+
+            {/* BOOLEAN */}
+            { (field.dataType == 'boolean') &&
+                <React.Fragment>
+                    {field.write ?
+                        <Input
+                            type='radio'
+                            label={field.name || field.sysName}
+                            defaultValue={field.dataType == 'boolean' ? ((model[field.sysName] == 'true' || model[field.sysName] == true) ? true : false) : model[field.sysName]}
+                            options={
+                                [
+                                    { value: true, label: 'Yes' },
+                                    { value: false, label: 'No' },
+                                ]
+                            }
+                            onChange={value => setModel({ ...model, [field.sysName]: value })}
+                        />
+                        :
+                        <FieldReadOnly field={field} object={object} />}
+                </React.Fragment>}
+
+            {/* LINK */}
+            { field.dataType == 'link' &&
+                <React.Fragment>
+                    {field.read && model[field.sysName] &&
+                        <React.Fragment>
+                            <span className={styles.label}>
+                                {field.name || field.sysName}</span>
+                            <div className={styles.linkFieldWrapper}>
+                                <a
+                                    onClick={() => {
+                                        setLinkedObject(model[field.sysName])
+                                        setLinkedObjectStruct(field.sysName)
+                                        setShowLinkedObject(true)
+                                    }}
+                                >{getLinkName(field.sysName, model[field.sysName])}</a>
+                            </div>
+                        </React.Fragment>
+                    }
+                </React.Fragment>}
+
+            {/* ARRAY LINK */}
+            { field.dataType == 'arrayLink' &&
+                <React.Fragment>
+                    {field.read && model[field.sysName] &&
+                        <React.Fragment>
+                            <span className={styles.label}>
+                                {field.name || field.sysName}</span>
+                            <div className={styles.linkFieldWrapper}>
+                                {model[field.sysName] && model[field.sysName].length > 0 && model[field.sysName].map((link, i) => {
+                                    return (
+                                        <a
+                                            key={i}
+                                            onClick={() => {
+                                                setLinkedObject(link)
+                                                setLinkedObjectStruct(field.sysName)
+                                                setShowLinkedObject(true)
+                                            }}
+                                        >{getLinkName(field.sysName, link)}</a>)
+                                })}
+                            </div>
+                        </React.Fragment>
+                    }
+                </React.Fragment>}
+
+
+            {/* ВСЕ ОСТАЛЬНОЕ */}
+            { field.dataType != 'string' &&
+                field.dataType != 'file' &&
+                field.dataType != 'link' &&
+                field.dataType != 'arrayLink' &&
+                <React.Fragment>
+                    {field.write ?
+                        <Input
+                            type={field.dataType}
+                            description={field.descriptionFlag && field.description}
+                            label={field.name || field.sysName}
+                            defaultValue={model[field.sysName]}
+                            onChange={value => setModel({ ...model, [field.sysName]: value })}
+                        /> :
+                        <FieldReadOnly field={field} object={object} />}
+                </React.Fragment>}
+
+        </div>
+    )
+}
+
+function FieldReadOnly({ field, object, weblink }) {
+    return (
+        <React.Fragment>
+            <span className={styles.label}>
+                {field.name || field.sysName}</span>
+
+            {field.descriptionFlag && field.description &&
+                <span className={styles.description}>
+                    {field.description}</span>}
+            {field.dataType != 'boolean' ?
+                !object[field.sysName].value ?
+                    <span className={styles.novalue}>—</span> :
+                    !weblink.flag ?
+                        <span className={styles.fieldValue}>{object[field.sysName].value}</span> :
+                        <a href={object[field.sysName].value} target="_blank">
+                            {weblink.weblink || object[field.sysName].value}
+                        </a>
+                :
+                <span className={`icon icon-${object[field.sysName] && (object[field.sysName].value ? `done` : `ban`)}`}>
+                    {object[field.sysName] && (object[field.sysName].value ? 'Yes' : 'No')}</span>}
         </React.Fragment>
+    )
+}
+
+function ActionDelete({ submit }) {
+
+    const [confirmDelete, setConfirmDelete] = useState(false)
+
+    return (
+        <React.Fragment>
+            <FormSection title='Danger zone' />
+            <ActionPanel margin={{ top: 0, bottom: 12 }}>
+                {!confirmDelete ?
+                    <Button icon='delete' onClick={() => setConfirmDelete(true)} danger>Delete</Button> :
+                    <Button icon='delete' onClick={submit} danger>I'm totally sure, delete</Button>
+                }
+            </ActionPanel>
+        </React.Fragment>
+    )
+}
+
+function SaveCard({ model, currentObject, submit, setCurrentObject, setModel }) {
+
+    return (
+        <ActionPanel margin={{ top: 24, bottom: 12 }}>
+            <Button
+                disabled={JSON.stringify(model) === JSON.stringify(currentObject)}
+                accent
+                icon='done'
+                onClick={() => { submit(model); setCurrentObject(model) }}
+            //onClick={() => { props.submit(model); setCurrentObject(model) }}
+            >
+                Save changes</Button>
+            <Button danger icon='ban'
+                onClick={() => setModel(currentObject)}
+                disabled={JSON.stringify(model) === JSON.stringify(currentObject)}>
+                Discard changes</Button>
+        </ActionPanel>
     )
 }

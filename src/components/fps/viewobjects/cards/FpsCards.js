@@ -10,6 +10,9 @@ import { ComponentWrapper } from '../../wrapper/wrapper'
 function FpsCards({ data, onEvent, id }) {
     if (!data) { data = {} }
 
+    // console.log('---data---')
+    // console.log(data)
+
     const tableTitle = data.tableTitle || null
     const tableQuickSearch = data.tableQuickSearch || null
     const tableFilters = data.tableFilters || null
