@@ -15,28 +15,27 @@ function YouTubeGetID(url) {
     return ID;
 }
 
-export default function Media({ type, source, width, height }) {
-    let videoID = source ? YouTubeGetID(source) : '';
+export default function Media(props) {
+    let videoID = props.source ? YouTubeGetID(props.source) : '';
+    console.log('--=== Video component ===--')
+    console.log(props)
     return (
         <React.Fragment>
-            {type == 'video' ? <React.Fragment>
-                {videoID ?
-                    <div style = {{
-                        maxWidth: parseInt(width) || 350
-                    }}>
-                        <iframe
-                            width='100%'
-                            height={height || '315'}
-                            src={`https://www.youtube.com/embed/${videoID}`}
-                            frameborder="0"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                        </iframe>
-                    </div>
-                    :
-                    <div>Can't parse youtube url</div>}
-
-            </React.Fragment> :
-                <div>Unknown media type</div>}
+            {videoID ?
+                <div style={{
+                    maxWidth: parseInt(props.width) || 350
+                }}>
+                    <iframe
+                        width='100%'
+                        height={props.height || '315'}
+                        src={`https://www.youtube.com/embed/${videoID}`}
+                        frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                :
+                <div>Can't parse youtube url</div>}
         </React.Fragment>
     )
 }
@@ -45,8 +44,8 @@ Media.settings = {
     name: 'Video',
     sysName: 'FpsVideo',
     form: [
-      { name: 'Youtube link', sysName: 'source', type: 'string' },
-      { name: 'Width', sysName: 'width', type: 'number positive', unitName: 'px' },
-      { name: 'Height', sysName: 'height', type: 'number positive', unitName: 'px' },
+        { name: 'Youtube link', sysName: 'source', type: 'string' },
+        { name: 'Width', sysName: 'width', type: 'number positive', unitName: 'px' },
+        { name: 'Height', sysName: 'height', type: 'number positive', unitName: 'px' },
     ]
-  }
+}
