@@ -2591,7 +2591,7 @@ const App = (props) => {
         //"radio": "option1",
         "radio": "{\"value\":\"option1\"}",
         "boolean": true,
-        "checkbox": "{\"option2\":true}",
+        //"checkbox": "{\"option2\":true}",
         //"textarea": "Crime and Punishment",
       }
     ],
