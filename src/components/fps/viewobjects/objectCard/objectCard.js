@@ -496,7 +496,7 @@ function CardField({ field, object, model, setModel, debug,
                             onChange={value => setModel({ ...model, [field.sysName]: value })}
                         />
                         :
-                        <FieldReadOnly field={field} object={object} />}
+                        <FieldReadOnly field={field} object={object} weblink={{}}/>}
                 </React.Fragment>}
 
             {/* LINK */}
@@ -558,7 +558,7 @@ function CardField({ field, object, model, setModel, debug,
                             defaultValue={model[field.sysName]}
                             onChange={value => setModel({ ...model, [field.sysName]: value })}
                         /> :
-                        <FieldReadOnly field={field} object={object} />}
+                        <FieldReadOnly field={field} object={object} weblink={{}}/>}
                 </React.Fragment>}
 
         </div>

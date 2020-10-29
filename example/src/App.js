@@ -76,6 +76,505 @@ const App = (props) => {
     html: '<b>test</b>'
   }
 
+  let Huyak ={
+    "sl": "ManageQuestions",
+    "pageSize": "10",
+    "headerField": null,
+    "params": {
+      "cardListLayout": "grid",
+      "cardHeaderComment": "",
+      "deleteField": "is_deleted",
+      "cardBodyText": "",
+      "cardImage": false,
+      "cardImageField": "",
+      "cardImageType": "none",
+      "cardImageSize": 100,
+      "objectView": {},
+      "data": {
+        "readFields": [
+          {
+            "fieldSysName": "answer",
+            "sysName": "answer",
+            "name": "Ответ",
+            "dataType": "string",
+            "link": ""
+          },
+          {
+            "fieldSysName": "date",
+            "sysName": "date",
+            "name": "Дата вопроса",
+            "dataType": "date",
+            "link": ""
+          },
+          {
+            "fieldSysName": "id",
+            "sysName": "id",
+            "name": "id",
+            "dataType": "id",
+            "link": ""
+          },
+          {
+            "fieldSysName": "question",
+            "sysName": "question",
+            "name": "Вопрос",
+            "dataType": "string",
+            "link": ""
+          },
+          {
+            "fieldSysName": "user_id",
+            "sysName": "user_id",
+            "name": "Кто спросил",
+            "dataType": "link",
+            "link": "WebUser"
+          }
+        ],
+        "writeFields": [
+          {
+            "fieldSysName": "answer",
+            "sysName": "answer",
+            "name": "Ответ",
+            "dataType": "string",
+            "link": ""
+          },
+          {
+            "fieldSysName": "id",
+            "sysName": "id",
+            "name": "id",
+            "dataType": "id",
+            "link": ""
+          },
+          {
+            "fieldSysName": "is_deleted",
+            "sysName": "is_deleted",
+            "name": "",
+            "dataType": "boolean",
+            "link": ""
+          }
+        ],
+        "fields": {
+          "answer": {
+            "id": "answer",
+            "content": "Ответ",
+            "type": "field",
+            "dataType": "string",
+            "write": true,
+            "read": true,
+            "link": ""
+          },
+          "date": {
+            "id": "date",
+            "content": "Дата вопроса",
+            "type": "field",
+            "dataType": "date",
+            "read": true,
+            "link": ""
+          },
+          "id": {
+            "id": "id",
+            "content": "id",
+            "type": "field",
+            "dataType": "id",
+            "write": true,
+            "read": true,
+            "link": ""
+          },
+          "question": {
+            "id": "question",
+            "content": "Вопрос",
+            "type": "field",
+            "dataType": "string",
+            "read": true,
+            "link": ""
+          },
+          "user_id": {
+            "id": "user_id",
+            "content": "Кто спросил",
+            "type": "field",
+            "dataType": "link",
+            "read": true,
+            "link": "WebUser"
+          },
+          "is_deleted": {
+            "id": "is_deleted",
+            "content": "",
+            "type": "field",
+            "dataType": "boolean",
+            "write": true,
+            "link": ""
+          },
+          "action__delete": {
+            "id": "action__delete",
+            "content": "Delete button",
+            "type": "action"
+          }
+        },
+        "fieldParams": {
+          "answer": {
+            "include": true
+          },
+          "date": {
+            "include": true
+          },
+          "id": {
+            "include": false
+          },
+          "question": {
+            "include": true
+          },
+          "user_id": {
+            "include": true
+          },
+          "is_deleted": {
+            "include": true
+          },
+          "action__delete": {}
+        },
+        "columns": {
+          "tab-1": {
+            "id": "tab-1",
+            "title": "New tab",
+            "fieldIds": [
+              "date",
+              "question",
+              "id"
+            ]
+          },
+          "22281603972867341": {
+            "id": "22281603972867341",
+            "title": "New tab",
+            "fieldIds": [
+              "user_id",
+              "answer",
+              "action__delete",
+              "is_deleted"
+            ]
+          }
+        },
+        "columnOrder": [
+          "tab-1",
+          "22281603972867341"
+        ]
+      },
+      "removeOn": true
+    },
+    "tableTitle": "Users' questions",
+    "headers": [
+      {
+        "sysName": "answer",
+        "dataType": "string",
+        "name": "Ответ",
+        "id": "97611600436853189",
+        "link": "",
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 4,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "typeVariable": {},
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
+        "json": false,
+        "indexExists": false,
+        "linkType": false
+      },
+      {
+        "sysName": "date",
+        "dataType": "date",
+        "name": "Дата вопроса",
+        "id": "83411601287631450",
+        "link": "",
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 5,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "typeVariable": {},
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
+        "json": false,
+        "indexExists": false,
+        "linkType": false
+      },
+      {
+        "sysName": "id",
+        "dataType": "id",
+        "name": "id",
+        "id": "0",
+        "link": "",
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 0,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "typeVariable": {},
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
+        "json": false,
+        "indexExists": false,
+        "linkType": false
+      },
+      {
+        "sysName": "question",
+        "dataType": "string",
+        "name": "Вопрос",
+        "id": "91971600436849319",
+        "link": "",
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 3,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "typeVariable": {},
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
+        "json": false,
+        "indexExists": false,
+        "linkType": false
+      },
+      {
+        "sysName": "user_id",
+        "dataType": "link",
+        "name": "Кто спросил",
+        "id": "92661600436847692",
+        "link": "WebUser",
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 1,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "typeVariable": {},
+        "linkOrArrayLinkType": true,
+        "arrayLink": false,
+        "json": false,
+        "indexExists": false,
+        "linkType": true
+      }
+    ],
+    "data": [
+      {
+        "question": "?",
+        "user_id": {
+          "lastName": "Efremova",
+          "firstName": "Alina",
+          "Skills": [
+            "business development",
+            "hr: admin and c&b",
+            "recruiting"
+          ],
+          "TG_username": "@efremovalialife"
+        },
+        "id": "ffe2b49c-9a55-45c3-9332-58fcce1e4b02",
+        "date": 1603977034000,
+        "answer": "Какой у вас костюм красный красивый",
+        "is_deleted": ""
+      },
+      {
+        "user_id": {
+          "lastName": "Ершов",
+          "firstName": "Павел",
+          "Skills": [
+            "corporate finance",
+            "transaction",
+            "big data"
+          ],
+          "TG_username": "@pavelershov"
+        },
+        "question": "Кто убил Кеннеди?",
+        "date": 1603974360000,
+        "id": "a0b863f2-9d03-47c7-81c3-77beeb70b0be",
+        "answer": "",
+        "is_deleted": ""
+      }
+    ],
+    "totalPages": 1,
+    "pageNumber": 0,
+    "error": null,
+    "fieldScheme": [
+      [
+        "answer",
+        1315872
+      ],
+      [
+        "date",
+        1315872
+      ],
+      [
+        "id",
+        1315872
+      ],
+      [
+        "question",
+        1315872
+      ],
+      [
+        "user_id.Skills",
+        1315850
+      ],
+      [
+        "user_id.TG_username",
+        1315850
+      ],
+      [
+        "user_id.firstName",
+        1315850
+      ],
+      [
+        "user_id.lastName",
+        1315850
+      ]
+    ],
+    "writeFields": [
+      "answer",
+      "id",
+      "is_deleted"
+    ],
+    "structures": {
+      "1315850": {
+        "networkID": 3571,
+        "sysName": "WebUser",
+        "name": "App users",
+        "id": 1315850,
+        "dateCreated": "2020-09-17T11:29:56Z",
+        "hidden": false,
+        "dateHidden": null,
+        "jsonObject": "[{\"sysName\":\"role\",\"dataType\":\"string\",\"name\":\"role\",\"id\":\"1\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"isAuthorization\",\"dataType\":\"boolean\",\"name\":\"isAuthorization\",\"id\":\"2\",\"link\":\"\",\"group\":\"1600346916835\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"Company_id\",\"dataType\":\"string\",\"name\":\"Компания\",\"id\":\"21091600891116320\",\"link\":\"\",\"group\":\"1600346984797\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"Пол\",\"id\":\"21661600355677459\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"dateLastActivity\",\"dataType\":\"string\",\"name\":\"dateLastActivity\",\"id\":\"3\",\"link\":\"\",\"group\":\"1600346916835\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"Company_site\",\"dataType\":\"string\",\"name\":\"Сайт компании\",\"id\":\"32501603357535558\",\"link\":\"\",\"group\":\"1600346984797\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"Salary_expectations\",\"dataType\":\"json\",\"name\":\"Ожидания по доходу\",\"id\":\"39581600416217901\",\"link\":\"\",\"group\":\"1600346971036\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"email\",\"dataType\":\"string\",\"name\":\"Email\",\"id\":\"4\",\"link\":\"\",\"group\":\"1600346959380\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"Photo\",\"dataType\":\"file\",\"name\":\"Photo\",\"id\":\"48241600975652227\",\"link\":\"\",\"group\":\"1600346959380\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"phone\",\"dataType\":\"string\",\"name\":\"Телефон\",\"id\":\"5\",\"link\":\"\",\"group\":\"1600346959380\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"TG_username\",\"dataType\":\"string\",\"name\":\"Telegram username\",\"id\":\"52471600355107908\",\"link\":\"\",\"group\":\"1600346959380\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"lastName\",\"dataType\":\"string\",\"name\":\"Фамилия\",\"id\":\"54421600355663803\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"dateCreated\",\"dataType\":\"string\",\"name\":\"dateCreated\",\"id\":\"6\",\"link\":\"\",\"group\":\"1600346916835\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"firstName\",\"dataType\":\"string\",\"name\":\"Имя\",\"id\":\"61731600355663227\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"password\",\"dataType\":\"string\",\"name\":\"password\",\"id\":\"7\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"CV_url\",\"dataType\":\"string\",\"name\":\"Ссылка на CV\",\"id\":\"74381600346994234\",\"link\":\"\",\"group\":\"1600346971036\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"City_id\",\"dataType\":\"link\",\"name\":\"Город\",\"id\":\"78691600347022913\",\"link\":\"cities\",\"group\":\"1600346959380\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"8\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"Skills\",\"dataType\":\"arrayLink\",\"name\":\"Функция\",\"id\":\"82091600415098326\",\"link\":\"Functions\",\"group\":\"1600346971036\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"TG_user_id\",\"dataType\":\"link\",\"name\":\"Telegram User\",\"id\":\"82311600346913479\",\"link\":\"TUser\",\"group\":\"1600346959380\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{}}]",
+        "jsonGroupSettings": "[{\"id\":1600346959380,\"name\":\"Contacts\",\"order\":0},{\"id\":1600346971036,\"name\":\"Candidate info\",\"order\":1},{\"id\":1600346984797,\"name\":\"Company info\",\"order\":2},{\"id\":1600346916835,\"name\":\"Trash\",\"order\":3}]",
+        "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
+        "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":false,\"lowPriority\":false}",
+        "jsonNativeIndexSettings": null,
+        "indexEnabled": true,
+        "lastIndexUpdate": 0,
+        "indexName": "",
+        "dateChanged": "2020-10-22T09:05:49Z",
+        "createBy": 0,
+        "changedBy": 21,
+        "_settings": null,
+        "_nativeIndexSettings": null,
+        "objectIDSysName": "id",
+        "innerIDField": {
+          "sysName": "id",
+          "dataType": "id",
+          "name": "id",
+          "id": "8",
+          "link": "",
+          "group": "0",
+          "tags": "",
+          "indexing": false,
+          "ordering": false,
+          "description": null,
+          "weight": null,
+          "order": 0,
+          "linkIndexFieldSysName": [],
+          "defaultValue": "",
+          "constraints": null,
+          "synthetic": false,
+          "format": null,
+          "formatOptions": null,
+          "typeVariable": {},
+          "linkOrArrayLinkType": false,
+          "arrayLink": false,
+          "json": false,
+          "indexExists": false,
+          "linkType": false
+        },
+        "folderId": null
+      },
+      "1315872": {
+        "networkID": 3571,
+        "sysName": "questions",
+        "name": "Вопросы",
+        "id": 1315872,
+        "dateCreated": "2020-09-18T13:33:20Z",
+        "hidden": false,
+        "dateHidden": null,
+        "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"is_deleted\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"30681603134054838\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"admin_id\",\"dataType\":\"link\",\"name\":\"Кто ответил\",\"id\":\"76431600436848180\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"linkType\":true},{\"sysName\":\"date\",\"dataType\":\"date\",\"name\":\"Дата вопроса\",\"id\":\"83411601287631450\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"question\",\"dataType\":\"string\",\"name\":\"Вопрос\",\"id\":\"91971600436849319\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"user_id\",\"dataType\":\"link\",\"name\":\"Кто спросил\",\"id\":\"92661600436847692\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"linkType\":true},{\"sysName\":\"answer\",\"dataType\":\"string\",\"name\":\"Ответ\",\"id\":\"97611600436853189\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false}]",
+        "jsonGroupSettings": null,
+        "jsonViewIdSettings": "[{\"sysName\":\"question\"}]",
+        "jsonSettings": null,
+        "jsonNativeIndexSettings": null,
+        "indexEnabled": true,
+        "lastIndexUpdate": 0,
+        "indexName": "",
+        "dateChanged": "2020-10-22T12:58:04Z",
+        "createBy": 1,
+        "changedBy": 21,
+        "_settings": null,
+        "_nativeIndexSettings": null,
+        "objectIDSysName": "id",
+        "innerIDField": {
+          "sysName": "id",
+          "dataType": "id",
+          "name": "id",
+          "id": "0",
+          "link": "",
+          "group": "0",
+          "tags": "",
+          "indexing": false,
+          "ordering": false,
+          "description": null,
+          "weight": null,
+          "order": 0,
+          "linkIndexFieldSysName": [],
+          "defaultValue": "",
+          "constraints": null,
+          "synthetic": false,
+          "format": null,
+          "formatOptions": null,
+          "typeVariable": {},
+          "linkOrArrayLinkType": false,
+          "arrayLink": false,
+          "json": false,
+          "indexExists": false,
+          "linkType": false
+        },
+        "folderId": 33590750
+      }
+    },
+    "isSuccessWrite": false,
+    "writeError": null,
+    "writeResponse": null
+  }
+
   let exampleTableTabs = {
     "sl": "allUsers",
     "pageSize": "10",
@@ -3192,7 +3691,7 @@ const App = (props) => {
 
             </Route>
             <Route exact path="/cards">
-              <FpsCards data={exampleTableTabs} />
+              <FpsCards data={Huyak} />
               <FpsCards data={exampleTable} />
               {/* <br /><br />
               <FpsCards data={exampleTable2} /> */}
