@@ -479,6 +479,21 @@ function CardField({ field, object, model, setModel, debug,
                     }
                 </React.Fragment>}
 
+            {/* ДАТЫ! */}
+            { (field.dataType == 'date') &&
+                <React.Fragment>
+                    {field.write ?
+                        <Input
+                            type='string'
+                            description={field.descriptionFlag && field.description}
+                            label={field.name || field.sysName}
+                            defaultValue={model[field.sysName]}
+                            onChange={value => setModel({ ...model, [field.sysName]: value })}
+                        /> :
+                        <FieldReadOnly field={field} object={object} weblink={{}} />
+                    }
+                </React.Fragment>}
+
             {/* BOOLEAN */}
             { (field.dataType == 'boolean') &&
                 <React.Fragment>
@@ -547,6 +562,8 @@ function CardField({ field, object, model, setModel, debug,
             {/* ВСЕ ОСТАЛЬНОЕ */}
             { field.dataType != 'string' &&
                 field.dataType != 'file' &&
+                field.dataType != 'boolean' &&
+                field.dataType != 'date' &&
                 field.dataType != 'link' &&
                 field.dataType != 'arrayLink' &&
                 <React.Fragment>
