@@ -1,0 +1,105 @@
+:global .dd_mdn .w-md-editor-input {
+  border-right: solid 1px var(--background-contrast-color);
+}
+:global .dd_mdn .w-md-editor {
+  box-shadow: none;
+  color: var(--font-color);
+  background-color: var(--background-color);
+  border: solid 1px var(--background-contrast-color);
+  font-family: 'Source Code Pro', monospace;
+  font-size: var(--text-font-size);
+  font-weight: var(--text-font-weight);
+}
+:global .dd_mdn .w-md-editor a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+:global .dd_mdn .w-md-editor a:hover {
+  color: var(--secondary-accent-color);
+  text-decoration: none;
+}
+:global .dd_mdn .w-md-editor .w-md-editor-text-pre {
+  color: var(--font-color);
+}
+:global .dd_mdn .w-md-editor .w-md-editor-text-pre .title,
+:global .dd_mdn .w-md-editor .w-md-editor-text-pre .bold {
+  color: var(--font-color);
+}
+:global .dd_mdn .w-md-editor .w-md-editor-text-pre .token.punctuation {
+  color: var(--font-color);
+  opacity: 0.5;
+}
+:global .dd_mdn .w-md-editor .w-md-editor-text-pre .url {
+  color: var(--font-color);
+  opacity: 0.5;
+}
+:global .dd_mdn .w-md-editor .w-md-editor-text-pre .url .content {
+  color: var(--accent-color);
+}
+:global .dd_mdn .wmde-markdown {
+  box-shadow: none;
+  color: var(--font-color);
+  background-color: var(--background-color);
+  border: none;
+  font-family: var(--main-font-family);
+  font-size: var(--text-font-size);
+  font-weight: var(--text-font-weight);
+  background: transparent;
+}
+:global .dd_mdn .wmde-markdown a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+:global .dd_mdn .wmde-markdown a:hover {
+  color: var(--secondary-accent-color);
+  text-decoration: none;
+}
+:global .dd_mdn .wmde-markdown blockquote {
+  color: var(--font-color);
+  border-left: 3px solid var(--table-border-color);
+}
+:global .dd_mdn .wmde-markdown blockquote p {
+  margin: 0;
+}
+:global .dd_mdn .wmde-markdown ul {
+  padding: 0;
+}
+:global .dd_mdn .wmde-markdown ul li {
+  margin: 8px 0 8px 0;
+  margin-left: calc(1.2 * var(--text-font-size));
+  line-height: calc(1.5 * var(--text-font-size));
+  list-style-type: disc;
+}
+:global .dd_mdn .wmde-markdown ol {
+  padding: 0;
+}
+:global .dd_mdn .wmde-markdown ol li {
+  margin: 8px 0 8px 0;
+  margin-left: calc(1.2 * var(--text-font-size));
+  line-height: calc(1.5 * var(--text-font-size));
+  list-style-type: decimal;
+}
+:global .dd_mdn .wmde-markdown h1,
+:global .dd_mdn .wmde-markdown h2,
+:global .dd_mdn .wmde-markdown h3 {
+  border: none;
+  padding: 0;
+}
+:global .dd_mdn .wmde-markdown h1 {
+  font-family: var(--headers-font-family);
+  font-size: var(--h1-font-size);
+  font-weight: var(--headers-font-weight);
+  margin-bottom: 24px;
+}
+:global .dd_mdn .wmde-markdown h2 {
+  font-family: var(--headers-font-family);
+  font-size: var(--h2-font-size);
+  font-weight: var(--headers-font-weight);
+  margin: 24px 0 16px 0;
+}
+:global .dd_mdn .wmde-markdown h3 {
+  font-family: var(--headers-font-family);
+  font-size: var(--h3-font-size);
+  font-weight: var(--headers-font-weight);
+  margin: 18px 0 12px 0;
+}

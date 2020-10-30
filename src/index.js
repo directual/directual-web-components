@@ -35,6 +35,7 @@ import OptionsHandler, {AdvancedOptionsHandler} from './components/fps/dataentry
 import StructureField from './components/fps/dataentry/structurefield/structurefield'
 import { Fps400 } from './components/fps/errors/errors'
 import { ImageButtons } from './components/fps/imagebuttons/imagebuttons'
+import { Markdown } from './components/fps/article/mkd'
 
 import FpsTheme, { SetTheme } from './components/fps/theme/theme'
 
@@ -75,6 +76,7 @@ export {
   CodeSnippet,
   Select,
   Slider,
+  Markdown,
   SignUp,
   Hint,
   Loader,
@@ -82,5 +84,5 @@ export {
   Article,
   Dnd,
   Table,
-  ImageButtons
+  ImageButtons,
 }

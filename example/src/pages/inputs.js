@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {
     FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, Select, Datepicker, InputGroup,
     FpsTheme, ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, CodeSnippet, Slider, FileUpload,
-    Checkbox, OptionsHandler, StructureField, ErrorBoundary
+    Checkbox, OptionsHandler, StructureField, ErrorBoundary, Markdown
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
@@ -170,6 +170,20 @@ export default function InputsPage() {
         <React.Fragment>
 
             <h1>Data entry</h1>
+            <h2 style={{ marginBottom: 24, marginTop: 12 }}>Markdown</h2>
+            <CodeSnippet code=
+                {`<Markdown 
+    edit 
+    height={400} 
+    preview='live' // 'live' or 'edit'
+    onChange={value => {}}
+    /> 
+
+<Markdown margin={{top:28, bottom: 28}}/>`} />
+
+            <Markdown edit height={400} preview='live'/>
+            <Markdown margin={{top:28, bottom: 28}}/>
+
 
             <h2>File upload</h2>
             <br />

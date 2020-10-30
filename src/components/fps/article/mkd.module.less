@@ -1,0 +1,108 @@
+ 
+:global {
+    .dd_mdn {
+        .w-md-editor-input {
+            border-right: solid 1px var(--background-contrast-color);
+        }
+        .w-md-editor {
+            box-shadow: none;
+            color: var(--font-color);
+            background-color: var(--background-color);
+            border:solid 1px var(--background-contrast-color);
+            font-family: 'Source Code Pro', monospace;
+            font-size: var( --text-font-size);
+            font-weight: var( --text-font-weight);
+            a {
+                color: var(--accent-color);
+                text-decoration: none;
+                &:hover {
+                    color: var(--secondary-accent-color);
+                    text-decoration: none;
+                }
+            }
+            .w-md-editor-text-pre {
+                color: var(--font-color);
+                .title, .bold {
+                    color: var(--font-color);
+                }
+                .token.punctuation {
+                    color: var(--font-color);
+                    opacity: .5;
+                }
+                .url {
+                    color: var(--font-color);
+                    opacity: .5;
+                    .content {
+                        color: var(--accent-color);
+                    }
+                }
+            }
+        }
+        .wmde-markdown {
+            box-shadow: none;
+            color: var(--font-color);
+            background-color: var(--background-color);
+            border:none;
+            font-family: var( --main-font-family);
+            font-size: var( --text-font-size);
+            font-weight: var( --text-font-weight);
+            a {
+                color: var(--accent-color);
+                text-decoration: none;
+                &:hover {
+                    color: var(--secondary-accent-color);
+                    text-decoration: none;
+                }
+            }
+            background: transparent;
+            blockquote {
+                color: var(--font-color);
+                border-left: 3px solid var(--table-border-color);
+                p {
+                    margin: 0;
+                }
+            }
+            ul {
+                padding: 0;
+                li {
+                    margin: 8px 0 8px 0;
+                    margin-left: calc(1.2 * var(--text-font-size));
+                    line-height: calc(1.5 * var(--text-font-size));
+                    list-style-type: disc; 
+                }
+            }
+            ol {
+                padding: 0;
+                li {
+                    margin: 8px 0 8px 0;
+                    margin-left: calc(1.2 * var(--text-font-size));
+                    line-height: calc(1.5 * var(--text-font-size));
+                    list-style-type: decimal; 
+                }
+            }
+            h1, h2, h3 {
+
+                border:none;
+                padding: 0;
+            }
+            h1 {
+                font-family: var( --headers-font-family);
+                font-size: var( --h1-font-size);
+                font-weight: var(--headers-font-weight);
+                margin-bottom: 24px;
+            }
+            h2 {
+                font-family: var( --headers-font-family);
+                font-size: var( --h2-font-size);
+                font-weight: var(--headers-font-weight);
+                margin: 24px 0 16px 0;
+            }
+            h3 {
+                font-family: var( --headers-font-family);
+                font-size: var( --h3-font-size);
+                font-weight: var(--headers-font-weight);
+                margin: 18px 0 12px 0;
+            }
+        }
+    }
+}
