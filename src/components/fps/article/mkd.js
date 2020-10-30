@@ -65,6 +65,14 @@ export function Markdown(props) {
                 ]}
                 onChange={updateValue} />:
             <MEDitor.Markdown source={value} /> }
+            {props.showTip &&
+            <div className={`${styles.tip} icon icon-help small`}>
+                <span>
+                Have a look at <a href={props.showTip} target="_blank">
+                markdown cheat sheet</a>
+                </span>
+            </div>
+            }
         </div>
     )
 }

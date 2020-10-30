@@ -103,3 +103,8 @@
   font-weight: var(--headers-font-weight);
   margin: 18px 0 12px 0;
 }
+.tip {
+  font-size: var(--text-small-size);
+  opacity: 0.5;
+  padding: 6px 0 0 0;
+}

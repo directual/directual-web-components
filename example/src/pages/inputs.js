@@ -174,6 +174,7 @@ export default function InputsPage() {
             <CodeSnippet code=
                 {`<Markdown 
     edit 
+    showTip = 'https://readme.directual.com/'
     height={400} 
     preview='live' // 'live' or 'edit'
     onChange={value => {}}
@@ -181,7 +182,7 @@ export default function InputsPage() {
 
 <Markdown margin={{top:28, bottom: 28}}/>`} />
 
-            <Markdown edit height={400} preview='live'/>
+            <Markdown edit showTip='https://readme.directual.com/' height={400} preview='live'/>
             <Markdown margin={{top:28, bottom: 28}}/>
 
 
