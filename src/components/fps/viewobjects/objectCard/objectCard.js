@@ -680,7 +680,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
                     <span
                         onClick={()=> setEdit(!edit)} 
                         className={`${styles.editPedal} icon icon-edit small`}>
-                        edit
+                        {edit ? 'cancel editing' : 'edit'}
                     </span>
                 }
             </span>
@@ -724,6 +724,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
                         (object[field.sysName].value && object[field.sysName].value.length > 0 
                             && object[field.sysName].value.map(i=>i.id))
                     }
+                    tip = {field.searchData.length > 990 && 'Quick search is limited by 1000 options'}
                     />
             }
         </React.Fragment>
