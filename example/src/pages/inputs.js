@@ -182,8 +182,8 @@ export default function InputsPage() {
 
 <Markdown margin={{top:28, bottom: 28}}/>`} />
 
-            <Markdown edit showTip='https://readme.directual.com/' height={400} preview='live'/>
-            <Markdown margin={{top:28, bottom: 28}}/>
+            <Markdown example edit showTip='https://readme.directual.com/' height={400} preview='live'/>
+            <Markdown example margin={{top:28, bottom: 28}}/>
 
 
             <h2>File upload</h2>

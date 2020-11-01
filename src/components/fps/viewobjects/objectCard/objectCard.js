@@ -7,6 +7,8 @@ import Input from '../../dataentry/input/input'
 import { FormSection } from '../../dataentry/form/FpsForm'
 import Loader from '../../loader/loader'
 import TabsPane from '../../layout/tabpane/tabpane'
+import { Markdown } from '../../article/mkd'
+import moment from 'moment'
 
 export function ObjectCard(props) {
     const [showLinkedObject, setShowLinkedObject] = useState(false)
@@ -91,6 +93,11 @@ export function ObjectCard(props) {
             }
             for (const field in props.params.data.fields) {
                 fieldDetails[field] = { ...fieldDetails[field], ...props.params.data.fields[field] }
+            }
+            for (const field in fieldDetails) {
+                if (props.params.fields && props.params.fields[field] && props.params.fields[field].searchData) {
+                    fieldDetails[field].searchData = props.params.fields[field].searchData
+                } 
             }
             return {
                 key: tab,
@@ -312,12 +319,12 @@ export function ObjectCard(props) {
                             setLinkedObjectStruct(transformTableFieldScheme(fieldSysName, props.tableFieldScheme))}
                     />
                 })}
-                
-                {fields.filter(i => 
+
+                {fields.filter(i =>
                     fieldParams[i].write == true
                     && fieldParams[i].include == true
                     && fieldParams[i].id != deleteField
-                ) && fields.filter(i => 
+                ) && fields.filter(i =>
                     fieldParams[i].write == true
                     && fieldParams[i].include == true
                     && fieldParams[i].id != deleteField
@@ -380,7 +387,7 @@ export function ObjectCard(props) {
                     <ObjectCard
                         onClose={() => setShowLinkedObject(false)}
                         object={linkedObject}
-                        params={{ isDisplayID: true }}
+                        params={{ isDisplayID: false }}
                         tableFieldScheme={linkedObjectStruct}
                         tableStructures={props.tableStructures}
                     />
@@ -401,7 +408,7 @@ function CardField({ field, object, model, setModel, debug,
     const getResolution = line => {
         const regex = /\....?.?.?$/g;
         const found = line.match(regex);
-        return found[0] || null
+        return found ? found[0] : ''
     }
 
     return (
@@ -463,14 +470,23 @@ function CardField({ field, object, model, setModel, debug,
             { (field.dataType == 'string') &&
                 <React.Fragment>
                     {field.write ?
-                        <Input
-                            type='textarea'
-                            description={field.descriptionFlag && field.description}
-                            rows={checkLineBreaks(model[field.sysName]) > 10 ? 10 : checkLineBreaks(model[field.sysName]) + 1}
-                            label={field.name || field.sysName}
-                            defaultValue={model[field.sysName]}
-                            onChange={value => setModel({ ...model, [field.sysName]: value })}
-                        /> :
+                        !field.markdown ?
+                            <Input
+                                type='textarea'
+                                description={field.descriptionFlag && field.description}
+                                rows={checkLineBreaks(model[field.sysName]) > 10 ? 10 : checkLineBreaks(model[field.sysName]) + 1}
+                                label={field.name || field.sysName}
+                                defaultValue={model[field.sysName]}
+                                onChange={value => setModel({ ...model, [field.sysName]: value })}
+                            />
+                            :
+                            <MkdField
+                                description={field.descriptionFlag && field.description}
+                                onChange={value => setModel({ ...model, [field.sysName]: value })}
+                                object={object}
+                                model={model}
+                                field={field} />
+                        :
                         <FieldReadOnly field={field} object={object}
                             weblink={{
                                 flag: field.weblinkFlag,
@@ -484,13 +500,14 @@ function CardField({ field, object, model, setModel, debug,
                 <React.Fragment>
                     {field.write ?
                         <Input
-                            type='string'
+                            type='date'
                             description={field.descriptionFlag && field.description}
                             label={field.name || field.sysName}
                             defaultValue={model[field.sysName]}
+                            timeFormat={`${field.dateTimeOn ? `h:mm a` : ''}`}
                             onChange={value => setModel({ ...model, [field.sysName]: value })}
                         /> :
-                        <FieldReadOnly field={field} object={object} weblink={{}} />
+                        <FieldReadOnly field={field} object={object} date weblink={{}} />
                     }
                 </React.Fragment>}
 
@@ -511,53 +528,22 @@ function CardField({ field, object, model, setModel, debug,
                             onChange={value => setModel({ ...model, [field.sysName]: value })}
                         />
                         :
-                        <FieldReadOnly field={field} object={object} weblink={{}}/>}
+                        <FieldReadOnly field={field} object={object} weblink={{}} />}
                 </React.Fragment>}
 
-            {/* LINK */}
-            { field.dataType == 'link' &&
-                <React.Fragment>
-                    {field.read && model[field.sysName] &&
-                        <React.Fragment>
-                            <span className={styles.label}>
-                                {field.name || field.sysName}</span>
-                            <div className={styles.linkFieldWrapper}>
-                                <a
-                                    onClick={() => {
-                                        setLinkedObject(model[field.sysName])
-                                        setLinkedObjectStruct(field.sysName)
-                                        setShowLinkedObject(true)
-                                    }}
-                                >{getLinkName(field.sysName, model[field.sysName])}</a>
-                            </div>
-                        </React.Fragment>
-                    }
-                </React.Fragment>}
-
-            {/* ARRAY LINK */}
-            { field.dataType == 'arrayLink' &&
-                <React.Fragment>
-                    {field.read && model[field.sysName] &&
-                        <React.Fragment>
-                            <span className={styles.label}>
-                                {field.name || field.sysName}</span>
-                            <div className={styles.linkFieldWrapper}>
-                                {model[field.sysName] && model[field.sysName].length > 0 && model[field.sysName].map((link, i) => {
-                                    return (
-                                        <a
-                                            key={i}
-                                            onClick={() => {
-                                                setLinkedObject(link)
-                                                setLinkedObjectStruct(field.sysName)
-                                                setShowLinkedObject(true)
-                                            }}
-                                        >{getLinkName(field.sysName, link)}</a>)
-                                })}
-                            </div>
-                        </React.Fragment>
-                    }
-                </React.Fragment>}
-
+            {/* LINK & ARRAY LINK*/}
+            { (field.dataType == 'link' || field.dataType == 'arrayLink') &&
+                <FieldLink
+                    model={model}
+                    object={object}
+                    field={field}
+                    onChange={value => setModel({ ...model, [field.sysName]: value })}
+                    setLinkedObject={setLinkedObject}
+                    setLinkedObjectStruct={setLinkedObjectStruct}
+                    setShowLinkedObject={setShowLinkedObject}
+                    getLinkName={getLinkName}
+                />
+            }
 
             {/* ВСЕ ОСТАЛЬНОЕ */}
             { field.dataType != 'string' &&
@@ -575,14 +561,14 @@ function CardField({ field, object, model, setModel, debug,
                             defaultValue={model[field.sysName]}
                             onChange={value => setModel({ ...model, [field.sysName]: value })}
                         /> :
-                        <FieldReadOnly field={field} object={object} weblink={{}}/>}
+                        <FieldReadOnly field={field} object={object} weblink={{}} />}
                 </React.Fragment>}
 
         </div>
     )
 }
 
-function FieldReadOnly({ field, object, weblink }) {
+function FieldReadOnly({ field, object, weblink, date }) {
     return (
         <React.Fragment>
             <span className={styles.label}>
@@ -591,17 +577,30 @@ function FieldReadOnly({ field, object, weblink }) {
             {field.descriptionFlag && field.description &&
                 <span className={styles.description}>
                     {field.description}</span>}
-            {field.dataType != 'boolean' ?
-                !object[field.sysName].value ?
-                    <span className={styles.novalue}>—</span> :
-                    !weblink.flag ?
-                        <span className={styles.fieldValue}>{object[field.sysName].value}</span> :
-                        <a href={object[field.sysName].value} target="_blank">
-                            {weblink.weblink || object[field.sysName].value}
-                        </a>
-                :
-                <span className={`icon icon-${object[field.sysName] && (object[field.sysName].value ? `done` : `ban`)}`}>
-                    {object[field.sysName] && (object[field.sysName].value ? 'Yes' : 'No')}</span>}
+
+            {date ?
+                <div>
+                    {
+                        (object[field.sysName] && object[field.sysName].value) ?
+                            field.dateTimeOn ?
+                                moment(object[field.sysName].value).format('D MMM, YYYY, h:mm a') :
+                                moment(object[field.sysName].value).format('D MMM, YYYY')
+                            : '—'}
+                </div> :
+                <React.Fragment>
+
+                    {field.dataType != 'boolean' ?
+                        !object[field.sysName].value ?
+                            <span className={styles.novalue}>—</span> :
+                            !weblink.flag ?
+                                <span className={styles.fieldValue}>{object[field.sysName].value}</span> :
+                                <a href={object[field.sysName].value} target="_blank">
+                                    {weblink.weblink || object[field.sysName].value}
+                                </a>
+                        :
+                        <span className={`icon icon-${object[field.sysName] && (object[field.sysName].value ? `done` : `ban`)}`}>
+                            {object[field.sysName] && (object[field.sysName].value ? 'Yes' : 'No')}</span>}
+                </React.Fragment>}
         </React.Fragment>
     )
 }
@@ -632,7 +631,6 @@ function SaveCard({ model, currentObject, submit, setCurrentObject, setModel }) 
                 accent
                 icon='done'
                 onClick={() => { submit(model); setCurrentObject(model) }}
-            //onClick={() => { props.submit(model); setCurrentObject(model) }}
             >
                 Save changes</Button>
             <Button danger icon='ban'
@@ -640,5 +638,94 @@ function SaveCard({ model, currentObject, submit, setCurrentObject, setModel }) 
                 disabled={JSON.stringify(model) === JSON.stringify(currentObject)}>
                 Discard changes</Button>
         </ActionPanel>
+    )
+}
+
+function MkdField({ field, model, object, onChange, description }) {
+    return (
+        <React.Fragment>
+            <span className={styles.label}>
+                {field.name || field.sysName}</span>
+
+            {description &&
+                <span className={styles.description}>
+                    {description}</span>}
+
+            <Markdown
+                edit={field.write}
+                value={model[field.sysName]}
+                showTip='https://readme.directual.com/data/data-types/markdown-cheatsheet'
+                height={250}
+                preview='live' // 'live' or 'edit'
+                onChange={onChange}
+            />
+        </React.Fragment>
+    )
+}
+
+function FieldLink({ field, model, onChange, setLinkedObject, object,
+    setLinkedObjectStruct, setShowLinkedObject, getLinkName }) {
+
+    const [edit, setEdit] = useState(false)
+
+    useEffect(()=> {
+        onChange(object[field.sysName].value.id)
+    }, [edit])
+
+    return (
+        <React.Fragment>
+            <span className={styles.label}>
+                {field.name || field.sysName}
+                {field.write &&
+                    <span
+                        onClick={()=> setEdit(!edit)} 
+                        className={`${styles.editPedal} icon icon-edit small`}>
+                        edit
+                    </span>
+                }
+            </span>
+            {field.dataType == 'link' && field.read && object[field.sysName].value && !edit &&
+                <div className={styles.linkFieldWrapper}>
+                    <a
+                        onClick={() => {
+                            setLinkedObject(model[field.sysName])
+                            setLinkedObjectStruct(field.sysName)
+                            setShowLinkedObject(true)
+                        }}
+                    >{getLinkName(field.sysName, object[field.sysName].value)}</a>
+                </div>
+            }
+
+            {field.dataType == 'arrayLink' && field.read && object[field.sysName].value && !edit && 
+                <div className={styles.linkFieldWrapper}>
+                    {object[field.sysName].value && object[field.sysName].value.length > 0 && object[field.sysName].value.map((link, i) => {
+                        return (
+                            <a
+                                key={i}
+                                onClick={() => {
+                                    setLinkedObject(link)
+                                    setLinkedObjectStruct(field.sysName)
+                                    setShowLinkedObject(true)
+                                }}
+                            >{getLinkName(field.sysName, link)}</a>)
+                    })}
+                </div>
+            }
+
+            {!object[field.sysName].value && !edit && '—'}
+            
+            {edit && field.searchData &&
+                <Input
+                    type={`${field.dataType == 'link' ? 'select' : 'multiselect'}`}
+                    options={field.searchData}
+                    onChange={onChange}
+                    defaultValue={
+                        field.dataType == 'link' ? object[field.sysName].value.id :
+                        (object[field.sysName].value && object[field.sysName].value.length > 0 
+                            && object[field.sysName].value.map(i=>i.id))
+                    }
+                    />
+            }
+        </React.Fragment>
     )
 }

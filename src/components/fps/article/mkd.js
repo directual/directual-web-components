@@ -30,7 +30,7 @@ export function Markdown(props) {
 
 `
 
-    const [value, setValue] = useState(props.value || mkdExample)
+    const [value, setValue] = useState(props.value || (props.example && mkdExample))
 
     const updateValue = value => {
         setValue(value)

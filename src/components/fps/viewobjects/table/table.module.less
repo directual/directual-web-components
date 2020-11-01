@@ -120,6 +120,7 @@
         margin:-5px 24px 19px 44px;
         //border: solid 1px green;
         overflow: auto;
+        flex-grow: 2;
         &.notabs {
             margin:12px 24px 24px 44px;
         }
@@ -216,9 +217,19 @@
      .label {
          opacity: .7;
          font-size: var(--text-small-size);
-         display: block;
+         display: flex;
          padding-bottom: 6px;
+         align-items: center;
          font-weight: var(--strong-font-weight);
+         .editPedal {
+             margin-left: 6px;
+             color: var(--accent-color);
+             cursor: pointer;
+             font-weight: var(--text-font-weight);
+             &:hover {
+                color: var(--secondary-accent-color);
+            }
+         }
      }
      .novalue {
          opacity: .5;
