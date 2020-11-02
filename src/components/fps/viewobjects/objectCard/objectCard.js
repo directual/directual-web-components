@@ -245,15 +245,17 @@ export function ObjectCard(props) {
                         </div>
                         {isEditable(field) &&
                             //props.object[field.sysName] && props.object[field.sysName][0] && props.object[field.sysName][0].id &&
-                            <div className={styles.editLink}>
-                                <Input
-                                    type='string'
-                                    //label={`Edit ${field.name || field.sysName}`}
-                                    tip={`Edit ${field.name || field.sysName} (value of the arrayLink field is object IDs, comma separated)`}
-                                    defaultValue={currentObject[field.sysName] && currentObject[field.sysName].length > 0 && (currentObject[field.sysName][0].id ? currentObject[field.sysName].map(i => i.id).join(',') : currentObject[field.sysName].join(','))}
-                                    onChange={value => setModel({ ...model, [field.sysName]: value.split(',') })}
-                                />
-                            </div>
+                            // <div className={styles.editLink}>
+                            //     <Input
+                            //         type='string'
+                            //         //label={`Edit ${field.name || field.sysName}`}
+                            //         tip={`Edit ${field.name || field.sysName} (value of the arrayLink field is object IDs, comma separated)`}
+                            //         defaultValue=
+                            //             {currentObject[field.sysName] && Array.isArray(currentObject[field.sysName]) && (currentObject[field.sysName][0].id ? 
+                            //                 currentObject[field.sysName].map(i => i.id).join(',') : currentObject[field.sysName].join(','))}
+                            //         onChange={value => setModel({ ...model, [field.sysName]: value.split(',') })}
+                            //     />
+                            // </div>
                         }
                     </React.Fragment>
                     }
@@ -733,8 +735,6 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
                     type={`${field.dataType == 'link' ? 'select' : 'multiselect'}`}
                     options={field.searchData}
                     onChange={value => {
-                        console.log('дебаг arrayLink')
-                        console.log(value)
                         field.dataType == 'link' ?
                             onChange(value) :
                             (value && Array.isArray(value)) ? onChange(value.join(',')) : onChange(value)
