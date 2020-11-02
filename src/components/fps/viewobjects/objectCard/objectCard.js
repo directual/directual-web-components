@@ -243,7 +243,7 @@ export function ObjectCard(props) {
                                     >{getLinkName(field.sysName, link)}</a>)
                             })}
                         </div>
-                        {isEditable(field) &&
+                        {/* {isEditable(field) &&
                             //props.object[field.sysName] && props.object[field.sysName][0] && props.object[field.sysName][0].id &&
                             // <div className={styles.editLink}>
                             //     <Input
@@ -256,7 +256,7 @@ export function ObjectCard(props) {
                             //         onChange={value => setModel({ ...model, [field.sysName]: value.split(',') })}
                             //     />
                             // </div>
-                        }
+                        } */}
                     </React.Fragment>
                     }
 
