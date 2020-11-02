@@ -20,9 +20,12 @@ export function ObjectCard(props) {
     // support previous component version:
     const oldFashioned = !props.params.data ? true : false
 
-    console.log('==============props.params==============')
-    console.log(props.params)
-    console.log(oldFashioned)
+    // console.log('==============props.params==============')
+    // console.log(props.params)
+    // console.log(oldFashioned)
+
+    console.log('==============CARD MODEL==============')
+    console.log(model)
 
     // press 'Esc' for closing a popup:
     const handleUserKeyPress = (e) => {
@@ -247,7 +250,7 @@ export function ObjectCard(props) {
                                     type='string'
                                     //label={`Edit ${field.name || field.sysName}`}
                                     tip={`Edit ${field.name || field.sysName} (value of the arrayLink field is object IDs, comma separated)`}
-                                    defaultValue={currentObject[field.sysName] && (currentObject[field.sysName][0].id ? currentObject[field.sysName].map(i => i.id).join(',') : currentObject[field.sysName].join(','))}
+                                    defaultValue={currentObject[field.sysName] && currentObject[field.sysName].length > 0 && (currentObject[field.sysName][0].id ? currentObject[field.sysName].map(i => i.id).join(',') : currentObject[field.sysName].join(','))}
                                     onChange={value => setModel({ ...model, [field.sysName]: value.split(',') })}
                                 />
                             </div>
@@ -263,6 +266,7 @@ export function ObjectCard(props) {
                     {props.loading ? <Loader>Saving...</Loader> :
                         (props.writeFields && props.writeFields.indexOf('id') != -1 && props.writeFields.length > 1) && object.id && object.id.value &&
                         <React.Fragment>
+
                             <ActionPanel margin={{ top: 24, bottom: 12 }}>
                                 <Button
                                     disabled={JSON.stringify(model) === JSON.stringify(currentObject)}
@@ -488,11 +492,17 @@ function CardField({ field, object, model, setModel, debug,
                                 model={model}
                                 field={field} />
                         :
-                        <FieldReadOnly field={field} object={object}
-                            weblink={{
-                                flag: field.weblinkFlag,
-                                weblink: field.weblink
-                            }} />
+                        !field.markdown ?
+                            <FieldReadOnly field={field} object={object}
+                                weblink={{
+                                    flag: field.weblinkFlag,
+                                    weblink: field.weblink
+                                }} /> :
+                            <MkdField
+                                description={field.descriptionFlag && field.description}
+                                object={object}
+                                model={model}
+                                field={field} />
                     }
                 </React.Fragment>}
 
@@ -628,6 +638,8 @@ function SaveCard({ model, currentObject, submit, setCurrentObject, setModel }) 
     return (
         <div>
             <ActionPanel margin={{ top: 24, bottom: 12 }}>
+                {/* <div className='dd-debug'>{JSON.stringify(model)}</div>
+                <div className='dd-debug'>{JSON.stringify(currentObject)}</div> */}
                 <Button
                     disabled={JSON.stringify(model) === JSON.stringify(currentObject)}
                     accent
@@ -657,7 +669,7 @@ function MkdField({ field, model, object, onChange, description }) {
             <Markdown
                 edit={field.write}
                 value={model[field.sysName]}
-                //height={300}
+                height={field.write ? 350 : false}
                 preview
                 onChange={onChange}
             />
@@ -714,13 +726,17 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
                 </div>
             }
 
-            {!object[field.sysName].value && !edit && '—'}
+            {(!object[field.sysName].value || object[field.sysName].value.length == 0) && !edit && '—'}
 
             {edit && field.searchData &&
                 <Input
                     type={`${field.dataType == 'link' ? 'select' : 'multiselect'}`}
                     options={field.searchData}
-                    onChange={onChange}
+                    onChange={value => {
+                        field.dataType == 'link' ?
+                            onChange(value) :
+                            value && value.length > 0 && onChange(value.join(','))
+                    }}
                     defaultValue={
                         field.dataType == 'link' ? object[field.sysName].value.id :
                             (object[field.sysName].value && object[field.sysName].value.length > 0

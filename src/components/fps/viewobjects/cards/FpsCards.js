@@ -70,7 +70,8 @@ function FpsCards({ data, onEvent, id }) {
         console.log('submitting...')
         if (model) {
             for (const field in model) {
-                if (typeof model[field] == 'object') { delete model[field] }  // removing links
+                if (typeof model[field] == 'object' && data.params.data.fields[field].dataType != 'date') 
+                    { delete model[field] }  // removing links
                 if (writeFields.indexOf(field) == -1) { delete model[field] } // removing fields not for writing
             }
         }

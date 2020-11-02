@@ -107,6 +107,11 @@
   margin: 0 18px;
   border-bottom: solid 1px var(--table-border-color);
 }
+.mkd_edit .editField .mkd_header * {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .mkd_edit .editField .mkd_header .rasporka {
   flex-grow: 2;
 }
