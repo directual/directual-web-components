@@ -97,7 +97,7 @@ export function ObjectCard(props) {
             for (const field in fieldDetails) {
                 if (props.params.fields && props.params.fields[field] && props.params.fields[field].searchData) {
                     fieldDetails[field].searchData = props.params.fields[field].searchData
-                } 
+                }
             }
             return {
                 key: tab,
@@ -449,8 +449,9 @@ function CardField({ field, object, model, setModel, debug,
                             <a href={model[field.sysName]} target="_blank" className={`${styles.download} icon icon-download`}>
                                 <span>Download <code>{' ' + getResolution(model[field.sysName]) || 'file'}</code></span>
                             </a>}
-                        <Button icon={`${model[field.sysName] ? 'refresh' : 'upload'}`} small onClick={() => setEdit(!edit)}>
-                            {model[field.sysName] ? 'Change file' : 'Upload file'}</Button>
+                        {field.write &&
+                            <Button icon={`${model[field.sysName] ? 'refresh' : 'upload'}`} small onClick={() => setEdit(!edit)}>
+                                {model[field.sysName] ? 'Change file' : 'Upload file'}</Button>}
                     </div>
                 </React.Fragment>}
 
@@ -625,19 +626,21 @@ function ActionDelete({ submit }) {
 function SaveCard({ model, currentObject, submit, setCurrentObject, setModel }) {
 
     return (
-        <ActionPanel margin={{ top: 24, bottom: 12 }}>
-            <Button
-                disabled={JSON.stringify(model) === JSON.stringify(currentObject)}
-                accent
-                icon='done'
-                onClick={() => { submit(model); setCurrentObject(model) }}
-            >
-                Save changes</Button>
-            <Button danger icon='ban'
-                onClick={() => setModel(currentObject)}
-                disabled={JSON.stringify(model) === JSON.stringify(currentObject)}>
-                Discard changes</Button>
-        </ActionPanel>
+        <div>
+            <ActionPanel margin={{ top: 24, bottom: 12 }}>
+                <Button
+                    disabled={JSON.stringify(model) === JSON.stringify(currentObject)}
+                    accent
+                    icon='done'
+                    onClick={() => { submit(model); setCurrentObject(model) }}
+                >
+                    Save changes</Button>
+                <Button danger icon='ban'
+                    onClick={() => setModel(currentObject)}
+                    disabled={JSON.stringify(model) === JSON.stringify(currentObject)}>
+                    Discard changes</Button>
+            </ActionPanel>
+        </div>
     )
 }
 
@@ -654,9 +657,8 @@ function MkdField({ field, model, object, onChange, description }) {
             <Markdown
                 edit={field.write}
                 value={model[field.sysName]}
-                showTip='https://readme.directual.com/data/data-types/markdown-cheatsheet'
-                height={250}
-                preview='live' // 'live' or 'edit'
+                //height={300}
+                preview
                 onChange={onChange}
             />
         </React.Fragment>
@@ -668,7 +670,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
 
     const [edit, setEdit] = useState(false)
 
-    useEffect(()=> {
+    useEffect(() => {
         onChange(object[field.sysName].value.id)
     }, [edit])
 
@@ -678,7 +680,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
                 {field.name || field.sysName}
                 {field.write &&
                     <span
-                        onClick={()=> setEdit(!edit)} 
+                        onClick={() => setEdit(!edit)}
                         className={`${styles.editPedal} icon icon-edit small`}>
                         {edit ? 'cancel editing' : 'edit'}
                     </span>
@@ -696,7 +698,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
                 </div>
             }
 
-            {field.dataType == 'arrayLink' && field.read && object[field.sysName].value && !edit && 
+            {field.dataType == 'arrayLink' && field.read && object[field.sysName].value && !edit &&
                 <div className={styles.linkFieldWrapper}>
                     {object[field.sysName].value && object[field.sysName].value.length > 0 && object[field.sysName].value.map((link, i) => {
                         return (
@@ -713,7 +715,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
             }
 
             {!object[field.sysName].value && !edit && '—'}
-            
+
             {edit && field.searchData &&
                 <Input
                     type={`${field.dataType == 'link' ? 'select' : 'multiselect'}`}
@@ -721,11 +723,11 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
                     onChange={onChange}
                     defaultValue={
                         field.dataType == 'link' ? object[field.sysName].value.id :
-                        (object[field.sysName].value && object[field.sysName].value.length > 0 
-                            && object[field.sysName].value.map(i=>i.id))
+                            (object[field.sysName].value && object[field.sysName].value.length > 0
+                                && object[field.sysName].value.map(i => i.id))
                     }
-                    tip = {field.searchData.length > 990 && 'Quick search is limited by 1000 options'}
-                    />
+                    tip={field.searchData.length > 990 && 'Quick search is limited by 1000 options'}
+                />
             }
         </React.Fragment>
     )

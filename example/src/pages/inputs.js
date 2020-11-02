@@ -172,18 +172,11 @@ export default function InputsPage() {
             <h1>Data entry</h1>
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Markdown</h2>
             <CodeSnippet code=
-                {`<Markdown 
-    edit 
-    showTip = 'https://readme.directual.com/'
-    height={400} 
-    preview='live' // 'live' or 'edit'
-    onChange={value => {}}
-    /> 
+                {`<Markdown example edit onChange={val=>console.log(val)} height={300} margin={{top:0,bottom:18}}/>
+<Markdown example margin={{top:0,bottom:18}}/>`} />
 
-<Markdown margin={{top:28, bottom: 28}}/>`} />
-
-            <Markdown example edit showTip='https://readme.directual.com/' height={400} preview='live'/>
-            <Markdown example margin={{top:28, bottom: 28}}/>
+            <Markdown example edit onChange={val=>console.log(val)} height={300} margin={{top:0,bottom:18}}/>
+            <Markdown example margin={{top:0,bottom:18}}/>
 
 
             <h2>File upload</h2>

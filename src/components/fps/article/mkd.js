@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import MEDitor, { commands } from "@uiw/react-md-editor";
+import ReactMarkdown from 'react-markdown'
+import gfm from 'remark-gfm'
 
 import styles from './mkd.module.css'
 
@@ -11,6 +12,7 @@ export function Markdown(props) {
 ## Nice to see you again
     
 Однажды в суровую зимнюю пору я из лесу вышел
+
 Был сильный мороз
 
 [yandex.ru](http://yandex.ru)
@@ -25,6 +27,12 @@ export function Markdown(props) {
 2. Пора, красавица, проснись
 3. Чаю попей
 
+| Feature   | Support |
+| :-------: | ------- |
+| tables    | ✔       |
+| alignment | ✔       |
+| wewt      | ✔       |
+
 > А. С. Пушкин
 > Наше все
 
@@ -32,47 +40,51 @@ export function Markdown(props) {
 
     const [value, setValue] = useState(props.value || (props.example && mkdExample))
 
-    const updateValue = value => {
-        setValue(value)
-        props.onChange && props.onChange(value)
+    const changeMkd = val => {
+        console.log(val)
+        setValue(val)
+        props.onChange && props.onChange(val)
     }
 
+    const [preview, setPreview] = useState(props.preview || false)
+
     return (
-        <div className='dd_mdn' 
+        <div className={styles.dd_mdn}
             style={{
-                marginTop: props.margin && props.margin.top, 
-                marginBottom: props.margin && props.margin.bottom
+                marginTop: props.margin && props.margin.top,
+                marginBottom: props.margin && props.margin.bottom,
+                height: props.height || 'auto'
             }}>
-            {props.edit ? 
-            <MEDitor
-                height={props.height || 400}
-                value={value}
-                preview={props.preview || 'live'}
-                commands={[
-                    commands.bold,
-                    commands.italic,
-                    commands.title,
-                    commands.quote,
-                    commands.divider,
-                    commands.link,
-                    commands.image,
-                    commands.divider,
-                    commands.unorderedListCommand,
-                    commands.orderedListCommand,
-                    commands.divider,
-                    commands.codeEdit,
-                    commands.codeLive,
-                ]}
-                onChange={updateValue} />:
-            <MEDitor.Markdown source={value} /> }
-            {props.showTip &&
-            <div className={`${styles.tip} icon icon-help small`}>
-                <span>
-                Have a look at <a href={props.showTip} target="_blank">
-                markdown cheat sheet</a>
-                </span>
-            </div>
+            {props.edit ?
+                <div className={styles.mkd_edit}>
+                    <div className={styles.editField}>
+                        <div className={styles.mkd_header}>
+                            <span>Markdown text </span>
+                            <a className='icon icon-help small' target="_blank"
+                                href="https://readme.directual.com/data/data-types/markdown-cheatsheet"></a>
+                            <span className={styles.rasporka}></span>
+                            {preview ?
+                                <a className='icon icon-hide small'
+                                    onClick={() => setPreview(!preview)}>Hide preview</a>
+                                :
+                                <a className='icon icon-view small'
+                                    onClick={() => setPreview(!preview)}>Show preview</a>
+                            }
+                        </div>
+                        <textarea
+                            onChange={e => changeMkd(e.target.value)}
+                        >
+                            {value}
+                        </textarea>
+                    </div>
+                    {preview &&
+                    <div className={styles.preview}>
+                        <ReactMarkdown plugins={[gfm]} children={value} />
+                    </div>}
+                </div>
+                :
+                <ReactMarkdown plugins={[gfm]} children={value} />
             }
-        </div>
+        </div >
     )
 }
