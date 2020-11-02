@@ -733,9 +733,11 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
                     type={`${field.dataType == 'link' ? 'select' : 'multiselect'}`}
                     options={field.searchData}
                     onChange={value => {
+                        console.log('дебаг arrayLink')
+                        console.log(value)
                         field.dataType == 'link' ?
                             onChange(value) :
-                            (value && value.length > 1) ? onChange(value.join(',')) : onChange(value)
+                            (value && Array.isArray(value)) ? onChange(value.join(',')) : onChange(value)
                     }}
                     defaultValue={
                         field.dataType == 'link' ? object[field.sysName].value.id :
