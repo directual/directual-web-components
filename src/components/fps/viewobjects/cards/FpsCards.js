@@ -6,6 +6,7 @@ import icon from './../../../../icons/fps-cards.svg'
 import Backdrop from '../../backdrop/backdrop'
 import { Cards } from './cards'
 import { ComponentWrapper } from '../../wrapper/wrapper'
+import moment from 'moment'
 
 function FpsCards({ data, onEvent, id }) {
     if (!data) { data = {} }
@@ -73,6 +74,9 @@ function FpsCards({ data, onEvent, id }) {
                 if (typeof model[field] == 'object' && data.params.data.fields[field].dataType != 'date') 
                     { delete model[field] }  // removing links
                 if (writeFields.indexOf(field) == -1) { delete model[field] } // removing fields not for writing
+                if (data.params.data.fields[field].dataType == 'date' && typeof model[field] == 'number') {
+                    model[field] = moment(model[field])
+                }
             }
         }
         console.log(model)

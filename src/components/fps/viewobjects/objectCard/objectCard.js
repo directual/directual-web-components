@@ -735,7 +735,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
                     onChange={value => {
                         field.dataType == 'link' ?
                             onChange(value) :
-                            value && value.length > 0 && onChange(value.join(','))
+                            (value && value.length > 1) ? onChange(value.join(',')) : onChange(value)
                     }}
                     defaultValue={
                         field.dataType == 'link' ? object[field.sysName].value.id :
