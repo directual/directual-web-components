@@ -3,6 +3,7 @@ import styles from './cards.module.css'
 import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
 import ExpandedText from '../../expandedText/expandedText'
 import { Paging } from '../paging/paging'
+import moment from 'moment'
 
 export function Cards({ data, onEvent, id, onExpand, loading, setLoading, searchValue }) {
     const tableHeaders = data.headers || []
@@ -102,20 +103,35 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading, search
                     const cardHeader = getInitialStructureParams().viewName && getInitialStructureParams().viewName &&
                         (getInitialStructureParams().viewName.length > 0 ?
                             getInitialStructureParams().viewName.map(i => typeof row[i] == 'object' ?
-                                getLinkName(i, row[i])
-                                : row[i]).join(' ')
+                                !Array.isArray(row[i]) ?
+                                    getLinkName(i, row[i]) :
+                                    row[i].map(j => getLinkName(i,j)).join(', ')
+                                : 
+                                tableHeaders.filter(h => h.sysName == i)[0].dataType !='date' ? 
+                                    row[i] : 
+                                    moment(row[i]).format('D MMM, YYYY')
+                                ).join(' ')
                             : 'No visible name')
                     const cardHeaderComment = row && (typeof row[tableParams.cardHeaderComment] == 'object' ?
                         !Array.isArray(row[tableParams.cardHeaderComment]) ?
                             getLinkName(tableParams.cardHeaderComment, row[tableParams.cardHeaderComment])
                             : row[tableParams.cardHeaderComment].map(i => getLinkName(tableParams.cardHeaderComment, i))
-                        : row[tableParams.cardHeaderComment])
+                        :   (tableHeaders.filter(h => h.sysName == tableParams.cardHeaderComment)[0] && 
+                                tableHeaders.filter(h => h.sysName == tableParams.cardHeaderComment)[0].dataType =='date') ?
+                            moment(row[tableParams.cardHeaderComment]).format('D MMM, YYYY') :
+                            row[tableParams.cardHeaderComment] 
+                            )
 
                     const cardBodyText = row && (typeof row[tableParams.cardBodyText] == 'object' ?
                         !Array.isArray(row[tableParams.cardBodyText]) ?
                             getLinkName(tableParams.cardBodyText, row[tableParams.cardBodyText])
                             : row[tableParams.cardBodyText].map(i => getLinkName(tableParams.cardBodyText, i))
-                        : row[tableParams.cardBodyText])
+
+                        :   (tableHeaders.filter(h => h.sysName == tableParams.cardBodyText)[0] && 
+                            tableHeaders.filter(h => h.sysName == tableParams.cardBodyText)[0].dataType =='date') ?
+                        moment(row[tableParams.cardBodyText]).format('D MMM, YYYY') :
+                        row[tableParams.cardBodyText] 
+                        )
                     // ==================================
 
                     return (

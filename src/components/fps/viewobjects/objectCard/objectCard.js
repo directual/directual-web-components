@@ -20,12 +20,12 @@ export function ObjectCard(props) {
     // support previous component version:
     const oldFashioned = !props.params.data ? true : false
 
-    // console.log('==============props.params==============')
-    // console.log(props.params)
+    // console.log('==============props==============')
+    // console.log(props)
     // console.log(oldFashioned)
 
-    console.log('==============CARD MODEL==============')
-    console.log(model)
+    // console.log('==============CARD MODEL==============')
+    // console.log(model)
 
     // press 'Esc' for closing a popup:
     const handleUserKeyPress = (e) => {
@@ -355,14 +355,17 @@ export function ObjectCard(props) {
                 <h2>
                     {structure.visibleName ? structure.visibleName.map(headerField => object[headerField] ?
                         typeof object[headerField].value == 'object' ?
-                            getLinkName(headerField, object[headerField].value)
-                            : object[headerField].value
+                            !Array.isArray(object[headerField].value) ?
+                                getLinkName(headerField, object[headerField].value) :
+                                object[headerField].value.map(i => getLinkName(headerField, i)).join(', ')
+                            : object[headerField].dataType == 'date' ?
+                                moment(object[headerField].value).format('D MMM, YYYY') :
+                                object[headerField].value
                         : null).join(' ')
                         :
                         'No visible name'}
                 </h2>
             </div>
-
             <div
                 ref={scrollDivRef}
                 onScroll={handleScroll}
@@ -393,7 +396,7 @@ export function ObjectCard(props) {
                     <ObjectCard
                         onClose={() => setShowLinkedObject(false)}
                         object={linkedObject}
-                        params={{ isDisplayID: false }}
+                        params={{ isDisplayID: true }}
                         tableFieldScheme={linkedObjectStruct}
                         tableStructures={props.tableStructures}
                     />
@@ -704,7 +707,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
                 <div className={styles.linkFieldWrapper}>
                     <a
                         onClick={() => {
-                            setLinkedObject(model[field.sysName])
+                            setLinkedObject(object[field.sysName].value)
                             setLinkedObjectStruct(field.sysName)
                             setShowLinkedObject(true)
                         }}
@@ -745,6 +748,19 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
                                 && object[field.sysName].value.map(i => i.id))
                     }
                     tip={field.searchData.length > 990 && 'Quick search is limited by 1000 options'}
+                />
+            }
+
+            {edit && !field.searchData &&
+                <Input
+                    type='string'
+                    onChange={onChange}
+                    defaultValue={
+                        field.dataType == 'link' ? object[field.sysName].value.id :
+                            (object[field.sysName].value && object[field.sysName].value.length > 0
+                                && object[field.sysName].value.map(i => i.id))
+                    }
+                    tip="Quick search option is disabled. Enter objects' IDs"
                 />
             }
         </React.Fragment>
