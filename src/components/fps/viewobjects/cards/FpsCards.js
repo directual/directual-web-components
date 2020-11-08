@@ -49,6 +49,7 @@ function FpsCards({auth, data, onEvent, id }) {
 
     const sendMsg = (msg, sl) => {
         const message = { ...msg, _id: 'form_' + id, _sl_name: sl } // проверить что с пустым SL все канает!
+        console.log(message)
         setLoading(true)
         if (onEvent) {
             onEvent(message)
@@ -84,9 +85,9 @@ function FpsCards({auth, data, onEvent, id }) {
     }
 
     const submitAction = (mapping, sl) => {
-        console.log('submitting action...')
-        console.log(mapping)
-        console.log('sl = ' + sl)
+        // console.log('submitting action...')
+        // console.log(mapping)
+        // console.log('sl = ' + sl)
         sendMsg(mapping, sl)
     }
 
