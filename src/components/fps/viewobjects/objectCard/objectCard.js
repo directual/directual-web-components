@@ -406,8 +406,9 @@ export function ObjectCard(props) {
                     }
                     if (field.id == 'action__delete') return
                     if (field.type == 'actions') {
-                        return <ActionPanel>
-                            {field.content.map(action => {
+                        return  <ActionPanel>
+                            {props.loading ? <Loader>Loading...</Loader> :
+                            field.content.map(action => {
                                 if (action.id != 'action__delete') {
                                     return <CardAction
                                         action={action.id}
@@ -452,6 +453,7 @@ export function ObjectCard(props) {
                 ).length > 0 &&
                     <SaveCard // Сохранить изменения
                         model={model}
+                        loading={props.loading}
                         currentObject={currentObject}
                         submit={props.submit}
                         setCurrentObject={setCurrentObject}
@@ -511,6 +513,7 @@ export function ObjectCard(props) {
                     <ObjectCard
                         onClose={() => setShowLinkedObject(false)}
                         object={linkedObject}
+                        parentObject={object}
                         params={{ isDisplayID: true }}
                         tableFieldScheme={linkedObjectStruct}
                         tableStructures={props.tableStructures}
@@ -752,24 +755,25 @@ function ActionDelete({ submit }) {
     )
 }
 
-function SaveCard({ model, currentObject, submit, setCurrentObject, setModel }) {
+function SaveCard({ model, currentObject, submit, setCurrentObject, setModel, loading }) {
 
     return (
         <div>
             <ActionPanel margin={{ top: 24, bottom: 12 }}>
-                {/* <div className='dd-debug'>{JSON.stringify(model)}</div>
-                <div className='dd-debug'>{JSON.stringify(currentObject)}</div> */}
-                <Button
-                    disabled={JSON.stringify(model) === JSON.stringify(currentObject)}
-                    accent
-                    icon='done'
-                    onClick={() => { submit(model); setCurrentObject(model) }}
-                >
-                    Save changes</Button>
-                <Button danger icon='ban'
-                    onClick={() => setModel(currentObject)}
-                    disabled={JSON.stringify(model) === JSON.stringify(currentObject)}>
-                    Discard changes</Button>
+                {loading ? <Loader>Loading...</Loader> :
+                    <React.Fragment>
+                        <Button
+                            disabled={JSON.stringify(model) === JSON.stringify(currentObject)}
+                            accent
+                            icon='done'
+                            onClick={() => { submit(model); setCurrentObject(model) }}
+                        >
+                            Save changes</Button>
+                        <Button danger icon='ban'
+                            onClick={() => setModel(currentObject)}
+                            disabled={JSON.stringify(model) === JSON.stringify(currentObject)}>
+                            Discard changes</Button>
+                    </React.Fragment>}
             </ActionPanel>
         </div>
     )

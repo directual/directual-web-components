@@ -48,6 +48,7 @@ function FpsCards({auth, data, onEvent, id }) {
     }
 
     const sendMsg = (msg, sl) => {
+        console.log('submitting...')
         const message = { ...msg, _id: 'form_' + id, _sl_name: sl } // проверить что с пустым SL все канает!
         console.log(message)
         setLoading(true)
@@ -63,13 +64,12 @@ function FpsCards({auth, data, onEvent, id }) {
         }
         if (!data.isSuccessWrite && data.writeError) {
             //setLoading(false)
-            console.log('data writeError')
+            console.log('data write error')
             console.log(data.writeError)
         }
     }, [data])
 
     const submit = (model) => {
-        console.log('submitting...')
         if (model) {
             for (const field in model) {
                 if (typeof model[field] == 'object' && data.params.data.fields[field].dataType != 'date') 
@@ -80,7 +80,6 @@ function FpsCards({auth, data, onEvent, id }) {
                 }
             }
         }
-        console.log(model)
         sendMsg(model)
     }
 
@@ -114,7 +113,6 @@ function FpsCards({auth, data, onEvent, id }) {
 
             <TableTitle
                 tableTitle={tableTitle}
-                //tableQuickSearch={tableQuickSearch}
                 searchValue={searchValue}
                 tableQuickSearch={true}
                 onSearch={value => search(value)}
