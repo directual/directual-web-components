@@ -111,6 +111,11 @@ export default function Input(props) {
         props.type == 'multiselect' && props.required && value != defVal && checkValue();
     }
 
+    useEffect(() => {
+        if (props.highlightEmpty && !value) { setWarningMesg({ type: 'error', msg: 'This field is required' }) } 
+            else { setWarningMesg({}); }
+    }, [value])
+
     const icon_options =
         [
             { key: 'babai', value: 'babai', icon: 'babai' },
@@ -553,7 +558,7 @@ export default function Input(props) {
                     min={props.min}
                     max={props.max}
                     step={props.step}
-                    onChange={e => { submit(e)}}
+                    onChange={e => { submit(e) }}
                     unitName={props.unitName} />
 
             }
@@ -563,7 +568,7 @@ export default function Input(props) {
                     min={props.min}
                     max={props.max}
                     step={props.step}
-                    onChange={e => { submit(e)}}
+                    onChange={e => { submit(e) }}
                     unitName={props.unitName} />
 
             }
@@ -593,7 +598,7 @@ export default function Input(props) {
                                 defaultValue={(typeof props.defaultValue == 'object' && props.defaultValue.customOption) && true}
                                 customOptionType={props.customOptionType}
                                 customOptionDefaultValue={typeof props.defaultValue == 'object' && props.defaultValue.customOption}
-                                onChange={ (val, customVal) => {
+                                onChange={(val, customVal) => {
                                     const saveValue = { ...value }
                                     if (val) { saveValue.customOption = customVal }
                                     else { delete saveValue.customOption }

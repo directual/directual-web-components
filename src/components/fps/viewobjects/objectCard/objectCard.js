@@ -20,8 +20,8 @@ export function ObjectCard(props) {
     // support previous component version:
     const oldFashioned = !props.params.data ? true : false
 
-    // console.log('==============props==============')
-    // console.log(props)
+    console.log('==============props==============')
+    console.log(props)
     // console.log(oldFashioned)
 
     // console.log('==============CARD MODEL==============')
@@ -110,6 +110,44 @@ export function ObjectCard(props) {
         })
     }
 
+    // выполнить Action
+
+    function submitAction(action, actionParams) {
+        console.log(action)
+        console.log(actionParams)
+        let mapping = {}
+
+        actionParams.formMapping && actionParams.formMapping.forEach(row => {
+            if (row.type == 'user') { mapping[row.target] = props.auth ? props.auth.user : null }
+            if (row.type == 'const') { mapping[row.target] = row.value }
+            if (row.type == 'objectField') {
+                if (props.parentObject && props.parentObject[row.value]) { // из дочерней карточки дергаем поле из родительской
+                    mapping[row.target] = typeof props.parentObject[row.value] != 'object' ?
+                        props.parentObject[row.value] :
+                        Array.isArray(props.parentObject[row.value]) ?
+                            props.parentObject[row.value].map(i => i.id).join(',') :
+                            props.parentObject[row.value].id
+                } else { // из основной карточки дергаем из основной же
+                    mapping[row.target] = typeof props.object[row.value] != 'object' ?
+                        props.object[row.value] :
+                        Array.isArray(props.object[row.value]) ?
+                            props.object[row.value].map(i => i.id).join(',') :
+                            props.object[row.value].id
+                }
+            }
+            if (row.type == 'linkedField') { // из дочерней дергаем поля дочерней же
+                mapping[row.target] = typeof props.object[row.value] != 'object' ?
+                    props.object[row.value] :
+                    Array.isArray(props.object[row.value]) ?
+                        props.object[row.value].map(i => i.id).join(',') :
+                        props.object[row.value].id
+            }
+        })
+
+        const sl = actionParams.sysName
+        props.submitAction(mapping, sl)
+    }
+
     //------------------------------
     function getLinkName(sysname, obj) {
         const structure = getStructure(obj, transformTableFieldScheme(sysname, props.tableFieldScheme), props.tableStructures)
@@ -146,10 +184,10 @@ export function ObjectCard(props) {
         return (line.match(/\n/g) || []).length;
     }
 
-    const noTabs =
+    const noTabs = // ЭТУ ХУЕРГУ НАДО ВЫПИЛИТЬ
         <React.Fragment>
             {Object.values(object).map(field =>
-                ((props.params && props.params.deleteField !== field.sysName) && (field.dataType !== 'id' || props.params.isDisplayID)) &&
+                ((field.dataType !== 'id' || props.params.isDisplayID)) &&
                 <div key={field.sysName} className={styles.objFieldWrapper}>
                     {field.dataType != 'link' &&
                         field.dataType != 'arrayLink' &&
@@ -297,27 +335,104 @@ export function ObjectCard(props) {
 
     // ============================= Generating Tab content ============================
     function composeTabContent(fields, fieldParams, deleteField) {
+
+        // группируем actions
+        const transform = (a, fieldParams) => {
+            const arr = a.map(i => { return { id: i, type: fieldParams[i] && fieldParams[i].type } })
+            return arr.reduce((acc, item, i) => {
+                const { type } = item;
+                if (i === 0 && type !== "action") {
+                    return [...acc, item];
+                }
+                const prevItem = arr[i - 1];
+                const prevType = prevItem && prevItem.type;
+
+                if (type === "action" && prevType !== "action") {
+                    return [...acc, { type: "actions", content: [item] }];
+                }
+                if (type === "action" && prevType === "action") {
+                    const accCopy = [...acc];
+                    const group = accCopy.pop();
+                    return [
+                        ...accCopy,
+                        { type: "actions", content: [...group.content, item] }
+                    ];
+                } else {
+                    return [...acc, item];
+                }
+            }, []);
+
+            // let newArr = [];
+            // let count = 0;
+            // let flag = false;
+            // arr.forEach((a, i) => {
+            //     if (i == 0 && a.type != "action") {
+            //         newArr.push(a);
+            //     }
+            //     if (i == 0 && a.type == "action") {
+            //         newArr.push({ type: "actions", content: [a] });
+            //         flag = true;
+            //     }
+            //     if (i != 0 && !flag && a.type == "action") {
+            //         newArr.push({ type: "actions", content: [a] });
+            //         flag = true;
+            //         count++;
+            //     }
+            //     if (i != 0 && flag && a.type == "action") {
+            //         newArr[count].content.push(a);
+            //     }
+            //     if (i != 0 && flag && a.type != "action") {
+            //         newArr.push(a);
+            //         count++;
+            //         flag = false;
+            //     }
+            //     if (i != 0 && !flag && a.type != "action") {
+            //         newArr.push(a);
+            //         count++;
+            //     }
+            // });
+            return newArr;
+        };
+        const transformedFields = transform(fields, fieldParams)
         return (
             <React.Fragment>
-                {fields.map(fieldSysName => {
-                    let field = fieldParams[fieldSysName]
+                {transformedFields.map((f, i) => {
+                    const fieldSysName = f.id
+                    let field = f.type != 'actions' ? fieldParams[fieldSysName] : f
                     field = {
                         ...field,
                         name: field.content,
                         sysName: field.id
                     }
-                    if (field.id == 'action__delete') return <ActionDelete
-                        submit={() => {
-                            props.submit({ [deleteField]: true, id: object.id.value });
-                            props.onClose()
-                        }} />
-                    if (!field.include || !object[field.sysName] || field.sysName == deleteField) { return null }
+                    if (field.id == 'action__delete') return
+                    if (field.type == 'actions') {
+                        return <ActionPanel>
+                            {field.content.map(action => {
+                                if (action.id != 'action__delete') {
+                                    return <CardAction
+                                        action={action.id}
+                                        submitAction={submitAction}
+                                        actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
+                                            props.params.actions.filter(i => action.id == 'action__' + i.id)[0]}
+                                    />
+                                } else {
+                                    return <ActionDelete // Кнопочка Delete
+                                        submit={() => {
+                                            props.submit({ [deleteField]: true, id: object.id.value });
+                                            props.onClose()
+                                        }} />
+                                }
+                            })}
+                        </ActionPanel>
+
+                    }
+                    if (!field.include || !object[field.sysName]) { return null } // скрытые поля
                     return <CardField
                         //debug
                         model={model}
                         field={field}
                         object={object}
-                        setModel={value => setModel(value)}
+                        setModel={value => { setModel(value); }}
                         setLinkedObject={setLinkedObject}
                         setShowLinkedObject={setShowLinkedObject}
                         getLinkName={getLinkName}
@@ -335,7 +450,7 @@ export function ObjectCard(props) {
                     && fieldParams[i].include == true
                     && fieldParams[i].id != deleteField
                 ).length > 0 &&
-                    <SaveCard
+                    <SaveCard // Сохранить изменения
                         model={model}
                         currentObject={currentObject}
                         submit={props.submit}
@@ -426,6 +541,8 @@ function CardField({ field, object, model, setModel, debug,
             {debug && <div>
                 <p className='dd-debug'>{JSON.stringify(field)}</p>
                 <p className='dd-debug'><b>object: </b>{JSON.stringify(object[field.sysName])}</p></div>}
+
+            {field.actions && field.actions.length > 0 && <div className='dd-debug'>бля! тут есть действия</div>}
 
             {/* КАРТИНКИ */}
             {field.dataType == 'file' && field.read && field.fileImage &&
@@ -627,13 +744,10 @@ function ActionDelete({ submit }) {
 
     return (
         <React.Fragment>
-            <FormSection title='Danger zone' />
-            <ActionPanel margin={{ top: 0, bottom: 12 }}>
-                {!confirmDelete ?
-                    <Button icon='delete' onClick={() => setConfirmDelete(true)} danger>Delete</Button> :
-                    <Button icon='delete' onClick={submit} danger>I'm totally sure, delete</Button>
-                }
-            </ActionPanel>
+            {!confirmDelete ?
+                <Button icon='delete' onClick={() => setConfirmDelete(true)} danger>Delete</Button> :
+                <Button icon='delete' onClick={submit} danger>I'm totally sure, delete</Button>
+            }
         </React.Fragment>
     )
 }
@@ -687,9 +801,9 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
 
     const [edit, setEdit] = useState(false)
 
-    useEffect(() => {
-        onChange(object[field.sysName].value.id)
-    }, [edit])
+    // useEffect(() => {
+    //     onChange(object[field.sysName].value.id)
+    // }, [edit])
 
     return (
         <React.Fragment>
@@ -763,6 +877,24 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
                     tip="Quick search option is disabled. Enter objects' IDs"
                 />
             }
+        </React.Fragment>
+    )
+}
+
+function CardAction({ action, actionParams, debug, submitAction }) {
+    return (
+        <React.Fragment>
+            {debug && <div>
+                <div className='dd-debug'>{JSON.stringify(action)}</div>
+                <div className='dd-debug'>{JSON.stringify(actionParams)}</div>
+            </div>}
+            <Button
+                accent={actionParams.buttonType == 'accent'}
+                danger={actionParams.buttonType == 'danger'}
+                onClick={() => submitAction(action, actionParams)}
+                icon={actionParams.buttonIcon}
+            >
+                {actionParams.buttonTitle || actionParams.name}</Button>
         </React.Fragment>
     )
 }

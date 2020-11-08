@@ -8,7 +8,7 @@ import { Cards } from './cards'
 import { ComponentWrapper } from '../../wrapper/wrapper'
 import moment from 'moment'
 
-function FpsCards({ data, onEvent, id }) {
+function FpsCards({auth, data, onEvent, id }) {
     if (!data) { data = {} }
 
     // console.log('---data---')
@@ -47,8 +47,8 @@ function FpsCards({ data, onEvent, id }) {
         }
     }
 
-    const sendMsg = (msg) => {
-        const message = { ...msg, _id: 'form_' + id }
+    const sendMsg = (msg, sl) => {
+        const message = { ...msg, _id: 'form_' + id, _sl_name: sl } // проверить что с пустым SL все канает!
         setLoading(true)
         if (onEvent) {
             onEvent(message)
@@ -83,6 +83,13 @@ function FpsCards({ data, onEvent, id }) {
         sendMsg(model)
     }
 
+    const submitAction = (mapping, sl) => {
+        console.log('submitting action...')
+        console.log(mapping)
+        console.log('sl = ' + sl)
+        //sendMsg(mapping, sl)
+    }
+
     return (
         <ComponentWrapper>
 
@@ -94,6 +101,8 @@ function FpsCards({ data, onEvent, id }) {
                             onClose={handleCloseShowObject}
                             object={showObject}
                             submit={submit}
+                            auth={auth}
+                            submitAction={submitAction}
                             params={data.params}
                             loading={loading}
                             tableFieldScheme={tableFieldScheme}

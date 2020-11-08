@@ -76,15 +76,15 @@ const App = (props) => {
     html: '<b>test</b>'
   }
 
-  let linksRead = {
-    "sl": "TEST",
+  let cardActions = {
+    "sl": "jobsAll",
     "pageSize": "10",
     "headerField": null,
     "params": {
       "cardListLayout": "grid",
-      "cardHeaderComment": "date",
-      "deleteField": "",
-      "cardBodyText": "arrayLink",
+      "cardHeaderComment": "",
+      "deleteField": "is_deleted",
+      "cardBodyText": "",
       "cardImage": false,
       "cardImageField": "",
       "cardImageType": "none",
@@ -93,96 +93,242 @@ const App = (props) => {
       "data": {
         "readFields": [
           {
-            "fieldSysName": "arrayLink",
-            "sysName": "arrayLink",
-            "name": "al",
-            "dataType": "arrayLink",
-            "link": "cities"
+            "fieldSysName": "author_id",
+            "fetch": [
+              {
+                "fieldSysName": "firstName",
+                "condition": null,
+                "fetch": []
+              },
+              {
+                "fieldSysName": "id",
+                "condition": null,
+                "fetch": []
+              },
+              {
+                "fieldSysName": "lastName",
+                "condition": null,
+                "fetch": []
+              }
+            ],
+            "sysName": "author_id",
+            "name": "Автор вакансии",
+            "dataType": "link",
+            "link": "WebUser"
           },
           {
-            "fieldSysName": "date",
-            "sysName": "date",
-            "name": "date",
-            "dataType": "date",
+            "fieldSysName": "description",
+            "fetch": [],
+            "sysName": "description",
+            "name": "Описание",
+            "dataType": "string",
             "link": ""
           },
           {
+            "fieldSysName": "functions_ids",
+            "fetch": [
+              {
+                "fieldSysName": "name",
+                "condition": null,
+                "fetch": []
+              }
+            ],
+            "sysName": "functions_ids",
+            "name": "Необходимые функции",
+            "dataType": "arrayLink",
+            "link": "Functions"
+          },
+          {
             "fieldSysName": "id",
+            "fetch": [],
             "sysName": "id",
             "name": "id",
             "dataType": "id",
             "link": ""
           },
           {
-            "fieldSysName": "link",
-            "sysName": "link",
-            "name": "l",
-            "dataType": "link",
-            "link": "cities"
+            "fieldSysName": "is_remote",
+            "fetch": [],
+            "sysName": "is_remote",
+            "name": "Возможна ли удаленка?",
+            "dataType": "boolean",
+            "link": ""
           },
           {
-            "fieldSysName": "text1",
-            "sysName": "text1",
-            "name": "text1",
-            "dataType": "string",
-            "link": null
+            "fieldSysName": "respond_ids",
+            "fetch": [
+              {
+                "fieldSysName": "Status",
+                "condition": null,
+                "fetch": []
+              },
+              {
+                "fieldSysName": "id",
+                "condition": null,
+                "fetch": []
+              },
+              {
+                "fieldSysName": "user_id",
+                "condition": null,
+                "fetch": [
+                  {
+                    "fieldSysName": "Job_title",
+                    "condition": null,
+                    "fetch": []
+                  },
+                  {
+                    "fieldSysName": "Photo",
+                    "condition": null,
+                    "fetch": []
+                  },
+                  {
+                    "fieldSysName": "Salary_expectations_TEXT",
+                    "condition": null,
+                    "fetch": []
+                  },
+                  {
+                    "fieldSysName": "current_job_company",
+                    "condition": null,
+                    "fetch": []
+                  },
+                  {
+                    "fieldSysName": "current_job_title",
+                    "condition": null,
+                    "fetch": []
+                  },
+                  {
+                    "fieldSysName": "firstName",
+                    "condition": null,
+                    "fetch": []
+                  },
+                  {
+                    "fieldSysName": "id",
+                    "condition": null,
+                    "fetch": []
+                  },
+                  {
+                    "fieldSysName": "lastName",
+                    "condition": null,
+                    "fetch": []
+                  }
+                ]
+              }
+            ],
+            "sysName": "respond_ids",
+            "name": "Отклики",
+            "dataType": "arrayLink",
+            "link": "Job_responds"
           },
           {
-            "fieldSysName": "text2",
-            "sysName": "text2",
-            "name": "text2",
+            "fieldSysName": "salary_raw",
+            "fetch": [],
+            "sysName": "salary_raw",
+            "name": "Зарплатная вилка",
+            "dataType": "json",
+            "link": ""
+          },
+          {
+            "fieldSysName": "title",
+            "fetch": [],
+            "sysName": "title",
+            "name": "Название вакансии",
             "dataType": "string",
-            "link": null
+            "link": ""
           }
         ],
         "writeFields": [
           {
-            "fieldSysName": "arrayLink",
-            "sysName": "arrayLink",
-            "name": "al",
-            "dataType": "arrayLink",
-            "link": "cities"
-          },
-          {
-            "fieldSysName": "date",
-            "sysName": "date",
-            "name": "date",
-            "dataType": "date",
+            "fieldSysName": "description",
+            "fetch": [],
+            "sysName": "description",
+            "name": "Описание",
+            "dataType": "string",
             "link": ""
           },
           {
             "fieldSysName": "id",
+            "fetch": [],
             "sysName": "id",
             "name": "id",
             "dataType": "id",
             "link": ""
           },
           {
-            "fieldSysName": "text1",
-            "sysName": "text1",
-            "name": "text1",
+            "fieldSysName": "is_deleted",
+            "fetch": [],
+            "sysName": "is_deleted",
+            "name": "",
+            "dataType": "boolean",
+            "link": ""
+          },
+          {
+            "fieldSysName": "title",
+            "fetch": [],
+            "sysName": "title",
+            "name": "Название вакансии",
             "dataType": "string",
-            "link": null
+            "link": ""
           }
         ],
         "fields": {
-          "arrayLink": {
-            "id": "arrayLink",
-            "content": "al",
+          "author_id": {
+            "id": "author_id",
+            "content": "Автор вакансии",
+            "type": "field",
+            "dataType": "link",
+            "read": true,
+            "link": "WebUser",
+            "actions": []
+          },
+          "description": {
+            "id": "description",
+            "content": "Описание",
+            "type": "field",
+            "dataType": "string",
+            "write": true,
+            "read": true,
+            "link": "",
+            "actions": []
+          },
+          "functions_ids": {
+            "id": "functions_ids",
+            "content": "Необходимые функции",
             "type": "field",
             "dataType": "arrayLink",
-            "write": true,
             "read": true,
-            "link": "cities"
-          },
-          "date": {
-            "id": "date",
-            "content": "date",
-            "type": "field",
-            "dataType": "date",
-            "write": true,
-            "read": true,
-            "link": ""
+            "link": "Functions",
+            "actions": [
+              {
+                "sysName": "",
+                "id": "84281604831881646",
+                "name": "Хуякс",
+                "buttonIcon": "academy",
+                "buttonType": "accent",
+                "buttonTitle": "нажми меня нежно",
+                "callFrom": "linked",
+                "callFromField": "functions_ids",
+                "formMapping": [
+                  {
+                    "id": "10341604832001385",
+                    "target": "description",
+                    "type": "objectField",
+                    "value": "id"
+                  },
+                  {
+                    "id": "57571604832009508",
+                    "target": "title",
+                    "type": "linkedField",
+                    "value": "name"
+                  },
+                  {
+                    "id": "74231604832017271",
+                    "target": "is_deleted",
+                    "type": "const",
+                    "value": "false"
+                  }
+                ]
+              }
+            ]
           },
           "id": {
             "id": "id",
@@ -191,42 +337,88 @@ const App = (props) => {
             "dataType": "id",
             "write": true,
             "read": true,
-            "link": ""
+            "link": "",
+            "actions": []
           },
-          "link": {
-            "id": "link",
-            "content": "l",
+          "is_remote": {
+            "id": "is_remote",
+            "content": "Возможна ли удаленка?",
             "type": "field",
-            "dataType": "link",
+            "dataType": "boolean",
             "read": true,
-            "link": "cities"
+            "link": "",
+            "actions": []
           },
-          "text1": {
-            "id": "text1",
-            "content": "text1",
+          "respond_ids": {
+            "id": "respond_ids",
+            "content": "Отклики",
+            "type": "field",
+            "dataType": "arrayLink",
+            "read": true,
+            "link": "Job_responds",
+            "actions": []
+          },
+          "salary_raw": {
+            "id": "salary_raw",
+            "content": "Зарплатная вилка",
+            "type": "field",
+            "dataType": "json",
+            "read": true,
+            "link": "",
+            "actions": []
+          },
+          "title": {
+            "id": "title",
+            "content": "Название вакансии",
             "type": "field",
             "dataType": "string",
             "write": true,
             "read": true,
-            "link": null
+            "link": "",
+            "actions": []
           },
-          "text2": {
-            "id": "text2",
-            "content": "text2",
+          "is_deleted": {
+            "id": "is_deleted",
+            "content": "",
             "type": "field",
-            "dataType": "string",
-            "read": true,
-            "link": null
+            "dataType": "boolean",
+            "write": true,
+            "link": "",
+            "actions": []
+          },
+          "action__delete": {
+            "id": "action__delete",
+            "content": "Delete button",
+            "type": "action",
+            "actions": []
+          },
+          "action__75191604831888412": {
+            "id": "action__75191604831888412",
+            "content": "Пиздыкс",
+            "type": "action",
+            "actions": []
+          },
+          "action__78151604832288623": {
+            "id": "action__78151604832288623",
+            "content": "Сделать нихуя",
+            "type": "action",
+            "actions": []
           }
         },
         "fieldParams": {
-          "arrayLink": {
+          "author_id": {
             "include": true,
             "fileImageFormat": "square",
-            "quickSearch": true,
+            "quickSearch": false,
             "fileImageSize": 200
           },
-          "date": {
+          "description": {
+            "include": true,
+            "fileImageFormat": "square",
+            "quickSearch": false,
+            "fileImageSize": 200
+          },
+          "functions_ids": {
             "include": true,
             "fileImageFormat": "square",
             "quickSearch": false,
@@ -238,25 +430,35 @@ const App = (props) => {
             "quickSearch": false,
             "fileImageSize": 200
           },
-          "link": {
+          "is_remote": {
             "include": true,
             "fileImageFormat": "square",
-            "quickSearch": true,
+            "quickSearch": false,
             "fileImageSize": 200
           },
-          "text1": {
+          "respond_ids": {
             "include": true,
             "fileImageFormat": "square",
             "quickSearch": false,
-            "fileImageSize": 200,
-            "markdown": true
+            "fileImageSize": 200
           },
-          "text2": {
+          "salary_raw": {
             "include": true,
             "fileImageFormat": "square",
             "quickSearch": false,
-            "fileImageSize": 200,
-            "markdown": true
+            "fileImageSize": 200
+          },
+          "title": {
+            "include": true,
+            "fileImageFormat": "square",
+            "quickSearch": false,
+            "fileImageSize": 200
+          },
+          "is_deleted": {
+            "include": false,
+            "fileImageFormat": "square",
+            "quickSearch": false,
+            "fileImageSize": 200
           }
         },
         "columns": {
@@ -264,685 +466,47 @@ const App = (props) => {
             "id": "tab-1",
             "title": "New tab",
             "fieldIds": [
-              "arrayLink",
-              "link",
-              "date",
+              "author_id",
+              "description",
+              "functions_ids",
               "id",
-              "text1",
-              "text2"
+              "is_remote",
+              "respond_ids",
+              "salary_raw",
+              "title",
+              "is_deleted",
+              "action__delete"
+            ]
+          },
+          "93271604832280447": {
+            "id": "93271604832280447",
+            "title": "Кнопки",
+            "fieldIds": [
+              "action__75191604831888412",
+              "action__78151604832288623"
             ]
           }
         },
         "columnOrder": [
-          "tab-1"
-        ]
+          "tab-1",
+          "93271604832280447"
+        ],
+        "actions": {}
       },
       "fields": {
-        "arrayLink": {
+        "author_id": {
           "include": true,
           "fileImageFormat": "square",
-          "quickSearch": true,
-          "fileImageSize": 200,
-          "searchData": [
-            {
-              "key": "fa3a51d6-2784-48aa-acb6-58a4934260cb",
-              "value": "Нижний Новгород"
-            },
-            {
-              "key": "efd0190e-1a19-40a7-9d00-b695b60e7b18",
-              "value": "Новосибирск"
-            },
-            {
-              "key": "5f07b0e5-cdeb-4b6d-bd7d-1b5aa25d597b",
-              "value": "Астрахань"
-            },
-            {
-              "key": "2985fa84-8a83-4cfe-8ac8-086b46480e1b",
-              "value": "Уфа"
-            },
-            {
-              "key": "cf89852c-0979-4dc2-a688-9f5f40e5f7b1",
-              "value": "Иркутск"
-            },
-            {
-              "key": "71a52f70-4701-476f-a9eb-065ed0ce34c0",
-              "value": "Тюмень"
-            },
-            {
-              "key": "9f937f4d-fff3-4e95-9833-05edba95e9fb",
-              "value": "Киров"
-            },
-            {
-              "key": "c272e7cd-d3c1-41a6-8ef3-731c1b6d3b0b",
-              "value": "Тольятти"
-            },
-            {
-              "key": "ee69e04b-bb3b-4835-a8c9-2a2fa47c9c1a",
-              "value": "Кемерово"
-            },
-            {
-              "key": "a0734bbe-965e-4be4-bf3e-0058587fb0d1",
-              "value": "Чебоксары"
-            },
-            {
-              "key": "35926902-ce08-4620-b791-a957b8e030bf",
-              "value": "Ульяновск"
-            },
-            {
-              "key": "886de159-f52c-4e0f-8fbf-c290e42b8880",
-              "value": "Махачкала"
-            },
-            {
-              "key": "fa8828c2-03ab-4a44-9301-407331a645bc",
-              "value": "Томск"
-            },
-            {
-              "key": "15d359fc-e894-4f19-8279-0195fa45b8f3",
-              "value": "Улан-Удэ"
-            },
-            {
-              "key": "e980a012-b87e-46fa-98b9-bc62c29f432f",
-              "value": "Ижевск"
-            },
-            {
-              "key": "aeeffdac-8680-4de7-a6b9-fbeee9732752",
-              "value": "Брянск"
-            },
-            {
-              "key": "6cb5b487-5cb7-4bf4-a197-c1fb7fd141ad",
-              "value": "Курск"
-            },
-            {
-              "key": "42af9a7c-b7ea-4079-91a5-65b408ddc2de",
-              "value": "Тула"
-            },
-            {
-              "key": "d317eccc-2c59-4443-adda-5dcb267453a0",
-              "value": "Красноярск"
-            },
-            {
-              "key": "e32a86b6-07a0-4ee6-b380-6b51a72f4937",
-              "value": "Пенза"
-            },
-            {
-              "key": "5f4e2ed6-c77c-4ce3-bc36-5e639a4a975b",
-              "value": "Новокузнецк"
-            },
-            {
-              "key": "95ddc157-f2dc-4ab1-a1e5-ce9c6398bfdf",
-              "value": "Москва"
-            },
-            {
-              "key": "c8c7d6d0-4fc6-41dd-a799-a8ad91e86fe7",
-              "value": "Казань"
-            },
-            {
-              "key": "411c9c4a-6590-4f12-9340-b268d1bade7b",
-              "value": "Екатеринбург"
-            },
-            {
-              "key": "a6b631d7-1456-421a-a8b7-a8880a9d3383",
-              "value": "Челябинск"
-            },
-            {
-              "key": "9e5fb78a-03c1-4016-a7f3-8341c0cbfcf6",
-              "value": "Краснодар"
-            },
-            {
-              "key": "ee7c7efc-2577-4efa-9675-f2bf3b4e3ba1",
-              "value": "Оренбург"
-            },
-            {
-              "key": "e2591b96-b2ba-4ce8-8c63-9477481effb5",
-              "value": "Тверь"
-            },
-            {
-              "key": "155a6363-9fb5-4d1c-b033-774825f25f1d",
-              "value": "Калининград"
-            },
-            {
-              "key": "1d0dc234-a8d0-4d14-93a4-42f8beb6e474",
-              "value": "Саратов"
-            },
-            {
-              "key": "e0e43003-5d03-4ed2-812f-13f29d79c5e6",
-              "value": "Рязань"
-            },
-            {
-              "key": "1b8475ce-5637-486c-8902-8e763c05053c",
-              "value": "Набережные Челны"
-            },
-            {
-              "key": "293bb3e2-22b7-4dbd-9d18-1fa7e5321b48",
-              "value": "Иваново"
-            },
-            {
-              "key": "8d8ee02c-05ca-4f16-b118-405f0a4a2028",
-              "value": "Магнитогорск"
-            },
-            {
-              "key": "405608e6-a8d2-44c3-b371-87ac6762741a",
-              "value": "Владивосток"
-            },
-            {
-              "key": "dfc75bdc-ac4d-41b6-bdad-220ea284a00e",
-              "value": "Ярославль"
-            },
-            {
-              "key": "2a58d436-70b0-4707-b52e-21c4a91f1ddd",
-              "value": "Хабаровск"
-            },
-            {
-              "key": "a92b6c0a-cabe-4a03-b1b8-808dc039869f",
-              "value": "Липецк "
-            },
-            {
-              "key": "7a211c47-1b4a-42b2-97ee-4c690ae147fd",
-              "value": "Самара"
-            },
-            {
-              "key": "4f04826b-a0f7-4abd-8261-e81b5f869b69",
-              "value": "Санкт-Петербург"
-            },
-            {
-              "key": "68bcde48-bffe-4d82-aab2-c04dd3393e89",
-              "value": "Омск"
-            },
-            {
-              "key": "a8b3fdc6-32ca-4210-adee-f779417c6bb6",
-              "value": "Пермь"
-            },
-            {
-              "key": "2fda8d82-7c06-46f8-bc25-6df163a7b554",
-              "value": "Волгоград"
-            },
-            {
-              "key": "a5e850fa-0ce2-4f5f-a276-de5c731626ff",
-              "value": "Барнаул"
-            },
-            {
-              "key": "db96b2ff-efb5-48e3-a079-1449024642ea",
-              "value": "Ставрополь"
-            },
-            {
-              "key": "d1bfc6ed-4a83-4f0a-a553-45a3152a03ff",
-              "value": "Ростов-на-Дону"
-            },
-            {
-              "key": "fff854f9-473f-46d8-afd2-318abd771a04",
-              "value": "Воронеж"
-            },
-            {
-              "key": "ff68b6d3-8478-4520-8a59-897b992f5f87",
-              "value": "Нижний Тагил"
-            },
-            {
-              "key": "0385a585-a0bf-4c62-835d-5c2343341ac4",
-              "value": "Белгород"
-            },
-            {
-              "key": "c0f6e5fe-15e7-469a-9dcc-6740e29585ac",
-              "value": "Якутск"
-            },
-            {
-              "key": "3625e59b-92be-4931-be3b-1657b1f1eab4",
-              "value": "Великий Новгород"
-            },
-            {
-              "key": "f5df55f5-7f2a-4d85-b9c3-c88b89fdf8b6",
-              "value": "Химки"
-            },
-            {
-              "key": "87413717-a238-4c2b-b8b8-b9ebbbd13d88",
-              "value": "Златоуст"
-            },
-            {
-              "key": "387c5608-bfe7-48a9-808e-1f394fd46228",
-              "value": "Уссурийск"
-            },
-            {
-              "key": "ab697bbb-564b-47f3-aa26-2b963422aa45",
-              "value": "Березники"
-            },
-            {
-              "key": "dbe428b0-33d4-451d-ba51-82d8bcd0d6d4",
-              "value": "Нефтеюганск"
-            },
-            {
-              "key": "5c236ec0-8f7a-4fa5-8e48-24d21f1ea39e",
-              "value": "Чита"
-            },
-            {
-              "key": "6483da5c-3d7d-4e62-a5b7-c259f5b11f0f",
-              "value": "Орел"
-            },
-            {
-              "key": "5347ab07-6807-496e-932b-4db13ec17ac3",
-              "value": "Вологда"
-            },
-            {
-              "key": "51f7889b-2afd-49e9-b9fe-fdc3d43bb4cb",
-              "value": "Комсомольск-на-Амуре"
-            },
-            {
-              "key": "6451bc49-0213-416c-a656-119d4b52b63b",
-              "value": "Армавир"
-            },
-            {
-              "key": "183be710-49ea-42b1-bfcb-8391188d1864",
-              "value": "Волгодонск"
-            },
-            {
-              "key": "18686d6b-3c73-4e03-9329-2f4c46e0c430",
-              "value": "Рубцовск"
-            },
-            {
-              "key": "a537ad97-3d9a-4247-ab7c-c5fd09e323d4",
-              "value": "Пятигорск"
-            },
-            {
-              "key": "296ceb44-e414-4026-8037-303680b519af",
-              "value": "Кызыл"
-            },
-            {
-              "key": "11edc61d-a00f-4ec8-b88e-d35b4eca2a19",
-              "value": "Обнинск"
-            },
-            {
-              "key": "ecb2b6a4-dd90-4d7a-9873-97f2417042cc",
-              "value": "Пушкино"
-            },
-            {
-              "key": "419030a9-a9dc-4a41-a633-a23dbbb65116",
-              "value": "Норильск"
-            },
-            {
-              "key": "962b61df-8781-4eec-9943-901c7d411592",
-              "value": "Хасавюрт"
-            },
-            {
-              "key": "64dfbbca-a11f-4ca5-a9fa-4fbb6b2d868c",
-              "value": "Батайск"
-            },
-            {
-              "key": "d7b0a7a9-71ca-484f-9a43-5629d9226850",
-              "value": "Северск"
-            },
-            {
-              "key": "141bf2ba-a924-4d61-8f4a-abe19dd79b5f",
-              "value": "Арзамас"
-            },
-            {
-              "key": "81dce290-2cff-406c-bc0d-3914be9534c1",
-              "value": "Артем"
-            },
-            {
-              "key": "b7ca406f-71d8-4125-b22b-1c4b3b5b3873",
-              "value": "Междуреченск"
-            },
-            {
-              "key": "4df6ed07-84ce-4324-a75c-b80b4138b8fa",
-              "value": "Сургут"
-            },
-            {
-              "key": "8cb8d65f-0e5b-4af3-a41f-db90ca5a9647",
-              "value": "Грозный"
-            },
-            {
-              "key": "20a74ee5-5cd4-45b1-a243-aa7db323a0c2",
-              "value": "Тамбов"
-            },
-            {
-              "key": "aa11ad14-a9f4-42ee-acad-06047ebdf17a",
-              "value": "Саранск"
-            },
-            {
-              "key": "573d8f7f-2227-4a4e-801b-f77e04a532db",
-              "value": "Дзержинск"
-            },
-            {
-              "key": "f6c16e58-b736-4fb3-b1f4-bf988f2b7fc2",
-              "value": "Северодвинск"
-            },
-            {
-              "key": "a952104f-36d4-4ed0-9ebb-a52b3135c8a8",
-              "value": "Шахты"
-            },
-            {
-              "key": "e55baa9d-693a-4b17-8dd5-492d67a9bc69",
-              "value": "Рыбинск"
-            },
-            {
-              "key": "14aca2a9-a7c1-4b94-baa3-011851f8c2f1",
-              "value": "Новочеркасск"
-            },
-            {
-              "key": "796783ae-c833-4dbf-91b2-3e31682ac3ba",
-              "value": "Ковров"
-            },
-            {
-              "key": "d32dbef5-8cff-4874-828b-af6db8aa9846",
-              "value": "Новочебоксарск"
-            },
-            {
-              "key": "c7e0c655-930b-455a-b21e-09b823ec6ba8",
-              "value": "Ноябрьск"
-            },
-            {
-              "key": "a20d2a73-9aa6-4353-8aad-e0556648dbea",
-              "value": "Каспийск"
-            },
-            {
-              "key": "0430d3db-b2b6-4745-a6b7-7aa3d1e2cd00",
-              "value": "Новороссийск"
-            },
-            {
-              "key": "1dca24bc-dcbe-49a2-9392-1cbf0cd6a729",
-              "value": "Ангарск"
-            },
-            {
-              "key": "fa5befd0-2901-433a-8605-ab4a9e6727cc",
-              "value": "Благовещенск"
-            },
-            {
-              "key": "6a9fc335-cbc3-4f44-addf-8c8ca81ac238",
-              "value": "Находка"
-            },
-            {
-              "key": "923858f8-28a2-4ff8-8c3c-fc96aa7081c7",
-              "value": "Коломна"
-            },
-            {
-              "key": "e37beb72-222e-4cdf-acd2-f36100784e15",
-              "value": "Волжский"
-            },
-            {
-              "key": "b2a7a390-a8cd-46e3-b2b0-219bd356343f",
-              "value": "Новомосковск"
-            },
-            {
-              "key": "49e45256-e242-41a6-b7ba-ea5c597dc67d",
-              "value": "Кисловодск"
-            },
-            {
-              "key": "2c7b72c2-c88d-4478-8a87-9f1c442b6dd4",
-              "value": "Камышин"
-            },
-            {
-              "key": "312c47b1-855c-462f-bcbc-92616220e080",
-              "value": "Стерлитамак"
-            },
-            {
-              "key": "beed9e2a-51f1-447b-973a-c369bf297e19",
-              "value": "Сыктывкар"
-            },
-            {
-              "key": "8ab91dfb-83c1-44fb-af26-7487894a1569",
-              "value": "Нижнекамск"
-            },
-            {
-              "key": "a4d031ad-645c-4c5c-86f9-2a85819dc283",
-              "value": "Мытищи"
-            },
-            {
-              "key": "59dc4c08-4a5b-4a21-bede-5772eae25d69",
-              "value": "Ессентуки "
-            },
-            {
-              "key": "a0ec46a3-44de-4a4a-a0dc-126b0c4afbf5",
-              "value": "Балашиха"
-            },
-            {
-              "key": "6aa99a15-e1d3-4318-9f63-2a07b63690e1",
-              "value": "Подольск"
-            },
-            {
-              "key": "8b9c8a1d-8429-43a6-acc3-b4d2fd2ddf80",
-              "value": "Люберцы"
-            },
-            {
-              "key": "766bf994-acfb-449b-a637-8ed86a83d4b9",
-              "value": "Абакан"
-            },
-            {
-              "key": "b37f7d2f-78fa-48ff-8915-0ce7fcd6e220",
-              "value": "Серпухов"
-            },
-            {
-              "key": "88c9dcaa-3f67-4ac7-b852-d4843abd2e0f",
-              "value": "Нефтекамск"
-            },
-            {
-              "key": "34b49b0b-f99d-4e79-a433-1a6612d712c5",
-              "value": "Октябрьский"
-            },
-            {
-              "key": "e7041943-68b2-4a50-b760-5e15ca6a3603",
-              "value": "Ленинск-Кузнецкий"
-            },
-            {
-              "key": "ccf34bd4-1720-49f8-8d98-a11d4ab6c629",
-              "value": "Таганрог"
-            },
-            {
-              "key": "cf53a24a-3a9d-4192-acd4-c5829dec337b",
-              "value": "Орск"
-            },
-            {
-              "key": "ccf4061b-b791-4bd6-925c-245c6257485f",
-              "value": "Невинномысск"
-            },
-            {
-              "key": "991e734f-a888-4340-ae4c-d5bd32273188",
-              "value": "Архангельск"
-            },
-            {
-              "key": "21bf7b64-5b43-4c95-ba7b-0c678e73b9f6",
-              "value": "Смоленск"
-            },
-            {
-              "key": "fbe1bea9-9ba3-42c3-a708-4e29e2601dbb",
-              "value": "Братск"
-            },
-            {
-              "key": "191bc69a-cd30-4456-8e11-59dd98476e2b",
-              "value": "Череповец"
-            },
-            {
-              "key": "aa1b9dfe-9b26-4a88-84db-212f35dcc7e1",
-              "value": "Владимир"
-            },
-            {
-              "key": "944b7750-cdfb-43b9-a2cc-9dd94ca49f15",
-              "value": "Сочи"
-            },
-            {
-              "key": "05ae4d4b-2ff2-4cfc-92ff-1153ea27fd7f",
-              "value": "Калуга"
-            },
-            {
-              "key": "60911776-c88f-48bb-b619-06a61c8ffd05",
-              "value": "Мурманск"
-            },
-            {
-              "key": "e1e8063c-23d1-432e-8e57-5d618410b3b7",
-              "value": "Прокопьевск"
-            },
-            {
-              "key": "1dfaa028-6c8b-4bd7-9ce9-b9462848e7b2",
-              "value": "Каменск-Уральский"
-            },
-            {
-              "key": "51f0a82c-49af-4ea7-b1ea-c1e99099923c",
-              "value": "Майкоп"
-            },
-            {
-              "key": "52b6844a-669d-470a-b3bd-617a8cf18e89",
-              "value": "Первоуральск"
-            },
-            {
-              "key": "f0ffa934-f809-4d28-a9d0-c6276c148189",
-              "value": "Муром"
-            },
-            {
-              "key": "0bae7c17-0e1f-40f6-b27c-47458c2c81d8",
-              "value": "Сергиев Посад"
-            },
-            {
-              "key": "07aadf04-2e21-4311-9466-512a18a4afd9",
-              "value": "Щелково"
-            },
-            {
-              "key": "75bf8bc5-b1ec-454e-973d-368253b4ca46",
-              "value": "Элиста"
-            },
-            {
-              "key": "42790cbf-02d7-4585-b274-117e6ccb0c60",
-              "value": "Сарапул"
-            },
-            {
-              "key": "da4f760e-f3db-44dd-93d8-5a42873062b9",
-              "value": "Энгельс "
-            },
-            {
-              "key": "1ad5cced-44c5-456e-9f83-2099fc678dfd",
-              "value": "Королев"
-            },
-            {
-              "key": "1fa0dda4-186d-4192-8a3f-923c7944d95d",
-              "value": "Южно-Сахалинск"
-            },
-            {
-              "key": "f35e0627-33b3-495d-b12b-86a2c9cf5afe",
-              "value": "Димитровград"
-            },
-            {
-              "key": "52a85978-37eb-4b02-b0d9-eb857686469c",
-              "value": "Орехово-Зуево"
-            },
-            {
-              "key": "6d4d13b3-f0b9-40f0-8b88-0c2c76cd8a9e",
-              "value": "Новошахтинск"
-            },
-            {
-              "key": "b9ac35fb-ef27-4d4b-9fcd-3a806c871ed4",
-              "value": "Бийск"
-            },
-            {
-              "key": "6b171a2c-af75-46bc-9429-79ec29b54a1d",
-              "value": "Балаково"
-            },
-            {
-              "key": "729165b3-1352-450c-a7c8-aca6f89eafeb",
-              "value": "Сызрань"
-            },
-            {
-              "key": "59746661-04a6-431f-913c-7100ae693e45",
-              "value": "Салават"
-            },
-            {
-              "key": "1653dbff-d223-4dee-8045-dada8685e366",
-              "value": "Альметьевск"
-            },
-            {
-              "key": "25c415a2-29a6-49cb-a9f0-0daaf112175e",
-              "value": "Йошкар-Ола"
-            },
-            {
-              "key": "01046d0e-326a-4289-85d8-208625de89e4",
-              "value": "Копейск"
-            },
-            {
-              "key": "704f3ef5-a27b-4988-baca-f6e002e9a164",
-              "value": "Красногорск"
-            },
-            {
-              "key": "b4a5efd6-0013-4f47-9f5b-709070821c61",
-              "value": "Ачинск"
-            },
-            {
-              "key": "0b8a1695-8a68-4491-88f1-562ecbbbeab6",
-              "value": "Новый Уренгой"
-            },
-            {
-              "key": "e31eed11-c387-4dbe-882d-dbd624eeaba3",
-              "value": "Жуковский"
-            },
-            {
-              "key": "e70f3e35-6f6e-4b45-8861-17716a2a3927",
-              "value": "Курган"
-            },
-            {
-              "key": "673f8960-e484-4b9e-83e3-989ff7759e7b",
-              "value": "Петрозаводск"
-            },
-            {
-              "key": "6237f1fb-f593-42ef-bd41-180e83381e30",
-              "value": "Новокуйбышевск"
-            },
-            {
-              "key": "9b5e8b83-d806-4855-ae3d-3b5d7f425536",
-              "value": "Кострома"
-            },
-            {
-              "key": "2b70ca02-bdad-4d84-864d-909c0a3e8b2c",
-              "value": "Нижневартовск"
-            },
-            {
-              "key": "33599e07-6e48-490a-b918-360d51d307fb",
-              "value": "Нальчик"
-            },
-            {
-              "key": "3a132be6-eb78-468e-bfc4-d0d369ff2ff6",
-              "value": "Старый Оскол"
-            },
-            {
-              "key": "8e3e81bd-5999-4e15-a87b-df3c869c7454",
-              "value": "Петропавловск-Камчатский"
-            },
-            {
-              "key": "fe4548ac-431f-4b11-84f7-b84d884f2bd3",
-              "value": "Электросталь"
-            },
-            {
-              "key": "adcb3d0d-ca62-4f35-a892-4e7c71be563f",
-              "value": "Одинцово"
-            },
-            {
-              "key": "7a70eb26-b75a-4ce1-bd40-776742689221",
-              "value": "Дербент"
-            },
-            {
-              "key": "1e7dd1af-6fce-4e04-8dcd-bdceaef37f8e",
-              "value": "Владикавказ"
-            },
-            {
-              "key": "44cf953a-3673-41a2-a763-382e1e6c95ed",
-              "value": "Псков"
-            },
-            {
-              "key": "8176f813-1930-4a5d-a67d-e7a60beb14cc",
-              "value": "Миасс"
-            },
-            {
-              "key": "900710e0-c8ed-4e3c-961c-32261fb1c6ed",
-              "value": "Черкесск"
-            },
-            {
-              "key": "beda39e1-253f-44d5-a4b8-c717433a7511",
-              "value": "Железнодорожный"
-            },
-            {
-              "key": "a81cace3-0ae3-4c48-9346-ebd67f740e2b",
-              "value": "Елец"
-            },
-            {
-              "key": "2d0da3cb-1d1c-490e-b67b-70b9f78f8d2f",
-              "value": "Воткинск"
-            }
-          ]
+          "quickSearch": false,
+          "fileImageSize": 200
         },
-        "date": {
+        "description": {
+          "include": true,
+          "fileImageFormat": "square",
+          "quickSearch": false,
+          "fileImageSize": 200
+        },
+        "functions_ids": {
           "include": true,
           "fileImageFormat": "square",
           "quickSearch": false,
@@ -954,72 +518,203 @@ const App = (props) => {
           "quickSearch": false,
           "fileImageSize": 200
         },
-        "link": {
+        "is_remote": {
           "include": true,
           "fileImageFormat": "square",
-          "quickSearch": true,
+          "quickSearch": false,
           "fileImageSize": 200
         },
-        "text1": {
+        "respond_ids": {
           "include": true,
           "fileImageFormat": "square",
           "quickSearch": false,
-          "fileImageSize": 200,
-          "markdown": true
+          "fileImageSize": 200
         },
-        "text2": {
+        "salary_raw": {
           "include": true,
           "fileImageFormat": "square",
           "quickSearch": false,
-          "fileImageSize": 200,
-          "markdown": true
+          "fileImageSize": 200
+        },
+        "title": {
+          "include": true,
+          "fileImageFormat": "square",
+          "quickSearch": false,
+          "fileImageSize": 200
+        },
+        "is_deleted": {
+          "include": false,
+          "fileImageFormat": "square",
+          "quickSearch": false,
+          "fileImageSize": 200
         }
-      }
+      },
+      "removeOn": true,
+      "actions": [
+        {
+          "sysName": "",
+          "id": "84281604831881646",
+          "name": "Хуякс",
+          "buttonIcon": "academy",
+          "buttonType": "accent",
+          "buttonTitle": "нажми меня нежно",
+          "callFrom": "linked",
+          "callFromField": "functions_ids",
+          "formMapping": [
+            {
+              "id": "10341604832001385",
+              "target": "description",
+              "type": "objectField",
+              "value": "id"
+            },
+            {
+              "id": "57571604832009508",
+              "target": "title",
+              "type": "linkedField",
+              "value": "name"
+            },
+            {
+              "id": "74231604832017271",
+              "target": "is_deleted",
+              "type": "const",
+              "value": "false"
+            }
+          ]
+        },
+        {
+          "sysName": "SendMessage",
+          "id": "75191604831888412",
+          "name": "Пиздыкс",
+          "buttonIcon": "babai",
+          "buttonTitle": "нажми меня уверенно, детка",
+          "buttonType": "danger",
+          "SLtype": "other",
+          "fields": {
+            "readFields": [
+              {
+                "fieldSysName": "admin_id",
+                "fetch": [],
+                "sysName": "admin_id",
+                "name": "Кто отправил",
+                "dataType": "link",
+                "link": "WebUser"
+              },
+              {
+                "fieldSysName": "message",
+                "fetch": [],
+                "sysName": "message",
+                "name": "Текст сообщения",
+                "dataType": "string",
+                "link": ""
+              },
+              {
+                "fieldSysName": "user_id",
+                "fetch": [],
+                "sysName": "user_id",
+                "name": "Кому сообщение",
+                "dataType": "link",
+                "link": "WebUser"
+              }
+            ],
+            "writeFields": [
+              {
+                "fieldSysName": "admin_id",
+                "fetch": [],
+                "sysName": "admin_id",
+                "name": "Кто отправил",
+                "dataType": "link",
+                "link": "WebUser"
+              },
+              {
+                "fieldSysName": "message",
+                "fetch": [],
+                "sysName": "message",
+                "name": "Текст сообщения",
+                "dataType": "string",
+                "link": ""
+              },
+              {
+                "fieldSysName": "user_id",
+                "fetch": [],
+                "sysName": "user_id",
+                "name": "Кому сообщение",
+                "dataType": "link",
+                "link": "WebUser"
+              }
+            ]
+          },
+          "formMapping": [
+            {
+              "id": "43021604832188405",
+              "target": "admin_id",
+              "type": "user",
+              "value": null
+            },
+            {
+              "id": "45461604832221797",
+              "target": "message",
+              "type": "const",
+              "value": "привет епта"
+            },
+            {
+              "id": "49121604832235521",
+              "target": "user_id",
+              "type": "objectField",
+              "value": "author_id"
+            }
+          ]
+        },
+        {
+          "sysName": "",
+          "id": "78151604832288623",
+          "name": "Сделать нихуя"
+        }
+      ]
     },
     "tableTitle": "",
     "actions": null,
     "headers": [
       {
-        "sysName": "arrayLink",
-        "name": "al",
-        "dataType": "arrayLink",
-        "id": "40121604337372632",
-        "link": "cities",
+        "sysName": "author_id",
+        "name": "Автор вакансии",
+        "dataType": "link",
+        "id": "93641604039651061",
+        "link": "WebUser",
         "group": "0",
-        "tags": null,
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 4,
-        "linkIndexFieldSysName": [],
-        "defaultValue": null,
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": null,
-        "linkType": false,
-        "json": false,
-        "arrayLink": true,
-        "typeVariable": {},
-        "indexExists": false,
-        "linkOrArrayLinkType": true
-      },
-      {
-        "sysName": "date",
-        "name": "date",
-        "dataType": "date",
-        "id": "18371604334217344",
-        "link": "",
-        "group": "0",
-        "tags": null,
+        "tags": "",
         "indexing": false,
         "ordering": false,
         "description": null,
         "weight": null,
         "order": 1,
         "linkIndexFieldSysName": [],
-        "defaultValue": null,
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "linkType": true,
+        "json": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "indexExists": false,
+        "linkOrArrayLinkType": true
+      },
+      {
+        "sysName": "description",
+        "name": "Описание",
+        "dataType": "string",
+        "id": "36741604039732068",
+        "link": "",
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 3,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
         "constraints": null,
         "synthetic": false,
         "format": null,
@@ -1030,6 +725,32 @@ const App = (props) => {
         "typeVariable": {},
         "indexExists": false,
         "linkOrArrayLinkType": false
+      },
+      {
+        "sysName": "functions_ids",
+        "name": "Необходимые функции",
+        "dataType": "arrayLink",
+        "id": "73451604039771489",
+        "link": "Functions",
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 5,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "linkType": false,
+        "json": false,
+        "arrayLink": true,
+        "typeVariable": {},
+        "indexExists": false,
+        "linkOrArrayLinkType": true
       },
       {
         "sysName": "id",
@@ -1058,46 +779,20 @@ const App = (props) => {
         "linkOrArrayLinkType": false
       },
       {
-        "sysName": "link",
-        "name": "l",
-        "dataType": "link",
-        "id": "67851604337388908",
-        "link": "cities",
+        "sysName": "is_remote",
+        "name": "Возможна ли удаленка?",
+        "dataType": "boolean",
+        "id": "28731604039741452",
+        "link": "",
         "group": "0",
-        "tags": null,
+        "tags": "",
         "indexing": false,
         "ordering": false,
         "description": null,
         "weight": null,
-        "order": 5,
+        "order": 4,
         "linkIndexFieldSysName": [],
-        "defaultValue": null,
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": null,
-        "linkType": true,
-        "json": false,
-        "arrayLink": false,
-        "typeVariable": {},
-        "indexExists": false,
-        "linkOrArrayLinkType": true
-      },
-      {
-        "sysName": "text1",
-        "name": "text1",
-        "dataType": "string",
-        "id": "53171604337371469",
-        "link": null,
-        "group": "0",
-        "tags": null,
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 2,
-        "linkIndexFieldSysName": [],
-        "defaultValue": null,
+        "defaultValue": "",
         "constraints": null,
         "synthetic": false,
         "format": null,
@@ -1110,20 +805,72 @@ const App = (props) => {
         "linkOrArrayLinkType": false
       },
       {
-        "sysName": "text2",
-        "name": "text2",
-        "dataType": "string",
-        "id": "57981604337372062",
-        "link": null,
+        "sysName": "respond_ids",
+        "name": "Отклики",
+        "dataType": "arrayLink",
+        "id": "85091604758872131",
+        "link": "Job_responds",
         "group": "0",
         "tags": null,
         "indexing": false,
         "ordering": false,
         "description": null,
         "weight": null,
-        "order": 3,
+        "order": 8,
         "linkIndexFieldSysName": [],
         "defaultValue": null,
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "linkType": false,
+        "json": false,
+        "arrayLink": true,
+        "typeVariable": {},
+        "indexExists": false,
+        "linkOrArrayLinkType": true
+      },
+      {
+        "sysName": "salary_raw",
+        "name": "Зарплатная вилка",
+        "dataType": "json",
+        "id": "60961604039806254",
+        "link": "",
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 6,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "linkType": false,
+        "json": true,
+        "arrayLink": false,
+        "typeVariable": {},
+        "indexExists": false,
+        "linkOrArrayLinkType": false
+      },
+      {
+        "sysName": "title",
+        "name": "Название вакансии",
+        "dataType": "string",
+        "id": "69581604039684404",
+        "link": "",
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 2,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
         "constraints": null,
         "synthetic": false,
         "format": null,
@@ -1138,23 +885,98 @@ const App = (props) => {
     ],
     "data": [
       {
-        "text1": "# Hello епта\n\n## this is Sparta",
-        "id": "2f1ea53d-9b67-44ae-b951-bd755470d414",
-        "date": 1604966400000,
-        "link": {
-          "name": "Иркутск",
-          "id": "cf89852c-0979-4dc2-a688-9f5f40e5f7b1"
-        },
-        "arrayLink": [
+        "description": "быть как Rainman ",
+        "functions_ids": [
           {
-            "name": "Кемерово",
-            "id": "ee69e04b-bb3b-4835-a8c9-2a2fa47c9c1a"
+            "name": "Big Data",
+            "id": "big data"
+          }
+        ],
+        "salary_raw": "{\"secondValue\":1200,\"firstValue\":200}",
+        "id": "8f9bbcd3-2d29-450a-931b-8d0df46889a9",
+        "is_remote": false,
+        "author_id": {
+          "lastName": "Nesterova",
+          "firstName": "Anastasiia",
+          "id": "79160990344"
+        },
+        "title": "Игрок в покер",
+        "is_deleted": ""
+      },
+      {
+        "description": "Придумать новую историю о Гарри Поттере",
+        "functions_ids": [
+          {
+            "name": "Finance",
+            "id": "finance"
           },
           {
-            "name": "Киров",
-            "id": "9f937f4d-fff3-4e95-9833-05edba95e9fb"
+            "name": "Risks",
+            "id": "risks"
           }
-        ]
+        ],
+        "salary_raw": "{\"secondValue\":400,\"firstValue\":200}",
+        "id": "40d31497-a703-4c04-a020-8d63f7ad55bc",
+        "is_remote": true,
+        "author_id": {
+          "lastName": "Nesterova",
+          "firstName": "Anastasiia",
+          "id": "79160990344"
+        },
+        "title": "Писатель",
+        "is_deleted": ""
+      },
+      {
+        "description": "## Требования \n- руки из плечей держать штурвал,\n- отсутствие морской болезни,\n- знание наизусть песни \"Йо хо хо и бутылка рому\"\n\n## Задачи\n- Кататься на лодочке\n- любоваться чайками, \n- слушать звук прибоя,\n- делать сложные щщи и смотреть в горизонт.\n\n![](https://bk55.ru/fileadmin/bkinform/bk_info_113669_big_1510732252.jpg)",
+        "functions_ids": [
+          {
+            "name": "Lean",
+            "id": "lean"
+          }
+        ],
+        "salary_raw": "{\"secondValue\":877,\"firstValue\":282}",
+        "id": "bb4abde8-be88-4940-b8ed-182bbebc9a11",
+        "is_remote": true,
+        "author_id": {
+          "firstName": "Павел",
+          "lastName": "Ершов",
+          "id": "79151845361"
+        },
+        "title": "Капитан дальнего плавания",
+        "respond_ids": [
+          {
+            "Status": "new",
+            "user_id": {
+              "Photo": "https://images.unsplash.com/photo-1603977503292-79226279141c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+              "Salary_expectations_TEXT": "От 540 до 1320 тыс. ₽ в месяц, без бонусов (fix, gross)",
+              "lastName": "Ершов",
+              "firstName": "Павел",
+              "id": "79151845361",
+              "Job_title": "CEO"
+            },
+            "id": "8e95d7a9-920e-4d5a-b631-59595af87d92"
+          }
+        ],
+        "is_deleted": ""
+      },
+      {
+        "description": "Математика, физика",
+        "functions_ids": [
+          {
+            "name": "Finance",
+            "id": "finance"
+          }
+        ],
+        "salary_raw": "{\"secondValue\":505,\"firstValue\":200}",
+        "id": "6f4f7ef1-7185-45f9-a2d6-df87bbf80b77",
+        "is_remote": false,
+        "author_id": {
+          "firstName": "Павел",
+          "lastName": "Ершов",
+          "id": "79151845361"
+        },
+        "title": "Школьный учитель",
+        "is_deleted": ""
       }
     ],
     "totalPages": 1,
@@ -1162,54 +984,148 @@ const App = (props) => {
     "error": null,
     "fieldScheme": [
       [
-        "arrayLink.id",
-        1315871
+        "author_id.firstName",
+        1315850
       ],
       [
-        "arrayLink.name",
-        1315871
+        "author_id.id",
+        1315850
       ],
       [
-        "date",
-        1322050
+        "author_id.lastName",
+        1315850
+      ],
+      [
+        "description",
+        1321550
+      ],
+      [
+        "functions_ids.name",
+        1316850
       ],
       [
         "id",
-        1322050
+        1321550
       ],
       [
-        "link.id",
-        1315871
+        "is_remote",
+        1321550
       ],
       [
-        "link.name",
-        1315871
+        "respond_ids.Status",
+        1322450
       ],
       [
-        "text1",
-        1322050
+        "respond_ids.id",
+        1322450
       ],
       [
-        "text2",
-        1322050
+        "respond_ids.user_id.Job_title",
+        1315850
+      ],
+      [
+        "respond_ids.user_id.Photo",
+        1315850
+      ],
+      [
+        "respond_ids.user_id.Salary_expectations_TEXT",
+        1315850
+      ],
+      [
+        "respond_ids.user_id.current_job_company",
+        1315850
+      ],
+      [
+        "respond_ids.user_id.current_job_title",
+        1315850
+      ],
+      [
+        "respond_ids.user_id.firstName",
+        1315850
+      ],
+      [
+        "respond_ids.user_id.id",
+        1315850
+      ],
+      [
+        "respond_ids.user_id.lastName",
+        1315850
+      ],
+      [
+        "salary_raw",
+        1321550
+      ],
+      [
+        "title",
+        1321550
       ]
     ],
     "writeFields": [
-      "arrayLink",
-      "date",
+      "description",
       "id",
-      "text1"
+      "is_deleted",
+      "title"
     ],
     "structures": {
-      "1315871": {
+      "1315850": {
         "networkID": 3571,
-        "sysName": "cities",
-        "name": "Cities",
-        "id": 1315871,
-        "dateCreated": "2020-09-18T07:42:27Z",
+        "sysName": "WebUser",
+        "name": "App users",
+        "id": 1315850,
+        "dateCreated": "2020-09-17T11:29:56Z",
         "hidden": false,
         "dateHidden": null,
-        "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"City name\",\"id\":\"64661600414975068\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false,\"json\":false}]",
+        "jsonObject": "[{\"sysName\":\"role\",\"dataType\":\"string\",\"name\":\"Роль в системе\",\"id\":\"1\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"Salary_expectations_TEXT\",\"dataType\":\"string\",\"name\":\"Ожидания по доходу, gross\",\"id\":\"12481604012441934\",\"link\":\"\",\"group\":\"1600346971036\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"Compan_city_id\",\"dataType\":\"arrayLink\",\"name\":\"Города, где работает компания\",\"id\":\"17331604005598241\",\"link\":\"cities\",\"group\":\"1600346984797\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"isAuthorization\",\"dataType\":\"boolean\",\"name\":\"isAuthorization\",\"id\":\"2\",\"link\":\"\",\"group\":\"1600346916835\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"Company_id\",\"dataType\":\"string\",\"name\":\"Название компании\",\"id\":\"21091600891116320\",\"link\":\"\",\"group\":\"1600346984797\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"Пол\",\"id\":\"21661600355677459\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"dateLastActivity\",\"dataType\":\"string\",\"name\":\"dateLastActivity\",\"id\":\"3\",\"link\":\"\",\"group\":\"1600346916835\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"Company_site\",\"dataType\":\"string\",\"name\":\"Сайт компании\",\"id\":\"32501603357535558\",\"link\":\"\",\"group\":\"1600346984797\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"Salary_expectations\",\"dataType\":\"json\",\"name\":\"Ожидания по доходу\",\"id\":\"39581600416217901\",\"link\":\"\",\"group\":\"1600346971036\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":true,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"email\",\"dataType\":\"string\",\"name\":\"Email\",\"id\":\"4\",\"link\":\"\",\"group\":\"1600346959380\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"push_topics\",\"dataType\":\"json\",\"name\":\"О чем оповещать\",\"id\":\"41091604006680753\",\"link\":\"\",\"group\":\"1604006620993\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":true,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"Job_title\",\"dataType\":\"string\",\"name\":\"Моя позиция в компании\",\"id\":\"42911604046604782\",\"link\":\"\",\"group\":\"1600346984797\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"push_how_often\",\"dataType\":\"json\",\"name\":\"Как часто присылать оповещения в бота\",\"id\":\"43711604006652482\",\"link\":\"\",\"group\":\"1604006620993\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":true,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"Photo\",\"dataType\":\"file\",\"name\":\"Фото\",\"id\":\"48241600975652227\",\"link\":\"\",\"group\":\"1600346959380\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"phone\",\"dataType\":\"string\",\"name\":\"Телефон\",\"id\":\"5\",\"link\":\"\",\"group\":\"1600346959380\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"TG_username\",\"dataType\":\"string\",\"name\":\"Telegram username\",\"id\":\"52471600355107908\",\"link\":\"\",\"group\":\"1600346959380\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"lastName\",\"dataType\":\"string\",\"name\":\"Фамилия\",\"id\":\"54421600355663803\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"dateCreated\",\"dataType\":\"string\",\"name\":\"dateCreated\",\"id\":\"6\",\"link\":\"\",\"group\":\"1600346916835\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"current_job_title\",\"dataType\":\"string\",\"name\":\"Должность в текущей компании\",\"id\":\"60981604048698572\",\"link\":\"\",\"group\":\"1600346971036\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"firstName\",\"dataType\":\"string\",\"name\":\"Имя\",\"id\":\"61731600355663227\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"password\",\"dataType\":\"string\",\"name\":\"password\",\"id\":\"7\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"CV_url\",\"dataType\":\"string\",\"name\":\"Ссылка на CV\",\"id\":\"74381600346994234\",\"link\":\"\",\"group\":\"1600346971036\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"City_id\",\"dataType\":\"link\",\"name\":\"Город проживания\",\"id\":\"78691600347022913\",\"link\":\"cities\",\"group\":\"1600346959380\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":true},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"8\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"Skills\",\"dataType\":\"arrayLink\",\"name\":\"Функция\",\"id\":\"82091600415098326\",\"link\":\"Functions\",\"group\":\"1600346971036\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"TG_user_id\",\"dataType\":\"link\",\"name\":\"Telegram User\",\"id\":\"82311600346913479\",\"link\":\"TUser\",\"group\":\"1600346959380\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":true},{\"sysName\":\"current_job_company\",\"dataType\":\"string\",\"name\":\"Текущая компания\",\"id\":\"93761604048697992\",\"link\":\"\",\"group\":\"1600346971036\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false}]",
+        "jsonGroupSettings": "[{\"id\":1600346916835,\"name\":\"Trash\",\"order\":3},{\"id\":1600346971036,\"name\":\"Candidate info\",\"order\":1},{\"id\":1600346984797,\"name\":\"Company info\",\"order\":2},{\"id\":1604006620993,\"name\":\"Настройки оповещений\",\"order\":4},{\"id\":1600346959380,\"name\":\"Contacts\",\"order\":0}]",
+        "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
+        "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":false,\"lowPriority\":false}",
+        "jsonNativeIndexSettings": null,
+        "indexEnabled": true,
+        "lastIndexUpdate": 0,
+        "indexName": "",
+        "dateChanged": "2020-10-30T09:05:31Z",
+        "createBy": 0,
+        "changedBy": 1,
+        "_settings": null,
+        "_nativeIndexSettings": null,
+        "innerIDField": {
+          "sysName": "id",
+          "name": "id",
+          "dataType": "id",
+          "id": "8",
+          "link": "",
+          "group": "0",
+          "tags": "",
+          "indexing": false,
+          "ordering": false,
+          "description": null,
+          "weight": null,
+          "order": 0,
+          "linkIndexFieldSysName": [],
+          "defaultValue": "",
+          "constraints": null,
+          "synthetic": false,
+          "format": null,
+          "formatOptions": null,
+          "linkType": false,
+          "json": false,
+          "arrayLink": false,
+          "typeVariable": {},
+          "indexExists": false,
+          "linkOrArrayLinkType": false
+        },
+        "objectIDSysName": "id",
+        "folderId": null
+      },
+      "1316850": {
+        "networkID": 3571,
+        "sysName": "Functions",
+        "name": "Функции",
+        "id": 1316850,
+        "dateCreated": "2020-09-28T12:41:37Z",
+        "hidden": false,
+        "dateHidden": null,
+        "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Назване функции\",\"id\":\"55601601296901980\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Описане\",\"id\":\"61471604045483466\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false}]",
         "jsonGroupSettings": null,
         "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
         "jsonSettings": null,
@@ -1217,7 +1133,7 @@ const App = (props) => {
         "indexEnabled": false,
         "lastIndexUpdate": 0,
         "indexName": "",
-        "dateChanged": "2020-09-28T12:47:19Z",
+        "dateChanged": "2020-10-30T08:11:35Z",
         "createBy": 1,
         "changedBy": 1,
         "_settings": null,
@@ -1251,23 +1167,23 @@ const App = (props) => {
         "objectIDSysName": "id",
         "folderId": 33588861
       },
-      "1322050": {
+      "1321550": {
         "networkID": 3571,
-        "sysName": "test",
-        "name": "test",
-        "id": 1322050,
-        "dateCreated": "2020-11-02T16:23:34Z",
+        "sysName": "Jobs",
+        "name": "Вакансии",
+        "id": 1321550,
+        "dateCreated": "2020-10-30T06:34:02Z",
         "hidden": false,
         "dateHidden": null,
-        "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":false,\"json\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"date\",\"name\":\"date\",\"dataType\":\"date\",\"id\":\"18371604334217344\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":false,\"json\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"arrayLink\",\"name\":\"al\",\"dataType\":\"arrayLink\",\"id\":\"40121604337372632\",\"link\":\"cities\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":false,\"json\":false,\"arrayLink\":true,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"text1\",\"name\":\"text1\",\"dataType\":\"string\",\"id\":\"53171604337371469\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":false,\"json\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"text2\",\"name\":\"text2\",\"dataType\":\"string\",\"id\":\"57981604337372062\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":false,\"json\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"link\",\"name\":\"l\",\"dataType\":\"link\",\"id\":\"67851604337388908\",\"link\":\"cities\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":true,\"json\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":true}]",
+        "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":false,\"json\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"is_remote\",\"name\":\"Возможна ли удаленка?\",\"dataType\":\"boolean\",\"id\":\"28731604039741452\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":false,\"json\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"description\",\"name\":\"Описание\",\"dataType\":\"string\",\"id\":\"36741604039732068\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":false,\"json\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"is_deleted\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"59631604040401120\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":false,\"json\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"salary_raw\",\"name\":\"Зарплатная вилка\",\"dataType\":\"json\",\"id\":\"60961604039806254\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":false,\"json\":true,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"title\",\"name\":\"Название вакансии\",\"dataType\":\"string\",\"id\":\"69581604039684404\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":false,\"json\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"functions_ids\",\"name\":\"Необходимые функции\",\"dataType\":\"arrayLink\",\"id\":\"73451604039771489\",\"link\":\"Functions\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":false,\"json\":false,\"arrayLink\":true,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"respond_ids\",\"name\":\"Отклики\",\"dataType\":\"arrayLink\",\"id\":\"85091604758872131\",\"link\":\"Job_responds\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":false,\"json\":false,\"arrayLink\":true,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"author_id\",\"name\":\"Автор вакансии\",\"dataType\":\"link\",\"id\":\"93641604039651061\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":true,\"json\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":true}]",
         "jsonGroupSettings": null,
-        "jsonViewIdSettings": "[{\"sysName\":\"date\"},{\"sysName\":\"arrayLink\"}]",
+        "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
         "jsonSettings": null,
         "jsonNativeIndexSettings": null,
         "indexEnabled": true,
         "lastIndexUpdate": 0,
         "indexName": "",
-        "dateChanged": "2020-11-04T08:19:50Z",
+        "dateChanged": "2020-11-07T14:21:29Z",
         "createBy": 1,
         "changedBy": 1,
         "_settings": null,
@@ -1299,7 +1215,57 @@ const App = (props) => {
           "linkOrArrayLinkType": false
         },
         "objectIDSysName": "id",
-        "folderId": null
+        "folderId": 33591500
+      },
+      "1322450": {
+        "networkID": 3571,
+        "sysName": "Job_responds",
+        "name": "Отклики",
+        "id": 1322450,
+        "dateCreated": "2020-11-07T14:18:30Z",
+        "hidden": false,
+        "dateHidden": null,
+        "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":false,\"json\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"user_id\",\"name\":\"Кандидат\",\"dataType\":\"link\",\"id\":\"34641604758714655\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":true,\"json\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"job_id\",\"name\":\"Вакансия\",\"dataType\":\"link\",\"id\":\"79931604758715240\",\"link\":\"Jobs\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":true,\"json\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"Status\",\"name\":\"Статус\",\"dataType\":\"string\",\"id\":\"99591604758716602\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":false,\"json\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false}]",
+        "jsonGroupSettings": null,
+        "jsonViewIdSettings": "[{\"sysName\":\"user_id\"}]",
+        "jsonSettings": null,
+        "jsonNativeIndexSettings": null,
+        "indexEnabled": false,
+        "lastIndexUpdate": 0,
+        "indexName": "",
+        "dateChanged": "2020-11-07T14:20:42Z",
+        "createBy": 1,
+        "changedBy": 1,
+        "_settings": null,
+        "_nativeIndexSettings": null,
+        "innerIDField": {
+          "sysName": "id",
+          "name": "id",
+          "dataType": "id",
+          "id": "0",
+          "link": "",
+          "group": "0",
+          "tags": "",
+          "indexing": false,
+          "ordering": false,
+          "description": null,
+          "weight": null,
+          "order": 0,
+          "linkIndexFieldSysName": [],
+          "defaultValue": "",
+          "constraints": null,
+          "synthetic": false,
+          "format": null,
+          "formatOptions": null,
+          "linkType": false,
+          "json": false,
+          "arrayLink": false,
+          "typeVariable": {},
+          "indexExists": false,
+          "linkOrArrayLinkType": false
+        },
+        "objectIDSysName": "id",
+        "folderId": 33591500
       }
     },
     "isSuccessWrite": false,
@@ -1307,46 +1273,20 @@ const App = (props) => {
     "writeResponse": null,
     "fileds": [
       {
-        "sysName": "arrayLink",
-        "name": "al",
-        "dataType": "arrayLink",
-        "id": "40121604337372632",
-        "link": "cities",
-        "group": "0",
-        "tags": null,
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 4,
-        "linkIndexFieldSysName": [],
-        "defaultValue": null,
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": null,
-        "linkType": false,
-        "json": false,
-        "arrayLink": true,
-        "typeVariable": {},
-        "indexExists": false,
-        "linkOrArrayLinkType": true
-      },
-      {
-        "sysName": "date",
-        "name": "date",
-        "dataType": "date",
-        "id": "18371604334217344",
+        "sysName": "description",
+        "name": "Описание",
+        "dataType": "string",
+        "id": "36741604039732068",
         "link": "",
         "group": "0",
-        "tags": null,
+        "tags": "",
         "indexing": false,
         "ordering": false,
         "description": null,
         "weight": null,
-        "order": 1,
+        "order": 3,
         "linkIndexFieldSysName": [],
-        "defaultValue": null,
+        "defaultValue": "",
         "constraints": null,
         "synthetic": false,
         "format": null,
@@ -1385,20 +1325,46 @@ const App = (props) => {
         "linkOrArrayLinkType": false
       },
       {
-        "sysName": "text1",
-        "name": "text1",
-        "dataType": "string",
-        "id": "53171604337371469",
-        "link": null,
+        "sysName": "is_deleted",
+        "name": "",
+        "dataType": "boolean",
+        "id": "59631604040401120",
+        "link": "",
         "group": "0",
-        "tags": null,
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 7,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "linkType": false,
+        "json": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "indexExists": false,
+        "linkOrArrayLinkType": false
+      },
+      {
+        "sysName": "title",
+        "name": "Название вакансии",
+        "dataType": "string",
+        "id": "69581604039684404",
+        "link": "",
+        "group": "0",
+        "tags": "",
         "indexing": false,
         "ordering": false,
         "description": null,
         "weight": null,
         "order": 2,
         "linkIndexFieldSysName": [],
-        "defaultValue": null,
+        "defaultValue": "",
         "constraints": null,
         "synthetic": false,
         "format": null,
@@ -8010,9 +7976,9 @@ const App = (props) => {
 
             </Route>
             <Route exact path="/cards">
-              <FpsCards data={linksRead} />
-              <FpsCards data={linksWrite} />
-              <FpsCards data={exampleTable} />
+              <FpsCards data={cardActions} auth={authExample}/>
+              {/* <FpsCards data={linksWrite} />
+              <FpsCards data={exampleTable} /> */}
               {/* <br /><br />
               <FpsCards data={exampleTable2} /> */}
             </Route>

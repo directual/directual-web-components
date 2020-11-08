@@ -255,6 +255,7 @@ export default function InputsPage() {
             <Input
                 label='Select with subselect'
                 width={400}
+                highlightEmpty
                 description='That component is needed for some complex cases'
                 subSelect={
                     {
