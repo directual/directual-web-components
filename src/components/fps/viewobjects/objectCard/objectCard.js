@@ -20,8 +20,8 @@ export function ObjectCard(props) {
     // support previous component version:
     const oldFashioned = !props.params.data ? true : false
 
-    console.log('==============props==============')
-    console.log(props)
+    // console.log('==============props==============')
+    // console.log(props)
     // console.log(oldFashioned)
 
     // console.log('==============CARD MODEL==============')
@@ -113,8 +113,8 @@ export function ObjectCard(props) {
     // выполнить Action
 
     function submitAction(action, actionParams) {
-        console.log(action)
-        console.log(actionParams)
+        // console.log(action)
+        // console.log(actionParams)
         let mapping = {}
 
         actionParams.formMapping && actionParams.formMapping.forEach(row => {
