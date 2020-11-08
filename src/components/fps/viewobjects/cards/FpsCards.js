@@ -87,7 +87,7 @@ function FpsCards({auth, data, onEvent, id }) {
         console.log('submitting action...')
         console.log(mapping)
         console.log('sl = ' + sl)
-        //sendMsg(mapping, sl)
+        sendMsg(mapping, sl)
     }
 
     return (
