@@ -31,24 +31,27 @@ function FpsCards({auth, data, onEvent, id }) {
     const [loading, setLoading] = useState(false)
     const [searchValue, setSearchValue] = useState()
     const [currentPage, setCurrentPage] = useState(0)
+    const [currentDQL, setCurrentDQL] = useState(null)
 
     const search = value => {
         if (value) {
             setSearchValue(value)
             const fieldsDQL = data.headers && data.headers.map(i => i.sysName);
             const requestDQL = fieldsDQL.map(i=>i + ' like ' + "'" + value + "'").join(' OR ')
-            sendMsg({dql: requestDQL})
+            setCurrentDQL(requestDQL)
         } else {
             setSearchValue('')
-            sendMsg({dql: ''})
+            setCurrentDQL('')
         }
     }
+
+    useEffect(()=>{sendMsg()}, [currentPage, currentDQL])
 
     // единая точка доступа к API:
     const sendMsg = (msg, sl) => {
         console.log('submitting...')
-        const message = { ...msg, _id: 'form_' + id, _sl_name: sl }
-        //const message = { ...msg, page: currentPage, _id: 'form_' + id, _sl_name: sl }
+        const message = { ...msg, page: currentPage, dql: currentDQL, _id: 'form_' + id, _sl_name: sl }
+        console.log(message)
         setLoading(true)
         if (onEvent) {
             onEvent(message)
@@ -122,7 +125,7 @@ function FpsCards({auth, data, onEvent, id }) {
                 params={data.params}
                 searchValue={searchValue}
                 onExpand={val => { setShowObject(val) }}
-                //onEvent={onEvent}
+                onEvent={onEvent}
                 setPage={page => setCurrentPage(page)}
                 auth={auth}
                 submitAction={submitAction}

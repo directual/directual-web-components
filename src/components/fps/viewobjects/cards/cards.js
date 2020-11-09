@@ -120,7 +120,6 @@ export function Cards({ data, setPage, onEvent, id, onExpand, loading, setLoadin
                     const quickActions = params.actions ?
                         params.actions.filter(i => i.dropdown && i.displayAs == 'button' && i.callFrom == 'main') : []
                     const object = row
-                    console.log(row)
                     // выполнить Action
                     function performAction(actionParams) {
                         console.log(actionParams)
