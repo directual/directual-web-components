@@ -137,14 +137,61 @@
             align-items: flex-start;
             z-index: 2;
             .details {
-                opacity: .5;
-                cursor: pointer;
+                .detailsButton {
+                    opacity: .5;
+                    cursor: pointer;
+                }
                 position: absolute;
                 top:12px;
                 right: 6px;
                 transition: .5s;
                 &:hover {
+                    .detailsButton {
+                        opacity: 1;}
+                }
+                .quickMenu {
+                    position: absolute;
+                    // height: 100px;
+                    // width: 100px;
+                    display: flex;
+                    flex-direction: column;
+                    box-shadow: 0 5px 12px rgba(0,0,0,.15);
+                    top:0;
+                    right: 100%;
+                    transition: .3s;
+                    transform-origin: top right;
+                    transition-timing-function: cubic-bezier(.6,.44,.72,1.45);
+                    transform: scale(1);
                     opacity: 1;
+                    border-radius: calc(var(--border-radius)/2);
+                    background-color: var(--background-color);
+                    border: solid 1px var(--field-border-color);
+                    &.hide {
+                        transform: scale(0);
+                        opacity: 0;
+                    }
+                    li {
+                        flex-shrink: 0;
+                        padding:8px 12px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        max-width: 150px;
+                        font-size: var(--text-small-size);
+                        margin:2px;
+                        border-radius: var( --border-radius);
+                        cursor: pointer;
+                        &:hover {
+                            background: var( --secondary-background-color);
+                        }
+                        &:active:not(.disabled) {
+                            background: var(--font-color);
+                            color: var(--background-color);
+                            .displayKey {
+                                color: var(--button-accent-color);
+                            }
+                        }
+                    }
                 }
             }
             .cardHeader {
@@ -178,6 +225,7 @@
             }
             .labelText, .linkText {
                 margin-right: 4px;
+                margin-top: 4px;
                 border-radius: calc(var(--border-radius) / 2);
             }
             .labelText {

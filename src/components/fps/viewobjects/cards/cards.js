@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styles from './cards.module.css'
 import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
 import ExpandedText from '../../expandedText/expandedText'
 import { Paging } from '../paging/paging'
 import moment from 'moment'
 
-export function Cards({ data, onEvent, id, onExpand, loading, setLoading, searchValue }) {
+export function Cards({ data, setPage, onEvent, id, onExpand, loading, setLoading, searchValue, auth, submitAction, params }) {
     const tableHeaders = data.headers || []
     const tableData = enrichTableDataWithWriteFields(data) || []
     const tableParams = data.params || {
@@ -16,11 +16,10 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading, search
     const pageSize = data.pageSize || 0
     const totalPages = data.totalPages || 0
     const currentPage = data.pageNumber || 0
-    const tableFilters = data.tableFilters || null
 
     const sendMsg = (msg) => {
         const message = { ...msg, _id: id }
-        console.log(message)
+        //console.log(message)
         if (onEvent) {
             onEvent(message)
         }
@@ -99,39 +98,81 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading, search
             <div className={`${styles.cardsWrapper} ${(data.error || tableData.length === 0 || tableHeaders.length === 0) && styles.emptyTable} ${loading && styles.loading}`}>
                 {(tableData.length != 0 && tableHeaders.length != 0) && tableData.map((row, i) => {
 
+                    const [showQA, setShowQA] = useState(false)
+                    const quickMenu = useRef(null);
+
+                    useOutsideAlerter(quickMenu);
+                    function useOutsideAlerter(ref) {
+                        useEffect(() => {
+                            function handleClickOutside(event) {
+                                if (ref.current && !ref.current.contains(event.target)) {
+                                    setShowQA(false)
+                                }
+                            }
+                            document.addEventListener("mousedown", handleClickOutside);
+                            return () => {
+                                document.removeEventListener("mousedown", handleClickOutside);
+                            };
+                        }, [ref]);
+                    }
+
+                    // actions для меню быстрого доступа
+                    const quickActions = params.actions ?
+                        params.actions.filter(i => i.dropdown && i.displayAs == 'button' && i.callFrom == 'main') : []
+                    const object = row
+                    console.log(row)
+                    // выполнить Action
+                    function performAction(actionParams) {
+                        console.log(actionParams)
+                        let mapping = {}
+                        actionParams.formMapping && actionParams.formMapping.forEach(row => {
+                            if (row.type == 'user') { mapping[row.target] = auth ? auth.user : null }
+                            if (row.type == 'const') { mapping[row.target] = row.value }
+                            if (row.type == 'objectField') {
+                                mapping[row.target] = typeof object[row.value] != 'object' ?
+                                    object[row.value] :
+                                    Array.isArray(object[row.value]) ?
+                                        object[row.value].map(i => i.id).join(',') :
+                                        object[row.value].id
+                            }
+                        })
+                        const sl = actionParams.sysName
+                        submitAction(mapping, sl)
+                    }
+
                     // в этой хуете мы подтягиваем для Заголовка, Подзаголовка и Текста карточки visible name если поле типа link/arrayLink
                     const cardHeader = getInitialStructureParams().viewName && getInitialStructureParams().viewName &&
                         (getInitialStructureParams().viewName.length > 0 ?
                             getInitialStructureParams().viewName.map(i => typeof row[i] == 'object' ?
                                 !Array.isArray(row[i]) ?
                                     getLinkName(i, row[i]) :
-                                    row[i].map(j => getLinkName(i,j)).join(', ')
-                                : 
-                                tableHeaders.filter(h => h.sysName == i)[0].dataType !='date' ? 
-                                    row[i] : 
+                                    row[i].map(j => getLinkName(i, j)).join(', ')
+                                :
+                                tableHeaders.filter(h => h.sysName == i)[0].dataType != 'date' ?
+                                    row[i] :
                                     moment(row[i]).format('D MMM, YYYY')
-                                ).join(' ')
+                            ).join(' ')
                             : 'No visible name')
                     const cardHeaderComment = row && (typeof row[tableParams.cardHeaderComment] == 'object' ?
                         !Array.isArray(row[tableParams.cardHeaderComment]) ?
                             getLinkName(tableParams.cardHeaderComment, row[tableParams.cardHeaderComment])
                             : row[tableParams.cardHeaderComment].map(i => getLinkName(tableParams.cardHeaderComment, i))
-                        :   (tableHeaders.filter(h => h.sysName == tableParams.cardHeaderComment)[0] && 
-                                tableHeaders.filter(h => h.sysName == tableParams.cardHeaderComment)[0].dataType =='date') ?
+                        : (tableHeaders.filter(h => h.sysName == tableParams.cardHeaderComment)[0] &&
+                            tableHeaders.filter(h => h.sysName == tableParams.cardHeaderComment)[0].dataType == 'date') ?
                             moment(row[tableParams.cardHeaderComment]).format('D MMM, YYYY') :
-                            row[tableParams.cardHeaderComment] 
-                            )
+                            row[tableParams.cardHeaderComment]
+                    )
 
                     const cardBodyText = row && (typeof row[tableParams.cardBodyText] == 'object' ?
                         !Array.isArray(row[tableParams.cardBodyText]) ?
                             getLinkName(tableParams.cardBodyText, row[tableParams.cardBodyText])
                             : row[tableParams.cardBodyText].map(i => getLinkName(tableParams.cardBodyText, i))
 
-                        :   (tableHeaders.filter(h => h.sysName == tableParams.cardBodyText)[0] && 
-                            tableHeaders.filter(h => h.sysName == tableParams.cardBodyText)[0].dataType =='date') ?
-                        moment(row[tableParams.cardBodyText]).format('D MMM, YYYY') :
-                        row[tableParams.cardBodyText] 
-                        )
+                        : (tableHeaders.filter(h => h.sysName == tableParams.cardBodyText)[0] &&
+                            tableHeaders.filter(h => h.sysName == tableParams.cardBodyText)[0].dataType == 'date') ?
+                            moment(row[tableParams.cardBodyText]).format('D MMM, YYYY') :
+                            row[tableParams.cardBodyText]
+                    )
                     // ==================================
 
                     return (
@@ -142,7 +183,7 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading, search
                                 ${tableParams.invertColors && styles.invertColors}
                                 `}
                                 onClick={() => !loading && onExpand(row)}>
-                                
+
                                 {/* Картинка карточки */}
                                 {tableParams.cardImageField &&
                                     <div className={`${styles.cardImage}`}
@@ -154,10 +195,35 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading, search
                                     >
                                         {!row[tableParams.cardImageField] && <span className='icon icon-ban'>no&nbsp;picture</span>}
                                     </div>}
-                                
+
                                 {/* Текст карточки */}
                                 <div className={styles.cardText}>
-                                    {/* <div className={`${styles.details} icon icon-details`}></div> */}
+
+                                    {/* quick actions menu */}
+                                    {quickActions && quickActions.length > 0 &&
+                                        <div
+
+                                            className={`${styles.details}`}>
+                                            <div
+                                                onClick={e => {
+                                                    e.stopPropagation()
+                                                    setShowQA(true)
+                                                }}
+                                                className={`${styles.detailsButton} icon icon-details`}
+                                            ></div>
+                                            <ul ref={quickMenu} className={`${styles.quickMenu} ${!showQA && styles.hide}`}>
+                                                {quickActions.map(action => <li
+                                                    onClick={e => {
+                                                        e.stopPropagation()
+                                                        performAction(action)
+                                                        setShowQA(false)
+                                                    }}
+                                                    className={`${action.buttonIcon ? 'icon small icon-' + action.buttonIcon : ''}`}>
+                                                    {action.buttonTitle || action.name}
+                                                </li>)}
+                                            </ul>
+                                        </div>}
+
                                     <h3 className={styles.cardHeader}>
                                         {cardHeader.length > 0 ? cardHeader : 'No visible name'}
                                     </h3>
@@ -213,7 +279,7 @@ export function Cards({ data, onEvent, id, onExpand, loading, setLoading, search
             {totalPages > 0 && tableData.length != 0 && tableHeaders.length != 0 &&
                 <div className={styles.pagination}>
                     <Paging
-                        sendMsg={sendMsg}
+                        setPage={setPage}
                         pageSize={pageSize}
                         totalPages={totalPages}
                         currentPage={currentPage}

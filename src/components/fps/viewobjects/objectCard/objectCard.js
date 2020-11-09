@@ -112,11 +112,8 @@ export function ObjectCard(props) {
 
     // выполнить Action
 
-    function submitAction(action, actionParams) {
-        // console.log(action)
-        // console.log(actionParams)
+    function submitAction(actionParams) {
         let mapping = {}
-
         actionParams.formMapping && actionParams.formMapping.forEach(row => {
             if (row.type == 'user') { mapping[row.target] = props.auth ? props.auth.user : null }
             if (row.type == 'const') { mapping[row.target] = row.value }
@@ -143,7 +140,6 @@ export function ObjectCard(props) {
                         props.object[row.value].id
             }
         })
-
         const sl = actionParams.sysName
         props.submitAction(mapping, sl)
     }
@@ -895,7 +891,7 @@ function CardAction({ action, actionParams, debug, submitAction }) {
             <Button
                 accent={actionParams.buttonType == 'accent'}
                 danger={actionParams.buttonType == 'danger'}
-                onClick={() => submitAction(action, actionParams)}
+                onClick={() => submitAction(actionParams)}
                 icon={actionParams.buttonIcon}
             >
                 {actionParams.buttonTitle || actionParams.name}</Button>

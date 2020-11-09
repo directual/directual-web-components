@@ -30,26 +30,24 @@ function FpsCards({auth, data, onEvent, id }) {
 
     const [loading, setLoading] = useState(false)
     const [searchValue, setSearchValue] = useState()
+    const [currentPage, setCurrentPage] = useState(0)
 
     const search = value => {
         if (value) {
             setSearchValue(value)
             const fieldsDQL = data.headers && data.headers.map(i => i.sysName);
             const requestDQL = fieldsDQL.map(i=>i + ' like ' + "'" + value + "'").join(' OR ')
-            //console.log('DQL = ' + requestDQL)
             sendMsg({dql: requestDQL})
         } else {
             setSearchValue('')
             sendMsg({dql: ''})
         }
-        if (onEvent) {
-            onEvent(message)
-        }
     }
 
+    // единая точка доступа к API:
     const sendMsg = (msg, sl) => {
         console.log('submitting...')
-        const message = { ...msg, _id: 'form_' + id, _sl_name: sl } // проверить что с пустым SL все канает!
+        const message = { ...msg, page: currentPage, _id: 'form_' + id, _sl_name: sl } // проверить что с пустым SL все канает!
         console.log(message)
         setLoading(true)
         if (onEvent) {
@@ -121,9 +119,13 @@ function FpsCards({auth, data, onEvent, id }) {
             />
             <Cards
                 data={data}
+                params={data.params}
                 searchValue={searchValue}
                 onExpand={val => { setShowObject(val) }}
-                onEvent={onEvent}
+                //onEvent={onEvent}
+                setPage={page => setCurrentPage(page)}
+                auth={auth}
+                submitAction={submitAction}
                 id={id}
                 loading={loading}
                 setLoading={value => setLoading(value)}
