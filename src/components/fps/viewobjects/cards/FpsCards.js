@@ -47,8 +47,8 @@ function FpsCards({auth, data, onEvent, id }) {
     // единая точка доступа к API:
     const sendMsg = (msg, sl) => {
         console.log('submitting...')
-        const message = { ...msg, page: currentPage, _id: 'form_' + id, _sl_name: sl } // проверить что с пустым SL все канает!
-        console.log(message)
+        const message = { ...msg, _id: 'form_' + id, _sl_name: sl }
+        //const message = { ...msg, page: currentPage, _id: 'form_' + id, _sl_name: sl }
         setLoading(true)
         if (onEvent) {
             onEvent(message)
