@@ -61,7 +61,7 @@ function FpsCards({auth, data, onEvent, id }) {
     // записываем в API:
     const getMsg = (msg) => {
         console.log('getting data...')
-        const message = { ...msg, page: currentPage, dql: currentDQL, _id: 'form_' + id }
+        const message = { ...msg, page: currentPage, dql: currentDQL, _id: id }
         console.log(message)
         setLoading(true)
         if (onEvent) {
