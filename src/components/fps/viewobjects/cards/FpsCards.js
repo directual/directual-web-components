@@ -45,12 +45,23 @@ function FpsCards({auth, data, onEvent, id }) {
         }
     }
 
-    useEffect(()=>{sendMsg()}, [currentPage, currentDQL])
+    useEffect(()=>{getMsg()}, [currentPage, currentDQL])
 
-    // единая точка доступа к API:
-    const sendMsg = (msg, sl) => {
-        console.log('submitting...')
-        const message = { ...msg, page: currentPage, dql: currentDQL, _id: 'form_' + id, _sl_name: sl }
+    // читаем из API:
+    const postMsg = (msg, sl) => {
+        console.log('posting data...')
+        const message = { ...msg, _id: 'form_' + id, _sl_name: sl }
+        console.log(message)
+        setLoading(true)
+        if (onEvent) {
+            onEvent(message)
+        }
+    }
+
+    // записываем в API:
+    const getMsg = (msg) => {
+        console.log('getting data...')
+        const message = { ...msg, page: currentPage, dql: currentDQL, _id: 'form_' + id }
         console.log(message)
         setLoading(true)
         if (onEvent) {
@@ -81,19 +92,16 @@ function FpsCards({auth, data, onEvent, id }) {
                 }
             }
         }
-        sendMsg(model)
+        postMsg(model)
     }
 
     const submitAction = (mapping, sl) => {
-        // console.log('submitting action...')
-        // console.log(mapping)
-        // console.log('sl = ' + sl)
-        sendMsg(mapping, sl)
+        console.log('submitting action...')
+        postMsg(mapping, sl)
     }
 
     return (
         <ComponentWrapper>
-
             {showObject &&
                 <React.Fragment>
                     <Backdrop onClick={handleCloseShowObject} hoverable />
