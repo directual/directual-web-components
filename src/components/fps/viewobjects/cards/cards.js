@@ -5,7 +5,7 @@ import ExpandedText from '../../expandedText/expandedText'
 import { Paging } from '../paging/paging'
 import moment from 'moment'
 
-export function Cards({ data, sendMsg, onEvent, id, onExpand, loading, setLoading, searchValue, auth, submitAction, params }) {
+export function Cards({ data, onExpand, loading, searchValue, auth, submitAction, setLoading, params }) {
     const tableHeaders = data.headers || []
     const tableData = enrichTableDataWithWriteFields(data) || []
     const tableParams = data.params || {
@@ -16,14 +16,6 @@ export function Cards({ data, sendMsg, onEvent, id, onExpand, loading, setLoadin
     const pageSize = data.pageSize || 0
     const totalPages = data.totalPages || 0
     const currentPage = data.pageNumber || 0
-
-    const sendMsg = (msg) => {
-        const message = { ...msg, _id: id }
-        //console.log(message)
-        if (onEvent) {
-            onEvent(message)
-        }
-    }
 
     const tableFieldScheme = data.fieldScheme || []
     const tableStructures = data.structures || {}
@@ -278,7 +270,7 @@ export function Cards({ data, sendMsg, onEvent, id, onExpand, loading, setLoadin
             {totalPages > 0 && tableData.length != 0 && tableHeaders.length != 0 &&
                 <div className={styles.pagination}>
                     <Paging
-                        sendMsg={sendMsg}
+                        sendMsg={()=>{}}
                         pageSize={pageSize}
                         totalPages={totalPages}
                         currentPage={currentPage}
