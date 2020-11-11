@@ -47,18 +47,13 @@ function FpsCards({auth, data, onEvent, id }) {
         }
     }
 
-    useEffect(()=>{sendMsg({ dql: currentDQL }, null, {page: currentPage})})
+    useEffect(()=>{sendMsg({ dql: currentDQL }, null, {page: currentPage})}, [currentPage])
+    useEffect(()=>{setCurrentPage(0)}, [currentDQL])
 
 
     const sendMsg = (msg, sl, pageInfo) => {
         console.log('submitting...')
         const message = { ...msg, _id: 'form_' + id, _sl_name: sl }
-        console.log('message')
-        console.log(message)
-        console.log('sl')
-        console.log(sl)
-        console.log('pageInfo')
-        console.log(pageInfo)
         setLoading(true)
         if (onEvent) {
             onEvent(message, pageInfo)
