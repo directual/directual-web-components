@@ -5,7 +5,7 @@ import ExpandedText from '../../expandedText/expandedText'
 import { Paging } from '../paging/paging'
 import moment from 'moment'
 
-export function Cards({ data, onExpand, loading, searchValue, auth, submitAction, setLoading, params }) {
+export function Cards({ data, onExpand, loading, searchValue, auth, submitAction, setLoading, params, setPage }) {
     const tableHeaders = data.headers || []
     const tableData = enrichTableDataWithWriteFields(data) || []
     const tableParams = data.params || {
@@ -270,7 +270,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
             {totalPages > 0 && tableData.length != 0 && tableHeaders.length != 0 &&
                 <div className={styles.pagination}>
                     <Paging
-                        sendMsg={()=>{}}
+                        setPage={setPage}
                         pageSize={pageSize}
                         totalPages={totalPages}
                         currentPage={currentPage}

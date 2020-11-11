@@ -31,28 +31,37 @@ function FpsCards({auth, data, onEvent, id }) {
     const [loading, setLoading] = useState(false)
     const [searchValue, setSearchValue] = useState()
     const [currentPage, setCurrentPage] = useState(0)
-    const [currentDQL, setCurrentDQL] = useState(null)
+    const [currentDQL, setCurrentDQL] = useState('')
 
     const search = value => {
         if (value) {
             setSearchValue(value)
             const fieldsDQL = data.headers && data.headers.map(i => i.sysName);
             const requestDQL = fieldsDQL.map(i=>i + ' like ' + "'" + value + "'").join(' OR ')
-            sendMsg({dql: requestDQL})
+            //sendMsg({dql: requestDQL})
+            setCurrentDQL(requestDQL)
         } else {
             setSearchValue('')
-            sendMsg({dql: ''})
+            //sendMsg({dql: ''})
+            setCurrentDQL('')
         }
     }
 
+    useEffect(()=>{sendMsg({ dql: currentDQL }, null, {page: currentPage})})
 
-    const sendMsg = (msg, sl) => {
+
+    const sendMsg = (msg, sl, pageInfo) => {
         console.log('submitting...')
         const message = { ...msg, _id: 'form_' + id, _sl_name: sl }
+        console.log('message')
         console.log(message)
+        console.log('sl')
+        console.log(sl)
+        console.log('pageInfo')
+        console.log(pageInfo)
         setLoading(true)
         if (onEvent) {
-            onEvent(message)
+            onEvent(message, pageInfo)
         }
     }
 
@@ -79,7 +88,7 @@ function FpsCards({auth, data, onEvent, id }) {
                 }
             }
         }
-        postMsg(model)
+        sendMsg(model)
     }
 
     const submitAction = (mapping, sl) => {
@@ -120,7 +129,7 @@ function FpsCards({auth, data, onEvent, id }) {
                 params={data.params}
                 searchValue={searchValue}
                 onExpand={val => { setShowObject(val) }}
-                onEvent={onEvent}
+                setPage={setCurrentPage}
                 auth={auth}
                 submitAction={submitAction}
                 id={id}
