@@ -14,6 +14,14 @@ function FpsCards({auth, data, onEvent, id }) {
     // console.log('---data---')
     // console.log(data)
 
+    const [loading, setLoading] = useState(false)
+    const [searchValue, setSearchValue] = useState()
+    
+    const [currentPage, setCurrentPage] = useState(0)
+    const [currentDQL, setCurrentDQL] = useState('')
+
+    const [showObject, setShowObject] = useState()
+
     const tableTitle = data.tableTitle || null
     const tableQuickSearch = data.tableQuickSearch || null
     const tableFilters = data.tableFilters || null
@@ -22,15 +30,10 @@ function FpsCards({auth, data, onEvent, id }) {
     const tableFieldScheme = data.fieldScheme || []
     const tableStructures = data.structures || {}
 
-    const [showObject, setShowObject] = useState()
 
     const handleCloseShowObject = () => {
         setShowObject(false);
     }
-
-    const [loading, setLoading] = useState(false)
-    const [searchValue, setSearchValue] = useState()
-
 
     const search = value => {
         if (value) {
@@ -46,9 +49,6 @@ function FpsCards({auth, data, onEvent, id }) {
             sendMsg({ dql: '' }, null, {page: 0})
         }
     }
-
-    const [currentPage, setCurrentPage] = useState(0)
-    const [currentDQL, setCurrentDQL] = useState('')
 
     useEffect(()=>{sendMsg({ dql: currentDQL }, null, {page: currentPage})}, [currentPage])
 
