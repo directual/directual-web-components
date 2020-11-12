@@ -30,8 +30,7 @@ function FpsCards({auth, data, onEvent, id }) {
 
     const [loading, setLoading] = useState(false)
     const [searchValue, setSearchValue] = useState()
-    const [currentPage, setCurrentPage] = useState(0)
-    const [currentDQL, setCurrentDQL] = useState('')
+
 
     const search = value => {
         if (value) {
@@ -40,20 +39,24 @@ function FpsCards({auth, data, onEvent, id }) {
             const requestDQL = fieldsDQL.map(i=>i + ' like ' + "'" + value + "'").join(' OR ')
             //sendMsg({dql: requestDQL})
             setCurrentDQL(requestDQL)
+            sendMsg({ dql: requestDQL }, null, {page: 0})
         } else {
             setSearchValue('')
-            //sendMsg({dql: ''})
             setCurrentDQL('')
+            sendMsg({ dql: '' }, null, {page: 0})
         }
     }
 
-    useEffect(()=>{sendMsg({ dql: currentDQL }, null, {page: currentPage})}, [currentPage])
-    useEffect(()=>{setCurrentPage(0)}, [currentDQL])
+    const [currentPage, setCurrentPage] = useState(0)
+    const [currentDQL, setCurrentDQL] = useState('')
 
+    useEffect(()=>{sendMsg({ dql: currentDQL }, null, {page: currentPage})}, [currentPage])
 
     const sendMsg = (msg, sl, pageInfo) => {
         console.log('submitting...')
         const message = { ...msg, _id: 'form_' + id, _sl_name: sl }
+        console.log(message)
+        console.log(pageInfo)
         setLoading(true)
         if (onEvent) {
             onEvent(message, pageInfo)
@@ -63,10 +66,8 @@ function FpsCards({auth, data, onEvent, id }) {
     useEffect(() => {
         setLoading(false)
         if (data.isSuccessWrite) {
-            //setLoading(false)
         }
         if (!data.isSuccessWrite && data.writeError) {
-            //setLoading(false)
             console.log('data write error')
             console.log(data.writeError)
         }
