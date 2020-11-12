@@ -6,6 +6,8 @@ import Datepicker from '../datepicker/datepicker'
 import Slider from '../slider/slider'
 import Checkbox from '../checkbox/checkbox'
 import StructureField from '../structurefield/structurefield'
+import { Markdown } from '../../article/mkd'
+
 
 export function InputGroup(props) {
     return (
@@ -280,6 +282,7 @@ export default function Input(props) {
                 props.type != 'multiselect' &&
                 props.type != 'date' &&
                 props.type != 'slider' &&
+                props.type != 'markdown' &&
                 props.type != 'range' &&
                 props.type != 'decimal' &&
                 <div className={styles.field_wrapper}>
@@ -431,6 +434,14 @@ export default function Input(props) {
                     {value &&
                         <div className={`${styles.clear} icon icon-close`}
                             onClick={clearValue}></div>}
+                </div>}
+
+                {props.type == 'markdown' &&
+                <div className={styles.field_wrapper}>
+                    <Markdown edit onChange={val=>handleChange(val)} 
+                        height={300} 
+                        //margin={{top:0,bottom:18}}
+                        />
                 </div>}
 
             {props.type == 'password' &&

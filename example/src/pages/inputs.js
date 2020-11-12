@@ -172,7 +172,7 @@ export default function InputsPage() {
             <h1>Data entry</h1>
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Markdown</h2>
             <CodeSnippet code=
-                {`<Markdown example edit onChange={val=>console.log(val)} height={300} margin={{top:0,bottom:18}}/>
+                {`<Markdown example preview edit onChange={val=>console.log(val)} height={300} margin={{top:0,bottom:18}}/>
 <Markdown example margin={{top:0,bottom:18}}/>`} />
 
             <Markdown example preview edit onChange={val=>console.log(val)} height={350} margin={{top:0,bottom:18}}/>

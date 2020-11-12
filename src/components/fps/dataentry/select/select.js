@@ -109,7 +109,11 @@ export default function Select(props) {
             return D;
         }
         if (props.multi && def) {
-            return def.map(j => props.options.filter(i => i.key == j)[0])
+            if (Array.isArray(def)) {
+                return def.map(j => props.options.filter(i => i.key == j)[0]) }
+                else {
+                    return Array.isArray(def.split(',')) && def.split(',').map(j => props.options.filter(i => i.key == j)[0])
+                }
         }
         return props.multi ? [] : null
     }

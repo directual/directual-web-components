@@ -6923,7 +6923,7 @@ const App = (props) => {
     "maxWidth": 500,
     "data": [
       {
-        //"arrayLink": "option1,option2",
+        "arrayLink": '',
         "range": "{\"firstValue\":40,\"secondValue\":90}",
         "link": "option2",
         //"radio": "option1",
@@ -7119,7 +7119,8 @@ const App = (props) => {
           "hidden": false,
           "unitName": '$',
           "required": false,
-          "isTextarea": true,
+          "isTextarea": false,
+          "isMarkdown": true,
           "textareaRows": 4,
           "defaultValue": 124,
           "isPositive": false,
@@ -7324,7 +7325,7 @@ const App = (props) => {
       {
         "sysName": "textarea",
         "name": "Price",
-        "dataType": "number",
+        "dataType": "string",
         "id": "97731592207240400",
         "link": null,
         "group": "0",

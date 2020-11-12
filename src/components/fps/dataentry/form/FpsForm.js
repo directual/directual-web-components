@@ -26,6 +26,7 @@ export default function FpsForm({ auth, data, onEvent, id }) {
     hidden: false,
     required: false,
     isTextarea: false,
+    isMarkdown: false,
     textareaRows: 4,
     defaultValue: '',
     isPositive: false,
@@ -189,6 +190,12 @@ export default function FpsForm({ auth, data, onEvent, id }) {
         params.fields[field.sysName].isTextarea
       ) {
         return 'textarea'
+      }
+      if (
+        matching[field.dataType] == 'string' &&
+        params.fields[field.sysName].isMarkdown
+      ) {
+        return 'markdown'
       }
       if (
         matching[field.dataType] == 'json' &&
