@@ -71,6 +71,7 @@ function List(props) {
                 {props.options && props.options.length == 0 && noOptions}
 
                 {props.options && props.options.map(option =>
+                    option &&
                     <li
                         className={`
                             ${styles.option}
@@ -103,6 +104,7 @@ function List(props) {
 export default function Select(props) {
 
     function convertDefaultValue(def) {
+        if (def === '[]') return null
         if (!props.options) { return null; }
         if (!props.multi && def) {
             let D = props.options.filter(i => i.key == def)[0];
@@ -112,7 +114,7 @@ export default function Select(props) {
             if (Array.isArray(def)) {
                 return def.map(j => props.options.filter(i => i.key == j)[0]) }
                 else {
-                    return Array.isArray(def.split(',')) && def.split(',').map(j => props.options.filter(i => i.key == j)[0])
+                    return Array.isArray(def.split(',')) && def.split(',').length > 0 && def.split(',').map(j => props.options.filter(i => i.key == j)[0])
                 }
         }
         return props.multi ? [] : null
@@ -275,6 +277,7 @@ export default function Select(props) {
                 {props.multi &&
                     <ul className={styles.multilist}>
                         {value && value.length > 0 && value.map((item) =>
+                            item &&
                             <li title={item.value}>
                                 <div className={styles.title_item}>{item.value}</div>
                                 {!props.disabled &&
