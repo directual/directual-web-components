@@ -6923,7 +6923,7 @@ const App = (props) => {
     "maxWidth": 500,
     "data": [
       {
-        "arrayLink": '[]',
+        "arrayLink": [""],
         "range": "{\"firstValue\":40,\"secondValue\":90}",
         "link": "option2",
         //"radio": "option1",

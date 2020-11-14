@@ -4,6 +4,12 @@
   padding: 18px 0;
   min-width: 100px;
 }
+.slider_wrapper.disabled {
+  opacity: 0.9;
+}
+.slider_wrapper.disabled * {
+  cursor: default !important;
+}
 .slider_wrapper .line {
   background: var(--table-border-color);
   height: 4px;

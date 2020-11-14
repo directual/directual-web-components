@@ -3,6 +3,12 @@
     height: 4px;
     padding:18px 0;
     min-width: 100px;
+    &.disabled {
+        opacity: .9;
+        * {
+            cursor: default !important;
+        }
+    }
     .line {
         background:var(--table-border-color);
         height: 4px;

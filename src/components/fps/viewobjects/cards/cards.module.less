@@ -163,7 +163,7 @@
                     transition-timing-function: cubic-bezier(.6,.44,.72,1.45);
                     transform: scale(1);
                     opacity: 1;
-                    border-radius: calc(var(--border-radius)/2);
+                    border-radius: calc(var(--border-radius)/1.2);
                     background-color: var(--background-color);
                     border: solid 1px var(--field-border-color);
                     &.hide {
@@ -179,7 +179,11 @@
                         max-width: 150px;
                         font-size: var(--text-small-size);
                         margin:2px;
-                        border-radius: var( --border-radius);
+                        &:before {
+                            margin-left: -5px;
+                            margin-right: 4px;
+                        }
+                        border-radius: var(--border-radius);
                         cursor: pointer;
                         &:hover {
                             background: var( --secondary-background-color);

@@ -2,17 +2,6 @@ import React, {useState, useEffect, useRef, useCallback} from 'react'
 import styles from './slider.module.css'
 import Input from '../input/input'
 
-
-// export default function Slider(props) {
-//     return (
-//         <div>slider</div>
-//     )
-// }
-
-
-
-//import InputRange from 'react-input-range';
-
 export default function Slider(props) {
     const percentToValue = x => {
         return Math.round(min+(max-min)*x/100)
@@ -35,6 +24,7 @@ export default function Slider(props) {
     useEffect (()=>{ props.defaultValue && props.defaultValue.secondValue && setRight(props.defaultValue.secondValue) }, [props.defaultValue])
 
     const onMouseDownHandlerLeft = (e) => {
+        if (props.disabled) return null
         function disableSelect(event) {
             event.preventDefault();
         }
@@ -60,6 +50,7 @@ export default function Slider(props) {
     }
 
     const onTouchDownHandlerLeft = (e) => {
+        if (props.disabled) return null
         function disableSelect(event) {
             event.preventDefault();
         }
@@ -85,6 +76,7 @@ export default function Slider(props) {
     }
 
     const onMouseDownHandlerRight = (e) => {
+        if (props.disabled) return null
         function disableSelect(event) {
             event.preventDefault();
         }
@@ -111,6 +103,7 @@ export default function Slider(props) {
     }
 
     const onTouchDownHandlerRight = (e) => {
+        if (props.disabled) return null
         function disableSelect(event) {
             event.preventDefault();
         }
@@ -138,12 +131,7 @@ export default function Slider(props) {
 
     return (
         <React.Fragment>
-            {/* min: {min}<br />
-            max: {max}<br />
-            left: {left}, {valueToPercent(left)}%<br />
-            right: {right}, {valueToPercent(right)}%<br /> */}
-
-        <div className={styles.slider_wrapper} ref={sliderBar}>
+        <div className={`${styles.slider_wrapper} ${props.disabled && styles.disabled}`} ref={sliderBar}>
             <div className={styles.line}>
                 <div 
                     className={`${styles.leftKnob} ${styles.knob}`}

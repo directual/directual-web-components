@@ -175,7 +175,13 @@ export default function InputsPage() {
                 {`<Markdown example preview edit onChange={val=>console.log(val)} height={300} margin={{top:0,bottom:18}}/>
 <Markdown example margin={{top:0,bottom:18}}/>`} />
 
-            <Markdown example preview edit onChange={val=>console.log(val)} height={350} margin={{top:0,bottom:18}}/>
+            <Markdown 
+                example 
+                preview 
+                edit 
+                onChange={val=>console.log(val)} 
+                height={350} 
+                margin={{top:0,bottom:18}}/>
             <Markdown example margin={{top:0,bottom:18}}/>
 
 
@@ -304,6 +310,7 @@ export default function InputsPage() {
                 label="Range slider"
                 defaultValue={{ firstValue: 200, secondValue: 400 }}
                 min={0}
+                disabled
                 max={600}
                 step={10}
                 unitName='€'
@@ -323,6 +330,7 @@ export default function InputsPage() {
             <Input
                 type="slider"
                 width={500}
+                disabled
                 label="Slider"
                 defaultValue={{ firstValue: 300 }}
                 min={200}
@@ -910,7 +918,7 @@ export default function InputsPage() {
                 label='Radio station (disabled)'
                 type='radio'
                 disabled
-                //defaultValue='option2'
+                defaultValue='option2'
                 options={
                     [
                         {
@@ -1026,6 +1034,7 @@ export default function InputsPage() {
                 customOption
                 defaultValue={{"option3":true,"customOption":"dd"}}
                 width={500}
+                disabled
                 customOptionType='textarea'
                 customOptionLabel='Something else...'
                 customOptionPlaceholder='Please, describe your option'

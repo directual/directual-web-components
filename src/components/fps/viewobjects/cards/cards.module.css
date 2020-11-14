@@ -158,7 +158,7 @@
   transition-timing-function: cubic-bezier(0.6, 0.44, 0.72, 1.45);
   transform: scale(1);
   opacity: 1;
-  border-radius: calc(var(--border-radius)/2);
+  border-radius: calc(var(--border-radius)/1.2);
   background-color: var(--background-color);
   border: solid 1px var(--field-border-color);
 }
@@ -177,6 +177,10 @@
   margin: 2px;
   border-radius: var(--border-radius);
   cursor: pointer;
+}
+.card .cardInnerWrapper .cardText .details .quickMenu li:before {
+  margin-left: -5px;
+  margin-right: 4px;
 }
 .card .cardInnerWrapper .cardText .details .quickMenu li:hover {
   background: var(--secondary-background-color);

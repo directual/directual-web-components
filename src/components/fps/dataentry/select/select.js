@@ -104,7 +104,12 @@ function List(props) {
 export default function Select(props) {
 
     function convertDefaultValue(def) {
-        if (def === '[]') return null
+        console.log('convertDefaultValue')
+        console.log(def)
+        if (def === '[]' || (Array.isArray(def) && def.length == 1 && def[0] == "")) {
+            def = null
+        } // какой-то лютый костыль для редактирования объекта
+
         if (!props.options) { return null; }
         if (!props.multi && def) {
             let D = props.options.filter(i => i.key == def)[0];
@@ -112,11 +117,13 @@ export default function Select(props) {
         }
         if (props.multi && def) {
             if (Array.isArray(def)) {
-                return def.map(j => props.options.filter(i => i.key == j)[0]) }
-                else {
-                    return Array.isArray(def.split(',')) && def.split(',').length > 0 && def.split(',').map(j => props.options.filter(i => i.key == j)[0])
-                }
+                return def.map(j => props.options.filter(i => i.key == j)[0])
+            }
+            else {
+                return Array.isArray(def.split(',')) && def.split(',').length > 0 && def.split(',').map(j => props.options.filter(i => i.key == j)[0])
+            }
         }
+        
         return props.multi ? [] : null
     }
 

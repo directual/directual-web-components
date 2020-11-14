@@ -7,6 +7,8 @@ import Backdrop from '../../backdrop/backdrop'
 import { Cards } from './cards'
 import { ComponentWrapper } from '../../wrapper/wrapper'
 import moment from 'moment'
+import { Paging } from '../paging/paging'
+
 
 function FpsCards({auth, data, onEvent, id }) {
     if (!data) { data = {} }
@@ -17,18 +19,32 @@ function FpsCards({auth, data, onEvent, id }) {
     const [loading, setLoading] = useState(false)
     const [searchValue, setSearchValue] = useState()
     
-    const [currentPage, setCurrentPage] = useState(0)
     const [currentDQL, setCurrentDQL] = useState('')
 
     const [showObject, setShowObject] = useState()
 
     const tableTitle = data.tableTitle || null
-    const tableQuickSearch = data.tableQuickSearch || null
-    const tableFilters = data.tableFilters || null
     const writeFields = data.writeFields || []
 
     const tableFieldScheme = data.fieldScheme || []
     const tableStructures = data.structures || {}
+
+    const tableHeaders = data.headers || []
+
+    const pageSize = data.pageSize || 0
+    const totalPages = data.totalPages || 0
+    const currentPage = data.pageNumber || 0
+
+    useEffect(() => {
+        setLoading(false)
+        if (data.isSuccessWrite) {
+        }
+        if (!data.isSuccessWrite && data.writeError) {
+            console.log('data write error')
+            console.log(data.writeError)
+        }
+    }, [data])
+
 
 
     const handleCloseShowObject = () => {
@@ -40,7 +56,6 @@ function FpsCards({auth, data, onEvent, id }) {
             setSearchValue(value)
             const fieldsDQL = data.headers && data.headers.map(i => i.sysName);
             const requestDQL = fieldsDQL.map(i=>i + ' like ' + "'" + value + "'").join(' OR ')
-            //sendMsg({dql: requestDQL})
             setCurrentDQL(requestDQL)
             sendMsg({ dql: requestDQL }, null, {page: 0})
         } else {
@@ -49,8 +64,6 @@ function FpsCards({auth, data, onEvent, id }) {
             sendMsg({ dql: '' }, null, {page: 0})
         }
     }
-
-    useEffect(()=>{sendMsg({ dql: currentDQL }, null, {page: currentPage})}, [currentPage])
 
     const sendMsg = (msg, sl, pageInfo) => {
         console.log('submitting...')
@@ -62,16 +75,6 @@ function FpsCards({auth, data, onEvent, id }) {
             onEvent(message, pageInfo)
         }
     }
-
-    useEffect(() => {
-        setLoading(false)
-        if (data.isSuccessWrite) {
-        }
-        if (!data.isSuccessWrite && data.writeError) {
-            console.log('data write error')
-            console.log(data.writeError)
-        }
-    }, [data])
 
     const submit = (model) => {
         if (model) {
@@ -120,12 +123,15 @@ function FpsCards({auth, data, onEvent, id }) {
                 loading={loading}
                 onFilter={() => { }}
             />
+            {/* <pre>
+                {JSON.stringify(data.data, 0, 3)}
+            </pre> */}
             <Cards
                 data={data}
                 params={data.params}
                 searchValue={searchValue}
                 onExpand={val => { setShowObject(val) }}
-                setPage={setCurrentPage}
+                setPage={page => { sendMsg(null, null, {page: page})}}
                 auth={auth}
                 submitAction={submitAction}
                 id={id}
@@ -133,8 +139,17 @@ function FpsCards({auth, data, onEvent, id }) {
                 setLoading={value => setLoading(value)}
             />
 
-
-
+            {totalPages > 0 && tableHeaders.length != 0 &&
+                <div className={styles.pagination}>
+                    <Paging
+                        setPage={page => onEvent({ page: page, _id: id })}
+                        pageSize={pageSize}
+                        totalPages={totalPages}
+                        currentPage={currentPage}
+                        setLoading={setLoading}
+                        loading={loading}
+                    />
+                </div>}
     </ComponentWrapper>
     )
 }

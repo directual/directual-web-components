@@ -97,14 +97,13 @@ export function SignUp(props) {
 export function Profile(props) {
     return (
         <div style={{ maxWidth: props.width || 'auto' }}>
-          {props.data  && <ProfileHeader
+          {/* {props.data  && <ProfileHeader
                 pictureUrl={props.data.profilePicture}
                 fullName={`${props.data.firstName} ${props.data.lastName}`} /> }
           {props.data && <ProfileBody
-                user={props.data} /> }
+                user={props.data} /> } */}
             <div className={styles.logOut}>
-              <div onClick={()=>props.logOut()}>logoout</div>
-                <Button icon='logout' >Log out</Button></div>
+                <Button icon='logout' onClick={()=>props.logOut()}>Log out</Button></div>
         </div>
     )
 }

@@ -7,7 +7,7 @@ export function Paging({ setPage, pageSize, totalPages, currentPage, setLoading,
     return (
         <div className={styles.paging}>
             {currentPage != 0 &&
-                <Button disabled={loading} small onClick={() => {setLoading(true); setPage(currentPage + 1)}}>❮ Prev</Button>
+                <Button disabled={loading} small onClick={() => {setLoading(true); setPage(currentPage - 1)}}>❮ Prev</Button>
                 }
             {currentPage < (totalPages - 1) &&
                 <Button disabled={loading} small onClick={() => {setLoading(true); setPage(currentPage + 1)}}>Next ❯</Button>

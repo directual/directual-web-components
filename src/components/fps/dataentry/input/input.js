@@ -568,6 +568,7 @@ export default function Input(props) {
                     defaultValue={defVal}
                     min={props.min}
                     max={props.max}
+                    disabled={props.disabled}
                     step={props.step}
                     onChange={e => { submit(e) }}
                     unitName={props.unitName} />
@@ -577,6 +578,7 @@ export default function Input(props) {
                 <Slider
                     defaultValue={defVal}
                     min={props.min}
+                    disabled={props.disabled}
                     max={props.max}
                     step={props.step}
                     onChange={e => { submit(e) }}
@@ -589,6 +591,7 @@ export default function Input(props) {
                         return (
                             <div className={styles.checkbox_wrapper}>
                                 <Checkbox
+                                    disabled={props.disabled}
                                     label={option.label}
                                     defaultValue={typeof props.defaultValue == 'object' && props.defaultValue[option.value]}
                                     onChange={val => {
@@ -605,6 +608,7 @@ export default function Input(props) {
                         <div className={styles.checkbox_wrapper}>
                             <Checkbox
                                 customOption
+                                disabled={props.disabled}
                                 label={props.customOptionLabel}
                                 defaultValue={(typeof props.defaultValue == 'object' && props.defaultValue.customOption) && true}
                                 customOptionType={props.customOptionType}

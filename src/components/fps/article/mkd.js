@@ -37,6 +37,9 @@ export function Markdown(props) {
 > Наше все
 
 `
+    const checkLineBreaks = line => {
+        return (line.match(/\n/g) || []).length;
+    }
 
     const [value, setValue] = useState(props.value || (props.example && mkdExample))
 
@@ -53,10 +56,12 @@ export function Markdown(props) {
             style={{
                 marginTop: props.margin && props.margin.top,
                 marginBottom: props.margin && props.margin.bottom,
-                height: props.height || 'auto'
             }}>
             {props.edit ?
-                <div className={styles.mkd_edit}>
+                <div className={styles.mkd_edit}
+                    style={{
+                        maxHeight: props.height || 'auto'
+                    }}>
                     <div className={styles.editField}>
                         <div className={styles.mkd_header}>
                             <span>Markdown text </span>
@@ -72,15 +77,16 @@ export function Markdown(props) {
                             }
                         </div>
                         <textarea
+                            rows={checkLineBreaks(value) + 1 }
                             onChange={e => changeMkd(e.target.value)}
                         >
                             {value}
                         </textarea>
                     </div>
                     {preview &&
-                    <div className={styles.preview}>
-                        <ReactMarkdown plugins={[gfm]} children={value} />
-                    </div>}
+                        <div className={styles.preview}>
+                            <ReactMarkdown plugins={[gfm]} children={value} />
+                        </div>}
                 </div>
                 :
                 <ReactMarkdown plugins={[gfm]} children={value} />

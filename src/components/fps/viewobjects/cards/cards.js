@@ -5,7 +5,7 @@ import ExpandedText from '../../expandedText/expandedText'
 import { Paging } from '../paging/paging'
 import moment from 'moment'
 
-export function Cards({ data, onExpand, loading, searchValue, auth, submitAction, setLoading, params, setPage }) {
+export function Cards({ data, onExpand, loading, searchValue, auth, submitAction, params }) {
     const tableHeaders = data.headers || []
     const tableData = enrichTableDataWithWriteFields(data) || []
     const tableParams = data.params || {
@@ -90,23 +90,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
             <div className={`${styles.cardsWrapper} ${(data.error || tableData.length === 0 || tableHeaders.length === 0) && styles.emptyTable} ${loading && styles.loading}`}>
                 {(tableData.length != 0 && tableHeaders.length != 0) && tableData.map((row, i) => {
 
-                    const [showQA, setShowQA] = useState(false)
-                    const quickMenu = useRef(null);
 
-                    useOutsideAlerter(quickMenu);
-                    function useOutsideAlerter(ref) {
-                        useEffect(() => {
-                            function handleClickOutside(event) {
-                                if (ref.current && !ref.current.contains(event.target)) {
-                                    setShowQA(false)
-                                }
-                            }
-                            document.addEventListener("mousedown", handleClickOutside);
-                            return () => {
-                                document.removeEventListener("mousedown", handleClickOutside);
-                            };
-                        }, [ref]);
-                    }
 
                     // actions для меню быстрого доступа
                     const quickActions = params.actions ?
@@ -191,29 +175,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                 <div className={styles.cardText}>
 
                                     {/* quick actions menu */}
-                                    {quickActions && quickActions.length > 0 &&
-                                        <div
-
-                                            className={`${styles.details}`}>
-                                            <div
-                                                onClick={e => {
-                                                    e.stopPropagation()
-                                                    setShowQA(true)
-                                                }}
-                                                className={`${styles.detailsButton} icon icon-details`}
-                                            ></div>
-                                            <ul ref={quickMenu} className={`${styles.quickMenu} ${!showQA && styles.hide}`}>
-                                                {quickActions.map(action => <li
-                                                    onClick={e => {
-                                                        e.stopPropagation()
-                                                        performAction(action)
-                                                        setShowQA(false)
-                                                    }}
-                                                    className={`${action.buttonIcon ? 'icon small icon-' + action.buttonIcon : ''}`}>
-                                                    {action.buttonTitle || action.name}
-                                                </li>)}
-                                            </ul>
-                                        </div>}
+                                    <QuickActionsControl quickActions={quickActions} performAction={performAction} />
 
                                     <h3 className={styles.cardHeader}>
                                         {cardHeader.length > 0 ? cardHeader : 'No visible name'}
@@ -247,7 +209,6 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                                         {i}
                                                     </div>)}
                                             </div>
-
                                     )}
                                 </div>
                             </div>
@@ -267,16 +228,54 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
 
 
             </div>
-            {totalPages > 0 && tableData.length != 0 && tableHeaders.length != 0 &&
-                <div className={styles.pagination}>
-                    <Paging
-                        setPage={setPage}
-                        pageSize={pageSize}
-                        totalPages={totalPages}
-                        currentPage={currentPage}
-                        setLoading={setLoading}
-                        loading={loading}
-                    />
+
+        </React.Fragment>
+    )
+}
+
+function QuickActionsControl({ quickActions, performAction }) {
+    const [showQA, setShowQA] = useState(false)
+    const quickMenu = useRef(null);
+
+    useOutsideAlerter(quickMenu);
+    function useOutsideAlerter(ref) {
+        useEffect(() => {
+            function handleClickOutside(event) {
+                if (ref.current && !ref.current.contains(event.target)) {
+                    setShowQA(false)
+                }
+            }
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => {
+                document.removeEventListener("mousedown", handleClickOutside);
+            };
+        }, [ref]);
+    }
+
+    return (
+        <React.Fragment>
+            {quickActions && quickActions.length > 0 &&
+                <div
+
+                    className={`${styles.details}`}>
+                    <div
+                        onClick={e => {
+                            e.stopPropagation()
+                            setShowQA(true)
+                        }}
+                        className={`${styles.detailsButton} icon icon-details`}
+                    ></div>
+                    <ul ref={quickMenu} className={`${styles.quickMenu} ${!showQA && styles.hide}`}>
+                        {quickActions.map(action => <li
+                            onClick={e => {
+                                e.stopPropagation()
+                                performAction(action)
+                                setShowQA(false)
+                            }}
+                            className={`${action.buttonIcon ? 'icon small icon-' + action.buttonIcon : ''}`}>
+                            {action.buttonTitle || action.name}
+                        </li>)}
+                    </ul>
                 </div>}
         </React.Fragment>
     )
