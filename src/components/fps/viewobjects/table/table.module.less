@@ -244,6 +244,14 @@
          display: flex;
          flex-wrap: wrap;
          margin-bottom: -6px;
+         &.notClickable {
+             a {
+                cursor: default;
+                color:var(--label-text-color);
+                background-color: var(--label-color);
+                border:none;
+             }
+         }
          a {
              margin: 0px 6px 6px 0;
              border: solid 1px var(--accent-color);
@@ -315,6 +323,8 @@
     align-items: flex-end;
  }
 
- 
+ .jsonHolder {
+     //margin: 0 20px;
+ }
 
  

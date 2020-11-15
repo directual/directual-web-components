@@ -271,14 +271,6 @@ export default function FpsForm({ auth, data, onEvent, id }) {
     if (!data.data) { return } else {
       let getFieldVal
       if (dataType == 'json' && data.data[0] && data.data[0][sysName]) {
-        
-        // try {
-        //   getFieldVal = JSON.parse(data.data[0][sysName])
-        // }
-        // catch (e) {
-        //   console.log(e);
-        // }
-
         if (data.data[0] && data.data[0][sysName] && params.fields[sysName].jsonDisplay == 'radioStation') {
           try {
             getFieldVal = JSON.parse(data.data[0][sysName])
@@ -298,7 +290,6 @@ export default function FpsForm({ auth, data, onEvent, id }) {
               }
           } else {
           getFieldVal = data.data[0] && data.data[0][sysName] }
-
         }
       } else { getFieldVal = data.data[0] && data.data[0][sysName] }
       if (eidtID && (getFieldVal || getFieldVal === false)) { // отдельно проверку на false для boolean полей

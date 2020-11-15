@@ -220,6 +220,12 @@
   flex-wrap: wrap;
   margin-bottom: -6px;
 }
+.objFieldWrapper .linkFieldWrapper.notClickable a {
+  cursor: default;
+  color: var(--label-text-color);
+  background-color: var(--label-color);
+  border: none;
+}
 .objFieldWrapper .linkFieldWrapper a {
   margin: 0px 6px 6px 0;
   border: solid 1px var(--accent-color);

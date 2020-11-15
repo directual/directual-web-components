@@ -1,7 +1,8 @@
 .slider_wrapper {
   display: flex;
   height: 4px;
-  padding: 18px 0;
+  padding: 18px 12px;
+  overflow: hidden;
   min-width: 100px;
 }
 .slider_wrapper.disabled {

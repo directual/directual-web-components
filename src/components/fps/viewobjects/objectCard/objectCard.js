@@ -9,6 +9,7 @@ import Loader from '../../loader/loader'
 import TabsPane from '../../layout/tabpane/tabpane'
 import { Markdown } from '../../article/mkd'
 import moment from 'moment'
+import Hint from '../../hint/hint'
 
 export function ObjectCard(props) {
     const [showLinkedObject, setShowLinkedObject] = useState(false)
@@ -24,8 +25,13 @@ export function ObjectCard(props) {
     // console.log(props)
     // console.log(oldFashioned)
 
-    // console.log('==============CARD MODEL==============')
-    // console.log(model)
+    const editingOn = props.params.data && props.params.data.fields &&
+        props.params.data.fields.id && props.params.data.fields.id.write && props.params.data.fields.id.read &&
+        props.params.data.writeFields && props.params.data.writeFields.length > 0
+
+
+    console.log('==============CARD MODEL==============')
+    console.log(model)
 
     // press 'Esc' for closing a popup:
     const handleUserKeyPress = (e) => {
@@ -402,24 +408,24 @@ export function ObjectCard(props) {
                     }
                     if (field.id == 'action__delete') return
                     if (field.type == 'actions') {
-                        return  <ActionPanel>
+                        return <ActionPanel>
                             {props.loading ? <Loader>Loading...</Loader> :
-                            field.content.map(action => {
-                                if (action.id != 'action__delete') {
-                                    return <CardAction
-                                        action={action.id}
-                                        submitAction={submitAction}
-                                        actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
-                                            props.params.actions.filter(i => action.id == 'action__' + i.id)[0]}
-                                    />
-                                } else {
-                                    return <ActionDelete // Кнопочка Delete
-                                        submit={() => {
-                                            props.submit({ [deleteField]: true, id: object.id.value });
-                                            props.onClose()
-                                        }} />
-                                }
-                            })}
+                                field.content.map(action => {
+                                    if (action.id != 'action__delete') {
+                                        return <CardAction
+                                            action={action.id}
+                                            submitAction={submitAction}
+                                            actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
+                                                props.params.actions.filter(i => action.id == 'action__' + i.id)[0]}
+                                        />
+                                    } else {
+                                        return <ActionDelete // Кнопочка Delete
+                                            submit={() => {
+                                                props.submit({ [deleteField]: true, id: object.id.value });
+                                                props.onClose()
+                                            }} />
+                                    }
+                                })}
                         </ActionPanel>
 
                     }
@@ -427,6 +433,7 @@ export function ObjectCard(props) {
                     return <CardField
                         //debug
                         model={model}
+                        editingOn={editingOn}
                         field={field}
                         object={object}
                         setModel={value => { setModel(value); }}
@@ -450,6 +457,7 @@ export function ObjectCard(props) {
                     <SaveCard // Сохранить изменения
                         model={model}
                         loading={props.loading}
+                        editingOn={editingOn}
                         currentObject={currentObject}
                         submit={props.submit}
                         setCurrentObject={setCurrentObject}
@@ -520,12 +528,12 @@ export function ObjectCard(props) {
 }
 
 
-function CardField({ field, object, model, setModel, debug,
+function CardField({ field, object, model, setModel, debug, editingOn,
     setLinkedObject, setLinkedObjectStruct, setShowLinkedObject, getLinkName }) {
     const [edit, setEdit] = useState(false)
 
     const checkLineBreaks = line => {
-        return (line.match(/\n/g) || []).length;
+        return line ? (line.match(/\n/g) || []).length : 0;
     }
 
     const getResolution = line => {
@@ -556,7 +564,7 @@ function CardField({ field, object, model, setModel, debug,
                             borderRadius: field.fileImageFormat == 'circle' ? (field.fileImageSize || 200) : 0
                         }}
                     >
-                        {field.write && <div
+                        {field.write && editingOn && <div
                             className={`${styles.editPic} icon icon-edit`}
                             onClick={() => setEdit(!edit)}
                         ></div>}
@@ -574,7 +582,7 @@ function CardField({ field, object, model, setModel, debug,
                             <a href={model[field.sysName]} target="_blank" className={`${styles.download} icon icon-download`}>
                                 <span>Download <code>{' ' + getResolution(model[field.sysName]) || 'file'}</code></span>
                             </a>}
-                        {field.write &&
+                        {field.write && editingOn &&
                             <Button icon={`${model[field.sysName] ? 'refresh' : 'upload'}`} small onClick={() => setEdit(!edit)}>
                                 {model[field.sysName] ? 'Change file' : 'Upload file'}</Button>}
                     </div>
@@ -594,43 +602,20 @@ function CardField({ field, object, model, setModel, debug,
 
             {/* СТРОКИ */}
             { (field.dataType == 'string') &&
-                <React.Fragment>
-                    {field.write ?
-                        !field.markdown ?
-                            <Input
-                                type='textarea'
-                                description={field.descriptionFlag && field.description}
-                                rows={checkLineBreaks(model[field.sysName]) > 10 ? 10 : checkLineBreaks(model[field.sysName]) + 1}
-                                label={field.name || field.sysName}
-                                defaultValue={model[field.sysName]}
-                                onChange={value => setModel({ ...model, [field.sysName]: value })}
-                            />
-                            :
-                            <MkdField
-                                description={field.descriptionFlag && field.description}
-                                onChange={value => setModel({ ...model, [field.sysName]: value })}
-                                object={object}
-                                model={model}
-                                field={field} />
-                        :
-                        !field.markdown ?
-                            <FieldReadOnly field={field} object={object}
-                                weblink={{
-                                    flag: field.weblinkFlag,
-                                    weblink: field.weblink
-                                }} /> :
-                            <MkdField
-                                description={field.descriptionFlag && field.description}
-                                object={object}
-                                model={model}
-                                field={field} />
-                    }
-                </React.Fragment>}
+                <FieldString
+                    model={model}
+                    checkLineBreaks={checkLineBreaks}
+                    editingOn={editingOn}
+                    object={object}
+                    field={field}
+                    onChange={value => setModel({ ...model, [field.sysName]: value })}
+                />
+            }
 
-            {/* ДАТЫ! */}
+            {/* ДАТЫ */}
             { (field.dataType == 'date') &&
                 <React.Fragment>
-                    {field.write ?
+                    {(field.write && editingOn) ?
                         <Input
                             type='date'
                             description={field.descriptionFlag && field.description}
@@ -646,7 +631,7 @@ function CardField({ field, object, model, setModel, debug,
             {/* BOOLEAN */}
             { (field.dataType == 'boolean') &&
                 <React.Fragment>
-                    {field.write ?
+                    {(field.write && editingOn) ?
                         <Input
                             type='radio'
                             label={field.name || field.sysName}
@@ -663,17 +648,30 @@ function CardField({ field, object, model, setModel, debug,
                         <FieldReadOnly field={field} object={object} weblink={{}} />}
                 </React.Fragment>}
 
-            {/* LINK & ARRAY LINK*/}
+            {/* LINK & ARRAY LINK */}
             { (field.dataType == 'link' || field.dataType == 'arrayLink') &&
                 <FieldLink
                     model={model}
+                    editingOn={editingOn}
                     object={object}
+                    editingOn={editingOn}
                     field={field}
                     onChange={value => setModel({ ...model, [field.sysName]: value })}
                     setLinkedObject={setLinkedObject}
                     setLinkedObjectStruct={setLinkedObjectStruct}
                     setShowLinkedObject={setShowLinkedObject}
                     getLinkName={getLinkName}
+                />
+            }
+
+            {/* JSON */}
+            { (field.dataType == 'json') &&
+                <FieldJson
+                    model={model}
+                    editingOn={editingOn}
+                    object={object}
+                    field={field}
+                    onChange={value => setModel({ ...model, [field.sysName]: value })}
                 />
             }
 
@@ -684,8 +682,9 @@ function CardField({ field, object, model, setModel, debug,
                 field.dataType != 'date' &&
                 field.dataType != 'link' &&
                 field.dataType != 'arrayLink' &&
+                field.dataType != 'json' &&
                 <React.Fragment>
-                    {field.write ?
+                    {(field.write && editingOn) ?
                         <Input
                             type={field.dataType}
                             description={field.descriptionFlag && field.description}
@@ -701,6 +700,16 @@ function CardField({ field, object, model, setModel, debug,
 }
 
 function FieldReadOnly({ field, object, weblink, date }) {
+
+    const jsonParse = def => {
+        try {
+            return JSON.stringify(JSON.parse(def), 0, 3)
+        } catch (e) {
+            console.log(e);
+            return def
+        }
+    }
+
     return (
         <React.Fragment>
             <span className={styles.label}>
@@ -725,7 +734,11 @@ function FieldReadOnly({ field, object, weblink, date }) {
                         !object[field.sysName].value ?
                             <span className={styles.novalue}>—</span> :
                             !weblink.flag ?
-                                <span className={styles.fieldValue}>{object[field.sysName].value}</span> :
+                                <span className={styles.fieldValue}>
+                                    {field.dataType != 'json' ?
+                                        object[field.sysName].value :
+                                        <pre><code>{jsonParse(object[field.sysName].value)}</code></pre>}
+                                </span> :
                                 <a href={object[field.sysName].value} target="_blank">
                                     {weblink.weblink || object[field.sysName].value}
                                 </a>
@@ -751,31 +764,32 @@ function ActionDelete({ submit }) {
     )
 }
 
-function SaveCard({ model, currentObject, submit, setCurrentObject, setModel, loading }) {
+function SaveCard({ model, currentObject, submit, setCurrentObject, setModel, loading, editingOn }) {
 
     return (
         <div>
-            <ActionPanel margin={{ top: 24, bottom: 12 }}>
-                {loading ? <Loader>Loading...</Loader> :
-                    <React.Fragment>
-                        <Button
-                            disabled={JSON.stringify(model) === JSON.stringify(currentObject)}
-                            accent
-                            icon='done'
-                            onClick={() => { submit(model); setCurrentObject(model) }}
-                        >
-                            Save changes</Button>
-                        <Button danger icon='ban'
-                            onClick={() => setModel(currentObject)}
-                            disabled={JSON.stringify(model) === JSON.stringify(currentObject)}>
-                            Discard changes</Button>
-                    </React.Fragment>}
-            </ActionPanel>
+            {editingOn &&
+                <ActionPanel margin={{ top: 24, bottom: 12 }}>
+                    {loading ? <Loader>Loading...</Loader> :
+                        <React.Fragment>
+                            <Button
+                                disabled={JSON.stringify(model) === JSON.stringify(currentObject)}
+                                accent
+                                icon='done'
+                                onClick={() => { submit(model); setCurrentObject(model) }}
+                            >
+                                Save changes</Button>
+                            <Button danger icon='ban'
+                                onClick={() => setModel(currentObject)}
+                                disabled={JSON.stringify(model) === JSON.stringify(currentObject)}>
+                                Discard changes</Button>
+                        </React.Fragment>}
+                </ActionPanel>}
         </div>
     )
 }
 
-function MkdField({ field, model, object, onChange, description }) {
+function FieldMkd({ field, model, object, onChange, description, editingOn }) {
     return (
         <React.Fragment>
             <span className={styles.label}>
@@ -786,9 +800,9 @@ function MkdField({ field, model, object, onChange, description }) {
                     {description}</span>}
 
             <Markdown
-                edit={field.write}
+                edit={(field.write && editingOn)}
                 value={model[field.sysName]}
-                height={field.write ? 350 : false}
+                height={(field.write && editingOn) ? 350 : false}
                 preview
                 onChange={onChange}
             />
@@ -796,8 +810,116 @@ function MkdField({ field, model, object, onChange, description }) {
     )
 }
 
+function FieldJson({ field, model, onChange, object, editingOn }) {
+
+    const jsonParse = def => {
+        try {
+            return JSON.stringify(JSON.parse(def), 0, 3)
+        } catch (e) {
+            console.log(e);
+            return def
+        }
+    }
+
+    const checkLineBreaks = line => {
+        return line ? (line.match(/\n/g) || []).length : 0;
+    }
+
+    if (!field.jsonDisplay || !field.jsonDisplay.type || field.jsonDisplay.type == 'default') {
+        return (
+            <React.Fragment>
+                {(field.write && editingOn) ?
+                    <Input
+                        type='textarea'
+                        code
+                        description={field.descriptionFlag && field.description}
+                        rows={checkLineBreaks(jsonParse(model[field.sysName])) > 10 ? 10 :
+                            checkLineBreaks(jsonParse(model[field.sysName])) + 1}
+                        label={field.name || field.sysName}
+                        defaultValue={jsonParse(model[field.sysName])}
+                        onChange={onChange}
+                    /> :
+                    <FieldReadOnly field={field} object={object} weblink={{}} />}
+            </React.Fragment>
+        )
+    }
+
+    const jsonDefVal = def => {
+        try {
+            return JSON.parse(def)
+        } catch (e) {
+            console.log(e);
+            return def
+        }
+    }
+
+    if (field.jsonDisplay && (field.jsonDisplay.type == 'slider' || field.jsonDisplay.type == 'range')) {
+        return (
+            <div>
+                <Input
+                    type={field.jsonDisplay.type}
+                    description={field.description}
+                    disabled={!(field.write && editingOn)}
+                    width={500}
+                    label={field.name || field.sysName}
+                    defaultValue={jsonDefVal(model[field.sysName])}
+                    min={field.jsonDisplay.range && field.jsonDisplay.range.min}
+                    max={field.jsonDisplay.range && field.jsonDisplay.range.max}
+                    step={field.jsonDisplay.range && field.jsonDisplay.range.step}
+                    unitName={field.jsonDisplay.unitName}
+                    onChange={onChange}
+                />
+            </div>
+        )
+    }
+
+    if (field.jsonDisplay && field.jsonDisplay.type == 'radioStation') {
+        return (
+            <div>
+                <Input
+                    // debug
+                    type='radio'
+                    options={field.jsonDisplay && field.jsonDisplay.multipleChoice}
+                    description={field.description}
+                    disabled={!(field.write && editingOn)}
+                    label={field.name || field.sysName}
+                    onChange={val => onChange(JSON.stringify({ value: val }))}
+                    defaultValue={jsonDefVal(model[field.sysName]) && jsonDefVal(model[field.sysName]).value}
+                    customOption={field.jsonDisplay.customOption}
+                    customOptionType={field.jsonDisplay.customOptionType}
+                    customOptionLabel={field.jsonDisplay.customOptionLabel}
+                    customOptionPlaceholder={field.jsonDisplay.customOptionPlaceholder}
+                />
+            </div>
+        )
+    }
+
+    if (field.jsonDisplay && field.jsonDisplay.type == 'checkboxGroup') {
+        return (
+            <div>
+                <Input
+                    // debug
+                    type='checkboxGroup'
+                    options={field.jsonDisplay && field.jsonDisplay.multipleChoice}
+                    description={field.description}
+                    disabled={!(field.write && editingOn)}
+                    label={field.name || field.sysName}
+                    onChange={val => onChange(JSON.stringify(val))}
+                    defaultValue={jsonDefVal(model[field.sysName])}
+                    customOption={field.jsonDisplay.customOption}
+                    customOptionType={field.jsonDisplay.customOptionType}
+                    customOptionLabel={field.jsonDisplay.customOptionLabel}
+                    customOptionPlaceholder={field.jsonDisplay.customOptionPlaceholder}
+                />
+            </div>
+        )
+    }
+
+    return <div></div>
+}
+
 function FieldLink({ field, model, onChange, setLinkedObject, object,
-    setLinkedObjectStruct, setShowLinkedObject, getLinkName }) {
+    setLinkedObjectStruct, setShowLinkedObject, getLinkName, editingOn }) {
 
     const [edit, setEdit] = useState(false)
 
@@ -809,7 +931,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
         <React.Fragment>
             <span className={styles.label}>
                 {field.name || field.sysName}
-                {field.write &&
+                {(field.write && editingOn) &&
                     <span
                         onClick={() => setEdit(!edit)}
                         className={`${styles.editPedal} icon icon-edit small`}>
@@ -818,27 +940,31 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
                 }
             </span>
             {field.dataType == 'link' && field.read && object[field.sysName].value && !edit &&
-                <div className={styles.linkFieldWrapper}>
+                <div className={`${styles.linkFieldWrapper} ${!field.clickable && styles.notClickable}`}>
                     <a
                         onClick={() => {
-                            setLinkedObject(object[field.sysName].value)
-                            setLinkedObjectStruct(field.sysName)
-                            setShowLinkedObject(true)
+                            if (field.clickable) {
+                                setLinkedObject(object[field.sysName].value)
+                                setLinkedObjectStruct(field.sysName)
+                                setShowLinkedObject(true)
+                            }
                         }}
                     >{getLinkName(field.sysName, object[field.sysName].value)}</a>
                 </div>
             }
 
             {field.dataType == 'arrayLink' && field.read && object[field.sysName].value && !edit &&
-                <div className={styles.linkFieldWrapper}>
+                <div className={`${styles.linkFieldWrapper} ${!field.clickable && styles.notClickable}`}>
                     {object[field.sysName].value && object[field.sysName].value.length > 0 && object[field.sysName].value.map((link, i) => {
                         return (
                             <a
                                 key={i}
                                 onClick={() => {
-                                    setLinkedObject(link)
-                                    setLinkedObjectStruct(field.sysName)
-                                    setShowLinkedObject(true)
+                                    if (field.clickable) {
+                                        setLinkedObject(link)
+                                        setLinkedObjectStruct(field.sysName)
+                                        setShowLinkedObject(true)
+                                    }
                                 }}
                             >{getLinkName(field.sysName, link)}</a>)
                     })}
@@ -895,6 +1021,85 @@ function CardAction({ action, actionParams, debug, submitAction }) {
                 icon={actionParams.buttonIcon}
             >
                 {actionParams.buttonTitle || actionParams.name}</Button>
+        </React.Fragment>
+    )
+}
+
+function FieldString({ field, model, onChange, object, editingOn, checkLineBreaks }) {
+
+    function validateUrl(value) {
+        return /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:[/?#]\S*)?$/i.test(value);
+    }
+
+    if (field.stringDisplay == 'markdown') {
+        if (field.write && editingOn) {
+            return (
+                <FieldMkd
+                    description={field.descriptionFlag && field.description}
+                    onChange={onChange}
+                    object={object}
+                    editingOn={editingOn}
+                    model={model}
+                    field={field} />
+            )
+        } else {
+            return (
+                <FieldMkd
+                    description={field.descriptionFlag && field.description}
+                    object={object}
+                    model={model}
+                    field={field} />
+            )
+        }
+    }
+
+    if (field.stringDisplay == 'hint') {
+        if (field.write && editingOn) {
+            return (
+                <Input
+                    type='textarea'
+                    description={field.descriptionFlag && field.description}
+                    rows={checkLineBreaks(model[field.sysName]) > 10 ? 10 : checkLineBreaks(model[field.sysName]) + 1}
+                    label={field.name || field.sysName}
+                    defaultValue={model[field.sysName]}
+                    onChange={onChange}
+                />
+            )
+        } else {
+            return (
+                <React.Fragment>
+                    <span className={styles.label}>
+                        {field.name || field.sysName}</span>
+                    <Hint
+                        ok={field.hintType == 'ok'}
+                        danger={field.hintType == 'danger'}
+                        title={model[field.sysName]}
+                        margin={{ top: 1, bottom: 24 }}
+                    >{field.descriptionFlag && field.description}</Hint>
+                </React.Fragment>
+            )
+        }
+    }
+
+    return (
+        <React.Fragment>
+            {(field.write && editingOn) ?
+                <Input
+                    type='textarea'
+                    description={field.descriptionFlag && field.description}
+                    rows={checkLineBreaks(model[field.sysName]) > 10 ? 10 : checkLineBreaks(model[field.sysName]) + 1}
+                    label={field.name || field.sysName}
+                    defaultValue={model[field.sysName]}
+                    onChange={onChange}
+                />
+                :
+                <FieldReadOnly field={field} object={object}
+                    weblink={{
+                        flag: field.stringDisplay == 'link' && validateUrl(model[field.sysName]),
+                        weblink: field.weblink
+                    }} />
+
+            }
         </React.Fragment>
     )
 }

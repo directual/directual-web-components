@@ -201,8 +201,28 @@
             .cardHeader {
                 white-space: nowrap;
                 max-width: 100%;
-                overflow: hidden;
-                text-overflow: ellipsis;
+                display: flex;
+                align-items: center;
+                .txt {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                .counter {
+                    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+                    flex-shrink: 0;
+                    margin: 0 8px;
+                    background: var(--error-color);
+                    color: #fff;
+                    font-family: var( --main-font-family);
+                    font-size: var( --text-font-size);
+                    font-weight: var( --text-font-weight);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 28px;
+                    height: 28px;
+                    border-radius: 32px;
+                }
             }
             .cardHeaderComment {
                 font-size: var(--text-small-size);

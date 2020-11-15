@@ -13,6 +13,9 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
         cardBodyText: ''
     }
 
+    // console.log('=========params=========')
+    // console.log(tableParams)
+
     const pageSize = data.pageSize || 0
     const totalPages = data.totalPages || 0
     const currentPage = data.pageNumber || 0
@@ -123,7 +126,8 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                     getLinkName(i, row[i]) :
                                     row[i].map(j => getLinkName(i, j)).join(', ')
                                 :
-                                tableHeaders.filter(h => h.sysName == i)[0].dataType != 'date' ?
+                                    !tableHeaders.filter(h => h.sysName == i)[0] ? 'No visible name' : 
+                                    tableHeaders.filter(h => h.sysName == i)[0].dataType != 'date' ?
                                     row[i] :
                                     moment(row[i]).format('D MMM, YYYY')
                             ).join(' ')
@@ -178,7 +182,11 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                     <QuickActionsControl quickActions={quickActions} performAction={performAction} />
 
                                     <h3 className={styles.cardHeader}>
-                                        {cardHeader.length > 0 ? cardHeader : 'No visible name'}
+                                        <span className={styles.txt}>{cardHeader.length > 0 ? cardHeader : 'No visible name'}</span>
+
+                                        {/* counter: */}
+                                        {tableParams.counterField && row && row[tableParams.counterField] &&
+                                            <span className={styles.counter} title={`${row[tableParams.counterField]} ${tableParams.counterText}`}>{row[tableParams.counterField]}</span>}
                                     </h3>
 
                                     {cardHeaderComment && (
