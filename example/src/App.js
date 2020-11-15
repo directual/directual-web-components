@@ -93,19 +93,11 @@ const App = (props) => {
       "data": {
         "readFields": [
           {
-            "fieldSysName": "Company_site",
+            "fieldSysName": "Salary_expectations",
             "fetch": [],
-            "sysName": "Company_site",
-            "name": "Сайт компании",
-            "dataType": "string",
-            "link": ""
-          },
-          {
-            "fieldSysName": "firstName",
-            "fetch": [],
-            "sysName": "firstName",
-            "name": "Имя",
-            "dataType": "string",
+            "sysName": "Salary_expectations",
+            "name": "Ожидания по доходу",
+            "dataType": "json",
             "link": ""
           },
           {
@@ -115,17 +107,17 @@ const App = (props) => {
             "name": "id",
             "dataType": "id",
             "link": ""
-          },
-          {
-            "fieldSysName": "lastName",
-            "fetch": [],
-            "sysName": "lastName",
-            "name": "Фамилия",
-            "dataType": "string",
-            "link": ""
           }
         ],
         "writeFields": [
+          {
+            "fieldSysName": "Salary_expectations",
+            "fetch": [],
+            "sysName": "Salary_expectations",
+            "name": "Ожидания по доходу",
+            "dataType": "json",
+            "link": ""
+          },
           {
             "fieldSysName": "id",
             "fetch": [],
@@ -136,20 +128,12 @@ const App = (props) => {
           }
         ],
         "fields": {
-          "Company_site": {
-            "id": "Company_site",
-            "content": "Сайт компании",
+          "Salary_expectations": {
+            "id": "Salary_expectations",
+            "content": "Ожидания по доходу",
             "type": "field",
-            "dataType": "string",
-            "read": true,
-            "link": "",
-            "actions": []
-          },
-          "firstName": {
-            "id": "firstName",
-            "content": "Имя",
-            "type": "field",
-            "dataType": "string",
+            "dataType": "json",
+            "write": true,
             "read": true,
             "link": "",
             "actions": []
@@ -160,15 +144,6 @@ const App = (props) => {
             "type": "field",
             "dataType": "id",
             "write": true,
-            "read": true,
-            "link": "",
-            "actions": []
-          },
-          "lastName": {
-            "id": "lastName",
-            "content": "Фамилия",
-            "type": "field",
-            "dataType": "string",
             "read": true,
             "link": "",
             "actions": []
@@ -209,8 +184,8 @@ const App = (props) => {
             "quickSearch": false,
             "fileImageSize": 200,
             "clickable": true,
-            "stringDisplay": "markdown",
-            "descriptionFlag": true,
+            "stringDisplay": "link",
+            "descriptionFlag": false,
             "description": "описание"
           },
           "Job_title": {
@@ -300,7 +275,7 @@ const App = (props) => {
             "quickSearch": false,
             "fileImageSize": 200,
             "clickable": true,
-            "stringDisplay": "link",
+            "stringDisplay": "markdown",
             "weblink": "нахуй",
             "descriptionFlag": true,
             "description": "описание"
@@ -356,11 +331,11 @@ const App = (props) => {
               "customOptionLabel": "2",
               "customOptionPlaceholder": "пум",
               "range": {
-                "min": 5,
-                "max": 10,
-                "step": 20
+                "min": 0,
+                "max": 1000,
+                "step": 10
               },
-              "unitName": "руб"
+              "unitName": "k ₽"
             }
           },
           "push_how_often": {
@@ -433,10 +408,8 @@ const App = (props) => {
             "id": "tab-1",
             "title": "New tab",
             "fieldIds": [
-              "Company_site",
-              "firstName",
-              "lastName",
-              "id"
+              "id",
+              "Salary_expectations"
             ]
           }
         },
@@ -480,8 +453,8 @@ const App = (props) => {
           "quickSearch": false,
           "fileImageSize": 200,
           "clickable": true,
-          "stringDisplay": "markdown",
-          "descriptionFlag": true,
+          "stringDisplay": "link",
+          "descriptionFlag": false,
           "description": "описание"
         },
         "Job_title": {
@@ -571,7 +544,7 @@ const App = (props) => {
           "quickSearch": false,
           "fileImageSize": 200,
           "clickable": true,
-          "stringDisplay": "link",
+          "stringDisplay": "markdown",
           "weblink": "нахуй",
           "descriptionFlag": true,
           "description": "описание"
@@ -627,11 +600,11 @@ const App = (props) => {
             "customOptionLabel": "2",
             "customOptionPlaceholder": "пум",
             "range": {
-              "min": 5,
-              "max": 10,
-              "step": 20
+              "min": 0,
+              "max": 1000,
+              "step": 10
             },
-            "unitName": "руб"
+            "unitName": "k ₽"
           }
         },
         "push_how_often": {
@@ -704,18 +677,18 @@ const App = (props) => {
     "actions": null,
     "headers": [
       {
-        "sysName": "Company_site",
-        "dataType": "string",
-        "name": "Сайт компании",
-        "id": "32501603357535558",
+        "sysName": "Salary_expectations",
+        "dataType": "json",
+        "name": "Ожидания по доходу",
+        "id": "39581600416217901",
         "link": "",
-        "group": "1600346984797",
+        "group": "1600346971036",
         "tags": "",
         "indexing": false,
         "ordering": false,
         "description": null,
         "weight": null,
-        "order": 1,
+        "order": 2,
         "linkIndexFieldSysName": [],
         "defaultValue": "",
         "constraints": null,
@@ -726,33 +699,7 @@ const App = (props) => {
         "linkType": false,
         "arrayLink": false,
         "indexExists": false,
-        "json": false,
-        "linkOrArrayLinkType": false
-      },
-      {
-        "sysName": "firstName",
-        "dataType": "string",
-        "name": "Имя",
-        "id": "61731600355663227",
-        "link": "",
-        "group": "0",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 3,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": null,
-        "typeVariable": {},
-        "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
-        "json": false,
+        "json": true,
         "linkOrArrayLinkType": false
       },
       {
@@ -780,39 +727,11 @@ const App = (props) => {
         "indexExists": false,
         "json": false,
         "linkOrArrayLinkType": false
-      },
-      {
-        "sysName": "lastName",
-        "dataType": "string",
-        "name": "Фамилия",
-        "id": "54421600355663803",
-        "link": "",
-        "group": "0",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 4,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": null,
-        "typeVariable": {},
-        "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
-        "json": false,
-        "linkOrArrayLinkType": false
       }
     ],
     "data": [
       {
-        "Company_site": "facebook.com",
-        "lastName": "Ershov",
-        "firstName": "Pavel",
+        "Salary_expectations": "{\"secondValue\":790,\"firstValue\":12}",
         "id": "79151845361"
       }
     ],
@@ -821,23 +740,16 @@ const App = (props) => {
     "error": null,
     "fieldScheme": [
       [
-        "Company_site",
-        1315850
-      ],
-      [
-        "firstName",
+        "Salary_expectations",
         1315850
       ],
       [
         "id",
         1315850
-      ],
-      [
-        "lastName",
-        1315850
       ]
     ],
     "writeFields": [
+      "Salary_expectations",
       "id"
     ],
     "structures": {
@@ -896,6 +808,32 @@ const App = (props) => {
     "writeError": null,
     "writeResponse": null,
     "fileds": [
+      {
+        "sysName": "Salary_expectations",
+        "dataType": "json",
+        "name": "Ожидания по доходу",
+        "id": "39581600416217901",
+        "link": "",
+        "group": "1600346971036",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 2,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
+        "typeVariable": {},
+        "linkType": false,
+        "arrayLink": false,
+        "indexExists": false,
+        "json": true,
+        "linkOrArrayLinkType": false
+      },
       {
         "sysName": "id",
         "dataType": "id",

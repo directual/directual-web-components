@@ -861,13 +861,14 @@ function FieldJson({ field, model, onChange, object, editingOn }) {
                     description={field.description}
                     disabled={!(field.write && editingOn)}
                     width={500}
+                    //debug
                     label={field.name || field.sysName}
-                    defaultValue={jsonDefVal(model[field.sysName])}
+                    defaultValue={jsonDefVal(object[field.sysName].value)}
                     min={field.jsonDisplay.range && field.jsonDisplay.range.min}
                     max={field.jsonDisplay.range && field.jsonDisplay.range.max}
                     step={field.jsonDisplay.range && field.jsonDisplay.range.step}
                     unitName={field.jsonDisplay.unitName}
-                    onChange={onChange}
+                    onChange={val => onChange(JSON.stringify(val))}
                 />
             </div>
         )
