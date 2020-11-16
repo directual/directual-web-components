@@ -67,6 +67,7 @@ function FpsCards({auth, data, onEvent, id }) {
 
     const sendMsg = (msg, sl, pageInfo) => {
         console.log('submitting...')
+        if (sl==="") {sl = undefined}
         const message = { ...msg, _id: 'form_' + id, _sl_name: sl }
         console.log(message)
         console.log(pageInfo)

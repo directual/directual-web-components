@@ -172,11 +172,15 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 150px;
+  max-width: 200px;
   font-size: var(--text-small-size);
   margin: 2px;
   border-radius: var(--border-radius);
   cursor: pointer;
+}
+.card .cardInnerWrapper .cardText .details .quickMenu li span {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .card .cardInnerWrapper .cardText .details .quickMenu li:before {
   margin-left: -5px;

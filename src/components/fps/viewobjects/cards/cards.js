@@ -97,7 +97,8 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
 
                     // actions для меню быстрого доступа
                     const quickActions = params.actions ?
-                        params.actions.filter(i => i.dropdown && i.displayAs == 'button' && i.callFrom == 'main') : []
+                        params.actions.filter(i => i.dropdown && i.displayAs == 'button' && i.callFrom != 'linked') : []
+
                     const object = row
                     // выполнить Action
                     function performAction(actionParams) {
@@ -281,7 +282,7 @@ function QuickActionsControl({ quickActions, performAction }) {
                                 setShowQA(false)
                             }}
                             className={`${action.buttonIcon ? 'icon small icon-' + action.buttonIcon : ''}`}>
-                            {action.buttonTitle || action.name}
+                            <span>{action.buttonTitle || action.name}</span>
                         </li>)}
                     </ul>
                 </div>}

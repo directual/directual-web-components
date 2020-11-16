@@ -104,8 +104,6 @@ function List(props) {
 export default function Select(props) {
 
     function convertDefaultValue(def) {
-        console.log('convertDefaultValue')
-        console.log(def)
         if (def === '[]' || (Array.isArray(def) && def.length == 1 && def[0] == "")) {
             def = null
         } // какой-то лютый костыль для редактирования объекта

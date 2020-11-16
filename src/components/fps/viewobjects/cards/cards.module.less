@@ -176,9 +176,13 @@
                         white-space: nowrap;
                         overflow: hidden;
                         text-overflow: ellipsis;
-                        max-width: 150px;
+                        max-width: 200px;
                         font-size: var(--text-small-size);
                         margin:2px;
+                        span {
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
                         &:before {
                             margin-left: -5px;
                             margin-right: 4px;
