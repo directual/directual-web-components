@@ -438,8 +438,11 @@ export default function Input(props) {
 
                 {props.type == 'markdown' &&
                 <div className={styles.field_wrapper}>
-                    <Markdown edit onChange={val=>handleChange(val)} 
-                        height={300} 
+                    <Markdown 
+                        edit 
+                        onChange={val=>handleChange(val)} 
+                        height={350}
+                        value={value} 
                         //margin={{top:0,bottom:18}}
                         />
                 </div>}

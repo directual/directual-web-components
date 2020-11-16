@@ -7,7 +7,8 @@
         height: 100%;
         flex-direction: column;
         .tabWrapper {
-            overflow: auto;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
     }
 }
@@ -18,6 +19,7 @@
     margin-bottom: 18px;
     font-size: var(--text-font-size);
     overflow: auto;
+    padding: 0 6px;
 }
 
 .tabWrapper {
@@ -25,6 +27,8 @@
     display: none;
     border-top:solid 1px transparent;
     transition: .5s;
+    flex-grow: 2;
+    padding: 0 6px;
     &.current {
         display: block;
     }

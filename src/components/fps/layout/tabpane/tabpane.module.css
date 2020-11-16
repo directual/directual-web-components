@@ -9,7 +9,8 @@
   flex-direction: column;
 }
 .tabsPane.fixedScroll .tabWrapper {
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .tabsMenu {
   display: flex;
@@ -17,12 +18,15 @@
   margin-bottom: 18px;
   font-size: var(--text-font-size);
   overflow: auto;
+  padding: 0 6px;
 }
 .tabWrapper {
   font-size: var(--text-font-size);
   display: none;
   border-top: solid 1px transparent;
   transition: 0.5s;
+  flex-grow: 2;
+  padding: 0 6px;
 }
 .tabWrapper.current {
   display: block;

@@ -63,8 +63,8 @@ export default function FpsForm({ auth, data, onEvent, id }) {
 
 
 
-  console.log('------------ form data: -------------')
-  console.log(data)
+  // console.log('------------ form data: -------------')
+  // console.log(data)
   // console.log('------------ auth: -------------')
   // console.log(auth)
   // console.log('------------ form model: -------------')
@@ -376,7 +376,6 @@ export default function FpsForm({ auth, data, onEvent, id }) {
               {typesMatching(field) != 'boolean' &&
                 <div>
                   <Input
-                    //debug
                     sysName={field.sysName}
                     validationHandler={validationHandler}
                     label={(data.placeholder != "true" || typesMatching(field) == 'slider' || typesMatching(field) == 'range') ? field.name : ''}
