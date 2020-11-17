@@ -264,14 +264,6 @@ const App = (props) => {
             "link": ""
           },
           {
-            "fieldSysName": "salary_raw",
-            "fetch": [],
-            "sysName": "salary_raw",
-            "name": "Зарплатная вилка",
-            "dataType": "json",
-            "link": ""
-          },
-          {
             "fieldSysName": "title",
             "fetch": [],
             "sysName": "title",
@@ -473,7 +465,6 @@ const App = (props) => {
             "content": "Зарплатная вилка",
             "type": "field",
             "dataType": "json",
-            "write": true,
             "read": true,
             "link": "",
             "actions": []
@@ -502,6 +493,12 @@ const App = (props) => {
             "content": "Архивировать вакансию",
             "type": "action",
             "actions": []
+          },
+          "action__51911605553461787": {
+            "id": "action__51911605553461787",
+            "content": "Тест действия-формы",
+            "type": "action",
+            "actions": []
           }
         },
         "fieldParams": {
@@ -510,7 +507,8 @@ const App = (props) => {
             "fileImageFormat": "square",
             "fileImageSize": 200,
             "quickSearch": true,
-            "markdown": true
+            "markdown": true,
+            "stringDisplay": "markdown"
           },
           "functions_ids": {
             "include": true,
@@ -601,12 +599,13 @@ const App = (props) => {
             "fieldIds": [
               "title",
               "description",
+              "action__51911605553461787",
+              "action__63761605546160632",
               "functions_ids",
               "is_remote",
               "salary_raw",
               "id",
-              "is_deleted",
-              "action__63761605546160632"
+              "is_deleted"
             ]
           },
           "83791604918873608": {
@@ -614,8 +613,8 @@ const App = (props) => {
             "title": "Отклики",
             "fieldIds": [
               "respond_ids",
-              "rejected_respond_ids",
               "approved_respond_ids",
+              "rejected_respond_ids",
               "new_responds"
             ]
           }
@@ -633,7 +632,8 @@ const App = (props) => {
           "fileImageFormat": "square",
           "fileImageSize": 200,
           "quickSearch": true,
-          "markdown": true
+          "markdown": true,
+          "stringDisplay": "markdown"
         },
         "functions_ids": {
           "include": true,
@@ -989,6 +989,67 @@ const App = (props) => {
             }
           ],
           "buttonTitle": ""
+        },
+        {
+          "sysName": "AskQuestion",
+          "id": "51911605553461787",
+          "name": "Тест действия-формы",
+          "displayAs": "form",
+          "SLtype": "other",
+          "fields": {
+            "readFields": [
+              {
+                "fieldSysName": "id",
+                "fetch": [],
+                "sysName": "id",
+                "name": "id",
+                "dataType": "id",
+                "link": ""
+              }
+            ],
+            "writeFields": [
+              {
+                "fieldSysName": "question",
+                "fetch": [],
+                "sysName": "question",
+                "name": "Вопрос",
+                "dataType": "string",
+                "link": ""
+              },
+              {
+                "fieldSysName": "user_id",
+                "fetch": [],
+                "sysName": "user_id",
+                "name": "Кто спросил",
+                "dataType": "link",
+                "link": "WebUser"
+              }
+            ]
+          },
+          "formFields": [
+            {
+              "id": "54381605558954902",
+              "field": {
+                "fieldSysName": "question",
+                "fetch": [],
+                "sysName": "question",
+                "name": "Вопрос",
+                "dataType": "string",
+                "link": ""
+              }
+            }
+          ],
+          "formMapping": [
+            {
+              "id": "74481605559114994",
+              "target": "user_id",
+              "type": "user",
+              "value": null
+            }
+          ],
+          "buttonTitle": "Какого хуя, я спрашиваю?",
+          "buttonIcon": "babai",
+          "buttonType": "accent"
         }
       ],
       "showCounter": true,
@@ -1017,12 +1078,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
-        "typeVariable": {},
+        "json": false,
+        "linkOrArrayLinkType": true,
         "linkType": false,
         "arrayLink": true,
-        "indexExists": false,
-        "json": false,
-        "linkOrArrayLinkType": true
+        "typeVariable": {},
+        "indexExists": false
       },
       {
         "sysName": "description",
@@ -1043,12 +1104,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
-        "typeVariable": {},
+        "json": false,
+        "linkOrArrayLinkType": false,
         "linkType": false,
         "arrayLink": false,
-        "indexExists": false,
-        "json": false,
-        "linkOrArrayLinkType": false
+        "typeVariable": {},
+        "indexExists": false
       },
       {
         "sysName": "functions_ids",
@@ -1069,12 +1130,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
-        "typeVariable": {},
+        "json": false,
+        "linkOrArrayLinkType": true,
         "linkType": false,
         "arrayLink": true,
-        "indexExists": false,
-        "json": false,
-        "linkOrArrayLinkType": true
+        "typeVariable": {},
+        "indexExists": false
       },
       {
         "sysName": "id",
@@ -1095,12 +1156,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
-        "typeVariable": {},
+        "json": false,
+        "linkOrArrayLinkType": false,
         "linkType": false,
         "arrayLink": false,
-        "indexExists": false,
-        "json": false,
-        "linkOrArrayLinkType": false
+        "typeVariable": {},
+        "indexExists": false
       },
       {
         "sysName": "is_remote",
@@ -1121,12 +1182,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
-        "typeVariable": {},
+        "json": false,
+        "linkOrArrayLinkType": false,
         "linkType": false,
         "arrayLink": false,
-        "indexExists": false,
-        "json": false,
-        "linkOrArrayLinkType": false
+        "typeVariable": {},
+        "indexExists": false
       },
       {
         "sysName": "new_responds",
@@ -1147,12 +1208,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
-        "typeVariable": {},
+        "json": false,
+        "linkOrArrayLinkType": false,
         "linkType": false,
         "arrayLink": false,
-        "indexExists": false,
-        "json": false,
-        "linkOrArrayLinkType": false
+        "typeVariable": {},
+        "indexExists": false
       },
       {
         "sysName": "rejected_respond_ids",
@@ -1173,12 +1234,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
-        "typeVariable": {},
+        "json": false,
+        "linkOrArrayLinkType": true,
         "linkType": false,
         "arrayLink": true,
-        "indexExists": false,
-        "json": false,
-        "linkOrArrayLinkType": true
+        "typeVariable": {},
+        "indexExists": false
       },
       {
         "sysName": "respond_ids",
@@ -1199,12 +1260,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
-        "typeVariable": {},
+        "json": false,
+        "linkOrArrayLinkType": true,
         "linkType": false,
         "arrayLink": true,
-        "indexExists": false,
-        "json": false,
-        "linkOrArrayLinkType": true
+        "typeVariable": {},
+        "indexExists": false
       },
       {
         "sysName": "salary_raw",
@@ -1225,12 +1286,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
-        "typeVariable": {},
+        "json": true,
+        "linkOrArrayLinkType": false,
         "linkType": false,
         "arrayLink": false,
-        "indexExists": false,
-        "json": true,
-        "linkOrArrayLinkType": false
+        "typeVariable": {},
+        "indexExists": false
       },
       {
         "sysName": "title",
@@ -1251,12 +1312,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
-        "typeVariable": {},
+        "json": false,
+        "linkOrArrayLinkType": false,
         "linkType": false,
         "arrayLink": false,
-        "indexExists": false,
-        "json": false,
-        "linkOrArrayLinkType": false
+        "typeVariable": {},
+        "indexExists": false
       }
     ],
     "data": [
@@ -1360,18 +1421,17 @@ const App = (props) => {
       "id",
       "is_deleted",
       "is_remote",
-      "salary_raw",
       "title"
     ],
     "structures": {
       "1316850": {
         "networkID": 3571,
+        "sysName": "Functions",
+        "name": "Функции",
         "id": 1316850,
         "dateCreated": "2020-09-28T12:41:37Z",
         "hidden": false,
         "dateHidden": null,
-        "name": "Функции",
-        "sysName": "Functions",
         "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Назване функции\",\"id\":\"55601601296901980\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Описане\",\"id\":\"61471604045483466\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false}]",
         "jsonGroupSettings": null,
         "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
@@ -1385,6 +1445,7 @@ const App = (props) => {
         "changedBy": 1,
         "_settings": null,
         "_nativeIndexSettings": null,
+        "objectIDSysName": "id",
         "innerIDField": {
           "sysName": "id",
           "dataType": "id",
@@ -1404,24 +1465,23 @@ const App = (props) => {
           "synthetic": false,
           "format": null,
           "formatOptions": null,
-          "typeVariable": {},
+          "json": false,
+          "linkOrArrayLinkType": false,
           "linkType": false,
           "arrayLink": false,
-          "indexExists": false,
-          "json": false,
-          "linkOrArrayLinkType": false
+          "typeVariable": {},
+          "indexExists": false
         },
-        "objectIDSysName": "id",
         "folderId": 33588861
       },
       "1321550": {
         "networkID": 3571,
+        "sysName": "Jobs",
+        "name": "Вакансии",
         "id": 1321550,
         "dateCreated": "2020-10-30T06:34:02Z",
         "hidden": false,
         "dateHidden": null,
-        "name": "Вакансии",
-        "sysName": "Jobs",
         "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"is_remote\",\"dataType\":\"boolean\",\"name\":\"Возможна ли удаленка?\",\"id\":\"28731604039741452\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"Company\",\"dataType\":\"string\",\"name\":\"Компания\",\"id\":\"32941604916282560\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Описание\",\"id\":\"36741604039732068\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"_salary_to\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"38941604920287854\",\"link\":\"\",\"group\":\"1604920223444\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"new_responds\",\"dataType\":\"number\",\"name\":\"Количество новых откликов\",\"id\":\"42241605184081790\",\"link\":\"\",\"group\":\"1605545589008\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"approved_respond_ids\",\"dataType\":\"arrayLink\",\"name\":\"Одобренные отклики\",\"id\":\"45281605545815460\",\"link\":\"Job_responds\",\"group\":\"1605545589008\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"city_id\",\"dataType\":\"link\",\"name\":\"Город вакансии\",\"id\":\"51921604916006748\",\"link\":\"cities\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"is_deleted\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"59631604040401120\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"salary_raw\",\"dataType\":\"json\",\"name\":\"Зарплатная вилка\",\"id\":\"60961604039806254\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"json\":true,\"linkOrArrayLinkType\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"Название вакансии\",\"id\":\"69581604039684404\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"candidates_ids\",\"dataType\":\"arrayLink\",\"name\":\"Подходящие кандидаты\",\"id\":\"70961604920230973\",\"link\":\"WebUser\",\"group\":\"1604920223444\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"functions_ids\",\"dataType\":\"arrayLink\",\"name\":\"Необходимые функции\",\"id\":\"73451604039771489\",\"link\":\"Functions\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"_salary_from\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"84411604920271978\",\"link\":\"\",\"group\":\"1604920223444\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"respond_ids\",\"dataType\":\"arrayLink\",\"name\":\"Новые отклики\",\"id\":\"85091604758872131\",\"link\":\"Job_responds\",\"group\":\"1605545589008\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"author_id\",\"dataType\":\"link\",\"name\":\"Автор вакансии\",\"id\":\"93641604039651061\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"rejected_respond_ids\",\"dataType\":\"arrayLink\",\"name\":\"Отклоненные отклики\",\"id\":\"93811605545833121\",\"link\":\"Job_responds\",\"group\":\"1605545589008\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true}]",
         "jsonGroupSettings": "[{\"id\":1604920223444,\"name\":\"Matching\",\"order\":1},{\"id\":1605545589008,\"name\":\"Responds\",\"order\":0}]",
         "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
@@ -1435,6 +1495,7 @@ const App = (props) => {
         "changedBy": 1,
         "_settings": null,
         "_nativeIndexSettings": null,
+        "objectIDSysName": "id",
         "innerIDField": {
           "sysName": "id",
           "dataType": "id",
@@ -1454,24 +1515,23 @@ const App = (props) => {
           "synthetic": false,
           "format": null,
           "formatOptions": null,
-          "typeVariable": {},
+          "json": false,
+          "linkOrArrayLinkType": false,
           "linkType": false,
           "arrayLink": false,
-          "indexExists": false,
-          "json": false,
-          "linkOrArrayLinkType": false
+          "typeVariable": {},
+          "indexExists": false
         },
-        "objectIDSysName": "id",
         "folderId": 33591500
       },
       "1322450": {
         "networkID": 3571,
+        "sysName": "Job_responds",
+        "name": "Отклики",
         "id": 1322450,
         "dateCreated": "2020-11-07T14:18:30Z",
         "hidden": false,
         "dateHidden": null,
-        "name": "Отклики",
-        "sysName": "Job_responds",
         "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":false,\"json\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"user_id\",\"name\":\"Кандидат\",\"dataType\":\"link\",\"id\":\"34641604758714655\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":true,\"json\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"job_id\",\"name\":\"Вакансия\",\"dataType\":\"link\",\"id\":\"79931604758715240\",\"link\":\"Jobs\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":true,\"json\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"Status\",\"name\":\"Статус\",\"dataType\":\"string\",\"id\":\"99591604758716602\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"linkType\":false,\"json\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false}]",
         "jsonGroupSettings": null,
         "jsonViewIdSettings": "[{\"sysName\":\"user_id\"}]",
@@ -1485,6 +1545,7 @@ const App = (props) => {
         "changedBy": 1,
         "_settings": null,
         "_nativeIndexSettings": null,
+        "objectIDSysName": "id",
         "innerIDField": {
           "sysName": "id",
           "dataType": "id",
@@ -1504,14 +1565,13 @@ const App = (props) => {
           "synthetic": false,
           "format": null,
           "formatOptions": null,
-          "typeVariable": {},
+          "json": false,
+          "linkOrArrayLinkType": false,
           "linkType": false,
           "arrayLink": false,
-          "indexExists": false,
-          "json": false,
-          "linkOrArrayLinkType": false
+          "typeVariable": {},
+          "indexExists": false
         },
-        "objectIDSysName": "id",
         "folderId": 33591500
       }
     },
@@ -1538,12 +1598,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
-        "typeVariable": {},
+        "json": false,
+        "linkOrArrayLinkType": false,
         "linkType": false,
         "arrayLink": false,
-        "indexExists": false,
-        "json": false,
-        "linkOrArrayLinkType": false
+        "typeVariable": {},
+        "indexExists": false
       },
       {
         "sysName": "functions_ids",
@@ -1564,12 +1624,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
-        "typeVariable": {},
+        "json": false,
+        "linkOrArrayLinkType": true,
         "linkType": false,
         "arrayLink": true,
-        "indexExists": false,
-        "json": false,
-        "linkOrArrayLinkType": true
+        "typeVariable": {},
+        "indexExists": false
       },
       {
         "sysName": "id",
@@ -1590,12 +1650,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
-        "typeVariable": {},
+        "json": false,
+        "linkOrArrayLinkType": false,
         "linkType": false,
         "arrayLink": false,
-        "indexExists": false,
-        "json": false,
-        "linkOrArrayLinkType": false
+        "typeVariable": {},
+        "indexExists": false
       },
       {
         "sysName": "is_deleted",
@@ -1616,12 +1676,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
-        "typeVariable": {},
+        "json": false,
+        "linkOrArrayLinkType": false,
         "linkType": false,
         "arrayLink": false,
-        "indexExists": false,
-        "json": false,
-        "linkOrArrayLinkType": false
+        "typeVariable": {},
+        "indexExists": false
       },
       {
         "sysName": "is_remote",
@@ -1642,38 +1702,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
-        "typeVariable": {},
-        "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
         "json": false,
-        "linkOrArrayLinkType": false
-      },
-      {
-        "sysName": "salary_raw",
-        "dataType": "json",
-        "name": "Зарплатная вилка",
-        "id": "60961604039806254",
-        "link": "",
-        "group": "0",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 6,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": null,
-        "typeVariable": {},
+        "linkOrArrayLinkType": false,
         "linkType": false,
         "arrayLink": false,
-        "indexExists": false,
-        "json": true,
-        "linkOrArrayLinkType": false
+        "typeVariable": {},
+        "indexExists": false
       },
       {
         "sysName": "title",
@@ -1694,12 +1728,12 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": null,
-        "typeVariable": {},
+        "json": false,
+        "linkOrArrayLinkType": false,
         "linkType": false,
         "arrayLink": false,
-        "indexExists": false,
-        "json": false,
-        "linkOrArrayLinkType": false
+        "typeVariable": {},
+        "indexExists": false
       }
     ]
   }

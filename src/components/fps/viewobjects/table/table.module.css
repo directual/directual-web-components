@@ -292,3 +292,16 @@
   display: flex;
   align-items: flex-end;
 }
+.actionsWrapper {
+  margin: 12px 0 24px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.actionsWrapper .actionButton {
+  margin: 0 6px 6px 0;
+}
+.actionsWrapper .actionForm {
+  width: 100%;
+  flex-shrink: 0;
+  margin-bottom: 24px;
+}

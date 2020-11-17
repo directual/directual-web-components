@@ -146,6 +146,7 @@ export function ObjectCard(props) {
                         props.object[row.value].id
             }
         })
+        mapping = {...mapping, ...actionParams.formData}
         const sl = actionParams.sysName
         props.submitAction(mapping, sl)
     }
@@ -393,7 +394,7 @@ export function ObjectCard(props) {
             //         count++;
             //     }
             // });
-            return newArr;
+            // return newArr;
         };
         const transformedFields = transform(fields, fieldParams)
         return (
@@ -408,25 +409,36 @@ export function ObjectCard(props) {
                     }
                     if (field.id == 'action__delete') return
                     if (field.type == 'actions') {
-                        return <ActionPanel>
+                        return <div className={styles.actionsWrapper}>
                             {props.loading ? <Loader>Loading...</Loader> :
                                 field.content.map(action => {
                                     if (action.id != 'action__delete') {
-                                        return <CardAction
-                                            action={action.id}
-                                            submitAction={submitAction}
-                                            actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
-                                                props.params.actions.filter(i => action.id == 'action__' + i.id)[0]}
-                                        />
+                                        const actionParams = props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
+                                            props.params.actions.filter(i => action.id == 'action__' + i.id)[0]
+                                        if (actionParams.displayAs == 'form') {
+                                            return <div className={styles.actionForm}><CardAction
+                                                action={action.id}
+                                                submitAction={submitAction}
+                                                actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
+                                                    props.params.actions.filter(i => action.id == 'action__' + i.id)[0]}
+                                            /></div>
+                                        } else {
+                                            return <div className={styles.actionButton}><CardAction
+                                                action={action.id}
+                                                submitAction={submitAction}
+                                                actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
+                                                    props.params.actions.filter(i => action.id == 'action__' + i.id)[0]}
+                                            /></div>
+                                        }
                                     } else {
-                                        return <ActionDelete // Кнопочка Delete
+                                        return <div className={styles.actionButton}><ActionDelete // Кнопочка Delete
                                             submit={() => {
                                                 props.submit({ [deleteField]: true, id: object.id.value });
                                                 props.onClose()
-                                            }} />
+                                            }} /></div>
                                     }
                                 })}
-                        </ActionPanel>
+                        </div>
 
                     }
                     if (!field.include || !object[field.sysName]) { return null } // скрытые поля
@@ -549,7 +561,7 @@ function CardField({ field, object, model, setModel, debug, editingOn,
                 <p className='dd-debug'>{JSON.stringify(field)}</p>
                 <p className='dd-debug'><b>object: </b>{JSON.stringify(object[field.sysName])}</p></div>}
 
-            {field.actions && field.actions.length > 0 && <div className='dd-debug'>бля! тут есть действия</div>}
+            {/* {field.actions && field.actions.length > 0 && <div className='dd-debug'>бля! тут есть действия</div>} */}
 
             {/* КАРТИНКИ */}
             {field.dataType == 'file' && field.read && field.fileImage &&
@@ -1011,16 +1023,32 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
 }
 
 function CardAction({ action, actionParams, debug, submitAction }) {
+
+    const [actionData, setActionData] = useState(actionParams)
+
     return (
         <React.Fragment>
-            {debug && <div>
-                <div className='dd-debug'>{JSON.stringify(action)}</div>
-                <div className='dd-debug'>{JSON.stringify(actionParams)}</div>
-            </div>}
+
+            {actionParams.displayAs == 'form' &&
+                <React.Fragment>
+                    <FormSection title={actionParams.name} />
+                    {/* <pre className='dd-debug'>{JSON.stringify(actionData, 0, 3)}</pre> */}
+                    {actionParams.formFields && actionParams.formFields.length > 0 && actionParams.formFields.map(field => (<Input 
+                        type={field.field.dataType}
+                        width={400}
+                        label={field.field.name}
+                        onChange={value => {
+                            const saveData = {...actionData}
+                            saveData.formData = {...saveData.formData, [field.field.fieldSysName]: value}
+                            setActionData(saveData)
+                        }}
+                    />))}
+                </React.Fragment>
+            }
             <Button
                 accent={actionParams.buttonType == 'accent'}
                 danger={actionParams.buttonType == 'danger'}
-                onClick={() => submitAction(actionParams)}
+                onClick={() => submitAction(actionData)}
                 icon={actionParams.buttonIcon}
             >
                 {actionParams.buttonTitle || actionParams.name}</Button>
