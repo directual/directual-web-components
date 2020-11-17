@@ -772,8 +772,8 @@ function SaveCard({ model, currentObject, submit, setCurrentObject, setModel, lo
                 <ActionPanel margin={{ top: 24, bottom: 12 }}>
                     {loading ? <Loader>Loading...</Loader> :
                         <React.Fragment>
-                            <pre className='dd-debug'>{JSON.stringify(model,0,3)}</pre>
-                            <pre className='dd-debug'>{JSON.stringify(currentObject,0,3)}</pre>
+                            {/* <pre className='dd-debug'>{JSON.stringify(model,0,3)}</pre>
+                            <pre className='dd-debug'>{JSON.stringify(currentObject,0,3)}</pre> */}
                             <Button
                                 disabled={JSON.stringify(model) === JSON.stringify(currentObject)}
                                 accent
