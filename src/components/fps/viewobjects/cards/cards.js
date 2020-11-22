@@ -186,8 +186,11 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                         <span className={styles.txt}>{cardHeader.length > 0 ? cardHeader : 'No visible name'}</span>
 
                                         {/* counter: */}
-                                        {tableParams.counterField && row && row[tableParams.counterField] &&
-                                            <span className={styles.counter} title={`${row[tableParams.counterField]} ${tableParams.counterText}`}>{row[tableParams.counterField]}</span>}
+                                        {(tableParams.counterField && 
+                                            row && row[tableParams.counterField] && 
+                                            row[tableParams.counterField] != 0 && row[tableParams.counterField] != "0") ?
+                                            <span className={styles.counter} title={`${row[tableParams.counterField]} ${tableParams.counterText}`}>
+                                                {row[tableParams.counterField]}</span> : ''}
                                     </h3>
 
                                     {cardHeaderComment && (

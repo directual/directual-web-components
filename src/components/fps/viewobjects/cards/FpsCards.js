@@ -107,7 +107,7 @@ function FpsCards({auth, data, onEvent, id }) {
                             object={showObject}
                             submit={submit}
                             auth={auth}
-                            submitAction={submitAction}
+                            executeAction={submitAction}
                             params={data.params}
                             loading={loading}
                             tableFieldScheme={tableFieldScheme}
@@ -124,9 +124,6 @@ function FpsCards({auth, data, onEvent, id }) {
                 loading={loading}
                 onFilter={() => { }}
             />
-            {/* <pre>
-                {JSON.stringify(data.data, 0, 3)}
-            </pre> */}
             <Cards
                 data={data}
                 params={data.params}
