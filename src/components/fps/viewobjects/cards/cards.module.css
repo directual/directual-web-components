@@ -266,27 +266,27 @@
 .card.list {
   width: calc(100% - 18px);
 }
-@media all and (min-width: 2300px) {
+@media all and (min-width: 2000px) {
   .card.grid {
     width: calc(20% - 18px);
   }
 }
-@media all and (min-width: 1900px) and (max-width: 2299px) {
+@media all and (min-width: 1400px) and (max-width: 1999px) {
   .card.grid {
     width: calc(25% - 18px);
   }
 }
-@media all and (min-width: 1400px) and (max-width: 1899px) {
+@media all and (min-width: 1100px) and (max-width: 1399px) {
   .card.grid {
     width: calc(33.3% - 18px);
   }
 }
-@media all and (min-width: 1000px) and (max-width: 1399px) {
+@media all and (min-width: 700px) and (max-width: 1099px) {
   .card.grid {
     width: calc(50% - 18px);
   }
 }
-@media all and (max-width: 999px) {
+@media all and (max-width: 699px) {
   .card.grid {
     width: calc(100% - 18px);
     margin-bottom: 12px !important;

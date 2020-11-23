@@ -413,6 +413,7 @@ export function ObjectCard(props) {
                                         if (actionParams && actionParams.displayAs == 'form') {
                                             return <div className={styles.actionForm}><CardAction
                                                 action={action.id}
+                                                onClose={props.onTerminate}
                                                 submitAction={submitAction}
                                                 actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
                                                     props.params.actions.filter(i => action.id == 'action__' + i.id)[0]}

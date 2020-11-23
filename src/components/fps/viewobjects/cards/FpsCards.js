@@ -104,6 +104,7 @@ function FpsCards({auth, data, onEvent, id }) {
                     <div className={styles.firstObjectCard}>
                         <ObjectCard
                             onClose={handleCloseShowObject}
+                            onTerminate={handleCloseShowObject}
                             object={showObject}
                             submit={submit}
                             auth={auth}
