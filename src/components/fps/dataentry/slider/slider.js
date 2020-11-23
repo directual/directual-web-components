@@ -17,8 +17,8 @@ export default function Slider(props) {
     const [right,setRight] = useState(props.defaultValue && props.defaultValue.secondValue)
     const sliderBar = useRef(null)
 
-    useEffect (()=>{!right ? props.onChange({firstValue:left}) : props.onChange({firstValue:left, secondValue:right})}, [left])
-    useEffect (()=>{props.onChange({firstValue:left, secondValue:right})}, [right])
+    useEffect (()=>{!right ? props.onChange({firstValue:left}) : props.onChange({secondValue:right, firstValue:left})}, [left])
+    useEffect (()=>{props.onChange({secondValue:right, firstValue:left})}, [right])
 
     useEffect (()=>{ props.defaultValue && setLeft(props.defaultValue.firstValue) }, [props.defaultValue])
     useEffect (()=>{ props.defaultValue && props.defaultValue.secondValue && setRight(props.defaultValue.secondValue) }, [props.defaultValue])

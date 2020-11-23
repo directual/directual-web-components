@@ -952,7 +952,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
                     </span>
                 }
             </span>
-            {field.description &&
+            {field.descriptionFlag && field.description &&
                 <span className={styles.description}>
                     {field.description}</span>}
 
