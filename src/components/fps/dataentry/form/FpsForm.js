@@ -137,9 +137,10 @@ export default function FpsForm({ auth, data, onEvent, id }) {
 
   const fetchObjectFields = (objId) => {
     setFetchetObj(true)
-    const message = { dql: 'id = ' + objId, _id: id }
+    const message = { dql: "id = '" + objId + "'", _id: id }
     if (onEvent) {
       onEvent(message)
+      console.log('onEvent')
       console.log(message)
     }
 
