@@ -336,6 +336,8 @@ export function ObjectCard(props) {
 
         // группируем actions
         const transform = (a, fieldParams) => {
+            console.log('transform')
+            console.log(a)
             const arr = a.map(i => { return { id: i, type: fieldParams[i] && fieldParams[i].type } })
             return arr.reduce((acc, item, i) => {
                 const { type } = item;
@@ -391,7 +393,7 @@ export function ObjectCard(props) {
             // });
             // return newArr;
         };
-        const transformedFields = transform(fields, fieldParams)
+        const transformedFields = fields && fieldParams ? transform(fields, fieldParams) : []
         return (
             <React.Fragment>
                 {transformedFields.map((f, i) => {
@@ -454,7 +456,7 @@ export function ObjectCard(props) {
                     />
                 })}
 
-                {fields.filter(i =>
+                {fields && fields.filter(i =>
                     fieldParams[i].write == true
                     && fieldParams[i].include == true
                     && fieldParams[i].id != deleteField
@@ -479,10 +481,16 @@ export function ObjectCard(props) {
 
     return (
         <div className={styles.objectCard}>
+            {props.shareble && 
+                <div title='Copy direct link to the object' 
+                    className={`${styles.shareObject} icon icon-copy`}
+                    onClick={()=>{}}
+                    ></div>
+            }
             <div className={styles.objectCardHeader}>
                 <div onClick={props.onClose}
                     className={`${styles.closeObjectCard} icon icon-back ${showLinkedObject && styles.hidden}`}></div>
-                <h2>{props.params && props.params.data && props.params.data.subHeader}
+                <h2 className={`${props.shareble && styles.narrowH2}`}>{props.params && props.params.data && props.params.data.subHeader}
                     {structure.visibleName ? structure.visibleName.map(headerField => object[headerField] ?
                         typeof object[headerField].value == 'object' ?
                             !Array.isArray(object[headerField].value) ?
@@ -937,8 +945,8 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
 
     const [edit, setEdit] = useState(false)
 
-    console.log('Field  Link')
-    console.log(field)
+    // console.log('Field  Link')
+    // console.log(field)
 
     return (
         <React.Fragment>

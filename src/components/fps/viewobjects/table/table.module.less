@@ -105,6 +105,9 @@
             overflow: hidden;
             text-overflow: ellipsis;
            // white-space: nowrap;
+           &.narrowH2 {
+               margin-right: 25px;
+           }
         }
         .closeObjectCard {
             cursor: pointer;
@@ -188,17 +191,17 @@
         flex-direction: column;
         align-items: stretch;
         h1, h2 {
-            max-width: 100%;
+            max-width: calc(100% - 24px);
             //margin-bottom: 12px !important;
         }
     }
     .tableTitle {
         .tableTitleWrapper {
-            margin-bottom: 12px;
+            //margin-bottom: 12px;
         }
         .tableActions {
             .tableQuickSearchField {
-                margin: 0;
+                margin: 12px 0 0 0;
                 width: 100%;
             }
             .quickSearchInput {
@@ -340,4 +343,19 @@
         margin-bottom: 24px;
     }
 }
- 
+.objectCard {
+    .shareObject {
+        position: absolute;
+        opacity: .15;
+        cursor: pointer;
+        top:25px;
+        right: 25px;
+        transition: .5s;
+        &:hover {
+            opacity: .8;
+        }
+        &:before {
+            font-size: 36px;
+        }
+    }
+}

@@ -63,8 +63,8 @@ export default function FpsForm({ auth, data, onEvent, id }) {
 
 
 
-  // console.log('------------ form data: -------------')
-  // console.log(data)
+  console.log('------------ form data: -------------')
+  console.log(data)
   // console.log('------------ auth: -------------')
   // console.log(auth)
   // console.log('------------ form model: -------------')
@@ -137,9 +137,10 @@ export default function FpsForm({ auth, data, onEvent, id }) {
 
   const fetchObjectFields = (objId) => {
     setFetchetObj(true)
-    const message = { dql: 'id = ' + objId, _id: 'form_' + id }
+    const message = { dql: 'id = ' + objId, _id: id }
     if (onEvent) {
       onEvent(message)
+      console.log(message)
     }
 
 

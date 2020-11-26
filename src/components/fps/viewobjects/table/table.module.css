@@ -96,6 +96,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.objectCard .objectCardHeader h2.narrowH2 {
+  margin-right: 25px;
+}
 .objectCard .objectCardHeader .closeObjectCard {
   cursor: pointer;
   margin-right: 12px;
@@ -173,13 +176,10 @@
   }
   div.tableTitle h1,
   div.tableTitle h2 {
-    max-width: 100%;
-  }
-  .tableTitle .tableTitleWrapper {
-    margin-bottom: 12px;
+    max-width: calc(100% - 24px);
   }
   .tableTitle .tableActions .tableQuickSearchField {
-    margin: 0;
+    margin: 12px 0 0 0;
     width: 100%;
   }
 }
@@ -304,4 +304,18 @@
   width: 100%;
   flex-shrink: 0;
   margin-bottom: 24px;
+}
+.objectCard .shareObject {
+  position: absolute;
+  opacity: 0.15;
+  cursor: pointer;
+  top: 25px;
+  right: 25px;
+  transition: 0.5s;
+}
+.objectCard .shareObject:hover {
+  opacity: 0.8;
+}
+.objectCard .shareObject:before {
+  font-size: 36px;
 }

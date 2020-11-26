@@ -108,6 +108,7 @@ function FpsCards({auth, data, onEvent, id }) {
                             object={showObject}
                             submit={submit}
                             auth={auth}
+                            //shareble
                             executeAction={submitAction}
                             params={data.params}
                             loading={loading}
@@ -121,6 +122,7 @@ function FpsCards({auth, data, onEvent, id }) {
                 tableTitle={tableTitle}
                 searchValue={searchValue}
                 tableQuickSearch={true}
+                search={data.data && data.data.length > 0 ? true : false}
                 onSearch={value => search(value)}
                 loading={loading}
                 onFilter={() => { }}

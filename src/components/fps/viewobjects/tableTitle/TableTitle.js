@@ -5,19 +5,19 @@ import Filters from '../filters/Filters'
 import Input from '../../dataentry/input/input'
 import Loader from '../../loader/loader'
 
-export function TableTitle({ tableQuickSearch, tableTitle, tableFilters, onFilter, onSearch, loading, searchValue }) {
-    const [showSearch, setShowSearch] = useState(true)
+export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters, onFilter, onSearch, loading, searchValue }) {
+    const [showSearch, setShowSearch] = useState(search)
     const [showFilters, setShowFilters] = useState(false)
     return (
         <React.Fragment>
             <div className={styles.tableTitle}>
                 <div className={styles.tableTitleWrapper}>
-                    {tableTitle && <h1><span>{tableTitle}</span></h1>}
+                    {tableTitle && <h2><span>{tableTitle}</span></h2>}
 
                     {loading && searchValue && <div className={styles.subtitle}><Loader>Loading...</Loader></div>}
                     {searchValue && !loading &&
                         <div className={styles.titleSearch}>
-                        <span>Searching: <strong>{searchValue}</strong></span>
+                            <span>Searching: <strong>{searchValue}</strong></span>
                         </div>
                     }
                 </div>
@@ -29,8 +29,8 @@ export function TableTitle({ tableQuickSearch, tableTitle, tableFilters, onFilte
                             onClick={() => setShowFilters(!showFilters)}
                         >{`${!showFilters ? 'Show filters' : 'Hide filters'}`}</Button> */}
 
-                        <div className={styles.tableQuickSearchField}>
-                            {showSearch ?
+                        {showSearch &&
+                            <div className={styles.tableQuickSearchField}>
                                 <Input
                                     type='search'
                                     searchOnEnter={true}
@@ -46,11 +46,11 @@ export function TableTitle({ tableQuickSearch, tableTitle, tableFilters, onFilte
                                         //setShowSearch(false)
                                     }}
                                     nomargin />
-                                :
-                                <Button icon='search'
-                                    onClick={() => setShowSearch(true)}></Button>
-                            }
-                        </div>
+                            </div>
+                            // :
+                            // <Button icon='search'
+                            //     onClick={() => setShowSearch(true)}></Button>
+                        }
                     </div>}
 
             </div>

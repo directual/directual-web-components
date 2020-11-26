@@ -90,7 +90,8 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
 
     return (
         <React.Fragment>
-            <div className={`${styles.cardsWrapper} ${(data.error || tableData.length === 0 || tableHeaders.length === 0) && styles.emptyTable} ${loading && styles.loading}`}>
+            <div className={`${styles.cardsWrapper} 
+                ${(data.error || tableData.length === 0 || tableHeaders.length === 0) && styles.emptyTable} ${loading && styles.loading}`}>
                 {(tableData.length != 0 && tableHeaders.length != 0) && tableData.map((row, i) => {
 
 
