@@ -27,6 +27,9 @@ a.button {
     transition: 0s;
     white-space: nowrap;
     font-weight: var( --text-font-weight);
+    &.loading {
+        padding-left:6px;
+    }
     &.small {
         font-size: var(--text-small-size);
     }
@@ -103,7 +106,7 @@ a.button {
             border-color: var(--font-color) !important;
         }
     }
-    &:hover:not(.disabled):not(.transparent) {
+    &:hover:not(.disabled):not(.transparent):not(.loading) {
         height: 48px;
         padding: 0 17px !important;
         border-width:2px;

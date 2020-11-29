@@ -82,13 +82,16 @@ export default function Input(props) {
     }
 
     const handleChange = (e) => {
-        props.onChange && props.onChange(e)
+        if (props.restrictChars && Array.isArray(props.restrictChars)
+            && props.restrictChars.indexOf(e.slice(-1)) === -1 && e) {
+            console.log('restricted character')
+            return null
+        }
         submit(e)
         props.required && setWarningMesg({})
     }
 
     const handleChangeDecimalNumber = (e) => {
-        props.onChange && props.onChange(e)
         submit(e)
         props.required && setWarningMesg({})
     }
@@ -114,8 +117,8 @@ export default function Input(props) {
     }
 
     useEffect(() => {
-        if (props.highlightEmpty && !value) { setWarningMesg({ type: 'error', msg: 'This field is required' }) } 
-            else { setWarningMesg({}); }
+        if (props.highlightEmpty && !value) { setWarningMesg({ type: 'error', msg: 'This field is required' }) }
+        else { setWarningMesg({}); }
     }, [value])
 
     const icon_options =
@@ -251,6 +254,12 @@ export default function Input(props) {
     }
 
 
+    useEffect(() => {
+        console.log(props.autoFocus)
+        props.autoFocus && inputEl.current.focus();
+    }, [])
+
+
     return (
         <div className={`${styles.input_wrapper} ${props.className}`}
             style={
@@ -285,40 +294,47 @@ export default function Input(props) {
                 props.type != 'markdown' &&
                 props.type != 'range' &&
                 props.type != 'decimal' &&
-                <div className={styles.field_wrapper}>
+                <div className={`${styles.field_wrapper} ${props.addonAfter && styles.hor}`}>
                     {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
-                    <input
-                        disabled={props.disabled}
-                        key={props.key}
-                        ref={inputEl}
-                        style={{
-                            height: props.height || 44
-                        }}
-                        className=
-                        {`${styles.field} 
+                    <div className={styles.field_wrapper_additional}>
+                        <input
+                            disabled={props.disabled}
+                            key={props.key}
+                            ref={inputEl}
+                            style={{
+                                height: props.height || 44
+                            }}
+                            className=
+                            {`${styles.field} 
                             ${props.icon && styles.icon}
+                            ${props.addonAfter && styles.addonAfterInput}
                             ${props.code && styles.code} 
                             ${warningMsg.type && styles[warningMsg.type]}
                             ${props.disabled && styles.disabled}`}
-                        type="text"
-                        onKeyPress={e => { e.key == 'Enter' ? props.onPressEnter(value) : undefined }}
-                        onChange={e => { !props.copy ? handleChange(e.target.value) : undefined; }}
-                        value={value || ''}
-                        onBlur={checkValue}
-                        placeholder={`${props.placeholder ? props.placeholder : ''}`}
-                    />
-                    {value && !props.disabled && !props.copy &&
-                        <div className={`${styles.clear} icon icon-close`}
-                            onClick={clearValue}></div>}
-                    {value && props.copy &&
-                        <div className={`${styles.clear} icon icon-copy`}
-                            onClick={value => copyValue(value)}></div>}
+                            type="text"
+                            onKeyPress={e => { e.key == 'Enter' ? props.onPressEnter(value) : undefined }}
+                            onChange={e => { !props.copy ? handleChange(e.target.value) : undefined; }}
+                            value={value || ''}
+                            onBlur={checkValue}
+                            placeholder={`${props.placeholder ? props.placeholder : ''}`}
+                        />
+                        {value && !props.disabled && !props.copy &&
+                            <div className={`${styles.clear} icon icon-close`}
+                                onClick={clearValue}></div>}
+                        {value && props.copy &&
+                            <div className={`${styles.clear} icon icon-copy`}
+                                onClick={value => copyValue(value)}></div>}
+                    </div>
+                    {props.addonAfter &&
+                        <div className={styles.addonAfter}>{props.addonAfter}</div>}
+
                 </div>}
 
             {props.type == 'email' &&
                 <div className={styles.field_wrapper}>
                     <input
                         autocomplete="off"
+                        ref={inputEl}
                         disabled={props.disabled}
                         className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
                         type="text"
@@ -343,6 +359,7 @@ export default function Input(props) {
                         style={{
                             height: props.height || 44
                         }}
+                        ref={inputEl}
                         className={`
                         ${styles.field} 
                         ${styles.icon} 
@@ -372,6 +389,7 @@ export default function Input(props) {
                     <div className={styles.field_wrapper}>
                         <input
                             className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
+                            ref={inputEl}
                             disabled={props.disabled}
                             type="number"
                             style={{
@@ -395,6 +413,7 @@ export default function Input(props) {
                         <input
                             className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                             disabled={props.disabled}
+                            ref={inputEl}
                             type="number"
                             style={{
                                 height: props.height || 44
@@ -422,6 +441,7 @@ export default function Input(props) {
                 <div className={styles.field_wrapper}>
                     <textarea
                         autoFocus={props.autoFocus}
+                        ref={inputEl}
                         disabled={props.disabled}
                         className={`${styles.field} ${props.disabled && styles.disabled} ${props.code && styles.code} ${warningMsg.type && styles[warningMsg.type]}`}
                         type="text"
@@ -436,21 +456,22 @@ export default function Input(props) {
                             onClick={clearValue}></div>}
                 </div>}
 
-                {props.type == 'markdown' &&
+            {props.type == 'markdown' &&
                 <div className={styles.field_wrapper}>
-                    <Markdown 
-                        edit 
-                        onChange={val=>handleChange(val)} 
+                    <Markdown
+                        edit
+                        onChange={val => handleChange(val)}
                         height={350}
-                        value={value} 
-                        //margin={{top:0,bottom:18}}
-                        />
+                        value={value}
+                    //margin={{top:0,bottom:18}}
+                    />
                 </div>}
 
             {props.type == 'password' &&
                 <div className={styles.field_wrapper}>
                     <input
                         autoFocus={props.autoFocus}
+                        ref={inputEl}
                         autocomplete="new-password"
                         disabled={props.disabled}
                         style={{

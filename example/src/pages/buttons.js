@@ -23,6 +23,20 @@ export default function ButtonsPage() {
             </ActionPanel>
 
             <CodeSnippet code=
+                {`<ActionPanel margin={{ top: 6, bottom: 12 }}>
+    <Button loading>Regular button</Button>
+    <Button accent loading>Accent button</Button>
+    <Button accent icon="play">Icon button</Button>
+</ActionPanel>`} />
+            <ActionPanel margin={{ top: 6, bottom: 12 }}>
+                <Button loading>Regular button</Button>
+                <Button accent loading>Accent button</Button>
+                <Button accent icon="play" loading>Icon button</Button>
+                <Button loading disabled>Regular button</Button>
+                <Button accent loading disabled>Accent button</Button>
+            </ActionPanel>
+
+            <CodeSnippet code=
                 {`<ActionPanel 
     title='Action panel with title and border, column' 
     column 

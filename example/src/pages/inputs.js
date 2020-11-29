@@ -168,21 +168,26 @@ export default function InputsPage() {
 
     return (
         <React.Fragment>
-
+            <Input
+                autoFocus
+                addonAfter=".directual.app"
+                restrictChars={['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+                    'q', 'r', 's', 't', 'v', 'u', 'w', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-']}
+            />
             <h1>Data entry</h1>
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Markdown</h2>
             <CodeSnippet code=
                 {`<Markdown example preview edit onChange={val=>console.log(val)} height={300} margin={{top:0,bottom:18}}/>
 <Markdown example margin={{top:0,bottom:18}}/>`} />
 
-            <Markdown 
-                example 
-                preview 
-                edit 
-                onChange={val=>console.log(val)} 
-                height={350} 
-                margin={{top:0,bottom:18}}/>
-            <Markdown example margin={{top:0,bottom:18}}/>
+            <Markdown
+                example
+                preview
+                edit
+                onChange={val => console.log(val)}
+                height={350}
+                margin={{ top: 0, bottom: 18 }} />
+            <Markdown example margin={{ top: 0, bottom: 18 }} />
 
 
             <h2>File upload</h2>
@@ -290,7 +295,7 @@ export default function InputsPage() {
                 }
             />
 
-            
+
 
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Range sliders</h2>
             <CodeSnippet code=
@@ -690,7 +695,7 @@ export default function InputsPage() {
                 code
                 width={400}
             />
-<CodeSnippet code=
+            <CodeSnippet code=
                 {`<Input
     label='Input code'
     placeholder='Placeholder'
@@ -1032,7 +1037,7 @@ export default function InputsPage() {
                 label='Checkbox group with a custom option'
                 type='checkboxGroup'
                 customOption
-                defaultValue={{"option3":true,"customOption":"dd"}}
+                defaultValue={{ "option3": true, "customOption": "dd" }}
                 width={500}
                 disabled
                 customOptionType='textarea'

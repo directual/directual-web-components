@@ -24,6 +24,9 @@ a.button:hover:not(.disabled):not(.transparent) {
   white-space: nowrap;
   font-weight: var(--text-font-weight);
 }
+.button.loading {
+  padding-left: 6px;
+}
 .button.small {
   font-size: var(--text-small-size);
 }
@@ -94,7 +97,7 @@ a.button:hover:not(.disabled):not(.transparent) {
   color: var(--background-color) !important;
   border-color: var(--font-color) !important;
 }
-.button:hover:not(.disabled):not(.transparent) {
+.button:hover:not(.disabled):not(.transparent):not(.loading) {
   height: 48px;
   padding: 0 17px !important;
   border-width: 2px;

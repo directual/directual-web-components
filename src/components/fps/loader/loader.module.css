@@ -16,6 +16,19 @@
     animation: loader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: var(--accent-color) transparent transparent transparent;
   }
+  .loader.accent div {
+    border-color: var(--button-accent-color) transparent transparent transparent;
+  }
+  .loader.small {
+    width: 30px;
+    height: 30px;
+  }
+  .loader.small div {
+    width: 24px;
+    height: 24px;
+    margin: 3px;
+    border-width: 3px;
+  }
   .loader div:nth-child(1) {
     animation-delay: -0.45s;
   }

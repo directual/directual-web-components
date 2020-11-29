@@ -6,6 +6,7 @@
     font-size: var(--text-font-size);
     //line-height: 1em;
     align-items: stretch;
+    color: var(--font-color);
     label {
         font-size: var(--text-small-size);
         opacity: .7;
@@ -13,9 +14,19 @@
         font-weight: var(--strong-font-weight);
     }
     .field_wrapper {
+        .field_wrapper_additional {
+            flex-grow: 2;
+            display: flex;
+            position: relative;
+            flex-direction: column;
+        }
         display: flex;
         flex-direction: column;
+        &.hor, .hor {
+            flex-direction: row;
+        }
         align-items: stretch;
+        justify-content: stretch;
         position: relative;
         .input_icon_wrapper {
             opacity: .5;
@@ -89,13 +100,30 @@
             line-height: 1.5;
         }
     }
+    .addonAfter {
+        border-radius: 0 var( --border-radius) var( --border-radius) 0;
+        border:solid 1px var( --field-border-color);
+        background-color: var(--secondry-background-color);
+        padding: 0 12px;
+        display: flex;
+        align-items: center;
+        max-width: 50%;
+        overflow: hidden;
+        white-space: nowrap;
+        border-left: none;
+    }
     .field {
         // &[type=number] {
         //     text-align: right;
         // }
+        flex-grow: 2;
         outline: none !important;
         border:solid 1px var( --field-border-color);
         border-radius: var( --border-radius);
+        &.addonAfterInput {
+            border-radius: var( --border-radius) 0 0 var( --border-radius);
+            //border-right: none;
+        }
         background-color: var(--background-color);
         font-size: var(--text-font-size);
         display: flex;

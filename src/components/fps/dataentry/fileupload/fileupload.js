@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React from 'react'
 import styles from './fileupload.module.css'
 import Dropzone from 'react-dropzone'
 import Loader from '../../loader/loader'

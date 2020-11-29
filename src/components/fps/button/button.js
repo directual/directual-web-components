@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './button.module.css'
+import Loader from '../loader/loader'
 
 export default function Button(props) {
 
@@ -16,9 +17,10 @@ export default function Button(props) {
                         ${props.verySmall && styles.verySmall}
                         ${props.accent && styles.accent} 
                         ${props.className} 
+                        ${props.loading && styles.loading}
                         ${props.disabled && styles.disabled}
                         ${!props.children && styles.empty}
-                        ${props.icon && `${styles.icon} icon icon-${props.icon}`}
+                        ${props.icon && !props.loading && `${styles.icon} icon icon-${props.icon}`}
                         ${props.socialGoogle && `${styles.socialGoogle}`}
                         ${props.danger && `${styles.danger}`}
                         ${props.inverseColor && `${styles.inverseColor}`}
@@ -26,6 +28,7 @@ export default function Button(props) {
                         `}
                     disabled={props.disabled && 'disabled'}
                 >
+                    {props.loading && <Loader small accent={props.accent}></Loader>}
                     {props.children}</button>
                 :
                 <a className={`${styles.button}
