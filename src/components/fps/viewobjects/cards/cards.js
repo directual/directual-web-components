@@ -5,7 +5,7 @@ import ExpandedText from '../../expandedText/expandedText'
 import { Paging } from '../paging/paging'
 import moment from 'moment'
 
-export function Cards({ data, onExpand, loading, searchValue, auth, submitAction, params }) {
+export function Cards({ data, onExpand, loading, searchValue, auth, submitAction, params, checkActionCond }) {
     const tableHeaders = data.headers || []
     const tableData = enrichTableDataWithWriteFields(data) || []
     const tableParams = data.params || {
@@ -87,6 +87,27 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
         return linkName || 'No visible name'
     }
 
+    const edenrichConds = (conds, object) => {
+        let eConds = conds ? [...conds] : null
+        // console.log('edenrichConds')
+        // console.log(conds)
+        // console.log(object)
+        eConds && eConds.forEach(cond => {
+            if (cond.target == 'id' && cond.type == 'const') {
+                cond.checkValue = cond.value
+            }
+            if (cond.target == 'role') {
+                cond.checkValue = cond.value
+            }
+            if (cond.target == 'id' && cond.type != 'const') {
+                typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
+                cond.checkValue = object[cond.value].id || null
+            }
+        })
+
+
+        return eConds
+    }
 
     return (
         <React.Fragment>
@@ -94,13 +115,14 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                 ${(data.error || tableData.length === 0 || tableHeaders.length === 0) && styles.emptyTable} ${loading && styles.loading}`}>
                 {(tableData.length != 0 && tableHeaders.length != 0) && tableData.map((row, i) => {
 
-
+                    const object = row
 
                     // actions для меню быстрого доступа
                     const quickActions = params.actions ?
-                        params.actions.filter(i => i.dropdown && i.displayAs == 'button' && i.callFrom != 'linked') : []
+                        params.actions.filter(i => i.dropdown && i.displayAs == 'button'
+                            && i.callFrom != 'linked'
+                            && checkActionCond(edenrichConds(i.conditionals, object))) : []
 
-                    const object = row
                     // выполнить Action
                     function performAction(actionParams) {
                         console.log(actionParams)
@@ -128,10 +150,10 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                     getLinkName(i, row[i]) :
                                     row[i].map(j => getLinkName(i, j)).join(', ')
                                 :
-                                    !tableHeaders.filter(h => h.sysName == i)[0] ? 'No visible name' : 
+                                !tableHeaders.filter(h => h.sysName == i)[0] ? 'No visible name' :
                                     tableHeaders.filter(h => h.sysName == i)[0].dataType != 'date' ?
-                                    row[i] :
-                                    moment(row[i]).format('D MMM, YYYY')
+                                        row[i] :
+                                        moment(row[i]).format('D MMM, YYYY')
                             ).join(' ')
                             : 'No visible name')
                     const cardHeaderComment = row && (typeof row[tableParams.cardHeaderComment] == 'object' ?
@@ -187,8 +209,8 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                         <span className={styles.txt}>{cardHeader.length > 0 ? cardHeader : 'No visible name'}</span>
 
                                         {/* counter: */}
-                                        {(tableParams.counterField && 
-                                            row && row[tableParams.counterField] && 
+                                        {(tableParams.counterField &&
+                                            row && row[tableParams.counterField] &&
                                             row[tableParams.counterField] != 0 && row[tableParams.counterField] != "0") ?
                                             <span className={styles.counter} title={`${row[tableParams.counterField]} ${tableParams.counterText}`}>
                                                 {row[tableParams.counterField]}</span> : ''}

@@ -23,7 +23,7 @@ export function ObjectCard(props) {
 
     console.log('==============props==============')
     console.log(props)
-    console.log(oldFashioned)
+    // console.log(oldFashioned)
 
     const editingOn = props.params.data && props.params.data.fields &&
         props.params.data.fields.id && props.params.data.fields.id.write && props.params.data.fields.id.read &&
@@ -50,7 +50,6 @@ export function ObjectCard(props) {
         deepClone.forEach(i => i[0] = i[0].substring(sysname.length + 1))
         return deepClone
     }
-
 
     // Gathers current structure info:
     const getStructure = (obj, tableFieldScheme, tableStructures) => {
@@ -336,8 +335,8 @@ export function ObjectCard(props) {
 
         // группируем actions
         const transform = (a, fieldParams) => {
-            console.log('transform')
-            console.log(a)
+            // console.log('transform')
+            // console.log(a)
             const arr = a.map(i => { return { id: i, type: fieldParams[i] && fieldParams[i].type } })
             return arr.reduce((acc, item, i) => {
                 const { type } = item;
@@ -415,6 +414,8 @@ export function ObjectCard(props) {
                                         if (actionParams && actionParams.displayAs == 'form') {
                                             return <div className={styles.actionForm}><CardAction
                                                 action={action.id}
+                                                object={object}
+                                                checkActionCond={props.checkActionCond}
                                                 onClose={props.onTerminate}
                                                 submitAction={submitAction}
                                                 actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
@@ -423,7 +424,9 @@ export function ObjectCard(props) {
                                         } else {
                                             return <div className={styles.actionButton}><CardAction
                                                 action={action.id}
+                                                object={object}
                                                 onClose={props.onTerminate}
+                                                checkActionCond={props.checkActionCond}
                                                 submitAction={submitAction}
                                                 actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
                                                     props.params.actions.filter(i => action.id == 'action__' + i.id)[0]}
@@ -1062,12 +1065,31 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
     )
 }
 
-function CardAction({ action, actionParams, debug, submitAction, onClose }) {
+function CardAction({ action, actionParams, debug, submitAction, onClose, checkActionCond, object }) {
 
     const [actionData, setActionData] = useState(actionParams)
 
+    // console.log('====actionParams====')
+    // console.log(actionParams)
+
+    let conds = actionParams.conditionals ? [...actionParams.conditionals] : null
+    if (conds) {
+        conds.forEach(cond=>{
+            if (cond.target == 'id' && cond.type != 'const') {
+                typeof object[cond.value].value != 'object' ? cond.checkValue = object[cond.value].value :
+                cond.checkValue = object[cond.value].value.id || null
+            }
+            if (cond.target == 'id' && cond.type == 'const') {
+                cond.checkValue = cond.value
+            }
+            if (cond.target == 'role') {
+                cond.checkValue = cond.value
+            }
+        })
+    }
+
     return (
-        actionParams ?
+        actionParams && checkActionCond(conds) ?
         <React.Fragment>
             {actionParams.displayAs == 'form' &&
                 <React.Fragment>
@@ -1095,7 +1117,7 @@ function CardAction({ action, actionParams, debug, submitAction, onClose }) {
                 icon={actionParams.buttonIcon}
             >
                 {actionParams.buttonTitle || actionParams.name}</Button>
-        </React.Fragment> : <div></div>
+        </React.Fragment> : <React.Fragment></React.Fragment>
     )
 }
 

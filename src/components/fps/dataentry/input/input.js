@@ -255,7 +255,7 @@ export default function Input(props) {
 
 
     useEffect(() => {
-        console.log(props.autoFocus)
+        // console.log(props.autoFocus)
         props.autoFocus && inputEl.current.focus();
     }, [])
 
@@ -295,8 +295,8 @@ export default function Input(props) {
                 props.type != 'range' &&
                 props.type != 'decimal' &&
                 <div className={`${styles.field_wrapper} ${props.addonAfter && styles.hor}`}>
-                    {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
                     <div className={styles.field_wrapper_additional}>
+                        {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
                         <input
                             disabled={props.disabled}
                             key={props.key}

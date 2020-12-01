@@ -10,7 +10,7 @@ import moment from 'moment'
 import { Paging } from '../paging/paging'
 
 
-function FpsCards({auth, data, onEvent, id }) {
+function FpsCards({ auth, data, onEvent, id }) {
     if (!data) { data = {} }
 
     // console.log('---data---')
@@ -18,7 +18,7 @@ function FpsCards({auth, data, onEvent, id }) {
 
     const [loading, setLoading] = useState(false)
     const [searchValue, setSearchValue] = useState()
-    
+
     const [currentDQL, setCurrentDQL] = useState('')
 
     const [showObject, setShowObject] = useState()
@@ -55,19 +55,19 @@ function FpsCards({auth, data, onEvent, id }) {
         if (value) {
             setSearchValue(value)
             const fieldsDQL = data.headers && data.headers.map(i => i.sysName);
-            const requestDQL = fieldsDQL.map(i=>i + ' like ' + "'" + value + "'").join(' OR ')
+            const requestDQL = fieldsDQL.map(i => i + ' like ' + "'" + value + "'").join(' OR ')
             setCurrentDQL(requestDQL)
-            sendMsg({ dql: requestDQL }, null, {page: 0})
+            sendMsg({ dql: requestDQL }, null, { page: 0 })
         } else {
             setSearchValue('')
             setCurrentDQL('')
-            sendMsg({ dql: '' }, null, {page: 0})
+            sendMsg({ dql: '' }, null, { page: 0 })
         }
     }
 
     const sendMsg = (msg, sl, pageInfo) => {
         console.log('submitting...')
-        if (sl==="") {sl = undefined}
+        if (sl === "") { sl = undefined }
         const message = { ...msg, _id: 'form_' + id, _sl_name: sl }
         console.log(message)
         console.log(pageInfo)
@@ -80,8 +80,7 @@ function FpsCards({auth, data, onEvent, id }) {
     const submit = (model) => {
         if (model) {
             for (const field in model) {
-                if (typeof model[field] == 'object' && data.params.data.fields[field].dataType != 'date') 
-                    { delete model[field] }  // removing links
+                if (typeof model[field] == 'object' && data.params.data.fields[field].dataType != 'date') { delete model[field] }  // removing links
                 if (writeFields.indexOf(field) == -1) { delete model[field] } // removing fields not for writing
                 if (data.params.data.fields[field].dataType == 'date' && typeof model[field] == 'number') {
                     model[field] = moment(model[field])
@@ -96,6 +95,29 @@ function FpsCards({auth, data, onEvent, id }) {
         sendMsg(mapping, sl)
     }
 
+    //Check action conditionals
+    const checkActionCond = (actionCond) => {
+        // console.log('actionCond')
+        // console.log(actionCond)
+        // console.log(auth)
+        
+        if (!actionCond) { return true }
+        if (!auth && actionCond) { return false }
+        let match = true
+        actionCond.forEach(cond => {
+            if (cond.target == 'id' && auth.user !== cond.checkValue) {
+                console.log(auth.user + ' != ' + cond.checkValue)
+                console.log('ID does not match');
+                match = false
+            }
+            if (cond.target == 'role' && !auth.role.match(new RegExp(cond.checkValue))) { 
+                console.log('Role does not match'); 
+                match = false 
+            }
+        })
+        return match
+    }
+
     return (
         <ComponentWrapper>
             {showObject &&
@@ -108,6 +130,7 @@ function FpsCards({auth, data, onEvent, id }) {
                             object={showObject}
                             submit={submit}
                             auth={auth}
+                            checkActionCond={checkActionCond}
                             //shareble
                             executeAction={submitAction}
                             params={data.params}
@@ -131,8 +154,9 @@ function FpsCards({auth, data, onEvent, id }) {
                 data={data}
                 params={data.params}
                 searchValue={searchValue}
+                checkActionCond={checkActionCond}
                 onExpand={val => { setShowObject(val) }}
-                setPage={page => { sendMsg(null, null, {page: page})}}
+                setPage={page => { sendMsg(null, null, { page: page }) }}
                 auth={auth}
                 submitAction={submitAction}
                 id={id}
@@ -151,7 +175,7 @@ function FpsCards({auth, data, onEvent, id }) {
                         loading={loading}
                     />
                 </div>}
-    </ComponentWrapper>
+        </ComponentWrapper>
     )
 }
 FpsCards.settings = {
