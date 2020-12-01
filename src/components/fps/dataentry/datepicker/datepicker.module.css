@@ -18,6 +18,9 @@
   right: 12px;
   opacity: 0.5;
 }
+:global .rdt.correctedHeight .form-control {
+  height: 46px;
+}
 :global .form-control {
   outline: none;
   border: solid 1px var(--field-border-color);

@@ -560,6 +560,7 @@ export default function Input(props) {
                     placeholder={props.placeholder}
                     defaultValue={defVal}
                     utc={props.utc}
+                    correctedHeight={props.correctedHeight}
                     dateFormat={props.dateFormat}
                     timeFormat={props.timeFormat}
                     //onBlur={checkValue}

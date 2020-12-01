@@ -25,7 +25,7 @@ export default function Datepicker(props) {
             <Datetime
                 value={value}
                 dateFormat={dateFormat}
-                timeFormat={timeFormat}
+                className={props.correctedHeight ? 'correctedHeight' : ''}
                 utc={true}
                 onBlur={props.onBlur}
                 closeOnSelect={props.closeOnSelect}
