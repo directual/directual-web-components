@@ -178,6 +178,13 @@
                     &:hover {
                         background: var( --table-border-color);
                     }
+                    &.keyfocus {
+                        border: solid 2px var(--font-color);
+                        padding:4px 26px 4px 10px;
+                        .goToLink {
+                            right: -2px;
+                        }
+                    }
                     &.selected {
                         background-color: var(--accent-color);
                         color: var(--button-accent-color);
@@ -206,13 +213,13 @@
                         }
                     }
                     .sysName {
-                        font-family: 'Source Code Pro', monospace;
+                        font-family: 'Fira Code', monospace;
                         color: var(--accent-color);
                     }
                     .objectDetails {
                         padding-top:2px;
                         color: var(--button-border-color);
-                        font-family: 'Source Code Pro', monospace;
+                        font-family: 'Fira Code', monospace;
                         .sysName {
                             font-size: var(--text-very-small-size);
                         }
@@ -280,7 +287,7 @@
                 .objectDetails {
                     padding-top:2px;
                     color: var(--button-border-color);
-                    font-family: 'Source Code Pro', monospace;
+                    font-family: 'Fira Code', monospace;
                     &.small {
                         font-size: var(--text-very-small-size);
                     }

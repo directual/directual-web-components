@@ -573,6 +573,7 @@ export default function Input(props) {
                     fixHeight={props.fixHeight}
                     hideSysFields={props.hideSysFields}
                     hideId={props.hideId}
+                    warning={warningMsg.type}
                     disabled={props.disabled}
                     noPropagation={props.noPropagation}
                     structSysName={props.structSysName}

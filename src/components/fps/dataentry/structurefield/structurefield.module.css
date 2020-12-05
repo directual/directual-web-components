@@ -173,6 +173,13 @@
 .select_wrapper .select_field .list .structFields .option:hover {
   background: var(--table-border-color);
 }
+.select_wrapper .select_field .list .structFields .option.keyfocus {
+  border: solid 2px var(--font-color);
+  padding: 4px 26px 4px 10px;
+}
+.select_wrapper .select_field .list .structFields .option.keyfocus .goToLink {
+  right: -2px;
+}
 .select_wrapper .select_field .list .structFields .option.selected {
   background-color: var(--accent-color);
   color: var(--button-accent-color);
@@ -203,13 +210,13 @@
   color: var(--background-color);
 }
 .select_wrapper .select_field .list .structFields .option .sysName {
-  font-family: 'Source Code Pro', monospace;
+  font-family: 'Fira Code', monospace;
   color: var(--accent-color);
 }
 .select_wrapper .select_field .list .structFields .option .objectDetails {
   padding-top: 2px;
   color: var(--button-border-color);
-  font-family: 'Source Code Pro', monospace;
+  font-family: 'Fira Code', monospace;
 }
 .select_wrapper .select_field .list .structFields .option .objectDetails .sysName {
   font-size: var(--text-very-small-size);
@@ -273,7 +280,7 @@
 .select_wrapper .select_field .value_wrapper .currentField .objectDetails {
   padding-top: 2px;
   color: var(--button-border-color);
-  font-family: 'Source Code Pro', monospace;
+  font-family: 'Fira Code', monospace;
 }
 .select_wrapper .select_field .value_wrapper .currentField .objectDetails.small {
   font-size: var(--text-very-small-size);

@@ -163,69 +163,77 @@ export default function InputsPage() {
                     link: ''
                 }
             ]
+        },
+        {
+            structName: 'GlobalVars',
+            fields: [
+                {
+                    sysName: 'global1',
+                    name: '',
+                    dataType: 'string',
+                },
+                {
+                    sysName: 'global2',
+                    name: '',
+                    dataType: 'string',
+                }
+            ]
+        },
+        {
+            structName: 'LocalVars',
+            fields: [
+                {
+                    sysName: 'local1',
+                    name: 'Local Var 1',
+                    dataType: 'number',
+                },
+                {
+                    sysName: 'local2',
+                    name: 'Local Link',
+                    dataType: 'link',
+                    link: 'TChat'
+                }
+            ]
         }
     ]
 
     return (
         <React.Fragment>
-            <Input
-                autoFocus
-                addonAfter=".directual.app"
-                restrictChars={['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
-                    'q', 'r', 's', 't', 'v', 'u', 'w', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-']}
-            />
-            <h1>Data entry</h1>
-            <h2 style={{ marginBottom: 24, marginTop: 12 }}>Markdown</h2>
-            <CodeSnippet code=
-                {`<Markdown example preview edit onChange={val=>console.log(val)} height={300} margin={{top:0,bottom:18}}/>
-<Markdown example margin={{top:0,bottom:18}}/>`} />
-
-            <Markdown
-                example
-                preview
-                edit
-                onChange={val => console.log(val)}
-                height={350}
-                margin={{ top: 0, bottom: 18 }} />
-            <Markdown example margin={{ top: 0, bottom: 18 }} />
-
-
-            <h2>File upload</h2>
-            <br />
-            <FileUpload />
-
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Special platform selects</h2>
 
             <CodeSnippet code=
                 {`<Input
-    label='Structure field'
-    width={700}
-    fields={testFields}
-    structSysName='WebUsers'
-    //defaultValue='foo.bar'
-    onChange={e => console.log(e)}
-    placeholder='Choose the object field'
-    icon='database'
-    //filterFields={['string', 'link']}
-    //filterLinkFields='TMessageIn'
-    description='That is a new FormField component for the platform'
-    //disabled
-    type='structurefield' />`} />
+label='Structure field'
+width={700}
+fields={testFields}
+structSysName='WebUsers'
+//defaultValue='foo.bar'
+onChange={e => console.log(e)}
+placeholder='Choose the object field'
+icon='database'
+//filterFields={['string', 'link']}
+//filterLinkFields='TMessageIn'
+description='That is a new FormField component for the platform'
+//disabled
+type='structurefield' />`} />
             <Input
                 label='Structure field'
                 width={500}
                 //fixHeight={100}
                 //debug
+                //highlightEmpty
                 fields={testFields}
-                hideSysFields
-                hideId
-                onChooseType={e => console.log(e)}
-                onChooseLinkStructSysName={e => console.log(e)}
+                //hideSysFields
+                //hideId
+                //onChooseType={e => console.log(e)} устар.
+                //onChooseLinkStructSysName={e => console.log(e)} устар.
                 //tip='подсказко'
                 structSysName='TMessageIn'
                 //defaultValue={testDefValue}
                 //onChange={value => console.log(value)}
-                onChangeExtended={(value, struct, type) => console.log(value + ', ' + struct + ', ' + type)}
+                onChangeExtended={(value, struct, type) => 
+                    console.log(`${value} ${type}${(type == 'link' || type == 'arrayLink') ? `→${struct}` : ''}`)
+                }
                 placeholder='Choose the object field'
                 icon='database'
                 //noPropagation
@@ -237,31 +245,31 @@ export default function InputsPage() {
 
             <CodeSnippet code=
                 {`<Input
-    label='Select with subselect'
-    width={400}
-    subSelect={
-        {
-            all: false, // show for all the options
-            keys: [2, 4], // show only for these options
-            defaultValue: 'sub1',
-            options: [
-                { key: 'sub1', value: 'to objects' },
-                { key: 'sub2', value: 'pick one' },
-            ]
-        }
-    }
-    onChangeSubselect={e => {}}
-    type='select'
-    placeholder='Choose the line'
-    icon='database'
-    options={
-        [
-            { key: 1, value: 'Good fortune? The fact is' },
-            { key: 2, value: 'The more that you practise' },
-            { key: 3, value: 'The harder you sweat' },
-            { key: 4, value: 'The luckier you get' }
-        ]
-    }
+label='Select with subselect'
+width={400}
+subSelect={
+{
+all: false, // show for all the options
+keys: [2, 4], // show only for these options
+defaultValue: 'sub1',
+options: [
+    { key: 'sub1', value: 'to objects' },
+    { key: 'sub2', value: 'pick one' },
+]
+}
+}
+onChangeSubselect={e => {}}
+type='select'
+placeholder='Choose the line'
+icon='database'
+options={
+[
+{ key: 1, value: 'Good fortune? The fact is' },
+{ key: 2, value: 'The more that you practise' },
+{ key: 3, value: 'The harder you sweat' },
+{ key: 4, value: 'The luckier you get' }
+]
+}
 />`} />
             <Input
                 label='Select with subselect'
@@ -294,6 +302,34 @@ export default function InputsPage() {
                     ]
                 }
             />
+
+            <Input
+                autoFocus
+                addonAfter=".directual.app"
+                restrictChars={['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+                    'q', 'r', 's', 't', 'v', 'u', 'w', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-']}
+            />
+            <h1>Data entry</h1>
+            <h2 style={{ marginBottom: 24, marginTop: 12 }}>Markdown</h2>
+            <CodeSnippet code=
+                {`<Markdown example preview edit onChange={val=>console.log(val)} height={300} margin={{top:0,bottom:18}}/>
+<Markdown example margin={{top:0,bottom:18}}/>`} />
+
+            <Markdown
+                example
+                preview
+                edit
+                onChange={val => console.log(val)}
+                height={350}
+                margin={{ top: 0, bottom: 18 }} />
+            <Markdown example margin={{ top: 0, bottom: 18 }} />
+
+
+            <h2>File upload</h2>
+            <br />
+            <FileUpload />
+
+
 
 
 

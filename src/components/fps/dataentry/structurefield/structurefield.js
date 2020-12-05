@@ -6,6 +6,7 @@ export default function StructureField(props) {
 
     const [value, setValue] = useState(props.defaultValue)
     const [focus, setFocus] = useState(false);
+    const [keyFocus, setKeyFocus] = useState(props.defaultValue)
     const selectRef = useRef(null);
     const inputEl = useRef(null);
     const [filter, setFilter] = useState('')
@@ -27,11 +28,22 @@ export default function StructureField(props) {
         }, [ref]);
     }
 
+    // press 'Esc' for closing a popup:
+    const handleUserKeyPress = (e) => {
+        e.stopPropagation()
+        e.key == 'Escape' && setFocus(false)
+    }
+    useEffect(() => {
+        window.addEventListener('keydown', handleUserKeyPress);
+        return () => { window.removeEventListener('keydown', handleUserKeyPress); };
+    }, [handleUserKeyPress]);
+    //----------------------
+
     // при анфокусе сбрасываем фильтр
     useEffect(() => {
         focus && inputEl.current.focus();
         setFilter('');
-        //setKeySelected()
+        setKeyFocus(value)
     }, [focus, value])
 
     // этой функцией мы выдергиваем детали поля из структуры
@@ -61,6 +73,17 @@ export default function StructureField(props) {
         return displayValue
     }
 
+    const clearValue = (e) => {
+        e && e.stopPropagation();
+        setValue(null);
+        props.onChange && props.onChange(null);
+        props.onChangeExtended && props.onChangeExtended(null);
+        setFocus(false)
+    }
+
+    const handleKeyboard = (e) => {
+        if (!filter && e.key == 'Backspace') { clearValue() }
+    }
 
 
     return (
@@ -68,6 +91,7 @@ export default function StructureField(props) {
             <div className=
                 {`${styles.select_field} 
                     ${props.warning == 'error' ? styles.error : ''} 
+                    ${props.warning && styles[props.warning]}
                     ${focus && styles.focus} 
                     ${props.disabled && styles.disabled}`}
                 style={
@@ -97,7 +121,7 @@ export default function StructureField(props) {
 
                     {focus &&
                         <input
-                            //onKeyDown={handleKeyboard}
+                            onKeyDown={handleKeyboard}
                             type="text"
                             placeholder={props.filterPlaceholder}
                             ref={inputEl}
@@ -109,7 +133,8 @@ export default function StructureField(props) {
                     }
                 </div>
                 {/* clear */}
-                {!props.disabled && value && focus && <div onClick={e => { e.stopPropagation(); setValue(null); props.onChange(null); props.onChangeExtended && props.onChangeExtended(null); setFocus(false) }} className={`${styles.clearValue} icon icon-ban ${(props.filterFields || props.filterLinkFields) && styles.moved}`}>Clear</div>}
+                {!props.disabled && value && focus &&
+                    <div onClick={e => { clearValue(e) }} className={`${styles.clearValue} icon icon-ban ${(props.filterFields || props.filterLinkFields) && styles.moved}`}>Clear</div>}
 
 
                 {/* filter */}
@@ -122,6 +147,7 @@ export default function StructureField(props) {
                 <ListFields
                     fields={props.fields}
                     filter={filter}
+                    keyFocus={keyFocus}
                     hideSysFields={props.hideSysFields}
                     hideId={props.hideId}
                     structSysName={props.structSysName}
@@ -141,6 +167,7 @@ export default function StructureField(props) {
         </div>
     )
 }
+
 
 function ListFields(props) {
     const listHolder = useRef(null)
@@ -199,8 +226,10 @@ function ListFields(props) {
                 hideId={props.hideId}
                 structSysName={props.structSysName}
                 filterLinkFields={props.filterLinkFields}
+                firstLevel
                 noPropagation={props.noPropagation}
                 filterFields={props.filterFields}
+                keyFocus={props.keyFocus}
                 value={props.value}
                 onChoose={(e, close, struct, type) => props.onChoose(e, close, struct, type)}
             />
@@ -210,9 +239,9 @@ function ListFields(props) {
 
 function StructListFields(props) {
 
-    const shiftPath = () => {
-        let objPath = props.value && props.value.split('.');
-        if (!props.value || objPath.length <= 1) {
+    const shiftPath = (value) => {
+        let objPath = value && value.split('.');
+        if (!value || objPath.length <= 1) {
             return null
         } else {
             objPath.shift();
@@ -252,10 +281,14 @@ function StructListFields(props) {
     const fields = props.fields && props.structSysName &&
         props.fields.filter(i => i.structName == props.structSysName) && props.fields.filter(i => i.structName == props.structSysName)[0].fields
     const currentField = props.value && props.value.split('.')[0]
-
+    const [currentKeyFocus, setCurrentKeyFocus] = useState(props.keyFocus && props.keyFocus.split('.')[0])
     const [filteredFields, setFilteredFields] = useState(fields)
 
-    const isLast = () => {
+    useEffect(() => {
+        setCurrentKeyFocus(props.keyFocus && props.keyFocus.split('.')[0])
+    }, [props.keyFocus])
+
+    function isLast() {
         return !props.value || (props.value.split('.').length == 1 && getFieldDetails(props.value, props.structSysName) && getFieldDetails(props.value, props.structSysName).dataType != 'link')
     }
 
@@ -271,6 +304,7 @@ function StructListFields(props) {
                         && (!props.hideSysFields || (props.hideSysFields && el.sysName != '@who' && el.sysName != '@dateCreated' && el.sysName != '@dateChanged'))
                 }
             })
+            if (props.firstLevel) { console.log(SaveFiltFields) }
             setFilteredFields(SaveFiltFields)
         } else {
             const SaveFiltFields2 = fields.filter(el => {
@@ -289,6 +323,29 @@ function StructListFields(props) {
         const newValue = props.value.split('.')[0] + '.' + e
         props.onChoose(newValue, close, struct, type)
     }
+
+    // key select
+    const handleUserKeyPress = (e) => {
+        if ((e.key == 'ArrowDown' || e.key == 'ArrowUp') && isLast() && filteredFields) {
+            console.log(filteredFields)
+            console.log(currentKeyFocus)
+            const currentKeyIndex = !currentKeyFocus ? -1 :
+                filteredFields.indexOf(filteredFields.filter(i => i.sysName == currentKeyFocus)[0])
+            if (e.key == 'ArrowDown') {
+                currentKeyIndex + 1 < filteredFields.length ? setCurrentKeyFocus(filteredFields[currentKeyIndex + 1].sysName) :
+                    setCurrentKeyFocus(filteredFields[0].sysName)
+            }
+            if (e.key == 'ArrowUp') {
+                currentKeyIndex > 0 ? setCurrentKeyFocus(filteredFields[currentKeyIndex - 1].sysName) :
+                    setCurrentKeyFocus(filteredFields[filteredFields.length - 1].sysName)
+            }
+        }
+    }
+    useEffect(() => {
+        window.addEventListener('keydown', handleUserKeyPress);
+        return () => { window.removeEventListener('keydown', handleUserKeyPress); };
+    }, [handleUserKeyPress]);
+    //----------------------
 
     //console.log(fields)
 
@@ -309,7 +366,11 @@ function StructListFields(props) {
                         }
                         if ((props.filterLinkFields && field.link == props.filterLinkFields) || !props.filterLinkFields) {
                             return (
-                                <li key={field.sysName} className={`${styles.option} ${currentField == field.sysName && styles.selected}`}
+                                <li key={field.sysName}
+                                    className={`
+                                        ${styles.option} 
+                                        ${currentKeyFocus == field.sysName && isLast() && styles.keyfocus}
+                                        ${currentField == field.sysName && styles.selected}`}
                                     onClick={() => {
                                         props.onChoose(field.sysName, (field && field.dataType != 'link' || (props.filterLinkFields && true) || (props.noPropagation && true)), field.link || '', field && field.dataType)
                                     }}
@@ -334,15 +395,16 @@ function StructListFields(props) {
                     }
                 </ul>
             </div>
-            {props.value && !props.filterLinkFields && !props.noPropagation && (shiftPath() || (getFieldDetails(currentField, props.structSysName) && getFieldDetails(currentField, props.structSysName).dataType == 'link')) &&
+            {props.value && !props.filterLinkFields && !props.noPropagation && (shiftPath(props.value) || (getFieldDetails(currentField, props.structSysName) && getFieldDetails(currentField, props.structSysName).dataType == 'link')) &&
                 <StructListFields
                     fields={props.fields}
                     filter={props.filter}
-                    onChoose={(e, close, struct) => onChoose(e, close, struct)}
+                    onChoose={(e, close, struct, type) => onChoose(e, close, struct, type)}
                     odd={!props.odd}
                     structSysName={getFieldDetails(currentField, props.structSysName).link}
                     filterFields={props.filterFields}
-                    value={shiftPath()} />
+                    keyFocus={shiftPath(props.keyFocus)}
+                    value={shiftPath(props.value)} />
             }
         </React.Fragment>
     )
