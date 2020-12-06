@@ -47,12 +47,12 @@ export default function StructureField(props) {
         setFilter('');
         setKeyFocus(value)
         // костылек для GlovalVar, ContextVar
-        if (!focus && (value == 'GlobalVar' || value == 'ContextVar')) {
-            console.log('vars themeselves could not be a value')
-            setValue(null)
-            props.onChangeExtended(null)
-            props.onChange(null)
-        }
+        // if (!focus && (value == 'GlobalVar' || value == 'ContextVar')) {
+        //     console.log('vars themeselves could not be a value')
+        //     setValue(null)
+        //     props.onChangeExtended(null)
+        //     props.onChange(null)
+        // }
     }, [focus, value])
 
     // этой функцией мы выдергиваем детали поля из структуры
