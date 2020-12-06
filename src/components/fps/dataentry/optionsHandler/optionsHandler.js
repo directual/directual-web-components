@@ -4,7 +4,7 @@ import Input, { InputGroup } from '../input/input'
 import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
 
-export default function OptionsHandler({ defaultValue, objectStructure, onChange, width, margin, debug, addButtonText }) {
+export default function OptionsHandler({ defaultValue, objectStructure, onChange, width, margin, debug, addButtonText, code }) {
     const [options, setOptions] = useState(defaultValue)
     return (
         <div className={styles.optionsList}
@@ -26,6 +26,7 @@ export default function OptionsHandler({ defaultValue, objectStructure, onChange
                                     key={i + '-' + property}
                                     width={width / 2 || 'auto'}
                                     placeholder={property}
+                                    code={code}
                                     className={styles.optionListInput}
                                     defaultValue={options[i][property]}
                                     onChange={e => {
@@ -39,7 +40,8 @@ export default function OptionsHandler({ defaultValue, objectStructure, onChange
                         })}
                         <div
                             className={`${styles.optionListButton} icon icon-delete`}
-                            onClick={() => {
+                            onClick={e => {
+                                e.stopPropagation()
                                 const saveOptions = [...options]
                                 saveOptions.splice(i, 1)
                                 setOptions(saveOptions)
@@ -52,7 +54,8 @@ export default function OptionsHandler({ defaultValue, objectStructure, onChange
             <Button
                 small
                 icon='plus'
-                onClick={() => {
+                onClick={e => {
+                    e.stopPropagation()
                     const saveOptions = options ? [...options] : [];
                     saveOptions.push({})
                     setOptions(saveOptions)

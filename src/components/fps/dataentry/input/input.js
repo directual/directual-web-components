@@ -7,6 +7,7 @@ import Slider from '../slider/slider'
 import Checkbox from '../checkbox/checkbox'
 import StructureField from '../structurefield/structurefield'
 import { Markdown } from '../../article/mkd'
+import OptionsHandler, { AdvancedOptionsHandler } from '../optionsHandler/optionsHandler'
 
 
 export function InputGroup(props) {
@@ -294,6 +295,7 @@ export default function Input(props) {
                 props.type != 'markdown' &&
                 props.type != 'range' &&
                 props.type != 'decimal' &&
+                props.type != 'optionsHandler' &&
                 <div className={`${styles.field_wrapper} ${props.addonAfter && styles.hor}`}>
                     <div className={styles.field_wrapper_additional}>
                         {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
@@ -511,6 +513,7 @@ export default function Input(props) {
                     placeholder={props.placeholder}
                     options={props.options}
                     icon={props.icon}
+                    code={props.code}
                     height={props.height}
                     bottomSelect={props.bottomSelect}
                     disabled={props.disabled}
@@ -600,7 +603,15 @@ export default function Input(props) {
                     step={props.step}
                     onChange={e => { submit(e) }}
                     unitName={props.unitName} />
-
+            }
+            {props.type == 'optionsHandler' &&
+                <OptionsHandler
+                    code={props.code}
+                    defaultValue={defVal}
+                    objectStructure={props.objectStructure}
+                    addButtonText={props.addButtonText || 'More'}
+                    onChange={e => { submit(e) }}
+                />
             }
             {props.type == 'range' &&
                 <Slider

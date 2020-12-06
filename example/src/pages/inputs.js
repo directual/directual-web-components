@@ -211,6 +211,26 @@ export default function InputsPage() {
 
     return (
         <React.Fragment>
+            <h2>Options handler</h2>
+
+            <CodeSnippet code=
+                {``} />
+
+            <Input
+                type='optionsHandler'
+                code
+                description='you can use {{template system}} here'
+                defaultValue={[
+                    { key: '1', value: 'val 1' },
+                    { key: '2', value: 'val 2' },
+                    { key: '3', value: 'val 3' },
+                ]}
+                objectStructure={['key', 'value']}
+                addButtonText='Add param'
+                onChange={value => console.log(value)}
+                label='Request query params'
+            />
+
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Special platform selects</h2>
 
             <CodeSnippet code=
@@ -244,7 +264,7 @@ type='structurefield' />`} />
                 structSysName='TMessageIn'
                 //defaultValue={testDefValue}
                 //onChange={value => console.log(value)}
-                onChangeExtended={(value, struct, type) => 
+                onChangeExtended={(value, struct, type) =>
                     console.log(`${value} ${type}${(type == 'link' || type == 'arrayLink') ? `→${struct}` : ''}`)
                 }
                 placeholder='Choose the object field'
@@ -1109,34 +1129,7 @@ options={
                     ]
                 }
             />
-            <h2>Options handler</h2>
 
-            <CodeSnippet code=
-                {`<OptionsHandler
-    width={600}
-    margin={{ top: 24, bottom: 24 }}
-    defaultValue={[
-        { key: '1', value: 'val 1' },
-        { key: '2', value: 'val 2' },
-        { key: '3', value: 'val 3' },
-    ]}
-    objectStructure={['key', 'value']}
-    addButtonText='More'
-    onChange={value => {}}
-/>`} />
-
-            <OptionsHandler
-                //width={300}
-                margin={{ top: 24, bottom: 24 }}
-                defaultValue={[
-                    { key: '1', value: 'val 1' },
-                    { key: '2', value: 'val 2' },
-                    { key: '3', value: 'val 3' },
-                ]}
-                objectStructure={['key', 'value']}
-                addButtonText='More'
-                onChange={value => { }}
-            />
 
 
 
