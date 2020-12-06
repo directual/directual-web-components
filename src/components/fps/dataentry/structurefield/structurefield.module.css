@@ -160,7 +160,6 @@
   top: 50%;
   margin-top: -15px;
   opacity: 0.5;
-  transition: 0.5s;
 }
 .select_wrapper .select_field .list .structFields .option:hover .goToLink {
   opacity: 1;

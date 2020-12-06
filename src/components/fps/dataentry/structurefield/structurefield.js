@@ -61,7 +61,7 @@ export default function StructureField(props) {
         if (objPath.length > 1) {
             objPath.forEach(i => {
                 counter++
-                currentStruct = (objPath.length != counter && getFieldDetails(i, currentStruct).link) || currentStruct
+                currentStruct = (objPath.length != counter && getFieldDetails(i, currentStruct) && getFieldDetails(i, currentStruct).link) || currentStruct
             })
         }
         let displayValue = {
@@ -82,7 +82,7 @@ export default function StructureField(props) {
     }
 
     const handleKeyboard = (e) => {
-        if (!filter && e.key == 'Backspace') { clearValue() }
+        // if (!filter && e.key == 'Backspace') { clearValue() }
     }
 
 
@@ -147,7 +147,10 @@ export default function StructureField(props) {
                 <ListFields
                     fields={props.fields}
                     filter={filter}
+                    focus={focus}
                     keyFocus={keyFocus}
+                    showGlobalVars={props.showGlobalVars}
+                    showContextVars={props.showContextVars}
                     hideSysFields={props.hideSysFields}
                     hideId={props.hideId}
                     structSysName={props.structSysName}
@@ -206,7 +209,6 @@ function ListFields(props) {
         setListHeight(maxListHeight)
     }
 
-
     return (
         <div ref={listHolder}
             className={styles.list}
@@ -220,13 +222,15 @@ function ListFields(props) {
         >
             <StructListFields
                 odd={false}
+                focus={props.focus}
                 fields={props.fields}
                 filter={props.filter}
                 hideSysFields={props.hideSysFields}
                 hideId={props.hideId}
                 structSysName={props.structSysName}
                 filterLinkFields={props.filterLinkFields}
-                firstLevel
+                showGlobalVars={props.showGlobalVars}
+                showContextVars={props.showContextVars}
                 noPropagation={props.noPropagation}
                 filterFields={props.filterFields}
                 keyFocus={props.keyFocus}
@@ -264,11 +268,31 @@ function StructListFields(props) {
     const scrollToSelected = (num) => {
         if (scrollDivRef && scrollDivRef.current) {
             scrollDivRef.current.scrollTo({
-                top: 49 * (num - 1),
+                top: 52 * (num - 1),
                 left: 0,
                 behavior: 'smooth'
             });
         }
+    }
+
+    const scrollToKeySelected = (num) => {
+        let rect = scrollDivRef.current.getBoundingClientRect()
+        const itemHeight = 50
+        let calcScroll
+        if ((num) * itemHeight < scrollDivRef.current.scrollTop) { calcScroll = itemHeight * (num - 1) }
+        if ((num) * itemHeight > (scrollDivRef.current.scrollTop + rect.height - 40)) { calcScroll = itemHeight * (num - rect.height / itemHeight + 1) }
+        scrollDivRef.current.scrollTo({
+            top: calcScroll,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    const selectOption = (field, close) => {
+        props.onChoose(field.sysName,
+            (field && field.dataType != 'link' || (props.filterLinkFields && true) || (props.noPropagation && true) || close),
+            field.link || '',
+            field && field.dataType)
     }
 
     // этой функцией мы выдергиваем детали поля из структуры
@@ -277,9 +301,36 @@ function StructListFields(props) {
         const fieldDetails = struct && struct.filter(i => i.sysName == fieldSysName) && struct.filter(i => i.sysName == fieldSysName)[0]
         return fieldDetails
     }
-
     const fields = props.fields && props.structSysName &&
-        props.fields.filter(i => i.structName == props.structSysName) && props.fields.filter(i => i.structName == props.structSysName)[0].fields
+        props.fields.filter(i =>
+            (i.structName == props.structSysName)
+        ) && props.fields.filter(i =>
+            i.structName == props.structSysName
+        )[0].fields
+    // const GlobalVars = props.fields && props.showGlobalVars &&
+    //     props.fields.filter(i => i.structName == 'GlobalVars') && props.fields.filter(i => i.structName == 'GlobalVars')[0] &&
+    //     props.fields.filter(i => i.structName == 'GlobalVars')[0].fields || []
+    // const fieldGlobalVars = props.showGlobalVars && GlobalVars.length > 0 ? [{
+    //     sysName: 'GlobalVar',
+    //     name: 'Global Constants (' + GlobalVars.length + ')',
+    //     dataType: 'link',
+    //     link: 'GlobalVars'
+    // }] : []
+    // const ContextVars = props.fields && props.showContextVars &&
+    //     props.fields.filter(i => i.structName == 'ContextVars') && props.fields.filter(i => i.structName == 'ContextVars')[0] &&
+    //     props.fields.filter(i => i.structName == 'ContextVars')[0].fields || []
+    // const fieldContextVars = props.showContextVars && ContextVars.length > 0 ? [{
+    //     sysName: 'ContextVar',
+    //     name: 'Global Constants (' + ContextVars.length + ')',
+    //     dataType: 'link',
+    //     link: 'ContextVars'
+    // }] : []
+    // console.log('=====fields=====')
+    // console.log(props.fields)
+    // console.log(GlobalVars)
+    // console.log(ContextVars)
+    // console.log(fields)
+
     const currentField = props.value && props.value.split('.')[0]
     const [currentKeyFocus, setCurrentKeyFocus] = useState(props.keyFocus && props.keyFocus.split('.')[0])
     const [filteredFields, setFilteredFields] = useState(fields)
@@ -292,9 +343,22 @@ function StructListFields(props) {
         return !props.value || (props.value.split('.').length == 1 && getFieldDetails(props.value, props.structSysName) && getFieldDetails(props.value, props.structSysName).dataType != 'link')
     }
 
+    const selectKeyOption = (close) => {
+        console.log(currentKeyFocus)
+        const currentKeyIndex = !currentKeyFocus ? -1 :
+            filteredFields.indexOf(filteredFields.filter(i => i.sysName == currentKeyFocus)[0])
+        if (currentKeyIndex != -1) {
+            //console.log(filteredFields[currentKeyIndex])
+            selectOption(filteredFields[currentKeyIndex], close)
+        }
+    }
+
+    // updating filteredFields
     useEffect(() => {
-        if (fields && (props.filter || props.filterFields) && isLast()) {
-            const SaveFiltFields = fields.filter(el => {
+        const allFields = [...fields]
+        //const allFields = [...fields, ...GlobalVars, ...ContextVars]
+        if (allFields && (props.filter || props.filterFields) && isLast()) {
+            const SaveFiltFields = allFields.filter(el => {
                 if (el) {
                     return (String(el.sysName).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())) ||
                         String(el.name).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())) ||
@@ -307,7 +371,7 @@ function StructListFields(props) {
             if (props.firstLevel) { console.log(SaveFiltFields) }
             setFilteredFields(SaveFiltFields)
         } else {
-            const SaveFiltFields2 = fields.filter(el => {
+            const SaveFiltFields2 = allFields.filter(el => {
                 return (
                     (!props.filterFields || props.filterFields.indexOf(el.dataType) != -1)
                     && (!props.hideId || (props.hideId && el.dataType != 'id'))
@@ -326,9 +390,9 @@ function StructListFields(props) {
 
     // key select
     const handleUserKeyPress = (e) => {
+        //onsole.log(e.key)
         if ((e.key == 'ArrowDown' || e.key == 'ArrowUp') && isLast() && filteredFields) {
-            console.log(filteredFields)
-            console.log(currentKeyFocus)
+            // console.log(filteredFields)
             const currentKeyIndex = !currentKeyFocus ? -1 :
                 filteredFields.indexOf(filteredFields.filter(i => i.sysName == currentKeyFocus)[0])
             if (e.key == 'ArrowDown') {
@@ -340,12 +404,41 @@ function StructListFields(props) {
                     setCurrentKeyFocus(filteredFields[filteredFields.length - 1].sysName)
             }
         }
+        if (e.key == 'Enter') {
+            currentKeyFocus && isLast() && selectKeyOption(true)
+        }
+        if (e.key == 'ArrowRight') {
+            const currentKeyIndex = !currentKeyFocus ? -1 :
+                filteredFields.indexOf(filteredFields.filter(i => i.sysName == currentKeyFocus)[0]);
+            currentKeyFocus && currentKeyIndex != -1 &&
+                (filteredFields[currentKeyIndex].dataType == 'link') && isLast() && selectKeyOption()
+        }
     }
+
     useEffect(() => {
-        window.addEventListener('keydown', handleUserKeyPress);
+        props.focus ? window.addEventListener('keydown', handleUserKeyPress)
+            : window.removeEventListener('keydown', handleUserKeyPress);
         return () => { window.removeEventListener('keydown', handleUserKeyPress); };
-    }, [handleUserKeyPress]);
+    }, [handleUserKeyPress, props.focus]);
     //----------------------
+
+    useEffect(() => {
+        const currentKeyIndex = !currentKeyFocus ? -1 :
+            filteredFields.indexOf(filteredFields.filter(i => i.sysName == currentKeyFocus)[0])
+        if (currentKeyIndex == -1 && filteredFields.length > 0) {
+            setCurrentKeyFocus(filteredFields[0].sysName)
+        }
+        if (filteredFields == 0) {
+            setCurrentKeyFocus(null)
+        }
+    }, [filteredFields]);
+
+    useEffect(() => {
+        console.log(currentKeyFocus)
+        const currentKeyIndex = !currentKeyFocus ? -1 :
+            filteredFields.indexOf(filteredFields.filter(i => i.sysName == currentKeyFocus)[0])
+        currentKeyIndex != -1 && scrollToKeySelected(currentKeyIndex)
+    }, [currentKeyFocus])
 
     //console.log(fields)
 
@@ -372,7 +465,7 @@ function StructListFields(props) {
                                         ${currentKeyFocus == field.sysName && isLast() && styles.keyfocus}
                                         ${currentField == field.sysName && styles.selected}`}
                                     onClick={() => {
-                                        props.onChoose(field.sysName, (field && field.dataType != 'link' || (props.filterLinkFields && true) || (props.noPropagation && true)), field.link || '', field && field.dataType)
+                                        selectOption(field)
                                     }}
                                 >
                                     <div className={styles.objectName}>
@@ -399,9 +492,10 @@ function StructListFields(props) {
                 <StructListFields
                     fields={props.fields}
                     filter={props.filter}
+                    focus={props.focus}
                     onChoose={(e, close, struct, type) => onChoose(e, close, struct, type)}
                     odd={!props.odd}
-                    structSysName={getFieldDetails(currentField, props.structSysName).link}
+                    structSysName={getFieldDetails(currentField, props.structSysName) && getFieldDetails(currentField, props.structSysName).link}
                     filterFields={props.filterFields}
                     keyFocus={shiftPath(props.keyFocus)}
                     value={shiftPath(props.value)} />

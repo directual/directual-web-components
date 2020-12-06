@@ -121,6 +121,18 @@ export default function InputsPage() {
                     sysName: 'five',
                     name: 'you again',
                     dataType: 'decimal',
+                },
+                {
+                    sysName: 'GlobalVar',
+                    name: 'Global Constants',
+                    dataType: 'link',
+                    link: 'GlobalVars'
+                },
+                {
+                    sysName: 'ContextVar',
+                    name: 'Context Variables',
+                    dataType: 'link',
+                    link: 'ContextVars'
                 }
             ]
         },
@@ -180,10 +192,10 @@ export default function InputsPage() {
             ]
         },
         {
-            structName: 'LocalVars',
+            structName: 'ContextVars',
             fields: [
                 {
-                    sysName: 'local1',
+                    sysName: 'ContextVar.local1',
                     name: 'Local Var 1',
                     dataType: 'number',
                 },
@@ -222,7 +234,10 @@ type='structurefield' />`} />
                 //fixHeight={100}
                 //debug
                 //highlightEmpty
+                //noPropagation
                 fields={testFields}
+                showGlobalVars
+                showContextVars
                 //hideSysFields
                 //hideId
                 //onChooseType={e => console.log(e)} устар.
