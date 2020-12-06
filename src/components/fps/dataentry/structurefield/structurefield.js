@@ -4,6 +4,8 @@ import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong';
 
 export default function StructureField(props) {
 
+    //console.log(props)
+
     const [value, setValue] = useState(props.defaultValue)
     const [focus, setFocus] = useState(false);
     const [keyFocus, setKeyFocus] = useState(props.defaultValue)
@@ -44,6 +46,13 @@ export default function StructureField(props) {
         focus && inputEl.current.focus();
         setFilter('');
         setKeyFocus(value)
+        // костылек для GlovalVar, ContextVar
+        if (!focus && (value == 'GlobalVar' || value == 'ContextVar')) {
+            console.log('vars themeselves could not be a value')
+            setValue(null)
+            props.onChangeExtended(null)
+            props.onChange(null)
+        }
     }, [focus, value])
 
     // этой функцией мы выдергиваем детали поля из структуры
@@ -172,6 +181,9 @@ export default function StructureField(props) {
 }
 
 
+
+
+
 function ListFields(props) {
     const listHolder = useRef(null)
 
@@ -225,6 +237,7 @@ function ListFields(props) {
                 focus={props.focus}
                 fields={props.fields}
                 filter={props.filter}
+                firstLevel
                 hideSysFields={props.hideSysFields}
                 hideId={props.hideId}
                 structSysName={props.structSysName}
@@ -240,6 +253,11 @@ function ListFields(props) {
         </div>
     )
 }
+
+
+
+
+
 
 function StructListFields(props) {
 
@@ -307,29 +325,6 @@ function StructListFields(props) {
         ) && props.fields.filter(i =>
             i.structName == props.structSysName
         )[0].fields
-    // const GlobalVars = props.fields && props.showGlobalVars &&
-    //     props.fields.filter(i => i.structName == 'GlobalVars') && props.fields.filter(i => i.structName == 'GlobalVars')[0] &&
-    //     props.fields.filter(i => i.structName == 'GlobalVars')[0].fields || []
-    // const fieldGlobalVars = props.showGlobalVars && GlobalVars.length > 0 ? [{
-    //     sysName: 'GlobalVar',
-    //     name: 'Global Constants (' + GlobalVars.length + ')',
-    //     dataType: 'link',
-    //     link: 'GlobalVars'
-    // }] : []
-    // const ContextVars = props.fields && props.showContextVars &&
-    //     props.fields.filter(i => i.structName == 'ContextVars') && props.fields.filter(i => i.structName == 'ContextVars')[0] &&
-    //     props.fields.filter(i => i.structName == 'ContextVars')[0].fields || []
-    // const fieldContextVars = props.showContextVars && ContextVars.length > 0 ? [{
-    //     sysName: 'ContextVar',
-    //     name: 'Global Constants (' + ContextVars.length + ')',
-    //     dataType: 'link',
-    //     link: 'ContextVars'
-    // }] : []
-    // console.log('=====fields=====')
-    // console.log(props.fields)
-    // console.log(GlobalVars)
-    // console.log(ContextVars)
-    // console.log(fields)
 
     const currentField = props.value && props.value.split('.')[0]
     const [currentKeyFocus, setCurrentKeyFocus] = useState(props.keyFocus && props.keyFocus.split('.')[0])
@@ -344,7 +339,7 @@ function StructListFields(props) {
     }
 
     const selectKeyOption = (close) => {
-        console.log(currentKeyFocus)
+        // console.log(currentKeyFocus)
         const currentKeyIndex = !currentKeyFocus ? -1 :
             filteredFields.indexOf(filteredFields.filter(i => i.sysName == currentKeyFocus)[0])
         if (currentKeyIndex != -1) {
@@ -355,7 +350,7 @@ function StructListFields(props) {
 
     // updating filteredFields
     useEffect(() => {
-        const allFields = [...fields]
+        const allFields = fields || []
         //const allFields = [...fields, ...GlobalVars, ...ContextVars]
         if (allFields && (props.filter || props.filterFields) && isLast()) {
             const SaveFiltFields = allFields.filter(el => {
@@ -364,22 +359,24 @@ function StructListFields(props) {
                         String(el.name).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())) ||
                         String(el.dataType).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())))
                         && (!props.filterFields || props.filterFields.indexOf(el.dataType) != -1)
+                        && (props.firstLevel || (!props.firstLevel && (el.sysName != 'GlobalVar' && el.sysName != 'ContextVar')))
                         && (!props.hideId || (props.hideId && el.dataType != 'id'))
                         && (!props.hideSysFields || (props.hideSysFields && el.sysName != '@who' && el.sysName != '@dateCreated' && el.sysName != '@dateChanged'))
                 }
             })
             if (props.firstLevel) { console.log(SaveFiltFields) }
-            setFilteredFields(SaveFiltFields)
+            setFilteredFields(SaveFiltFields || [])
         } else {
             const SaveFiltFields2 = allFields.filter(el => {
                 return (
                     (!props.filterFields || props.filterFields.indexOf(el.dataType) != -1)
                     && (!props.hideId || (props.hideId && el.dataType != 'id'))
+                    && (props.firstLevel || (!props.firstLevel && (el.sysName != 'GlobalVar' && el.sysName != 'ContextVar')))
                     && (!props.hideSysFields || (props.hideSysFields && el.sysName != '@who' && el.sysName != '@dateCreated' && el.sysName != '@dateChanged'))
                 )
 
             })
-            setFilteredFields(SaveFiltFields2)
+            setFilteredFields(SaveFiltFields2 || [])
         }
     }, [props.filter, props.value, fields])
 
@@ -423,24 +420,28 @@ function StructListFields(props) {
     //----------------------
 
     useEffect(() => {
-        const currentKeyIndex = !currentKeyFocus ? -1 :
-            filteredFields.indexOf(filteredFields.filter(i => i.sysName == currentKeyFocus)[0])
-        if (currentKeyIndex == -1 && filteredFields.length > 0) {
-            setCurrentKeyFocus(filteredFields[0].sysName)
-        }
-        if (filteredFields == 0) {
-            setCurrentKeyFocus(null)
+        if (filteredFields) {
+            const currentKeyIndex = !currentKeyFocus ? -1 :
+                filteredFields.indexOf(filteredFields.filter(i => i.sysName == currentKeyFocus)[0])
+            if (currentKeyIndex == -1 && filteredFields.length > 0) {
+                setCurrentKeyFocus(filteredFields[0].sysName)
+            }
+            if (filteredFields == 0) {
+                setCurrentKeyFocus(null)
+            }
         }
     }, [filteredFields]);
 
     useEffect(() => {
-        console.log(currentKeyFocus)
-        const currentKeyIndex = !currentKeyFocus ? -1 :
-            filteredFields.indexOf(filteredFields.filter(i => i.sysName == currentKeyFocus)[0])
-        currentKeyIndex != -1 && scrollToKeySelected(currentKeyIndex)
+        if (filteredFields) {
+            // console.log(currentKeyFocus)
+            const currentKeyIndex = !currentKeyFocus ? -1 :
+                filteredFields.indexOf(filteredFields.filter(i => i.sysName == currentKeyFocus)[0])
+            currentKeyIndex != -1 && scrollToKeySelected(currentKeyIndex)
+        }
     }, [currentKeyFocus])
 
-    //console.log(fields)
+    //console.log(filteredFields)
 
 
     return (

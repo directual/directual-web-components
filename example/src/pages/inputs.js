@@ -195,7 +195,7 @@ export default function InputsPage() {
             structName: 'ContextVars',
             fields: [
                 {
-                    sysName: 'ContextVar.local1',
+                    sysName: 'local1',
                     name: 'Local Var 1',
                     dataType: 'number',
                 },
@@ -236,8 +236,6 @@ type='structurefield' />`} />
                 //highlightEmpty
                 //noPropagation
                 fields={testFields}
-                showGlobalVars
-                showContextVars
                 //hideSysFields
                 //hideId
                 //onChooseType={e => console.log(e)} устар.
