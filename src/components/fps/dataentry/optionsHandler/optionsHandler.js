@@ -42,6 +42,7 @@ export default function OptionsHandler({ defaultValue, objectStructure, onChange
                             className={`${styles.optionListButton} icon icon-delete`}
                             onClick={e => {
                                 e.stopPropagation()
+                                e.preventDefault()
                                 const saveOptions = [...options]
                                 saveOptions.splice(i, 1)
                                 setOptions(saveOptions)
@@ -56,6 +57,7 @@ export default function OptionsHandler({ defaultValue, objectStructure, onChange
                 icon='plus'
                 onClick={e => {
                     e.stopPropagation()
+                    e.preventDefault()
                     const saveOptions = options ? [...options] : [];
                     saveOptions.push({})
                     setOptions(saveOptions)
