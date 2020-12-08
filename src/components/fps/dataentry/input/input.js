@@ -169,6 +169,7 @@ export default function Input(props) {
             { key: 'export', value: 'export', icon: 'export' },
             { key: 'filterFill', value: 'filterFill', icon: 'filterFill' },
             { key: 'filter', value: 'filter', icon: 'filter' },
+            { key: 'filterClear', value: 'filterClear', icon: 'filterClear' },
             { key: 'folder', value: 'folder', icon: 'folder' },
             { key: 'forward', value: 'forward', icon: 'forward' },
             { key: 'gates', value: 'gates', icon: 'gates' },
@@ -234,7 +235,8 @@ export default function Input(props) {
             { key: 'zoom-to-fit', value: 'zoom-to-fit', icon: 'zoom-to-fit' },
             { key: 'dashboard', value: 'dashboard', icon: 'dashboard' },
             { key: 'path', value: 'path', icon: 'path' },
-            { key: 'bellMute', value: 'bellMute', icon: 'bellMute' }
+            { key: 'bellMute', value: 'bellMute', icon: 'bellMute' },
+            { key: 'cart', value: 'cart', icon: 'cart' },
         ]
 
     let inputMargins = {
