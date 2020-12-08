@@ -189,148 +189,7 @@ export function ObjectCard(props) {
     }
 
     const noTabs = <div></div>
-    // ЭТУ ХУЕРГУ НАДО ВЫПИЛИТЬ
-    //     <React.Fragment>
-    //         {Object.values(object).map(field =>
-    //             ((field.dataType !== 'id' || props.params.isDisplayID)) &&
-    //             <div key={field.sysName} className={styles.objFieldWrapper}>
-    //                 {field.dataType != 'link' &&
-    //                     field.dataType != 'arrayLink' &&
-    //                     field.dataType != 'id' && <React.Fragment>
-    //                         {!isEditable(field) ?
-    //                             <React.Fragment>
-    //                                 <span className={styles.label}>
-    //                                     {field.name || field.sysName}</span>
-    //                                 {!field.value && field.dataType != 'boolean' && <span className={styles.novalue}>—</span>}
-    //                                 {field.dataType != 'boolean' ?
-    //                                     <span className={styles.fieldValue}>{field && field.value}</span> :
-    //                                     <span className={`icon icon-${field && (field.value ? `done` : `ban`)}`}>{field && (field.value ? 'Yes' : 'No')}</span>}
 
-    //                             </React.Fragment> :
-    //                             <React.Fragment>
-    //                                 {field.dataType == 'string' ?
-    //                                     <Input
-    //                                         type='textarea'
-    //                                         rows={checkLineBreaks(model[field.sysName]) > 10 ? 10 : checkLineBreaks(model[field.sysName]) + 1}
-    //                                         label={field.name || field.sysName}
-    //                                         defaultValue={model[field.sysName]}
-    //                                         onChange={value => setModel({ ...model, [field.sysName]: value })}
-    //                                     />
-    //                                     :
-    //                                     <Input
-    //                                         type={matchInputType(field.dataType)}
-    //                                         label={field.name || field.sysName}
-    //                                         defaultValue={field.dataType == 'boolean' ? ((model[field.sysName] == 'true' || model[field.sysName] == true) ? true : false) : model[field.sysName]}
-    //                                         options={
-    //                                             [
-    //                                                 { value: true, label: 'Yes' },
-    //                                                 { value: false, label: 'No' },
-    //                                             ]
-    //                                         }
-    //                                         onChange={value => setModel({ ...model, [field.sysName]: value })}
-    //                                     />}
-    //                             </React.Fragment>}
-    //                     </React.Fragment>}
-    //                 {field.dataType == 'id' && props.params && props.params.isDisplayID &&
-    //                     <React.Fragment>
-    //                         <span className={styles.label}>
-    //                             {field.name || field.sysName}</span>
-    //                         {!field.value && <span className={styles.novalue}>—</span>}
-    //                         <span>{field && field.value}</span>
-    //                     </React.Fragment>
-    //                 }
-    //                 {field.dataType == 'link' &&
-    //                     <React.Fragment>
-    //                         {field.value &&
-    //                             <React.Fragment>
-    //                                 <span className={styles.label}>
-    //                                     {field.name || field.sysName}</span>
-    //                                 <div className={styles.linkFieldWrapper}>
-    //                                     <a
-    //                                         onClick={() => {
-    //                                             setLinkedObject(field.value)
-    //                                             setLinkedObjectStruct(transformTableFieldScheme(field.sysName, props.tableFieldScheme))
-    //                                             setShowLinkedObject(true)
-    //                                         }}
-    //                                     >{getLinkName(field.sysName, field.value)}</a>
-    //                                 </div>
-    //                             </React.Fragment>}
-
-    //                         {isEditable(field) &&
-    //                             // props.object[field.sysName].id &&
-    //                             <div className={styles.editLink}>
-    //                                 <Input
-    //                                     type='string'
-    //                                     label={!field.value ? (field.name || field.sysName) : ''}
-    //                                     tip={`Edit ${field.name || field.sysName} (value of the link field is object ID)`}
-    //                                     defaultValue={currentObject[field.sysName] && (currentObject[field.sysName].id || currentObject[field.sysName])}
-    //                                     onChange={value => setModel({ ...model, [field.sysName]: value })}
-    //                                 />
-    //                             </div>
-    //                         }
-    //                     </React.Fragment>
-    //                 }
-    //                 {field.dataType == 'arrayLink' && <React.Fragment>
-    //                     <span className={styles.label}>
-    //                         {field.name || field.sysName}</span>
-    //                     <div className={styles.linkFieldWrapper}>
-    //                         {field.value && field.value.map((link, i) => {
-    //                             return (
-    //                                 <a
-    //                                     key={i}
-    //                                     onClick={() => {
-    //                                         setLinkedObject(link)
-    //                                         setLinkedObjectStruct(transformTableFieldScheme(field.sysName, props.tableFieldScheme))
-    //                                         setShowLinkedObject(true)
-    //                                     }}
-    //                                 >{getLinkName(field.sysName, link)}</a>)
-    //                         })}
-    //                     </div>
-    //                 </React.Fragment>
-    //                 }
-
-    //             </div>
-    //         )}
-
-    //         {props.writeFields && props.writeFields.length > 0 &&
-    //             <React.Fragment>
-    //                 {props.loading ? <Loader>Saving...</Loader> :
-    //                     (props.writeFields && props.writeFields.indexOf('id') != -1 && props.writeFields.length > 1) && object.id && object.id.value &&
-    //                     <React.Fragment>
-
-    //                         <ActionPanel margin={{ top: 24, bottom: 12 }}>
-    //                             <Button
-    //                                 disabled={JSON.stringify(model) === JSON.stringify(currentObject)}
-    //                                 accent
-    //                                 icon='done'
-    //                                 onClick={() => { props.submit(model); setCurrentObject(model) }}>
-    //                                 Save changes</Button>
-    //                             <Button danger icon='ban'
-    //                                 onClick={() => setModel(currentObject)}
-    //                                 disabled={JSON.stringify(model) === JSON.stringify(currentObject)}>
-    //                                 Discard changes</Button>
-    //                         </ActionPanel>
-    //                         {(props.params.deleteField && object.id && props.writeFields && props.writeFields.indexOf(props.params.deleteField) != -1) &&
-    //                             // удаление
-    //                             <React.Fragment>
-    //                                 <FormSection title='Danger zone' />
-    //                                 {!confirmDelete ?
-    //                                     <Button icon='delete' onClick={() => setConfirmDelete(true)} danger>Delete</Button> :
-    //                                     <Button icon='delete' onClick={() => { props.submit({ [props.params.deleteField]: true, id: object.id.value }); props.onClose() }} danger>I'm totally sure, delete</Button>
-    //                                 }
-    //                             </React.Fragment>}
-    //                     </React.Fragment>}
-
-    //             </React.Fragment>}
-    //     </React.Fragment>
-
-
-
-
-
-
-    // ============================= Generating Tab content ============================
-    
     function composeTabContent(fields, fieldParams, deleteField, actions) {
 
         // группируем actions
@@ -1089,7 +948,7 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
     }
 
     return (
-        actionParams && checkActionCond(conds) ?
+        actionParams && checkActionCond && checkActionCond(conds) ?
         <React.Fragment>
             {actionParams.displayAs == 'form' &&
                 <React.Fragment>

@@ -9,7 +9,7 @@ import 'directual-web-components/dist/index.css'
 export default function InputsPage() {
     const [value, setValue] = useState()
 
-    const [testDefValue, setTestDefValue] = useState('option1')
+    const [testDefValue, setTestDefValue] = useState('2020-06-10T21:00:00.000Z')
 
     const testFields = [
         {
@@ -211,6 +211,21 @@ export default function InputsPage() {
 
     return (
         <React.Fragment>
+
+            <Button onClick={()=>setTestDefValue(null)}>обнулить!</Button>
+            {testDefValue}
+            <Input
+                type="date"
+                width={400}
+                label='Date and time picker'
+                utc
+                debug
+                placeholder='Select date'
+                dateFormat='D, MMM, YYYY' // default 'D, MMM, YYYY'
+                timeFormat=' HH:mm' //default ' h:mm a'
+                defaultValue={testDefValue}
+            />
+
             <h2>Options handler</h2>
 
             <CodeSnippet code=
@@ -219,6 +234,7 @@ export default function InputsPage() {
             <Input
                 type='optionsHandler'
                 code
+                disabled
                 description='you can use {{template system}} here'
                 defaultValue={[
                     { key: '1', value: 'val 1' },

@@ -9,22 +9,23 @@ export default function Datepicker(props) {
     const dateFormat = props.dateFormat || 'D, MMM, YYYY'
     let timeFormat;
     if (typeof props.timeFormat == 'string') { timeFormat = props.timeFormat }
-    if (typeof props.timeFormat == 'undefined') { timeFormat = ' h:mm a' }
+    if (typeof props.timeFormat == 'undefined') { timeFormat = ' HH:mm' }
     //console.log(typeof props.timeFormat)
 
-    const [value, setValue] = useState(props.defaultValue && moment(props.defaultValue).zone("00:00"))
+    const [value, setValue] = useState(props.defaultValue && props.utc ? moment.utc(props.defaultValue) : moment(props.defaultValue))
 
-    // useEffect(()=>{
-    //     if (props.defaultValue && !value) {
-    //         setValue(props.defaultValue && moment(moment(props.defaultValue).format(dateFormat + timeFormat)).zone("00:00"))
-    //     }
-    // }, [props.defaultValue])
+    useEffect(()=>{
+        if (!props.defaultValue) {
+            setValue(null)
+        }
+    }, [props.defaultValue])
 
     return (
         <div className={styles.calendar}>
             <Datetime
                 value={value}
                 dateFormat={dateFormat}
+                timeFormat={timeFormat}
                 className={props.correctedHeight ? 'correctedHeight' : ''}
                 utc={true}
                 onBlur={props.onBlur}

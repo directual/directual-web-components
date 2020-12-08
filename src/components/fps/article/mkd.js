@@ -38,7 +38,7 @@ export function Markdown(props) {
 
 `
     const checkLineBreaks = line => {
-        return line ? (line.match(/\n/g) || []).length : 0
+        return line && typeof line == 'string' ? (line.match(/\n/g) || []).length : 0
     }
 
     const [value, setValue] = useState(props.value || (props.example && mkdExample))

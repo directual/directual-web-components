@@ -4,7 +4,7 @@ import Input, { InputGroup } from '../input/input'
 import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
 
-export default function OptionsHandler({ defaultValue, objectStructure, onChange, width, margin, debug, addButtonText, code }) {
+export default function OptionsHandler({ defaultValue, disabled, objectStructure, onChange, width, margin, debug, addButtonText, code }) {
     const [options, setOptions] = useState(defaultValue)
     return (
         <div className={styles.optionsList}
@@ -24,6 +24,7 @@ export default function OptionsHandler({ defaultValue, objectStructure, onChange
                             return (
                                 <Input
                                     key={i + '-' + property}
+                                    disabled={disabled}
                                     width={width / 2 || 'auto'}
                                     placeholder={property}
                                     code={code}
@@ -38,6 +39,7 @@ export default function OptionsHandler({ defaultValue, objectStructure, onChange
                                     nomargin />
                             )
                         })}
+                        {!disabled &&
                         <div
                             className={`${styles.optionListButton} icon icon-delete`}
                             onClick={e => {
@@ -48,13 +50,14 @@ export default function OptionsHandler({ defaultValue, objectStructure, onChange
                                 setOptions(saveOptions)
                                 onChange && onChange(saveOptions)
                             }}
-                        ></div>
+                        ></div>}
                     </div>
                 )
             })}
             <Button
                 small
                 icon='plus'
+                disabled={disabled}
                 onClick={e => {
                     e.stopPropagation()
                     e.preventDefault()

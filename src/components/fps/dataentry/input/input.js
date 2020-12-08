@@ -609,6 +609,7 @@ export default function Input(props) {
             {props.type == 'optionsHandler' &&
                 <OptionsHandler
                     code={props.code}
+                    disabled={props.disabled}
                     defaultValue={defVal}
                     objectStructure={props.objectStructure}
                     addButtonText={props.addButtonText || 'More'}
