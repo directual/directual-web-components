@@ -33,17 +33,20 @@
   opacity: 0.5;
   position: absolute;
   left: 8px;
-  top: 9px;
+  top: 7px;
 }
 .input_wrapper .field_wrapper .input_icon_wrapper:before {
   font-size: 32px;
 }
+.input_wrapper .field_wrapper:hover .clear {
+  opacity: 0.3;
+}
 .input_wrapper .field_wrapper .clear {
   position: absolute;
-  opacity: 0.3;
+  opacity: 0;
   cursor: pointer;
   transition: 0.5s;
-  top: 9px;
+  top: 7px;
   right: 9px;
 }
 .input_wrapper .field_wrapper .clear:before {
@@ -101,7 +104,6 @@
 .input_wrapper textarea.disabled {
   background-color: var(--table-border-color);
   cursor: not-allowed;
-  color: var(--field-border-color);
 }
 .input_wrapper textarea.code {
   font-family: 'Fira Code', monospace;
@@ -151,9 +153,13 @@
   padding-left: 40px;
 }
 .input_wrapper .field.disabled {
+  background-color: var(--table-border-color);
   cursor: not-allowed;
   padding: 1px 18px 1px 18px;
   opacity: 0.6;
+}
+.input_wrapper .field.disabled.icon {
+  padding-left: 40px;
 }
 .input_wrapper .field.error {
   border-width: 2px;

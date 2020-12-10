@@ -105,7 +105,6 @@
 .select_wrapper .select_field.disabled {
   background-color: var(--table-border-color);
   cursor: not-allowed;
-  color: var(--field-border-color);
 }
 .select_wrapper .select_field.error {
   border-width: 2px;

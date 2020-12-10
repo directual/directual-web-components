@@ -32,8 +32,6 @@ export default function ButtonsPage() {
                 <Button loading>Regular button</Button>
                 <Button accent loading>Accent button</Button>
                 <Button accent icon="play" loading>Icon button</Button>
-                <Button loading disabled>Regular button</Button>
-                <Button accent loading disabled>Accent button</Button>
             </ActionPanel>
 
             <CodeSnippet code=

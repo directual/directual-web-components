@@ -18,7 +18,7 @@ export default function Button(props) {
                         ${props.accent && styles.accent} 
                         ${props.className} 
                         ${props.loading && styles.loading}
-                        ${props.disabled && styles.disabled}
+                        ${(props.disabled || props.loading) && styles.disabled}
                         ${!props.children && styles.empty}
                         ${props.icon && !props.loading && `${styles.icon} icon icon-${props.icon}`}
                         ${props.socialGoogle && `${styles.socialGoogle}`}
@@ -26,7 +26,7 @@ export default function Button(props) {
                         ${props.inverseColor && `${styles.inverseColor}`}
                         ${props.transparent && `${styles.transparent}`}
                         `}
-                    disabled={props.disabled && 'disabled'}
+                    disabled={ (props.disabled || props.loading) && 'disabled'}
                 >
                     {props.loading && <Loader small accent={props.accent}></Loader>}
                     {props.children}</button>

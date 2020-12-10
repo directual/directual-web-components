@@ -32,17 +32,23 @@
             opacity: .5;
             position: absolute;
             left:8px;
-            top:9px;
+            top:7px;
             &:before {
                 font-size:32px;
             }
         }
-        .clear {
-            position: absolute;
+        &:hover {
+            .clear {
             opacity: .3;
+            }
+        }
+        .clear {
+            
+            position: absolute;
+            opacity: 0;
             cursor: pointer;
             transition: .5s;
-            top:9px;
+            top:7px;
             right:9px;
             &:before {
                 font-size: 32px;}
@@ -92,7 +98,7 @@
         &.disabled {
             background-color: var(--table-border-color);
             cursor: not-allowed;
-            color: var(--field-border-color);
+            //color: var(--field-border-color);
         }
         &.code {
             font-family: 'Fira Code', monospace;
@@ -146,8 +152,11 @@
             padding-left: 40px;
         }
         &.disabled {
-            //background-color: var(--table-border-color);
+            background-color: var(--table-border-color);
             cursor: not-allowed;
+            &.icon {
+                padding-left: 40px;
+            }
             //color: var(--table-border-color);
             padding: 1px 18px 1px 18px;
             opacity: .6;

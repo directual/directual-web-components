@@ -232,11 +232,17 @@ export default function Input(props) {
             { key: 'view', value: 'view', icon: 'view' },
             { key: 'warning', value: 'warning', icon: 'warning' },
             { key: 'webhook', value: 'webhook', icon: 'webhook' },
-            { key: 'zoom-to-fit', value: 'zoom-to-fit', icon: 'zoom-to-fit' },
+            //{ key: 'zoom-to-fit', value: 'zoom-to-fit', icon: 'zoom-to-fit' },
             { key: 'dashboard', value: 'dashboard', icon: 'dashboard' },
             { key: 'path', value: 'path', icon: 'path' },
             { key: 'bellMute', value: 'bellMute', icon: 'bellMute' },
+            { key: 'phone', value: 'phone', icon: 'phone' },
+            { key: 'decimal', value: 'decimal', icon: 'decimal' },
+            { key: 'slider', value: 'slider', icon: 'slider' },
             { key: 'cart', value: 'cart', icon: 'cart' },
+            { key: 'range', value: 'range', icon: 'range' },
+            { key: 'radio', value: 'radio', icon: 'radio' },
+            { key: 'checkbox', value: 'checkbox', icon: 'checkbox' },
         ]
 
     let inputMargins = {
@@ -319,7 +325,7 @@ export default function Input(props) {
                             onKeyPress={e => { e.key == 'Enter' ? props.onPressEnter(value) : undefined }}
                             onChange={e => { !props.copy ? handleChange(e.target.value) : undefined; }}
                             value={value || ''}
-                            onBlur={checkValue}
+                            onBlur={e => props.onBlur ? props.onBlur(e.target.value) : checkValue(e) }
                             placeholder={`${props.placeholder ? props.placeholder : ''}`}
                         />
                         {value && !props.disabled && !props.copy &&
@@ -350,9 +356,12 @@ export default function Input(props) {
                         onBlur={e => checkEmailValue(e.target.value)}
                         placeholder={`${props.placeholder ? props.placeholder : ''}`}
                     />
-                    {value && !props.disabled &&
+                    {value && !props.disabled && !props.copy &&
                         <div className={`${styles.clear} icon icon-close`}
                             onClick={clearValue}></div>}
+                    {value && props.copy &&
+                            <div className={`${styles.clear} icon icon-copy`}
+                                onClick={value => copyValue(value)}></div>}
                 </div>}
 
             {props.type == 'search' &&
@@ -455,9 +464,12 @@ export default function Input(props) {
                         onBlur={checkValue}
                         placeholder={`${props.placeholder ? props.placeholder : ''}`}
                     />
-                    {value &&
+                    {value && !props.copy &&
                         <div className={`${styles.clear} icon icon-close`}
                             onClick={clearValue}></div>}
+                    {value && props.copy &&
+                            <div className={`${styles.clear} icon icon-copy`}
+                                onClick={value => copyValue(value)}></div>}
                 </div>}
 
             {props.type == 'markdown' &&

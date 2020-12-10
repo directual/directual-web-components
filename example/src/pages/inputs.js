@@ -212,19 +212,6 @@ export default function InputsPage() {
     return (
         <React.Fragment>
 
-            <Button onClick={()=>setTestDefValue(null)}>обнулить!</Button>
-            {testDefValue}
-            <Input
-                type="date"
-                width={400}
-                label='Date and time picker'
-                utc
-                debug
-                placeholder='Select date'
-                dateFormat='D, MMM, YYYY' // default 'D, MMM, YYYY'
-                timeFormat=' HH:mm' //default ' h:mm a'
-                defaultValue={testDefValue}
-            />
 
             <h2>Options handler</h2>
 
@@ -601,6 +588,7 @@ options={
             <Input
                 label='Multiple select'
                 width={700}
+                disabled
                 type='multiselect'
                 placeholder='Choose the values'
                 defaultValue={[2, 5]}
@@ -760,6 +748,7 @@ options={
                 placeholder='Placeholder'
                 defaultValue='default value default value default value default value default value'
                 type='string'
+                icon='id'
                 disabled
                 width={400}
             />
@@ -830,6 +819,7 @@ options={
                 placeholder='Placeholder for textarea'
                 type='textarea'
                 rows={4}
+                copy
                 width={400}
             />
 

@@ -346,8 +346,8 @@
 }
 @font-face {
   font-family: 'directual-icons';
-  src: url('https://api.alfa.directual.com/fileUploaded/directual-site/2b116606-c42f-4c7c-a2fe-fbd18f388e70.eot');
-  src: url('https://api.alfa.directual.com/fileUploaded/directual-site/2b116606-c42f-4c7c-a2fe-fbd18f388e70.eot') format('embedded-opentype'), url('https://api.alfa.directual.com/fileUploaded/directual-site/cdd84f18-5cea-4328-8665-60e841021025.woff') format('woff'), url('https://api.alfa.directual.com/fileUploaded/directual-site/c3a4f6e1-6b03-406c-8367-132cacf2c927.ttf') format('truetype'), url('https://api.alfa.directual.com/fileUploaded/directual-site/1aed7c18-8f6d-44b4-9567-07ef51807e47.svg') format('svg');
+  src: url('https://api.alfa.directual.com/fileUploaded/directual-site/96850ca2-968b-468e-bf5c-78b442809006.eot');
+  src: url('https://api.alfa.directual.com/fileUploaded/directual-site/96850ca2-968b-468e-bf5c-78b442809006.eot') format('embedded-opentype'), url('https://api.alfa.directual.com/fileUploaded/directual-site/f34ae1e7-fdf5-4259-beb9-7821d8901fbe.woff') format('woff'), url('https://api.alfa.directual.com/fileUploaded/directual-site/317ffc5a-8147-4527-a71d-10a298f519f8.ttf') format('truetype'), url('https://api.alfa.directual.com/fileUploaded/directual-site/7d9d01c4-ab0f-439c-9e77-5a1c452f403f.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -708,6 +708,24 @@
 }
 :global .icon-bellMute:before {
   content: "\e972";
+}
+:global .icon-phone:before {
+  content: "\e975";
+}
+:global .icon-decimal:before {
+  content: "\e976";
+}
+:global .icon-slider:before {
+  content: "\e977";
+}
+:global .icon-range:before {
+  content: "\e978";
+}
+:global .icon-radio:before {
+  content: "\e979";
+}
+:global .icon-checkbox:before {
+  content: "\e97a";
 }
 /*-- VARIABLES --*/
 :root {
