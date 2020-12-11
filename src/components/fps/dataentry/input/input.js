@@ -40,7 +40,7 @@ export default function Input(props) {
         try {
             parseJSON = JSON.parse(value)
             setValue(JSON.stringify(parseJSON, 0, 3));
-            e && setLines(countLines(e.target, JSON.stringify(parseJSON, 0, 3)))
+            e && setLines(countLines(e.target || e, JSON.stringify(parseJSON, 0, 3)))
             setWarningMesg({ type: 'ok', msg: 'Valid JSON' })
             props.isValid && props.isValid(true)
         } catch {
@@ -79,6 +79,7 @@ export default function Input(props) {
 
     useEffect(() => {
         if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal)) { setValue(props.defaultValue); setDefVal(props.defaultValue) }
+        if (props.type == 'json' && inputEl.current) {checkJsonValue(inputEl.current)}
     }, [props.defaultValue])
 
     const checkEmailValue = (v) => {
@@ -328,8 +329,9 @@ export default function Input(props) {
 
         // Copy value.
         _buffer.value = text || textarea.value;
+        console.log(_buffer.scrollHeight / lh)
 
-        var result = Math.floor(_buffer.scrollHeight / lh);
+        var result = Math.round(_buffer.scrollHeight / lh);
         if (result == 0) result = 1;
         return result;
     }
@@ -521,7 +523,6 @@ export default function Input(props) {
                     <textarea
                         autoFocus={props.autoFocus}
                         ref={inputEl}
-                        id='textarea'
                         disabled={props.disabled}
                         className={`
                         ${styles.field} 
@@ -530,7 +531,10 @@ export default function Input(props) {
                         ${warningMsg.type && styles[warningMsg.type]}`}
                         type="text"
                         rows={props.rows == 'auto' ? lines : props.rows || 1}
-                        onChange={e => { setLines(countLines(e.target)); handleChange(e.target.value) }}
+                        onChange={e => { 
+                            setLines(countLines(e.target)); 
+                            handleChange(e.target.value) 
+                        }}
                         value={value}
                         onBlur={e => checkJsonValue(e)}
                         placeholder={`${props.placeholder ? props.placeholder : ''}`}
