@@ -77,7 +77,7 @@ export function Markdown(props) {
                             }
                         </div>
                         <textarea
-                            rows={checkLineBreaks(value) + 1 }
+                            rows='auto'
                             onChange={e => changeMkd(e.target.value)}
                         >
                             {value}

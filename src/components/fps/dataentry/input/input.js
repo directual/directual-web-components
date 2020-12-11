@@ -24,12 +24,31 @@ export default function Input(props) {
     const [warningMsg, setWarningMesg] = useState(props.warning || {})
     const [defVal, setDefVal] = useState(props.defaultValue || props.value)
     const inputEl = useRef(null);
+    const [lines, setLines] = useState(1)
 
     const checkValue = () => {
         // console.log('checking...');
         ((!value || (value && value.length == 0)) && (value != 0) && props.required) ?
             setWarningMesg({ type: 'error', msg: 'This field is required' }) :
             setWarningMesg({});
+    }
+
+    const checkJsonValue = e => {
+        console.log('checking JSON...');
+        let parseJSON = {}
+        if (value) { 
+        try {
+            parseJSON = JSON.parse(value)
+            setValue(JSON.stringify(parseJSON, 0, 3));
+            e && setLines(countLines(e.target, JSON.stringify(parseJSON, 0, 3)))
+            setWarningMesg({ type: 'ok', msg: 'Valid JSON' })
+            props.isValid && props.isValid(true)
+        } catch {
+            console.log('Error in parsing JSON');
+            setWarningMesg({ type: 'error', msg: 'Invalid JSON' })
+            props.isValid && props.isValid(false)
+        }}
+        !value && setWarningMesg({});
     }
 
     const copyValue = value => {
@@ -119,7 +138,7 @@ export default function Input(props) {
 
     useEffect(() => {
         if (props.highlightEmpty && !value) { setWarningMesg({ type: 'error', msg: 'This field is required' }) }
-        else { setWarningMesg({}); }
+        else { inputEl.current == document.activeElement && setWarningMesg({}); }
     }, [value])
 
     const icon_options =
@@ -268,6 +287,52 @@ export default function Input(props) {
         props.autoFocus && inputEl.current.focus();
     }, [])
 
+    const checkLineBreaks = line => {
+        if (!line) return 1
+        return typeof line == 'string' ? (line.match(/\n/g) || []).length + 1 : 1
+    }
+
+    let _buffer;
+    function countLines(textarea, text) {
+        if (_buffer == null) {
+            _buffer = document.createElement('textarea');
+            _buffer.style.border = 'none';
+            _buffer.style.height = '0';
+            _buffer.style.overflow = 'hidden';
+            _buffer.style.padding = '0';
+            _buffer.style.position = 'absolute';
+            _buffer.style.left = '0';
+            _buffer.style.top = '0';
+            _buffer.style.zIndex = '-1';
+            document.body.appendChild(_buffer);
+        }
+
+        var cs = window.getComputedStyle(textarea);
+        var pl = parseInt(cs.paddingLeft);
+        var pr = parseInt(cs.paddingRight);
+        var lh = parseInt(cs.lineHeight);
+
+        // [cs.lineHeight] may return 'normal', which means line height = font size.
+        if (isNaN(lh)) lh = parseInt(cs.fontSize) + 3;
+
+        // Copy content width.
+        _buffer.style.width = (textarea.clientWidth - pl - pr) + 'px';
+
+        // Copy text properties.
+        _buffer.style.font = cs.font;
+        _buffer.style.letterSpacing = cs.letterSpacing;
+        _buffer.style.whiteSpace = cs.whiteSpace;
+        _buffer.style.wordBreak = cs.wordBreak;
+        _buffer.style.wordSpacing = cs.wordSpacing;
+        _buffer.style.wordWrap = cs.wordWrap;
+
+        // Copy value.
+        _buffer.value = text || textarea.value;
+
+        var result = Math.floor(_buffer.scrollHeight / lh);
+        if (result == 0) result = 1;
+        return result;
+    }
 
     return (
         <div className={`${styles.input_wrapper} ${props.className}`}
@@ -303,6 +368,7 @@ export default function Input(props) {
                 props.type != 'markdown' &&
                 props.type != 'range' &&
                 props.type != 'decimal' &&
+                props.type != 'json' &&
                 props.type != 'optionsHandler' &&
                 <div className={`${styles.field_wrapper} ${props.addonAfter && styles.hor}`}>
                     <div className={styles.field_wrapper_additional}>
@@ -325,7 +391,7 @@ export default function Input(props) {
                             onKeyPress={e => { e.key == 'Enter' ? props.onPressEnter(value) : undefined }}
                             onChange={e => { !props.copy ? handleChange(e.target.value) : undefined; }}
                             value={value || ''}
-                            onBlur={e => props.onBlur ? props.onBlur(e.target.value) : checkValue(e) }
+                            onBlur={e => props.onBlur ? props.onBlur(e.target.value) : checkValue(e)}
                             placeholder={`${props.placeholder ? props.placeholder : ''}`}
                         />
                         {value && !props.disabled && !props.copy &&
@@ -360,8 +426,8 @@ export default function Input(props) {
                         <div className={`${styles.clear} icon icon-close`}
                             onClick={clearValue}></div>}
                     {value && props.copy &&
-                            <div className={`${styles.clear} icon icon-copy`}
-                                onClick={value => copyValue(value)}></div>}
+                        <div className={`${styles.clear} icon icon-copy`}
+                            onClick={value => copyValue(value)}></div>}
                 </div>}
 
             {props.type == 'search' &&
@@ -450,6 +516,33 @@ export default function Input(props) {
                 </div>
             }
 
+            {props.type == 'json' &&
+                <div className={styles.field_wrapper}>
+                    <textarea
+                        autoFocus={props.autoFocus}
+                        ref={inputEl}
+                        id='textarea'
+                        disabled={props.disabled}
+                        className={`
+                        ${styles.field} 
+                        ${props.disabled && styles.disabled} 
+                        ${styles.code} 
+                        ${warningMsg.type && styles[warningMsg.type]}`}
+                        type="text"
+                        rows={props.rows == 'auto' ? lines : props.rows || 1}
+                        onChange={e => { setLines(countLines(e.target)); handleChange(e.target.value) }}
+                        value={value}
+                        onBlur={e => checkJsonValue(e)}
+                        placeholder={`${props.placeholder ? props.placeholder : ''}`}
+                    />
+                    {value && !props.copy &&
+                        <div className={`${styles.clear} icon icon-close`}
+                            onClick={clearValue}></div>}
+                    {value && props.copy &&
+                        <div className={`${styles.clear} icon icon-copy`}
+                            onClick={value => copyValue(value)}></div>}
+                </div>}
+
             {props.type == 'textarea' &&
                 <div className={styles.field_wrapper}>
                     <textarea
@@ -458,8 +551,8 @@ export default function Input(props) {
                         disabled={props.disabled}
                         className={`${styles.field} ${props.disabled && styles.disabled} ${props.code && styles.code} ${warningMsg.type && styles[warningMsg.type]}`}
                         type="text"
-                        rows={props.rows || 3}
-                        onChange={e => handleChange(e.target.value)}
+                        rows={props.rows == 'auto' ? lines : props.rows || 1}
+                        onChange={e => { setLines(countLines(e.target)); handleChange(e.target.value) }}
                         value={value}
                         onBlur={checkValue}
                         placeholder={`${props.placeholder ? props.placeholder : ''}`}
@@ -468,8 +561,8 @@ export default function Input(props) {
                         <div className={`${styles.clear} icon icon-close`}
                             onClick={clearValue}></div>}
                     {value && props.copy &&
-                            <div className={`${styles.clear} icon icon-copy`}
-                                onClick={value => copyValue(value)}></div>}
+                        <div className={`${styles.clear} icon icon-copy`}
+                            onClick={value => copyValue(value)}></div>}
                 </div>}
 
             {props.type == 'markdown' &&
@@ -532,6 +625,7 @@ export default function Input(props) {
                     bottomSelect={props.bottomSelect}
                     disabled={props.disabled}
                     displayKey={props.displayKey}
+                    displayKeyShort={props.displayKeyShort}
                     defaultValue={defVal}
                     iconOptions={props.iconOptions}
                     onChange={e => submit(e)}
@@ -547,6 +641,7 @@ export default function Input(props) {
                     bottomSelect={props.bottomSelect}
                     icon={props.icon}
                     height={props.height}
+                    displayKeyShort={props.displayKeyShort}
                     displayKey={props.displayKey}
                     disabled={props.disabled}
                     multi

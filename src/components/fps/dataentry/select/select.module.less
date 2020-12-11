@@ -177,7 +177,7 @@
             display: flex;
             align-items: center;
             height: 30px;
-            min-width: 100px;
+            min-width: 50px;
             overflow: hidden;
             .filter {
                 border:none;
@@ -238,6 +238,9 @@
                     .displayKey {
                         color: var(--button-accent-color);
                     }
+                    .displayKeyShort {
+                        color: var(--background-color);
+                    }
                 }
                 &.keySelected {
                     padding:6px 10px;
@@ -251,6 +254,9 @@
                     color: var(--background-color);
                     .displayKey {
                         color: var(--button-accent-color);
+                    }
+                    .displayKeyShort {
+                        color: var(--background-color);
                     }
                 }
             }
@@ -335,4 +341,10 @@
     font-size: var(--text-small-size);
     font-family: 'Fira Code', monospace;
     color:var(--accent-color)
+}
+.displayKeyShort {
+    font-size: var(--text-small-size);
+    font-family: 'Fira Code', monospace;
+    color:var(--font-color);
+    opacity: .6;
 }

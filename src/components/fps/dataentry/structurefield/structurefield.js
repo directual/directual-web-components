@@ -364,7 +364,9 @@ function StructListFields(props) {
                         && (!props.hideSysFields || (props.hideSysFields && el.sysName != '@who' && el.sysName != '@dateCreated' && el.sysName != '@dateChanged'))
                 }
             })
-            if (props.firstLevel) { console.log(SaveFiltFields) }
+            if (props.firstLevel) { 
+                //console.log(SaveFiltFields) 
+            }
             setFilteredFields(SaveFiltFields || [])
         } else {
             const SaveFiltFields2 = allFields.filter(el => {

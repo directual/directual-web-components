@@ -94,6 +94,9 @@ function List(props) {
                         <span className={styles.displayKey}>
                             {`${props.displayKey ? ` {{${option.key}}}` : ''}`}
                         </span>
+                        <span className={styles.displayKeyShort}>
+                            {`${props.displayKeyShort ? ` [${option.key}]` : ''}`}
+                        </span>
                     </li>
                 )}
             </ul>
@@ -320,6 +323,9 @@ export default function Select(props) {
                                 <span className={styles.displayKey}>
                                     {`${props.displayKey ? ` {{${value.key}}}` : ''}`}
                                 </span>
+                                <span className={styles.displayKeyShort}>
+                                    {`${props.displayKeyShort ? ` [${value.key}]` : ''}`}
+                                </span>
                             </div>}
                         {focus &&
                             <input
@@ -343,6 +349,7 @@ export default function Select(props) {
                     onClick={() => { setFocus(false) }}
                     options={filteredOptions}
                     displayKey={props.displayKey}
+                    displayKeyShort={props.displayKeyShort}
                     filter={filter}
                     focus={focus}
                     selected={keySelected}

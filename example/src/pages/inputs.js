@@ -211,12 +211,29 @@ export default function InputsPage() {
 
     return (
         <React.Fragment>
+            <h1>Data entry</h1>
 
+            <Input type='json' label='JSON input' rows='auto' onChange={v => {}} isValid={v => {console.log(v)}} defaultValue=''/>
+            <Input type='textarea' label='auto-height textarea' rows='auto' />
 
             <h2>Options handler</h2>
 
             <CodeSnippet code=
-                {``} />
+                {`<Input
+    type='optionsHandler'
+    code
+    disabled
+    description='you can use {{template system}} here'
+    defaultValue={[
+        { key: '1', value: 'val 1' },
+        { key: '2', value: 'val 2' },
+        { key: '3', value: 'val 3' },
+    ]}
+    objectStructure={['key', 'value']}
+    addButtonText='Add param'
+    onChange={value => console.log(value)}
+    label='Request query params'
+/>`} />
 
             <Input
                 type='optionsHandler'
@@ -328,7 +345,8 @@ options={
                 type='select'
                 placeholder='Choose the line'
                 icon='database'
-                displayKey
+                displayKeyShort
+                //displayKey
                 options={
                     [
                         { key: 1, value: 'Good fortune? The fact is' },
@@ -340,12 +358,11 @@ options={
             />
 
             <Input
-                autoFocus
+                //autoFocus
                 addonAfter=".directual.app"
                 restrictChars={['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
                     'q', 'r', 's', 't', 'v', 'u', 'w', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-']}
             />
-            <h1>Data entry</h1>
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Markdown</h2>
             <CodeSnippet code=
                 {`<Markdown example preview edit onChange={val=>console.log(val)} height={300} margin={{top:0,bottom:18}}/>

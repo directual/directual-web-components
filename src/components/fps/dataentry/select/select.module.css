@@ -175,7 +175,7 @@
   display: flex;
   align-items: center;
   height: 30px;
-  min-width: 100px;
+  min-width: 50px;
   overflow: hidden;
 }
 .select_wrapper .select_field .value_wrapper .filter {
@@ -233,6 +233,9 @@
 .select_wrapper .select_field .list .option.selected .displayKey {
   color: var(--button-accent-color);
 }
+.select_wrapper .select_field .list .option.selected .displayKeyShort {
+  color: var(--background-color);
+}
 .select_wrapper .select_field .list .option.keySelected {
   padding: 6px 10px;
   border: solid 2px var(--font-color);
@@ -246,6 +249,9 @@
 }
 .select_wrapper .select_field .list .option:active:not(.disabled) .displayKey {
   color: var(--button-accent-color);
+}
+.select_wrapper .select_field .list .option:active:not(.disabled) .displayKeyShort {
+  color: var(--background-color);
 }
 .subselect {
   position: absolute;
@@ -323,4 +329,10 @@
   font-size: var(--text-small-size);
   font-family: 'Fira Code', monospace;
   color: var(--accent-color);
+}
+.displayKeyShort {
+  font-size: var(--text-small-size);
+  font-family: 'Fira Code', monospace;
+  color: var(--font-color);
+  opacity: 0.6;
 }

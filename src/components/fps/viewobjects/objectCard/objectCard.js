@@ -185,7 +185,7 @@ export function ObjectCard(props) {
     }
 
     const checkLineBreaks = line => {
-        return (line.match(/\n/g) || []).length;
+        return line && typeof line == 'string' ? (line.match(/\n/g) || []).length : 0
     }
 
     const noTabs = <div></div>
@@ -716,8 +716,7 @@ function FieldJson({ field, model, onChange, object, editingOn }) {
                         type='textarea'
                         code
                         description={field.descriptionFlag && field.description}
-                        rows={checkLineBreaks(jsonParse(model[field.sysName])) > 10 ? 10 :
-                            checkLineBreaks(jsonParse(model[field.sysName])) + 1}
+                        rows='auto'
                         label={field.name || field.sysName}
                         defaultValue={jsonParse(model[field.sysName])}
                         onChange={onChange}
@@ -1014,7 +1013,7 @@ function FieldString({ field, model, onChange, object, editingOn, checkLineBreak
                 <Input
                     type='textarea'
                     description={field.descriptionFlag && field.description}
-                    rows={checkLineBreaks(model[field.sysName]) > 10 ? 10 : checkLineBreaks(model[field.sysName]) + 1}
+                    rows='auto'
                     label={field.name || field.sysName}
                     defaultValue={model[field.sysName]}
                     onChange={onChange}
@@ -1042,7 +1041,7 @@ function FieldString({ field, model, onChange, object, editingOn, checkLineBreak
                 <Input
                     type='textarea'
                     description={field.descriptionFlag && field.description}
-                    rows={checkLineBreaks(model[field.sysName]) > 10 ? 10 : checkLineBreaks(model[field.sysName]) + 1}
+                    rows='auto'
                     label={field.name || field.sysName}
                     defaultValue={model[field.sysName]}
                     onChange={onChange}
