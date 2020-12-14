@@ -8246,11 +8246,9 @@ const App = (props) => {
                 header='Sign in'
                 width={400}
                 google
-              />
-              <SignUp
-                header='Sign up'
-                width={400}
-                google
+                userNameFormat='email'
+                allowSignUp
+                signUpheader='Sign up'
               />
 
             </Route>

@@ -5,7 +5,7 @@ import ActionPanel from '../actionspanel/actionspanel'
 import Button from '../button/button'
 import { FormSection } from '../dataentry/form/FpsForm'
 
-export function SignIn({ width, header, google, onSubmit, userNameFormat }) {
+export function SignIn({ width, header, signUpheader, google, onSubmit, userNameFormat, allowSignUp }) {
     const submit = () => {
         onSubmit(loginDetails)
     }
@@ -19,77 +19,100 @@ export function SignIn({ width, header, google, onSubmit, userNameFormat }) {
     const urlParams = new URLSearchParams(queryString);
     const defaultLogin = urlParams.get('login') || null;
 
-    const [loginDetails, setLoginDetails] = useState({login: defaultLogin})
+    const [loginDetails, setLoginDetails] = useState({ login: defaultLogin })
+    const [signUp, setSignUp] = useState(false)
 
-    return (
-        <form className={styles.signinform} style={{ maxWidth: width || 'auto' }}>
-            {header && <h1>{header}</h1>}
-            {google && <React.Fragment>
-                <ActionPanel column margin={{ top: 0, bottom: 18 }}>
-                    <Button socialGoogle>Sign In with Google</Button>
-                </ActionPanel>
-                <FormSection title='Or' />
-            </React.Fragment>}
-            <Input
-                type={userNameFormat || 'string'}
-                required
-                defaultValue={defaultLogin}
-                label={userNameLabel}
-                onChange={value => setLoginDetails({ ...loginDetails, login: value })}
-            />
-            <Input
-                type='password'
-                required
-                label='Password'
-                onChange={value => setLoginDetails({ ...loginDetails, password: value })}
-            />
-            <ActionPanel column margin={{ top: 0, bottom: 18 }}>
-                <Button onClick={submit} accent icon='permission'>Sign In</Button>
-            </ActionPanel>
-        </form>
-    )
+    if (signUp) {
+        return (
+            <React.Fragment>
+                <SignUp
+                    header={signUpheader}
+                    width={width}
+                    google={google}
+                    userNameLabel={userNameLabel}
+                    userNameFormat={userNameFormat}
+                />
+                <a onClick={() => setSignUp(false)}>I have an account</a>
+            </React.Fragment>
+        )
+    } else {
+
+        return (
+            <div className={styles.signinform} style={{ maxWidth: width || 'auto' }}>
+                <form >
+                    {header && <h1>{header || 'Sign In'}</h1>}
+                    {google && <React.Fragment>
+                        <ActionPanel column margin={{ top: 0, bottom: 18 }}>
+                            <Button socialGoogle>Sign In with Google</Button>
+                        </ActionPanel>
+                        <FormSection title='Or' />
+                    </React.Fragment>}
+                    <Input
+                        type={userNameFormat || 'string'}
+                        required
+                        defaultValue={defaultLogin}
+                        label={userNameLabel}
+                        onChange={value => setLoginDetails({ ...loginDetails, login: value })}
+                    />
+                    <Input
+                        type='password'
+                        required
+                        label='Password'
+                        onChange={value => setLoginDetails({ ...loginDetails, password: value })}
+                    />
+                    <ActionPanel column margin={{ top: 0, bottom: 18 }}>
+                        <Button onClick={submit} accent icon='permission'>{header || 'Sign In'}</Button>
+                    </ActionPanel>
+                </form>
+                {allowSignUp && <a onClick={() => setSignUp(true)}>Create an account</a>}
+            </div>
+        )
+    }
+
 }
 
 export function SignUp(props) {
     return (
         <div className={styles.signinform} style={{ maxWidth: props.width || 'auto' }}>
-            {props.header && <h1>{props.header}</h1>}
-            {props.google && <React.Fragment>
+            <form>
+                {props.header && <h1>{props.header || 'Sign Up'}</h1>}
+                {props.google && <React.Fragment>
+                    <ActionPanel column margin={{ top: 0, bottom: 18 }}>
+                        <Button socialGoogle>Sign Up with Google</Button>
+                    </ActionPanel>
+                    <FormSection title='Or' />
+                </React.Fragment>}
+                <InputGroup>
+                    <Input
+                        label='First name'
+                        type='string'
+                        required
+                    />
+                    <Input
+                        label='Last name'
+                        type='string'
+                        required
+                    />
+                </InputGroup>
+                <Input
+                    label={props.userNameLabel}
+                    type={props.userNameFormat || 'string'}
+                    required
+                />
+                <Input
+                    type='password'
+                    label='Password'
+                    required
+                />
+                <Input
+                    type='password'
+                    label='Repeat password'
+                    required
+                />
                 <ActionPanel column margin={{ top: 0, bottom: 18 }}>
-                    <Button socialGoogle>Sign Up with Google</Button>
+                    <Button accent icon='permission'>{props.header || 'Sign Up'}</Button>
                 </ActionPanel>
-                <FormSection title='Or' />
-            </React.Fragment>}
-            <InputGroup>
-                <Input
-                    label='First name'
-                    type='string'
-                    required
-                />
-                <Input
-                    label='Last name'
-                    type='string'
-                    required
-                />
-            </InputGroup>
-            <Input
-                type='email'
-                label='Email address'
-                required
-            />
-            <Input
-                type='password'
-                label='Password'
-                required
-            />
-            <Input
-                type='password'
-                label='Repeat password'
-                required
-            />
-            <ActionPanel column margin={{ top: 0, bottom: 18 }}>
-                <Button accent icon='permission'>Sign In</Button>
-            </ActionPanel>
+            </form>
         </div>
     )
 }
@@ -97,13 +120,13 @@ export function SignUp(props) {
 export function Profile(props) {
     return (
         <div style={{ maxWidth: props.width || 'auto' }}>
-          {/* {props.data  && <ProfileHeader
+            {/* {props.data  && <ProfileHeader
                 pictureUrl={props.data.profilePicture}
                 fullName={`${props.data.firstName} ${props.data.lastName}`} /> }
           {props.data && <ProfileBody
                 user={props.data} /> } */}
             <div className={styles.logOut}>
-                <Button icon='logout' onClick={()=>props.logOut()}>Log out</Button></div>
+                <Button icon='logout' onClick={() => props.logOut()}>Log out</Button></div>
         </div>
     )
 }
@@ -152,7 +175,7 @@ function ProfileBody({ user, onSave }) {
                 label='Phone'
                 type='phone'
                 defaultValue={`${data.phone || ''}`}
-                onChange={value => value ? setData({ ...data, phone: value }): undefined}
+                onChange={value => value ? setData({ ...data, phone: value }) : undefined}
             />
             <Input
                 label='Email'
@@ -184,7 +207,7 @@ function ProfileBody({ user, onSave }) {
                 label='New password'
                 type='password'
                 defaultValue={`${data.newPassword || ''}`}
-                onChange={value => value ? setData({ ...data, newPassword: value }): undefined}
+                onChange={value => value ? setData({ ...data, newPassword: value }) : undefined}
             />
             {/* <div className="dd-debug">
             {JSON.stringify(data)}</div> */}
