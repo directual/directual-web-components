@@ -3,6 +3,7 @@
   border-left: solid 5px var(--alert-color);
   color: var(--hint-color);
   padding: 18px 18px 6px 18px;
+  font-size: var(--text-font-size);
   border-radius: 4px;
 }
 .hint * {

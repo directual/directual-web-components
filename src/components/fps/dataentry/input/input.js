@@ -79,7 +79,7 @@ export default function Input(props) {
 
     useEffect(() => {
         if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal)) { setValue(props.defaultValue); setDefVal(props.defaultValue) }
-        if (props.type == 'json' && inputEl.current) {checkJsonValue(inputEl.current)}
+        if (props.raws == 'auto' && inputEl.current) {checkJsonValue(inputEl.current)}
     }, [props.defaultValue])
 
     const checkEmailValue = (v) => {
