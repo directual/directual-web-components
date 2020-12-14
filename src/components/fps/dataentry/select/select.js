@@ -287,7 +287,11 @@ export default function Select(props) {
                         {value && value.length > 0 && value.map((item) =>
                             item &&
                             <li title={item.value}>
-                                <div className={styles.title_item}>{item.value}</div>
+                                <div className={styles.title_item}>
+                                    {item.value} 
+                                    {props.displayKey ? <code>{`{{${item.key}}}`}</code> : ''}
+                                    {props.displayKeyShort ? <code>{`[${item.key}]`}</code> : ''}
+                                </div>
                                 {!props.disabled &&
                                     <div className={`${styles.delete_item} icon icon-close`}
                                         onClick={(e) => { e.stopPropagation(); removeOption(item) }}

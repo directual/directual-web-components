@@ -213,11 +213,21 @@ export default function InputsPage() {
         <React.Fragment>
             <h1>Data entry</h1>
 
+            <Input
+                //autoFocus
+                addonBefore=".directual.app"
+                icon='path'
+                restrictChars={['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+                    'q', 'r', 's', 't', 'v', 'u', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-']}
+            />
+
+
             <Input 
                 defaultValue={`{\n \"text\": \"Мы с вами, возможно, еще не знакомы. Нажмите большую ☎️ *кнопку* снизу, чтобы сообщить нам свой телефон.\",\n \"parse_mode\": \"Markdown\",\n \"reply_markup\": {\n \"one_time_keyboard\": \"{{boolean}}\",\n \"keyboard\": [\n [\n {\n \"text\": \"☎️ Отправить мой номер!\",\n \"request_contact\": true\n }\n ]\n ]\n }\n}`}
                 //debug 
                 type='json' 
                 label='JSON input' 
+                //disabled
                 rows='auto' 
                 onChange={v => {}} 
                 isValid={v => {console.log(v)}} 
@@ -284,6 +294,7 @@ type='structurefield' />`} />
                 //highlightEmpty
                 //noPropagation
                 fields={testFields}
+                highlightEmpty
                 //hideSysFields
                 //hideId
                 //onChooseType={e => console.log(e)} устар.

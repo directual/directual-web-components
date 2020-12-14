@@ -122,6 +122,18 @@
   white-space: nowrap;
   border-left: none;
 }
+.input_wrapper .addonBefore {
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  border: solid 1px var(--field-border-color);
+  background-color: var(--secondary-background-color);
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  max-width: 50%;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: none;
+}
 .input_wrapper .field {
   flex-grow: 2;
   outline: none !important;
@@ -140,6 +152,9 @@
 }
 .input_wrapper .field.addonAfterInput {
   border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+.input_wrapper .field.addonBeforeInput {
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
 .input_wrapper .field::-webkit-inner-spin-button {
   -webkit-appearance: none;

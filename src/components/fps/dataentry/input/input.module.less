@@ -118,6 +118,18 @@
         white-space: nowrap;
         border-left: none;
     }
+    .addonBefore {
+        border-radius: var( --border-radius) 0 0 var( --border-radius);
+        border:solid 1px var( --field-border-color);
+        background-color: var(--secondary-background-color);
+        padding: 0 12px;
+        display: flex;
+        align-items: center;
+        max-width: 50%;
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: none;
+    }
     .field {
         // &[type=number] {
         //     text-align: right;
@@ -128,6 +140,10 @@
         border-radius: var( --border-radius);
         &.addonAfterInput {
             border-radius: var( --border-radius) 0 0 var( --border-radius);
+            //border-right: none;
+        }
+        &.addonBeforeInput {
+            border-radius: 0 var( --border-radius) var( --border-radius) 0;
             //border-right: none;
         }
         background-color: var(--background-color);

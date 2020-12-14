@@ -47,6 +47,7 @@ export default function Input(props) {
             console.log('Error in parsing JSON');
             setWarningMesg({ type: 'error', msg: 'Invalid JSON' })
             props.isValid && props.isValid(false)
+            e && setLines(value && typeof value == 'string' ? (value.match(/\n/g) || []).length : 1)
         }}
         !value && setWarningMesg({});
     }
@@ -79,7 +80,7 @@ export default function Input(props) {
 
     useEffect(() => {
         if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal)) { setValue(props.defaultValue); setDefVal(props.defaultValue) }
-        if (props.raws == 'auto' && inputEl.current) {checkJsonValue(inputEl.current)}
+        if (props.rows == 'auto' && inputEl.current) {checkJsonValue(inputEl.current)}
     }, [props.defaultValue])
 
     const checkEmailValue = (v) => {
@@ -103,10 +104,10 @@ export default function Input(props) {
     }
 
     const handleChange = (e) => {
-        if (props.restrictChars && Array.isArray(props.restrictChars)
-            && props.restrictChars.indexOf(e.slice(-1)) === -1 && e) {
-            console.log('restricted character')
-            return null
+        if (props.restrictChars && Array.isArray(props.restrictChars)) {
+            let isRestricted = false;
+            e && e.split('').forEach(i=> isRestricted = isRestricted || (props.restrictChars.indexOf(i) == -1 && true))
+            if (isRestricted) { console.log('restricted character'); return null }
         }
         submit(e)
         props.required && setWarningMesg({})
@@ -140,6 +141,9 @@ export default function Input(props) {
     useEffect(() => {
         if (props.highlightEmpty && !value) { setWarningMesg({ type: 'error', msg: 'This field is required' }) }
         else { inputEl.current == document.activeElement && setWarningMesg({}); }
+        if ((props.type == 'select' || props.type == 'multiselect' || props.type =='structurefield') && props.highlightEmpty && value) {
+            setWarningMesg({});
+        }
     }, [value])
 
     const icon_options =
@@ -372,7 +376,9 @@ export default function Input(props) {
                 props.type != 'decimal' &&
                 props.type != 'json' &&
                 props.type != 'optionsHandler' &&
-                <div className={`${styles.field_wrapper} ${props.addonAfter && styles.hor}`}>
+                <div className={`${styles.field_wrapper} ${(props.addonAfter || props.addonBefore) && styles.hor}`}>
+                    {props.addonBefore &&
+                        <div className={styles.addonBefore}>{props.addonBefore}</div>}
                     <div className={styles.field_wrapper_additional}>
                         {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
                         <input
@@ -386,6 +392,7 @@ export default function Input(props) {
                             {`${styles.field} 
                             ${props.icon && styles.icon}
                             ${props.addonAfter && styles.addonAfterInput}
+                            ${props.addonBefore && styles.addonBeforeInput}
                             ${props.code && styles.code} 
                             ${warningMsg.type && styles[warningMsg.type]}
                             ${props.disabled && styles.disabled}`}
@@ -539,7 +546,7 @@ export default function Input(props) {
                         onBlur={e => checkJsonValue(e)}
                         placeholder={`${props.placeholder ? props.placeholder : ''}`}
                     />
-                    {value && !props.copy &&
+                    {value && !props.copy && !props.disabled &&
                         <div className={`${styles.clear} icon icon-close`}
                             onClick={clearValue}></div>}
                     {value && props.copy &&
@@ -561,7 +568,7 @@ export default function Input(props) {
                         onBlur={checkValue}
                         placeholder={`${props.placeholder ? props.placeholder : ''}`}
                     />
-                    {value && !props.copy &&
+                    {value && !props.copy && !props.disabled &&
                         <div className={`${styles.clear} icon icon-close`}
                             onClick={clearValue}></div>}
                     {value && props.copy &&
