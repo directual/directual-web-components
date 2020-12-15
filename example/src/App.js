@@ -8248,7 +8248,7 @@ const App = (props) => {
                 google
                 userNameFormat='email'
                 allowSignUp
-                signUpheader='Sign up'
+                signUpheader='Sign Up'
               />
 
             </Route>

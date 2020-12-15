@@ -213,6 +213,10 @@ export default function InputsPage() {
         <React.Fragment>
             <h1>Data entry</h1>
 
+            <Input type='phone' label='phone'/>
+            <Input type='email' label='email'/>
+            <Input type='password' label='password'/>
+
             <Input
                 //autoFocus
                 addonBefore=".directual.app"

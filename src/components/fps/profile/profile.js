@@ -5,9 +5,9 @@ import ActionPanel from '../actionspanel/actionspanel'
 import Button from '../button/button'
 import { FormSection } from '../dataentry/form/FpsForm'
 
-export function SignIn({ width, header, signUpheader, google, onSubmit, userNameFormat, allowSignUp }) {
+export function SignIn({ width, header, signUpheader, google, onSignIn, onSignUp, userNameFormat, allowSignUp }) {
     const submit = () => {
-        onSubmit(loginDetails)
+        onSignIn && onSignIn(loginDetails)
     }
 
     const userNameLabel = userNameFormat == 'email' ? 'Email address' :
@@ -31,6 +31,7 @@ export function SignIn({ width, header, signUpheader, google, onSubmit, userName
                     google={google}
                     userNameLabel={userNameLabel}
                     userNameFormat={userNameFormat}
+                    onSignUp={onSignUp}
                 />
                 <a onClick={() => setSignUp(false)}>I have an account</a>
             </React.Fragment>
@@ -53,6 +54,7 @@ export function SignIn({ width, header, signUpheader, google, onSubmit, userName
                         defaultValue={defaultLogin}
                         label={userNameLabel}
                         onChange={value => setLoginDetails({ ...loginDetails, login: value })}
+                        isValid={value => setLoginDetails({ ...loginDetails, isLoginValid: value })}
                     />
                     <Input
                         type='password'
@@ -61,7 +63,11 @@ export function SignIn({ width, header, signUpheader, google, onSubmit, userName
                         onChange={value => setLoginDetails({ ...loginDetails, password: value })}
                     />
                     <ActionPanel column margin={{ top: 0, bottom: 18 }}>
-                        <Button onClick={submit} accent icon='permission'>{header || 'Sign In'}</Button>
+                        <Button 
+                            disabled={
+                                !loginDetails.login ||
+                                !loginDetails.password || !loginDetails.isLoginValid}
+                            onClick={submit} accent icon='permission'>{header || 'Sign In'}</Button>
                     </ActionPanel>
                 </form>
                 {allowSignUp && <a onClick={() => setSignUp(true)}>Create an account</a>}
@@ -72,6 +78,7 @@ export function SignIn({ width, header, signUpheader, google, onSubmit, userName
 }
 
 export function SignUp(props) {
+    const [signUpDetails, setSignUpDetails] = useState({})
     return (
         <div className={styles.signinform} style={{ maxWidth: props.width || 'auto' }}>
             <form>
@@ -87,30 +94,50 @@ export function SignUp(props) {
                         label='First name'
                         type='string'
                         required
+                        defaultValue={signUpDetails.firstName}
+                        onChange={value => setSignUpDetails({ ...signUpDetails, firstName: value })}
                     />
                     <Input
                         label='Last name'
                         type='string'
                         required
+                        defaultValue={signUpDetails.lastName}
+                        onChange={value => setSignUpDetails({ ...signUpDetails, lastName: value })}
                     />
                 </InputGroup>
                 <Input
                     label={props.userNameLabel}
                     type={props.userNameFormat || 'string'}
                     required
+                    defaultValue={signUpDetails.login}
+                    onChange={value => setSignUpDetails({ ...signUpDetails, login: value })}
+                    isValid={value => setSignUpDetails({ ...signUpDetails, isLoginValid: value })}
                 />
                 <Input
                     type='password'
                     label='Password'
                     required
+                    defaultValue={signUpDetails.password}
+                    onChange={value => setSignUpDetails({ ...signUpDetails, password: value })}
                 />
                 <Input
                     type='password'
                     label='Repeat password'
                     required
+                    defaultValue={signUpDetails.repeatPassword}
+                    onChange={value => setSignUpDetails({ ...signUpDetails, repeatPassword: value })}
+                    error={(signUpDetails.password && signUpDetails.repeatPassword && 
+                            signUpDetails.password != signUpDetails.repeatPassword) ? 'Passwords do not match' : null}
+                    
                 />
                 <ActionPanel column margin={{ top: 0, bottom: 18 }}>
-                    <Button accent icon='permission'>{props.header || 'Sign Up'}</Button>
+                    <Button
+                        disabled={
+                            !signUpDetails.firstName || !signUpDetails.isLoginValid ||
+                            !signUpDetails.lastName || !signUpDetails.login ||
+                            !signUpDetails.password || signUpDetails.password != signUpDetails.repeatPassword}
+                        onClick={() => props.onSignUp(signUpDetails)}
+                        accent icon='permission'>{props.header || 'Sign Up'}</Button>
                 </ActionPanel>
             </form>
         </div>

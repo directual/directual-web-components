@@ -30,25 +30,26 @@ export default function Input(props) {
         // console.log('checking...');
         ((!value || (value && value.length == 0)) && (value != 0) && props.required) ?
             setWarningMesg({ type: 'error', msg: 'This field is required' }) :
-            setWarningMesg({});
+            !props.error && setWarningMesg({});
     }
 
     const checkJsonValue = e => {
         console.log('checking JSON...');
         let parseJSON = {}
-        if (value) { 
-        try {
-            parseJSON = JSON.parse(value)
-            setValue(JSON.stringify(parseJSON, 0, 3));
-            e && setLines(countLines(e.target || e, JSON.stringify(parseJSON, 0, 3)))
-            setWarningMesg({ type: 'ok', msg: 'Valid JSON' })
-            props.isValid && props.isValid(true)
-        } catch {
-            console.log('Error in parsing JSON');
-            setWarningMesg({ type: 'error', msg: 'Invalid JSON' })
-            props.isValid && props.isValid(false)
-            e && setLines(value && typeof value == 'string' ? (value.match(/\n/g) || []).length : 1)
-        }}
+        if (value) {
+            try {
+                parseJSON = JSON.parse(value)
+                setValue(JSON.stringify(parseJSON, 0, 3));
+                e && setLines(countLines(e.target || e, JSON.stringify(parseJSON, 0, 3)))
+                setWarningMesg({ type: 'ok', msg: 'Valid JSON' })
+                props.isValid && props.isValid(true)
+            } catch {
+                console.log('Error in parsing JSON');
+                setWarningMesg({ type: 'error', msg: 'Invalid JSON' })
+                props.isValid && props.isValid(false)
+                e && setLines(value && typeof value == 'string' ? (value.match(/\n/g) || []).length : 1)
+            }
+        }
         !value && setWarningMesg({});
     }
 
@@ -72,6 +73,9 @@ export default function Input(props) {
         if (props.data && props.data.errors && props.data.errors.length > 0) {
             setWarningMesg({ type: 'error' })
         }
+        if (props.error) {
+            setWarningMesg({ type: 'error', msg: props.error })
+        }
     }, [props])
 
     useEffect(() => {
@@ -80,7 +84,7 @@ export default function Input(props) {
 
     useEffect(() => {
         if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal)) { setValue(props.defaultValue); setDefVal(props.defaultValue) }
-        if (props.rows == 'auto' && inputEl.current) {checkJsonValue(inputEl.current)}
+        if (props.rows == 'auto' && inputEl.current) { checkJsonValue(inputEl.current) }
     }, [props.defaultValue])
 
     const checkEmailValue = (v) => {
@@ -106,7 +110,7 @@ export default function Input(props) {
     const handleChange = (e) => {
         if (props.restrictChars && Array.isArray(props.restrictChars)) {
             let isRestricted = false;
-            e && e.split('').forEach(i=> isRestricted = isRestricted || (props.restrictChars.indexOf(i) == -1 && true))
+            e && e.split('').forEach(i => isRestricted = isRestricted || (props.restrictChars.indexOf(i) == -1 && true))
             if (isRestricted) { console.log('restricted character'); return null }
         }
         submit(e)
@@ -117,6 +121,10 @@ export default function Input(props) {
         submit(e)
         props.required && setWarningMesg({})
     }
+
+    useEffect(() => {
+        warningMsg.type == 'error' ? (props.isValid && props.isValid(false)) : (props.isValid && props.isValid(true))
+    }, [warningMsg])
 
 
     const handleChangeNumber = (e) => {
@@ -140,8 +148,9 @@ export default function Input(props) {
 
     useEffect(() => {
         if (props.highlightEmpty && !value) { setWarningMesg({ type: 'error', msg: 'This field is required' }) }
-        else { inputEl.current == document.activeElement && setWarningMesg({}); }
-        if ((props.type == 'select' || props.type == 'multiselect' || props.type =='structurefield') && props.highlightEmpty && value) {
+        else { inputEl.current == document.activeElement && !props.error && setWarningMesg({}); }
+        if ((props.type == 'select' || props.type == 'multiselect' || props.type == 'structurefield') &&
+            props.highlightEmpty && value && !props.error) {
             setWarningMesg({});
         }
     }, [value])
@@ -372,6 +381,7 @@ export default function Input(props) {
                 props.type != 'date' &&
                 props.type != 'slider' &&
                 props.type != 'markdown' &&
+                props.type != 'phone' &&
                 props.type != 'range' &&
                 props.type != 'decimal' &&
                 props.type != 'json' &&
@@ -417,11 +427,12 @@ export default function Input(props) {
 
             {props.type == 'email' &&
                 <div className={styles.field_wrapper}>
+                    <div className={`${styles.input_icon_wrapper} icon icon-mail`} />
                     <input
                         autocomplete="off"
                         ref={inputEl}
                         disabled={props.disabled}
-                        className={`${styles.field} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
+                        className={`${styles.field} ${styles.icon} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
                         type="text"
                         style={{
                             height: props.height || 44
@@ -429,7 +440,7 @@ export default function Input(props) {
                         onChange={e => { handleChange(String(e.target.value).toLowerCase()); e && checkEmailValue(e.target.value) }}
                         value={value}
                         onBlur={e => checkEmailValue(e.target.value)}
-                        placeholder={`${props.placeholder ? props.placeholder : ''}`}
+                        placeholder={`${props.placeholder ? props.placeholder : 'your@email.com'}`}
                     />
                     {value && !props.disabled && !props.copy &&
                         <div className={`${styles.clear} icon icon-close`}
@@ -476,7 +487,7 @@ export default function Input(props) {
                 <div className={`${props.unitName && styles.fieldUnitsWrapper}`}>
                     <div className={styles.field_wrapper}>
                         <input
-                            className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
+                            className={`${styles.field} ${props.icon && styles.icon} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                             ref={inputEl}
                             disabled={props.disabled}
                             type="number"
@@ -499,7 +510,7 @@ export default function Input(props) {
                 <div className={`${props.unitName && styles.fieldUnitsWrapper}`}>
                     <div className={styles.field_wrapper}>
                         <input
-                            className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
+                            className={`${styles.field} ${props.icon && styles.icon} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                             disabled={props.disabled}
                             ref={inputEl}
                             type="number"
@@ -525,6 +536,33 @@ export default function Input(props) {
                 </div>
             }
 
+            {props.type == 'phone' &&
+                <div className={`${props.unitName && styles.fieldUnitsWrapper}`}>
+                    <div className={styles.field_wrapper}>
+                        <div className={`${styles.input_icon_wrapper} icon icon-phone`} />
+                        <input
+                            className={`${styles.field} ${styles.icon} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
+                            disabled={props.disabled}
+                            ref={inputEl}
+                            type="number"
+                            style={{
+                                height: props.height || 44
+                            }}
+                            onChange={e => handleChange(e.target.value)}
+                            value={value}
+                            onBlur={checkValue}
+                            placeholder={`${props.placeholder ? props.placeholder : 'numbers only'}`}
+                        />
+                        {value && !props.disabled && !props.copy &&
+                            <div className={`${styles.clear} icon icon-close`}
+                                onClick={clearValue}></div>}
+                        {value && props.copy &&
+                            <div className={`${styles.clear} icon icon-copy`}
+                                onClick={value => copyValue(value)}></div>}
+                    </div>
+                </div>
+            }
+
             {props.type == 'json' &&
                 <div className={styles.field_wrapper}>
                     <textarea
@@ -538,9 +576,9 @@ export default function Input(props) {
                         ${warningMsg.type && styles[warningMsg.type]}`}
                         type="text"
                         rows={props.rows == 'auto' ? lines : props.rows || 1}
-                        onChange={e => { 
-                            setLines(countLines(e.target)); 
-                            handleChange(e.target.value) 
+                        onChange={e => {
+                            setLines(countLines(e.target));
+                            handleChange(e.target.value)
                         }}
                         value={value}
                         onBlur={e => checkJsonValue(e)}
@@ -589,6 +627,7 @@ export default function Input(props) {
 
             {props.type == 'password' &&
                 <div className={styles.field_wrapper}>
+                    <div className={`${styles.input_icon_wrapper} icon icon-lock`} />
                     <input
                         autoFocus={props.autoFocus}
                         ref={inputEl}
@@ -597,7 +636,7 @@ export default function Input(props) {
                         style={{
                             height: props.height || 44
                         }}
-                        className={`${styles.field} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
+                        className={`${styles.field} ${styles.icon} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                         type={pwdVisible}
                         onChange={e => handleChange(e.target.value)}
                         value={value}
