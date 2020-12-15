@@ -63,6 +63,7 @@ export default function Checkbox(props) {
                         type={customOptionType}
                         value={customOptionVal}
                         nomargin
+                        rows='auto'
                     />
                 </div>
             }
