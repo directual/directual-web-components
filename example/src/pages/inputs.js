@@ -214,9 +214,9 @@ export default function InputsPage() {
         <React.Fragment>
             <h1>Data entry</h1>
 
-            <Input type='phone' label='phone'/>
-            <Input type='email' label='email'/>
-            <Input type='password' label='password'/>
+            <Input type='phone' label='phone' />
+            <Input type='email' label='email' />
+            <Input type='password' label='password' />
 
             <Input
                 //autoFocus
@@ -226,17 +226,40 @@ export default function InputsPage() {
                     'q', 'r', 's', 't', 'v', 'u', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-']}
             />
 
-            <Input defaultValue={testDefValue} onChange={a=>setTestDefValue(a)} />
-            <Input 
-                defaultValue={testDefValue}
-                debug 
-                type='json' 
-                label='JSON input' 
+            <Input
+                label='Radio station with a custom option'
+                type='radioJson'
+                onChange={a => setTestDefValue(a)}
+                customOption
+                defaultValue={{value: 'option2'}}
+                //debug
+                width={400}
+                customOptionType='textarea'
+                customOptionLabel='Something else...'
+                customOptionPlaceholder='Please, describe your option'
+                options={
+                    [
+                        {
+                            value: 'option1',
+                            label: 'Option 1'
+                        },
+                        {
+                            value: 'option2',
+                            label: 'Option 2'
+                        }
+                    ]
+                }
+            />
+            <Input
+                defaultValue={JSON.stringify(testDefValue)}
+                //debug
+                type='json'
+                label='JSON input'
                 //disabled
-                rows='auto' 
-                onChange={v => {}} 
-                isValid={v => {console.log(v)}} 
-                />
+                rows='auto'
+                onChange={v => { }}
+                isValid={v => { console.log(v) }}
+            />
             <Input type='textarea' label='auto-height textarea' rows='auto' />
 
             <h2>Options handler</h2>

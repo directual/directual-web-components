@@ -379,6 +379,7 @@ export default function Input(props) {
                 props.type != 'password' &&
                 props.type != 'structurefield' &&
                 props.type != 'radio' &&
+                props.type != 'radioJson' &&
                 props.type != 'select' &&
                 props.type != 'multiselect' &&
                 props.type != 'date' &&
@@ -657,6 +658,20 @@ export default function Input(props) {
                 <Radio
                     onChange={e => e ? (e.target ? submit(e.target.value) : submit(e)) : submit(null)}
                     defaultValue={defVal}
+                    options={props.options}
+                    disabled={props.disabled}
+                    placeholder={props.placeholder}
+                    radioImages={props.radioImages}
+                    customOption={props.customOption}
+                    customOptionLabel={props.customOptionLabel}
+                    customOptionType={props.customOptionType}
+                    customOptionPlaceholder={props.customOptionPlaceholder}
+                />
+            }
+            {props.type == 'radioJson' &&
+                <Radio
+                    onChange={e => {console.log(e); e ? (e.target ? submit({value: e.target.value}) : submit(e)) : submit(null)}}
+                    defaultValue={ (defVal && defVal.value) || defVal}
                     options={props.options}
                     disabled={props.disabled}
                     placeholder={props.placeholder}
