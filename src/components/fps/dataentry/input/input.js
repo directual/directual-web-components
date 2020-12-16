@@ -33,24 +33,26 @@ export default function Input(props) {
             !props.error && setWarningMesg({});
     }
 
-    const checkJsonValue = e => {
+    const checkJsonValue = (e,v) => {
         console.log('checking JSON...');
         let parseJSON = {}
-        if (value) {
+        const val = v || value
+        if (val) {
             try {
-                parseJSON = JSON.parse(value)
+                parseJSON = JSON.parse(val)
                 setValue(JSON.stringify(parseJSON, 0, 3));
                 e && setLines(countLines(e.target || e, JSON.stringify(parseJSON, 0, 3)))
+                console.log('lines ' + lines)
                 setWarningMesg({ type: 'ok', msg: 'Valid JSON' })
                 props.isValid && props.isValid(true)
             } catch {
                 console.log('Error in parsing JSON');
                 setWarningMesg({ type: 'error', msg: 'Invalid JSON' })
                 props.isValid && props.isValid(false)
-                e && setLines(value && typeof value == 'string' ? (value.match(/\n/g) || []).length : 1)
+                e && setLines(val && typeof val == 'string' ? (val.match(/\n/g) || []).length + 1 : 1)
             }
         }
-        !value && setWarningMesg({});
+        !val && setWarningMesg({});
     }
 
     const copyValue = value => {
@@ -83,8 +85,9 @@ export default function Input(props) {
     }, [warningMsg])
 
     useEffect(() => {
-        if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal)) { setValue(props.defaultValue); setDefVal(props.defaultValue) }
-        if (props.rows == 'auto' && inputEl.current) { checkJsonValue(inputEl.current) }
+        if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal) && props.type != 'json') { setValue(props.defaultValue); setDefVal(props.defaultValue) }
+        if (props.type == 'json' && inputEl.current) { 
+            checkJsonValue(inputEl.current, props.defaultValue) }
     }, [props.defaultValue])
 
     const checkEmailValue = (v) => {
@@ -575,7 +578,7 @@ export default function Input(props) {
                         ${styles.code} 
                         ${warningMsg.type && styles[warningMsg.type]}`}
                         type="text"
-                        rows={props.rows == 'auto' ? lines : props.rows || 1}
+                        rows={props.rows == 'auto' ? lines : (props.rows || 1)}
                         onChange={e => {
                             setLines(countLines(e.target));
                             handleChange(e.target.value)

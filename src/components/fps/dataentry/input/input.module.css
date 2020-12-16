@@ -104,6 +104,7 @@
 .input_wrapper textarea.disabled {
   background-color: var(--table-border-color);
   cursor: not-allowed;
+  padding: 14px 36px 14px 18px !important;
 }
 .input_wrapper textarea.code {
   font-family: 'Fira Code', monospace;

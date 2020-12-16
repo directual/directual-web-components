@@ -9,7 +9,7 @@ import 'directual-web-components/dist/index.css'
 export default function InputsPage() {
     const [value, setValue] = useState()
 
-    const [testDefValue, setTestDefValue] = useState('2020-06-10T21:00:00.000Z')
+    const [testDefValue, setTestDefValue] = useState('{}')
 
     const testFields = [
         {
@@ -209,6 +209,7 @@ export default function InputsPage() {
         }
     ]
 
+
     return (
         <React.Fragment>
             <h1>Data entry</h1>
@@ -225,10 +226,10 @@ export default function InputsPage() {
                     'q', 'r', 's', 't', 'v', 'u', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-']}
             />
 
-
+            <Input defaultValue={testDefValue} onChange={a=>setTestDefValue(a)} />
             <Input 
-                defaultValue={`{\n \"text\": \"Мы с вами, возможно, еще не знакомы. Нажмите большую ☎️ *кнопку* снизу, чтобы сообщить нам свой телефон.\",\n \"parse_mode\": \"Markdown\",\n \"reply_markup\": {\n \"one_time_keyboard\": \"{{boolean}}\",\n \"keyboard\": [\n [\n {\n \"text\": \"☎️ Отправить мой номер!\",\n \"request_contact\": true\n }\n ]\n ]\n }\n}`}
-                //debug 
+                defaultValue={testDefValue}
+                debug 
                 type='json' 
                 label='JSON input' 
                 //disabled
