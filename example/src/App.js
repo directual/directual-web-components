@@ -8264,7 +8264,7 @@ const App = (props) => {
               <FpsTheme
                 onChange={value => { setCurrentTheme(value) }}
                 defaultValue={currentTheme}
-                themes={['classic', 'white', 'tiffany', 'darkMint', 'warmNight', 'hacker', 'raspberry']} />
+                themes={['classic', 'white', 'tiffany', 'darkMint', 'warmNight', 'hacker', 'raspberry', 'baltic']} />
             </Route>
 
             <Route exact path="/system-typography">

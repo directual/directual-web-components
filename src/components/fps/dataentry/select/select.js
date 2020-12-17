@@ -277,6 +277,7 @@ export default function Select(props) {
                             options={props.subSelect.options}
                             placeholder={props.subSelect.placeholder || 'choose'}
                             thisIsSubSelect
+                            disabled={props.disabled}
                             defaultValue={props.subSelect.defaultValue}
                             onChange={props.onChangeSubselect ? props.onChangeSubselect : undefined}
                         />

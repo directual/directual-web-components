@@ -393,6 +393,8 @@ options={
                 placeholder='Choose the line'
                 icon='database'
                 displayKeyShort
+                disabled
+                defaultValue='2'
                 //displayKey
                 options={
                     [

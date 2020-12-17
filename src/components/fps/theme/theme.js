@@ -189,6 +189,30 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--label-text-color', 'rgba(0,0,0,.5)')
         }
 
+        if (colorScheme === 'baltic') {
+            document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
+            document.documentElement.style.setProperty('--field-border-color', '#aaa')
+            document.documentElement.style.setProperty('--table-border-color', 'rgba(0,0,0,.12)')
+            document.documentElement.style.setProperty('--accent-color', '#8ca3a3')
+            document.documentElement.style.setProperty('--secondary-accent-color', '#6a8d8d')
+            document.documentElement.style.setProperty('--button-accent-color', '#ffffff')
+            document.documentElement.style.setProperty('--background-color', '#fff')
+            document.documentElement.style.setProperty('--background-contrast-color', '#eeefe7')
+            document.documentElement.style.setProperty('--secondary-background-color', '#eeefe7')
+            document.documentElement.style.setProperty('--font-color', '#515a5a')
+            document.documentElement.style.setProperty('--hint-color', '#515a5a')
+            document.documentElement.style.setProperty('--code-color', '#515a5a')
+            document.documentElement.style.setProperty('--code-color-background', '#fff')
+            document.documentElement.style.setProperty('--error-color', '#b2473d')
+            document.documentElement.style.setProperty('--error-color-light', '#e2c3bf')
+            document.documentElement.style.setProperty('--alert-color', '#ECA910')
+            document.documentElement.style.setProperty('--alert-color-light', '#F9DFA4')
+            document.documentElement.style.setProperty('--ok-color', '#588654')
+            document.documentElement.style.setProperty('--ok-color-light', '#d7f1d5')
+            document.documentElement.style.setProperty('--label-color', '#8f6d7d')
+            document.documentElement.style.setProperty('--label-text-color', '#fff')
+        }
+
     }
     return null
 }
@@ -232,6 +256,11 @@ export default function FpsTheme(props) {
                 value: 'raspberry',
                 label: 'Raspberry',
                 image: 'https://api.alfa.directual.com/fileUploaded/directual-site/b2eee4fa-fbbb-4f83-a2f4-bbcb248f481e.svg'
+            },
+            {
+                value: 'baltic',
+                label: 'Baltic',
+                image: 'https://api.alfa.directual.com/fileUploaded/directual-site/44fbcd36-9525-45d1-ab10-32f57562b8a3.svg'
             },
         ]
 
