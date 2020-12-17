@@ -57,6 +57,7 @@ export default function OptionsHandler({ defaultValue, disabled, objectStructure
             <Button
                 small
                 icon='plus'
+                height={44}
                 disabled={disabled}
                 onClick={e => {
                     e.stopPropagation()

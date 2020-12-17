@@ -109,6 +109,7 @@ export default function Radio(props) {
                             disabled={props.disabled}
                             placeholder={customOptionPlaceholder}
                             timeFormat={timeFormat}
+                            rows='auto'
                             onChange={val => {
                                 setCustomOptionVal(val);
                                 setSelectedOption({customOption: val});
