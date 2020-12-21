@@ -12,6 +12,7 @@ import moment from 'moment'
 import Hint from '../../hint/hint'
 
 export function ObjectCard(props) {
+
     const [showLinkedObject, setShowLinkedObject] = useState(false)
     const [linkedObject, setLinkedObject] = useState({})
     const [linkedObjectStruct, setLinkedObjectStruct] = useState()
@@ -407,7 +408,6 @@ export function ObjectCard(props) {
         </div>
     )
 }
-
 
 function CardField({ field, object, model, setModel, debug, editingOn,
     setLinkedObject, setLinkedObjectStruct, setShowLinkedObject, getLinkName }) {

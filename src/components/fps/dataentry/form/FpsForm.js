@@ -7,6 +7,8 @@ import Hint from '../../hint/hint'
 import Loader from '../../loader/loader'
 import icon from './../../../../icons/fps-form.svg'
 import { ComponentWrapper } from './../../wrapper/wrapper'
+import { Markdown } from '../../article/mkd'
+import { InputForm } from './InputForm'
 
 export function FormSection(props) {
   return (
@@ -19,6 +21,227 @@ export function FormSection(props) {
 }
 
 export default function FpsForm({ auth, data, onEvent, id }) {
+  if (data.params.data) {
+    return <FpsFormNew auth={auth} data={data} onEvent={onEvent} id={id} />
+  }
+  else {
+    return <FpsFormOld auth={auth} data={data} onEvent={onEvent} id={id} />
+  }
+}
+
+function FpsFormNew({ auth, data, onEvent, id }) {
+
+  const [model, setModel] = useState({})
+  const [isValid, setIsValid] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [showForm, setShowForm] = useState(true)
+
+  const successText = data.successText || 'Submitted successfully'
+  const formName = data.formName || ''
+  const formDesc = data.formDesc || ''
+  const formButton = data.formButton || 'Submit'
+  const formButtonResubmit = data.formButtonResubmit || 'Submit again'
+  const isSuccessWrite = data.isSuccessWrite
+  let params = data.params || {}
+  const fileds = []
+  const formWidth = (data.maxWidth && parseInt(data.maxWidth)) || 'auto'
+  let hiddenFields = {}
+
+  console.log('------------ form data: -------------')
+  console.log(data)
+  console.log('------------ auth: -------------')
+  console.log(auth)
+  console.log('------------ form model: -------------')
+  console.log(model)
+
+  const sendMsg = (msg) => {
+    const message = { ...msg, _id: 'form_' + id }
+    setLoading(true)
+    setShowForm(false)
+    if (onEvent) {
+      onEvent(message)
+    }
+  }
+
+  const submit = (e) => {
+    e.preventDefault()
+    console.log('submitting...')
+    sendMsg(model)
+  }
+
+  data.error =
+    data.error && data.error == '403'
+      ? 'You have no permissions for viewing form'
+      : data.error
+  data.error =
+    data.error && data.error == '511' ? 'Form is not configured' : data.error
+
+  //Hidden fields from URL query params:
+  const queryString = typeof window !== 'undefined' ? window.location.search : '';
+  const urlParams = new URLSearchParams(queryString);
+  let hiddenFieldsValues
+  for (const hiddenField in hiddenFields) {
+    hiddenFieldsValues = { ...hiddenFieldsValues, [hiddenField]: urlParams.get(hiddenField) }
+  }
+
+  //Editting object
+  let eidtID
+  if (data.params.edit && auth.isAuth && auth.user) {
+    eidtID = auth.user // если стоит галка, то забираем айди из юзера
+  }
+  eidtID = urlParams.get('@editObject') || eidtID; // если задаем в URL, приоритет выше
+
+  const [fetchedObj, setFetchetObj] = useState(false)
+  const fetchObjectFields = (objId) => {
+    setFetchetObj(true)
+    const message = { dql: "id = '" + objId + "'", _id: id }
+    if (onEvent) {
+      onEvent(message)
+    }
+  }
+  if (eidtID && !fetchedObj) {
+    console.log(`fetching object (id = ${eidtID}) fields...`)
+    fetchObjectFields(eidtID)
+  }
+
+  //Hidden auth
+  const userAuth = auth ? auth.user : null
+  const userRole = auth ? auth.role : null
+  const includeAuth = data && data.params && data.params.auth && data.params.auth.isPerson
+  const userAuthField = data && data.params && data.params.auth && data.params.auth.userIdField
+  let hiddenAuth = {}
+  if (includeAuth && userAuth && userAuthField) {
+    hiddenAuth[userAuthField] = userAuth
+  }
+
+  // Validation:
+  useEffect(() => {
+    setIsValid(true)
+    fileds.forEach(field => {
+      if (field.isValid == false) { setIsValid(false); }
+      if (field.params.required && !model[field.sysName] && !model[field.sysName] !== false && field.params.include && !field.params.hidden) { setIsValid(false); }
+    }
+    )
+  }, [model])
+
+  // хуерга какая-то
+  const validationHandler = (field, valid) => {
+    if (fileds) { fileds[fileds.indexOf(fileds.filter(f => f.sysName == field)[0])].isValid = valid }
+  }
+
+  useEffect(() => {
+    if (data.error || data.response) {
+      setLoading(false)
+    }
+  }, [data.error, data.response])
+
+  const getResultAnswer = () => {
+    let sync = false
+    if (data.params.result.isSuccessField ||
+      data.params.result.resultMessageField ||
+      data.params.result.resultTitleField) { sync = true }
+    let isSuccess = true
+    if (sync && data.response && data.params.result.isSuccessField) { isSuccess = data.response[0][data.params.result.isSuccessField] }
+    let answerTitle = ''
+    if (sync && data.response && data.params.result.resultTitleField) { answerTitle = data.response[0][data.params.result.resultTitleField] }
+    if (sync && data.response && !answerTitle) { answerTitle = isSuccess ? 'Success' : 'Error' }
+    let answerText = ''
+    if (sync && data.response && data.params.result.resultMessageField) { answerText = data.response[0][data.params.result.resultMessageField] }
+    return {
+      sync,
+      isSuccess,
+      answerTitle,
+      answerText
+    }
+  }
+
+  // object editing TODO
+  let fetchedObjectFields = {}
+  const getFieldValue = (sysName, dataType) => { }
+
+  const onChange = (field, value) => {
+    let modelCopy = { ...fetchedObjectFields, ...hiddenFieldsValues, ...hiddenAuth, ...model }; // model в конце! Иначе нахуй перетирается все что ввели
+    if (eidtID) { modelCopy.id = eidtID } // тут проебывался где-то или перетирался id, посему записываем в явном виде
+    modelCopy[field] = value
+    setModel(modelCopy)
+  }
+
+  return (
+    <ComponentWrapper>
+      {formName && <h2>{formName}</h2>}
+      {formDesc && showForm && (
+        <Markdown style={{ maxWidth: formWidth, marginBottom: 22 }} value={formDesc} />
+      )}
+
+      {loading && <Loader>Loading...</Loader>}
+
+      {data.error && !loading && data.error != 'dql is not allowed for write' &&  // dql это КОСТЫЛЬ — убрать когда пофиксим на API
+        <Hint title='Form Error' error>{data.error}</Hint>}
+
+      {/* Standard response processing: */}
+      {!showForm && !loading && !getResultAnswer().sync && <React.Fragment>
+        {isSuccessWrite && <Hint title='Thank you' ok>{successText}</Hint>}
+      </React.Fragment>}
+
+
+      {/* Custom response processing: */}
+      {!showForm && !loading && getResultAnswer().sync && <React.Fragment>
+        {data.response && !getResultAnswer().isSuccess && <React.Fragment>
+          <Hint title={getResultAnswer().answerTitle} error>{getResultAnswer().answerText}</Hint>
+        </React.Fragment>}
+        {data.response && getResultAnswer().isSuccess &&
+          <Hint title={getResultAnswer().answerTitle} ok>{getResultAnswer().answerText}</Hint>}
+      </React.Fragment>}
+
+      {!showForm && !loading && data.error != 'You have no permissions for viewing form' && data.error != 'Form is not configured' &&
+        <Button icon='refresh' onClick={() => {
+          setShowForm(true);
+          data.response == [];
+          data.error = '';
+          fetchObjectFields(eidtID)
+          getResultAnswer().isSuccess && !data.error && setModel({ ...hiddenFieldsValues, ...hiddenAuth, ...fetchedObjectFields }) // TODO : скрытые поля, авторизация и фетч
+        }}>{formButtonResubmit}</Button>}
+
+      {showForm && !loading &&
+        <form onSubmit={submit} style={{ maxWidth: formWidth }}>
+          {data.params.data.columnOrder.map(section =>
+            data.params.data.columns[section].fieldIds
+            && data.params.data.columns[section].fieldIds.length > 0 &&
+            <div style={{marginBottom:44}}>
+              <FormSection title=
+                {data.params.data.columns[section].title} />
+              {data.params.data.columns[section].fieldIds.map(fieldName => {
+                const field =
+                {
+                  ...data.params.fields[fieldName],
+                  ...data.params.data.fields[fieldName],
+                  ...data.params.data.fieldParams[fieldName]
+                }
+                if (field.id[0] == '@') return null //системные поля
+                return <InputForm
+                  field={field}
+                  placeholder={data.placeholder}
+                  onChange={value => { console.log(value) }}
+                  onValidation={value => { console.log(value) }}
+                  defaultValue={null}
+                  editingOn
+                />
+              }
+              )}
+            </div>
+          )}
+
+          {(!data.error || data.error == 'dql is not allowed for write') &&  // dql это КОСТЫЛЬ — убрать когда пофиксим на API
+            <ActionPanel>
+              <Button accent disabled={!isValid}>{formButton}</Button>
+            </ActionPanel>}
+
+        </form>}
+    </ComponentWrapper>)
+}
+
+
+function FpsFormOld({ auth, data, onEvent, id }) {
 
   const defaultParam =
   {
@@ -281,17 +504,17 @@ export default function FpsForm({ auth, data, onEvent, id }) {
             console.log(e);
           }
           getFieldVal = getFieldVal
-        } else { 
-          if (data.data[0] && typeof data.data[0][sysName] == 'string')
-          {
+        } else {
+          if (data.data[0] && typeof data.data[0][sysName] == 'string') {
             try {
-                getFieldVal = JSON.parse(data.data[0][sysName])
-              }
-              catch (e) {
-                console.log(e);
-              }
+              getFieldVal = JSON.parse(data.data[0][sysName])
+            }
+            catch (e) {
+              console.log(e);
+            }
           } else {
-          getFieldVal = data.data[0] && data.data[0][sysName] }
+            getFieldVal = data.data[0] && data.data[0][sysName]
+          }
         }
       } else { getFieldVal = data.data[0] && data.data[0][sysName] }
       if (eidtID && (getFieldVal || getFieldVal === false)) { // отдельно проверку на false для boolean полей
@@ -364,11 +587,11 @@ export default function FpsForm({ auth, data, onEvent, id }) {
                     [
                       {
                         value: true,
-                        label: field.params.booleanOptions[0] || 'Yes'
+                        label: (field.params.booleanOptions && field.params.booleanOptions[0]) || 'Yes'
                       },
                       {
                         value: false,
-                        label: field.params.booleanOptions[1] || 'No'
+                        label: (field.params.booleanOptions && field.params.booleanOptions[1]) || 'No'
                       }
 
                     ]
@@ -392,10 +615,10 @@ export default function FpsForm({ auth, data, onEvent, id }) {
                     options={(typesMatching(field) == 'select' || typesMatching(field) == 'multiselect') ? (field.params.searchData || []) :
                       (field.params.multipleChoice || [])}
                     defaultValue={
-                      params.fields[field.sysName].jsonDisplay == 'radioStation' ? 
+                      params.fields[field.sysName].jsonDisplay == 'radioStation' ?
                         ((getFieldValue(field.sysName, field.dataType) && getFieldValue(field.sysName, field.dataType).value)
-                        || field.params.defaultValue) :
-                      (getFieldValue(field.sysName, field.dataType) || field.params.defaultValue)
+                          || field.params.defaultValue) :
+                        (getFieldValue(field.sysName, field.dataType) || field.params.defaultValue)
                     }
                     timeFormat={`${field.params.dateTimeOn ? ' hh:mm A' : ''}`}
                     type={typesMatching(field)}

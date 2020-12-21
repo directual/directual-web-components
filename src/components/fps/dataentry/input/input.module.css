@@ -33,7 +33,7 @@
   opacity: 0.5;
   position: absolute;
   left: 8px;
-  top: 7px;
+  top: 8px;
 }
 .input_wrapper .field_wrapper .input_icon_wrapper:before {
   font-size: 32px;
@@ -46,7 +46,7 @@
   opacity: 0;
   cursor: pointer;
   transition: 0.5s;
-  top: 7px;
+  top: 8px;
   right: 9px;
 }
 .input_wrapper .field_wrapper .clear:before {

@@ -1,10 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ReactMarkdown from 'react-markdown'
 import gfm from 'remark-gfm'
 
 import styles from './mkd.module.css'
 
 export function Markdown(props) {
+
+    const inputEl = useRef(null);
+    const [lines, setLines] = useState(1)
+
+    let _buffer;
+    function countLines(textarea, text) {
+        if (_buffer == null) {
+            _buffer = document.createElement('textarea');
+            _buffer.style.border = 'none';
+            _buffer.style.height = '0';
+            _buffer.style.overflow = 'hidden';
+            _buffer.style.padding = '0';
+            _buffer.style.position = 'absolute';
+            _buffer.style.left = '0';
+            _buffer.style.top = '0';
+            _buffer.style.zIndex = '-1';
+            document.body.appendChild(_buffer);
+        }
+
+        var cs = window.getComputedStyle(textarea);
+        var pl = parseInt(cs.paddingLeft);
+        var pr = parseInt(cs.paddingRight);
+        var lh = parseInt(cs.lineHeight);
+
+        // [cs.lineHeight] may return 'normal', which means line height = font size.
+        if (isNaN(lh)) lh = parseInt(cs.fontSize) + 3;
+
+        // Copy content width.
+        _buffer.style.width = (textarea.clientWidth - pl - pr) + 'px';
+
+        // Copy text properties.
+        _buffer.style.font = cs.font;
+        _buffer.style.letterSpacing = cs.letterSpacing;
+        _buffer.style.whiteSpace = cs.whiteSpace;
+        _buffer.style.wordBreak = cs.wordBreak;
+        _buffer.style.wordSpacing = cs.wordSpacing;
+        _buffer.style.wordWrap = cs.wordWrap;
+
+        // Copy value.
+        _buffer.value = text || textarea.value;
+        console.log(_buffer.scrollHeight / lh)
+
+        var result = Math.round(_buffer.scrollHeight / lh);
+        if (result == 0) result = 1;
+        return result;
+    }
 
     const mkdExample =
         `# Hello world
@@ -37,9 +83,6 @@ export function Markdown(props) {
 > Наше все
 
 `
-    const checkLineBreaks = line => {
-        return line && typeof line == 'string' ? (line.match(/\n/g) || []).length : 0
-    }
 
     const [value, setValue] = useState(props.value || (props.example && mkdExample))
 
@@ -77,7 +120,10 @@ export function Markdown(props) {
                             }
                         </div>
                         <textarea
-                            rows='auto'
+                            placeholder={props.placeholder}
+                            rows={inputEl.current ? countLines(inputEl.current,value) : 1}
+                            ref={inputEl}
+                            disabled={props.disabled}
                             onChange={e => changeMkd(e.target.value)}
                         >
                             {value}

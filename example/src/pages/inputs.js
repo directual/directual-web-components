@@ -9,7 +9,7 @@ import 'directual-web-components/dist/index.css'
 export default function InputsPage() {
     const [value, setValue] = useState()
 
-    const [testDefValue, setTestDefValue] = useState('{}')
+    const [testDefValue, setTestDefValue] = useState([])
 
     const testFields = [
         {
@@ -214,6 +214,24 @@ export default function InputsPage() {
         <React.Fragment>
             <h1>Data entry</h1>
 
+            <Input type='optionsHandler'
+                label='Options'
+                addButtonText='Add an option'
+                defaultValue={testDefValue.multipleChoice || [{ value: null, label: null }]}
+                objectStructure={['value', 'label']}
+                onChange={value => setTestDefValue({ ...testDefValue, multipleChoice: value }) }
+            />
+
+            <Input
+                label='cb'
+                options={testDefValue.multipleChoice}
+                //options={[{ value: 'a', label: 'b' }]}
+                // customOption={this.state.formatOptions.customOption}
+                // onChange={value => this.setState({ value: value })}
+                // defaultValue={this.state.value}
+                nomargin
+                type='checkboxGroup' />
+
             <Input type='phone' label='phone' />
             <Input type='email' label='email' />
             <Input type='password' label='password' />
@@ -231,7 +249,7 @@ export default function InputsPage() {
                 type='radioJson'
                 onChange={a => setTestDefValue(a)}
                 customOption
-                defaultValue={{value: 'option2'}}
+                defaultValue={{ value: 'option2' }}
                 //debug
                 width={400}
                 customOptionType='textarea'

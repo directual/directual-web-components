@@ -33,7 +33,7 @@ export default function Input(props) {
             !props.error && setWarningMesg({});
     }
 
-    const checkJsonValue = (e,v) => {
+    const checkJsonValue = (e, v) => {
         console.log('checking JSON...');
         let parseJSON = {}
         const val = v || value
@@ -85,9 +85,10 @@ export default function Input(props) {
     }, [warningMsg])
 
     useEffect(() => {
-        if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal) && props.type != 'json') { setValue(props.defaultValue); setDefVal(props.defaultValue) }
-        if (props.type == 'json' && inputEl.current) { 
-            checkJsonValue(inputEl.current, props.defaultValue) }
+        if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal) && props.type != 'json') { setValue(props.defaultValue); setDefVal(props.defaultValue); setLines(countLines(inputEl.current, props.defaultValue)) }
+        if (props.type == 'json' && inputEl.current) {
+            checkJsonValue(inputEl.current, props.defaultValue)
+        }
     }, [props.defaultValue])
 
     const checkEmailValue = (v) => {
@@ -105,6 +106,7 @@ export default function Input(props) {
 
     const clearValue = () => {
         submit('')
+        setLines(1)
         props.required ?
             setWarningMesg({ type: 'error', msg: 'This field is required' }) :
             setWarningMesg({});
@@ -386,6 +388,7 @@ export default function Input(props) {
                 props.type != 'slider' &&
                 props.type != 'markdown' &&
                 props.type != 'phone' &&
+                props.type != 'file' &&
                 props.type != 'range' &&
                 props.type != 'decimal' &&
                 props.type != 'json' &&
@@ -567,6 +570,32 @@ export default function Input(props) {
                 </div>
             }
 
+            {props.type == 'file' &&
+                <div className={`${props.unitName && styles.fieldUnitsWrapper}`}>
+                    <div className={styles.field_wrapper}>
+                        <div className={`${styles.input_icon_wrapper} icon icon-clip`} />
+                        <input
+                            className={`${styles.field} ${styles.icon} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
+                            disabled={props.disabled}
+                            ref={inputEl}
+                            style={{
+                                height: props.height || 44
+                            }}
+                            onChange={e => handleChange(e.target.value)}
+                            value={value}
+                            onBlur={checkValue}
+                            placeholder={`${props.placeholder ? props.placeholder : 'Enter file URL'}`}
+                        />
+                        {value && !props.disabled && !props.copy &&
+                            <div className={`${styles.clear} icon icon-close`}
+                                onClick={clearValue}></div>}
+                        {value && props.copy &&
+                            <div className={`${styles.clear} icon icon-copy`}
+                                onClick={value => copyValue(value)}></div>}
+                    </div>
+                </div>
+            }
+
             {props.type == 'json' &&
                 <div className={styles.field_wrapper}>
                     <textarea
@@ -621,7 +650,9 @@ export default function Input(props) {
             {props.type == 'markdown' &&
                 <div className={styles.field_wrapper}>
                     <Markdown
-                        edit
+                        placeholder={`${props.placeholder ? props.placeholder : ''}`}
+                        disabled={props.disabled}
+                        edit={props.edit}
                         onChange={val => handleChange(val)}
                         height={350}
                         value={value}
@@ -670,8 +701,8 @@ export default function Input(props) {
             }
             {props.type == 'radioJson' &&
                 <Radio
-                    onChange={e => {console.log(e); e ? (e.target ? submit({value: e.target.value}) : submit(e)) : submit(null)}}
-                    defaultValue={ (defVal && defVal.value) || defVal}
+                    onChange={e => { console.log(e); e ? (e.target ? submit({ value: e.target.value }) : submit(e)) : submit(null) }}
+                    defaultValue={(defVal && defVal.value) || defVal}
                     options={props.options}
                     disabled={props.disabled}
                     placeholder={props.placeholder}
