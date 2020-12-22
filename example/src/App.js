@@ -7139,8 +7139,8 @@ const App = (props) => {
 
   let exampleForm = {
     "sl": "TEST",
-    "formName": "New form",
-    "formDesc": "Form description",
+    "formName": "Тайтле",
+    "formDesc": "### hello ebt\n- one\n- two\n- three",
     "formButton": "",
     "placeholder": "",
     "maxWidth": "500",
@@ -8380,7 +8380,9 @@ const App = (props) => {
             "fileImageFormat": "square",
             "quickSearch": false,
             "fileImageSize": 200,
-            "clickable": false
+            "clickable": false,
+            "hidden": true,
+            "required": false
           },
           "email": {
             "include": true,
@@ -8389,7 +8391,9 @@ const App = (props) => {
             "fileImageSize": 200,
             "clickable": false,
             "defaultValueOn": true,
-            "defaultValue": "pavel@ershov.org"
+            "defaultValue": "pavel@ershov.org",
+            "hidden": false,
+            "required": false
           },
           "file": {
             "include": true,
@@ -8528,7 +8532,7 @@ const App = (props) => {
             "defaultValue": "{\"a\":2}"
           },
           "user_id": {
-            "include": true,
+            "include": false,
             "fileImageFormat": "square",
             "quickSearch": false,
             "fileImageSize": 200,
@@ -9319,7 +9323,9 @@ const App = (props) => {
           "fileImageFormat": "square",
           "quickSearch": false,
           "fileImageSize": 200,
-          "clickable": false
+          "clickable": false,
+          "hidden": true,
+          "required": false
         },
         "email": {
           "include": true,
@@ -9328,7 +9334,9 @@ const App = (props) => {
           "fileImageSize": 200,
           "clickable": false,
           "defaultValueOn": true,
-          "defaultValue": "pavel@ershov.org"
+          "defaultValue": "pavel@ershov.org",
+          "hidden": false,
+          "required": false
         },
         "file": {
           "include": true,
@@ -10129,7 +10137,7 @@ const App = (props) => {
           "defaultValue": "{\"a\":2}"
         },
         "user_id": {
-          "include": true,
+          "include": false,
           "fileImageFormat": "square",
           "quickSearch": false,
           "fileImageSize": 200,
@@ -10139,13 +10147,15 @@ const App = (props) => {
       "auth": {
         "isPerson": true,
         "userIdField": "user_id"
-      }
+      },
+      "useEditing": true,
+      "edit": true
     },
     "fileds": [
       {
         "sysName": "alink",
-        "dataType": "arrayLink",
         "name": "Много ссылок",
+        "dataType": "arrayLink",
         "id": "82921608220199162",
         "link": "cities",
         "group": "0",
@@ -10162,17 +10172,17 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkType": false,
-        "json": false,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": true,
-        "arrayLink": true
+        "linkType": false,
+        "arrayLink": true,
+        "typeVariable": {},
+        "json": false,
+        "indexExists": false
       },
       {
         "sysName": "arr",
-        "dataType": "array",
         "name": "Массив",
+        "dataType": "array",
         "id": "30621608220118372",
         "link": "",
         "group": "0",
@@ -10189,17 +10199,17 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkType": false,
-        "json": false,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": false,
+        "indexExists": false
       },
       {
         "sysName": "bool",
-        "dataType": "boolean",
         "name": "Выбор есть",
+        "dataType": "boolean",
         "id": "80061608220132733",
         "link": "",
         "group": "0",
@@ -10230,17 +10240,17 @@ const App = (props) => {
           "customOptionType": "textarea"
         },
         "groupName": null,
-        "linkType": false,
-        "json": false,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": false,
+        "indexExists": false
       },
       {
         "sysName": "checkboxes",
-        "dataType": "json",
         "name": "Чекбокс",
+        "dataType": "json",
         "id": "78381608220227972",
         "link": "",
         "group": "0",
@@ -10282,17 +10292,17 @@ const App = (props) => {
           ]
         },
         "groupName": null,
-        "linkType": false,
-        "json": true,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": true,
+        "indexExists": false
       },
       {
         "sysName": "color",
-        "dataType": "string",
         "name": "Цвет",
+        "dataType": "string",
         "id": "13701608220077573",
         "link": "",
         "group": "0",
@@ -10309,17 +10319,17 @@ const App = (props) => {
         "format": "color",
         "formatOptions": {},
         "groupName": null,
-        "linkType": false,
-        "json": false,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": false,
+        "indexExists": false
       },
       {
         "sysName": "date",
-        "dataType": "date",
         "name": "Дата",
+        "dataType": "date",
         "id": "68681608220122837",
         "link": "",
         "group": "0",
@@ -10336,17 +10346,17 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkType": false,
-        "json": false,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": false,
+        "indexExists": false
       },
       {
         "sysName": "dec",
-        "dataType": "decimal",
         "name": "Чиселка с точкой",
+        "dataType": "decimal",
         "id": "47381608220114148",
         "link": "",
         "group": "0",
@@ -10363,17 +10373,17 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkType": false,
-        "json": false,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": false,
+        "indexExists": false
       },
       {
         "sysName": "email",
-        "dataType": "string",
         "name": "Почто",
+        "dataType": "string",
         "id": "18281608220056577",
         "link": "",
         "group": "0",
@@ -10390,17 +10400,17 @@ const App = (props) => {
         "format": "email",
         "formatOptions": {},
         "groupName": null,
-        "linkType": false,
-        "json": false,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": false,
+        "indexExists": false
       },
       {
         "sysName": "file",
-        "dataType": "file",
         "name": "Файло",
+        "dataType": "file",
         "id": "61221608220216971",
         "link": "",
         "group": "0",
@@ -10417,17 +10427,17 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkType": false,
-        "json": false,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": false,
+        "indexExists": false
       },
       {
         "sysName": "html",
-        "dataType": "string",
         "name": "хэ тэ мэ эл",
+        "dataType": "string",
         "id": "64111608220043721",
         "link": "",
         "group": "0",
@@ -10444,17 +10454,17 @@ const App = (props) => {
         "format": "html",
         "formatOptions": {},
         "groupName": null,
-        "linkType": false,
-        "json": false,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": false,
+        "indexExists": false
       },
       {
         "sysName": "id",
-        "dataType": "id",
         "name": "id",
+        "dataType": "id",
         "id": "0",
         "link": "",
         "group": "0",
@@ -10471,17 +10481,17 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkType": false,
-        "json": false,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": false,
+        "indexExists": false
       },
       {
         "sysName": "json",
-        "dataType": "json",
         "name": "JSON",
+        "dataType": "json",
         "id": "26811608301882976",
         "link": "",
         "group": "0",
@@ -10498,17 +10508,17 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkType": false,
-        "json": true,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": true,
+        "indexExists": false
       },
       {
         "sysName": "keyValue",
-        "dataType": "json",
         "name": "Кей валью",
+        "dataType": "json",
         "id": "97111608281610391",
         "link": "",
         "group": "0",
@@ -10539,17 +10549,17 @@ const App = (props) => {
           "customOptionType": "textarea"
         },
         "groupName": null,
-        "linkType": false,
-        "json": true,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": true,
+        "indexExists": false
       },
       {
         "sysName": "link",
-        "dataType": "link",
         "name": "Ссылка",
+        "dataType": "link",
         "id": "65771608220138370",
         "link": "cities",
         "group": "0",
@@ -10566,17 +10576,17 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkType": true,
-        "json": false,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": true,
-        "arrayLink": false
+        "linkType": true,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": false,
+        "indexExists": false
       },
       {
         "sysName": "mkd",
-        "dataType": "string",
         "name": "Маркдаунъ",
+        "dataType": "string",
         "id": "60221608220022092",
         "link": "",
         "group": "0",
@@ -10593,17 +10603,17 @@ const App = (props) => {
         "format": "markdown",
         "formatOptions": {},
         "groupName": null,
-        "linkType": false,
-        "json": false,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": false,
+        "indexExists": false
       },
       {
         "sysName": "number",
-        "dataType": "number",
         "name": "Чиселка",
+        "dataType": "number",
         "id": "47151608220088994",
         "link": "",
         "group": "0",
@@ -10620,17 +10630,17 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkType": false,
-        "json": false,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": false,
+        "indexExists": false
       },
       {
         "sysName": "oper",
-        "dataType": "operator",
         "name": "Операторъ",
+        "dataType": "operator",
         "id": "97671608220128096",
         "link": "",
         "group": "0",
@@ -10647,17 +10657,17 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkType": false,
-        "json": false,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": false,
+        "indexExists": false
       },
       {
         "sysName": "phone",
-        "dataType": "string",
         "name": "Телефон",
+        "dataType": "string",
         "id": "12761608220066424",
         "link": "",
         "group": "0",
@@ -10674,17 +10684,17 @@ const App = (props) => {
         "format": "phone",
         "formatOptions": {},
         "groupName": null,
-        "linkType": false,
-        "json": false,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": false,
+        "indexExists": false
       },
       {
         "sysName": "posNum",
-        "dataType": "number",
         "name": "Положительная чиселка",
+        "dataType": "number",
         "id": "41551608220100429",
         "link": "",
         "group": "0",
@@ -10701,17 +10711,17 @@ const App = (props) => {
         "format": "positiveNum",
         "formatOptions": {},
         "groupName": null,
-        "linkType": false,
-        "json": false,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": false,
+        "indexExists": false
       },
       {
         "sysName": "radioOptions",
-        "dataType": "json",
         "name": "Радио станция",
+        "dataType": "json",
         "id": "49431608281537601",
         "link": "",
         "group": "0",
@@ -10753,17 +10763,17 @@ const App = (props) => {
           ]
         },
         "groupName": null,
-        "linkType": false,
-        "json": true,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": true,
+        "indexExists": false
       },
       {
         "sysName": "range",
-        "dataType": "json",
         "name": "Рейндж (не настроен)",
+        "dataType": "json",
         "id": "21181608281595081",
         "link": "",
         "group": "0",
@@ -10798,17 +10808,17 @@ const App = (props) => {
           "customOptionType": "textarea"
         },
         "groupName": null,
-        "linkType": false,
-        "json": true,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": true,
+        "indexExists": false
       },
       {
         "sysName": "slider",
-        "dataType": "json",
         "name": "Слайдер",
+        "dataType": "json",
         "id": "63771608281575384",
         "link": "",
         "group": "0",
@@ -10843,17 +10853,17 @@ const App = (props) => {
           "customOptionType": "textarea"
         },
         "groupName": null,
-        "linkType": false,
-        "json": true,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": true,
+        "indexExists": false
       },
       {
         "sysName": "string",
-        "dataType": "string",
         "name": "Просто текст",
+        "dataType": "string",
         "id": "39161608220010160",
         "link": "",
         "group": "0",
@@ -10870,17 +10880,17 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkType": false,
-        "json": false,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": false,
-        "arrayLink": false
+        "linkType": false,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": false,
+        "indexExists": false
       },
       {
         "sysName": "user_id",
-        "dataType": "link",
         "name": "",
+        "dataType": "link",
         "id": "60191608369089124",
         "link": "WebUser",
         "group": "0",
@@ -10897,18 +10907,39 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkType": true,
-        "json": false,
-        "indexExists": false,
-        "typeVariable": {},
         "linkOrArrayLinkType": true,
-        "arrayLink": false
+        "linkType": true,
+        "arrayLink": false,
+        "typeVariable": {},
+        "json": false,
+        "indexExists": false
       }
     ],
     "error": null,
     "isSuccessWrite": false,
     "response": null,
-    "data": null
+    "data": [
+      {
+        "alink": [
+          "fa3a51d6-2784-48aa-acb6-58a4934260cb"
+        ],
+        "keyValue": "{\"value\":\"0\",\"key\":\"0\"},{\"value\":\"0\",\"key\":\"33\"}",
+        "email": "pavel@ershov.org",
+        "json": "{\"a\":2}",
+        "slider": "{}",
+        "string": "hello ebta1",
+        "user_id": "79151845361",
+        "id": "79151845361",
+        "bool": false,
+        "range": "{\"secondValue\":260,\"firstValue\":120}",
+        "arr": [
+          ""
+        ],
+        "radioOptions": "{\"customOption\":\"2020-12-01T00:00:00.000Z\"}",
+        "mkd": "# sdfsf\nsdf\n\nsdf",
+        "checkboxes": "{\"two\":true,\"bbb\":true}"
+      }
+    ]
   }
 
   let exampleFormHH = {

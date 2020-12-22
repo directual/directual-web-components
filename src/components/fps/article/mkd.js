@@ -88,6 +88,12 @@ export function Markdown(props) {
 
     const [value, setValue] = useState(props.value || (props.example && mkdExample))
 
+    useEffect(()=>{
+        if (props.value != value) {
+            setValue(props.value)
+        }
+    },[props.value])
+
     const changeMkd = val => {
         console.log(val)
         setValue(val)
@@ -127,9 +133,8 @@ export function Markdown(props) {
                             ref={inputEl}
                             disabled={props.disabled}
                             onChange={e => changeMkd(e.target.value)}
-                        >
-                            {value}
-                        </textarea>
+                            value={value}
+                        />
                     </div>
                     {preview &&
                         <div className={styles.preview}>

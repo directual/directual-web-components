@@ -37,7 +37,7 @@ export function InputForm(props) {
     }
 }
 
-function FieldText({ field, onChange, placeholder, editingOn, code }) {
+function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue }) {
     //console.log(field)
     return <Input
         type='textarea'
@@ -49,11 +49,11 @@ function FieldText({ field, onChange, placeholder, editingOn, code }) {
         placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
         label={placeholder != "true" ? (field.content || field.id) : ''}
         description={field.description}
-        defaultValue={field.defaultValueOn && field.defaultValue}
+        defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
     />
 }
 
-function FieldStandard({ field, onChange, placeholder, editingOn }) {
+function FieldStandard({ field, onChange, placeholder, editingOn, defaultValue }) {
     return <Input
         type={field.dataType != 'string' ? field.dataType : field.format} // для email, phone
         positive={field.format == 'positiveNum'}
@@ -68,9 +68,8 @@ function FieldStandard({ field, onChange, placeholder, editingOn }) {
     />
 }
 
-function FieldBoolean({ field, onChange, placeholder, editingOn }) {
+function FieldBoolean({ field, onChange, placeholder, editingOn, defaultValue }) {
     return <Input type='radio'
-        defaultValue={field.defaultValueOn && field.defaultValue}
         options={[
             { value: 'true', label: field.formatOptions.booleanOptions && field.formatOptions.booleanOptions[0] ? field.formatOptions.booleanOptions[0] : 'true' },
             { value: 'false', label: field.formatOptions.booleanOptions && field.formatOptions.booleanOptions[1] ? field.formatOptions.booleanOptions[1] : 'false' }
@@ -79,10 +78,11 @@ function FieldBoolean({ field, onChange, placeholder, editingOn }) {
         disabled={!editingOn}
         label={field.content || field.id}
         description={field.description}
+        defaultValue={defaultValue ? 'true' : (field.defaultValueOn && field.defaultValue)}
     />
 }
 
-function FieldDate({ field, onChange, placeholder, editingOn }) {
+function FieldDate({ field, onChange, placeholder, editingOn, defaultValue }) {
     return <Input type='date'
         defaultValue={field.defaultValueOn && field.defaultValue}
         utc
@@ -92,11 +92,11 @@ function FieldDate({ field, onChange, placeholder, editingOn }) {
         label={placeholder != "true" ? (field.content || field.id) : ''}
         placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
         description={field.description}
-        defaultValue={field.defaultValueOn && field.defaultValue}
+        defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
     />
 }
 
-function FieldMkd({ field, onChange, placeholder, editingOn }) {
+function FieldMkd({ field, onChange, placeholder, editingOn, defaultValue }) {
     //console.log(field)
     return <React.Fragment>
         <Input
@@ -108,12 +108,26 @@ function FieldMkd({ field, onChange, placeholder, editingOn }) {
             placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
             label={placeholder != "true" ? (field.content || field.id) : ''}
             description={field.description}
-            defaultValue={field.defaultValueOn && field.defaultValue}
+            defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
         />
     </React.Fragment>
 }
 
-function FieldJson({ field, onChange, placeholder, editingOn }) {
+function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
+
+    const parseJson = json => {
+        let parsedJson = {}
+        if (typeof json == 'object') return json
+        try {
+            parsedJson = JSON.parse(json)
+          }
+          catch (e) {
+            console.log(json);
+            console.log(e);
+          }
+        return parsedJson
+    }
+
     return <React.Fragment>
         {field && !field.format &&
             <Input type='json'
@@ -124,7 +138,7 @@ function FieldJson({ field, onChange, placeholder, editingOn }) {
                 placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
                 required={field.required}
                 description={field.description}
-                defaultValue={field.defaultValueOn && field.defaultValue}
+                defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
             />}
 
         {field && field.format == 'checkboxes' &&
@@ -133,12 +147,12 @@ function FieldJson({ field, onChange, placeholder, editingOn }) {
                 onChange={value => onChange(JSON.stringify(value))}
                 label={placeholder != "true" ? (field.content || field.id) : ''}
                 description={field.description}
-                defaultValue={field.defaultValueOn && field.defaultValue}
                 customOptionType={field.formatOptions.customOptionType}
                 customOptionLabel={field.formatOptions.customOptionLabel}
                 customOptionPlaceholder={field.formatOptions.customOptionPlaceholder}
                 options={field.formatOptions.multipleChoice}
                 customOption={field.formatOptions.customOption}
+                defaultValue={parseJson(defaultValue || (field.defaultValueOn && field.defaultValue) || {})}
             />}
 
         {field && field.format == 'radioOptions' &&
@@ -147,12 +161,12 @@ function FieldJson({ field, onChange, placeholder, editingOn }) {
                 onChange={value => onChange(JSON.stringify(value))}
                 label={placeholder != "true" ? (field.content || field.id) : ''}
                 description={field.description}
-                defaultValue={field.defaultValueOn && field.defaultValue}
                 customOptionType={field.formatOptions.customOptionType}
                 customOptionLabel={field.formatOptions.customOptionLabel}
                 customOptionPlaceholder={field.formatOptions.customOptionPlaceholder}
                 options={field.formatOptions.multipleChoice}
                 customOption={field.formatOptions.customOption}
+                defaultValue={parseJson(defaultValue || (field.defaultValueOn && field.defaultValue) || {})}
             />}
 
         {field && field.format == 'keyValue' &&
@@ -161,10 +175,10 @@ function FieldJson({ field, onChange, placeholder, editingOn }) {
                 onChange={value => onChange(JSON.stringify(value))}
                 label={placeholder != "true" ? (field.content || field.id) : ''}
                 description={field.description}
-                defaultValue={field.defaultValueOn && field.defaultValue}
                 objectStructure={field.formatOptions.keyValue ?
                     [field.formatOptions.keyValue.key, field.formatOptions.keyValue.value]
                     : ['key', 'value']}
+                defaultValue={parseJson(defaultValue) || (field.defaultValueOn && field.defaultValue) || {}}
             />}
 
         {field && field.format == 'slider' &&
@@ -173,10 +187,10 @@ function FieldJson({ field, onChange, placeholder, editingOn }) {
                 onChange={value => onChange(JSON.stringify(value))}
                 label={placeholder != "true" ? (field.content || field.id) : ''}
                 description={field.description}
-                defaultValue={(field.defaultValueOn && field.defaultValue) ? { firstValue: field.defaultValue.firstValue } :
+                defaultValue={parseJson(defaultValue) || ((field.defaultValueOn && field.defaultValue) ? { firstValue: field.defaultValue.firstValue } :
                     {
                         firstValue: Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 0.3 + field.formatOptions.range.min)
-                    }
+                    })
                 }
                 min={field.formatOptions.range && field.formatOptions.range.min}
                 max={field.formatOptions.range && field.formatOptions.range.max}
@@ -189,11 +203,11 @@ function FieldJson({ field, onChange, placeholder, editingOn }) {
                 onChange={value => onChange(JSON.stringify(value))}
                 label={placeholder != "true" ? (field.content || field.id) : ''}
                 description={field.description}
-                defaultValue={(field.defaultValueOn && field.defaultValue) ? field.defaultValue :
+                defaultValue={parseJson(defaultValue) || ((field.defaultValueOn && field.defaultValue) ? field.defaultValue :
                     {
                         firstValue: Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 0.3 + field.formatOptions.range.min),
                         secondValue: Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 0.6 + field.formatOptions.range.min)
-                    }
+                    })
                 }
                 min={field.formatOptions.range && field.formatOptions.range.min}
                 max={field.formatOptions.range && field.formatOptions.range.max}
@@ -203,7 +217,7 @@ function FieldJson({ field, onChange, placeholder, editingOn }) {
     </React.Fragment>
 }
 
-function FieldLink({ field, onChange, placeholder, editingOn }) {
+function FieldLink({ field, onChange, placeholder, editingOn, defaultValue }) {
     //console.log(field)
     const [edit, setEdit] = useState(false)
     if (field.searchData && field.searchData.length > 0) {
@@ -215,7 +229,7 @@ function FieldLink({ field, onChange, placeholder, editingOn }) {
             placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
             label={placeholder != "true" ? (field.content || field.id) : ''}
             description={field.description}
-            defaultValue={field.defaultValueOn && field.defaultValue}
+            defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
             options={field.searchData}
         />
     } else {
@@ -228,7 +242,7 @@ function FieldLink({ field, onChange, placeholder, editingOn }) {
             placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
             label={placeholder != "true" ? (field.content || field.id) : ''}
             description={field.description}
-            defaultValue={field.defaultValueOn && field.defaultValue}
+            defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
         />
     }
 }

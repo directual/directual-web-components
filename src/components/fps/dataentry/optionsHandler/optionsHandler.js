@@ -17,7 +17,7 @@ export default function OptionsHandler({ defaultValue, disabled, objectStructure
             }>
 
             {debug && <div className='dd-debug'>{JSON.stringify(options)}</div>}
-            {options && options.map((option, i) => {
+            {options && Array.isArray(options) && options.map((option, i) => {
                 return (
                     <div key={i} className={styles.option}>
                         {objectStructure && objectStructure.map(property => {

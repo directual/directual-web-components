@@ -31,6 +31,7 @@ export default function FpsForm({ auth, data, onEvent, id }) {
 
 function FpsFormNew({ auth, data, onEvent, id }) {
 
+  let hiddenFields = {}
   const [model, setModel] = useState(defaultModel())
   const [isValid, setIsValid] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -45,7 +46,6 @@ function FpsFormNew({ auth, data, onEvent, id }) {
   let params = data.params || {}
   const fileds = []
   const formWidth = (data.maxWidth && parseInt(data.maxWidth)) || 'auto'
-  let hiddenFields = {}
 
   console.log('------------ form data: -------------')
   console.log(data)
@@ -73,9 +73,12 @@ function FpsFormNew({ auth, data, onEvent, id }) {
     let defModel = {}
     for (const field in data.params.fields) {
       if (data.params.fields[field].defaultValueOn && data.params.fields[field].defaultValue) {
-        defModel[field] = typeof data.params.fields[field].defaultValue == 'object' ? 
+        defModel[field] = typeof data.params.fields[field].defaultValue == 'object' ?
           JSON.stringify(data.params.fields[field].defaultValue)
-        : data.params.fields[field].defaultValue
+          : data.params.fields[field].defaultValue
+      }
+      if (data.params.fields[field].hidden) {
+        hiddenFields[field] = true
       }
     }
     return defModel || {}
@@ -167,9 +170,17 @@ function FpsFormNew({ auth, data, onEvent, id }) {
     }
   }
 
-  // object editing TODO
   let fetchedObjectFields = {}
-  const getFieldValue = (sysName, dataType) => { }
+  const getFieldValue = (sysName, dataType) => {
+    if (!data.data) { return } else { 
+      let getFieldVal
+      getFieldVal = data.data[0] && data.data[0][sysName]
+      if (eidtID && (getFieldVal || getFieldVal === false)) { // отдельно проверку на false для boolean полей
+        fetchedObjectFields = { ...fetchedObjectFields, id: eidtID, [sysName]: getFieldVal }
+      }
+      return getFieldVal
+    }
+  }
 
   const onChange = (field, value) => {
     let modelCopy = { ...fetchedObjectFields, ...hiddenFieldsValues, ...hiddenAuth, ...model }; // model в конце! Иначе нахуй перетирается все что ввели
@@ -211,7 +222,7 @@ function FpsFormNew({ auth, data, onEvent, id }) {
           data.response == [];
           data.error = '';
           fetchObjectFields(eidtID)
-          getResultAnswer().isSuccess && !data.error && 
+          getResultAnswer().isSuccess && !data.error &&
             setModel({ ...defaultModel(), ...hiddenFieldsValues, ...hiddenAuth, ...fetchedObjectFields }) // скрытые поля, авторизация и фетч
         }}>{formButtonResubmit}</Button>}
 
@@ -220,9 +231,10 @@ function FpsFormNew({ auth, data, onEvent, id }) {
           {data.params.data.columnOrder.map(section =>
             data.params.data.columns[section].fieldIds
             && data.params.data.columns[section].fieldIds.length > 0 &&
-            <div style={{marginBottom:44}}>
+            <div style={{ marginBottom: 44 }}>
+              {data.params.data.columnOrder.length > 1 &&
               <FormSection title=
-                {data.params.data.columns[section].title} />
+                {data.params.data.columns[section].title} />}
               {data.params.data.columns[section].fieldIds.map(fieldName => {
                 const field =
                 {
@@ -231,11 +243,12 @@ function FpsFormNew({ auth, data, onEvent, id }) {
                   ...data.params.data.fieldParams[fieldName]
                 }
                 if (field.id[0] == '@') return null //системные поля
+                if (!field.write) return null
                 return <InputForm
                   field={field}
                   placeholder={data.placeholder}
-                  onChange={value => { onChange(field.id,value) }}
-                  defaultValue={null}
+                  onChange={value => { onChange(field.id, value) }}
+                  defaultValue={getFieldValue(field.id, field.dataType)}
                   editingOn
                 />
               }
