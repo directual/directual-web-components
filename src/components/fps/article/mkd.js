@@ -23,11 +23,15 @@ export function Markdown(props) {
             _buffer.style.zIndex = '-1';
             document.body.appendChild(_buffer);
         }
-
-        var cs = window.getComputedStyle(textarea);
-        var pl = parseInt(cs.paddingLeft);
-        var pr = parseInt(cs.paddingRight);
-        var lh = parseInt(cs.lineHeight);
+        try {
+            var cs = window.getComputedStyle(textarea);
+            var pl = parseInt(cs.paddingLeft);
+            var pr = parseInt(cs.paddingRight);
+            var lh = parseInt(cs.lineHeight);
+        } catch (error) {
+            console.log(error)
+            return 1
+        }
 
         // [cs.lineHeight] may return 'normal', which means line height = font size.
         if (isNaN(lh)) lh = parseInt(cs.fontSize) + 3;
@@ -121,7 +125,7 @@ export function Markdown(props) {
                         </div>
                         <textarea
                             placeholder={props.placeholder}
-                            rows={inputEl.current ? countLines(inputEl.current,value) : 1}
+                            rows={inputEl.current ? countLines(inputEl.current, value) : 1}
                             ref={inputEl}
                             disabled={props.disabled}
                             onChange={e => changeMkd(e.target.value)}

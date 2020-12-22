@@ -31,7 +31,7 @@ export default function FpsForm({ auth, data, onEvent, id }) {
 
 function FpsFormNew({ auth, data, onEvent, id }) {
 
-  const [model, setModel] = useState({})
+  const [model, setModel] = useState(defaultModel())
   const [isValid, setIsValid] = useState(false)
   const [loading, setLoading] = useState(false)
   const [showForm, setShowForm] = useState(true)
@@ -67,6 +67,16 @@ function FpsFormNew({ auth, data, onEvent, id }) {
     e.preventDefault()
     console.log('submitting...')
     sendMsg(model)
+  }
+
+  function defaultModel() {
+    let defModel = {}
+    for (const field in data.params.fields) {
+      if (data.params.fields[field].defaultValueOn && data.params.fields[field].defaultValue) {
+        defModel[field] = data.params.fields[field].defaultValue
+      }
+    }
+    return defModel || {}
   }
 
   data.error =
@@ -199,7 +209,8 @@ function FpsFormNew({ auth, data, onEvent, id }) {
           data.response == [];
           data.error = '';
           fetchObjectFields(eidtID)
-          getResultAnswer().isSuccess && !data.error && setModel({ ...hiddenFieldsValues, ...hiddenAuth, ...fetchedObjectFields }) // TODO : скрытые поля, авторизация и фетч
+          getResultAnswer().isSuccess && !data.error && 
+            setModel({ ...defaultModel(), ...hiddenFieldsValues, ...hiddenAuth, ...fetchedObjectFields }) // скрытые поля, авторизация и фетч
         }}>{formButtonResubmit}</Button>}
 
       {showForm && !loading &&
@@ -221,8 +232,7 @@ function FpsFormNew({ auth, data, onEvent, id }) {
                 return <InputForm
                   field={field}
                   placeholder={data.placeholder}
-                  onChange={value => { console.log(value) }}
-                  onValidation={value => { console.log(value) }}
+                  onChange={value => { onChange(field.id,value) }}
                   defaultValue={null}
                   editingOn
                 />

@@ -35,43 +35,6 @@ export function InputForm(props) {
         default:
             return <FieldText {...props} code={type == 'string_html'} />
     }
-    return <Input
-        sysName={field.sysName}
-        validationHandler={validationHandler}
-        label={(data.placeholder != "true" || typesMatching(field) == 'slider' || typesMatching(field) == 'range') ? field.name : ''}
-        placeholder={`${data.placeholder == "true" ? `${field.name}${field.params.required ? '*' : ''}` : ''}`}
-        required={field.params.required}
-        description={field.params.description}
-        positive={field.params.isPositive}
-        customOption={field.params.customOption}
-        customOptionType={field.params.customOptionType}
-        customOptionLabel={field.params.customOptionLabel}
-        customOptionPlaceholder={field.params.customOptionPlaceholder}
-        options={(typesMatching(field) == 'select' || typesMatching(field) == 'multiselect') ? (field.params.searchData || []) :
-            (field.params.multipleChoice || [])}
-        defaultValue={
-            params.fields[field.sysName].jsonDisplay == 'radioStation' ?
-                ((getFieldValue(field.sysName, field.dataType) && getFieldValue(field.sysName, field.dataType).value)
-                    || field.params.defaultValue) :
-                (getFieldValue(field.sysName, field.dataType) || field.params.defaultValue)
-        }
-        timeFormat={`${field.params.dateTimeOn ? ' hh:mm A' : ''}`}
-        type={typesMatching(field)}
-        rows={field.params.textareaRows}
-        onChange={value => {
-            console.log(value)
-            let correctedValue
-            if (params.fields[field.sysName].jsonDisplay == 'radioStation' && typeof value == 'string') {
-                correctedValue = { value: value }
-            } else { correctedValue = value }
-            onChange(field.sysName, correctedValue)
-        }}
-        min={field.params && field.params.range && field.params.range.min}
-        max={field.params && field.params.range && field.params.range.max}
-        step={field.params && field.params.range && field.params.range.step}
-        unitName={field.params && field.params.unitName}
-        utc
-    />
 }
 
 function FieldText({ field, onChange, placeholder, editingOn, code }) {
@@ -196,7 +159,7 @@ function FieldJson({ field, onChange, placeholder, editingOn }) {
                 onChange={onChange}
                 label={placeholder != "true" ? (field.content || field.id) : ''}
                 description={field.description}
-                defaultValue={(field.defaultValueOn && field.defaultValue) ? field.defaultValue :
+                defaultValue={(field.defaultValueOn && field.defaultValue) ? { firstValue: field.defaultValue.firstValue } :
                     {
                         firstValue: Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 0.3 + field.formatOptions.range.min)
                     }
@@ -227,7 +190,7 @@ function FieldJson({ field, onChange, placeholder, editingOn }) {
 }
 
 function FieldLink({ field, onChange, placeholder, editingOn }) {
-    console.log(field)
+    //console.log(field)
     const [edit, setEdit] = useState(false)
     if (field.searchData && field.searchData.length > 0) {
         return <Input
