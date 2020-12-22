@@ -23,15 +23,13 @@ export function Markdown(props) {
             _buffer.style.zIndex = '-1';
             document.body.appendChild(_buffer);
         }
-        try {
-            var cs = window.getComputedStyle(textarea);
-            var pl = parseInt(cs.paddingLeft);
-            var pr = parseInt(cs.paddingRight);
-            var lh = parseInt(cs.lineHeight);
-        } catch (error) {
-            console.log(error)
-            return 1
-        }
+
+        if (!textarea || !textarea.constructor || textarea.constructor.name != 'HTMLTextAreaElement') { return; }
+
+        var cs = window.getComputedStyle(textarea);
+        var pl = parseInt(cs.paddingLeft);
+        var pr = parseInt(cs.paddingRight);
+        var lh = parseInt(cs.lineHeight);
 
         // [cs.lineHeight] may return 'normal', which means line height = font size.
         if (isNaN(lh)) lh = parseInt(cs.fontSize) + 3;

@@ -325,6 +325,7 @@ export default function Input(props) {
             _buffer.style.zIndex = '-1';
             document.body.appendChild(_buffer);
         }
+        if (!textarea || !textarea.constructor || textarea.constructor.name != 'HTMLTextAreaElement') { return; }
 
         var cs = window.getComputedStyle(textarea);
         var pl = parseInt(cs.paddingLeft);

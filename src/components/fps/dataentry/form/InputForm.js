@@ -130,7 +130,21 @@ function FieldJson({ field, onChange, placeholder, editingOn }) {
         {field && field.format == 'checkboxes' &&
             <Input type='checkboxGroup'
                 disabled={!editingOn}
-                onChange={onChange}
+                onChange={value => onChange(JSON.stringify(value))}
+                label={placeholder != "true" ? (field.content || field.id) : ''}
+                description={field.description}
+                defaultValue={field.defaultValueOn && field.defaultValue}
+                customOptionType={field.formatOptions.customOptionType}
+                customOptionLabel={field.formatOptions.customOptionLabel}
+                customOptionPlaceholder={field.formatOptions.customOptionPlaceholder}
+                options={field.formatOptions.multipleChoice}
+                customOption={field.formatOptions.customOption}
+            />}
+
+        {field && field.format == 'radioOptions' &&
+            <Input type='radioJson'
+                disabled={!editingOn}
+                onChange={value => onChange(JSON.stringify(value))}
                 label={placeholder != "true" ? (field.content || field.id) : ''}
                 description={field.description}
                 defaultValue={field.defaultValueOn && field.defaultValue}
@@ -144,7 +158,7 @@ function FieldJson({ field, onChange, placeholder, editingOn }) {
         {field && field.format == 'keyValue' &&
             <Input type='optionsHandler'
                 disabled={!editingOn}
-                onChange={onChange}
+                onChange={value => onChange(JSON.stringify(value))}
                 label={placeholder != "true" ? (field.content || field.id) : ''}
                 description={field.description}
                 defaultValue={field.defaultValueOn && field.defaultValue}
@@ -156,7 +170,7 @@ function FieldJson({ field, onChange, placeholder, editingOn }) {
         {field && field.format == 'slider' &&
             <Input type='slider'
                 disabled={!editingOn}
-                onChange={onChange}
+                onChange={value => onChange(JSON.stringify(value))}
                 label={placeholder != "true" ? (field.content || field.id) : ''}
                 description={field.description}
                 defaultValue={(field.defaultValueOn && field.defaultValue) ? { firstValue: field.defaultValue.firstValue } :
@@ -172,7 +186,7 @@ function FieldJson({ field, onChange, placeholder, editingOn }) {
         {field && field.format == "rangeSlider" &&
             <Input type='range'
                 disabled={!editingOn}
-                onChange={onChange}
+                onChange={value => onChange(JSON.stringify(value))}
                 label={placeholder != "true" ? (field.content || field.id) : ''}
                 description={field.description}
                 defaultValue={(field.defaultValueOn && field.defaultValue) ? field.defaultValue :

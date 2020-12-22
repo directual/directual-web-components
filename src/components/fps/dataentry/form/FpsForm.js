@@ -73,7 +73,9 @@ function FpsFormNew({ auth, data, onEvent, id }) {
     let defModel = {}
     for (const field in data.params.fields) {
       if (data.params.fields[field].defaultValueOn && data.params.fields[field].defaultValue) {
-        defModel[field] = data.params.fields[field].defaultValue
+        defModel[field] = typeof data.params.fields[field].defaultValue == 'object' ? 
+          JSON.stringify(data.params.fields[field].defaultValue)
+        : data.params.fields[field].defaultValue
       }
     }
     return defModel || {}
