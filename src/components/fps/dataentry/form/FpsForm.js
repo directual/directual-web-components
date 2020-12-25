@@ -132,11 +132,12 @@ function FpsFormNew({ auth, data, onEvent, id }) {
   // Validation:
   useEffect(() => {
     setIsValid(true)
-    fileds.forEach(field => {
-      if (field.isValid == false) { setIsValid(false); }
-      if (field.params.required && !model[field.sysName] && !model[field.sysName] !== false && field.params.include && !field.params.hidden) { setIsValid(false); }
+    for (const field in data.params.data.fieldParams) {
+      //if (field.isValid == false) { setIsValid(false); }
+      if (data.params.data.fieldParams[field] && data.params.data.fieldParams[field].required && 
+        !model[field] && !model[field] !== false && data.params.data.fieldParams[field].include && 
+        !data.params.data.fieldParams[field].hidden) { setIsValid(false); }
     }
-    )
   }, [model])
 
   // хуерга какая-то
@@ -172,7 +173,7 @@ function FpsFormNew({ auth, data, onEvent, id }) {
 
   let fetchedObjectFields = {}
   const getFieldValue = (sysName, dataType) => {
-    if (!data.data) { return } else { 
+    if (!data.data) { return } else {
       let getFieldVal
       getFieldVal = data.data[0] && data.data[0][sysName]
       if (eidtID && (getFieldVal || getFieldVal === false)) { // отдельно проверку на false для boolean полей
@@ -187,6 +188,23 @@ function FpsFormNew({ auth, data, onEvent, id }) {
     if (eidtID) { modelCopy.id = eidtID } // тут проебывался где-то или перетирался id, посему записываем в явном виде
     modelCopy[field] = value
     setModel(modelCopy)
+  }
+
+  const checkSectionConditionals = conditionals => {
+    let showSection = true
+    console.log('===cond===')
+    console.log(conditionals)
+    console.log(model)
+
+    if (conditionals.length == 0) return true;
+    conditionals.forEach(cond => {
+      if (model[cond.field] != cond.value) {
+        console.log("section can't be shown")
+        console.log(model[cond.field] + ' != ' + cond.value)
+        showSection = false
+      }
+    })
+    return showSection
   }
 
   return (
@@ -230,11 +248,12 @@ function FpsFormNew({ auth, data, onEvent, id }) {
         <form onSubmit={submit} style={{ maxWidth: formWidth }}>
           {data.params.data.columnOrder.map(section =>
             data.params.data.columns[section].fieldIds
-            && data.params.data.columns[section].fieldIds.length > 0 &&
+            && data.params.data.columns[section].fieldIds.length > 0
+            && checkSectionConditionals(data.params.data.columns[section].cond) &&
             <div style={{ marginBottom: 44 }}>
               {data.params.data.columnOrder.length > 1 &&
-              <FormSection title=
-                {data.params.data.columns[section].title} />}
+                <FormSection title=
+                  {data.params.data.columns[section].title} />}
               {data.params.data.columns[section].fieldIds.map(fieldName => {
                 const field =
                 {

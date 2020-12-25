@@ -8373,7 +8373,8 @@ const App = (props) => {
             "fileImageFormat": "square",
             "quickSearch": false,
             "fileImageSize": 200,
-            "clickable": false
+            "clickable": false,
+            "dateTimeOn": true
           },
           "dec": {
             "include": true,
@@ -8455,7 +8456,8 @@ const App = (props) => {
             "fileImageFormat": "square",
             "quickSearch": false,
             "fileImageSize": 200,
-            "clickable": false
+            "clickable": false,
+            "required": true
           },
           "oper": {
             "include": true,
@@ -8471,7 +8473,8 @@ const App = (props) => {
             "quickSearch": false,
             "fileImageSize": 200,
             "clickable": false,
-            "defaultValueOn": false
+            "defaultValueOn": false,
+            "required": true
           },
           "posNum": {
             "include": true,
@@ -8542,7 +8545,7 @@ const App = (props) => {
         "columns": {
           "tab-1": {
             "id": "tab-1",
-            "title": "New section",
+            "title": "Section!!!",
             "fieldIds": [
               "id",
               "user_id",
@@ -8551,7 +8554,6 @@ const App = (props) => {
               "@who",
               "alink",
               "arr",
-              "bool",
               "checkboxes",
               "color",
               "date",
@@ -8563,13 +8565,15 @@ const App = (props) => {
               "keyValue",
               "link",
               "mkd",
-              "number",
               "oper",
               "phone",
               "posNum",
               "radioOptions",
-              "range"
-            ]
+              "range",
+              "number",
+              "bool"
+            ],
+            "cond": []
           },
           "30241608302879647": {
             "id": "30241608302879647",
@@ -8577,6 +8581,18 @@ const App = (props) => {
             "fieldIds": [
               "slider",
               "string"
+            ],
+            "cond": [
+              {
+                "id": "47811608832070349",
+                "field": "bool",
+                "value": "false"
+              },
+              {
+                "id": "25931608832079021",
+                "field": "number",
+                "value": "5"
+              }
             ]
           }
         },
@@ -9316,7 +9332,8 @@ const App = (props) => {
           "fileImageFormat": "square",
           "quickSearch": false,
           "fileImageSize": 200,
-          "clickable": false
+          "clickable": false,
+          "dateTimeOn": true
         },
         "dec": {
           "include": true,
@@ -10060,7 +10077,8 @@ const App = (props) => {
           "fileImageFormat": "square",
           "quickSearch": false,
           "fileImageSize": 200,
-          "clickable": false
+          "clickable": false,
+          "required": true
         },
         "oper": {
           "include": true,
@@ -10076,7 +10094,8 @@ const App = (props) => {
           "quickSearch": false,
           "fileImageSize": 200,
           "clickable": false,
-          "defaultValueOn": false
+          "defaultValueOn": false,
+          "required": true
         },
         "posNum": {
           "include": true,
@@ -10172,10 +10191,10 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": true,
-        "linkType": false,
-        "arrayLink": true,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": true,
+        "arrayLink": true,
         "json": false,
         "indexExists": false
       },
@@ -10199,10 +10218,10 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": false,
         "indexExists": false
       },
@@ -10240,10 +10259,10 @@ const App = (props) => {
           "customOptionType": "textarea"
         },
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": false,
         "indexExists": false
       },
@@ -10292,10 +10311,10 @@ const App = (props) => {
           ]
         },
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": true,
         "indexExists": false
       },
@@ -10319,10 +10338,10 @@ const App = (props) => {
         "format": "color",
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": false,
         "indexExists": false
       },
@@ -10346,10 +10365,10 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": false,
         "indexExists": false
       },
@@ -10373,10 +10392,10 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": false,
         "indexExists": false
       },
@@ -10400,10 +10419,10 @@ const App = (props) => {
         "format": "email",
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": false,
         "indexExists": false
       },
@@ -10427,10 +10446,10 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": false,
         "indexExists": false
       },
@@ -10454,10 +10473,10 @@ const App = (props) => {
         "format": "html",
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": false,
         "indexExists": false
       },
@@ -10481,10 +10500,10 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": false,
         "indexExists": false
       },
@@ -10508,10 +10527,10 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": true,
         "indexExists": false
       },
@@ -10549,10 +10568,10 @@ const App = (props) => {
           "customOptionType": "textarea"
         },
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": true,
         "indexExists": false
       },
@@ -10576,10 +10595,10 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": true,
-        "linkType": true,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": true,
+        "linkOrArrayLinkType": true,
+        "arrayLink": false,
         "json": false,
         "indexExists": false
       },
@@ -10603,10 +10622,10 @@ const App = (props) => {
         "format": "markdown",
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": false,
         "indexExists": false
       },
@@ -10630,10 +10649,10 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": false,
         "indexExists": false
       },
@@ -10657,10 +10676,10 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": false,
         "indexExists": false
       },
@@ -10684,10 +10703,10 @@ const App = (props) => {
         "format": "phone",
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": false,
         "indexExists": false
       },
@@ -10711,10 +10730,10 @@ const App = (props) => {
         "format": "positiveNum",
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": false,
         "indexExists": false
       },
@@ -10763,10 +10782,10 @@ const App = (props) => {
           ]
         },
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": true,
         "indexExists": false
       },
@@ -10808,10 +10827,10 @@ const App = (props) => {
           "customOptionType": "textarea"
         },
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": true,
         "indexExists": false
       },
@@ -10853,10 +10872,10 @@ const App = (props) => {
           "customOptionType": "textarea"
         },
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": true,
         "indexExists": false
       },
@@ -10880,10 +10899,10 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": false,
+        "linkOrArrayLinkType": false,
+        "arrayLink": false,
         "json": false,
         "indexExists": false
       },
@@ -10907,10 +10926,10 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": true,
-        "linkType": true,
-        "arrayLink": false,
         "typeVariable": {},
+        "linkType": true,
+        "linkOrArrayLinkType": true,
+        "arrayLink": false,
         "json": false,
         "indexExists": false
       }
@@ -10918,28 +10937,7 @@ const App = (props) => {
     "error": null,
     "isSuccessWrite": false,
     "response": null,
-    "data": [
-      {
-        "alink": [
-          "fa3a51d6-2784-48aa-acb6-58a4934260cb"
-        ],
-        "keyValue": "{\"value\":\"0\",\"key\":\"0\"},{\"value\":\"0\",\"key\":\"33\"}",
-        "email": "pavel@ershov.org",
-        "json": "{\"a\":2}",
-        "slider": "{}",
-        "string": "hello ebta1",
-        "user_id": "79151845361",
-        "id": "79151845361",
-        "bool": false,
-        "range": "{\"secondValue\":260,\"firstValue\":120}",
-        "arr": [
-          ""
-        ],
-        "radioOptions": "{\"customOption\":\"2020-12-01T00:00:00.000Z\"}",
-        "mkd": "# sdfsf\nsdf\n\nsdf",
-        "checkboxes": "{\"two\":true,\"bbb\":true}"
-      }
-    ]
+    "data": null
   }
 
   let exampleFormHH = {
