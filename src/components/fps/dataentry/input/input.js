@@ -375,6 +375,8 @@ export default function Input(props) {
                 <div className="dd-debug">searchValue: {JSON.stringify(searchValue)}</div>
                 <div className="dd-debug">value: {JSON.stringify(value)}</div>
                 <div className="dd-debug"> defVal: {JSON.stringify(defVal)}</div>
+                <div className="dd-debug"> lines: {lines}</div>
+                <div className="dd-debug"> countlLnes: {countLines(inputEl.current, value)}</div>
             </div>}
 
             {props.type != 'email' &&

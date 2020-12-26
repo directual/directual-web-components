@@ -9,7 +9,9 @@ import 'directual-web-components/dist/index.css'
 export default function InputsPage() {
     const [value, setValue] = useState()
  
-    const [ testDefValue, setTestDefValue] = useState([])
+    const [ testDefValue, setTestDefValue] = useState(`{
+        "hello": true
+    }`)
 
     const testFields = [
         {
@@ -214,6 +216,11 @@ export default function InputsPage() {
         <React.Fragment>
             <h1>Data entry</h1>
 
+            <Button onClick={()=>setTestDefValue(`{
+    "hello": true,
+    "goodBye": 12, "goodBye1": 122
+}`)}>push me</Button>
+
             <Input type='optionsHandler'
                 label='Options'
                 addButtonText='Add an option'
@@ -269,14 +276,11 @@ export default function InputsPage() {
                 }
             />
             <Input
-                defaultValue={`{
-    "hello": true,
-    "goodBye": 12
-}`}
-                //debug
+                defaultValue={testDefValue}
+                debug
                 type='json'
                 label='JSON input'
-                //disabled
+                disabled
                 rows='auto'
                 onChange={v => { }}
                 //isValid={v => { console.log(v) }}
