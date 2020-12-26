@@ -8,8 +8,8 @@ import 'directual-web-components/dist/index.css'
 
 export default function InputsPage() {
     const [value, setValue] = useState()
-
-    const [testDefValue, setTestDefValue] = useState([])
+ 
+    const [ testDefValue, setTestDefValue] = useState([])
 
     const testFields = [
         {
@@ -269,7 +269,10 @@ export default function InputsPage() {
                 }
             />
             <Input
-                defaultValue={JSON.stringify(testDefValue)}
+                defaultValue={`{
+    "hello": true,
+    "goodBye": 12
+}`}
                 //debug
                 type='json'
                 label='JSON input'

@@ -84,10 +84,6 @@ export default function Input(props) {
 
     useEffect(() => {
         if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal) && props.type != 'json') {
-            if (props.type == 'textarea') {
-                console.log('TEXTAREA')
-                console.log(props.defaultValue)
-            }
             setValue(props.defaultValue); setDefVal(props.defaultValue);
             setLines(countLines(inputEl.current, props.defaultValue))
         }
@@ -97,7 +93,7 @@ export default function Input(props) {
     }, [props.defaultValue])
 
     useEffect(() => {
-        setLines(countLines(inputEl.current, value))
+        props.type == 'textarea' && setLines(countLines(inputEl.current, value))
     }, [inputEl])
 
     const checkEmailValue = (v) => {
