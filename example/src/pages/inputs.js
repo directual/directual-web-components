@@ -276,9 +276,17 @@ export default function InputsPage() {
                 //disabled
                 rows='auto'
                 onChange={v => { }}
-                isValid={v => { console.log(v) }}
+                //isValid={v => { console.log(v) }}
             />
-            <Input type='textarea' label='auto-height textarea' rows='auto' />
+            <Input type='textarea' 
+                //debug
+                description={<span>hello <code>my friend</code>, nice to meet you</span>}
+                tip={<span>hello <code>my friend</code>, nice to meet you</span>}
+                defaultValue={`<Input
+type='optionsHandler'
+code
+disabled`}
+                label='auto-height textarea' rows='auto' />
 
             <h2>Options handler</h2>
 

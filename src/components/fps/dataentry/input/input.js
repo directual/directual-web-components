@@ -34,7 +34,6 @@ export default function Input(props) {
     }
 
     const checkJsonValue = (e, v) => {
-        console.log('checking JSON...');
         let parseJSON = {}
         const val = v || value
         if (val) {
@@ -42,7 +41,6 @@ export default function Input(props) {
                 parseJSON = JSON.parse(val)
                 setValue(JSON.stringify(parseJSON, 0, 3));
                 e && setLines(countLines(e.target || e, JSON.stringify(parseJSON, 0, 3)))
-                console.log('lines ' + lines)
                 setWarningMesg({ type: 'ok', msg: 'Valid JSON' })
                 props.isValid && props.isValid(true)
             } catch {
@@ -85,11 +83,22 @@ export default function Input(props) {
     }, [warningMsg])
 
     useEffect(() => {
-        if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal) && props.type != 'json') { setValue(props.defaultValue); setDefVal(props.defaultValue); setLines(countLines(inputEl.current, props.defaultValue)) }
+        if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal) && props.type != 'json') {
+            if (props.type == 'textarea') {
+                console.log('TEXTAREA')
+                console.log(props.defaultValue)
+            }
+            setValue(props.defaultValue); setDefVal(props.defaultValue);
+            setLines(countLines(inputEl.current, props.defaultValue))
+        }
         if (props.type == 'json' && inputEl.current) {
             checkJsonValue(inputEl.current, props.defaultValue)
         }
     }, [props.defaultValue])
+
+    useEffect(() => {
+        setLines(countLines(inputEl.current, value))
+    }, [inputEl])
 
     const checkEmailValue = (v) => {
         (!v && props.required) ?
@@ -306,13 +315,14 @@ export default function Input(props) {
         props.autoFocus && inputEl.current.focus();
     }, [])
 
-    const checkLineBreaks = line => {
-        if (!line) return 1
-        return typeof line == 'string' ? (line.match(/\n/g) || []).length + 1 : 1
-    }
-
-    let _buffer;
     function countLines(textarea, text) {
+        // console.log('counting lines...')
+        // console.log(textarea)
+        if (!textarea || !textarea.constructor || textarea.constructor.name != 'HTMLTextAreaElement') {
+            //console.log('not a textarea'); 
+            return;
+        }
+        let _buffer;
         if (_buffer == null) {
             _buffer = document.createElement('textarea');
             _buffer.style.border = 'none';
@@ -325,7 +335,6 @@ export default function Input(props) {
             _buffer.style.zIndex = '-1';
             document.body.appendChild(_buffer);
         }
-        if (!textarea || !textarea.constructor || textarea.constructor.name != 'HTMLTextAreaElement') { return; }
 
         var cs = window.getComputedStyle(textarea);
         var pl = parseInt(cs.paddingLeft);
@@ -348,7 +357,6 @@ export default function Input(props) {
 
         // Copy value.
         _buffer.value = text || textarea.value;
-        console.log(_buffer.scrollHeight / lh)
 
         var result = Math.round(_buffer.scrollHeight / lh);
         if (result == 0) result = 1;
@@ -437,7 +445,7 @@ export default function Input(props) {
                 <div className={styles.field_wrapper}>
                     <div className={`${styles.input_icon_wrapper} icon icon-mail`} />
                     <input
-                        autocomplete="off"
+                        autoComplete="off"
                         ref={inputEl}
                         disabled={props.disabled}
                         className={`${styles.field} ${styles.icon} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
@@ -634,7 +642,7 @@ export default function Input(props) {
                         disabled={props.disabled}
                         className={`${styles.field} ${props.disabled && styles.disabled} ${props.code && styles.code} ${warningMsg.type && styles[warningMsg.type]}`}
                         type="text"
-                        rows={props.rows == 'auto' ? lines : props.rows || 1}
+                        rows={props.rows == 'auto' ? lines : props.rows}
                         onChange={e => { setLines(countLines(e.target)); handleChange(e.target.value) }}
                         value={value}
                         onBlur={checkValue}
@@ -667,7 +675,7 @@ export default function Input(props) {
                     <input
                         autoFocus={props.autoFocus}
                         ref={inputEl}
-                        autocomplete="new-password"
+                        autoComplete="new-password"
                         disabled={props.disabled}
                         style={{
                             height: props.height || 44
