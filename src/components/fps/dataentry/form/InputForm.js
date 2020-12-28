@@ -69,6 +69,10 @@ function FieldStandard({ field, onChange, placeholder, editingOn, defaultValue }
 }
 
 function FieldBoolean({ field, onChange, placeholder, editingOn, defaultValue }) {
+    const getBooleanDefaultValue = defVal => {
+        if (typeof defVal == 'string' ) {return defVal}
+        if (defVal) { return 'true' } else {return 'false'}
+    }
     return <Input type='radio'
         options={[
             { value: 'true', label: field.formatOptions.booleanOptions && field.formatOptions.booleanOptions[0] ? field.formatOptions.booleanOptions[0] : 'true' },
@@ -78,7 +82,7 @@ function FieldBoolean({ field, onChange, placeholder, editingOn, defaultValue })
         disabled={!editingOn}
         label={field.content || field.id}
         description={field.description}
-        defaultValue={defaultValue ? 'true' : (field.defaultValueOn && field.defaultValue)}
+        defaultValue={getBooleanDefaultValue(defaultValue || (field.defaultValueOn && field.defaultValue))}
     />
 }
 
@@ -138,7 +142,7 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
                 placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
                 required={field.required}
                 description={field.description}
-                defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
+                defaultValue={(defaultValue && parseJson(defaultValue)) || (field.defaultValueOn && field.defaultValue)}
             />}
 
         {field && field.format == 'checkboxes' &&
@@ -152,7 +156,7 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
                 customOptionPlaceholder={field.formatOptions.customOptionPlaceholder}
                 options={field.formatOptions.multipleChoice}
                 customOption={field.formatOptions.customOption}
-                defaultValue={parseJson(defaultValue || (field.defaultValueOn && field.defaultValue) || {})}
+                defaultValue={(defaultValue && parseJson(defaultValue)) || (field.defaultValueOn && field.defaultValue) || {}}
             />}
 
         {field && field.format == 'radioOptions' &&
@@ -166,7 +170,7 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
                 customOptionPlaceholder={field.formatOptions.customOptionPlaceholder}
                 options={field.formatOptions.multipleChoice}
                 customOption={field.formatOptions.customOption}
-                defaultValue={parseJson(defaultValue || (field.defaultValueOn && field.defaultValue) || {})}
+                defaultValue={(defaultValue && parseJson(defaultValue)) || (field.defaultValueOn && field.defaultValue) || {}}
             />}
 
         {field && field.format == 'keyValue' &&
@@ -178,7 +182,7 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
                 objectStructure={field.formatOptions.keyValue ?
                     [field.formatOptions.keyValue.key, field.formatOptions.keyValue.value]
                     : ['key', 'value']}
-                defaultValue={parseJson(defaultValue) || (field.defaultValueOn && field.defaultValue) || {}}
+                defaultValue={ (defaultValue && parseJson(defaultValue)) || (field.defaultValueOn && field.defaultValue) || {}}
             />}
 
         {field && field.format == 'slider' &&
@@ -187,7 +191,7 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
                 onChange={value => onChange(JSON.stringify(value))}
                 label={placeholder != "true" ? (field.content || field.id) : ''}
                 description={field.description}
-                defaultValue={parseJson(defaultValue) || ((field.defaultValueOn && field.defaultValue) ? { firstValue: field.defaultValue.firstValue } :
+                defaultValue={ (defaultValue && parseJson(defaultValue)) || ((field.defaultValueOn && field.defaultValue) ? { firstValue: field.defaultValue.firstValue } :
                     {
                         firstValue: Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 0.3 + field.formatOptions.range.min)
                     })
@@ -203,7 +207,7 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
                 onChange={value => onChange(JSON.stringify(value))}
                 label={placeholder != "true" ? (field.content || field.id) : ''}
                 description={field.description}
-                defaultValue={parseJson(defaultValue) || ((field.defaultValueOn && field.defaultValue) ? field.defaultValue :
+                defaultValue={ (defaultValue && parseJson(defaultValue)) || ((field.defaultValueOn && field.defaultValue) ? field.defaultValue :
                     {
                         firstValue: Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 0.3 + field.formatOptions.range.min),
                         secondValue: Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 0.6 + field.formatOptions.range.min)

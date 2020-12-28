@@ -140,11 +140,6 @@ function FpsFormNew({ auth, data, onEvent, id }) {
     }
   }, [model])
 
-  // хуерга какая-то
-  const validationHandler = (field, valid) => {
-    if (fileds) { fileds[fileds.indexOf(fileds.filter(f => f.sysName == field)[0])].isValid = valid }
-  }
-
   useEffect(() => {
     if (data.error || data.response) {
       setLoading(false)
@@ -176,7 +171,11 @@ function FpsFormNew({ auth, data, onEvent, id }) {
     if (!data.data) { return } else {
       let getFieldVal
       getFieldVal = data.data[0] && data.data[0][sysName]
-      if (eidtID && (getFieldVal || getFieldVal === false)) { // отдельно проверку на false для boolean полей
+      if (dataType == 'boolean') {
+        if (getFieldVal === true) { getFieldVal = 'true'; console.log('TRUE')}
+        if (getFieldVal === false) { getFieldVal = 'false'; console.log('FALSE') }
+      }
+      if (eidtID && getFieldVal) { 
         fetchedObjectFields = { ...fetchedObjectFields, id: eidtID, [sysName]: getFieldVal }
       }
       return getFieldVal
@@ -193,9 +192,9 @@ function FpsFormNew({ auth, data, onEvent, id }) {
   const checkSectionConditionals = conditionals => {
     if (!conditionals) {return true}
     let showSection = true
-    console.log('===cond===')
-    console.log(conditionals)
-    console.log(model)
+    // console.log('===cond===')
+    // console.log(conditionals)
+    // console.log(model)
 
     if (conditionals.length == 0) return true;
     conditionals.forEach(cond => {
