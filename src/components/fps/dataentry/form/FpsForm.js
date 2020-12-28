@@ -191,6 +191,7 @@ function FpsFormNew({ auth, data, onEvent, id }) {
   }
 
   const checkSectionConditionals = conditionals => {
+    if (!conditionals) {return true}
     let showSection = true
     console.log('===cond===')
     console.log(conditionals)
