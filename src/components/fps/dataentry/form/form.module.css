@@ -13,3 +13,6 @@
   border-top: solid 1px var(--table-border-color);
   flex-grow: 2;
 }
+.form_header {
+  margin-bottom: 18px;
+}

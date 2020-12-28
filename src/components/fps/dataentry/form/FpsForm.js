@@ -134,8 +134,8 @@ function FpsFormNew({ auth, data, onEvent, id }) {
     setIsValid(true)
     for (const field in data.params.data.fieldParams) {
       //if (field.isValid == false) { setIsValid(false); }
-      if (data.params.data.fieldParams[field] && data.params.data.fieldParams[field].required && 
-        !model[field] && !model[field] !== false && data.params.data.fieldParams[field].include && 
+      if (data.params.data.fieldParams[field] && data.params.data.fieldParams[field].required &&
+        !model[field] && !model[field] !== false && data.params.data.fieldParams[field].include &&
         !data.params.data.fieldParams[field].hidden) { setIsValid(false); }
     }
   }, [model])
@@ -172,10 +172,10 @@ function FpsFormNew({ auth, data, onEvent, id }) {
       let getFieldVal
       getFieldVal = data.data[0] && data.data[0][sysName]
       if (dataType == 'boolean') {
-        if (getFieldVal === true) { getFieldVal = 'true'; console.log('TRUE')}
+        if (getFieldVal === true) { getFieldVal = 'true'; console.log('TRUE') }
         if (getFieldVal === false) { getFieldVal = 'false'; console.log('FALSE') }
       }
-      if (eidtID && getFieldVal) { 
+      if (eidtID && getFieldVal) {
         fetchedObjectFields = { ...fetchedObjectFields, id: eidtID, [sysName]: getFieldVal }
       }
       return getFieldVal
@@ -190,7 +190,7 @@ function FpsFormNew({ auth, data, onEvent, id }) {
   }
 
   const checkSectionConditionals = conditionals => {
-    if (!conditionals) {return true}
+    if (!conditionals) { return true }
     let showSection = true
     // console.log('===cond===')
     // console.log(conditionals)
@@ -209,10 +209,11 @@ function FpsFormNew({ auth, data, onEvent, id }) {
 
   return (
     <ComponentWrapper>
-      {formName && <h2>{formName}</h2>}
-      {formDesc && showForm && (
-        <Markdown style={{ maxWidth: formWidth, marginBottom: 22 }} value={formDesc} />
-      )}
+      {formName && <h2 className={styles.form_header}>{formName}</h2>}
+      <div style={{ maxWidth: formWidth, marginBottom: 12 }}>
+        {formDesc && showForm && (
+          <Markdown value={formDesc} />
+        )}</div>
 
       {loading && <Loader>Loading...</Loader>}
 
