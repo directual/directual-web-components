@@ -251,7 +251,7 @@ function FpsFormNew({ auth, data, onEvent, id }) {
             data.params.data.columns[section].fieldIds
             && data.params.data.columns[section].fieldIds.length > 0
             && checkSectionConditionals(data.params.data.columns[section].cond) &&
-            <div style={{ marginBottom: 44 }}>
+            <div style={{ marginBottom: 38 }}>
               {data.params.data.columnOrder.length > 1 &&
                 <FormSection title=
                   {data.params.data.columns[section].title} />}

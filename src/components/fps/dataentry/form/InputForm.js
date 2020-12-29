@@ -38,7 +38,7 @@ export function InputForm(props) {
 }
 
 function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue }) {
-    //console.log(field)
+    console.log(defaultValue || (field.defaultValueOn && field.defaultValue))
     return <Input
         type='textarea'
         rows='auto'
@@ -49,7 +49,7 @@ function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue
         placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
         label={placeholder != "true" ? (field.content || field.id) : ''}
         description={field.description}
-        defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
+        defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue) || ''}
     />
 }
 
