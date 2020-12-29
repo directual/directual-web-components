@@ -71,6 +71,7 @@ function FieldStandard({ field, onChange, placeholder, editingOn, defaultValue }
 function FieldBoolean({ field, onChange, placeholder, editingOn, defaultValue }) {
     const getBooleanDefaultValue = defVal => {
         if (typeof defVal == 'string' ) {return defVal}
+        if (typeof defVal == 'undefined') {return 'undefined'}
         if (defVal) { return 'true' } else {return 'false'}
     }
     return <Input type='radio'

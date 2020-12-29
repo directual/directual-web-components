@@ -7141,10 +7141,10 @@ const App = (props) => {
     "sl": "editEmployeeProfile",
     "formName": "Профиль кандидата",
     "formDesc": "",
-    "formButton": "",
+    "formButton": "Сохранить",
     "placeholder": "",
-    "maxWidth": "400",
-    "formButtonResubmit": null,
+    "maxWidth": "500",
+    "formButtonResubmit": "Изменить данные профиля",
     "params": {
       "result": {
         "resultTitleField": null,
@@ -8781,16 +8781,15 @@ const App = (props) => {
       {
         "city": "95ddc157-f2dc-4ab1-a1e5-ce9c6398bfdf",
         "52_functions": [
-          "5b27b967-9c4d-4dbe-89f0-abb4186e64a1"
+          ""
         ],
-        //"salary_raw": "{\"firstValue\":100}",
+        "salary_raw": "{\"secondValue\":190,\"firstValue\":70}",
         "22_functions": [
-          "8736e749-48f8-4dfb-ba6d-483d0ce9f350"
+          ""
         ],
         "lastName": "Ershov",
         "firstName": "Pavel",
-        "id": "79151845361",
-        "type": false
+        "id": "79151845361"
       }
     ]
   }
