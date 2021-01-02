@@ -216,6 +216,8 @@ export default function InputsPage() {
         <React.Fragment>
             <h1>Data entry</h1>
 
+            <Input type='markdown' label='mkd' defaultValue='ып'/>
+
             <Button onClick={()=>setTestDefValue(`{
     "hello": true,
     "goodBye": 12, "goodBye1": 122
