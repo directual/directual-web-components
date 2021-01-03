@@ -10,6 +10,7 @@ import TabsPane from '../../layout/tabpane/tabpane'
 import { Markdown } from '../../article/mkd'
 import moment from 'moment'
 import Hint from '../../hint/hint'
+import { InputForm } from '../../dataentry/form/InputForm'
 
 export function ObjectCard(props) {
 
@@ -22,9 +23,8 @@ export function ObjectCard(props) {
     // support previous component version:
     const oldFashioned = (props.params && !props.params.data) ? true : false
 
-    console.log('==============props==============')
-    console.log(props)
-    // console.log(oldFashioned)
+    // console.log('==============card props==============')
+    // console.log(props)
 
     const editingOn = props.params.data && props.params.data.fields &&
         props.params.data.fields.id && props.params.data.fields.id.write && props.params.data.fields.id.read &&
@@ -85,12 +85,15 @@ export function ObjectCard(props) {
                     object[field].name = fieldStructure.name
                     object[field].sysName = field
                     object[field].dataType = fieldStructure.dataType
+                    object[field].format = fieldStructure.format
+                    object[field].formatOptions = fieldStructure.formatOptions
                 }
             }
         }
         return object
     }
     const object = composeObject()
+    //console.log(object)
 
     // arrange tabs:
     let cardTabs = []
@@ -156,25 +159,9 @@ export function ObjectCard(props) {
         const structure = getStructure(obj, transformTableFieldScheme(sysname, props.tableFieldScheme), props.tableStructures)
         const linkName = structure.visibleName && structure.visibleName.map(field => obj[field]).join(' ')
         let displayID = ''
-        if (typeof obj == 'string') {displayID = obj}
+        if (typeof obj == 'string') { displayID = obj }
         return linkName || displayID || 'No visible name'
     }
-
-    const isEditable = field => {
-        if (props.writeFields && props.writeFields.indexOf('id') != -1 && object.id && object.id.value &&
-            field.sysName &&
-            props.writeFields.indexOf(field.sysName) != -1) { return true } else { return false }
-    }
-
-    const matchInputType = type => {
-        const types = {
-            number: 'number',
-            date: 'date',
-            boolean: 'radio',
-        }
-        return types[type] || 'string'
-    }
-    const [confirmDelete, setConfirmDelete] = useState(false)
 
     const scrollDivRef = useRef(null)
     const [showBorder, setShowBorder] = useState(false)
@@ -185,18 +172,12 @@ export function ObjectCard(props) {
             setShowBorder(false)
     }
 
-    const checkLineBreaks = line => {
-        return line && typeof line == 'string' ? (line.match(/\n/g) || []).length : 0
-    }
-
-    const noTabs = <div></div>
+    const noTabs = <div>update components settings</div>
 
     function composeTabContent(fields, fieldParams, deleteField, actions) {
 
         // группируем actions
         const transform = (a, fieldParams) => {
-            // console.log('transform')
-            // console.log(a)
             const arr = a.map(i => { return { id: i, type: fieldParams[i] && fieldParams[i].type } })
             return arr.reduce((acc, item, i) => {
                 const { type } = item;
@@ -322,11 +303,9 @@ export function ObjectCard(props) {
                 {fields && fields.filter(i =>
                     fieldParams[i].write == true
                     && fieldParams[i].include == true
-                    && fieldParams[i].id != deleteField
                 ) && fields.filter(i =>
                     fieldParams[i].write == true
                     && fieldParams[i].include == true
-                    && fieldParams[i].id != deleteField
                 ).length > 0 &&
                     <SaveCard // Сохранить изменения
                         model={model}
@@ -344,11 +323,11 @@ export function ObjectCard(props) {
 
     return (
         <div className={styles.objectCard}>
-            {props.shareble && 
-                <div title='Copy direct link to the object' 
+            {props.shareble && // todo: сделать прямые ссылки на карточку
+                <div title='Copy direct link to the object'
                     className={`${styles.shareObject} icon icon-copy`}
-                    onClick={()=>{}}
-                    ></div>
+                    onClick={() => { }}
+                ></div>
             }
             <div className={styles.objectCardHeader}>
                 <div onClick={props.onClose}
@@ -395,10 +374,10 @@ export function ObjectCard(props) {
                             :
                             (object.id || 'No visible name')} />
                     <ObjectCard
-                        onClose={() => { setShowLinkedObject(false)}}
+                        onClose={() => { setShowLinkedObject(false) }}
                         onTerminate={() => props.onClose()}
                         object={linkedObject && linkedObject.object}
-                        params={linkedObject && {...linkedObject.params, actions: props.params.actions}}
+                        params={linkedObject && { ...linkedObject.params, actions: props.params.actions }}
                         parentObject={object}
                         tableFieldScheme={linkedObjectStruct}
                         executeAction={props.executeAction}
@@ -413,24 +392,22 @@ function CardField({ field, object, model, setModel, debug, editingOn,
     setLinkedObject, setLinkedObjectStruct, setShowLinkedObject, getLinkName }) {
     const [edit, setEdit] = useState(false)
 
-    const checkLineBreaks = line => {
-        return line ? (line.match(/\n/g) || []).length : 0;
-    }
-
     const getResolution = line => {
         const regex = /\....?.?.?$/g;
         const found = line.match(regex);
         return found ? found[0] : ''
     }
 
+    // console.log(field)
+    // console.log(object)
+
     return (
         <div key={field.sysName} className={styles.objFieldWrapper}>
 
             {debug && <div>
                 <p className='dd-debug'>{JSON.stringify(field)}</p>
-                <p className='dd-debug'><b>object: </b>{JSON.stringify(object[field.sysName])}</p></div>}
-
-            {/* {field.actions && field.actions.length > 0 && <div className='dd-debug'>бля! тут есть действия</div>} */}
+                <p className='dd-debug'><b>object: </b>{JSON.stringify(object[field.sysName])}</p>
+            </div>}
 
             {/* КАРТИНКИ */}
             {field.dataType == 'file' && field.read && field.fileImage &&
@@ -483,19 +460,27 @@ function CardField({ field, object, model, setModel, debug, editingOn,
 
             {/* СТРОКИ */}
             { (field.dataType == 'string') &&
-                <FieldString
-                    model={model}
-                    checkLineBreaks={checkLineBreaks}
-                    editingOn={editingOn}
-                    object={object}
+            <React.Fragment>
+                <InputForm
                     field={field}
+                    defaultValue={object[field.sysName].value}
+                    editingOn={field.write && editingOn}
+                    // to do:
+                    isHint={field.displayAsHint}
+                    hintType={field.hintType}
                     onChange={value => setModel({ ...model, [field.sysName]: value })}
-                />
+                /></React.Fragment>
             }
 
             {/* ДАТЫ */}
             { (field.dataType == 'date') &&
                 <React.Fragment>
+                    {/* <InputForm
+                        field={field}
+                        defaultValue={object[field.sysName].value}
+                        editingOn={field.write && editingOn}
+                        onChange={value => setModel({ ...model, [field.sysName]: value })}
+                    /> */}
                     {(field.write && editingOn) ?
                         <Input
                             type='date'
@@ -512,7 +497,14 @@ function CardField({ field, object, model, setModel, debug, editingOn,
             {/* BOOLEAN */}
             { (field.dataType == 'boolean') &&
                 <React.Fragment>
-                    {(field.write && editingOn) ?
+                    <InputForm
+                        field={field}
+                        defaultValue={typeof object[field.sysName].value == 'undefined' ? 'undefined' :
+                            object[field.sysName].value ? 'true' : 'false'}
+                        editingOn={field.write && editingOn}
+                        onChange={value => setModel({ ...model, [field.sysName]: value })}
+                    />
+                    {/* {(field.write && editingOn) ?
                         <Input
                             type='radio'
                             label={field.name || field.sysName}
@@ -526,7 +518,7 @@ function CardField({ field, object, model, setModel, debug, editingOn,
                             onChange={value => setModel({ ...model, [field.sysName]: value })}
                         />
                         :
-                        <FieldReadOnly field={field} object={object} weblink={{}} />}
+                        <FieldReadOnly field={field} object={object} weblink={{}} />} */}
                 </React.Fragment>}
 
             {/* LINK & ARRAY LINK */}
@@ -547,11 +539,10 @@ function CardField({ field, object, model, setModel, debug, editingOn,
 
             {/* JSON */}
             { (field.dataType == 'json') &&
-                <FieldJson
-                    model={model}
-                    editingOn={editingOn}
-                    object={object}
+                <InputForm
                     field={field}
+                    defaultValue={object[field.sysName].value}
+                    editingOn={field.write && editingOn}
                     onChange={value => setModel({ ...model, [field.sysName]: value })}
                 />
             }
@@ -672,135 +663,6 @@ function SaveCard({ model, currentObject, submit, setCurrentObject, setModel, lo
     )
 }
 
-function FieldMkd({ field, model, object, onChange, description, editingOn }) {
-    return (
-        <React.Fragment>
-            <span className={styles.label}>
-                {field.name || field.sysName}</span>
-
-            {description &&
-                <span className={styles.description}>
-                    {description}</span>}
-
-            <Markdown
-                edit={(field.write && editingOn)}
-                value={model[field.sysName]}
-                height={(field.write && editingOn) ? 350 : false}
-                preview
-                onChange={onChange}
-            />
-        </React.Fragment>
-    )
-}
-
-function FieldJson({ field, model, onChange, object, editingOn }) {
-
-    const jsonParse = def => {
-        try {
-            return JSON.stringify(JSON.parse(def), 0, 3)
-        } catch (e) {
-            console.log(e);
-            return def
-        }
-    }
-
-    const checkLineBreaks = line => {
-        return line ? (line.match(/\n/g) || []).length : 0;
-    }
-
-    if (!field.jsonDisplay || !field.jsonDisplay.type || field.jsonDisplay.type == 'default') {
-        return (
-            <React.Fragment>
-                {(field.write && editingOn) ?
-                    <Input
-                        type='textarea'
-                        code
-                        description={field.descriptionFlag && field.description}
-                        rows='auto'
-                        label={field.name || field.sysName}
-                        defaultValue={jsonParse(model[field.sysName])}
-                        onChange={onChange}
-                    /> :
-                    <FieldReadOnly field={field} object={object} weblink={{}} />}
-            </React.Fragment>
-        )
-    }
-
-    const jsonDefVal = def => {
-        try {
-            return JSON.parse(def)
-        } catch (e) {
-            console.log(e);
-            return def
-        }
-    }
-
-    if (field.jsonDisplay && (field.jsonDisplay.type == 'slider' || field.jsonDisplay.type == 'range')) {
-        return (
-            <div>
-                <Input
-                    type={field.jsonDisplay.type}
-                    description={field.description}
-                    disabled={!(field.write && editingOn)}
-                    width={500}
-                    //debug
-                    label={field.name || field.sysName}
-                    defaultValue={jsonDefVal(object[field.sysName].value)}
-                    min={field.jsonDisplay.range && field.jsonDisplay.range.min}
-                    max={field.jsonDisplay.range && field.jsonDisplay.range.max}
-                    step={field.jsonDisplay.range && field.jsonDisplay.range.step}
-                    unitName={field.jsonDisplay.unitName}
-                    onChange={val => onChange(JSON.stringify(val))}
-                />
-            </div>
-        )
-    }
-
-    if (field.jsonDisplay && field.jsonDisplay.type == 'radioStation') {
-        return (
-            <div>
-                <Input
-                    // debug
-                    type='radio'
-                    options={field.jsonDisplay && field.jsonDisplay.multipleChoice}
-                    description={field.description}
-                    disabled={!(field.write && editingOn)}
-                    label={field.name || field.sysName}
-                    onChange={val => onChange(JSON.stringify({ value: val }))}
-                    defaultValue={jsonDefVal(model[field.sysName]) && jsonDefVal(model[field.sysName]).value}
-                    customOption={field.jsonDisplay.customOption}
-                    customOptionType={field.jsonDisplay.customOptionType}
-                    customOptionLabel={field.jsonDisplay.customOptionLabel}
-                    customOptionPlaceholder={field.jsonDisplay.customOptionPlaceholder}
-                />
-            </div>
-        )
-    }
-
-    if (field.jsonDisplay && field.jsonDisplay.type == 'checkboxGroup') {
-        return (
-            <div>
-                <Input
-                    // debug
-                    type='checkboxGroup'
-                    options={field.jsonDisplay && field.jsonDisplay.multipleChoice}
-                    description={field.description}
-                    disabled={!(field.write && editingOn)}
-                    label={field.name || field.sysName}
-                    onChange={val => onChange(JSON.stringify(val))}
-                    defaultValue={jsonDefVal(model[field.sysName])}
-                    customOption={field.jsonDisplay.customOption}
-                    customOptionType={field.jsonDisplay.customOptionType}
-                    customOptionLabel={field.jsonDisplay.customOptionLabel}
-                    customOptionPlaceholder={field.jsonDisplay.customOptionPlaceholder}
-                />
-            </div>
-        )
-    }
-
-    return <div></div>
-}
-
 function FieldLink({ field, model, onChange, setLinkedObject, object,
     setLinkedObjectStruct, setShowLinkedObject, getLinkName, editingOn }) {
 
@@ -836,11 +698,13 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
                                         data: {
                                             fields: field.configureLinkedCard && field.configureLinkedCard.fields,
                                             fieldParams: field.configureLinkedCard && field.configureLinkedCard.fieldParams,
-                                            columns: { main: 
-                                                { 
+                                            columns: {
+                                                main:
+                                                {
                                                     id: 'main',
                                                     fieldIds: field.configureLinkedCard && field.configureLinkedCard.fieldOrder
-                                                } },
+                                                }
+                                            },
                                             columnOrder: ['main'],
                                             subHeader: field.subHeader || ''
                                         }
@@ -868,11 +732,13 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
                                                 data: {
                                                     fields: field.configureLinkedCard && field.configureLinkedCard.fields,
                                                     fieldParams: field.configureLinkedCard && field.configureLinkedCard.fieldParams,
-                                                    columns: { main: 
-                                                        { 
+                                                    columns: {
+                                                        main:
+                                                        {
                                                             id: 'main',
                                                             fieldIds: field.configureLinkedCard && field.configureLinkedCard.fieldOrder
-                                                        } },
+                                                        }
+                                                    },
                                                     columnOrder: ['main'],
                                                     subHeader: field.subHeader || ''
                                                 }
@@ -932,10 +798,10 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
 
     let conds = actionParams.conditionals ? [...actionParams.conditionals] : null
     if (conds) {
-        conds.forEach(cond=>{
+        conds.forEach(cond => {
             if (cond.target == 'id' && cond.type != 'const') {
                 typeof object[cond.value].value != 'object' ? cond.checkValue = object[cond.value].value :
-                cond.checkValue = object[cond.value].value.id || null
+                    cond.checkValue = object[cond.value].value.id || null
             }
             if (cond.target == 'id' && cond.type == 'const') {
                 cond.checkValue = cond.value
@@ -948,112 +814,34 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
 
     return (
         actionParams && checkActionCond && checkActionCond(conds) ?
-        <React.Fragment>
-            {actionParams.displayAs == 'form' &&
-                <React.Fragment>
-                    <FormSection title={actionParams.name} />
-                    {/* <pre className='dd-debug'>{JSON.stringify(actionData, 0, 3)}</pre> */}
-                    {actionParams.formFields && actionParams.formFields.length > 0 && actionParams.formFields.map(field => (<Input
-                        type={field.field.dataType}
-                        width={400}
-                        label={field.field.name}
-                        onChange={value => {
-                            const saveData = { ...actionData }
-                            saveData.formData = { ...saveData.formData, [field.field.fieldSysName]: value }
-                            setActionData(saveData)
-                        }}
-                    />))}
-                </React.Fragment>
-            }
-            <Button
-                accent={actionParams.buttonType == 'accent'}
-                danger={actionParams.buttonType == 'danger'}
-                onClick={() => { 
-                    submitAction(actionData)
-                    actionParams.closePopup && onClose()
-                }}
-                icon={actionParams.buttonIcon}
-            >
-                {actionParams.buttonTitle || actionParams.name}</Button>
-        </React.Fragment> : <React.Fragment></React.Fragment>
-    )
-}
-
-function FieldString({ field, model, onChange, object, editingOn, checkLineBreaks }) {
-
-    function validateUrl(value) {
-        return /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:[/?#]\S*)?$/i.test(value);
-    }
-
-    if (field.stringDisplay == 'markdown') {
-        if (field.write && editingOn) {
-            return (
-                <FieldMkd
-                    description={field.descriptionFlag && field.description}
-                    onChange={onChange}
-                    object={object}
-                    editingOn={editingOn}
-                    model={model}
-                    field={field} />
-            )
-        } else {
-            return (
-                <FieldMkd
-                    description={field.descriptionFlag && field.description}
-                    object={object}
-                    model={model}
-                    field={field} />
-            )
-        }
-    }
-
-    if (field.stringDisplay == 'hint') {
-        if (field.write && editingOn) {
-            return (
-                <Input
-                    type='textarea'
-                    description={field.descriptionFlag && field.description}
-                    rows='auto'
-                    label={field.name || field.sysName}
-                    defaultValue={model[field.sysName]}
-                    onChange={onChange}
-                />
-            )
-        } else {
-            return (
-                <React.Fragment>
-                    <span className={styles.label}>
-                        {field.name || field.sysName}</span>
-                    <Hint
-                        ok={field.hintType == 'ok'}
-                        danger={field.hintType == 'danger'}
-                        title={model[field.sysName]}
-                        margin={{ top: 1, bottom: 24 }}
-                    >{field.descriptionFlag && field.description}</Hint>
-                </React.Fragment>
-            )
-        }
-    }
-
-    return (
-        <React.Fragment>
-            {(field.write && editingOn) ?
-                <Input
-                    type='textarea'
-                    description={field.descriptionFlag && field.description}
-                    rows='auto'
-                    label={field.name || field.sysName}
-                    defaultValue={model[field.sysName]}
-                    onChange={onChange}
-                />
-                :
-                <FieldReadOnly field={field} object={object}
-                    weblink={{
-                        flag: field.stringDisplay == 'link' && validateUrl(model[field.sysName]),
-                        weblink: field.weblink
-                    }} />
-
-            }
-        </React.Fragment>
+            <React.Fragment>
+                {actionParams.displayAs == 'form' &&
+                    <React.Fragment>
+                        <FormSection title={actionParams.name} />
+                        {/* <pre className='dd-debug'>{JSON.stringify(actionData, 0, 3)}</pre> */}
+                        {actionParams.formFields && actionParams.formFields.length > 0 && actionParams.formFields.map(field => (<Input
+                            type={field.field.dataType}
+                            key={field.field.sysName}
+                            width={400}
+                            label={field.field.name}
+                            onChange={value => {
+                                const saveData = { ...actionData }
+                                saveData.formData = { ...saveData.formData, [field.field.fieldSysName]: value }
+                                setActionData(saveData)
+                            }}
+                        />))}
+                    </React.Fragment>
+                }
+                <Button
+                    accent={actionParams.buttonType == 'accent'}
+                    danger={actionParams.buttonType == 'danger'}
+                    onClick={() => {
+                        submitAction(actionData)
+                        actionParams.closePopup && onClose()
+                    }}
+                    icon={actionParams.buttonIcon}
+                >
+                    {actionParams.buttonTitle || actionParams.name}</Button>
+            </React.Fragment> : <React.Fragment></React.Fragment>
     )
 }

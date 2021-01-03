@@ -3,11 +3,13 @@ import Input from '../input/input'
 import { Markdown } from '../../article/mkd'
 import Hint from '../../hint/hint'
 import moment from 'moment'
+import styles from '../../viewobjects/table/table.module.css'
 
 export function InputForm(props) {
-
+    // console.log(props.field)
     if (!props.field.include) { return null }
     const type = `${props.field.dataType}${props.field.format ? `_${props.field.format}` : ''}`
+    // console.log(type)
     switch (type) {
         case 'json':
         case 'json_checkboxes':
@@ -18,6 +20,8 @@ export function InputForm(props) {
             return <FieldJson {...props} />
         case 'string_markdown':
             return <FieldMkd {...props} />
+        case 'string_webLink':
+            return <FieldText {...props} link />
         case 'decimal':
         case 'number':
         case 'number_positiveNum':
@@ -37,8 +41,26 @@ export function InputForm(props) {
     }
 }
 
-function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue }) {
-    console.log(defaultValue || (field.defaultValueOn && field.defaultValue))
+function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue, link, hintType, isHint }) {
+    const addHttp = link => {
+        if (link.substring(0,4) != 'http') { link = 'http://' + link }
+        return link
+    }
+
+    if (!editingOn) return <div>
+        <span className={styles.label}>
+            {field.name || field.sysName}</span>
+
+        {field.descriptionFlag && field.description &&
+            <span className={styles.description}>
+                {field.description}</span>}
+        {!link && !isHint &&
+        <div>{defaultValue || (field.defaultValueOn && field.defaultValue) || ''}</div>}
+        {link &&
+        <a href={addHttp(defaultValue)} target='_blank'>{defaultValue}</a>}
+        {isHint &&
+        <Hint margin={{top:1,bottom:24}} ok={hintType == 'ok'} error={hintType == 'danger'}>{defaultValue}</Hint>}
+    </div>
     return <Input
         type='textarea'
         rows='auto'
@@ -48,7 +70,7 @@ function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue
         required={field.required}
         placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
         label={placeholder != "true" ? (field.content || field.id) : ''}
-        description={field.description}
+        description={field.descriptionFlag && field.description}
         defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue) || ''}
     />
 }
@@ -63,26 +85,26 @@ function FieldStandard({ field, onChange, placeholder, editingOn, defaultValue }
         required={field.required}
         placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
         label={placeholder != "true" ? (field.content || field.id) : ''}
-        description={field.description}
+        description={field.descriptionFlag && field.description}
         defaultValue={field.defaultValueOn && field.defaultValue}
     />
 }
 
 function FieldBoolean({ field, onChange, placeholder, editingOn, defaultValue }) {
     const getBooleanDefaultValue = defVal => {
-        if (typeof defVal == 'string' ) {return defVal}
-        if (typeof defVal == 'undefined') {return 'undefined'}
-        if (defVal) { return 'true' } else {return 'false'}
+        if (typeof defVal == 'string') { return defVal }
+        if (typeof defVal == 'undefined') { return 'undefined' }
+        if (defVal) { return 'true' } else { return 'false' }
     }
     return <Input type='radio'
         options={[
-            { value: 'true', label: field.formatOptions.booleanOptions && field.formatOptions.booleanOptions[0] ? field.formatOptions.booleanOptions[0] : 'true' },
-            { value: 'false', label: field.formatOptions.booleanOptions && field.formatOptions.booleanOptions[1] ? field.formatOptions.booleanOptions[1] : 'false' }
+            { value: 'true', label: !field.formatOptions ? 'true' : field.formatOptions.booleanOptions && field.formatOptions.booleanOptions[0] ? field.formatOptions.booleanOptions[0] : 'true' },
+            { value: 'false', label: !field.formatOptions ? 'false' : field.formatOptions.booleanOptions && field.formatOptions.booleanOptions[1] ? field.formatOptions.booleanOptions[1] : 'false' }
         ]}
         onChange={onChange}
         disabled={!editingOn}
         label={field.content || field.id}
-        description={field.description}
+        description={field.descriptionFlag && field.description}
         defaultValue={getBooleanDefaultValue(defaultValue || (field.defaultValueOn && field.defaultValue))}
     />
 }
@@ -96,7 +118,7 @@ function FieldDate({ field, onChange, placeholder, editingOn, defaultValue }) {
         disabled={!editingOn}
         label={placeholder != "true" ? (field.content || field.id) : ''}
         placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
-        description={field.description}
+        description={field.descriptionFlag && field.description}
         defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
     />
 }
@@ -112,7 +134,7 @@ function FieldMkd({ field, onChange, placeholder, editingOn, defaultValue }) {
             required={field.required}
             placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
             label={placeholder != "true" ? (field.content || field.id) : ''}
-            description={field.description}
+            description={field.descriptionFlag && field.description}
             defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
         />
     </React.Fragment>
@@ -125,12 +147,17 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
         if (typeof json == 'object') return json
         try {
             parsedJson = JSON.parse(json)
-          }
-          catch (e) {
+        }
+        catch (e) {
             console.log(json);
             console.log(e);
-          }
+        }
         return parsedJson
+    }
+
+    const stringifyJson = json => {
+        if (typeof json == 'string') return json
+        return JSON.stringify(json)
     }
 
     return <React.Fragment>
@@ -142,8 +169,8 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
                 label={placeholder != "true" ? (field.content || field.id) : ''}
                 placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
                 required={field.required}
-                description={field.description}
-                defaultValue={(defaultValue && parseJson(defaultValue)) || (field.defaultValueOn && field.defaultValue)}
+                description={field.descriptionFlag && field.description}
+                defaultValue={(defaultValue && stringifyJson(defaultValue)) || (field.defaultValueOn && field.defaultValue)}
             />}
 
         {field && field.format == 'checkboxes' &&
@@ -151,7 +178,7 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
                 disabled={!editingOn}
                 onChange={value => onChange(JSON.stringify(value))}
                 label={placeholder != "true" ? (field.content || field.id) : ''}
-                description={field.description}
+                description={field.descriptionFlag && field.description}
                 customOptionType={field.formatOptions.customOptionType}
                 customOptionLabel={field.formatOptions.customOptionLabel}
                 customOptionPlaceholder={field.formatOptions.customOptionPlaceholder}
@@ -165,7 +192,7 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
                 disabled={!editingOn}
                 onChange={value => onChange(JSON.stringify(value))}
                 label={placeholder != "true" ? (field.content || field.id) : ''}
-                description={field.description}
+                description={field.descriptionFlag && field.description}
                 customOptionType={field.formatOptions.customOptionType}
                 customOptionLabel={field.formatOptions.customOptionLabel}
                 customOptionPlaceholder={field.formatOptions.customOptionPlaceholder}
@@ -179,11 +206,11 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
                 disabled={!editingOn}
                 onChange={value => onChange(JSON.stringify(value))}
                 label={placeholder != "true" ? (field.content || field.id) : ''}
-                description={field.description}
+                description={field.descriptionFlag && field.description}
                 objectStructure={field.formatOptions.keyValue ?
                     [field.formatOptions.keyValue.key, field.formatOptions.keyValue.value]
                     : ['key', 'value']}
-                defaultValue={ (defaultValue && parseJson(defaultValue)) || (field.defaultValueOn && field.defaultValue) || {}}
+                defaultValue={(defaultValue && parseJson(defaultValue)) || (field.defaultValueOn && field.defaultValue) || {}}
             />}
 
         {field && field.format == 'slider' &&
@@ -191,8 +218,8 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
                 disabled={!editingOn}
                 onChange={value => onChange(JSON.stringify(value))}
                 label={placeholder != "true" ? (field.content || field.id) : ''}
-                description={field.description}
-                defaultValue={ (defaultValue && parseJson(defaultValue)) || ((field.defaultValueOn && field.defaultValue) ? { firstValue: field.defaultValue.firstValue } :
+                description={field.descriptionFlag && field.description}
+                defaultValue={(defaultValue && parseJson(defaultValue)) || ((field.defaultValueOn && field.defaultValue) ? { firstValue: field.defaultValue.firstValue } :
                     {
                         firstValue: Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 0.3 + field.formatOptions.range.min)
                     })
@@ -205,10 +232,10 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
         {field && field.format == "rangeSlider" &&
             <Input type='range'
                 disabled={!editingOn}
-                onChange={value => onChange(JSON.stringify(value))}
+                onChange={value => onChange && onChange(JSON.stringify(value))}
                 label={placeholder != "true" ? (field.content || field.id) : ''}
-                description={field.description}
-                defaultValue={ (defaultValue && parseJson(defaultValue)) || ((field.defaultValueOn && field.defaultValue) ? field.defaultValue :
+                description={field.descriptionFlag && field.description}
+                defaultValue={(defaultValue && parseJson(defaultValue)) || ((field.defaultValueOn && field.defaultValue) ? field.defaultValue :
                     {
                         firstValue: Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 0.3 + field.formatOptions.range.min),
                         secondValue: Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 0.6 + field.formatOptions.range.min)
@@ -233,7 +260,7 @@ function FieldLink({ field, onChange, placeholder, editingOn, defaultValue }) {
             required={field.required}
             placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
             label={placeholder != "true" ? (field.content || field.id) : ''}
-            description={field.description}
+            description={field.descriptionFlag && field.description}
             defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
             options={field.searchData}
         />
@@ -246,7 +273,7 @@ function FieldLink({ field, onChange, placeholder, editingOn, defaultValue }) {
             required={field.required}
             placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
             label={placeholder != "true" ? (field.content || field.id) : ''}
-            description={field.description}
+            description={field.descriptionFlag && field.description}
             defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
         />
     }
