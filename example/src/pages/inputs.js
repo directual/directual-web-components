@@ -8,10 +8,8 @@ import 'directual-web-components/dist/index.css'
 
 export default function InputsPage() {
     const [value, setValue] = useState()
- 
-    const [ testDefValue, setTestDefValue] = useState(`{
-        "hello": true
-    }`)
+
+    const [testDefValue, setTestDefValue] = useState(null)
 
     const testFields = [
         {
@@ -216,22 +214,27 @@ export default function InputsPage() {
         <React.Fragment>
             <h1>Data entry</h1>
 
+            <Input 
+                type='date'
+                //debug
+                label='test date'
+                dateFormat='D MMM, YYYY '
+                timeFormat='HH:mm'
+                defaultValue={testDefValue}
+                />
             <Input type='markdown' label='mkd' defaultValue='ып'/>
 
-            <Button onClick={()=>setTestDefValue(`{
-    "hello": true,
-    "goodBye": 12, "goodBye1": 122
-}`)}>push me</Button>
+            <Button onClick={() => setTestDefValue(`2020-12-29T22:17:50.000Z`)}>push me</Button>
 
-            <Input type='optionsHandler'
+            {/* <Input type='optionsHandler'
                 label='Options'
                 addButtonText='Add an option'
                 defaultValue={testDefValue.multipleChoice || [{ value: null, label: null }]}
                 objectStructure={['value', 'label']}
-                onChange={value => setTestDefValue({ ...testDefValue, multipleChoice: value }) }
-            />
+                onChange={value => setTestDefValue({ ...testDefValue, multipleChoice: value })}
+            /> */}
 
-            <Input
+            {/* <Input
                 label='cb'
                 options={testDefValue.multipleChoice}
                 //options={[{ value: 'a', label: 'b' }]}
@@ -239,7 +242,7 @@ export default function InputsPage() {
                 // onChange={value => this.setState({ value: value })}
                 // defaultValue={this.state.value}
                 nomargin
-                type='checkboxGroup' />
+                type='checkboxGroup' /> */}
 
             <Input type='phone' label='phone' />
             <Input type='email' label='email' />
@@ -285,9 +288,9 @@ export default function InputsPage() {
                 disabled
                 rows='auto'
                 onChange={v => { }}
-                //isValid={v => { console.log(v) }}
+            //isValid={v => { console.log(v) }}
             />
-            <Input type='textarea' 
+            <Input type='textarea'
                 //debug
                 description={<span>hello <code>my friend</code>, nice to meet you</span>}
                 tip={<span>hello <code>my friend</code>, nice to meet you</span>}

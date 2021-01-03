@@ -772,18 +772,20 @@ export default function Input(props) {
                 />
             }
             {props.type == 'date' &&
-                <Datepicker
-                    onChange={e => { setValue(e); props.onChange && props.onChange(e) }}
-                    disabled={props.disabled}
-                    placeholder={props.placeholder}
-                    defaultValue={defVal}
-                    utc={props.utc}
-                    correctedHeight={props.correctedHeight}
-                    dateFormat={props.dateFormat}
-                    timeFormat={props.timeFormat}
-                    //onBlur={checkValue}
-                    closeOnSelect={true}
-                />
+                <React.Fragment>
+                    <Datepicker
+                        onChange={e => { setValue(e); props.onChange && props.onChange(e) }}
+                        disabled={props.disabled}
+                        placeholder={props.placeholder}
+                        defaultValue={defVal}
+                        utc={props.utc}
+                        correctedHeight={props.correctedHeight}
+                        dateFormat={props.dateFormat}
+                        timeFormat={props.timeFormat}
+                        //onBlur={checkValue}
+                        closeOnSelect={true}
+                    />
+                </React.Fragment>
             }
             {props.type == 'structurefield' &&
                 <StructureField

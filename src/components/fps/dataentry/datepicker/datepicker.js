@@ -14,9 +14,11 @@ export default function Datepicker(props) {
 
     const [value, setValue] = useState(props.defaultValue && props.utc ? moment.utc(props.defaultValue) : moment(props.defaultValue))
 
-    useEffect(()=>{
+    useEffect(() => {
         if (!props.defaultValue) {
             setValue(null)
+        } else {
+            setValue(props.utc ? moment.utc(props.defaultValue) : moment(props.defaultValue))
         }
     }, [props.defaultValue])
 
