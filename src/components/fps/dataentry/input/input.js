@@ -659,7 +659,7 @@ export default function Input(props) {
                     <Markdown
                         placeholder={`${props.placeholder ? props.placeholder : ''}`}
                         disabled={props.disabled}
-                        edit
+                        edit={props.edit}
                         onChange={val => handleChange(val)}
                         //height={350}
                         value={value}
