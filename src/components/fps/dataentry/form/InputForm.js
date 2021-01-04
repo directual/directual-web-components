@@ -46,7 +46,6 @@ function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue
         if (link.substring(0,4) != 'http') { link = 'http://' + link }
         return link
     }
-
     if (!editingOn) return <div>
         <span className={styles.label}>
             {field.name || field.sysName}</span>
@@ -76,6 +75,15 @@ function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue
 }
 
 function FieldStandard({ field, onChange, placeholder, editingOn, defaultValue }) {
+    if (!editingOn) return <div>
+        <span className={styles.label}>
+            {field.name || field.sysName}</span>
+
+        {field.descriptionFlag && field.description &&
+            <span className={styles.description}>
+                {field.description}</span>}
+        <div>{defaultValue || (field.defaultValueOn && field.defaultValue) || ''}</div>
+    </div>
     return <Input
         type={field.dataType != 'string' ? field.dataType : field.format} // для email, phone
         positive={field.format == 'positiveNum'}
