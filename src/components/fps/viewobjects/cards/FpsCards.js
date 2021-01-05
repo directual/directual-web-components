@@ -97,8 +97,8 @@ function FpsCards({ auth, data, onEvent, id }) {
 
     //Check action conditionals
     const checkActionCond = (actionCond) => {
-        console.log('actionCond')
-        console.log(actionCond)
+        // console.log('actionCond')
+        // console.log(actionCond)
         // console.log(auth)
         
         if (!actionCond) { return true }

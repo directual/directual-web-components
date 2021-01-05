@@ -494,6 +494,16 @@ const App = (props) => {
             "format": "",
             "formatOptions": {},
             "link": "Type2252"
+          },
+          {
+            "fieldSysName": "user_editor_id",
+            "fetch": [],
+            "sysName": "user_editor_id",
+            "name": "Кто внес изменение",
+            "dataType": "link",
+            "format": "",
+            "formatOptions": {},
+            "link": "WebUser"
           }
         ],
         "fields": {
@@ -725,31 +735,46 @@ const App = (props) => {
             "formatOptions": {},
             "read": true,
             "link": "WebUser",
-            "actions": [
-              {
-                "sysName": "",
-                "id": "83501609848192559",
-                "name": "linked action",
-                "displayAs": "button",
-                "conditionals": [
-                  {
-                    "id": "81091609848199768",
-                    "target": "linkedField",
-                    "field": "firstName",
-                    "value": "paul",
-                    "type": "linkedField",
-                    "linkedField": "firstName"
-                  }
-                ],
-                "callFrom": "linked",
-                "callFromField": "user_id",
-                "formMapping": []
-              }
-            ]
+            "actions": []
           },
-          "action__95091609854765695": {
-            "id": "action__95091609854765695",
-            "content": "action",
+          "user_editor_id": {
+            "id": "user_editor_id",
+            "content": "Кто внес изменение",
+            "type": "field",
+            "dataType": "link",
+            "format": "",
+            "formatOptions": {},
+            "write": true,
+            "link": "WebUser",
+            "actions": []
+          },
+          "action__14971609867306992": {
+            "content": "Активировать вакансию",
+            "id": "action__14971609867306992",
+            "type": "action",
+            "actions": []
+          },
+          "action__25911609867410918": {
+            "content": "Вернуть в неоплаченные черновики",
+            "id": "action__25911609867410918",
+            "type": "action",
+            "actions": []
+          },
+          "action__28261609868425771": {
+            "id": "action__28261609868425771",
+            "content": "Архивировать вакансию",
+            "type": "action",
+            "actions": []
+          },
+          "action__72731609868546612": {
+            "id": "action__72731609868546612",
+            "content": "Вернуть в неоплаченные черновики",
+            "type": "action",
+            "actions": []
+          },
+          "action__90571609868628367": {
+            "id": "action__90571609868628367",
+            "content": "Удалить черновик",
             "type": "action",
             "actions": []
           }
@@ -784,7 +809,7 @@ const App = (props) => {
             "quickSearch": false,
             "fileImageSize": 200,
             "clickable": false,
-            "displayAsButton": true,
+            "displayAsButton": false,
             "button": {
               "icon": "academy",
               "title": "hey"
@@ -890,11 +915,6 @@ const App = (props) => {
                   "type": "field",
                   "read": true,
                   "dataType": "string"
-                },
-                "action__83501609848192559": {
-                  "id": "action__83501609848192559",
-                  "content": "linked action",
-                  "type": "action"
                 }
               },
               "fieldParams": {
@@ -925,6 +945,7 @@ const App = (props) => {
                 "firstName",
                 "action__83501609848192559",
                 "lastName",
+                null,
                 "TG_username"
               ]
             },
@@ -967,6 +988,13 @@ const App = (props) => {
             "fileImageSize": 200,
             "clickable": false,
             "displayAsHint": true
+          },
+          "user_editor_id": {
+            "include": false,
+            "fileImageFormat": "square",
+            "quickSearch": false,
+            "fileImageSize": 200,
+            "clickable": false
           }
         },
         "columns": {
@@ -975,6 +1003,11 @@ const App = (props) => {
             "title": "Вакансия",
             "fieldIds": [
               "job_status_message",
+              "action__25911609867410918",
+              "action__14971609867306992",
+              "action__28261609868425771",
+              "action__72731609868546612",
+              "action__90571609868628367",
               "job_name",
               "job_description",
               "type",
@@ -985,7 +1018,7 @@ const App = (props) => {
               "connect_type",
               "connect_instructions",
               "job_status",
-              "action__95091609854765695"
+              "user_editor_id"
             ]
           },
           "14041609667638138": {
@@ -1004,20 +1037,78 @@ const App = (props) => {
             "id": "34091609667685704",
             "title": "Отклики",
             "fieldIds": []
-          },
-          "79441609764968782": {
-            "id": "79441609764968782",
-            "title": "Действия с вакансией",
-            "fieldIds": []
           }
         },
         "columnOrder": [
           "tab-1",
           "14041609667638138",
-          "34091609667685704",
-          "79441609764968782"
+          "34091609667685704"
         ],
-        "actions": []
+        "actions": [
+          {
+            "sysName": "",
+            "id": "14971609867306992",
+            "name": "Активировать вакансию",
+            "displayAs": "button",
+            "buttonIcon": "upload",
+            "buttonType": "accent",
+            "closePopup": true,
+            "dropdown": true,
+            "formMapping": [
+              {
+                "id": "29031609867347672",
+                "target": "id",
+                "type": "objectField",
+                "value": "id"
+              },
+              {
+                "id": "71361609867355849",
+                "target": "job_status",
+                "type": "const",
+                "value": "active"
+              }
+            ],
+            "conditionals": [
+              {
+                "id": "30311609867367312",
+                "target": "field",
+                "value": "new",
+                "field": "job_status"
+              }
+            ]
+          },
+          {
+            "sysName": "",
+            "id": "25911609867410918",
+            "name": "Вернуть в неоплаченные черновики",
+            "displayAs": "button",
+            "buttonIcon": "download",
+            "dropdown": true,
+            "closePopup": true,
+            "formMapping": [
+              {
+                "id": "87691609867443440",
+                "target": "id",
+                "type": "objectField",
+                "value": "id"
+              },
+              {
+                "id": "26241609867455762",
+                "target": "job_status",
+                "type": "const",
+                "value": "new"
+              }
+            ],
+            "conditionals": [
+              {
+                "id": "27341609867462533",
+                "target": "field",
+                "value": "active",
+                "field": "job_status"
+              }
+            ]
+          }
+        ]
       },
       "fields": {
         "company_city_ids": {
@@ -1049,7 +1140,7 @@ const App = (props) => {
           "quickSearch": false,
           "fileImageSize": 200,
           "clickable": false,
-          "displayAsButton": true,
+          "displayAsButton": false,
           "button": {
             "icon": "academy",
             "title": "hey"
@@ -1313,11 +1404,6 @@ const App = (props) => {
                 "type": "field",
                 "read": true,
                 "dataType": "string"
-              },
-              "action__83501609848192559": {
-                "id": "action__83501609848192559",
-                "content": "linked action",
-                "type": "action"
               }
             },
             "fieldParams": {
@@ -1348,6 +1434,7 @@ const App = (props) => {
               "firstName",
               "action__83501609848192559",
               "lastName",
+              null,
               "TG_username"
             ]
           },
@@ -1390,6 +1477,13 @@ const App = (props) => {
           "fileImageSize": 200,
           "clickable": false,
           "displayAsHint": true
+        },
+        "user_editor_id": {
+          "include": false,
+          "fileImageFormat": "square",
+          "quickSearch": false,
+          "fileImageSize": 200,
+          "clickable": false
         }
       },
       "showCounter": true,
@@ -1398,37 +1492,196 @@ const App = (props) => {
       "actions": [
         {
           "sysName": "",
-          "id": "83501609848192559",
-          "name": "linked action",
+          "id": "14971609867306992",
+          "name": "Активировать вакансию",
           "displayAs": "button",
-          "conditionals": [
+          "buttonIcon": "upload",
+          "buttonType": "accent",
+          "closePopup": true,
+          "dropdown": true,
+          "formMapping": [
             {
-              "id": "81091609848199768",
-              "target": "linkedField",
-              "field": "firstName",
-              "value": "paul",
-              "type": "linkedField",
-              "linkedField": "firstName"
+              "id": "29031609867347672",
+              "target": "id",
+              "type": "objectField",
+              "value": "id"
+            },
+            {
+              "id": "71361609867355849",
+              "target": "job_status",
+              "type": "const",
+              "value": "active"
+            },
+            {
+              "id": "29701609867653986",
+              "target": "user_editor_id",
+              "type": "user",
+              "value": null
             }
           ],
-          "callFrom": "linked",
-          "callFromField": "user_id",
-          "formMapping": []
+          "conditionals": [
+            {
+              "id": "30311609867367312",
+              "target": "field",
+              "value": "new",
+              "field": "job_status",
+              "fieldValue": "new"
+            }
+          ]
         },
         {
           "sysName": "",
-          "id": "95091609854765695",
-          "name": "action",
+          "id": "25911609867410918",
+          "name": "Вернуть в неоплаченные черновики",
           "displayAs": "button",
+          "buttonIcon": "download",
+          "dropdown": true,
+          "closePopup": true,
+          "formMapping": [
+            {
+              "id": "87691609867443440",
+              "target": "id",
+              "type": "objectField",
+              "value": "id"
+            },
+            {
+              "id": "26241609867455762",
+              "target": "job_status",
+              "type": "const",
+              "value": "new"
+            },
+            {
+              "id": "63641609867670853",
+              "target": "user_editor_id",
+              "type": "user",
+              "value": null
+            }
+          ],
           "conditionals": [
             {
-              "id": "75401609854777171",
+              "id": "27341609867462533",
               "target": "field",
+              "value": "active",
               "field": "job_status",
+              "fieldValue": "new"
+            }
+          ]
+        },
+        {
+          "sysName": "",
+          "id": "28261609868425771",
+          "name": "Архивировать вакансию",
+          "displayAs": "button",
+          "buttonIcon": "delete",
+          "buttonType": "danger",
+          "dropdown": true,
+          "closePopup": true,
+          "formMapping": [
+            {
+              "id": "13861609868444933",
+              "target": "id",
+              "type": "objectField",
+              "value": "id"
+            },
+            {
+              "id": "48741609868451780",
+              "target": "job_status",
+              "type": "const",
+              "value": "archived"
+            },
+            {
+              "id": "97501609868464033",
+              "target": "user_editor_id",
+              "type": "user",
+              "value": null
+            }
+          ],
+          "conditionals": [
+            {
+              "id": "29461609868609056",
+              "target": "field",
+              "value": "active",
+              "field": "job_status",
+              "fieldValue": "new"
+            }
+          ]
+        },
+        {
+          "sysName": "",
+          "id": "72731609868546612",
+          "name": "Вернуть в неоплаченные черновики",
+          "displayAs": "button",
+          "buttonIcon": "download",
+          "dropdown": true,
+          "closePopup": true,
+          "formMapping": [
+            {
+              "id": "43681609868562733",
+              "target": "id",
+              "type": "objectField",
+              "value": "id"
+            },
+            {
+              "id": "54831609868572261",
+              "target": "user_editor_id",
+              "type": "user",
+              "value": null
+            },
+            {
+              "id": "65661609868575972",
+              "target": "job_status",
+              "type": "const",
               "value": "new"
             }
           ],
-          "dropdown": true
+          "conditionals": [
+            {
+              "id": "32001609868587111",
+              "target": "field",
+              "value": "archived",
+              "field": "job_status",
+              "fieldValue": "new"
+            }
+          ]
+        },
+        {
+          "sysName": "",
+          "id": "90571609868628367",
+          "name": "Удалить черновик",
+          "displayAs": "button",
+          "buttonIcon": "delete",
+          "buttonType": "danger",
+          "dropdown": true,
+          "closePopup": true,
+          "formMapping": [
+            {
+              "id": "38911609868650926",
+              "target": "id",
+              "type": "objectField",
+              "value": "id"
+            },
+            {
+              "id": "63801609868658311",
+              "target": "user_editor_id",
+              "type": "user",
+              "value": null
+            },
+            {
+              "id": "77031609868662044",
+              "target": "job_status",
+              "type": "const",
+              "value": "deleted"
+            }
+          ],
+          "conditionals": [
+            {
+              "id": "39501609868669772",
+              "target": "field",
+              "value": "new",
+              "field": "job_status",
+              "fieldValue": "new"
+            }
+          ]
         }
       ]
     },
@@ -1930,74 +2183,40 @@ const App = (props) => {
     ],
     "data": [
       {
+        "connect_instructions": "прийти одному и без оружия",
         "company_name": "Яндекс",
-        "company_city_ids": [
-          {
-            "name": "Москва",
-            "id": "95ddc157-f2dc-4ab1-a1e5-ce9c6398bfdf"
-          }
-        ],
-        "job_name": "Хостесс",
-        "user_id": {
-          "image": "https://api.alfa.directual.com/fileUploaded/vitrina2252/bf8c02c2-d671-4c3c-9551-ab1e9fb94647.jpg",
-          "lastName": "Ershov",
-          "firstName": "Pavel",
-          "TG_username": "pavelershov"
-        },
-        "functions_52": [],
-        "connect_type": true,
-        "salary": "{\"secondValue\":230,\"firstValue\":120}",
-        "job_description": "### Требования \n- милая мордочка\n- стройная фигура\n\n### Обязанности\n- хлопать глазами\n- улыбаться\n\n### Условия \n- отличные",
-        "id": "4f938487-6f4d-4372-b2c9-dea73a7be03f",
-        "functions_22": [
-          {
-            "name": "Хостес",
-            "id": "ee6cd622-e697-4d59-bca0-d34d4d6fa058"
-          }
-        ],
-        "job_status": "active",
-        "type": {
-          "id": "22",
-          "type": "график 2 через 2"
-        },
-        "company_website": "ya.ru",
-        "connect_instructions": ""
-      },
-      {
-        "company_name": "Google",
         "company_city_ids": [
           {
             "name": "Другой город / за пределами РФ",
             "id": "other"
           }
         ],
-        "job_name": "Модель",
+        "job_name": "пыщь пыщь",
         "user_id": {
-          "image": "https://api.alfa.directual.com/fileUploaded/vitrina2252/bf8c02c2-d671-4c3c-9551-ab1e9fb94647.jpg",
+          "image": "https://api.alfa.directual.com/fileUploaded/vitrina2252/806beb37-e6ca-41fe-957d-8ee5e2711ed8.jpg",
           "lastName": "Ershov",
           "firstName": "Pavel",
           "TG_username": "pavelershov"
         },
-        "connect_type": true,
-        "salary": "{\"secondValue\":120,\"firstValue\":40}",
-        "job_status_message": "Ожидает оплаты",
-        "job_description": "### Требования \n- один\n- два\n- три\n\n### Обязанности\n- один\n- два\n- три\n\n### Условия \n- один\n- два\n- три",
-        "id": "4caa85d7-5757-41ab-8540-eead081152b2",
-        "company_description": "Транснациональная корпорация **Гугол**\n\nГоворят, там бесплатная еда для программистов.\n\n![Google](https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png)\n",
-        "functions_22": [
+        "functions_52": [
           {
-            "name": "Продавец-консультант",
-            "id": "58b198e4-6ec9-4cde-87cf-8edf8d88af95"
+            "name": "PR",
+            "id": "5b27b967-9c4d-4dbe-89f0-abb4186e64a1"
           }
         ],
+        "connect_type": "",
+        "salary": "{\"secondValue\":170,\"firstValue\":70}",
+        "job_status_message": "Ожидает оплаты",
+        "job_description": "### Требования \n- один\n- два\n- три\n\n### Обязанности\n- один\n- два\n- три\n\n### Условия \n- один\n- два\n- три",
+        "id": "15948ad3-a5d8-471b-9050-e728714a7f86",
         "job_status": "new",
         "type": {
-          "id": "22",
-          "type": "график 2 через 2"
+          "id": "52",
+          "type": "график 5 через 2"
         },
-        "company_website": "google.com",
-        "connect_instructions": "",
-        "functions_52": ""
+        "company_website": "ya.ru",
+        "functions_22": "",
+        "user_editor_id": ""
       }
     ],
     "totalPages": 1,
@@ -2111,7 +2330,8 @@ const App = (props) => {
       "job_name",
       "job_status",
       "salary",
-      "type"
+      "type",
+      "user_editor_id"
     ],
     "structures": {
       "1330951": {
@@ -2173,7 +2393,7 @@ const App = (props) => {
         "dateCreated": "2020-12-14T10:27:24Z",
         "hidden": false,
         "dateHidden": null,
-        "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"company_city_ids\",\"dataType\":\"arrayLink\",\"name\":\"Город(а) работодателя\",\"id\":\"10281607944727109\",\"link\":\"cities\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"job_status\",\"dataType\":\"string\",\"name\":\"Статус (техническое поле)\",\"id\":\"14461609825098470\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"salary\",\"dataType\":\"json\",\"name\":\"Зарплатная вилка\",\"id\":\"15401607941726857\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"rangeSlider\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"unitName\":\"k ₽\",\"booleanOptions\":[\"True\",\"False\"],\"customOptionPlaceholder\":\"Describe your option\",\"range\":{\"min\":20,\"max\":300,\"step\":10},\"customOptionType\":\"textarea\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true},{\"sysName\":\"company_description\",\"dataType\":\"string\",\"name\":\"Описание компании работодателя\",\"id\":\"17331609671162114\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"responds_declined_ids\",\"dataType\":\"arrayLink\",\"name\":\"Отклоненные отклики\",\"id\":\"19311609830709019\",\"link\":\"Responds\",\"group\":\"1609753049831\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"company_name\",\"dataType\":\"string\",\"name\":\"Название компании работодателя\",\"id\":\"22051607944259558\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"job_status_message\",\"dataType\":\"string\",\"name\":\"Статус вакансии\",\"id\":\"30881609826436336\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"company_in_profile\",\"dataType\":\"boolean\",\"name\":\"Работодатель\",\"id\":\"33951607944479971\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"booleanOptions\":[\"Указан в моем профиле работодателя\",\"Другая компания\"],\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"user_id\",\"dataType\":\"link\",\"name\":\"Пользователь, разместивший вакансию\",\"id\":\"41481607941663169\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"responds_new_ids\",\"dataType\":\"arrayLink\",\"name\":\"Новые отклики\",\"id\":\"52651609830657074\",\"link\":\"Responds\",\"group\":\"1609753049831\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"responds_new\",\"dataType\":\"number\",\"name\":\"Новых откликов\",\"id\":\"59481609753074292\",\"link\":\"\",\"group\":\"1609753049831\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"connect_instructions\",\"dataType\":\"string\",\"name\":\"Инструкции для связи кандидату\",\"id\":\"64711607948185707\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"connect_type\",\"dataType\":\"boolean\",\"name\":\"Способ связи с кандидатом\",\"id\":\"65731607948157836\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"booleanOptions\":[\"Выслать кандидату мой телеграм\",\"Другой способ\"],\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"responds_approved_ids\",\"dataType\":\"arrayLink\",\"name\":\"Одобренные отклики\",\"id\":\"67331609830708204\",\"link\":\"Responds\",\"group\":\"1609753049831\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"functions_52\",\"dataType\":\"arrayLink\",\"name\":\"Функции 5/2\",\"id\":\"67731607941768628\",\"link\":\"functions52\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"job_description\",\"dataType\":\"string\",\"name\":\"Описание вакансии\",\"id\":\"74961607943694679\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"responds_total\",\"dataType\":\"number\",\"name\":\"Всего откликов\",\"id\":\"74961609753055250\",\"link\":\"\",\"group\":\"1609753049831\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"company_website\",\"dataType\":\"string\",\"name\":\"Сайт работодателя\",\"id\":\"76091607944603531\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"date_created\",\"dataType\":\"date\",\"name\":\"Дата создания вакансии\",\"id\":\"76531609833917406\",\"link\":\"\",\"group\":\"1609833907682\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"functions_22\",\"dataType\":\"arrayLink\",\"name\":\"Функции 2/2\",\"id\":\"82251607941755646\",\"link\":\"functions22\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"type\",\"dataType\":\"link\",\"name\":\"График\",\"id\":\"82641607941710823\",\"link\":\"Type2252\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"job_name\",\"dataType\":\"string\",\"name\":\"Название вакансии\",\"id\":\"93071607941686773\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false}]",
+        "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"company_city_ids\",\"name\":\"Город(а) работодателя\",\"dataType\":\"arrayLink\",\"id\":\"10281607944727109\",\"link\":\"cities\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"job_status\",\"name\":\"Статус (техническое поле)\",\"dataType\":\"string\",\"id\":\"14461609825098470\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"salary\",\"name\":\"Зарплатная вилка\",\"dataType\":\"json\",\"id\":\"15401607941726857\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"rangeSlider\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"unitName\":\"k ₽\",\"booleanOptions\":[\"True\",\"False\"],\"customOptionPlaceholder\":\"Describe your option\",\"range\":{\"min\":20,\"max\":300,\"step\":10},\"customOptionType\":\"textarea\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":true},{\"sysName\":\"company_description\",\"name\":\"Описание компании работодателя\",\"dataType\":\"string\",\"id\":\"17331609671162114\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"responds_declined_ids\",\"name\":\"Отклоненные отклики\",\"dataType\":\"arrayLink\",\"id\":\"19311609830709019\",\"link\":\"Responds\",\"group\":\"1609753049831\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"company_name\",\"name\":\"Название компании работодателя\",\"dataType\":\"string\",\"id\":\"22051607944259558\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"payment_link\",\"name\":\"Оплатить размещение\",\"dataType\":\"string\",\"id\":\"29021609872910913\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"job_status_message\",\"name\":\"Статус вакансии\",\"dataType\":\"string\",\"id\":\"30881609826436336\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"company_in_profile\",\"name\":\"Работодатель\",\"dataType\":\"boolean\",\"id\":\"33951607944479971\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"booleanOptions\":[\"Указан в моем профиле работодателя\",\"Другая компания\"],\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"user_id\",\"name\":\"Пользователь, разместивший вакансию\",\"dataType\":\"link\",\"id\":\"41481607941663169\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"responds_new_ids\",\"name\":\"Новые отклики\",\"dataType\":\"arrayLink\",\"id\":\"52651609830657074\",\"link\":\"Responds\",\"group\":\"1609753049831\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"user_editor_id\",\"name\":\"Кто внес изменение\",\"dataType\":\"link\",\"id\":\"55761609867584495\",\"link\":\"WebUser\",\"group\":\"1609833907682\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"responds_new\",\"name\":\"Новых откликов\",\"dataType\":\"number\",\"id\":\"59481609753074292\",\"link\":\"\",\"group\":\"1609753049831\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"connect_instructions\",\"name\":\"Инструкции для связи кандидату\",\"dataType\":\"string\",\"id\":\"64711607948185707\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"connect_type\",\"name\":\"Способ связи с кандидатом\",\"dataType\":\"boolean\",\"id\":\"65731607948157836\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"booleanOptions\":[\"Выслать кандидату мой телеграм\",\"Другой способ\"],\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"responds_approved_ids\",\"name\":\"Одобренные отклики\",\"dataType\":\"arrayLink\",\"id\":\"67331609830708204\",\"link\":\"Responds\",\"group\":\"1609753049831\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"functions_52\",\"name\":\"Функции 5/2\",\"dataType\":\"arrayLink\",\"id\":\"67731607941768628\",\"link\":\"functions52\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"job_description\",\"name\":\"Описание вакансии\",\"dataType\":\"string\",\"id\":\"74961607943694679\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"responds_total\",\"name\":\"Всего откликов\",\"dataType\":\"number\",\"id\":\"74961609753055250\",\"link\":\"\",\"group\":\"1609753049831\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"company_website\",\"name\":\"Сайт работодателя\",\"dataType\":\"string\",\"id\":\"76091607944603531\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"date_created\",\"name\":\"Дата создания вакансии\",\"dataType\":\"date\",\"id\":\"76531609833917406\",\"link\":\"\",\"group\":\"1609833907682\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"functions_22\",\"name\":\"Функции 2/2\",\"dataType\":\"arrayLink\",\"id\":\"82251607941755646\",\"link\":\"functions22\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"type\",\"name\":\"График\",\"dataType\":\"link\",\"id\":\"82641607941710823\",\"link\":\"Type2252\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"job_name\",\"name\":\"Название вакансии\",\"dataType\":\"string\",\"id\":\"93071607941686773\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false}]",
         "jsonGroupSettings": "[{\"id\":1609753049831,\"name\":\"Отклики\",\"order\":0},{\"id\":1609833907682,\"name\":\"Timeline\",\"order\":1}]",
         "jsonViewIdSettings": "[{\"sysName\":\"job_name\"},{\"sysName\":\"company_name\"}]",
         "jsonSettings": null,
@@ -2181,9 +2401,9 @@ const App = (props) => {
         "indexEnabled": true,
         "lastIndexUpdate": 0,
         "indexName": "",
-        "dateChanged": "2021-01-05T08:05:39Z",
+        "dateChanged": "2021-01-05T18:55:38Z",
         "createBy": 21,
-        "changedBy": 1,
+        "changedBy": 21,
         "_settings": null,
         "_nativeIndexSettings": null,
         "innerIDField": {
@@ -2720,6 +2940,33 @@ const App = (props) => {
         "synthetic": false,
         "format": null,
         "formatOptions": {},
+        "groupName": null,
+        "linkOrArrayLinkType": true,
+        "linkType": true,
+        "arrayLink": false,
+        "indexExists": false,
+        "typeVariable": {},
+        "json": false
+      },
+      {
+        "sysName": "user_editor_id",
+        "name": "Кто внес изменение",
+        "dataType": "link",
+        "id": "55761609867584495",
+        "link": "WebUser",
+        "group": "1609833907682",
+        "tags": null,
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 1,
+        "linkIndexFieldSysName": [],
+        "defaultValue": null,
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": null,
         "groupName": null,
         "linkOrArrayLinkType": true,
         "linkType": true,

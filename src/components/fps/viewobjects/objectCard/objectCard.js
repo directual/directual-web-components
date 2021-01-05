@@ -239,6 +239,7 @@ export function ObjectCard(props) {
                 {transformedFields.map((f, i) => {
                     const fieldSysName = f.id
                     let field = f.type != 'actions' ? fieldParams[fieldSysName] : f
+                    if (!field) return <React.Fragment></React.Fragment>
                     field = {
                         ...field,
                         name: field.content,
@@ -293,7 +294,7 @@ export function ObjectCard(props) {
                     />
                 })}
 
-                {fields && fields.filter(i =>
+                {fields && fieldParams && fieldParams.length > 0 && fields.filter(i =>
                     fieldParams[i].write == true
                     && fieldParams[i].include == true
                 ) && fields.filter(i =>
@@ -776,7 +777,7 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
     // console.log('====actionParams====')
     // console.log(actionParams)
 
-    let conds = actionParams.conditionals ? [...actionParams.conditionals] : null
+    let conds = actionParams ? (actionParams.conditionals ? [...actionParams.conditionals] : null) : null
     if (conds) {
         conds.forEach(cond => {
             if (cond.target == 'id' && cond.type != 'const') {
