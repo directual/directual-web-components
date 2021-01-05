@@ -244,41 +244,34 @@ export function ObjectCard(props) {
                         name: field.content,
                         sysName: field.id
                     }
-                    if (field.id == 'action__delete') return
                     if (field.type == 'actions') {
                         return <div className={styles.actionsWrapper}>
                             {props.loading ? <Loader>Loading...</Loader> :
                                 field.content.map(action => {
-                                    if (action.id != 'action__delete') {
-                                        const actionParams = props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
-                                            props.params.actions.filter(i => action.id == 'action__' + i.id)[0]
-                                        if (actionParams && actionParams.displayAs == 'form') {
-                                            return <div className={styles.actionForm}><CardAction
-                                                action={action.id}
-                                                object={object}
-                                                checkActionCond={props.checkActionCond}
-                                                onClose={props.onTerminate}
-                                                submitAction={submitAction}
-                                                actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
-                                                    props.params.actions.filter(i => action.id == 'action__' + i.id)[0]}
-                                            /></div>
-                                        } else {
-                                            return <div className={styles.actionButton}><CardAction
-                                                action={action.id}
-                                                object={object}
-                                                onClose={props.onTerminate}
-                                                checkActionCond={props.checkActionCond}
-                                                submitAction={submitAction}
-                                                actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
-                                                    props.params.actions.filter(i => action.id == 'action__' + i.id)[0]}
-                                            /></div>
-                                        }
+                                    const actionParams = props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
+                                        props.params.actions.filter(i => action.id == 'action__' + i.id)[0]
+                                    if (actionParams && actionParams.displayAs == 'form') {
+                                        return <CardAction
+                                            action={action.id}
+                                            aType='actionForm'
+                                            object={object}
+                                            checkActionCond={props.checkActionCond}
+                                            onClose={props.onTerminate}
+                                            submitAction={submitAction}
+                                            actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
+                                                props.params.actions.filter(i => action.id == 'action__' + i.id)[0]}
+                                        />
                                     } else {
-                                        return <div className={styles.actionButton}><ActionDelete // Кнопочка Delete
-                                            submit={() => {
-                                                props.submit({ [deleteField]: true, id: object.id.value });
-                                                props.onClose()
-                                            }} /></div>
+                                        return <CardAction
+                                            action={action.id}
+                                            aType='actionButton'
+                                            object={object}
+                                            onClose={props.onTerminate}
+                                            checkActionCond={props.checkActionCond}
+                                            submitAction={submitAction}
+                                            actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
+                                                props.params.actions.filter(i => action.id == 'action__' + i.id)[0]}
+                                        />
                                     }
                                 })}
                         </div>
@@ -382,6 +375,7 @@ export function ObjectCard(props) {
                         tableFieldScheme={linkedObjectStruct}
                         executeAction={props.executeAction}
                         tableStructures={props.tableStructures}
+                        checkActionCond={props.checkActionCond}
                     />
                 </React.Fragment>}
         </div>
@@ -460,16 +454,16 @@ function CardField({ field, object, model, setModel, debug, editingOn,
 
             {/* СТРОКИ */}
             { (field.dataType == 'string') &&
-            <React.Fragment>
-                <InputForm
-                    field={field}
-                    defaultValue={object[field.sysName].value}
-                    editingOn={field.write && editingOn}
-                    // to do:
-                    isHint={field.displayAsHint}
-                    hintType={field.hintType}
-                    onChange={value => setModel({ ...model, [field.sysName]: value })}
-                /></React.Fragment>
+                <React.Fragment>
+                    <InputForm
+                        field={field}
+                        defaultValue={object[field.sysName].value}
+                        editingOn={field.write && editingOn}
+                        // to do:
+                        isHint={field.displayAsHint}
+                        hintType={field.hintType}
+                        onChange={value => setModel({ ...model, [field.sysName]: value })}
+                    /></React.Fragment>
             }
 
             {/* ДАТЫ */}
@@ -618,20 +612,6 @@ function FieldReadOnly({ field, object, weblink, date }) {
                         <span className={`icon icon-${object[field.sysName] && (object[field.sysName].value ? `done` : `ban`)}`}>
                             {object[field.sysName] && (object[field.sysName].value ? 'Yes' : 'No')}</span>}
                 </React.Fragment>}
-        </React.Fragment>
-    )
-}
-
-function ActionDelete({ submit }) {
-
-    const [confirmDelete, setConfirmDelete] = useState(false)
-
-    return (
-        <React.Fragment>
-            {!confirmDelete ?
-                <Button icon='delete' onClick={() => setConfirmDelete(true)} danger>Delete</Button> :
-                <Button icon='delete' onClick={submit} danger>I'm totally sure, delete</Button>
-            }
         </React.Fragment>
     )
 }
@@ -789,7 +769,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
     )
 }
 
-function CardAction({ action, actionParams, debug, submitAction, onClose, checkActionCond, object }) {
+function CardAction({ action, actionParams, debug, submitAction, onClose, checkActionCond, object, aType }) {
 
     const [actionData, setActionData] = useState(actionParams)
 
@@ -800,8 +780,8 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
     if (conds) {
         conds.forEach(cond => {
             if (cond.target == 'id' && cond.type != 'const') {
-                typeof object[cond.value].value != 'object' ? cond.checkValue = object[cond.value].value :
-                    cond.checkValue = object[cond.value].value.id || null
+                typeof object[cond.value].value != 'object' ? cond.checkValue = object[cond.value] :
+                    cond.checkValue = object[cond.value].value || null // раньше тут было .id, а не .value проверить!
             }
             if (cond.target == 'id' && cond.type == 'const') {
                 cond.checkValue = cond.value
@@ -809,12 +789,15 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
             if (cond.target == 'role') {
                 cond.checkValue = cond.value
             }
+            if (cond.target == 'field' || cond.target == 'linkedField') {
+                cond.fieldValue = object[cond.field] && object[cond.field].value
+            }
         })
     }
 
     return (
         actionParams && checkActionCond && checkActionCond(conds) ?
-            <React.Fragment>
+            <div className={`${aType == 'actionButton' ? styles.actionButton : styles.actionForm}`}>
                 {actionParams.displayAs == 'form' &&
                     <React.Fragment>
                         <FormSection title={actionParams.name} />
@@ -842,6 +825,6 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
                     icon={actionParams.buttonIcon}
                 >
                     {actionParams.buttonTitle || actionParams.name}</Button>
-            </React.Fragment> : <React.Fragment></React.Fragment>
+            </div> : <React.Fragment></React.Fragment>
     )
 }

@@ -99,9 +99,13 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
             if (cond.target == 'role') {
                 cond.checkValue = cond.value
             }
+            if (cond.target == 'field') {
+                typeof object[cond.value] != 'object' ? cond.fieldValue = object[cond.field] :
+                cond.fieldValue = object[cond.field].value || null 
+            }
             if (cond.target == 'id' && cond.type != 'const') {
                 typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
-                cond.checkValue = object[cond.value].id || null
+                cond.checkValue = object[cond.value].value || null // раньше тут было .id, а не .value проверить!
             }
         })
 

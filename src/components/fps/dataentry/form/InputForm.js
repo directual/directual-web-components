@@ -4,6 +4,8 @@ import { Markdown } from '../../article/mkd'
 import Hint from '../../hint/hint'
 import moment from 'moment'
 import styles from '../../viewobjects/table/table.module.css'
+import Button from '../../button/button'
+import ActionPanel from '../../actionspanel/actionspanel'
 
 export function InputForm(props) {
     // console.log(props.field)
@@ -43,22 +45,36 @@ export function InputForm(props) {
 
 function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue, link, hintType, isHint }) {
     const addHttp = link => {
-        if (link.substring(0,4) != 'http') { link = 'http://' + link }
+        if (link.substring(0, 4) != 'http') { link = 'http://' + link }
         return link
     }
     if (!editingOn) return <div>
+        {!field.displayAsButton &&
         <span className={styles.label}>
-            {field.name || field.sysName}</span>
+            {field.name || field.sysName}</span>}
 
         {field.descriptionFlag && field.description &&
             <span className={styles.description}>
                 {field.description}</span>}
         {!link && !isHint &&
-        <div>{defaultValue || (field.defaultValueOn && field.defaultValue) || ''}</div>}
+            <div>{defaultValue || (field.defaultValueOn && field.defaultValue) || ''}</div>}
         {link &&
-        <a href={addHttp(defaultValue)} target='_blank'>{defaultValue}</a>}
+            <React.Fragment>
+                {field.displayAsButton ? 
+                <ActionPanel>
+                    <Button 
+                        newWindow 
+                        icon={field.button && field.button.icon}
+                        accent={field.button && field.button.type == 'accent'}
+                        danger={field.button && field.button.type == 'danger'}
+                        link={addHttp(defaultValue)}>
+                            {(field.button && field.button.title) || field.name || field.sysName}
+                    </Button></ActionPanel>
+                :
+                    <a href={addHttp(defaultValue)} target='_blank'>{defaultValue}</a>}
+            </React.Fragment>}
         {isHint &&
-        <Hint margin={{top:1,bottom:24}} ok={hintType == 'ok'} error={hintType == 'danger'}>{defaultValue}</Hint>}
+            <Hint margin={{ top: 1, bottom: 24 }} ok={hintType == 'ok'} error={hintType == 'danger'}>{defaultValue}</Hint>}
     </div>
     return <Input
         type='textarea'

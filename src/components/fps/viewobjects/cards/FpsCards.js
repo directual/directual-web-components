@@ -97,22 +97,28 @@ function FpsCards({ auth, data, onEvent, id }) {
 
     //Check action conditionals
     const checkActionCond = (actionCond) => {
-        // console.log('actionCond')
-        // console.log(actionCond)
+        console.log('actionCond')
+        console.log(actionCond)
         // console.log(auth)
         
         if (!actionCond) { return true }
-        if (!auth && actionCond) { return false }
+        //if (!auth && actionCond) { return false }
         let match = true
         actionCond.forEach(cond => {
-            if (cond.target == 'id' && auth.user !== cond.checkValue) {
+            if (cond.target == 'id' && (!auth || auth.user !== cond.checkValue)) {
                 console.log(auth.user + ' != ' + cond.checkValue)
                 console.log('ID does not match');
                 match = false
             }
-            if (cond.target == 'role' && !auth.role.match(new RegExp(cond.checkValue))) { 
+            if (cond.target == 'role' && (!auth || !auth.role.match(new RegExp(cond.checkValue)))) { 
                 console.log('Role does not match'); 
                 match = false 
+            }
+            if ((cond.target == 'field' || cond.target == 'linkedField') &&
+                cond.fieldValue.toLowerCase() != cond.value.toLowerCase()) { 
+                console.log(cond.fieldValue + ' != ' + cond.value); 
+                console.log('Field is wrong'); 
+                match = false
             }
         })
         return match
