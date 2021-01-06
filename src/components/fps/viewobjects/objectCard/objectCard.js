@@ -293,8 +293,7 @@ export function ObjectCard(props) {
                             setLinkedObjectStruct(transformTableFieldScheme(fieldSysName, props.tableFieldScheme))}
                     />
                 })}
-
-                {fields && fieldParams && fieldParams.length > 0 && fields.filter(i =>
+                {fields && fieldParams && fields.filter(i =>
                     fieldParams[i].write == true
                     && fieldParams[i].include == true
                 ) && fields.filter(i =>
