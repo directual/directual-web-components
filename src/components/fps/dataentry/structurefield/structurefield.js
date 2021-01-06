@@ -355,13 +355,17 @@ function StructListFields(props) {
         if (allFields && (props.filter || props.filterFields) && isLast()) {
             const SaveFiltFields = allFields.filter(el => {
                 if (el) {
-                    return (String(el.sysName).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())) ||
+                     try { return (String(el.sysName).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())) ||
                         String(el.name).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())) ||
                         String(el.dataType).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())))
                         && (!props.filterFields || props.filterFields.indexOf(el.dataType) != -1)
                         && (props.firstLevel || (!props.firstLevel && (el.sysName != 'GlobalVar' && el.sysName != 'ContextVar')))
                         && (!props.hideId || (props.hideId && el.dataType != 'id'))
-                        && (!props.hideSysFields || (props.hideSysFields && el.sysName != '@who' && el.sysName != '@dateCreated' && el.sysName != '@dateChanged'))
+                        && (!props.hideSysFields || (props.hideSysFields && el.sysName != '@who' && el.sysName != '@dateCreated' && el.sysName != '@dateChanged')) }
+                        catch(e) {
+                            console.log(e)
+                            return true
+                        }
                 }
             })
             if (props.firstLevel) { 

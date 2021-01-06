@@ -175,7 +175,11 @@ export default function Select(props) {
     useEffect(() => {
         if (props.options) {
             FO = props.options.filter(el => {
-                return (String(el.value).toLowerCase().match(new RegExp(String(filter).toLowerCase())) || String(el.key).toLowerCase().match(new RegExp(String(filter).toLowerCase())))
+                try {return (String(el.value).toLowerCase().match(new RegExp(String(filter).toLowerCase())) || String(el.key).toLowerCase().match(new RegExp(String(filter).toLowerCase())))}
+                catch(e) {
+                    console.log(e)
+                    return true
+                }
             })
         }
         setFilteredOptions(FO)
