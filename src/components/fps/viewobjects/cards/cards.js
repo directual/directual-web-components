@@ -154,12 +154,12 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                     getLinkName(i, row[i]) :
                                     row[i].map(j => getLinkName(i, j)).join(', ')
                                 :
-                                !tableHeaders.filter(h => h.sysName == i)[0] ? 'No visible name' :
+                                !tableHeaders.filter(h => h.sysName == i)[0] ? '' :
                                     tableHeaders.filter(h => h.sysName == i)[0].dataType != 'date' ?
                                         row[i] :
                                         moment(row[i]).format('D MMM, YYYY')
                             ).join(' ')
-                            : 'No visible name')
+                            : '')
                     const cardHeaderComment = row && (typeof row[tableParams.cardHeaderComment] == 'object' ?
                         !Array.isArray(row[tableParams.cardHeaderComment]) ?
                             getLinkName(tableParams.cardHeaderComment, row[tableParams.cardHeaderComment])

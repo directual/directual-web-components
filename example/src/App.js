@@ -77,122 +77,27 @@ const App = (props) => {
   }
 
   let cardActions = {
-    "sl": "adminWebUsers",
+    "sl": "mySelectedJobs",
     "pageSize": "10",
     "headerField": null,
     "params": {
+      "cardListLayout": "grid",
+      "cardHeaderComment": null,
+      "deleteField": "",
+      "cardBodyText": "date_created",
+      "cardImage": false,
+      "cardImageField": "",
+      "cardImageType": "none",
+      "cardImageSize": 100,
+      "objectView": {},
       "data": {
         "readFields": [
           {
-            "fieldSysName": "22_functions",
-            "fetch": [
-              {
-                "fieldSysName": "name",
-                "condition": null,
-                "fetch": []
-              }
-            ],
-            "sysName": "22_functions",
-            "name": "Функции для графика 2/2",
-            "dataType": "arrayLink",
-            "format": "",
-            "formatOptions": {},
-            "link": "functions22"
-          },
-          {
-            "fieldSysName": "52_functions",
-            "fetch": [
-              {
-                "fieldSysName": "name",
-                "condition": null,
-                "fetch": []
-              }
-            ],
-            "sysName": "52_functions",
-            "name": "Функции для графика 5/2",
-            "dataType": "arrayLink",
-            "format": "",
-            "formatOptions": {},
-            "link": "functions52"
-          },
-          {
-            "fieldSysName": "TG_username",
+            "fieldSysName": "date_created",
             "fetch": [],
-            "sysName": "TG_username",
-            "name": "Telegram",
-            "dataType": "string",
-            "format": "",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "city",
-            "fetch": [
-              {
-                "fieldSysName": "name",
-                "condition": null,
-                "fetch": []
-              }
-            ],
-            "sysName": "city",
-            "name": "Город",
-            "dataType": "link",
-            "format": "",
-            "formatOptions": {},
-            "link": "cities"
-          },
-          {
-            "fieldSysName": "employer_city_id",
-            "fetch": [
-              {
-                "fieldSysName": "name",
-                "condition": null,
-                "fetch": []
-              }
-            ],
-            "sysName": "employer_city_id",
-            "name": "Город(а) компании",
-            "dataType": "arrayLink",
-            "format": "",
-            "formatOptions": {},
-            "link": "cities"
-          },
-          {
-            "fieldSysName": "employer_description",
-            "fetch": [],
-            "sysName": "employer_description",
-            "name": "Описание компании",
-            "dataType": "string",
-            "format": "markdown",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "employer_name",
-            "fetch": [],
-            "sysName": "employer_name",
-            "name": "Название компании",
-            "dataType": "string",
-            "format": "",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "employer_website",
-            "fetch": [],
-            "sysName": "employer_website",
-            "name": "Сайт компании",
-            "dataType": "string",
-            "format": "webLink",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "firstName",
-            "fetch": [],
-            "sysName": "firstName",
-            "name": "Имя",
-            "dataType": "string",
+            "sysName": "date_created",
+            "name": "Дата подбора вакансии",
+            "dataType": "date",
             "format": "",
             "formatOptions": {},
             "link": ""
@@ -201,83 +106,127 @@ const App = (props) => {
             "fieldSysName": "id",
             "fetch": [],
             "sysName": "id",
-            "name": "Username (login)",
+            "name": "id",
             "dataType": "id",
             "format": "",
             "formatOptions": {},
             "link": ""
           },
           {
-            "fieldSysName": "image",
+            "fieldSysName": "jobCompany",
             "fetch": [],
-            "sysName": "image",
-            "name": "image",
-            "dataType": "file",
-            "format": "",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "lastName",
-            "fetch": [],
-            "sysName": "lastName",
-            "name": "Фамлия",
+            "sysName": "jobCompany",
+            "name": "Название компании работодателя",
             "dataType": "string",
             "format": "",
             "formatOptions": {},
             "link": ""
           },
           {
-            "fieldSysName": "phone",
-            "fetch": [],
-            "sysName": "phone",
-            "name": "Телефон",
-            "dataType": "string",
-            "format": "phone",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "role",
-            "fetch": [],
-            "sysName": "role",
-            "name": "Роли",
-            "dataType": "string",
-            "format": "",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "salary_raw",
-            "fetch": [],
-            "sysName": "salary_raw",
-            "name": "Ожидания по доходу ",
-            "dataType": "json",
-            "format": "rangeSlider",
-            "formatOptions": {
-              "customOptionLabel": "My option",
-              "keyValue": {
-                "key": "key",
-                "value": "value",
-                "button": "One more"
+            "fieldSysName": "jobCompanyCity",
+            "fetch": [
+              {
+                "fieldSysName": "id",
+                "condition": null,
+                "fetch": []
               },
-              "unitName": "k ₽",
-              "booleanOptions": [
-                "True",
-                "False"
-              ],
-              "customOptionPlaceholder": "Describe your option",
-              "range": {
-                "max": 300,
-                "min": 20,
-                "step": 10
-              },
-              "customOptionType": "textarea"
-            },
+              {
+                "fieldSysName": "name",
+                "condition": null,
+                "fetch": []
+              }
+            ],
+            "sysName": "jobCompanyCity",
+            "name": "Город(а) работодателя",
+            "dataType": "arrayLink",
+            "format": "",
+            "formatOptions": {},
+            "link": "cities"
+          },
+          {
+            "fieldSysName": "jobCompanyDesc",
+            "fetch": [],
+            "sysName": "jobCompanyDesc",
+            "name": "Описание компании работодателя",
+            "dataType": "string",
+            "format": "markdown",
+            "formatOptions": {},
             "link": ""
           },
           {
-            "fieldSysName": "type",
+            "fieldSysName": "jobCompanySite",
+            "fetch": [],
+            "sysName": "jobCompanySite",
+            "name": "Сайт работодателя",
+            "dataType": "string",
+            "format": "webLink",
+            "formatOptions": {},
+            "link": ""
+          },
+          {
+            "fieldSysName": "jobDescription",
+            "fetch": [],
+            "sysName": "jobDescription",
+            "name": "Описание вакансии",
+            "dataType": "string",
+            "format": "markdown",
+            "formatOptions": {},
+            "link": ""
+          },
+          {
+            "fieldSysName": "jobFunctions22",
+            "fetch": [
+              {
+                "fieldSysName": "id",
+                "condition": null,
+                "fetch": []
+              },
+              {
+                "fieldSysName": "name",
+                "condition": null,
+                "fetch": []
+              }
+            ],
+            "sysName": "jobFunctions22",
+            "name": "Функции",
+            "dataType": "arrayLink",
+            "format": "",
+            "formatOptions": {},
+            "link": "functions22"
+          },
+          {
+            "fieldSysName": "jobFunctions52",
+            "fetch": [
+              {
+                "fieldSysName": "id",
+                "condition": null,
+                "fetch": []
+              },
+              {
+                "fieldSysName": "name",
+                "condition": null,
+                "fetch": []
+              }
+            ],
+            "sysName": "jobFunctions52",
+            "name": "Функции",
+            "dataType": "arrayLink",
+            "format": "",
+            "formatOptions": {},
+            "link": "functions52"
+          },
+          {
+            "fieldSysName": "jobName",
+            "fetch": [],
+            "sysName": "jobName",
+            "name": "Название вакансии",
+            "dataType": "string",
+            "format": "",
+            "formatOptions": {},
+            "link": ""
+          },
+          {
+            "fieldSysName": "jobType",
             "fetch": [
               {
                 "fieldSysName": "id",
@@ -290,94 +239,50 @@ const App = (props) => {
                 "fetch": []
               }
             ],
-            "sysName": "type",
+            "sysName": "jobType",
             "name": "График",
-            "dataType": "boolean",
+            "dataType": "link",
             "format": "",
-            "formatOptions": {
-              "customOptionLabel": "My option",
-              "keyValue": {
-                "key": "key",
-                "value": "value",
-                "button": "One more"
-              },
-              "booleanOptions": [
-                "2 через 2",
-                "5 через 2"
-              ],
-              "customOptionPlaceholder": "Describe your option",
-              "range": {},
-              "customOptionType": "textarea"
-            },
+            "formatOptions": {},
+            "link": "Type2252"
+          },
+          {
+            "fieldSysName": "salary_text",
+            "fetch": [],
+            "sysName": "salary_text",
+            "name": "Зарплатная вилка",
+            "dataType": "string",
+            "format": "",
+            "formatOptions": {},
+            "link": ""
+          },
+          {
+            "fieldSysName": "status",
+            "fetch": [],
+            "sysName": "status",
+            "name": "Статус (suggested,new,approved,declined)",
+            "dataType": "string",
+            "format": "",
+            "formatOptions": {},
             "link": ""
           }
         ],
         "writeFields": [
           {
-            "fieldSysName": "employer_description",
-            "fetch": [],
-            "sysName": "employer_description",
-            "name": "Описание компании",
-            "dataType": "string",
-            "format": "markdown",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "employer_name",
-            "fetch": [],
-            "sysName": "employer_name",
-            "name": "Название компании",
-            "dataType": "string",
-            "format": "",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "employer_website",
-            "fetch": [],
-            "sysName": "employer_website",
-            "name": "Сайт компании",
-            "dataType": "string",
-            "format": "webLink",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "firstName",
-            "fetch": [],
-            "sysName": "firstName",
-            "name": "Имя",
-            "dataType": "string",
-            "format": "",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
             "fieldSysName": "id",
             "fetch": [],
             "sysName": "id",
-            "name": "Username (login)",
+            "name": "id",
             "dataType": "id",
             "format": "",
             "formatOptions": {},
             "link": ""
           },
           {
-            "fieldSysName": "lastName",
+            "fieldSysName": "status",
             "fetch": [],
-            "sysName": "lastName",
-            "name": "Фамлия",
-            "dataType": "string",
-            "format": "",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "role",
-            "fetch": [],
-            "sysName": "role",
-            "name": "Роли",
+            "sysName": "status",
+            "name": "Статус (suggested,new,approved,declined)",
             "dataType": "string",
             "format": "",
             "formatOptions": {},
@@ -385,9 +290,87 @@ const App = (props) => {
           }
         ],
         "fields": {
-          "22_functions": {
-            "id": "22_functions",
-            "content": "Функции для графика 2/2",
+          "date_created": {
+            "id": "date_created",
+            "content": "Дата подбора вакансии",
+            "type": "field",
+            "dataType": "date",
+            "format": "",
+            "formatOptions": {},
+            "read": true,
+            "link": "",
+            "actions": []
+          },
+          "id": {
+            "id": "id",
+            "content": "id",
+            "type": "field",
+            "dataType": "id",
+            "format": "",
+            "formatOptions": {},
+            "write": true,
+            "read": true,
+            "link": "",
+            "actions": []
+          },
+          "jobCompany": {
+            "id": "jobCompany",
+            "content": "Название компании работодателя",
+            "type": "field",
+            "dataType": "string",
+            "format": "",
+            "formatOptions": {},
+            "read": true,
+            "link": "",
+            "actions": []
+          },
+          "jobCompanyCity": {
+            "id": "jobCompanyCity",
+            "content": "Город(а) работодателя",
+            "type": "field",
+            "dataType": "arrayLink",
+            "format": "",
+            "formatOptions": {},
+            "read": true,
+            "link": "cities",
+            "actions": []
+          },
+          "jobCompanyDesc": {
+            "id": "jobCompanyDesc",
+            "content": "Описание компании работодателя",
+            "type": "field",
+            "dataType": "string",
+            "format": "markdown",
+            "formatOptions": {},
+            "read": true,
+            "link": "",
+            "actions": []
+          },
+          "jobCompanySite": {
+            "id": "jobCompanySite",
+            "content": "Сайт работодателя",
+            "type": "field",
+            "dataType": "string",
+            "format": "webLink",
+            "formatOptions": {},
+            "read": true,
+            "link": "",
+            "actions": []
+          },
+          "jobDescription": {
+            "id": "jobDescription",
+            "content": "Описание вакансии",
+            "type": "field",
+            "dataType": "string",
+            "format": "markdown",
+            "formatOptions": {},
+            "read": true,
+            "link": "",
+            "actions": []
+          },
+          "jobFunctions22": {
+            "id": "jobFunctions22",
+            "content": "Функции",
             "type": "field",
             "dataType": "arrayLink",
             "format": "",
@@ -396,9 +379,9 @@ const App = (props) => {
             "link": "functions22",
             "actions": []
           },
-          "52_functions": {
-            "id": "52_functions",
-            "content": "Функции для графика 5/2",
+          "jobFunctions52": {
+            "id": "jobFunctions52",
+            "content": "Функции",
             "type": "field",
             "dataType": "arrayLink",
             "format": "",
@@ -407,9 +390,9 @@ const App = (props) => {
             "link": "functions52",
             "actions": []
           },
-          "TG_username": {
-            "id": "TG_username",
-            "content": "Telegram",
+          "jobName": {
+            "id": "jobName",
+            "content": "Название вакансии",
             "type": "field",
             "dataType": "string",
             "format": "",
@@ -418,43 +401,31 @@ const App = (props) => {
             "link": "",
             "actions": []
           },
-          "city": {
-            "id": "city",
-            "content": "Город",
+          "jobType": {
+            "id": "jobType",
+            "content": "График",
             "type": "field",
             "dataType": "link",
             "format": "",
             "formatOptions": {},
             "read": true,
-            "link": "cities",
+            "link": "Type2252",
             "actions": []
           },
-          "employer_city_id": {
-            "id": "employer_city_id",
-            "content": "Город(а) компании",
-            "type": "field",
-            "dataType": "arrayLink",
-            "format": "",
-            "formatOptions": {},
-            "read": true,
-            "link": "cities",
-            "actions": []
-          },
-          "employer_description": {
-            "id": "employer_description",
-            "content": "Описание компании",
+          "salary_text": {
+            "id": "salary_text",
+            "content": "Зарплатная вилка",
             "type": "field",
             "dataType": "string",
-            "format": "markdown",
+            "format": "",
             "formatOptions": {},
-            "write": true,
             "read": true,
             "link": "",
             "actions": []
           },
-          "employer_name": {
-            "id": "employer_name",
-            "content": "Название компании",
+          "status": {
+            "id": "status",
+            "content": "Статус (suggested,new,approved,declined)",
             "type": "field",
             "dataType": "string",
             "format": "",
@@ -464,152 +435,20 @@ const App = (props) => {
             "link": "",
             "actions": []
           },
-          "employer_website": {
-            "id": "employer_website",
-            "content": "Сайт компании",
-            "type": "field",
-            "dataType": "string",
-            "format": "webLink",
-            "formatOptions": {},
-            "write": true,
-            "read": true,
-            "link": "",
+          "action__28901609933532764": {
+            "content": "Откликнуться",
+            "id": "action__28901609933532764",
+            "type": "action",
             "actions": []
           },
-          "firstName": {
-            "id": "firstName",
-            "content": "Имя",
-            "type": "field",
-            "dataType": "string",
-            "format": "",
-            "formatOptions": {},
-            "write": true,
-            "read": true,
-            "link": "",
-            "actions": []
-          },
-          "id": {
-            "id": "id",
-            "content": "Username (login)",
-            "type": "field",
-            "dataType": "id",
-            "format": "",
-            "formatOptions": {},
-            "write": true,
-            "read": true,
-            "link": "",
-            "actions": []
-          },
-          "image": {
-            "id": "image",
-            "content": "image",
-            "type": "field",
-            "dataType": "file",
-            "format": "",
-            "formatOptions": {},
-            "read": true,
-            "link": "",
-            "actions": []
-          },
-          "lastName": {
-            "id": "lastName",
-            "content": "Фамлия",
-            "type": "field",
-            "dataType": "string",
-            "format": "",
-            "formatOptions": {},
-            "write": true,
-            "read": true,
-            "link": "",
-            "actions": []
-          },
-          "phone": {
-            "id": "phone",
-            "content": "Телефон",
-            "type": "field",
-            "dataType": "string",
-            "format": "phone",
-            "formatOptions": {},
-            "read": true,
-            "link": "",
-            "actions": []
-          },
-          "role": {
-            "id": "role",
-            "content": "Роли",
-            "type": "field",
-            "dataType": "string",
-            "format": "",
-            "formatOptions": {},
-            "write": true,
-            "read": true,
-            "link": "",
-            "actions": []
-          },
-          "salary_raw": {
-            "id": "salary_raw",
-            "content": "Ожидания по доходу ",
-            "type": "field",
-            "dataType": "json",
-            "format": "rangeSlider",
-            "formatOptions": {
-              "customOptionLabel": "My option",
-              "keyValue": {
-                "key": "key",
-                "value": "value",
-                "button": "One more"
-              },
-              "unitName": "k ₽",
-              "booleanOptions": [
-                "True",
-                "False"
-              ],
-              "customOptionPlaceholder": "Describe your option",
-              "range": {
-                "max": 300,
-                "min": 20,
-                "step": 10
-              },
-              "customOptionType": "textarea"
-            },
-            "read": true,
-            "link": "",
-            "actions": []
-          },
-          "type": {
-            "id": "type",
-            "content": "График",
-            "type": "field",
-            "dataType": "boolean",
-            "format": "",
-            "formatOptions": {
-              "customOptionLabel": "My option",
-              "keyValue": {
-                "key": "key",
-                "value": "value",
-                "button": "One more"
-              },
-              "booleanOptions": [
-                "2 через 2",
-                "5 через 2"
-              ],
-              "customOptionPlaceholder": "Describe your option",
-              "range": {},
-              "customOptionType": "textarea"
-            },
-            "read": true,
-            "link": "",
+          "action__96981609933721449": {
+            "content": "Не интересно",
+            "id": "action__96981609933721449",
+            "type": "action",
             "actions": []
           }
         },
         "fieldParams": {
-          "firstName": {
-            "include": true,
-            "fileImageFormat": "square",
-            "quickSearch": false,
-            "fileImageSize": 200,
-            "clickable": false
-          },
           "id": {
             "include": false,
             "fileImageFormat": "square",
@@ -617,175 +456,176 @@ const App = (props) => {
             "fileImageSize": 200,
             "clickable": false
           },
-          "image": {
-            "include": true,
-            "fileImageFormat": "circle",
-            "quickSearch": false,
-            "fileImageSize": 200,
-            "clickable": false,
-            "fileImage": true
-          },
-          "lastName": {
+          "jobCompany": {
             "include": true,
             "fileImageFormat": "square",
             "quickSearch": false,
             "fileImageSize": 200,
             "clickable": false
           },
-          "phone": {
+          "jobCompanyCity": {
             "include": true,
             "fileImageFormat": "square",
             "quickSearch": false,
             "fileImageSize": 200,
             "clickable": false
           },
-          "role": {
-            "include": true,
-            "fileImageFormat": "square",
-            "quickSearch": false,
-            "fileImageSize": 200,
-            "clickable": false,
-            "descriptionFlag": true,
-            "description": "Подсказка: admin,employer,candidate — через запятую без пробела. Админ, работодатель и кандидат соответственно."
-          },
-          "type": {
+          "jobCompanyDesc": {
             "include": true,
             "fileImageFormat": "square",
             "quickSearch": false,
             "fileImageSize": 200,
             "clickable": false
           },
-          "TG_user_id": {
+          "jobCompanySite": {
             "include": true,
             "fileImageFormat": "square",
             "quickSearch": false,
             "fileImageSize": 200,
             "clickable": false
           },
-          "TG_username": {
+          "jobDescription": {
             "include": true,
             "fileImageFormat": "square",
             "quickSearch": false,
             "fileImageSize": 200,
             "clickable": false
           },
-          "employer_city_id": {
+          "jobFunctions22": {
             "include": true,
             "fileImageFormat": "square",
             "quickSearch": false,
             "fileImageSize": 200,
             "clickable": false
           },
-          "employer_name": {
+          "jobFunctions52": {
             "include": true,
             "fileImageFormat": "square",
             "quickSearch": false,
             "fileImageSize": 200,
             "clickable": false
           },
-          "employer_website": {
+          "jobName": {
             "include": true,
             "fileImageFormat": "square",
             "quickSearch": false,
             "fileImageSize": 200,
             "clickable": false
           },
-          "22_functions": {
+          "jobType": {
             "include": true,
             "fileImageFormat": "square",
             "quickSearch": false,
             "fileImageSize": 200,
             "clickable": false
           },
-          "52_functions": {
+          "salary_text": {
             "include": true,
             "fileImageFormat": "square",
             "quickSearch": false,
             "fileImageSize": 200,
             "clickable": false
           },
-          "city": {
-            "include": true,
+          "status": {
+            "include": false,
             "fileImageFormat": "square",
             "quickSearch": false,
             "fileImageSize": 200,
             "clickable": false
           },
-          "salary_raw": {
+          "date_created": {
             "include": true,
             "fileImageFormat": "square",
             "quickSearch": false,
             "fileImageSize": 200,
             "clickable": false
-          },
-          "employer_description": {
-            "include": true,
-            "fileImageFormat": "square",
-            "quickSearch": false,
-            "fileImageSize": 200,
-            "clickable": false
-          },
-          "quota": {
-            "include": true,
-            "fileImageFormat": "square",
-            "quickSearch": false,
-            "fileImageSize": 200,
-            "clickable": false,
-            "descriptionFlag": false,
-            "description": ""
           }
         },
         "columns": {
           "tab-1": {
             "id": "tab-1",
-            "title": "Общая информация",
+            "title": "Вакансия",
             "fieldIds": [
-              "image",
-              "firstName",
-              "lastName",
-              "role",
               "id",
-              "phone",
-              "TG_username",
-              "city"
+              "jobName",
+              "jobDescription",
+              "salary_text",
+              "jobType",
+              "jobFunctions22",
+              "jobFunctions52",
+              "date_created",
+              "status",
+              "action__28901609933532764",
+              "action__96981609933721449"
             ]
           },
-          "88371609664858032": {
-            "id": "88371609664858032",
-            "title": "Кандидат",
-            "fieldIds": [
-              "type",
-              "22_functions",
-              "52_functions",
-              "salary_raw"
-            ]
-          },
-          "21561609665108980": {
-            "id": "21561609665108980",
+          "39811609933473399": {
+            "id": "39811609933473399",
             "title": "Работодатель",
             "fieldIds": [
-              "employer_name",
-              "employer_website",
-              "employer_description",
-              "employer_city_id"
+              "jobCompany",
+              "jobCompanySite",
+              "jobCompanyCity",
+              "jobCompanyDesc"
             ]
           }
         },
         "columnOrder": [
           "tab-1",
-          "88371609664858032",
-          "21561609665108980"
+          "39811609933473399"
         ],
-        "actions": []
+        "actions": [
+          {
+            "sysName": "",
+            "id": "28901609933532764",
+            "name": "Откликнуться",
+            "displayAs": "button",
+            "buttonIcon": "done",
+            "buttonType": "accent",
+            "dropdown": true,
+            "closePopup": true,
+            "formMapping": [
+              {
+                "id": "33731609933574401",
+                "target": "id",
+                "type": "objectField",
+                "value": "id"
+              },
+              {
+                "id": "65371609933613637",
+                "target": "status",
+                "type": "const",
+                "value": "new"
+              }
+            ]
+          },
+          {
+            "sysName": "",
+            "id": "96981609933721449",
+            "name": "Не интересно",
+            "displayAs": "button",
+            "buttonIcon": "delete",
+            "buttonType": "danger",
+            "dropdown": true,
+            "closePopup": true,
+            "formMapping": [
+              {
+                "id": "73081609933738886",
+                "target": "id",
+                "type": "objectField",
+                "value": "id"
+              },
+              {
+                "id": "31091609933745898",
+                "target": "status",
+                "type": "const",
+                "value": "declined"
+              }
+            ]
+          }
+        ]
       },
       "fields": {
-        "firstName": {
-          "include": true,
-          "fileImageFormat": "square",
-          "quickSearch": false,
-          "fileImageSize": 200,
-          "clickable": false
-        },
         "id": {
           "include": false,
           "fileImageFormat": "square",
@@ -793,204 +633,158 @@ const App = (props) => {
           "fileImageSize": 200,
           "clickable": false
         },
-        "image": {
-          "include": true,
-          "fileImageFormat": "circle",
-          "quickSearch": false,
-          "fileImageSize": 200,
-          "clickable": false,
-          "fileImage": true
-        },
-        "lastName": {
+        "jobCompany": {
           "include": true,
           "fileImageFormat": "square",
           "quickSearch": false,
           "fileImageSize": 200,
           "clickable": false
         },
-        "phone": {
+        "jobCompanyCity": {
           "include": true,
           "fileImageFormat": "square",
           "quickSearch": false,
           "fileImageSize": 200,
           "clickable": false
         },
-        "role": {
-          "include": true,
-          "fileImageFormat": "square",
-          "quickSearch": false,
-          "fileImageSize": 200,
-          "clickable": false,
-          "descriptionFlag": true,
-          "description": "Подсказка: admin,employer,candidate — через запятую без пробела. Админ, работодатель и кандидат соответственно."
-        },
-        "type": {
+        "jobCompanyDesc": {
           "include": true,
           "fileImageFormat": "square",
           "quickSearch": false,
           "fileImageSize": 200,
           "clickable": false
         },
-        "TG_user_id": {
+        "jobCompanySite": {
           "include": true,
           "fileImageFormat": "square",
           "quickSearch": false,
           "fileImageSize": 200,
           "clickable": false
         },
-        "TG_username": {
+        "jobDescription": {
           "include": true,
           "fileImageFormat": "square",
           "quickSearch": false,
           "fileImageSize": 200,
           "clickable": false
         },
-        "employer_city_id": {
+        "jobFunctions22": {
           "include": true,
           "fileImageFormat": "square",
           "quickSearch": false,
           "fileImageSize": 200,
           "clickable": false
         },
-        "employer_name": {
+        "jobFunctions52": {
           "include": true,
           "fileImageFormat": "square",
           "quickSearch": false,
           "fileImageSize": 200,
           "clickable": false
         },
-        "employer_website": {
+        "jobName": {
           "include": true,
           "fileImageFormat": "square",
           "quickSearch": false,
           "fileImageSize": 200,
           "clickable": false
         },
-        "22_functions": {
+        "jobType": {
           "include": true,
           "fileImageFormat": "square",
           "quickSearch": false,
           "fileImageSize": 200,
           "clickable": false
         },
-        "52_functions": {
+        "salary_text": {
           "include": true,
           "fileImageFormat": "square",
           "quickSearch": false,
           "fileImageSize": 200,
           "clickable": false
         },
-        "city": {
-          "include": true,
+        "status": {
+          "include": false,
           "fileImageFormat": "square",
           "quickSearch": false,
           "fileImageSize": 200,
           "clickable": false
         },
-        "salary_raw": {
+        "date_created": {
           "include": true,
           "fileImageFormat": "square",
           "quickSearch": false,
           "fileImageSize": 200,
           "clickable": false
-        },
-        "employer_description": {
-          "include": true,
-          "fileImageFormat": "square",
-          "quickSearch": false,
-          "fileImageSize": 200,
-          "clickable": false
-        },
-        "quota": {
-          "include": true,
-          "fileImageFormat": "square",
-          "quickSearch": false,
-          "fileImageSize": 200,
-          "clickable": false,
-          "descriptionFlag": false,
-          "description": ""
         }
       },
-      "showCounter": false,
-      "counterField": null,
-      "counterText": null,
-      "cardImage": true,
-      "cardImageField": "image",
-      "cardImageType": "leftCircle",
-      "cardImageSize": 100,
-      "cardHeaderComment": "role",
-      "cardBodyText": "type"
+      "actions": [
+        {
+          "sysName": "",
+          "id": "28901609933532764",
+          "name": "Откликнуться",
+          "displayAs": "button",
+          "buttonIcon": "done",
+          "buttonType": "accent",
+          "dropdown": true,
+          "closePopup": true,
+          "formMapping": [
+            {
+              "id": "33731609933574401",
+              "target": "id",
+              "type": "objectField",
+              "value": "id"
+            },
+            {
+              "id": "65371609933613637",
+              "target": "status",
+              "type": "const",
+              "value": "new"
+            }
+          ]
+        },
+        {
+          "sysName": "",
+          "id": "96981609933721449",
+          "name": "Не интересно",
+          "displayAs": "button",
+          "buttonIcon": "delete",
+          "buttonType": "danger",
+          "dropdown": true,
+          "closePopup": true,
+          "formMapping": [
+            {
+              "id": "73081609933738886",
+              "target": "id",
+              "type": "objectField",
+              "value": "id"
+            },
+            {
+              "id": "31091609933745898",
+              "target": "status",
+              "type": "const",
+              "value": "declined"
+            }
+          ]
+        }
+      ]
     },
-    "tableTitle": "Все пользователи",
+    "tableTitle": "💎 Подходящие вакансии",
     "actions": null,
     "headers": [
       {
-        "sysName": "22_functions",
-        "name": "Функции для графика 2/2",
-        "dataType": "arrayLink",
-        "id": "34391607077096514",
-        "link": "functions22",
-        "group": "1607016878115",
-        "tags": null,
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 6,
-        "linkIndexFieldSysName": [],
-        "defaultValue": null,
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": null,
-        "groupName": null,
-        "linkOrArrayLinkType": true,
-        "linkType": false,
-        "arrayLink": true,
-        "indexExists": false,
-        "typeVariable": {},
-        "json": false
-      },
-      {
-        "sysName": "52_functions",
-        "name": "Функции для графика 5/2",
-        "dataType": "arrayLink",
-        "id": "22101607077116998",
-        "link": "functions52",
-        "group": "1607016878115",
-        "tags": null,
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 5,
-        "linkIndexFieldSysName": [],
-        "defaultValue": null,
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": null,
-        "groupName": null,
-        "linkOrArrayLinkType": true,
-        "linkType": false,
-        "arrayLink": true,
-        "indexExists": false,
-        "typeVariable": {},
-        "json": false
-      },
-      {
-        "sysName": "TG_username",
-        "name": "Telegram",
-        "dataType": "string",
-        "id": "33601607938915585",
+        "sysName": "date_created",
+        "dataType": "date",
+        "name": "Дата подбора вакансии",
+        "id": "22671609753618893",
         "link": "",
-        "group": "1606985920923",
+        "group": "0",
         "tags": "",
         "indexing": false,
         "ordering": false,
         "description": null,
         "weight": null,
-        "order": 3,
+        "order": 4,
         "linkIndexFieldSysName": [],
         "defaultValue": "",
         "constraints": null,
@@ -998,101 +792,20 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
+        "typeVariable": {},
+        "arrayLink": false,
+        "indexExists": false,
         "linkOrArrayLinkType": false,
         "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
-        "typeVariable": {},
         "json": false
       },
       {
-        "sysName": "city",
-        "name": "Город",
-        "dataType": "link",
-        "id": "80181607081867668",
-        "link": "cities",
-        "group": "1606985920923",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 1,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": null,
-        "groupName": null,
-        "linkOrArrayLinkType": true,
-        "linkType": true,
-        "arrayLink": false,
-        "indexExists": false,
-        "typeVariable": {},
-        "json": false
-      },
-      {
-        "sysName": "employer_city_id",
-        "name": "Город(а) компании",
-        "dataType": "arrayLink",
-        "id": "68231607939175436",
-        "link": "cities",
-        "group": "1607938855954",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 1,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": {},
-        "groupName": null,
-        "linkOrArrayLinkType": true,
-        "linkType": false,
-        "arrayLink": true,
-        "indexExists": false,
-        "typeVariable": {},
-        "json": false
-      },
-      {
-        "sysName": "employer_description",
-        "name": "Описание компании",
-        "dataType": "string",
-        "id": "34671609671007166",
+        "sysName": "id",
+        "dataType": "id",
+        "name": "id",
+        "id": "0",
         "link": "",
-        "group": "1607938855954",
-        "tags": null,
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 3,
-        "linkIndexFieldSysName": [],
-        "defaultValue": null,
-        "constraints": null,
-        "synthetic": false,
-        "format": "markdown",
-        "formatOptions": null,
-        "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
-        "typeVariable": {},
-        "json": false
-      },
-      {
-        "sysName": "employer_name",
-        "name": "Название компании",
-        "dataType": "string",
-        "id": "68021607939162171",
-        "link": "",
-        "group": "1607938855954",
+        "group": "0",
         "tags": "",
         "indexing": false,
         "ordering": false,
@@ -1106,20 +819,101 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
+        "typeVariable": {},
         "arrayLink": false,
         "indexExists": false,
-        "typeVariable": {},
+        "linkOrArrayLinkType": false,
+        "linkType": false,
         "json": false
       },
       {
-        "sysName": "employer_website",
-        "name": "Сайт компании",
+        "sysName": "jobCompany",
         "dataType": "string",
-        "id": "89401607939216442",
+        "name": "Название компании работодателя",
+        "id": "18201609753320275",
         "link": "",
-        "group": "1607938855954",
+        "group": "1609753298511",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 1,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": {},
+        "groupName": null,
+        "typeVariable": {},
+        "arrayLink": false,
+        "indexExists": false,
+        "linkOrArrayLinkType": false,
+        "linkType": false,
+        "json": false
+      },
+      {
+        "sysName": "jobCompanyCity",
+        "dataType": "arrayLink",
+        "name": "Город(а) работодателя",
+        "id": "67721609753322261",
+        "link": "cities",
+        "group": "1609753298511",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 3,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": {},
+        "groupName": null,
+        "typeVariable": {},
+        "arrayLink": true,
+        "indexExists": false,
+        "linkOrArrayLinkType": true,
+        "linkType": false,
+        "json": false
+      },
+      {
+        "sysName": "jobCompanyDesc",
+        "dataType": "string",
+        "name": "Описание компании работодателя",
+        "id": "70501609753347877",
+        "link": "",
+        "group": "1609753298511",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 4,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": "markdown",
+        "formatOptions": {},
+        "groupName": null,
+        "typeVariable": {},
+        "arrayLink": false,
+        "indexExists": false,
+        "linkOrArrayLinkType": false,
+        "linkType": false,
+        "json": false
+      },
+      {
+        "sysName": "jobCompanySite",
+        "dataType": "string",
+        "name": "Сайт работодателя",
+        "id": "63091609753320998",
+        "link": "",
+        "group": "1609753298511",
         "tags": "",
         "indexing": false,
         "ordering": false,
@@ -1133,26 +927,53 @@ const App = (props) => {
         "format": "webLink",
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
+        "typeVariable": {},
         "arrayLink": false,
         "indexExists": false,
-        "typeVariable": {},
+        "linkOrArrayLinkType": false,
+        "linkType": false,
         "json": false
       },
       {
-        "sysName": "firstName",
-        "name": "Имя",
+        "sysName": "jobDescription",
         "dataType": "string",
-        "id": "4",
+        "name": "Описание вакансии",
+        "id": "87151609753355684",
         "link": "",
-        "group": "0",
+        "group": "1609753298511",
         "tags": "",
         "indexing": false,
         "ordering": false,
         "description": null,
         "weight": null,
-        "order": 4,
+        "order": 6,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": "markdown",
+        "formatOptions": {},
+        "groupName": null,
+        "typeVariable": {},
+        "arrayLink": false,
+        "indexExists": false,
+        "linkOrArrayLinkType": false,
+        "linkType": false,
+        "json": false
+      },
+      {
+        "sysName": "jobFunctions22",
+        "dataType": "arrayLink",
+        "name": "Функции",
+        "id": "45431609753369136",
+        "link": "functions22",
+        "group": "1609753298511",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 8,
         "linkIndexFieldSysName": [],
         "defaultValue": "",
         "constraints": null,
@@ -1160,20 +981,47 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
         "typeVariable": {},
+        "arrayLink": true,
+        "indexExists": false,
+        "linkOrArrayLinkType": true,
+        "linkType": false,
         "json": false
       },
       {
-        "sysName": "id",
-        "name": "Username (login)",
-        "dataType": "id",
-        "id": "12",
+        "sysName": "jobFunctions52",
+        "dataType": "arrayLink",
+        "name": "Функции",
+        "id": "77141609753455553",
+        "link": "functions52",
+        "group": "1609753298511",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 9,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": {},
+        "groupName": null,
+        "typeVariable": {},
+        "arrayLink": true,
+        "indexExists": false,
+        "linkOrArrayLinkType": true,
+        "linkType": false,
+        "json": false
+      },
+      {
+        "sysName": "jobName",
+        "dataType": "string",
+        "name": "Название вакансии",
+        "id": "51461609753306387",
         "link": "",
-        "group": "0",
+        "group": "1609753298511",
         "tags": "",
         "indexing": false,
         "ordering": false,
@@ -1187,229 +1035,123 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
+        "typeVariable": {},
         "arrayLink": false,
         "indexExists": false,
-        "typeVariable": {},
+        "linkOrArrayLinkType": false,
+        "linkType": false,
         "json": false
       },
       {
-        "sysName": "image",
-        "name": "image",
-        "dataType": "file",
-        "id": "63411607068082205",
+        "sysName": "jobType",
+        "dataType": "link",
+        "name": "График",
+        "id": "21591609753362987",
+        "link": "Type2252",
+        "group": "1609753298511",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 7,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": {},
+        "groupName": null,
+        "typeVariable": {},
+        "arrayLink": false,
+        "indexExists": false,
+        "linkOrArrayLinkType": true,
+        "linkType": true,
+        "json": false
+      },
+      {
+        "sysName": "salary_text",
+        "dataType": "string",
+        "name": "Зарплатная вилка",
+        "id": "87951609753577950",
         "link": "",
-        "group": "1607016878115",
-        "tags": null,
+        "group": "1609753298511",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 10,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": {},
+        "groupName": null,
+        "typeVariable": {},
+        "arrayLink": false,
+        "indexExists": false,
+        "linkOrArrayLinkType": false,
+        "linkType": false,
+        "json": false
+      },
+      {
+        "sysName": "status",
+        "dataType": "string",
+        "name": "Статус (suggested,new,approved,declined)",
+        "id": "91021609753267495",
+        "link": "",
+        "group": "0",
+        "tags": "",
         "indexing": false,
         "ordering": false,
         "description": null,
         "weight": null,
         "order": 3,
         "linkIndexFieldSysName": [],
-        "defaultValue": null,
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": null,
-        "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
-        "typeVariable": {},
-        "json": false
-      },
-      {
-        "sysName": "lastName",
-        "name": "Фамлия",
-        "dataType": "string",
-        "id": "3",
-        "link": "",
-        "group": "0",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 5,
-        "linkIndexFieldSysName": [],
         "defaultValue": "",
         "constraints": null,
         "synthetic": false,
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
+        "typeVariable": {},
         "arrayLink": false,
         "indexExists": false,
-        "typeVariable": {},
-        "json": false
-      },
-      {
-        "sysName": "phone",
-        "name": "Телефон",
-        "dataType": "string",
-        "id": "9",
-        "link": "",
-        "group": "0",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 8,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": "phone",
-        "formatOptions": {},
-        "groupName": "Contacts",
         "linkOrArrayLinkType": false,
         "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
-        "typeVariable": {},
-        "json": false
-      },
-      {
-        "sysName": "role",
-        "name": "Роли",
-        "dataType": "string",
-        "id": "5",
-        "link": "",
-        "group": "0",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 2,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": {},
-        "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
-        "typeVariable": {},
-        "json": false
-      },
-      {
-        "sysName": "salary_raw",
-        "name": "Ожидания по доходу ",
-        "dataType": "json",
-        "id": "63391607082324656",
-        "link": "",
-        "group": "1607016878115",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 2,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": "rangeSlider",
-        "formatOptions": {
-          "customOptionLabel": "My option",
-          "keyValue": {
-            "key": "key",
-            "value": "value",
-            "button": "One more"
-          },
-          "unitName": "k ₽",
-          "booleanOptions": [
-            "True",
-            "False"
-          ],
-          "customOptionPlaceholder": "Describe your option",
-          "range": {
-            "max": 300,
-            "min": 20,
-            "step": 10
-          },
-          "customOptionType": "textarea"
-        },
-        "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
-        "typeVariable": {},
-        "json": true
-      },
-      {
-        "sysName": "type",
-        "name": "График",
-        "dataType": "boolean",
-        "id": "68641607070972375",
-        "link": "",
-        "group": "1607016878115",
-        "tags": null,
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 4,
-        "linkIndexFieldSysName": [],
-        "defaultValue": null,
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": {
-          "customOptionLabel": "My option",
-          "keyValue": {
-            "key": "key",
-            "value": "value",
-            "button": "One more"
-          },
-          "booleanOptions": [
-            "2 через 2",
-            "5 через 2"
-          ],
-          "customOptionPlaceholder": "Describe your option",
-          "range": {},
-          "customOptionType": "textarea"
-        },
-        "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
-        "typeVariable": {},
         "json": false
       }
     ],
     "data": [
       {
-        "role": "employer,admin",
-        "image": "https://api.alfa.directual.com/fileUploaded/vitrina2252/806beb37-e6ca-41fe-957d-8ee5e2711ed8.jpg",
-        "52_functions": [],
-        "22_functions": [],
-        "lastName": "Ershov",
-        "firstName": "Pavel",
-        "id": "79151845361",
-        "TG_username": "pavelershov",
-        "employer_city_id": [
+        "jobName": "Инженер",
+        "salary_text": "От 40k ₽ до 120k ₽",
+        "date_created": 1610106192000,
+        "jobDescription": "### Требования \n- один\n- два\n- три\n\n### Обязанности\n- один\n- два\n- три\n\n### Условия \n- один\n- два\n- три",
+        "jobCompanySite": "tesla.com",
+        "jobType": {
+          "id": "52",
+          "type": "график 5 через 2"
+        },
+        "jobCompanyDesc": "Делаем электрокары\n\n- 1\n- 2",
+        "id": "$D.md5('79151845361' + '')",
+        "jobCompany": "Tesla",
+        "status": "suggested",
+        "jobFunctions52": [
+          {
+            "name": "IT",
+            "id": "57816d4e-5d1a-4240-8eda-0041ccdc3d55"
+          }
+        ],
+        "jobFunctions22": [],
+        "jobCompanyCity": [
           {
             "name": "Другой город / за пределами РФ",
             "id": "other"
           }
-        ],
-        "employer_website": "ya.ru",
-        "employer_name": "Яндекс",
-        "phone": "79151845361",
-        "employer_description": ""
+        ]
       }
     ],
     "totalPages": 1,
@@ -1417,135 +1159,87 @@ const App = (props) => {
     "error": null,
     "fieldScheme": [
       [
-        "22_functions.name",
-        1330974
-      ],
-      [
-        "52_functions.name",
-        1330975
-      ],
-      [
-        "TG_username",
-        1330951
-      ],
-      [
-        "city.name",
-        1330972
-      ],
-      [
-        "employer_city_id.name",
-        1330972
-      ],
-      [
-        "employer_description",
-        1330951
-      ],
-      [
-        "employer_name",
-        1330951
-      ],
-      [
-        "employer_website",
-        1330951
-      ],
-      [
-        "firstName",
-        1330951
+        "date_created",
+        1332190
       ],
       [
         "id",
-        1330951
+        1332190
       ],
       [
-        "image",
-        1330951
+        "jobCompany",
+        1332190
       ],
       [
-        "lastName",
-        1330951
+        "jobCompanyCity.id",
+        1330972
       ],
       [
-        "phone",
-        1330951
+        "jobCompanyCity.name",
+        1330972
       ],
       [
-        "role",
-        1330951
+        "jobCompanyDesc",
+        1332190
       ],
       [
-        "salary_raw",
-        1330951
+        "jobCompanySite",
+        1332190
+      ],
+      [
+        "jobDescription",
+        1332190
+      ],
+      [
+        "jobFunctions22.id",
+        1330974
+      ],
+      [
+        "jobFunctions22.name",
+        1330974
+      ],
+      [
+        "jobFunctions52.id",
+        1330975
+      ],
+      [
+        "jobFunctions52.name",
+        1330975
+      ],
+      [
+        "jobName",
+        1332190
+      ],
+      [
+        "jobType.id",
+        1330973
+      ],
+      [
+        "jobType.type",
+        1330973
+      ],
+      [
+        "salary_text",
+        1332190
+      ],
+      [
+        "status",
+        1332190
       ]
     ],
     "writeFields": [
-      "employer_description",
-      "employer_name",
-      "employer_website",
-      "firstName",
       "id",
-      "lastName",
-      "role"
+      "status"
     ],
     "structures": {
-      "1330951": {
-        "networkID": 4265,
-        "sysName": "WebUser",
-        "name": "App users",
-        "id": 1330951,
-        "dateCreated": "2020-12-25T09:02:32Z",
-        "hidden": false,
-        "dateHidden": null,
-        "jsonObject": "[{\"sysName\":\"isBlocked\",\"dataType\":\"boolean\",\"name\":\"Block user\",\"id\":\"1\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"dateCreated\",\"dataType\":\"string\",\"name\":\"dateCreated\",\"id\":\"10\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"password\",\"dataType\":\"string\",\"name\":\"Password (hash)\",\"id\":\"11\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"Username (login)\",\"id\":\"12\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"Пол\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"52_functions\",\"dataType\":\"arrayLink\",\"name\":\"Функции для графика 5/2\",\"id\":\"22101607077116998\",\"link\":\"functions52\",\"group\":\"1607016878115\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"lastName\",\"dataType\":\"string\",\"name\":\"Фамлия\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"TG_username\",\"dataType\":\"string\",\"name\":\"Telegram\",\"id\":\"33601607938915585\",\"link\":\"\",\"group\":\"1606985920923\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"22_functions\",\"dataType\":\"arrayLink\",\"name\":\"Функции для графика 2/2\",\"id\":\"34391607077096514\",\"link\":\"functions22\",\"group\":\"1607016878115\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"employer_description\",\"dataType\":\"string\",\"name\":\"Описание компании\",\"id\":\"34671609671007166\",\"link\":\"\",\"group\":\"1607938855954\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"firstName\",\"dataType\":\"string\",\"name\":\"Имя\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"salary_text\",\"dataType\":\"string\",\"name\":\"Ожидания по доходу\",\"id\":\"49741607082338411\",\"link\":\"\",\"group\":\"1607016878115\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"role\",\"dataType\":\"string\",\"name\":\"Роли\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"TG_user_id\",\"dataType\":\"link\",\"name\":\"TG_user\",\"id\":\"55611607016886218\",\"link\":\"TUser\",\"group\":\"1607016878115\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"isAuthorization\",\"dataType\":\"boolean\",\"name\":\"isAuthorization\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"salary_raw\",\"dataType\":\"json\",\"name\":\"Ожидания по доходу \",\"id\":\"63391607082324656\",\"link\":\"\",\"group\":\"1607016878115\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"rangeSlider\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"unitName\":\"k ₽\",\"booleanOptions\":[\"True\",\"False\"],\"customOptionPlaceholder\":\"Describe your option\",\"range\":{\"max\":300,\"min\":20,\"step\":10},\"customOptionType\":\"textarea\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true},{\"sysName\":\"image\",\"dataType\":\"file\",\"name\":\"image\",\"id\":\"63411607068082205\",\"link\":\"\",\"group\":\"1607016878115\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"Facebook_lonk\",\"dataType\":\"string\",\"name\":\"Facebook\",\"id\":\"64931609825374119\",\"link\":\"\",\"group\":\"1607016878115\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"employer_name\",\"dataType\":\"string\",\"name\":\"Название компании\",\"id\":\"68021607939162171\",\"link\":\"\",\"group\":\"1607938855954\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"employer_city_id\",\"dataType\":\"arrayLink\",\"name\":\"Город(а) компании\",\"id\":\"68231607939175436\",\"link\":\"cities\",\"group\":\"1607938855954\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"quota\",\"dataType\":\"number\",\"name\":\"Доступно вакансий для размещения\",\"id\":\"68471609764533949\",\"link\":\"\",\"group\":\"1607938855954\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"type\",\"dataType\":\"boolean\",\"name\":\"График\",\"id\":\"68641607070972375\",\"link\":\"\",\"group\":\"1607016878115\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"booleanOptions\":[\"2 через 2\",\"5 через 2\"],\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"dateLastActivity\",\"dataType\":\"string\",\"name\":\"dateLastActivity\",\"id\":\"7\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"email\",\"dataType\":\"string\",\"name\":\"Email\",\"id\":\"8\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"email\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"city\",\"dataType\":\"link\",\"name\":\"Город\",\"id\":\"80181607081867668\",\"link\":\"cities\",\"group\":\"1606985920923\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"CV_file\",\"dataType\":\"file\",\"name\":\"Резюме\",\"id\":\"84081609825345581\",\"link\":\"\",\"group\":\"1607016878115\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"employer_website\",\"dataType\":\"string\",\"name\":\"Сайт компании\",\"id\":\"89401607939216442\",\"link\":\"\",\"group\":\"1607938855954\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"phone\",\"dataType\":\"string\",\"name\":\"Телефон\",\"id\":\"9\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"phone\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"Instagram_link\",\"dataType\":\"string\",\"name\":\"Instagram\",\"id\":\"91391609825359387\",\"link\":\"\",\"group\":\"1607016878115\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false}]",
-        "jsonGroupSettings": "[{\"name\":\"Contacts\",\"id\":1606985920923,\"order\":0},{\"name\":\"Кандидат\",\"id\":1607016878115,\"order\":1},{\"name\":\"Работодатель\",\"id\":1607938855954,\"order\":2}]",
-        "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
-        "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
-        "jsonNativeIndexSettings": null,
-        "indexEnabled": true,
-        "lastIndexUpdate": 0,
-        "indexName": "",
-        "dateChanged": "2021-01-05T05:43:18Z",
-        "createBy": 0,
-        "changedBy": 1,
-        "_settings": null,
-        "_nativeIndexSettings": null,
-        "innerIDField": {
-          "sysName": "id",
-          "name": "Username (login)",
-          "dataType": "id",
-          "id": "12",
-          "link": "",
-          "group": "0",
-          "tags": "",
-          "indexing": false,
-          "ordering": false,
-          "description": null,
-          "weight": null,
-          "order": 0,
-          "linkIndexFieldSysName": [],
-          "defaultValue": "",
-          "constraints": null,
-          "synthetic": false,
-          "format": null,
-          "formatOptions": {},
-          "groupName": null,
-          "linkOrArrayLinkType": false,
-          "linkType": false,
-          "arrayLink": false,
-          "indexExists": false,
-          "typeVariable": {},
-          "json": false
-        },
-        "objectIDSysName": "id",
-        "folderId": null
-      },
       "1330972": {
-        "networkID": 4265,
-        "sysName": "cities",
-        "name": "Cities",
         "id": 1330972,
         "dateCreated": "2020-09-18T07:42:27Z",
         "hidden": false,
         "dateHidden": null,
+        "networkID": 4265,
+        "name": "Cities",
+        "sysName": "cities",
         "jsonObject": "[{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"indexExists\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"indexExists\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"indexExists\":false},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"indexExists\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"City name\",\"id\":\"64661600414975068\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"indexExists\":false}]",
         "jsonGroupSettings": "[]",
         "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
@@ -1561,8 +1255,8 @@ const App = (props) => {
         "_nativeIndexSettings": null,
         "innerIDField": {
           "sysName": "id",
-          "name": "id",
           "dataType": "id",
+          "name": "id",
           "id": "0",
           "link": "",
           "group": "0",
@@ -1579,24 +1273,75 @@ const App = (props) => {
           "format": null,
           "formatOptions": null,
           "groupName": null,
-          "linkOrArrayLinkType": false,
-          "linkType": false,
+          "typeVariable": {},
           "arrayLink": false,
           "indexExists": false,
+          "linkOrArrayLinkType": false,
+          "linkType": false,
+          "json": false
+        },
+        "objectIDSysName": "id",
+        "folderId": 33596509
+      },
+      "1330973": {
+        "id": 1330973,
+        "dateCreated": "2020-12-04T08:33:52Z",
+        "hidden": false,
+        "dateHidden": null,
+        "networkID": 4265,
+        "name": "Тип: 22 / 52",
+        "sysName": "Type2252",
+        "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false},{\"sysName\":\"type\",\"name\":\"Тип работы\",\"dataType\":\"string\",\"id\":\"42681607070870540\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false},{\"sysName\":\"@who\",\"name\":\"who changed\",\"dataType\":\"string\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false},{\"sysName\":\"@dateCreated\",\"name\":\"date created\",\"dataType\":\"date\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false},{\"sysName\":\"@dateChanged\",\"name\":\"date changed\",\"dataType\":\"date\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false}]",
+        "jsonGroupSettings": null,
+        "jsonViewIdSettings": "[{\"sysName\":\"type\"}]",
+        "jsonSettings": null,
+        "jsonNativeIndexSettings": null,
+        "indexEnabled": false,
+        "lastIndexUpdate": 0,
+        "indexName": "",
+        "dateChanged": "2020-12-04T08:36:05Z",
+        "createBy": 1,
+        "changedBy": 1,
+        "_settings": null,
+        "_nativeIndexSettings": null,
+        "innerIDField": {
+          "sysName": "id",
+          "dataType": "id",
+          "name": "id",
+          "id": "0",
+          "link": "",
+          "group": "0",
+          "tags": "",
+          "indexing": false,
+          "ordering": false,
+          "description": null,
+          "weight": null,
+          "order": 0,
+          "linkIndexFieldSysName": [],
+          "defaultValue": "",
+          "constraints": null,
+          "synthetic": false,
+          "format": null,
+          "formatOptions": null,
+          "groupName": null,
           "typeVariable": {},
+          "arrayLink": false,
+          "indexExists": false,
+          "linkOrArrayLinkType": false,
+          "linkType": false,
           "json": false
         },
         "objectIDSysName": "id",
         "folderId": 33596509
       },
       "1330974": {
-        "networkID": 4265,
-        "sysName": "functions22",
-        "name": "Функции 22",
         "id": 1330974,
         "dateCreated": "2020-12-04T10:19:23Z",
         "hidden": false,
         "dateHidden": null,
+        "networkID": 4265,
+        "name": "Функции 22",
+        "sysName": "functions22",
         "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false},{\"sysName\":\"name\",\"name\":\"Функция\",\"dataType\":\"string\",\"id\":\"83101607077166818\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false},{\"sysName\":\"isDelete\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"96931607077672366\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false},{\"sysName\":\"@who\",\"name\":\"who changed\",\"dataType\":\"string\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false},{\"sysName\":\"@dateCreated\",\"name\":\"date created\",\"dataType\":\"date\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false},{\"sysName\":\"@dateChanged\",\"name\":\"date changed\",\"dataType\":\"date\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false}]",
         "jsonGroupSettings": null,
         "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
@@ -1612,8 +1357,8 @@ const App = (props) => {
         "_nativeIndexSettings": null,
         "innerIDField": {
           "sysName": "id",
-          "name": "id",
           "dataType": "id",
+          "name": "id",
           "id": "0",
           "link": "",
           "group": "0",
@@ -1630,24 +1375,24 @@ const App = (props) => {
           "format": null,
           "formatOptions": null,
           "groupName": null,
-          "linkOrArrayLinkType": false,
-          "linkType": false,
+          "typeVariable": {},
           "arrayLink": false,
           "indexExists": false,
-          "typeVariable": {},
+          "linkOrArrayLinkType": false,
+          "linkType": false,
           "json": false
         },
         "objectIDSysName": "id",
         "folderId": 33596509
       },
       "1330975": {
-        "networkID": 4265,
-        "sysName": "functions52",
-        "name": "Функции 52",
         "id": 1330975,
         "dateCreated": "2020-12-04T10:19:52Z",
         "hidden": false,
         "dateHidden": null,
+        "networkID": 4265,
+        "name": "Функции 52",
+        "sysName": "functions52",
         "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false},{\"sysName\":\"isDelete\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"21621607077688079\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false},{\"sysName\":\"name\",\"name\":\"Функция\",\"dataType\":\"string\",\"id\":\"83101607077166818\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false},{\"sysName\":\"@who\",\"name\":\"who changed\",\"dataType\":\"string\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false},{\"sysName\":\"@dateCreated\",\"name\":\"date created\",\"dataType\":\"date\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false},{\"sysName\":\"@dateChanged\",\"name\":\"date changed\",\"dataType\":\"date\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false}]",
         "jsonGroupSettings": null,
         "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
@@ -1663,8 +1408,8 @@ const App = (props) => {
         "_nativeIndexSettings": null,
         "innerIDField": {
           "sysName": "id",
-          "name": "id",
           "dataType": "id",
+          "name": "id",
           "id": "0",
           "link": "",
           "group": "0",
@@ -1681,15 +1426,66 @@ const App = (props) => {
           "format": null,
           "formatOptions": null,
           "groupName": null,
-          "linkOrArrayLinkType": false,
-          "linkType": false,
+          "typeVariable": {},
           "arrayLink": false,
           "indexExists": false,
-          "typeVariable": {},
+          "linkOrArrayLinkType": false,
+          "linkType": false,
           "json": false
         },
         "objectIDSysName": "id",
         "folderId": 33596509
+      },
+      "1332190": {
+        "id": 1332190,
+        "dateCreated": "2021-01-04T09:40:26Z",
+        "hidden": false,
+        "dateHidden": null,
+        "networkID": 4265,
+        "name": "Отклики",
+        "sysName": "Responds",
+        "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"job_id\",\"dataType\":\"link\",\"name\":\"Вакансия\",\"id\":\"17681609753231539\",\"link\":\"Jobs\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"json\":false},{\"sysName\":\"jobCompany\",\"dataType\":\"string\",\"name\":\"Название компании работодателя\",\"id\":\"18201609753320275\",\"link\":\"\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"date_notificated\",\"dataType\":\"date\",\"name\":\"Дата нотификации пользователя\",\"id\":\"19391609931967555\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"jobType\",\"dataType\":\"link\",\"name\":\"График\",\"id\":\"21591609753362987\",\"link\":\"Type2252\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"json\":false},{\"sysName\":\"date_created\",\"dataType\":\"date\",\"name\":\"Дата подбора вакансии\",\"id\":\"22671609753618893\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"user_id\",\"dataType\":\"link\",\"name\":\"Кандидат\",\"id\":\"30541609753246985\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"json\":false},{\"sysName\":\"jobFunctions22\",\"dataType\":\"arrayLink\",\"name\":\"Функции\",\"id\":\"45431609753369136\",\"link\":\"functions22\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"json\":false},{\"sysName\":\"jobName\",\"dataType\":\"string\",\"name\":\"Название вакансии\",\"id\":\"51461609753306387\",\"link\":\"\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"date_process\",\"dataType\":\"date\",\"name\":\"Дата обработки работодателем\",\"id\":\"62351609753664330\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"user_name\",\"dataType\":\"string\",\"name\":\"Имя пользователя\",\"id\":\"62681610095241918\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"jobCompanySite\",\"dataType\":\"string\",\"name\":\"Сайт работодателя\",\"id\":\"63091609753320998\",\"link\":\"\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"jobCompanyCity\",\"dataType\":\"arrayLink\",\"name\":\"Город(а) работодателя\",\"id\":\"67721609753322261\",\"link\":\"cities\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"json\":false},{\"sysName\":\"date_respond\",\"dataType\":\"date\",\"name\":\"Дата отклика\",\"id\":\"68381609753647773\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"jobCompanyDesc\",\"dataType\":\"string\",\"name\":\"Описание компании работодателя\",\"id\":\"70501609753347877\",\"link\":\"\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"jobFunctions52\",\"dataType\":\"arrayLink\",\"name\":\"Функции\",\"id\":\"77141609753455553\",\"link\":\"functions52\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"json\":false},{\"sysName\":\"jobDescription\",\"dataType\":\"string\",\"name\":\"Описание вакансии\",\"id\":\"87151609753355684\",\"link\":\"\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"salary_text\",\"dataType\":\"string\",\"name\":\"Зарплатная вилка\",\"id\":\"87951609753577950\",\"link\":\"\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Статус (suggested,new,approved,declined)\",\"id\":\"91021609753267495\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false}]",
+        "jsonGroupSettings": "[{\"id\":1609753298511,\"name\":\"Описание вакансии\",\"order\":0}]",
+        "jsonViewIdSettings": "[{\"sysName\":\"jobName\"},{\"sysName\":\"jobCompany\"},{\"sysName\":\"user_name\"}]",
+        "jsonSettings": null,
+        "jsonNativeIndexSettings": null,
+        "indexEnabled": true,
+        "lastIndexUpdate": 0,
+        "indexName": "",
+        "dateChanged": "2021-01-08T08:41:18Z",
+        "createBy": 1,
+        "changedBy": 21,
+        "_settings": null,
+        "_nativeIndexSettings": null,
+        "innerIDField": {
+          "sysName": "id",
+          "dataType": "id",
+          "name": "id",
+          "id": "0",
+          "link": "",
+          "group": "0",
+          "tags": "",
+          "indexing": false,
+          "ordering": false,
+          "description": null,
+          "weight": null,
+          "order": 0,
+          "linkIndexFieldSysName": [],
+          "defaultValue": "",
+          "constraints": null,
+          "synthetic": false,
+          "format": null,
+          "formatOptions": {},
+          "groupName": null,
+          "typeVariable": {},
+          "arrayLink": false,
+          "indexExists": false,
+          "linkOrArrayLinkType": false,
+          "linkType": false,
+          "json": false
+        },
+        "objectIDSysName": "id",
+        "folderId": 33596511
       }
     },
     "isSuccessWrite": false,
@@ -1697,192 +1493,57 @@ const App = (props) => {
     "writeResponse": null,
     "fileds": [
       {
-        "sysName": "employer_description",
-        "name": "Описание компании",
-        "dataType": "string",
-        "id": "34671609671007166",
+        "sysName": "id",
+        "dataType": "id",
+        "name": "id",
+        "id": "0",
         "link": "",
-        "group": "1607938855954",
-        "tags": null,
+        "group": "0",
+        "tags": "",
+        "indexing": false,
+        "ordering": false,
+        "description": null,
+        "weight": null,
+        "order": 0,
+        "linkIndexFieldSysName": [],
+        "defaultValue": "",
+        "constraints": null,
+        "synthetic": false,
+        "format": null,
+        "formatOptions": {},
+        "groupName": null,
+        "typeVariable": {},
+        "arrayLink": false,
+        "indexExists": false,
+        "linkOrArrayLinkType": false,
+        "linkType": false,
+        "json": false
+      },
+      {
+        "sysName": "status",
+        "dataType": "string",
+        "name": "Статус (suggested,new,approved,declined)",
+        "id": "91021609753267495",
+        "link": "",
+        "group": "0",
+        "tags": "",
         "indexing": false,
         "ordering": false,
         "description": null,
         "weight": null,
         "order": 3,
         "linkIndexFieldSysName": [],
-        "defaultValue": null,
-        "constraints": null,
-        "synthetic": false,
-        "format": "markdown",
-        "formatOptions": null,
-        "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
-        "typeVariable": {},
-        "json": false
-      },
-      {
-        "sysName": "employer_name",
-        "name": "Название компании",
-        "dataType": "string",
-        "id": "68021607939162171",
-        "link": "",
-        "group": "1607938855954",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 0,
-        "linkIndexFieldSysName": [],
         "defaultValue": "",
         "constraints": null,
         "synthetic": false,
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
+        "typeVariable": {},
         "arrayLink": false,
         "indexExists": false,
-        "typeVariable": {},
-        "json": false
-      },
-      {
-        "sysName": "employer_website",
-        "name": "Сайт компании",
-        "dataType": "string",
-        "id": "89401607939216442",
-        "link": "",
-        "group": "1607938855954",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 2,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": "webLink",
-        "formatOptions": {},
-        "groupName": null,
         "linkOrArrayLinkType": false,
         "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
-        "typeVariable": {},
-        "json": false
-      },
-      {
-        "sysName": "firstName",
-        "name": "Имя",
-        "dataType": "string",
-        "id": "4",
-        "link": "",
-        "group": "0",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 4,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": {},
-        "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
-        "typeVariable": {},
-        "json": false
-      },
-      {
-        "sysName": "id",
-        "name": "Username (login)",
-        "dataType": "id",
-        "id": "12",
-        "link": "",
-        "group": "0",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 0,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": {},
-        "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
-        "typeVariable": {},
-        "json": false
-      },
-      {
-        "sysName": "lastName",
-        "name": "Фамлия",
-        "dataType": "string",
-        "id": "3",
-        "link": "",
-        "group": "0",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 5,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": {},
-        "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
-        "typeVariable": {},
-        "json": false
-      },
-      {
-        "sysName": "role",
-        "name": "Роли",
-        "dataType": "string",
-        "id": "5",
-        "link": "",
-        "group": "0",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 2,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": {},
-        "groupName": null,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "indexExists": false,
-        "typeVariable": {},
         "json": false
       }
     ]
