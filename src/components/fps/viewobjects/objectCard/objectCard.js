@@ -294,10 +294,10 @@ export function ObjectCard(props) {
                     />
                 })}
                 {fields && fieldParams && fields.filter(i =>
-                    fieldParams[i].write == true
+                    fieldParams[i] && fieldParams[i].write == true
                     && fieldParams[i].include == true
                 ) && fields.filter(i =>
-                    fieldParams[i].write == true
+                    fieldParams[i] && fieldParams[i].write == true
                     && fieldParams[i].include == true
                 ).length > 0 &&
                     <SaveCard // Сохранить изменения
@@ -648,9 +648,9 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
 
     const [edit, setEdit] = useState(false)
 
-    console.log('Field  Link')
-    console.log(field)
-    console.log(object[field.sysName].value)
+    // console.log('Field  Link')
+    // console.log(field)
+    // console.log(object[field.sysName].value)
     if (!object[field.sysName].value || object[field.sysName].value.length == 0) {
         return <React.Fragment></React.Fragment>
     }
