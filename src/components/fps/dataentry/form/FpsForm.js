@@ -172,15 +172,21 @@ function FpsFormNew({ auth, data, onEvent, id }) {
       let getFieldVal
       getFieldVal = data.data[0] && data.data[0][sysName]
       if (dataType == 'boolean') {
-        if (getFieldVal === true) { getFieldVal = 'true'; console.log('TRUE') }
-        if (getFieldVal === false) { getFieldVal = 'false'; console.log('FALSE') }
+        if (getFieldVal === true) { getFieldVal = 'true' }
+        if (getFieldVal === false) { getFieldVal = 'false' }
       }
-      if (eidtID && getFieldVal) {
+      if (eidtID && getFieldVal && fetchedObjectFields[sysName] != getFieldVal) {
         fetchedObjectFields = { ...fetchedObjectFields, id: eidtID, [sysName]: getFieldVal }
       }
       return getFieldVal
     }
   }
+
+  useEffect(()=>{
+    let modelCopy = { ...fetchedObjectFields, ...hiddenFieldsValues, ...hiddenAuth, ...model }; // model в конце! Иначе нахуй перетирается все что ввели
+    if (eidtID) { modelCopy.id = eidtID } // тут проебывался где-то или перетирался id, посему записываем в явном виде
+    setModel(modelCopy)
+  },[data.data])
 
   const onChange = (field, value) => {
     let modelCopy = { ...fetchedObjectFields, ...hiddenFieldsValues, ...hiddenAuth, ...model }; // model в конце! Иначе нахуй перетирается все что ввели
