@@ -77,14 +77,14 @@ const App = (props) => {
   }
 
   let cardActions = {
-    "sl": "mySelectedJobs",
+    "sl": "myRespondsNew",
     "pageSize": "10",
     "headerField": null,
     "params": {
       "cardListLayout": "grid",
-      "cardHeaderComment": null,
+      "cardHeaderComment": "",
       "deleteField": "",
-      "cardBodyText": "date_created",
+      "cardBodyText": "date_respond",
       "cardImage": false,
       "cardImageField": "",
       "cardImageType": "none",
@@ -93,10 +93,10 @@ const App = (props) => {
       "data": {
         "readFields": [
           {
-            "fieldSysName": "date_created",
+            "fieldSysName": "date_respond",
             "fetch": [],
-            "sysName": "date_created",
-            "name": "Дата подбора вакансии",
+            "sysName": "date_respond",
+            "name": "Дата отклика",
             "dataType": "date",
             "format": "",
             "formatOptions": {},
@@ -125,11 +125,6 @@ const App = (props) => {
           {
             "fieldSysName": "jobCompanyCity",
             "fetch": [
-              {
-                "fieldSysName": "id",
-                "condition": null,
-                "fetch": []
-              },
               {
                 "fieldSysName": "name",
                 "condition": null,
@@ -177,11 +172,6 @@ const App = (props) => {
             "fieldSysName": "jobFunctions22",
             "fetch": [
               {
-                "fieldSysName": "id",
-                "condition": null,
-                "fetch": []
-              },
-              {
                 "fieldSysName": "name",
                 "condition": null,
                 "fetch": []
@@ -197,11 +187,6 @@ const App = (props) => {
           {
             "fieldSysName": "jobFunctions52",
             "fetch": [
-              {
-                "fieldSysName": "id",
-                "condition": null,
-                "fetch": []
-              },
               {
                 "fieldSysName": "name",
                 "condition": null,
@@ -229,11 +214,6 @@ const App = (props) => {
             "fieldSysName": "jobType",
             "fetch": [
               {
-                "fieldSysName": "id",
-                "condition": null,
-                "fetch": []
-              },
-              {
                 "fieldSysName": "type",
                 "condition": null,
                 "fetch": []
@@ -255,44 +235,13 @@ const App = (props) => {
             "format": "",
             "formatOptions": {},
             "link": ""
-          },
-          {
-            "fieldSysName": "status",
-            "fetch": [],
-            "sysName": "status",
-            "name": "Статус (suggested,new,approved,declined)",
-            "dataType": "string",
-            "format": "",
-            "formatOptions": {},
-            "link": ""
           }
         ],
-        "writeFields": [
-          {
-            "fieldSysName": "id",
-            "fetch": [],
-            "sysName": "id",
-            "name": "id",
-            "dataType": "id",
-            "format": "",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "status",
-            "fetch": [],
-            "sysName": "status",
-            "name": "Статус (suggested,new,approved,declined)",
-            "dataType": "string",
-            "format": "",
-            "formatOptions": {},
-            "link": ""
-          }
-        ],
+        "writeFields": [],
         "fields": {
-          "date_created": {
-            "id": "date_created",
-            "content": "Дата подбора вакансии",
+          "date_respond": {
+            "id": "date_respond",
+            "content": "Дата отклика",
             "type": "field",
             "dataType": "date",
             "format": "",
@@ -308,7 +257,6 @@ const App = (props) => {
             "dataType": "id",
             "format": "",
             "formatOptions": {},
-            "write": true,
             "read": true,
             "link": "",
             "actions": []
@@ -422,33 +370,16 @@ const App = (props) => {
             "read": true,
             "link": "",
             "actions": []
-          },
-          "status": {
-            "id": "status",
-            "content": "Статус (suggested,new,approved,declined)",
-            "type": "field",
-            "dataType": "string",
-            "format": "",
-            "formatOptions": {},
-            "write": true,
-            "read": true,
-            "link": "",
-            "actions": []
-          },
-          "action__28901609933532764": {
-            "content": "Откликнуться",
-            "id": "action__28901609933532764",
-            "type": "action",
-            "actions": []
-          },
-          "action__96981609933721449": {
-            "content": "Не интересно",
-            "id": "action__96981609933721449",
-            "type": "action",
-            "actions": []
           }
         },
         "fieldParams": {
+          "date_respond": {
+            "include": true,
+            "fileImageFormat": "square",
+            "quickSearch": false,
+            "fileImageSize": 200,
+            "clickable": false
+          },
           "id": {
             "include": false,
             "fileImageFormat": "square",
@@ -525,20 +456,6 @@ const App = (props) => {
             "quickSearch": false,
             "fileImageSize": 200,
             "clickable": false
-          },
-          "status": {
-            "include": false,
-            "fileImageFormat": "square",
-            "quickSearch": false,
-            "fileImageSize": 200,
-            "clickable": false
-          },
-          "date_created": {
-            "include": true,
-            "fileImageFormat": "square",
-            "quickSearch": false,
-            "fileImageSize": 200,
-            "clickable": false
           }
         },
         "columns": {
@@ -546,86 +463,41 @@ const App = (props) => {
             "id": "tab-1",
             "title": "Вакансия",
             "fieldIds": [
+              "date_respond",
               "id",
               "jobName",
               "jobDescription",
               "salary_text",
               "jobType",
               "jobFunctions22",
-              "jobFunctions52",
-              "date_created",
-              "status",
-              "action__28901609933532764",
-              "action__96981609933721449"
+              "jobFunctions52"
             ]
           },
-          "39811609933473399": {
-            "id": "39811609933473399",
+          "92351610095731833": {
+            "id": "92351610095731833",
             "title": "Работодатель",
             "fieldIds": [
               "jobCompany",
-              "jobCompanySite",
               "jobCompanyCity",
+              "jobCompanySite",
               "jobCompanyDesc"
             ]
           }
         },
         "columnOrder": [
           "tab-1",
-          "39811609933473399"
+          "92351610095731833"
         ],
-        "actions": [
-          {
-            "sysName": "",
-            "id": "28901609933532764",
-            "name": "Откликнуться",
-            "displayAs": "button",
-            "buttonIcon": "done",
-            "buttonType": "accent",
-            "dropdown": true,
-            "closePopup": true,
-            "formMapping": [
-              {
-                "id": "33731609933574401",
-                "target": "id",
-                "type": "objectField",
-                "value": "id"
-              },
-              {
-                "id": "65371609933613637",
-                "target": "status",
-                "type": "const",
-                "value": "new"
-              }
-            ]
-          },
-          {
-            "sysName": "",
-            "id": "96981609933721449",
-            "name": "Не интересно",
-            "displayAs": "button",
-            "buttonIcon": "delete",
-            "buttonType": "danger",
-            "dropdown": true,
-            "closePopup": true,
-            "formMapping": [
-              {
-                "id": "73081609933738886",
-                "target": "id",
-                "type": "objectField",
-                "value": "id"
-              },
-              {
-                "id": "31091609933745898",
-                "target": "status",
-                "type": "const",
-                "value": "declined"
-              }
-            ]
-          }
-        ]
+        "actions": []
       },
       "fields": {
+        "date_respond": {
+          "include": true,
+          "fileImageFormat": "square",
+          "quickSearch": false,
+          "fileImageSize": 200,
+          "clickable": false
+        },
         "id": {
           "include": false,
           "fileImageFormat": "square",
@@ -702,81 +574,17 @@ const App = (props) => {
           "quickSearch": false,
           "fileImageSize": 200,
           "clickable": false
-        },
-        "status": {
-          "include": false,
-          "fileImageFormat": "square",
-          "quickSearch": false,
-          "fileImageSize": 200,
-          "clickable": false
-        },
-        "date_created": {
-          "include": true,
-          "fileImageFormat": "square",
-          "quickSearch": false,
-          "fileImageSize": 200,
-          "clickable": false
         }
-      },
-      "actions": [
-        {
-          "sysName": "",
-          "id": "28901609933532764",
-          "name": "Откликнуться",
-          "displayAs": "button",
-          "buttonIcon": "done",
-          "buttonType": "accent",
-          "dropdown": true,
-          "closePopup": true,
-          "formMapping": [
-            {
-              "id": "33731609933574401",
-              "target": "id",
-              "type": "objectField",
-              "value": "id"
-            },
-            {
-              "id": "65371609933613637",
-              "target": "status",
-              "type": "const",
-              "value": "new"
-            }
-          ]
-        },
-        {
-          "sysName": "",
-          "id": "96981609933721449",
-          "name": "Не интересно",
-          "displayAs": "button",
-          "buttonIcon": "delete",
-          "buttonType": "danger",
-          "dropdown": true,
-          "closePopup": true,
-          "formMapping": [
-            {
-              "id": "73081609933738886",
-              "target": "id",
-              "type": "objectField",
-              "value": "id"
-            },
-            {
-              "id": "31091609933745898",
-              "target": "status",
-              "type": "const",
-              "value": "declined"
-            }
-          ]
-        }
-      ]
+      }
     },
-    "tableTitle": "💎 Подходящие вакансии",
+    "tableTitle": "Ждут ответа",
     "actions": null,
     "headers": [
       {
-        "sysName": "date_created",
+        "sysName": "date_respond",
         "dataType": "date",
-        "name": "Дата подбора вакансии",
-        "id": "22671609753618893",
+        "name": "Дата отклика",
+        "id": "68381609753647773",
         "link": "",
         "group": "0",
         "tags": "",
@@ -784,7 +592,7 @@ const App = (props) => {
         "ordering": false,
         "description": null,
         "weight": null,
-        "order": 4,
+        "order": 5,
         "linkIndexFieldSysName": [],
         "defaultValue": "",
         "constraints": null,
@@ -1095,50 +903,47 @@ const App = (props) => {
         "linkOrArrayLinkType": false,
         "linkType": false,
         "json": false
-      },
-      {
-        "sysName": "status",
-        "dataType": "string",
-        "name": "Статус (suggested,new,approved,declined)",
-        "id": "91021609753267495",
-        "link": "",
-        "group": "0",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 3,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": {},
-        "groupName": null,
-        "typeVariable": {},
-        "arrayLink": false,
-        "indexExists": false,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "json": false
       }
     ],
     "data": [
       {
-        "jobName": "Инженер",
+        "jobName": "уборщица",
         "salary_text": "От 40k ₽ до 120k ₽",
-        "date_created": 1610106192000,
+        "date_respond": 1610109585000,
         "jobDescription": "### Требования \n- один\n- два\n- три\n\n### Обязанности\n- один\n- два\n- три\n\n### Условия \n- один\n- два\n- три",
         "jobCompanySite": "tesla.com",
         "jobType": {
-          "id": "52",
           "type": "график 5 через 2"
         },
         "jobCompanyDesc": "Делаем электрокары\n\n- 1\n- 2",
-        "id": "$D.md5('79151845361' + '')",
+        "id": "ced8092712251e916ceff640482ce5f1",
         "jobCompany": "Tesla",
-        "status": "suggested",
+        "jobFunctions52": [
+          {
+            "name": "IT",
+            "id": "57816d4e-5d1a-4240-8eda-0041ccdc3d55"
+          }
+        ],
+        "jobFunctions22": [],
+        "jobCompanyCity": [
+          {
+            "name": "Другой город / за пределами РФ",
+            "id": "other"
+          }
+        ]
+      },
+      {
+        "jobName": "массажист",
+        "salary_text": "От 40k ₽ до 120k ₽",
+        "date_respond": 1610109652000,
+        "jobDescription": "### Требования \n- один\n- два\n- три\n\n### Обязанности\n- один\n- два\n- три\n\n### Условия \n- один\n- два\n- три",
+        "jobCompanySite": "tesla.com",
+        "jobType": {
+          "type": "график 5 через 2"
+        },
+        "jobCompanyDesc": "Делаем электрокары\n\n- 1\n- 2",
+        "id": "04c17cac0e223d75277282285e2f616a",
+        "jobCompany": "Tesla",
         "jobFunctions52": [
           {
             "name": "IT",
@@ -1159,7 +964,7 @@ const App = (props) => {
     "error": null,
     "fieldScheme": [
       [
-        "date_created",
+        "date_respond",
         1332190
       ],
       [
@@ -1169,10 +974,6 @@ const App = (props) => {
       [
         "jobCompany",
         1332190
-      ],
-      [
-        "jobCompanyCity.id",
-        1330972
       ],
       [
         "jobCompanyCity.name",
@@ -1191,16 +992,8 @@ const App = (props) => {
         1332190
       ],
       [
-        "jobFunctions22.id",
-        1330974
-      ],
-      [
         "jobFunctions22.name",
         1330974
-      ],
-      [
-        "jobFunctions52.id",
-        1330975
       ],
       [
         "jobFunctions52.name",
@@ -1211,26 +1004,15 @@ const App = (props) => {
         1332190
       ],
       [
-        "jobType.id",
-        1330973
-      ],
-      [
         "jobType.type",
         1330973
       ],
       [
         "salary_text",
         1332190
-      ],
-      [
-        "status",
-        1332190
       ]
     ],
-    "writeFields": [
-      "id",
-      "status"
-    ],
+    "writeFields": [],
     "structures": {
       "1330972": {
         "id": 1330972,
@@ -1444,15 +1226,15 @@ const App = (props) => {
         "networkID": 4265,
         "name": "Отклики",
         "sysName": "Responds",
-        "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"job_id\",\"dataType\":\"link\",\"name\":\"Вакансия\",\"id\":\"17681609753231539\",\"link\":\"Jobs\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"json\":false},{\"sysName\":\"jobCompany\",\"dataType\":\"string\",\"name\":\"Название компании работодателя\",\"id\":\"18201609753320275\",\"link\":\"\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"date_notificated\",\"dataType\":\"date\",\"name\":\"Дата нотификации пользователя\",\"id\":\"19391609931967555\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"jobType\",\"dataType\":\"link\",\"name\":\"График\",\"id\":\"21591609753362987\",\"link\":\"Type2252\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"json\":false},{\"sysName\":\"date_created\",\"dataType\":\"date\",\"name\":\"Дата подбора вакансии\",\"id\":\"22671609753618893\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"user_id\",\"dataType\":\"link\",\"name\":\"Кандидат\",\"id\":\"30541609753246985\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"json\":false},{\"sysName\":\"jobFunctions22\",\"dataType\":\"arrayLink\",\"name\":\"Функции\",\"id\":\"45431609753369136\",\"link\":\"functions22\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"json\":false},{\"sysName\":\"jobName\",\"dataType\":\"string\",\"name\":\"Название вакансии\",\"id\":\"51461609753306387\",\"link\":\"\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"date_process\",\"dataType\":\"date\",\"name\":\"Дата обработки работодателем\",\"id\":\"62351609753664330\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"user_name\",\"dataType\":\"string\",\"name\":\"Имя пользователя\",\"id\":\"62681610095241918\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"jobCompanySite\",\"dataType\":\"string\",\"name\":\"Сайт работодателя\",\"id\":\"63091609753320998\",\"link\":\"\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"jobCompanyCity\",\"dataType\":\"arrayLink\",\"name\":\"Город(а) работодателя\",\"id\":\"67721609753322261\",\"link\":\"cities\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"json\":false},{\"sysName\":\"date_respond\",\"dataType\":\"date\",\"name\":\"Дата отклика\",\"id\":\"68381609753647773\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"jobCompanyDesc\",\"dataType\":\"string\",\"name\":\"Описание компании работодателя\",\"id\":\"70501609753347877\",\"link\":\"\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"jobFunctions52\",\"dataType\":\"arrayLink\",\"name\":\"Функции\",\"id\":\"77141609753455553\",\"link\":\"functions52\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"json\":false},{\"sysName\":\"jobDescription\",\"dataType\":\"string\",\"name\":\"Описание вакансии\",\"id\":\"87151609753355684\",\"link\":\"\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"salary_text\",\"dataType\":\"string\",\"name\":\"Зарплатная вилка\",\"id\":\"87951609753577950\",\"link\":\"\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Статус (suggested,new,approved,declined)\",\"id\":\"91021609753267495\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false}]",
-        "jsonGroupSettings": "[{\"id\":1609753298511,\"name\":\"Описание вакансии\",\"order\":0}]",
-        "jsonViewIdSettings": "[{\"sysName\":\"jobName\"},{\"sysName\":\"jobCompany\"},{\"sysName\":\"user_name\"}]",
+        "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"job_id\",\"dataType\":\"link\",\"name\":\"Вакансия\",\"id\":\"17681609753231539\",\"link\":\"Jobs\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"json\":false},{\"sysName\":\"jobCompany\",\"dataType\":\"string\",\"name\":\"Название компании работодателя\",\"id\":\"18201609753320275\",\"link\":\"\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"user_telegram\",\"dataType\":\"string\",\"name\":\"Telegram\",\"id\":\"18501610096811464\",\"link\":\"\",\"group\":\"1610096745541\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"date_notificated\",\"dataType\":\"date\",\"name\":\"Дата нотификации пользователя\",\"id\":\"19391609931967555\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"jobType\",\"dataType\":\"link\",\"name\":\"График\",\"id\":\"21591609753362987\",\"link\":\"Type2252\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"json\":false},{\"sysName\":\"date_created\",\"dataType\":\"date\",\"name\":\"Дата подбора вакансии\",\"id\":\"22671609753618893\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"user_id\",\"dataType\":\"link\",\"name\":\"Кандидат\",\"id\":\"30541609753246985\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"json\":false},{\"sysName\":\"user_CV\",\"dataType\":\"file\",\"name\":\"Резюме кандидата\",\"id\":\"42111610096763643\",\"link\":\"\",\"group\":\"1610096745541\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"jobFunctions22\",\"dataType\":\"arrayLink\",\"name\":\"Функции\",\"id\":\"45431609753369136\",\"link\":\"functions22\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"json\":false},{\"sysName\":\"jobName\",\"dataType\":\"string\",\"name\":\"Название вакансии\",\"id\":\"51461609753306387\",\"link\":\"\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"date_process\",\"dataType\":\"date\",\"name\":\"Дата обработки работодателем\",\"id\":\"62351609753664330\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"user_name\",\"dataType\":\"string\",\"name\":\"Имя кандидата\",\"id\":\"62681610095241918\",\"link\":\"\",\"group\":\"1610096745541\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"jobCompanySite\",\"dataType\":\"string\",\"name\":\"Сайт работодателя\",\"id\":\"63091609753320998\",\"link\":\"\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"jobCompanyCity\",\"dataType\":\"arrayLink\",\"name\":\"Город(а) работодателя\",\"id\":\"67721609753322261\",\"link\":\"cities\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"json\":false},{\"sysName\":\"date_respond\",\"dataType\":\"date\",\"name\":\"Дата отклика\",\"id\":\"68381609753647773\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"jobCompanyDesc\",\"dataType\":\"string\",\"name\":\"Описание компании работодателя\",\"id\":\"70501609753347877\",\"link\":\"\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"jobFunctions52\",\"dataType\":\"arrayLink\",\"name\":\"Функции\",\"id\":\"77141609753455553\",\"link\":\"functions52\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"json\":false},{\"sysName\":\"jobDescription\",\"dataType\":\"string\",\"name\":\"Описание вакансии\",\"id\":\"87151609753355684\",\"link\":\"\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"user_phone\",\"dataType\":\"string\",\"name\":\"Телефон кандидата\",\"id\":\"87451610096826236\",\"link\":\"\",\"group\":\"1610096745541\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"phone\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"salary_text\",\"dataType\":\"string\",\"name\":\"Зарплатная вилка\",\"id\":\"87951609753577950\",\"link\":\"\",\"group\":\"1609753298511\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Статус (suggested,new,approved,declined)\",\"id\":\"91021609753267495\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"user_lastName\",\"dataType\":\"string\",\"name\":\"Фамилия кандидата\",\"id\":\"93431610096794050\",\"link\":\"\",\"group\":\"1610096745541\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false}]",
+        "jsonGroupSettings": "[{\"id\":1609753298511,\"name\":\"Описание вакансии\",\"order\":0},{\"id\":1610096745541,\"name\":\" Инфо о кандидате\",\"order\":1}]",
+        "jsonViewIdSettings": "[{\"sysName\":\"jobName\"},{\"sysName\":\"jobCompany\"},{\"sysName\":\"user_name\"},{\"sysName\":\"user_lastName\"}]",
         "jsonSettings": null,
         "jsonNativeIndexSettings": null,
         "indexEnabled": true,
         "lastIndexUpdate": 0,
         "indexName": "",
-        "dateChanged": "2021-01-08T08:41:18Z",
+        "dateChanged": "2021-01-08T09:17:15Z",
         "createBy": 1,
         "changedBy": 21,
         "_settings": null,
@@ -1491,62 +1273,7 @@ const App = (props) => {
     "isSuccessWrite": false,
     "writeError": null,
     "writeResponse": null,
-    "fileds": [
-      {
-        "sysName": "id",
-        "dataType": "id",
-        "name": "id",
-        "id": "0",
-        "link": "",
-        "group": "0",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 0,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": {},
-        "groupName": null,
-        "typeVariable": {},
-        "arrayLink": false,
-        "indexExists": false,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "json": false
-      },
-      {
-        "sysName": "status",
-        "dataType": "string",
-        "name": "Статус (suggested,new,approved,declined)",
-        "id": "91021609753267495",
-        "link": "",
-        "group": "0",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 3,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": {},
-        "groupName": null,
-        "typeVariable": {},
-        "arrayLink": false,
-        "indexExists": false,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "json": false
-      }
-    ]
+    "fileds": []
   }
 
   let exampleTable =

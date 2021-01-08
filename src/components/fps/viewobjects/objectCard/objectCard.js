@@ -648,8 +648,12 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
 
     const [edit, setEdit] = useState(false)
 
-    // console.log('Field  Link')
-    // console.log(field)
+    console.log('Field  Link')
+    console.log(field)
+    console.log(object[field.sysName].value)
+    if (!object[field.sysName].value || object[field.sysName].value.length == 0) {
+        return <React.Fragment></React.Fragment>
+    }
 
     return (
         <React.Fragment>
