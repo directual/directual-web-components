@@ -4445,8 +4445,8 @@ const App = (props) => {
 
   let exampleForm = {
     "sl": "editEmployeeProfile",
-    "formName": "Мой профиль кандидата",
-    "formDesc": "График **2/2** — профессии в области beauty, HoReCa, услуг.\n\nГрафик **5/2** — креатив, дизайн, менеджмент.",
+    "formName": "Профиль кандидата",
+    "formDesc": "",
     "formButton": "Сохранить",
     "placeholder": "",
     "maxWidth": "500",
@@ -4463,7 +4463,7 @@ const App = (props) => {
             "fieldSysName": "22_functions",
             "fetch": [],
             "sysName": "22_functions",
-            "name": "Функции для графика 2/2",
+            "name": "Функции для категории 22",
             "dataType": "arrayLink",
             "format": "",
             "formatOptions": {},
@@ -4473,7 +4473,7 @@ const App = (props) => {
             "fieldSysName": "52_functions",
             "fetch": [],
             "sysName": "52_functions",
-            "name": "Функции для графика 5/2",
+            "name": "Функции для категории 52",
             "dataType": "arrayLink",
             "format": "",
             "formatOptions": {},
@@ -4572,7 +4572,7 @@ const App = (props) => {
             "fieldSysName": "type",
             "fetch": [],
             "sysName": "type",
-            "name": "График",
+            "name": "Категория вакансии",
             "dataType": "link",
             "format": "",
             "formatOptions": {
@@ -4598,7 +4598,7 @@ const App = (props) => {
             "fieldSysName": "22_functions",
             "fetch": [],
             "sysName": "22_functions",
-            "name": "Функции для графика 2/2",
+            "name": "Функции для категории 22",
             "dataType": "arrayLink",
             "format": "",
             "formatOptions": {},
@@ -4608,7 +4608,7 @@ const App = (props) => {
             "fieldSysName": "52_functions",
             "fetch": [],
             "sysName": "52_functions",
-            "name": "Функции для графика 5/2",
+            "name": "Функции для категории 52",
             "dataType": "arrayLink",
             "format": "",
             "formatOptions": {},
@@ -4707,7 +4707,7 @@ const App = (props) => {
             "fieldSysName": "type",
             "fetch": [],
             "sysName": "type",
-            "name": "График",
+            "name": "Категория вакансии",
             "dataType": "link",
             "format": "",
             "formatOptions": {
@@ -4731,7 +4731,7 @@ const App = (props) => {
         "fields": {
           "22_functions": {
             "id": "22_functions",
-            "content": "Функции для графика 2/2",
+            "content": "Функции для категории 22",
             "type": "field",
             "dataType": "arrayLink",
             "format": "",
@@ -4742,7 +4742,7 @@ const App = (props) => {
           },
           "52_functions": {
             "id": "52_functions",
-            "content": "Функции для графика 5/2",
+            "content": "Функции для категории 52",
             "type": "field",
             "dataType": "arrayLink",
             "format": "",
@@ -4849,7 +4849,7 @@ const App = (props) => {
           },
           "type": {
             "id": "type",
-            "content": "График",
+            "content": "Категория вакансии",
             "type": "field",
             "dataType": "link",
             "format": "",
@@ -4882,7 +4882,7 @@ const App = (props) => {
             "clickable": false,
             "descriptionFlag": true,
             "defaultValueOn": false,
-            "description": "Выберите до 3 функций"
+            "description": "Вакансии в шоурумах, магазинах, салонах, фитнес-клубах и ресторанном бизнесе"
           },
           "52_functions": {
             "include": true,
@@ -4891,7 +4891,7 @@ const App = (props) => {
             "fileImageSize": 200,
             "clickable": false,
             "descriptionFlag": true,
-            "description": "Выберите до 3 функций"
+            "description": "Вакансии в креативе, бизнесе и стажировки"
           },
           "city": {
             "include": true,
@@ -5033,7 +5033,7 @@ const App = (props) => {
           "clickable": false,
           "descriptionFlag": true,
           "defaultValueOn": false,
-          "description": "Выберите до 3 функций",
+          "description": "Вакансии в шоурумах, магазинах, салонах, фитнес-клубах и ресторанном бизнесе",
           "searchData": [
             {
               "key": "772fafad-36a7-4ccc-b338-ebb3b670e554",
@@ -5100,19 +5100,11 @@ const App = (props) => {
           "fileImageSize": 200,
           "clickable": false,
           "descriptionFlag": true,
-          "description": "Выберите до 3 функций",
+          "description": "Вакансии в креативе, бизнесе и стажировки",
           "searchData": [
-            {
-              "key": "1d25ecad-0a05-42c8-a9d8-76ae5939fc09",
-              "value": "Marketing"
-            },
             {
               "key": "5b27b967-9c4d-4dbe-89f0-abb4186e64a1",
               "value": "PR"
-            },
-            {
-              "key": "f458982e-0569-4006-8c7a-edef0d59bc07",
-              "value": "Events"
             },
             {
               "key": "565e74f1-6a97-491b-a97b-7578d26f9b0e",
@@ -5156,15 +5148,11 @@ const App = (props) => {
             },
             {
               "key": "f357eb22-9b97-4889-ae7b-1359a837626e",
-              "value": "Fashion-designer"
-            },
-            {
-              "key": "95e69d64-91c4-4134-8109-62ad43bab442",
-              "value": "Art-director"
+              "value": "Fashion-дизайнер"
             },
             {
               "key": "35a1a90b-b7bf-44dd-b2cb-0537f35c995a",
-              "value": "Brand-manager"
+              "value": "Бренд менеджер"
             },
             {
               "key": "d8a43cf3-5903-4073-95e3-d7f400ff28cc",
@@ -5175,20 +5163,28 @@ const App = (props) => {
               "value": "Стилист"
             },
             {
-              "key": "87f3fcfb-131b-4f80-af76-fd2e2a88419f",
-              "value": "Sales"
-            },
-            {
-              "key": "9275cda3-f60c-4827-866b-e6f151d10118",
-              "value": "Admin/Intern"
-            },
-            {
               "key": "57816d4e-5d1a-4240-8eda-0041ccdc3d55",
               "value": "IT"
             },
             {
               "key": "f9e6e8ea-aea5-4a2e-b46c-4dfa353fec64",
               "value": "HR"
+            },
+            {
+              "key": "b5ecf298-bc0b-4010-964a-9eb1f36e88c7",
+              "value": "Маркетинг"
+            },
+            {
+              "key": "42793449-612e-4a86-b519-e59c8c4d0f7b",
+              "value": "Art-директор"
+            },
+            {
+              "key": "9d328ba3-59c4-43f8-809d-068d86dada3c",
+              "value": "Стажер "
+            },
+            {
+              "key": "e3673d9f-84cc-4e92-bdae-5bd81ad3fefc",
+              "value": "Менеджер проектов"
             }
           ]
         },
@@ -5911,11 +5907,11 @@ const App = (props) => {
           "searchData": [
             {
               "key": "22",
-              "value": "график 2 через 2"
+              "value": "22 — сфера услуг, сменный график"
             },
             {
               "key": "52",
-              "value": "график 5 через 2"
+              "value": "52 — офисная работа и креатив"
             }
           ]
         },
@@ -5945,7 +5941,7 @@ const App = (props) => {
       {
         "sysName": "22_functions",
         "dataType": "arrayLink",
-        "name": "Функции для графика 2/2",
+        "name": "Функции для категории 22",
         "id": "34391607077096514",
         "link": "functions22",
         "group": "1607016878115",
@@ -5962,17 +5958,17 @@ const App = (props) => {
         "format": null,
         "formatOptions": null,
         "groupName": null,
-        "typeVariable": {},
-        "arrayLink": true,
+        "json": false,
         "indexExists": false,
         "linkOrArrayLinkType": true,
         "linkType": false,
-        "json": false
+        "arrayLink": true,
+        "typeVariable": {}
       },
       {
         "sysName": "52_functions",
         "dataType": "arrayLink",
-        "name": "Функции для графика 5/2",
+        "name": "Функции для категории 52",
         "id": "22101607077116998",
         "link": "functions52",
         "group": "1607016878115",
@@ -5989,12 +5985,12 @@ const App = (props) => {
         "format": null,
         "formatOptions": null,
         "groupName": null,
-        "typeVariable": {},
-        "arrayLink": true,
+        "json": false,
         "indexExists": false,
         "linkOrArrayLinkType": true,
         "linkType": false,
-        "json": false
+        "arrayLink": true,
+        "typeVariable": {}
       },
       {
         "sysName": "Facebook_lonk",
@@ -6016,12 +6012,12 @@ const App = (props) => {
         "format": "webLink",
         "formatOptions": {},
         "groupName": null,
-        "typeVariable": {},
-        "arrayLink": false,
+        "json": false,
         "indexExists": false,
         "linkOrArrayLinkType": false,
         "linkType": false,
-        "json": false
+        "arrayLink": false,
+        "typeVariable": {}
       },
       {
         "sysName": "Instagram_link",
@@ -6043,12 +6039,12 @@ const App = (props) => {
         "format": "webLink",
         "formatOptions": {},
         "groupName": null,
-        "typeVariable": {},
-        "arrayLink": false,
+        "json": false,
         "indexExists": false,
         "linkOrArrayLinkType": false,
         "linkType": false,
-        "json": false
+        "arrayLink": false,
+        "typeVariable": {}
       },
       {
         "sysName": "city",
@@ -6070,12 +6066,12 @@ const App = (props) => {
         "format": null,
         "formatOptions": null,
         "groupName": null,
-        "typeVariable": {},
-        "arrayLink": false,
+        "json": false,
         "indexExists": false,
         "linkOrArrayLinkType": true,
         "linkType": true,
-        "json": false
+        "arrayLink": false,
+        "typeVariable": {}
       },
       {
         "sysName": "firstName",
@@ -6097,12 +6093,12 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "typeVariable": {},
-        "arrayLink": false,
+        "json": false,
         "indexExists": false,
         "linkOrArrayLinkType": false,
         "linkType": false,
-        "json": false
+        "arrayLink": false,
+        "typeVariable": {}
       },
       {
         "sysName": "id",
@@ -6124,12 +6120,12 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "typeVariable": {},
-        "arrayLink": false,
+        "json": false,
         "indexExists": false,
         "linkOrArrayLinkType": false,
         "linkType": false,
-        "json": false
+        "arrayLink": false,
+        "typeVariable": {}
       },
       {
         "sysName": "lastName",
@@ -6151,12 +6147,12 @@ const App = (props) => {
         "format": null,
         "formatOptions": {},
         "groupName": null,
-        "typeVariable": {},
-        "arrayLink": false,
+        "json": false,
         "indexExists": false,
         "linkOrArrayLinkType": false,
         "linkType": false,
-        "json": false
+        "arrayLink": false,
+        "typeVariable": {}
       },
       {
         "sysName": "salary_raw",
@@ -6197,17 +6193,17 @@ const App = (props) => {
           "customOptionType": "textarea"
         },
         "groupName": null,
-        "typeVariable": {},
-        "arrayLink": false,
+        "json": true,
         "indexExists": false,
         "linkOrArrayLinkType": false,
         "linkType": false,
-        "json": true
+        "arrayLink": false,
+        "typeVariable": {}
       },
       {
         "sysName": "type",
         "dataType": "link",
-        "name": "График",
+        "name": "Категория вакансий",
         "id": "68641607070972375",
         "link": "Type2252",
         "group": "1607016878115",
@@ -6238,12 +6234,12 @@ const App = (props) => {
           "customOptionType": "textarea"
         },
         "groupName": null,
-        "typeVariable": {},
-        "arrayLink": false,
+        "json": false,
         "indexExists": false,
         "linkOrArrayLinkType": true,
         "linkType": true,
-        "json": false
+        "arrayLink": false,
+        "typeVariable": {}
       }
     ],
     "error": null,
@@ -6253,8 +6249,8 @@ const App = (props) => {
       {
         "city": "95ddc157-f2dc-4ab1-a1e5-ce9c6398bfdf",
         "52_functions": [
-          "d4e838bd-8e32-4a65-9d08-09ccf5e8956c",
-          "02b3892a-9ca7-40e3-bb79-2a4682fe445c"
+          "1d25ecad-0a05-42c8-a9d8-76ae5939fc09",
+          "5b27b967-9c4d-4dbe-89f0-abb4186e64a1"
         ],
         "salary_raw": "{\"secondValue\":100,\"firstValue\":50}",
         "22_functions": [
@@ -6263,8 +6259,7 @@ const App = (props) => {
         "lastName": "Ershov",
         "firstName": "Pavel",
         "id": "79151845361",
-        "Instagram_link": "https://www.instagram.com/pavelers/",
-        "type": "22"
+        "type": "52"
       }
     ]
   }

@@ -77,7 +77,7 @@ function List(props) {
                             ${styles.option}
                             ${props.current && props.current.key == option.key && styles.selected}
                             ${props.selected && props.selected.key == option.key && styles.keySelected}
-                            ${(props.current && props.current.length > 0) && props.current.filter(i => i.key == option.key).length > 0 && styles.selected}
+                            ${(props.current && props.current.length > 0) && option && props.current.filter(i => i && i.key == option.key).length > 0 && styles.selected}
                             ${props.iconOptions && option.icon && `${styles.optionIcon} icon icon-${option.icon}`}
                         `}
                         //ref={refs[option.key]}
