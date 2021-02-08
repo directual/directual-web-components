@@ -12,202 +12,74 @@ export default function InputsPage() {
     const [testDefValue, setTestDefValue] = useState(null)
 
     const testFields = [
-        {
-            structName: 'WebUsers',
-            fields: [
-                {
-                    sysName: 'foo1',
-                    name: 'First Name',
-                    dataType: 'json',
-                    link: ''
-                },
-                {
-                    sysName: 'lastName',
-                    name: 'Last Name',
-                    dataType: 'string',
-                },
-                {
-                    sysName: 'foo',
-                    name: 'Foo',
-                    dataType: 'link',
-                    link: 'TMessageIn'
-                }
-            ]
-        },
-        {
-            structName: 'TMessageIn',
-            fields: [
-                {
-                    sysName: 'id',
-                    name: 'ID',
-                    dataType: 'id',
-                    link: ''
-                },
-                {
-                    sysName: '@who',
-                    name: 'First Name',
-                    dataType: 'json',
-                    link: ''
-                },
-                {
-                    sysName: '@dateCreated',
-                    name: 'First Name',
-                    dataType: 'string',
-                    link: ''
-                },
-                {
-                    sysName: 'firstName',
-                    name: 'First Name',
-                    dataType: 'json',
-                    link: ''
-                },
-                {
-                    sysName: 'messageID',
-                    name: 'Еще одна линка',
-                    dataType: 'link',
-                    link: 'TChat'
-                },
-                {
-                    sysName: 'bar',
-                    name: 'Bar',
-                    dataType: 'json',
-                    link: ''
-                },
-                {
-                    sysName: 'one',
-                    name: 'hello',
-                    dataType: 'string',
-                    link: ''
-                },
-                {
-                    sysName: 'one1',
-                    name: 'hello',
-                    dataType: 'link',
-                    link: 'TUser'
-                },
-                {
-                    sysName: 'one2',
-                    name: 'hello',
-                    dataType: 'link',
-                    link: 'TUser'
-                },
-                {
-                    sysName: 'one3',
-                    name: 'hello',
-                    dataType: 'link',
-                    link: 'TUser'
-                },
-                {
-                    sysName: 'two',
-                    name: 'world',
-                    dataType: 'decimal',
-                },
-                {
-                    sysName: 'twenty_one',
-                    name: "It's",
-                    dataType: 'decimal',
-                },
-                {
-                    sysName: 'three',
-                    name: 'nice',
-                    dataType: 'decimal',
-                },
-                {
-                    sysName: 'four',
-                    name: 'to see',
-                    dataType: 'decimal',
-                },
-                {
-                    sysName: 'five',
-                    name: 'you again',
-                    dataType: 'decimal',
-                },
-                {
-                    sysName: 'GlobalVar',
-                    name: 'Global Constants',
-                    dataType: 'link',
-                    link: 'GlobalVars'
-                },
-                {
-                    sysName: 'ContextVar',
-                    name: 'Context Variables',
-                    dataType: 'link',
-                    link: 'ContextVars'
-                }
-            ]
-        },
-        {
-            structName: 'TChat',
-            fields: [
-                {
-                    sysName: 'firstName',
-                    name: 'First Name',
-                    dataType: 'json',
-                    link: ''
-                },
-                {
-                    sysName: 'barr',
-                    name: 'Bar',
-                    dataType: 'json',
-                    link: ''
-                },
-                {
-                    sysName: 'ssylka',
-                    name: 'Ssylka',
-                    dataType: 'link',
-                    link: 'TMessageIn'
-                },
-                {
-                    sysName: 'messageID33',
-                    name: 'Message ID 2',
-                    dataType: 'decimal',
-                }
-            ]
-        }
-        ,
-        {
-            structName: 'TUser',
-            fields: [
-                {
-                    sysName: 'helloWorld',
-                    name: 'First Name',
-                    dataType: 'json',
-                    link: ''
-                }
-            ]
-        },
-        {
-            structName: 'GlobalVars',
-            fields: [
-                {
-                    sysName: 'global1',
-                    name: '',
-                    dataType: 'string',
-                },
-                {
-                    sysName: 'global2',
-                    name: '',
-                    dataType: 'string',
-                }
-            ]
-        },
-        {
-            structName: 'ContextVars',
-            fields: [
-                {
-                    sysName: 'local1',
-                    name: 'Local Var 1',
-                    dataType: 'number',
-                },
-                {
-                    sysName: 'local2',
-                    name: 'Local Link',
-                    dataType: 'link',
-                    link: 'TChat'
-                }
-            ]
-        }
+  {
+    "structName": "test",
+    "fields": [
+      {
+        "sysName": "string",
+        "name": "",
+        "dataType": "string",
+        "link": ""
+      },
+      {
+        "sysName": "array",
+        "name": "",
+        "dataType": "string",
+        "link": ""
+      },
+      {
+        "sysName": "parse_ids",
+        "name": "",
+        "dataType": "arrayLink",
+        "link": "test2"
+      },
+      {
+        "sysName": "json",
+        "name": "json",
+        "dataType": "json",
+        "link": ""
+      },
+      {
+        "sysName": "new",
+        "name": "displayed name",
+        "dataType": "string",
+        "link": ""
+      },
+      {
+        "sysName": "id",
+        "name": "id",
+        "dataType": "id",
+        "link": ""
+      },
+      {
+        "sysName": "@who",
+        "name": "who changed",
+        "dataType": "string",
+        "link": ""
+      },
+      {
+        "sysName": "@dateCreated",
+        "name": "date created",
+        "dataType": "date",
+        "link": ""
+      },
+      {
+        "sysName": "@dateChanged",
+        "name": "date changed",
+        "dataType": "date",
+        "link": ""
+      }
     ]
+  },
+  {
+    "structName": "GlobalVars",
+    "fields": []
+  },
+  {
+    "structName": "ContextVars",
+    "fields": []
+  }
+]
 
 
     return (
@@ -366,7 +238,7 @@ type='structurefield' />`} />
                 //onChooseType={e => console.log(e)} устар.
                 //onChooseLinkStructSysName={e => console.log(e)} устар.
                 //tip='подсказко'
-                structSysName='TMessageIn'
+                structSysName='test'
                 //defaultValue={testDefValue}
                 //onChange={value => console.log(value)}
                 onChangeExtended={(value, struct, type) =>
@@ -374,8 +246,7 @@ type='structurefield' />`} />
                 }
                 placeholder='Choose the object field'
                 icon='database'
-                //noPropagation
-                //filterFields={['string', 'json', 'id']}
+                filterFields={'string'}
                 //filterLinkFields='TMessageIn'
                 description='That is a new FormField component for the platform'
                 //disabled

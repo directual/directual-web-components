@@ -4,7 +4,8 @@ import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong';
 
 export default function StructureField(props) {
 
-    //console.log(props)
+    // console.log('StructureField props:')
+    // console.log(props)
 
     const [value, setValue] = useState(props.defaultValue)
     const [focus, setFocus] = useState(false);
@@ -12,6 +13,8 @@ export default function StructureField(props) {
     const selectRef = useRef(null);
     const inputEl = useRef(null);
     const [filter, setFilter] = useState('')
+
+    // костыль, если в фильрах указали строку, а не массив
 
     useEffect(() => { setValue(props.defaultValue) }, [props.defaultValue])
 
@@ -319,7 +322,7 @@ function StructListFields(props) {
         const fieldDetails = struct && struct.filter(i => i.sysName == fieldSysName) && struct.filter(i => i.sysName == fieldSysName)[0]
         return fieldDetails
     }
-    const fields = props.fields && props.structSysName &&
+    const fields = props && props.fields && props.structSysName &&
         props.fields.filter(i =>
             (i.structName == props.structSysName)
         ) && props.fields.filter(i =>
@@ -489,7 +492,9 @@ function StructListFields(props) {
                         }
 
                     })}
-                    {(!filteredFields || filteredFields.length == 0) && <SomethingWentWrong icon='ban' message={`No fields${(props.filterFields && !props.filter) ? ` of types: ${props.filterFields.join(', ')}` : ``}`} />}
+                    {(!filteredFields || filteredFields.length == 0) && 
+                        <SomethingWentWrong icon='ban' 
+                            message={`No fields${(props.filterFields && !props.filter && props.filterFields && props.filterFields.length > 0) ? ` of types: ${props.filterFields.join ? props.filterFields.join(', ') : props.filterFields}` : ``}`} />}
                     {props.filterLinkFields && (!fields.filter(i => i.link == props.filterLinkFields) || fields.filter(i => i.link == props.filterLinkFields).length == 0) &&
                         <SomethingWentWrong icon='ban' message={`No links to ${props.filterLinkFields}`} />
                     }
