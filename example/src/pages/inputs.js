@@ -12,79 +12,179 @@ export default function InputsPage() {
     const [testDefValue, setTestDefValue] = useState(null)
 
     const testFields = [
-  {
-    "structName": "test",
-    "fields": [
-      {
-        "sysName": "string",
-        "name": "",
-        "dataType": "string",
-        "link": ""
-      },
-      {
-        "sysName": "array",
-        "name": "",
-        "dataType": "string",
-        "link": ""
-      },
-      {
-        "sysName": "parse_ids",
-        "name": "",
-        "dataType": "arrayLink",
-        "link": "test2"
-      },
-      {
-        "sysName": "json",
-        "name": "json",
-        "dataType": "json",
-        "link": ""
-      },
-      {
-        "sysName": "new",
-        "name": "displayed name",
-        "dataType": "string",
-        "link": ""
-      },
-      {
-        "sysName": "id",
-        "name": "id",
-        "dataType": "id",
-        "link": ""
-      },
-      {
-        "sysName": "@who",
-        "name": "who changed",
-        "dataType": "string",
-        "link": ""
-      },
-      {
-        "sysName": "@dateCreated",
-        "name": "date created",
-        "dataType": "date",
-        "link": ""
-      },
-      {
-        "sysName": "@dateChanged",
-        "name": "date changed",
-        "dataType": "date",
-        "link": ""
-      }
-    ]
-  },
-  {
-    "structName": "GlobalVars",
-    "fields": []
-  },
-  {
-    "structName": "ContextVars",
-    "fields": []
-  }
-]
+        {
+          "structName": "alfaWebHookData",
+          "fields": [
+            {
+              "sysName": "id",
+              "name": "id",
+              "dataType": "id",
+              "link": ""
+            },
+            {
+              "sysName": "body",
+              "name": "body",
+              "dataType": "json",
+              "link": ""
+            },
+            {
+              "sysName": "headers",
+              "name": "headers",
+              "dataType": "json",
+              "link": ""
+            },
+            {
+              "sysName": "urlData",
+              "name": "urlData",
+              "dataType": "json",
+              "link": ""
+            },
+            {
+              "sysName": "@who",
+              "name": "who changed",
+              "dataType": "string",
+              "link": ""
+            },
+            {
+              "sysName": "@dateCreated",
+              "name": "date created",
+              "dataType": "date",
+              "link": ""
+            },
+            {
+              "sysName": "@dateChanged",
+              "name": "date changed",
+              "dataType": "date",
+              "link": ""
+            },
+            {
+              "sysName": "GlobalVar",
+              "name": "Global Constants (2)",
+              "dataType": "link",
+              "link": "GlobalVars",
+              "vars": "global"
+            },
+            {
+              "sysName": "ContextVar",
+              "name": "Context Variables (3)",
+              "dataType": "link",
+              "link": "ContextVars",
+              "vars": "context"
+            }
+          ]
+        },
+        {
+          "structName": "ContextVars",
+          "fields": [
+            {
+              "sysName": "orderId",
+              "name": "",
+              "dataType": "string",
+              "link": ""
+            },
+            {
+              "sysName": "job_id",
+              "name": "",
+              "dataType": "link",
+              "link": "Jobs"
+            },
+            {
+              "sysName": "status",
+              "name": "",
+              "dataType": "string",
+              "link": ""
+            }
+          ]
+        },
+        {
+          "structName": "GlobalVars",
+          "fields": [
+            {
+              "sysName": "jobPrice",
+              "name": "",
+              "dataType": "string"
+            },
+            {
+              "sysName": "luxaryJobPrice",
+              "name": "",
+              "dataType": "string"
+            }
+          ]
+        },
+        {
+          "structName": "ContextVars",
+          "fields": [
+            {
+              "sysName": "orderId",
+              "name": "",
+              "dataType": "string",
+              "link": ""
+            },
+            {
+              "sysName": "job_id",
+              "name": "",
+              "dataType": "link",
+              "link": "Jobs"
+            },
+            {
+              "sysName": "status",
+              "name": "",
+              "dataType": "string",
+              "link": ""
+            }
+          ]
+        }
+      ]
 
 
     return (
         <React.Fragment>
             <h1>Data entry</h1>
+
+            <h2 style={{ marginBottom: 24, marginTop: 12 }}>Special platform selects</h2>
+
+            <CodeSnippet code=
+                {`<Input
+label='Structure field'
+width={700}
+fields={testFields}
+structSysName='WebUsers'
+//defaultValue='foo.bar'
+onChange={e => console.log(e)}
+placeholder='Choose the object field'
+icon='database'
+//filterFields={['string', 'link']}
+//filterLinkFields='TMessageIn'
+description='That is a new FormField component for the platform'
+//disabled
+type='structurefield' />`} />
+            <Input
+                label='Structure field'
+                width={500}
+                //fixHeight={100}
+                //debug
+                //highlightEmpty
+                //noPropagation
+                fields={testFields}
+                //highlightEmpty
+                //hideSysFields
+                //hideId
+                //onChooseType={e => console.log(e)} устар.
+                //onChooseLinkStructSysName={e => console.log(e)} устар.
+                //tip='подсказко'
+                structSysName='alfaWebHookData'
+                //defaultValue={testDefValue}
+                //onChange={value => console.log(value)}
+                onChangeExtended={(value, struct, type) =>
+                    console.log(`${value} ${type}${(type == 'link' || type == 'arrayLink') ? `→${struct}` : ''}`)
+                }
+                placeholder='Choose the object field'
+                icon='database'
+                //filterFields={'string'}
+                //filterLinkFields='TMessageIn'
+                description='That is a new FormField component for the platform'
+                //disabled
+                type='structurefield' />
 
             <Input 
                 type='date'
@@ -207,50 +307,7 @@ disabled`}
                 label='Request query params'
             />
 
-            <h2 style={{ marginBottom: 24, marginTop: 12 }}>Special platform selects</h2>
-
-            <CodeSnippet code=
-                {`<Input
-label='Structure field'
-width={700}
-fields={testFields}
-structSysName='WebUsers'
-//defaultValue='foo.bar'
-onChange={e => console.log(e)}
-placeholder='Choose the object field'
-icon='database'
-//filterFields={['string', 'link']}
-//filterLinkFields='TMessageIn'
-description='That is a new FormField component for the platform'
-//disabled
-type='structurefield' />`} />
-            <Input
-                label='Structure field'
-                width={500}
-                //fixHeight={100}
-                //debug
-                //highlightEmpty
-                //noPropagation
-                fields={testFields}
-                highlightEmpty
-                //hideSysFields
-                //hideId
-                //onChooseType={e => console.log(e)} устар.
-                //onChooseLinkStructSysName={e => console.log(e)} устар.
-                //tip='подсказко'
-                structSysName='test'
-                //defaultValue={testDefValue}
-                //onChange={value => console.log(value)}
-                onChangeExtended={(value, struct, type) =>
-                    console.log(`${value} ${type}${(type == 'link' || type == 'arrayLink') ? `→${struct}` : ''}`)
-                }
-                placeholder='Choose the object field'
-                icon='database'
-                filterFields={'string'}
-                //filterLinkFields='TMessageIn'
-                description='That is a new FormField component for the platform'
-                //disabled
-                type='structurefield' />
+            
 
             <CodeSnippet code=
                 {`<Input

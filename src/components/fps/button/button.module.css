@@ -30,8 +30,23 @@ a.button:hover:not(.disabled):not(.transparent) {
 .button.small {
   font-size: var(--text-small-size);
 }
+.button.superSmall {
+  font-size: var(--text-small-size);
+  height: 28px;
+}
 .button.verySmall {
   font-size: var(--text-very-small-size);
+  padding: 1px 9px;
+}
+.button.verySmall.icon:before {
+  font-size: 20px;
+  margin-left: -6px;
+}
+.button.verySmall:active:not(.disabled):not(.transparent) {
+  padding: 0px 8px !important;
+}
+.button.verySmall:hover:not(.disabled):not(.transparent):not(.loading) {
+  padding: 0px 8px !important;
 }
 .button.disabled {
   cursor: not-allowed;

@@ -16,6 +16,7 @@ export default function ButtonsPage() {
         <Button accent>Accent button</Button>
         <Button icon="play">Icon button</Button>
 </ActionPanel>`} />
+                <Button verySmall accent icon='babai' height={26}>Regular button</Button>
             <ActionPanel margin={{ top: 6, bottom: 12 }}>
                 <Button>Regular button</Button>
                 <Button accent>Accent button</Button>

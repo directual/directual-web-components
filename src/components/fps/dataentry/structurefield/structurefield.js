@@ -2,21 +2,52 @@ import React, { useState, useEffect, useRef } from 'react'
 import styles from './structurefield.module.css'
 import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong';
 
+
+const dataTypesIcons = {
+    string: 'string',
+    string_markdown: 'paragraph',
+    string_html: 'codeXML',
+    string_email: 'mail',
+    string_phone: 'phone',
+    string_color: 'styles',
+    string_webLink: 'move',
+    number: 'num',
+    number_positiveNum: 'num',
+    decimal: 'decimal',
+    array: 'brackets',
+    date: 'calendar',
+    boolean: 'boolean',
+    link: 'move',
+    arrayLink: 'bracketsArray',
+    file: 'clip',
+    file_multipleFiles: 'clip',
+    json: 'code',
+    json_checkboxes: 'checkbox',
+    json_radioOptions: 'radio',
+    json_slider: 'slider',
+    json_keyValue: 'tag',
+    json_rangeSlider: 'range',
+    json_dateRange: 'calendar',
+    json_choosePicture: 'keynote',
+    operator: 'filter',
+    id: 'id'
+  }
+
 export default function StructureField(props) {
 
     // console.log('StructureField props:')
     // console.log(props)
 
     const [value, setValue] = useState(props.defaultValue)
-    const [focus, setFocus] = useState(false);
+    const [focus, setFocus] = useState(props.autofocus);
     const [keyFocus, setKeyFocus] = useState(props.defaultValue)
     const selectRef = useRef(null);
     const inputEl = useRef(null);
     const [filter, setFilter] = useState('')
 
-    // костыль, если в фильрах указали строку, а не массив
 
     useEffect(() => { setValue(props.defaultValue) }, [props.defaultValue])
+    useEffect(() => { !focus && props.lostFocus && props.lostFocus(value) }, [focus])
 
     useOutsideAlerter(selectRef);
     function useOutsideAlerter(ref) {
@@ -80,6 +111,7 @@ export default function StructureField(props) {
             sysName: val,
             name: getFieldDetails(objPath[objPath.length - 1], currentStruct) ? getFieldDetails(objPath[objPath.length - 1], currentStruct).name : 'unknown',
             dataType: getFieldDetails(objPath[objPath.length - 1], currentStruct) ? getFieldDetails(objPath[objPath.length - 1], currentStruct).dataType : 'unknown',
+            dataSubType: getFieldDetails(objPath[objPath.length - 1], currentStruct) ? getFieldDetails(objPath[objPath.length - 1], currentStruct).dataSubType : '',
             struct: currentStruct
         }
         return displayValue
@@ -95,6 +127,93 @@ export default function StructureField(props) {
 
     const handleKeyboard = (e) => {
         // if (!filter && e.key == 'Backspace') { clearValue() }
+    }
+
+    const getIconName = (dataType,dataSubType) => {
+        if (!dataSubType) { return dataTypesIcons[dataType] }
+        const typename = getValueDetails(value).dataType + (getValueDetails(value).dataSubType ? `_${getValueDetails(value).dataSubType}` : '')
+        return dataTypesIcons[typename] || typename
+    }
+    
+    // console.log('FORM FIELD RERENDER')
+
+    if (props.inline) {
+        return (
+            <div className={`${styles.inline} ${styles.select_wrapper}`}>
+                <div className=
+                    {`${styles.select_field} 
+                    ${props.warning == 'error' ? styles.error : ''} 
+                    ${props.warning && styles[props.warning]}
+                    ${focus && styles.focus} 
+                    ${props.disabled && styles.disabled}`}
+                    onClick={() => { !focus && !props.disabled && setFocus(true) }}
+                    ref={selectRef} >
+                    {props.icon && !(value && value.icon && props.iconOptions) &&
+                        <div className={`${styles.icon} icon icon-${props.icon}`}></div>}
+
+                    <div className={`${styles.value_wrapper} ${(props.filterFields || props.filterLinkFields) && styles.narrow}`}>
+                    
+                        {value && !filter && <div className={`${styles.icon} icon icon-${getIconName(getValueDetails(value).dataType,getValueDetails(value).dataSubType)}`}/>} 
+                        {value ?
+                            <div className={`${styles.currentInlineField} ${styles.withIcon} ${focus && styles.transparent}`}>
+                                {!filter ? <span>{`{{`}{getValueDetails(value).sysName}{`}}`}</span> : <span>&nbsp;</span> }
+                            </div> :
+                            !filter ?
+                                <div className={`${styles.currentInlineField} ${styles.transparent}`}>
+                                    {props.placeholder ? props.placeholder : 'Select the value'}
+                                </div> :
+                                <div className={`${styles.currentInlineField} ${styles.transparent}`}>&nbsp;
+                                </div>
+                        }
+                        {/* {getValueDetails(value).name &&
+                                    <div className={styles.objectName}>
+                                        <strong>{getValueDetails(value).name}</strong> from {getValueDetails(value).struct}</div>}
+                                <div className={`${styles.objectDetails} ${getValueDetails(value).name && styles.small}`}>
+                                    <span>{`{{`}{getValueDetails(value).sysName}{`}}`}</span> {getValueDetails(value).dataType}</div>
+                            </div> */}
+
+                        {focus &&
+                            <input
+                                onKeyDown={handleKeyboard}
+                                type="text"
+                                placeholder={props.filterPlaceholder}
+                                ref={inputEl}
+                                disabled={props.disabled}
+                                className={styles.filter}
+                                value={filter}
+                                onChange={e => setFilter(e.target.value)}
+                            />
+                        }
+                    </div>
+
+                    {/* arrow */}
+                    {!props.disabled && <div onClick={() => { setFocus(!focus) }} className={`${styles.arrow} icon icon-down ${focus && styles.twist}`}></div>}
+
+                    <ListFields
+                        fields={props.fields}
+                        filter={filter}
+                        focus={focus}
+                        keyFocus={keyFocus}
+                        showGlobalVars={props.showGlobalVars}
+                        showContextVars={props.showContextVars}
+                        hideSysFields={props.hideSysFields}
+                        hideId={props.hideId}
+                        structSysName={props.structSysName}
+                        filterFields={props.filterFields}
+                        filterLinkFields={props.filterLinkFields}
+                        noPropagation={props.noPropagation}
+                        value={value}
+                        onChoose={(e, close, struct, type) => {
+                            setValue(e); props.onChange(e); close && setFocus(false);
+                            props.onChooseLinkStructSysName && struct && props.onChooseLinkStructSysName(struct);
+                            props.onChooseType && props.onChooseType(type);
+                            props.onChangeExtended && props.onChangeExtended(e, struct, type)
+                        }}
+                    />
+                </div>
+
+            </div>
+        )
     }
 
 
@@ -128,9 +247,8 @@ export default function StructureField(props) {
                                 <div className={styles.objectName}>
                                     <strong>{getValueDetails(value).name}</strong> from {getValueDetails(value).struct}</div>}
                             <div className={`${styles.objectDetails} ${getValueDetails(value).name && styles.small}`}>
-                                <span>{`{{`}{getValueDetails(value).sysName}{`}}`}</span> {getValueDetails(value).dataType}</div>
+                                <span>{`{{`}{getValueDetails(value).sysName}{`}}`}</span> {getValueDetails(value).dataType}{getValueDetails(value).dataSubType ? ` (${getValueDetails(value).dataSubType})` : ''}</div>
                         </div>}
-
                     {focus &&
                         <input
                             onKeyDown={handleKeyboard}
@@ -310,8 +428,13 @@ function StructListFields(props) {
     }
 
     const selectOption = (field, close) => {
+        // console.log('selectOption')
+        // console.log(field.sysName)
         props.onChoose(field.sysName,
-            (field && field.dataType != 'link' || (props.filterLinkFields && true) || (props.noPropagation && true) || close),
+            (field && field.dataType != 'link' ||
+                (props.filterLinkFields && true) ||
+                (!props.noPropagation && field.dataType != 'link' && field.sysName != 'ContextVar') ||
+                close),
             field.link || '',
             field && field.dataType)
     }
@@ -358,27 +481,29 @@ function StructListFields(props) {
         if (allFields && (props.filter || props.filterFields) && isLast()) {
             const SaveFiltFields = allFields.filter(el => {
                 if (el) {
-                     try { return (String(el.sysName).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())) ||
-                        String(el.name).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())) ||
-                        String(el.dataType).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())))
-                        && (!props.filterFields || props.filterFields.indexOf(el.dataType) != -1)
-                        && (props.firstLevel || (!props.firstLevel && (el.sysName != 'GlobalVar' && el.sysName != 'ContextVar')))
-                        && (!props.hideId || (props.hideId && el.dataType != 'id'))
-                        && (!props.hideSysFields || (props.hideSysFields && el.sysName != '@who' && el.sysName != '@dateCreated' && el.sysName != '@dateChanged')) }
-                        catch(e) {
-                            console.log(e)
-                            return true
-                        }
+                    try {
+                        return (String(el.sysName).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())) ||
+                            String(el.name).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())) ||
+                            String(el.dataType).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())))
+                            && (!props.filterFields || props.filterFields.indexOf(el.dataType) != -1 || el.sysName == 'ContextVar')
+                            && (props.firstLevel || (!props.firstLevel && (el.sysName != 'GlobalVar' && el.sysName != 'ContextVar')))
+                            && (!props.hideId || (props.hideId && el.dataType != 'id'))
+                            && (!props.hideSysFields || (props.hideSysFields && el.sysName != '@who' && el.sysName != '@dateCreated' && el.sysName != '@dateChanged'))
+                    }
+                    catch (e) {
+                        console.log(e)
+                        return true
+                    }
                 }
             })
-            if (props.firstLevel) { 
+            if (props.firstLevel) {
                 //console.log(SaveFiltFields) 
             }
             setFilteredFields(SaveFiltFields || [])
         } else {
             const SaveFiltFields2 = allFields.filter(el => {
                 return (
-                    (!props.filterFields || props.filterFields.indexOf(el.dataType) != -1)
+                    (!props.filterFields || props.filterFields.indexOf(el.dataType) != -1 || el.sysName == 'ContextVar')
                     && (!props.hideId || (props.hideId && el.dataType != 'id'))
                     && (props.firstLevel || (!props.firstLevel && (el.sysName != 'GlobalVar' && el.sysName != 'ContextVar')))
                     && (!props.hideSysFields || (props.hideSysFields && el.sysName != '@who' && el.sysName != '@dateCreated' && el.sysName != '@dateChanged'))
@@ -484,25 +609,30 @@ function StructListFields(props) {
                                     </div>
                                     <div className={`${styles.objectDetails} ${field.name && styles.small}`}>
                                         {field.name && <span className={styles.sysName}>{`{{`}{field.sysName}{`}} `}</span>}
-                                        <span className={styles.dataType}>{`${field && field.dataType}${field.link ? ` → ${field.link}` : ''}`}</span></div>
-                                    {field && field.dataType == 'link' && !props.filterLinkFields && !props.noPropagation &&
+                                        <span className={styles.dataType}>{`${field && field.dataType}${field.dataSubType ? ` (${field.dataSubType})` : ''}${field.link ? ` → ${field.link}` : ''}`}</span></div>
+                                    {field && field.dataType == 'link' && !props.filterLinkFields && (!props.noPropagation || field.sysName == 'ContextVar') &&
                                         <div className={`${styles.goToLink} icon icon-forward`}></div>}
                                 </li>
+                                
                             )
                         }
 
                     })}
-                    {(!filteredFields || filteredFields.length == 0) && 
-                        <SomethingWentWrong icon='ban' 
+                    {(!filteredFields || filteredFields.length == 0) &&
+                        <SomethingWentWrong icon='ban'
                             message={`No fields${(props.filterFields && !props.filter && props.filterFields && props.filterFields.length > 0) ? ` of types: ${props.filterFields.join ? props.filterFields.join(', ') : props.filterFields}` : ``}`} />}
                     {props.filterLinkFields && (!fields.filter(i => i.link == props.filterLinkFields) || fields.filter(i => i.link == props.filterLinkFields).length == 0) &&
                         <SomethingWentWrong icon='ban' message={`No links to ${props.filterLinkFields}`} />
                     }
                 </ul>
             </div>
-            {props.value && !props.filterLinkFields && !props.noPropagation && (shiftPath(props.value) || (getFieldDetails(currentField, props.structSysName) && getFieldDetails(currentField, props.structSysName).dataType == 'link')) &&
+            {props.value && !props.filterLinkFields && (
+                !props.noPropagation
+                || props.value.startsWith('ContextVar')
+            ) && (shiftPath(props.value) || (getFieldDetails(currentField, props.structSysName) && getFieldDetails(currentField, props.structSysName).dataType == 'link')) &&
                 <StructListFields
                     fields={props.fields}
+                    noPropagation={props.noPropagation}
                     filter={props.filter}
                     focus={props.focus}
                     onChoose={(e, close, struct, type) => onChoose(e, close, struct, type)}

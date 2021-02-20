@@ -2,6 +2,84 @@
   line-height: normal !important;
   position: relative;
   flex-shrink: 0;
+  font-family: var(--main-font-family);
+}
+.select_wrapper.inline {
+  display: inline-block;
+  min-width: 80px;
+}
+.select_wrapper.inline .select_field {
+  background-color: var(--accent-color);
+  height: 18px;
+  margin: -3px 0;
+  min-height: 0;
+  padding: 3px 20px 3px 9px;
+  border: none !important;
+}
+.select_wrapper.inline .select_field .value_wrapper {
+  display: flex;
+  align-items: center;
+}
+.select_wrapper.inline .select_field .filter {
+  color: #fff !important;
+  font-size: 14px;
+}
+.select_wrapper.inline .select_field .icon {
+  position: absolute;
+  color: #fff;
+  left: 4px;
+}
+.select_wrapper.inline .select_field .icon:before {
+  font-size: 24px;
+}
+.select_wrapper.inline .select_field .currentInlineField {
+  font-family: 'Fira Code', monospace;
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+}
+.select_wrapper.inline .select_field .currentInlineField.withIcon {
+  padding-left: 19px;
+}
+.select_wrapper.inline .select_field .currentInlineField.transparent {
+  opacity: 0.5;
+}
+.select_wrapper.inline .select_field .list {
+  width: auto;
+  max-width: 300px;
+}
+.select_wrapper.inline .select_field.error {
+  padding: 3px 20px 3px 9px;
+}
+.select_wrapper.inline .select_field.ok {
+  padding: 3px 20px 3px 9px;
+}
+.select_wrapper.inline .select_field:hover:not(.disabled) {
+  padding: 3px 20px 3px 9px;
+}
+.select_wrapper.inline .select_field:active:not(.disabled) {
+  padding: 3px 20px 3px 9px;
+}
+.select_wrapper.inline .select_field.focus:not(.disabled) {
+  padding: 3px 20px 3px 9px;
+}
+.select_wrapper.inline .select_field.focus:not(.disabled) .placeholder {
+  padding-right: 50px;
+}
+.select_wrapper.inline .select_field .arrow {
+  position: absolute;
+  color: #fff;
+  opacity: 0.3;
+  cursor: pointer;
+  transition: 0.5s;
+  top: 1px;
+  right: 3px;
+}
+.select_wrapper.inline .select_field .arrow.twist {
+  transform: rotate(180deg);
+}
+.select_wrapper.inline .select_field .arrow:before {
+  font-size: 18px;
 }
 .select_wrapper:hover .arrow {
   opacity: 0.8;

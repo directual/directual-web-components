@@ -20,6 +20,7 @@ import IconsPage from './pages/icons'
 import TypoPage from './pages/typo'
 import WhatIsIt from './pages/wtf'
 import LayoutPage from './pages/layout'
+import PlatformPage from './pages/platform'
 import { reduceHooks } from 'react-table'
 
 
@@ -66,6 +67,7 @@ function MainMenuWrapper(props) {
         { name: "Data entry", route: "/system-data-entry", icon: "import", link: <Link to="/system-data-entry">Data entry</Link> },
         { name: "Media", route: "/system-media", icon: "play", link: <Link to="/system-media">Media</Link> },
         { name: "Layout", route: "/system-layout", icon: "dashboard", link: <Link to="/system-layout">Layout</Link> },
+        { name: "Platform", route: "/platform", icon: "babai", link: <Link to="/platform">Platform</Link> },
       ]}
 
     />)
@@ -6360,6 +6362,9 @@ const App = (props) => {
             </Route>
             <Route exact path="/system-layout">
               <LayoutPage />
+            </Route>
+            <Route exact path="/platform">
+              <PlatformPage />
             </Route>
             <Route exact path="/system-media">
               <h1>Media</h1>

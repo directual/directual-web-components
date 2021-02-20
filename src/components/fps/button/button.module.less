@@ -33,8 +33,25 @@ a.button {
     &.small {
         font-size: var(--text-small-size);
     }
+    &.superSmall {
+        font-size: var(--text-small-size);
+        height: 28px;
+    }
     &.verySmall {
         font-size: var(--text-very-small-size);
+        padding: 1px 9px;
+        &.icon {
+            &:before {
+                font-size: 20px;
+                margin-left: -6px;
+            }
+        }
+        &:active:not(.disabled):not(.transparent) {
+            padding: 0px 8px !important;
+        }
+        &:hover:not(.disabled):not(.transparent):not(.loading) {
+            padding: 0px 8px !important;
+        }
     }
     &.disabled {
         cursor: not-allowed;

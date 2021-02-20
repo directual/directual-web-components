@@ -5,6 +5,7 @@ import {
   PageIsEmpty
 } from './components/fps/FpsSystem'
 import FpsLogin from './components/fps/FpsLogin'
+import CodeInput from './components/fps/dataentry/codeinput/codeinput'
 import FpsCards from './components/fps/viewobjects/cards/FpsCards'
 import FpsHtml from './components/fps/FpsHtml'
 import FpsForm, { FormSection } from './components/fps/dataentry/form/FpsForm'
@@ -85,4 +86,5 @@ export {
   Dnd,
   Table,
   ImageButtons,
+  CodeInput
 }
