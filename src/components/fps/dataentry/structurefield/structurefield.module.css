@@ -213,13 +213,22 @@
 }
 .select_wrapper .select_field .list .structFields .structName {
   font-size: var(--text-small-size);
-  opacity: 0.4;
+  color: #aaa;
   padding: 6px 10px 6px 10px;
   font-weight: var(--strong-font-weight);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+.select_wrapper .select_field .list .structFields .structName .linkBack {
+  cursor: pointer;
+  transition: 0.5s;
+}
+.select_wrapper .select_field .list .structFields .structName .linkBack:hover {
+  color: #333;
 }
 .select_wrapper .select_field .list .structFields .option {
   min-width: 200px;

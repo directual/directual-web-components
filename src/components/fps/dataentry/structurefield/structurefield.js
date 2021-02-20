@@ -31,7 +31,7 @@ const dataTypesIcons = {
     json_choosePicture: 'keynote',
     operator: 'filter',
     id: 'id'
-  }
+}
 
 export default function StructureField(props) {
 
@@ -129,12 +129,12 @@ export default function StructureField(props) {
         // if (!filter && e.key == 'Backspace') { clearValue() }
     }
 
-    const getIconName = (dataType,dataSubType) => {
+    const getIconName = (dataType, dataSubType) => {
         if (!dataSubType) { return dataTypesIcons[dataType] }
         const typename = getValueDetails(value).dataType + (getValueDetails(value).dataSubType ? `_${getValueDetails(value).dataSubType}` : '')
         return dataTypesIcons[typename] || typename
     }
-    
+
     // console.log('FORM FIELD RERENDER')
 
     if (props.inline) {
@@ -152,11 +152,11 @@ export default function StructureField(props) {
                         <div className={`${styles.icon} icon icon-${props.icon}`}></div>}
 
                     <div className={`${styles.value_wrapper} ${(props.filterFields || props.filterLinkFields) && styles.narrow}`}>
-                    
-                        {value && !filter && <div className={`${styles.icon} icon icon-${getIconName(getValueDetails(value).dataType,getValueDetails(value).dataSubType)}`}/>} 
+
+                        {value && !filter && <div className={`${styles.icon} icon icon-${getIconName(getValueDetails(value).dataType, getValueDetails(value).dataSubType)}`} />}
                         {value ?
                             <div className={`${styles.currentInlineField} ${styles.withIcon} ${focus && styles.transparent}`}>
-                                {!filter ? <span>{`{{`}{getValueDetails(value).sysName}{`}}`}</span> : <span>&nbsp;</span> }
+                                {!filter ? <span>{`{{`}{getValueDetails(value).sysName}{`}}`}</span> : <span>&nbsp;</span>}
                             </div> :
                             !filter ?
                                 <div className={`${styles.currentInlineField} ${styles.transparent}`}>
@@ -312,7 +312,7 @@ function ListFields(props) {
         if (listHolder && listHolder.current) {
             listHolder.current.scrollTo({
                 top: 0,
-                left: 10000,
+                left: 30000,
                 behavior: 'smooth'
             });
         }
@@ -340,6 +340,13 @@ function ListFields(props) {
         if (props.bottomSelect) { pos = 'top' }
         setListPosition(pos)
         setListHeight(maxListHeight)
+    }
+
+    const getCurrentPath = path => {
+        if (!path) return null
+        const splited = path.split('.') || []
+        if (splited.length == 0) return null
+        return splited[0]
     }
 
     return (
@@ -370,6 +377,18 @@ function ListFields(props) {
                 keyFocus={props.keyFocus}
                 value={props.value}
                 onChoose={(e, close, struct, type) => props.onChoose(e, close, struct, type)}
+                currentPath={getCurrentPath(props.value)}
+                fullPath={props.value}
+                onChoosePath={e => {
+                    if (!e) { return null }
+                    const splitE = e.split('.')
+                    splitE.pop()
+                    const val = splitE.length == 0 ? null : splitE.join('.')
+                    console.log('aaaaa')
+                    console.log(val)
+                    props.onChoose(val, false)
+                }
+                }
             />
         </div>
     )
@@ -382,6 +401,8 @@ function ListFields(props) {
 
 function StructListFields(props) {
 
+    // console.log(props.value)
+
     const shiftPath = (value) => {
         let objPath = value && value.split('.');
         if (!value || objPath.length <= 1) {
@@ -390,6 +411,15 @@ function StructListFields(props) {
             objPath.shift();
         }
         return objPath.join('.')
+    }
+
+    const nextPath = (value) => {
+        let objPath = value && value.split('.');
+        if (!value || objPath.length <= 1) {
+            return null
+        } else {
+            return objPath[1]
+        }
     }
 
     const scrollDivRef = useRef(null)
@@ -427,9 +457,12 @@ function StructListFields(props) {
         });
     }
 
+    const goBack = () => {
+        console.log('Go back')
+        props.onChoosePath && props.onChoosePath(props.currentPath)
+    }
+
     const selectOption = (field, close) => {
-        // console.log('selectOption')
-        // console.log(field.sysName)
         props.onChoose(field.sysName,
             (field && field.dataType != 'link' ||
                 (props.filterLinkFields && true) ||
@@ -521,7 +554,8 @@ function StructListFields(props) {
 
     // key select
     const handleUserKeyPress = (e) => {
-        //onsole.log(e.key)
+        console.log(e.key)
+        if (e.key == 'ArrowLeft') {goBack()}
         if ((e.key == 'ArrowDown' || e.key == 'ArrowUp') && isLast() && filteredFields) {
             // console.log(filteredFields)
             const currentKeyIndex = !currentKeyFocus ? -1 :
@@ -581,7 +615,11 @@ function StructListFields(props) {
     return (
         <React.Fragment>
             <div className={`${styles.structFields} ${props.odd && styles.odd}`}>
-                <div className={styles.structName}>{props.structSysName}{(props.filter && isLast()) && ' (filtered)'}</div>
+                <div className={styles.structName}>
+                    {props.currentPath == props.fullPath && !props.firstLevel && <div className={`${styles.linkBack} icon icon-back`}
+                        onClick={props.goBack}
+                    ></div>}
+                    {props.structSysName}{(props.filter && isLast()) && ' (filtered)'}</div>
                 <ul ref={scrollDivRef}
                     onScroll={handleScroll}
                     className={`${showBorder && styles.bordered}`}
@@ -613,7 +651,7 @@ function StructListFields(props) {
                                     {field && field.dataType == 'link' && !props.filterLinkFields && (!props.noPropagation || field.sysName == 'ContextVar') &&
                                         <div className={`${styles.goToLink} icon icon-forward`}></div>}
                                 </li>
-                                
+
                             )
                         }
 
@@ -635,12 +673,16 @@ function StructListFields(props) {
                     noPropagation={props.noPropagation}
                     filter={props.filter}
                     focus={props.focus}
+                    goBack={goBack}
+                    onChoosePath={props.onChoosePath}
                     onChoose={(e, close, struct, type) => onChoose(e, close, struct, type)}
                     odd={!props.odd}
                     structSysName={getFieldDetails(currentField, props.structSysName) && getFieldDetails(currentField, props.structSysName).link}
                     filterFields={props.filterFields}
                     keyFocus={shiftPath(props.keyFocus)}
-                    value={shiftPath(props.value)} />
+                    value={shiftPath(props.value)}
+                    currentPath={`${props.currentPath}${nextPath(props.value) ? `.${nextPath(props.value)}` : ''}`}
+                    fullPath={props.fullPath} />
             }
         </React.Fragment>
     )
