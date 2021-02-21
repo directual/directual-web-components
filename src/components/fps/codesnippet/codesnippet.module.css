@@ -10,7 +10,7 @@
 .showhide {
   cursor: pointer;
   font-size: var(--text-very-small-size);
-  font-family: 'Fira Code', monospace;
+  font-family: 'Source Code Pro', monospace;
   width: 100px;
 }
 .showhide:before {

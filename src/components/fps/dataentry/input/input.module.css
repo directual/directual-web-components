@@ -107,7 +107,7 @@
   padding: 14px 36px 14px 18px !important;
 }
 .input_wrapper textarea.code {
-  font-family: 'Fira Code', monospace;
+  font-family: 'Source Code Pro', monospace;
   font-size: var(--text-small-size);
   line-height: 1.5;
 }
@@ -161,7 +161,7 @@
   -webkit-appearance: none;
 }
 .input_wrapper .field.code {
-  font-family: 'Fira Code', monospace;
+  font-family: 'Source Code Pro', monospace;
   font-size: var(--text-small-size);
   line-height: 1.5;
 }

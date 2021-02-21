@@ -305,7 +305,7 @@
   font-weight: var(--text-font-weight);
 }
 :global code {
-  font-family: 'Fira Code', monospace;
+  font-family: 'Source Code Pro', monospace;
 }
 :global strong {
   font-weight: var(--strong-font-weight);
@@ -770,7 +770,7 @@
   padding: 0px 2px;
 }
 :global .dd-debug {
-  font-family: 'Fira Code', monospace;
+  font-family: 'Source Code Pro', monospace;
   color: #9b2626;
   padding: 10px;
   border: solid 2px rgba(155, 38, 38, 0.5);

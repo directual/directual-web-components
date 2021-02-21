@@ -327,12 +327,12 @@
 }
 .displayKey {
   font-size: var(--text-small-size);
-  font-family: 'Fira Code', monospace;
+  font-family: 'Source Code Pro', monospace;
   color: var(--accent-color);
 }
 .displayKeyShort {
   font-size: var(--text-small-size);
-  font-family: 'Fira Code', monospace;
+  font-family: 'Source Code Pro', monospace;
   color: var(--font-color);
   opacity: 0.6;
 }
