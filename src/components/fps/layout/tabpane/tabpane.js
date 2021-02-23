@@ -11,7 +11,7 @@ export default function TabsPane({ tabs, currentTabKey, fixedScroll }) {
                 tabs={tabs}
                 currentTabKey={currentTab}
                 onClick={tabClicked => tabClicked && setCurrentTab(tabClicked)} />
-            {tabs.map(tab =>
+            {tabs.map(tab => currentTab == tab.key &&
                 <Tab key={tab.key} tabContent={tab} currentTabKey={currentTab} />)}
         </div>
     )
@@ -55,7 +55,7 @@ export function Tab({ tabContent, currentTabKey }) {
             className=
             {`
                 ${styles.tabWrapper} 
-                ${currentTabKey == tabContent.key && styles.current}
+                ${currentTabKey == tabContent.key && styles.current_}
                 ${showBorder && styles.bordered}
             `}>
             {tabContent.content}
