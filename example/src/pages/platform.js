@@ -993,6 +993,7 @@ export default function PlatformPage() {
           «Здорово <StructureField
           inline
           autofocus
+          defaultValue='CV_filee'
           fields={testFields}
           hideSysFields
           structSysName='WebUser'

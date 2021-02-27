@@ -8,6 +8,9 @@
   display: inline-block;
   min-width: 80px;
 }
+.select_wrapper.inline.noSuchField .select_field {
+  background-color: var(--error-color);
+}
 .select_wrapper.inline .select_field {
   background-color: var(--accent-color);
   height: 18px;

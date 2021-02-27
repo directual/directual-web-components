@@ -30,7 +30,8 @@ const dataTypesIcons = {
     json_dateRange: 'calendar',
     json_choosePicture: 'keynote',
     operator: 'filter',
-    id: 'id'
+    id: 'id',
+    unknown: 'ban'
 }
 
 export default function StructureField(props) {
@@ -135,11 +136,13 @@ export default function StructureField(props) {
         return dataTypesIcons[typename] || typename
     }
 
-    // console.log('FORM FIELD RERENDER')
+    // console.log('DEBUG')
+    // console.log(value)
+    // console.log(value && getValueDetails(value).dataType === "unknown")
 
     if (props.inline) {
         return (
-            <div className={`${styles.inline} ${styles.select_wrapper}`}>
+            <div className={`${styles.inline} ${styles.select_wrapper} ${value && getValueDetails(value).dataType === "unknown" && styles.noSuchField}`}>
                 <div className=
                     {`${styles.select_field} 
                     ${props.warning == 'error' ? styles.error : ''} 

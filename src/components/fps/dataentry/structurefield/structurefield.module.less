@@ -6,6 +6,11 @@
     &.inline {
         display: inline-block;
         min-width: 80px;
+        &.noSuchField {
+            .select_field {
+                background-color: var(--error-color);
+            }
+        }
         .select_field {
             background-color: var(--accent-color);
             height: 18px;
