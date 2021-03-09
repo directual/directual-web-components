@@ -5,7 +5,6 @@
   padding: 24px 8px;
 }
 .sww .title {
-  opacity: 0.3;
   font-size: var(--h3-font-size);
 }
 .sww .title.icon {

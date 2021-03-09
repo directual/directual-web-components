@@ -37,6 +37,7 @@ import StructureField from './components/fps/dataentry/structurefield/structuref
 import { Fps400 } from './components/fps/errors/errors'
 import { ImageButtons } from './components/fps/imagebuttons/imagebuttons'
 import { Markdown } from './components/fps/article/mkd'
+import { FpsLayout } from './components/fps/layout/fpsLayout/fpsLayout'
 
 import FpsTheme, { SetTheme } from './components/fps/theme/theme'
 
@@ -86,5 +87,6 @@ export {
   Dnd,
   Table,
   ImageButtons,
-  CodeInput
+  CodeInput,
+  FpsLayout
 }

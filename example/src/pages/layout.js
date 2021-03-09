@@ -1,16 +1,32 @@
 import React from 'react'
-import { ImageButtons, TabsPane} from 'directual-web-components'
+import { Button, FpsLayout, Dnd } from 'directual-web-components'
+
 
 export default function LayoutPage() {
 
+
+    return (
+        <div>
+            <h1>Layout</h1>
+            <FpsLayout />
+            {/* <Dnd /> */}
+        </div>
+    )
+}
+
+
+
+
+{/* 
     const exampleTabs = [
         { key: '1', title: 'Tab number 1', content: <div>Tab content 1</div> },
         { key: '2', title: 'Tab 2', content: <div>Tab content 2</div> },
         { key: '3', disabled: true, title: 'Tab 3 (disabled)', content: <div>Tab content 3</div> }
       ]
 
-    return (
-        <div>
+
+
+    <div>
             <h1>Layout</h1>
             <h2>Tabs</h2>
             <TabsPane tabs={exampleTabs} currentTabKey={1} fixedScroll={false} />
@@ -33,6 +49,4 @@ export default function LayoutPage() {
                     }
                 ]}
             />
-        </div>
-    )
-}
+        </div> */}
