@@ -9,6 +9,7 @@
 }
 .sww .title.icon {
   display: flex;
+  opacity: 0.3;
   flex-direction: column;
 }
 .sww .title.icon:before {
