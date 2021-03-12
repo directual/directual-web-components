@@ -9,9 +9,9 @@
 }
 .sww .title.icon {
   display: flex;
-  opacity: 0.3;
   flex-direction: column;
 }
 .sww .title.icon:before {
+  opacity: 0.3;
   font-size: calc(var(--h1-font-size) * 1.5);
 }
