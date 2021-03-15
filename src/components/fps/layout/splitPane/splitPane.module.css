@@ -1,0 +1,16 @@
+.splitPane {
+  border: solid 1px lightcoral;
+  padding: 2px;
+  display: flex;
+}
+.splitPane .pane {
+  background-color: lightgreen;
+  flex-grow: 2;
+}
+.splitPane .dragMe {
+  background-color: lightskyblue;
+  width: 10px;
+  display: flex;
+  justify-content: center;
+  cursor: col-resize;
+}

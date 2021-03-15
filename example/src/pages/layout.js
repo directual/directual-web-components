@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, FpsLayout, Dnd } from 'directual-web-components'
+import { Button, FpsLayout, Dnd, SplitPane } from 'directual-web-components'
 
 
 export default function LayoutPage() {
@@ -8,7 +8,7 @@ export default function LayoutPage() {
     return (
         <div>
             <h1>Layout</h1>
-            <FpsLayout />
+            <SplitPane width = {300}/>
             {/* <Dnd /> */}
         </div>
     )
