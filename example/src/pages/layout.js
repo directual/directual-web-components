@@ -1,15 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, FpsLayout, Dnd, SplitPane } from 'directual-web-components'
+import { useSortBy } from 'react-table'
 
+const exampleData =
+{
+    reorder: true,
+    sizeUnits: '%', // 'px', '%'
+    panes:
+        [
+            { id: 'pane_01', content: <div style={{ height: 140 }}>a</div>, size: 50 },
+            { id: 'pane_02', content: <div style={{ height: 140 }}>b</div>, size: 20 },
+            { id: 'pane_03', content: <div style={{ height: 140 }}>c</div>, size: 30 }
+        ]
+}
+
+const exampleData2 =
+{
+    reorder: true,
+    sizeUnits: '%', // 'px', '%'
+    panes:
+        [
+            { id: 'pane_01', content: <div style={{ height: 140 }}>a</div>, size: 50 },
+            { id: 'pane_02', content: <div style={{ height: 140 }}>b</div>, size: 20 },
+            { id: 'pane_03', content: <div style={{ height: 140 }}>c</div>, size: 20 },
+            { id: 'pane_04', content: <div style={{ height: 140 }}>c</div>, size: 10 }
+        ]
+}
 
 export default function LayoutPage() {
 
+    const [data,setData] = useState(exampleData)
 
     return (
         <div>
             <h1>Layout</h1>
-            <SplitPane width = {300}/>
+            <SplitPane width = {400} panes={data}/>
             {/* <Dnd /> */}
+            <Button onClick={()=>{
+                if (JSON.stringify(data) != JSON.stringify(exampleData2)) {
+                    setData(exampleData2) } else {
+                    setData(exampleData)
+                }
+            }}>Click me</Button>
         </div>
     )
 }

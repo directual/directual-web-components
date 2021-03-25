@@ -103,6 +103,7 @@ function FpsCards({ auth, data, onEvent, id }) {
         
         if (!actionCond) { return true }
         //if (!auth && actionCond) { return false }
+        
         let match = true
         actionCond.forEach(cond => {
             if (cond.target == 'id' && (!auth || auth.user !== cond.checkValue)) {
@@ -115,7 +116,7 @@ function FpsCards({ auth, data, onEvent, id }) {
                 match = false 
             }
             if ((cond.target == 'field' || cond.target == 'linkedField') &&
-                cond.fieldValue.toLowerCase() != cond.value.toLowerCase()) { 
+                cond.fieldValue.toString().toLowerCase() != cond.value.toString().toLowerCase()) { 
                 console.log(cond.fieldValue + ' != ' + cond.value); 
                 console.log('Field is wrong'); 
                 match = false
