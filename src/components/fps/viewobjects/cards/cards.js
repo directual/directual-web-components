@@ -10,7 +10,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
     const tableData = enrichTableDataWithWriteFields(data) || []
     const tableParams = data.params || {
         cardHeaderComment: '',
-        cardBodyText: ''
+        cardBodyText: '' 
     }
 
     // console.log('=========params=========')
