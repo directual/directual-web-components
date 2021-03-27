@@ -2288,19 +2288,14 @@ const App = (props) => {
     ]
 }
   let newCardActions = {
-    "sl": "returnedRecord",
+    "sl": "getBookRecords",
     "pageSize": "10",
     "headerField": null,
     "params": {
-        "cardListLayout": "list",
-        "cardHeaderComment": "borrowDate",
-        "deleteField": "",
-        "cardBodyText": "status",
+        "cardHeaderComment": "name",
+        "cardListLayout": "grid",
         "cardImage": true,
-        "cardImageField": "bookPage",
-        "cardImageType": "none",
-        "cardImageSize": 100,
-        "objectView": {},
+        "cardImageField": null,
         "data": {
             "readFields": [
                 {
@@ -2334,81 +2329,7 @@ const App = (props) => {
                     "link": ""
                 },
                 {
-                    "fieldSysName": "actReturnDate",
-                    "fetch": [],
-                    "sysName": "actReturnDate",
-                    "name": "归还日期",
-                    "dataType": "date",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": ""
-                },
-                {
-                    "fieldSysName": "bookAuthor",
-                    "fetch": [],
-                    "sysName": "bookAuthor",
-                    "name": "作者",
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {
-                        "customOptionLabel": "My option",
-                        "keyValue": {
-                            "key": "key",
-                            "value": "value",
-                            "button": "One more"
-                        },
-                        "booleanOptions": [
-                            "True",
-                            "False"
-                        ],
-                        "customOptionPlaceholder": "Describe your option",
-                        "range": {},
-                        "customOptionType": "textarea",
-                        "multipleChoice": [
-                            {
-                                "value": "CheckedOut",
-                                "label": "借阅中"
-                            },
-                            {
-                                "value": "CheckedIn",
-                                "label": "已归还"
-                            }
-                        ]
-                    },
-                    "link": ""
-                },
-                {
-                    "fieldSysName": "bookName",
-                    "fetch": [],
-                    "sysName": "bookName",
-                    "name": "书名",
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": null
-                },
-                {
-                    "fieldSysName": "bookPage",
-                    "fetch": [],
-                    "sysName": "bookPage",
-                    "name": "书的封面图",
-                    "dataType": "file",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": ""
-                },
-                {
-                    "fieldSysName": "bookPublisher",
-                    "fetch": [],
-                    "sysName": "bookPublisher",
-                    "name": "出版社",
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": null
-                },
-                {
-                    "fieldSysName": "book_name",
+                    "fieldSysName": "book",
                     "fetch": [
                         {
                             "fieldSysName": "@dateChanged",
@@ -2426,129 +2347,17 @@ const App = (props) => {
                             "fetch": []
                         },
                         {
-                            "fieldSysName": "bookName",
-                            "condition": null,
-                            "fetch": [
-                                {
-                                    "fieldSysName": "@dateChanged",
-                                    "condition": null,
-                                    "fetch": []
-                                },
-                                {
-                                    "fieldSysName": "@dateCreated",
-                                    "condition": null,
-                                    "fetch": []
-                                },
-                                {
-                                    "fieldSysName": "@who",
-                                    "condition": null,
-                                    "fetch": []
-                                },
-                                {
-                                    "fieldSysName": "book_author",
-                                    "condition": null,
-                                    "fetch": []
-                                },
-                                {
-                                    "fieldSysName": "book_cover",
-                                    "condition": null,
-                                    "fetch": []
-                                },
-                                {
-                                    "fieldSysName": "book_name",
-                                    "condition": null,
-                                    "fetch": []
-                                },
-                                {
-                                    "fieldSysName": "book_publication",
-                                    "condition": null,
-                                    "fetch": []
-                                },
-                                {
-                                    "fieldSysName": "book_rating",
-                                    "condition": null,
-                                    "fetch": []
-                                },
-                                {
-                                    "fieldSysName": "id",
-                                    "condition": null,
-                                    "fetch": []
-                                },
-                                {
-                                    "fieldSysName": "libraryBook",
-                                    "condition": null,
-                                    "fetch": []
-                                }
-                            ]
-                        },
-                        {
-                            "fieldSysName": "id",
+                            "fieldSysName": "author",
                             "condition": null,
                             "fetch": []
                         },
                         {
-                            "fieldSysName": "status",
-                            "condition": null,
-                            "fetch": []
-                        }
-                    ],
-                    "sysName": "book_name",
-                    "name": "馆藏编号",
-                    "dataType": "link",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": "libraryBook"
-                },
-                {
-                    "fieldSysName": "borrowDate",
-                    "fetch": [],
-                    "sysName": "borrowDate",
-                    "name": "借阅日期",
-                    "dataType": "date",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": ""
-                },
-                {
-                    "fieldSysName": "borrower",
-                    "fetch": [
-                        {
-                            "fieldSysName": "@dateChanged",
+                            "fieldSysName": "cover",
                             "condition": null,
                             "fetch": []
                         },
                         {
-                            "fieldSysName": "@dateCreated",
-                            "condition": null,
-                            "fetch": []
-                        },
-                        {
-                            "fieldSysName": "@who",
-                            "condition": null,
-                            "fetch": []
-                        },
-                        {
-                            "fieldSysName": "dateCreated",
-                            "condition": null,
-                            "fetch": []
-                        },
-                        {
-                            "fieldSysName": "dateLastActivity",
-                            "condition": null,
-                            "fetch": []
-                        },
-                        {
-                            "fieldSysName": "email",
-                            "condition": null,
-                            "fetch": []
-                        },
-                        {
-                            "fieldSysName": "firstName",
-                            "condition": null,
-                            "fetch": []
-                        },
-                        {
-                            "fieldSysName": "gender",
+                            "fieldSysName": "desc",
                             "condition": null,
                             "fetch": []
                         },
@@ -2558,58 +2367,48 @@ const App = (props) => {
                             "fetch": []
                         },
                         {
-                            "fieldSysName": "isAuthorization",
+                            "fieldSysName": "isbn",
                             "condition": null,
                             "fetch": []
                         },
                         {
-                            "fieldSysName": "isBlocked",
+                            "fieldSysName": "name",
                             "condition": null,
                             "fetch": []
                         },
                         {
-                            "fieldSysName": "lastName",
+                            "fieldSysName": "numExist",
                             "condition": null,
                             "fetch": []
                         },
                         {
-                            "fieldSysName": "password",
+                            "fieldSysName": "price",
                             "condition": null,
                             "fetch": []
                         },
                         {
-                            "fieldSysName": "phone",
+                            "fieldSysName": "publishDate",
                             "condition": null,
                             "fetch": []
                         },
                         {
-                            "fieldSysName": "role",
+                            "fieldSysName": "publishingHouse",
                             "condition": null,
                             "fetch": []
                         }
                     ],
-                    "sysName": "borrower",
-                    "name": "借阅人",
+                    "sysName": "book",
+                    "name": "图书",
                     "dataType": "link",
                     "format": "",
                     "formatOptions": {},
-                    "link": "WebUser"
-                },
-                {
-                    "fieldSysName": "expReturnDate",
-                    "fetch": [],
-                    "sysName": "expReturnDate",
-                    "name": "预计归还日期",
-                    "dataType": "date",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": ""
+                    "link": "Bookinfo"
                 },
                 {
                     "fieldSysName": "id",
                     "fetch": [],
                     "sysName": "id",
-                    "name": "借书编号",
+                    "name": "id",
                     "dataType": "id",
                     "format": "",
                     "formatOptions": {},
@@ -2619,9 +2418,9 @@ const App = (props) => {
                     "fieldSysName": "status",
                     "fetch": [],
                     "sysName": "status",
-                    "name": "借阅状态",
-                    "dataType": "link",
-                    "format": "",
+                    "name": "状态",
+                    "dataType": "json",
+                    "format": "radioOptions",
                     "formatOptions": {
                         "customOptionLabel": "My option",
                         "keyValue": {
@@ -2639,30 +2438,23 @@ const App = (props) => {
                         "customOptionType": "textarea",
                         "multipleChoice": [
                             {
-                                "value": "CheckedIn",
-                                "label": "已归还"
+                                "value": "onshelf",
+                                "label": "可借阅"
                             },
                             {
-                                "value": "CheckedOut",
+                                "value": "borrowed",
                                 "label": "借阅中"
+                            },
+                            {
+                                "value": "deleted",
+                                "label": "已删除"
                             }
                         ]
                     },
-                    "link": "statusOfCheckout"
-                }
-            ],
-            "writeFields": [
-                {
-                    "fieldSysName": "id",
-                    "fetch": [],
-                    "sysName": "id",
-                    "name": "借书编号",
-                    "dataType": "id",
-                    "format": "",
-                    "formatOptions": {},
                     "link": ""
                 }
             ],
+            "writeFields": [],
             "fields": {
                 "@dateChanged": {
                     "id": "@dateChanged",
@@ -2697,147 +2489,34 @@ const App = (props) => {
                     "link": "",
                     "actions": []
                 },
-                "actReturnDate": {
-                    "id": "actReturnDate",
-                    "content": "归还日期",
-                    "type": "field",
-                    "dataType": "date",
-                    "format": "",
-                    "formatOptions": {},
-                    "read": true,
-                    "link": "",
-                    "actions": []
-                },
-                "bookAuthor": {
-                    "id": "bookAuthor",
-                    "content": "作者",
-                    "type": "field",
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {
-                        "customOptionLabel": "My option",
-                        "keyValue": {
-                            "key": "key",
-                            "value": "value",
-                            "button": "One more"
-                        },
-                        "booleanOptions": [
-                            "True",
-                            "False"
-                        ],
-                        "customOptionPlaceholder": "Describe your option",
-                        "range": {},
-                        "customOptionType": "textarea",
-                        "multipleChoice": [
-                            {
-                                "value": "CheckedOut",
-                                "label": "借阅中"
-                            },
-                            {
-                                "value": "CheckedIn",
-                                "label": "已归还"
-                            }
-                        ]
-                    },
-                    "read": true,
-                    "link": "",
-                    "actions": []
-                },
-                "bookName": {
-                    "id": "bookName",
-                    "content": "书名",
-                    "type": "field",
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {},
-                    "read": true,
-                    "link": null,
-                    "actions": []
-                },
-                "bookPage": {
-                    "id": "bookPage",
-                    "content": "书的封面图",
-                    "type": "field",
-                    "dataType": "file",
-                    "format": "",
-                    "formatOptions": {},
-                    "read": true,
-                    "link": "",
-                    "actions": []
-                },
-                "bookPublisher": {
-                    "id": "bookPublisher",
-                    "content": "出版社",
-                    "type": "field",
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {},
-                    "read": true,
-                    "link": null,
-                    "actions": []
-                },
-                "book_name": {
-                    "id": "book_name",
-                    "content": "馆藏编号",
+                "book": {
+                    "id": "book",
+                    "content": "图书",
                     "type": "field",
                     "dataType": "link",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
-                    "link": "libraryBook",
-                    "actions": []
-                },
-                "borrowDate": {
-                    "id": "borrowDate",
-                    "content": "借阅日期",
-                    "type": "field",
-                    "dataType": "date",
-                    "format": "",
-                    "formatOptions": {},
-                    "read": true,
-                    "link": "",
-                    "actions": []
-                },
-                "borrower": {
-                    "id": "borrower",
-                    "content": "借阅人",
-                    "type": "field",
-                    "dataType": "link",
-                    "format": "",
-                    "formatOptions": {},
-                    "read": true,
-                    "link": "WebUser",
-                    "actions": []
-                },
-                "expReturnDate": {
-                    "id": "expReturnDate",
-                    "content": "预计归还日期",
-                    "type": "field",
-                    "dataType": "date",
-                    "format": "",
-                    "formatOptions": {},
-                    "read": true,
-                    "link": "",
+                    "link": "Bookinfo",
                     "actions": []
                 },
                 "id": {
                     "id": "id",
-                    "content": "借书编号",
+                    "content": "id",
                     "type": "field",
                     "dataType": "id",
                     "format": "",
                     "formatOptions": {},
-                    "write": true,
                     "read": true,
                     "link": "",
                     "actions": []
                 },
                 "status": {
                     "id": "status",
-                    "content": "借阅状态",
+                    "content": "状态",
                     "type": "field",
-                    "dataType": "link",
-                    "format": "",
+                    "dataType": "json",
+                    "format": "radioOptions",
                     "formatOptions": {
                         "customOptionLabel": "My option",
                         "keyValue": {
@@ -2855,17 +2534,27 @@ const App = (props) => {
                         "customOptionType": "textarea",
                         "multipleChoice": [
                             {
-                                "value": "CheckedIn",
-                                "label": "已归还"
+                                "value": "onshelf",
+                                "label": "可借阅"
                             },
                             {
-                                "value": "CheckedOut",
+                                "value": "borrowed",
                                 "label": "借阅中"
+                            },
+                            {
+                                "value": "deleted",
+                                "label": "已删除"
                             }
                         ]
                     },
                     "read": true,
-                    "link": "statusOfCheckout",
+                    "link": "",
+                    "actions": []
+                },
+                "action__31141616851170614": {
+                    "content": "New action",
+                    "id": "action__31141616851170614",
+                    "type": "action",
                     "actions": []
                 }
             },
@@ -2891,67 +2580,8 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "actReturnDate": {
+                "book": {
                     "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "descriptionFlag": false,
-                    "description": "归还日期"
-                },
-                "bookAuthor": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "bookName": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "bookPage": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 300,
-                    "clickable": false,
-                    "fileImage": true
-                },
-                "bookPublisher": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "book_name": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "borrowDate": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "borrower": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "expReturnDate": {
-                    "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
@@ -2964,42 +2594,14 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
+                "numExist": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
                 "status": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "book_author": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "book_cover": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "book_publication": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "book_rating": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "libraryBook": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -3010,36 +2612,380 @@ const App = (props) => {
             "columns": {
                 "tab-1": {
                     "id": "tab-1",
-                    "title": "借阅信息",
+                    "title": "New section",
                     "fieldIds": [
-                        "id",
                         "@dateChanged",
                         "@dateCreated",
                         "@who",
-                        "bookPage",
+                        "book",
+                        "id",
                         "status",
-                        "borrowDate",
-                        "actReturnDate",
-                        "book_name",
-                        "borrower",
-                        "expReturnDate"
-                    ]
-                },
-                "60381616654844348": {
-                    "id": "60381616654844348",
-                    "title": "书籍信息",
-                    "fieldIds": [
-                        "bookName",
-                        "bookAuthor",
-                        "bookPublisher"
+                        "action__31141616851170614"
                     ]
                 }
             },
             "columnOrder": [
-                "tab-1",
-                "60381616654844348"
+                "tab-1"
             ],
-            "actions": []
+            "actions": [
+                {
+                    "sysName": "createBorrowInfo",
+                    "id": "31141616851170614",
+                    "name": "New action",
+                    "displayAs": "form",
+                    "buttonIcon": "export",
+                    "buttonTitle": "借阅",
+                    "dropdown": true,
+                    "closePopup": true,
+                    "formMapping": [
+                        {
+                            "id": "42501616851356013",
+                            "target": "bookRecord",
+                            "type": "objectField",
+                            "value": "book"
+                        },
+                        {
+                            "id": "89651616851511270",
+                            "target": "user",
+                            "type": "user",
+                            "value": null
+                        },
+                        {
+                            "id": "48141616851710248",
+                            "target": "renewCount",
+                            "type": "const",
+                            "value": "0"
+                        }
+                    ],
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "@dateChanged",
+                                "fetch": [],
+                                "sysName": "@dateChanged",
+                                "name": "date changed",
+                                "dataType": "date",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "@dateCreated",
+                                "fetch": [],
+                                "sysName": "@dateCreated",
+                                "name": "date created",
+                                "dataType": "date",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "@who",
+                                "fetch": [],
+                                "sysName": "@who",
+                                "name": "who changed",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "bookRecord",
+                                "fetch": [
+                                    {
+                                        "fieldSysName": "book",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "id",
+                                        "condition": null,
+                                        "fetch": []
+                                    }
+                                ],
+                                "sysName": "bookRecord",
+                                "name": "图书",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "BookRecord"
+                            },
+                            {
+                                "fieldSysName": "borrowDate",
+                                "fetch": [],
+                                "sysName": "borrowDate",
+                                "name": "借书时间",
+                                "dataType": "date",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "comment",
+                                "fetch": [],
+                                "sysName": "comment",
+                                "name": "评价",
+                                "dataType": "string",
+                                "format": "markdown",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "expectedReturnDate",
+                                "fetch": [],
+                                "sysName": "expectedReturnDate",
+                                "name": "预计还书时间",
+                                "dataType": "date",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "grade",
+                                "fetch": [],
+                                "sysName": "grade",
+                                "name": "评分",
+                                "dataType": "json",
+                                "format": "slider",
+                                "formatOptions": {
+                                    "customOptionLabel": "My option",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "unitName": "5",
+                                    "booleanOptions": [
+                                        "True",
+                                        "False"
+                                    ],
+                                    "customOptionPlaceholder": "Describe your option",
+                                    "range": {
+                                        "max": 5,
+                                        "min": 1,
+                                        "step": 1
+                                    },
+                                    "customOptionType": "textarea"
+                                },
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "renewCount",
+                                "fetch": [],
+                                "sysName": "renewCount",
+                                "name": "续借次数",
+                                "dataType": "number",
+                                "format": "positiveNum",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "returnDate",
+                                "fetch": [],
+                                "sysName": "returnDate",
+                                "name": "实际还书时间",
+                                "dataType": "date",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "user",
+                                "fetch": [],
+                                "sysName": "user",
+                                "name": "借阅人",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "@dateChanged",
+                                "fetch": [],
+                                "sysName": "@dateChanged",
+                                "name": "date changed",
+                                "dataType": "date",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "@dateCreated",
+                                "fetch": [],
+                                "sysName": "@dateCreated",
+                                "name": "date created",
+                                "dataType": "date",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "@who",
+                                "fetch": [],
+                                "sysName": "@who",
+                                "name": "who changed",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "bookRecord",
+                                "fetch": [],
+                                "sysName": "bookRecord",
+                                "name": "图书",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "BookRecord"
+                            },
+                            {
+                                "fieldSysName": "borrowDate",
+                                "fetch": [],
+                                "sysName": "borrowDate",
+                                "name": "借书时间",
+                                "dataType": "date",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "comment",
+                                "fetch": [],
+                                "sysName": "comment",
+                                "name": "评价",
+                                "dataType": "string",
+                                "format": "markdown",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "expectedReturnDate",
+                                "fetch": [],
+                                "sysName": "expectedReturnDate",
+                                "name": "预计还书时间",
+                                "dataType": "date",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "grade",
+                                "fetch": [],
+                                "sysName": "grade",
+                                "name": "评分",
+                                "dataType": "json",
+                                "format": "slider",
+                                "formatOptions": {
+                                    "customOptionLabel": "My option",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "unitName": "5",
+                                    "booleanOptions": [
+                                        "True",
+                                        "False"
+                                    ],
+                                    "customOptionPlaceholder": "Describe your option",
+                                    "range": {
+                                        "max": 5,
+                                        "min": 1,
+                                        "step": 1
+                                    },
+                                    "customOptionType": "textarea"
+                                },
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "renewCount",
+                                "fetch": [],
+                                "sysName": "renewCount",
+                                "name": "续借次数",
+                                "dataType": "number",
+                                "format": "positiveNum",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "returnDate",
+                                "fetch": [],
+                                "sysName": "returnDate",
+                                "name": "实际还书时间",
+                                "dataType": "date",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "user",
+                                "fetch": [],
+                                "sysName": "user",
+                                "name": "借阅人",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            }
+                        ]
+                    },
+                    "conditionals": [],
+                    "formFields": [
+                        {
+                            "id": "98911616851688310",
+                            "field": {
+                                "fieldSysName": "borrowDate",
+                                "fetch": [],
+                                "sysName": "borrowDate",
+                                "name": "借书时间",
+                                "dataType": "date",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        },
+                        {
+                            "id": "18871616851690837",
+                            "field": {
+                                "fieldSysName": "expectedReturnDate",
+                                "fetch": [],
+                                "sysName": "expectedReturnDate",
+                                "name": "预计还书时间",
+                                "dataType": "date",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        }
+                    ],
+                    "callFrom": "main",
+                    "callFromField": "book"
+                }
+            ]
         },
         "fields": {
             "@dateChanged": {
@@ -3063,67 +3009,8 @@ const App = (props) => {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "actReturnDate": {
+            "book": {
                 "include": true,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false,
-                "descriptionFlag": false,
-                "description": "归还日期"
-            },
-            "bookAuthor": {
-                "include": true,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false
-            },
-            "bookName": {
-                "include": true,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false
-            },
-            "bookPage": {
-                "include": true,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 300,
-                "clickable": false,
-                "fileImage": true
-            },
-            "bookPublisher": {
-                "include": true,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false
-            },
-            "book_name": {
-                "include": true,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false
-            },
-            "borrowDate": {
-                "include": true,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false
-            },
-            "borrower": {
-                "include": false,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false
-            },
-            "expReturnDate": {
-                "include": false,
                 "fileImageFormat": "square",
                 "quickSearch": false,
                 "fileImageSize": 200,
@@ -3136,42 +3023,14 @@ const App = (props) => {
                 "fileImageSize": 200,
                 "clickable": false
             },
+            "numExist": {
+                "include": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
             "status": {
-                "include": true,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false
-            },
-            "book_author": {
-                "include": true,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false
-            },
-            "book_cover": {
-                "include": true,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false
-            },
-            "book_publication": {
-                "include": true,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false
-            },
-            "book_rating": {
-                "include": true,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false
-            },
-            "libraryBook": {
                 "include": true,
                 "fileImageFormat": "square",
                 "quickSearch": false,
@@ -3179,22 +3038,1275 @@ const App = (props) => {
                 "clickable": false
             }
         },
-        "actions": []
+        "actions": [
+            {
+                "sysName": "createBorrowInfo",
+                "id": "31141616851170614",
+                "name": "New action",
+                "displayAs": "form",
+                "buttonIcon": "export",
+                "buttonTitle": "借阅",
+                "dropdown": true,
+                "closePopup": true,
+                "formMapping": [
+                    {
+                        "id": "42501616851356013",
+                        "target": "bookRecord",
+                        "type": "objectField",
+                        "value": "book"
+                    },
+                    {
+                        "id": "89651616851511270",
+                        "target": "user",
+                        "type": "user",
+                        "value": null
+                    },
+                    {
+                        "id": "48141616851710248",
+                        "target": "renewCount",
+                        "type": "const",
+                        "value": "0"
+                    }
+                ],
+                "SLtype": "other",
+                "fields": {
+                    "readFields": [
+                        {
+                            "fieldSysName": "@dateChanged",
+                            "fetch": [],
+                            "sysName": "@dateChanged",
+                            "name": "date changed",
+                            "dataType": "date",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "@dateCreated",
+                            "fetch": [],
+                            "sysName": "@dateCreated",
+                            "name": "date created",
+                            "dataType": "date",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "@who",
+                            "fetch": [],
+                            "sysName": "@who",
+                            "name": "who changed",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "bookRecord",
+                            "fetch": [
+                                {
+                                    "fieldSysName": "book",
+                                    "condition": null,
+                                    "fetch": []
+                                },
+                                {
+                                    "fieldSysName": "id",
+                                    "condition": null,
+                                    "fetch": []
+                                }
+                            ],
+                            "sysName": "bookRecord",
+                            "name": "图书",
+                            "dataType": "link",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": "BookRecord"
+                        },
+                        {
+                            "fieldSysName": "borrowDate",
+                            "fetch": [],
+                            "sysName": "borrowDate",
+                            "name": "借书时间",
+                            "dataType": "date",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "comment",
+                            "fetch": [],
+                            "sysName": "comment",
+                            "name": "评价",
+                            "dataType": "string",
+                            "format": "markdown",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "expectedReturnDate",
+                            "fetch": [],
+                            "sysName": "expectedReturnDate",
+                            "name": "预计还书时间",
+                            "dataType": "date",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "grade",
+                            "fetch": [],
+                            "sysName": "grade",
+                            "name": "评分",
+                            "dataType": "json",
+                            "format": "slider",
+                            "formatOptions": {
+                                "customOptionLabel": "My option",
+                                "keyValue": {
+                                    "key": "key",
+                                    "value": "value",
+                                    "button": "One more"
+                                },
+                                "unitName": "5",
+                                "booleanOptions": [
+                                    "True",
+                                    "False"
+                                ],
+                                "customOptionPlaceholder": "Describe your option",
+                                "range": {
+                                    "max": 5,
+                                    "min": 1,
+                                    "step": 1
+                                },
+                                "customOptionType": "textarea"
+                            },
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "id",
+                            "fetch": [],
+                            "sysName": "id",
+                            "name": "id",
+                            "dataType": "id",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "renewCount",
+                            "fetch": [],
+                            "sysName": "renewCount",
+                            "name": "续借次数",
+                            "dataType": "number",
+                            "format": "positiveNum",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "returnDate",
+                            "fetch": [],
+                            "sysName": "returnDate",
+                            "name": "实际还书时间",
+                            "dataType": "date",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "user",
+                            "fetch": [],
+                            "sysName": "user",
+                            "name": "借阅人",
+                            "dataType": "link",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": "WebUser"
+                        }
+                    ],
+                    "writeFields": [
+                        {
+                            "fieldSysName": "@dateChanged",
+                            "fetch": [],
+                            "sysName": "@dateChanged",
+                            "name": "date changed",
+                            "dataType": "date",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "@dateCreated",
+                            "fetch": [],
+                            "sysName": "@dateCreated",
+                            "name": "date created",
+                            "dataType": "date",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "@who",
+                            "fetch": [],
+                            "sysName": "@who",
+                            "name": "who changed",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "bookRecord",
+                            "fetch": [],
+                            "sysName": "bookRecord",
+                            "name": "图书",
+                            "dataType": "link",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": "BookRecord"
+                        },
+                        {
+                            "fieldSysName": "borrowDate",
+                            "fetch": [],
+                            "sysName": "borrowDate",
+                            "name": "借书时间",
+                            "dataType": "date",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "comment",
+                            "fetch": [],
+                            "sysName": "comment",
+                            "name": "评价",
+                            "dataType": "string",
+                            "format": "markdown",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "expectedReturnDate",
+                            "fetch": [],
+                            "sysName": "expectedReturnDate",
+                            "name": "预计还书时间",
+                            "dataType": "date",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "grade",
+                            "fetch": [],
+                            "sysName": "grade",
+                            "name": "评分",
+                            "dataType": "json",
+                            "format": "slider",
+                            "formatOptions": {
+                                "customOptionLabel": "My option",
+                                "keyValue": {
+                                    "key": "key",
+                                    "value": "value",
+                                    "button": "One more"
+                                },
+                                "unitName": "5",
+                                "booleanOptions": [
+                                    "True",
+                                    "False"
+                                ],
+                                "customOptionPlaceholder": "Describe your option",
+                                "range": {
+                                    "max": 5,
+                                    "min": 1,
+                                    "step": 1
+                                },
+                                "customOptionType": "textarea"
+                            },
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "id",
+                            "fetch": [],
+                            "sysName": "id",
+                            "name": "id",
+                            "dataType": "id",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "renewCount",
+                            "fetch": [],
+                            "sysName": "renewCount",
+                            "name": "续借次数",
+                            "dataType": "number",
+                            "format": "positiveNum",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "returnDate",
+                            "fetch": [],
+                            "sysName": "returnDate",
+                            "name": "实际还书时间",
+                            "dataType": "date",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "user",
+                            "fetch": [],
+                            "sysName": "user",
+                            "name": "借阅人",
+                            "dataType": "link",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": "WebUser"
+                        }
+                    ]
+                },
+                "conditionals": [],
+                "formFields": [
+                    {
+                        "id": "98911616851688310",
+                        "field": {
+                            "fieldSysName": "borrowDate",
+                            "fetch": [],
+                            "sysName": "borrowDate",
+                            "name": "借书时间",
+                            "dataType": "date",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        }
+                    },
+                    {
+                        "id": "18871616851690837",
+                        "field": {
+                            "fieldSysName": "expectedReturnDate",
+                            "fetch": [],
+                            "sysName": "expectedReturnDate",
+                            "name": "预计还书时间",
+                            "dataType": "date",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        }
+                    }
+                ],
+                "callFrom": "main",
+                "callFromField": "book"
+            }
+        ],
+        "cardBodyText": "author",
+        "showCounter": false,
+        "counterField": null,
+        "counterText": null
     },
-    "tableTitle": "借阅记录",
+    "tableTitle": "馆藏列表",
     "actions": null,
-    "headers": null,
-    "data": null,
-    "totalPages": 0,
+    "headers": [
+        {
+            "sysName": "@dateChanged",
+            "name": "@dateChanged",
+            "dataType": "string",
+            "id": "",
+            "link": "",
+            "group": "",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": null,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "@dateCreated",
+            "name": "@dateCreated",
+            "dataType": "string",
+            "id": "",
+            "link": "",
+            "group": "",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": null,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "@who",
+            "name": "@who",
+            "dataType": "string",
+            "id": "",
+            "link": "",
+            "group": "",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": null,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "author",
+            "name": "作者",
+            "dataType": "string",
+            "id": "17941616859285621",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "book",
+            "name": "图书",
+            "dataType": "link",
+            "id": "11151616592942142",
+            "link": "Bookinfo",
+            "group": "0",
+            "tags": null,
+            "indexing": true,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [
+                "name"
+            ],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": true,
+            "typeVariable": {},
+            "indexExists": true,
+            "linkOrArrayLinkType": true
+        },
+        {
+            "sysName": "cover",
+            "name": "封面",
+            "dataType": "file",
+            "id": "57301616859296763",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "description",
+            "name": "描述",
+            "dataType": "string",
+            "id": "65901616859377628",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "id",
+            "name": "id",
+            "dataType": "id",
+            "id": "0",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "isbn",
+            "name": "ISBN",
+            "dataType": "string",
+            "id": "21711616859334587",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "name",
+            "name": "书名",
+            "dataType": "string",
+            "id": "79001616857753515",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "status",
+            "name": "状态",
+            "dataType": "json",
+            "id": "88101616593122115",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": "radioOptions",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "customOption": false,
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "multipleChoice": [
+                    {
+                        "value": "onshelf",
+                        "label": "可借阅"
+                    },
+                    {
+                        "value": "borrowed",
+                        "label": "借阅中"
+                    },
+                    {
+                        "value": "deleted",
+                        "label": "已删除"
+                    }
+                ]
+            },
+            "groupName": null,
+            "arrayLink": false,
+            "json": true,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        }
+    ],
+    "data": [
+        {
+            "name": "Harry Potter",
+            "book": {
+                "author": "理查德·J. 埃文斯",
+                "desc": "德国在一战前曾是欧洲最富裕、最强大的经济体，反犹主义在政治中明显处于边缘地位。然而，起初只是一群极端分子和恶棍的纳粹党人，在数年之中就把德国变成了一党独裁的国家，把一个极有教养的民族引向了道德、物质和文化的废墟与绝境。\n\n本书透过德国的历史、社会与文化，探究纳粹党徒的心理 ，还原纳粹攫取权力的过程，揭示反对者为何未能阻止他们，生动再现了导致第三帝国到来的混乱失序、经济灾难、暴力行径，以及社会的两极分化。\n\n细致解析纳粹掌权的过程，获得今日的镜鉴——纳粹统治德国的时间虽只有十二年，却深刻影响了20世纪的历史进程，在现代世界的思想中留下了深刻的烙印。探究纳粹党徒的心理，理解纳粹的反对者为何未能阻止他们，明白纳粹独裁政权的本质和运作方式，并从中汲取教训，避免历史重演，时至今日依然必要。\n\n从德国特殊的历史中寻找法西斯和民粹主义的根源——纳粹的崛起并不能简单视为德意志民族的独特产物，其复杂的经济社会因素，能使任何国家堕入暴力的深渊。本书详细阐述了历经一战、《凡尔赛条约》、恶性通货膨胀和大萧条的德国，如何一步步走向专制统治；魏玛共和国时期的政治、经济和社会发展，又如何为激进思想的酝酿提供了温床。\n\n史学名家为普通读者撰写的全景式纳粹德国史——基于详实的史料与丰富的细节，埃文斯出色地实现了语言生动、分析严谨与解释有力的完美结合，以中立的视角客观、准确地呈现了纳粹登台前德国社会的方方面面。\n\n《出版人周刊》《科克斯评论》《纽约时报》《华盛顿邮报》《卫报》等媒体齐声推荐。",
+                "name": "第三帝国的到来",
+                "publishingHouse": "九州出版社",
+                "price": 50,
+                "numExist": 0,
+                "cover": "https://img3.doubanio.com/view/subject/l/public/s33578801.jpg",
+                "id": "1",
+                "isbn": "9787510886768",
+                "publishDate": 1580515200000
+            },
+            "status": "{\n   \"value\": \"onshelf\"\n}",
+            "id": "1",
+            "@dateChanged": "",
+            "@dateCreated": "",
+            "@who": "",
+            "author": "",
+            "cover": "",
+            "description": "",
+            "isbn": ""
+        }
+    ],
+    "totalPages": 1,
     "pageNumber": 0,
-    "error": "You have no permissions",
-    "fieldScheme": null,
-    "writeFields": null,
-    "structures": null,
+    "error": null,
+    "fieldScheme": [
+        [
+            "@dateChanged",
+            1369232
+        ],
+        [
+            "@dateCreated",
+            1369232
+        ],
+        [
+            "@who",
+            1369232
+        ],
+        [
+            "author",
+            1369232
+        ],
+        [
+            "book.@dateChanged",
+            1369231
+        ],
+        [
+            "book.@dateCreated",
+            1369231
+        ],
+        [
+            "book.@who",
+            1369231
+        ],
+        [
+            "book.author",
+            1369231
+        ],
+        [
+            "book.cover",
+            1369231
+        ],
+        [
+            "book.desc",
+            1369231
+        ],
+        [
+            "book.id",
+            1369231
+        ],
+        [
+            "book.isbn",
+            1369231
+        ],
+        [
+            "book.name",
+            1369231
+        ],
+        [
+            "book.numExist",
+            1369231
+        ],
+        [
+            "book.price",
+            1369231
+        ],
+        [
+            "book.publishDate",
+            1369231
+        ],
+        [
+            "book.publishingHouse",
+            1369231
+        ],
+        [
+            "cover",
+            1369232
+        ],
+        [
+            "description",
+            1369232
+        ],
+        [
+            "id",
+            1369232
+        ],
+        [
+            "isbn",
+            1369232
+        ],
+        [
+            "name",
+            1369232
+        ],
+        [
+            "status",
+            1369232
+        ]
+    ],
+    "writeFields": [
+        "@dateChanged",
+        "@dateCreated",
+        "@who",
+        "author",
+        "book",
+        "cover",
+        "description",
+        "id",
+        "isbn",
+        "name",
+        "status"
+    ],
+    "structures": {
+        "1369231": {
+            "networkID": 6068,
+            "sysName": "Bookinfo",
+            "name": "图书信息",
+            "id": 1369231,
+            "dateCreated": "2021-03-24T13:35:06Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"isbn\",\"dataType\":\"string\",\"name\":\"ISBN\",\"id\":\"16891616592952948\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"creator\",\"dataType\":\"link\",\"name\":\"创建人\",\"id\":\"27261616854119749\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"author\",\"dataType\":\"link\",\"name\":\"作者\",\"id\":\"38891616593040978\",\"link\":\"writer\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"cover\",\"dataType\":\"file\",\"name\":\"封面\",\"id\":\"43951616593055642\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"publishingHouse\",\"dataType\":\"string\",\"name\":\"出版社\",\"id\":\"66891616593082694\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"书名\",\"id\":\"87241616592936446\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"numExist\",\"dataType\":\"number\",\"name\":\"库存数量\",\"id\":\"95341616848803733\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"publishDate\",\"dataType\":\"date\",\"name\":\"出版日期\",\"id\":\"97571616593097014\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"price\",\"dataType\":\"decimal\",\"name\":\"价格\",\"id\":\"97601616593116561\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"desc\",\"dataType\":\"string\",\"name\":\"描述\",\"id\":\"99151616593076431\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2021-03-27T14:28:12Z",
+            "createBy": 6508,
+            "changedBy": 1,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
+            "innerIDField": {
+                "sysName": "id",
+                "name": "id",
+                "dataType": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "arrayLink": false,
+                "json": false,
+                "linkType": false,
+                "typeVariable": {},
+                "indexExists": false,
+                "linkOrArrayLinkType": false
+            },
+            "folderId": 33616903
+        },
+        "1369232": {
+            "networkID": 6068,
+            "sysName": "BookRecord",
+            "name": "书本信息",
+            "id": 1369232,
+            "dateCreated": "2021-03-24T13:35:34Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"book\",\"dataType\":\"link\",\"name\":\"图书\",\"id\":\"11151616592942142\",\"link\":\"Bookinfo\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[\"name\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":true,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"author\",\"dataType\":\"string\",\"name\":\"作者\",\"id\":\"17941616859285621\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"isbn\",\"dataType\":\"string\",\"name\":\"ISBN\",\"id\":\"21711616859334587\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"cover\",\"dataType\":\"file\",\"name\":\"封面\",\"id\":\"57301616859296763\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"描述\",\"id\":\"65901616859377628\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"书名\",\"id\":\"79001616857753515\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"status\",\"dataType\":\"json\",\"name\":\"状态\",\"id\":\"88101616593122115\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"radioOptions\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"booleanOptions\":[\"True\",\"False\"],\"customOption\":false,\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"multipleChoice\":[{\"value\":\"onshelf\",\"label\":\"可借阅\"},{\"value\":\"borrowed\",\"label\":\"借阅中\"},{\"value\":\"deleted\",\"label\":\"已删除\"}]},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2021-03-27T15:37:15Z",
+            "createBy": 6266,
+            "changedBy": 6266,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
+            "innerIDField": {
+                "sysName": "id",
+                "name": "id",
+                "dataType": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "arrayLink": false,
+                "json": false,
+                "linkType": false,
+                "typeVariable": {},
+                "indexExists": false,
+                "linkOrArrayLinkType": false
+            },
+            "folderId": 33616903
+        }
+    },
     "isSuccessWrite": false,
     "writeError": null,
     "writeResponse": null,
-    "fileds": null
+    "fileds": [
+        {
+            "sysName": "@dateChanged",
+            "name": "@dateChanged",
+            "dataType": "string",
+            "id": "",
+            "link": "",
+            "group": "",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": null,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "@dateCreated",
+            "name": "@dateCreated",
+            "dataType": "string",
+            "id": "",
+            "link": "",
+            "group": "",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": null,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "@who",
+            "name": "@who",
+            "dataType": "string",
+            "id": "",
+            "link": "",
+            "group": "",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": null,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "author",
+            "name": "作者",
+            "dataType": "string",
+            "id": "17941616859285621",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "book",
+            "name": "图书",
+            "dataType": "link",
+            "id": "11151616592942142",
+            "link": "Bookinfo",
+            "group": "0",
+            "tags": null,
+            "indexing": true,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [
+                "name"
+            ],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": true,
+            "typeVariable": {},
+            "indexExists": true,
+            "linkOrArrayLinkType": true
+        },
+        {
+            "sysName": "cover",
+            "name": "封面",
+            "dataType": "file",
+            "id": "57301616859296763",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "description",
+            "name": "描述",
+            "dataType": "string",
+            "id": "65901616859377628",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "id",
+            "name": "id",
+            "dataType": "id",
+            "id": "0",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "isbn",
+            "name": "ISBN",
+            "dataType": "string",
+            "id": "21711616859334587",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "name",
+            "name": "书名",
+            "dataType": "string",
+            "id": "79001616857753515",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "status",
+            "name": "状态",
+            "dataType": "json",
+            "id": "88101616593122115",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": "radioOptions",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "customOption": false,
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "multipleChoice": [
+                    {
+                        "value": "onshelf",
+                        "label": "可借阅"
+                    },
+                    {
+                        "value": "borrowed",
+                        "label": "借阅中"
+                    },
+                    {
+                        "value": "deleted",
+                        "label": "已删除"
+                    }
+                ]
+            },
+            "groupName": null,
+            "arrayLink": false,
+            "json": true,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        }
+    ]
 }
 
   let exampleTable =
@@ -3775,1825 +4887,1198 @@ const App = (props) => {
 
 
   let exampleForm = {
-    "sl": "editEmployeeProfile",
-    "formName": "Профиль кандидата",
+    "sl": "books",
+    "formName": "新增图书信息",
     "formDesc": "",
-    "formButton": "Сохранить",
-    "placeholder": "",
-    "maxWidth": "500",
+    "formButton": "确定添加",
+    "placeholder": "false",
+    "maxWidth": "",
     "formButtonResubmit": null,
     "params": {
-      "result": {
-        "resultTitleField": null,
-        "resultMessageField": null,
-        "isSuccessField": null
-      },
-      "data": {
-        "readFields": [
-          {
-            "fieldSysName": "22_functions",
-            "fetch": [],
-            "sysName": "22_functions",
-            "name": "Функции для категории 22",
-            "dataType": "arrayLink",
-            "format": "",
-            "formatOptions": {},
-            "link": "functions22"
-          },
-          {
-            "fieldSysName": "52_functions",
-            "fetch": [],
-            "sysName": "52_functions",
-            "name": "Функции для категории 52",
-            "dataType": "arrayLink",
-            "format": "",
-            "formatOptions": {},
-            "link": "functions52"
-          },
-          {
-            "fieldSysName": "Facebook_lonk",
-            "fetch": [],
-            "sysName": "Facebook_lonk",
-            "name": "Facebook",
-            "dataType": "string",
-            "format": "webLink",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "Instagram_link",
-            "fetch": [],
-            "sysName": "Instagram_link",
-            "name": "Instagram",
-            "dataType": "string",
-            "format": "webLink",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "city",
-            "fetch": [],
-            "sysName": "city",
-            "name": "Город",
-            "dataType": "link",
-            "format": "",
-            "formatOptions": {},
-            "link": "cities"
-          },
-          {
-            "fieldSysName": "firstName",
-            "fetch": [],
-            "sysName": "firstName",
-            "name": "Имя",
-            "dataType": "string",
-            "format": "",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "id",
-            "fetch": [],
-            "sysName": "id",
-            "name": "Username (login)",
-            "dataType": "id",
-            "format": "",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "lastName",
-            "fetch": [],
-            "sysName": "lastName",
-            "name": "Фамлия",
-            "dataType": "string",
-            "format": "",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "salary_raw",
-            "fetch": [],
-            "sysName": "salary_raw",
-            "name": "Ожидания по доходу ",
-            "dataType": "json",
-            "format": "rangeSlider",
-            "formatOptions": {
-              "customOptionLabel": "My option",
-              "keyValue": {
-                "key": "key",
-                "value": "value",
-                "button": "One more"
-              },
-              "unitName": "k ₽",
-              "booleanOptions": [
-                "True",
-                "False"
-              ],
-              "customOptionPlaceholder": "Describe your option",
-              "range": {
-                "max": 300,
-                "min": 20,
-                "step": 10
-              },
-              "customOptionType": "textarea"
+        "result": {
+            "resultTitleField": null,
+            "resultMessageField": null,
+            "isSuccessField": null
+        },
+        "data": {
+            "readFields": [
+                {
+                    "fieldSysName": "@dateChanged",
+                    "fetch": [],
+                    "sysName": "@dateChanged",
+                    "name": "date changed",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "@dateCreated",
+                    "fetch": [],
+                    "sysName": "@dateCreated",
+                    "name": "date created",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "@who",
+                    "fetch": [],
+                    "sysName": "@who",
+                    "name": "who changed",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "author",
+                    "fetch": [
+                        {
+                            "fieldSysName": "@dateChanged",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "@dateCreated",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "@who",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "author",
+                    "name": "作者",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "writer"
+                },
+                {
+                    "fieldSysName": "cover",
+                    "fetch": [],
+                    "sysName": "cover",
+                    "name": "封面",
+                    "dataType": "file",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "creator",
+                    "fetch": [],
+                    "sysName": "creator",
+                    "name": "创建人",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "WebUser"
+                },
+                {
+                    "fieldSysName": "desc",
+                    "fetch": [],
+                    "sysName": "desc",
+                    "name": "描述",
+                    "dataType": "string",
+                    "format": "markdown",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "id",
+                    "fetch": [],
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "isbn",
+                    "fetch": [],
+                    "sysName": "isbn",
+                    "name": "ISBN",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": null
+                },
+                {
+                    "fieldSysName": "name",
+                    "fetch": [],
+                    "sysName": "name",
+                    "name": "书名",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "numExist",
+                    "fetch": [],
+                    "sysName": "numExist",
+                    "name": "库存数量",
+                    "dataType": "number",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "price",
+                    "fetch": [],
+                    "sysName": "price",
+                    "name": "价格",
+                    "dataType": "decimal",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "publishDate",
+                    "fetch": [],
+                    "sysName": "publishDate",
+                    "name": "出版日期",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "publishingHouse",
+                    "fetch": [],
+                    "sysName": "publishingHouse",
+                    "name": "出版社",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                }
+            ],
+            "writeFields": [
+                {
+                    "fieldSysName": "@dateChanged",
+                    "fetch": [],
+                    "sysName": "@dateChanged",
+                    "name": "date changed",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "@dateCreated",
+                    "fetch": [],
+                    "sysName": "@dateCreated",
+                    "name": "date created",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "@who",
+                    "fetch": [],
+                    "sysName": "@who",
+                    "name": "who changed",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "author",
+                    "fetch": [],
+                    "sysName": "author",
+                    "name": "作者",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "writer"
+                },
+                {
+                    "fieldSysName": "cover",
+                    "fetch": [],
+                    "sysName": "cover",
+                    "name": "封面",
+                    "dataType": "file",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "creator",
+                    "fetch": [],
+                    "sysName": "creator",
+                    "name": "创建人",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "WebUser"
+                },
+                {
+                    "fieldSysName": "desc",
+                    "fetch": [],
+                    "sysName": "desc",
+                    "name": "描述",
+                    "dataType": "string",
+                    "format": "markdown",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "id",
+                    "fetch": [],
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "isbn",
+                    "fetch": [],
+                    "sysName": "isbn",
+                    "name": "ISBN",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": null
+                },
+                {
+                    "fieldSysName": "name",
+                    "fetch": [],
+                    "sysName": "name",
+                    "name": "书名",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "numExist",
+                    "fetch": [],
+                    "sysName": "numExist",
+                    "name": "库存数量",
+                    "dataType": "number",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "price",
+                    "fetch": [],
+                    "sysName": "price",
+                    "name": "价格",
+                    "dataType": "decimal",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "publishDate",
+                    "fetch": [],
+                    "sysName": "publishDate",
+                    "name": "出版日期",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "publishingHouse",
+                    "fetch": [],
+                    "sysName": "publishingHouse",
+                    "name": "出版社",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                }
+            ],
+            "fields": {
+                "@dateChanged": {
+                    "id": "@dateChanged",
+                    "content": "date changed",
+                    "type": "field",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": ""
+                },
+                "@dateCreated": {
+                    "id": "@dateCreated",
+                    "content": "date created",
+                    "type": "field",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": ""
+                },
+                "@who": {
+                    "id": "@who",
+                    "content": "who changed",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": ""
+                },
+                "author": {
+                    "id": "author",
+                    "content": "作者",
+                    "type": "field",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": "writer"
+                },
+                "cover": {
+                    "id": "cover",
+                    "content": "封面",
+                    "type": "field",
+                    "dataType": "file",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": ""
+                },
+                "creator": {
+                    "id": "creator",
+                    "content": "创建人",
+                    "type": "field",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": "WebUser"
+                },
+                "desc": {
+                    "id": "desc",
+                    "content": "描述",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "markdown",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": ""
+                },
+                "id": {
+                    "id": "id",
+                    "content": "id",
+                    "type": "field",
+                    "dataType": "id",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": ""
+                },
+                "isbn": {
+                    "id": "isbn",
+                    "content": "ISBN",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": null
+                },
+                "name": {
+                    "id": "name",
+                    "content": "书名",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": ""
+                },
+                "numExist": {
+                    "id": "numExist",
+                    "content": "库存数量",
+                    "type": "field",
+                    "dataType": "number",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": ""
+                },
+                "price": {
+                    "id": "price",
+                    "content": "价格",
+                    "type": "field",
+                    "dataType": "decimal",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": ""
+                },
+                "publishDate": {
+                    "id": "publishDate",
+                    "content": "出版日期",
+                    "type": "field",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": ""
+                },
+                "publishingHouse": {
+                    "id": "publishingHouse",
+                    "content": "出版社",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": ""
+                }
             },
-            "link": ""
-          },
-          {
-            "fieldSysName": "type",
-            "fetch": [],
-            "sysName": "type",
-            "name": "Категория вакансии",
-            "dataType": "link",
-            "format": "",
-            "formatOptions": {
-              "customOptionLabel": "My option",
-              "keyValue": {
-                "key": "key",
-                "value": "value",
-                "button": "One more"
-              },
-              "booleanOptions": [
-                "2 через 2",
-                "5 через 2"
-              ],
-              "customOptionPlaceholder": "Describe your option",
-              "range": {},
-              "customOptionType": "textarea"
+            "fieldParams": {
+                "book": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": true,
+                    "defaultValueOn": false
+                },
+                "id": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": false
+                },
+                "status": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "defaultValueOn": true,
+                    "defaultValue": {
+                        "value": "onshelf"
+                    }
+                },
+                "@dateChanged": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "@dateCreated": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "@who": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "author": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": true
+                },
+                "cover": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": true
+                },
+                "desc": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "isbn": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": true
+                },
+                "name": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": true
+                },
+                "price": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": false
+                },
+                "publishDate": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": false
+                },
+                "publishingHouse": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": true
+                },
+                "creator": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "hidden": false,
+                    "required": false
+                },
+                "numExist": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                }
             },
-            "link": "Type2252"
-          }
-        ],
-        "writeFields": [
-          {
-            "fieldSysName": "22_functions",
-            "fetch": [],
-            "sysName": "22_functions",
-            "name": "Функции для категории 22",
-            "dataType": "arrayLink",
-            "format": "",
-            "formatOptions": {},
-            "link": "functions22"
-          },
-          {
-            "fieldSysName": "52_functions",
-            "fetch": [],
-            "sysName": "52_functions",
-            "name": "Функции для категории 52",
-            "dataType": "arrayLink",
-            "format": "",
-            "formatOptions": {},
-            "link": "functions52"
-          },
-          {
-            "fieldSysName": "Facebook_lonk",
-            "fetch": [],
-            "sysName": "Facebook_lonk",
-            "name": "Facebook",
-            "dataType": "string",
-            "format": "webLink",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "Instagram_link",
-            "fetch": [],
-            "sysName": "Instagram_link",
-            "name": "Instagram",
-            "dataType": "string",
-            "format": "webLink",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "city",
-            "fetch": [],
-            "sysName": "city",
-            "name": "Город",
-            "dataType": "link",
-            "format": "",
-            "formatOptions": {},
-            "link": "cities"
-          },
-          {
-            "fieldSysName": "firstName",
-            "fetch": [],
-            "sysName": "firstName",
-            "name": "Имя",
-            "dataType": "string",
-            "format": "",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "id",
-            "fetch": [],
-            "sysName": "id",
-            "name": "Username (login)",
-            "dataType": "id",
-            "format": "",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "lastName",
-            "fetch": [],
-            "sysName": "lastName",
-            "name": "Фамлия",
-            "dataType": "string",
-            "format": "",
-            "formatOptions": {},
-            "link": ""
-          },
-          {
-            "fieldSysName": "salary_raw",
-            "fetch": [],
-            "sysName": "salary_raw",
-            "name": "Ожидания по доходу ",
-            "dataType": "json",
-            "format": "rangeSlider",
-            "formatOptions": {
-              "customOptionLabel": "My option",
-              "keyValue": {
-                "key": "key",
-                "value": "value",
-                "button": "One more"
-              },
-              "unitName": "k ₽",
-              "booleanOptions": [
-                "True",
-                "False"
-              ],
-              "customOptionPlaceholder": "Describe your option",
-              "range": {
-                "max": 300,
-                "min": 20,
-                "step": 10
-              },
-              "customOptionType": "textarea"
+            "columns": {
+                "tab-1": {
+                    "id": "tab-1",
+                    "title": "New section",
+                    "fieldIds": [
+                        "name",
+                        "isbn",
+                        "author",
+                        "publishingHouse",
+                        "cover",
+                        "desc",
+                        "price",
+                        "publishDate",
+                        "@dateChanged",
+                        "@dateCreated",
+                        "@who",
+                        "creator",
+                        "id",
+                        "numExist"
+                    ]
+                }
             },
-            "link": ""
-          },
-          {
-            "fieldSysName": "type",
-            "fetch": [],
-            "sysName": "type",
-            "name": "Категория вакансии",
-            "dataType": "link",
-            "format": "",
-            "formatOptions": {
-              "customOptionLabel": "My option",
-              "keyValue": {
-                "key": "key",
-                "value": "value",
-                "button": "One more"
-              },
-              "booleanOptions": [
-                "2 через 2",
-                "5 через 2"
-              ],
-              "customOptionPlaceholder": "Describe your option",
-              "range": {},
-              "customOptionType": "textarea"
-            },
-            "link": "Type2252"
-          }
-        ],
+            "columnOrder": [
+                "tab-1"
+            ]
+        },
         "fields": {
-          "22_functions": {
-            "id": "22_functions",
-            "content": "Функции для категории 22",
-            "type": "field",
-            "dataType": "arrayLink",
-            "format": "",
-            "formatOptions": {},
-            "write": true,
-            "read": true,
-            "link": "functions22"
-          },
-          "52_functions": {
-            "id": "52_functions",
-            "content": "Функции для категории 52",
-            "type": "field",
-            "dataType": "arrayLink",
-            "format": "",
-            "formatOptions": {},
-            "write": true,
-            "read": true,
-            "link": "functions52"
-          },
-          "Facebook_lonk": {
-            "id": "Facebook_lonk",
-            "content": "Facebook",
-            "type": "field",
-            "dataType": "string",
-            "format": "webLink",
-            "formatOptions": {},
-            "write": true,
-            "read": true,
-            "link": ""
-          },
-          "Instagram_link": {
-            "id": "Instagram_link",
-            "content": "Instagram",
-            "type": "field",
-            "dataType": "string",
-            "format": "webLink",
-            "formatOptions": {},
-            "write": true,
-            "read": true,
-            "link": ""
-          },
-          "city": {
-            "id": "city",
-            "content": "Город",
-            "type": "field",
-            "dataType": "link",
-            "format": "",
-            "formatOptions": {},
-            "write": true,
-            "read": true,
-            "link": "cities"
-          },
-          "firstName": {
-            "id": "firstName",
-            "content": "Имя",
-            "type": "field",
-            "dataType": "string",
-            "format": "",
-            "formatOptions": {},
-            "write": true,
-            "read": true,
-            "link": ""
-          },
-          "id": {
-            "id": "id",
-            "content": "Username (login)",
-            "type": "field",
-            "dataType": "id",
-            "format": "",
-            "formatOptions": {},
-            "write": true,
-            "read": true,
-            "link": ""
-          },
-          "lastName": {
-            "id": "lastName",
-            "content": "Фамлия",
-            "type": "field",
-            "dataType": "string",
-            "format": "",
-            "formatOptions": {},
-            "write": true,
-            "read": true,
-            "link": ""
-          },
-          "salary_raw": {
-            "id": "salary_raw",
-            "content": "Ожидания по доходу ",
-            "type": "field",
-            "dataType": "json",
-            "format": "rangeSlider",
-            "formatOptions": {
-              "customOptionLabel": "My option",
-              "keyValue": {
-                "key": "key",
-                "value": "value",
-                "button": "One more"
-              },
-              "unitName": "k ₽",
-              "booleanOptions": [
-                "True",
-                "False"
-              ],
-              "customOptionPlaceholder": "Describe your option",
-              "range": {
-                "max": 300,
-                "min": 20,
-                "step": 10
-              },
-              "customOptionType": "textarea"
+            "book": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": true,
+                "fileImageSize": 200,
+                "clickable": false,
+                "required": true,
+                "defaultValueOn": false
             },
-            "write": true,
-            "read": true,
-            "link": ""
-          },
-          "type": {
-            "id": "type",
-            "content": "Категория вакансии",
-            "type": "field",
-            "dataType": "link",
-            "format": "",
-            "formatOptions": {
-              "customOptionLabel": "My option",
-              "keyValue": {
-                "key": "key",
-                "value": "value",
-                "button": "One more"
-              },
-              "booleanOptions": [
-                "2 через 2",
-                "5 через 2"
-              ],
-              "customOptionPlaceholder": "Describe your option",
-              "range": {},
-              "customOptionType": "textarea"
+            "id": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false,
+                "required": false
             },
-            "write": true,
-            "read": true,
-            "link": "Type2252"
-          }
-        },
-        "fieldParams": {
-          "22_functions": {
-            "include": true,
-            "fileImageFormat": "square",
-            "quickSearch": true,
-            "fileImageSize": 200,
-            "clickable": false,
-            "descriptionFlag": true,
-            "defaultValueOn": false,
-            "description": "Вакансии в шоурумах, магазинах, салонах, фитнес-клубах и ресторанном бизнесе"
-          },
-          "52_functions": {
-            "include": true,
-            "fileImageFormat": "square",
-            "quickSearch": true,
-            "fileImageSize": 200,
-            "clickable": false,
-            "descriptionFlag": true,
-            "description": "Вакансии в креативе, бизнесе и стажировки"
-          },
-          "city": {
-            "include": true,
-            "fileImageFormat": "square",
-            "quickSearch": true,
-            "fileImageSize": 200,
-            "clickable": false,
-            "defaultValueOn": true,
-            "defaultValue": "95ddc157-f2dc-4ab1-a1e5-ce9c6398bfdf",
-            "required": true
-          },
-          "firstName": {
-            "include": true,
-            "fileImageFormat": "square",
-            "quickSearch": false,
-            "fileImageSize": 200,
-            "clickable": false,
-            "required": true
-          },
-          "id": {
-            "include": false,
-            "fileImageFormat": "square",
-            "quickSearch": false,
-            "fileImageSize": 200,
-            "clickable": false
-          },
-          "lastName": {
-            "include": true,
-            "fileImageFormat": "square",
-            "quickSearch": false,
-            "fileImageSize": 200,
-            "clickable": false,
-            "required": true
-          },
-          "salary_raw": {
-            "include": true,
-            "fileImageFormat": "square",
-            "quickSearch": false,
-            "fileImageSize": 200,
-            "clickable": false,
-            "defaultValueOn": true,
-            "defaultValue": {
-              "secondValue": 100,
-              "firstValue": 50
+            "status": {
+                "include": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false,
+                "defaultValueOn": true,
+                "defaultValue": {
+                    "value": "onshelf"
+                }
             },
-            "descriptionFlag": true,
-            "description": "Доход в месяц, тыс.  ₽"
-          },
-          "type": {
-            "include": true,
-            "fileImageFormat": "square",
-            "quickSearch": true,
-            "fileImageSize": 200,
-            "clickable": false,
-            "required": true
-          },
-          "Facebook_lonk": {
-            "include": true,
-            "fileImageFormat": "square",
-            "quickSearch": false,
-            "fileImageSize": 200,
-            "clickable": false,
-            "descriptionFlag": true,
-            "description": "опционально"
-          },
-          "Instagram_link": {
-            "include": true,
-            "fileImageFormat": "square",
-            "quickSearch": false,
-            "fileImageSize": 200,
-            "clickable": false,
-            "descriptionFlag": true,
-            "description": "опционально"
-          }
-        },
-        "columns": {
-          "tab-1": {
-            "id": "tab-1",
-            "title": "Основная информация",
-            "fieldIds": [
-              "firstName",
-              "lastName",
-              "city",
-              "id",
-              "Instagram_link",
-              "Facebook_lonk",
-              "type"
-            ]
-          },
-          "39401609181601788": {
-            "id": "39401609181601788",
-            "title": "Ожидаемый доход",
-            "fieldIds": [
-              "salary_raw"
-            ]
-          },
-          "24571609181681819": {
-            "id": "24571609181681819",
-            "title": "Функции для графика 2/2",
-            "fieldIds": [
-              "22_functions"
-            ],
-            "cond": [
-              {
-                "id": "23701609181788383",
-                "field": "type",
-                "value": "22"
-              }
-            ]
-          },
-          "21061609181696456": {
-            "id": "21061609181696456",
-            "title": "Функции для графика 5/2",
-            "fieldIds": [
-              "52_functions"
-            ],
-            "cond": [
-              {
-                "id": "58551609181799429",
-                "field": "type",
-                "value": "52"
-              }
-            ]
-          }
-        },
-        "columnOrder": [
-          "tab-1",
-          "24571609181681819",
-          "21061609181696456",
-          "39401609181601788"
-        ]
-      },
-      "fields": {
-        "22_functions": {
-          "include": true,
-          "fileImageFormat": "square",
-          "quickSearch": true,
-          "fileImageSize": 200,
-          "clickable": false,
-          "descriptionFlag": true,
-          "defaultValueOn": false,
-          "description": "Вакансии в шоурумах, магазинах, салонах, фитнес-клубах и ресторанном бизнесе",
-          "searchData": [
-            {
-              "key": "772fafad-36a7-4ccc-b338-ebb3b670e554",
-              "value": "Официант"
+            "@dateChanged": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
             },
-            {
-              "key": "8736e749-48f8-4dfb-ba6d-483d0ce9f350",
-              "value": "Бариста"
+            "@dateCreated": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
             },
-            {
-              "key": "cf10904f-55e2-4678-8b88-3f01f70b8308",
-              "value": "Повар"
+            "@who": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
             },
-            {
-              "key": "b5d6682c-09da-4d8b-86ef-abe3295da502",
-              "value": "Шеф"
+            "author": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": true,
+                "fileImageSize": 200,
+                "clickable": false,
+                "required": true,
+                "searchData": [
+                    {
+                        "key": "1",
+                        "value": "1"
+                    }
+                ]
             },
-            {
-              "key": "d6d250fd-4f29-4b09-a140-9757ac0266aa",
-              "value": "Управляющий"
+            "cover": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false,
+                "required": true
             },
-            {
-              "key": "ee6cd622-e697-4d59-bca0-d34d4d6fa058",
-              "value": "Хостес"
+            "desc": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
             },
-            {
-              "key": "cee393b6-1f7f-459b-8d5f-a9b59c41cf92",
-              "value": "Администратор"
+            "isbn": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false,
+                "required": true
             },
-            {
-              "key": "c127df30-c9ce-4063-9a66-a005d4c9695a",
-              "value": "Мастер маникюра"
+            "name": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false,
+                "required": true
             },
-            {
-              "key": "9153c4b7-e930-48ed-92e8-da4abbf63d3f",
-              "value": "Бровист"
+            "price": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false,
+                "required": false
             },
-            {
-              "key": "622fe247-51cb-4295-a8b4-eaf189dd807d",
-              "value": "Косметолог"
+            "publishDate": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false,
+                "required": false
             },
-            {
-              "key": "9b643b1a-5e5d-45c2-9bfa-847fca9201c0",
-              "value": "Стилист"
+            "publishingHouse": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false,
+                "required": true
             },
-            {
-              "key": "3a6782d8-5938-4d7c-acc3-00c072db4b71",
-              "value": "Визажист"
+            "creator": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": true,
+                "fileImageSize": 200,
+                "clickable": false,
+                "hidden": false,
+                "required": false,
+                "searchData": [
+                    {
+                        "key": "first person",
+                        "value": "ddd ffff"
+                    },
+                    {
+                        "key": "jinming.d@foxmail.com",
+                        "value": "d jm"
+                    },
+                    {
+                        "key": "lichaoyi@bytedance.com",
+                        "value": "Chaoyi Li"
+                    },
+                    {
+                        "key": "test@bytedance.com",
+                        "value": "test@bytedance.com"
+                    },
+                    {
+                        "key": "sherryeyrew@163.com",
+                        "value": "sherryeyrew@163.com"
+                    },
+                    {
+                        "key": "1@1.com",
+                        "value": "1@1.com"
+                    },
+                    {
+                        "key": "2@2.com",
+                        "value": "2@2.com"
+                    },
+                    {
+                        "key": "pavel@directual.com",
+                        "value": "pavel@directual.com"
+                    }
+                ]
             },
-            {
-              "key": "d91564fe-70ce-406a-8119-cbbe2deef5a4",
-              "value": "Фитнес-тренер"
-            },
-            {
-              "key": "58b198e4-6ec9-4cde-87cf-8edf8d88af95",
-              "value": "Продавец-консультант"
+            "numExist": {
+                "include": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
             }
-          ]
         },
-        "52_functions": {
-          "include": true,
-          "fileImageFormat": "square",
-          "quickSearch": true,
-          "fileImageSize": 200,
-          "clickable": false,
-          "descriptionFlag": true,
-          "description": "Вакансии в креативе, бизнесе и стажировки",
-          "searchData": [
-            {
-              "key": "5b27b967-9c4d-4dbe-89f0-abb4186e64a1",
-              "value": "PR"
-            },
-            {
-              "key": "565e74f1-6a97-491b-a97b-7578d26f9b0e",
-              "value": "Редактор"
-            },
-            {
-              "key": "5c696884-c6e8-4608-a928-06ca86d28f52",
-              "value": "SMM"
-            },
-            {
-              "key": "14746650-98aa-44d7-8989-472c8162dba8",
-              "value": "Контент"
-            },
-            {
-              "key": "605143a0-bb72-49ec-a7c2-16d6a84baa6b",
-              "value": "Копирайтинг"
-            },
-            {
-              "key": "b0458bef-2b44-42a7-a27f-69f4043eb19a",
-              "value": " Таргетинг"
-            },
-            {
-              "key": "d4e838bd-8e32-4a65-9d08-09ccf5e8956c",
-              "value": "Фотограф"
-            },
-            {
-              "key": "aaa68f68-4196-4561-b4ca-6957ee1f5271",
-              "value": "Видеограф"
-            },
-            {
-              "key": "69cf9997-fd45-442e-8590-74815535e949",
-              "value": "Продюссер"
-            },
-            {
-              "key": "fdd5dd01-1867-4f2d-a579-4032bc691551",
-              "value": "UI/UX дизайн"
-            },
-            {
-              "key": "02b3892a-9ca7-40e3-bb79-2a4682fe445c",
-              "value": "Графический дизайн"
-            },
-            {
-              "key": "f357eb22-9b97-4889-ae7b-1359a837626e",
-              "value": "Fashion-дизайнер"
-            },
-            {
-              "key": "35a1a90b-b7bf-44dd-b2cb-0537f35c995a",
-              "value": "Бренд менеджер"
-            },
-            {
-              "key": "d8a43cf3-5903-4073-95e3-d7f400ff28cc",
-              "value": "Баер"
-            },
-            {
-              "key": "2ee7a4c1-51a4-46d9-b93a-f4c06f9dc095",
-              "value": "Стилист"
-            },
-            {
-              "key": "57816d4e-5d1a-4240-8eda-0041ccdc3d55",
-              "value": "IT"
-            },
-            {
-              "key": "f9e6e8ea-aea5-4a2e-b46c-4dfa353fec64",
-              "value": "HR"
-            },
-            {
-              "key": "b5ecf298-bc0b-4010-964a-9eb1f36e88c7",
-              "value": "Маркетинг"
-            },
-            {
-              "key": "42793449-612e-4a86-b519-e59c8c4d0f7b",
-              "value": "Art-директор"
-            },
-            {
-              "key": "9d328ba3-59c4-43f8-809d-068d86dada3c",
-              "value": "Стажер "
-            },
-            {
-              "key": "e3673d9f-84cc-4e92-bdae-5bd81ad3fefc",
-              "value": "Менеджер проектов"
-            }
-          ]
+        "auth": {
+            "isPerson": false,
+            "userIdField": "creator"
         },
-        "city": {
-          "include": true,
-          "fileImageFormat": "square",
-          "quickSearch": true,
-          "fileImageSize": 200,
-          "clickable": false,
-          "defaultValueOn": true,
-          "defaultValue": "95ddc157-f2dc-4ab1-a1e5-ce9c6398bfdf",
-          "required": true,
-          "searchData": [
-            {
-              "key": "fa3a51d6-2784-48aa-acb6-58a4934260cb",
-              "value": "Нижний Новгород"
-            },
-            {
-              "key": "efd0190e-1a19-40a7-9d00-b695b60e7b18",
-              "value": "Новосибирск"
-            },
-            {
-              "key": "5f07b0e5-cdeb-4b6d-bd7d-1b5aa25d597b",
-              "value": "Астрахань"
-            },
-            {
-              "key": "2985fa84-8a83-4cfe-8ac8-086b46480e1b",
-              "value": "Уфа"
-            },
-            {
-              "key": "cf89852c-0979-4dc2-a688-9f5f40e5f7b1",
-              "value": "Иркутск"
-            },
-            {
-              "key": "71a52f70-4701-476f-a9eb-065ed0ce34c0",
-              "value": "Тюмень"
-            },
-            {
-              "key": "9f937f4d-fff3-4e95-9833-05edba95e9fb",
-              "value": "Киров"
-            },
-            {
-              "key": "c272e7cd-d3c1-41a6-8ef3-731c1b6d3b0b",
-              "value": "Тольятти"
-            },
-            {
-              "key": "ee69e04b-bb3b-4835-a8c9-2a2fa47c9c1a",
-              "value": "Кемерово"
-            },
-            {
-              "key": "a0734bbe-965e-4be4-bf3e-0058587fb0d1",
-              "value": "Чебоксары"
-            },
-            {
-              "key": "35926902-ce08-4620-b791-a957b8e030bf",
-              "value": "Ульяновск"
-            },
-            {
-              "key": "886de159-f52c-4e0f-8fbf-c290e42b8880",
-              "value": "Махачкала"
-            },
-            {
-              "key": "fa8828c2-03ab-4a44-9301-407331a645bc",
-              "value": "Томск"
-            },
-            {
-              "key": "15d359fc-e894-4f19-8279-0195fa45b8f3",
-              "value": "Улан-Удэ"
-            },
-            {
-              "key": "e980a012-b87e-46fa-98b9-bc62c29f432f",
-              "value": "Ижевск"
-            },
-            {
-              "key": "aeeffdac-8680-4de7-a6b9-fbeee9732752",
-              "value": "Брянск"
-            },
-            {
-              "key": "6cb5b487-5cb7-4bf4-a197-c1fb7fd141ad",
-              "value": "Курск"
-            },
-            {
-              "key": "42af9a7c-b7ea-4079-91a5-65b408ddc2de",
-              "value": "Тула"
-            },
-            {
-              "key": "d317eccc-2c59-4443-adda-5dcb267453a0",
-              "value": "Красноярск"
-            },
-            {
-              "key": "e32a86b6-07a0-4ee6-b380-6b51a72f4937",
-              "value": "Пенза"
-            },
-            {
-              "key": "5f4e2ed6-c77c-4ce3-bc36-5e639a4a975b",
-              "value": "Новокузнецк"
-            },
-            {
-              "key": "95ddc157-f2dc-4ab1-a1e5-ce9c6398bfdf",
-              "value": "Москва"
-            },
-            {
-              "key": "c8c7d6d0-4fc6-41dd-a799-a8ad91e86fe7",
-              "value": "Казань"
-            },
-            {
-              "key": "411c9c4a-6590-4f12-9340-b268d1bade7b",
-              "value": "Екатеринбург"
-            },
-            {
-              "key": "a6b631d7-1456-421a-a8b7-a8880a9d3383",
-              "value": "Челябинск"
-            },
-            {
-              "key": "9e5fb78a-03c1-4016-a7f3-8341c0cbfcf6",
-              "value": "Краснодар"
-            },
-            {
-              "key": "ee7c7efc-2577-4efa-9675-f2bf3b4e3ba1",
-              "value": "Оренбург"
-            },
-            {
-              "key": "e2591b96-b2ba-4ce8-8c63-9477481effb5",
-              "value": "Тверь"
-            },
-            {
-              "key": "155a6363-9fb5-4d1c-b033-774825f25f1d",
-              "value": "Калининград"
-            },
-            {
-              "key": "1d0dc234-a8d0-4d14-93a4-42f8beb6e474",
-              "value": "Саратов"
-            },
-            {
-              "key": "e0e43003-5d03-4ed2-812f-13f29d79c5e6",
-              "value": "Рязань"
-            },
-            {
-              "key": "1b8475ce-5637-486c-8902-8e763c05053c",
-              "value": "Набережные Челны"
-            },
-            {
-              "key": "293bb3e2-22b7-4dbd-9d18-1fa7e5321b48",
-              "value": "Иваново"
-            },
-            {
-              "key": "8d8ee02c-05ca-4f16-b118-405f0a4a2028",
-              "value": "Магнитогорск"
-            },
-            {
-              "key": "405608e6-a8d2-44c3-b371-87ac6762741a",
-              "value": "Владивосток"
-            },
-            {
-              "key": "dfc75bdc-ac4d-41b6-bdad-220ea284a00e",
-              "value": "Ярославль"
-            },
-            {
-              "key": "2a58d436-70b0-4707-b52e-21c4a91f1ddd",
-              "value": "Хабаровск"
-            },
-            {
-              "key": "a92b6c0a-cabe-4a03-b1b8-808dc039869f",
-              "value": "Липецк "
-            },
-            {
-              "key": "7a211c47-1b4a-42b2-97ee-4c690ae147fd",
-              "value": "Самара"
-            },
-            {
-              "key": "4f04826b-a0f7-4abd-8261-e81b5f869b69",
-              "value": "Санкт-Петербург"
-            },
-            {
-              "key": "68bcde48-bffe-4d82-aab2-c04dd3393e89",
-              "value": "Омск"
-            },
-            {
-              "key": "a8b3fdc6-32ca-4210-adee-f779417c6bb6",
-              "value": "Пермь"
-            },
-            {
-              "key": "2fda8d82-7c06-46f8-bc25-6df163a7b554",
-              "value": "Волгоград"
-            },
-            {
-              "key": "a5e850fa-0ce2-4f5f-a276-de5c731626ff",
-              "value": "Барнаул"
-            },
-            {
-              "key": "db96b2ff-efb5-48e3-a079-1449024642ea",
-              "value": "Ставрополь"
-            },
-            {
-              "key": "d1bfc6ed-4a83-4f0a-a553-45a3152a03ff",
-              "value": "Ростов-на-Дону"
-            },
-            {
-              "key": "fff854f9-473f-46d8-afd2-318abd771a04",
-              "value": "Воронеж"
-            },
-            {
-              "key": "ff68b6d3-8478-4520-8a59-897b992f5f87",
-              "value": "Нижний Тагил"
-            },
-            {
-              "key": "0385a585-a0bf-4c62-835d-5c2343341ac4",
-              "value": "Белгород"
-            },
-            {
-              "key": "c0f6e5fe-15e7-469a-9dcc-6740e29585ac",
-              "value": "Якутск"
-            },
-            {
-              "key": "3625e59b-92be-4931-be3b-1657b1f1eab4",
-              "value": "Великий Новгород"
-            },
-            {
-              "key": "f5df55f5-7f2a-4d85-b9c3-c88b89fdf8b6",
-              "value": "Химки"
-            },
-            {
-              "key": "87413717-a238-4c2b-b8b8-b9ebbbd13d88",
-              "value": "Златоуст"
-            },
-            {
-              "key": "387c5608-bfe7-48a9-808e-1f394fd46228",
-              "value": "Уссурийск"
-            },
-            {
-              "key": "ab697bbb-564b-47f3-aa26-2b963422aa45",
-              "value": "Березники"
-            },
-            {
-              "key": "dbe428b0-33d4-451d-ba51-82d8bcd0d6d4",
-              "value": "Нефтеюганск"
-            },
-            {
-              "key": "5c236ec0-8f7a-4fa5-8e48-24d21f1ea39e",
-              "value": "Чита"
-            },
-            {
-              "key": "6483da5c-3d7d-4e62-a5b7-c259f5b11f0f",
-              "value": "Орел"
-            },
-            {
-              "key": "5347ab07-6807-496e-932b-4db13ec17ac3",
-              "value": "Вологда"
-            },
-            {
-              "key": "51f7889b-2afd-49e9-b9fe-fdc3d43bb4cb",
-              "value": "Комсомольск-на-Амуре"
-            },
-            {
-              "key": "6451bc49-0213-416c-a656-119d4b52b63b",
-              "value": "Армавир"
-            },
-            {
-              "key": "183be710-49ea-42b1-bfcb-8391188d1864",
-              "value": "Волгодонск"
-            },
-            {
-              "key": "18686d6b-3c73-4e03-9329-2f4c46e0c430",
-              "value": "Рубцовск"
-            },
-            {
-              "key": "a537ad97-3d9a-4247-ab7c-c5fd09e323d4",
-              "value": "Пятигорск"
-            },
-            {
-              "key": "296ceb44-e414-4026-8037-303680b519af",
-              "value": "Кызыл"
-            },
-            {
-              "key": "11edc61d-a00f-4ec8-b88e-d35b4eca2a19",
-              "value": "Обнинск"
-            },
-            {
-              "key": "ecb2b6a4-dd90-4d7a-9873-97f2417042cc",
-              "value": "Пушкино"
-            },
-            {
-              "key": "419030a9-a9dc-4a41-a633-a23dbbb65116",
-              "value": "Норильск"
-            },
-            {
-              "key": "962b61df-8781-4eec-9943-901c7d411592",
-              "value": "Хасавюрт"
-            },
-            {
-              "key": "64dfbbca-a11f-4ca5-a9fa-4fbb6b2d868c",
-              "value": "Батайск"
-            },
-            {
-              "key": "d7b0a7a9-71ca-484f-9a43-5629d9226850",
-              "value": "Северск"
-            },
-            {
-              "key": "141bf2ba-a924-4d61-8f4a-abe19dd79b5f",
-              "value": "Арзамас"
-            },
-            {
-              "key": "81dce290-2cff-406c-bc0d-3914be9534c1",
-              "value": "Артем"
-            },
-            {
-              "key": "b7ca406f-71d8-4125-b22b-1c4b3b5b3873",
-              "value": "Междуреченск"
-            },
-            {
-              "key": "4df6ed07-84ce-4324-a75c-b80b4138b8fa",
-              "value": "Сургут"
-            },
-            {
-              "key": "8cb8d65f-0e5b-4af3-a41f-db90ca5a9647",
-              "value": "Грозный"
-            },
-            {
-              "key": "20a74ee5-5cd4-45b1-a243-aa7db323a0c2",
-              "value": "Тамбов"
-            },
-            {
-              "key": "aa11ad14-a9f4-42ee-acad-06047ebdf17a",
-              "value": "Саранск"
-            },
-            {
-              "key": "573d8f7f-2227-4a4e-801b-f77e04a532db",
-              "value": "Дзержинск"
-            },
-            {
-              "key": "f6c16e58-b736-4fb3-b1f4-bf988f2b7fc2",
-              "value": "Северодвинск"
-            },
-            {
-              "key": "a952104f-36d4-4ed0-9ebb-a52b3135c8a8",
-              "value": "Шахты"
-            },
-            {
-              "key": "e55baa9d-693a-4b17-8dd5-492d67a9bc69",
-              "value": "Рыбинск"
-            },
-            {
-              "key": "14aca2a9-a7c1-4b94-baa3-011851f8c2f1",
-              "value": "Новочеркасск"
-            },
-            {
-              "key": "796783ae-c833-4dbf-91b2-3e31682ac3ba",
-              "value": "Ковров"
-            },
-            {
-              "key": "d32dbef5-8cff-4874-828b-af6db8aa9846",
-              "value": "Новочебоксарск"
-            },
-            {
-              "key": "c7e0c655-930b-455a-b21e-09b823ec6ba8",
-              "value": "Ноябрьск"
-            },
-            {
-              "key": "a20d2a73-9aa6-4353-8aad-e0556648dbea",
-              "value": "Каспийск"
-            },
-            {
-              "key": "0430d3db-b2b6-4745-a6b7-7aa3d1e2cd00",
-              "value": "Новороссийск"
-            },
-            {
-              "key": "1dca24bc-dcbe-49a2-9392-1cbf0cd6a729",
-              "value": "Ангарск"
-            },
-            {
-              "key": "fa5befd0-2901-433a-8605-ab4a9e6727cc",
-              "value": "Благовещенск"
-            },
-            {
-              "key": "6a9fc335-cbc3-4f44-addf-8c8ca81ac238",
-              "value": "Находка"
-            },
-            {
-              "key": "923858f8-28a2-4ff8-8c3c-fc96aa7081c7",
-              "value": "Коломна"
-            },
-            {
-              "key": "e37beb72-222e-4cdf-acd2-f36100784e15",
-              "value": "Волжский"
-            },
-            {
-              "key": "b2a7a390-a8cd-46e3-b2b0-219bd356343f",
-              "value": "Новомосковск"
-            },
-            {
-              "key": "49e45256-e242-41a6-b7ba-ea5c597dc67d",
-              "value": "Кисловодск"
-            },
-            {
-              "key": "2c7b72c2-c88d-4478-8a87-9f1c442b6dd4",
-              "value": "Камышин"
-            },
-            {
-              "key": "312c47b1-855c-462f-bcbc-92616220e080",
-              "value": "Стерлитамак"
-            },
-            {
-              "key": "beed9e2a-51f1-447b-973a-c369bf297e19",
-              "value": "Сыктывкар"
-            },
-            {
-              "key": "8ab91dfb-83c1-44fb-af26-7487894a1569",
-              "value": "Нижнекамск"
-            },
-            {
-              "key": "a4d031ad-645c-4c5c-86f9-2a85819dc283",
-              "value": "Мытищи"
-            },
-            {
-              "key": "59dc4c08-4a5b-4a21-bede-5772eae25d69",
-              "value": "Ессентуки "
-            },
-            {
-              "key": "a0ec46a3-44de-4a4a-a0dc-126b0c4afbf5",
-              "value": "Балашиха"
-            },
-            {
-              "key": "6aa99a15-e1d3-4318-9f63-2a07b63690e1",
-              "value": "Подольск"
-            },
-            {
-              "key": "8b9c8a1d-8429-43a6-acc3-b4d2fd2ddf80",
-              "value": "Люберцы"
-            },
-            {
-              "key": "766bf994-acfb-449b-a637-8ed86a83d4b9",
-              "value": "Абакан"
-            },
-            {
-              "key": "b37f7d2f-78fa-48ff-8915-0ce7fcd6e220",
-              "value": "Серпухов"
-            },
-            {
-              "key": "88c9dcaa-3f67-4ac7-b852-d4843abd2e0f",
-              "value": "Нефтекамск"
-            },
-            {
-              "key": "34b49b0b-f99d-4e79-a433-1a6612d712c5",
-              "value": "Октябрьский"
-            },
-            {
-              "key": "e7041943-68b2-4a50-b760-5e15ca6a3603",
-              "value": "Ленинск-Кузнецкий"
-            },
-            {
-              "key": "ccf34bd4-1720-49f8-8d98-a11d4ab6c629",
-              "value": "Таганрог"
-            },
-            {
-              "key": "cf53a24a-3a9d-4192-acd4-c5829dec337b",
-              "value": "Орск"
-            },
-            {
-              "key": "ccf4061b-b791-4bd6-925c-245c6257485f",
-              "value": "Невинномысск"
-            },
-            {
-              "key": "991e734f-a888-4340-ae4c-d5bd32273188",
-              "value": "Архангельск"
-            },
-            {
-              "key": "21bf7b64-5b43-4c95-ba7b-0c678e73b9f6",
-              "value": "Смоленск"
-            },
-            {
-              "key": "fbe1bea9-9ba3-42c3-a708-4e29e2601dbb",
-              "value": "Братск"
-            },
-            {
-              "key": "191bc69a-cd30-4456-8e11-59dd98476e2b",
-              "value": "Череповец"
-            },
-            {
-              "key": "aa1b9dfe-9b26-4a88-84db-212f35dcc7e1",
-              "value": "Владимир"
-            },
-            {
-              "key": "944b7750-cdfb-43b9-a2cc-9dd94ca49f15",
-              "value": "Сочи"
-            },
-            {
-              "key": "05ae4d4b-2ff2-4cfc-92ff-1153ea27fd7f",
-              "value": "Калуга"
-            },
-            {
-              "key": "60911776-c88f-48bb-b619-06a61c8ffd05",
-              "value": "Мурманск"
-            },
-            {
-              "key": "e1e8063c-23d1-432e-8e57-5d618410b3b7",
-              "value": "Прокопьевск"
-            },
-            {
-              "key": "1dfaa028-6c8b-4bd7-9ce9-b9462848e7b2",
-              "value": "Каменск-Уральский"
-            },
-            {
-              "key": "51f0a82c-49af-4ea7-b1ea-c1e99099923c",
-              "value": "Майкоп"
-            },
-            {
-              "key": "52b6844a-669d-470a-b3bd-617a8cf18e89",
-              "value": "Первоуральск"
-            },
-            {
-              "key": "f0ffa934-f809-4d28-a9d0-c6276c148189",
-              "value": "Муром"
-            },
-            {
-              "key": "0bae7c17-0e1f-40f6-b27c-47458c2c81d8",
-              "value": "Сергиев Посад"
-            },
-            {
-              "key": "07aadf04-2e21-4311-9466-512a18a4afd9",
-              "value": "Щелково"
-            },
-            {
-              "key": "75bf8bc5-b1ec-454e-973d-368253b4ca46",
-              "value": "Элиста"
-            },
-            {
-              "key": "42790cbf-02d7-4585-b274-117e6ccb0c60",
-              "value": "Сарапул"
-            },
-            {
-              "key": "da4f760e-f3db-44dd-93d8-5a42873062b9",
-              "value": "Энгельс "
-            },
-            {
-              "key": "1ad5cced-44c5-456e-9f83-2099fc678dfd",
-              "value": "Королев"
-            },
-            {
-              "key": "1fa0dda4-186d-4192-8a3f-923c7944d95d",
-              "value": "Южно-Сахалинск"
-            },
-            {
-              "key": "f35e0627-33b3-495d-b12b-86a2c9cf5afe",
-              "value": "Димитровград"
-            },
-            {
-              "key": "52a85978-37eb-4b02-b0d9-eb857686469c",
-              "value": "Орехово-Зуево"
-            },
-            {
-              "key": "6d4d13b3-f0b9-40f0-8b88-0c2c76cd8a9e",
-              "value": "Новошахтинск"
-            },
-            {
-              "key": "b9ac35fb-ef27-4d4b-9fcd-3a806c871ed4",
-              "value": "Бийск"
-            },
-            {
-              "key": "6b171a2c-af75-46bc-9429-79ec29b54a1d",
-              "value": "Балаково"
-            },
-            {
-              "key": "729165b3-1352-450c-a7c8-aca6f89eafeb",
-              "value": "Сызрань"
-            },
-            {
-              "key": "59746661-04a6-431f-913c-7100ae693e45",
-              "value": "Салават"
-            },
-            {
-              "key": "1653dbff-d223-4dee-8045-dada8685e366",
-              "value": "Альметьевск"
-            },
-            {
-              "key": "25c415a2-29a6-49cb-a9f0-0daaf112175e",
-              "value": "Йошкар-Ола"
-            },
-            {
-              "key": "01046d0e-326a-4289-85d8-208625de89e4",
-              "value": "Копейск"
-            },
-            {
-              "key": "704f3ef5-a27b-4988-baca-f6e002e9a164",
-              "value": "Красногорск"
-            },
-            {
-              "key": "b4a5efd6-0013-4f47-9f5b-709070821c61",
-              "value": "Ачинск"
-            },
-            {
-              "key": "0b8a1695-8a68-4491-88f1-562ecbbbeab6",
-              "value": "Новый Уренгой"
-            },
-            {
-              "key": "e31eed11-c387-4dbe-882d-dbd624eeaba3",
-              "value": "Жуковский"
-            },
-            {
-              "key": "e70f3e35-6f6e-4b45-8861-17716a2a3927",
-              "value": "Курган"
-            },
-            {
-              "key": "673f8960-e484-4b9e-83e3-989ff7759e7b",
-              "value": "Петрозаводск"
-            },
-            {
-              "key": "6237f1fb-f593-42ef-bd41-180e83381e30",
-              "value": "Новокуйбышевск"
-            },
-            {
-              "key": "9b5e8b83-d806-4855-ae3d-3b5d7f425536",
-              "value": "Кострома"
-            },
-            {
-              "key": "2b70ca02-bdad-4d84-864d-909c0a3e8b2c",
-              "value": "Нижневартовск"
-            },
-            {
-              "key": "33599e07-6e48-490a-b918-360d51d307fb",
-              "value": "Нальчик"
-            },
-            {
-              "key": "3a132be6-eb78-468e-bfc4-d0d369ff2ff6",
-              "value": "Старый Оскол"
-            },
-            {
-              "key": "8e3e81bd-5999-4e15-a87b-df3c869c7454",
-              "value": "Петропавловск-Камчатский"
-            },
-            {
-              "key": "fe4548ac-431f-4b11-84f7-b84d884f2bd3",
-              "value": "Электросталь"
-            },
-            {
-              "key": "adcb3d0d-ca62-4f35-a892-4e7c71be563f",
-              "value": "Одинцово"
-            },
-            {
-              "key": "7a70eb26-b75a-4ce1-bd40-776742689221",
-              "value": "Дербент"
-            },
-            {
-              "key": "1e7dd1af-6fce-4e04-8dcd-bdceaef37f8e",
-              "value": "Владикавказ"
-            },
-            {
-              "key": "44cf953a-3673-41a2-a763-382e1e6c95ed",
-              "value": "Псков"
-            },
-            {
-              "key": "8176f813-1930-4a5d-a67d-e7a60beb14cc",
-              "value": "Миасс"
-            },
-            {
-              "key": "900710e0-c8ed-4e3c-961c-32261fb1c6ed",
-              "value": "Черкесск"
-            },
-            {
-              "key": "beda39e1-253f-44d5-a4b8-c717433a7511",
-              "value": "Железнодорожный"
-            },
-            {
-              "key": "a81cace3-0ae3-4c48-9346-ebd67f740e2b",
-              "value": "Елец"
-            },
-            {
-              "key": "2d0da3cb-1d1c-490e-b67b-70b9f78f8d2f",
-              "value": "Воткинск"
-            },
-            {
-              "key": "other",
-              "value": "Другой город / за пределами РФ"
-            }
-          ]
-        },
-        "firstName": {
-          "include": true,
-          "fileImageFormat": "square",
-          "quickSearch": false,
-          "fileImageSize": 200,
-          "clickable": false,
-          "required": true
-        },
-        "id": {
-          "include": false,
-          "fileImageFormat": "square",
-          "quickSearch": false,
-          "fileImageSize": 200,
-          "clickable": false
-        },
-        "lastName": {
-          "include": true,
-          "fileImageFormat": "square",
-          "quickSearch": false,
-          "fileImageSize": 200,
-          "clickable": false,
-          "required": true
-        },
-        "salary_raw": {
-          "include": true,
-          "fileImageFormat": "square",
-          "quickSearch": false,
-          "fileImageSize": 200,
-          "clickable": false,
-          "defaultValueOn": true,
-          "defaultValue": {
-            "secondValue": 100,
-            "firstValue": 50
-          },
-          "descriptionFlag": true,
-          "description": "Доход в месяц, тыс.  ₽"
-        },
-        "type": {
-          "include": true,
-          "fileImageFormat": "square",
-          "quickSearch": true,
-          "fileImageSize": 200,
-          "clickable": false,
-          "required": true,
-          "searchData": [
-            {
-              "key": "22",
-              "value": "22 — сфера услуг, сменный график"
-            },
-            {
-              "key": "52",
-              "value": "52 — офисная работа и креатив"
-            }
-          ]
-        },
-        "Facebook_lonk": {
-          "include": true,
-          "fileImageFormat": "square",
-          "quickSearch": false,
-          "fileImageSize": 200,
-          "clickable": false,
-          "descriptionFlag": true,
-          "description": "опционально"
-        },
-        "Instagram_link": {
-          "include": true,
-          "fileImageFormat": "square",
-          "quickSearch": false,
-          "fileImageSize": 200,
-          "clickable": false,
-          "descriptionFlag": true,
-          "description": "опционально"
-        }
-      },
-      "useEditing": true,
-      "edit": true
+        "useEditing": false
     },
     "fileds": [
-      {
-        "sysName": "22_functions",
-        "dataType": "arrayLink",
-        "name": "Функции для категории 22",
-        "id": "34391607077096514",
-        "link": "functions22",
-        "group": "1607016878115",
-        "tags": null,
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 6,
-        "linkIndexFieldSysName": [],
-        "defaultValue": null,
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": null,
-        "groupName": null,
-        "json": false,
-        "indexExists": false,
-        "linkOrArrayLinkType": true,
-        "linkType": false,
-        "arrayLink": true,
-        "typeVariable": {}
-      },
-      {
-        "sysName": "52_functions",
-        "dataType": "arrayLink",
-        "name": "Функции для категории 52",
-        "id": "22101607077116998",
-        "link": "functions52",
-        "group": "1607016878115",
-        "tags": null,
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 5,
-        "linkIndexFieldSysName": [],
-        "defaultValue": null,
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": null,
-        "groupName": null,
-        "json": false,
-        "indexExists": false,
-        "linkOrArrayLinkType": true,
-        "linkType": false,
-        "arrayLink": true,
-        "typeVariable": {}
-      },
-      {
-        "sysName": "Facebook_lonk",
-        "dataType": "string",
-        "name": "Facebook",
-        "id": "64931609825374119",
-        "link": "",
-        "group": "1607016878115",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 9,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": "webLink",
-        "formatOptions": {},
-        "groupName": null,
-        "json": false,
-        "indexExists": false,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "typeVariable": {}
-      },
-      {
-        "sysName": "Instagram_link",
-        "dataType": "string",
-        "name": "Instagram",
-        "id": "91391609825359387",
-        "link": "",
-        "group": "1607016878115",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 8,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": "webLink",
-        "formatOptions": {},
-        "groupName": null,
-        "json": false,
-        "indexExists": false,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "typeVariable": {}
-      },
-      {
-        "sysName": "city",
-        "dataType": "link",
-        "name": "Город",
-        "id": "80181607081867668",
-        "link": "cities",
-        "group": "1606985920923",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 1,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": null,
-        "groupName": null,
-        "json": false,
-        "indexExists": false,
-        "linkOrArrayLinkType": true,
-        "linkType": true,
-        "arrayLink": false,
-        "typeVariable": {}
-      },
-      {
-        "sysName": "firstName",
-        "dataType": "string",
-        "name": "Имя",
-        "id": "4",
-        "link": "",
-        "group": "0",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 4,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": {},
-        "groupName": null,
-        "json": false,
-        "indexExists": false,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "typeVariable": {}
-      },
-      {
-        "sysName": "id",
-        "dataType": "id",
-        "name": "Username (login)",
-        "id": "12",
-        "link": "",
-        "group": "0",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 0,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": {},
-        "groupName": null,
-        "json": false,
-        "indexExists": false,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "typeVariable": {}
-      },
-      {
-        "sysName": "lastName",
-        "dataType": "string",
-        "name": "Фамлия",
-        "id": "3",
-        "link": "",
-        "group": "0",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 5,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": {},
-        "groupName": null,
-        "json": false,
-        "indexExists": false,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "typeVariable": {}
-      },
-      {
-        "sysName": "salary_raw",
-        "dataType": "json",
-        "name": "Ожидания по доходу ",
-        "id": "63391607082324656",
-        "link": "",
-        "group": "1607016878115",
-        "tags": "",
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 2,
-        "linkIndexFieldSysName": [],
-        "defaultValue": "",
-        "constraints": null,
-        "synthetic": false,
-        "format": "rangeSlider",
-        "formatOptions": {
-          "customOptionLabel": "My option",
-          "keyValue": {
-            "key": "key",
-            "value": "value",
-            "button": "One more"
-          },
-          "unitName": "k ₽",
-          "booleanOptions": [
-            "True",
-            "False"
-          ],
-          "customOptionPlaceholder": "Describe your option",
-          "range": {
-            "max": 300,
-            "min": 20,
-            "step": 10
-          },
-          "customOptionType": "textarea"
+        {
+            "sysName": "@dateChanged",
+            "name": "@dateChanged",
+            "dataType": "string",
+            "id": "",
+            "link": "",
+            "group": "",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": null,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
         },
-        "groupName": null,
-        "json": true,
-        "indexExists": false,
-        "linkOrArrayLinkType": false,
-        "linkType": false,
-        "arrayLink": false,
-        "typeVariable": {}
-      },
-      {
-        "sysName": "type",
-        "dataType": "link",
-        "name": "Категория вакансий",
-        "id": "68641607070972375",
-        "link": "Type2252",
-        "group": "1607016878115",
-        "tags": null,
-        "indexing": false,
-        "ordering": false,
-        "description": null,
-        "weight": null,
-        "order": 4,
-        "linkIndexFieldSysName": [],
-        "defaultValue": null,
-        "constraints": null,
-        "synthetic": false,
-        "format": null,
-        "formatOptions": {
-          "customOptionLabel": "My option",
-          "keyValue": {
-            "key": "key",
-            "value": "value",
-            "button": "One more"
-          },
-          "booleanOptions": [
-            "2 через 2",
-            "5 через 2"
-          ],
-          "customOptionPlaceholder": "Describe your option",
-          "range": {},
-          "customOptionType": "textarea"
+        {
+            "sysName": "@dateCreated",
+            "name": "@dateCreated",
+            "dataType": "string",
+            "id": "",
+            "link": "",
+            "group": "",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": null,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
         },
-        "groupName": null,
-        "json": false,
-        "indexExists": false,
-        "linkOrArrayLinkType": true,
-        "linkType": true,
-        "arrayLink": false,
-        "typeVariable": {}
-      }
+        {
+            "sysName": "@who",
+            "name": "@who",
+            "dataType": "string",
+            "id": "",
+            "link": "",
+            "group": "",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": null,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "author",
+            "name": "作者",
+            "dataType": "link",
+            "id": "38891616593040978",
+            "link": "writer",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": true,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": true
+        },
+        {
+            "sysName": "cover",
+            "name": "封面",
+            "dataType": "file",
+            "id": "43951616593055642",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "creator",
+            "name": "创建人",
+            "dataType": "link",
+            "id": "27261616854119749",
+            "link": "WebUser",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 10,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": true,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": true
+        },
+        {
+            "sysName": "desc",
+            "name": "描述",
+            "dataType": "string",
+            "id": "99151616593076431",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": "markdown",
+            "formatOptions": null,
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "id",
+            "name": "id",
+            "dataType": "id",
+            "id": "0",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "isbn",
+            "name": "ISBN",
+            "dataType": "string",
+            "id": "16891616592952948",
+            "link": null,
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "name",
+            "name": "书名",
+            "dataType": "string",
+            "id": "87241616592936446",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "numExist",
+            "name": "库存数量",
+            "dataType": "number",
+            "id": "95341616848803733",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 9,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "price",
+            "name": "价格",
+            "dataType": "decimal",
+            "id": "97601616593116561",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 8,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "publishDate",
+            "name": "出版日期",
+            "dataType": "date",
+            "id": "97571616593097014",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 7,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        },
+        {
+            "sysName": "publishingHouse",
+            "name": "出版社",
+            "dataType": "string",
+            "id": "66891616593082694",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "arrayLink": false,
+            "json": false,
+            "linkType": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "linkOrArrayLinkType": false
+        }
     ],
     "error": null,
     "isSuccessWrite": false,
     "response": null,
-    "data": [
-      {
-        "city": "95ddc157-f2dc-4ab1-a1e5-ce9c6398bfdf",
-        "52_functions": [
-          "1d25ecad-0a05-42c8-a9d8-76ae5939fc09",
-          "5b27b967-9c4d-4dbe-89f0-abb4186e64a1"
-        ],
-        "salary_raw": "{\"secondValue\":100,\"firstValue\":50}",
-        "22_functions": [
-          "772fafad-36a7-4ccc-b338-ebb3b670e554"
-        ],
-        "lastName": "Ershov",
-        "firstName": "Pavel",
-        "id": "79151845361",
-        "type": "52"
-      }
-    ]
-  }
+    "data": null
+}
 
 
 

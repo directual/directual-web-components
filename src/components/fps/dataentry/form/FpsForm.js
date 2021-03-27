@@ -135,8 +135,13 @@ function FpsFormNew({ auth, data, onEvent, id }) {
     for (const field in data.params.data.fieldParams) {
       //if (field.isValid == false) { setIsValid(false); }
       if (data.params.data.fieldParams[field] && data.params.data.fieldParams[field].required &&
+        data.fields && data.fields.length > 0 && data.fields.filter(i=>i.sysName == field) &&
+        data.fields.filter(i=>i.sysName == field).length > 0 &&
         !model[field] && !model[field] !== false && data.params.data.fieldParams[field].include &&
-        !data.params.data.fieldParams[field].hidden) { setIsValid(false); }
+        !data.params.data.fieldParams[field].hidden) { 
+          console.log('FAILED REQ VALIDATION')
+          console.log(field)
+          setIsValid(false); }
     }
   }, [model])
 
@@ -506,7 +511,11 @@ function FpsFormOld({ auth, data, onEvent, id }) {
     setIsValid(true)
     fileds.forEach(field => {
       if (field.isValid == false) { setIsValid(false); }
-      if (field.params.required && !model[field.sysName] && !model[field.sysName] !== false && field.params.include && !field.params.hidden) { setIsValid(false); }
+      if (field.params.required && !model[field.sysName] && !model[field.sysName] !== false && field.params.include && !field.params.hidden) 
+        { 
+          // console.log('FAILED REQ VALIDATION')
+          // console.log(field)
+          setIsValid(false); }
     }
     )
   }, [model])

@@ -79,9 +79,12 @@ export function ObjectCard(props) {
         if (props.object && structure) {
             for (const field in props.object) {
                 object[field] = {}
-                if (structure.fieldStructure) {
+                if (structure.fieldStructure && field && field[0] != '@') {
                     object[field].value = props.object[field]
                     let fieldStructure = structure.fieldStructure.filter(i => i.sysName == field)[0]
+                    console.log('====structure====')
+                    console.log(structure)
+                    console.log(field)
                     object[field].name = fieldStructure.name
                     object[field].sysName = field
                     object[field].dataType = fieldStructure.dataType
