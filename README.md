@@ -31,4 +31,4 @@ class Example extends Component {
 
 ## License
 
-Apache 2.0 © [Directual](https://github.com/directual), 2020
+Apache 2.0 © [Directual](https://github.com/directual), 2021
