@@ -6,7 +6,8 @@ import TabsPane from '../tabpane/tabpane'
 
 const brakePoints = {
     mobile: { from: 0, to: 478, display: 400 },
-    desktop: { from: 479, to: '∞', display: 1200 },
+    tablet: { from: 479, to: 768, display: 700 },
+    desktop: { from: 769, to: '∞', display: 1200 },
 }
 
 export function FpsLayout({ layout }) {
@@ -24,14 +25,22 @@ export function FpsLayout({ layout }) {
     useEffect(() => {
         if (layoutWidth <= brakePoints.mobile.to) {
             setCurrentBP('mobile')
-        } else { setCurrentBP('desktop') }
+        }
+        if (layoutWidth >= brakePoints.tablet.from && layoutWidth <= brakePoints.tablet.to) {
+            setCurrentBP('tablet')
+        }
+        if (layoutWidth >= brakePoints.desktop.from) {
+            setCurrentBP('desktop')
+        } 
     }, [layoutWidth])
 
-    window.onresize = () => {
-        if (layoutRef.current && layoutRef.current.offsetWidth != layoutWidth) {
-            setLayoutWidth(layoutRef.current.offsetWidth)
-        }
-    }
+    useEffect(() => {
+        window.addEventListener("resize", () => {
+            if (layoutRef.current && layoutRef.current.offsetWidth !== layoutWidth) {
+                setLayoutWidth(layoutRef.current.offsetWidth);
+            }
+        });
+    }, []);
     // =========================
 
     console.log("LAYOUT")
@@ -59,19 +68,19 @@ const Section = ({ section, currentBP }) => {
 
     if (!section.columns || section.columns.length == 0) return <div>no columns</div>
 
-    return <div className={styles.section} style={{flexDirection: section.flexDirection[currentBP]}}>
+    return <div className={styles.section} style={{ flexDirection: section.flexDirection[currentBP] }}>
         {section.columns.map(column => <Column key={column.id} row={section.flexDirection[currentBP] == 'row'} column={column} />)}
     </div>
 }
 
-const Column = ({column, row}) => {
+const Column = ({ column, row }) => {
 
-    return <div className={styles.column} style={{width: row ? column.size + '%' : 'auto'}}>
+    return <div className={styles.column} style={{ width: row ? column.size + '%' : 'auto' }}>
         <ComponentWrapper>
-            {JSON.stringify('column - ' + column.size  + '%')}
+            {column.render}
         </ComponentWrapper>
     </div>
-} 
+}
 
 function ComponentWrapper(props) {
     const layoutRef = useRef(null);
@@ -87,23 +96,27 @@ function ComponentWrapper(props) {
     useEffect(() => {
         if (layoutWidth <= brakePoints.mobile.to) {
             setCurrentBP('mobile')
-        } else { setCurrentBP('desktop') }
+        }
+        if (layoutWidth >= brakePoints.tablet.from && layoutWidth <= brakePoints.tablet.to) {
+            setCurrentBP('tablet')
+        }
+        if (layoutWidth >= brakePoints.desktop.from) {
+            setCurrentBP('desktop')
+        }
     }, [layoutWidth])
 
-    window.onresize = () => {
-        if (layoutRef.current && layoutRef.current.offsetWidth != layoutWidth) {
-            setLayoutWidth(layoutRef.current.offsetWidth)
-        }
-    }
+    useEffect(() => {
+        window.addEventListener("resize", () => {
+            if (layoutRef.current && layoutRef.current.offsetWidth !== layoutWidth) {
+                setLayoutWidth(layoutRef.current.offsetWidth);
+            }
+        });
+    }, []);
     // =========================
 
     return (
         <div className={styles.componentWrapper} ref={layoutRef}>
             <div className={styles.componentWidth}>{layoutWidth} – {currentBP}</div>
-            {typeof props.children == 'object' ?
-                <props.children.type {...props.children.props} {...{currentBP: currentBP}}>{props.children}</props.children.type>
-                // React.cloneElement(props.children, { currentBP: currentBP }) 
-                :
-                props.children}
+            {props.children(currentBP)}
         </div>)
 }

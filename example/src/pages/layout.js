@@ -39,7 +39,7 @@ export default function LayoutPage() {
                                 "clazz": "FpsCards",
                                 "id": "610a56c4-39e4-f75b-98e5-9d79bf3b583a"
                             },
-                            "render": <div>FpsCards</div>
+                            "render": (currentBP) => <div>FpsCards - {currentBP}</div>
                         }
                     ]
                 },
@@ -54,13 +54,13 @@ export default function LayoutPage() {
                                 "id": "comp_1616786182315"
                             },
                             "size": 50,
-                            "render": <div>FpsForm</div>
+                            "render": (currentBP) => <div>FpsForm – {currentBP}</div>
                         },
                         {
                             "id": "column_1616786202461",
                             "content": null,
                             "size": 50,
-                            "render": null
+                            "render": (currentBP) => <div>{currentBP}</div>
                         }
                     ],
                     "flexDirection": {
@@ -78,19 +78,19 @@ export default function LayoutPage() {
                             "id": "column_1616786213464",
                             "content": null,
                             "size": 15,
-                            "render": null
+                            "render": (currentBP) => <div>{currentBP}</div>
                         },
                         {
                             "id": "column_1616786216062",
                             "content": null,
                             "size": 61,
-                            "render": null
+                            "render": (currentBP) => <div>{currentBP}</div>
                         },
                         {
                             "id": "column_1616786216338",
                             "content": null,
                             "size": 24,
-                            "render": null
+                            "render": (currentBP) => <div>{currentBP}</div>
                         }
                     ],
                     "flexDirection": {
@@ -109,7 +109,7 @@ export default function LayoutPage() {
                                 "id": "comp_1616786211156"
                             },
                             "size": 100,
-                            "render": <div>FpsHtml</div>
+                            "render": (currentBP) => <div>FpsHtml - {currentBP}</div>
                         }
                     ],
                     "flexDirection": {

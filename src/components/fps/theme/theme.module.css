@@ -15,14 +15,14 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/sourcecodepro/v13/HI_SiYsKILxRpg3hIP6sJ7fM7PqVOg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/sourcecodepro/v14/HI_SiYsKILxRpg3hIP6sJ7fM7PqVOg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Source Code Pro';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/sourcecodepro/v13/HI_XiYsKILxRpg3hIP6sJ7fM7Pqths7ztA.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/sourcecodepro/v14/HI_XiYsKILxRpg3hIP6sJ7fM7Pqths7ztA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Fira Code';
@@ -346,8 +346,8 @@
 }
 @font-face {
   font-family: 'directual-icons';
-  src: url('https://api.alfa.directual.com/fileUploaded/directual-site/96850ca2-968b-468e-bf5c-78b442809006.eot');
-  src: url('https://api.alfa.directual.com/fileUploaded/directual-site/96850ca2-968b-468e-bf5c-78b442809006.eot') format('embedded-opentype'), url('https://api.alfa.directual.com/fileUploaded/directual-site/f34ae1e7-fdf5-4259-beb9-7821d8901fbe.woff') format('woff'), url('https://api.alfa.directual.com/fileUploaded/directual-site/317ffc5a-8147-4527-a71d-10a298f519f8.ttf') format('truetype'), url('https://api.alfa.directual.com/fileUploaded/directual-site/7d9d01c4-ab0f-439c-9e77-5a1c452f403f.svg') format('svg');
+  src: url('https://api.directual.com/fileUploaded/directual-site/31834bc5-9397-4fc3-b566-863ba2790f49.eot');
+  src: url('https://api.directual.com/fileUploaded/directual-site/31834bc5-9397-4fc3-b566-863ba2790f49.eot') format('embedded-opentype'), url('https://api.directual.com/fileUploaded/directual-site/9ba7a435-2c93-4ab3-99cd-c6ccae3b76e1.woff') format('woff'), url('https://api.directual.com/fileUploaded/directual-site/6c6d1572-7c67-4376-880c-bf24f2f55465.ttf') format('truetype'), url('https://api.directual.com/fileUploaded/directual-site/d6d6fb70-dd1c-44b4-a75c-66dd6e0d4baa.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -726,6 +726,9 @@
 }
 :global .icon-checkbox:before {
   content: "\e97a";
+}
+:global .icon-tablet:before {
+  content: "\e97c";
 }
 /*-- VARIABLES --*/
 :root {
