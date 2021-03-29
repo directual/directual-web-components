@@ -1,49 +1,130 @@
 import React, { useState } from 'react'
-import { Button, FpsLayout, Dnd, SplitPane } from 'directual-web-components'
+import { Button, FpsLayout, Dnd } from 'directual-web-components'
 import { useSortBy } from 'react-table'
 
-const exampleData =
-{
-    reorder: true,
-    sizeUnits: '%', // 'px', '%'
-    panes:
-        [
-            { id: 'pane_01', content: <div style={{ height: 140 }}>a</div>, size: 50 },
-            { id: 'pane_02', content: <div style={{ height: 140 }}>b</div>, size: 20 },
-            { id: 'pane_03', content: <div style={{ height: 140 }}>c</div>, size: 30 }
-        ]
-}
-
-const exampleData2 =
-{
-    reorder: true,
-    sizeUnits: '%', // 'px', '%'
-    panes:
-        [
-            { id: 'pane_01', content: <div style={{ height: 140 }}>a</div>, size: 50 },
-            { id: 'pane_02', content: <div style={{ height: 140 }}>b</div>, size: 20 },
-            { id: 'pane_03', content: <div style={{ height: 140 }}>c</div>, size: 20 },
-            { id: 'pane_04', content: <div style={{ height: 140 }}>c</div>, size: 10 }
-        ]
-}
 
 export default function LayoutPage() {
 
-    const [data,setData] = useState(exampleData)
-
-    return (
-        <div>
-            <h1>Layout</h1>
-            <SplitPane width = {400} panes={data}/>
-            {/* <Dnd /> */}
-            <Button onClick={()=>{
-                if (JSON.stringify(data) != JSON.stringify(exampleData2)) {
-                    setData(exampleData2) } else {
-                    setData(exampleData)
+    const layoutExample = {
+        "showHeader": true,
+        "header": "Books!!",
+        "tabs": [
+            {
+                "id": "tab_01",
+                "title": "Tab 1"
+            },
+            {
+                "id": "tab_1616786206244",
+                "title": "Tab 2"
+            },
+            {
+                "id": "tab_3",
+                "title": "Tab 3"
+            }
+        ],
+        "sections": {
+            "tab_01": [
+                {
+                    "id": "section_610a56c4-3",
+                    "tab": "tab_01",
+                    "flexDirection": {
+                        "mobile": "column",
+                        "desktop": "row"
+                    },
+                    "columns": [
+                        {
+                            "size": 100,
+                            "id": "column_610a56c4-3",
+                            "content": {
+                                "clazz": "FpsCards",
+                                "id": "610a56c4-39e4-f75b-98e5-9d79bf3b583a"
+                            },
+                            "render": <div>FpsCards</div>
+                        }
+                    ]
+                },
+                {
+                    "id": "section_1616786179144",
+                    "tab": "tab_01",
+                    "columns": [
+                        {
+                            "id": "column_1616786179144",
+                            "content": {
+                                "clazz": "FpsForm",
+                                "id": "comp_1616786182315"
+                            },
+                            "size": 50,
+                            "render": <div>FpsForm</div>
+                        },
+                        {
+                            "id": "column_1616786202461",
+                            "content": null,
+                            "size": 50,
+                            "render": null
+                        }
+                    ],
+                    "flexDirection": {
+                        "mobile": "row",
+                        "desktop": "row"
+                    }
                 }
-            }}>Click me</Button>
-        </div>
-    )
+            ],
+            "tab_1616786206244": [
+                {
+                    "id": "section_1616786213464",
+                    "tab": "tab_1616786206244",
+                    "columns": [
+                        {
+                            "id": "column_1616786213464",
+                            "content": null,
+                            "size": 15,
+                            "render": null
+                        },
+                        {
+                            "id": "column_1616786216062",
+                            "content": null,
+                            "size": 61,
+                            "render": null
+                        },
+                        {
+                            "id": "column_1616786216338",
+                            "content": null,
+                            "size": 24,
+                            "render": null
+                        }
+                    ],
+                    "flexDirection": {
+                        "mobile": "column",
+                        "desktop": "row"
+                    }
+                },
+                {
+                    "id": "section_1616786209058",
+                    "tab": "tab_1616786206244",
+                    "columns": [
+                        {
+                            "id": "column_1616786209058",
+                            "content": {
+                                "clazz": "FpsHtml",
+                                "id": "comp_1616786211156"
+                            },
+                            "size": 100,
+                            "render": <div>FpsHtml</div>
+                        }
+                    ],
+                    "flexDirection": {
+                        "mobile": "column",
+                        "desktop": "row"
+                    }
+                }
+            ],
+            "tab_03": []
+        }
+    }
+
+    return <FpsLayout
+        layout={layoutExample}
+    />
 }
 
 
@@ -55,8 +136,6 @@ export default function LayoutPage() {
         { key: '2', title: 'Tab 2', content: <div>Tab content 2</div> },
         { key: '3', disabled: true, title: 'Tab 3 (disabled)', content: <div>Tab content 3</div> }
       ]
-
-
 
     <div>
             <h1>Layout</h1>

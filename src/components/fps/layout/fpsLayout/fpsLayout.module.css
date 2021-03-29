@@ -1,75 +1,24 @@
-.fpsLayout .section {
-  display: flex;
-  background: #fff;
+.fpsLayout .layoutHeader {
+  margin: 0;
+  padding-bottom: 12px;
 }
-.fpsLayout .section .sectionColumns {
-  flex-grow: 2;
-  display: flex;
-}
-.fpsLayout .section .sectionColumns .column {
-  flex: 1;
-  border: solid 1px blue;
-}
-.fpsLayout .section .sectionColumns .column .overlayer {
-  position: absolute;
-  background-color: #058efc;
-  z-index: 10;
-  opacity: 0;
-  cursor: pointer;
-  transition: 0.5s;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.fpsLayout .section .sectionColumns .column:hover .overlayer {
-  opacity: 0.3;
-}
-.fpsLayout .addSection {
-  opacity: 0;
-  transition: 0.5s;
-  cursor: pointer;
-  height: 2px;
-  border: solid 2px rgba(0, 0, 0, 0);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.fpsLayout .addSection .addSectionFill {
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-  height: 2px;
-  background: transparent;
-}
-.fpsLayout .addSection .plus {
-  color: #fff;
-  z-index: 9;
-  background-color: #058efc;
-  display: none;
-  border-radius: 50px;
-  z-index: 2;
-}
-.fpsLayout .addSection:hover {
-  opacity: 1;
-}
-.fpsLayout .addSection:hover .addSectionFill {
-  background: #058efc;
-}
-.fpsLayout .addSection:hover .plus {
+.section {
   display: flex;
 }
-.layoutWrapper {
-  display: flex;
-}
-.layoutWrapper .fpsLayout {
-  flex-grow: 2;
-}
-.layoutWrapper .layoutSettings {
+.column {
   flex-shrink: 0;
-  border: solid 1px green;
-  margin-left: 12px;
+  flex-grow: 2;
+}
+.componentWrapper {
+  border: solid 1px darkviolet;
+}
+.componentWrapper .componentWidth {
+  background-color: coral;
+  color: #fff;
+}
+.error {
+  color: #ec6161;
+  border: solid 2px #ec6161;
   padding: 10px;
-  width: 300px;
+  border-radius: 10px;
 }
