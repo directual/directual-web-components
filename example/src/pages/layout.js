@@ -12,14 +12,14 @@ export default function LayoutPage() {
                 "id": "tab_01",
                 "title": "Tab 1"
             },
-            {
-                "id": "tab_1616786206244",
-                "title": "Tab 2"
-            },
-            {
-                "id": "tab_3",
-                "title": "Tab 3"
-            }
+            // {
+            //     "id": "tab_1616786206244",
+            //     "title": "Tab 2"
+            // },
+            // {
+            //     "id": "tab_3",
+            //     "title": "Tab 3"
+            // }
         ],
         "sections": {
             "tab_01": [
@@ -28,17 +28,26 @@ export default function LayoutPage() {
                     "tab": "tab_01",
                     "flexDirection": {
                         "mobile": "column",
-                        "tablet": "row",
+                        "tablet": "column",
                         "desktop": "row"
                     },
                     "columns": [
                         {
-                            "size": 100,
+                            "size": 60,
                             "id": "column_610a56c4-3",
                             "content": {
                                 "clazz": "FpsCards",
                                 "id": "610a56c4-39e4-f75b-98e5-9d79bf3b583a"
                             },
+                            "render": (currentBP) => <FpsCards data={dataCards} currentBP={currentBP}/>
+                        },
+                        {
+                            "id": "column_161678617914a",
+                            "content": {
+                                "clazz": "FpsForm",
+                                "id": "comp_161678618231a"
+                            },
+                            "size": 40,
                             "render": (currentBP) => <FpsCards data={dataCards} currentBP={currentBP}/>
                         }
                     ]
@@ -85,7 +94,7 @@ export default function LayoutPage() {
                             "id": "column_1616786216062",
                             "content": null,
                             "size": 61,
-                            "render": (currentBP) => <div>{currentBP}</div>
+                            "render": () => (currentBP) => <div>{currentBP}</div>
                         },
                         {
                             "id": "column_1616786216338",

@@ -149,7 +149,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
                         /></div>
                 </React.Fragment>}
 
-                {currentBP}
+                {/* {currentBP ? currentBP : 'no currentBP'} */}
 
             <TableTitle
                 currentBP={currentBP}

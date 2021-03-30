@@ -64,16 +64,17 @@ export function FpsLayout({ layout }) {
     return (
         <div className={styles.fpsLayout} ref={layoutRef}>
             {layout.showHeader && layout.header && <h1 className={styles.layoutHeader}>{layout.header}</h1>}
-            {tabs && <TabsPane tabs={tabs} currentTabKey={tabs[0].key} fixedScroll />}
+            {tabs && <TabsPane hideSingleTab tabs={tabs} currentTabKey={tabs[0].key} fixedScroll />}
         </div>)
 }
 
 const Section = ({ section, currentBP }) => {
 
     if (!section.columns || section.columns.length == 0) return <div>no columns</div>
+    const correctedBP = currentBP == 'wideDesktop' ? 'desktop' : currentBP;
 
-    return <div className={styles.section} style={{ flexDirection: section.flexDirection[currentBP] }}>
-        {section.columns.map( (column, i) => <Column last={section.columns.length == i + 1} key={column.id} row={section.flexDirection[currentBP] == 'row'} column={column} />)}
+    return <div className={styles.section} style={{ flexDirection: section.flexDirection[correctedBP] }}>
+        {section.columns.map( (column, i) => <Column last={section.columns.length == i + 1} key={column.id} row={section.flexDirection[correctedBP] == 'row'} column={column} />)}
     </div>
 }
 
