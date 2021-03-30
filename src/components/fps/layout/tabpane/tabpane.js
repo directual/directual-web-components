@@ -5,15 +5,21 @@ import styles from './tabpane.module.css'
 export default function TabsPane({ tabs, currentTabKey, fixedScroll, hideSingleTab }) {
     const [currentTab, setCurrentTab] = useState(currentTabKey || '')
 
+    let counter = 0
+    tabs.forEach(tab=> { counter = !tab.hidden ? counter + 1 : counter })
+    console.log(counter)
+
+    const isSingleTab = counter == 1 || tabs.length == 1
+
     return (
         <div className={`${styles.tabsPane} ${fixedScroll && styles.fixedScroll}`}>
-            {tabs.length > 1 || (tabs.length == 1 && !hideSingleTab) &&
+            {(!isSingleTab || (isSingleTab && !hideSingleTab)) &&
             <TabsMenu
                 tabs={tabs}
                 currentTabKey={currentTab}
                 onClick={tabClicked => tabClicked && setCurrentTab(tabClicked)} />}
             {tabs.map(tab => currentTab == tab.key &&
-                <Tab key={tab.key} tabContent={tab} currentTabKey={currentTab} hideSingleTab={hideSingleTab}/>)}
+                <Tab key={tab.key} tabContent={tab} currentTabKey={currentTab} isSingleTab={isSingleTab}/>)}
         </div>
     )
 }
@@ -39,7 +45,7 @@ function TabsMenu({ tabs, currentTabKey, onClick }) {
     )
 }
 
-export function Tab({ tabContent, currentTabKey, hideSingleTab }) {
+export function Tab({ tabContent, currentTabKey, isSingleTab }) {
     const scrollDivRef = useRef(null)
     const [showBorder, setShowBorder] = useState(false)
 
@@ -55,7 +61,7 @@ export function Tab({ tabContent, currentTabKey, hideSingleTab }) {
             onScroll={handleScroll}
             className=
             {`
-                ${hideSingleTab && styles.singleTab}
+                ${isSingleTab && styles.singleTab}
                 ${styles.tabWrapper} 
                 ${currentTabKey == tabContent.key && styles.current_}
                 ${showBorder && styles.bordered}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, FpsLayout, Dnd, FpsCards } from 'directual-web-components'
+import { Button, FpsLayout, Dnd, FpsCards, TabsPane } from 'directual-web-components'
 
 
 export default function LayoutPage() {
@@ -1901,7 +1901,13 @@ export default function LayoutPage() {
         "fileds": []
     }
 
+    const exampleTabs = [
+        { key: '1', title: 'Tab number 1', content: <div>Tab content 1</div>, hidden: true },
+        { key: '2', title: 'Tab 2', content: <div>Tab content 2</div>, hidden: true },
+        { key: '3', disabled: true, title: 'Tab 3 (disabled)', content: <div>Tab content 3</div> }
+      ]
 
+    return <TabsPane tabs={exampleTabs} hideSingleTab currentTabKey={1} fixedScroll={false} />
 
     return <FpsLayout
         layout={layoutExample}
