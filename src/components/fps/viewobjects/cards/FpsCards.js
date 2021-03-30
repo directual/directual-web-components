@@ -10,7 +10,7 @@ import moment from 'moment'
 import { Paging } from '../paging/paging'
 
 
-function FpsCards({ auth, data, onEvent, id }) {
+function FpsCards({ auth, data, onEvent, id, currentBP }) {
     if (!data) { data = {} }
 
     // console.log('---data---')
@@ -100,10 +100,10 @@ function FpsCards({ auth, data, onEvent, id }) {
         console.log('actionCond')
         console.log(actionCond)
         console.log(auth)
-        
+
         if (!actionCond) { return true }
         //if (!auth && actionCond) { return false }
-        
+
         let match = true
         actionCond.forEach(cond => {
             if (cond.target == 'id' && (!auth || auth.user !== cond.checkValue)) {
@@ -111,14 +111,14 @@ function FpsCards({ auth, data, onEvent, id }) {
                 console.log('ID does not match');
                 match = false
             }
-            if (cond.target == 'role' && (!auth || !auth.role.match(new RegExp(cond.checkValue)))) { 
-                console.log('Role does not match'); 
-                match = false 
+            if (cond.target == 'role' && (!auth || !auth.role.match(new RegExp(cond.checkValue)))) {
+                console.log('Role does not match');
+                match = false
             }
             if ((cond.target == 'field' || cond.target == 'linkedField') && cond.fieldValue &&
-                cond.fieldValue.toString().toLowerCase() != cond.value.toString().toLowerCase()) { 
-                console.log(cond.fieldValue + ' != ' + cond.value); 
-                console.log('Field is wrong'); 
+                cond.fieldValue.toString().toLowerCase() != cond.value.toString().toLowerCase()) {
+                console.log(cond.fieldValue + ' != ' + cond.value);
+                console.log('Field is wrong');
                 match = false
             }
         })
@@ -126,12 +126,13 @@ function FpsCards({ auth, data, onEvent, id }) {
     }
 
     return (
-        <ComponentWrapper>
+        <ComponentWrapper currentBP={currentBP}>
             {showObject &&
                 <React.Fragment>
                     <Backdrop onClick={handleCloseShowObject} hoverable />
                     <div className={styles.firstObjectCard}>
                         <ObjectCard
+                            currentBP={currentBP}
                             onClose={handleCloseShowObject}
                             onTerminate={handleCloseShowObject}
                             object={showObject}
@@ -148,7 +149,10 @@ function FpsCards({ auth, data, onEvent, id }) {
                         /></div>
                 </React.Fragment>}
 
+                {currentBP}
+
             <TableTitle
+                currentBP={currentBP}
                 tableTitle={tableTitle}
                 searchValue={searchValue}
                 tableQuickSearch={true}
@@ -158,6 +162,7 @@ function FpsCards({ auth, data, onEvent, id }) {
                 onFilter={() => { }}
             />
             <Cards
+                currentBP={currentBP}
                 data={data}
                 params={data.params}
                 searchValue={searchValue}

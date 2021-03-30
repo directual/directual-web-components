@@ -187,29 +187,30 @@
             }
         }
     }
-    div.tableTitle {
-        flex-direction: column;
-        align-items: stretch;
-        h1, h2 {
-            max-width: calc(100% - 24px);
-            //margin-bottom: 12px !important;
-        }
-    }
-    .tableTitle {
-        .tableTitleWrapper {
-            //margin-bottom: 12px;
-        }
-        .tableActions {
-            .tableQuickSearchField {
-                margin: 12px 0 0 0;
-                width: 100%;
-            }
-            .quickSearchInput {
-                //width: calc(100% - 8px);
-            }
-        }
-    }
  }
+
+ div.tableTitle.mobile {
+    flex-direction: column;
+    align-items: stretch;
+    h1, h2 {
+        max-width: calc(100% - 24px);
+        //margin-bottom: 12px !important;
+    }
+}
+.tableTitle.mobile {
+    .tableTitleWrapper {
+        //margin-bottom: 12px;
+    }
+    .tableActions {
+        .tableQuickSearchField {
+            margin: 12px 0 0 0;
+            width: 100%;
+        }
+        .quickSearchInput {
+            //width: calc(100% - 8px);
+        }
+    }
+}
 
  .hidden {
      visibility: hidden;

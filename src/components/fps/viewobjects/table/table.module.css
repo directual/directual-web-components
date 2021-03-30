@@ -170,18 +170,18 @@
   .objectCard .objectCardBody.notabs {
     margin: 12px 24px 24px 24px;
   }
-  div.tableTitle {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  div.tableTitle h1,
-  div.tableTitle h2 {
-    max-width: calc(100% - 24px);
-  }
-  .tableTitle .tableActions .tableQuickSearchField {
-    margin: 12px 0 0 0;
-    width: 100%;
-  }
+}
+div.tableTitle.mobile {
+  flex-direction: column;
+  align-items: stretch;
+}
+div.tableTitle.mobile h1,
+div.tableTitle.mobile h2 {
+  max-width: calc(100% - 24px);
+}
+.tableTitle.mobile .tableActions .tableQuickSearchField {
+  margin: 12px 0 0 0;
+  width: 100%;
 }
 .hidden {
   visibility: hidden;

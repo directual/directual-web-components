@@ -4,13 +4,13 @@
 }
 .section {
   display: flex;
+  overflow: hidden;
 }
 .column {
   flex-shrink: 0;
   flex-grow: 2;
-}
-.componentWrapper {
-  border: solid 1px darkviolet;
+  overflow: hidden;
+  max-width: 100%;
 }
 .componentWrapper .componentWidth {
   background-color: coral;

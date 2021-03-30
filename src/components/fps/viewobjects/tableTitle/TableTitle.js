@@ -5,12 +5,12 @@ import Filters from '../filters/Filters'
 import Input from '../../dataentry/input/input'
 import Loader from '../../loader/loader'
 
-export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters, onFilter, onSearch, loading, searchValue }) {
+export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters, onFilter, onSearch, loading, searchValue, currentBP }) {
     const [showSearch, setShowSearch] = useState(search)
     const [showFilters, setShowFilters] = useState(false)
     return (
         <React.Fragment>
-            <div className={styles.tableTitle}>
+            <div className={`${styles.tableTitle} ${styles[currentBP]}`}>
                 <div className={styles.tableTitleWrapper}>
                     {tableTitle && <h2><span>{tableTitle}</span></h2>}
 

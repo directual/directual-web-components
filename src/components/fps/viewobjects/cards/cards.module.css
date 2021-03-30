@@ -267,35 +267,22 @@
 .card.list {
   width: calc(100% - 18px);
 }
-@media all and (min-width: 2000px) {
-  .card.grid {
-    width: calc(20% - 18px);
-  }
+.card.grid.wideDesktop {
+  width: calc(25% - 18px);
 }
-@media all and (min-width: 1600px) and (max-width: 1999px) {
-  .card.grid {
-    width: calc(25% - 18px);
-  }
+.card.grid.desktop {
+  width: calc(33.3% - 18px);
 }
-@media all and (min-width: 1200px) and (max-width: 1599px) {
-  .card.grid {
-    width: calc(33.3% - 18px);
-  }
+.card.grid.tablet {
+  width: calc(50% - 18px);
 }
-@media all and (min-width: 900px) and (max-width: 1199px) {
-  .card.grid {
-    width: calc(50% - 18px);
-  }
+.card.grid.mobile {
+  width: calc(100% - 18px);
+  margin-bottom: 12px !important;
 }
-@media all and (max-width: 899px) {
-  .card.grid {
-    width: calc(100% - 18px);
-    margin-bottom: 12px !important;
-  }
-  .card.list {
-    margin-bottom: 12px !important;
-  }
-  .leftCircle .cardImage {
-    margin: 8px 0 8px 8px !important;
-  }
+.card.list.mobile {
+  margin-bottom: 12px !important;
+}
+.mobile .leftCircle .cardImage {
+  margin: 8px 0 8px 8px !important;
 }
