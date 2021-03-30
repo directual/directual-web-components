@@ -4,6 +4,8 @@ import Input, { InputGroup } from '../dataentry/input/input'
 import ActionPanel from '../actionspanel/actionspanel'
 import Button from '../button/button'
 import { FormSection } from '../dataentry/form/FpsForm'
+import icon from "../../../icons/fps-cards.svg";
+import FpsCards from "../viewobjects/cards/FpsCards";
 
 export function SignIn({ width, header, signUpheader, google, onSignIn, onSignUp, userNameFormat, allowSignUp }) {
     const submit = () => {
@@ -63,7 +65,7 @@ export function SignIn({ width, header, signUpheader, google, onSignIn, onSignUp
                         onChange={value => setLoginDetails({ ...loginDetails, password: value })}
                     />
                     <ActionPanel column margin={{ top: 0, bottom: 18 }}>
-                        <Button 
+                        <Button
                             disabled={
                                 !loginDetails.login ||
                                 !loginDetails.password || !loginDetails.isLoginValid}
@@ -75,6 +77,20 @@ export function SignIn({ width, header, signUpheader, google, onSignIn, onSignUp
         )
     }
 
+}
+
+SignIn.settings = {
+  icon: icon,
+  name: 'SignIn view',
+  sysName: 'SignIn',
+  system: true,
+  form: [
+    // { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
+    // { name: 'List title', sysName: 'tableTitle', type: 'input' },
+    // { name: 'Page size', sysName: 'pageSize', type: 'number' },
+    // { name: 'Filters', sysName: 'tableFilters', type: 'on_off' },
+    // { name: 'Quick search', sysName: 'tableQuickSearch', type: 'on_off' },
+  ]
 }
 
 export function SignUp(props) {
@@ -126,9 +142,9 @@ export function SignUp(props) {
                     required
                     defaultValue={signUpDetails.repeatPassword}
                     onChange={value => setSignUpDetails({ ...signUpDetails, repeatPassword: value })}
-                    error={(signUpDetails.password && signUpDetails.repeatPassword && 
+                    error={(signUpDetails.password && signUpDetails.repeatPassword &&
                             signUpDetails.password != signUpDetails.repeatPassword) ? 'Passwords do not match' : null}
-                    
+
                 />
                 <ActionPanel column margin={{ top: 0, bottom: 18 }}>
                     <Button
@@ -144,6 +160,21 @@ export function SignUp(props) {
     )
 }
 
+SignUp.settings = {
+  icon: icon,
+  name: 'SignUp view',
+  sysName: 'SignUp',
+  system: true,
+  form: [
+    // { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
+    // { name: 'List title', sysName: 'tableTitle', type: 'input' },
+    // { name: 'Page size', sysName: 'pageSize', type: 'number' },
+    // { name: 'Filters', sysName: 'tableFilters', type: 'on_off' },
+    // { name: 'Quick search', sysName: 'tableQuickSearch', type: 'on_off' },
+  ]
+}
+
+
 export function Profile(props) {
     return (
         <div style={{ maxWidth: props.width || 'auto' }}>
@@ -156,6 +187,20 @@ export function Profile(props) {
                 <Button icon='logout' onClick={() => props.logOut()}>Log out</Button></div>
         </div>
     )
+}
+
+Profile.settings = {
+  icon: icon,
+  name: 'Profile view',
+  sysName: 'Profile',
+  system: true,
+  form: [
+    // { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
+    // { name: 'List title', sysName: 'tableTitle', type: 'input' },
+    // { name: 'Page size', sysName: 'pageSize', type: 'number' },
+    // { name: 'Filters', sysName: 'tableFilters', type: 'on_off' },
+    // { name: 'Quick search', sysName: 'tableQuickSearch', type: 'on_off' },
+  ]
 }
 
 function ProfileHeader({ pictureUrl, fullName }) {
