@@ -39,6 +39,7 @@ import { ImageButtons } from './components/fps/imagebuttons/imagebuttons'
 import { Markdown } from './components/fps/article/mkd'
 import { FpsLayout } from './components/fps/layout/fpsLayout/fpsLayout'
 import SplitPane from './components/fps/layout/splitPane/splitPane'
+import { RichText } from './components/fps/richTextEditor/richTextEditor'
 
 import FpsTheme, { SetTheme } from './components/fps/theme/theme'
 
@@ -90,5 +91,6 @@ export {
   ImageButtons,
   CodeInput,
   FpsLayout,
-  SplitPane
+  SplitPane,
+  RichText
 }
