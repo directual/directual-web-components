@@ -58,8 +58,8 @@ export default function MainMenu(props) {
                                 {props.profileButton.link}
                             </div>
                             {props.logOutButton && 
-                                <Button icon='logoutAlt' onClick={()=>{hideMM(); props.logout && props.logout()}}/>
-                            }
+                                <Button height={50} icon='logoutAlt' onClick={()=>{hideMM(); props.logout && props.logout()}}/>
+                            } 
                             </ActionPanel>
                             :
                             <div className={`
