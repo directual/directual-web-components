@@ -79,19 +79,19 @@ export function SignIn({ width, header, signUpheader, google, onSignIn, onSignUp
 
 }
 
-SignIn.settings = {
-  icon: icon,
-  name: 'SignIn view',
-  sysName: 'SignIn',
-  system: true,
-  form: [
-    // { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
-    // { name: 'List title', sysName: 'tableTitle', type: 'input' },
-    // { name: 'Page size', sysName: 'pageSize', type: 'number' },
-    // { name: 'Filters', sysName: 'tableFilters', type: 'on_off' },
-    // { name: 'Quick search', sysName: 'tableQuickSearch', type: 'on_off' },
-  ]
-}
+// SignIn.settings = {
+//   icon: icon,
+//   name: 'SignIn view',
+//   sysName: 'SignIn',
+//   system: true,
+//   form: [
+//     { name: 'Turn on Signing Up', sysName: 'allowRegiter', type: 'switch' },
+//     // { name: 'List title', sysName: 'tableTitle', type: 'input' },
+//     // { name: 'Page size', sysName: 'pageSize', type: 'number' },
+//     // { name: 'Filters', sysName: 'tableFilters', type: 'on_off' },
+//     // { name: 'Quick search', sysName: 'tableQuickSearch', type: 'on_off' },
+//   ]
+// }
 
 export function SignUp(props) {
     const [signUpDetails, setSignUpDetails] = useState({})
@@ -160,19 +160,19 @@ export function SignUp(props) {
     )
 }
 
-SignUp.settings = {
-  icon: icon,
-  name: 'SignUp view',
-  sysName: 'SignUp',
-  system: true,
-  form: [
-    // { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
-    // { name: 'List title', sysName: 'tableTitle', type: 'input' },
-    // { name: 'Page size', sysName: 'pageSize', type: 'number' },
-    // { name: 'Filters', sysName: 'tableFilters', type: 'on_off' },
-    // { name: 'Quick search', sysName: 'tableQuickSearch', type: 'on_off' },
-  ]
-}
+// SignUp.settings = {
+//   icon: icon,
+//   name: 'SignUp view',
+//   sysName: 'SignUp',
+//   system: true,
+//   form: [
+//     // { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
+//     // { name: 'List title', sysName: 'tableTitle', type: 'input' },
+//     // { name: 'Page size', sysName: 'pageSize', type: 'number' },
+//     // { name: 'Filters', sysName: 'tableFilters', type: 'on_off' },
+//     // { name: 'Quick search', sysName: 'tableQuickSearch', type: 'on_off' },
+//   ]
+// }
 
 
 export function Profile(props) {
@@ -189,19 +189,19 @@ export function Profile(props) {
     )
 }
 
-Profile.settings = {
-  icon: icon,
-  name: 'Profile view',
-  sysName: 'Profile',
-  system: true,
-  form: [
-    // { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
-    // { name: 'List title', sysName: 'tableTitle', type: 'input' },
-    // { name: 'Page size', sysName: 'pageSize', type: 'number' },
-    // { name: 'Filters', sysName: 'tableFilters', type: 'on_off' },
-    // { name: 'Quick search', sysName: 'tableQuickSearch', type: 'on_off' },
-  ]
-}
+// Profile.settings = {
+//   icon: icon,
+//   name: 'Log out button',
+//   sysName: 'LogOut',
+//   system: true,
+//   form: [
+//     // { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
+//     // { name: 'List title', sysName: 'tableTitle', type: 'input' },
+//     // { name: 'Page size', sysName: 'pageSize', type: 'number' },
+//     // { name: 'Filters', sysName: 'tableFilters', type: 'on_off' },
+//     // { name: 'Quick search', sysName: 'tableQuickSearch', type: 'on_off' },
+//   ]
+// }
 
 function ProfileHeader({ pictureUrl, fullName }) {
     return (

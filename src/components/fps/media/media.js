@@ -16,14 +16,15 @@ function YouTubeGetID(url) {
 }
 
 export default function Media(props) {
-    let videoID = props.source ? YouTubeGetID(props.source) : '';
+    const data = props.data || {}
+    let videoID = data.source ? YouTubeGetID(data.source) : '';
     console.log('--=== Video component ===--')
-    console.log(props)
+    console.log(data)
     return (
         <React.Fragment>
             {videoID ?
                 <div style={{
-                    maxWidth: parseInt(props.width) || 350
+                    maxWidth: parseInt(data.width) || 350
                 }}>
                     <iframe
                         width='100%'

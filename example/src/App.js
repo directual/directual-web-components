@@ -44,11 +44,12 @@ function MainMenuWrapper(props) {
     <MainMenu
       title='directual-design'
       showUserButtons={true}
-      //loggedIn={true}
-      loggedIn={false}
+      loggedIn={true}
+      //loggedIn={false}
       logInButton={{ name: "Sign in", route: "/profile", icon: "logoutAlt", link: <Link to="/profile">Sign in</Link> }}
       profileButton={{ name: "Profile", route: "/profile", icon: "user", link: <Link to="/profile">Profile</Link> }}
       logoUrl={logoUrl}
+      logOutButton
       currentRoute={location.pathname || '/'}
       menu={[
         { name: "What?", route: "/", icon: "info", link: <Link to="/">What is it?</Link> },

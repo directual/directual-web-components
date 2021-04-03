@@ -24,7 +24,7 @@
 }
 .menuButton {
   display: flex;
-  height: 48px;
+  height: 46px;
   justify-content: center;
   align-items: center;
   padding: 1px 24px 1px 18px;
@@ -41,7 +41,7 @@
   font-weight: var(--text-font-weight);
 }
 .menuButton:hover {
-  height: 48px;
+  height: 46px;
   padding: 0 23px 0 17px !important;
   border-width: 2px;
   transition: 0;
@@ -83,6 +83,7 @@
   color: var(--background-color);
 }
 .menuButton a {
+  margin: 0;
   color: var(--font-color);
   text-decoration: none !important;
   transition: 0s;

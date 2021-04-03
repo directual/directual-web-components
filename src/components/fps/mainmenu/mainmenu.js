@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Backdrop from '../backdrop/backdrop'
 import styles from './mainmenu.module.css'
 import Button from '../button/button'
+import ActionPanel from '../actionspanel/actionspanel'
 
 
 export default function MainMenu(props) {
@@ -46,14 +47,20 @@ export default function MainMenu(props) {
                     {props.showUserButtons &&
                     <div className={styles.menuFooterButton}>
                         {props.loggedIn ?
+                            <ActionPanel margin={{top:1, bottom:1}}>
                             <div className=
                                 {`
                             ${styles.menuButton} 
                             ${props.profileButton.icon && `${styles.icon} icon icon-${props.profileButton.icon}`}
                             `}
+                                style={{marginRight:6}}
                                 onClick={hideMM}>
                                 {props.profileButton.link}
                             </div>
+                            {props.logOutButton && 
+                                <Button icon='logoutAlt' onClick={()=>{hideMM(); props.logout && props.logout()}}/>
+                            }
+                            </ActionPanel>
                             :
                             <div className={`
                             ${styles.menuButton}

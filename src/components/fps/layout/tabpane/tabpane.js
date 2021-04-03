@@ -7,7 +7,6 @@ export default function TabsPane({ tabs, currentTabKey, fixedScroll, hideSingleT
 
     let counter = 0
     tabs.forEach(tab=> { counter = !tab.hidden ? counter + 1 : counter })
-    console.log(counter)
 
     const isSingleTab = counter == 1 || tabs.length == 1
 
