@@ -4,17 +4,14 @@ import { ComponentWrapper } from './wrapper/wrapper'
 import Article from './article/article'
 import Input from './dataentry/input/input'
 
-function FpsHtml({ data }) {
-  const text = data.text || ''
+export default function FpsHtml({ data }) {
+  const html = data.html || ''
   return (
     <ComponentWrapper>
-      {/* 
+      <Article>
         <div
           dangerouslySetInnerHTML={{ __html: html }}
         />
-       */}
-      <Article>
-        <Input type='markdown' defaultValue={text} />
       </Article>
     </ComponentWrapper>
   )
@@ -25,7 +22,26 @@ FpsHtml.settings = {
   name: "Rich text",
   sysName: 'FpsHtml',
   form: [
-    { name: "Enter your text", sysName: "text", type: "markdown" }
+    { name: "Enter your text", sysName: "html", type: "html" }
   ]
 }
-export default FpsHtml
+
+export function FpsMarkdown({ data }) {
+  const text = data.text || ''
+  return <ComponentWrapper>
+    <Article>
+      <Input type='markdown' defaultValue={text} />
+    </Article>
+  </ComponentWrapper>
+}
+
+FpsMarkdown.settings = {
+  icon: icon,
+  name: "Rich text",
+  sysName: 'FpsMarkdown',
+  form: [
+    { name: "Enter your text", sysName: "markdown", type: "markdown" }
+  ]
+}
+
+

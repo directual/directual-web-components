@@ -7,7 +7,7 @@ import {
 import FpsLogin from './components/fps/FpsLogin'
 import CodeInput from './components/fps/dataentry/codeinput/codeinput'
 import FpsCards from './components/fps/viewobjects/cards/FpsCards'
-import FpsHtml from './components/fps/FpsHtml'
+import FpsHtml, { FpsMarkdown } from './components/fps/FpsHtml'
 import FpsForm, { FormSection } from './components/fps/dataentry/form/FpsForm'
 import MainMenu from './components/fps/mainmenu/mainmenu'
 import ComponentDetails from './components/fps/componentdetails/componentdetails'
@@ -32,7 +32,7 @@ import Article from './components/fps/article/article'
 import TabsPane from './components/fps/layout/tabpane/tabpane'
 import { Dnd } from './components/fps/dnd/dndList'
 import Checkbox from './components/fps/dataentry/checkbox/checkbox'
-import OptionsHandler, {AdvancedOptionsHandler} from './components/fps/dataentry/optionsHandler/optionsHandler'
+import OptionsHandler, { AdvancedOptionsHandler } from './components/fps/dataentry/optionsHandler/optionsHandler'
 import StructureField from './components/fps/dataentry/structurefield/structurefield'
 import { Fps400 } from './components/fps/errors/errors'
 import { ImageButtons } from './components/fps/imagebuttons/imagebuttons'
@@ -92,5 +92,6 @@ export {
   CodeInput,
   FpsLayout,
   SplitPane,
-  RichText
+  RichText,
+  FpsMarkdown
 }
