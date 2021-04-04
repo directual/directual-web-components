@@ -32,7 +32,6 @@ export function FpsMarkdown(props) {
 console.log(props)
   const text = (props && props.data && props.data.markdown) || ''
   return <ComponentWrapper>
-    markdown:
     <Article>
       <Input type='markdown' defaultValue={text} />
     </Article>
