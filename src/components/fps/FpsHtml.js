@@ -1,5 +1,7 @@
 import React from 'react'
-import icon from './../../icons/fps-rich-text.svg'
+//import icon from './../../icons/fps-rich-text.svg'
+import iconHtml from './../../icons/fps-html.svg'
+import iconMkd from './../../icons/fps-markdown.svg'
 import { ComponentWrapper } from './wrapper/wrapper'
 import Article from './article/article'
 import Input from './dataentry/input/input'
@@ -18,7 +20,7 @@ export default function FpsHtml({ data }) {
 }
 
 FpsHtml.settings = {
-  icon: icon,
+  icon: iconHtml,
   name: "HTML code",
   sysName: 'FpsHtml',
   form: [
@@ -38,7 +40,7 @@ console.log(props)
 }
 
 FpsMarkdown.settings = {
-  icon: icon,
+  icon: iconMkd,
   name: "Markdown text",
   sysName: 'FpsMarkdown',
   form: [
