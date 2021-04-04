@@ -92,10 +92,13 @@ export function Markdown(props) {
         if (props.value != value) {
             setValue(props.value)
         }
+        if (countLines(inputEl.current, value) != lines) {
+            setLines(countLines(inputEl.current, value))
+        }
     },[props.value])
 
     const changeMkd = val => {
-        console.log(val)
+        //console.log(val)
         setValue(val)
         props.onChange && props.onChange(val)
     }
@@ -129,7 +132,8 @@ export function Markdown(props) {
                         </div>
                         <textarea
                             placeholder={props.placeholder}
-                            rows={inputEl.current ? countLines(inputEl.current, value) : 1}
+                            rows={lines}
+                            //rows={inputEl.current ? countLines(inputEl.current, value) : lines}
                             ref={inputEl}
                             disabled={props.disabled}
                             onChange={e => changeMkd(e.target.value)}

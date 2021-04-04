@@ -19,16 +19,18 @@ export default function FpsHtml({ data }) {
 
 FpsHtml.settings = {
   icon: icon,
-  name: "Rich text",
+  name: "HTML code",
   sysName: 'FpsHtml',
   form: [
-    { name: "Enter your text", sysName: "html", type: "html" }
+    { name: "Enter your HTML-code", sysName: "html", type: "html" }
   ]
 }
 
-export function FpsMarkdown({ data }) {
-  const text = data.text || ''
+export function FpsMarkdown(props) {
+console.log(props)
+  const text = (props && props.data && props.data.markdown) || ''
   return <ComponentWrapper>
+    markdown:
     <Article>
       <Input type='markdown' defaultValue={text} />
     </Article>
@@ -37,7 +39,7 @@ export function FpsMarkdown({ data }) {
 
 FpsMarkdown.settings = {
   icon: icon,
-  name: "Rich text",
+  name: "Markdown text",
   sysName: 'FpsMarkdown',
   form: [
     { name: "Enter your text", sysName: "markdown", type: "markdown" }

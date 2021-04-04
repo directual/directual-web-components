@@ -663,7 +663,8 @@ export default function Input(props) {
                         onChange={val => handleChange(val)}
                         //height={350}
                         value={value}
-                    //margin={{top:0,bottom:18}}
+                        //example={props.example}
+                        //margin={{top:0,bottom:18}}
                     />
                 </div>}
 
