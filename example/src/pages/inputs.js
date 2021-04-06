@@ -141,6 +141,20 @@ export default function InputsPage() {
         <React.Fragment>
             <h1>Data entry</h1>
 
+            <Input type='multiselect' 
+            defaultValue={['id','хуе-мое']}
+            options ={[
+    {
+        "key": "id",
+        "value": "id"
+    },
+    {
+        "key": "value",
+        "value": "Страна"
+    }
+]} />
+
+
             <Input type='markdown' edit example/>
 
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Special platform selects</h2>

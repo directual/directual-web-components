@@ -118,7 +118,14 @@ export default function Select(props) {
         }
         if (props.multi && def) {
             if (Array.isArray(def)) {
-                return def.map(j => props.options.filter(i => i.key == j)[0])
+                const convDef = []  
+                def.forEach(j => { 
+                    if (props.options.filter(i => i.key == j)[0]) { convDef.push(props.options.filter(i => i.key == j)[0]) } 
+                    }
+                )
+                console.log('эвы чо епта')
+                console.log(convDef)
+                return convDef
             }
             else {
                 return Array.isArray(def.split(',')) && def.split(',').length > 0 && def.split(',').map(j => props.options.filter(i => i.key == j)[0])

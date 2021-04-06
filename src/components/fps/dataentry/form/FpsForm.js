@@ -22,10 +22,10 @@ export function FormSection(props) {
 
 export default function FpsForm({ auth, data, onEvent, id }) {
   if (data.params.data) {
-    return <FpsFormNew auth={auth} data={data} onEvent={onEvent} id={id} />
+    return <FpsFormNew auth={auth || {}} data={data} onEvent={onEvent} id={id} />
   }
   else {
-    return <FpsFormOld auth={auth} data={data} onEvent={onEvent} id={id} />
+    return <FpsFormOld auth={auth || {}} data={data} onEvent={onEvent} id={id} />
   }
 }
 
