@@ -130,7 +130,7 @@
   position: relative;
   flex-grow: 2;
   overflow: hidden;
-  align-items: flex-start;
+  align-items: stretch;
   z-index: 2;
 }
 .card .cardInnerWrapper .cardText .details {
@@ -206,6 +206,7 @@
 .card .cardInnerWrapper .cardText .cardHeader .txt {
   overflow: hidden;
   text-overflow: ellipsis;
+  flex-grow: 2;
 }
 .card .cardInnerWrapper .cardText .cardHeader .counter {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
@@ -219,9 +220,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
+  min-width: 28px;
   height: 28px;
   border-radius: 32px;
+  padding: 0 6px;
 }
 .card .cardInnerWrapper .cardText .cardHeaderComment {
   font-size: var(--text-small-size);
