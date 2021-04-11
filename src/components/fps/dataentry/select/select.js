@@ -121,10 +121,10 @@ export default function Select(props) {
                 const convDef = []  
                 def.forEach(j => { 
                     if (props.options.filter(i => i.key == j)[0]) { convDef.push(props.options.filter(i => i.key == j)[0]) } 
-                    }
+                    } 
                 )
-                console.log('эвы чо епта')
-                console.log(convDef)
+                // console.log('эвы чо епта')
+                // console.log(convDef)
                 return convDef
             }
             else {
