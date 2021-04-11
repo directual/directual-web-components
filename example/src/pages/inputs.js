@@ -144,15 +144,28 @@ export default function InputsPage() {
             <Input type='multiselect' 
             defaultValue={['id','хуе-мое']}
             options ={[
-    {
-        "key": "id",
-        "value": "id"
-    },
-    {
-        "key": "value",
-        "value": "Страна"
-    }
-]} />
+                {
+                    "key": "id",
+                    "value": "id"
+                },
+                {
+                    "key": "api_version",
+                    "value": ""
+                },
+                {
+                    "key": "release_date",
+                    "value": "Release date"
+                },
+                {
+                    "key": "updates",
+                    "value": "Updates"
+                },
+                {
+                    "key": "ui_version",
+                    "value": ""
+                },
+                null
+            ]} />
 
 
             <Input type='markdown' edit example/>

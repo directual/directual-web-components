@@ -120,7 +120,8 @@ export default function Select(props) {
             if (Array.isArray(def)) {
                 const convDef = []  
                 def.forEach(j => { 
-                    if (props.options.filter(i => i && i.key == j)[0]) { convDef.push(props.options.filter(i => i.key == j)[0]) } 
+                    if (props.options.filter(i => i && i.key == j)[0]) {
+                        convDef.push(props.options.filter(i => i && i.key == j)[0]) } 
                     } 
                 )
                 // console.log('эвы чо епта')
@@ -139,7 +140,7 @@ export default function Select(props) {
     const [value, setValue] = useState((props.defaultValue && convertDefaultValue(props.defaultValue)) || (props.multi && []) || null);
     const inputEl = useRef(null);
     const [filter, setFilter] = useState('')
-    const [filteredOptions, setFilteredOptions] = useState(props.options || [])
+    const [filteredOptions, setFilteredOptions] = useState(props.options ? props.options.filter(i => i && i.key) : [])
     const [keySelected, setKeySelected] = useState()
     const selectRef = useRef(null);
 
@@ -182,6 +183,9 @@ export default function Select(props) {
     useEffect(() => {
         if (props.options) {
             FO = props.options.filter(el => {
+                if (!el || !el.key)  { 
+                    return false 
+                } 
                 try {return (String(el.value).toLowerCase().match(new RegExp(String(filter).toLowerCase())) || String(el.key).toLowerCase().match(new RegExp(String(filter).toLowerCase())))}
                 catch(e) {
                     console.log(e)
