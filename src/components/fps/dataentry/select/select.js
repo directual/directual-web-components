@@ -120,7 +120,7 @@ export default function Select(props) {
             if (Array.isArray(def)) {
                 const convDef = []  
                 def.forEach(j => { 
-                    if (props.options.filter(i => i.key == j)[0]) { convDef.push(props.options.filter(i => i.key == j)[0]) } 
+                    if (props.options.filter(i => i && i.key == j)[0]) { convDef.push(props.options.filter(i => i.key == j)[0]) } 
                     } 
                 )
                 // console.log('эвы чо епта')
