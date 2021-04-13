@@ -2289,71 +2289,113 @@ const App = (props) => {
     ]
 }
   let newCardActions = {
-    "sl": "getAll",
-    "pageSize": "10",
+    "sl": "callsList",
+    "pageSize": "50",
     "headerField": null,
     "params": {
         "cardListLayout": "grid",
-        "cardHeaderComment": "year",
+        "cardHeaderComment": "sourceFromTags",
         "deleteField": "",
-        "cardBodyText": "description",
+        "cardBodyText": "phone",
         "cardImage": false,
         "cardImageField": "",
         "cardImageType": "none",
         "cardImageSize": 100,
         "objectView": {},
+        "showCounter": false,
+        "counterField": null,
+        "counterText": null,
         "data": {
             "readFields": [
                 {
-                    "fieldSysName": "actor_ids",
+                    "fieldSysName": "agentID",
                     "fetch": [],
-                    "sysName": "actor_ids",
-                    "name": "Актеры",
-                    "dataType": "arrayLink",
+                    "sysName": "agentID",
+                    "name": "Агент",
+                    "dataType": "link",
                     "format": "",
                     "formatOptions": {},
-                    "link": "person"
+                    "link": "Agents"
                 },
                 {
-                    "fieldSysName": "description",
+                    "fieldSysName": "callType",
                     "fetch": [],
-                    "sysName": "description",
-                    "name": "Описание",
+                    "sysName": "callType",
+                    "name": "Тип звонка",
                     "dataType": "string",
                     "format": "",
                     "formatOptions": {},
                     "link": null
                 },
                 {
-                    "fieldSysName": "director_id",
+                    "fieldSysName": "calling_number",
                     "fetch": [],
-                    "sysName": "director_id",
-                    "name": "Режиссер",
+                    "sysName": "calling_number",
+                    "name": "Звонок на телефон",
+                    "dataType": "string",
+                    "format": "phone",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "client",
+                    "fetch": [],
+                    "sysName": "client",
+                    "name": "Клиент",
                     "dataType": "link",
                     "format": "",
                     "formatOptions": {},
-                    "link": "person"
+                    "link": "Clients"
                 },
                 {
-                    "fieldSysName": "genre_ids",
-                    "fetch": [
-                        {
-                            "fieldSysName": "id",
-                            "condition": null,
-                            "fetch": []
-                        },
-                        {
-                            "fieldSysName": "name",
-                            "condition": null,
-                            "fetch": []
-                        }
-                    ],
-                    "sysName": "genre_ids",
-                    "name": "Жанры",
-                    "dataType": "arrayLink",
+                    "fieldSysName": "dateEnd",
+                    "fetch": [],
+                    "sysName": "dateEnd",
+                    "name": "Конец",
+                    "dataType": "date",
                     "format": "",
                     "formatOptions": {},
-                    "link": "genre"
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "dateStart",
+                    "fetch": [],
+                    "sysName": "dateStart",
+                    "name": "Начало",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "duration",
+                    "fetch": [],
+                    "sysName": "duration",
+                    "name": "Длительность",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "durationToCheck",
+                    "fetch": [],
+                    "sysName": "durationToCheck",
+                    "name": "durationToCheck",
+                    "dataType": "number",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "firstUrl",
+                    "fetch": [],
+                    "sysName": "firstUrl",
+                    "name": "URL входа",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": null
                 },
                 {
                     "fieldSysName": "id",
@@ -2366,42 +2408,132 @@ const App = (props) => {
                     "link": ""
                 },
                 {
-                    "fieldSysName": "name",
+                    "fieldSysName": "phone",
                     "fetch": [],
-                    "sysName": "name",
-                    "name": "Название",
+                    "sysName": "phone",
+                    "name": "Телефон",
+                    "dataType": "string",
+                    "format": "phone",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "source",
+                    "fetch": [],
+                    "sysName": "source",
+                    "name": "Источник",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "source"
+                },
+                {
+                    "fieldSysName": "sourceFromTags",
+                    "fetch": [],
+                    "sysName": "sourceFromTags",
+                    "name": "Источник",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "type_of_source",
+                    "fetch": [],
+                    "sysName": "type_of_source",
+                    "name": "Тип источника",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "url",
+                    "fetch": [],
+                    "sysName": "url",
+                    "name": "URL звонка",
                     "dataType": "string",
                     "format": "",
                     "formatOptions": {},
                     "link": null
                 },
                 {
-                    "fieldSysName": "year",
+                    "fieldSysName": "utmCampaign",
                     "fetch": [],
-                    "sysName": "year",
-                    "name": "Год",
-                    "dataType": "number",
-                    "format": "positiveNum",
+                    "sysName": "utmCampaign",
+                    "name": "UTM Campaign",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": null
+                },
+                {
+                    "fieldSysName": "utmContent",
+                    "fetch": [],
+                    "sysName": "utmContent",
+                    "name": "UTM Content",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": null
+                },
+                {
+                    "fieldSysName": "utmMedium",
+                    "fetch": [],
+                    "sysName": "utmMedium",
+                    "name": "UTM Medium",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": null
+                },
+                {
+                    "fieldSysName": "utmSource",
+                    "fetch": [],
+                    "sysName": "utmSource",
+                    "name": "UTM Источник",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "utmTerm",
+                    "fetch": [],
+                    "sysName": "utmTerm",
+                    "name": "UTM Term",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": null
+                },
+                {
+                    "fieldSysName": "waitDuration",
+                    "fetch": [],
+                    "sysName": "waitDuration",
+                    "name": "Ожидание",
+                    "dataType": "string",
+                    "format": "",
                     "formatOptions": {},
                     "link": ""
                 }
             ],
             "writeFields": [],
             "fields": {
-                "actor_ids": {
-                    "id": "actor_ids",
-                    "content": "Актеры",
+                "agentID": {
+                    "id": "agentID",
+                    "content": "Агент",
                     "type": "field",
-                    "dataType": "arrayLink",
+                    "dataType": "link",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
-                    "link": "person",
+                    "link": "Agents",
                     "actions": []
                 },
-                "description": {
-                    "id": "description",
-                    "content": "Описание",
+                "callType": {
+                    "id": "callType",
+                    "content": "Тип звонка",
                     "type": "field",
                     "dataType": "string",
                     "format": "",
@@ -2410,26 +2542,711 @@ const App = (props) => {
                     "link": null,
                     "actions": []
                 },
-                "director_id": {
-                    "id": "director_id",
-                    "content": "Режиссер",
+                "calling_number": {
+                    "id": "calling_number",
+                    "content": "Звонок на телефон",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "phone",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "client": {
+                    "id": "client",
+                    "content": "Клиент",
                     "type": "field",
                     "dataType": "link",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
-                    "link": "person",
-                    "actions": []
+                    "link": "Clients",
+                    "actions": [
+                        {
+                            "sysName": "formToContract",
+                            "id": "87171618274035063",
+                            "name": "New action",
+                            "displayAs": "form",
+                            "SLtype": "other",
+                            "fields": {
+                                "readFields": [
+                                    {
+                                        "fieldSysName": "@who",
+                                        "fetch": [],
+                                        "sysName": "@who",
+                                        "name": "who changed",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "contractFile",
+                                        "fetch": [],
+                                        "sysName": "contractFile",
+                                        "name": "Договор",
+                                        "dataType": "file",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "contractSum",
+                                        "fetch": [],
+                                        "sysName": "contractSum",
+                                        "name": "Сумма по договору",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "contracter",
+                                        "fetch": [],
+                                        "sysName": "contracter",
+                                        "name": "Принял договор",
+                                        "dataType": "link",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": "WebUser"
+                                    },
+                                    {
+                                        "fieldSysName": "date",
+                                        "fetch": [],
+                                        "sysName": "date",
+                                        "name": "Дата",
+                                        "dataType": "date",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "deceased",
+                                        "fetch": [],
+                                        "sysName": "deceased",
+                                        "name": "Покойный",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "discount",
+                                        "fetch": [],
+                                        "sysName": "discount",
+                                        "name": "Скидка",
+                                        "dataType": "link",
+                                        "format": "",
+                                        "formatOptions": {
+                                            "customOptionLabel": "Другое",
+                                            "keyValue": {
+                                                "key": "key",
+                                                "value": "value",
+                                                "button": "One more"
+                                            },
+                                            "unitName": "%",
+                                            "booleanOptions": [
+                                                "True",
+                                                "False"
+                                            ],
+                                            "customOption": true,
+                                            "customOptionPlaceholder": "Размер скидки",
+                                            "range": {
+                                                "min": 0,
+                                                "max": 25,
+                                                "step": 5
+                                            },
+                                            "customOptionType": "number",
+                                            "multipleChoice": [
+                                                {
+                                                    "value": "0",
+                                                    "label": "0%"
+                                                },
+                                                {
+                                                    "value": "5",
+                                                    "label": "5%"
+                                                },
+                                                {
+                                                    "value": "10",
+                                                    "label": "10%"
+                                                },
+                                                {
+                                                    "value": "15",
+                                                    "label": "15%"
+                                                },
+                                                {
+                                                    "value": "20",
+                                                    "label": "20%"
+                                                }
+                                            ]
+                                        },
+                                        "link": "discounts"
+                                    },
+                                    {
+                                        "fieldSysName": "email",
+                                        "fetch": [],
+                                        "sysName": "email",
+                                        "name": "E-mail",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "fullName",
+                                        "fetch": [],
+                                        "sysName": "fullName",
+                                        "name": "ФИО",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": null
+                                    },
+                                    {
+                                        "fieldSysName": "hallAdress",
+                                        "fetch": [],
+                                        "sysName": "hallAdress",
+                                        "name": "Трапезная",
+                                        "dataType": "link",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": "restoran"
+                                    },
+                                    {
+                                        "fieldSysName": "homeAdress",
+                                        "fetch": [],
+                                        "sysName": "homeAdress",
+                                        "name": "Адрес прописки",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "id",
+                                        "fetch": [],
+                                        "sysName": "id",
+                                        "name": "id",
+                                        "dataType": "id",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "menu",
+                                        "fetch": [],
+                                        "sysName": "menu",
+                                        "name": "Меню",
+                                        "dataType": "link",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": "menu"
+                                    },
+                                    {
+                                        "fieldSysName": "passportGivenBy",
+                                        "fetch": [],
+                                        "sysName": "passportGivenBy",
+                                        "name": "Выдан кем",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "passportGivenWhen",
+                                        "fetch": [],
+                                        "sysName": "passportGivenWhen",
+                                        "name": "Выдан когда",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "passportNumber",
+                                        "fetch": [],
+                                        "sysName": "passportNumber",
+                                        "name": "№ паспорта",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "persons",
+                                        "fetch": [],
+                                        "sysName": "persons",
+                                        "name": "Гостей",
+                                        "dataType": "number",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "phone",
+                                        "fetch": [],
+                                        "sysName": "phone",
+                                        "name": "Телефон",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "prePayment",
+                                        "fetch": [],
+                                        "sysName": "prePayment",
+                                        "name": "Предоплата",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "serviceFee",
+                                        "fetch": [],
+                                        "sysName": "serviceFee",
+                                        "name": "Сбор",
+                                        "dataType": "link",
+                                        "format": "",
+                                        "formatOptions": {
+                                            "customOptionLabel": "Другое",
+                                            "keyValue": {
+                                                "key": "key",
+                                                "value": "value",
+                                                "button": "One more"
+                                            },
+                                            "booleanOptions": [
+                                                "True",
+                                                "False"
+                                            ],
+                                            "customOption": true,
+                                            "customOptionPlaceholder": "Введите % за обслуживание",
+                                            "range": {},
+                                            "customOptionType": "number",
+                                            "multipleChoice": [
+                                                {
+                                                    "value": "10",
+                                                    "label": "Сбор 10%"
+                                                },
+                                                {
+                                                    "value": "0",
+                                                    "label": "Без сбора"
+                                                }
+                                            ]
+                                        },
+                                        "link": "serviceFee"
+                                    },
+                                    {
+                                        "fieldSysName": "source",
+                                        "fetch": [],
+                                        "sysName": "source",
+                                        "name": "Источник",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "status",
+                                        "fetch": [],
+                                        "sysName": "status",
+                                        "name": "Статус",
+                                        "dataType": "link",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": "eventStatus"
+                                    },
+                                    {
+                                        "fieldSysName": "time",
+                                        "fetch": [],
+                                        "sysName": "time",
+                                        "name": "Время",
+                                        "dataType": "date",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    }
+                                ],
+                                "writeFields": [
+                                    {
+                                        "fieldSysName": "@who",
+                                        "fetch": [],
+                                        "sysName": "@who",
+                                        "name": "who changed",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "contractFile",
+                                        "fetch": [],
+                                        "sysName": "contractFile",
+                                        "name": "Договор",
+                                        "dataType": "file",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "contractSum",
+                                        "fetch": [],
+                                        "sysName": "contractSum",
+                                        "name": "Сумма по договору",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "contracter",
+                                        "fetch": [],
+                                        "sysName": "contracter",
+                                        "name": "Принял договор",
+                                        "dataType": "link",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": "WebUser"
+                                    },
+                                    {
+                                        "fieldSysName": "date",
+                                        "fetch": [],
+                                        "sysName": "date",
+                                        "name": "Дата",
+                                        "dataType": "date",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "deceased",
+                                        "fetch": [],
+                                        "sysName": "deceased",
+                                        "name": "Покойный",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "discount",
+                                        "fetch": [],
+                                        "sysName": "discount",
+                                        "name": "Скидка",
+                                        "dataType": "link",
+                                        "format": "",
+                                        "formatOptions": {
+                                            "customOptionLabel": "Другое",
+                                            "keyValue": {
+                                                "key": "key",
+                                                "value": "value",
+                                                "button": "One more"
+                                            },
+                                            "unitName": "%",
+                                            "booleanOptions": [
+                                                "True",
+                                                "False"
+                                            ],
+                                            "customOption": true,
+                                            "customOptionPlaceholder": "Размер скидки",
+                                            "range": {
+                                                "min": 0,
+                                                "max": 25,
+                                                "step": 5
+                                            },
+                                            "customOptionType": "number",
+                                            "multipleChoice": [
+                                                {
+                                                    "value": "0",
+                                                    "label": "0%"
+                                                },
+                                                {
+                                                    "value": "5",
+                                                    "label": "5%"
+                                                },
+                                                {
+                                                    "value": "10",
+                                                    "label": "10%"
+                                                },
+                                                {
+                                                    "value": "15",
+                                                    "label": "15%"
+                                                },
+                                                {
+                                                    "value": "20",
+                                                    "label": "20%"
+                                                }
+                                            ]
+                                        },
+                                        "link": "discounts"
+                                    },
+                                    {
+                                        "fieldSysName": "email",
+                                        "fetch": [],
+                                        "sysName": "email",
+                                        "name": "E-mail",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "fullName",
+                                        "fetch": [],
+                                        "sysName": "fullName",
+                                        "name": "ФИО",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": null
+                                    },
+                                    {
+                                        "fieldSysName": "hallAdress",
+                                        "fetch": [],
+                                        "sysName": "hallAdress",
+                                        "name": "Трапезная",
+                                        "dataType": "link",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": "restoran"
+                                    },
+                                    {
+                                        "fieldSysName": "homeAdress",
+                                        "fetch": [],
+                                        "sysName": "homeAdress",
+                                        "name": "Адрес прописки",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "id",
+                                        "fetch": [],
+                                        "sysName": "id",
+                                        "name": "id",
+                                        "dataType": "id",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "menu",
+                                        "fetch": [],
+                                        "sysName": "menu",
+                                        "name": "Меню",
+                                        "dataType": "link",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": "menu"
+                                    },
+                                    {
+                                        "fieldSysName": "passportGivenBy",
+                                        "fetch": [],
+                                        "sysName": "passportGivenBy",
+                                        "name": "Выдан кем",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "passportGivenWhen",
+                                        "fetch": [],
+                                        "sysName": "passportGivenWhen",
+                                        "name": "Выдан когда",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "passportNumber",
+                                        "fetch": [],
+                                        "sysName": "passportNumber",
+                                        "name": "№ паспорта",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "persons",
+                                        "fetch": [],
+                                        "sysName": "persons",
+                                        "name": "Гостей",
+                                        "dataType": "number",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "phone",
+                                        "fetch": [],
+                                        "sysName": "phone",
+                                        "name": "Телефон",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "prePayment",
+                                        "fetch": [],
+                                        "sysName": "prePayment",
+                                        "name": "Предоплата",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "serviceFee",
+                                        "fetch": [],
+                                        "sysName": "serviceFee",
+                                        "name": "Сбор",
+                                        "dataType": "link",
+                                        "format": "",
+                                        "formatOptions": {
+                                            "customOptionLabel": "Другое",
+                                            "keyValue": {
+                                                "key": "key",
+                                                "value": "value",
+                                                "button": "One more"
+                                            },
+                                            "booleanOptions": [
+                                                "True",
+                                                "False"
+                                            ],
+                                            "customOption": true,
+                                            "customOptionPlaceholder": "Введите % за обслуживание",
+                                            "range": {},
+                                            "customOptionType": "number",
+                                            "multipleChoice": [
+                                                {
+                                                    "value": "10",
+                                                    "label": "Сбор 10%"
+                                                },
+                                                {
+                                                    "value": "0",
+                                                    "label": "Без сбора"
+                                                }
+                                            ]
+                                        },
+                                        "link": "serviceFee"
+                                    },
+                                    {
+                                        "fieldSysName": "source",
+                                        "fetch": [],
+                                        "sysName": "source",
+                                        "name": "Источник",
+                                        "dataType": "string",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    },
+                                    {
+                                        "fieldSysName": "status",
+                                        "fetch": [],
+                                        "sysName": "status",
+                                        "name": "Статус",
+                                        "dataType": "link",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": "eventStatus"
+                                    },
+                                    {
+                                        "fieldSysName": "time",
+                                        "fetch": [],
+                                        "sysName": "time",
+                                        "name": "Время",
+                                        "dataType": "date",
+                                        "format": "",
+                                        "formatOptions": {},
+                                        "link": ""
+                                    }
+                                ]
+                            },
+                            "callFrom": "linked",
+                            "callFromField": "client",
+                            "closePopup": false,
+                            "dropdown": true,
+                            "buttonTitle": "Добавить",
+                            "buttonIcon": "academy",
+                            "formFields": [
+                                {
+                                    "id": "22581618320181957"
+                                },
+                                {
+                                    "id": "28571618320203818"
+                                }
+                            ],
+                            "formMapping": [
+                                {
+                                    "id": "34271618320206989",
+                                    "target": "hallAdress",
+                                    "type": "objectField",
+                                    "value": null
+                                }
+                            ]
+                        }
+                    ]
                 },
-                "genre_ids": {
-                    "id": "genre_ids",
-                    "content": "Жанры",
+                "dateEnd": {
+                    "id": "dateEnd",
+                    "content": "Конец",
                     "type": "field",
-                    "dataType": "arrayLink",
+                    "dataType": "date",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
-                    "link": "genre",
+                    "link": "",
+                    "actions": []
+                },
+                "dateStart": {
+                    "id": "dateStart",
+                    "content": "Начало",
+                    "type": "field",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "duration": {
+                    "id": "duration",
+                    "content": "Длительность",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "durationToCheck": {
+                    "id": "durationToCheck",
+                    "content": "durationToCheck",
+                    "type": "field",
+                    "dataType": "number",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "firstUrl": {
+                    "id": "firstUrl",
+                    "content": "URL входа",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": null,
                     "actions": []
                 },
                 "id": {
@@ -2443,9 +3260,53 @@ const App = (props) => {
                     "link": "",
                     "actions": []
                 },
-                "name": {
-                    "id": "name",
-                    "content": "Название",
+                "phone": {
+                    "id": "phone",
+                    "content": "Телефон",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "phone",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "source": {
+                    "id": "source",
+                    "content": "Источник",
+                    "type": "field",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "source",
+                    "actions": []
+                },
+                "sourceFromTags": {
+                    "id": "sourceFromTags",
+                    "content": "Источник",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "type_of_source": {
+                    "id": "type_of_source",
+                    "content": "Тип источника",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "url": {
+                    "id": "url",
+                    "content": "URL звонка",
                     "type": "field",
                     "dataType": "string",
                     "format": "",
@@ -2454,12 +3315,67 @@ const App = (props) => {
                     "link": null,
                     "actions": []
                 },
-                "year": {
-                    "id": "year",
-                    "content": "Год",
+                "utmCampaign": {
+                    "id": "utmCampaign",
+                    "content": "UTM Campaign",
                     "type": "field",
-                    "dataType": "number",
-                    "format": "positiveNum",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": null,
+                    "actions": []
+                },
+                "utmContent": {
+                    "id": "utmContent",
+                    "content": "UTM Content",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": null,
+                    "actions": []
+                },
+                "utmMedium": {
+                    "id": "utmMedium",
+                    "content": "UTM Medium",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": null,
+                    "actions": []
+                },
+                "utmSource": {
+                    "id": "utmSource",
+                    "content": "UTM Источник",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "utmTerm": {
+                    "id": "utmTerm",
+                    "content": "UTM Term",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": null,
+                    "actions": []
+                },
+                "waitDuration": {
+                    "id": "waitDuration",
+                    "content": "Ожидание",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
                     "formatOptions": {},
                     "read": true,
                     "link": "",
@@ -2467,28 +3383,90 @@ const App = (props) => {
                 }
             },
             "fieldParams": {
-                "actor_ids": {
+                "@dateChanged": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "@dateCreated": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "@who": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "callType": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "description": {
+                "calling_number": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "director_id": {
+                "client": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "action__87171618274035063": {
+                                "id": "action__87171618274035063",
+                                "content": "New action",
+                                "type": "action"
+                            }
+                        },
+                        "fieldParams": {},
+                        "fieldOrder": [
+                            "action__87171618274035063"
+                        ]
+                    }
+                },
+                "dateEnd": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "genre_ids": {
+                "dateStart": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "duration": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "durationToCheck": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "firstUrl": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -2502,14 +3480,84 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "name": {
+                "phone": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "year": {
+                "source": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "type_of_source": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "url": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "utmCampaign": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "utmContent": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "utmMedium": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "utmSource": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "utmTerm": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "waitDuration": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "agentID": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "sourceFromTags": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -2522,44 +3570,750 @@ const App = (props) => {
                     "id": "tab-1",
                     "title": "New section",
                     "fieldIds": [
-                        "actor_ids",
-                        "description",
-                        "director_id",
-                        "genre_ids",
+                        "client",
+                        "callType",
+                        "calling_number",
+                        "dateEnd",
+                        "dateStart",
+                        "durationToCheck",
+                        "firstUrl",
                         "id",
-                        "name",
-                        "year"
+                        "phone",
+                        "source",
+                        "type_of_source",
+                        "url",
+                        "utmCampaign",
+                        "utmContent",
+                        "utmMedium",
+                        "utmSource",
+                        "utmTerm",
+                        "waitDuration",
+                        "duration",
+                        "agentID",
+                        "sourceFromTags"
                     ]
                 }
             },
             "columnOrder": [
                 "tab-1"
             ],
-            "actions": {}
+            "actions": [
+                {
+                    "sysName": "formToContract",
+                    "id": "87171618274035063",
+                    "name": "New action",
+                    "displayAs": "form",
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "@who",
+                                "fetch": [],
+                                "sysName": "@who",
+                                "name": "who changed",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "contractFile",
+                                "fetch": [],
+                                "sysName": "contractFile",
+                                "name": "Договор",
+                                "dataType": "file",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "contractSum",
+                                "fetch": [],
+                                "sysName": "contractSum",
+                                "name": "Сумма по договору",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "contracter",
+                                "fetch": [],
+                                "sysName": "contracter",
+                                "name": "Принял договор",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            },
+                            {
+                                "fieldSysName": "date",
+                                "fetch": [],
+                                "sysName": "date",
+                                "name": "Дата",
+                                "dataType": "date",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "deceased",
+                                "fetch": [],
+                                "sysName": "deceased",
+                                "name": "Покойный",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "discount",
+                                "fetch": [],
+                                "sysName": "discount",
+                                "name": "Скидка",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {
+                                    "customOptionLabel": "Другое",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "unitName": "%",
+                                    "booleanOptions": [
+                                        "True",
+                                        "False"
+                                    ],
+                                    "customOption": true,
+                                    "customOptionPlaceholder": "Размер скидки",
+                                    "range": {
+                                        "min": 0,
+                                        "max": 25,
+                                        "step": 5
+                                    },
+                                    "customOptionType": "number",
+                                    "multipleChoice": [
+                                        {
+                                            "value": "0",
+                                            "label": "0%"
+                                        },
+                                        {
+                                            "value": "5",
+                                            "label": "5%"
+                                        },
+                                        {
+                                            "value": "10",
+                                            "label": "10%"
+                                        },
+                                        {
+                                            "value": "15",
+                                            "label": "15%"
+                                        },
+                                        {
+                                            "value": "20",
+                                            "label": "20%"
+                                        }
+                                    ]
+                                },
+                                "link": "discounts"
+                            },
+                            {
+                                "fieldSysName": "email",
+                                "fetch": [],
+                                "sysName": "email",
+                                "name": "E-mail",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "fullName",
+                                "fetch": [],
+                                "sysName": "fullName",
+                                "name": "ФИО",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": null
+                            },
+                            {
+                                "fieldSysName": "hallAdress",
+                                "fetch": [],
+                                "sysName": "hallAdress",
+                                "name": "Трапезная",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "restoran"
+                            },
+                            {
+                                "fieldSysName": "homeAdress",
+                                "fetch": [],
+                                "sysName": "homeAdress",
+                                "name": "Адрес прописки",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "menu",
+                                "fetch": [],
+                                "sysName": "menu",
+                                "name": "Меню",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "menu"
+                            },
+                            {
+                                "fieldSysName": "passportGivenBy",
+                                "fetch": [],
+                                "sysName": "passportGivenBy",
+                                "name": "Выдан кем",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "passportGivenWhen",
+                                "fetch": [],
+                                "sysName": "passportGivenWhen",
+                                "name": "Выдан когда",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "passportNumber",
+                                "fetch": [],
+                                "sysName": "passportNumber",
+                                "name": "№ паспорта",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "persons",
+                                "fetch": [],
+                                "sysName": "persons",
+                                "name": "Гостей",
+                                "dataType": "number",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "phone",
+                                "fetch": [],
+                                "sysName": "phone",
+                                "name": "Телефон",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "prePayment",
+                                "fetch": [],
+                                "sysName": "prePayment",
+                                "name": "Предоплата",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "serviceFee",
+                                "fetch": [],
+                                "sysName": "serviceFee",
+                                "name": "Сбор",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {
+                                    "customOptionLabel": "Другое",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "booleanOptions": [
+                                        "True",
+                                        "False"
+                                    ],
+                                    "customOption": true,
+                                    "customOptionPlaceholder": "Введите % за обслуживание",
+                                    "range": {},
+                                    "customOptionType": "number",
+                                    "multipleChoice": [
+                                        {
+                                            "value": "10",
+                                            "label": "Сбор 10%"
+                                        },
+                                        {
+                                            "value": "0",
+                                            "label": "Без сбора"
+                                        }
+                                    ]
+                                },
+                                "link": "serviceFee"
+                            },
+                            {
+                                "fieldSysName": "source",
+                                "fetch": [],
+                                "sysName": "source",
+                                "name": "Источник",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "status",
+                                "fetch": [],
+                                "sysName": "status",
+                                "name": "Статус",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "eventStatus"
+                            },
+                            {
+                                "fieldSysName": "time",
+                                "fetch": [],
+                                "sysName": "time",
+                                "name": "Время",
+                                "dataType": "date",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "@who",
+                                "fetch": [],
+                                "sysName": "@who",
+                                "name": "who changed",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "contractFile",
+                                "fetch": [],
+                                "sysName": "contractFile",
+                                "name": "Договор",
+                                "dataType": "file",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "contractSum",
+                                "fetch": [],
+                                "sysName": "contractSum",
+                                "name": "Сумма по договору",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "contracter",
+                                "fetch": [],
+                                "sysName": "contracter",
+                                "name": "Принял договор",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            },
+                            {
+                                "fieldSysName": "date",
+                                "fetch": [],
+                                "sysName": "date",
+                                "name": "Дата",
+                                "dataType": "date",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "deceased",
+                                "fetch": [],
+                                "sysName": "deceased",
+                                "name": "Покойный",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "discount",
+                                "fetch": [],
+                                "sysName": "discount",
+                                "name": "Скидка",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {
+                                    "customOptionLabel": "Другое",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "unitName": "%",
+                                    "booleanOptions": [
+                                        "True",
+                                        "False"
+                                    ],
+                                    "customOption": true,
+                                    "customOptionPlaceholder": "Размер скидки",
+                                    "range": {
+                                        "min": 0,
+                                        "max": 25,
+                                        "step": 5
+                                    },
+                                    "customOptionType": "number",
+                                    "multipleChoice": [
+                                        {
+                                            "value": "0",
+                                            "label": "0%"
+                                        },
+                                        {
+                                            "value": "5",
+                                            "label": "5%"
+                                        },
+                                        {
+                                            "value": "10",
+                                            "label": "10%"
+                                        },
+                                        {
+                                            "value": "15",
+                                            "label": "15%"
+                                        },
+                                        {
+                                            "value": "20",
+                                            "label": "20%"
+                                        }
+                                    ]
+                                },
+                                "link": "discounts"
+                            },
+                            {
+                                "fieldSysName": "email",
+                                "fetch": [],
+                                "sysName": "email",
+                                "name": "E-mail",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "fullName",
+                                "fetch": [],
+                                "sysName": "fullName",
+                                "name": "ФИО",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": null
+                            },
+                            {
+                                "fieldSysName": "hallAdress",
+                                "fetch": [],
+                                "sysName": "hallAdress",
+                                "name": "Трапезная",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "restoran"
+                            },
+                            {
+                                "fieldSysName": "homeAdress",
+                                "fetch": [],
+                                "sysName": "homeAdress",
+                                "name": "Адрес прописки",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "menu",
+                                "fetch": [],
+                                "sysName": "menu",
+                                "name": "Меню",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "menu"
+                            },
+                            {
+                                "fieldSysName": "passportGivenBy",
+                                "fetch": [],
+                                "sysName": "passportGivenBy",
+                                "name": "Выдан кем",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "passportGivenWhen",
+                                "fetch": [],
+                                "sysName": "passportGivenWhen",
+                                "name": "Выдан когда",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "passportNumber",
+                                "fetch": [],
+                                "sysName": "passportNumber",
+                                "name": "№ паспорта",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "persons",
+                                "fetch": [],
+                                "sysName": "persons",
+                                "name": "Гостей",
+                                "dataType": "number",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "phone",
+                                "fetch": [],
+                                "sysName": "phone",
+                                "name": "Телефон",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "prePayment",
+                                "fetch": [],
+                                "sysName": "prePayment",
+                                "name": "Предоплата",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "serviceFee",
+                                "fetch": [],
+                                "sysName": "serviceFee",
+                                "name": "Сбор",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {
+                                    "customOptionLabel": "Другое",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "booleanOptions": [
+                                        "True",
+                                        "False"
+                                    ],
+                                    "customOption": true,
+                                    "customOptionPlaceholder": "Введите % за обслуживание",
+                                    "range": {},
+                                    "customOptionType": "number",
+                                    "multipleChoice": [
+                                        {
+                                            "value": "10",
+                                            "label": "Сбор 10%"
+                                        },
+                                        {
+                                            "value": "0",
+                                            "label": "Без сбора"
+                                        }
+                                    ]
+                                },
+                                "link": "serviceFee"
+                            },
+                            {
+                                "fieldSysName": "source",
+                                "fetch": [],
+                                "sysName": "source",
+                                "name": "Источник",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "status",
+                                "fetch": [],
+                                "sysName": "status",
+                                "name": "Статус",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "eventStatus"
+                            },
+                            {
+                                "fieldSysName": "time",
+                                "fetch": [],
+                                "sysName": "time",
+                                "name": "Время",
+                                "dataType": "date",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ]
+                    },
+                    "callFrom": "linked",
+                    "callFromField": "client",
+                    "closePopup": false,
+                    "dropdown": true,
+                    "buttonTitle": "Добавить",
+                    "buttonIcon": "academy",
+                    "formFields": [
+                        {
+                            "id": "22581618320181957"
+                        },
+                        {
+                            "id": "28571618320203818"
+                        }
+                    ],
+                    "formMapping": [
+                        {
+                            "id": "34271618320206989",
+                            "target": "hallAdress",
+                            "type": "objectField",
+                            "value": null
+                        }
+                    ]
+                }
+            ]
         },
         "fields": {
-            "actor_ids": {
+            "@dateChanged": {
+                "include": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "@dateCreated": {
+                "include": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "@who": {
+                "include": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "callType": {
                 "include": true,
                 "fileImageFormat": "square",
                 "quickSearch": false,
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "description": {
+            "calling_number": {
                 "include": true,
                 "fileImageFormat": "square",
                 "quickSearch": false,
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "director_id": {
+            "client": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": true,
+                "configureLinkedCard": {
+                    "fields": {
+                        "action__87171618274035063": {
+                            "id": "action__87171618274035063",
+                            "content": "New action",
+                            "type": "action"
+                        }
+                    },
+                    "fieldParams": {},
+                    "fieldOrder": [
+                        "action__87171618274035063"
+                    ]
+                }
+            },
+            "dateEnd": {
                 "include": true,
                 "fileImageFormat": "square",
                 "quickSearch": false,
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "genre_ids": {
+            "dateStart": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "duration": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "durationToCheck": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "firstUrl": {
                 "include": true,
                 "fileImageFormat": "square",
                 "quickSearch": false,
@@ -2573,14 +4327,84 @@ const App = (props) => {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "name": {
+            "phone": {
                 "include": true,
                 "fileImageFormat": "square",
                 "quickSearch": false,
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "year": {
+            "source": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "type_of_source": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "url": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "utmCampaign": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "utmContent": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "utmMedium": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "utmSource": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "utmTerm": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "waitDuration": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "agentID": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "sourceFromTags": {
                 "include": true,
                 "fileImageFormat": "square",
                 "quickSearch": false,
@@ -2588,80 +4412,654 @@ const App = (props) => {
                 "clickable": false
             }
         },
-        "showCounter": true,
-        "counterField": "year",
-        "counterText": "год"
+        "actions": [
+            {
+                "sysName": "formToContract",
+                "id": "87171618274035063",
+                "name": "New action",
+                "displayAs": "form",
+                "SLtype": "other",
+                "fields": {
+                    "readFields": [
+                        {
+                            "fieldSysName": "@who",
+                            "fetch": [],
+                            "sysName": "@who",
+                            "name": "who changed",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "contractFile",
+                            "fetch": [],
+                            "sysName": "contractFile",
+                            "name": "Договор",
+                            "dataType": "file",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "contractSum",
+                            "fetch": [],
+                            "sysName": "contractSum",
+                            "name": "Сумма по договору",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "contracter",
+                            "fetch": [],
+                            "sysName": "contracter",
+                            "name": "Принял договор",
+                            "dataType": "link",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": "WebUser"
+                        },
+                        {
+                            "fieldSysName": "date",
+                            "fetch": [],
+                            "sysName": "date",
+                            "name": "Дата",
+                            "dataType": "date",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "deceased",
+                            "fetch": [],
+                            "sysName": "deceased",
+                            "name": "Покойный",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "discount",
+                            "fetch": [],
+                            "sysName": "discount",
+                            "name": "Скидка",
+                            "dataType": "link",
+                            "format": "",
+                            "formatOptions": {
+                                "customOptionLabel": "Другое",
+                                "keyValue": {
+                                    "key": "key",
+                                    "value": "value",
+                                    "button": "One more"
+                                },
+                                "unitName": "%",
+                                "booleanOptions": [
+                                    "True",
+                                    "False"
+                                ],
+                                "customOption": true,
+                                "customOptionPlaceholder": "Размер скидки",
+                                "range": {
+                                    "min": 0,
+                                    "max": 25,
+                                    "step": 5
+                                },
+                                "customOptionType": "number",
+                                "multipleChoice": [
+                                    {
+                                        "value": "0",
+                                        "label": "0%"
+                                    },
+                                    {
+                                        "value": "5",
+                                        "label": "5%"
+                                    },
+                                    {
+                                        "value": "10",
+                                        "label": "10%"
+                                    },
+                                    {
+                                        "value": "15",
+                                        "label": "15%"
+                                    },
+                                    {
+                                        "value": "20",
+                                        "label": "20%"
+                                    }
+                                ]
+                            },
+                            "link": "discounts"
+                        },
+                        {
+                            "fieldSysName": "email",
+                            "fetch": [],
+                            "sysName": "email",
+                            "name": "E-mail",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "fullName",
+                            "fetch": [],
+                            "sysName": "fullName",
+                            "name": "ФИО",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": null
+                        },
+                        {
+                            "fieldSysName": "hallAdress",
+                            "fetch": [],
+                            "sysName": "hallAdress",
+                            "name": "Трапезная",
+                            "dataType": "link",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": "restoran"
+                        },
+                        {
+                            "fieldSysName": "homeAdress",
+                            "fetch": [],
+                            "sysName": "homeAdress",
+                            "name": "Адрес прописки",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "id",
+                            "fetch": [],
+                            "sysName": "id",
+                            "name": "id",
+                            "dataType": "id",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "menu",
+                            "fetch": [],
+                            "sysName": "menu",
+                            "name": "Меню",
+                            "dataType": "link",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": "menu"
+                        },
+                        {
+                            "fieldSysName": "passportGivenBy",
+                            "fetch": [],
+                            "sysName": "passportGivenBy",
+                            "name": "Выдан кем",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "passportGivenWhen",
+                            "fetch": [],
+                            "sysName": "passportGivenWhen",
+                            "name": "Выдан когда",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "passportNumber",
+                            "fetch": [],
+                            "sysName": "passportNumber",
+                            "name": "№ паспорта",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "persons",
+                            "fetch": [],
+                            "sysName": "persons",
+                            "name": "Гостей",
+                            "dataType": "number",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "phone",
+                            "fetch": [],
+                            "sysName": "phone",
+                            "name": "Телефон",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "prePayment",
+                            "fetch": [],
+                            "sysName": "prePayment",
+                            "name": "Предоплата",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "serviceFee",
+                            "fetch": [],
+                            "sysName": "serviceFee",
+                            "name": "Сбор",
+                            "dataType": "link",
+                            "format": "",
+                            "formatOptions": {
+                                "customOptionLabel": "Другое",
+                                "keyValue": {
+                                    "key": "key",
+                                    "value": "value",
+                                    "button": "One more"
+                                },
+                                "booleanOptions": [
+                                    "True",
+                                    "False"
+                                ],
+                                "customOption": true,
+                                "customOptionPlaceholder": "Введите % за обслуживание",
+                                "range": {},
+                                "customOptionType": "number",
+                                "multipleChoice": [
+                                    {
+                                        "value": "10",
+                                        "label": "Сбор 10%"
+                                    },
+                                    {
+                                        "value": "0",
+                                        "label": "Без сбора"
+                                    }
+                                ]
+                            },
+                            "link": "serviceFee"
+                        },
+                        {
+                            "fieldSysName": "source",
+                            "fetch": [],
+                            "sysName": "source",
+                            "name": "Источник",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "status",
+                            "fetch": [],
+                            "sysName": "status",
+                            "name": "Статус",
+                            "dataType": "link",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": "eventStatus"
+                        },
+                        {
+                            "fieldSysName": "time",
+                            "fetch": [],
+                            "sysName": "time",
+                            "name": "Время",
+                            "dataType": "date",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        }
+                    ],
+                    "writeFields": [
+                        {
+                            "fieldSysName": "@who",
+                            "fetch": [],
+                            "sysName": "@who",
+                            "name": "who changed",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "contractFile",
+                            "fetch": [],
+                            "sysName": "contractFile",
+                            "name": "Договор",
+                            "dataType": "file",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "contractSum",
+                            "fetch": [],
+                            "sysName": "contractSum",
+                            "name": "Сумма по договору",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "contracter",
+                            "fetch": [],
+                            "sysName": "contracter",
+                            "name": "Принял договор",
+                            "dataType": "link",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": "WebUser"
+                        },
+                        {
+                            "fieldSysName": "date",
+                            "fetch": [],
+                            "sysName": "date",
+                            "name": "Дата",
+                            "dataType": "date",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "deceased",
+                            "fetch": [],
+                            "sysName": "deceased",
+                            "name": "Покойный",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "discount",
+                            "fetch": [],
+                            "sysName": "discount",
+                            "name": "Скидка",
+                            "dataType": "link",
+                            "format": "",
+                            "formatOptions": {
+                                "customOptionLabel": "Другое",
+                                "keyValue": {
+                                    "key": "key",
+                                    "value": "value",
+                                    "button": "One more"
+                                },
+                                "unitName": "%",
+                                "booleanOptions": [
+                                    "True",
+                                    "False"
+                                ],
+                                "customOption": true,
+                                "customOptionPlaceholder": "Размер скидки",
+                                "range": {
+                                    "min": 0,
+                                    "max": 25,
+                                    "step": 5
+                                },
+                                "customOptionType": "number",
+                                "multipleChoice": [
+                                    {
+                                        "value": "0",
+                                        "label": "0%"
+                                    },
+                                    {
+                                        "value": "5",
+                                        "label": "5%"
+                                    },
+                                    {
+                                        "value": "10",
+                                        "label": "10%"
+                                    },
+                                    {
+                                        "value": "15",
+                                        "label": "15%"
+                                    },
+                                    {
+                                        "value": "20",
+                                        "label": "20%"
+                                    }
+                                ]
+                            },
+                            "link": "discounts"
+                        },
+                        {
+                            "fieldSysName": "email",
+                            "fetch": [],
+                            "sysName": "email",
+                            "name": "E-mail",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "fullName",
+                            "fetch": [],
+                            "sysName": "fullName",
+                            "name": "ФИО",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": null
+                        },
+                        {
+                            "fieldSysName": "hallAdress",
+                            "fetch": [],
+                            "sysName": "hallAdress",
+                            "name": "Трапезная",
+                            "dataType": "link",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": "restoran"
+                        },
+                        {
+                            "fieldSysName": "homeAdress",
+                            "fetch": [],
+                            "sysName": "homeAdress",
+                            "name": "Адрес прописки",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "id",
+                            "fetch": [],
+                            "sysName": "id",
+                            "name": "id",
+                            "dataType": "id",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "menu",
+                            "fetch": [],
+                            "sysName": "menu",
+                            "name": "Меню",
+                            "dataType": "link",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": "menu"
+                        },
+                        {
+                            "fieldSysName": "passportGivenBy",
+                            "fetch": [],
+                            "sysName": "passportGivenBy",
+                            "name": "Выдан кем",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "passportGivenWhen",
+                            "fetch": [],
+                            "sysName": "passportGivenWhen",
+                            "name": "Выдан когда",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "passportNumber",
+                            "fetch": [],
+                            "sysName": "passportNumber",
+                            "name": "№ паспорта",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "persons",
+                            "fetch": [],
+                            "sysName": "persons",
+                            "name": "Гостей",
+                            "dataType": "number",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "phone",
+                            "fetch": [],
+                            "sysName": "phone",
+                            "name": "Телефон",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "prePayment",
+                            "fetch": [],
+                            "sysName": "prePayment",
+                            "name": "Предоплата",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "serviceFee",
+                            "fetch": [],
+                            "sysName": "serviceFee",
+                            "name": "Сбор",
+                            "dataType": "link",
+                            "format": "",
+                            "formatOptions": {
+                                "customOptionLabel": "Другое",
+                                "keyValue": {
+                                    "key": "key",
+                                    "value": "value",
+                                    "button": "One more"
+                                },
+                                "booleanOptions": [
+                                    "True",
+                                    "False"
+                                ],
+                                "customOption": true,
+                                "customOptionPlaceholder": "Введите % за обслуживание",
+                                "range": {},
+                                "customOptionType": "number",
+                                "multipleChoice": [
+                                    {
+                                        "value": "10",
+                                        "label": "Сбор 10%"
+                                    },
+                                    {
+                                        "value": "0",
+                                        "label": "Без сбора"
+                                    }
+                                ]
+                            },
+                            "link": "serviceFee"
+                        },
+                        {
+                            "fieldSysName": "source",
+                            "fetch": [],
+                            "sysName": "source",
+                            "name": "Источник",
+                            "dataType": "string",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        },
+                        {
+                            "fieldSysName": "status",
+                            "fetch": [],
+                            "sysName": "status",
+                            "name": "Статус",
+                            "dataType": "link",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": "eventStatus"
+                        },
+                        {
+                            "fieldSysName": "time",
+                            "fetch": [],
+                            "sysName": "time",
+                            "name": "Время",
+                            "dataType": "date",
+                            "format": "",
+                            "formatOptions": {},
+                            "link": ""
+                        }
+                    ]
+                },
+                "callFrom": "linked",
+                "callFromField": "client",
+                "closePopup": false,
+                "dropdown": true,
+                "buttonTitle": "Добавить",
+                "buttonIcon": "academy",
+                "formFields": [
+                    {
+                        "id": "22581618320181957"
+                    },
+                    {
+                        "id": "28571618320203818"
+                    }
+                ],
+                "formMapping": [
+                    {
+                        "id": "34271618320206989",
+                        "target": "hallAdress",
+                        "type": "objectField",
+                        "value": null
+                    }
+                ]
+            }
+        ]
     },
-    "tableTitle": "Список фильмов",
+    "tableTitle": "Звонки",
     "actions": null,
     "headers": [
         {
-            "sysName": "actor_ids",
-            "dataType": "arrayLink",
-            "name": "Актеры",
-            "id": "85541617099995713",
-            "link": "person",
-            "group": "1617099937454",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "indexExists": false,
-            "typeVariable": {},
-            "linkOrArrayLinkType": true,
-            "arrayLink": true,
-            "linkType": false,
-            "json": false
-        },
-        {
-            "sysName": "description",
-            "dataType": "string",
-            "name": "Описание",
-            "id": "62111617099056277",
-            "link": null,
-            "group": "1617098987109",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "indexExists": false,
-            "typeVariable": {},
-            "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "linkType": false,
-            "json": false
-        },
-        {
-            "sysName": "director_id",
+            "sysName": "agentID",
             "dataType": "link",
-            "name": "Режиссер",
-            "id": "68721617100033417",
-            "link": "person",
-            "group": "1617099937454",
+            "name": "Агент",
+            "id": "12971612393927266",
+            "link": "Agents",
+            "group": "1610287187145",
             "tags": null,
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 2,
+            "order": 3,
             "linkIndexFieldSysName": [],
             "defaultValue": null,
             "constraints": null,
@@ -2677,18 +5075,18 @@ const App = (props) => {
             "json": false
         },
         {
-            "sysName": "genre_ids",
-            "dataType": "arrayLink",
-            "name": "Жанры",
-            "id": "29091617099948585",
-            "link": "genre",
-            "group": "1617099937454",
+            "sysName": "callType",
+            "dataType": "string",
+            "name": "Тип звонка",
+            "id": "97531608334034546",
+            "link": null,
+            "group": "0",
             "tags": null,
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 0,
+            "order": 9,
             "linkIndexFieldSysName": [],
             "defaultValue": null,
             "constraints": null,
@@ -2698,18 +5096,153 @@ const App = (props) => {
             "groupName": null,
             "indexExists": false,
             "typeVariable": {},
-            "linkOrArrayLinkType": true,
-            "arrayLink": true,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
             "linkType": false,
             "json": false
         },
         {
-            "sysName": "id",
-            "dataType": "id",
-            "name": "id",
-            "id": "0",
+            "sysName": "calling_number",
+            "dataType": "string",
+            "name": "Звонок на телефон",
+            "id": "88691605401461485",
             "link": "",
             "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "phone",
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "json": false
+        },
+        {
+            "sysName": "client",
+            "dataType": "link",
+            "name": "Клиент",
+            "id": "37501605401391515",
+            "link": "Clients",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "linkOrArrayLinkType": true,
+            "arrayLink": false,
+            "linkType": true,
+            "json": false
+        },
+        {
+            "sysName": "dateEnd",
+            "dataType": "date",
+            "name": "Конец",
+            "id": "61431608339503598",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 13,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "json": false
+        },
+        {
+            "sysName": "dateStart",
+            "dataType": "date",
+            "name": "Начало",
+            "id": "34511608339497129",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 12,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "json": false
+        },
+        {
+            "sysName": "duration",
+            "dataType": "string",
+            "name": "Длительность",
+            "id": "49831608339519180",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 15,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "json": false
+        },
+        {
+            "sysName": "durationToCheck",
+            "dataType": "number",
+            "name": "durationToCheck",
+            "id": "20401609762146014",
+            "link": "",
+            "group": "1610287203232",
             "tags": "",
             "indexing": false,
             "ordering": false,
@@ -2731,18 +5264,18 @@ const App = (props) => {
             "json": false
         },
         {
-            "sysName": "name",
+            "sysName": "firstUrl",
             "dataType": "string",
-            "name": "Название",
-            "id": "73801617099001685",
+            "name": "URL входа",
+            "id": "63681608334047679",
             "link": null,
-            "group": "1617098987109",
+            "group": "0",
             "tags": null,
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 0,
+            "order": 11,
             "linkIndexFieldSysName": [],
             "defaultValue": null,
             "constraints": null,
@@ -2758,12 +5291,39 @@ const App = (props) => {
             "json": false
         },
         {
-            "sysName": "year",
-            "dataType": "number",
-            "name": "Год",
-            "id": "81181617099065580",
+            "sysName": "id",
+            "dataType": "id",
+            "name": "id",
+            "id": "0",
             "link": "",
-            "group": "1617098987109",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "json": false
+        },
+        {
+            "sysName": "phone",
+            "dataType": "string",
+            "name": "Телефон",
+            "id": "59641606520600951",
+            "link": "",
+            "group": "0",
             "tags": null,
             "indexing": false,
             "ordering": false,
@@ -2774,7 +5334,277 @@ const App = (props) => {
             "defaultValue": null,
             "constraints": null,
             "synthetic": false,
-            "format": "positiveNum",
+            "format": "phone",
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "json": false
+        },
+        {
+            "sysName": "source",
+            "dataType": "link",
+            "name": "Источник",
+            "id": "27621605401800993",
+            "link": "source",
+            "group": "1610287187145",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "linkOrArrayLinkType": true,
+            "arrayLink": false,
+            "linkType": true,
+            "json": false
+        },
+        {
+            "sysName": "sourceFromTags",
+            "dataType": "string",
+            "name": "Источник",
+            "id": "11321610288006354",
+            "link": "",
+            "group": "1610287187145",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "json": false
+        },
+        {
+            "sysName": "type_of_source",
+            "dataType": "string",
+            "name": "Тип источника",
+            "id": "50451605401766987",
+            "link": "",
+            "group": "1610287187145",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "json": false
+        },
+        {
+            "sysName": "url",
+            "dataType": "string",
+            "name": "URL звонка",
+            "id": "41211608334043680",
+            "link": null,
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 10,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "json": false
+        },
+        {
+            "sysName": "utmCampaign",
+            "dataType": "string",
+            "name": "UTM Campaign",
+            "id": "71701608334213055",
+            "link": null,
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "json": false
+        },
+        {
+            "sysName": "utmContent",
+            "dataType": "string",
+            "name": "UTM Content",
+            "id": "20181608334213626",
+            "link": null,
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 7,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "json": false
+        },
+        {
+            "sysName": "utmMedium",
+            "dataType": "string",
+            "name": "UTM Medium",
+            "id": "48121608333941150",
+            "link": null,
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "json": false
+        },
+        {
+            "sysName": "utmSource",
+            "dataType": "string",
+            "name": "UTM Источник",
+            "id": "69781605401814270",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "json": false
+        },
+        {
+            "sysName": "utmTerm",
+            "dataType": "string",
+            "name": "UTM Term",
+            "id": "21281608334214088",
+            "link": null,
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 8,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "json": false
+        },
+        {
+            "sysName": "waitDuration",
+            "dataType": "string",
+            "name": "Ожидание",
+            "id": "91721608339509589",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 14,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
             "formatOptions": null,
             "groupName": null,
             "indexExists": false,
@@ -2787,257 +5617,1080 @@ const App = (props) => {
     ],
     "data": [
         {
-            "name": "Властелин колец: Две башни",
-            "director_id": "1",
-            "actor_ids": [
-                ""
-            ],
-            "genre_ids": [],
-            "id": "9bb43d78-ce56-438e-b47b-0f7bc93945cd"
+            "sourceFromTags": "Google organic",
+            "waitDuration": "14",
+            "duration": "189",
+            "utmCampaign": "(none)",
+            "utmContent": "(none)",
+            "dateStart": 1618323068000,
+            "url": "https://spb.pominky.ru/kontakty.html",
+            "dateEnd": 1618323271000,
+            "utmSource": "google",
+            "utmMedium": "organic",
+            "id": "79818153020-13.04.21-17:11",
+            "client": "79818153020",
+            "callType": "1",
+            "utmTerm": "(none)",
+            "firstUrl": "https://spb.pominky.ru/kontakty.html",
+            "calling_number": "78126149045",
+            "durationToCheck": 189,
+            "phone": "79818153020"
         },
         {
-            "name": "FORD против Ferarri 1",
-            "director_id": "11",
-            "actor_ids": [
-                "12",
-                "13",
-                "14"
-            ],
-            "description": "FORD против Ferarri - 2019 года",
-            "year": 2000,
-            "genre_ids": [
-                {
-                    "name": "Биография",
-                    "id": "15"
-                },
-                {
-                    "name": "Драма",
-                    "id": "3"
-                },
-                {
-                    "name": "Боевик",
-                    "id": "9"
-                }
-            ],
-            "id": "6a3bf7d3-31c1-4b1b-9bc8-891b77cb06cc"
+            "sourceFromTags": "Яндекс Карты",
+            "waitDuration": "13",
+            "duration": "76",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618322431000,
+            "url": "(undefined)",
+            "dateEnd": 1618322520000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79112128506-13.04.21-17:00",
+            "client": "79112128506",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78126141312",
+            "durationToCheck": 76,
+            "phone": "79112128506"
         },
         {
-            "name": "Властелин колец: Братство кольца",
-            "director_id": "1",
-            "actor_ids": [
-                "15",
-                "16"
-            ],
-            "description": "Сказания о Средиземье — это хроника Великой войны за Кольцо, длившейся не одну тысячу лет. Тот, кто владел Кольцом, получал неограниченную власть, но был обязан служить злу. Тихая деревня, где живут хоббиты. Придя на 111-й день рождения к своему старому другу Бильбо Бэггинсу, волшебник Гэндальф начинает вести разговор о кольце, которое Бильбо нашел много лет назад. Это кольцо принадлежало когда-то темному властителю Средиземья Саурону, и оно дает большую власть своему обладателю. Теперь Саурон хочет вернуть себе власть над Средиземьем. Бильбо отдает найденное кольцо племяннику Фродо, чтобы тот отнёс его к Роковой Горе и уничтожил.",
-            "year": 2001,
-            "genre_ids": [
-                {
-                    "name": "Фэнтези",
-                    "id": "6"
-                },
-                {
-                    "name": "Мелодрама",
-                    "id": "7"
-                },
-                {
-                    "name": "Драма",
-                    "id": "3"
-                }
-            ],
-            "id": "ea1baf4e-2bd6-44a7-b69e-81b41945d15e"
+            "id": "5d47f184-112f-4bcf-aa38-81d05f5c54fe"
         },
         {
-            "name": "Прислуга",
-            "director_id": "17",
-            "actor_ids": [
-                "4",
-                "18"
-            ],
-            "description": "Американский Юг, на дворе 1960-е годы. Скитер только-только закончила университет и возвращается домой, в сонный городок Джексон, где никогда ничего не происходит. Она мечтает стать писательницей, вырваться в большой мир. Но для приличной девушки с Юга не пристало тешиться столь глупыми иллюзиями, приличной девушке следует выйти замуж и хлопотать по дому. Мудрая Эйбилин на тридцать лет старше Скитер, она прислуживает в домах белых всю свою жизнь, вынянчила семнадцать детей и давно уже ничего не ждет от жизни, ибо сердце ее разбито после смерти единственного сына. Минни - самая лучшая стряпуха во всем Джексоне, а еще она самая дерзкая служанка в городе. И острый язык не раз уже сослужил ей плохую службу...",
-            "year": 2011,
-            "genre_ids": [
-                {
-                    "name": "Драма",
-                    "id": "3"
-                }
-            ],
-            "id": "8d251268-f00f-4db9-b5a0-fd6d5374c715"
+            "sourceFromTags": "Яндекс директ",
+            "waitDuration": "14",
+            "duration": "132",
+            "utmCampaign": "cid|45133922|search",
+            "utmContent": "gid|3916795767|aid|10591653547|21953862755_",
+            "dateStart": 1618320439000,
+            "url": "https://spb.pominky.ru/fotogalereya/gzhatskaya-9.html",
+            "dateEnd": 1618320585000,
+            "utmSource": "yandex",
+            "utmMedium": "cpc",
+            "id": "79213892437-13.04.21-16:27",
+            "client": "79213892437",
+            "callType": "1",
+            "utmTerm": "Организовать поминки",
+            "firstUrl": "https://spb.pominky.ru/?utm_source=yandex&utm_medium=cpc&utm_campaign=cid%7C45133922%7Csearch&utm_content=gid%7C3916795767%7Caid%7C10591653547%7C21953862755_&utm_term=%D0%9E%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%BA%D0%B8&pm_source=none&pm_position=2&mango=%7Cc%3A45133922%7Cg%3A3916795767%7Cb%3A10591653547%7Ck%3A21953862755%7Cst%3Asearch%7Ca%3Ano%7Cs%3Anone%7Ct%3Apremium%7Cp%3A2%7Cr%3A%7Creg%3A2%7Cnet%3A%7Byad%7D&yclid=1892554816135657222",
+            "calling_number": "78126112687",
+            "durationToCheck": 132,
+            "phone": "79213892437"
         },
         {
-            "name": "Как избежать наказания за убийство",
-            "director_id": "3",
-            "actor_ids": [
-                "4",
-                "5",
-                "6",
-                "7",
-                "8"
-            ],
-            "description": "Профессор Эннализ Китинг – блестящий адвокат. Она преподает у студентов дисциплину под названием: «Как избежать наказания за убийство». Но те даже не подозревают, что в скором времени им придется применить свои знания в этой области в реальной жизни…",
-            "year": 2014,
-            "genre_ids": [
-                {
-                    "name": "Триллер",
-                    "id": "2"
-                },
-                {
-                    "name": "Драма",
-                    "id": "3"
-                },
-                {
-                    "name": "Детектив",
-                    "id": "10"
-                },
-                {
-                    "name": "Сериал",
-                    "id": "14"
-                }
-            ],
-            "id": "4b50b580-04c3-42e1-bcb3-c4b47cec4793"
+            "waitDuration": "10",
+            "duration": "226",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618317777000,
+            "url": "(undefined)",
+            "dateEnd": 1618318013000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79146214455-13.04.21-15:42",
+            "client": "79146214455",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 226,
+            "phone": "79146214455"
         },
         {
-            "name": "Райа и последний дракон",
-            "director_id": "19",
-            "actor_ids": [
-                ""
-            ],
-            "description": "Давным-давно в волшебной стране Кумандре бок о бок с людьми жили драконы — создатели и хранители воды. Мирной жизни пришел конец, когда появились друуны. Порождения тьмы обращали людей и драконов в каменные изваяния, и только магия драконихи Сису смогла прогнать злых созданий и расколдовать людей, но на драконов не подействовала. Кумандра раскололась на государства Сердца, Клыка, Когтя, Хребта и Хвоста, а волшебный драконий камень хранился в стране Сердца, которой правил отец Райи. Он мечтал объединить земли, но из-за человеческой жадности и зависти артефакт раскололся. Правитель каждой страны заполучил по осколку, а друуны снова стали властвовать безраздельно...",
-            "year": 2021,
-            "genre_ids": [
-                {
-                    "name": "Комедия",
-                    "id": "1"
-                },
-                {
-                    "name": "Приключения",
-                    "id": "5"
-                },
-                {
-                    "name": "Фэнтези",
-                    "id": "6"
-                },
-                {
-                    "name": "Мультфильм",
-                    "id": "12"
-                }
-            ],
-            "id": "af8ca8ea-ea8c-498f-aff4-fd8e69de0d2e"
+            "waitDuration": "14",
+            "duration": "62",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618317304000,
+            "url": "(undefined)",
+            "dateEnd": 1618317380000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79215665302-13.04.21-15:35",
+            "client": "79215665302",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 62,
+            "phone": "79215665302"
         },
         {
-            "name": "1+1",
-            "actor_ids": [
-                "20",
-                "21"
-            ],
-            "description": "Пострадав в результате несчастного случая, богатый аристократ Филипп нанимает в помощники человека, который менее всего подходит для этой работы, – молодого жителя предместья Дрисса, только что освободившегося из тюрьмы. Несмотря на то, что Филипп прикован к инвалидному креслу, Дриссу удается привнести в размеренную жизнь аристократа дух приключений.",
-            "year": 2011,
-            "genre_ids": [
-                {
-                    "name": "Комедия",
-                    "id": "1"
-                },
-                {
-                    "name": "Драма",
-                    "id": "3"
-                },
-                {
-                    "name": "Биография",
-                    "id": "15"
-                }
-            ],
-            "id": "67735a66-e9e2-451f-a9c7-d285c8a20ccc"
+            "waitDuration": "13",
+            "duration": "147",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618316954000,
+            "url": "(undefined)",
+            "dateEnd": 1618317114000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79312880873-13.04.21-15:29",
+            "client": "79312880873",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 147,
+            "phone": "79312880873"
         },
         {
-            "name": "Душа",
-            "director_id": "23",
-            "actor_ids": [
-                ""
-            ],
-            "description": "Уже немолодой школьный учитель музыки Джо Гарднер всю жизнь мечтал выступать на сцене в составе джазового ансамбля. Однажды он успешно проходит прослушивание у известной клубной певицы и, возвращаясь домой вне себя от счастья, падает в люк и умирает. Теперь у Джо одна дорога — в Великое После, но он сбегает с идущего в вечность эскалатора и случайно попадает в Великое До. Тут новенькие души обретают себя, и у будущих людей зарождаются увлечения, мечты и интересы. Джо становится наставником упрямой души 22, которая уже много веков не может найти свою искру и отправиться на Землю.",
-            "year": 2020,
-            "genre_ids": [
-                {
-                    "name": "Комедия",
-                    "id": "1"
-                },
-                {
-                    "name": "Приключения",
-                    "id": "5"
-                },
-                {
-                    "name": "Фэнтези",
-                    "id": "6"
-                },
-                {
-                    "name": "Мелодрама",
-                    "id": "7"
-                },
-                {
-                    "name": "Мультфильм",
-                    "id": "12"
-                }
-            ],
-            "id": "07e89d91-0f38-4005-a019-17b7331fb27b"
+            "waitDuration": "17",
+            "duration": "84",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618315112000,
+            "url": "(undefined)",
+            "dateEnd": 1618315213000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79817050167-13.04.21-14:58",
+            "client": "79817050167",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 84,
+            "phone": "79817050167"
+        },
+        {
+            "waitDuration": "11",
+            "duration": "35",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618312066000,
+            "url": "(undefined)",
+            "dateEnd": 1618312112000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79819516781-13.04.21-14:07",
+            "client": "79819516781",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 35,
+            "phone": "79819516781"
+        },
+        {
+            "sourceFromTags": "Яндекс Карты",
+            "waitDuration": "11",
+            "duration": "66",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618310555000,
+            "url": "(undefined)",
+            "dateEnd": 1618310632000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79312880873-13.04.21-13:42",
+            "client": "79312880873",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78126141312",
+            "durationToCheck": 66,
+            "phone": "79312880873"
+        },
+        {
+            "waitDuration": "20",
+            "duration": "90",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618308941000,
+            "url": "(undefined)",
+            "dateEnd": 1618309051000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79119851361-13.04.21-13:15",
+            "client": "79119851361",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 90,
+            "phone": "79119851361"
+        },
+        {
+            "sourceFromTags": "Агент",
+            "waitDuration": "10",
+            "duration": "17",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "agentID": "79213681828",
+            "dateStart": 1618308701000,
+            "url": "(undefined)",
+            "dateEnd": 1618308728000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79213681828-13.04.21-13:11",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 17,
+            "phone": "79213681828"
+        },
+        {
+            "sourceFromTags": "Агент",
+            "waitDuration": "27",
+            "duration": "4",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "agentID": "79213681828",
+            "dateStart": 1618308634000,
+            "url": "(undefined)",
+            "dateEnd": 1618308665000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79213681828-13.04.21-13:10",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 4,
+            "phone": "79213681828"
+        },
+        {
+            "sourceFromTags": "Яндекс Карты",
+            "waitDuration": "21",
+            "duration": "57",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618308626000,
+            "url": "(undefined)",
+            "dateEnd": 1618308704000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79117774147-13.04.21-13:10",
+            "client": "79117774147",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78126141312",
+            "durationToCheck": 57,
+            "phone": "79117774147"
+        },
+        {
+            "sourceFromTags": "Агент",
+            "waitDuration": "18",
+            "duration": "124",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "agentID": "79119214768",
+            "dateStart": 1618308176000,
+            "url": "(undefined)",
+            "dateEnd": 1618308318000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79119214768-13.04.21-13:02",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 124,
+            "phone": "79119214768"
+        },
+        {
+            "sourceFromTags": "Агент",
+            "waitDuration": "53",
+            "duration": "0",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "agentID": "79119214768",
+            "dateStart": 1618307984000,
+            "url": "(undefined)",
+            "dateEnd": 1618308037000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79119214768-13.04.21-12:59",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 0,
+            "phone": "79119214768"
+        },
+        {
+            "sourceFromTags": "Яндекс organic",
+            "waitDuration": "40",
+            "duration": "0",
+            "utmCampaign": "(none)",
+            "utmContent": "/",
+            "dateStart": 1618307909000,
+            "url": "https://spb.pominky.ru/menyu-catering.html",
+            "dateEnd": 1618307949000,
+            "utmSource": "yandex",
+            "utmMedium": "organic",
+            "id": "79062571313-13.04.21-12:58",
+            "client": "79062571313",
+            "callType": "1",
+            "utmTerm": "(none)",
+            "firstUrl": "https://spb.pominky.ru/pominalnyy-keytering.html/",
+            "calling_number": "78126136634",
+            "durationToCheck": 0,
+            "phone": "79062571313"
+        },
+        {
+            "sourceFromTags": "Агент",
+            "waitDuration": "11",
+            "duration": "78",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "agentID": "79213681828",
+            "dateStart": 1618307624000,
+            "url": "(undefined)",
+            "dateEnd": 1618307713000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79213681828-13.04.21-12:53",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 78,
+            "phone": "79213681828"
+        },
+        {
+            "waitDuration": "9",
+            "duration": "0",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618307441000,
+            "url": "(undefined)",
+            "dateEnd": 1618307450000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79119965320-13.04.21-12:50",
+            "client": "79119965320",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 0,
+            "phone": "79119965320"
+        },
+        {
+            "waitDuration": "11",
+            "duration": "54",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618304067000,
+            "url": "(undefined)",
+            "dateEnd": 1618304132000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79217661056-13.04.21-11:54",
+            "client": "79217661056",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 54,
+            "phone": "79217661056"
+        },
+        {
+            "sourceFromTags": "Агент",
+            "waitDuration": "11",
+            "duration": "85",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "agentID": "79117800369",
+            "dateStart": 1618303913000,
+            "url": "(undefined)",
+            "dateEnd": 1618304009000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79117800369-13.04.21-11:51",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 85,
+            "phone": "79117800369"
+        },
+        {
+            "waitDuration": "10",
+            "duration": "22",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618303461000,
+            "url": "(undefined)",
+            "dateEnd": 1618303493000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79220120298-13.04.21-11:44",
+            "client": "79220120298",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 22,
+            "phone": "79220120298"
+        },
+        {
+            "sourceFromTags": "Агент",
+            "waitDuration": "14",
+            "duration": "83",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "agentID": "79213206623",
+            "dateStart": 1618303336000,
+            "url": "(undefined)",
+            "dateEnd": 1618303433000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79213206623-13.04.21-11:42",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 83,
+            "phone": "79213206623"
+        },
+        {
+            "sourceFromTags": "Google organic",
+            "waitDuration": "1",
+            "duration": "0",
+            "utmCampaign": "(none)",
+            "utmContent": "(none)",
+            "dateStart": 1618303236000,
+            "url": "https://spb.pominky.ru/kontakty.html",
+            "dateEnd": 1618303237000,
+            "utmSource": "google",
+            "utmMedium": "organic",
+            "id": "79818153020-13.04.21-11:40",
+            "client": "79818153020",
+            "callType": "1",
+            "utmTerm": "(none)",
+            "firstUrl": "https://spb.pominky.ru/kontakty.html",
+            "calling_number": "78126149045",
+            "durationToCheck": 0,
+            "phone": "79818153020"
+        },
+        {
+            "sourceFromTags": "Google organic",
+            "waitDuration": "13",
+            "duration": "75",
+            "utmCampaign": "(none)",
+            "utmContent": "(none)",
+            "dateStart": 1618303137000,
+            "url": "https://spb.pominky.ru/kontakty.html",
+            "dateEnd": 1618303225000,
+            "utmSource": "google",
+            "utmMedium": "organic",
+            "id": "79818153020-13.04.21-11:38",
+            "client": "79818153020",
+            "callType": "1",
+            "utmTerm": "(none)",
+            "firstUrl": "https://spb.pominky.ru/kontakty.html",
+            "calling_number": "78126149045",
+            "durationToCheck": 75,
+            "phone": "79818153020"
+        },
+        {
+            "waitDuration": "12",
+            "duration": "33",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618302614000,
+            "url": "(undefined)",
+            "dateEnd": 1618302659000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79119965320-13.04.21-11:30",
+            "client": "79119965320",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 33,
+            "phone": "79119965320"
+        },
+        {
+            "sourceFromTags": "Агент",
+            "waitDuration": "25",
+            "duration": "55",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "agentID": "79117800369",
+            "dateStart": 1618301631000,
+            "url": "(undefined)",
+            "dateEnd": 1618301711000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79117800369-13.04.21-11:13",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 55,
+            "phone": "79117800369"
+        },
+        {
+            "waitDuration": "13",
+            "duration": "109",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618301533000,
+            "url": "(undefined)",
+            "dateEnd": 1618301655000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "78126814781-13.04.21-11:12",
+            "client": "78126814781",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 109,
+            "phone": "78126814781"
+        },
+        {
+            "sourceFromTags": "Агент",
+            "waitDuration": "38",
+            "duration": "25",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "agentID": "79817205055",
+            "dateStart": 1618300683000,
+            "url": "(undefined)",
+            "dateEnd": 1618300746000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79817205055-13.04.21-10:58",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 25,
+            "phone": "79817205055"
+        },
+        {
+            "waitDuration": "47",
+            "duration": "11",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618300663000,
+            "url": "(undefined)",
+            "dateEnd": 1618300721000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79213125559-13.04.21-10:57",
+            "client": "79213125559",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 11,
+            "phone": "79213125559"
+        },
+        {
+            "sourceFromTags": "Агент",
+            "waitDuration": "11",
+            "duration": "76",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "agentID": "79117526843",
+            "dateStart": 1618300534000,
+            "url": "(undefined)",
+            "dateEnd": 1618300621000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79117526843-13.04.21-10:55",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 76,
+            "phone": "79117526843"
+        },
+        {
+            "waitDuration": "12",
+            "duration": "14",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618300068000,
+            "url": "(undefined)",
+            "dateEnd": 1618300094000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79119262511-13.04.21-10:47",
+            "client": "79119262511",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 14,
+            "phone": "79119262511"
+        },
+        {
+            "sourceFromTags": "Агент",
+            "waitDuration": "13",
+            "duration": "11",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "agentID": "79111228898",
+            "dateStart": 1618298715000,
+            "url": "(undefined)",
+            "dateEnd": 1618298739000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79111228898-13.04.21-10:25",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 11,
+            "phone": "79111228898"
+        },
+        {
+            "sourceFromTags": "Google organic",
+            "waitDuration": "9",
+            "duration": "90",
+            "utmCampaign": "(none)",
+            "utmContent": "(none)",
+            "dateStart": 1618297299000,
+            "url": "https://spb.pominky.ru/dostavka-blyud-iz-seti-kafe-pominalnaya-trapeza.html/",
+            "dateEnd": 1618297398000,
+            "utmSource": "google",
+            "utmMedium": "organic",
+            "id": "79219612778-13.04.21-10:01",
+            "client": "79219612778",
+            "callType": "1",
+            "utmTerm": "(none)",
+            "firstUrl": "https://spb.pominky.ru/dostavka-blyud-iz-seti-kafe-pominalnaya-trapeza.html/",
+            "calling_number": "78125646736",
+            "durationToCheck": 90,
+            "phone": "79219612778"
+        },
+        {
+            "sourceFromTags": "Google organic",
+            "waitDuration": "70",
+            "duration": "3",
+            "utmCampaign": "(none)",
+            "utmContent": "(none)",
+            "dateStart": 1618297219000,
+            "url": "https://spb.pominky.ru/dostavka-blyud-iz-seti-kafe-pominalnaya-trapeza.html/",
+            "dateEnd": 1618297292000,
+            "utmSource": "google",
+            "utmMedium": "organic",
+            "id": "79219612778-13.04.21-10:00",
+            "client": "79219612778",
+            "callType": "1",
+            "utmTerm": "(none)",
+            "firstUrl": "https://spb.pominky.ru/dostavka-blyud-iz-seti-kafe-pominalnaya-trapeza.html/",
+            "calling_number": "78125646736",
+            "durationToCheck": 3,
+            "phone": "79219612778"
+        },
+        {
+            "sourceFromTags": "Агент",
+            "waitDuration": "11",
+            "duration": "146",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "agentID": "79117674969",
+            "dateStart": 1618297108000,
+            "url": "(undefined)",
+            "dateEnd": 1618297265000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79117674969-13.04.21-09:58",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 146,
+            "phone": "79117674969"
+        },
+        {
+            "sourceFromTags": "Google adwords",
+            "waitDuration": "14",
+            "duration": "48",
+            "utmCampaign": "9977459477",
+            "utmContent": "459281209354",
+            "dateStart": 1618296892000,
+            "url": "https://spb.pominky.ru/?utm_source=yandex&utm_medium=cpc&utm_campaign=cid%7C45133922%7Csearch&utm_content=gid%7C3916795765%7Caid%7C9668338880%7C17930321998_&utm_term=%D0%9A%D0%B0%D1%84%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%BE%D0%BA%20%D0%B2%20%D0%A1%D0%B0%D0%BD%D0%BA%D1%82%20%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3%D0%B5&pm_source=none&pm_position=3&mango=%7Cc%3A45133922%7Cg%3A3916795765%7Cb%3A9668338880%7Ck%3A17930321998%7Cst%3Asearch%7Ca%3Ano%7Cs%3Anone%7Ct%3Apremium%7Cp%3A3%7Cr%3A%7Creg%3A2%7Cnet%3A%7Byad%7D&yclid=1820346579959982578",
+            "dateEnd": 1618296954000,
+            "utmSource": "google",
+            "utmMedium": "cpc",
+            "id": "79992493914-13.04.21-09:54",
+            "client": "79992493914",
+            "callType": "1",
+            "utmTerm": "+поминки +в +кафе +спб",
+            "firstUrl": "https://spb.pominky.ru/?utm_source=yandex&utm_medium=cpc&utm_campaign=cid%7C45133922%7Csearch&utm_content=gid%7C3916795765%7Caid%7C9668338880%7C17930321998_&utm_term=%D0%9A%D0%B0%D1%84%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%BE%D0%BA%20%D0%B2%20%D0%A1%D0%B0%D0%BD%D0%BA%D1%82%20%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3%D0%B5&pm_source=none&pm_position=3&mango=%7Cc%3A45133922%7Cg%3A3916795765%7Cb%3A9668338880%7Ck%3A17930321998%7Cst%3Asearch%7Ca%3Ano%7Cs%3Anone%7Ct%3Apremium%7Cp%3A3%7Cr%3A%7Creg%3A2%7Cnet%3A%7Byad%7D&yclid=1820346579959982578",
+            "calling_number": "78123173447",
+            "durationToCheck": 48,
+            "phone": "79992493914"
+        },
+        {
+            "waitDuration": "23",
+            "duration": "5",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618250886000,
+            "url": "(undefined)",
+            "dateEnd": 1618250914000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79219543381-12.04.21-21:08",
+            "client": "79219543381",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 5,
+            "phone": "79219543381"
+        },
+        {
+            "sourceFromTags": "Яндекс Карты на сайт",
+            "waitDuration": "17",
+            "duration": "61",
+            "utmCampaign": "(none)",
+            "utmContent": "gzatskaya",
+            "dateStart": 1618244641000,
+            "url": "https://spb.pominky.ru/fotogalereya/gzhatskaya-9.html",
+            "dateEnd": 1618244719000,
+            "utmSource": "yandex_maps",
+            "utmMedium": "(none)",
+            "id": "79217475464-12.04.21-19:24",
+            "client": "79217475464",
+            "callType": "1",
+            "utmTerm": "поминальное кафе санкт-петербург",
+            "firstUrl": "https://spb.pominky.ru/?utm_content=gzatskaya&utm_source=yandex_maps",
+            "calling_number": "78126135583",
+            "durationToCheck": 61,
+            "phone": "79217475464"
+        },
+        {
+            "sourceFromTags": "Яндекс Карты",
+            "waitDuration": "11",
+            "duration": "76",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618242712000,
+            "url": "(undefined)",
+            "dateEnd": 1618242799000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "78125572930-12.04.21-18:51",
+            "client": "78125572930",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78126141312",
+            "durationToCheck": 76,
+            "phone": "78125572930"
+        },
+        {
+            "waitDuration": "10",
+            "duration": "14",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618240587000,
+            "url": "(undefined)",
+            "dateEnd": 1618240611000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "74952780222-12.04.21-18:16",
+            "client": "74952780222",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 14,
+            "phone": "74952780222"
+        },
+        {
+            "waitDuration": "13",
+            "duration": "20",
+            "utmCampaign": "(none)",
+            "utmContent": "(none)",
+            "dateStart": 1618239687000,
+            "url": "https://spb.pominky.ru/fotogalereya/veteranov-16.html",
+            "dateEnd": 1618239720000,
+            "utmSource": "spb.zoon.ru",
+            "utmMedium": "referral",
+            "id": "79111967530-12.04.21-18:01",
+            "client": "79111967530",
+            "callType": "1",
+            "utmTerm": "(none)",
+            "firstUrl": "https://spb.pominky.ru/fotogalereya/veteranov-16.html",
+            "calling_number": "78125666338",
+            "durationToCheck": 20,
+            "phone": "79111967530"
+        },
+        {
+            "sourceFromTags": "Яндекс Карты на сайт",
+            "waitDuration": "3",
+            "duration": "0",
+            "utmCampaign": "(none)",
+            "utmContent": "toreza",
+            "dateStart": 1618239017000,
+            "url": "https://spb.pominky.ru/?utm_content=politeh&utm_source=yandex_maps",
+            "dateEnd": 1618239020000,
+            "utmSource": "yandex_maps",
+            "utmMedium": "(none)",
+            "id": "79013583349-12.04.21-17:50",
+            "client": "79013583349",
+            "callType": "1",
+            "utmTerm": "(none)",
+            "firstUrl": "https://spb.pominky.ru/menyu.html",
+            "calling_number": "78126137213",
+            "durationToCheck": 0,
+            "phone": "79013583349"
+        },
+        {
+            "sourceFromTags": "Google adwords",
+            "waitDuration": "15",
+            "duration": "183",
+            "utmCampaign": "9977459477",
+            "utmContent": "482791162312",
+            "dateStart": 1618237423000,
+            "url": "https://spb.pominky.ru/?utm_source=google&utm_medium=cpc&utm_campaign=9977459477&utm_content=482791162312&utm_term=%2B%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%BA%D0%B8%20%2B%D0%B2%20%2B%D0%BA%D0%B0%D1%84%D0%B5%20%2B%D1%81%D0%BF%D0%B1&gclid=EAIaIQobChMIt6qV3sv47wIVjgWiAx1D4wqSEAAYAyAAEgLEqPD_BwE",
+            "dateEnd": 1618237621000,
+            "utmSource": "google",
+            "utmMedium": "cpc",
+            "id": "78126873743-12.04.21-17:23",
+            "client": "78126873743",
+            "callType": "1",
+            "utmTerm": "+поминки +в +кафе +спб",
+            "firstUrl": "https://spb.pominky.ru/?utm_source=google&utm_medium=cpc&utm_campaign=9977459477&utm_content=482791162312&utm_term=%2B%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%BA%D0%B8%20%2B%D0%B2%20%2B%D0%BA%D0%B0%D1%84%D0%B5%20%2B%D1%81%D0%BF%D0%B1&gclid=EAIaIQobChMIt6qV3sv47wIVjgWiAx1D4wqSEAAYAyAAEgLEqPD_BwE",
+            "calling_number": "78126135381",
+            "durationToCheck": 183,
+            "phone": "78126873743"
+        },
+        {
+            "waitDuration": "1",
+            "duration": "0",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618236742000,
+            "url": "(undefined)",
+            "dateEnd": 1618236743000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79819111676-12.04.21-17:12",
+            "client": "79819111676",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 0,
+            "phone": "79819111676"
+        },
+        {
+            "sourceFromTags": "Google adwords",
+            "waitDuration": "12",
+            "duration": "171",
+            "utmCampaign": "11761194450",
+            "utmContent": "483754730528",
+            "dateStart": 1618235702000,
+            "url": "https://spb.pominky.ru/",
+            "dateEnd": 1618235885000,
+            "utmSource": "google",
+            "utmMedium": "cpc",
+            "id": "78127437654-12.04.21-16:55",
+            "client": "78127437654",
+            "callType": "1",
+            "utmTerm": "поминальная трапеза спб",
+            "firstUrl": "https://spb.pominky.ru/?utm_source=google&utm_medium=cpc&utm_campaign=11761194450&utm_content=483754730528&utm_term=%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%D1%82%D1%80%D0%B0%D0%BF%D0%B5%D0%B7%D0%B0%20%D1%81%D0%BF%D0%B1&gclid=Cj0KCQjw38-DBhDpARIsADJ3kjnJGy1eW326guk-uGnp_DRBFcJcvDLrJePpHcWlcGrtkOEtRDGG45waAs0mEALw_wcB",
+            "calling_number": "78126113697",
+            "durationToCheck": 171,
+            "phone": "78127437654"
+        },
+        {
+            "waitDuration": "14",
+            "duration": "29",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618234246000,
+            "url": "(undefined)",
+            "dateEnd": 1618234289000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79949990309-12.04.21-16:30",
+            "client": "79949990309",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 29,
+            "phone": "79949990309"
+        },
+        {
+            "sourceFromTags": "Агент",
+            "waitDuration": "19",
+            "duration": "93",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "agentID": "79110340307",
+            "dateStart": 1618233574000,
+            "url": "(undefined)",
+            "dateEnd": 1618233686000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79110340307-12.04.21-16:19",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 93,
+            "phone": "79110340307"
+        },
+        {
+            "sourceFromTags": "Google organic",
+            "waitDuration": "10",
+            "duration": "54",
+            "utmCampaign": "(none)",
+            "utmContent": "(none)",
+            "dateStart": 1618232297000,
+            "url": "https://spb.pominky.ru/",
+            "dateEnd": 1618232361000,
+            "utmSource": "google",
+            "utmMedium": "organic",
+            "id": "79643725094-12.04.21-15:58",
+            "client": "79643725094",
+            "callType": "1",
+            "utmTerm": "(none)",
+            "firstUrl": "https://spb.pominky.ru/",
+            "calling_number": "78126135583",
+            "durationToCheck": 54,
+            "phone": "79643725094"
+        },
+        {
+            "waitDuration": "13",
+            "duration": "167",
+            "utmCampaign": "(undefined)",
+            "utmContent": "(undefined)",
+            "dateStart": 1618230726000,
+            "url": "(undefined)",
+            "dateEnd": 1618230906000,
+            "utmSource": "(undefined)",
+            "utmMedium": "(undefined)",
+            "id": "79110140766-12.04.21-15:32",
+            "client": "79110140766",
+            "callType": "2",
+            "utmTerm": "(undefined)",
+            "firstUrl": "(undefined)",
+            "calling_number": "78124253938",
+            "durationToCheck": 167,
+            "phone": "79110140766"
         }
     ],
-    "totalPages": 1,
+    "totalPages": 88,
     "pageNumber": 0,
     "error": null,
     "fieldScheme": [
         [
-            "actor_ids",
-            1371110
+            "agentID",
+            1323224
         ],
         [
-            "description",
-            1371110
+            "callType",
+            1323224
         ],
         [
-            "director_id",
-            1371110
+            "calling_number",
+            1323224
         ],
         [
-            "genre_ids.id",
-            1371111
+            "client",
+            1323224
         ],
         [
-            "genre_ids.name",
-            1371111
+            "dateEnd",
+            1323224
+        ],
+        [
+            "dateStart",
+            1323224
+        ],
+        [
+            "duration",
+            1323224
+        ],
+        [
+            "durationToCheck",
+            1323224
+        ],
+        [
+            "firstUrl",
+            1323224
         ],
         [
             "id",
-            1371110
+            1323224
         ],
         [
-            "name",
-            1371110
+            "phone",
+            1323224
         ],
         [
-            "year",
-            1371110
+            "source",
+            1323224
+        ],
+        [
+            "sourceFromTags",
+            1323224
+        ],
+        [
+            "type_of_source",
+            1323224
+        ],
+        [
+            "url",
+            1323224
+        ],
+        [
+            "utmCampaign",
+            1323224
+        ],
+        [
+            "utmContent",
+            1323224
+        ],
+        [
+            "utmMedium",
+            1323224
+        ],
+        [
+            "utmSource",
+            1323224
+        ],
+        [
+            "utmTerm",
+            1323224
+        ],
+        [
+            "waitDuration",
+            1323224
         ]
     ],
     "writeFields": [],
     "structures": {
-        "1371110": {
-            "networkID": 6154,
-            "sysName": "movie",
-            "name": "Фильм",
-            "id": 1371110,
-            "dateCreated": "2021-03-30T10:09:02Z",
+        "1323224": {
+            "networkID": 3842,
+            "sysName": "calls",
+            "name": "Звонки",
+            "id": 1323224,
+            "dateCreated": "2020-11-15T00:49:32Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"genre_ids\",\"dataType\":\"arrayLink\",\"name\":\"Жанры\",\"id\":\"29091617099948585\",\"link\":\"genre\",\"group\":\"1617099937454\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"json\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Описание\",\"id\":\"62111617099056277\",\"link\":null,\"group\":\"1617098987109\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"director_id\",\"dataType\":\"link\",\"name\":\"Режиссер\",\"id\":\"68721617100033417\",\"link\":\"person\",\"group\":\"1617099937454\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"json\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Название\",\"id\":\"73801617099001685\",\"link\":null,\"group\":\"1617098987109\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"year\",\"dataType\":\"number\",\"name\":\"Год\",\"id\":\"81181617099065580\",\"link\":\"\",\"group\":\"1617098987109\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false},{\"sysName\":\"actor_ids\",\"dataType\":\"arrayLink\",\"name\":\"Актеры\",\"id\":\"85541617099995713\",\"link\":\"person\",\"group\":\"1617099937454\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"json\":false}]",
-            "jsonGroupSettings": "[{\"name\":\"Основная группа\",\"id\":1617098987109,\"order\":0},{\"name\":\"Ссылки\",\"id\":1617099937454,\"order\":1}]",
-            "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
-            "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":false,\"lowPriority\":false}",
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"sourceFromTags\",\"name\":\"Источник\",\"dataType\":\"string\",\"id\":\"11321610288006354\",\"link\":\"\",\"group\":\"1610287187145\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"agentID\",\"name\":\"Агент\",\"dataType\":\"link\",\"id\":\"12971612393927266\",\"link\":\"Agents\",\"group\":\"1610287187145\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"utmContent\",\"name\":\"UTM Content\",\"dataType\":\"string\",\"id\":\"20181608334213626\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"durationToCheck\",\"name\":\"durationToCheck\",\"dataType\":\"number\",\"id\":\"20401609762146014\",\"link\":\"\",\"group\":\"1610287203232\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"utmTerm\",\"name\":\"UTM Term\",\"dataType\":\"string\",\"id\":\"21281608334214088\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"source\",\"name\":\"Источник\",\"dataType\":\"link\",\"id\":\"27621605401800993\",\"link\":\"source\",\"group\":\"1610287187145\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"dateStart\",\"name\":\"Начало\",\"dataType\":\"date\",\"id\":\"34511608339497129\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"client\",\"name\":\"Клиент\",\"dataType\":\"link\",\"id\":\"37501605401391515\",\"link\":\"Clients\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"url\",\"name\":\"URL звонка\",\"dataType\":\"string\",\"id\":\"41211608334043680\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"utmMedium\",\"name\":\"UTM Medium\",\"dataType\":\"string\",\"id\":\"48121608333941150\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"duration\",\"name\":\"Длительность\",\"dataType\":\"string\",\"id\":\"49831608339519180\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"type_of_source\",\"name\":\"Тип источника\",\"dataType\":\"string\",\"id\":\"50451605401766987\",\"link\":\"\",\"group\":\"1610287187145\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"phone\",\"name\":\"Телефон\",\"dataType\":\"string\",\"id\":\"59641606520600951\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"phone\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"dateEnd\",\"name\":\"Конец\",\"dataType\":\"date\",\"id\":\"61431608339503598\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"firstUrl\",\"name\":\"URL входа\",\"dataType\":\"string\",\"id\":\"63681608334047679\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"utmSource\",\"name\":\"UTM Источник\",\"dataType\":\"string\",\"id\":\"69781605401814270\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"utmCampaign\",\"name\":\"UTM Campaign\",\"dataType\":\"string\",\"id\":\"71701608334213055\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"calling_number\",\"name\":\"Звонок на телефон\",\"dataType\":\"string\",\"id\":\"88691605401461485\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"phone\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"waitDuration\",\"name\":\"Ожидание\",\"dataType\":\"string\",\"id\":\"91721608339509589\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"callType\",\"name\":\"Тип звонка\",\"dataType\":\"string\",\"id\":\"97531608334034546\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false}]",
+            "jsonGroupSettings": "[{\"id\":1610287187145,\"name\":\"Обработка источника\",\"order\":0},{\"id\":1610287203232,\"name\":\"Технические\",\"order\":1}]",
+            "jsonViewIdSettings": "[{\"sysName\":\"id\"}]",
+            "jsonSettings": null,
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2021-04-08T15:37:10Z",
-            "createBy": 2842,
-            "changedBy": 2842,
+            "dateChanged": "2021-02-03T23:14:05Z",
+            "createBy": 4373,
+            "changedBy": 4373,
             "_settings": null,
             "_nativeIndexSettings": null,
             "objectIDSysName": "id",
@@ -3059,7 +6712,7 @@ const App = (props) => {
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": null,
                 "groupName": null,
                 "indexExists": false,
                 "typeVariable": {},
@@ -3068,58 +6721,7 @@ const App = (props) => {
                 "linkType": false,
                 "json": false
             },
-            "folderId": 33617887
-        },
-        "1371111": {
-            "networkID": 6154,
-            "sysName": "genre",
-            "name": "Жанр",
-            "id": 1371111,
-            "dateCreated": "2021-03-30T10:21:56Z",
-            "hidden": false,
-            "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"@who\",\"name\":\"who changed\",\"dataType\":\"string\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"@dateCreated\",\"name\":\"date created\",\"dataType\":\"date\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"@dateChanged\",\"name\":\"date changed\",\"dataType\":\"date\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"name\",\"name\":\"Название\",\"dataType\":\"string\",\"id\":\"32091617099719985\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false}]",
-            "jsonGroupSettings": "[]",
-            "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
-            "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":false,\"lowPriority\":false}",
-            "jsonNativeIndexSettings": null,
-            "indexEnabled": false,
-            "lastIndexUpdate": 0,
-            "indexName": "",
-            "dateChanged": "2021-03-30T10:31:27Z",
-            "createBy": 2842,
-            "changedBy": 2842,
-            "_settings": null,
-            "_nativeIndexSettings": null,
-            "objectIDSysName": "id",
-            "innerIDField": {
-                "sysName": "id",
-                "dataType": "id",
-                "name": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "indexExists": false,
-                "typeVariable": {},
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "json": false
-            },
-            "folderId": 33617887
+            "folderId": 33591407
         }
     },
     "isSuccessWrite": false,
