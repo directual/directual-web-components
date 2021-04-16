@@ -365,6 +365,10 @@
 :global .small.icon:before {
   font-size: calc(var(--h2-font-size)/1.5);
 }
+:global .small.icon {
+  width: auto;
+  height: auto;
+}
 :global .icon:before {
   font-family: 'directual-icons';
   content: "";
