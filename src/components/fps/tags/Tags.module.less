@@ -1,0 +1,44 @@
+ .tagList {
+     display: flex;
+     flex-wrap: wrap;
+     overflow: hidden;
+ }
+
+ .tag {
+    display: flex;
+    align-items: center;
+    font-size: var(--text-small-size);
+    background-color: var(--label-color);
+    color: var(--label-text-color);
+    border-radius: 12px;
+    padding: 4px 9px;
+    margin: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default;
+    overflow: hidden;
+    &.clickable {
+        opacity: .9;
+        cursor: pointer;
+        transition: .5s;
+        &:hover {
+            opacity: 1;
+            box-shadow: 0 0 4px rgba(0,0,0,.2);
+        }
+    }
+    .text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .delete {
+        opacity: .5;
+        cursor: pointer;
+        transition: .5s;
+        margin-right: -3px;
+        flex-shrink: 0;
+        &:hover {
+            opacity: 1;
+        }
+    }
+ }

@@ -1,15 +1,33 @@
 import React from 'react'
 import {
-    Hint, Loader, CodeSnippet, Button, RichText
+    Hint, Loader, CodeSnippet, Button, RichText, Tags
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
 export default function TypoPage() {
+
+    const exampleTags =
+    {
+        maxWidth: 300,
+        sorting: true,
+        data: [
+            { id: 1, text: 'Hello world', deletable: false, clickable: true },
+            { id: 2, text: 'Goodbye world Goodbye world Goodbye world Goodbye world', deletable: true },
+            { id: 3, text: 'Huyak world', deletable: true, clickable: true },
+        ]
+    }
+
     return (
         <React.Fragment>
-            <h2 style={{ marginBottom: 24, marginTop: 12 }}>Rich text component</h2>
-            
-            <RichText />
+            <h2 style={{ marginBottom: 24, marginTop: 12 }}>Tags</h2>
+
+            <Tags 
+                tags={exampleTags}
+                style={{ marginBottom: 24, marginTop: 12 }}
+                onSort={newSorting => {console.log('sort tags'); console.log(newSorting)}}
+                onDelete={tagId => {console.log('delete tag: ' + tagId)}}
+                onClick={tagId => {console.log('click tag: ' + tagId)}}
+            />
 
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Loader</h2>
             <CodeSnippet code=

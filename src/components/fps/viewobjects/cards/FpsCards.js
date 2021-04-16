@@ -111,7 +111,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
                 console.log('ID does not match');
                 match = false
             }
-            if (cond.target == 'role' && (!auth || !auth.role || !auth.role.match(new RegExp(cond.checkValue)))) {
+            if (cond.target == 'role' && (!auth || !auth.role || (auth.role && !auth.role.match(new RegExp(cond.checkValue))) )) {
                 console.log('Role does not match');
                 match = false
             }
