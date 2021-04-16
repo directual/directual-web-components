@@ -9,12 +9,20 @@ export default function TypoPage() {
     const exampleTags =
     {
         maxWidth: 300,
-        sorting: true,
+        addButton: true,
+        addText: 'Add scenario',
         data: [
             { id: 1, text: 'Hello world', deletable: false, clickable: true },
             { id: 2, text: 'Goodbye world Goodbye world Goodbye world Goodbye world', deletable: true },
             { id: 3, text: 'Huyak world', deletable: true, clickable: true },
         ]
+    }
+    const exampleTags2 =
+    {
+        maxWidth: 300,
+        addButton: true,
+        addText: 'Add tag',
+        data: []
     }
 
     return (
@@ -27,6 +35,15 @@ export default function TypoPage() {
                 onSort={newSorting => {console.log('sort tags'); console.log(newSorting)}}
                 onDelete={tagId => {console.log('delete tag: ' + tagId)}}
                 onClick={tagId => {console.log('click tag: ' + tagId)}}
+                onAdd={() => {console.log('Add tag!')}}
+            />
+            <Tags 
+                tags={exampleTags2}
+                style={{ marginBottom: 24, marginTop: 12 }}
+                onSort={newSorting => {console.log('sort tags'); console.log(newSorting)}}
+                onDelete={tagId => {console.log('delete tag: ' + tagId)}}
+                onClick={tagId => {console.log('click tag: ' + tagId)}}
+                onAdd={() => {console.log('Add tag!')}}
             />
 
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Loader</h2>

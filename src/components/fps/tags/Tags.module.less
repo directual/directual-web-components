@@ -18,6 +18,14 @@
     text-overflow: ellipsis;
     cursor: default;
     overflow: hidden;
+    &.addButton {
+        background-color: var(--accent-color);
+        color: var(--button-accent-color);
+        padding-left: 4px;
+        &:hover {
+            background-color: var(--secondary-accent-color);
+        }
+    }
     &.clickable {
         opacity: .9;
         cursor: pointer;
