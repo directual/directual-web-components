@@ -17,12 +17,16 @@
   cursor: default;
   overflow: hidden;
 }
+.tag.disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
 .tag.addButton {
   background-color: var(--accent-color);
   color: var(--button-accent-color);
   padding-left: 4px;
 }
-.tag.addButton:hover {
+.tag.addButton:hover:not(.disabled) {
   background-color: var(--secondary-accent-color);
 }
 .tag.clickable {

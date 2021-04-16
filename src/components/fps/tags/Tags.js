@@ -14,12 +14,12 @@ export function Tags(props) {
                     tag={tag} 
                     maxWidth={props.tags && props.tags.maxWidth}
                     key={tag.id} 
-                    onDelete={id => { tag.deletable && props.onDelete && props.onDelete(id) } }
-                    onClick={id => { tag.clickable && props.onClick && props.onClick(id) } }/>)}
+                    onDelete={id => { !props.disabled && tag.deletable && props.onDelete && props.onDelete(id) } }
+                    onClick={id => { !props.disabled && tag.clickable && props.onClick && props.onClick(id) } }/>)}
                 {addButton && 
                 <div 
-                    onClick={props.onAdd}
-                    className={`${styles.tag} ${styles.clickable} icon icon-plus small ${styles.addButton}`}>
+                    onClick={!props.disabled && props.onAdd}
+                    className={`${styles.tag} ${props.disabled ? styles.disabled : styles.clickable} icon icon-plus small ${styles.addButton}`}>
                     {props.tags.addText || 'Add'}</div>}
             </div>
             {/* <pre className='dd-debug'>{JSON.stringify(props.tags.data, 0, 1)}</pre> */}

@@ -18,11 +18,15 @@
     text-overflow: ellipsis;
     cursor: default;
     overflow: hidden;
+    &.disabled {
+        cursor:not-allowed;
+        opacity: .3;
+    }
     &.addButton {
         background-color: var(--accent-color);
         color: var(--button-accent-color);
         padding-left: 4px;
-        &:hover {
+        &:hover:not(.disabled) {
             background-color: var(--secondary-accent-color);
         }
     }

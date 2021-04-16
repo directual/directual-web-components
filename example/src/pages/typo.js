@@ -30,6 +30,7 @@ export default function TypoPage() {
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Tags</h2>
 
             <Tags 
+                disabled
                 tags={exampleTags}
                 style={{ marginBottom: 24, marginTop: 12 }}
                 onSort={newSorting => {console.log('sort tags'); console.log(newSorting)}}
