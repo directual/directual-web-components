@@ -14,7 +14,7 @@ export default function TypoPage() {
         data: [
             { id: 1, text: 'Hello world', deletable: false, clickable: true },
             { id: 2, text: 'Goodbye world Goodbye world Goodbye world Goodbye world', deletable: true },
-            { id: 3, text: 'Huyak world', deletable: true, clickable: true },
+            { id: 3, text: 'Huyak world', deletable: true, clickable: true, clickLink:'https://ya.ru' },
         ]
     }
     const exampleTags2 =
@@ -30,7 +30,7 @@ export default function TypoPage() {
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Tags</h2>
 
             <Tags 
-                disabled
+                //disabled
                 tags={exampleTags}
                 style={{ marginBottom: 24, marginTop: 12 }}
                 onSort={newSorting => {console.log('sort tags'); console.log(newSorting)}}

@@ -15,7 +15,8 @@ export function Tags(props) {
                     maxWidth={props.tags && props.tags.maxWidth}
                     key={tag.id} 
                     onDelete={id => { !props.disabled && tag.deletable && props.onDelete && props.onDelete(id) } }
-                    onClick={id => { !props.disabled && tag.clickable && props.onClick && props.onClick(id) } }/>)}
+                    onClick={id => { !props.disabled && tag.clickable && props.onClick && props.onClick(id) } }
+                    />)}
                 {addButton && 
                 <div 
                     onClick={!props.disabled && props.onAdd}
@@ -29,11 +30,12 @@ export function Tags(props) {
 
 function Tag({ tag, onDelete, maxWidth, onClick }) {
     return (
-        <div 
-            onClick={() => onClick(tag.id)}
+        <a 
+            href={tag.clickLink}
+            onClick={e => { e.preventDefault(); onClick(tag.id) }}
             className={`${styles.tag} ${tag.clickable ? styles.clickable : ''}`} style={{maxWidth: maxWidth || 'none'}}>
             <span className={styles.text}>{tag.text || tag.id}</span>
-            {tag.deletable && <span onClick={e => { e.stopPropagation(); onDelete(tag.id) }} className={`icon icon-close small ${styles.delete}`} />}
-        </div>
+            {tag.deletable && <span onClick={e => {e.preventDefault(); e.stopPropagation(); onDelete(tag.id) }} className={`icon icon-close small ${styles.delete}`} />}
+        </a>
     )
 }
