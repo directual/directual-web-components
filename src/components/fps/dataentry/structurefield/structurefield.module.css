@@ -133,7 +133,7 @@
   padding: 7px 36px 7px 18px;
   overflow-x: auto;
   overflow-y: hidden;
-  min-height: 36px;
+  min-height: 32px;
   color: var(--font-color);
   -webkit-appearance: none;
   -moz-appearance: none;
