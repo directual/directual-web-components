@@ -4,12 +4,10 @@
 }
 .section {
   display: flex;
-  overflow: hidden;
 }
 .column {
   flex-shrink: 0;
   flex-grow: 2;
-  overflow: hidden;
   max-width: 100%;
 }
 .componentWrapper .componentWidth {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, FpsLayout, Dnd, FpsCards, TabsPane } from 'directual-web-components'
+import { Button, FpsLayout, Dnd, FpsCards, TabsPane, FpsForm } from 'directual-web-components'
 
 
 export default function LayoutPage() {
@@ -63,7 +63,7 @@ export default function LayoutPage() {
                                 "id": "comp_1616786182315"
                             },
                             "size": 50,
-                            "render": (currentBP) => <FpsCards data={dataCards} currentBP={currentBP}/>
+                            "render": (currentBP) => <FpsForm data={dataForm} currentBP={currentBP}/>
                         },
                         {
                             "id": "column_1616786202461",
@@ -132,6 +132,79 @@ export default function LayoutPage() {
             ],
             "tab_03": []
         }
+    }
+
+    const dataForm = {
+        "sl": "date",
+        "formName": "",
+        "formDesc": "",
+        "formButton": "",
+        "placeholder": "",
+        "maxWidth": "",
+        "formButtonResubmit": null,
+        "params": {
+            "result": {
+                "resultTitleField": null,
+                "resultMessageField": null,
+                "isSuccessField": null
+            }
+        },
+        "fileds": [
+            {
+                "sysName": "date",
+                "dataType": "date",
+                "name": "",
+                "id": "57511618846087372",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": 0,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "params": {
+                    "include": true,
+                    "hidden": false,
+                    "required": false,
+                    "isTextarea": false,
+                    "isMarkdown": false,
+                    "textareaRows": 4,
+                    "defaultValue": "",
+                    "isPositive": false,
+                    "quickSearch": true,
+                    "allowAddLinks": false,
+                    "dateTimeOn": true,
+                    "isValid": true,
+                    "weight": 0,
+                    "jsonDisplay": "default",
+                    "range": {
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unitName": ""
+                    }
+                },
+                "isValid": true
+            }
+        ],
+        "error": null,
+        "isSuccessWrite": false,
+        "response": null,
+        "data": null
     }
 
     const dataCards = {
@@ -1907,7 +1980,7 @@ export default function LayoutPage() {
         { key: '3', disabled: true, title: 'Tab 3 (disabled)', content: <div>Tab content 3</div> }
       ]
 
-    return <TabsPane tabs={exampleTabs} hideSingleTab currentTabKey={1} fixedScroll={false} />
+    //return <TabsPane tabs={exampleTabs} hideSingleTab currentTabKey={1} fixedScroll={false} />
 
     return <FpsLayout
         layout={layoutExample}
