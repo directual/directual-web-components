@@ -93,6 +93,8 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
         // console.log(conds)
         // console.log(object)
         eConds && eConds.forEach(cond => {
+            console.log(cond)
+            console.log(object)
             if (cond.target == 'id' && cond.type == 'const') {
                 cond.checkValue = cond.value
             }
