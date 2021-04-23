@@ -31,7 +31,6 @@ function FpsTable({ data, onEvent, id }) {
     }
     return (
         <React.Fragment>
-
             {showObject &&
                 <React.Fragment>
                     <Backdrop onClick={handleCloseShowObject} hoverable />
@@ -68,13 +67,9 @@ FpsTable.settings = {
     name: 'Table view',
     sysName: 'FpsTable',
     form: [
-        { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
+        { name: 'API-endpoint', sysName: 'sl', type: 'api-endpoint' },
         { name: 'Table title', sysName: 'tableTitle', type: 'input' },
-        { name: 'Desktop view', sysName: 'desktopView', type: 'tableView' },
-        { name: 'Mobile view', sysName: 'mobileView', type: 'tableView' },
         { name: 'Page size', sysName: 'pageSize', type: 'number' },
-        { name: 'Filters', sysName: 'tableFilters', type: 'boolean' },
-        { name: 'Quick serch', sysName: 'tableQuickSearch', type: 'boolean' },
     ]
 }
 export default FpsTable

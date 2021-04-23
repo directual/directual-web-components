@@ -55,7 +55,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
         if (value) {
             setSearchValue(value)
             const fieldsDQL = data.headers && data.headers.map(i => i.sysName);
-            const requestDQL = fieldsDQL.map(i => i + ' like ' + "'" + value + "'").join(' OR ')
+            const requestDQL = fieldsDQL.map(i => "'" + i + "'" + ' like ' + "'" + value + "'").join(' OR ')
             setCurrentDQL(requestDQL)
             sendMsg({ dql: requestDQL }, null, { page: 0 })
         } else {

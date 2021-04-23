@@ -1,8 +1,21 @@
 import React, { useState } from 'react'
 import styles from './table.module.css'
 import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
+import { Table as AntdTable } from 'antd'
+
 
 export function Table({ data, onEvent, id, onExpand }) {
+
+    console.log('FpsTable')
+    console.log(data)
+
+    return <React.Fragment>
+        <AntdTable />
+    </React.Fragment>
+}
+
+
+function OldTable({ data, onEvent, id, onExpand }) {
     const tableHeader = data.headers || []
     const tableData = data.data || []
     const pageSize = data.pageSize || 0
