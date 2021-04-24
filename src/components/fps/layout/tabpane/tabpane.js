@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import styles from './tabpane.module.css'
 
 
-export default function TabsPane({ tabs, currentTabKey, fixedScroll, hideSingleTab }) {
+export default function TabsPane({ tabs, currentTabKey, fixedScroll, hideSingleTab, preloadTabs }) {
     const [currentTab, setCurrentTab] = useState(currentTabKey || '')
 
     let counter = 0
@@ -17,7 +17,10 @@ export default function TabsPane({ tabs, currentTabKey, fixedScroll, hideSingleT
                 tabs={tabs}
                 currentTabKey={currentTab}
                 onClick={tabClicked => tabClicked && setCurrentTab(tabClicked)} />}
-            {tabs.map(tab => currentTab == tab.key &&
+            {preloadTabs && tabs.map(tab => <Tab 
+                key={tab.key} tabContent={tab} currentTabKey={currentTab} isSingleTab={isSingleTab}/>)}
+
+            {!preloadTabs && tabs.map(tab => currentTab == tab.key &&
                 <Tab key={tab.key} tabContent={tab} currentTabKey={currentTab} isSingleTab={isSingleTab}/>)}
         </div>
     )
@@ -62,7 +65,7 @@ export function Tab({ tabContent, currentTabKey, isSingleTab }) {
             {`
                 ${isSingleTab && styles.singleTab}
                 ${styles.tabWrapper} 
-                ${currentTabKey == tabContent.key && styles.current_}
+                ${currentTabKey == tabContent.key && styles.current}
                 ${showBorder && styles.bordered}
             `}>
             {tabContent.content}
