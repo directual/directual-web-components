@@ -78,16 +78,25 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
     }
 
     const submit = (model) => {
-        if (model) {
-            for (const field in model) {
-                if (typeof model[field] == 'object' && data.params.data.fields[field].dataType != 'date') { delete model[field] }  // removing links
-                if (writeFields.indexOf(field) == -1) { delete model[field] } // removing fields not for writing
-                if (data.params.data.fields[field].dataType == 'date' && typeof model[field] == 'number') {
-                    model[field] = moment(model[field])
+        const saveModel = {...model}
+        if (saveModel) {
+            for (const field in saveModel) {
+                console.log(field)
+                if (saveModel[field] && typeof saveModel[field] == 'object' && data.params.data.fields[field].dataType != 'date') 
+                    {   console.log('removing links')
+                        delete saveModel[field] 
+                    }  // removing links
+                if (writeFields.indexOf(field) == -1) 
+                    { 
+                        console.log(`removing ${field} as a field not for writing`)
+                        delete saveModel[field] 
+                    } // removing fields not for writing
+                if (data.params.data.fields[field].dataType == 'date' && typeof saveModel[field] == 'number') {
+                    saveModel[field] = moment(saveModel[field])
                 }
             }
         }
-        sendMsg(model)
+        sendMsg(saveModel)
     }
 
     const submitAction = (mapping, sl) => {

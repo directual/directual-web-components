@@ -237,6 +237,10 @@ export function ObjectCard(props) {
             // return newArr;
         };
         const transformedFields = fields && fieldParams ? transform(fields, fieldParams) : []
+
+        console.log('transformedFields')
+        console.log(transformedFields)
+
         return (
             <React.Fragment>
                 {transformedFields.map((f, i) => {
@@ -484,7 +488,7 @@ function CardField({ field, object, model, setModel, debug, editingOn,
                             description={field.descriptionFlag && field.description}
                             label={field.name || field.sysName}
                             defaultValue={model[field.sysName]}
-                            timeFormat={`${field.dateTimeOn ? `h:mm a` : ''}`}
+                            timeFormat={`${field.dateTimeOn ? ' HH:mm' : ''}`}
                             onChange={value => setModel({ ...model, [field.sysName]: value })}
                         /> :
                         <FieldReadOnly field={field} object={object} date weblink={{}} />
@@ -627,13 +631,18 @@ function SaveCard({ model, currentObject, submit, setCurrentObject, setModel, lo
                 <ActionPanel margin={{ top: 24, bottom: 12 }}>
                     {loading ? <Loader>Loading...</Loader> :
                         <React.Fragment>
-                            {/* <pre className='dd-debug'>{JSON.stringify(model,0,3)}</pre>
-                            <pre className='dd-debug'>{JSON.stringify(currentObject,0,3)}</pre> */}
+                            {/* <pre className='dd-debug'>{JSON.stringify(model,0,3)}</pre> */}
+                            {/* <pre className='dd-debug'>{JSON.stringify(currentObject,0,3)}</pre> */}
                             <Button
                                 disabled={JSON.stringify(model) === JSON.stringify(currentObject)}
                                 accent
                                 icon='done'
-                                onClick={() => { submit(model); setCurrentObject(model) }}
+                                onClick={() => {
+                                    // console.log('Save changes')
+                                    // console.log(model)
+                                    setCurrentObject(model);
+                                    submit(model);
+                                }}
                             >
                                 Save changes</Button>
                             <Button danger icon='ban'
@@ -654,9 +663,11 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
     // console.log('Field  Link')
     // console.log(field)
     // console.log(object[field.sysName].value)
-    if (!object[field.sysName].value || object[field.sysName].value.length == 0) {
-        return <React.Fragment></React.Fragment>
-    }
+    // if (!object[field.sysName].value || object[field.sysName].value.length == 0) {
+    //     return <React.Fragment>
+
+    //     </React.Fragment>
+    // }
 
     return (
         <React.Fragment>
