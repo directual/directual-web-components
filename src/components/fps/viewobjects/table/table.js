@@ -1,11 +1,20 @@
 import React, { useState, useMemo } from 'react'
 import styles from './table.module.css'
 import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
-import { useTable } from 'react-table'
+import { useTable, usePagination } from 'react-table'
 
 
-export function Table({ data, onExpand, loading, searchValue, auth, submitAction, params, checkActionCond, currentBP }) {
-
+export function Table({ 
+    data, 
+    onExpand, 
+    loading, 
+    searchValue, 
+    auth, 
+    submitAction, 
+    params, 
+    checkActionCond, 
+    currentBP 
+}) {
 
     data.error =
         data.error && data.error == '403'
@@ -21,9 +30,9 @@ export function Table({ data, onExpand, loading, searchValue, auth, submitAction
 
     // composing Table Header
     const tableParams = data.params.tableParams
+        
     if (!tableParams) { return <SomethingWentWrong icon='ban' message='Table is not configured' /> }
 
-    
     let tableColumns = []
     tableParams.fieldOrder.forEach(field => {
         if (tableParams.fieldParams[field] && tableParams.fieldParams[field].include) {
@@ -35,8 +44,9 @@ export function Table({ data, onExpand, loading, searchValue, auth, submitAction
     })
 
     // composing Table data 
-    const tableData = useMemo(()=> data.data) //.map((row, index) => { return { ...row, key: index } }) || []
-    const columns = useMemo(()=>tableColumns)
+    const tableData = useMemo(()=>data.data, [data.data])
+
+    const columns = useMemo(()=>tableColumns, [])
 
     console.log('tableColumns')
     console.log(tableColumns)

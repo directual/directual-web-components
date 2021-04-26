@@ -19,8 +19,8 @@
     flex-grow: 2;
     overflow-x: hidden;
     overflow-y: auto;
-    /* height: calc(100% - 78px); */
-    height: 100%
+    height: calc(100% - 78px);
+    /* height: 100% */
 }
 
 .content_wrapper h1 {
