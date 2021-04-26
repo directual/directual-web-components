@@ -1,31 +1,17 @@
 
-     .table_wrapper {
-        background-color: var(--background-color);
-        padding: 6px;
-        border-radius: var(--border-radius);
-        overflow: auto; 
-        border: solid 1px var(--background-contrast-color);
-     
+.table_wrapper {
+    background-color: var(--background-color);
+    padding: 6px;
+    border-radius: var(--border-radius);
+    overflow: auto;
+    border: solid 1px var(--background-contrast-color);
      table {
         min-width: 100%;
-
-        
         tr {
             &:hover .expand {
                 opacity: .5;
             }
-            .expand {
-                width: 0;
-                opacity: .1;
-                transition: .5s;
-                cursor: pointer;
-                margin-right: 6px;
-                &:hover {
-                    opacity: 1;
-                }
-            }
         }
-        
         td {
             padding: 12px 12px;
             border-top: solid 1px var(--table-border-color);
@@ -46,11 +32,13 @@
                 }
             }
         }
-        thead td
+        thead th
         {
             font-weight: var(--strong-font-weight);
             border:none;
             opacity: .5;
+            text-align: left;
+            padding: 12px 12px;
         }
     }
     .pagination {
@@ -71,292 +59,294 @@
         }
     }
 }
- 
- .firstObjectCard {
-    position: absolute;
-    top:18px;
-    left: 0;
-    bottom: 18px;
-    right: 18px;
- }
- .objectCard {
-    position: absolute;
-    top:-1px;
-    left: 17px;
-    bottom: -1px;
-    right: -1px;
-    overflow: hidden;
-    //padding:24px 24px 24px 12px;
-    display: flex;
-    flex-direction: column;
-    border-radius: var(--border-radius);
-    border: solid 1px var(--background-contrast-color);
-    background-color: var(--background-color);
-    z-index: 101;
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
 
-    .objectCardHeader {
-        display: flex;
-        flex-shrink: 0;
-        align-items: center;
-        overflow: hidden;
-        padding: 24px 24px 12px 12px;
-        h2 {
-            overflow: hidden;
-            text-overflow: ellipsis;
-           // white-space: nowrap;
-           &.narrowH2 {
-               margin-right: 25px;
-           }
-        }
-        .closeObjectCard {
-            cursor: pointer;
-            margin-right: 12px;
-            opacity: .5;
-            transition: .5s;
-            &:hover {
-                opacity: 1;
-            }
-        }
+.firstObjectCard {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  bottom: 18px;
+  right: 18px;
+}
+.objectCard {
+  position: absolute;
+  top: -1px;
+  left: 17px;
+  bottom: -1px;
+  right: -1px;
+  overflow: hidden;
+  //padding:24px 24px 24px 12px;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--border-radius);
+  border: solid 1px var(--background-contrast-color);
+  background-color: var(--background-color);
+  z-index: 101;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+
+  .objectCardHeader {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    overflow: hidden;
+    padding: 24px 24px 12px 12px;
+    h2 {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      // white-space: nowrap;
+      &.narrowH2 {
+        margin-right: 25px;
+      }
     }
-    .objectCardBody {
-        margin:-5px 24px 19px 44px;
-        //border: solid 1px green;
-        overflow: auto;
-        flex-grow: 2;
-        &.notabs {
-            margin:12px 24px 24px 44px;
-        }
-        &.bordered {
-            border-top:solid 1px var(--field-border-color)
-        }
+    .closeObjectCard {
+      cursor: pointer;
+      margin-right: 12px;
+      opacity: 0.5;
+      transition: 0.5s;
+      &:hover {
+        opacity: 1;
+      }
     }
-    .fieldValue {
-        display: block;
-        overflow: hidden;
-        max-width: 100%;
-        text-overflow: ellipsis;
-        white-space: pre-line
+  }
+  .objectCardBody {
+    margin: -5px 24px 19px 44px;
+    //border: solid 1px green;
+    overflow: auto;
+    flex-grow: 2;
+    &.notabs {
+      margin: 12px 24px 24px 44px;
     }
-    .editLink {
-        margin:12px 3px 0 0
+    &.bordered {
+      border-top: solid 1px var(--field-border-color);
     }
+  }
+  .fieldValue {
+    display: block;
+    overflow: hidden;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: pre-line;
+  }
+  .editLink {
+    margin: 12px 3px 0 0;
+  }
 }
 
 .tableTitle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  overflow: hidden;
+  .tableTitleWrapper {
     overflow: hidden;
-    .tableTitleWrapper {
-        overflow: hidden;
+  }
+  h1,
+  h2 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0 !important;
+    transition: 0.5s;
+  }
+  .tableActions {
+    display: flex;
+    .tableQuickSearchField {
+      margin-left: 6px;
     }
-    h1,h2 {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin-bottom: 0 !important;
-        transition: .5s;
+    .quickSearchInput {
+      width: calc(100% - 82px);
     }
-    .tableActions {
-        display: flex;
-        .tableQuickSearchField {
-            margin-left: 6px;
-        }
-        .quickSearchInput {
-            width: calc(100% - 82px);
-        }
-    }
+  }
 }
 
- @media all and (max-width: 415px) { 
-    .firstObjectCard {
-        position: absolute;
-        top:12px;
-        left: -6px;
-        bottom: 12px;
-        right: 12px;
-     }
-    .objectCard {
-        //padding:12px;
-        .objectCardBody {
-            margin:-5px 24px 19px 24px;
-            &.notabs {
-                margin:12px 24px 24px 24px;
-            }
-        }
+@media all and (max-width: 415px) {
+  .firstObjectCard {
+    position: absolute;
+    top: 12px;
+    left: -6px;
+    bottom: 12px;
+    right: 12px;
+  }
+  .objectCard {
+    //padding:12px;
+    .objectCardBody {
+      margin: -5px 24px 19px 24px;
+      &.notabs {
+        margin: 12px 24px 24px 24px;
+      }
     }
- }
+  }
+}
 
- div.tableTitle.mobile {
-    flex-direction: column;
-    align-items: stretch;
-    h1, h2 {
-        max-width: calc(100% - 24px);
-        //margin-bottom: 12px !important;
-    }
+div.tableTitle.mobile {
+  flex-direction: column;
+  align-items: stretch;
+  h1,
+  h2 {
+    max-width: calc(100% - 24px);
+    //margin-bottom: 12px !important;
+  }
 }
 .tableTitle.mobile {
-    .tableTitleWrapper {
-        //margin-bottom: 12px;
+  .tableTitleWrapper {
+    //margin-bottom: 12px;
+  }
+  .tableActions {
+    .tableQuickSearchField {
+      margin: 12px 0 0 0;
+      width: 100%;
     }
-    .tableActions {
-        .tableQuickSearchField {
-            margin: 12px 0 0 0;
-            width: 100%;
-        }
-        .quickSearchInput {
-            //width: calc(100% - 8px);
-        }
+    .quickSearchInput {
+      //width: calc(100% - 8px);
     }
+  }
 }
 
- .hidden {
-     visibility: hidden;
- }
+.hidden {
+  visibility: hidden;
+}
 
- .objFieldWrapper {
-     margin-bottom: 24px;
-     .label {
-         opacity: .7;
-         font-size: var(--text-small-size);
-         display: flex;
-         padding-bottom: 6px;
-         align-items: center;
-         font-weight: var(--strong-font-weight);
-         .editPedal {
-             margin-left: 6px;
-             color: var(--accent-color);
-             cursor: pointer;
-             font-weight: var(--text-font-weight);
-             &:hover {
-                color: var(--secondary-accent-color);
-            }
-         }
-     }
-     .novalue {
-         opacity: .5;
-     }
-     .description {
-        font-size: var(--text-small-size);
-        opacity: 0.6;
-        margin: 3px 0 9px 0px;
-        display: block;
-    }
-     .linkFieldWrapper {
-         display: flex;
-         flex-wrap: wrap;
-         margin-bottom: -6px;
-         &.notClickable {
-             a {
-                cursor: default;
-                color:var(--label-text-color);
-                background-color: var(--label-color);
-                border:none;
-             }
-         }
-         a {
-             margin: 0px 6px 6px 0;
-             border: solid 1px var(--accent-color);
-             padding: 3px 9px;
-             border-radius: calc(var(--border-radius) / 2);
-             &:hover {
-                 border-color: var(--secondary-accent-color);
-             }
-         }
-     }
-     .cardImage {
-         background-color: var(--field-border-color);
-         display: flex;
-         overflow: hidden;
-         align-items: center;
-         justify-content: center;
-         background-size: contain;
-         background-position: center center;
-         background-repeat: no-repeat;
-         margin-bottom: 12px;
-         position: relative;
-         .noPic {
-             font-size: var(--text-small-size);
-             color: var(--background-color);
-             opacity: .5;
-         }
-         .editPic {
-             position: absolute;
-             background: var(--accent-color);
-             opacity: 0;
-             width: 100%;
-             height: 100%;
-             align-items: center;
-             justify-content: center;
-             cursor: pointer;
-             transition: .5s;
-             &:hover {
-                opacity: .35;
-             }
-             &:before {
-                 color: var(--button-accent-color);
-                 font-size: 80px;
-             }
-         }
-     }
-     .cardFile {
-         display: flex;
-         align-items: center;
-         margin-bottom: 12px;
-         .download {
-            background-color: var(--label-color);
-            color: var(--label-text-color);
-            border-radius: var(--border-radius);
-            height: 48px;
-            padding: 0 22px 0 16px;
-            margin-right: 6px;
-         }
-         
-     }
- }
-
- .titleSearch {
-     opacity: .6;
- }
-
- .subtitle, .titleSearch {
-    height: 40px;
+.objFieldWrapper {
+  margin-bottom: 24px;
+  .label {
+    opacity: 0.7;
+    font-size: var(--text-small-size);
     display: flex;
-    align-items: flex-end;
- }
-
- .jsonHolder {
-     //margin: 0 20px;
- }
-
-.actionsWrapper {
-    margin: 12px 0 24px 0;
+    padding-bottom: 6px;
+    align-items: center;
+    font-weight: var(--strong-font-weight);
+    .editPedal {
+      margin-left: 6px;
+      color: var(--accent-color);
+      cursor: pointer;
+      font-weight: var(--text-font-weight);
+      &:hover {
+        color: var(--secondary-accent-color);
+      }
+    }
+  }
+  .novalue {
+    opacity: 0.5;
+  }
+  .description {
+    font-size: var(--text-small-size);
+    opacity: 0.6;
+    margin: 3px 0 9px 0px;
+    display: block;
+  }
+  .linkFieldWrapper {
     display: flex;
     flex-wrap: wrap;
-    .actionButton {
-        margin: 0 6px 6px 0;
+    margin-bottom: -6px;
+    &.notClickable {
+      a {
+        cursor: default;
+        color: var(--label-text-color);
+        background-color: var(--label-color);
+        border: none;
+      }
     }
-    .actionForm {
-        width: 100%;
-        flex-shrink: 0;
-        margin-bottom: 24px;
+    a {
+      margin: 0px 6px 6px 0;
+      border: solid 1px var(--accent-color);
+      padding: 3px 9px;
+      border-radius: calc(var(--border-radius) / 2);
+      &:hover {
+        border-color: var(--secondary-accent-color);
+      }
     }
+  }
+  .cardImage {
+    background-color: var(--field-border-color);
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-bottom: 12px;
+    position: relative;
+    .noPic {
+      font-size: var(--text-small-size);
+      color: var(--background-color);
+      opacity: 0.5;
+    }
+    .editPic {
+      position: absolute;
+      background: var(--accent-color);
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.5s;
+      &:hover {
+        opacity: 0.35;
+      }
+      &:before {
+        color: var(--button-accent-color);
+        font-size: 80px;
+      }
+    }
+  }
+  .cardFile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    .download {
+      background-color: var(--label-color);
+      color: var(--label-text-color);
+      border-radius: var(--border-radius);
+      height: 48px;
+      padding: 0 22px 0 16px;
+      margin-right: 6px;
+    }
+  }
+}
+
+.titleSearch {
+  opacity: 0.6;
+}
+
+.subtitle,
+.titleSearch {
+  height: 40px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.jsonHolder {
+  //margin: 0 20px;
+}
+
+.actionsWrapper {
+  margin: 12px 0 24px 0;
+  display: flex;
+  flex-wrap: wrap;
+  .actionButton {
+    margin: 0 6px 6px 0;
+  }
+  .actionForm {
+    width: 100%;
+    flex-shrink: 0;
+    margin-bottom: 24px;
+  }
 }
 .objectCard {
-    .shareObject {
-        position: absolute;
-        opacity: .15;
-        cursor: pointer;
-        top:25px;
-        right: 25px;
-        transition: .5s;
-        &:hover {
-            opacity: .8;
-        }
-        &:before {
-            font-size: 36px;
-        }
+  .shareObject {
+    position: absolute;
+    opacity: 0.15;
+    cursor: pointer;
+    top: 25px;
+    right: 25px;
+    transition: 0.5s;
+    &:hover {
+      opacity: 0.8;
     }
+    &:before {
+      font-size: 36px;
+    }
+  }
 }

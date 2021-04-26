@@ -1,16 +1,113 @@
 import React, { useState } from 'react'
 import styles from './table.module.css'
 import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
-import { Table as AntdTable } from 'antd'
+import { useTable } from 'react-table'
 
 
-export function Table({ data, onEvent, id, onExpand }) {
+export function Table({ data, onExpand, loading, searchValue, auth, submitAction, params, checkActionCond, currentBP }) {
 
-    console.log('FpsTable')
-    console.log(data)
+
+    data.error =
+        data.error && data.error == '403'
+            ? 'You have no permissions for viewing form'
+            : data.error
+    data.error =
+        data.error && data.error == '511' ? 'Table is not configured' : data.error
+
+    // console.log('===data===:')
+    // console.log(tableData)
+    // console.log('===tableParams===:')
+    // console.log(tableParams)
+
+    // composing Table Header
+    const tableParams = data.params.tableParams
+    let tableColumns = []
+    tableParams.fieldOrder.forEach(field => {
+        if (tableParams.fieldParams[field] && tableParams.fieldParams[field].include) {
+            tableColumns.push({
+                Header: tableParams.fields[field].content,
+                accessor: field,
+            })
+        }
+    })
+
+    // composing Table data 
+    const tableData = data.data //.map((row, index) => { return { ...row, key: index } }) || []
+
+    console.log('tableColumns')
+    console.log(tableColumns)
+    console.log('tableData')
+    console.log(tableData)
+
+    const tableInstance = useTable({ columns: tableColumns, data: tableData })
+
+    const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        rows,
+        prepareRow,
+    } = tableInstance
+
+    if (!tableParams) { return <SomethingWentWrong icon='ban' message='Table is not configured' /> }
+
+    if (data.error) {
+        return <SomethingWentWrong
+            icon='warning'
+            message={data.error}
+        />
+    }
+    if (tableData.length === 0) {
+        return <SomethingWentWrong
+            icon='ban'
+            message={`${searchValue ? `No object found for ${searchValue}` : `No objects`}`}
+        />
+    }
+
+    // const [selectedRowKeys,setSelectedRowKeys] = useState([])
+
+    // const rowSelection = {
+    //     selectedRowKeys,
+    //     onChange: setSelectedRowKeys,
+    //   };
 
     return <React.Fragment>
-        <AntdTable />
+        <div className={styles.table_wrapper}>
+            <table {...getTableProps()}>
+                <thead>
+                    {headerGroups.map(headerGroup => (
+                        <tr {...headerGroup.getHeaderGroupProps()}>
+                            {headerGroup.headers.map(column => (
+                                <th
+                                    {...column.getHeaderProps()}
+                                >
+                                    {column.render('Header')}
+                                </th>
+                            ))}
+                        </tr>
+                    ))}
+                </thead>
+                <tbody {...getTableBodyProps()}>
+                    {rows.map(row => {
+                        prepareRow(row)
+                        return (
+                            <tr {...row.getRowProps()}>
+                                {row.cells.map(cell => {
+                                    return (
+                                        <td
+                                            {...cell.getCellProps()}
+                                        >
+                                            {cell.render('Cell')}
+                                        </td>
+                                    )
+                                })}
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
+        </div>
+
     </React.Fragment>
 }
 

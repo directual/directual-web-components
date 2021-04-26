@@ -11,16 +11,6 @@
 .table_wrapper table tr:hover .expand {
   opacity: 0.5;
 }
-.table_wrapper table tr .expand {
-  width: 0;
-  opacity: 0.1;
-  transition: 0.5s;
-  cursor: pointer;
-  margin-right: 6px;
-}
-.table_wrapper table tr .expand:hover {
-  opacity: 1;
-}
 .table_wrapper table td {
   padding: 12px 12px;
   border-top: solid 1px var(--table-border-color);
@@ -41,10 +31,12 @@
 .table_wrapper table td .previewLink .noname {
   opacity: 0.5;
 }
-.table_wrapper table thead td {
+.table_wrapper table thead th {
   font-weight: var(--strong-font-weight);
   border: none;
   opacity: 0.5;
+  text-align: left;
+  padding: 12px 12px;
 }
 .table_wrapper .pagination {
   border-top: solid 1px var(--table-border-color);

@@ -120,15 +120,12 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
             <div className={`${styles.cardsWrapper} 
                 ${(data.error || tableData.length === 0 || tableHeaders.length === 0) && styles.emptyTable} ${loading && styles.loading}`}>
                 {(tableData.length != 0 && tableHeaders.length != 0) && tableData.map((row, i) => {
-
                     const object = row
-
                     // actions для меню быстрого доступа
                     const quickActions = params.actions ?
                         params.actions.filter(i => i.dropdown && i.displayAs == 'button'
                             && i.callFrom != 'linked'
                             && checkActionCond(edenrichConds(i.conditionals, object))) : []
-
                     // выполнить Action
                     function performAction(actionParams) {
                         console.log(actionParams)
