@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import styles from './table.module.css'
 import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
 import { useTable } from 'react-table'
@@ -21,6 +21,9 @@ export function Table({ data, onExpand, loading, searchValue, auth, submitAction
 
     // composing Table Header
     const tableParams = data.params.tableParams
+    if (!tableParams) { return <SomethingWentWrong icon='ban' message='Table is not configured' /> }
+
+    
     let tableColumns = []
     tableParams.fieldOrder.forEach(field => {
         if (tableParams.fieldParams[field] && tableParams.fieldParams[field].include) {
@@ -32,14 +35,15 @@ export function Table({ data, onExpand, loading, searchValue, auth, submitAction
     })
 
     // composing Table data 
-    const tableData = data.data //.map((row, index) => { return { ...row, key: index } }) || []
+    const tableData = useMemo(()=> data.data) //.map((row, index) => { return { ...row, key: index } }) || []
+    const columns = useMemo(()=>tableColumns)
 
     console.log('tableColumns')
     console.log(tableColumns)
     console.log('tableData')
     console.log(tableData)
 
-    const tableInstance = useTable({ columns: tableColumns, data: tableData })
+    const tableInstance = useTable({ columns: columns, data: tableData })
 
     const {
         getTableProps,
@@ -49,7 +53,6 @@ export function Table({ data, onExpand, loading, searchValue, auth, submitAction
         prepareRow,
     } = tableInstance
 
-    if (!tableParams) { return <SomethingWentWrong icon='ban' message='Table is not configured' /> }
 
     if (data.error) {
         return <SomethingWentWrong
