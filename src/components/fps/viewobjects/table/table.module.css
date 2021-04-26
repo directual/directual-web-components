@@ -4,12 +4,19 @@
   border-radius: var(--border-radius);
   overflow: auto;
   border: solid 1px var(--background-contrast-color);
+  margin-bottom: 12px;
 }
 .table_wrapper table {
   min-width: 100%;
 }
+.table_wrapper table tr .expand {
+  opacity: 0;
+}
 .table_wrapper table tr:hover .expand {
   opacity: 0.5;
+}
+.table_wrapper table tr:hover .expand:hover {
+  opacity: 1;
 }
 .table_wrapper table td {
   padding: 12px 12px;

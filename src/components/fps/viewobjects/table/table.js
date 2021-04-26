@@ -90,6 +90,7 @@ export function Table({
                 <thead>
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
+                            <th style={{width: 30}}/>
                             {headerGroup.headers.map(column => (
                                 <th
                                     {...column.getHeaderProps()}
@@ -105,7 +106,14 @@ export function Table({
                         prepareRow(row)
                         return (
                             <tr {...row.getRowProps()}>
+                                <td><a 
+                                    onClick={()=>
+                                        //console.log(row)
+                                        onExpand(row.original)
+                                    }
+                                    className={`icon icon-expand ${styles.expand}`}/></td>
                                 {row.cells.map(cell => {
+                                    console.log(cell)
                                     return (
                                         <td
                                             {...cell.getCellProps()}

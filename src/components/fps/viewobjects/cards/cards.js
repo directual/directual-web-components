@@ -188,7 +188,10 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                 ${styles[tableParams.cardImageType]}
                                 ${tableParams.invertColors && styles.invertColors}
                                 `}
-                                onClick={() => !loading && onExpand(row)}>
+                                onClick={() => {
+                                    //console.log(row) 
+                                    !loading && onExpand(row)
+                                }}>
 
                                 {/* Картинка карточки */}
                                 {tableParams.cardImageField &&
