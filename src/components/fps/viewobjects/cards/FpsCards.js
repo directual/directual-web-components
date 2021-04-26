@@ -209,7 +209,7 @@ FpsCards.settings = {
         { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
         { name: 'List title', sysName: 'tableTitle', type: 'input' },
         { name: 'Page size', sysName: 'pageSize', type: 'number' },
-        { name: 'Quick search', sysName: 'quickSearch', type: 'boolean' },
+        { name: 'Quick search', sysName: 'quickSearch', type: 'turn_on_off' },
     ]
 }
 export default FpsCards
