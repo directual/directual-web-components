@@ -108,7 +108,6 @@ export function Table({
                             <tr {...row.getRowProps()}>
                                 <td><a 
                                     onClick={()=>
-                                        //console.log(row)
                                         onExpand(row.original)
                                     }
                                     className={`icon icon-expand ${styles.expand}`}/></td>
