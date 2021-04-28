@@ -10,10 +10,10 @@
   min-width: 100%;
 }
 .table_wrapper table tr .expand {
-  opacity: 0;
+  opacity: 0.15;
 }
 .table_wrapper table tr:hover .expand {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 .table_wrapper table tr:hover .expand:hover {
   opacity: 1;
@@ -22,28 +22,34 @@
   padding: 12px 12px;
   border-top: solid 1px var(--table-border-color);
 }
-.table_wrapper table td .previewLink {
-  display: inline-block;
-  font-size: var(--text-small-size);
-  background-color: var(--label-color);
-  color: var(--label-text-color);
-  border-radius: 4px;
-  padding: 2px 4px;
-  margin: 2px;
+.table_wrapper table td.nowrap {
   white-space: nowrap;
+}
+.table_wrapper table td.ellipsis {
+  max-width: 300px;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 200px;
 }
-.table_wrapper table td .previewLink .noname {
-  opacity: 0.5;
+.table_wrapper table td.ellipsis .notEditableValue {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: default;
 }
 .table_wrapper table thead th {
   font-weight: var(--strong-font-weight);
   border: none;
-  opacity: 0.5;
   text-align: left;
   padding: 12px 12px;
+  white-space: nowrap;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.table_wrapper table thead th .columnHeader {
+  opacity: 0.5;
+}
+.table_wrapper table thead th .columnHeader code {
+  font-size: var(--text-small-size);
 }
 .table_wrapper .pagination {
   border-top: solid 1px var(--table-border-color);

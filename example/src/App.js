@@ -2065,8 +2065,8 @@ const App = (props) => {
     }
 
     let exampleTable = {
-        "sl": "getCloudUsers",
-        "pageSize": "10",
+        "sl": "allBooks",
+        "pageSize": "1",
         "headerField": null,
         "params": {
             "cardListLayout": "grid",
@@ -2081,116 +2081,188 @@ const App = (props) => {
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "app_description",
+                        "fieldSysName": "Title",
                         "fetch": [],
-                        "sysName": "app_description",
-                        "name": "App description",
+                        "sysName": "Title",
+                        "name": "Title",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "Year",
+                        "fetch": [],
+                        "sysName": "Year",
+                        "name": "Year",
+                        "dataType": "number",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "_hidden_author",
+                        "fetch": [],
+                        "sysName": "_hidden_author",
+                        "name": "",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": null
                     },
                     {
-                        "fieldSysName": "apps",
+                        "fieldSysName": "amazon",
                         "fetch": [],
-                        "sysName": "apps",
-                        "name": "Apps",
-                        "dataType": "arrayLink",
-                        "format": "",
+                        "sysName": "amazon",
+                        "name": "Link",
+                        "dataType": "string",
+                        "format": "webLink",
                         "formatOptions": {},
-                        "link": "AppInfo"
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "country",
-                        "fetch": [],
-                        "sysName": "country",
-                        "name": "country CODE",
+                        "fieldSysName": "author_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "book_ids",
+                                "condition": null,
+                                "fetch": [
+                                    {
+                                        "fieldSysName": "Title",
+                                        "condition": null,
+                                        "fetch": []
+                                    }
+                                ]
+                            },
+                            {
+                                "fieldSysName": "country",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "photo",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "author_id",
+                        "name": "Author",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "CountriesISO"
+                        "link": "Authors"
                     },
                     {
-                        "fieldSysName": "first_name",
+                        "fieldSysName": "id",
                         "fetch": [],
-                        "sysName": "first_name",
-                        "name": "First name",
-                        "dataType": "string",
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "gravatar_pic",
+                        "fieldSysName": "picture",
                         "fetch": [],
-                        "sysName": "gravatar_pic",
-                        "name": "Gravatar picture",
+                        "sysName": "picture",
+                        "name": "Picture",
                         "dataType": "file",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "last_name",
+                        "fieldSysName": "plot",
                         "fetch": [],
-                        "sysName": "last_name",
-                        "name": "Last name",
+                        "sysName": "plot",
+                        "name": "Plot",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "upvotes",
+                        "fetch": [],
+                        "sysName": "upvotes",
+                        "name": "Number of upvotes",
+                        "dataType": "number",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "upvotes_text",
+                        "fetch": [],
+                        "sysName": "upvotes_text",
+                        "name": "Upvotes",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
                     }
                 ],
                 "writeFields": [
                     {
-                        "fieldSysName": "app_description",
+                        "fieldSysName": "Title",
                         "fetch": [],
-                        "sysName": "app_description",
-                        "name": "App description",
+                        "sysName": "Title",
+                        "name": "Title",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "Year",
+                        "fetch": [],
+                        "sysName": "Year",
+                        "name": "Year",
+                        "dataType": "number",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
                     }
                 ],
                 "fields": {
-                    "app_description": {
-                        "id": "app_description",
-                        "content": "App description",
+                    "Title": {
+                        "id": "Title",
+                        "content": "Title",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
                         "read": true,
-                        "link": null,
+                        "link": "",
                         "actions": []
                     },
-                    "apps": {
-                        "id": "apps",
-                        "content": "Apps",
+                    "Year": {
+                        "id": "Year",
+                        "content": "Year",
                         "type": "field",
-                        "dataType": "arrayLink",
+                        "dataType": "number",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
-                        "link": "AppInfo",
+                        "link": "",
                         "actions": []
                     },
-                    "country": {
-                        "id": "country",
-                        "content": "country CODE",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "CountriesISO",
-                        "actions": []
-                    },
-                    "first_name": {
-                        "id": "first_name",
-                        "content": "First name",
+                    "_hidden_author": {
+                        "id": "_hidden_author",
+                        "content": "",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
@@ -2199,9 +2271,42 @@ const App = (props) => {
                         "link": null,
                         "actions": []
                     },
-                    "gravatar_pic": {
-                        "id": "gravatar_pic",
-                        "content": "Gravatar picture",
+                    "amazon": {
+                        "id": "amazon",
+                        "content": "Link",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "author_id": {
+                        "id": "author_id",
+                        "content": "Author",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "Authors",
+                        "actions": []
+                    },
+                    "id": {
+                        "id": "id",
+                        "content": "id",
+                        "type": "field",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "picture": {
+                        "id": "picture",
+                        "content": "Picture",
                         "type": "field",
                         "dataType": "file",
                         "format": "",
@@ -2210,41 +2315,70 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "last_name": {
-                        "id": "last_name",
-                        "content": "Last name",
+                    "plot": {
+                        "id": "plot",
+                        "content": "Plot",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": null,
+                        "link": "",
+                        "actions": []
+                    },
+                    "upvotes": {
+                        "id": "upvotes",
+                        "content": "Number of upvotes",
+                        "type": "field",
+                        "dataType": "number",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "upvotes_text": {
+                        "id": "upvotes_text",
+                        "content": "Upvotes",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "apps": {
+                    "Title": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "country": {
+                    "Year": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "first_name": {
+                    "_hidden_author": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "gravatar_pic": {
+                    "amazon": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "author_id": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -2258,21 +2392,28 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "last_name": {
+                    "picture": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "gravatar": {
+                    "plot": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "app_description": {
+                    "upvotes": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "upvotes_text": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -2285,12 +2426,16 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "apps",
-                            "country",
-                            "first_name",
-                            "gravatar_pic",
-                            "last_name",
-                            "app_description"
+                            "Title",
+                            "Year",
+                            "_hidden_author",
+                            "amazon",
+                            "author_id",
+                            "id",
+                            "picture",
+                            "plot",
+                            "upvotes",
+                            "upvotes_text"
                         ]
                     }
                 },
@@ -2300,28 +2445,35 @@ const App = (props) => {
                 "actions": []
             },
             "fields": {
-                "apps": {
+                "Title": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "country": {
+                "Year": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "first_name": {
+                "_hidden_author": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "gravatar_pic": {
+                "amazon": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "author_id": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -2335,21 +2487,28 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "last_name": {
+                "picture": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "gravatar": {
+                "plot": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "app_description": {
+                "upvotes": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "upvotes_text": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -2360,208 +2519,342 @@ const App = (props) => {
             "tableParams": {
                 "readFields": [
                     {
-                        "fieldSysName": "app_description",
+                        "fieldSysName": "Title",
                         "fetch": [],
-                        "sysName": "app_description",
-                        "name": "App description",
+                        "sysName": "Title",
+                        "name": "Title",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "Year",
+                        "fetch": [],
+                        "sysName": "Year",
+                        "name": "Year",
+                        "dataType": "number",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "_hidden_author",
+                        "fetch": [],
+                        "sysName": "_hidden_author",
+                        "name": "",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": null
                     },
                     {
-                        "fieldSysName": "apps",
+                        "fieldSysName": "amazon",
                         "fetch": [],
-                        "sysName": "apps",
-                        "name": "Apps",
-                        "dataType": "arrayLink",
-                        "format": "",
+                        "sysName": "amazon",
+                        "name": "Link",
+                        "dataType": "string",
+                        "format": "webLink",
                         "formatOptions": {},
-                        "link": "AppInfo"
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "country",
-                        "fetch": [],
-                        "sysName": "country",
-                        "name": "country CODE",
+                        "fieldSysName": "author_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "book_ids",
+                                "condition": null,
+                                "fetch": [
+                                    {
+                                        "fieldSysName": "Title",
+                                        "condition": null,
+                                        "fetch": []
+                                    }
+                                ]
+                            },
+                            {
+                                "fieldSysName": "country",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "photo",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "author_id",
+                        "name": "Author",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "CountriesISO"
+                        "link": "Authors"
                     },
                     {
-                        "fieldSysName": "first_name",
+                        "fieldSysName": "id",
                         "fetch": [],
-                        "sysName": "first_name",
-                        "name": "First name",
-                        "dataType": "string",
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "gravatar_pic",
+                        "fieldSysName": "picture",
                         "fetch": [],
-                        "sysName": "gravatar_pic",
-                        "name": "Gravatar picture",
+                        "sysName": "picture",
+                        "name": "Picture",
                         "dataType": "file",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "last_name",
+                        "fieldSysName": "plot",
                         "fetch": [],
-                        "sysName": "last_name",
-                        "name": "Last name",
+                        "sysName": "plot",
+                        "name": "Plot",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
-                    }
-                ],
-                "writeFields": [
+                        "link": ""
+                    },
                     {
-                        "fieldSysName": "app_description",
+                        "fieldSysName": "upvotes",
                         "fetch": [],
-                        "sysName": "app_description",
-                        "name": "App description",
+                        "sysName": "upvotes",
+                        "name": "Number of upvotes",
+                        "dataType": "number",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "upvotes_text",
+                        "fetch": [],
+                        "sysName": "upvotes_text",
+                        "name": "Upvotes",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
                     }
                 ],
+                "writeFields": [],
                 "fields": {
-                    "app_description": {
-                        "id": "app_description",
-                        "content": "App description",
+                    "Title": {
+                        "id": "Title",
+                        "content": "Title",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": null
+                        "link": ""
                     },
-                    "apps": {
-                        "id": "apps",
-                        "content": "Apps",
-                        "dataType": "arrayLink",
+                    "Year": {
+                        "id": "Year",
+                        "content": "Year",
+                        "dataType": "number",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "AppInfo"
+                        "link": ""
                     },
-                    "country": {
-                        "id": "country",
-                        "content": "country CODE",
+                    "_hidden_author": {
+                        "id": "_hidden_author",
+                        "content": "",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null
+                    },
+                    "amazon": {
+                        "id": "amazon",
+                        "content": "Link",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "author_id": {
+                        "id": "author_id",
+                        "content": "Author",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "CountriesISO"
+                        "link": "Authors"
                     },
-                    "first_name": {
-                        "id": "first_name",
-                        "content": "First name",
-                        "dataType": "string",
+                    "id": {
+                        "id": "id",
+                        "content": "id",
+                        "dataType": "id",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": null
+                        "link": ""
                     },
-                    "gravatar_pic": {
-                        "id": "gravatar_pic",
-                        "content": "Gravatar picture",
+                    "picture": {
+                        "id": "picture",
+                        "content": "Picture",
                         "dataType": "file",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
                         "link": ""
                     },
-                    "last_name": {
-                        "id": "last_name",
-                        "content": "Last name",
+                    "plot": {
+                        "id": "plot",
+                        "content": "Plot",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": null
+                        "link": ""
+                    },
+                    "upvotes": {
+                        "id": "upvotes",
+                        "content": "Number of upvotes",
+                        "dataType": "number",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "upvotes_text": {
+                        "id": "upvotes_text",
+                        "content": "Upvotes",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
                     }
                 },
                 "fieldParams": {
-                    "app_description": {
-                        "include": false,
-                        "value": {
-                            "include": false,
-                            "value": {
-                                "include": false
-                            }
-                        }
-                    },
-                    "apps": {
+                    "Title": {
                         "include": true
                     },
-                    "country": {
+                    "Year": {
                         "include": true
                     },
-                    "first_name": {
+                    "_hidden_author": {
                         "include": true
                     },
-                    "gravatar_pic": {
-                        "include": false
+                    "amazon": {
+                        "include": true,
+                        "displayAsButton": true
                     },
-                    "last_name": {
+                    "author_id": {
+                        "include": true
+                    },
+                    "id": {
+                        "include": true
+                    },
+                    "picture": {
+                        "include": true
+                    },
+                    "plot": {
+                        "include": true
+                    },
+                    "upvotes": {
+                        "include": true
+                    },
+                    "upvotes_text": {
                         "include": true
                     }
                 },
                 "fieldOrder": [
-                    "first_name",
-                    "country",
-                    "apps",
-                    "last_name",
-                    "gravatar_pic",
-                    "app_description"
+                    "Title",
+                    "Year",
+                    "_hidden_author",
+                    "amazon",
+                    "author_id",
+                    "id",
+                    "picture",
+                    "plot",
+                    "upvotes",
+                    "upvotes_text"
                 ]
             }
         },
-        "tableTitle": "хуяйтл",
+        "tableTitle": "yo",
         "actions": null,
         "headers": [
             {
-                "sysName": "app_description",
-                "name": "App description",
+                "sysName": "Title",
                 "dataType": "string",
-                "id": "72461572603438535",
-                "link": null,
-                "group": "1570381436668",
-                "tags": null,
+                "name": "Title",
+                "id": "61721606146483591",
+                "link": "",
+                "group": "0",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 0,
+                "order": 3,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "linkType": false,
-                "json": false,
-                "typeVariable": {},
-                "arrayLink": false,
                 "indexExists": false,
-                "linkOrArrayLinkType": false
+                "linkType": false,
+                "typeVariable": {},
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "json": false
             },
             {
-                "sysName": "apps",
-                "name": "Apps",
-                "dataType": "arrayLink",
-                "id": "80561587152006234",
-                "link": "AppInfo",
-                "group": "1570288674389",
+                "sysName": "Year",
+                "dataType": "number",
+                "name": "Year",
+                "id": "31891606146490274",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "json": false
+            },
+            {
+                "sysName": "_hidden_author",
+                "dataType": "string",
+                "name": "",
+                "id": "70741606390710852",
+                "link": null,
+                "group": "1606390717489",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
@@ -2575,19 +2868,184 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "linkType": false,
-                "json": false,
-                "typeVariable": {},
-                "arrayLink": true,
                 "indexExists": false,
-                "linkOrArrayLinkType": true
+                "linkType": false,
+                "typeVariable": {},
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "json": false
             },
             {
-                "sysName": "country",
-                "name": "country CODE",
+                "sysName": "amazon",
+                "dataType": "string",
+                "name": "Link",
+                "id": "38631606146498227",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "webLink",
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "json": false
+            },
+            {
+                "sysName": "author_id",
                 "dataType": "link",
-                "id": "37101588673355053",
-                "link": "CountriesISO",
+                "name": "Author",
+                "id": "92061606146469134",
+                "link": "Authors",
+                "group": "0",
+                "tags": "",
+                "indexing": true,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [
+                    "country",
+                    "name"
+                ],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": true,
+                "linkType": true,
+                "typeVariable": {},
+                "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "json": false
+            },
+            {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "json": false
+            },
+            {
+                "sysName": "picture",
+                "dataType": "file",
+                "name": "Picture",
+                "id": "61021606149985644",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 7,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "json": false
+            },
+            {
+                "sysName": "plot",
+                "dataType": "string",
+                "name": "Plot",
+                "id": "97401606161579412",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "json": false
+            },
+            {
+                "sysName": "upvotes",
+                "dataType": "number",
+                "name": "Number of upvotes",
+                "id": "45431606146512728",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "json": false
+            },
+            {
+                "sysName": "upvotes_text",
+                "dataType": "string",
+                "name": "Upvotes",
+                "id": "95311606152487151",
+                "link": "",
                 "group": "0",
                 "tags": "",
                 "indexing": false,
@@ -2602,228 +3060,138 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "linkType": true,
-                "json": false,
-                "typeVariable": {},
-                "arrayLink": false,
                 "indexExists": false,
-                "linkOrArrayLinkType": true
-            },
-            {
-                "sysName": "first_name",
-                "name": "First name",
-                "dataType": "string",
-                "id": "23971570288647049",
-                "link": null,
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
                 "linkType": false,
-                "json": false,
                 "typeVariable": {},
+                "linkOrArrayLinkType": false,
                 "arrayLink": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false
-            },
-            {
-                "sysName": "gravatar_pic",
-                "name": "Gravatar picture",
-                "dataType": "file",
-                "id": "77261619116355317",
-                "link": "",
-                "group": "1588875605532",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkType": false,
-                "json": false,
-                "typeVariable": {},
-                "arrayLink": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false
-            },
-            {
-                "sysName": "last_name",
-                "name": "Last name",
-                "dataType": "string",
-                "id": "81941570288646826",
-                "link": null,
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkType": false,
-                "json": false,
-                "typeVariable": {},
-                "arrayLink": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false
+                "json": false
             }
         ],
         "data": [
             {
-                "first_name": "Egor",
-                "gravatar_pic": "https://www.gravatar.com/avatar/16bdbc2e2b2a4b43722e981860ddffb4?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "country": "BY",
-                "last_name": "Kunovsky"
-            },
-            {
-                "first_name": "Mar",
-                "country": "RU",
-                "gravatar_pic": "https://www.gravatar.com/avatar/41dc605b4a7714f01b5fb832fb06dfab?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "last_name": "Vik",
-                "apps": [
-                    "6555"
-                ]
-            },
-            {
-                "first_name": "Mr kvachet",
-                "gravatar_pic": "https://www.gravatar.com/avatar/b4a5f99d3a8d7c03c705064d83fcb2df?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "country": "UA",
-                "last_name": "Вадим Хлань"
-            },
-            {
-                "first_name": "Sahar.",
-                "gravatar_pic": "https://www.gravatar.com/avatar/a85aa151f5ce89a1675e4ccc2232cd68?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "country": "RU",
-                "last_name": "com"
-            },
-            {
-                "first_name": "Виктория",
-                "country": "RU",
-                "gravatar_pic": "https://www.gravatar.com/avatar/34cf10109a5af52f0223c41316df2e8f?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "last_name": "Губанова",
-                "apps": [
-                    "6554"
-                ]
-            },
-            {
-                "first_name": "Илья",
-                "country": "RU",
-                "gravatar_pic": "https://www.gravatar.com/avatar/46e47a665bc13a23b72be536875744b9?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "last_name": "Тимохин",
-                "apps": [
-                    "6552"
-                ]
-            },
-            {
-                "first_name": "Alena",
-                "gravatar_pic": "https://www.gravatar.com/avatar/7796cd41dd02b2b9454a0c9b47c95587?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "country": "RU",
-                "last_name": "Zakharova"
-            },
-            {
-                "first_name": "Dmitry",
-                "country": "RU",
-                "gravatar_pic": "https://www.gravatar.com/avatar/6ef978e8e565207ed54263d47961bed7?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "last_name": "Korneev",
-                "apps": [
-                    "6548"
-                ]
-            },
-            {
-                "first_name": "Антон",
-                "gravatar_pic": "https://www.gravatar.com/avatar/217873723e0f93c22236ffe72591ccf7?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "country": "RU",
-                "last_name": "Усиков"
-            },
-            {
-                "first_name": "Timur",
-                "gravatar_pic": "https://www.gravatar.com/avatar/6c208ecc4944af83e4525be0c9313d4e?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "country": "RU",
-                "last_name": "Nuriakhmetov"
+                "amazon": "https://www.amazon.com/War-Peace-Vintage-Classics-Tolstoy/dp/1400079985",
+                "Title": "War and Peace",
+                "plot": "War and Peace broadly focuses on Napoleon’s invasion of Russia in 1812 and follows three of the most well-known characters in literature: Pierre Bezukhov, the illegitimate son of a count who is fighting for his inheritance and yearning for spiritual fulfillment; Prince Andrei Bolkonsky, who leaves his family behind to fight in the war against Napoleon; and Natasha Rostov, the beautiful young daughter of a nobleman who intrigues both men.\n\nA s Napoleon’s army invades, Tolstoy brilliantly follows characters from diverse backgrounds—peasants and nobility, civilians and soldiers—as they struggle with the problems unique to their era, their history, and their culture. And as the novel progresses, these characters transcend their specificity, becoming some of the most moving—and human—figures in world literature.",
+                "Year": 1867,
+                "upvotes_text": "8 upvotes",
+                "upvotes": 8,
+                "id": "44ac3660-069d-4f8d-99fb-a93e841d3ca9",
+                "picture": "https://images-na.ssl-images-amazon.com/images/I/51J1nb00FLL._SX330_BO1,204,203,200_.jpg",
+                "author_id": {
+                    "name": "Leo Tolstoy",
+                    "photo": "data:image/jpeg;base64,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",
+                    "country": "Russia",
+                    "id": "ffc054fe-a4ad-476b-9e27-3a5c98b2b10b",
+                    "book_ids": [
+                        {
+                            "Title": "Anna Karenina",
+                            "id": "2d567166-484c-4064-9ffe-7172b51c32a5"
+                        },
+                        {
+                            "Title": "The Cossacks",
+                            "id": "8dc7bce3-7ae2-46fd-95d8-ab46eee7e2e9"
+                        },
+                        {
+                            "Title": "War and Peace",
+                            "id": "44ac3660-069d-4f8d-99fb-a93e841d3ca9"
+                        }
+                    ]
+                },
+                "_hidden_author": "Leo Tolstoy"
             }
         ],
-        "totalPages": 383,
+        "totalPages": 20,
         "pageNumber": 0,
         "error": null,
         "fieldScheme": [
             [
-                "app_description",
-                1282551
+                "Title",
+                1353771
             ],
             [
-                "apps",
-                1282551
+                "Year",
+                1353771
             ],
             [
-                "country",
-                1282551
+                "_hidden_author",
+                1353771
             ],
             [
-                "first_name",
-                1282551
+                "amazon",
+                1353771
             ],
             [
-                "gravatar_pic",
-                1282551
+                "author_id.book_ids.Title",
+                1353771
             ],
             [
-                "last_name",
-                1282551
+                "author_id.country",
+                1353770
+            ],
+            [
+                "author_id.id",
+                1353770
+            ],
+            [
+                "author_id.name",
+                1353770
+            ],
+            [
+                "author_id.photo",
+                1353770
+            ],
+            [
+                "id",
+                1353771
+            ],
+            [
+                "picture",
+                1353771
+            ],
+            [
+                "plot",
+                1353771
+            ],
+            [
+                "upvotes",
+                1353771
+            ],
+            [
+                "upvotes_text",
+                1353771
             ]
         ],
         "writeFields": [
-            "app_description"
+            "Title",
+            "Year"
         ],
         "structures": {
-            "1282551": {
-                "id": 1282551,
-                "dateCreated": "2019-10-05T15:17:37Z",
+            "1353770": {
+                "networkID": 5420,
+                "id": 1353770,
+                "dateCreated": "2020-11-23T15:46:23Z",
                 "hidden": false,
                 "dateHidden": null,
-                "networkID": 1822,
-                "name": "Cloud users",
-                "sysName": "Cloud_users",
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"notifications_blog\",\"dataType\":\"boolean\",\"name\":\"Notify about Blog\",\"id\":\"20211572378981407\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"unsubscribed\",\"dataType\":\"boolean\",\"name\":\"unsubscribed\",\"id\":\"20361600521081143\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"admin_notification_text\",\"dataType\":\"string\",\"name\":\"admin_notification_text\",\"id\":\"21331602224278958\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"request_id\",\"dataType\":\"link\",\"name\":\"Request ID\",\"id\":\"23691571997337572\",\"link\":\"Requests\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":true,\"json\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"first_name\",\"dataType\":\"string\",\"name\":\"First name\",\"id\":\"23971570288647049\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"survey_ids\",\"dataType\":\"arrayLink\",\"name\":\"Surveys\",\"id\":\"27581591180002769\",\"link\":\"Surveys\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":true,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"utm_medium\",\"dataType\":\"string\",\"name\":\"utm_medium\",\"id\":\"27621588673319861\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"country_id\",\"dataType\":\"link\",\"name\":\"Country link (ISO)\",\"id\":\"31401588873548829\",\"link\":\"CountriesISO\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":true,\"json\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"is_country_synced\",\"dataType\":\"boolean\",\"name\":\"is_country_synced\",\"id\":\"31991605527320825\",\"link\":\"\",\"group\":\"1570379125072\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"note\",\"dataType\":\"string\",\"name\":\"Note\",\"id\":\"34591570383079323\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"register_date\",\"dataType\":\"date\",\"name\":\"Register date\",\"id\":\"36551588868841568\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"country\",\"dataType\":\"link\",\"name\":\"country CODE\",\"id\":\"37101588673355053\",\"link\":\"CountriesISO\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":true,\"json\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"email_hash\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"40581588875619696\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"number_of_sl\",\"dataType\":\"number\",\"name\":\"Number of SLs\",\"id\":\"41141570962898360\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"number_of_apps\",\"dataType\":\"number\",\"name\":\"Number of apps\",\"id\":\"41911570383626553\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"logged_in\",\"dataType\":\"boolean\",\"name\":\"Have logged in\",\"id\":\"42361570962605801\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"today_stat_id\",\"dataType\":\"link\",\"name\":\"Today stat link\",\"id\":\"42431587908594891\",\"link\":\"Dashboard_data\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":true,\"json\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"locale\",\"dataType\":\"string\",\"name\":\"locale\",\"id\":\"47031570379144750\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"notifications_account\",\"dataType\":\"boolean\",\"name\":\"Notify about Account\",\"id\":\"49381572378982097\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"whom_to_alert\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"61381602224446180\",\"link\":\"TUser\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":true,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"number_of_structures\",\"dataType\":\"number\",\"name\":\"Number of structures\",\"id\":\"70371570962891170\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"ip\",\"dataType\":\"string\",\"name\":\"ip\",\"id\":\"70561588673350213\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"number_of_scenarios\",\"dataType\":\"number\",\"name\":\"Number of scenarios\",\"id\":\"71201570962890259\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"social_register\",\"dataType\":\"boolean\",\"name\":\"social_register\",\"id\":\"71461588678509868\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"app_description\",\"dataType\":\"string\",\"name\":\"App description\",\"id\":\"72461572603438535\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"gravatar_pic\",\"dataType\":\"file\",\"name\":\"Gravatar picture\",\"id\":\"77261619116355317\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"apps\",\"dataType\":\"arrayLink\",\"name\":\"Apps\",\"id\":\"80561587152006234\",\"link\":\"AppInfo\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":true,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"last_name\",\"dataType\":\"string\",\"name\":\"Last name\",\"id\":\"81941570288646826\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"mailchimp_segments\",\"dataType\":\"array\",\"name\":\"Mailchimp Segments\",\"id\":\"84981587457354001\",\"link\":\"\",\"group\":\"1570379125072\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"utm_campaign\",\"dataType\":\"string\",\"name\":\"utm_campaign\",\"id\":\"85671588673320381\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"unsibscribed_reason\",\"dataType\":\"string\",\"name\":\"unsibscribed_reason\",\"id\":\"87491600521243757\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"gravatar\",\"dataType\":\"string\",\"name\":\"Gravatar\",\"id\":\"89411588875620336\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"utm_source\",\"dataType\":\"string\",\"name\":\"utm_source\",\"id\":\"91131588673287122\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"source\",\"dataType\":\"string\",\"name\":\"Source\",\"id\":\"92371570288676773\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"customer_type\",\"dataType\":\"string\",\"name\":\"Customer type\",\"id\":\"93281572603437791\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"last_activity_date\",\"dataType\":\"date\",\"name\":\"Last activity date\",\"id\":\"96951570962621002\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"mailchimp_tags\",\"dataType\":\"string\",\"name\":\"Mailchimp labels\",\"id\":\"97421570379132976\",\"link\":null,\"group\":\"1570379125072\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"notifications_academy\",\"dataType\":\"boolean\",\"name\":\"Notify about Academy\",\"id\":\"97951572378981844\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false}]",
-                "jsonGroupSettings": "[{\"id\":1570381436668,\"name\":\"CRM\",\"order\":2},{\"id\":1588875605532,\"name\":\"Gravatar\",\"order\":4},{\"id\":1570288674389,\"name\":\"Cloud usage\",\"order\":0},{\"id\":1572378880897,\"name\":\"Notifications settings\",\"order\":3},{\"id\":1570379125072,\"name\":\"Mailchimp\",\"order\":1}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"first_name\"},{\"sysName\":\"last_name\"}]",
-                "jsonSettings": null,
+                "name": "Authors",
+                "sysName": "Authors",
+                "jsonObject": "[{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Name\",\"id\":\"26491606146386795\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false},{\"sysName\":\"photo\",\"dataType\":\"file\",\"name\":\"Picture\",\"id\":\"34851606146387901\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false},{\"sysName\":\"book_ids\",\"dataType\":\"arrayLink\",\"name\":\"Books\",\"id\":\"36111606146410363\",\"link\":\"Books\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"json\":false},{\"sysName\":\"country\",\"dataType\":\"string\",\"name\":\"Country\",\"id\":\"85641606146387358\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false}]",
+                "jsonGroupSettings": "[]",
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"},{\"sysName\":\"country\"}]",
+                "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-04-22T18:33:02Z",
+                "dateChanged": "2021-03-03T12:03:57Z",
                 "createBy": 21,
                 "changedBy": 1,
                 "_settings": null,
                 "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "id",
                     "dataType": "id",
+                    "name": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -2840,14 +3208,66 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": null,
                     "groupName": null,
-                    "linkType": false,
-                    "json": false,
-                    "typeVariable": {},
-                    "arrayLink": false,
                     "indexExists": false,
-                    "linkOrArrayLinkType": false
+                    "linkType": false,
+                    "typeVariable": {},
+                    "linkOrArrayLinkType": false,
+                    "arrayLink": false,
+                    "json": false
                 },
-                "folderId": 667556
+                "objectIDSysName": "id",
+                "folderId": null
+            },
+            "1353771": {
+                "networkID": 5420,
+                "id": 1353771,
+                "dateCreated": "2020-11-23T15:47:45Z",
+                "hidden": false,
+                "dateHidden": null,
+                "name": "Books",
+                "sysName": "Books",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"user_genetrated_content\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"12711606401929347\",\"link\":\"\",\"group\":\"1606390717489\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"seaarch_authors\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"14111614166972088\",\"link\":\"Authors\",\"group\":\"1614166965417\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"json\":false,\"typeVariable\":{},\"arrayLink\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"Year\",\"name\":\"Year\",\"dataType\":\"number\",\"id\":\"31891606146490274\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"amazon\",\"name\":\"Link\",\"dataType\":\"string\",\"id\":\"38631606146498227\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"upvotes\",\"name\":\"Number of upvotes\",\"dataType\":\"number\",\"id\":\"45431606146512728\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"is_great\",\"name\":\"Is great book\",\"dataType\":\"boolean\",\"id\":\"53281614688521775\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"picture\",\"name\":\"Picture\",\"dataType\":\"file\",\"id\":\"61021606149985644\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"Title\",\"name\":\"Title\",\"dataType\":\"string\",\"id\":\"61721606146483591\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"_hidden_author\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"70741606390710852\",\"link\":null,\"group\":\"1606390717489\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"decimal\",\"name\":\"\",\"dataType\":\"decimal\",\"id\":\"71291614800237919\",\"link\":\"\",\"group\":\"1606390717489\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"test_field\",\"name\":\"Tesitng field\",\"dataType\":\"string\",\"id\":\"71711614686477180\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"email\",\"name\":\"Your email (we'll notify you as soon as book is moderated)\",\"dataType\":\"email\",\"id\":\"87391606401804684\",\"link\":\"\",\"group\":\"1606390717489\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"author_id\",\"name\":\"Author\",\"dataType\":\"link\",\"id\":\"92061606146469134\",\"link\":\"Authors\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[\"country\",\"name\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":true,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":true,\"linkOrArrayLinkType\":true},{\"sysName\":\"upvotes_text\",\"name\":\"Upvotes\",\"dataType\":\"string\",\"id\":\"95311606152487151\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"plot\",\"name\":\"Plot\",\"dataType\":\"string\",\"id\":\"97401606161579412\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"Hidden fields for search\",\"id\":1606390717489,\"order\":0},{\"name\":\"Test fields\",\"id\":1614166965417,\"order\":1}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"Title\"}]",
+                "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-04-27T09:14:50Z",
+                "createBy": 21,
+                "changedBy": 1,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": null,
+                    "groupName": null,
+                    "indexExists": false,
+                    "linkType": false,
+                    "typeVariable": {},
+                    "linkOrArrayLinkType": false,
+                    "arrayLink": false,
+                    "json": false
+                },
+                "objectIDSysName": "id",
+                "folderId": null
             }
         },
         "isSuccessWrite": false,

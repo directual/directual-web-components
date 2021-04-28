@@ -160,8 +160,6 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
                         /></div>
                 </React.Fragment>}
 
-            {/* {currentBP ? currentBP : 'no currentBP'} */}
-
             <TableTitle
                 currentBP={currentBP}
                 tableTitle={tableTitle}

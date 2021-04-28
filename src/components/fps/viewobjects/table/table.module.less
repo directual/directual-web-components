@@ -1,70 +1,74 @@
-
 .table_wrapper {
-    background-color: var(--background-color);
-    padding: 6px;
-    border-radius: var(--border-radius);
-    overflow: auto;
-    border: solid 1px var(--background-contrast-color);
-    margin-bottom: 12px;
-     table {
-        min-width: 100%;
-        tr {
-          .expand {
-            opacity: 0;
-          }
-            &:hover .expand {
-                opacity: .5;
-                &:hover {
-                  opacity: 1;
-                }
-            }
+  background-color: var(--background-color);
+  padding: 6px;
+  border-radius: var(--border-radius);
+  overflow: auto;
+  border: solid 1px var(--background-contrast-color);
+  margin-bottom: 12px;
+  table {
+    min-width: 100%;
+    tr {
+      .expand {
+        opacity: 0.15;
+      }
+      &:hover .expand {
+        opacity: 0.6;
+        &:hover {
+          opacity: 1;
         }
-        td {
-            padding: 12px 12px;
-            border-top: solid 1px var(--table-border-color);
-            .previewLink {
-                display: inline-block;
-                font-size: var(--text-small-size);
-                background-color: var(--label-color);
-                color: var(--label-text-color);
-                border-radius: 4px;
-                padding: 2px 4px;
-                margin: 2px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                max-width: 200px;
-                .noname {
-                    opacity: .5;
-                }
-            }
-        }
-        thead th
-        {
-            font-weight: var(--strong-font-weight);
-            border:none;
-            opacity: .5;
-            text-align: left;
-            padding: 12px 12px;
-        }
+      }
     }
-    .pagination {
-        border-top: solid 1px var(--table-border-color);
-        padding:12px;
-        font-size: var(--text-very-small-size);
-        display: flex;
-        align-items: center;
-        div {
-            margin-right: 18px;
-            opacity: .4;
+    td {
+      padding: 12px 12px;
+      border-top: solid 1px var(--table-border-color);
+      &.nowrap {
+        white-space: nowrap;
+      }
+      &.ellipsis {
+        max-width: 300px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        .notEditableValue {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          cursor: default;
         }
-        button {
-            margin-right: 18px;
-            font-size: var(--text-very-small-size);
-            padding: 2px 6px;
-            cursor: pointer;
-        }
+      }
     }
+    thead th {
+      font-weight: var(--strong-font-weight);
+      border: none;
+      .columnHeader {
+        opacity: 0.5;
+        code {
+          font-size: var(--text-small-size);
+        }
+      }
+      text-align: left;
+      padding: 12px 12px;
+      white-space: nowrap;
+      max-width: 300px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .pagination {
+    border-top: solid 1px var(--table-border-color);
+    padding: 12px;
+    font-size: var(--text-very-small-size);
+    display: flex;
+    align-items: center;
+    div {
+      margin-right: 18px;
+      opacity: 0.4;
+    }
+    button {
+      margin-right: 18px;
+      font-size: var(--text-very-small-size);
+      padding: 2px 6px;
+      cursor: pointer;
+    }
+  }
 }
 
 .firstObjectCard {

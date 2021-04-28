@@ -17,6 +17,9 @@
   position: relative;
   padding-right: 12px;
 }
+.cb_wrap .checkbox .cb_wrapper.nopadding {
+  padding: 0;
+}
 .cb_wrap .checkbox .cb_wrapper input[type=checkbox] {
   position: absolute;
   height: 1px;

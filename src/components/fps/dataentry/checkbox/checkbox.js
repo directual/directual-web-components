@@ -4,7 +4,7 @@ import Input from '../input/input'
 
 export default function Checkbox(props) {
     const defaultValue = props.checked || props.defaultValue || false
-    const label = props.label || 'Option'
+    const label = props.label
     const disabled = props.disabled || false
 
     const customOption = props.customOption || false
@@ -43,7 +43,7 @@ export default function Checkbox(props) {
                         }
                     }}
                 >
-                    <div className={styles.cb_wrapper}>
+                    <div className={`${styles.cb_wrapper} ${!label && styles.nopadding}`}>
                         <input
                             type='checkbox'
                             checked={checked} />
