@@ -137,6 +137,7 @@
 }
 .input_wrapper .preSelect {
   padding-right: 6px;
+  font-size: 14px;
 }
 .input_wrapper .preSelect select {
   background: none;
