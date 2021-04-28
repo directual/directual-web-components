@@ -405,7 +405,7 @@ export default function Input(props) {
                         <div className={styles.addonBefore}>{props.addonBefore}</div>}
                    {props.preSelect &&
                         <div className={`${styles.addonBefore} ${styles.preSelect}`}>
-                            <select disabled={props.disabled} onChange={e=>props.onChoosePreSelect && props.onChoosePreSelect(e.target.value)}>
+                            <select value={props.preSelectDefaultValue} disabled={props.disabled} onChange={e=>props.onChoosePreSelect && props.onChoosePreSelect(e.target.value)}>
                                 {props.preSelectOptions.map(option=><option value={option.key} key={option.key}>{option.value}</option>)}
                             </select>    
                         </div>}

@@ -985,6 +985,7 @@ export default function PlatformPage() {
         code 
         width={400}
         placeholder='https://api.your.app'
+        preSelectDefaultValue='GET'
         preSelect
         preSelectOptions={['POST','GET','PATCH'].map(method => { return { key: method, value: method } })}
         onChoosePreSelect={value => console.log(value)}
