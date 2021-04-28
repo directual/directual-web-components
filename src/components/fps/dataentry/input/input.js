@@ -400,11 +400,18 @@ export default function Input(props) {
                 props.type != 'decimal' &&
                 props.type != 'json' &&
                 props.type != 'optionsHandler' &&
-                <div className={`${styles.field_wrapper} ${(props.addonAfter || props.addonBefore) && styles.hor}`}>
+                <div className={`${styles.field_wrapper} ${(props.addonAfter || props.addonBefore || props.preSelect) && styles.hor}`}>
                     {props.addonBefore &&
                         <div className={styles.addonBefore}>{props.addonBefore}</div>}
+                   {props.preSelect &&
+                        <div className={`${styles.addonBefore} ${styles.preSelect}`}>
+                            <select onChange={e=>props.onChoosePreSelect && props.onChoosePreSelect(e.target.value)}>
+                                {props.preSelectOptions.map(option=><option value={option.key} key={option.key}>{option.value}</option>)}
+                            </select>    
+                        </div>}
                     <div className={styles.field_wrapper_additional}>
                         {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
+                    
                         <input
                             disabled={props.disabled}
                             key={props.key}
@@ -416,7 +423,7 @@ export default function Input(props) {
                             {`${styles.field} 
                             ${props.icon && styles.icon}
                             ${props.addonAfter && styles.addonAfterInput}
-                            ${props.addonBefore && styles.addonBeforeInput}
+                            ${(props.addonBefore || props.preSelect) && styles.addonBeforeInput}
                             ${props.code && styles.code} 
                             ${warningMsg.type && styles[warningMsg.type]}
                             ${props.disabled && styles.disabled}`}

@@ -135,6 +135,15 @@
   white-space: nowrap;
   border-right: none;
 }
+.input_wrapper .preSelect {
+  padding-right: 6px;
+}
+.input_wrapper .preSelect select {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--accent-color);
+}
 .input_wrapper .field {
   flex-grow: 2;
   outline: none !important;

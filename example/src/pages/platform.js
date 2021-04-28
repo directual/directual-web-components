@@ -981,6 +981,15 @@ export default function PlatformPage() {
   return (
     <div>
       <h1>Platform</h1>
+      <Input 
+        code 
+        width={400}
+        placeholder='https://api.your.app'
+        preSelect
+        preSelectOptions={['POST','GET','PATCH'].map(method => { return { key: method, value: method } })}
+        onChoosePreSelect={value => console.log(value)}
+        onChange={value => console.log(value)}
+      />
       <h2>Inline structure field input </h2>
       <p>Оджажды в
           суровую  зимнюю пору я из лесу вышел был сильный мороз.
@@ -992,7 +1001,7 @@ export default function PlatformPage() {
           В больших рукавицах… а сам с ноготок!
           «Здорово <StructureField
           inline
-          autofocus
+          //autofocus
           defaultValue='CV_filee'
           fields={testFields}
           hideSysFields
