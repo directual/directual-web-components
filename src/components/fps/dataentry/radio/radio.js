@@ -41,7 +41,7 @@ export default function Radio(props) {
 
     return (
         <div className={`${styles.radio} ${props.disabled && styles.disabled}`}>
-            <div className={`${styles.radio_flex}`}>
+            <div className={`${styles.radio_flex} ${props.horizontal ? styles.horizontal : ''}`}>
                 {!props.radioImages && <React.Fragment>
                     {props.options && props.options.map(option =>
                         <label>

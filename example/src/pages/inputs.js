@@ -996,6 +996,7 @@ options={
                 {`<Input
     label='Radio station (with default value)'
     type='radio'
+    horizontal
     defaultValue='option2'
     options={
         [
@@ -1017,6 +1018,7 @@ options={
             <Input
                 label='Radio station (with default value)'
                 type='radio'
+                horizontal
                 defaultValue='option2'
                 options={
                     [

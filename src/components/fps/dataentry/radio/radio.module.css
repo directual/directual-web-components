@@ -6,6 +6,15 @@
   flex-direction: column;
   align-items: flex-start;
 }
+.radio .radio_flex.horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.radio .radio_flex.horizontal label {
+  margin-right: 24px;
+  align-items: center;
+}
 .radio.disabled label {
   cursor: not-allowed;
   color: var(--field-border-color);
