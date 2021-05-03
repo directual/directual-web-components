@@ -99,7 +99,8 @@ export default function StructureField(props) {
 
     // тут мы получаем данные для отображения текущего Value: имя поля и тип
     const getValueDetails = val => {
-        const objPath = val.split('.')
+        console.log(val)        
+        const objPath = val && val.split('.')
         let currentStruct = props.structSysName
         let counter = 0;
         if (objPath.length > 1) {
@@ -387,8 +388,8 @@ function ListFields(props) {
                     const splitE = e.split('.')
                     splitE.pop()
                     const val = splitE.length == 0 ? null : splitE.join('.')
-                    console.log('aaaaa')
-                    console.log(val)
+                    // console.log('aaaaa')
+                    // console.log(val)
                     props.onChoose(val, false)
                 }
                 }

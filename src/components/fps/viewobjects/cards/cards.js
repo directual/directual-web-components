@@ -10,7 +10,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
     const tableData = enrichTableDataWithWriteFields(data) || []
     const tableParams = data.params || {
         cardHeaderComment: '',
-        cardBodyText: '' 
+        cardBodyText: ''
     }
 
     // console.log('=========params=========')
@@ -103,11 +103,11 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
             }
             if (cond.target == 'field') {
                 typeof object[cond.value] != 'object' ? cond.fieldValue = object[cond.field] :
-                cond.fieldValue = object[cond.field].value || null 
+                    cond.fieldValue = object[cond.field].value || null
             }
             if (cond.target == 'id' && cond.type != 'const') {
                 typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
-                cond.checkValue = object[cond.value].value || null // раньше тут было .id, а не .value проверить!
+                    cond.checkValue = object[cond.value].value || null // раньше тут было .id, а не .value проверить!
             }
         })
 
@@ -221,36 +221,37 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                             <span className={styles.counter} title={`${row[tableParams.counterField]} ${tableParams.counterText}`}>
                                                 {row[tableParams.counterField]}</span> : ''}
                                     </h3>
+                                    <div style={{display:'flex', flexDirection:'column', alignItems:'flex-start'}}>
+                                        {cardHeaderComment && (
+                                            // если Array, то это у нас либо список labels, либо arrayLink
+                                            // также чекаем на то, что это link/arrayLink, тогда добавляем классом linkText рамочку
+                                            // для labels рамочка добавляется классом labelText
+                                            !Array.isArray(cardHeaderComment) ?
+                                                <div className={`${styles.cardHeaderComment} ${typeof row[tableParams.cardHeaderComment] == 'object' && styles.linkText}`}>
+                                                    {cardHeaderComment}
+                                                </div> :
+                                                <div className={`${styles.headerArray} ${styles.cardHeaderComment}`}>
+                                                    {cardHeaderComment.map(i =>
+                                                        <div className={`${typeof row[tableParams.cardHeaderComment][0] == 'object' ? styles.linkText : styles.labelText}`}>
+                                                            {i}
+                                                        </div>)}
+                                                </div>
 
-                                    {cardHeaderComment && (
-                                        // если Array, то это у нас либо список labels, либо arrayLink
-                                        // также чекаем на то, что это link/arrayLink, тогда добавляем классом linkText рамочку
-                                        // для labels рамочка добавляется классом labelText
-                                        !Array.isArray(cardHeaderComment) ?
-                                            <div className={`${styles.cardHeaderComment} ${typeof row[tableParams.cardHeaderComment] == 'object' && styles.linkText}`}>
-                                                {cardHeaderComment}
-                                            </div> :
-                                            <div className={`${styles.headerArray} ${styles.cardHeaderComment}`}>
-                                                {cardHeaderComment.map(i =>
-                                                    <div className={`${typeof row[tableParams.cardHeaderComment][0] == 'object' ? styles.linkText : styles.labelText}`}>
-                                                        {i}
-                                                    </div>)}
-                                            </div>
-
-                                    )}
-                                    {cardBodyText && (
-                                        // все также как у cardHeaderComment
-                                        !Array.isArray(cardBodyText) ?
-                                            <ExpandedText className={`${styles.cardBodyText} ${typeof row[tableParams.cardBodyText] == 'object' && styles.linkText}`}>
-                                                {cardBodyText}
-                                            </ExpandedText> :
-                                            <div className={`${styles.headerArray} ${styles.cardBodyText}`}>
-                                                {cardBodyText.map(i =>
-                                                    <div className={`${typeof row[tableParams.cardBodyText][0] == 'object' ? styles.linkText : styles.labelText}`}>
-                                                        {i}
-                                                    </div>)}
-                                            </div>
-                                    )}
+                                        )}
+                                        {cardBodyText && (
+                                            // все также как у cardHeaderComment
+                                            !Array.isArray(cardBodyText) ?
+                                                <ExpandedText className={`${styles.cardBodyText} ${typeof row[tableParams.cardBodyText] == 'object' && styles.linkText}`}>
+                                                    {cardBodyText}
+                                                </ExpandedText> :
+                                                <div className={`${styles.headerArray} ${styles.cardBodyText}`}>
+                                                    {cardBodyText.map(i =>
+                                                        <div className={`${typeof row[tableParams.cardBodyText][0] == 'object' ? styles.linkText : styles.labelText}`}>
+                                                            {i}
+                                                        </div>)}
+                                                </div>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         </div>)

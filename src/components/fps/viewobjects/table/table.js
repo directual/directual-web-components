@@ -3,6 +3,7 @@ import styles from './table.module.css'
 import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
 import { useTable } from 'react-table'
 import Checkbox from '../../dataentry/checkbox/checkbox'
+import Button from '../../button/button'
 
 // Create an editable cell renderer
 const EditableCell = ({
@@ -10,6 +11,8 @@ const EditableCell = ({
     row: { index },
     column: { id },
     fieldDetails,
+    tableParams,
+    getLinkName,
     updateMyData, // This is a custom function that we supplied to our table instance
 }) => {
     // We need to keep and update the state of the cell normally
@@ -41,6 +44,96 @@ const EditableCell = ({
     //     )
     // }
 
+    // console.log(tableParams[id])
+    // console.log(fieldDetails[id])
+
+    //numbers
+    if (fieldDetails[id].dataType == 'number' || fieldDetails[id].dataType == 'decimal') {
+        return <div className={`${styles.notEditableValue} ${styles.number}`}>
+            {value}
+        </div>
+    }
+
+    //images
+    if (fieldDetails[id].dataType == 'file' && value) {
+        if (tableParams[id].fileImage) {
+            return <div className={styles.cardImage}
+            style={{
+                width: tableParams[id].fileImageSize || 80,
+                height: tableParams[id].fileImageSize || 80,
+                backgroundImage: `url(${value})`,
+                borderRadius: tableParams[id].fileImageFormat == 'circle' ? (tableParams[id].fileImageSize || 80) : 0
+            }} />
+        }
+        return <div className={`${styles.notEditableValue} ${styles.number}`}>
+            {value}
+        </div>
+    }
+
+    //booleans
+    if (fieldDetails[id].dataType == 'boolean') {
+        if (fieldDetails[id].formatOptions && 
+            fieldDetails[id].formatOptions.booleanOptions && 
+            fieldDetails[id].formatOptions.booleanOptions.length > 0) {
+            return <div className={`${styles.notEditableValue} ${styles.boolean}`}>
+                {value === true && <span className='icon icon-done'>{fieldDetails[id].formatOptions.booleanOptions[0]}</span>}
+                {value === false && <span className='icon icon-ban'>{fieldDetails[id].formatOptions.booleanOptions[1]}</span>}
+            </div>
+        } else {
+            return <div className={`${styles.notEditableValue} ${styles.boolean}`}>
+                {value === true && <span className='icon icon-done'>true</span>} 
+                {value === false && <span className='icon icon-ban'>false</span>}
+            </div>
+        }
+    }
+
+    //weblink
+    if (fieldDetails[id].format == 'webLink' && value) {
+        if (tableParams[id].displayAsButton) {
+            return <Button
+                link={value}
+                verySmall
+                accent={tableParams[id].button && tableParams[id].button.type == 'accent'}
+                danger={tableParams[id].button && tableParams[id].button.type == 'danger'}
+                icon={tableParams[id].button && tableParams[id].button.icon}
+                height={26}
+                newWindow
+            >
+                {(tableParams[id].button && tableParams[id].button.title) || value}
+            </Button>
+        } else {
+            return <a target="_blank" href={value}>{value}</a>
+        }
+    }
+
+    // link:
+    if (fieldDetails[id].dataType == 'link') {
+    return <div className={`${styles.notEditableValue} ${styles.linkWrapper}`}>
+        <div className={`${styles.linkText}`}>
+            {typeof value == 'object' ? getLinkName(id, value) : value}
+        </div>
+    </div>
+    }
+
+    // array:
+    if (fieldDetails[id].dataType == 'array' && value) {
+        return <div className={`${styles.notEditableValue} ${styles.linkWrapper}`}>
+            {value.length > 0 ?
+            value.map(label=> <div className={`${styles.labelText}`}>{label}</div>) :
+            <div className={`${styles.labelText}`}>{value}</div>}
+        </div>
+        }
+
+    // arrayLink:
+    if (fieldDetails[id].dataType == 'arrayLink' && value) {
+        return <div className={`${styles.notEditableValue} ${styles.linkWrapper}`}>
+            {Array.isArray(value) ?
+            value.map(label=> <div className={`${styles.linkText}`}>{getLinkName(id, label)}</div>) :
+            <div className={`${styles.linkText}`}>{value}</div>}
+        </div>
+        }
+
+    // other types:
     return <div className={styles.notEditableValue}>
         {typeof value == 'object' ? JSON.stringify(value) : value}
     </div>
@@ -52,7 +145,7 @@ const defaultColumn = {
     Cell: EditableCell
 }
 
-function ReactTable({ columns, data, updateMyData, fieldDetails, skipPageReset, onExpand }) {
+function ReactTable({ columns, data, updateMyData, fieldDetails, tableParams, skipPageReset, getLinkName, onExpand }) {
     const {
         getTableProps,
         getTableBodyProps,
@@ -73,7 +166,9 @@ function ReactTable({ columns, data, updateMyData, fieldDetails, skipPageReset, 
             // That way we can call this function from our
             // cell renderer!
             updateMyData,
-            fieldDetails
+            fieldDetails,
+            tableParams,
+            getLinkName
         },
     )
 
@@ -137,7 +232,8 @@ export function Table({
     checkActionCond,
 }) {
 
-    console.log(data)
+    // console.log('FpsTable')
+    // console.log(data)
 
     data.error = data.error && data.error == '403' ? 'You have no permissions for viewing form' : data.error
     data.error = data.error && data.error == '511' ? 'Table is not configured' : data.error
@@ -164,9 +260,11 @@ export function Table({
     })
 
     // Gathers current structure info:
-    const getStructure = (obj) => { // obj == row
-        const tableFieldScheme = data.fieldScheme ? [...data.fieldScheme] : []
-        const tableStructures = data.structures ? {...data.structures} : {}
+    const getStructure = (obj, tableFieldScheme, tableStructures) => { // obj == row
+        // console.log('getStructure')
+        // console.log(obj)
+        // const tableFieldScheme = data.fieldScheme ? [...data.fieldScheme] : []
+        // const tableStructures = data.structures ? { ...data.structures } : {}
         let structure = {}
         for (const field in obj) {
             if (typeof obj[field] != 'object') {
@@ -183,12 +281,21 @@ export function Table({
         }
         return structure
     }
-    
+
     //-----------------------------
+
+    const transformTableFieldScheme = (sysname, tableFieldScheme) => {
+        let newTableFieldScheme = tableFieldScheme.filter(i => i[0].startsWith(sysname + '.'))
+        var deepClone = JSON.parse(JSON.stringify(newTableFieldScheme))
+        deepClone.forEach(i => i[0] = i[0].substring(sysname.length + 1))
+        return deepClone
+    }
 
     //------------------------------
     function getLinkName(sysname, obj) {
-        const structure = getStructure(obj)
+        const tableFieldScheme = data.fieldScheme ? [...data.fieldScheme] : []
+        const tableStructures = data.structures ? { ...data.structures } : {}
+        const structure = getStructure(obj, transformTableFieldScheme(sysname, tableFieldScheme), tableStructures)
         const linkName = structure.visibleName && structure.visibleName.map(field => obj[field]).join(' ')
         let displayID = ''
         if (typeof obj == 'string') { displayID = obj }
@@ -249,9 +356,11 @@ export function Table({
     return <ReactTable
         columns={columns}
         data={tableData}
+        getLinkName={getLinkName}
         updateMyData={updateMyData}
         fieldDetails={fieldDetails}
         skipPageReset={skipPageReset}
         onExpand={onExpand}
+        tableParams={tableParams.fieldParams}
     />
 }

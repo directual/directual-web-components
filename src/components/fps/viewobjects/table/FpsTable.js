@@ -82,14 +82,14 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
         if (saveModel) {
             for (const field in saveModel) {
                 console.log(field)
-                if (saveModel[field] && typeof saveModel[field] == 'object' && data.params.data.fields[field].dataType != 'date') 
+                if (saveModel[field] && typeof saveModel[field] == 'object' && data.params.data.fields[field].dataType != 'date')
                     {   console.log('removing links')
-                        delete saveModel[field] 
+                        delete saveModel[field]
                     }  // removing links
-                if (writeFields.indexOf(field) == -1) 
-                    { 
+                if (writeFields.indexOf(field) == -1)
+                    {
                         console.log(`removing ${field} as a field not for writing`)
-                        delete saveModel[field] 
+                        delete saveModel[field]
                     } // removing fields not for writing
                 if (data.params.data.fields[field].dataType == 'date' && typeof saveModel[field] == 'number') {
                     saveModel[field] = moment(saveModel[field])
@@ -170,7 +170,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
                 loading={loading}
                 onFilter={() => { }}
             />
-            <Table 
+            <Table
                 currentBP={currentBP}
                 data={data}
                 params={data.params}
