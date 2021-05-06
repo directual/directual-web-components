@@ -1,5 +1,7 @@
-import React from 'react'
-import { Input, CodeInput, StructureField } from 'directual-web-components'
+import React, { useState } from 'react'
+import { Input, CodeInput, StructureField, InputGroup, Button, Checkbox } from 'directual-web-components'
+import moment from 'moment'
+import { useSortBy } from 'react-table'
 
 export default function PlatformPage() {
 
@@ -977,29 +979,41 @@ export default function PlatformPage() {
       ]
     }
   ]
+  const weekDays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+
+  // formatOptions:
+  const [testDefValue, setTestDefValue] = useState(null)
+  const [dateFormat, setDateFormat] = useState('D MMMM, Y')
+  const [timeFormat, setTimeFormat] = useState('HH:mm, Z')
+  const [dateLocale, setDateLocale] = useState('ru')
+  const [isUTC, setIsUTC] = useState('false')
+  const [validWeekDays, setValidWeekDays] = useState({ mon: true, tue: true, wed: true, thu: true, fri: true, sat: false, sun: false })
+  const [allowPast, setAllowPast] = useState({ past: true })
+  const [timeConstraints, setTimeConstraints] = useState({
+    hours: {
+      min: 9,
+      max: 15,
+      step: 2
+    },
+    minutes: {
+      min: 0,
+      max: 60,
+      step: 20
+    }
+  })
 
   return (
     <div>
       <h1>Platform</h1>
-      <Input 
-        code 
-        width={400}
-        placeholder='https://api.your.app'
-        preSelectDefaultValue='GET'
-        preSelect
-        preSelectOptions={['POST','GET','PATCH'].map(method => { return { key: method, value: method } })}
-        onChoosePreSelect={value => console.log(value)}
-        onChange={value => console.log(value)}
-      />
-      <h2>Inline structure field input </h2>
+      {/* <h2>Inline structure field input </h2>
       <p>Оджажды в
-          суровую  зимнюю пору я из лесу вышел был сильный мороз.
-          Гляжу, поднимается медленно в гору
-          Лошадка, везущая хворосту воз.
-          И шествуя важно, в спокойствии чинном,
-          Лошадку ведет под уздцы мужичок
-          В больших сапогах, в полушубке овчинном,
-          В больших рукавицах… а сам с ноготок!
+      суровую  зимнюю пору я из лесу вышел был сильный мороз.
+      Гляжу, поднимается медленно в гору
+      Лошадка, везущая хворосту воз.
+      И шествуя важно, в спокойствии чинном,
+      Лошадку ведет под уздцы мужичок
+      В больших сапогах, в полушубке овчинном,
+      В больших рукавицах… а сам с ноготок!
           «Здорово <StructureField
           inline
           //autofocus
@@ -1022,24 +1036,94 @@ export default function PlatformPage() {
           — «А кой тебе годик?» — «Шестой миновал…
           Ну, мертвая!» — крикнул малюточка басом,
           Рванул под уздцы и быстрей зашагал.</p>
-      <br /><br /><hr /><br /><br />
-      {/* <StructureField
-          fields={testFields}
-          structSysName='WebUser'
-          onChangeExtended={(value, struct, type) => { }}
-          onChange={e => { }}
-          placeholder='Object field'
-          //noPropagation
+      <br /><br /><hr /><br /><br /> */}
+
+      <InputGroup width={400}>
+        <Input
+          label='Date format'
+          placeholder='Hide date'
+          code
+          defaultValue={dateFormat}
+          onChange={setDateFormat}
         />
-        <StructureField
-          fields={testFields}
-          structSysName='WebUser'
-          onChangeExtended={(value, struct, type) => { }}
-          onChange={e => { }}
-          placeholder='Select field'
-          noPropagation
-        /> */}
+        <Input
+          label='Time format'
+          placeholder='Hide time'
+          code
+          defaultValue={timeFormat}
+          onChange={setTimeFormat}
+        />
+      </InputGroup>
       <Input
+        width={400}
+        label='Date locale'
+        type='select'
+        defaultValue={dateLocale}
+        onChange={setDateLocale}
+        options={[
+          { key: 'en-gb', value: 'English (en-gb)' },
+          { key: 'en-us', value: 'English (en-us)' },
+          { key: 'es', value: 'Spanish (es)' },
+          { key: 'fr', value: 'French (fr)' },
+          { key: 'de', value: 'Deutsche (de)' },
+          { key: 'ru', value: 'Russian (ru)' },
+        ]}
+      />
+      <Input
+        type='json'
+        rows='auto'
+        width={400}
+        defaultValue={typeof timeConstraints == 'object' ? JSON.stringify(timeConstraints) : timeConstraints}
+        onChange={setTimeConstraints}
+        label='timeConstraints' />
+      <Input
+        label='Available week days'
+        type='checkboxGroup'
+        //debug
+        width={350}
+        horizontal
+        horWidth={80}
+        defaultValue={validWeekDays}
+        onChange={setValidWeekDays}
+        options={weekDays.map(day => {return { value: day, label: day}})}
+      />
+      {/* <Input
+        label='Allowing users to choose day in the past'
+        type='checkboxGroup'
+        //debug
+        width={350}
+        defaultValue={allowPast}
+        onChange={setAllowPast}
+        options={[{ value: 'past', label: 'Choosing the past'}]}
+      /> */}
+      <Input type='radio'
+        label='Time zone'
+        onChange={setIsUTC}
+        defaultValue={isUTC}
+        options={[
+          { value: 'true', label: "Use UTC (+00, Zulu time)" },
+          { value: 'false', label: "Use user's local timezone" },
+        ]}
+      />
+      <Input
+        type='date'
+        width={400}
+        //debug
+        //allowPast={allowPast}
+        timeConstraints={timeConstraints}
+        label='test date'
+        locale={dateLocale}
+        dateFormat={dateFormat}
+        timeFormat={timeFormat}
+        utc={isUTC == 'true'}
+        validWeekDays={validWeekDays}
+        //defaultValue={moment()}
+        defaultValue={testDefValue}
+        onChange={setTestDefValue}
+      />
+      <Button onClick={() => setTestDefValue(moment())}>push me</Button>
+
+      {/* <Input
         label='Structure field'
         width={500}
         //fixHeight={100}
@@ -1063,7 +1147,7 @@ export default function PlatformPage() {
         //filterLinkFields='TMessageIn'
         //description='That is a new FormField component for the platform'
         //disabled
-        type='structurefield' />
+        type='structurefield' /> */}
     </div>
   )
 }

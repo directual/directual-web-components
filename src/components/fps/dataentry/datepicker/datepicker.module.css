@@ -1,6 +1,66 @@
+.datePicker {
+  outline: none !important;
+  border: solid 1px var(--field-border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  font-size: var(--text-font-size);
+  height: 44px;
+  padding: 1px 8px 1px 8px;
+  color: var(--font-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: flex;
+  align-items: center;
+}
+.datePicker:hover .clear {
+  opacity: 0.3;
+}
+.datePicker .clear {
+  opacity: 0;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.datePicker .clear:before {
+  font-size: 32px;
+}
+.datePicker .clear:hover {
+  opacity: 0.8;
+}
+.datePicker .icon {
+  opacity: 0.5;
+}
+.datePicker .icon:before {
+  font-size: 32px;
+}
+.datePicker .value {
+  flex-grow: 2;
+}
+.datePicker.ok {
+  border-width: 2px;
+  padding: 0 7px 0 7px;
+  border-color: var(--ok-color);
+}
+.datePicker:hover:not(.disabled) {
+  border-width: 2px;
+  padding: 0 7px 0 7px;
+}
+.datePicker:focus:not(.disabled) {
+  border-width: 2px;
+  padding: 0 7px 0 7px;
+  border-color: var(--accent-color);
+}
+.datePicker:active:not(.disabled) {
+  padding: 0 7px 0 7px;
+  border: solid 2px var(--font-color);
+}
+.datePicker .placeholder {
+  opacity: 0.5;
+  color: var(--font-color);
+  font-size: var(--text-small-size);
+}
 :global .rdt {
   position: relative;
-  display: flex;
   align-items: center;
 }
 :global .rdt.rdtOpen:after {
@@ -9,17 +69,6 @@
 }
 :global .rdt * {
   border-radius: var(--border-radius);
-}
-:global .rdt:after {
-  content: "\e914";
-  font-family: 'directual-icons';
-  font-size: var(--h2-font-size);
-  position: absolute;
-  right: 12px;
-  opacity: 0.5;
-}
-:global .rdt.correctedHeight .form-control {
-  height: 46px;
 }
 :global .form-control {
   outline: none;

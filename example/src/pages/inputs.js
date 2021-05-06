@@ -136,6 +136,9 @@ export default function InputsPage() {
         }
       ]
 
+      const [dateFormat,setDateFormat] = useState('D MMM, YYYY')
+      const [timeFormat,setTimeFormat] = useState('HH:mm')
+      const [dateLocale,setDateLocale] = useState(null)
 
     return (
         <React.Fragment>
@@ -215,16 +218,45 @@ type='structurefield' />`} />
                 //disabled
                 type='structurefield' />
 
+                <InputGroup width={400}>
+                <Input 
+                    label='Date format'
+                    code
+                    defaultValue={dateFormat}
+                    onChange={setDateFormat}
+                />
+                <Input 
+                    label='Time format'
+                    code
+                    defaultValue={timeFormat}
+                    onChange={setTimeFormat}
+                />
+                </InputGroup>
+                <Input
+                    width={400} 
+                    label='Date locale'
+                    type='select'
+                    defaultValue={dateLocale}
+                    onChange={setDateLocale}
+                    options={[
+                        {key: 'en-gb', value: 'English (en-gb)'},
+                        {key: 'es', value: 'Spanish (es)'},
+                        {key: 'fr', value: 'French (fr)'},
+                        {key: 'de', value: 'Deutsche (de)'},
+                        {key: 'ru', value: 'Russian (ru)'},
+                    ]}
+                />
             <Input 
                 type='date'
+                width={400} 
                 //debug
                 label='test date'
-                dateFormat='D MMM, YYYY '
-                timeFormat='HH:mm'
+                locale={dateLocale}
+                dateFormat={dateFormat}
+                timeFormat={timeFormat}
                 defaultValue={testDefValue}
+                onChange={setTestDefValue}
                 />
-            <Input type='markdown' label='mkd' defaultValue='ып'/>
-
             <Button onClick={() => setTestDefValue(`2020-12-29T22:17:50.000Z`)}>push me</Button>
 
             {/* <Input type='optionsHandler'

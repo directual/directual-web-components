@@ -4,9 +4,14 @@ import React, { useState, useEffect } from 'react'
 import * as Datetime from 'react-datetime'
 import styles from './datepicker.module.css'
 import moment from 'moment';
+import 'moment/locale/ru'
+import 'moment/locale/en-gb'
+import 'moment/locale/es'
+import 'moment/locale/fr'
+import 'moment/locale/de'
 
 export default function Datepicker(props) {
-    const dateFormat = props.dateFormat || 'D, MMM, YYYY'
+    const dateFormat = props.dateFormat // || 'D, MMM, YYYY'
     let timeFormat;
     if (typeof props.timeFormat == 'string') { timeFormat = props.timeFormat }
     if (typeof props.timeFormat == 'undefined') { timeFormat = ' HH:mm' }
@@ -18,24 +23,60 @@ export default function Datepicker(props) {
         if (!props.defaultValue) {
             setValue(null)
         } else {
-            setValue(props.utc ? moment.utc(props.defaultValue) : moment(props.defaultValue))
+            // console.log(props.defaultValue)
+            // console.log(moment(props.defaultValue).isValid())
+            !value && moment(props.defaultValue).isValid() && setValue(props.utc ? moment.utc(props.defaultValue) : moment(props.defaultValue))
         }
     }, [props.defaultValue])
 
+    const validWeekDays = current => {
+        const allowPast = props.allowPast || { past: true }
+        const validWeekDays = props.validWeekDays || { mon: true, tue: true, wed: true, thu: true, fri: true, sat: true, sun: true }
+        if (current < moment() && !current.isSame(moment(), 'day') && !allowPast.past) { return false }
+        if (current.day() == 0) { return validWeekDays.sun }
+        if (current.day() == 1) { return validWeekDays.mon }
+        if (current.day() == 2) { return validWeekDays.tue }
+        if (current.day() == 3) { return validWeekDays.wed }
+        if (current.day() == 4) { return validWeekDays.thu }
+        if (current.day() == 5) { return validWeekDays.fri }
+        if (current.day() == 6) { return validWeekDays.sat }
+        return true
+    }
+
+    const renderInput = (props, openCalendar, closeCalendar) => {
+        const clear = () => {
+            props.onChange({ target: { value: '' } });
+        }
+        return (
+            <div onClick={openCalendar} className={styles.datePicker}>
+                <div className={`${styles.icon} icon icon-calendar`} />
+                <div className={styles.value}>{props.value}</div>
+                {props.value && <div onClick={clear} className={`${styles.clear} icon icon-close`}/>}
+            </div>
+        );
+    }
+
     return (
         <div className={styles.calendar}>
+            {/* <div className='dd-debug'>{JSON.stringify(value)}</div> */}
             <Datetime
                 value={value}
+                renderInput={renderInput}
                 dateFormat={dateFormat}
+                locale={props.locale || 'en-gb'}
                 timeFormat={timeFormat}
+                isValidDate={validWeekDays}
+                timeConstraints={props.timeConstraints}
                 className={props.correctedHeight ? 'correctedHeight' : ''}
-                utc={true}
+                utc={props.utc}
                 onBlur={props.onBlur}
-                closeOnSelect={props.closeOnSelect}
+                closeOnSelect={true}
+
                 inputProps={{
                     placeholder: props.placeholder,
                     disabled: props.disabled,
                 }}
+
                 onChange={value => {
                     props.onChange(value)
                     setValue(value)

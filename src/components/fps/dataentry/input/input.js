@@ -34,6 +34,7 @@ export default function Input(props) {
     }
 
     const checkJsonValue = (e, v) => {
+        // console.log(v)
         let parseJSON = {}
         const val = v || value
         if (val) {
@@ -787,13 +788,16 @@ export default function Input(props) {
                         onChange={e => { setValue(e); props.onChange && props.onChange(e) }}
                         disabled={props.disabled}
                         placeholder={props.placeholder}
+                        timeConstraints={props.timeConstraints}
                         defaultValue={defVal}
+                        validWeekDays={props.validWeekDays}
                         utc={props.utc}
+                        locale={props.locale}
+                        allowPast={props.allowPast}
                         correctedHeight={props.correctedHeight}
                         dateFormat={props.dateFormat}
                         timeFormat={props.timeFormat}
                         //onBlur={checkValue}
-                        closeOnSelect={true}
                     />
                 </React.Fragment>
             }
@@ -853,10 +857,10 @@ export default function Input(props) {
 
             }
             {props.type == 'checkboxGroup' &&
-                <React.Fragment>
+                <div style={props.horizontal ? {display: 'flex', flexWrap: 'wrap'} : {}}>
                     {props.options && props.options.map(option => {
                         return (
-                            <div className={styles.checkbox_wrapper}>
+                            <div className={styles.checkbox_wrapper} style={props.horWidth ? {width: props.horWidth} : {}}>
                                 <Checkbox
                                     disabled={props.disabled}
                                     label={option.label}
@@ -893,7 +897,7 @@ export default function Input(props) {
                         </div>
                     }
 
-                </React.Fragment>
+                </div>
             }
 
             {props.tip &&
