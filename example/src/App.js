@@ -3651,34 +3651,1078 @@ const App = (props) => {
 
 
     let exampleForm = {
-        "sl": "fpsform",
+        "sl": "post_test",
         "formName": "",
         "formDesc": "",
         "formButton": "",
-        "placeholder": "",
-        "maxWidth": "",
+        "placeholder": "false",
+        "maxWidth": "250",
         "formButtonResubmit": null,
         "params": {
             "result": {
                 "resultTitleField": null,
                 "resultMessageField": null,
                 "isSuccessField": null
+            },
+            "data": {
+                "readFields": [
+                    {
+                        "fieldSysName": "@dateChanged",
+                        "fetch": [],
+                        "sysName": "@dateChanged",
+                        "name": "date changed",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "@dateCreated",
+                        "fetch": [],
+                        "sysName": "@dateCreated",
+                        "name": "date created",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "@who",
+                        "fetch": [],
+                        "sysName": "@who",
+                        "name": "who changed",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "array",
+                        "fetch": [],
+                        "sysName": "array",
+                        "name": "array",
+                        "dataType": "array",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "checkbox",
+                        "fetch": [],
+                        "sysName": "checkbox",
+                        "name": "checkbox",
+                        "dataType": "json",
+                        "format": "checkboxes",
+                        "formatOptions": {
+                            "customOptionLabel": "мой ответ",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "customOption": true,
+                            "customOptionPlaceholder": "что не так с вариантами ответа?",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "multipleChoice": [
+                                {
+                                    "value": "checkbox 1",
+                                    "label": "checkbox "
+                                },
+                                {
+                                    "value": "checkbox 2",
+                                    "label": "checkbox 2"
+                                },
+                                {
+                                    "value": "checkbox 3",
+                                    "label": "checkbox 4"
+                                }
+                            ]
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "color",
+                        "fetch": [],
+                        "sysName": "color",
+                        "name": "color",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "html",
+                        "fetch": [],
+                        "sysName": "html",
+                        "name": "html",
+                        "dataType": "string",
+                        "format": "html",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "json",
+                        "fetch": [],
+                        "sysName": "json",
+                        "name": "json",
+                        "dataType": "json",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "mail",
+                        "fetch": [],
+                        "sysName": "mail",
+                        "name": "mail",
+                        "dataType": "string",
+                        "format": "email",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "markdown",
+                        "fetch": [],
+                        "sysName": "markdown",
+                        "name": "markdown",
+                        "dataType": "string",
+                        "format": "markdown",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "operator",
+                        "fetch": [],
+                        "sysName": "operator",
+                        "name": "operator",
+                        "dataType": "operator",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "phone",
+                        "fetch": [],
+                        "sysName": "phone",
+                        "name": "phone",
+                        "dataType": "string",
+                        "format": "phone",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "radiobtn",
+                        "fetch": [],
+                        "sysName": "radiobtn",
+                        "name": "radiobtn",
+                        "dataType": "json",
+                        "format": "radioOptions",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "customOption": true,
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "multipleChoice": [
+                                {
+                                    "value": "да",
+                                    "label": "да"
+                                },
+                                {
+                                    "value": "нет",
+                                    "label": "нет"
+                                },
+                                {
+                                    "value": "не знаю",
+                                    "label": "не знаю"
+                                }
+                            ]
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "range_slider",
+                        "fetch": [],
+                        "sysName": "range_slider",
+                        "name": "range_slider",
+                        "dataType": "json",
+                        "format": "rangeSlider",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "slider",
+                        "fetch": [],
+                        "sysName": "slider",
+                        "name": "slider",
+                        "dataType": "json",
+                        "format": "slider",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "unitName": "описание",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {
+                                "max": 500,
+                                "min": 30,
+                                "step": 10
+                            },
+                            "customOptionType": "textarea"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "weblink",
+                        "fetch": [],
+                        "sysName": "weblink",
+                        "name": "weblink",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
+                    }
+                ],
+                "writeFields": [
+                    {
+                        "fieldSysName": "@dateChanged",
+                        "fetch": [],
+                        "sysName": "@dateChanged",
+                        "name": "date changed",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "@dateCreated",
+                        "fetch": [],
+                        "sysName": "@dateCreated",
+                        "name": "date created",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "@who",
+                        "fetch": [],
+                        "sysName": "@who",
+                        "name": "who changed",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "array",
+                        "fetch": [],
+                        "sysName": "array",
+                        "name": "array",
+                        "dataType": "array",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "checkbox",
+                        "fetch": [],
+                        "sysName": "checkbox",
+                        "name": "checkbox",
+                        "dataType": "json",
+                        "format": "checkboxes",
+                        "formatOptions": {
+                            "customOptionLabel": "мой ответ",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "customOption": true,
+                            "customOptionPlaceholder": "что не так с вариантами ответа?",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "multipleChoice": [
+                                {
+                                    "value": "checkbox 1",
+                                    "label": "checkbox "
+                                },
+                                {
+                                    "value": "checkbox 2",
+                                    "label": "checkbox 2"
+                                },
+                                {
+                                    "value": "checkbox 3",
+                                    "label": "checkbox 4"
+                                }
+                            ]
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "color",
+                        "fetch": [],
+                        "sysName": "color",
+                        "name": "color",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "html",
+                        "fetch": [],
+                        "sysName": "html",
+                        "name": "html",
+                        "dataType": "string",
+                        "format": "html",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "json",
+                        "fetch": [],
+                        "sysName": "json",
+                        "name": "json",
+                        "dataType": "json",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "mail",
+                        "fetch": [],
+                        "sysName": "mail",
+                        "name": "mail",
+                        "dataType": "string",
+                        "format": "email",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "markdown",
+                        "fetch": [],
+                        "sysName": "markdown",
+                        "name": "markdown",
+                        "dataType": "string",
+                        "format": "markdown",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "operator",
+                        "fetch": [],
+                        "sysName": "operator",
+                        "name": "operator",
+                        "dataType": "operator",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "phone",
+                        "fetch": [],
+                        "sysName": "phone",
+                        "name": "phone",
+                        "dataType": "string",
+                        "format": "phone",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "radiobtn",
+                        "fetch": [],
+                        "sysName": "radiobtn",
+                        "name": "radiobtn",
+                        "dataType": "json",
+                        "format": "radioOptions",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "customOption": true,
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "multipleChoice": [
+                                {
+                                    "value": "да",
+                                    "label": "да"
+                                },
+                                {
+                                    "value": "нет",
+                                    "label": "нет"
+                                },
+                                {
+                                    "value": "не знаю",
+                                    "label": "не знаю"
+                                }
+                            ]
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "range_slider",
+                        "fetch": [],
+                        "sysName": "range_slider",
+                        "name": "range_slider",
+                        "dataType": "json",
+                        "format": "rangeSlider",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "slider",
+                        "fetch": [],
+                        "sysName": "slider",
+                        "name": "slider",
+                        "dataType": "json",
+                        "format": "slider",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "unitName": "описание",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {
+                                "max": 500,
+                                "min": 30,
+                                "step": 10
+                            },
+                            "customOptionType": "textarea"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "weblink",
+                        "fetch": [],
+                        "sysName": "weblink",
+                        "name": "weblink",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
+                    }
+                ],
+                "fields": {
+                    "@dateChanged": {
+                        "id": "@dateChanged",
+                        "content": "date changed",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "@dateCreated": {
+                        "id": "@dateCreated",
+                        "content": "date created",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "@who": {
+                        "id": "@who",
+                        "content": "who changed",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "array": {
+                        "id": "array",
+                        "content": "array",
+                        "type": "field",
+                        "dataType": "array",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "checkbox": {
+                        "id": "checkbox",
+                        "content": "checkbox",
+                        "type": "field",
+                        "dataType": "json",
+                        "format": "checkboxes",
+                        "formatOptions": {
+                            "customOptionLabel": "мой ответ",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "customOption": true,
+                            "customOptionPlaceholder": "что не так с вариантами ответа?",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "multipleChoice": [
+                                {
+                                    "value": "checkbox 1",
+                                    "label": "checkbox "
+                                },
+                                {
+                                    "value": "checkbox 2",
+                                    "label": "checkbox 2"
+                                },
+                                {
+                                    "value": "checkbox 3",
+                                    "label": "checkbox 4"
+                                }
+                            ]
+                        },
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "color": {
+                        "id": "color",
+                        "content": "color",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "html": {
+                        "id": "html",
+                        "content": "html",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "html",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "id": {
+                        "id": "id",
+                        "content": "id",
+                        "type": "field",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "json": {
+                        "id": "json",
+                        "content": "json",
+                        "type": "field",
+                        "dataType": "json",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "mail": {
+                        "id": "mail",
+                        "content": "mail",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "email",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "markdown": {
+                        "id": "markdown",
+                        "content": "markdown",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "markdown",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "operator": {
+                        "id": "operator",
+                        "content": "operator",
+                        "type": "field",
+                        "dataType": "operator",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "phone": {
+                        "id": "phone",
+                        "content": "phone",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "phone",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "radiobtn": {
+                        "id": "radiobtn",
+                        "content": "radiobtn",
+                        "type": "field",
+                        "dataType": "json",
+                        "format": "radioOptions",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "customOption": true,
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "multipleChoice": [
+                                {
+                                    "value": "да",
+                                    "label": "да"
+                                },
+                                {
+                                    "value": "нет",
+                                    "label": "нет"
+                                },
+                                {
+                                    "value": "не знаю",
+                                    "label": "не знаю"
+                                }
+                            ]
+                        },
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "range_slider": {
+                        "id": "range_slider",
+                        "content": "range_slider",
+                        "type": "field",
+                        "dataType": "json",
+                        "format": "rangeSlider",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "slider": {
+                        "id": "slider",
+                        "content": "slider",
+                        "type": "field",
+                        "dataType": "json",
+                        "format": "slider",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "unitName": "описание",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {
+                                "max": 500,
+                                "min": 30,
+                                "step": 10
+                            },
+                            "customOptionType": "textarea"
+                        },
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "weblink": {
+                        "id": "weblink",
+                        "content": "weblink",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    }
+                },
+                "fieldParams": {
+                    "@dateChanged": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "@dateCreated": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "@who": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "array": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "checkbox": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "color": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "html": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "id": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "json": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "mail": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "markdown": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "operator": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "phone": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "radiobtn": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "range_slider": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "slider": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "defaultValueOn": false,
+                        "defaultValue": {
+                            "firstValue": 320
+                        }
+                    },
+                    "weblink": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    }
+                },
+                "columns": {
+                    "tab-1": {
+                        "id": "tab-1",
+                        "title": "New section",
+                        "fieldIds": [
+                            "@dateChanged",
+                            "@dateCreated",
+                            "@who",
+                            "array",
+                            "checkbox",
+                            "color",
+                            "html",
+                            "id",
+                            "json",
+                            "mail",
+                            "markdown",
+                            "operator",
+                            "phone",
+                            "radiobtn",
+                            "range_slider",
+                            "slider",
+                            "weblink"
+                        ]
+                    }
+                },
+                "columnOrder": [
+                    "tab-1"
+                ]
+            },
+            "fields": {
+                "@dateChanged": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "@dateCreated": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "@who": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "array": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "checkbox": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "color": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "html": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "id": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "json": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "mail": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "markdown": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "operator": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "phone": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "radiobtn": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "range_slider": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "slider": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "defaultValueOn": false,
+                    "defaultValue": {
+                        "firstValue": 320
+                    }
+                },
+                "weblink": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                }
             }
         },
         "fileds": [
             {
-                "sysName": "date",
-                "name": "date",
-                "dataType": "date",
-                "id": "99881618843953062",
+                "sysName": "array",
+                "name": "array",
+                "dataType": "array",
+                "id": "81471620377074203",
                 "link": "",
                 "group": "0",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
-                "weight": 0,
-                "order": 1,
+                "weight": null,
+                "order": 7,
                 "linkIndexFieldSysName": [],
                 "defaultValue": null,
                 "constraints": null,
@@ -3686,35 +4730,440 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "json": false,
                 "typeVariable": {},
+                "linkType": false,
+                "json": false,
                 "linkOrArrayLinkType": false,
                 "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "params": {
-                    "include": true,
-                    "hidden": false,
-                    "required": false,
-                    "isTextarea": false,
-                    "isMarkdown": false,
-                    "textareaRows": 4,
-                    "defaultValue": "",
-                    "isPositive": false,
-                    "quickSearch": true,
-                    "allowAddLinks": false,
-                    "dateTimeOn": true,
-                    "isValid": true,
-                    "weight": 0,
-                    "jsonDisplay": "default",
-                    "range": {
-                        "min": 0,
-                        "max": 100,
-                        "step": 1,
-                        "unitName": ""
-                    }
+                "indexExists": false
+            },
+            {
+                "sysName": "checkbox",
+                "name": "checkbox",
+                "dataType": "json",
+                "id": "85581620377090695",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 10,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "checkboxes",
+                "formatOptions": {
+                    "customOptionLabel": "мой ответ",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "customOption": true,
+                    "customOptionPlaceholder": "что не так с вариантами ответа?",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "multipleChoice": [
+                        {
+                            "value": "checkbox 1",
+                            "label": "checkbox "
+                        },
+                        {
+                            "value": "checkbox 2",
+                            "label": "checkbox 2"
+                        },
+                        {
+                            "value": "checkbox 3",
+                            "label": "checkbox 4"
+                        }
+                    ]
                 },
-                "isValid": true
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "json": true,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "color",
+                "name": "color",
+                "dataType": "string",
+                "id": "96451620376946650",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "color",
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "html",
+                "name": "html",
+                "dataType": "string",
+                "id": "11311620376918041",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "html",
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "id",
+                "name": "id",
+                "dataType": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "json",
+                "name": "json",
+                "dataType": "json",
+                "id": "88951620377089686",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "json": true,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "mail",
+                "name": "mail",
+                "dataType": "string",
+                "id": "15671620376927052",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "email",
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "markdown",
+                "name": "markdown",
+                "dataType": "string",
+                "id": "36701620376902335",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "markdown",
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "operator",
+                "name": "operator",
+                "dataType": "operator",
+                "id": "54911620377085397",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 8,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "phone",
+                "name": "phone",
+                "dataType": "string",
+                "id": "83471620376936952",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "phone",
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "radiobtn",
+                "name": "radiobtn",
+                "dataType": "json",
+                "id": "88911620377091922",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 11,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "radioOptions",
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "customOption": true,
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "multipleChoice": [
+                        {
+                            "value": "да",
+                            "label": "да"
+                        },
+                        {
+                            "value": "нет",
+                            "label": "нет"
+                        },
+                        {
+                            "value": "не знаю",
+                            "label": "не знаю"
+                        }
+                    ]
+                },
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "json": true,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "range_slider",
+                "name": "range_slider",
+                "dataType": "json",
+                "id": "84311620377097491",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 13,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "rangeSlider",
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "json": true,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "slider",
+                "name": "slider",
+                "dataType": "json",
+                "id": "34631620377095972",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 12,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "slider",
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "unitName": "описание",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {
+                        "max": 500,
+                        "min": 30,
+                        "step": 10
+                    },
+                    "customOptionType": "textarea"
+                },
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "json": true,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "weblink",
+                "name": "weblink",
+                "dataType": "string",
+                "id": "17681620376961410",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "webLink",
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false
             }
         ],
         "error": null,

@@ -253,7 +253,13 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
                 step={field.formatOptions.range && field.formatOptions.range.step}
                 unitName={field.formatOptions.unitName}
             />}
-        {field && field.format == "rangeSlider" &&
+        {field && field.format == "slider" && !field.formatOptions.range && 
+            <div style={{marginBottom:24}}>{`Slider "${field.content || field.id}" is not configured`}</div>
+        }
+        {field && field.format == "rangeSlider" && !field.formatOptions.range && 
+            <div style={{marginBottom:24}}>{`Range slider "${field.content || field.id}" is not configured`}</div>
+        }
+        {field && field.format == "rangeSlider" && field.formatOptions.range &&
             <Input type='range'
                 disabled={!editingOn}
                 onChange={value => onChange && onChange(JSON.stringify(value))}
