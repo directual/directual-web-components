@@ -62,10 +62,10 @@ export function FpsLayout({ layout }) {
     const tabs = layout.tabs.map(tab => { return { ...tab, key: tab.id, content: composeTabsContent(tab.id) } })
 
     return (
-        <div className={styles.fpsLayout} ref={layoutRef}>
+        (tabs && tabs[0]) ? <div className={styles.fpsLayout} ref={layoutRef}>
             {layout.showHeader && layout.header && <h1 className={styles.layoutHeader}>{layout.header}</h1>}
             {tabs && <TabsPane hideSingleTab tabs={tabs} currentTabKey={tabs[0].key} fixedScroll />}
-        </div>)
+        </div> : <div />)
 }
 
 const Section = ({ section, currentBP }) => {

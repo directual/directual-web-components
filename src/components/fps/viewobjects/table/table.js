@@ -240,16 +240,17 @@ export function Table({
 
     // composing Table Header
     const tableParams = { ...data.params.tableParams }
-    const fieldDetails = { ...data.params.data.fields }
-    const tableFieldparams = { ...data.params.data.fields }
+    const fieldDetails = data.params.data ? { ...data.params.data.fields }: {}
+    const tableFieldparams = data.params.data ? { ...data.params.data.fields }: {}
 
     for (const field in fieldDetails) {
         fieldDetails[field] = { ...fieldDetails[field], ...tableFieldparams[field] }
     }
 
-    if (!tableParams) { return <SomethingWentWrong icon='ban' message='Table is not configured' /> }
+    if (!tableParams || !tableParams.fieldOrder) { return <SomethingWentWrong icon='ban' message='Table is not configured' /> }
 
     let tableColumns = []
+    tableParams.fieldOrder = tableParams.fieldOrder || []
     tableParams.fieldOrder.forEach(field => {
         if (tableParams.fieldParams[field] && tableParams.fieldParams[field].include) {
             tableColumns.push({
