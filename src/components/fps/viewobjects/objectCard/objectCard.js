@@ -493,6 +493,7 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                             label={field.name || field.sysName}
                             defaultValue={model[field.sysName]}
 
+                            timeConstraints={field.formatOptions && field.formatOptions.timeConstraints}
                             dateFormat={field.formatOptions ? field.formatOptions.dateFormat : 'DD/MM/Y '}
                             timeFormat={field.formatOptions ? field.formatOptions.timeFormat : 'HH:mm'}
                             locale={field.formatOptions ? field.formatOptions.dateLocale : 'en-gb'}

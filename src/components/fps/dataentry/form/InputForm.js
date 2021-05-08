@@ -139,6 +139,7 @@ function FieldDate({ field, onChange, placeholder, editingOn, defaultValue }) {
     return <Input type='date'
         defaultValue={field.defaultValueOn && field.defaultValue}
 
+        timeConstraints={field.formatOptions && field.formatOptions.timeConstraints}
         dateFormat={field.formatOptions ? field.formatOptions.dateFormat : 'DD/MM/Y '}
         timeFormat={field.formatOptions ? field.formatOptions.timeFormat : 'HH:mm'}
         locale={field.formatOptions ? field.formatOptions.dateLocale : 'en-gb'}
