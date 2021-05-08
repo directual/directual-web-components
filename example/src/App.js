@@ -2626,8 +2626,8 @@ const App = (props) => {
 
 
     let exampleForm = {
-        "sl": "date",
-        "formName": "",
+        "sl": "namageUIversions",
+        "formName": "Add UI version",
         "formDesc": "",
         "formButton": "",
         "placeholder": "",
@@ -2642,78 +2642,35 @@ const App = (props) => {
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "date",
+                        "fieldSysName": "id",
                         "fetch": [],
-                        "sysName": "date",
-                        "name": "",
-                        "dataType": "date",
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
                         "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "ru",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": false,
-                                "fri": true,
-                                "sat": false,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "MMMM, D, Y,",
-                            "timeFormat": " HH:mm, Z",
-                            "isUTC": "true",
-                            "timeConstraints": ""
-                        },
+                        "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "date2",
+                        "fieldSysName": "ui_version",
                         "fetch": [],
-                        "sysName": "date2",
-                        "name": "",
-                        "dataType": "date",
+                        "sysName": "ui_version",
+                        "name": "Version",
+                        "dataType": "string",
                         "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": false,
-                                "fri": true,
-                                "sat": false,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm, Z",
-                            "isUTC": "false"
-                        },
+                        "formatOptions": {},
+                        "link": null
+                    }
+                ],
+                "writeFields": [
+                    {
+                        "fieldSysName": "delete",
+                        "fetch": [],
+                        "sysName": "delete",
+                        "name": "",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
                         "link": ""
                     },
                     {
@@ -2725,125 +2682,19 @@ const App = (props) => {
                         "format": "",
                         "formatOptions": {},
                         "link": ""
-                    }
-                ],
-                "writeFields": [
+                    },
                     {
-                        "fieldSysName": "date",
+                        "fieldSysName": "ui_version",
                         "fetch": [],
-                        "sysName": "date",
-                        "name": "",
-                        "dataType": "date",
+                        "sysName": "ui_version",
+                        "name": "Version",
+                        "dataType": "string",
                         "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "ru",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": false,
-                                "fri": true,
-                                "sat": false,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "MMMM, D, Y,",
-                            "timeFormat": " HH:mm, Z",
-                            "isUTC": "true",
-                            "timeConstraints": ""
-                        },
-                        "link": ""
+                        "formatOptions": {},
+                        "link": null
                     }
                 ],
                 "fields": {
-                    "date": {
-                        "id": "date",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "ru",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": false,
-                                "fri": true,
-                                "sat": false,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "MMMM, D, Y,",
-                            "timeFormat": " HH:mm, Z",
-                            "isUTC": "true",
-                            "timeConstraints": ""
-                        },
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "date2": {
-                        "id": "date2",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": false,
-                                "fri": true,
-                                "sat": false,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm, Z",
-                            "isUTC": "false"
-                        },
-                        "read": true,
-                        "link": ""
-                    },
                     "id": {
                         "id": "id",
                         "content": "id",
@@ -2851,27 +2702,49 @@ const App = (props) => {
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
+                        "link": ""
+                    },
+                    "ui_version": {
+                        "id": "ui_version",
+                        "content": "Version",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": null
+                    },
+                    "delete": {
+                        "id": "delete",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
                         "link": ""
                     }
                 },
                 "fieldParams": {
-                    "date": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "defaultValueOn": true
-                    },
-                    "date2": {
-                        "include": true,
+                    "id": {
+                        "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "id": {
+                    "ui_version": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "required": true
+                    },
+                    "delete": {
                         "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -2884,9 +2757,9 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "date",
-                            "date2",
-                            "id"
+                            "id",
+                            "ui_version",
+                            "delete"
                         ]
                     }
                 },
@@ -2895,22 +2768,22 @@ const App = (props) => {
                 ]
             },
             "fields": {
-                "date": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "defaultValueOn": true
-                },
-                "date2": {
-                    "include": true,
+                "id": {
+                    "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "id": {
+                "ui_version": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": true
+                },
+                "delete": {
                     "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -2921,11 +2794,65 @@ const App = (props) => {
         },
         "fileds": [
             {
-                "sysName": "date",
+                "sysName": "delete",
                 "name": "",
-                "dataType": "date",
-                "id": "86361620246190466",
+                "dataType": "boolean",
+                "id": "84651618145763056",
                 "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "id",
+                "name": "id",
+                "dataType": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "ui_version",
+                "name": "Version",
+                "dataType": "string",
+                "id": "50881618145263107",
+                "link": null,
                 "group": "0",
                 "tags": null,
                 "indexing": false,
@@ -2938,35 +2865,7 @@ const App = (props) => {
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "ru",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": false,
-                        "fri": true,
-                        "sat": false,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "MMMM, D, Y,",
-                    "timeFormat": " HH:mm, Z",
-                    "isUTC": "true",
-                    "timeConstraints": ""
-                },
+                "formatOptions": null,
                 "groupName": null,
                 "typeVariable": {},
                 "linkType": false,

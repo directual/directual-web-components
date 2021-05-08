@@ -47,12 +47,12 @@ function FpsFormNew({ auth, data, onEvent, id }) {
   const fileds = []
   const formWidth = (data.maxWidth && parseInt(data.maxWidth)) || 'auto'
 
-  console.log('------------ form data: -------------')
-  console.log(data)
-  console.log('------------ auth: -------------')
-  console.log(auth)
-  console.log('------------ form model: -------------')
-  console.log(model)
+  // console.log('------------ form data: -------------')
+  // console.log(data)
+  // console.log('------------ auth: -------------')
+  // console.log(auth)
+  // console.log('------------ form model: -------------')
+  // console.log(model)
 
   const sendMsg = (msg) => {
     const message = { ...msg, _id: 'form_' + id }
@@ -132,11 +132,12 @@ function FpsFormNew({ auth, data, onEvent, id }) {
   // Validation:
   useEffect(() => {
     setIsValid(true)
+    
     for (const field in data.params.data.fieldParams) {
       //if (field.isValid == false) { setIsValid(false); }
       if (data.params.data.fieldParams[field] && data.params.data.fieldParams[field].required &&
-        data.fields && data.fields.length > 0 && data.fields.filter(i=>i.sysName == field) &&
-        data.fields.filter(i=>i.sysName == field).length > 0 &&
+        data.fileds && data.fileds.length > 0 && data.fileds.filter(i=>i.sysName == field) &&
+        data.fileds.filter(i=>i.sysName == field).length > 0 &&
         !model[field] && !model[field] !== false && data.params.data.fieldParams[field].include &&
         !data.params.data.fieldParams[field].hidden) { 
           console.log('FAILED REQ VALIDATION')
