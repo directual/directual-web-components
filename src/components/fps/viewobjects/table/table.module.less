@@ -9,6 +9,10 @@
     min-width: 100%;
     margin-right: 6px;
     tr {
+      &:hover {
+        td{
+          background-color: var(--accent-transp-05-color);}
+      }
       .expand {
         opacity: 0.15;
       }
@@ -20,6 +24,7 @@
       }
     }
     td {
+      transition: .5s;
       .cardImage {
         margin: 0;
         background-size: cover;

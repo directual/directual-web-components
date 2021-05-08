@@ -742,6 +742,7 @@
   --field-border-color: #AAAAAA;
   --table-border-color: rgba(0, 0, 0, 0.12);
   --accent-color: #058efc;
+  --accent-transp-05-color: rgba(5, 142, 252, 0.05);
   --secondary-accent-color: #0062BD;
   --button-accent-color: #fff;
   --background-color: #ffffff;

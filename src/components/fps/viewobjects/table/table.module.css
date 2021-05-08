@@ -10,6 +10,9 @@
   min-width: 100%;
   margin-right: 6px;
 }
+.table_wrapper table tr:hover td {
+  background-color: var(--accent-transp-05-color);
+}
 .table_wrapper table tr .expand {
   opacity: 0.15;
 }
@@ -20,6 +23,7 @@
   opacity: 1;
 }
 .table_wrapper table td {
+  transition: 0.5s;
   padding: 12px 12px;
   border-top: solid 1px var(--table-border-color);
 }

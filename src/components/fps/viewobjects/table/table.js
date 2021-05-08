@@ -213,7 +213,8 @@ function ReactTable({ columns, data, updateMyData, fieldDetails, tableParams, sk
                     {rows.map(row => {
                         prepareRow(row)
                         return (
-                            <tr {...row.getRowProps()}>
+                            <tr onDoubleClick={() => onExpand(row.original)}
+                                {...row.getRowProps()}>
                                 {/* <td>
                                     <Checkbox label='' />
                                 </td> */}
