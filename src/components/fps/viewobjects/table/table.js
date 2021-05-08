@@ -4,6 +4,7 @@ import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
 import { useTable } from 'react-table'
 import Checkbox from '../../dataentry/checkbox/checkbox'
 import Button from '../../button/button'
+import moment from 'moment'
 
 // Create an editable cell renderer
 const EditableCell = ({
@@ -44,8 +45,19 @@ const EditableCell = ({
     //     )
     // }
 
-    // console.log(tableParams[id])
-    // console.log(fieldDetails[id])
+    //console.log(tableParams[id])
+    //console.log(fieldDetails[id])
+
+    //date
+    const formatOptions = fieldDetails[id].formatOptions || {}
+    if (fieldDetails[id].dataType == 'date') {
+        return <div className={`${styles.notEditableValue}`}>
+            {formatOptions.isUTC == 'true' ?
+                moment.utc(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
+                :
+                moment(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')}
+        </div>
+    }
 
     //numbers
     if (fieldDetails[id].dataType == 'number' || fieldDetails[id].dataType == 'decimal') {

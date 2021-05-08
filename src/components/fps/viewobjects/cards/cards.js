@@ -145,6 +145,16 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                         submitAction(mapping, sl)
                     }
 
+                    // форматируем дату для карточки (если есть) в соответствии с formatOptions
+                    const formatDate = (value, formatOptions) => {
+                        formatOptions = formatOptions || {}
+                        const formattedDate = formatOptions.isUTC == 'true' ?
+                        moment.utc(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
+                        :
+                        moment(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
+                        return formattedDate
+                    }
+
                     // в этой хуете мы подтягиваем для Заголовка, Подзаголовка и Текста карточки visible name если поле типа link/arrayLink
                     const cardHeader = getInitialStructureParams().viewName && getInitialStructureParams().viewName &&
                         (getInitialStructureParams().viewName.length > 0 ?
@@ -156,7 +166,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                 !tableHeaders.filter(h => h.sysName == i)[0] ? '' :
                                     tableHeaders.filter(h => h.sysName == i)[0].dataType != 'date' ?
                                         row[i] :
-                                        moment(row[i]).format('D MMM, YYYY')
+                                        formatDate(row[i],tableHeaders.filter(h => h.sysName == i)[0].formatOptions)
                             ).join(' ')
                             : '')
                     const cardHeaderComment = row && (typeof row[tableParams.cardHeaderComment] == 'object' ?
@@ -165,7 +175,8 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                             : row[tableParams.cardHeaderComment].map(i => getLinkName(tableParams.cardHeaderComment, i))
                         : (tableHeaders.filter(h => h.sysName == tableParams.cardHeaderComment)[0] &&
                             tableHeaders.filter(h => h.sysName == tableParams.cardHeaderComment)[0].dataType == 'date') ?
-                            moment(row[tableParams.cardHeaderComment]).format('D MMM, YYYY') :
+                            //<pre>{JSON.stringify(tableHeaders.filter(h => h.sysName == tableParams.cardHeaderComment)[0],0,3)}</pre> :
+                            formatDate(row[tableParams.cardHeaderComment], tableHeaders.filter(h => h.sysName == tableParams.cardHeaderComment)[0].formatOptions) :
                             row[tableParams.cardHeaderComment]
                     )
 
@@ -176,7 +187,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
 
                         : (tableHeaders.filter(h => h.sysName == tableParams.cardBodyText)[0] &&
                             tableHeaders.filter(h => h.sysName == tableParams.cardBodyText)[0].dataType == 'date') ?
-                            moment(row[tableParams.cardBodyText]).format('D MMM, YYYY') :
+                            formatDate(row[tableParams.cardBodyText], tableHeaders.filter(h => h.sysName == tableParams.cardBodyText)[0].formatOptions) :
                             row[tableParams.cardBodyText]
                     )
                     // ==================================

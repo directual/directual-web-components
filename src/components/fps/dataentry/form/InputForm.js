@@ -50,8 +50,8 @@ function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue
     }
     if (!editingOn) return <div>
         {!field.displayAsButton &&
-        <span className={styles.label}>
-            {field.name || field.sysName}</span>}
+            <span className={styles.label}>
+                {field.name || field.sysName}</span>}
 
         {field.descriptionFlag && field.description &&
             <span className={styles.description}>
@@ -60,17 +60,17 @@ function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue
             <div>{defaultValue || (field.defaultValueOn && field.defaultValue) || ''}</div>}
         {link &&
             <React.Fragment>
-                {field.displayAsButton ? 
-                <ActionPanel>
-                    <Button 
-                        newWindow 
-                        icon={field.button && field.button.icon}
-                        accent={field.button && field.button.type == 'accent'}
-                        danger={field.button && field.button.type == 'danger'}
-                        link={addHttp(defaultValue)}>
+                {field.displayAsButton ?
+                    <ActionPanel>
+                        <Button
+                            newWindow
+                            icon={field.button && field.button.icon}
+                            accent={field.button && field.button.type == 'accent'}
+                            danger={field.button && field.button.type == 'danger'}
+                            link={addHttp(defaultValue)}>
                             {(field.button && field.button.title) || field.name || field.sysName}
-                    </Button></ActionPanel>
-                :
+                        </Button></ActionPanel>
+                    :
                     <a href={addHttp(defaultValue)} target='_blank'>{defaultValue}</a>}
             </React.Fragment>}
         {isHint &&
@@ -134,10 +134,17 @@ function FieldBoolean({ field, onChange, placeholder, editingOn, defaultValue })
 }
 
 function FieldDate({ field, onChange, placeholder, editingOn, defaultValue }) {
+    console.log('DATE')
+    console.log(field)
     return <Input type='date'
         defaultValue={field.defaultValueOn && field.defaultValue}
-        utc
-        timeFormat={`${field.dateTimeOn ? ' HH:mm' : ''}`}
+
+        dateFormat={field.formatOptions ? field.formatOptions.dateFormat : 'DD/MM/Y '}
+        timeFormat={field.formatOptions ? field.formatOptions.timeFormat : 'HH:mm'}
+        locale={field.formatOptions ? field.formatOptions.dateLocale : 'en-gb'}
+        utc={field.formatOptions ? field.formatOptions.isUTC == 'true' : true}
+        validWeekDays={field.formatOptions ? field.formatOptions.validWeekDays : null}
+
         onChange={onChange}
         disabled={!editingOn}
         label={placeholder != "true" ? (field.content || field.id) : ''}
@@ -253,11 +260,11 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
                 step={field.formatOptions.range && field.formatOptions.range.step}
                 unitName={field.formatOptions.unitName}
             />}
-        {field && field.format == "slider" && !field.formatOptions.range && 
-            <div style={{marginBottom:24}}>{`Slider "${field.content || field.id}" is not configured`}</div>
+        {field && field.format == "slider" && !field.formatOptions.range &&
+            <div style={{ marginBottom: 24 }}>{`Slider "${field.content || field.id}" is not configured`}</div>
         }
-        {field && field.format == "rangeSlider" && !field.formatOptions.range && 
-            <div style={{marginBottom:24}}>{`Range slider "${field.content || field.id}" is not configured`}</div>
+        {field && field.format == "rangeSlider" && !field.formatOptions.range &&
+            <div style={{ marginBottom: 24 }}>{`Range slider "${field.content || field.id}" is not configured`}</div>
         }
         {field && field.format == "rangeSlider" && field.formatOptions.range &&
             <Input type='range'

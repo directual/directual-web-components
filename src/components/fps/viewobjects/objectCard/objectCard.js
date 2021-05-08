@@ -175,7 +175,16 @@ export function ObjectCard(props) {
             setShowBorder(false)
     }
 
-    const noTabs = <div>update components settings</div>
+    const noTabs = <div>Update components settings</div>
+
+    function formatDate(value, formatOptions) {
+        formatOptions = formatOptions || {}
+        const formattedDate = formatOptions.isUTC == 'true' ?
+            moment.utc(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
+            :
+            moment(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
+        return formattedDate
+    }
 
     function composeTabContent(fields, fieldParams, deleteField, actions) {
 
@@ -238,8 +247,8 @@ export function ObjectCard(props) {
         };
         const transformedFields = fields && fieldParams ? transform(fields, fieldParams) : []
 
-        console.log('transformedFields')
-        console.log(transformedFields)
+        // console.log('transformedFields')
+        // console.log(transformedFields)
 
         return (
             <React.Fragment>
@@ -291,6 +300,7 @@ export function ObjectCard(props) {
                         model={model}
                         editingOn={editingOn}
                         field={field}
+                        formatDate={formatDate}
                         object={object}
                         setModel={value => { setModel(value); }}
                         setLinkedObject={setLinkedObject}
@@ -339,7 +349,7 @@ export function ObjectCard(props) {
                                 getLinkName(headerField, object[headerField].value) :
                                 object[headerField].value.map(i => getLinkName(headerField, i)).join(', ')
                             : object[headerField].dataType == 'date' ?
-                                moment(object[headerField].value).format('D MMM, YYYY') :
+                                formatDate(object[headerField].value, object[headerField].formatOptions) :
                                 object[headerField].value
                         : null).join(' ')
                         :
@@ -389,7 +399,7 @@ export function ObjectCard(props) {
     )
 }
 
-function CardField({ field, object, model, setModel, debug, editingOn,
+function CardField({ field, object, model, setModel, debug, editingOn, formatDate,
     setLinkedObject, setLinkedObjectStruct, setShowLinkedObject, getLinkName }) {
     const [edit, setEdit] = useState(false)
 
@@ -476,22 +486,22 @@ function CardField({ field, object, model, setModel, debug, editingOn,
             {/* ДАТЫ */}
             { (field.dataType == 'date') &&
                 <React.Fragment>
-                    {/* <InputForm
-                        field={field}
-                        defaultValue={object[field.sysName].value}
-                        editingOn={field.write && editingOn}
-                        onChange={value => setModel({ ...model, [field.sysName]: value })}
-                    /> */}
                     {(field.write && editingOn) ?
                         <Input
                             type='date'
                             description={field.descriptionFlag && field.description}
                             label={field.name || field.sysName}
                             defaultValue={model[field.sysName]}
-                            timeFormat={`${field.dateTimeOn ? ' HH:mm' : ''}`}
+
+                            dateFormat={field.formatOptions ? field.formatOptions.dateFormat : 'DD/MM/Y '}
+                            timeFormat={field.formatOptions ? field.formatOptions.timeFormat : 'HH:mm'}
+                            locale={field.formatOptions ? field.formatOptions.dateLocale : 'en-gb'}
+                            utc={field.formatOptions ? field.formatOptions.isUTC == 'true' : true}
+                            validWeekDays={field.formatOptions ? field.formatOptions.validWeekDays : null}
+
                             onChange={value => setModel({ ...model, [field.sysName]: value })}
                         /> :
-                        <FieldReadOnly field={field} object={object} date weblink={{}} />
+                        <FieldReadOnly formatDate={formatDate} field={field} object={object} date weblink={{}} />
                     }
                 </React.Fragment>}
 
@@ -572,7 +582,7 @@ function CardField({ field, object, model, setModel, debug, editingOn,
     )
 }
 
-function FieldReadOnly({ field, object, weblink, date }) {
+function FieldReadOnly({ field, object, weblink, date, formatDate }) {
 
     const jsonParse = def => {
         try {
@@ -596,9 +606,7 @@ function FieldReadOnly({ field, object, weblink, date }) {
                 <div>
                     {
                         (object[field.sysName] && object[field.sysName].value) ?
-                            field.dateTimeOn ?
-                                moment(object[field.sysName].value).format('D MMM, YYYY, h:mm a') :
-                                moment(object[field.sysName].value).format('D MMM, YYYY')
+                            formatDate(object[field.sysName].value, field.formatOptions)
                             : '—'}
                 </div> :
                 <React.Fragment>

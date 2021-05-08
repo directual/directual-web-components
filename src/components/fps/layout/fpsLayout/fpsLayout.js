@@ -64,7 +64,9 @@ export function FpsLayout({ layout }) {
     return (
         (tabs && tabs[0]) ? <div className={styles.fpsLayout} ref={layoutRef}>
             {layout.showHeader && layout.header && <h1 className={styles.layoutHeader}>{layout.header}</h1>}
-            {tabs && <TabsPane hideSingleTab tabs={tabs} currentTabKey={tabs[0].key} fixedScroll />}
+            {tabs && <TabsPane hideSingleTab tabs={tabs} currentTabKey={tabs[0].key} 
+                //fixedScroll 
+            />}
         </div> : <div />)
 }
 
