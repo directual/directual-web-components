@@ -19,6 +19,20 @@ export default function Datepicker(props) {
 
     const [value, setValue] = useState(props.defaultValue && props.utc ? moment.utc(props.defaultValue) : moment(props.defaultValue))
 
+    const parseJson = json => {
+        let parsedJson = {}
+        if (typeof json == 'object') return json
+        try {
+            parsedJson = JSON.parse(json)
+        }
+        catch (e) {
+            console.log(json);
+            console.log(e);
+        }
+        return parsedJson
+    }
+
+
     useEffect(() => {
         if (!props.defaultValue) {
             setValue(null)
@@ -66,7 +80,7 @@ export default function Datepicker(props) {
                 locale={props.locale || 'en-gb'}
                 timeFormat={timeFormat}
                 isValidDate={validWeekDays}
-                timeConstraints={props.timeConstraints}
+                timeConstraints={parseJson(props.timeConstraints)}
                 className={props.correctedHeight ? 'correctedHeight' : ''}
                 utc={props.utc}
                 onBlur={props.onBlur}
