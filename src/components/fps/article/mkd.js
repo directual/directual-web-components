@@ -108,8 +108,8 @@ export function Markdown(props) {
     return (
         <div className={styles.dd_mdn}
             style={{
-                marginTop: props.margin && props.margin.top,
-                marginBottom: props.margin && props.margin.bottom,
+                marginTop: props.margin ? props.margin.top : 0,
+                marginBottom: props.margin ? props.margin.bottom : 0,
             }}>
             {props.edit ?
                 <div className={styles.mkd_edit}

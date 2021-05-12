@@ -33,7 +33,7 @@ console.log(props)
   const text = (props && props.data && props.data.markdown) || ''
   return <ComponentWrapper>
     <Article>
-      <Input type='markdown' defaultValue={text} />
+      <Input type='markdown' defaultValue={text} nomargin/>
     </Article>
   </ComponentWrapper>
 }

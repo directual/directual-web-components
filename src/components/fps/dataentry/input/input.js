@@ -672,7 +672,7 @@ export default function Input(props) {
                         //height={350}
                         value={value}
                         //example={props.example}
-                        //margin={{top:0,bottom:18}}
+                        margin={{top:0,bottom:0}}
                     />
                 </div>}
 
