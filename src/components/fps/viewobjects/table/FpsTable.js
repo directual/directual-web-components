@@ -164,7 +164,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
                 currentBP={currentBP}
                 tableTitle={tableTitle}
                 searchValue={searchValue}
-                tableQuickSearch={true}
+                tableQuickSearch={data.quickSeatch == 'true'}
                 search={data.data && data.data.length > 0 ? true : false}
                 onSearch={value => search(value)}
                 loading={loading}

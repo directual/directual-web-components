@@ -13,8 +13,8 @@ import { Paging } from '../paging/paging'
 function FpsCards({ auth, data, onEvent, id, currentBP }) {
     if (!data) { data = {} }
 
-    // console.log('---data---')
-    // console.log(data)
+    console.log('---data---')
+    console.log(data)
 
     const [loading, setLoading] = useState(false)
     const [searchValue, setSearchValue] = useState()
@@ -166,7 +166,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
                 currentBP={currentBP}
                 tableTitle={tableTitle}
                 searchValue={searchValue}
-                tableQuickSearch={true}
+                tableQuickSearch={data.quickSeatch == 'true'}
                 search={data.data && data.data.length > 0 ? true : false}
                 onSearch={value => search(value)}
                 loading={loading}

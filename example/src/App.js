@@ -80,14 +80,14 @@ const App = (props) => {
     }
 
     let cardActions = {
-        "sl": "date",
+        "sl": "openPipelinePlanned",
         "pageSize": "10",
         "headerField": null,
         "params": {
             "cardListLayout": "list",
-            "cardHeaderComment": "date",
+            "cardHeaderComment": "",
             "deleteField": "",
-            "cardBodyText": "date2",
+            "cardBodyText": "",
             "cardImage": false,
             "cardImageField": "",
             "cardImageType": "none",
@@ -96,48 +96,10 @@ const App = (props) => {
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "date",
+                        "fieldSysName": "date_added",
                         "fetch": [],
-                        "sysName": "date",
-                        "name": "",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "ru",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": false,
-                                "fri": true,
-                                "sat": false,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "MMMM, D, Y,",
-                            "timeFormat": " HH:mm, Z",
-                            "isUTC": "true",
-                            "timeConstraints": ""
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "date2",
-                        "fetch": [],
-                        "sysName": "date2",
-                        "name": "",
+                        "sysName": "date_added",
+                        "name": "Date added",
                         "dataType": "date",
                         "format": "",
                         "formatOptions": {
@@ -156,151 +118,56 @@ const App = (props) => {
                                 "mon": true,
                                 "thu": true,
                                 "tue": true,
-                                "sun": false,
+                                "sun": true,
                                 "fri": true,
-                                "sat": false,
+                                "sat": true,
                                 "wed": true
                             },
                             "customOptionPlaceholder": "Describe your option",
                             "range": {},
                             "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm, Z",
+                            "dateFormat": "D MMMM, Y",
+                            "timeFormat": "",
                             "isUTC": "false"
                         },
                         "link": ""
                     },
                     {
-                        "fieldSysName": "id",
+                        "fieldSysName": "description",
                         "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
+                        "sysName": "description",
+                        "name": "Feature description",
+                        "dataType": "string",
+                        "format": "markdown",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "link",
-                        "fetch": [
-                            {
-                                "fieldSysName": "date",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "date2",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "link",
-                        "name": "",
-                        "dataType": "link",
+                        "fieldSysName": "title",
+                        "fetch": [],
+                        "sysName": "title",
+                        "name": "Feature title",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": "date"
-                    }
-                ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "date",
-                        "fetch": [],
-                        "sysName": "date",
-                        "name": "",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "ru",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": false,
-                                "fri": true,
-                                "sat": false,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "MMMM, D, Y,",
-                            "timeFormat": " HH:mm, Z",
-                            "isUTC": "true",
-                            "timeConstraints": ""
-                        },
-                        "link": ""
+                        "link": null
                     },
                     {
-                        "fieldSysName": "id",
+                        "fieldSysName": "votes",
                         "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
+                        "sysName": "votes",
+                        "name": "Number of upvotes",
+                        "dataType": "number",
+                        "format": "positiveNum",
                         "formatOptions": {},
                         "link": ""
                     }
                 ],
+                "writeFields": [],
                 "fields": {
-                    "date": {
-                        "id": "date",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "ru",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": false,
-                                "fri": true,
-                                "sat": false,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "MMMM, D, Y,",
-                            "timeFormat": " HH:mm, Z",
-                            "isUTC": "true",
-                            "timeConstraints": ""
-                        },
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "date2": {
-                        "id": "date2",
-                        "content": "",
+                    "date_added": {
+                        "id": "date_added",
+                        "content": "Date added",
                         "type": "field",
                         "dataType": "date",
                         "format": "",
@@ -320,182 +187,84 @@ const App = (props) => {
                                 "mon": true,
                                 "thu": true,
                                 "tue": true,
-                                "sun": false,
+                                "sun": true,
                                 "fri": true,
-                                "sat": false,
+                                "sat": true,
                                 "wed": true
                             },
                             "customOptionPlaceholder": "Describe your option",
                             "range": {},
                             "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm, Z",
+                            "dateFormat": "D MMMM, Y",
+                            "timeFormat": "",
                             "isUTC": "false"
                         },
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "id": {
-                        "id": "id",
-                        "content": "id",
+                    "description": {
+                        "id": "description",
+                        "content": "Feature description",
                         "type": "field",
-                        "dataType": "id",
-                        "format": "",
+                        "dataType": "string",
+                        "format": "markdown",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "link": {
-                        "id": "link",
-                        "content": "",
+                    "title": {
+                        "id": "title",
+                        "content": "Feature title",
                         "type": "field",
-                        "dataType": "link",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "date",
+                        "link": null,
+                        "actions": []
+                    },
+                    "votes": {
+                        "id": "votes",
+                        "content": "Number of upvotes",
+                        "type": "field",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "date": {
+                    "date_added": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "date2": {
+                    "description": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "id": {
-                        "include": false,
+                    "title": {
+                        "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "link": {
+                    "votes": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
-                        "clickable": true,
-                        "configureLinkedCard": {
-                            "fields": {
-                                "date": {
-                                    "id": "date",
-                                    "content": "",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "date",
-                                    "format": null,
-                                    "formatOptions": {
-                                        "customOptionLabel": "My option",
-                                        "keyValue": {
-                                            "key": "key",
-                                            "value": "value",
-                                            "button": "One more"
-                                        },
-                                        "dateLocale": "ru",
-                                        "booleanOptions": [
-                                            "True",
-                                            "False"
-                                        ],
-                                        "validWeekDays": {
-                                            "mon": true,
-                                            "thu": true,
-                                            "tue": true,
-                                            "sun": false,
-                                            "fri": true,
-                                            "sat": false,
-                                            "wed": true
-                                        },
-                                        "customOptionPlaceholder": "Describe your option",
-                                        "range": {},
-                                        "customOptionType": "textarea",
-                                        "dateFormat": "MMMM, D, Y,",
-                                        "timeFormat": " HH:mm, Z",
-                                        "isUTC": "true",
-                                        "timeConstraints": ""
-                                    }
-                                },
-                                "date2": {
-                                    "id": "date2",
-                                    "content": "",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "date",
-                                    "format": null,
-                                    "formatOptions": {
-                                        "customOptionLabel": "My option",
-                                        "keyValue": {
-                                            "key": "key",
-                                            "value": "value",
-                                            "button": "One more"
-                                        },
-                                        "dateLocale": "en-gb",
-                                        "booleanOptions": [
-                                            "True",
-                                            "False"
-                                        ],
-                                        "validWeekDays": {
-                                            "mon": true,
-                                            "thu": true,
-                                            "tue": true,
-                                            "sun": false,
-                                            "fri": true,
-                                            "sat": false,
-                                            "wed": true
-                                        },
-                                        "customOptionPlaceholder": "Describe your option",
-                                        "range": {},
-                                        "customOptionType": "textarea",
-                                        "dateFormat": "DD/MM/Y",
-                                        "timeFormat": " HH:mm, Z",
-                                        "isUTC": "false"
-                                    }
-                                },
-                                "id": {
-                                    "id": "id",
-                                    "content": "id",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "id",
-                                    "format": null,
-                                    "formatOptions": {}
-                                }
-                            },
-                            "fieldParams": {
-                                "date": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "date2": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "id": {
-                                    "include": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                }
-                            },
-                            "fieldOrder": [
-                                "date",
-                                "date2",
-                                "id"
-                            ]
-                        }
+                        "clickable": false
                     }
                 },
                 "columns": {
@@ -503,10 +272,10 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "date",
-                            "date2",
-                            "id",
-                            "link"
+                            "date_added",
+                            "description",
+                            "title",
+                            "votes"
                         ]
                     }
                 },
@@ -516,207 +285,44 @@ const App = (props) => {
                 "actions": []
             },
             "fields": {
-                "date": {
+                "date_added": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "date2": {
+                "description": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "id": {
-                    "include": false,
+                "title": {
+                    "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "link": {
+                "votes": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": true,
-                    "configureLinkedCard": {
-                        "fields": {
-                            "date": {
-                                "id": "date",
-                                "content": "",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "date",
-                                "format": null,
-                                "formatOptions": {
-                                    "customOptionLabel": "My option",
-                                    "keyValue": {
-                                        "key": "key",
-                                        "value": "value",
-                                        "button": "One more"
-                                    },
-                                    "dateLocale": "ru",
-                                    "booleanOptions": [
-                                        "True",
-                                        "False"
-                                    ],
-                                    "validWeekDays": {
-                                        "mon": true,
-                                        "thu": true,
-                                        "tue": true,
-                                        "sun": false,
-                                        "fri": true,
-                                        "sat": false,
-                                        "wed": true
-                                    },
-                                    "customOptionPlaceholder": "Describe your option",
-                                    "range": {},
-                                    "customOptionType": "textarea",
-                                    "dateFormat": "MMMM, D, Y,",
-                                    "timeFormat": " HH:mm, Z",
-                                    "isUTC": "true",
-                                    "timeConstraints": ""
-                                }
-                            },
-                            "date2": {
-                                "id": "date2",
-                                "content": "",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "date",
-                                "format": null,
-                                "formatOptions": {
-                                    "customOptionLabel": "My option",
-                                    "keyValue": {
-                                        "key": "key",
-                                        "value": "value",
-                                        "button": "One more"
-                                    },
-                                    "dateLocale": "en-gb",
-                                    "booleanOptions": [
-                                        "True",
-                                        "False"
-                                    ],
-                                    "validWeekDays": {
-                                        "mon": true,
-                                        "thu": true,
-                                        "tue": true,
-                                        "sun": false,
-                                        "fri": true,
-                                        "sat": false,
-                                        "wed": true
-                                    },
-                                    "customOptionPlaceholder": "Describe your option",
-                                    "range": {},
-                                    "customOptionType": "textarea",
-                                    "dateFormat": "DD/MM/Y",
-                                    "timeFormat": " HH:mm, Z",
-                                    "isUTC": "false"
-                                }
-                            },
-                            "id": {
-                                "id": "id",
-                                "content": "id",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "id",
-                                "format": null,
-                                "formatOptions": {}
-                            }
-                        },
-                        "fieldParams": {
-                            "date": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "date2": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "id": {
-                                "include": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            }
-                        },
-                        "fieldOrder": [
-                            "date",
-                            "date2",
-                            "id"
-                        ]
-                    }
+                    "clickable": false
                 }
             }
         },
-        "tableTitle": "",
+        "tableTitle": "Under development",
         "actions": null,
         "headers": [
             {
-                "sysName": "date",
-                "name": "",
+                "sysName": "date_added",
+                "name": "Date added",
                 "dataType": "date",
-                "id": "86361620246190466",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "ru",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": false,
-                        "fri": true,
-                        "sat": false,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "MMMM, D, Y,",
-                    "timeFormat": " HH:mm, Z",
-                    "isUTC": "true",
-                    "timeConstraints": ""
-                },
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "indexExists": false
-            },
-            {
-                "sysName": "date2",
-                "name": "",
-                "dataType": "date",
-                "id": "70341620382618834",
+                "id": "68351620832123660",
                 "link": "",
                 "group": "0",
                 "tags": null,
@@ -746,59 +352,86 @@ const App = (props) => {
                         "mon": true,
                         "thu": true,
                         "tue": true,
-                        "sun": false,
+                        "sun": true,
                         "fri": true,
-                        "sat": false,
+                        "sat": true,
                         "wed": true
                     },
                     "customOptionPlaceholder": "Describe your option",
                     "range": {},
                     "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm, Z",
+                    "dateFormat": "D MMMM, Y",
+                    "timeFormat": "",
                     "isUTC": "false"
                 },
                 "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
-                "json": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "indexExists": false
+                "json": false,
+                "linkType": false,
+                "typeVariable": {},
+                "arrayLink": false
             },
             {
-                "sysName": "id",
-                "name": "id",
-                "dataType": "id",
-                "id": "0",
+                "sysName": "description",
+                "name": "Feature description",
+                "dataType": "string",
+                "id": "77031620832091108",
                 "link": "",
                 "group": "0",
-                "tags": "",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 0,
+                "order": 2,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "markdown",
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "linkType": false,
+                "typeVariable": {},
+                "arrayLink": false
+            },
+            {
+                "sysName": "title",
+                "name": "Feature title",
+                "dataType": "string",
+                "id": "79031620832091734",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": null,
                 "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
-                "json": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "indexExists": false
+                "json": false,
+                "linkType": false,
+                "typeVariable": {},
+                "arrayLink": false
             },
             {
-                "sysName": "link",
-                "name": "",
-                "dataType": "link",
-                "id": "73121620487124603",
-                "link": "date",
+                "sysName": "votes",
+                "name": "Number of upvotes",
+                "dataType": "number",
+                "id": "68061620832170304",
+                "link": "",
                 "group": "0",
                 "tags": null,
                 "indexing": false,
@@ -810,27 +443,21 @@ const App = (props) => {
                 "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
-                "format": null,
+                "format": "positiveNum",
                 "formatOptions": null,
                 "groupName": null,
-                "typeVariable": {},
-                "linkType": true,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
                 "json": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "indexExists": false
+                "linkType": false,
+                "typeVariable": {},
+                "arrayLink": false
             }
         ],
         "data": [
             {
-                "date": 1620950400000,
-                "link": {
-                    "date": 1620950400000,
-                    "date2": 1620766800000,
-                    "id": "1"
-                },
-                "date2": 1620766800000,
-                "id": "1"
+                "title": "Filters in Cards, Table",
+                "date_added": 1620766800000
             }
         ],
         "totalPages": 1,
@@ -838,53 +465,42 @@ const App = (props) => {
         "error": null,
         "fieldScheme": [
             [
-                "date",
-                1381936
+                "date_added",
+                1384821
             ],
             [
-                "date2",
-                1381936
+                "description",
+                1384821
             ],
             [
-                "id",
-                1381936
+                "title",
+                1384821
             ],
             [
-                "link.date",
-                1381936
-            ],
-            [
-                "link.date2",
-                1381936
-            ],
-            [
-                "link.id",
-                1381936
+                "votes",
+                1384821
             ]
         ],
-        "writeFields": [
-            "date",
-            "id"
-        ],
+        "writeFields": [],
         "structures": {
-            "1381936": {
-                "networkID": 6357,
-                "sysName": "date",
-                "name": "date",
-                "id": 1381936,
-                "dateCreated": "2021-05-05T20:22:25Z",
+            "1384821": {
+                "networkID": 6795,
+                "id": 1384821,
+                "dateCreated": "2021-05-12T15:06:56Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"material_id\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"19831620484708058\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"bool\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"62821620287734475\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"date2\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"70341620382618834\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":false,\"fri\":true,\"sat\":false,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm, Z\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"link\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"73121620487124603\",\"link\":\"date\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"date\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"86361620246190466\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":false,\"fri\":true,\"sat\":false,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"MMMM, D, Y,\",\"timeFormat\":\" HH:mm, Z\",\"isUTC\":\"true\",\"timeConstraints\":\"\"},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false}]",
+                "name": "features",
+                "sysName": "Features",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkType\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"votes_ids\",\"name\":\"Who upvoted\",\"dataType\":\"arrayLink\",\"id\":\"14001620832180875\",\"link\":\"votes\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"linkType\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"status\",\"name\":\"Request status\",\"dataType\":\"link\",\"id\":\"40251620832303364\",\"link\":\"request_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkType\":true,\"linkOrArrayLinkType\":true},{\"sysName\":\"user_id\",\"name\":\"Who suggested\",\"dataType\":\"link\",\"id\":\"59421620832153105\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkType\":true,\"linkOrArrayLinkType\":true},{\"sysName\":\"votes\",\"name\":\"Number of upvotes\",\"dataType\":\"number\",\"id\":\"68061620832170304\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkType\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"date_added\",\"name\":\"Date added\",\"dataType\":\"date\",\"id\":\"68351620832123660\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkType\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"description\",\"name\":\"Feature description\",\"dataType\":\"string\",\"id\":\"77031620832091108\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkType\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"title\",\"name\":\"Feature title\",\"dataType\":\"string\",\"id\":\"79031620832091734\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkType\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"dev_status\",\"name\":\"Development status\",\"dataType\":\"link\",\"id\":\"85621620832330584\",\"link\":\"development_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkType\":true,\"linkOrArrayLinkType\":true}]",
                 "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"date2\"},{\"sysName\":\"date\"}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-05-08T15:18:55Z",
-                "createBy": 21,
+                "dateChanged": "2021-05-12T15:16:18Z",
+                "createBy": 1,
                 "changedBy": 1,
                 "_settings": null,
                 "_nativeIndexSettings": null,
@@ -908,104 +524,22 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "typeVariable": {},
-                    "linkType": false,
-                    "json": false,
+                    "indexExists": false,
                     "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "indexExists": false
+                    "json": false,
+                    "linkType": false,
+                    "typeVariable": {},
+                    "arrayLink": false
                 },
                 "objectIDSysName": "id",
-                "folderId": null
+                "folderId": 33625260
             }
         },
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
-        "fileds": [
-            {
-                "sysName": "date",
-                "name": "",
-                "dataType": "date",
-                "id": "86361620246190466",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "ru",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": false,
-                        "fri": true,
-                        "sat": false,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "MMMM, D, Y,",
-                    "timeFormat": " HH:mm, Z",
-                    "isUTC": "true",
-                    "timeConstraints": ""
-                },
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "indexExists": false
-            },
-            {
-                "sysName": "id",
-                "name": "id",
-                "dataType": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "indexExists": false
-            }
-        ]
+        "fileds": [],
+        "quickSearch": "false"
     }
 
     let newCardActions = {
