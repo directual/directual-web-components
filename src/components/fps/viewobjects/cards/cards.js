@@ -130,7 +130,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                     function performAction(actionParams) {
                         //console.log(actionParams)
                         let mapping = {}
-                        if (actionParams.formMapping.length == 0) {
+                        if (!actionParams.formMapping || actionParams.formMapping.length == 0) {
                             console.log('action does nothing')
                             return null
                         }

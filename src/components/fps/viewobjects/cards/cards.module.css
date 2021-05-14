@@ -224,6 +224,7 @@
 .card .cardInnerWrapper .cardText .cardHeader .txt {
   overflow: hidden;
   text-overflow: ellipsis;
+  flex-grow: 2;
 }
 .card .cardInnerWrapper .cardText .cardHeader .counter {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);

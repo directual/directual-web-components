@@ -173,6 +173,32 @@ const App = (props) => {
                         "link": null
                     },
                     {
+                        "fieldSysName": "user_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "firstName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "lastName",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "user_id",
+                        "name": "Who suggested",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
                         "fieldSysName": "votes",
                         "fetch": [],
                         "sysName": "votes",
@@ -183,28 +209,7 @@ const App = (props) => {
                         "link": ""
                     }
                 ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "description",
-                        "fetch": [],
-                        "sysName": "description",
-                        "name": "Feature description",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    }
-                ],
+                "writeFields": [],
                 "fields": {
                     "color": {
                         "id": "color",
@@ -262,7 +267,6 @@ const App = (props) => {
                         "dataType": "string",
                         "format": "markdown",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
@@ -274,7 +278,6 @@ const App = (props) => {
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
@@ -290,6 +293,17 @@ const App = (props) => {
                         "link": null,
                         "actions": []
                     },
+                    "user_id": {
+                        "id": "user_id",
+                        "content": "Who suggested",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "WebUser",
+                        "actions": []
+                    },
                     "votes": {
                         "id": "votes",
                         "content": "Number of upvotes",
@@ -299,12 +313,6 @@ const App = (props) => {
                         "formatOptions": {},
                         "read": true,
                         "link": "",
-                        "actions": []
-                    },
-                    "action__60771621015854764": {
-                        "content": "New action",
-                        "id": "action__60771621015854764",
-                        "type": "action",
                         "actions": []
                     }
                 },
@@ -345,11 +353,56 @@ const App = (props) => {
                         "clickable": false
                     },
                     "color": {
-                        "include": true,
+                        "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
+                    },
+                    "user_id": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "firstName": {
+                                    "id": "firstName",
+                                    "content": "First name",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "lastName": {
+                                    "id": "lastName",
+                                    "content": "Last name",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": {}
+                                }
+                            },
+                            "fieldParams": {
+                                "firstName": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "lastName": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "firstName",
+                                "lastName"
+                            ]
+                        }
                     }
                 },
                 "columns": {
@@ -360,24 +413,17 @@ const App = (props) => {
                             "title",
                             "description",
                             "date_added",
-                            "votes",
                             "id",
-                            "action__60771621015854764",
-                            "color"
+                            "color",
+                            "user_id",
+                            "votes"
                         ]
                     }
                 },
                 "columnOrder": [
                     "tab-1"
                 ],
-                "actions": [
-                    {
-                        "sysName": "",
-                        "id": "60771621015854764",
-                        "name": "New action",
-                        "displayAs": "button"
-                    }
-                ]
+                "actions": []
             },
             "fields": {
                 "date_added": {
@@ -416,24 +462,62 @@ const App = (props) => {
                     "clickable": false
                 },
                 "color": {
-                    "include": true,
+                    "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
+                },
+                "user_id": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "firstName": {
+                                "id": "firstName",
+                                "content": "First name",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "lastName": {
+                                "id": "lastName",
+                                "content": "Last name",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": {}
+                            }
+                        },
+                        "fieldParams": {
+                            "firstName": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "lastName": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "firstName",
+                            "lastName"
+                        ]
+                    }
                 }
             },
             "showCounter": true,
             "counterField": "votes",
             "counterText": " votes",
-            "actions": [
-                {
-                    "sysName": "",
-                    "id": "60771621015854764",
-                    "name": "New action",
-                    "displayAs": "button"
-                }
-            ],
+            "actions": [],
             "cardColor": "color",
             "cardColorOption": "left"
         },
@@ -603,6 +687,33 @@ const App = (props) => {
                 "arrayLink": false
             },
             {
+                "sysName": "user_id",
+                "name": "Who suggested",
+                "dataType": "link",
+                "id": "59421620832153105",
+                "link": "WebUser",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "json": false,
+                "linkType": true,
+                "typeVariable": {},
+                "arrayLink": false
+            },
+            {
                 "sysName": "votes",
                 "name": "Number of upvotes",
                 "dataType": "number",
@@ -635,6 +746,9 @@ const App = (props) => {
                 "votes": 1,
                 "description": "Description",
                 "color": "57bf97",
+                "user_id": {
+                    "id": "pavel@directual.com"
+                },
                 "id": "3fe3f7b6-b1cd-45a7-a41c-51fcea40309c",
                 "date_added": 1620766800000,
                 "title": "Filters in Cards, Table"
@@ -642,10 +756,12 @@ const App = (props) => {
             {
                 "votes": 0,
                 "color": "ec6161",
+                "user_id": {
+                    "id": "pavel@directual.com"
+                },
                 "id": "c5799df6-5d2c-439c-8997-8400a2c366aa",
                 "date_added": 1620939600000,
-                "title": "Sockets",
-                "description": ""
+                "title": "Sockets"
             }
         ],
         "totalPages": 1,
@@ -673,15 +789,75 @@ const App = (props) => {
                 1384821
             ],
             [
+                "user_id.firstName",
+                1384803
+            ],
+            [
+                "user_id.id",
+                1384803
+            ],
+            [
+                "user_id.lastName",
+                1384803
+            ],
+            [
                 "votes",
                 1384821
             ]
         ],
-        "writeFields": [
-            "description",
-            "id"
-        ],
+        "writeFields": [],
         "structures": {
+            "1384803": {
+                "networkID": 6795,
+                "id": 1384803,
+                "dateCreated": "2021-05-12T14:47:38Z",
+                "hidden": false,
+                "dateHidden": null,
+                "name": "App users",
+                "sysName": "WebUser",
+                "jsonObject": "[{\"sysName\":\"isBlocked\",\"name\":\"Block user\",\"dataType\":\"boolean\",\"id\":\"1\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"dateCreated\",\"name\":\"dateCreated\",\"dataType\":\"string\",\"id\":\"10\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"password\",\"name\":\"Password (hash)\",\"dataType\":\"string\",\"id\":\"11\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"id\",\"name\":\"Username (login)\",\"dataType\":\"id\",\"id\":\"12\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"gender\",\"name\":\"Gender\",\"dataType\":\"string\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"lastName\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"firstName\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"role\",\"name\":\"Roles\",\"dataType\":\"string\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"isAuthorization\",\"name\":\"isAuthorization\",\"dataType\":\"boolean\",\"id\":\"6\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"dateLastActivity\",\"name\":\"dateLastActivity\",\"dataType\":\"string\",\"id\":\"7\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"email\",\"name\":\"Email\",\"dataType\":\"string\",\"id\":\"8\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"phone\",\"name\":\"Phone\",\"dataType\":\"string\",\"id\":\"9\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false}]",
+                "jsonGroupSettings": "[{\"id\":-502807437,\"name\":\"Contacts\",\"order\":null},{\"id\":-1776115286,\"name\":\"System fields\",\"order\":null}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-05-14T20:38:17Z",
+                "createBy": 0,
+                "changedBy": 21,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "name": "Username (login)",
+                    "dataType": "id",
+                    "id": "12",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "indexExists": false,
+                    "linkOrArrayLinkType": false,
+                    "json": false,
+                    "linkType": false,
+                    "typeVariable": {},
+                    "arrayLink": false
+                },
+                "objectIDSysName": "id",
+                "folderId": null
+            },
             "1384821": {
                 "networkID": 6795,
                 "id": 1384821,
@@ -737,62 +913,7 @@ const App = (props) => {
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
-        "fileds": [
-            {
-                "sysName": "description",
-                "name": "Feature description",
-                "dataType": "string",
-                "id": "77031620832091108",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "json": false,
-                "linkType": false,
-                "typeVariable": {},
-                "arrayLink": false
-            },
-            {
-                "sysName": "id",
-                "name": "id",
-                "dataType": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "json": false,
-                "linkType": false,
-                "typeVariable": {},
-                "arrayLink": false
-            }
-        ],
+        "fileds": [],
         "quickSearch": "false"
     }
 
