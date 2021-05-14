@@ -10,19 +10,34 @@ export function SetTheme({ themeName }) {
 
     useEffect(() => {
         if (themeName.colorScheme) {
-            setTheme(themeName.colorScheme, themeName.radius || 25, themeName.headersFont || 'Montserrat', themeName.fontText || 'Lato', themeName.headersFontWeight || '700', themeName.bodyFontWeight || '400')
-        } else { setTheme(themeName, 25, 'Montserrat', 'Lato', '700', '400') }
+            setTheme(
+                themeName.colorScheme, themeName.radius || 25,
+                themeName.headersFont || 'Montserrat',
+                themeName.fontText || 'Lato',
+                themeName.headersFontWeight || '700',
+                themeName.bodyFontWeight || '400',
+                themeName.textSize || 16,
+                themeName.h1size || 42,
+                themeName.h2size || 30,
+                themeName.h3size || 22,
+            )
+        } else { setTheme(themeName, 25, 'Montserrat', 'Lato', '700', '400', 16, 42, 30, 22) }
     }, [themeName])
 
 
 
 
-    const setTheme = (colorScheme, radius, headersFont, fontText, headersFontWeight, bodyFontWeight) => {
+    const setTheme = (colorScheme, radius, headersFont, fontText, headersFontWeight, bodyFontWeight,
+        textSize, h1size, h2size, h3size) => {
         document.documentElement.style.setProperty('--headers-font-weight', headersFontWeight)
         document.documentElement.style.setProperty('--text-font-weight', bodyFontWeight)
         document.documentElement.style.setProperty('--headers-font-family', "'" + headersFont + "'" + ', sans-serif')
         document.documentElement.style.setProperty('--main-font-family', "'" + fontText + "'" + ', sans-serif')
         document.documentElement.style.setProperty('--border-radius', radius + 'px')
+        document.documentElement.style.setProperty('--text-font-size', textSize + 'px')
+        document.documentElement.style.setProperty('--h1-font-size', h1size + 'px')
+        document.documentElement.style.setProperty('--h2-font-size', h2size + 'px')
+        document.documentElement.style.setProperty('--h3-font-size', h3size + 'px')
         if (colorScheme === 'white') {
             document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
             document.documentElement.style.setProperty('--field-border-color', '#aaa')
@@ -281,7 +296,11 @@ export default function FpsTheme(props) {
             headersFont: props.defaultValue.headersFont || 'Montserrat',
             fontText: props.defaultValue.fontText || 'Lato',
             headersFontWeight: props.defaultValue.headersFontWeight || '700',
-            bodyFontWeight: props.defaultValue.bodyFontWeight || '400'
+            bodyFontWeight: props.defaultValue.bodyFontWeight || '400',
+            textSize: props.defaultValue.textSize || 16,
+            h1size: props.defaultValue.h1size || 42,
+            h2size: props.defaultValue.h2size || 30,
+            h3size: props.defaultValue.h3size || 22
         }
     )
 
@@ -309,7 +328,7 @@ export default function FpsTheme(props) {
         { key: '300', value: 'Light 300' },
     ]
 
-    const [dummyText,setDummyText] = useState('The quick brown fox jumps over the lazy dog')
+    const [dummyText, setDummyText] = useState('The quick brown fox jumps over the lazy dog')
 
     return (
         <div className={styles.themeSettings}>
@@ -331,10 +350,10 @@ export default function FpsTheme(props) {
                 defaultValue={selectedColorScheme.radius}
                 onChange={value => value ? setSelectedColorScheme({ ...selectedColorScheme, radius: value }) : setSelectedColorScheme({ ...selectedColorScheme, radius: 'none' })}
             />
-            <InputGroup
-                width={500}>
+            <div className={styles.horInputs}>
                 <Input
                     type="select"
+                    className={styles.input}
                     label="Headers font face"
                     height={props.height}
                     defaultValue={selectedColorScheme.headersFont}
@@ -343,17 +362,19 @@ export default function FpsTheme(props) {
                 />
                 <Input
                     type='select'
+                    className={styles.input}
                     height={props.height}
                     label="Headers font weight"
                     options={fontWeights}
                     defaultValue={selectedColorScheme.headersFontWeight}
                     onChange={value => setSelectedColorScheme({ ...selectedColorScheme, headersFontWeight: value })}
                 />
-            </InputGroup>
-            <InputGroup
-                width={500}>
+            </div>
+            
+            <div className={styles.horInputs}>
                 <Input
                     type="select"
+                    className={styles.input}
                     label="Text font face"
                     height={props.height}
                     defaultValue={selectedColorScheme.fontText}
@@ -364,15 +385,62 @@ export default function FpsTheme(props) {
                     type='select'
                     label="Text font weight"
                     height={props.height}
+                    className={styles.input}
                     options={fontWeights}
                     defaultValue={selectedColorScheme.bodyFontWeight}
                     onChange={value => setSelectedColorScheme({ ...selectedColorScheme, bodyFontWeight: value })}
                 />
-            </InputGroup>
+            </div>
+            <div className={styles.horInputs}>
+                <Input
+                    type='number'
+                    label='Text size'
+                    positive
+                    height={props.height}
+                    className={styles.input}
+                    unitName='px'
+                    width={120}
+                    defaultValue={selectedColorScheme.textSize}
+                    onChange={value => value ? setSelectedColorScheme({ ...selectedColorScheme, textSize: value }) : setSelectedColorScheme({ ...selectedColorScheme, textSize: 16 })}
+                />
+                <Input
+                    type='number'
+                    label='H1 size'
+                    positive
+                    height={props.height}
+                    className={styles.input}
+                    unitName='px'
+                    width={120}
+                    defaultValue={selectedColorScheme.h1size}
+                    onChange={value => value ? setSelectedColorScheme({ ...selectedColorScheme, h1size: value }) : setSelectedColorScheme({ ...selectedColorScheme, h1size: 42 })}
+                />
+                <Input
+                    type='number'
+                    label='H2 size'
+                    positive
+                    height={props.height}
+                    className={styles.input}
+                    unitName='px'
+                    width={120}
+                    defaultValue={selectedColorScheme.h2size}
+                    onChange={value => value ? setSelectedColorScheme({ ...selectedColorScheme, h2size: value }) : setSelectedColorScheme({ ...selectedColorScheme, h2size: 30 })}
+                />
+                <Input
+                    type='number'
+                    label='H3 size'
+                    positive
+                    height={props.height}
+                    className={styles.input}
+                    unitName='px'
+                    width={120}
+                    defaultValue={selectedColorScheme.h3size}
+                    onChange={value => value ? setSelectedColorScheme({ ...selectedColorScheme, h3size: value }) : setSelectedColorScheme({ ...selectedColorScheme, h3size: 22 })}
+                />
+            </div>
             <FormSection title='Example' />
-            <Input 
+            <Input
                 defaultValue={dummyText}
-                onChange={value=>setDummyText(value)}
+                onChange={value => setDummyText(value)}
                 label='Dummy text'
                 width={500}
             />
@@ -381,14 +449,37 @@ export default function FpsTheme(props) {
                     fontFamily: selectedColorScheme.headersFont,
                     fontWeight: selectedColorScheme.headersFontWeight,
                     padding: 0,
+                    marginBottom: 12,
+                    fontSize: selectedColorScheme.h1size
                 }}
-            >{dummyText}</h1>
+            >H1: {dummyText}</h1>
+            <h2
+                style={{
+                    fontFamily: selectedColorScheme.headersFont,
+                    fontWeight: selectedColorScheme.headersFontWeight,
+                    padding: 0,
+                    marginBottom: 12,
+                    fontSize: selectedColorScheme.h2size
+                }}
+            >H2: {dummyText}</h2>
+            <h3
+                style={{
+                    fontFamily: selectedColorScheme.headersFont,
+                    fontWeight: selectedColorScheme.headersFontWeight,
+                    marginBottom: 12,
+                    padding: 0,
+                    fontSize: selectedColorScheme.h3size
+                }}
+            >H3: {dummyText}</h3>
             <p
                 style={{
                     fontFamily: selectedColorScheme.fontText,
                     fontWeight: selectedColorScheme.bodyFontWeight,
                     padding: 0,
-                    margin: 0
+                    marginTop: 0,
+                    marginBottom: 12,
+                    lineHeight: 'normal',
+                    fontSize: selectedColorScheme.textSize
                 }}
             >{dummyText}! {dummyText}? {dummyText}.</p>
         </div>

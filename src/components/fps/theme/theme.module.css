@@ -795,3 +795,10 @@
 .themeSettings {
   line-height: normal;
 }
+.horInputs {
+  display: flex;
+}
+.horInputs .input {
+  margin-right: 12px;
+  width: 250px;
+}
