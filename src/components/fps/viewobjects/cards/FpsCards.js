@@ -78,19 +78,18 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
     }
 
     const submit = (model) => {
-        const saveModel = {...model}
+        const saveModel = { ...model }
         if (saveModel) {
             for (const field in saveModel) {
                 console.log(field)
-                if (saveModel[field] && typeof saveModel[field] == 'object' && data.params.data.fields[field].dataType != 'date') 
-                    {   console.log('removing links')
-                        delete saveModel[field] 
-                    }  // removing links
-                if (writeFields.indexOf(field) == -1) 
-                    { 
-                        console.log(`removing ${field} as a field not for writing`)
-                        delete saveModel[field] 
-                    } // removing fields not for writing
+                if (saveModel[field] && typeof saveModel[field] == 'object' && data.params.data.fields[field].dataType != 'date') {
+                    console.log('removing links')
+                    delete saveModel[field]
+                }  // removing links
+                if (writeFields.indexOf(field) == -1) {
+                    console.log(`removing ${field} as a field not for writing`)
+                    delete saveModel[field]
+                } // removing fields not for writing
                 if (data.params.data.fields[field].dataType == 'date' && typeof saveModel[field] == 'number') {
                     saveModel[field] = moment(saveModel[field])
                 }
@@ -113,14 +112,14 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
         if (!actionCond) { return true }
         //if (!auth && actionCond) { return false }
 
-        const compareRoleArrays = (userRolesString,rolesString) => {
+        const compareRoleArrays = (userRolesString, rolesString) => {
             if (!userRolesString || !rolesString) return false
             let match = false
             const userRoles = userRolesString.split(',')
             const roles = rolesString.split(',')
             userRoles.forEach(userRole => {
                 roles.forEach(role => {
-                    if (userRole == role) {match = true}
+                    if (userRole == role) { match = true }
                 })
             })
             return match

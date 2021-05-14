@@ -128,8 +128,12 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                             && checkActionCond(edenrichConds(i.conditionals, object))) : []
                     // выполнить Action
                     function performAction(actionParams) {
-                        console.log(actionParams)
+                        //console.log(actionParams)
                         let mapping = {}
+                        if (actionParams.formMapping.length == 0) {
+                            console.log('action does nothing')
+                            return null
+                        }
                         actionParams.formMapping && actionParams.formMapping.forEach(row => {
                             if (row.type == 'user') { mapping[row.target] = auth ? auth.user : null }
                             if (row.type == 'const') { mapping[row.target] = row.value }
@@ -149,9 +153,9 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                     const formatDate = (value, formatOptions) => {
                         formatOptions = formatOptions || {}
                         const formattedDate = formatOptions.isUTC == 'true' ?
-                        moment.utc(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
-                        :
-                        moment(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
+                            moment.utc(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
+                            :
+                            moment(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
                         return formattedDate
                     }
 
@@ -166,7 +170,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                 !tableHeaders.filter(h => h.sysName == i)[0] ? '' :
                                     tableHeaders.filter(h => h.sysName == i)[0].dataType != 'date' ?
                                         row[i] :
-                                        formatDate(row[i],tableHeaders.filter(h => h.sysName == i)[0].formatOptions)
+                                        formatDate(row[i], tableHeaders.filter(h => h.sysName == i)[0].formatOptions)
                             ).join(' ')
                             : '')
                     const cardHeaderComment = row && (typeof row[tableParams.cardHeaderComment] == 'object' ?
@@ -232,7 +236,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                             <span className={styles.counter} title={`${row[tableParams.counterField]} ${tableParams.counterText}`}>
                                                 {row[tableParams.counterField]}</span> : ''}
                                     </h3>
-                                    <div style={{display:'flex', flexDirection:'column', alignItems:'flex-start'}}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                                         {cardHeaderComment && (
                                             // если Array, то это у нас либо список labels, либо arrayLink
                                             // также чекаем на то, что это link/arrayLink, тогда добавляем классом linkText рамочку

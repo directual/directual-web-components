@@ -833,7 +833,7 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
                 setGenericLoading(false)
                 setNoData('Action does nothing')
             },
-            1000
+            500
         )
         setTimeout(
             () => {
@@ -869,7 +869,11 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
                         danger={actionParams.buttonType == 'danger'}
                         loading={loading || genericLoading}
                         onClick={() => {
-                            (!actionData.formMapping && !actionData.formData) ?
+                            // console.log(!actionData.formMapping);
+                            // console.log(!actionData.formMapping && actionData.displayAs == 'button');
+
+                            (((!actionData.formMapping || actionData.formMapping.length == 0) && actionData.displayAs == 'button') || 
+                            ((!actionData.formData || actionData.formData.length == 0) && actionData.displayAs == 'form')) ?
                                 noActionData()
                                 :
                                 submitAction(actionData)

@@ -4,6 +4,7 @@ import Button from '../../button/button'
 import Loader from '../../loader/loader'
 
 export function Paging({ setPage, pageSize, totalPages, currentPage, setLoading, loading }) {
+    if (totalPages == 1) return <div />
     return (
         <div className={styles.paging}>
             {currentPage != 0 &&
