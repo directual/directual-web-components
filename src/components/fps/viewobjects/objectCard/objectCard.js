@@ -263,34 +263,35 @@ export function ObjectCard(props) {
                     }
                     if (field.type == 'actions') {
                         return <div className={styles.actionsWrapper}>
-                            {props.loading ? <Loader>Loading...</Loader> :
-                                field.content.map(action => {
-                                    const actionParams = props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
-                                        props.params.actions.filter(i => action.id == 'action__' + i.id)[0]
-                                    if (actionParams && actionParams.displayAs == 'form') {
-                                        return <CardAction
-                                            action={action.id}
-                                            aType='actionForm'
-                                            object={object}
-                                            checkActionCond={props.checkActionCond}
-                                            onClose={props.onTerminate}
-                                            submitAction={submitAction}
-                                            actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
-                                                props.params.actions.filter(i => action.id == 'action__' + i.id)[0]}
-                                        />
-                                    } else {
-                                        return <CardAction
-                                            action={action.id}
-                                            aType='actionButton'
-                                            object={object}
-                                            onClose={props.onTerminate}
-                                            checkActionCond={props.checkActionCond}
-                                            submitAction={submitAction}
-                                            actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
-                                                props.params.actions.filter(i => action.id == 'action__' + i.id)[0]}
-                                        />
-                                    }
-                                })}
+                            {field.content.map(action => {
+                                const actionParams = props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
+                                    props.params.actions.filter(i => action.id == 'action__' + i.id)[0]
+                                if (actionParams && actionParams.displayAs == 'form') {
+                                    return <CardAction
+                                        loading={props.loading}
+                                        action={action.id}
+                                        aType='actionForm'
+                                        object={object}
+                                        checkActionCond={props.checkActionCond}
+                                        onClose={props.onTerminate}
+                                        submitAction={submitAction}
+                                        actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
+                                            props.params.actions.filter(i => action.id == 'action__' + i.id)[0]}
+                                    />
+                                } else {
+                                    return <CardAction
+                                        loading={props.loading}
+                                        action={action.id}
+                                        aType='actionButton'
+                                        object={object}
+                                        onClose={props.onTerminate}
+                                        checkActionCond={props.checkActionCond}
+                                        submitAction={submitAction}
+                                        actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
+                                            props.params.actions.filter(i => action.id == 'action__' + i.id)[0]}
+                                    />
+                                }
+                            })}
                         </div>
 
                     }
@@ -796,9 +797,11 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
     )
 }
 
-function CardAction({ action, actionParams, debug, submitAction, onClose, checkActionCond, object, aType }) {
+function CardAction({ action, actionParams, debug, submitAction, onClose, checkActionCond, object, aType, loading }) {
 
     const [actionData, setActionData] = useState(actionParams)
+    const [genericLoading, setGenericLoading] = useState(false)
+    const [noData, setNoData] = useState(null)
 
     // console.log('====actionParams====')
     // console.log(actionParams)
@@ -822,6 +825,23 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
         })
     }
 
+    const noActionData = () => {
+        setGenericLoading(true)
+        setTimeout(
+            () => {
+                setGenericLoading(false)
+                setNoData('Action does nothing')
+            },
+            1000
+        )
+        setTimeout(
+            () => {
+                setNoData(null)
+            },
+            4000
+        )
+    }
+
     return (
         actionParams && checkActionCond && checkActionCond(conds) ?
             <div className={`${aType == 'actionButton' ? styles.actionButton : styles.actionForm}`}>
@@ -842,16 +862,21 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
                         />))}
                     </React.Fragment>
                 }
-                <Button
-                    accent={actionParams.buttonType == 'accent'}
-                    danger={actionParams.buttonType == 'danger'}
-                    onClick={() => {
-                        submitAction(actionData)
-                        actionParams.closePopup && onClose()
-                    }}
-                    icon={actionParams.buttonIcon}
-                >
-                    {actionParams.buttonTitle || actionParams.name}</Button>
+                {noData ? <div className={styles.noData}>{noData}</div> :
+                    <Button
+                        accent={actionParams.buttonType == 'accent'}
+                        danger={actionParams.buttonType == 'danger'}
+                        loading={loading || genericLoading}
+                        onClick={() => {
+                            (!actionData.formMapping && !actionData.formData) ?
+                                noActionData()
+                                :
+                                submitAction(actionData)
+                            actionParams.closePopup && onClose()
+                        }}
+                        icon={actionParams.buttonIcon}
+                    >
+                        {actionParams.buttonTitle || actionParams.name}</Button>}
             </div> : <React.Fragment></React.Fragment>
     )
 }

@@ -13,8 +13,8 @@ import { Paging } from '../paging/paging'
 function FpsCards({ auth, data, onEvent, id, currentBP }) {
     if (!data) { data = {} }
 
-    console.log('---data---')
-    console.log(data)
+    // console.log('---data---')
+    // console.log(data)
 
     const [loading, setLoading] = useState(false)
     const [searchValue, setSearchValue] = useState()
@@ -106,13 +106,25 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
 
     //Check action conditionals
     const checkActionCond = (actionCond) => {
-        console.log('actionCond')
-        console.log(actionCond)
-        console.log(auth)
+        // console.log('actionCond')
+        // console.log(actionCond)
+        // console.log(auth)
 
         if (!actionCond) { return true }
         //if (!auth && actionCond) { return false }
 
+        const compareRoleArrays = (userRolesString,rolesString) => {
+            if (!userRolesString || !rolesString) return false
+            let match = false
+            const userRoles = userRolesString.split(',')
+            const roles = rolesString.split(',')
+            userRoles.forEach(userRole => {
+                roles.forEach(role => {
+                    if (userRole == role) {match = true}
+                })
+            })
+            return match
+        }
 
         let match = true
         actionCond.forEach(cond => {
@@ -122,7 +134,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
                 console.log('ID does not match');
                 match = false
             }
-            if (cond.target == 'role' && (!auth || !auth.role || (auth.role && !auth.role.match(new RegExp(cond.checkValue))))) {
+            if (cond.target == 'role' && (!auth || !auth.role || (compareRoleArrays(auth.role && cond.checkValue)))) {
                 console.log('Role does not match');
                 match = false
             }

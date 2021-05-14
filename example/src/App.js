@@ -143,6 +143,16 @@ const App = (props) => {
                         "link": ""
                     },
                     {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
                         "fieldSysName": "title",
                         "fetch": [],
                         "sysName": "title",
@@ -163,7 +173,28 @@ const App = (props) => {
                         "link": ""
                     }
                 ],
-                "writeFields": [],
+                "writeFields": [
+                    {
+                        "fieldSysName": "description",
+                        "fetch": [],
+                        "sysName": "description",
+                        "name": "Feature description",
+                        "dataType": "string",
+                        "format": "markdown",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    }
+                ],
                 "fields": {
                     "date_added": {
                         "id": "date_added",
@@ -210,6 +241,19 @@ const App = (props) => {
                         "dataType": "string",
                         "format": "markdown",
                         "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "id": {
+                        "id": "id",
+                        "content": "id",
+                        "type": "field",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
@@ -234,6 +278,12 @@ const App = (props) => {
                         "formatOptions": {},
                         "read": true,
                         "link": "",
+                        "actions": []
+                    },
+                    "action__31191621003309378": {
+                        "id": "action__31191621003309378",
+                        "content": "New action12",
+                        "type": "action",
                         "actions": []
                     }
                 },
@@ -265,6 +315,13 @@ const App = (props) => {
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
+                    },
+                    "id": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
                     }
                 },
                 "columns": {
@@ -272,17 +329,35 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "date_added",
-                            "description",
                             "title",
-                            "votes"
+                            "description",
+                            "date_added",
+                            "votes",
+                            "id",
+                            "action__31191621003309378"
                         ]
                     }
                 },
                 "columnOrder": [
                     "tab-1"
                 ],
-                "actions": []
+                "actions": [
+                    {
+                        "sysName": "",
+                        "id": "56121620992525007",
+                        "name": "Upvote",
+                        "displayAs": "button",
+                        "dropdown": true,
+                        "closePopup": false,
+                        "buttonIcon": "arrowUp"
+                    },
+                    {
+                        "sysName": "",
+                        "id": "22121620997100357",
+                        "name": "New action",
+                        "displayAs": "button"
+                    }
+                ]
             },
             "fields": {
                 "date_added": {
@@ -312,10 +387,44 @@ const App = (props) => {
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
+                },
+                "id": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
                 }
-            }
+            },
+            "showCounter": true,
+            "counterField": "votes",
+            "counterText": " votes",
+            "actions": [
+                {
+                    "sysName": "",
+                    "id": "31191621003309378",
+                    "name": "New action12",
+                    "displayAs": "button",
+                    "conditionals": [
+                        {
+                            "id": "86281621003402674",
+                            "target": "role",
+                            "value": "god,loh",
+                            "checkValue": "god,loh"
+                        }
+                    ],
+                    "formMapping": [],
+                    "formFields": [
+                        {
+                            "id": "87631621003815185"
+                        }
+                    ],
+                    "closePopup": false,
+                    "dropdown": true
+                }
+            ]
         },
-        "tableTitle": "Under development",
+        "tableTitle": "Planned",
         "actions": null,
         "headers": [
             {
@@ -400,6 +509,33 @@ const App = (props) => {
                 "arrayLink": false
             },
             {
+                "sysName": "id",
+                "name": "id",
+                "dataType": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "linkType": false,
+                "typeVariable": {},
+                "arrayLink": false
+            },
+            {
                 "sysName": "title",
                 "name": "Feature title",
                 "dataType": "string",
@@ -456,8 +592,18 @@ const App = (props) => {
         ],
         "data": [
             {
-                "title": "Filters in Cards, Table",
-                "date_added": 1620766800000
+                "votes": 1,
+                "description": "Description",
+                "id": "3fe3f7b6-b1cd-45a7-a41c-51fcea40309c",
+                "date_added": 1620766800000,
+                "title": "Filters in Cards, Table"
+            },
+            {
+                "title": "Sockets",
+                "votes": 0,
+                "date_added": 1620939600000,
+                "id": "c5799df6-5d2c-439c-8997-8400a2c366aa",
+                "description": ""
             }
         ],
         "totalPages": 1,
@@ -473,6 +619,10 @@ const App = (props) => {
                 1384821
             ],
             [
+                "id",
+                1384821
+            ],
+            [
                 "title",
                 1384821
             ],
@@ -481,7 +631,10 @@ const App = (props) => {
                 1384821
             ]
         ],
-        "writeFields": [],
+        "writeFields": [
+            "description",
+            "id"
+        ],
         "structures": {
             "1384821": {
                 "networkID": 6795,
@@ -538,7 +691,62 @@ const App = (props) => {
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
-        "fileds": [],
+        "fileds": [
+            {
+                "sysName": "description",
+                "name": "Feature description",
+                "dataType": "string",
+                "id": "77031620832091108",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "markdown",
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "linkType": false,
+                "typeVariable": {},
+                "arrayLink": false
+            },
+            {
+                "sysName": "id",
+                "name": "id",
+                "dataType": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "linkType": false,
+                "typeVariable": {},
+                "arrayLink": false
+            }
+        ],
         "quickSearch": "false"
     }
 
