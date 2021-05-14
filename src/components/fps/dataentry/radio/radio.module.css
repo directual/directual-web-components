@@ -35,6 +35,13 @@
   flex-wrap: wrap;
   padding-top: 6px;
 }
+.radio .radioImages.small label {
+  width: 90px;
+  padding-bottom: 6px;
+}
+.radio .radioImages.small label img {
+  max-width: 85px;
+}
 .radio .radioImages label {
   background-color: var(--background-color);
   border: solid 1px var(--background-contrast-color);
@@ -72,6 +79,7 @@
 .radio label input[type=radio] {
   width: 20px;
   height: 20px;
+  flex-shrink: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;

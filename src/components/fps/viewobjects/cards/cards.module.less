@@ -38,6 +38,16 @@
         width: calc(100% - 2px);
         overflow: hidden;
         cursor: pointer;
+        position: relative;
+        &.coloured {
+            &:before {
+                display: block;
+                position: absolute;
+                content: "";
+                height: 100%;
+                width: 6px;
+            }
+        }
 
         .cardImage {
             background-size: cover;

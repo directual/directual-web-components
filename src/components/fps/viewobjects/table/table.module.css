@@ -185,7 +185,8 @@
     margin: -5px 24px 19px 24px;
   }
   .objectCard .objectCardBody.notabs {
-    margin: 12px 24px 24px 24px;
+    padding-top: 12px;
+    margin: 0 24px 24px 24px;
   }
 }
 div.tableTitle.mobile {

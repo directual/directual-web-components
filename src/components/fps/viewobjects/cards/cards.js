@@ -200,6 +200,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                         <div key={i} className={`${styles.card} ${styles[currentBP]} ${styles[tableParams.cardListLayout || 'grid']}`}>
                             <div
                                 className={`${styles.cardInnerWrapper}
+                                ${styles.coloured}
                                 ${styles[tableParams.cardImageType]}
                                 ${tableParams.invertColors && styles.invertColors}
                                 `}

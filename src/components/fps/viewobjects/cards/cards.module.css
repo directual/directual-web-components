@@ -34,6 +34,14 @@
   width: calc(100% - 2px);
   overflow: hidden;
   cursor: pointer;
+  position: relative;
+}
+.card .cardInnerWrapper.coloured:before {
+  display: block;
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 6px;
 }
 .card .cardInnerWrapper .cardImage {
   background-size: cover;
