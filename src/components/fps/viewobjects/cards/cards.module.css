@@ -36,12 +36,22 @@
   cursor: pointer;
   position: relative;
 }
-.card .cardInnerWrapper.coloured:before {
+.card .cardInnerWrapper.borderColor {
+  padding: 0;
+  border: solid;
+  border-width: 2px;
+}
+.card .cardInnerWrapper .color {
   display: block;
   position: absolute;
   content: "";
   height: 100%;
+}
+.card .cardInnerWrapper .color.left {
   width: 6px;
+}
+.card .cardInnerWrapper .color.fill {
+  width: 100%;
 }
 .card .cardInnerWrapper .cardImage {
   background-size: cover;

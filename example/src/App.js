@@ -88,13 +88,23 @@ const App = (props) => {
             "cardHeaderComment": "",
             "deleteField": "",
             "cardBodyText": "",
-            "cardImage": false,
+            "cardImage": true,
             "cardImageField": "",
             "cardImageType": "none",
             "cardImageSize": 100,
             "objectView": {},
             "data": {
                 "readFields": [
+                    {
+                        "fieldSysName": "color",
+                        "fetch": [],
+                        "sysName": "color",
+                        "name": "Card color",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
                     {
                         "fieldSysName": "date_added",
                         "fetch": [],
@@ -196,6 +206,17 @@ const App = (props) => {
                     }
                 ],
                 "fields": {
+                    "color": {
+                        "id": "color",
+                        "content": "Card color",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
                     "date_added": {
                         "id": "date_added",
                         "content": "Date added",
@@ -280,9 +301,9 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "action__31191621003309378": {
-                        "id": "action__31191621003309378",
-                        "content": "New action12",
+                    "action__60771621015854764": {
+                        "content": "New action",
+                        "id": "action__60771621015854764",
                         "type": "action",
                         "actions": []
                     }
@@ -322,6 +343,13 @@ const App = (props) => {
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
+                    },
+                    "color": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
                     }
                 },
                 "columns": {
@@ -334,7 +362,8 @@ const App = (props) => {
                             "date_added",
                             "votes",
                             "id",
-                            "action__31191621003309378"
+                            "action__60771621015854764",
+                            "color"
                         ]
                     }
                 },
@@ -344,16 +373,7 @@ const App = (props) => {
                 "actions": [
                     {
                         "sysName": "",
-                        "id": "56121620992525007",
-                        "name": "Upvote",
-                        "displayAs": "button",
-                        "dropdown": true,
-                        "closePopup": false,
-                        "buttonIcon": "arrowUp"
-                    },
-                    {
-                        "sysName": "",
-                        "id": "22121620997100357",
+                        "id": "60771621015854764",
                         "name": "New action",
                         "displayAs": "button"
                     }
@@ -394,6 +414,13 @@ const App = (props) => {
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
+                },
+                "color": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
                 }
             },
             "showCounter": true,
@@ -402,24 +429,44 @@ const App = (props) => {
             "actions": [
                 {
                     "sysName": "",
-                    "id": "31191621003309378",
-                    "name": "New action12",
-                    "displayAs": "button",
-                    "conditionals": [],
-                    "formMapping": [],
-                    "formFields": [
-                        {
-                            "id": "87631621003815185"
-                        }
-                    ],
-                    "closePopup": false,
-                    "dropdown": true
+                    "id": "60771621015854764",
+                    "name": "New action",
+                    "displayAs": "button"
                 }
-            ]
+            ],
+            "cardColor": "color",
+            "cardColorOption": "left"
         },
         "tableTitle": "Planned",
         "actions": null,
         "headers": [
+            {
+                "sysName": "color",
+                "name": "Card color",
+                "dataType": "string",
+                "id": "61881621017200362",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "color",
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "linkType": false,
+                "typeVariable": {},
+                "arrayLink": false
+            },
             {
                 "sysName": "date_added",
                 "name": "Date added",
@@ -587,15 +634,17 @@ const App = (props) => {
             {
                 "votes": 1,
                 "description": "Description",
+                "color": "57bf97",
                 "id": "3fe3f7b6-b1cd-45a7-a41c-51fcea40309c",
                 "date_added": 1620766800000,
                 "title": "Filters in Cards, Table"
             },
             {
-                "title": "Sockets",
                 "votes": 0,
-                "date_added": 1620939600000,
+                "color": "ec6161",
                 "id": "c5799df6-5d2c-439c-8997-8400a2c366aa",
+                "date_added": 1620939600000,
+                "title": "Sockets",
                 "description": ""
             }
         ],
@@ -603,6 +652,10 @@ const App = (props) => {
         "pageNumber": 0,
         "error": null,
         "fieldScheme": [
+            [
+                "color",
+                1384821
+            ],
             [
                 "date_added",
                 1384821
@@ -637,7 +690,7 @@ const App = (props) => {
                 "dateHidden": null,
                 "name": "features",
                 "sysName": "Features",
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkType\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"votes_ids\",\"name\":\"Who upvoted\",\"dataType\":\"arrayLink\",\"id\":\"14001620832180875\",\"link\":\"votes\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"linkType\":false,\"linkOrArrayLinkType\":true},{\"sysName\":\"status\",\"name\":\"Request status\",\"dataType\":\"link\",\"id\":\"40251620832303364\",\"link\":\"request_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkType\":true,\"linkOrArrayLinkType\":true},{\"sysName\":\"user_id\",\"name\":\"Who suggested\",\"dataType\":\"link\",\"id\":\"59421620832153105\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkType\":true,\"linkOrArrayLinkType\":true},{\"sysName\":\"votes\",\"name\":\"Number of upvotes\",\"dataType\":\"number\",\"id\":\"68061620832170304\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkType\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"date_added\",\"name\":\"Date added\",\"dataType\":\"date\",\"id\":\"68351620832123660\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkType\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"description\",\"name\":\"Feature description\",\"dataType\":\"string\",\"id\":\"77031620832091108\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkType\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"title\",\"name\":\"Feature title\",\"dataType\":\"string\",\"id\":\"79031620832091734\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkType\":false,\"linkOrArrayLinkType\":false},{\"sysName\":\"dev_status\",\"name\":\"Development status\",\"dataType\":\"link\",\"id\":\"85621620832330584\",\"link\":\"development_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkType\":true,\"linkOrArrayLinkType\":true}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"votes_ids\",\"name\":\"Who upvoted\",\"dataType\":\"arrayLink\",\"id\":\"14001620832180875\",\"link\":\"votes\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":true},{\"sysName\":\"status\",\"name\":\"Request status\",\"dataType\":\"link\",\"id\":\"40251620832303364\",\"link\":\"request_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"linkType\":true,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"user_id\",\"name\":\"Who suggested\",\"dataType\":\"link\",\"id\":\"59421620832153105\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"linkType\":true,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"color\",\"name\":\"Card color\",\"dataType\":\"string\",\"id\":\"61881621017200362\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"votes\",\"name\":\"Number of upvotes\",\"dataType\":\"number\",\"id\":\"68061620832170304\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"date_added\",\"name\":\"Date added\",\"dataType\":\"date\",\"id\":\"68351620832123660\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"description\",\"name\":\"Feature description\",\"dataType\":\"string\",\"id\":\"77031620832091108\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"title\",\"name\":\"Feature title\",\"dataType\":\"string\",\"id\":\"79031620832091734\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"dev_status\",\"name\":\"Development status\",\"dataType\":\"link\",\"id\":\"85621620832330584\",\"link\":\"development_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"linkType\":true,\"typeVariable\":{},\"arrayLink\":false}]",
                 "jsonGroupSettings": null,
                 "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
                 "jsonSettings": null,
@@ -645,9 +698,9 @@ const App = (props) => {
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-05-12T15:16:18Z",
+                "dateChanged": "2021-05-14T18:33:30Z",
                 "createBy": 1,
-                "changedBy": 1,
+                "changedBy": 21,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "innerIDField": {

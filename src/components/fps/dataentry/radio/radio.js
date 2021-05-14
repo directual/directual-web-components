@@ -62,7 +62,7 @@ export default function Radio(props) {
 
                 </React.Fragment>}
 
-                {props.radioImages && <div className={`${styles.radioImages} ${small && styles.small}`}>
+                {props.radioImages && <div className={`${styles.radioImages} ${props.small && styles.small}`}>
 
                     {props.options && props.options.map(option =>
                         <label>

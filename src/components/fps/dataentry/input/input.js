@@ -710,6 +710,7 @@ export default function Input(props) {
                     disabled={props.disabled}
                     placeholder={props.placeholder}
                     radioImages={props.radioImages}
+                    small={props.small}
                     customOption={props.customOption}
                     customOptionLabel={props.customOptionLabel}
                     customOptionType={props.customOptionType}

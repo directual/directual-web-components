@@ -200,15 +200,26 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                         <div key={i} className={`${styles.card} ${styles[currentBP]} ${styles[tableParams.cardListLayout || 'grid']}`}>
                             <div
                                 className={`${styles.cardInnerWrapper}
-                                ${styles.coloured}
+                                ${tableParams.cardColor && tableParams.cardColorOption == 'border' && styles.borderColor}
                                 ${styles[tableParams.cardImageType]}
                                 ${tableParams.invertColors && styles.invertColors}
                                 `}
+                                style={
+                                    (tableParams.cardColor && tableParams.cardColorOption == 'border') ? {
+                                        borderColor: '#' + row[tableParams.cardColor]
+                                    } : {}
+                                }
                                 onClick={() => {
                                     //console.log(row) 
                                     !loading && onExpand(row)
                                 }}>
-
+                                {/* Разукрашиваем карточку */}
+                                {tableParams.cardColor && tableParams.cardColorOption != 'none' && 
+                                    <div 
+                                        style={{
+                                            backgroundColor: '#' + row[tableParams.cardColor]
+                                        }}
+                                        className={`${styles.color} ${styles[tableParams.cardColorOption]}`} />}
                                 {/* Картинка карточки */}
                                 {tableParams.cardImageField &&
                                     <div className={`${styles.cardImage}`}
