@@ -83,7 +83,7 @@ export function ObjectCard(props) {
                     object[field].value = props.object[field]
                     let fieldStructure = structure.fieldStructure.filter(i => i.sysName == field)[0]
                     // console.log('====structure====')
-                    // console.log(structure)
+                    // console.log(fieldStructure)
                     // console.log(field)
                     object[field].name = fieldStructure.name
                     object[field].sysName = field
@@ -412,6 +412,7 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
 
     // console.log(field)
     // console.log(object)
+    field.formatOptions = object[field.sysName].formatOptions
 
     return (
         <div key={field.sysName} className={styles.objFieldWrapper}>
