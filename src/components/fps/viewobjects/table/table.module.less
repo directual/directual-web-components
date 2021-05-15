@@ -10,8 +10,9 @@
     margin-right: 6px;
     tr {
       &:hover {
-        td{
-          background-color: var(--accent-transp-05-color);}
+        td {
+          background-color: var(--accent-transp-05-color);
+        }
       }
       .expand {
         opacity: 0.15;
@@ -24,7 +25,7 @@
       }
     }
     td {
-      transition: .5s;
+      transition: 0.5s;
       .cardImage {
         margin: 0;
         background-size: cover;
@@ -281,7 +282,7 @@ div.tableTitle.mobile {
       }
     }
   }
-  
+
   .cardFile {
     display: flex;
     align-items: center;
@@ -384,11 +385,12 @@ div.tableTitle.mobile {
 }
 
 .linkText {
-  border:solid 1px var(--accent-color);
-  color:var(--accent-color);
+  border: solid 1px var(--accent-color);
+  color: var(--accent-color);
   padding: 3px 9px;
 }
-.labelText, .linkText {
+.labelText,
+.linkText {
   margin-right: 4px;
   margin-top: 4px;
   border-radius: calc(var(--border-radius) / 2);
@@ -397,7 +399,7 @@ div.tableTitle.mobile {
   text-overflow: ellipsis;
 }
 .labelText {
-  color:var(--label-text-color);
+  color: var(--label-text-color);
   background-color: var(--label-color);
   padding: 4px 9px;
 }
@@ -407,4 +409,13 @@ div.tableTitle.mobile {
   display: flex;
   align-items: center;
   min-height: 48px;
+}
+
+.emptyTable {
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-color);
+  margin-bottom: 12px;
+  border-radius: var(--border-radius);
+  margin-right: 0;
 }

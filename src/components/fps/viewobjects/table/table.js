@@ -260,7 +260,8 @@ export function Table({
         fieldDetails[field] = { ...fieldDetails[field], ...tableFieldparams[field] }
     }
 
-    if (!tableParams || !tableParams.fieldOrder) { return <SomethingWentWrong icon='ban' message='Table is not configured' /> }
+    if (!tableParams || !tableParams.fieldOrder) { return <div className={styles.emptyTable}>
+        <SomethingWentWrong icon='warning' message='Table is not configured' /></div> }
 
     let tableColumns = []
     tableParams.fieldOrder = tableParams.fieldOrder || []

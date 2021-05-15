@@ -366,3 +366,11 @@ div.tableTitle.mobile h2 {
   align-items: center;
   min-height: 48px;
 }
+.emptyTable {
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-color);
+  margin-bottom: 12px;
+  border-radius: var(--border-radius);
+  margin-right: 0;
+}
