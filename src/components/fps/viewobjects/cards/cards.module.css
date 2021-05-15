@@ -25,6 +25,72 @@
   display: flex;
   justify-content: stretch;
   align-items: stretch;
+  position: relative;
+}
+.card .details {
+  position: absolute;
+  z-index: 100;
+  top: 12px;
+  right: 6px;
+  transition: 0.5s;
+}
+.card .details .detailsButton {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.card .details:hover .detailsButton {
+  opacity: 1;
+}
+.card .details .quickMenu {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+  top: 0;
+  right: 100%;
+  transition: 0.3s;
+  transform-origin: top right;
+  transition-timing-function: cubic-bezier(0.6, 0.44, 0.72, 1.45);
+  transform: scale(1);
+  opacity: 1;
+  border-radius: calc(var(--border-radius)/1.2);
+  background-color: var(--background-color);
+  border: solid 1px var(--field-border-color);
+}
+.card .details .quickMenu.hide {
+  transform: scale(0);
+  opacity: 0;
+}
+.card .details .quickMenu li {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+  font-size: var(--text-small-size);
+  margin: 2px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+.card .details .quickMenu li span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card .details .quickMenu li:before {
+  margin-left: -5px;
+  margin-right: 4px;
+}
+.card .details .quickMenu li:hover {
+  background: var(--secondary-background-color);
+}
+.card .details .quickMenu li:active:not(.disabled) {
+  background: var(--font-color);
+  color: var(--background-color);
+}
+.card .details .quickMenu li:active:not(.disabled) .displayKey {
+  color: var(--button-accent-color);
 }
 .card .cardInnerWrapper {
   background-color: var(--background-color);
@@ -150,70 +216,6 @@
   overflow: hidden;
   align-items: stretch;
   z-index: 2;
-}
-.card .cardInnerWrapper .cardText .details {
-  position: absolute;
-  top: 12px;
-  right: 6px;
-  transition: 0.5s;
-}
-.card .cardInnerWrapper .cardText .details .detailsButton {
-  opacity: 0.5;
-  cursor: pointer;
-}
-.card .cardInnerWrapper .cardText .details:hover .detailsButton {
-  opacity: 1;
-}
-.card .cardInnerWrapper .cardText .details .quickMenu {
-  position: absolute;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
-  top: 0;
-  right: 100%;
-  transition: 0.3s;
-  transform-origin: top right;
-  transition-timing-function: cubic-bezier(0.6, 0.44, 0.72, 1.45);
-  transform: scale(1);
-  opacity: 1;
-  border-radius: calc(var(--border-radius)/1.2);
-  background-color: var(--background-color);
-  border: solid 1px var(--field-border-color);
-}
-.card .cardInnerWrapper .cardText .details .quickMenu.hide {
-  transform: scale(0);
-  opacity: 0;
-}
-.card .cardInnerWrapper .cardText .details .quickMenu li {
-  flex-shrink: 0;
-  padding: 8px 12px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 200px;
-  font-size: var(--text-small-size);
-  margin: 2px;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-}
-.card .cardInnerWrapper .cardText .details .quickMenu li span {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.card .cardInnerWrapper .cardText .details .quickMenu li:before {
-  margin-left: -5px;
-  margin-right: 4px;
-}
-.card .cardInnerWrapper .cardText .details .quickMenu li:hover {
-  background: var(--secondary-background-color);
-}
-.card .cardInnerWrapper .cardText .details .quickMenu li:active:not(.disabled) {
-  background: var(--font-color);
-  color: var(--background-color);
-}
-.card .cardInnerWrapper .cardText .details .quickMenu li:active:not(.disabled) .displayKey {
-  color: var(--button-accent-color);
 }
 .card .cardInnerWrapper .cardText .cardHeader {
   white-space: nowrap;

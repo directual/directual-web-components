@@ -80,8 +80,8 @@ const App = (props) => {
     }
 
     let cardActions = {
-        "sl": "manageFeatures",
-        "pageSize": "10",
+        "sl": "newFeatures",
+        "pageSize": "16",
         "headerField": null,
         "params": {
             "data": {
@@ -224,6 +224,11 @@ const App = (props) => {
                                 "fetch": []
                             },
                             {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
                                 "fieldSysName": "lastName",
                                 "condition": null,
                                 "fetch": []
@@ -265,7 +270,7 @@ const App = (props) => {
                         "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "link": "votes"
+                        "link": "WebUser"
                     }
                 ],
                 "writeFields": [
@@ -493,13 +498,31 @@ const App = (props) => {
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "votes",
+                        "link": "WebUser",
+                        "actions": []
+                    },
+                    "action__55911621104088139": {
+                        "content": "Approve",
+                        "id": "action__55911621104088139",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__25741621104094317": {
+                        "content": "Double",
+                        "id": "action__25741621104094317",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__11061621104103733": {
+                        "content": "Decline",
+                        "id": "action__11061621104103733",
+                        "type": "action",
                         "actions": []
                     }
                 },
                 "fieldParams": {
                     "color": {
-                        "include": true,
+                        "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
@@ -520,6 +543,13 @@ const App = (props) => {
                         "clickable": false
                     },
                     "dev_status": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "feature_type": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": true,
@@ -534,9 +564,9 @@ const App = (props) => {
                         "clickable": false
                     },
                     "status": {
-                        "include": true,
+                        "include": false,
                         "fileImageFormat": "square",
-                        "quickSearch": true,
+                        "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
@@ -566,51 +596,6 @@ const App = (props) => {
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
-                        "clickable": false,
-                        "configureLinkedCard": {
-                            "fields": {
-                                "id": {
-                                    "id": "id",
-                                    "content": "id",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "id",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "user_name": {
-                                    "id": "user_name",
-                                    "content": "User name",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "string",
-                                    "format": null,
-                                    "formatOptions": null
-                                }
-                            },
-                            "fieldParams": {
-                                "id": {
-                                    "include": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "user_name": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                }
-                            },
-                            "fieldOrder": [
-                                "id",
-                                "user_name"
-                            ]
-                        }
-                    },
-                    "feature_type": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
-                        "fileImageSize": 200,
                         "clickable": false
                     }
                 },
@@ -619,35 +604,115 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "Feature",
                         "fieldIds": [
-                            "user_id",
-                            "date_added",
+                            "color",
                             "feature_type",
+                            "date_added",
+                            "user_id",
                             "title",
                             "description",
-                            "status",
+                            "id",
                             "dev_status",
-                            "color",
-                            "id"
+                            "status"
                         ]
                     },
-                    "82431621030139706": {
-                        "id": "82431621030139706",
-                        "title": "Votes",
+                    "92101621102838363": {
+                        "id": "92101621102838363",
+                        "title": "Upvotes",
                         "fieldIds": [
                             "votes_ids",
                             "votes"
+                        ]
+                    },
+                    "79901621104076976": {
+                        "id": "79901621104076976",
+                        "title": "Manage",
+                        "fieldIds": [
+                            "action__55911621104088139",
+                            "action__25741621104094317",
+                            "action__11061621104103733"
                         ]
                     }
                 },
                 "columnOrder": [
                     "tab-1",
-                    "82431621030139706"
+                    "92101621102838363",
+                    "79901621104076976"
                 ],
-                "actions": []
+                "actions": [
+                    {
+                        "sysName": "",
+                        "id": "55911621104088139",
+                        "name": "Approve",
+                        "displayAs": "button",
+                        "buttonIcon": "done",
+                        "buttonType": "accent",
+                        "closePopup": true,
+                        "formMapping": [
+                            {
+                                "id": "98611621104178153",
+                                "target": "id",
+                                "type": "objectField",
+                                "value": "id"
+                            },
+                            {
+                                "id": "38741621104188723",
+                                "target": "status",
+                                "type": "const",
+                                "value": "approved"
+                            }
+                        ]
+                    },
+                    {
+                        "sysName": "",
+                        "id": "25741621104094317",
+                        "name": "Double",
+                        "displayAs": "button",
+                        "buttonIcon": "copy",
+                        "closePopup": true,
+                        "formMapping": [
+                            {
+                                "id": "74201621104234002",
+                                "target": "id",
+                                "type": "objectField",
+                                "value": "id"
+                            },
+                            {
+                                "id": "28401621104240674",
+                                "target": "status",
+                                "type": "const",
+                                "value": "double"
+                            }
+                        ],
+                        "buttonTitle": "This is Double"
+                    },
+                    {
+                        "sysName": "",
+                        "id": "11061621104103733",
+                        "name": "Decline",
+                        "displayAs": "button",
+                        "buttonIcon": "delete",
+                        "buttonType": "danger",
+                        "closePopup": true,
+                        "formMapping": [
+                            {
+                                "id": "26501621104270813",
+                                "target": "id",
+                                "type": "objectField",
+                                "value": "id"
+                            },
+                            {
+                                "id": "93411621104278343",
+                                "target": "status",
+                                "type": "const",
+                                "value": "declined"
+                            }
+                        ]
+                    }
+                ]
             },
             "fields": {
                 "color": {
-                    "include": true,
+                    "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
@@ -668,6 +733,13 @@ const App = (props) => {
                     "clickable": false
                 },
                 "dev_status": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "feature_type": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": true,
@@ -675,16 +747,12 @@ const App = (props) => {
                     "clickable": false,
                     "searchData": [
                         {
-                            "key": "planned",
-                            "value": "Planned"
+                            "key": "bug",
+                            "value": "bug"
                         },
                         {
-                            "key": "under_development",
-                            "value": "Under development"
-                        },
-                        {
-                            "key": "released",
-                            "value": "Released"
+                            "key": "feature",
+                            "value": "feature"
                         }
                     ]
                 },
@@ -696,29 +764,11 @@ const App = (props) => {
                     "clickable": false
                 },
                 "status": {
-                    "include": true,
+                    "include": false,
                     "fileImageFormat": "square",
-                    "quickSearch": true,
+                    "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": false,
-                    "searchData": [
-                        {
-                            "key": "new",
-                            "value": "New"
-                        },
-                        {
-                            "key": "approved",
-                            "value": "Approved"
-                        },
-                        {
-                            "key": "declined",
-                            "value": "Declined"
-                        },
-                        {
-                            "key": "double",
-                            "value": "Double"
-                        }
-                    ]
+                    "clickable": false
                 },
                 "title": {
                     "include": true,
@@ -746,70 +796,92 @@ const App = (props) => {
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": false,
-                    "configureLinkedCard": {
-                        "fields": {
-                            "id": {
-                                "id": "id",
-                                "content": "id",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "id",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "user_name": {
-                                "id": "user_name",
-                                "content": "User name",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "string",
-                                "format": null,
-                                "formatOptions": null
-                            }
-                        },
-                        "fieldParams": {
-                            "id": {
-                                "include": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "user_name": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            }
-                        },
-                        "fieldOrder": [
-                            "id",
-                            "user_name"
-                        ]
-                    }
-                },
-                "feature_type": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "searchData": [
-                        {
-                            "key": "bug",
-                            "value": "bug"
-                        },
-                        {
-                            "key": "feature",
-                            "value": "feature"
-                        }
-                    ]
+                    "clickable": false
                 }
             },
+            "cardHeaderComment": "feature_type",
+            "cardBodyText": "user_id",
             "cardColor": "color",
             "cardColorOption": "border",
-            "cardHeaderComment": "feature_type",
-            "cardBodyText": "date_added"
+            "actions": [
+                {
+                    "sysName": "",
+                    "id": "55911621104088139",
+                    "name": "Approve",
+                    "displayAs": "button",
+                    "buttonIcon": "done",
+                    "buttonType": "accent",
+                    "closePopup": true,
+                    "formMapping": [
+                        {
+                            "id": "98611621104178153",
+                            "target": "id",
+                            "type": "objectField",
+                            "value": "id"
+                        },
+                        {
+                            "id": "38741621104188723",
+                            "target": "status",
+                            "type": "const",
+                            "value": "approved"
+                        }
+                    ],
+                    "dropdown": true
+                },
+                {
+                    "sysName": "",
+                    "id": "25741621104094317",
+                    "name": "Double",
+                    "displayAs": "button",
+                    "buttonIcon": "copy",
+                    "closePopup": true,
+                    "formMapping": [
+                        {
+                            "id": "74201621104234002",
+                            "target": "id",
+                            "type": "objectField",
+                            "value": "id"
+                        },
+                        {
+                            "id": "28401621104240674",
+                            "target": "status",
+                            "type": "const",
+                            "value": "double"
+                        }
+                    ],
+                    "buttonTitle": "This is Double",
+                    "dropdown": true
+                },
+                {
+                    "sysName": "",
+                    "id": "11061621104103733",
+                    "name": "Decline",
+                    "displayAs": "button",
+                    "buttonIcon": "delete",
+                    "buttonType": "danger",
+                    "closePopup": true,
+                    "formMapping": [
+                        {
+                            "id": "26501621104270813",
+                            "target": "id",
+                            "type": "objectField",
+                            "value": "id"
+                        },
+                        {
+                            "id": "93411621104278343",
+                            "target": "status",
+                            "type": "const",
+                            "value": "declined"
+                        }
+                    ],
+                    "dropdown": true
+                }
+            ],
+            "showCounter": true,
+            "counterField": "votes",
+            "counterText": " upvotes"
         },
-        "tableTitle": "Approved features",
+        "tableTitle": "",
         "actions": null,
         "headers": [
             {
@@ -1114,7 +1186,7 @@ const App = (props) => {
                 "name": "Who upvoted",
                 "dataType": "arrayLink",
                 "id": "14001620832180875",
-                "link": "votes",
+                "link": "WebUser",
                 "group": "0",
                 "tags": null,
                 "indexing": false,
@@ -1140,47 +1212,47 @@ const App = (props) => {
         "data": [
             {
                 "votes": 1,
-                "description": "Implement quick filters as Tags for **Cards** and **Table** components.\n\nFilters should base on `link` or `arrayLink` fields, similar to quick search option in the **Form** component.\n\nWe can combine several tag-collections.\n\n",
-                "color": "ec6161",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel"
-                },
-                "feature_type": "bug",
-                "id": "3fe3f7b6-b1cd-45a7-a41c-51fcea40309c",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1620766800000,
-                "votes_ids": [],
-                "title": "Quick filters (tags) in Cards, Table"
-            },
-            {
-                "votes": 0,
-                "description": "bla bla bla",
+                "description": "полезная хуета",
                 "color": "57bf97",
                 "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel"
+                    "id": "pavel@directual.com"
                 },
-                "feature_type": "bug",
-                "id": "c5799df6-5d2c-439c-8997-8400a2c366aa",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
+                "feature_type": "feature",
+                "id": "a7172328-d15f-44bb-8700-52aa834c026c",
                 "status": {
-                    "id": "approved",
-                    "status": "Approved"
+                    "id": "new",
+                    "status": "New"
                 },
-                "date_added": 1620939600000,
-                "votes_ids": [],
-                "title": "Push notifications from scenarios based on Socket.io"
+                "date_added": 1621113325000,
+                "votes_ids": [
+                    {
+                        "id": "pavel@directual.com"
+                    }
+                ],
+                "title": "Sockets.io",
+                "dev_status": ""
+            },
+            {
+                "votes": 1,
+                "description": "Change default \"submitted successfully\" with something custom",
+                "color": "57bf97",
+                "user_id": {
+                    "id": "pavel@directual.com"
+                },
+                "feature_type": "feature",
+                "id": "03aeff11-d26f-4e31-ac95-b752597f4d23",
+                "status": {
+                    "id": "new",
+                    "status": "New"
+                },
+                "date_added": 1621113409000,
+                "votes_ids": [
+                    {
+                        "id": "pavel@directual.com"
+                    }
+                ],
+                "title": "Custom success message in Form",
+                "dev_status": ""
             }
         ],
         "totalPages": 1,
@@ -1232,6 +1304,10 @@ const App = (props) => {
                 1385542
             ],
             [
+                "user_id.id",
+                1385542
+            ],
+            [
                 "user_id.lastName",
                 1385542
             ],
@@ -1241,11 +1317,11 @@ const App = (props) => {
             ],
             [
                 "votes_ids.id",
-                1385611
+                1385542
             ],
             [
                 "votes_ids.user_name",
-                1385611
+                1385542
             ]
         ],
         "writeFields": [
@@ -1317,7 +1393,7 @@ const App = (props) => {
                 "dateHidden": null,
                 "name": "features",
                 "sysName": "Features",
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"votes_ids\",\"name\":\"Who upvoted\",\"dataType\":\"arrayLink\",\"id\":\"14001620832180875\",\"link\":\"votes\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":true},{\"sysName\":\"status\",\"name\":\"Request status\",\"dataType\":\"link\",\"id\":\"40251620832303364\",\"link\":\"request_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"linkType\":true,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"feature_type\",\"name\":\"Feature type\",\"dataType\":\"link\",\"id\":\"55371621030232780\",\"link\":\"feature_type\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"linkType\":true,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"user_id\",\"name\":\"Who suggested\",\"dataType\":\"link\",\"id\":\"59421620832153105\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"linkType\":true,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"color\",\"name\":\"Card color\",\"dataType\":\"string\",\"id\":\"61881621017200362\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"votes\",\"name\":\"Number of upvotes\",\"dataType\":\"number\",\"id\":\"68061620832170304\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"date_added\",\"name\":\"Date added\",\"dataType\":\"date\",\"id\":\"68351620832123660\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"description\",\"name\":\"Feature description\",\"dataType\":\"string\",\"id\":\"77031620832091108\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"title\",\"name\":\"Feature title\",\"dataType\":\"string\",\"id\":\"79031620832091734\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"dev_status\",\"name\":\"Development status\",\"dataType\":\"link\",\"id\":\"85621620832330584\",\"link\":\"development_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"linkType\":true,\"typeVariable\":{},\"arrayLink\":false}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"votes_ids\",\"name\":\"Who upvoted\",\"dataType\":\"arrayLink\",\"id\":\"14001620832180875\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"status\",\"name\":\"Request status\",\"dataType\":\"link\",\"id\":\"40251620832303364\",\"link\":\"request_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"feature_type\",\"name\":\"Feature type\",\"dataType\":\"link\",\"id\":\"55371621030232780\",\"link\":\"feature_type\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"user_id\",\"name\":\"Who suggested\",\"dataType\":\"link\",\"id\":\"59421620832153105\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"color\",\"name\":\"Card color\",\"dataType\":\"string\",\"id\":\"61881621017200362\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"votes\",\"name\":\"Number of upvotes\",\"dataType\":\"number\",\"id\":\"68061620832170304\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"date_added\",\"name\":\"Date added\",\"dataType\":\"date\",\"id\":\"68351620832123660\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"description\",\"name\":\"Feature description\",\"dataType\":\"string\",\"id\":\"77031620832091108\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"title\",\"name\":\"Feature title\",\"dataType\":\"string\",\"id\":\"79031620832091734\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"dev_status\",\"name\":\"Development status\",\"dataType\":\"link\",\"id\":\"85621620832330584\",\"link\":\"development_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false}]",
                 "jsonGroupSettings": null,
                 "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
                 "jsonSettings": null,
@@ -1325,58 +1401,7 @@ const App = (props) => {
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-05-14T22:10:49Z",
-                "createBy": 1,
-                "changedBy": 21,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "name": "id",
-                    "dataType": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "json": false,
-                    "typeVariable": {},
-                    "indexExists": false
-                },
-                "folderId": 33625685
-            },
-            "1385611": {
-                "networkID": 6829,
-                "id": 1385611,
-                "dateCreated": "2021-05-12T15:07:08Z",
-                "hidden": false,
-                "dateHidden": null,
-                "name": "votes",
-                "sysName": "votes",
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"user_name\",\"dataType\":\"string\",\"name\":\"User name\",\"id\":\"13621620832245662\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"user_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"26981620832233748\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true},{\"sysName\":\"feature\",\"dataType\":\"link\",\"name\":\"Feature\",\"id\":\"46291620832268116\",\"link\":\"Features\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true},{\"sysName\":\"date\",\"dataType\":\"date\",\"name\":\"Date voted\",\"id\":\"47661620832254794\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"user_name\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-05-12T15:11:25Z",
+                "dateChanged": "2021-05-15T19:02:17Z",
                 "createBy": 1,
                 "changedBy": 1,
                 "_settings": null,
@@ -1708,7 +1733,7 @@ const App = (props) => {
                 "indexExists": false
             }
         ],
-        "quickSearch": "true"
+        "quickSearch": "false"
     }
 
     let newCardActions = {

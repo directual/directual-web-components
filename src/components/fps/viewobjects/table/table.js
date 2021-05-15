@@ -311,10 +311,16 @@ export function Table({
         const tableFieldScheme = data.fieldScheme ? [...data.fieldScheme] : []
         const tableStructures = data.structures ? { ...data.structures } : {}
         const structure = getStructure(obj, transformTableFieldScheme(sysname, tableFieldScheme), tableStructures)
-        const linkName = structure.visibleName && structure.visibleName.map(field => obj[field]).join(' ')
+        const linkNameArr = [] 
+        structure.visibleName && structure.visibleName.forEach(field => { 
+            if(obj[field])  {
+                linkNameArr.push(obj[field])
+            }
+        })
+        const linkName = linkNameArr.length > 0 ? linkNameArr.join(' ') : null
         let displayID = ''
         if (typeof obj == 'string') { displayID = obj }
-        return linkName || displayID || 'No visible name'
+        return linkName || displayID || obj.id || 'No visible name'
     }
     //------------------------------
 

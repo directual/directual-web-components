@@ -83,8 +83,20 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
 
     const getLinkName = (sysname, obj) => {
         const structure = getStructure(obj, transformTableFieldScheme(sysname, tableFieldScheme), tableStructures)
-        const linkName = structure.visibleName && structure.visibleName.map(field => obj[field]).join(' ')
-        return linkName || 'No visible name'
+        // const linkName = structure.visibleName && structure.visibleName.map(field => obj[field]).join(' ')
+        // return linkName || 'No visible name'
+        // const structure = getStructure(obj, transformTableFieldScheme(sysname, props.tableFieldScheme), props.tableStructures)
+        const linkNameArr = [] 
+        structure.visibleName && structure.visibleName.forEach(field => { 
+            if(obj[field])  {
+                linkNameArr.push(obj[field])
+            }
+        })
+        const linkName = linkNameArr.length > 0 ? linkNameArr.join(' ') : null
+        let displayID = ''
+        if (typeof obj == 'string') { displayID = obj }
+        return linkName || displayID || obj.id || 'No visible name'
+
     }
 
     const edenrichConds = (conds, object) => {
@@ -198,6 +210,9 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
 
                     return (
                         <div key={i} className={`${styles.card} ${styles[currentBP]} ${styles[tableParams.cardListLayout || 'grid']}`}>
+                            {/* quick actions menu */}
+                            <QuickActionsControl quickActions={quickActions} performAction={performAction} />
+
                             <div
                                 className={`${styles.cardInnerWrapper}
                                 ${tableParams.cardColor && tableParams.cardColorOption == 'border' && styles.borderColor}
@@ -235,9 +250,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                 {/* Текст карточки */}
                                 <div className={styles.cardText}>
 
-                                    {/* quick actions menu */}
-                                    <QuickActionsControl quickActions={quickActions} performAction={performAction} />
-
+                                    
                                     <h3 className={styles.cardHeader}>
                                         <span className={styles.txt}>{cardHeader.length > 0 ? cardHeader : 'No visible name'}</span>
 

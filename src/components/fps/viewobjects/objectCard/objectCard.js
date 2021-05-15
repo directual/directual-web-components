@@ -159,8 +159,8 @@ export function ObjectCard(props) {
 
     //------------------------------
     function getLinkName(sysname, obj) {
-        console.log('obj')
-        console.log(obj)
+        // console.log('obj')
+        // console.log(obj)
         const structure = getStructure(obj, transformTableFieldScheme(sysname, props.tableFieldScheme), props.tableStructures)
         const linkNameArr = [] 
         structure.visibleName && structure.visibleName.forEach(field => { 
