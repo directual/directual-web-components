@@ -172,7 +172,6 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
                 </React.Fragment>}
 
             {/* {currentBP ? currentBP : 'no currentBP'} */}
-            {data.quickSeatch == 'true' ? 'true' : 'false'}
             <TableTitle
                 currentBP={currentBP}
                 tableTitle={tableTitle}
