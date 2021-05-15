@@ -43,7 +43,7 @@ export function SignIn({ width, header, signUpheader, google, onSignIn, onSignUp
         return (
             <div className={styles.signinform} style={{ maxWidth: width || 'auto' }}>
                 <form >
-                    {header && <h1>{header || 'Sign In'}</h1>}
+                    {header && <h1 style={{marginBottom:24}}>{header || 'Sign In'}</h1>}
                     {google && <React.Fragment>
                         <ActionPanel column margin={{ top: 0, bottom: 18 }}>
                             <Button socialGoogle>Sign In with Google</Button>
@@ -98,7 +98,7 @@ export function SignUp(props) {
     return (
         <div className={styles.signinform} style={{ maxWidth: props.width || 'auto' }}>
             <form>
-                {props.header && <h1>{props.header || 'Sign Up'}</h1>}
+                {props.header && <h1 style={{marginBottom:24}}>{props.header || 'Sign Up'}</h1>}
                 {props.google && <React.Fragment>
                     <ActionPanel column margin={{ top: 0, bottom: 18 }}>
                         <Button socialGoogle>Sign Up with Google</Button>
