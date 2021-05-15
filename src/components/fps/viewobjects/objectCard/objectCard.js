@@ -679,9 +679,9 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
 
     const [edit, setEdit] = useState(false)
 
-    // console.log('Field  Link')
-    // console.log(field)
-    // console.log(object[field.sysName].value)
+    console.log('Field  Link')
+    console.log(field)
+    console.log(object[field.sysName].value)
     // if (!object[field.sysName].value || object[field.sysName].value.length == 0) {
     //     return <React.Fragment>
 
@@ -782,9 +782,9 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
                             (value && Array.isArray(value)) ? onChange(value.join(',')) : onChange(value)
                     }}
                     defaultValue={
-                        field.dataType == 'link' ? object[field.sysName].value.id :
+                        field.dataType == 'link' ? (object[field.sysName].value.id || object[field.sysName].value) :
                             (object[field.sysName].value && object[field.sysName].value.length > 0
-                                && object[field.sysName].value.map(i => i.id))
+                                && object[field.sysName].value.map(i => i.id || i))
                     }
                     tip={field.searchData.length > 990 && 'Quick search is limited by 1000 options'}
                 />
