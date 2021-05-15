@@ -80,10 +80,19 @@ const App = (props) => {
     }
 
     let cardActions = {
-        "sl": "newFeatures",
-        "pageSize": "16",
+        "sl": "openPipelinePlanned",
+        "pageSize": "50",
         "headerField": null,
         "params": {
+            "cardListLayout": "list",
+            "cardHeaderComment": "feature_type",
+            "deleteField": "",
+            "cardBodyText": "",
+            "cardImage": true,
+            "cardImageField": "",
+            "cardImageType": "none",
+            "cardImageSize": 100,
+            "objectView": {},
             "data": {
                 "readFields": [
                     {
@@ -144,27 +153,6 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "dev_status",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "status",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "dev_status",
-                        "name": "Development status",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "development_status"
-                    },
-                    {
                         "fieldSysName": "feature_type",
                         "fetch": [],
                         "sysName": "feature_type",
@@ -183,27 +171,6 @@ const App = (props) => {
                         "format": "",
                         "formatOptions": {},
                         "link": ""
-                    },
-                    {
-                        "fieldSysName": "status",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "status",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "status",
-                        "name": "Request status",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "request_status"
                     },
                     {
                         "fieldSysName": "title",
@@ -250,101 +217,9 @@ const App = (props) => {
                         "format": "positiveNum",
                         "formatOptions": {},
                         "link": ""
-                    },
-                    {
-                        "fieldSysName": "votes_ids",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "user_name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "votes_ids",
-                        "name": "Who upvoted",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "WebUser"
                     }
                 ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "color",
-                        "fetch": [],
-                        "sysName": "color",
-                        "name": "Card color",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "description",
-                        "fetch": [],
-                        "sysName": "description",
-                        "name": "Feature description",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "dev_status",
-                        "fetch": [],
-                        "sysName": "dev_status",
-                        "name": "Development status",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "development_status"
-                    },
-                    {
-                        "fieldSysName": "feature_type",
-                        "fetch": [],
-                        "sysName": "feature_type",
-                        "name": "Feature type",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "feature_type"
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "status",
-                        "fetch": [],
-                        "sysName": "status",
-                        "name": "Request status",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "request_status"
-                    },
-                    {
-                        "fieldSysName": "title",
-                        "fetch": [],
-                        "sysName": "title",
-                        "name": "Feature title",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    }
-                ],
+                "writeFields": [],
                 "fields": {
                     "color": {
                         "id": "color",
@@ -353,7 +228,6 @@ const App = (props) => {
                         "dataType": "string",
                         "format": "color",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
@@ -403,21 +277,8 @@ const App = (props) => {
                         "dataType": "string",
                         "format": "markdown",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
-                        "actions": []
-                    },
-                    "dev_status": {
-                        "id": "dev_status",
-                        "content": "Development status",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "development_status",
                         "actions": []
                     },
                     "feature_type": {
@@ -427,7 +288,6 @@ const App = (props) => {
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "feature_type",
                         "actions": []
@@ -439,21 +299,8 @@ const App = (props) => {
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
-                        "actions": []
-                    },
-                    "status": {
-                        "id": "status",
-                        "content": "Request status",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "request_status",
                         "actions": []
                     },
                     "title": {
@@ -463,7 +310,6 @@ const App = (props) => {
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": null,
                         "actions": []
@@ -489,45 +335,9 @@ const App = (props) => {
                         "read": true,
                         "link": "",
                         "actions": []
-                    },
-                    "votes_ids": {
-                        "id": "votes_ids",
-                        "content": "Who upvoted",
-                        "type": "field",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "WebUser",
-                        "actions": []
-                    },
-                    "action__55911621104088139": {
-                        "content": "Approve",
-                        "id": "action__55911621104088139",
-                        "type": "action",
-                        "actions": []
-                    },
-                    "action__25741621104094317": {
-                        "content": "Double",
-                        "id": "action__25741621104094317",
-                        "type": "action",
-                        "actions": []
-                    },
-                    "action__11061621104103733": {
-                        "content": "Decline",
-                        "id": "action__11061621104103733",
-                        "type": "action",
-                        "actions": []
                     }
                 },
                 "fieldParams": {
-                    "color": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
                     "date_added": {
                         "include": true,
                         "fileImageFormat": "square",
@@ -542,43 +352,8 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "dev_status": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "feature_type": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "id": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "status": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
                     "title": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "user_id": {
-                        "include": true,
+                        "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
@@ -591,7 +366,66 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "votes_ids": {
+                    "id": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "color": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "user_id": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "firstName": {
+                                    "id": "firstName",
+                                    "content": "First name",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "lastName": {
+                                    "id": "lastName",
+                                    "content": "Last name",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": {}
+                                }
+                            },
+                            "fieldParams": {
+                                "firstName": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "lastName": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "firstName",
+                                "lastName"
+                            ]
+                        }
+                    },
+                    "feature_type": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -602,122 +436,25 @@ const App = (props) => {
                 "columns": {
                     "tab-1": {
                         "id": "tab-1",
-                        "title": "Feature",
+                        "title": "New section",
                         "fieldIds": [
-                            "color",
-                            "feature_type",
-                            "date_added",
-                            "user_id",
                             "title",
+                            "feature_type",
                             "description",
+                            "date_added",
                             "id",
-                            "dev_status",
-                            "status"
-                        ]
-                    },
-                    "92101621102838363": {
-                        "id": "92101621102838363",
-                        "title": "Upvotes",
-                        "fieldIds": [
-                            "votes_ids",
+                            "color",
+                            "user_id",
                             "votes"
-                        ]
-                    },
-                    "79901621104076976": {
-                        "id": "79901621104076976",
-                        "title": "Manage",
-                        "fieldIds": [
-                            "action__55911621104088139",
-                            "action__25741621104094317",
-                            "action__11061621104103733"
                         ]
                     }
                 },
                 "columnOrder": [
-                    "tab-1",
-                    "92101621102838363",
-                    "79901621104076976"
+                    "tab-1"
                 ],
-                "actions": [
-                    {
-                        "sysName": "",
-                        "id": "55911621104088139",
-                        "name": "Approve",
-                        "displayAs": "button",
-                        "buttonIcon": "done",
-                        "buttonType": "accent",
-                        "closePopup": true,
-                        "formMapping": [
-                            {
-                                "id": "98611621104178153",
-                                "target": "id",
-                                "type": "objectField",
-                                "value": "id"
-                            },
-                            {
-                                "id": "38741621104188723",
-                                "target": "status",
-                                "type": "const",
-                                "value": "approved"
-                            }
-                        ]
-                    },
-                    {
-                        "sysName": "",
-                        "id": "25741621104094317",
-                        "name": "Double",
-                        "displayAs": "button",
-                        "buttonIcon": "copy",
-                        "closePopup": true,
-                        "formMapping": [
-                            {
-                                "id": "74201621104234002",
-                                "target": "id",
-                                "type": "objectField",
-                                "value": "id"
-                            },
-                            {
-                                "id": "28401621104240674",
-                                "target": "status",
-                                "type": "const",
-                                "value": "double"
-                            }
-                        ],
-                        "buttonTitle": "This is Double"
-                    },
-                    {
-                        "sysName": "",
-                        "id": "11061621104103733",
-                        "name": "Decline",
-                        "displayAs": "button",
-                        "buttonIcon": "delete",
-                        "buttonType": "danger",
-                        "closePopup": true,
-                        "formMapping": [
-                            {
-                                "id": "26501621104270813",
-                                "target": "id",
-                                "type": "objectField",
-                                "value": "id"
-                            },
-                            {
-                                "id": "93411621104278343",
-                                "target": "status",
-                                "type": "const",
-                                "value": "declined"
-                            }
-                        ]
-                    }
-                ]
+                "actions": []
             },
             "fields": {
-                "color": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
                 "date_added": {
                     "include": true,
                     "fileImageFormat": "square",
@@ -732,53 +469,8 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "dev_status": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "feature_type": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "searchData": [
-                        {
-                            "key": "bug",
-                            "value": "bug"
-                        },
-                        {
-                            "key": "feature",
-                            "value": "feature"
-                        }
-                    ]
-                },
-                "id": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "status": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
                 "title": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "user_id": {
-                    "include": true,
+                    "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
@@ -791,7 +483,66 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "votes_ids": {
+                "id": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "color": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "user_id": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "firstName": {
+                                "id": "firstName",
+                                "content": "First name",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "lastName": {
+                                "id": "lastName",
+                                "content": "Last name",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": {}
+                            }
+                        },
+                        "fieldParams": {
+                            "firstName": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "lastName": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "firstName",
+                            "lastName"
+                        ]
+                    }
+                },
+                "feature_type": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -799,89 +550,14 @@ const App = (props) => {
                     "clickable": false
                 }
             },
-            "cardHeaderComment": "feature_type",
-            "cardBodyText": "user_id",
-            "cardColor": "color",
-            "cardColorOption": "border",
-            "actions": [
-                {
-                    "sysName": "",
-                    "id": "55911621104088139",
-                    "name": "Approve",
-                    "displayAs": "button",
-                    "buttonIcon": "done",
-                    "buttonType": "accent",
-                    "closePopup": true,
-                    "formMapping": [
-                        {
-                            "id": "98611621104178153",
-                            "target": "id",
-                            "type": "objectField",
-                            "value": "id"
-                        },
-                        {
-                            "id": "38741621104188723",
-                            "target": "status",
-                            "type": "const",
-                            "value": "approved"
-                        }
-                    ],
-                    "dropdown": true
-                },
-                {
-                    "sysName": "",
-                    "id": "25741621104094317",
-                    "name": "Double",
-                    "displayAs": "button",
-                    "buttonIcon": "copy",
-                    "closePopup": true,
-                    "formMapping": [
-                        {
-                            "id": "74201621104234002",
-                            "target": "id",
-                            "type": "objectField",
-                            "value": "id"
-                        },
-                        {
-                            "id": "28401621104240674",
-                            "target": "status",
-                            "type": "const",
-                            "value": "double"
-                        }
-                    ],
-                    "buttonTitle": "This is Double",
-                    "dropdown": true
-                },
-                {
-                    "sysName": "",
-                    "id": "11061621104103733",
-                    "name": "Decline",
-                    "displayAs": "button",
-                    "buttonIcon": "delete",
-                    "buttonType": "danger",
-                    "closePopup": true,
-                    "formMapping": [
-                        {
-                            "id": "26501621104270813",
-                            "target": "id",
-                            "type": "objectField",
-                            "value": "id"
-                        },
-                        {
-                            "id": "93411621104278343",
-                            "target": "status",
-                            "type": "const",
-                            "value": "declined"
-                        }
-                    ],
-                    "dropdown": true
-                }
-            ],
             "showCounter": true,
             "counterField": "votes",
-            "counterText": " upvotes"
+            "counterText": " upvotes",
+            "actions": [],
+            "cardColor": "color",
+            "cardColorOption": "left"
         },
-        "tableTitle": "",
+        "tableTitle": "Planned",
         "actions": null,
         "headers": [
             {
@@ -993,33 +669,6 @@ const App = (props) => {
                 "indexExists": false
             },
             {
-                "sysName": "dev_status",
-                "name": "Development status",
-                "dataType": "link",
-                "id": "85621620832330584",
-                "link": "development_status",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 8,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false
-            },
-            {
                 "sysName": "feature_type",
                 "name": "Feature type",
                 "dataType": "link",
@@ -1068,33 +717,6 @@ const App = (props) => {
                 "groupName": null,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false
-            },
-            {
-                "sysName": "status",
-                "name": "Request status",
-                "dataType": "link",
-                "id": "40251620832303364",
-                "link": "request_status",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 7,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
                 "arrayLink": false,
                 "json": false,
                 "typeVariable": {},
@@ -1180,33 +802,6 @@ const App = (props) => {
                 "json": false,
                 "typeVariable": {},
                 "indexExists": false
-            },
-            {
-                "sysName": "votes_ids",
-                "name": "Who upvoted",
-                "dataType": "arrayLink",
-                "id": "14001620832180875",
-                "link": "WebUser",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 6,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": false,
-                "arrayLink": true,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false
             }
         ],
         "data": [
@@ -1219,40 +814,8 @@ const App = (props) => {
                 },
                 "feature_type": "feature",
                 "id": "a7172328-d15f-44bb-8700-52aa834c026c",
-                "status": {
-                    "id": "new",
-                    "status": "New"
-                },
                 "date_added": 1621113325000,
-                "votes_ids": [
-                    {
-                        "id": "pavel@directual.com"
-                    }
-                ],
-                "title": "Sockets.io",
-                "dev_status": ""
-            },
-            {
-                "votes": 1,
-                "description": "Change default \"submitted successfully\" with something custom",
-                "color": "57bf97",
-                "user_id": {
-                    "id": "pavel@directual.com"
-                },
-                "feature_type": "feature",
-                "id": "03aeff11-d26f-4e31-ac95-b752597f4d23",
-                "status": {
-                    "id": "new",
-                    "status": "New"
-                },
-                "date_added": 1621113409000,
-                "votes_ids": [
-                    {
-                        "id": "pavel@directual.com"
-                    }
-                ],
-                "title": "Custom success message in Form",
-                "dev_status": ""
+                "title": "Sockets.io"
             }
         ],
         "totalPages": 1,
@@ -1272,28 +835,12 @@ const App = (props) => {
                 1385610
             ],
             [
-                "dev_status.id",
-                1385613
-            ],
-            [
-                "dev_status.status",
-                1385613
-            ],
-            [
                 "feature_type",
                 1385610
             ],
             [
                 "id",
                 1385610
-            ],
-            [
-                "status.id",
-                1385612
-            ],
-            [
-                "status.status",
-                1385612
             ],
             [
                 "title",
@@ -1314,25 +861,9 @@ const App = (props) => {
             [
                 "votes",
                 1385610
-            ],
-            [
-                "votes_ids.id",
-                1385542
-            ],
-            [
-                "votes_ids.user_name",
-                1385542
             ]
         ],
-        "writeFields": [
-            "color",
-            "description",
-            "dev_status",
-            "feature_type",
-            "id",
-            "status",
-            "title"
-        ],
+        "writeFields": [],
         "structures": {
             "1385542": {
                 "networkID": 6829,
@@ -1435,304 +966,12 @@ const App = (props) => {
                     "indexExists": false
                 },
                 "folderId": 33625685
-            },
-            "1385612": {
-                "networkID": 6829,
-                "id": 1385612,
-                "dateCreated": "2021-05-12T15:13:21Z",
-                "hidden": false,
-                "dateHidden": null,
-                "name": "request_status",
-                "sysName": "request_status",
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Status\",\"id\":\"76241620832406222\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"status\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-05-12T15:13:35Z",
-                "createBy": 1,
-                "changedBy": 1,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "name": "id",
-                    "dataType": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "json": false,
-                    "typeVariable": {},
-                    "indexExists": false
-                },
-                "folderId": 33625685
-            },
-            "1385613": {
-                "networkID": 6829,
-                "id": 1385613,
-                "dateCreated": "2021-05-12T15:14:45Z",
-                "hidden": false,
-                "dateHidden": null,
-                "name": "development_status",
-                "sysName": "development_status",
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Status\",\"id\":\"23221620832490508\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"status\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-05-12T15:14:59Z",
-                "createBy": 1,
-                "changedBy": 1,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "name": "id",
-                    "dataType": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "json": false,
-                    "typeVariable": {},
-                    "indexExists": false
-                },
-                "folderId": 33625685
             }
         },
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
-        "fileds": [
-            {
-                "sysName": "color",
-                "name": "Card color",
-                "dataType": "string",
-                "id": "61881621017200362",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 9,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "color",
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false
-            },
-            {
-                "sysName": "description",
-                "name": "Feature description",
-                "dataType": "string",
-                "id": "77031620832091108",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false
-            },
-            {
-                "sysName": "dev_status",
-                "name": "Development status",
-                "dataType": "link",
-                "id": "85621620832330584",
-                "link": "development_status",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 8,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false
-            },
-            {
-                "sysName": "feature_type",
-                "name": "Feature type",
-                "dataType": "link",
-                "id": "55371621030232780",
-                "link": "feature_type",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 10,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false
-            },
-            {
-                "sysName": "id",
-                "name": "id",
-                "dataType": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false
-            },
-            {
-                "sysName": "status",
-                "name": "Request status",
-                "dataType": "link",
-                "id": "40251620832303364",
-                "link": "request_status",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 7,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false
-            },
-            {
-                "sysName": "title",
-                "name": "Feature title",
-                "dataType": "string",
-                "id": "79031620832091734",
-                "link": null,
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false
-            }
-        ],
+        "fileds": [],
         "quickSearch": "false"
     }
 

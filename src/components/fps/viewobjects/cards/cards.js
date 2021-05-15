@@ -212,7 +212,6 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                         <div key={i} className={`${styles.card} ${styles[currentBP]} ${styles[tableParams.cardListLayout || 'grid']}`}>
                             {/* quick actions menu */}
                             <QuickActionsControl quickActions={quickActions} performAction={performAction} />
-
                             <div
                                 className={`${styles.cardInnerWrapper}
                                 ${tableParams.cardColor && tableParams.cardColorOption == 'border' && styles.borderColor}
@@ -258,7 +257,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                         {(tableParams.counterField &&
                                             row && row[tableParams.counterField] &&
                                             row[tableParams.counterField] != 0 && row[tableParams.counterField] != "0") ?
-                                            <span className={styles.counter} title={`${row[tableParams.counterField]} ${tableParams.counterText}`}>
+                                            <span className={`${styles.counter} ${(!quickActions || quickActions.length == 0) ? styles.moveCounter: ''}`} title={`${row[tableParams.counterField]} ${tableParams.counterText}`}>
                                                 {row[tableParams.counterField]}</span> : ''}
                                     </h3>
                                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>

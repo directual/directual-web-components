@@ -245,6 +245,9 @@
   border-radius: 32px;
   padding: 0 6px;
 }
+.card .cardInnerWrapper .cardText .cardHeader .counter.moveCounter {
+  margin-right: -10px;
+}
 .card .cardInnerWrapper .cardText .cardHeaderComment {
   font-size: var(--text-small-size);
   margin-top: 6px;
