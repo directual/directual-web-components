@@ -340,6 +340,29 @@ export function ObjectCard(props) {
         )
     }
 
+    let cardHeader = structure.visibleName ? structure.visibleName.map(headerField => object[headerField] ?
+        typeof object[headerField].value == 'object' ?
+            !Array.isArray(object[headerField].value) ?
+                getLinkName(headerField, object[headerField].value) :
+                object[headerField].value.map(i => getLinkName(headerField, i)).join(', ')
+            : object[headerField].dataType == 'date' ?
+                formatDate(object[headerField].value, object[headerField].formatOptions) :
+                object[headerField].value
+        : null).join(' ')
+        :
+        (object.id || 'No visible name')
+
+    cardHeader = (cardHeader == '' 
+        || cardHeader == ' '
+        || cardHeader == '  '
+        || cardHeader == '   '
+        || cardHeader == '    '
+        || cardHeader == '     '
+        || cardHeader == '      ') ? (object.id || 'No visible name') :
+        cardHeader
+
+    cardHeader = (typeof cardHeader == 'object') ? (cardHeader.value || JSON.stringify(cardHeader)) : cardHeader
+
     return (
         <div className={styles.objectCard}>
             {props.shareble && // todo: сделать прямые ссылки на карточку
@@ -352,17 +375,7 @@ export function ObjectCard(props) {
                 <div onClick={props.onClose}
                     className={`${styles.closeObjectCard} icon icon-back ${showLinkedObject && styles.hidden}`}></div>
                 <h2 className={`${props.shareble && styles.narrowH2}`}>{props.params && props.params.data && props.params.data.subHeader}
-                    {structure.visibleName ? structure.visibleName.map(headerField => object[headerField] ?
-                        typeof object[headerField].value == 'object' ?
-                            !Array.isArray(object[headerField].value) ?
-                                getLinkName(headerField, object[headerField].value) :
-                                object[headerField].value.map(i => getLinkName(headerField, i)).join(', ')
-                            : object[headerField].dataType == 'date' ?
-                                formatDate(object[headerField].value, object[headerField].formatOptions) :
-                                object[headerField].value
-                        : null).join(' ')
-                        :
-                        (object.id || 'No visible name')}
+                    {cardHeader}
                 </h2>
             </div>
             <div

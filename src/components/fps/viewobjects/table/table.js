@@ -256,6 +256,17 @@ export function Table({
     const fieldDetails = data.params.data ? { ...data.params.data.fields }: {}
     const tableFieldparams = data.params.data ? { ...data.params.data.fields }: {}
 
+    // обогащаем поля теми, что не пришли по данным, но мы их можем писать:
+    function enrichTableDataWithWriteFields(data) {
+        let saveData = data.data ? [...data.data] : []
+        saveData.forEach(field => {
+            data.writeFields && data.writeFields.forEach(writeField => {
+                if (!field[writeField]) { field[writeField] = '' }
+            })
+        })
+        return saveData
+    }
+
     for (const field in fieldDetails) {
         fieldDetails[field] = { ...fieldDetails[field], ...tableFieldparams[field] }
     }
@@ -325,7 +336,7 @@ export function Table({
     //------------------------------
 
     // composing Table data 
-    const tableData = useMemo(() => data.data, [data.data])
+    const tableData = useMemo(() => enrichTableDataWithWriteFields(data), [data.data])
     const columns = useMemo(() => tableColumns, [])
 
     //const [tableData, setTableData] = useState(data.data)

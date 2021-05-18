@@ -86,9 +86,9 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
         // const linkName = structure.visibleName && structure.visibleName.map(field => obj[field]).join(' ')
         // return linkName || 'No visible name'
         // const structure = getStructure(obj, transformTableFieldScheme(sysname, props.tableFieldScheme), props.tableStructures)
-        const linkNameArr = [] 
-        structure.visibleName && structure.visibleName.forEach(field => { 
-            if(obj[field])  {
+        const linkNameArr = []
+        structure.visibleName && structure.visibleName.forEach(field => {
+            if (obj[field]) {
                 linkNameArr.push(obj[field])
             }
         })
@@ -172,7 +172,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                     }
 
                     // в этой хуете мы подтягиваем для Заголовка, Подзаголовка и Текста карточки visible name если поле типа link/arrayLink
-                    const cardHeader = getInitialStructureParams().viewName && getInitialStructureParams().viewName &&
+                    let cardHeader = getInitialStructureParams().viewName && getInitialStructureParams().viewName &&
                         (getInitialStructureParams().viewName.length > 0 ?
                             getInitialStructureParams().viewName.map(i => typeof row[i] == 'object' ?
                                 !Array.isArray(row[i]) ?
@@ -185,6 +185,18 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                         formatDate(row[i], tableHeaders.filter(h => h.sysName == i)[0].formatOptions)
                             ).join(' ')
                             : '')
+
+                    cardHeader = (cardHeader == ''
+                        || cardHeader == ' '
+                        || cardHeader == '  '
+                        || cardHeader == '   '
+                        || cardHeader == '    '
+                        || cardHeader == '     '
+                        || cardHeader == '      ') ? (row.id || 'No visible name') :
+                        cardHeader
+
+                    cardHeader = (typeof cardHeader == 'object') ? (cardHeader.value || JSON.stringify(cardHeader)) : cardHeader
+
                     const cardHeaderComment = row && (typeof row[tableParams.cardHeaderComment] == 'object' ?
                         !Array.isArray(row[tableParams.cardHeaderComment]) ?
                             getLinkName(tableParams.cardHeaderComment, row[tableParams.cardHeaderComment])
@@ -228,8 +240,8 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                     !loading && onExpand(row)
                                 }}>
                                 {/* Разукрашиваем карточку */}
-                                {tableParams.cardColor && tableParams.cardColorOption != 'none' && 
-                                    <div 
+                                {tableParams.cardColor && tableParams.cardColorOption != 'none' &&
+                                    <div
                                         style={{
                                             backgroundColor: '#' + row[tableParams.cardColor]
                                         }}
@@ -249,7 +261,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                 {/* Текст карточки */}
                                 <div className={styles.cardText}>
 
-                                    
+
                                     <h3 className={styles.cardHeader}>
                                         <span className={styles.txt}>{cardHeader.length > 0 ? cardHeader : 'No visible name'}</span>
 
@@ -257,7 +269,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                         {(tableParams.counterField &&
                                             row && row[tableParams.counterField] &&
                                             row[tableParams.counterField] != 0 && row[tableParams.counterField] != "0") ?
-                                            <span className={`${styles.counter} ${(!quickActions || quickActions.length == 0) ? styles.moveCounter: ''}`} title={`${row[tableParams.counterField]} ${tableParams.counterText}`}>
+                                            <span className={`${styles.counter} ${(!quickActions || quickActions.length == 0) ? styles.moveCounter : ''}`} title={`${row[tableParams.counterField]} ${tableParams.counterText}`}>
                                                 {row[tableParams.counterField]}</span> : ''}
                                     </h3>
                                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
