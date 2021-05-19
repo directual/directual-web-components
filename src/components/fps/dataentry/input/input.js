@@ -281,12 +281,18 @@ export default function Input(props) {
             { key: 'path', value: 'path', icon: 'path' },
             { key: 'bellMute', value: 'bellMute', icon: 'bellMute' },
             { key: 'phone', value: 'phone', icon: 'phone' },
+            { key: 'tablet', value: 'tablet', icon: 'tablet' },
             { key: 'decimal', value: 'decimal', icon: 'decimal' },
             { key: 'slider', value: 'slider', icon: 'slider' },
             { key: 'cart', value: 'cart', icon: 'cart' },
             { key: 'range', value: 'range', icon: 'range' },
             { key: 'radio', value: 'radio', icon: 'radio' },
             { key: 'checkbox', value: 'checkbox', icon: 'checkbox' },
+
+            { key: 'money', value: 'money', icon: 'money' },
+            { key: 'idea', value: 'idea', icon: 'idea' },
+            { key: 'star', value: 'star', icon: 'star' },
+            { key: 'fuckYou', value: 'fuckYou', icon: 'fuckYou' },
         ]
 
     let inputMargins = {
