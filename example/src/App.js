@@ -80,27 +80,36 @@ const App = (props) => {
     }
 
     let cardActions = {
-        "sl": "users",
-        "pageSize": "10",
+        "sl": "openPipelineReleased",
+        "pageSize": "20",
         "headerField": null,
         "params": {
+            "cardListLayout": "grid",
+            "cardHeaderComment": "tags",
+            "deleteField": "",
+            "cardBodyText": null,
+            "cardImage": false,
+            "cardImageField": "",
+            "cardImageType": "none",
+            "cardImageSize": 100,
+            "objectView": {},
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "code",
+                        "fieldSysName": "color",
                         "fetch": [],
-                        "sysName": "code",
-                        "name": "",
+                        "sysName": "color",
+                        "name": "Card color",
                         "dataType": "string",
-                        "format": "",
+                        "format": "color",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "date_registered",
+                        "fieldSysName": "date_added",
                         "fetch": [],
-                        "sysName": "date_registered",
-                        "name": "Date registered on Dev",
+                        "sysName": "date_added",
+                        "name": "Date added",
                         "dataType": "date",
                         "format": "",
                         "formatOptions": {
@@ -127,99 +136,280 @@ const App = (props) => {
                             "customOptionPlaceholder": "Describe your option",
                             "range": {},
                             "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
+                            "dateFormat": "D MMMM, Y",
                             "timeFormat": "",
                             "isUTC": "false"
                         },
                         "link": ""
                     },
                     {
-                        "fieldSysName": "firstName",
+                        "fieldSysName": "description",
                         "fetch": [],
-                        "sysName": "firstName",
-                        "name": "First name",
+                        "sysName": "description",
+                        "name": "Feature description",
+                        "dataType": "string",
+                        "format": "markdown",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "dev_status",
+                        "fetch": [
+                            {
+                                "fieldSysName": "status",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "dev_status",
+                        "name": "Development status",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "development_status"
+                    },
+                    {
+                        "fieldSysName": "feature_id",
+                        "fetch": [],
+                        "sysName": "feature_id",
+                        "name": "Inner ID",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": ""
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "feature_type",
+                        "fetch": [],
+                        "sysName": "feature_type",
+                        "name": "Feature type",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "feature_type"
                     },
                     {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
-                        "name": "Username (login)",
+                        "name": "id",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "isEmailConfirmed",
+                        "fieldSysName": "release_date",
                         "fetch": [],
-                        "sysName": "isEmailConfirmed",
-                        "name": "Email confirmed",
-                        "dataType": "boolean",
+                        "sysName": "release_date",
+                        "name": "Release date",
+                        "dataType": "date",
                         "format": "",
-                        "formatOptions": {},
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "D MMMM, Y",
+                            "timeFormat": "",
+                            "isUTC": "false"
+                        },
                         "link": ""
                     },
                     {
-                        "fieldSysName": "lastName",
+                        "fieldSysName": "release_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "api_version",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "date",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "feature_ids",
+                                "condition": null,
+                                "fetch": [
+                                    {
+                                        "fieldSysName": "feature_id",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "title",
+                                        "condition": null,
+                                        "fetch": []
+                                    }
+                                ]
+                            },
+                            {
+                                "fieldSysName": "ui_version",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "release_id",
+                        "name": "Release",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "Releases"
+                    },
+                    {
+                        "fieldSysName": "tags",
                         "fetch": [],
-                        "sysName": "lastName",
-                        "name": "Last name",
+                        "sysName": "tags",
+                        "name": "Tags",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "tags"
+                    },
+                    {
+                        "fieldSysName": "title",
+                        "fetch": [],
+                        "sysName": "title",
+                        "name": "Feature title",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": ""
+                        "link": null
                     },
                     {
-                        "fieldSysName": "role",
-                        "fetch": [],
-                        "sysName": "role",
-                        "name": "Roles",
-                        "dataType": "string",
+                        "fieldSysName": "user_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "firstName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "lastName",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "user_id",
+                        "name": "Who suggested",
+                        "dataType": "link",
                         "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "votes",
+                        "fetch": [],
+                        "sysName": "votes",
+                        "name": "Number of upvotes",
+                        "dataType": "number",
+                        "format": "positiveNum",
                         "formatOptions": {},
                         "link": ""
                     }
                 ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "firstName",
-                        "fetch": [],
-                        "sysName": "firstName",
-                        "name": "First name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "Username (login)",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "lastName",
-                        "fetch": [],
-                        "sysName": "lastName",
-                        "name": "Last name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    }
-                ],
+                "writeFields": [],
                 "fields": {
-                    "code": {
-                        "id": "code",
-                        "content": "",
+                    "color": {
+                        "id": "color",
+                        "content": "Card color",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "date_added": {
+                        "id": "date_added",
+                        "content": "Date added",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "D MMMM, Y",
+                            "timeFormat": "",
+                            "isUTC": "false"
+                        },
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "description": {
+                        "id": "description",
+                        "content": "Feature description",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "markdown",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "dev_status": {
+                        "id": "dev_status",
+                        "content": "Development status",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "development_status",
+                        "actions": []
+                    },
+                    "feature_id": {
+                        "id": "feature_id",
+                        "content": "Inner ID",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
@@ -228,9 +418,31 @@ const App = (props) => {
                         "link": null,
                         "actions": []
                     },
-                    "date_registered": {
-                        "id": "date_registered",
-                        "content": "Date registered on Dev",
+                    "feature_type": {
+                        "id": "feature_type",
+                        "content": "Feature type",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "feature_type",
+                        "actions": []
+                    },
+                    "id": {
+                        "id": "id",
+                        "content": "id",
+                        "type": "field",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "release_date": {
+                        "id": "release_date",
+                        "content": "Release date",
                         "type": "field",
                         "dataType": "date",
                         "format": "",
@@ -258,7 +470,7 @@ const App = (props) => {
                             "customOptionPlaceholder": "Describe your option",
                             "range": {},
                             "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
+                            "dateFormat": "D MMMM, Y",
                             "timeFormat": "",
                             "isUTC": "false"
                         },
@@ -266,59 +478,56 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "firstName": {
-                        "id": "firstName",
-                        "content": "First name",
+                    "release_id": {
+                        "id": "release_id",
+                        "content": "Release",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "Releases",
+                        "actions": []
+                    },
+                    "tags": {
+                        "id": "tags",
+                        "content": "Tags",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "tags",
+                        "actions": []
+                    },
+                    "title": {
+                        "id": "title",
+                        "content": "Feature title",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": "",
+                        "link": null,
                         "actions": []
                     },
-                    "id": {
-                        "id": "id",
-                        "content": "Username (login)",
+                    "user_id": {
+                        "id": "user_id",
+                        "content": "Who suggested",
                         "type": "field",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "isEmailConfirmed": {
-                        "id": "isEmailConfirmed",
-                        "content": "Email confirmed",
-                        "type": "field",
-                        "dataType": "boolean",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "",
+                        "link": "WebUser",
                         "actions": []
                     },
-                    "lastName": {
-                        "id": "lastName",
-                        "content": "Last name",
+                    "votes": {
+                        "id": "votes",
+                        "content": "Number of upvotes",
                         "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "role": {
-                        "id": "role",
-                        "content": "Roles",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
+                        "dataType": "number",
+                        "format": "positiveNum",
                         "formatOptions": {},
                         "read": true,
                         "link": "",
@@ -326,14 +535,28 @@ const App = (props) => {
                     }
                 },
                 "fieldParams": {
-                    "code": {
+                    "color": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "date_added": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "firstName": {
+                    "description": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "feature_type": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -341,34 +564,158 @@ const App = (props) => {
                         "clickable": false
                     },
                     "id": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "title": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "user_id": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "isEmailConfirmed": {
+                    "votes": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "lastName": {
+                    "dev_status": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "role": {
+                    "feature_id": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "date_registered": {
+                    "release_date": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "release_id": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": true,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "api_version": {
+                                    "id": "api_version",
+                                    "content": "API version",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "link",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "date": {
+                                    "id": "date",
+                                    "content": "Release date",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "date",
+                                    "format": null,
+                                    "formatOptions": {
+                                        "customOptionLabel": "My option",
+                                        "keyValue": {
+                                            "key": "key",
+                                            "value": "value",
+                                            "button": "One more"
+                                        },
+                                        "dateLocale": "en-gb",
+                                        "booleanOptions": [
+                                            "True",
+                                            "False"
+                                        ],
+                                        "validWeekDays": {
+                                            "mon": true,
+                                            "thu": true,
+                                            "tue": true,
+                                            "sun": true,
+                                            "fri": true,
+                                            "sat": true,
+                                            "wed": true
+                                        },
+                                        "customOptionPlaceholder": "Describe your option",
+                                        "range": {},
+                                        "customOptionType": "textarea",
+                                        "dateFormat": "D MMMM, Y",
+                                        "timeFormat": "",
+                                        "isUTC": "false"
+                                    }
+                                },
+                                "feature_ids": {
+                                    "id": "feature_ids",
+                                    "content": "Features",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "arrayLink",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "ui_version": {
+                                    "id": "ui_version",
+                                    "content": "UI version",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "link",
+                                    "format": null,
+                                    "formatOptions": null
+                                }
+                            },
+                            "fieldParams": {
+                                "api_version": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "date": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "feature_ids": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "ui_version": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "date",
+                                "feature_ids",
+                                "api_version",
+                                "ui_version"
+                            ]
+                        },
+                        "subHeader": "Release: "
+                    },
+                    "tags": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -381,13 +728,19 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
+                            "color",
+                            "feature_id",
+                            "feature_type",
+                            "description",
+                            "date_added",
+                            "release_date",
                             "id",
-                            "role",
-                            "firstName",
-                            "lastName",
-                            "isEmailConfirmed",
-                            "code",
-                            "date_registered"
+                            "title",
+                            "user_id",
+                            "votes",
+                            "dev_status",
+                            "release_id",
+                            "tags"
                         ]
                     }
                 },
@@ -397,14 +750,28 @@ const App = (props) => {
                 "actions": []
             },
             "fields": {
-                "code": {
+                "color": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "date_added": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "firstName": {
+                "description": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "feature_type": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -412,34 +779,158 @@ const App = (props) => {
                     "clickable": false
                 },
                 "id": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "title": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "user_id": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "isEmailConfirmed": {
+                "votes": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "lastName": {
+                "dev_status": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "role": {
+                "feature_id": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "date_registered": {
+                "release_date": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "release_id": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "api_version": {
+                                "id": "api_version",
+                                "content": "API version",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "date": {
+                                "id": "date",
+                                "content": "Release date",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "date",
+                                "format": null,
+                                "formatOptions": {
+                                    "customOptionLabel": "My option",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "dateLocale": "en-gb",
+                                    "booleanOptions": [
+                                        "True",
+                                        "False"
+                                    ],
+                                    "validWeekDays": {
+                                        "mon": true,
+                                        "thu": true,
+                                        "tue": true,
+                                        "sun": true,
+                                        "fri": true,
+                                        "sat": true,
+                                        "wed": true
+                                    },
+                                    "customOptionPlaceholder": "Describe your option",
+                                    "range": {},
+                                    "customOptionType": "textarea",
+                                    "dateFormat": "D MMMM, Y",
+                                    "timeFormat": "",
+                                    "isUTC": "false"
+                                }
+                            },
+                            "feature_ids": {
+                                "id": "feature_ids",
+                                "content": "Features",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "arrayLink",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "ui_version": {
+                                "id": "ui_version",
+                                "content": "UI version",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": null
+                            }
+                        },
+                        "fieldParams": {
+                            "api_version": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "date": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "feature_ids": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "ui_version": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "date",
+                            "feature_ids",
+                            "api_version",
+                            "ui_version"
+                        ]
+                    },
+                    "subHeader": "Release: "
+                },
+                "tags": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -447,316 +938,20 @@ const App = (props) => {
                     "clickable": false
                 }
             },
-            "tableParams": {
-                "readFields": [
-                    {
-                        "fieldSysName": "code",
-                        "fetch": [],
-                        "sysName": "code",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "date_registered",
-                        "fetch": [],
-                        "sysName": "date_registered",
-                        "name": "Date registered on Dev",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "firstName",
-                        "fetch": [],
-                        "sysName": "firstName",
-                        "name": "First name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "Username (login)",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "isEmailConfirmed",
-                        "fetch": [],
-                        "sysName": "isEmailConfirmed",
-                        "name": "Email confirmed",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "lastName",
-                        "fetch": [],
-                        "sysName": "lastName",
-                        "name": "Last name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "role",
-                        "fetch": [],
-                        "sysName": "role",
-                        "name": "Roles",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    }
-                ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "firstName",
-                        "fetch": [],
-                        "sysName": "firstName",
-                        "name": "First name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "Username (login)",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "lastName",
-                        "fetch": [],
-                        "sysName": "lastName",
-                        "name": "Last name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    }
-                ],
-                "fields": {
-                    "code": {
-                        "id": "code",
-                        "content": "",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null
-                    },
-                    "date_registered": {
-                        "id": "date_registered",
-                        "content": "Date registered on Dev",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
-                        "read": true,
-                        "link": ""
-                    },
-                    "firstName": {
-                        "id": "firstName",
-                        "content": "First name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "id": {
-                        "id": "id",
-                        "content": "Username (login)",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "isEmailConfirmed": {
-                        "id": "isEmailConfirmed",
-                        "content": "Email confirmed",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "lastName": {
-                        "id": "lastName",
-                        "content": "Last name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "role": {
-                        "id": "role",
-                        "content": "Roles",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    }
-                },
-                "fieldParams": {
-                    "code": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80
-                    },
-                    "firstName": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80
-                    },
-                    "id": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80
-                    },
-                    "isEmailConfirmed": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80
-                    },
-                    "lastName": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80
-                    },
-                    "role": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80
-                    },
-                    "date_registered": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80
-                    }
-                },
-                "fieldOrder": [
-                    "id",
-                    "firstName",
-                    "lastName",
-                    "isEmailConfirmed",
-                    "role",
-                    "code",
-                    "date_registered"
-                ]
-            }
+            "cardColor": "color",
+            "cardColorOption": "left",
+            "showCounter": true,
+            "counterField": "votes",
+            "counterText": " upvotes"
         },
-        "tableTitle": "Users",
+        "tableTitle": "Released",
         "actions": null,
         "headers": [
             {
-                "sysName": "code",
-                "name": "",
+                "sysName": "color",
                 "dataType": "string",
-                "id": "51351621027822811",
-                "link": null,
-                "group": "1621027815164",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false
-            },
-            {
-                "sysName": "date_registered",
-                "name": "Date registered on Dev",
-                "dataType": "date",
-                "id": "14451621029358812",
+                "name": "Card color",
+                "id": "61881621017200362",
                 "link": "",
                 "group": "0",
                 "tags": null,
@@ -764,7 +959,34 @@ const App = (props) => {
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 7,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "color",
+                "formatOptions": null,
+                "groupName": null,
+                "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "indexExists": false,
+                "json": false,
+                "typeVariable": {}
+            },
+            {
+                "sysName": "date_added",
+                "dataType": "date",
+                "name": "Date added",
+                "id": "68351620832123660",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
                 "linkIndexFieldSysName": [],
                 "defaultValue": null,
                 "constraints": null,
@@ -794,50 +1016,131 @@ const App = (props) => {
                     "customOptionPlaceholder": "Describe your option",
                     "range": {},
                     "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
+                    "dateFormat": "D MMMM, Y",
                     "timeFormat": "",
                     "isUTC": "false"
                 },
                 "groupName": null,
+                "arrayLink": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
-                "arrayLink": false,
+                "indexExists": false,
                 "json": false,
-                "typeVariable": {},
-                "indexExists": false
+                "typeVariable": {}
             },
             {
-                "sysName": "firstName",
-                "name": "First name",
+                "sysName": "description",
                 "dataType": "string",
-                "id": "4",
+                "name": "Feature description",
+                "id": "77031620832091108",
                 "link": "",
                 "group": "0",
-                "tags": "",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 3,
+                "order": 2,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "markdown",
+                "formatOptions": null,
+                "groupName": null,
+                "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "indexExists": false,
+                "json": false,
+                "typeVariable": {}
+            },
+            {
+                "sysName": "dev_status",
+                "dataType": "link",
+                "name": "Development status",
+                "id": "85621620832330584",
+                "link": "development_status",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 8,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": null,
                 "groupName": null,
+                "arrayLink": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "indexExists": false,
+                "json": false,
+                "typeVariable": {}
+            },
+            {
+                "sysName": "feature_id",
+                "dataType": "string",
+                "name": "Inner ID",
+                "id": "23601621342083348",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 11,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "arrayLink": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
-                "arrayLink": false,
+                "indexExists": false,
                 "json": false,
-                "typeVariable": {},
-                "indexExists": false
+                "typeVariable": {}
+            },
+            {
+                "sysName": "feature_type",
+                "dataType": "link",
+                "name": "Feature type",
+                "id": "55371621030232780",
+                "link": "feature_type",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 10,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "arrayLink": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "indexExists": false,
+                "json": false,
+                "typeVariable": {}
             },
             {
                 "sysName": "id",
-                "name": "Username (login)",
                 "dataType": "id",
-                "id": "12",
+                "name": "id",
+                "id": "0",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -853,20 +1156,128 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "arrayLink": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
-                "arrayLink": false,
+                "indexExists": false,
                 "json": false,
-                "typeVariable": {},
-                "indexExists": false
+                "typeVariable": {}
             },
             {
-                "sysName": "isEmailConfirmed",
-                "name": "Email confirmed",
-                "dataType": "boolean",
-                "id": "60111621027825496",
+                "sysName": "release_date",
+                "dataType": "date",
+                "name": "Release date",
+                "id": "71651621345011532",
                 "link": "",
-                "group": "1621027815164",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 13,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "D MMMM, Y",
+                    "timeFormat": "",
+                    "isUTC": "false"
+                },
+                "groupName": null,
+                "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "indexExists": false,
+                "json": false,
+                "typeVariable": {}
+            },
+            {
+                "sysName": "release_id",
+                "dataType": "link",
+                "name": "Release",
+                "id": "40791621408746909",
+                "link": "Releases",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 14,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "arrayLink": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "indexExists": false,
+                "json": false,
+                "typeVariable": {}
+            },
+            {
+                "sysName": "tags",
+                "dataType": "arrayLink",
+                "name": "Tags",
+                "id": "67851621409605492",
+                "link": "tags",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 15,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "arrayLink": true,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "indexExists": false,
+                "json": false,
+                "typeVariable": {}
+            },
+            {
+                "sysName": "title",
+                "dataType": "string",
+                "name": "Feature title",
+                "id": "79031620832091734",
+                "link": null,
+                "group": "0",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
@@ -880,99 +1291,462 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
+                "arrayLink": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
-                "arrayLink": false,
+                "indexExists": false,
                 "json": false,
-                "typeVariable": {},
-                "indexExists": false
+                "typeVariable": {}
             },
             {
-                "sysName": "lastName",
-                "name": "Last name",
-                "dataType": "string",
-                "id": "3",
-                "link": "",
+                "sysName": "user_id",
+                "dataType": "link",
+                "name": "Who suggested",
+                "id": "59421620832153105",
+                "link": "WebUser",
                 "group": "0",
-                "tags": "",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 4,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": null,
                 "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "indexExists": false,
                 "json": false,
-                "typeVariable": {},
-                "indexExists": false
+                "typeVariable": {}
             },
             {
-                "sysName": "role",
-                "name": "Roles",
-                "dataType": "string",
-                "id": "5",
+                "sysName": "votes",
+                "dataType": "number",
+                "name": "Number of upvotes",
+                "id": "68061620832170304",
                 "link": "",
                 "group": "0",
-                "tags": "",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 1,
+                "order": 5,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
-                "format": null,
-                "formatOptions": {},
+                "format": "positiveNum",
+                "formatOptions": null,
                 "groupName": null,
+                "arrayLink": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
-                "arrayLink": false,
+                "indexExists": false,
                 "json": false,
-                "typeVariable": {},
-                "indexExists": false
+                "typeVariable": {}
             }
         ],
         "data": [
             {
-                "role": "god,confirmed",
-                "code": "20497",
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "pavel@directual.com",
-                "isEmailConfirmed": true,
-                "date_registered": 1621040334000
+                "description": "In web-pages",
+                "tags": [
+                    "web-pages"
+                ],
+                "feature_id": "PLT-130",
+                "color": "ec6161",
+                "user_id": {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                "feature_type": "bug",
+                "id": "199eb1d3-8a1f-4d8a-925e-85b065bfd4f7",
+                "release_id": {
+                    "date": 1621371600000,
+                    "feature_ids": [
+                        {
+                            "feature_id": "PLT-130",
+                            "title": "First name, Last name aren't saved in Sign Up form",
+                            "id": "199eb1d3-8a1f-4d8a-925e-85b065bfd4f7"
+                        },
+                        {
+                            "feature_id": "PLT-131",
+                            "title": "XML to JSON converting",
+                            "id": "9446bf33-24d5-4c1c-a2fc-35912b7fa352"
+                        },
+                        {
+                            "title": "Display Synch processing load on Dashboard",
+                            "feature_id": "PLT-141",
+                            "id": "5f51e93e-ad1e-4dd5-81ed-b9abd3699a06"
+                        }
+                    ],
+                    "ui_version": "10.6.4",
+                    "api_version": "10.6.11"
+                },
+                "release_date": 1621371600000,
+                "dev_status": {
+                    "status": "Released"
+                },
+                "date_added": 1621421252000,
+                "title": "First name, Last name aren't saved in Sign Up form"
             },
             {
-                "role": "notConfirmed,god",
-                "firstName": "Nikita",
-                "id": "nikita@directual.com",
-                "isEmailConfirmed": false,
-                "date_registered": 1621356846000
+                "description": "`$D.json.fromXML()`\n\n[Link to the documentation](https://readme.directual.com/javascript-sdk/internal-usdd-methods#usdd-json-fromxml-converts-xml-to-json)",
+                "tags": [
+                    "scenarios"
+                ],
+                "feature_id": "PLT-131",
+                "color": "57bf97",
+                "user_id": {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                "feature_type": "feature",
+                "id": "9446bf33-24d5-4c1c-a2fc-35912b7fa352",
+                "release_id": {
+                    "date": 1621371600000,
+                    "feature_ids": [
+                        {
+                            "feature_id": "PLT-130",
+                            "title": "First name, Last name aren't saved in Sign Up form",
+                            "id": "199eb1d3-8a1f-4d8a-925e-85b065bfd4f7"
+                        },
+                        {
+                            "feature_id": "PLT-131",
+                            "title": "XML to JSON converting",
+                            "id": "9446bf33-24d5-4c1c-a2fc-35912b7fa352"
+                        },
+                        {
+                            "title": "Display Synch processing load on Dashboard",
+                            "feature_id": "PLT-141",
+                            "id": "5f51e93e-ad1e-4dd5-81ed-b9abd3699a06"
+                        }
+                    ],
+                    "ui_version": "10.6.4",
+                    "api_version": "10.6.11"
+                },
+                "release_date": 1621371600000,
+                "dev_status": {
+                    "status": "Released"
+                },
+                "date_added": 1621421364000,
+                "title": "XML to JSON converting"
             },
             {
-                "role": "confirmed",
-                "code": "0ba29",
-                "lastName": "Dolgov",
-                "firstName": "Nikita",
-                "id": "n.dolgov@directual.com",
-                "isEmailConfirmed": true,
-                "date_registered": 1621375669000
+                "description": "Limits on synch processing are introduced.\nApp dashboard should display synch processing load:\n\n![dashboard](https://api.directual.com/fileUploaded/directual-site/48f3e223-a8ad-488f-8e11-54dd71ab95c1.png)",
+                "tags": [
+                    "billing"
+                ],
+                "feature_id": "PLT-141",
+                "color": "57bf97",
+                "user_id": {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                "feature_type": "feature",
+                "id": "5f51e93e-ad1e-4dd5-81ed-b9abd3699a06",
+                "release_id": {
+                    "date": 1621371600000,
+                    "feature_ids": [
+                        {
+                            "feature_id": "PLT-130",
+                            "title": "First name, Last name aren't saved in Sign Up form",
+                            "id": "199eb1d3-8a1f-4d8a-925e-85b065bfd4f7"
+                        },
+                        {
+                            "feature_id": "PLT-131",
+                            "title": "XML to JSON converting",
+                            "id": "9446bf33-24d5-4c1c-a2fc-35912b7fa352"
+                        },
+                        {
+                            "title": "Display Synch processing load on Dashboard",
+                            "feature_id": "PLT-141",
+                            "id": "5f51e93e-ad1e-4dd5-81ed-b9abd3699a06"
+                        }
+                    ],
+                    "ui_version": "10.6.4",
+                    "api_version": "10.6.11"
+                },
+                "release_date": 1621371600000,
+                "dev_status": {
+                    "status": "Released"
+                },
+                "date_added": 1621506713000,
+                "title": "Display Synch processing load on Dashboard"
             },
             {
-                "isEmailConfirmed": false,
-                "date_registered": 1621376473000,
-                "role": "notConfirmed",
-                "id": "mxf@mail.ru"
+                "description": "Add an option to turn ON and to turn OFF quick search",
+                "tags": [
+                    "web-pages"
+                ],
+                "feature_id": "PLT-125",
+                "color": "57bf97",
+                "user_id": {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                "feature_type": "feature",
+                "id": "735ff05a-9d5d-4eba-8da4-8e7b9fdbc4a3",
+                "release_id": {
+                    "date": 1621198800000,
+                    "feature_ids": [
+                        {
+                            "feature_id": "PLT-125",
+                            "title": "Optional Quick search field in Table, Cards",
+                            "id": "735ff05a-9d5d-4eba-8da4-8e7b9fdbc4a3"
+                        },
+                        {
+                            "feature_id": "PLT-126",
+                            "title": "Cards colouring",
+                            "id": "73b47d82-a716-4026-a259-e7f832bd421d"
+                        },
+                        {
+                            "title": "Empty Action creates empty object",
+                            "feature_id": "PLT-127",
+                            "id": "69ce0cbe-d381-4673-9d71-4492dc937a3f"
+                        },
+                        {
+                            "feature_id": "PLT-128",
+                            "title": "Conditional Actions for multiple roles",
+                            "id": "96bb4e22-78b1-4841-980a-ead7e4179307"
+                        },
+                        {
+                            "feature_id": "PLT-129",
+                            "title": "Changing font sizes for app",
+                            "id": "f0c72d92-6a6b-431c-81f0-e5e03f17c5e8"
+                        }
+                    ],
+                    "ui_version": "10.6.3",
+                    "api_version": "10.5.7"
+                },
+                "release_date": 1621198800000,
+                "dev_status": {
+                    "status": "Released"
+                },
+                "date_added": 1621418636000,
+                "title": "Optional Quick search field in Table, Cards"
+            },
+            {
+                "description": "- Choose the field type of `colour` where the card colour is stored\n- Choose the way of colouring:\n\n   - None;\n   - Stripe on the left;\n   - Border;\n   - Fill.",
+                "tags": [
+                    "web-pages"
+                ],
+                "feature_id": "PLT-126",
+                "color": "57bf97",
+                "user_id": {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                "feature_type": "feature",
+                "id": "73b47d82-a716-4026-a259-e7f832bd421d",
+                "release_id": {
+                    "date": 1621198800000,
+                    "feature_ids": [
+                        {
+                            "feature_id": "PLT-125",
+                            "title": "Optional Quick search field in Table, Cards",
+                            "id": "735ff05a-9d5d-4eba-8da4-8e7b9fdbc4a3"
+                        },
+                        {
+                            "feature_id": "PLT-126",
+                            "title": "Cards colouring",
+                            "id": "73b47d82-a716-4026-a259-e7f832bd421d"
+                        },
+                        {
+                            "title": "Empty Action creates empty object",
+                            "feature_id": "PLT-127",
+                            "id": "69ce0cbe-d381-4673-9d71-4492dc937a3f"
+                        },
+                        {
+                            "feature_id": "PLT-128",
+                            "title": "Conditional Actions for multiple roles",
+                            "id": "96bb4e22-78b1-4841-980a-ead7e4179307"
+                        },
+                        {
+                            "feature_id": "PLT-129",
+                            "title": "Changing font sizes for app",
+                            "id": "f0c72d92-6a6b-431c-81f0-e5e03f17c5e8"
+                        }
+                    ],
+                    "ui_version": "10.6.3",
+                    "api_version": "10.5.7"
+                },
+                "release_date": 1621198800000,
+                "dev_status": {
+                    "status": "Released"
+                },
+                "date_added": 1621418793000,
+                "title": "Cards colouring"
+            },
+            {
+                "description": "It should do nothing",
+                "tags": [
+                    "web-pages"
+                ],
+                "feature_id": "PLT-127",
+                "color": "ec6161",
+                "user_id": {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                "feature_type": "bug",
+                "id": "69ce0cbe-d381-4673-9d71-4492dc937a3f",
+                "release_id": {
+                    "date": 1621198800000,
+                    "feature_ids": [
+                        {
+                            "feature_id": "PLT-125",
+                            "title": "Optional Quick search field in Table, Cards",
+                            "id": "735ff05a-9d5d-4eba-8da4-8e7b9fdbc4a3"
+                        },
+                        {
+                            "feature_id": "PLT-126",
+                            "title": "Cards colouring",
+                            "id": "73b47d82-a716-4026-a259-e7f832bd421d"
+                        },
+                        {
+                            "title": "Empty Action creates empty object",
+                            "feature_id": "PLT-127",
+                            "id": "69ce0cbe-d381-4673-9d71-4492dc937a3f"
+                        },
+                        {
+                            "feature_id": "PLT-128",
+                            "title": "Conditional Actions for multiple roles",
+                            "id": "96bb4e22-78b1-4841-980a-ead7e4179307"
+                        },
+                        {
+                            "feature_id": "PLT-129",
+                            "title": "Changing font sizes for app",
+                            "id": "f0c72d92-6a6b-431c-81f0-e5e03f17c5e8"
+                        }
+                    ],
+                    "ui_version": "10.6.3",
+                    "api_version": "10.5.7"
+                },
+                "release_date": 1621198800000,
+                "dev_status": {
+                    "status": "Released"
+                },
+                "date_added": 1621419142000,
+                "title": "Empty Action creates empty object"
+            },
+            {
+                "description": "Roles in Action conditionals can be used like `role1,role2`",
+                "tags": [
+                    "web-pages"
+                ],
+                "feature_id": "PLT-128",
+                "color": "57bf97",
+                "user_id": {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                "feature_type": "feature",
+                "id": "96bb4e22-78b1-4841-980a-ead7e4179307",
+                "release_id": {
+                    "date": 1621198800000,
+                    "feature_ids": [
+                        {
+                            "feature_id": "PLT-125",
+                            "title": "Optional Quick search field in Table, Cards",
+                            "id": "735ff05a-9d5d-4eba-8da4-8e7b9fdbc4a3"
+                        },
+                        {
+                            "feature_id": "PLT-126",
+                            "title": "Cards colouring",
+                            "id": "73b47d82-a716-4026-a259-e7f832bd421d"
+                        },
+                        {
+                            "title": "Empty Action creates empty object",
+                            "feature_id": "PLT-127",
+                            "id": "69ce0cbe-d381-4673-9d71-4492dc937a3f"
+                        },
+                        {
+                            "feature_id": "PLT-128",
+                            "title": "Conditional Actions for multiple roles",
+                            "id": "96bb4e22-78b1-4841-980a-ead7e4179307"
+                        },
+                        {
+                            "feature_id": "PLT-129",
+                            "title": "Changing font sizes for app",
+                            "id": "f0c72d92-6a6b-431c-81f0-e5e03f17c5e8"
+                        }
+                    ],
+                    "ui_version": "10.6.3",
+                    "api_version": "10.5.7"
+                },
+                "release_date": 1621198800000,
+                "dev_status": {
+                    "status": "Released"
+                },
+                "date_added": 1621419223000,
+                "title": "Conditional Actions for multiple roles"
+            },
+            {
+                "description": "Portal settings → Appearance. \n\nYou can change font size for your app (text, h1, h2, h3).\n",
+                "tags": [
+                    "web-pages"
+                ],
+                "feature_id": "PLT-129",
+                "color": "57bf97",
+                "user_id": {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                "feature_type": "feature",
+                "id": "f0c72d92-6a6b-431c-81f0-e5e03f17c5e8",
+                "release_id": {
+                    "date": 1621198800000,
+                    "feature_ids": [
+                        {
+                            "feature_id": "PLT-125",
+                            "title": "Optional Quick search field in Table, Cards",
+                            "id": "735ff05a-9d5d-4eba-8da4-8e7b9fdbc4a3"
+                        },
+                        {
+                            "feature_id": "PLT-126",
+                            "title": "Cards colouring",
+                            "id": "73b47d82-a716-4026-a259-e7f832bd421d"
+                        },
+                        {
+                            "title": "Empty Action creates empty object",
+                            "feature_id": "PLT-127",
+                            "id": "69ce0cbe-d381-4673-9d71-4492dc937a3f"
+                        },
+                        {
+                            "feature_id": "PLT-128",
+                            "title": "Conditional Actions for multiple roles",
+                            "id": "96bb4e22-78b1-4841-980a-ead7e4179307"
+                        },
+                        {
+                            "feature_id": "PLT-129",
+                            "title": "Changing font sizes for app",
+                            "id": "f0c72d92-6a6b-431c-81f0-e5e03f17c5e8"
+                        }
+                    ],
+                    "ui_version": "10.6.3",
+                    "api_version": "10.5.7"
+                },
+                "release_date": 1621198800000,
+                "dev_status": {
+                    "status": "Released"
+                },
+                "date_added": 1621419302000,
+                "title": "Changing font sizes for app"
             }
         ],
         "totalPages": 1,
@@ -980,48 +1754,92 @@ const App = (props) => {
         "error": null,
         "fieldScheme": [
             [
-                "code",
-                1385542
+                "color",
+                1385610
             ],
             [
-                "date_registered",
-                1385542
+                "date_added",
+                1385610
             ],
             [
-                "firstName",
-                1385542
+                "description",
+                1385610
+            ],
+            [
+                "dev_status.status",
+                1385613
+            ],
+            [
+                "feature_id",
+                1385610
+            ],
+            [
+                "feature_type",
+                1385610
             ],
             [
                 "id",
+                1385610
+            ],
+            [
+                "release_date",
+                1385610
+            ],
+            [
+                "release_id.api_version",
+                1386900
+            ],
+            [
+                "release_id.date",
+                1386900
+            ],
+            [
+                "release_id.feature_ids.feature_id",
+                1385610
+            ],
+            [
+                "release_id.feature_ids.title",
+                1385610
+            ],
+            [
+                "release_id.ui_version",
+                1386900
+            ],
+            [
+                "tags",
+                1385610
+            ],
+            [
+                "title",
+                1385610
+            ],
+            [
+                "user_id.firstName",
                 1385542
             ],
             [
-                "isEmailConfirmed",
+                "user_id.id",
                 1385542
             ],
             [
-                "lastName",
+                "user_id.lastName",
                 1385542
             ],
             [
-                "role",
-                1385542
+                "votes",
+                1385610
             ]
         ],
-        "writeFields": [
-            "firstName",
-            "id",
-            "lastName"
-        ],
+        "writeFields": [],
         "structures": {
             "1385542": {
+                "networkID": 6829,
+                "sysName": "WebUser",
+                "name": "App users",
                 "id": 1385542,
                 "dateCreated": "2021-05-14T21:02:45Z",
                 "hidden": false,
                 "dateHidden": null,
-                "networkID": 6829,
-                "name": "App users",
-                "sysName": "WebUser",
                 "jsonObject": "[{\"sysName\":\"isBlocked\",\"name\":\"Block user\",\"dataType\":\"boolean\",\"id\":\"1\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"dateCreated\",\"name\":\"dateCreated\",\"dataType\":\"string\",\"id\":\"10\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"password\",\"name\":\"Password (hash)\",\"dataType\":\"string\",\"id\":\"11\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"id\",\"name\":\"Username (login)\",\"dataType\":\"id\",\"id\":\"12\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"date_registered\",\"name\":\"Date registered on Dev\",\"dataType\":\"date\",\"id\":\"14451621029358812\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"gender\",\"name\":\"Gender\",\"dataType\":\"string\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"lastName\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"firstName\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"role\",\"name\":\"Roles\",\"dataType\":\"string\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"code\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"51351621027822811\",\"link\":null,\"group\":\"1621027815164\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"isAuthorization\",\"name\":\"isAuthorization\",\"dataType\":\"boolean\",\"id\":\"6\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"isEmailConfirmed\",\"name\":\"Email confirmed\",\"dataType\":\"boolean\",\"id\":\"60111621027825496\",\"link\":\"\",\"group\":\"1621027815164\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"dateLastActivity\",\"name\":\"dateLastActivity\",\"dataType\":\"string\",\"id\":\"7\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"email\",\"name\":\"Email\",\"dataType\":\"string\",\"id\":\"8\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"phone\",\"name\":\"Phone\",\"dataType\":\"string\",\"id\":\"9\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false}]",
                 "jsonGroupSettings": "[{\"id\":-502807437,\"name\":\"Contacts\",\"order\":0},{\"id\":-1776115286,\"name\":\"System fields\",\"order\":1},{\"id\":1621027815164,\"name\":\"Email confirmation\",\"order\":2}]",
                 "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
@@ -1038,8 +1856,8 @@ const App = (props) => {
                 "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "Username (login)",
                     "dataType": "id",
+                    "name": "Username (login)",
                     "id": "12",
                     "link": "",
                     "group": "0",
@@ -1056,21 +1874,174 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
+                    "arrayLink": false,
                     "linkOrArrayLinkType": false,
                     "linkType": false,
-                    "arrayLink": false,
+                    "indexExists": false,
                     "json": false,
-                    "typeVariable": {},
-                    "indexExists": false
+                    "typeVariable": {}
                 },
                 "folderId": null
+            },
+            "1385610": {
+                "networkID": 6829,
+                "sysName": "Features",
+                "name": "features",
+                "id": 1385610,
+                "dateCreated": "2021-05-12T15:06:56Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"votes_ids\",\"name\":\"Who upvoted\",\"dataType\":\"arrayLink\",\"id\":\"14001620832180875\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"feature_id\",\"name\":\"Inner ID\",\"dataType\":\"string\",\"id\":\"23601621342083348\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"subscriber_ids\",\"name\":\"Subscribers\",\"dataType\":\"arrayLink\",\"id\":\"26751621348189191\",\"link\":\"WebUser\",\"group\":\"1621348185318\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"status\",\"name\":\"Request status\",\"dataType\":\"link\",\"id\":\"40251620832303364\",\"link\":\"request_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"release_id\",\"name\":\"Release\",\"dataType\":\"link\",\"id\":\"40791621408746909\",\"link\":\"Releases\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"feature_type\",\"name\":\"Feature type\",\"dataType\":\"link\",\"id\":\"55371621030232780\",\"link\":\"feature_type\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"user_id\",\"name\":\"Who suggested\",\"dataType\":\"link\",\"id\":\"59421620832153105\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"color\",\"name\":\"Card color\",\"dataType\":\"string\",\"id\":\"61881621017200362\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"tags\",\"name\":\"Tags\",\"dataType\":\"arrayLink\",\"id\":\"67851621409605492\",\"link\":\"tags\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"votes\",\"name\":\"Number of upvotes\",\"dataType\":\"number\",\"id\":\"68061620832170304\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"date_added\",\"name\":\"Date added\",\"dataType\":\"date\",\"id\":\"68351620832123660\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"release_date\",\"name\":\"Release date\",\"dataType\":\"date\",\"id\":\"71651621345011532\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"decline_reason\",\"name\":\"Reason of decline\",\"dataType\":\"string\",\"id\":\"73671621342083940\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"description\",\"name\":\"Feature description\",\"dataType\":\"string\",\"id\":\"77031620832091108\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"title\",\"name\":\"Feature title\",\"dataType\":\"string\",\"id\":\"79031620832091734\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"dev_status\",\"name\":\"Development status\",\"dataType\":\"link\",\"id\":\"85621620832330584\",\"link\":\"development_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"Subscriptions\",\"id\":1621348185318,\"order\":0}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"feature_id\"},{\"sysName\":\"title\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-05-19T07:33:37Z",
+                "createBy": 1,
+                "changedBy": 1,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "arrayLink": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "indexExists": false,
+                    "json": false,
+                    "typeVariable": {}
+                },
+                "folderId": 33625685
+            },
+            "1385613": {
+                "networkID": 6829,
+                "sysName": "development_status",
+                "name": "development_status",
+                "id": 1385613,
+                "dateCreated": "2021-05-12T15:14:45Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Status\",\"id\":\"23221620832490508\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"status\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": false,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-05-12T15:14:59Z",
+                "createBy": 1,
+                "changedBy": 1,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "arrayLink": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "indexExists": false,
+                    "json": false,
+                    "typeVariable": {}
+                },
+                "folderId": 33625685
+            },
+            "1386900": {
+                "networkID": 6829,
+                "sysName": "Releases",
+                "name": "Releases",
+                "id": 1386900,
+                "dateCreated": "2021-05-19T06:35:58Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"delete\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"35761621407098811\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"feature_ids\",\"name\":\"Features\",\"dataType\":\"arrayLink\",\"id\":\"43571621406266791\",\"link\":\"Features\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"date\",\"name\":\"Release date\",\"dataType\":\"date\",\"id\":\"56501621406213092\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"ui_version\",\"name\":\"UI version\",\"dataType\":\"link\",\"id\":\"64471621406232483\",\"link\":\"ui_versions\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"api_version\",\"name\":\"API version\",\"dataType\":\"link\",\"id\":\"87621621406247702\",\"link\":\"api_versions\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"date\"},{\"sysName\":\"api_version\"},{\"sysName\":\"ui_version\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-05-19T07:23:54Z",
+                "createBy": 1,
+                "changedBy": 1,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "arrayLink": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "indexExists": false,
+                    "json": false,
+                    "typeVariable": {}
+                },
+                "folderId": 33626586
             }
         },
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
-        "fileds": null,
-        "quickSearch": "true"
+        "fileds": [],
+        "quickSearch": "false"
     }
 
     let newCardActions = {
@@ -2706,27 +3677,36 @@ const App = (props) => {
     }
 
     let exampleTable = {
-        "sl": "users",
-        "pageSize": "10",
+        "sl": "releaseNotes",
+        "pageSize": "16",
         "headerField": null,
         "params": {
+            "cardListLayout": "grid",
+            "cardHeaderComment": "",
+            "deleteField": "",
+            "cardBodyText": "",
+            "cardImage": false,
+            "cardImageField": "",
+            "cardImageType": "none",
+            "cardImageSize": 100,
+            "objectView": {},
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "code",
+                        "fieldSysName": "api_version",
                         "fetch": [],
-                        "sysName": "code",
-                        "name": "",
-                        "dataType": "string",
+                        "sysName": "api_version",
+                        "name": "API version",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": "api_versions"
                     },
                     {
-                        "fieldSysName": "date_registered",
+                        "fieldSysName": "date",
                         "fetch": [],
-                        "sysName": "date_registered",
-                        "name": "Date registered on Dev",
+                        "sysName": "date",
+                        "name": "Release date",
                         "dataType": "date",
                         "format": "",
                         "formatOptions": {
@@ -2753,110 +3733,80 @@ const App = (props) => {
                             "customOptionPlaceholder": "Describe your option",
                             "range": {},
                             "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
+                            "dateFormat": "D MMMM, Y",
                             "timeFormat": "",
                             "isUTC": "false"
                         },
                         "link": ""
                     },
                     {
-                        "fieldSysName": "firstName",
-                        "fetch": [],
-                        "sysName": "firstName",
-                        "name": "First name",
-                        "dataType": "string",
+                        "fieldSysName": "feature_ids",
+                        "fetch": [
+                            {
+                                "fieldSysName": "description",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "dev_status",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "feature_id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "feature_type",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "title",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "votes",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "feature_ids",
+                        "name": "Features",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "link": ""
+                        "link": "Features"
                     },
                     {
-                        "fieldSysName": "id",
+                        "fieldSysName": "ui_version",
                         "fetch": [],
-                        "sysName": "id",
-                        "name": "Username (login)",
-                        "dataType": "id",
+                        "sysName": "ui_version",
+                        "name": "UI version",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "isEmailConfirmed",
-                        "fetch": [],
-                        "sysName": "isEmailConfirmed",
-                        "name": "Email confirmed",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "lastName",
-                        "fetch": [],
-                        "sysName": "lastName",
-                        "name": "Last name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "role",
-                        "fetch": [],
-                        "sysName": "role",
-                        "name": "Roles",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
+                        "link": "ui_versions"
                     }
                 ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "firstName",
-                        "fetch": [],
-                        "sysName": "firstName",
-                        "name": "First name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "Username (login)",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "lastName",
-                        "fetch": [],
-                        "sysName": "lastName",
-                        "name": "Last name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    }
-                ],
+                "writeFields": [],
                 "fields": {
-                    "code": {
-                        "id": "code",
-                        "content": "",
+                    "api_version": {
+                        "id": "api_version",
+                        "content": "API version",
                         "type": "field",
-                        "dataType": "string",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": null,
+                        "link": "api_versions",
                         "actions": []
                     },
-                    "date_registered": {
-                        "id": "date_registered",
-                        "content": "Date registered on Dev",
+                    "date": {
+                        "id": "date",
+                        "content": "Release date",
                         "type": "field",
                         "dataType": "date",
                         "format": "",
@@ -2884,7 +3834,7 @@ const App = (props) => {
                             "customOptionPlaceholder": "Describe your option",
                             "range": {},
                             "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
+                            "dateFormat": "D MMMM, Y",
                             "timeFormat": "",
                             "isUTC": "false"
                         },
@@ -2892,109 +3842,151 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "firstName": {
-                        "id": "firstName",
-                        "content": "First name",
+                    "feature_ids": {
+                        "id": "feature_ids",
+                        "content": "Features",
                         "type": "field",
-                        "dataType": "string",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": "",
+                        "link": "Features",
                         "actions": []
                     },
-                    "id": {
-                        "id": "id",
-                        "content": "Username (login)",
+                    "ui_version": {
+                        "id": "ui_version",
+                        "content": "UI version",
                         "type": "field",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "isEmailConfirmed": {
-                        "id": "isEmailConfirmed",
-                        "content": "Email confirmed",
-                        "type": "field",
-                        "dataType": "boolean",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "lastName": {
-                        "id": "lastName",
-                        "content": "Last name",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "role": {
-                        "id": "role",
-                        "content": "Roles",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
+                        "link": "ui_versions",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "code": {
+                    "api_version": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "firstName": {
+                    "date": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "id": {
+                    "feature_ids": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
-                        "clickable": false
+                        "clickable": true,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "description": {
+                                    "id": "description",
+                                    "content": "Feature description",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": "markdown",
+                                    "formatOptions": null
+                                },
+                                "dev_status": {
+                                    "id": "dev_status",
+                                    "content": "Development status",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "link",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "feature_id": {
+                                    "id": "feature_id",
+                                    "content": "Inner ID",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "feature_type": {
+                                    "id": "feature_type",
+                                    "content": "Feature type",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "link",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "title": {
+                                    "id": "title",
+                                    "content": "Feature title",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "votes": {
+                                    "id": "votes",
+                                    "content": "Number of upvotes",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "number",
+                                    "format": "positiveNum",
+                                    "formatOptions": null
+                                }
+                            },
+                            "fieldParams": {
+                                "description": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "dev_status": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "feature_id": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "feature_type": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "title": {
+                                    "include": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "votes": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "feature_id",
+                                "title",
+                                "description",
+                                "feature_type",
+                                "dev_status",
+                                "votes"
+                            ]
+                        },
+                        "subHeader": "Feature: "
                     },
-                    "isEmailConfirmed": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "lastName": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "role": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "date_registered": {
+                    "ui_version": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -3007,13 +3999,10 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "id",
-                            "role",
-                            "firstName",
-                            "lastName",
-                            "isEmailConfirmed",
-                            "code",
-                            "date_registered"
+                            "date",
+                            "feature_ids",
+                            "ui_version",
+                            "api_version"
                         ]
                     }
                 },
@@ -3023,49 +4012,127 @@ const App = (props) => {
                 "actions": []
             },
             "fields": {
-                "code": {
+                "api_version": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "firstName": {
+                "date": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "id": {
+                "feature_ids": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": false
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "description": {
+                                "id": "description",
+                                "content": "Feature description",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": "markdown",
+                                "formatOptions": null
+                            },
+                            "dev_status": {
+                                "id": "dev_status",
+                                "content": "Development status",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "feature_id": {
+                                "id": "feature_id",
+                                "content": "Inner ID",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "feature_type": {
+                                "id": "feature_type",
+                                "content": "Feature type",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "title": {
+                                "id": "title",
+                                "content": "Feature title",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "votes": {
+                                "id": "votes",
+                                "content": "Number of upvotes",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "number",
+                                "format": "positiveNum",
+                                "formatOptions": null
+                            }
+                        },
+                        "fieldParams": {
+                            "description": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "dev_status": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "feature_id": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "feature_type": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "title": {
+                                "include": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "votes": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "feature_id",
+                            "title",
+                            "description",
+                            "feature_type",
+                            "dev_status",
+                            "votes"
+                        ]
+                    },
+                    "subHeader": "Feature: "
                 },
-                "isEmailConfirmed": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "lastName": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "role": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "date_registered": {
+                "ui_version": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -3076,20 +4143,20 @@ const App = (props) => {
             "tableParams": {
                 "readFields": [
                     {
-                        "fieldSysName": "code",
+                        "fieldSysName": "api_version",
                         "fetch": [],
-                        "sysName": "code",
-                        "name": "",
-                        "dataType": "string",
+                        "sysName": "api_version",
+                        "name": "API version",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": "api_versions"
                     },
                     {
-                        "fieldSysName": "date_registered",
+                        "fieldSysName": "date",
                         "fetch": [],
-                        "sysName": "date_registered",
-                        "name": "Date registered on Dev",
+                        "sysName": "date",
+                        "name": "Release date",
                         "dataType": "date",
                         "format": "",
                         "formatOptions": {
@@ -3116,108 +4183,78 @@ const App = (props) => {
                             "customOptionPlaceholder": "Describe your option",
                             "range": {},
                             "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
+                            "dateFormat": "D MMMM, Y",
                             "timeFormat": "",
                             "isUTC": "false"
                         },
                         "link": ""
                     },
                     {
-                        "fieldSysName": "firstName",
-                        "fetch": [],
-                        "sysName": "firstName",
-                        "name": "First name",
-                        "dataType": "string",
+                        "fieldSysName": "feature_ids",
+                        "fetch": [
+                            {
+                                "fieldSysName": "description",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "dev_status",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "feature_id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "feature_type",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "title",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "votes",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "feature_ids",
+                        "name": "Features",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "link": ""
+                        "link": "Features"
                     },
                     {
-                        "fieldSysName": "id",
+                        "fieldSysName": "ui_version",
                         "fetch": [],
-                        "sysName": "id",
-                        "name": "Username (login)",
-                        "dataType": "id",
+                        "sysName": "ui_version",
+                        "name": "UI version",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "isEmailConfirmed",
-                        "fetch": [],
-                        "sysName": "isEmailConfirmed",
-                        "name": "Email confirmed",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "lastName",
-                        "fetch": [],
-                        "sysName": "lastName",
-                        "name": "Last name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "role",
-                        "fetch": [],
-                        "sysName": "role",
-                        "name": "Roles",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
+                        "link": "ui_versions"
                     }
                 ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "firstName",
-                        "fetch": [],
-                        "sysName": "firstName",
-                        "name": "First name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "Username (login)",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "lastName",
-                        "fetch": [],
-                        "sysName": "lastName",
-                        "name": "Last name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    }
-                ],
+                "writeFields": [],
                 "fields": {
-                    "code": {
-                        "id": "code",
-                        "content": "",
-                        "dataType": "string",
+                    "api_version": {
+                        "id": "api_version",
+                        "content": "API version",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": null
+                        "link": "api_versions"
                     },
-                    "date_registered": {
-                        "id": "date_registered",
-                        "content": "Date registered on Dev",
+                    "date": {
+                        "id": "date",
+                        "content": "Release date",
                         "dataType": "date",
                         "format": "",
                         "formatOptions": {
@@ -3244,126 +4281,78 @@ const App = (props) => {
                             "customOptionPlaceholder": "Describe your option",
                             "range": {},
                             "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
+                            "dateFormat": "D MMMM, Y",
                             "timeFormat": "",
                             "isUTC": "false"
                         },
                         "read": true,
                         "link": ""
                     },
-                    "firstName": {
-                        "id": "firstName",
-                        "content": "First name",
-                        "dataType": "string",
+                    "feature_ids": {
+                        "id": "feature_ids",
+                        "content": "Features",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": ""
+                        "link": "Features"
                     },
-                    "id": {
-                        "id": "id",
-                        "content": "Username (login)",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "isEmailConfirmed": {
-                        "id": "isEmailConfirmed",
-                        "content": "Email confirmed",
-                        "dataType": "boolean",
+                    "ui_version": {
+                        "id": "ui_version",
+                        "content": "UI version",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": ""
-                    },
-                    "lastName": {
-                        "id": "lastName",
-                        "content": "Last name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "role": {
-                        "id": "role",
-                        "content": "Roles",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
+                        "link": "ui_versions"
                     }
                 },
                 "fieldParams": {
-                    "code": {
+                    "api_version": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80
+                    },
+                    "date": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80
+                    },
+                    "feature_ids": {
                         "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80
                     },
-                    "firstName": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80
-                    },
-                    "id": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80
-                    },
-                    "isEmailConfirmed": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80
-                    },
-                    "lastName": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80
-                    },
-                    "role": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80
-                    },
-                    "date_registered": {
+                    "ui_version": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80
                     }
                 },
                 "fieldOrder": [
-                    "id",
-                    "firstName",
-                    "lastName",
-                    "isEmailConfirmed",
-                    "role",
-                    "code",
-                    "date_registered"
+                    "date",
+                    "api_version",
+                    "ui_version",
+                    "feature_ids"
                 ]
             }
         },
-        "tableTitle": "Users",
+        "tableTitle": "",
         "actions": null,
         "headers": [
             {
-                "sysName": "code",
-                "name": "",
-                "dataType": "string",
-                "id": "51351621027822811",
-                "link": null,
-                "group": "1621027815164",
+                "sysName": "api_version",
+                "dataType": "link",
+                "name": "API version",
+                "id": "87621621406247702",
+                "link": "api_versions",
+                "group": "0",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 0,
+                "order": 3,
                 "linkIndexFieldSysName": [],
                 "defaultValue": null,
                 "constraints": null,
@@ -3371,18 +4360,18 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "indexExists": false,
                 "json": false,
-                "typeVariable": {},
-                "indexExists": false
+                "typeVariable": {}
             },
             {
-                "sysName": "date_registered",
-                "name": "Date registered on Dev",
+                "sysName": "date",
                 "dataType": "date",
-                "id": "14451621029358812",
+                "name": "Release date",
+                "id": "56501621406213092",
                 "link": "",
                 "group": "0",
                 "tags": null,
@@ -3390,7 +4379,7 @@ const App = (props) => {
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 7,
+                "order": 1,
                 "linkIndexFieldSysName": [],
                 "defaultValue": null,
                 "constraints": null,
@@ -3420,85 +4409,31 @@ const App = (props) => {
                     "customOptionPlaceholder": "Describe your option",
                     "range": {},
                     "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
+                    "dateFormat": "D MMMM, Y",
                     "timeFormat": "",
                     "isUTC": "false"
                 },
                 "groupName": null,
+                "arrayLink": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
-                "arrayLink": false,
+                "indexExists": false,
                 "json": false,
-                "typeVariable": {},
-                "indexExists": false
+                "typeVariable": {}
             },
             {
-                "sysName": "firstName",
-                "name": "First name",
-                "dataType": "string",
-                "id": "4",
-                "link": "",
+                "sysName": "feature_ids",
+                "dataType": "arrayLink",
+                "name": "Features",
+                "id": "43571621406266791",
+                "link": "Features",
                 "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false
-            },
-            {
-                "sysName": "id",
-                "name": "Username (login)",
-                "dataType": "id",
-                "id": "12",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false
-            },
-            {
-                "sysName": "isEmailConfirmed",
-                "name": "Email confirmed",
-                "dataType": "boolean",
-                "id": "60111621027825496",
-                "link": "",
-                "group": "1621027815164",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 1,
+                "order": 4,
                 "linkIndexFieldSysName": [],
                 "defaultValue": null,
                 "constraints": null,
@@ -3506,99 +4441,119 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "linkOrArrayLinkType": false,
+                "arrayLink": true,
+                "linkOrArrayLinkType": true,
                 "linkType": false,
-                "arrayLink": false,
+                "indexExists": false,
                 "json": false,
-                "typeVariable": {},
-                "indexExists": false
+                "typeVariable": {}
             },
             {
-                "sysName": "lastName",
-                "name": "Last name",
-                "dataType": "string",
-                "id": "3",
-                "link": "",
+                "sysName": "ui_version",
+                "dataType": "link",
+                "name": "UI version",
+                "id": "64471621406232483",
+                "link": "ui_versions",
                 "group": "0",
-                "tags": "",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 4,
+                "order": 2,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": null,
                 "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "indexExists": false,
                 "json": false,
-                "typeVariable": {},
-                "indexExists": false
-            },
-            {
-                "sysName": "role",
-                "name": "Roles",
-                "dataType": "string",
-                "id": "5",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false
+                "typeVariable": {}
             }
         ],
         "data": [
             {
-                "role": "god,confirmed",
-                "code": "20497",
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "pavel@directual.com",
-                "isEmailConfirmed": true,
-                "date_registered": 1621040334000
+                "feature_ids": [
+                    {
+                        "description": "In web-pages",
+                        "feature_id": "PLT-130",
+                        "feature_type": "bug",
+                        "id": "199eb1d3-8a1f-4d8a-925e-85b065bfd4f7",
+                        "dev_status": "released",
+                        "title": "First name, Last name aren't saved in Sign Up form"
+                    },
+                    {
+                        "description": "`$D.json.fromXML()`\n\n[Link to the documentation](https://readme.directual.com/javascript-sdk/internal-usdd-methods#usdd-json-fromxml-converts-xml-to-json)",
+                        "feature_id": "PLT-131",
+                        "feature_type": "feature",
+                        "id": "9446bf33-24d5-4c1c-a2fc-35912b7fa352",
+                        "dev_status": "released",
+                        "title": "XML to JSON converting"
+                    },
+                    {
+                        "description": "Limits on synch processing are introduced.\nApp dashboard should display synch processing load:\n\n![dashboard](https://api.directual.com/fileUploaded/directual-site/48f3e223-a8ad-488f-8e11-54dd71ab95c1.png)",
+                        "feature_id": "PLT-141",
+                        "feature_type": "feature",
+                        "id": "5f51e93e-ad1e-4dd5-81ed-b9abd3699a06",
+                        "dev_status": "released",
+                        "title": "Display Synch processing load on Dashboard"
+                    }
+                ],
+                "date": 1621371600000,
+                "ui_version": "10.6.4",
+                "api_version": "10.6.11"
             },
             {
-                "role": "notConfirmed,god",
-                "firstName": "Nikita",
-                "id": "nikita@directual.com",
-                "isEmailConfirmed": false,
-                "date_registered": 1621356846000
-            },
-            {
-                "role": "confirmed",
-                "code": "0ba29",
-                "lastName": "Dolgov",
-                "firstName": "Nikita",
-                "id": "n.dolgov@directual.com",
-                "isEmailConfirmed": true,
-                "date_registered": 1621375669000
-            },
-            {
-                "isEmailConfirmed": false,
-                "date_registered": 1621376473000,
-                "role": "notConfirmed",
-                "id": "mxf@mail.ru"
+                "feature_ids": [
+                    {
+                        "description": "Add an option to turn ON and to turn OFF quick search",
+                        "feature_id": "PLT-125",
+                        "feature_type": "feature",
+                        "id": "735ff05a-9d5d-4eba-8da4-8e7b9fdbc4a3",
+                        "dev_status": "released",
+                        "title": "Optional Quick search field in Table, Cards"
+                    },
+                    {
+                        "description": "- Choose the field type of `colour` where the card colour is stored\n- Choose the way of colouring:\n\n   - None;\n   - Stripe on the left;\n   - Border;\n   - Fill.",
+                        "feature_id": "PLT-126",
+                        "feature_type": "feature",
+                        "id": "73b47d82-a716-4026-a259-e7f832bd421d",
+                        "dev_status": "released",
+                        "title": "Cards colouring"
+                    },
+                    {
+                        "description": "It should do nothing",
+                        "feature_id": "PLT-127",
+                        "feature_type": "bug",
+                        "id": "69ce0cbe-d381-4673-9d71-4492dc937a3f",
+                        "dev_status": "released",
+                        "title": "Empty Action creates empty object"
+                    },
+                    {
+                        "description": "Roles in Action conditionals can be used like `role1,role2`",
+                        "feature_id": "PLT-128",
+                        "feature_type": "feature",
+                        "id": "96bb4e22-78b1-4841-980a-ead7e4179307",
+                        "dev_status": "released",
+                        "title": "Conditional Actions for multiple roles"
+                    },
+                    {
+                        "description": "Portal settings → Appearance. \n\nYou can change font size for your app (text, h1, h2, h3).\n",
+                        "feature_id": "PLT-129",
+                        "feature_type": "feature",
+                        "id": "f0c72d92-6a6b-431c-81f0-e5e03f17c5e8",
+                        "dev_status": "released",
+                        "title": "Changing font sizes for app"
+                    }
+                ],
+                "date": 1621198800000,
+                "ui_version": "10.6.3",
+                "api_version": "10.5.7"
             }
         ],
         "totalPages": 1,
@@ -3606,67 +4561,71 @@ const App = (props) => {
         "error": null,
         "fieldScheme": [
             [
-                "code",
-                1385542
+                "api_version",
+                1386900
             ],
             [
-                "date_registered",
-                1385542
+                "date",
+                1386900
             ],
             [
-                "firstName",
-                1385542
+                "feature_ids.description",
+                1385610
             ],
             [
-                "id",
-                1385542
+                "feature_ids.dev_status",
+                1385610
             ],
             [
-                "isEmailConfirmed",
-                1385542
+                "feature_ids.feature_id",
+                1385610
             ],
             [
-                "lastName",
-                1385542
+                "feature_ids.feature_type",
+                1385610
             ],
             [
-                "role",
-                1385542
+                "feature_ids.title",
+                1385610
+            ],
+            [
+                "feature_ids.votes",
+                1385610
+            ],
+            [
+                "ui_version",
+                1386900
             ]
         ],
-        "writeFields": [
-            "firstName",
-            "id",
-            "lastName"
-        ],
+        "writeFields": [],
         "structures": {
-            "1385542": {
-                "id": 1385542,
-                "dateCreated": "2021-05-14T21:02:45Z",
+            "1385610": {
+                "networkID": 6829,
+                "sysName": "Features",
+                "name": "features",
+                "id": 1385610,
+                "dateCreated": "2021-05-12T15:06:56Z",
                 "hidden": false,
                 "dateHidden": null,
-                "networkID": 6829,
-                "name": "App users",
-                "sysName": "WebUser",
-                "jsonObject": "[{\"sysName\":\"isBlocked\",\"name\":\"Block user\",\"dataType\":\"boolean\",\"id\":\"1\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"dateCreated\",\"name\":\"dateCreated\",\"dataType\":\"string\",\"id\":\"10\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"password\",\"name\":\"Password (hash)\",\"dataType\":\"string\",\"id\":\"11\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"id\",\"name\":\"Username (login)\",\"dataType\":\"id\",\"id\":\"12\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"date_registered\",\"name\":\"Date registered on Dev\",\"dataType\":\"date\",\"id\":\"14451621029358812\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"gender\",\"name\":\"Gender\",\"dataType\":\"string\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"lastName\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"firstName\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"role\",\"name\":\"Roles\",\"dataType\":\"string\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"code\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"51351621027822811\",\"link\":null,\"group\":\"1621027815164\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"isAuthorization\",\"name\":\"isAuthorization\",\"dataType\":\"boolean\",\"id\":\"6\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"isEmailConfirmed\",\"name\":\"Email confirmed\",\"dataType\":\"boolean\",\"id\":\"60111621027825496\",\"link\":\"\",\"group\":\"1621027815164\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"dateLastActivity\",\"name\":\"dateLastActivity\",\"dataType\":\"string\",\"id\":\"7\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"email\",\"name\":\"Email\",\"dataType\":\"string\",\"id\":\"8\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"phone\",\"name\":\"Phone\",\"dataType\":\"string\",\"id\":\"9\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false}]",
-                "jsonGroupSettings": "[{\"id\":-502807437,\"name\":\"Contacts\",\"order\":0},{\"id\":-1776115286,\"name\":\"System fields\",\"order\":1},{\"id\":1621027815164,\"name\":\"Email confirmation\",\"order\":2}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
-                "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"votes_ids\",\"name\":\"Who upvoted\",\"dataType\":\"arrayLink\",\"id\":\"14001620832180875\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"feature_id\",\"name\":\"Inner ID\",\"dataType\":\"string\",\"id\":\"23601621342083348\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"subscriber_ids\",\"name\":\"Subscribers\",\"dataType\":\"arrayLink\",\"id\":\"26751621348189191\",\"link\":\"WebUser\",\"group\":\"1621348185318\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"status\",\"name\":\"Request status\",\"dataType\":\"link\",\"id\":\"40251620832303364\",\"link\":\"request_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"release_id\",\"name\":\"Release\",\"dataType\":\"link\",\"id\":\"40791621408746909\",\"link\":\"Releases\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"feature_type\",\"name\":\"Feature type\",\"dataType\":\"link\",\"id\":\"55371621030232780\",\"link\":\"feature_type\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"user_id\",\"name\":\"Who suggested\",\"dataType\":\"link\",\"id\":\"59421620832153105\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"color\",\"name\":\"Card color\",\"dataType\":\"string\",\"id\":\"61881621017200362\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"tags\",\"name\":\"Tags\",\"dataType\":\"arrayLink\",\"id\":\"67851621409605492\",\"link\":\"tags\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"votes\",\"name\":\"Number of upvotes\",\"dataType\":\"number\",\"id\":\"68061620832170304\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"date_added\",\"name\":\"Date added\",\"dataType\":\"date\",\"id\":\"68351620832123660\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"release_date\",\"name\":\"Release date\",\"dataType\":\"date\",\"id\":\"71651621345011532\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"decline_reason\",\"name\":\"Reason of decline\",\"dataType\":\"string\",\"id\":\"73671621342083940\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"description\",\"name\":\"Feature description\",\"dataType\":\"string\",\"id\":\"77031620832091108\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"title\",\"name\":\"Feature title\",\"dataType\":\"string\",\"id\":\"79031620832091734\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"dev_status\",\"name\":\"Development status\",\"dataType\":\"link\",\"id\":\"85621620832330584\",\"link\":\"development_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"Subscriptions\",\"id\":1621348185318,\"order\":0}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"feature_id\"},{\"sysName\":\"title\"}]",
+                "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-05-14T21:56:42Z",
-                "createBy": 0,
-                "changedBy": 21,
+                "dateChanged": "2021-05-19T07:33:37Z",
+                "createBy": 1,
+                "changedBy": 1,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "Username (login)",
                     "dataType": "id",
-                    "id": "12",
+                    "name": "id",
+                    "id": "0",
                     "link": "",
                     "group": "0",
                     "tags": "",
@@ -3682,21 +4641,72 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
+                    "arrayLink": false,
                     "linkOrArrayLinkType": false,
                     "linkType": false,
-                    "arrayLink": false,
+                    "indexExists": false,
                     "json": false,
-                    "typeVariable": {},
-                    "indexExists": false
+                    "typeVariable": {}
                 },
-                "folderId": null
+                "folderId": 33625685
+            },
+            "1386900": {
+                "networkID": 6829,
+                "sysName": "Releases",
+                "name": "Releases",
+                "id": 1386900,
+                "dateCreated": "2021-05-19T06:35:58Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"delete\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"35761621407098811\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"feature_ids\",\"name\":\"Features\",\"dataType\":\"arrayLink\",\"id\":\"43571621406266791\",\"link\":\"Features\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"date\",\"name\":\"Release date\",\"dataType\":\"date\",\"id\":\"56501621406213092\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"ui_version\",\"name\":\"UI version\",\"dataType\":\"link\",\"id\":\"64471621406232483\",\"link\":\"ui_versions\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"api_version\",\"name\":\"API version\",\"dataType\":\"link\",\"id\":\"87621621406247702\",\"link\":\"api_versions\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"date\"},{\"sysName\":\"api_version\"},{\"sysName\":\"ui_version\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-05-19T07:23:54Z",
+                "createBy": 1,
+                "changedBy": 1,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "arrayLink": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "indexExists": false,
+                    "json": false,
+                    "typeVariable": {}
+                },
+                "folderId": 33626586
             }
         },
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
         "fileds": null,
-        "quickSearch": "true"
+        "quickSearch": "false"
     }
 
 

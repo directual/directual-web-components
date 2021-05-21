@@ -149,6 +149,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
                             object={showObject}
                             submit={submit}
                             auth={auth}
+                            firstCard
                             checkActionCond={checkActionCond}
                             //shareble
                             executeAction={submitAction}

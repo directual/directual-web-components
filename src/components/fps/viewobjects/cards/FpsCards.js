@@ -162,6 +162,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
                             auth={auth}
                             checkActionCond={checkActionCond}
                             //shareble
+                            firstCard
                             executeAction={submitAction}
                             params={data.params}
                             loading={loading}

@@ -162,10 +162,16 @@ export function ObjectCard(props) {
         // console.log('obj')
         // console.log(obj)
         const structure = getStructure(obj, transformTableFieldScheme(sysname, props.tableFieldScheme), props.tableStructures)
-        const linkNameArr = [] 
-        structure.visibleName && structure.visibleName.forEach(field => { 
-            if(obj[field])  {
-                linkNameArr.push(obj[field])
+        console.log(structure)
+        const linkNameArr = []
+        structure.visibleName && structure.visibleName.forEach(field => {
+            const fieldDetails = structure.fieldStructure.filter(i => i.sysName == field)[0]
+            if (obj[field]) {
+                if (fieldDetails.dataType == 'date') {
+                    linkNameArr.push(formatDate(obj[field], fieldDetails.formatOptions))
+                } else {
+                    linkNameArr.push(obj[field])
+                }
             }
         })
         const linkName = linkNameArr.length > 0 ? linkNameArr.join(' ') : null
@@ -372,7 +378,7 @@ export function ObjectCard(props) {
             }
             <div className={styles.objectCardHeader}>
                 <div onClick={props.onClose}
-                    className={`${styles.closeObjectCard} icon icon-back ${showLinkedObject && styles.hidden}`}></div>
+                    className={`${styles.closeObjectCard} icon ${props.firstCard ? 'icon-close' : 'icon-back'} ${showLinkedObject && styles.hidden}`}></div>
                 <h2 className={`${props.shareble && styles.narrowH2}`}>{props.params && props.params.data && props.params.data.subHeader}
                     {cardHeader}
                 </h2>
@@ -691,9 +697,9 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
 
     const [edit, setEdit] = useState(false)
 
-    console.log('Field  Link')
-    console.log(field)
-    console.log(object[field.sysName].value)
+    // console.log('Field  Link')
+    // console.log(field)
+    // console.log(object[field.sysName].value)
     // if (!object[field.sysName].value || object[field.sysName].value.length == 0) {
     //     return <React.Fragment>
 
@@ -892,8 +898,8 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
                             // console.log(!actionData.formMapping);
                             // console.log(!actionData.formMapping && actionData.displayAs == 'button');
 
-                            (((!actionData.formMapping || actionData.formMapping.length == 0) && actionData.displayAs == 'button') || 
-                            ((!actionData.formData || actionData.formData.length == 0) && actionData.displayAs == 'form')) ?
+                            (((!actionData.formMapping || actionData.formMapping.length == 0) && actionData.displayAs == 'button') ||
+                                ((!actionData.formData || actionData.formData.length == 0) && actionData.displayAs == 'form')) ?
                                 noActionData()
                                 :
                                 submitAction(actionData)
