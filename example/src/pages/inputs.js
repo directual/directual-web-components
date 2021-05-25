@@ -144,6 +144,12 @@ export default function InputsPage() {
         <React.Fragment>
             <h1>Data entry</h1>
 
+            <h2>File upload</h2>
+            <br />
+            <FileUpload />
+
+            <br />
+
             <Input type='multiselect' 
             defaultValue={['id','хуе-мое']}
             options ={[
@@ -452,15 +458,6 @@ options={
                 height={350}
                 margin={{ top: 0, bottom: 18 }} />
             <Markdown example margin={{ top: 0, bottom: 18 }} />
-
-
-            <h2>File upload</h2>
-            <br />
-            <FileUpload />
-
-
-
-
 
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Range sliders</h2>
             <CodeSnippet code=

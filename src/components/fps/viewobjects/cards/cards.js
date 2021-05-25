@@ -186,7 +186,8 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                             ).join(' ')
                             : '')
 
-                    cardHeader = (cardHeader == ' '
+                    cardHeader = (cardHeader == ''
+                        || cardHeader == ' '
                         || cardHeader == '  '
                         || cardHeader == '   '
                         || cardHeader == '    '

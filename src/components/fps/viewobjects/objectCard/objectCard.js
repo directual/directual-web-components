@@ -358,7 +358,8 @@ export function ObjectCard(props) {
         :
         (object.id || 'No visible name')
 
-    cardHeader = (cardHeader == ' '
+    cardHeader = (cardHeader == '' 
+        || cardHeader == ' '
         || cardHeader == '  '
         || cardHeader == '   '
         || cardHeader == '    '
