@@ -171,6 +171,38 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                         return formattedDate
                     }
 
+                    const formatJson = (value, formatOptions) => {
+                        const jsonParse = def => {
+                            try {
+                                return JSON.parse(def)
+                            } catch (e) {
+                                console.log(e);
+                                return def
+                            }
+                        }
+
+
+                        // Range слайдер пока не прикрутил, см условие на .secondValue
+                        if (!value || !formatOptions.range || jsonParse(value).secondValue) { return }
+                        console.log('SLIDER')
+                        console.log(value)
+                        console.log(formatOptions)
+                        console.log(jsonParse(value))
+
+                        const progress = jsonParse(value) ? 
+                            100 * jsonParse(value).firstValue / (formatOptions.range.max - formatOptions.range.min) 
+                             : 0
+                        console.log(progress)
+
+                        return <div className={styles.cardsSlider}>
+                            <div className={styles.line}>
+                                <div className={styles.fill} 
+                                    style={{width:`${progress || '0'}%`}}
+                                />
+                            </div>
+                        </div>
+                    }
+
                     // в этой хуете мы подтягиваем для Заголовка, Подзаголовка и Текста карточки visible name если поле типа link/arrayLink
                     let cardHeader = getInitialStructureParams().viewName && getInitialStructureParams().viewName &&
                         (getInitialStructureParams().viewName.length > 0 ?
@@ -216,7 +248,11 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                         : (tableHeaders.filter(h => h.sysName == tableParams.cardBodyText)[0] &&
                             tableHeaders.filter(h => h.sysName == tableParams.cardBodyText)[0].dataType == 'date') ?
                             formatDate(row[tableParams.cardBodyText], tableHeaders.filter(h => h.sysName == tableParams.cardBodyText)[0].formatOptions) :
-                            row[tableParams.cardBodyText]
+                            (tableHeaders.filter(h => h.sysName == tableParams.cardBodyText)[0] &&
+                                tableHeaders.filter(h => h.sysName == tableParams.cardBodyText)[0].dataType == 'json') ?
+                                formatJson(row[tableParams.cardBodyText], tableHeaders.filter(h => h.sysName == tableParams.cardBodyText)[0].formatOptions)
+                                :
+                                row[tableParams.cardBodyText]
                     )
                     // ==================================
 

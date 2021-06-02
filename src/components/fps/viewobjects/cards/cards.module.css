@@ -259,6 +259,7 @@
 }
 .card .cardInnerWrapper .cardText .cardBodyText {
   margin-top: 12px;
+  width: 100%;
 }
 .card .cardInnerWrapper .cardText .headerArray {
   display: flex;
@@ -311,4 +312,27 @@
 }
 .mobile .leftCircle .cardImage {
   margin: 8px 0 8px 8px !important;
+}
+.cardsSlider {
+  display: flex;
+  height: 4px;
+  padding: 8px 0;
+  width: 100%;
+}
+.cardsSlider .line {
+  background: var(--table-border-color);
+  height: 4px;
+  width: 100%;
+  border-radius: 6px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+}
+.cardsSlider .line .fill {
+  border-radius: 6px;
+  height: 4px;
+  background: var(--accent-color);
+  position: absolute;
+  z-index: 2;
 }

@@ -253,7 +253,7 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
                 description={field.descriptionFlag && field.description}
                 defaultValue={(defaultValue && parseJson(defaultValue)) || ((field.defaultValueOn && field.defaultValue) ? { firstValue: field.defaultValue.firstValue } :
                     {
-                        firstValue: Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 0.3 + field.formatOptions.range.min)
+                        firstValue: Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 0 + field.formatOptions.range.min)
                     })
                 }
                 min={field.formatOptions.range && field.formatOptions.range.min}
@@ -275,8 +275,8 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
                 description={field.descriptionFlag && field.description}
                 defaultValue={(defaultValue && parseJson(defaultValue)) || ((field.defaultValueOn && field.defaultValue) ? field.defaultValue :
                     {
-                        firstValue: Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 0.3 + field.formatOptions.range.min),
-                        secondValue: Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 0.6 + field.formatOptions.range.min)
+                        firstValue: Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 0 + field.formatOptions.range.min),
+                        secondValue: Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 1 + field.formatOptions.range.min)
                     })
                 }
                 min={field.formatOptions.range && field.formatOptions.range.min}
