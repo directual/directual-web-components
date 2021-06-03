@@ -183,7 +183,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
 
 
                         // Range слайдер пока не прикрутил, см условие на .secondValue
-                        if (!value || !formatOptions.range || jsonParse(value).secondValue) { return }
+                        if (!formatOptions.range || jsonParse(value).secondValue) { return }
                         console.log('SLIDER')
                         console.log(value)
                         console.log(formatOptions)
@@ -200,6 +200,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                     style={{width:`${progress || '0'}%`}}
                                 />
                             </div>
+                            <div className={styles.sliderValue}>{jsonParse(value).firstValue || '0'}{formatOptions.unitName}</div>
                         </div>
                     }
 
