@@ -309,7 +309,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                                             <span className={`${styles.counter} ${(!quickActions || quickActions.length == 0) ? styles.moveCounter : ''}`} title={`${row[tableParams.counterField]} ${tableParams.counterText}`}>
                                                 {row[tableParams.counterField]}</span> : ''}
                                     </h3>
-                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginRight:-12 }}>
                                         {cardHeaderComment && (
                                             // если Array, то это у нас либо список labels, либо arrayLink
                                             // также чекаем на то, что это link/arrayLink, тогда добавляем классом linkText рамочку
