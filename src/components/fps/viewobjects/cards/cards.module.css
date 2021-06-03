@@ -261,6 +261,9 @@
   margin-top: 12px;
   width: 100%;
 }
+.card .cardInnerWrapper .cardText .cardBodyText.linkText {
+  width: auto;
+}
 .card .cardInnerWrapper .cardText .headerArray {
   display: flex;
   flex-wrap: wrap;

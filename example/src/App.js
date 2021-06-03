@@ -80,8 +80,8 @@ const App = (props) => {
     }
 
     let cardActions = {
-        "sl": "manageFeatures",
-        "pageSize": "16",
+        "sl": "RM_approvedFeatures",
+        "pageSize": "10",
         "headerField": null,
         "params": {
             "data": {
@@ -97,10 +97,10 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "date_added",
+                        "fieldSysName": "date_requested",
                         "fetch": [],
-                        "sysName": "date_added",
-                        "name": "Date added",
+                        "sysName": "date_requested",
+                        "name": "Date requested",
                         "dataType": "date",
                         "format": "",
                         "formatOptions": {
@@ -127,62 +127,52 @@ const App = (props) => {
                             "customOptionPlaceholder": "Describe your option",
                             "range": {},
                             "customOptionType": "textarea",
-                            "dateFormat": "D MMMM, Y",
+                            "dateFormat": "DD/MM/Y",
                             "timeFormat": "",
                             "isUTC": "false"
                         },
                         "link": ""
                     },
                     {
+                        "fieldSysName": "decline_reason",
+                        "fetch": [],
+                        "sysName": "decline_reason",
+                        "name": "Decline reason",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
                         "fieldSysName": "description",
                         "fetch": [],
                         "sysName": "description",
-                        "name": "Feature description",
+                        "name": "Description",
                         "dataType": "string",
                         "format": "markdown",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "dev_status",
+                        "fieldSysName": "development_status",
                         "fetch": [
                             {
-                                "fieldSysName": "id",
+                                "fieldSysName": "@who",
                                 "condition": null,
                                 "fetch": []
                             },
                             {
-                                "fieldSysName": "status",
+                                "fieldSysName": "id",
                                 "condition": null,
                                 "fetch": []
                             }
                         ],
-                        "sysName": "dev_status",
+                        "sysName": "development_status",
                         "name": "Development status",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "development_status"
-                    },
-                    {
-                        "fieldSysName": "feature_id",
-                        "fetch": [],
-                        "sysName": "feature_id",
-                        "name": "Inner ID",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "feature_type",
-                        "fetch": [],
-                        "sysName": "feature_type",
-                        "name": "Feature type",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "feature_type"
+                        "link": "dev_statuses"
                     },
                     {
                         "fieldSysName": "id",
@@ -195,93 +185,24 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "progress",
+                        "fieldSysName": "inner_id",
                         "fetch": [],
-                        "sysName": "progress",
-                        "name": "Progress",
-                        "dataType": "json",
-                        "format": "slider",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "unitName": "%",
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {
-                                "min": 0,
-                                "max": 100,
-                                "step": 5
-                            },
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
+                        "sysName": "inner_id",
+                        "name": "Inner ID",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "status",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "status",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "status",
+                        "fieldSysName": "request_status",
+                        "fetch": [],
+                        "sysName": "request_status",
                         "name": "Request status",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "request_status"
-                    },
-                    {
-                        "fieldSysName": "subscriber_ids",
-                        "fetch": [
-                            {
-                                "fieldSysName": "firstName",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "lastName",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "subscriber_ids",
-                        "name": "Subscribers",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "WebUser"
+                        "link": "req_statuses"
                     },
                     {
                         "fieldSysName": "tags",
@@ -297,11 +218,21 @@ const App = (props) => {
                         "fieldSysName": "title",
                         "fetch": [],
                         "sysName": "title",
-                        "name": "Feature title",
+                        "name": "Title",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "type",
+                        "fetch": [],
+                        "sysName": "type",
+                        "name": "Type",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "type"
                     },
                     {
                         "fieldSysName": "user_id",
@@ -323,49 +254,8 @@ const App = (props) => {
                             }
                         ],
                         "sysName": "user_id",
-                        "name": "Who suggested",
+                        "name": "Who requested",
                         "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "WebUser"
-                    },
-                    {
-                        "fieldSysName": "votes",
-                        "fetch": [],
-                        "sysName": "votes",
-                        "name": "Number of upvotes",
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "votes_ids",
-                        "fetch": [
-                            {
-                                "fieldSysName": "firstName",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "lastName",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "user_name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "votes_ids",
-                        "name": "Who upvoted",
-                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
                         "link": "WebUser"
@@ -373,44 +263,14 @@ const App = (props) => {
                 ],
                 "writeFields": [
                     {
-                        "fieldSysName": "color",
-                        "fetch": [],
-                        "sysName": "color",
-                        "name": "Card color",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
                         "fieldSysName": "description",
                         "fetch": [],
                         "sysName": "description",
-                        "name": "Feature description",
+                        "name": "Description",
                         "dataType": "string",
                         "format": "markdown",
                         "formatOptions": {},
                         "link": ""
-                    },
-                    {
-                        "fieldSysName": "dev_status",
-                        "fetch": [],
-                        "sysName": "dev_status",
-                        "name": "Development status",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "development_status"
-                    },
-                    {
-                        "fieldSysName": "feature_type",
-                        "fetch": [],
-                        "sysName": "feature_type",
-                        "name": "Feature type",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "feature_type"
                     },
                     {
                         "fieldSysName": "id",
@@ -421,58 +281,6 @@ const App = (props) => {
                         "format": "",
                         "formatOptions": {},
                         "link": ""
-                    },
-                    {
-                        "fieldSysName": "progress",
-                        "fetch": [],
-                        "sysName": "progress",
-                        "name": "Progress",
-                        "dataType": "json",
-                        "format": "slider",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "unitName": "%",
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {
-                                "min": 0,
-                                "max": 100,
-                                "step": 5
-                            },
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "status",
-                        "fetch": [],
-                        "sysName": "status",
-                        "name": "Request status",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "request_status"
                     },
                     {
                         "fieldSysName": "tags",
@@ -488,11 +296,21 @@ const App = (props) => {
                         "fieldSysName": "title",
                         "fetch": [],
                         "sysName": "title",
-                        "name": "Feature title",
+                        "name": "Title",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "type",
+                        "fetch": [],
+                        "sysName": "type",
+                        "name": "Type",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "type"
                     }
                 ],
                 "fields": {
@@ -503,14 +321,13 @@ const App = (props) => {
                         "dataType": "string",
                         "format": "color",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "date_added": {
-                        "id": "date_added",
-                        "content": "Date added",
+                    "date_requested": {
+                        "id": "date_requested",
+                        "content": "Date requested",
                         "type": "field",
                         "dataType": "date",
                         "format": "",
@@ -538,7 +355,7 @@ const App = (props) => {
                             "customOptionPlaceholder": "Describe your option",
                             "range": {},
                             "customOptionType": "textarea",
-                            "dateFormat": "D MMMM, Y",
+                            "dateFormat": "DD/MM/Y",
                             "timeFormat": "",
                             "isUTC": "false"
                         },
@@ -546,9 +363,20 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
+                    "decline_reason": {
+                        "id": "decline_reason",
+                        "content": "Decline reason",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
                     "description": {
                         "id": "description",
-                        "content": "Feature description",
+                        "content": "Description",
                         "type": "field",
                         "dataType": "string",
                         "format": "markdown",
@@ -558,39 +386,15 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "dev_status": {
-                        "id": "dev_status",
+                    "development_status": {
+                        "id": "development_status",
                         "content": "Development status",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": "development_status",
-                        "actions": []
-                    },
-                    "feature_id": {
-                        "id": "feature_id",
-                        "content": "Inner ID",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "feature_type": {
-                        "id": "feature_type",
-                        "content": "Feature type",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "feature_type",
+                        "link": "dev_statuses",
                         "actions": []
                     },
                     "id": {
@@ -605,71 +409,26 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "progress": {
-                        "id": "progress",
-                        "content": "Progress",
+                    "inner_id": {
+                        "id": "inner_id",
+                        "content": "Inner ID",
                         "type": "field",
-                        "dataType": "json",
-                        "format": "slider",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "unitName": "%",
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {
-                                "min": 0,
-                                "max": 100,
-                                "step": 5
-                            },
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "write": true,
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "status": {
-                        "id": "status",
+                    "request_status": {
+                        "id": "request_status",
                         "content": "Request status",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": "request_status",
-                        "actions": []
-                    },
-                    "subscriber_ids": {
-                        "id": "subscriber_ids",
-                        "content": "Subscribers",
-                        "type": "field",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "WebUser",
+                        "link": "req_statuses",
                         "actions": []
                     },
                     "tags": {
@@ -686,19 +445,31 @@ const App = (props) => {
                     },
                     "title": {
                         "id": "title",
-                        "content": "Feature title",
+                        "content": "Title",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
                         "read": true,
-                        "link": null,
+                        "link": "",
+                        "actions": []
+                    },
+                    "type": {
+                        "id": "type",
+                        "content": "Type",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "type",
                         "actions": []
                     },
                     "user_id": {
                         "id": "user_id",
-                        "content": "Who suggested",
+                        "content": "Who requested",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
@@ -707,43 +478,27 @@ const App = (props) => {
                         "link": "WebUser",
                         "actions": []
                     },
-                    "votes": {
-                        "id": "votes",
-                        "content": "Number of upvotes",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "votes_ids": {
-                        "id": "votes_ids",
-                        "content": "Who upvoted",
-                        "type": "field",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "WebUser",
-                        "actions": []
-                    },
-                    "action__10531621343955723": {
-                        "content": "Pick for development",
-                        "id": "action__10531621343955723",
+                    "action__81241621944821168": {
+                        "content": "Back to backlog",
+                        "id": "action__81241621944821168",
                         "type": "action",
                         "actions": []
                     },
-                    "action__37201621343964714": {
-                        "content": "Put back to backlog",
-                        "id": "action__37201621343964714",
+                    "action__77251621952156197": {
+                        "id": "action__77251621952156197",
+                        "content": "Choose for development",
                         "type": "action",
                         "actions": []
                     },
-                    "action__14851621345231893": {
-                        "content": "Release!",
-                        "id": "action__14851621345231893",
+                    "action__70761621952274143": {
+                        "id": "action__70761621952274143",
+                        "content": "Remove from \"under development\"",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__56711621952385019": {
+                        "id": "action__56711621952385019",
+                        "content": "Release",
                         "type": "action",
                         "actions": []
                     }
@@ -756,7 +511,14 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "date_added": {
+                    "date_requested": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "decline_reason": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -770,10 +532,10 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "dev_status": {
+                    "development_status": {
                         "include": true,
                         "fileImageFormat": "square",
-                        "quickSearch": true,
+                        "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
@@ -784,94 +546,14 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "status": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "title": {
+                    "inner_id": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "user_id": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "votes": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "votes_ids": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "configureLinkedCard": {
-                            "fields": {
-                                "id": {
-                                    "id": "id",
-                                    "content": "id",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "id",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "user_name": {
-                                    "id": "user_name",
-                                    "content": "User name",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "string",
-                                    "format": null,
-                                    "formatOptions": null
-                                }
-                            },
-                            "fieldParams": {
-                                "id": {
-                                    "include": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "user_name": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                }
-                            },
-                            "fieldOrder": [
-                                "id",
-                                "user_name"
-                            ]
-                        }
-                    },
-                    "feature_type": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "feature_id": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "subscriber_ids": {
+                    "request_status": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -885,7 +567,21 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "progress": {
+                    "title": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "type": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "user_id": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -896,140 +592,121 @@ const App = (props) => {
                 "columns": {
                     "tab-1": {
                         "id": "tab-1",
-                        "title": "Feature",
+                        "title": "New section",
                         "fieldIds": [
-                            "feature_id",
-                            "progress",
-                            "user_id",
-                            "date_added",
-                            "feature_type",
+                            "color",
+                            "inner_id",
+                            "type",
                             "title",
                             "description",
-                            "status",
-                            "dev_status",
-                            "color",
+                            "date_requested",
+                            "decline_reason",
+                            "development_status",
                             "id",
-                            "tags"
+                            "request_status",
+                            "tags",
+                            "user_id"
                         ]
                     },
-                    "82431621030139706": {
-                        "id": "82431621030139706",
-                        "title": "Votes",
+                    "98611622407516319": {
+                        "id": "98611622407516319",
+                        "title": "Request management",
                         "fieldIds": [
-                            "subscriber_ids",
-                            "votes_ids",
-                            "votes"
-                        ]
-                    },
-                    "29571621344123729": {
-                        "id": "29571621344123729",
-                        "title": "Manage",
-                        "fieldIds": [
-                            "action__10531621343955723",
-                            "action__14851621345231893",
-                            "action__37201621343964714"
+                            "action__77251621952156197",
+                            "action__81241621944821168",
+                            "action__70761621952274143",
+                            "action__56711621952385019"
                         ]
                     }
                 },
                 "columnOrder": [
                     "tab-1",
-                    "82431621030139706",
-                    "29571621344123729"
+                    "98611622407516319"
                 ],
                 "actions": [
                     {
-                        "sysName": "",
-                        "id": "10531621343955723",
-                        "name": "Pick for development",
-                        "displayAs": "button",
-                        "buttonIcon": "arrowRight",
-                        "buttonType": "accent",
-                        "formMapping": [
-                            {
-                                "id": "13041621344021008",
-                                "target": "id",
-                                "type": "objectField",
-                                "value": "id"
-                            },
-                            {
-                                "id": "30131621344029217",
-                                "target": "dev_status",
-                                "type": "const",
-                                "value": "under_development"
-                            }
-                        ],
-                        "conditionals": [
-                            {
-                                "id": "40471621344079447",
-                                "target": "field",
-                                "value": "planned",
-                                "field": "dev_status"
-                            }
-                        ],
-                        "dropdown": true,
-                        "closePopup": true
-                    },
-                    {
-                        "sysName": "",
-                        "id": "37201621343964714",
-                        "name": "Put back to backlog",
+                        "sysName": "moveFeatures",
+                        "id": "81241621944821168",
+                        "name": "Back to backlog",
                         "displayAs": "button",
                         "buttonIcon": "arrowLeft",
-                        "buttonType": "accent",
                         "dropdown": true,
                         "closePopup": true,
+                        "SLtype": "other",
+                        "fields": {
+                            "readFields": [
+                                {
+                                    "fieldSysName": "id",
+                                    "fetch": [],
+                                    "sysName": "id",
+                                    "name": "id",
+                                    "dataType": "id",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                }
+                            ],
+                            "writeFields": [
+                                {
+                                    "fieldSysName": "decline_reason",
+                                    "fetch": [],
+                                    "sysName": "decline_reason",
+                                    "name": "Decline reason",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "development_status",
+                                    "fetch": [],
+                                    "sysName": "development_status",
+                                    "name": "Development status",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "dev_statuses"
+                                },
+                                {
+                                    "fieldSysName": "id",
+                                    "fetch": [],
+                                    "sysName": "id",
+                                    "name": "id",
+                                    "dataType": "id",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "request_status",
+                                    "fetch": [],
+                                    "sysName": "request_status",
+                                    "name": "Request status",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "req_statuses"
+                                }
+                            ]
+                        },
                         "formMapping": [
                             {
-                                "id": "37871621344159914",
+                                "id": "23701621944847999",
                                 "target": "id",
                                 "type": "objectField",
                                 "value": "id"
                             },
                             {
-                                "id": "69381621344160975",
-                                "target": "dev_status",
+                                "id": "54531621944854547",
+                                "target": "development_status",
                                 "type": "const",
-                                "value": "planned"
-                            }
-                        ],
-                        "conditionals": [
-                            {
-                                "id": "75151621344162098",
-                                "target": "field",
-                                "value": "under_development",
-                                "field": "dev_status"
-                            }
-                        ]
-                    },
-                    {
-                        "sysName": "",
-                        "id": "14851621345231893",
-                        "name": "Release!",
-                        "displayAs": "button",
-                        "buttonIcon": "rocket",
-                        "buttonType": "accent",
-                        "dropdown": true,
-                        "closePopup": true,
-                        "formMapping": [
-                            {
-                                "id": "24921621345250090",
-                                "target": "id",
-                                "type": "objectField",
-                                "value": "id"
+                                "value": null
                             },
                             {
-                                "id": "38651621345261152",
-                                "target": "dev_status",
+                                "id": "28081621944859946",
+                                "target": "request_status",
                                 "type": "const",
-                                "value": "released"
-                            }
-                        ],
-                        "conditionals": [
-                            {
-                                "id": "78811621345270074",
-                                "target": "field",
-                                "value": "under_development",
-                                "field": "dev_status"
+                                "value": "new"
                             }
                         ]
                     }
@@ -1043,7 +720,14 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "date_added": {
+                "date_requested": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "decline_reason": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -1057,26 +741,12 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "dev_status": {
+                "development_status": {
                     "include": true,
                     "fileImageFormat": "square",
-                    "quickSearch": true,
+                    "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": false,
-                    "searchData": [
-                        {
-                            "key": "planned",
-                            "value": "Planned"
-                        },
-                        {
-                            "key": "under_development",
-                            "value": "Under development"
-                        },
-                        {
-                            "key": "released",
-                            "value": "Released"
-                        }
-                    ]
+                    "clickable": false
                 },
                 "id": {
                     "include": false,
@@ -1085,122 +755,14 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "status": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "searchData": [
-                        {
-                            "key": "new",
-                            "value": "New"
-                        },
-                        {
-                            "key": "approved",
-                            "value": "Approved"
-                        },
-                        {
-                            "key": "declined",
-                            "value": "Declined"
-                        },
-                        {
-                            "key": "double",
-                            "value": "Double"
-                        }
-                    ]
-                },
-                "title": {
+                "inner_id": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "user_id": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "votes": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "votes_ids": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "configureLinkedCard": {
-                        "fields": {
-                            "id": {
-                                "id": "id",
-                                "content": "id",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "id",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "user_name": {
-                                "id": "user_name",
-                                "content": "User name",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "string",
-                                "format": null,
-                                "formatOptions": null
-                            }
-                        },
-                        "fieldParams": {
-                            "id": {
-                                "include": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "user_name": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            }
-                        },
-                        "fieldOrder": [
-                            "id",
-                            "user_name"
-                        ]
-                    }
-                },
-                "feature_type": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "searchData": [
-                        {
-                            "key": "bug",
-                            "value": "bug"
-                        },
-                        {
-                            "key": "feature",
-                            "value": "feature"
-                        }
-                    ]
-                },
-                "feature_id": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "subscriber_ids": {
+                "request_status": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -1215,44 +777,34 @@ const App = (props) => {
                     "clickable": false,
                     "searchData": [
                         {
-                            "key": "scenarios",
-                            "value": "scenarios"
-                        },
-                        {
-                            "key": "api-builder",
-                            "value": "api-builder"
-                        },
-                        {
-                            "key": "web-pages",
-                            "value": "web-pages"
+                            "key": "design",
+                            "value": "design"
                         },
                         {
                             "key": "integrations",
                             "value": "integrations"
                         },
                         {
-                            "key": "database",
-                            "value": "database"
-                        },
-                        {
-                            "key": "billing",
-                            "value": "billing"
-                        },
-                        {
-                            "key": "app life cycle management",
-                            "value": "app life cycle management"
-                        },
-                        {
-                            "key": "reports",
-                            "value": "reports"
-                        },
-                        {
-                            "key": "general issues",
-                            "value": "general issues"
+                            "key": "product",
+                            "value": "product"
                         }
                     ]
                 },
-                "progress": {
+                "title": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "type": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "user_id": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -1260,160 +812,422 @@ const App = (props) => {
                     "clickable": false
                 }
             },
-            "cardColor": "color",
-            "cardColorOption": "border",
             "cardHeaderComment": "tags",
-            "cardBodyText": "progress",
-            "showCounter": true,
-            "counterField": "votes",
-            "counterText": " upvotes",
+            "cardBodyText": "development_status",
             "actions": [
                 {
-                    "sysName": "",
-                    "id": "10531621343955723",
-                    "name": "Pick for development",
+                    "sysName": "moveFeatures",
+                    "id": "81241621944821168",
+                    "name": "Back to backlog",
                     "displayAs": "button",
-                    "buttonIcon": "arrowRight",
-                    "buttonType": "accent",
+                    "buttonIcon": "ban",
+                    "dropdown": true,
+                    "closePopup": true,
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "decline_reason",
+                                "fetch": [],
+                                "sysName": "decline_reason",
+                                "name": "Decline reason",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "development_status",
+                                "fetch": [],
+                                "sysName": "development_status",
+                                "name": "Development status",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "dev_statuses"
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "request_status",
+                                "fetch": [],
+                                "sysName": "request_status",
+                                "name": "Request status",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "req_statuses"
+                            }
+                        ]
+                    },
                     "formMapping": [
                         {
-                            "id": "13041621344021008",
+                            "id": "23701621944847999",
                             "target": "id",
                             "type": "objectField",
                             "value": "id"
                         },
                         {
-                            "id": "30131621344029217",
-                            "target": "dev_status",
+                            "id": "54531621944854547",
+                            "target": "development_status",
+                            "type": "const",
+                            "value": null
+                        },
+                        {
+                            "id": "28081621944859946",
+                            "target": "request_status",
+                            "type": "const",
+                            "value": "new"
+                        }
+                    ],
+                    "conditionals": [
+                        {
+                            "id": "21051621952251621",
+                            "target": "field",
+                            "value": "planned",
+                            "field": "development_status",
+                            "fieldValue": "planned"
+                        }
+                    ]
+                },
+                {
+                    "sysName": "moveFeatures",
+                    "id": "77251621952156197",
+                    "name": "Choose for development",
+                    "displayAs": "button",
+                    "buttonIcon": "done",
+                    "buttonType": "accent",
+                    "dropdown": true,
+                    "closePopup": true,
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "decline_reason",
+                                "fetch": [],
+                                "sysName": "decline_reason",
+                                "name": "Decline reason",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "development_status",
+                                "fetch": [],
+                                "sysName": "development_status",
+                                "name": "Development status",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "dev_statuses"
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "request_status",
+                                "fetch": [],
+                                "sysName": "request_status",
+                                "name": "Request status",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "req_statuses"
+                            }
+                        ]
+                    },
+                    "formMapping": [
+                        {
+                            "id": "53711621952179881",
+                            "target": "id",
+                            "type": "objectField",
+                            "value": "id"
+                        },
+                        {
+                            "id": "20431621952186987",
+                            "target": "development_status",
                             "type": "const",
                             "value": "under_development"
                         }
                     ],
                     "conditionals": [
                         {
-                            "id": "40471621344079447",
+                            "id": "75451621952205497",
                             "target": "field",
                             "value": "planned",
-                            "field": "dev_status",
+                            "field": "development_status",
                             "fieldValue": "planned"
                         }
-                    ],
-                    "dropdown": true,
-                    "closePopup": true
+                    ]
                 },
                 {
-                    "sysName": "",
-                    "id": "37201621343964714",
-                    "name": "Put back to backlog",
+                    "sysName": "moveFeatures",
+                    "id": "70761621952274143",
+                    "name": "Remove from \"under development\"",
                     "displayAs": "button",
                     "buttonIcon": "arrowLeft",
-                    "buttonType": "accent",
                     "dropdown": true,
                     "closePopup": true,
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "decline_reason",
+                                "fetch": [],
+                                "sysName": "decline_reason",
+                                "name": "Decline reason",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "development_status",
+                                "fetch": [],
+                                "sysName": "development_status",
+                                "name": "Development status",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "dev_statuses"
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "request_status",
+                                "fetch": [],
+                                "sysName": "request_status",
+                                "name": "Request status",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "req_statuses"
+                            }
+                        ]
+                    },
                     "formMapping": [
                         {
-                            "id": "37871621344159914",
+                            "id": "37151621952319478",
                             "target": "id",
                             "type": "objectField",
                             "value": "id"
                         },
                         {
-                            "id": "69381621344160975",
-                            "target": "dev_status",
+                            "id": "25771621952326462",
+                            "target": "development_status",
                             "type": "const",
                             "value": "planned"
                         }
                     ],
                     "conditionals": [
                         {
-                            "id": "75151621344162098",
+                            "id": "98211621952334217",
                             "target": "field",
                             "value": "under_development",
-                            "field": "dev_status",
+                            "field": "development_status",
                             "fieldValue": "planned"
                         }
                     ]
                 },
                 {
-                    "sysName": "",
-                    "id": "14851621345231893",
-                    "name": "Release!",
+                    "sysName": "moveFeatures",
+                    "id": "56711621952385019",
+                    "name": "Release",
                     "displayAs": "button",
                     "buttonIcon": "rocket",
                     "buttonType": "accent",
                     "dropdown": true,
                     "closePopup": true,
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "decline_reason",
+                                "fetch": [],
+                                "sysName": "decline_reason",
+                                "name": "Decline reason",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "development_status",
+                                "fetch": [],
+                                "sysName": "development_status",
+                                "name": "Development status",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "dev_statuses"
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "request_status",
+                                "fetch": [],
+                                "sysName": "request_status",
+                                "name": "Request status",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "req_statuses"
+                            }
+                        ]
+                    },
                     "formMapping": [
                         {
-                            "id": "24921621345250090",
+                            "id": "81101621952401927",
                             "target": "id",
                             "type": "objectField",
                             "value": "id"
                         },
                         {
-                            "id": "38651621345261152",
-                            "target": "dev_status",
+                            "id": "78371621952409028",
+                            "target": "development_status",
                             "type": "const",
                             "value": "released"
                         }
                     ],
                     "conditionals": [
                         {
-                            "id": "78811621345270074",
+                            "id": "65211621952416991",
                             "target": "field",
                             "value": "under_development",
-                            "field": "dev_status",
+                            "field": "development_status",
                             "fieldValue": "planned"
                         }
                     ]
                 }
-            ]
+            ],
+            "cardColor": "color",
+            "cardColorOption": "border"
         },
         "tableTitle": "",
         "actions": null,
         "headers": [
             {
                 "sysName": "color",
-                "name": "Card color",
                 "dataType": "string",
-                "id": "61881621017200362",
+                "name": "Card color",
+                "id": "57571621936399214",
                 "link": "",
                 "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 9,
+                "order": 7,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": "color",
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
+                "linkType": false,
                 "json": false
             },
             {
-                "sysName": "date_added",
-                "name": "Date added",
+                "sysName": "date_requested",
                 "dataType": "date",
-                "id": "68351620832123660",
+                "name": "Date requested",
+                "id": "76061621718186422",
                 "link": "",
                 "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 3,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
@@ -1441,130 +1255,103 @@ const App = (props) => {
                     "customOptionPlaceholder": "Describe your option",
                     "range": {},
                     "customOptionType": "textarea",
-                    "dateFormat": "D MMMM, Y",
+                    "dateFormat": "DD/MM/Y",
                     "timeFormat": "",
                     "isUTC": "false"
                 },
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
                 "indexExists": false,
+                "linkType": false,
+                "json": false
+            },
+            {
+                "sysName": "decline_reason",
+                "dataType": "string",
+                "name": "Decline reason",
+                "id": "19191621940158180",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
                 "typeVariable": {},
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkType": false,
                 "json": false
             },
             {
                 "sysName": "description",
-                "name": "Feature description",
                 "dataType": "string",
-                "id": "77031620832091108",
+                "name": "Description",
+                "id": "59461621718174735",
                 "link": "",
                 "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 2,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": "markdown",
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
+                "linkType": false,
                 "json": false
             },
             {
-                "sysName": "dev_status",
+                "sysName": "development_status",
+                "dataType": "link",
                 "name": "Development status",
-                "dataType": "link",
-                "id": "85621620832330584",
-                "link": "development_status",
-                "group": "0",
-                "tags": null,
+                "id": "45061621718255160",
+                "link": "dev_statuses",
+                "group": "1621718233227",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 8,
+                "order": 1,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "indexExists": false,
                 "linkType": true,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "feature_id",
-                "name": "Inner ID",
-                "dataType": "string",
-                "id": "23601621342083348",
-                "link": null,
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 11,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "feature_type",
-                "name": "Feature type",
-                "dataType": "link",
-                "id": "55371621030232780",
-                "link": "feature_type",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 10,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
                 "json": false
             },
             {
                 "sysName": "id",
-                "name": "id",
                 "dataType": "id",
+                "name": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -1581,18 +1368,18 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
+                "linkType": false,
                 "json": false
             },
             {
-                "sysName": "progress",
-                "name": "Progress",
-                "dataType": "json",
-                "id": "68751622642385874",
+                "sysName": "inner_id",
+                "dataType": "string",
+                "name": "Inner ID",
+                "id": "23781621938010110",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -1600,1343 +1387,299 @@ const App = (props) => {
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 16,
+                "order": 8,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
-                "format": "slider",
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "unitName": "%",
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {
-                        "min": 0,
-                        "max": 100,
-                        "step": 5
-                    },
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false"
-                },
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": true
-            },
-            {
-                "sysName": "status",
-                "name": "Request status",
-                "dataType": "link",
-                "id": "40251620832303364",
-                "link": "request_status",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 7,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
+                "typeVariable": {},
+                "linkOrArrayLinkType": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
+                "linkType": false,
                 "json": false
             },
             {
-                "sysName": "subscriber_ids",
-                "name": "Subscribers",
-                "dataType": "arrayLink",
-                "id": "26751621348189191",
-                "link": "WebUser",
-                "group": "1621348185318",
-                "tags": null,
+                "sysName": "request_status",
+                "dataType": "link",
+                "name": "Request status",
+                "id": "83151621718240424",
+                "link": "req_statuses",
+                "group": "1621718233227",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 0,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": false,
-                "arrayLink": true,
-                "indexExists": false,
                 "typeVariable": {},
+                "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkType": true,
                 "json": false
             },
             {
                 "sysName": "tags",
-                "name": "Tags",
                 "dataType": "arrayLink",
-                "id": "67851621409605492",
+                "name": "Tags",
+                "id": "55021621718269718",
                 "link": "tags",
                 "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 15,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": false,
-                "arrayLink": true,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "title",
-                "name": "Feature title",
-                "dataType": "string",
-                "id": "79031620832091734",
-                "link": null,
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "user_id",
-                "name": "Who suggested",
-                "dataType": "link",
-                "id": "59421620832153105",
-                "link": "WebUser",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "votes",
-                "name": "Number of upvotes",
-                "dataType": "number",
-                "id": "68061620832170304",
-                "link": "",
-                "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 5,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
-                "format": "positiveNum",
-                "formatOptions": null,
+                "format": null,
+                "formatOptions": {},
                 "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
                 "typeVariable": {},
+                "linkOrArrayLinkType": true,
+                "arrayLink": true,
+                "indexExists": false,
+                "linkType": false,
                 "json": false
             },
             {
-                "sysName": "votes_ids",
-                "name": "Who upvoted",
-                "dataType": "arrayLink",
-                "id": "14001620832180875",
-                "link": "WebUser",
+                "sysName": "title",
+                "dataType": "string",
+                "name": "Title",
+                "id": "23311621718169548",
+                "link": "",
                 "group": "0",
-                "tags": null,
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkType": false,
+                "json": false
+            },
+            {
+                "sysName": "type",
+                "dataType": "link",
+                "name": "Type",
+                "id": "92351621803633448",
+                "link": "type",
+                "group": "0",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 6,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": false,
-                "arrayLink": true,
-                "indexExists": false,
                 "typeVariable": {},
+                "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkType": true,
+                "json": false
+            },
+            {
+                "sysName": "user_id",
+                "dataType": "link",
+                "name": "Who requested",
+                "id": "18271621718213040",
+                "link": "WebUser",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkType": true,
                 "json": false
             }
         ],
         "data": [
             {
-                "votes": 6,
-                "subscriber_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    },
-                    {
-                        "firstName": "YURI",
-                        "lastName": "Udalov",
-                        "id": "udalov66@gmail.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "lastName": "Kumswa",
-                        "firstName": "Nanfa",
-                        "id": "nanfa@availsys.com"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "lastName": "Shahbandaryan",
-                        "firstName": "David",
-                        "id": "d.shahbandaryan@bsl.dev"
-                    }
-                ],
-                "description": "For Forms and Cards/Table.",
+                "description": "Description",
                 "tags": [
-                    "web-pages"
+                    "product"
                 ],
-                "feature_id": "PLT-105",
-                "color": "57bf97",
+                "color": "e33636",
                 "user_id": {
                     "lastName": "Ershov",
                     "firstName": "Pavel",
                     "id": "pavel@directual.com"
                 },
-                "feature_type": "feature",
-                "id": "f33f3979-a84f-4904-951e-ae41e52aac6e",
-                "progress": "{\"firstValue\":25}",
-                "dev_status": {
-                    "id": "under_development",
-                    "status": "Under development"
+                "development_status": {
+                    "id": "planned"
                 },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621374011000,
-                "votes_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    },
-                    {
-                        "firstName": "YURI",
-                        "lastName": "Udalov",
-                        "id": "udalov66@gmail.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "lastName": "Kumswa",
-                        "firstName": "Nanfa",
-                        "id": "nanfa@availsys.com"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "lastName": "Shahbandaryan",
-                        "firstName": "David",
-                        "id": "d.shahbandaryan@bsl.dev"
-                    }
-                ],
-                "title": "File upload control"
+                "date_requested": 1622478446000,
+                "id": "9f9b168c-0be8-493f-8c0a-03a174cc678c",
+                "request_status": "approved",
+                "title": "Fourth bug",
+                "type": "bug",
+                "inner_id": "T-4"
             },
             {
-                "votes": 2,
-                "subscriber_ids": [
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "lastName": "Dolgov",
-                        "firstName": "Nikita",
-                        "id": "n.dolgov@directual.com"
-                    },
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
-                "description": "As of today there is statistics about GET and POST requests on app dashboard.\n\nDetailed stats will include info about **scenarios** and **endpoints** which consume resources.",
+                "description": "Hello",
                 "tags": [
-                    "billing"
+                    "integrations"
                 ],
-                "feature_id": "PLT-101",
-                "color": "57bf97",
+                "color": "1ed627",
                 "user_id": {
                     "lastName": "Ershov",
                     "firstName": "Pavel",
                     "id": "pavel@directual.com"
                 },
-                "feature_type": "feature",
-                "id": "91a90487-def8-4a35-80e6-7103c568bc7a",
-                "progress": "{\"firstValue\":10}",
-                "dev_status": {
-                    "id": "under_development",
-                    "status": "Under development"
+                "development_status": {
+                    "id": "planned"
                 },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621373485000,
-                "votes_ids": [
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "lastName": "Dolgov",
-                        "firstName": "Nikita",
-                        "id": "n.dolgov@directual.com"
-                    }
-                ],
-                "title": "📈Detailed load consumption stats"
-            },
-            {
-                "votes": 2,
-                "subscriber_ids": [
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
-                "description": "Two-step import of CSV/XLS\n\n### Step 1\nFields aliases, with quick structure editing.\n\n### Step 2\nImport itself.\n\nP.S. Webflow has similar mechanism of CSV import.\n\nPlus:\n- import from Airtable\n- import from Google Sheets\n- import from popular CRMs",
-                "tags": [
-                    "database"
-                ],
-                "feature_id": "PLT-102",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "feature_type": "feature",
-                "id": "b5ca7520-f1d3-48da-af26-0cdacab94757",
-                "progress": "{\"firstValue\":40}",
-                "dev_status": {
-                    "id": "under_development",
-                    "status": "Under development"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621373725000,
-                "votes_ids": [
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
-                "title": "Import updating"
-            },
-            {
-                "votes": 1,
-                "subscriber_ids": [
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
-                "description": "The same settings for Cards work well.",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-161",
-                "color": "ec6161",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "feature_type": "bug",
-                "id": "f9086b28-1e6b-4399-a232-66e923f534df",
-                "progress": "{\"firstValue\":95}",
-                "dev_status": {
-                    "id": "under_development",
-                    "status": "Under development"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1622157439000,
-                "votes_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
-                "title": "QuickSearch option for links in Table doesn't work"
-            },
-            {
-                "subscriber_ids": [
-                    {
-                        "firstName": "Efim",
-                        "lastName": "Maisak",
-                        "id": "coldnaked@gmail.com"
-                    }
-                ],
-                "description": "After sending a form with **default value** (type number) - \"0\".\nIt`s have not appear in the Database object.\n\nDefault value \"0\" (type decimal) is saved without any problems.",
-                "tags": [
-                    "database",
-                    "web-pages"
-                ],
-                "feature_id": "PLT-155",
-                "color": "ec6161",
-                "user_id": {
-                    "firstName": "Efim",
-                    "lastName": "Maisak",
-                    "id": "coldnaked@gmail.com"
-                },
-                "feature_type": "bug",
-                "id": "ffc2d863-92ca-4a98-8382-5cab9aa348bf",
-                "dev_status": {
-                    "id": "under_development",
-                    "status": "Under development"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1622039744000,
-                "title": "Lost values (type  number) from the form when saving to the base",
-                "progress": ""
-            },
-            {
-                "votes": 7,
-                "subscriber_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    },
-                    {
-                        "firstName": "YURI",
-                        "lastName": "Udalov",
-                        "id": "udalov66@gmail.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "lastName": "Kumswa",
-                        "firstName": "Nanfa",
-                        "id": "nanfa@availsys.com"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "firstName": "Efim",
-                        "lastName": "Maisak",
-                        "id": "coldnaked@gmail.com"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    }
-                ],
-                "description": "Filters should be tags-like. The list of tags is based on `link`/`arrayLink` field (as on the directory).",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-104",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "feature_type": "feature",
-                "id": "00e555ce-3faa-47c5-9768-91d224a1f8fe",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621373961000,
-                "votes_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    },
-                    {
-                        "firstName": "YURI",
-                        "lastName": "Udalov",
-                        "id": "udalov66@gmail.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "lastName": "Kumswa",
-                        "firstName": "Nanfa",
-                        "id": "nanfa@availsys.com"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "firstName": "Efim",
-                        "lastName": "Maisak",
-                        "id": "coldnaked@gmail.com"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    }
-                ],
-                "title": "Filters for Table, Cards",
-                "progress": ""
-            },
-            {
-                "votes": 4,
-                "subscriber_ids": [
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "lastName": "Novoseltsev",
-                        "firstName": "Vladimir",
-                        "id": "xtrms@yandex.ru"
-                    },
-                    {
-                        "lastName": "Dolgov",
-                        "firstName": "Nikita",
-                        "id": "n.dolgov@directual.com"
-                    }
-                ],
-                "description": "1. Make API-builder interface easier\n2. Introduce API-endpoint request logs\n3. Improve work with HTTP-parameters",
-                "tags": [
-                    "api-builder"
-                ],
-                "feature_id": "PLT-103",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "feature_type": "feature",
-                "id": "ea8ef168-ca6c-4f6c-b82b-6d6c4f0610f0",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621373826000,
-                "votes_ids": [
-                    {
-                        "lastName": "Dolgov",
-                        "firstName": "Nikita",
-                        "id": "n.dolgov@directual.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    }
-                ],
-                "title": "API-builder UI updating",
-                "progress": ""
-            },
-            {
-                "votes": 4,
-                "subscriber_ids": [
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "firstName": "Efim",
-                        "lastName": "Maisak",
-                        "id": "coldnaked@gmail.com"
-                    },
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
-                "description": "As of today, arrayLink is displayed as a simple list. It would be great to have:\n\n- Comments\n- Sorted list\n- Cards\n- Table\n- Calendar\n- Object-quantity pairs",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-114",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "feature_type": "feature",
-                "id": "db3ce173-737a-4b9b-9872-f9c5d090f015",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621374947000,
-                "votes_ids": [
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "firstName": "Efim",
-                        "lastName": "Maisak",
-                        "id": "coldnaked@gmail.com"
-                    },
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
-                "title": "Sophisticated view for arrayLinks on object cards",
-                "progress": ""
-            },
-            {
-                "votes": 4,
-                "subscriber_ids": [
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "lastName": "Kumswa",
-                        "firstName": "Nanfa",
-                        "id": "nanfa@availsys.com"
-                    }
-                ],
-                "description": "That means, I want to choose an API-endpoint, fetch the first object and manipulate the data from that object.",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-121",
-                "color": "57bf97",
-                "user_id": {
-                    "firstName": "Dimitry",
-                    "lastName": "Novozhilov",
-                    "id": "novozhilov@code-word.ru"
-                },
-                "feature_type": "feature",
-                "id": "64fd31ac-e91c-479f-bdb1-0d8998010fe0",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621380341000,
-                "votes_ids": [
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "lastName": "Kumswa",
-                        "firstName": "Nanfa",
-                        "id": "nanfa@availsys.com"
-                    }
-                ],
-                "title": "Add to HTML and Markdown option to fetch Directual data",
-                "progress": ""
-            },
-            {
-                "votes": 3,
-                "subscriber_ids": [
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "firstName": "YURI",
-                        "lastName": "Udalov",
-                        "id": "udalov66@gmail.com"
-                    }
-                ],
-                "description": "Push your app UI right from scenarios",
-                "tags": [
-                    "scenarios",
-                    "web-pages"
-                ],
-                "feature_id": "PLT-111",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "feature_type": "feature",
-                "id": "6735e327-e1b5-486c-b88e-8ebb33fd2785",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621374431000,
-                "votes_ids": [
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    }
-                ],
-                "title": "🔔 Real-time pushes based on Socket.io",
-                "progress": ""
-            },
-            {
-                "votes": 3,
-                "subscriber_ids": [
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    }
-                ],
-                "description": "Calendar view for the structure",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-113",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "feature_type": "feature",
-                "id": "2c7192b1-cae4-4234-a245-8e5d0160ee2f",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621374804000,
-                "votes_ids": [
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    }
-                ],
-                "title": "Calendar component",
-                "progress": ""
-            },
-            {
-                "votes": 3,
-                "subscriber_ids": [
-                    {
-                        "lastName": "Mozer",
-                        "firstName": "Anna",
-                        "id": "annmozer116@gmail.com"
-                    },
-                    {
-                        "lastName": "Novoseltsev",
-                        "firstName": "Vladimir",
-                        "id": "xtrms@yandex.ru"
-                    },
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
-                "description": "Copy Sections and Components on the page and between different pages",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-136",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Mozer",
-                    "firstName": "Anna",
-                    "id": "annmozer116@gmail.com"
-                },
-                "feature_type": "feature",
-                "id": "1b9163bd-db44-48af-8f7c-ad9c86299d94",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621428952000,
-                "votes_ids": [
-                    {
-                        "lastName": "Mozer",
-                        "firstName": "Anna",
-                        "id": "annmozer116@gmail.com"
-                    },
-                    {
-                        "lastName": "Novoseltsev",
-                        "firstName": "Vladimir",
-                        "id": "xtrms@yandex.ru"
-                    },
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
-                "title": "Copy-paste sections and components",
-                "progress": ""
-            },
-            {
-                "votes": 2,
-                "subscriber_ids": [
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Valentin",
-                        "lastName": "Novikov",
-                        "id": "novikov84@gmail.com"
-                    }
-                ],
-                "description": "That will allow users to define specific filters for quick search in selects in the Form component.",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-109",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "feature_type": "feature",
-                "id": "ddd88fa6-eadc-4ca2-bdd8-21c01b1aeeca",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621374294000,
-                "votes_ids": [
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Valentin",
-                        "lastName": "Novikov",
-                        "id": "novikov84@gmail.com"
-                    }
-                ],
-                "title": "Quick search (selects for links) in Forms via specific API-endpoint",
-                "progress": ""
-            },
-            {
-                "votes": 1,
-                "subscriber_ids": [
-                    {
-                        "lastName": "Dolgov",
-                        "firstName": "Nikita",
-                        "id": "n.dolgov@directual.com"
-                    }
-                ],
-                "description": "Current ES5 is not the best JS-engine :)",
-                "tags": [
-                    "scenarios"
-                ],
-                "feature_id": "PLT-112",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "feature_type": "feature",
-                "id": "63da4103-bb50-4b03-889c-1e5af18677c5",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621374725000,
-                "votes_ids": [
-                    {
-                        "lastName": "Dolgov",
-                        "firstName": "Nikita",
-                        "id": "n.dolgov@directual.com"
-                    }
-                ],
-                "title": "ES-2017  as a JS-engine",
-                "progress": ""
-            },
-            {
-                "votes": 1,
-                "subscriber_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
-                "description": "Now max depth is 2. That would be great if it was greater (ideally — unlimited).",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-122",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "feature_type": "feature",
-                "id": "ad5455d7-dbcb-446b-ac79-dc41f1014234",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621381484000,
-                "votes_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
-                "title": "Greater depth of linked cards",
-                "progress": ""
-            },
-            {
-                "votes": 1,
-                "subscriber_ids": [
-                    {
-                        "lastName": "Mozer",
-                        "firstName": "Anna",
-                        "id": "annmozer116@gmail.com"
-                    }
-                ],
-                "description": "That would be useful — to use the unique API-endpoint for several components!",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-137",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Mozer",
-                    "firstName": "Anna",
-                    "id": "annmozer116@gmail.com"
-                },
-                "feature_type": "feature",
-                "id": "2a1735c3-7b33-4876-964e-01317eaf3269",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621429081000,
-                "votes_ids": [
-                    {
-                        "lastName": "Mozer",
-                        "firstName": "Anna",
-                        "id": "annmozer116@gmail.com"
-                    }
-                ],
-                "title": "Include HTTP-params in Component settings",
-                "progress": ""
+                "date_requested": 1621938135000,
+                "id": "3a3b0e6a-cd36-480c-8f00-24abfe9b7b5d",
+                "request_status": "approved",
+                "title": "Hello",
+                "type": "feature",
+                "inner_id": "T-1"
             }
         ],
-        "totalPages": 2,
+        "totalPages": 1,
         "pageNumber": 0,
         "error": null,
         "fieldScheme": [
             [
                 "color",
-                1385610
+                1388303
             ],
             [
-                "date_added",
-                1385610
+                "date_requested",
+                1388303
+            ],
+            [
+                "decline_reason",
+                1388303
             ],
             [
                 "description",
-                1385610
+                1388303
             ],
             [
-                "dev_status.id",
-                1385613
+                "development_status.@who",
+                1388307
             ],
             [
-                "dev_status.status",
-                1385613
-            ],
-            [
-                "feature_id",
-                1385610
-            ],
-            [
-                "feature_type",
-                1385610
+                "development_status.id",
+                1388307
             ],
             [
                 "id",
-                1385610
+                1388303
             ],
             [
-                "progress",
-                1385610
+                "inner_id",
+                1388303
             ],
             [
-                "status.id",
-                1385612
-            ],
-            [
-                "status.status",
-                1385612
-            ],
-            [
-                "subscriber_ids.firstName",
-                1385542
-            ],
-            [
-                "subscriber_ids.id",
-                1385542
-            ],
-            [
-                "subscriber_ids.lastName",
-                1385542
+                "request_status",
+                1388303
             ],
             [
                 "tags",
-                1385610
+                1388303
             ],
             [
                 "title",
-                1385610
+                1388303
+            ],
+            [
+                "type",
+                1388303
             ],
             [
                 "user_id.firstName",
-                1385542
+                1388284
             ],
             [
                 "user_id.id",
-                1385542
+                1388284
             ],
             [
                 "user_id.lastName",
-                1385542
-            ],
-            [
-                "votes",
-                1385610
-            ],
-            [
-                "votes_ids.firstName",
-                1385542
-            ],
-            [
-                "votes_ids.id",
-                1385542
-            ],
-            [
-                "votes_ids.lastName",
-                1385542
-            ],
-            [
-                "votes_ids.user_name",
-                1385542
+                1388284
             ]
         ],
         "writeFields": [
-            "color",
             "description",
-            "dev_status",
-            "feature_type",
             "id",
-            "progress",
-            "status",
             "tags",
-            "title"
+            "title",
+            "type"
         ],
         "structures": {
-            "1385542": {
-                "networkID": 6829,
+            "1388284": {
+                "networkID": 6948,
                 "sysName": "WebUser",
                 "name": "App users",
-                "id": 1385542,
-                "dateCreated": "2021-05-14T21:02:45Z",
+                "id": 1388284,
+                "dateCreated": "2021-05-22T21:15:35Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"isBlocked\",\"name\":\"Block user\",\"dataType\":\"boolean\",\"id\":\"1\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"dateCreated\",\"name\":\"dateCreated\",\"dataType\":\"string\",\"id\":\"10\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"password\",\"name\":\"Password (hash)\",\"dataType\":\"string\",\"id\":\"11\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"id\",\"name\":\"Username (login)\",\"dataType\":\"id\",\"id\":\"12\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"date_registered\",\"name\":\"Date registered on Dev\",\"dataType\":\"date\",\"id\":\"14451621029358812\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"gender\",\"name\":\"Gender\",\"dataType\":\"string\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"lastName\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"firstName\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"role\",\"name\":\"Roles\",\"dataType\":\"string\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"code\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"51351621027822811\",\"link\":null,\"group\":\"1621027815164\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"isAuthorization\",\"name\":\"isAuthorization\",\"dataType\":\"boolean\",\"id\":\"6\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"isEmailConfirmed\",\"name\":\"Email confirmed\",\"dataType\":\"boolean\",\"id\":\"60111621027825496\",\"link\":\"\",\"group\":\"1621027815164\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"dateLastActivity\",\"name\":\"dateLastActivity\",\"dataType\":\"string\",\"id\":\"7\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"email\",\"name\":\"Email\",\"dataType\":\"string\",\"id\":\"8\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false},{\"sysName\":\"phone\",\"name\":\"Phone\",\"dataType\":\"string\",\"id\":\"9\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"linkType\":false,\"typeVariable\":{},\"arrayLink\":false}]",
-                "jsonGroupSettings": "[{\"id\":-502807437,\"name\":\"Contacts\",\"order\":0},{\"id\":-1776115286,\"name\":\"System fields\",\"order\":1},{\"id\":1621027815164,\"name\":\"Email confirmation\",\"order\":2}]",
+                "jsonObject": "[{\"sysName\":\"isBlocked\",\"dataType\":\"boolean\",\"name\":\"Block user\",\"id\":\"1\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"dateCreated\",\"dataType\":\"string\",\"name\":\"dateCreated\",\"id\":\"10\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"password\",\"dataType\":\"string\",\"name\":\"Password (hash)\",\"id\":\"11\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"Username (login)\",\"id\":\"12\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"code\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"14841622481465747\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"Gender\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"lastName\",\"dataType\":\"string\",\"name\":\"Last name\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"firstName\",\"dataType\":\"string\",\"name\":\"First name\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"role\",\"dataType\":\"string\",\"name\":\"Roles\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"isAuthorization\",\"dataType\":\"boolean\",\"name\":\"isAuthorization\",\"id\":\"6\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"dateLastActivity\",\"dataType\":\"string\",\"name\":\"dateLastActivity\",\"id\":\"7\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"email\",\"dataType\":\"string\",\"name\":\"Email\",\"id\":\"8\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"phone\",\"dataType\":\"string\",\"name\":\"Phone\",\"id\":\"9\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false}]",
+                "jsonGroupSettings": "[{\"id\":-502807437,\"name\":\"Contacts\",\"order\":null},{\"id\":-1776115286,\"name\":\"System fields\",\"order\":null}]",
                 "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
-                "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
+                "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-05-14T21:56:42Z",
+                "dateChanged": "2021-05-31T17:17:49Z",
                 "createBy": 0,
                 "changedBy": 21,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "Username (login)",
                     "dataType": "id",
+                    "name": "Username (login)",
                     "id": "12",
                     "link": "",
                     "group": "0",
@@ -2953,41 +1696,41 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
+                    "typeVariable": {},
                     "linkOrArrayLinkType": false,
-                    "linkType": false,
                     "arrayLink": false,
                     "indexExists": false,
-                    "typeVariable": {},
+                    "linkType": false,
                     "json": false
                 },
                 "objectIDSysName": "id",
                 "folderId": null
             },
-            "1385610": {
-                "networkID": 6829,
-                "sysName": "Features",
-                "name": "features",
-                "id": 1385610,
-                "dateCreated": "2021-05-12T15:06:56Z",
+            "1388303": {
+                "networkID": 6948,
+                "sysName": "features",
+                "name": "Features",
+                "id": 1388303,
+                "dateCreated": "2021-05-22T21:16:01Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"votes_ids\",\"dataType\":\"arrayLink\",\"name\":\"Who upvoted\",\"id\":\"14001620832180875\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"feature_id\",\"dataType\":\"string\",\"name\":\"Inner ID\",\"id\":\"23601621342083348\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"subscriber_ids\",\"dataType\":\"arrayLink\",\"name\":\"Subscribers\",\"id\":\"26751621348189191\",\"link\":\"WebUser\",\"group\":\"1621348185318\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"status\",\"dataType\":\"link\",\"name\":\"Request status\",\"id\":\"40251620832303364\",\"link\":\"request_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"release_id\",\"dataType\":\"link\",\"name\":\"Release\",\"id\":\"40791621408746909\",\"link\":\"Releases\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"feature_type\",\"dataType\":\"link\",\"name\":\"Feature type\",\"id\":\"55371621030232780\",\"link\":\"feature_type\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"user_id\",\"dataType\":\"link\",\"name\":\"Who suggested\",\"id\":\"59421620832153105\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"color\",\"dataType\":\"string\",\"name\":\"Card color\",\"id\":\"61881621017200362\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"tags\",\"dataType\":\"arrayLink\",\"name\":\"Tags\",\"id\":\"67851621409605492\",\"link\":\"tags\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"votes\",\"dataType\":\"number\",\"name\":\"Number of upvotes\",\"id\":\"68061620832170304\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"date_added\",\"dataType\":\"date\",\"name\":\"Date added\",\"id\":\"68351620832123660\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"progress\",\"dataType\":\"json\",\"name\":\"Progress\",\"id\":\"68751622642385874\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"slider\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"unitName\":\"%\",\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{\"min\":0,\"max\":100,\"step\":5},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":true},{\"sysName\":\"release_date\",\"dataType\":\"date\",\"name\":\"Release date\",\"id\":\"71651621345011532\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"decline_reason\",\"dataType\":\"string\",\"name\":\"Reason of decline\",\"id\":\"73671621342083940\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Feature description\",\"id\":\"77031620832091108\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"Feature title\",\"id\":\"79031620832091734\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"dev_status\",\"dataType\":\"link\",\"name\":\"Development status\",\"id\":\"85621620832330584\",\"link\":\"development_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false}]",
-                "jsonGroupSettings": "[{\"name\":\"Subscriptions\",\"id\":1621348185318,\"order\":0}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"feature_id\"},{\"sysName\":\"title\"}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"user_id\",\"dataType\":\"link\",\"name\":\"Who requested\",\"id\":\"18271621718213040\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"decline_reason\",\"dataType\":\"string\",\"name\":\"Decline reason\",\"id\":\"19191621940158180\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"Title\",\"id\":\"23311621718169548\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"inner_id\",\"dataType\":\"string\",\"name\":\"Inner ID\",\"id\":\"23781621938010110\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"development_status\",\"dataType\":\"link\",\"name\":\"Development status\",\"id\":\"45061621718255160\",\"link\":\"dev_statuses\",\"group\":\"1621718233227\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"tags\",\"dataType\":\"arrayLink\",\"name\":\"Tags\",\"id\":\"55021621718269718\",\"link\":\"tags\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"color\",\"dataType\":\"string\",\"name\":\"Card color\",\"id\":\"57571621936399214\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Description\",\"id\":\"59461621718174735\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"date_requested\",\"dataType\":\"date\",\"name\":\"Date requested\",\"id\":\"76061621718186422\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"users_watching_ids\",\"dataType\":\"arrayLink\",\"name\":\"Who is watching the feature\",\"id\":\"79991622482662025\",\"link\":\"WebUser\",\"group\":\"1622407374615\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"request_status\",\"dataType\":\"link\",\"name\":\"Request status\",\"id\":\"83151621718240424\",\"link\":\"req_statuses\",\"group\":\"1621718233227\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"type\",\"dataType\":\"link\",\"name\":\"Type\",\"id\":\"92351621803633448\",\"link\":\"type\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"users_upvoted_ids\",\"dataType\":\"arrayLink\",\"name\":\"Who upvoted\",\"id\":\"92511622407382572\",\"link\":\"WebUser\",\"group\":\"1622407374615\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"numbers_of_upvotes\",\"dataType\":\"number\",\"name\":\"Upvotes\",\"id\":\"99071622407381727\",\"link\":\"\",\"group\":\"1622407374615\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false}]",
+                "jsonGroupSettings": "[{\"id\":1621718233227,\"name\":\"Workflow\",\"order\":0},{\"id\":1622407374615,\"name\":\"Upvotes\",\"order\":1}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"inner_id\"},{\"sysName\":\"title\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-06-02T14:00:53Z",
-                "createBy": 1,
+                "dateChanged": "2021-05-31T17:38:13Z",
+                "createBy": 21,
                 "changedBy": 21,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "id",
                     "dataType": "id",
+                    "name": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -3004,50 +1747,50 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
+                    "typeVariable": {},
                     "linkOrArrayLinkType": false,
-                    "linkType": false,
                     "arrayLink": false,
                     "indexExists": false,
-                    "typeVariable": {},
+                    "linkType": false,
                     "json": false
                 },
                 "objectIDSysName": "id",
-                "folderId": 33625685
+                "folderId": 33627335
             },
-            "1385612": {
-                "networkID": 6829,
-                "sysName": "request_status",
-                "name": "request_status",
-                "id": 1385612,
-                "dateCreated": "2021-05-12T15:13:21Z",
+            "1388307": {
+                "networkID": 6948,
+                "sysName": "dev_statuses",
+                "name": "Development statuses",
+                "id": 1388307,
+                "dateCreated": "2021-05-22T21:18:57Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Status\",\"id\":\"76241620832406222\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"json\":false}]",
                 "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"status\"}]",
+                "jsonViewIdSettings": null,
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": false,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-05-12T15:13:35Z",
-                "createBy": 1,
-                "changedBy": 1,
+                "dateChanged": "2021-05-22T21:18:57Z",
+                "createBy": 21,
+                "changedBy": 21,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "id",
                     "dataType": "id",
+                    "name": "id",
                     "id": "0",
                     "link": "",
-                    "group": "0",
+                    "group": "",
                     "tags": "",
                     "indexing": false,
                     "ordering": false,
                     "description": null,
                     "weight": null,
-                    "order": 0,
+                    "order": null,
                     "linkIndexFieldSysName": [],
                     "defaultValue": "",
                     "constraints": null,
@@ -3055,66 +1798,15 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
+                    "typeVariable": {},
                     "linkOrArrayLinkType": false,
-                    "linkType": false,
                     "arrayLink": false,
                     "indexExists": false,
-                    "typeVariable": {},
+                    "linkType": false,
                     "json": false
                 },
                 "objectIDSysName": "id",
-                "folderId": 33625685
-            },
-            "1385613": {
-                "networkID": 6829,
-                "sysName": "development_status",
-                "name": "development_status",
-                "id": 1385613,
-                "dateCreated": "2021-05-12T15:14:45Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Status\",\"id\":\"23221620832490508\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"status\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-05-12T15:14:59Z",
-                "createBy": 1,
-                "changedBy": 1,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "innerIDField": {
-                    "sysName": "id",
-                    "name": "id",
-                    "dataType": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "indexExists": false,
-                    "typeVariable": {},
-                    "json": false
-                },
-                "objectIDSysName": "id",
-                "folderId": 33625685
+                "folderId": 33627336
             }
         },
         "isSuccessWrite": false,
@@ -3122,117 +1814,36 @@ const App = (props) => {
         "writeResponse": null,
         "fileds": [
             {
-                "sysName": "color",
-                "name": "Card color",
-                "dataType": "string",
-                "id": "61881621017200362",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 9,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "color",
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
                 "sysName": "description",
-                "name": "Feature description",
                 "dataType": "string",
-                "id": "77031620832091108",
+                "name": "Description",
+                "id": "59461621718174735",
                 "link": "",
                 "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 2,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": "markdown",
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false,
                 "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "dev_status",
-                "name": "Development status",
-                "dataType": "link",
-                "id": "85621620832330584",
-                "link": "development_status",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 8,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "feature_type",
-                "name": "Feature type",
-                "dataType": "link",
-                "id": "55371621030232780",
-                "link": "feature_type",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 10,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
                 "json": false
             },
             {
                 "sysName": "id",
-                "name": "id",
                 "dataType": "id",
+                "name": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -3249,18 +1860,45 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
+                "linkType": false,
                 "json": false
             },
             {
-                "sysName": "progress",
-                "name": "Progress",
-                "dataType": "json",
-                "id": "68751622642385874",
+                "sysName": "tags",
+                "dataType": "arrayLink",
+                "name": "Tags",
+                "id": "55021621718269718",
+                "link": "tags",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "linkOrArrayLinkType": true,
+                "arrayLink": true,
+                "indexExists": false,
+                "linkType": false,
+                "json": false
+            },
+            {
+                "sysName": "title",
+                "dataType": "string",
+                "name": "Title",
+                "id": "23311621718169548",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -3268,136 +1906,50 @@ const App = (props) => {
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 16,
+                "order": 1,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
-                "format": "slider",
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "unitName": "%",
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {
-                        "min": 0,
-                        "max": 100,
-                        "step": 5
-                    },
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false"
-                },
+                "format": null,
+                "formatOptions": {},
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
-                "json": true
+                "linkType": false,
+                "json": false
             },
             {
-                "sysName": "status",
-                "name": "Request status",
+                "sysName": "type",
                 "dataType": "link",
-                "id": "40251620832303364",
-                "link": "request_status",
+                "name": "Type",
+                "id": "92351621803633448",
+                "link": "type",
                 "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 7,
+                "order": 6,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "indexExists": false,
                 "linkType": true,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "tags",
-                "name": "Tags",
-                "dataType": "arrayLink",
-                "id": "67851621409605492",
-                "link": "tags",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 15,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": false,
-                "arrayLink": true,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "title",
-                "name": "Feature title",
-                "dataType": "string",
-                "id": "79031620832091734",
-                "link": null,
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
                 "json": false
             }
         ],
-        "quickSearch": "true"
+        "quickSearch": "false"
     }
 
     let newCardActions = {
