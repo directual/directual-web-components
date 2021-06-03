@@ -80,10 +80,19 @@ const App = (props) => {
     }
 
     let cardActions = {
-        "sl": "manageFeatures",
-        "pageSize": "16",
+        "sl": "openPipelineUnderDevelopment",
+        "pageSize": "20",
         "headerField": null,
         "params": {
+            "cardListLayout": "grid",
+            "cardHeaderComment": "tags",
+            "deleteField": "",
+            "cardBodyText": "progress",
+            "cardImage": false,
+            "cardImageField": "",
+            "cardImageType": "none",
+            "cardImageSize": 100,
+            "objectView": {},
             "data": {
                 "readFields": [
                     {
@@ -146,11 +155,6 @@ const App = (props) => {
                     {
                         "fieldSysName": "dev_status",
                         "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
                             {
                                 "fieldSysName": "status",
                                 "condition": null,
@@ -237,53 +241,6 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "status",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "status",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "status",
-                        "name": "Request status",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "request_status"
-                    },
-                    {
-                        "fieldSysName": "subscriber_ids",
-                        "fetch": [
-                            {
-                                "fieldSysName": "firstName",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "lastName",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "subscriber_ids",
-                        "name": "Subscribers",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "WebUser"
-                    },
-                    {
                         "fieldSysName": "tags",
                         "fetch": [],
                         "sysName": "tags",
@@ -338,163 +295,9 @@ const App = (props) => {
                         "format": "positiveNum",
                         "formatOptions": {},
                         "link": ""
-                    },
-                    {
-                        "fieldSysName": "votes_ids",
-                        "fetch": [
-                            {
-                                "fieldSysName": "firstName",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "lastName",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "user_name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "votes_ids",
-                        "name": "Who upvoted",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "WebUser"
                     }
                 ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "color",
-                        "fetch": [],
-                        "sysName": "color",
-                        "name": "Card color",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "description",
-                        "fetch": [],
-                        "sysName": "description",
-                        "name": "Feature description",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "dev_status",
-                        "fetch": [],
-                        "sysName": "dev_status",
-                        "name": "Development status",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "development_status"
-                    },
-                    {
-                        "fieldSysName": "feature_type",
-                        "fetch": [],
-                        "sysName": "feature_type",
-                        "name": "Feature type",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "feature_type"
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "progress",
-                        "fetch": [],
-                        "sysName": "progress",
-                        "name": "Progress",
-                        "dataType": "json",
-                        "format": "slider",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "unitName": "%",
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {
-                                "min": 0,
-                                "max": 100,
-                                "step": 5
-                            },
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "status",
-                        "fetch": [],
-                        "sysName": "status",
-                        "name": "Request status",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "request_status"
-                    },
-                    {
-                        "fieldSysName": "tags",
-                        "fetch": [],
-                        "sysName": "tags",
-                        "name": "Tags",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "tags"
-                    },
-                    {
-                        "fieldSysName": "title",
-                        "fetch": [],
-                        "sysName": "title",
-                        "name": "Feature title",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    }
-                ],
+                "writeFields": [],
                 "fields": {
                     "color": {
                         "id": "color",
@@ -503,7 +306,6 @@ const App = (props) => {
                         "dataType": "string",
                         "format": "color",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
@@ -553,7 +355,6 @@ const App = (props) => {
                         "dataType": "string",
                         "format": "markdown",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
@@ -565,7 +366,6 @@ const App = (props) => {
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "development_status",
                         "actions": []
@@ -588,7 +388,6 @@ const App = (props) => {
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "feature_type",
                         "actions": []
@@ -600,7 +399,6 @@ const App = (props) => {
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
@@ -644,32 +442,8 @@ const App = (props) => {
                             "timeFormat": " HH:mm",
                             "isUTC": "false"
                         },
-                        "write": true,
                         "read": true,
                         "link": "",
-                        "actions": []
-                    },
-                    "status": {
-                        "id": "status",
-                        "content": "Request status",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "request_status",
-                        "actions": []
-                    },
-                    "subscriber_ids": {
-                        "id": "subscriber_ids",
-                        "content": "Subscribers",
-                        "type": "field",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "WebUser",
                         "actions": []
                     },
                     "tags": {
@@ -679,7 +453,6 @@ const App = (props) => {
                         "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "tags",
                         "actions": []
@@ -691,7 +464,6 @@ const App = (props) => {
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": null,
                         "actions": []
@@ -717,35 +489,6 @@ const App = (props) => {
                         "read": true,
                         "link": "",
                         "actions": []
-                    },
-                    "votes_ids": {
-                        "id": "votes_ids",
-                        "content": "Who upvoted",
-                        "type": "field",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "WebUser",
-                        "actions": []
-                    },
-                    "action__10531621343955723": {
-                        "content": "Pick for development",
-                        "id": "action__10531621343955723",
-                        "type": "action",
-                        "actions": []
-                    },
-                    "action__37201621343964714": {
-                        "content": "Put back to backlog",
-                        "id": "action__37201621343964714",
-                        "type": "action",
-                        "actions": []
-                    },
-                    "action__14851621345231893": {
-                        "content": "Release!",
-                        "id": "action__14851621345231893",
-                        "type": "action",
-                        "actions": []
                     }
                 },
                 "fieldParams": {
@@ -770,10 +513,10 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "dev_status": {
+                    "feature_type": {
                         "include": true,
                         "fileImageFormat": "square",
-                        "quickSearch": true,
+                        "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
@@ -784,15 +527,8 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "status": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
                     "title": {
-                        "include": true,
+                        "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
@@ -812,58 +548,6 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "votes_ids": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "configureLinkedCard": {
-                            "fields": {
-                                "id": {
-                                    "id": "id",
-                                    "content": "id",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "id",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "user_name": {
-                                    "id": "user_name",
-                                    "content": "User name",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "string",
-                                    "format": null,
-                                    "formatOptions": null
-                                }
-                            },
-                            "fieldParams": {
-                                "id": {
-                                    "include": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "user_name": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                }
-                            },
-                            "fieldOrder": [
-                                "id",
-                                "user_name"
-                            ]
-                        }
-                    },
-                    "feature_type": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
                     "feature_id": {
                         "include": true,
                         "fileImageFormat": "square",
@@ -871,7 +555,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "subscriber_ids": {
+                    "dev_status": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -881,12 +565,12 @@ const App = (props) => {
                     "tags": {
                         "include": true,
                         "fileImageFormat": "square",
-                        "quickSearch": true,
+                        "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
                     "progress": {
-                        "include": true,
+                        "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
@@ -896,144 +580,27 @@ const App = (props) => {
                 "columns": {
                     "tab-1": {
                         "id": "tab-1",
-                        "title": "Feature",
+                        "title": "New section",
                         "fieldIds": [
-                            "feature_id",
-                            "progress",
-                            "user_id",
-                            "date_added",
-                            "feature_type",
-                            "title",
-                            "description",
-                            "status",
-                            "dev_status",
                             "color",
+                            "feature_id",
+                            "feature_type",
+                            "description",
                             "id",
-                            "tags"
-                        ]
-                    },
-                    "82431621030139706": {
-                        "id": "82431621030139706",
-                        "title": "Votes",
-                        "fieldIds": [
-                            "subscriber_ids",
-                            "votes_ids",
-                            "votes"
-                        ]
-                    },
-                    "29571621344123729": {
-                        "id": "29571621344123729",
-                        "title": "Manage",
-                        "fieldIds": [
-                            "action__10531621343955723",
-                            "action__14851621345231893",
-                            "action__37201621343964714"
+                            "title",
+                            "date_added",
+                            "user_id",
+                            "votes",
+                            "dev_status",
+                            "tags",
+                            "progress"
                         ]
                     }
                 },
                 "columnOrder": [
-                    "tab-1",
-                    "82431621030139706",
-                    "29571621344123729"
+                    "tab-1"
                 ],
-                "actions": [
-                    {
-                        "sysName": "",
-                        "id": "10531621343955723",
-                        "name": "Pick for development",
-                        "displayAs": "button",
-                        "buttonIcon": "arrowRight",
-                        "buttonType": "accent",
-                        "formMapping": [
-                            {
-                                "id": "13041621344021008",
-                                "target": "id",
-                                "type": "objectField",
-                                "value": "id"
-                            },
-                            {
-                                "id": "30131621344029217",
-                                "target": "dev_status",
-                                "type": "const",
-                                "value": "under_development"
-                            }
-                        ],
-                        "conditionals": [
-                            {
-                                "id": "40471621344079447",
-                                "target": "field",
-                                "value": "planned",
-                                "field": "dev_status"
-                            }
-                        ],
-                        "dropdown": true,
-                        "closePopup": true
-                    },
-                    {
-                        "sysName": "",
-                        "id": "37201621343964714",
-                        "name": "Put back to backlog",
-                        "displayAs": "button",
-                        "buttonIcon": "arrowLeft",
-                        "buttonType": "accent",
-                        "dropdown": true,
-                        "closePopup": true,
-                        "formMapping": [
-                            {
-                                "id": "37871621344159914",
-                                "target": "id",
-                                "type": "objectField",
-                                "value": "id"
-                            },
-                            {
-                                "id": "69381621344160975",
-                                "target": "dev_status",
-                                "type": "const",
-                                "value": "planned"
-                            }
-                        ],
-                        "conditionals": [
-                            {
-                                "id": "75151621344162098",
-                                "target": "field",
-                                "value": "under_development",
-                                "field": "dev_status"
-                            }
-                        ]
-                    },
-                    {
-                        "sysName": "",
-                        "id": "14851621345231893",
-                        "name": "Release!",
-                        "displayAs": "button",
-                        "buttonIcon": "rocket",
-                        "buttonType": "accent",
-                        "dropdown": true,
-                        "closePopup": true,
-                        "formMapping": [
-                            {
-                                "id": "24921621345250090",
-                                "target": "id",
-                                "type": "objectField",
-                                "value": "id"
-                            },
-                            {
-                                "id": "38651621345261152",
-                                "target": "dev_status",
-                                "type": "const",
-                                "value": "released"
-                            }
-                        ],
-                        "conditionals": [
-                            {
-                                "id": "78811621345270074",
-                                "target": "field",
-                                "value": "under_development",
-                                "field": "dev_status"
-                            }
-                        ]
-                    }
-                ]
+                "actions": []
             },
             "fields": {
                 "color": {
@@ -1057,26 +624,12 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "dev_status": {
+                "feature_type": {
                     "include": true,
                     "fileImageFormat": "square",
-                    "quickSearch": true,
+                    "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": false,
-                    "searchData": [
-                        {
-                            "key": "planned",
-                            "value": "Planned"
-                        },
-                        {
-                            "key": "under_development",
-                            "value": "Under development"
-                        },
-                        {
-                            "key": "released",
-                            "value": "Released"
-                        }
-                    ]
+                    "clickable": false
                 },
                 "id": {
                     "include": false,
@@ -1085,33 +638,8 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "status": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "searchData": [
-                        {
-                            "key": "new",
-                            "value": "New"
-                        },
-                        {
-                            "key": "approved",
-                            "value": "Approved"
-                        },
-                        {
-                            "key": "declined",
-                            "value": "Declined"
-                        },
-                        {
-                            "key": "double",
-                            "value": "Double"
-                        }
-                    ]
-                },
                 "title": {
-                    "include": true,
+                    "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
@@ -1131,68 +659,6 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "votes_ids": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "configureLinkedCard": {
-                        "fields": {
-                            "id": {
-                                "id": "id",
-                                "content": "id",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "id",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "user_name": {
-                                "id": "user_name",
-                                "content": "User name",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "string",
-                                "format": null,
-                                "formatOptions": null
-                            }
-                        },
-                        "fieldParams": {
-                            "id": {
-                                "include": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "user_name": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            }
-                        },
-                        "fieldOrder": [
-                            "id",
-                            "user_name"
-                        ]
-                    }
-                },
-                "feature_type": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "searchData": [
-                        {
-                            "key": "bug",
-                            "value": "bug"
-                        },
-                        {
-                            "key": "feature",
-                            "value": "feature"
-                        }
-                    ]
-                },
                 "feature_id": {
                     "include": true,
                     "fileImageFormat": "square",
@@ -1200,7 +666,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "subscriber_ids": {
+                "dev_status": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -1210,50 +676,12 @@ const App = (props) => {
                 "tags": {
                     "include": true,
                     "fileImageFormat": "square",
-                    "quickSearch": true,
+                    "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": false,
-                    "searchData": [
-                        {
-                            "key": "scenarios",
-                            "value": "scenarios"
-                        },
-                        {
-                            "key": "api-builder",
-                            "value": "api-builder"
-                        },
-                        {
-                            "key": "web-pages",
-                            "value": "web-pages"
-                        },
-                        {
-                            "key": "integrations",
-                            "value": "integrations"
-                        },
-                        {
-                            "key": "database",
-                            "value": "database"
-                        },
-                        {
-                            "key": "billing",
-                            "value": "billing"
-                        },
-                        {
-                            "key": "app life cycle management",
-                            "value": "app life cycle management"
-                        },
-                        {
-                            "key": "reports",
-                            "value": "reports"
-                        },
-                        {
-                            "key": "general issues",
-                            "value": "general issues"
-                        }
-                    ]
+                    "clickable": false
                 },
                 "progress": {
-                    "include": true,
+                    "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
@@ -1261,121 +689,18 @@ const App = (props) => {
                 }
             },
             "cardColor": "color",
-            "cardColorOption": "border",
-            "cardHeaderComment": "tags",
-            "cardBodyText": "progress",
+            "cardColorOption": "left",
             "showCounter": true,
             "counterField": "votes",
-            "counterText": " upvotes",
-            "actions": [
-                {
-                    "sysName": "",
-                    "id": "10531621343955723",
-                    "name": "Pick for development",
-                    "displayAs": "button",
-                    "buttonIcon": "arrowRight",
-                    "buttonType": "accent",
-                    "formMapping": [
-                        {
-                            "id": "13041621344021008",
-                            "target": "id",
-                            "type": "objectField",
-                            "value": "id"
-                        },
-                        {
-                            "id": "30131621344029217",
-                            "target": "dev_status",
-                            "type": "const",
-                            "value": "under_development"
-                        }
-                    ],
-                    "conditionals": [
-                        {
-                            "id": "40471621344079447",
-                            "target": "field",
-                            "value": "planned",
-                            "field": "dev_status",
-                            "fieldValue": "planned"
-                        }
-                    ],
-                    "dropdown": true,
-                    "closePopup": true
-                },
-                {
-                    "sysName": "",
-                    "id": "37201621343964714",
-                    "name": "Put back to backlog",
-                    "displayAs": "button",
-                    "buttonIcon": "arrowLeft",
-                    "buttonType": "accent",
-                    "dropdown": true,
-                    "closePopup": true,
-                    "formMapping": [
-                        {
-                            "id": "37871621344159914",
-                            "target": "id",
-                            "type": "objectField",
-                            "value": "id"
-                        },
-                        {
-                            "id": "69381621344160975",
-                            "target": "dev_status",
-                            "type": "const",
-                            "value": "planned"
-                        }
-                    ],
-                    "conditionals": [
-                        {
-                            "id": "75151621344162098",
-                            "target": "field",
-                            "value": "under_development",
-                            "field": "dev_status",
-                            "fieldValue": "planned"
-                        }
-                    ]
-                },
-                {
-                    "sysName": "",
-                    "id": "14851621345231893",
-                    "name": "Release!",
-                    "displayAs": "button",
-                    "buttonIcon": "rocket",
-                    "buttonType": "accent",
-                    "dropdown": true,
-                    "closePopup": true,
-                    "formMapping": [
-                        {
-                            "id": "24921621345250090",
-                            "target": "id",
-                            "type": "objectField",
-                            "value": "id"
-                        },
-                        {
-                            "id": "38651621345261152",
-                            "target": "dev_status",
-                            "type": "const",
-                            "value": "released"
-                        }
-                    ],
-                    "conditionals": [
-                        {
-                            "id": "78811621345270074",
-                            "target": "field",
-                            "value": "under_development",
-                            "field": "dev_status",
-                            "fieldValue": "planned"
-                        }
-                    ]
-                }
-            ]
+            "counterText": " upvotes"
         },
-        "tableTitle": "",
+        "tableTitle": "Under development",
         "actions": null,
         "headers": [
             {
                 "sysName": "color",
-                "name": "Card color",
                 "dataType": "string",
+                "name": "Card color",
                 "id": "61881621017200362",
                 "link": "",
                 "group": "0",
@@ -1392,17 +717,17 @@ const App = (props) => {
                 "format": "color",
                 "formatOptions": null,
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
+                "linkType": false,
                 "json": false
             },
             {
                 "sysName": "date_added",
-                "name": "Date added",
                 "dataType": "date",
+                "name": "Date added",
                 "id": "68351620832123660",
                 "link": "",
                 "group": "0",
@@ -1446,17 +771,17 @@ const App = (props) => {
                     "isUTC": "false"
                 },
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
+                "linkType": false,
                 "json": false
             },
             {
                 "sysName": "description",
-                "name": "Feature description",
                 "dataType": "string",
+                "name": "Feature description",
                 "id": "77031620832091108",
                 "link": "",
                 "group": "0",
@@ -1473,17 +798,17 @@ const App = (props) => {
                 "format": "markdown",
                 "formatOptions": null,
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
+                "linkType": false,
                 "json": false
             },
             {
                 "sysName": "dev_status",
-                "name": "Development status",
                 "dataType": "link",
+                "name": "Development status",
                 "id": "85621620832330584",
                 "link": "development_status",
                 "group": "0",
@@ -1500,17 +825,17 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": true,
-                "linkType": true,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
+                "linkType": true,
                 "json": false
             },
             {
                 "sysName": "feature_id",
-                "name": "Inner ID",
                 "dataType": "string",
+                "name": "Inner ID",
                 "id": "23601621342083348",
                 "link": null,
                 "group": "0",
@@ -1527,17 +852,17 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
+                "linkType": false,
                 "json": false
             },
             {
                 "sysName": "feature_type",
-                "name": "Feature type",
                 "dataType": "link",
+                "name": "Feature type",
                 "id": "55371621030232780",
                 "link": "feature_type",
                 "group": "0",
@@ -1554,17 +879,17 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": true,
-                "linkType": true,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
+                "linkType": true,
                 "json": false
             },
             {
                 "sysName": "id",
-                "name": "id",
                 "dataType": "id",
+                "name": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -1581,17 +906,17 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
+                "linkType": false,
                 "json": false
             },
             {
                 "sysName": "progress",
-                "name": "Progress",
                 "dataType": "json",
+                "name": "Progress",
                 "id": "68751622642385874",
                 "link": "",
                 "group": "0",
@@ -1640,71 +965,17 @@ const App = (props) => {
                     "isUTC": "false"
                 },
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
+                "linkType": false,
                 "json": true
             },
             {
-                "sysName": "status",
-                "name": "Request status",
-                "dataType": "link",
-                "id": "40251620832303364",
-                "link": "request_status",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 7,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "subscriber_ids",
-                "name": "Subscribers",
-                "dataType": "arrayLink",
-                "id": "26751621348189191",
-                "link": "WebUser",
-                "group": "1621348185318",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": false,
-                "arrayLink": true,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
                 "sysName": "tags",
-                "name": "Tags",
                 "dataType": "arrayLink",
+                "name": "Tags",
                 "id": "67851621409605492",
                 "link": "tags",
                 "group": "0",
@@ -1721,17 +992,17 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": true,
-                "linkType": false,
                 "arrayLink": true,
                 "indexExists": false,
-                "typeVariable": {},
+                "linkType": false,
                 "json": false
             },
             {
                 "sysName": "title",
-                "name": "Feature title",
                 "dataType": "string",
+                "name": "Feature title",
                 "id": "79031620832091734",
                 "link": null,
                 "group": "0",
@@ -1748,17 +1019,17 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
+                "linkType": false,
                 "json": false
             },
             {
                 "sysName": "user_id",
-                "name": "Who suggested",
                 "dataType": "link",
+                "name": "Who suggested",
                 "id": "59421620832153105",
                 "link": "WebUser",
                 "group": "0",
@@ -1775,17 +1046,17 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": true,
-                "linkType": true,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
+                "linkType": true,
                 "json": false
             },
             {
                 "sysName": "votes",
-                "name": "Number of upvotes",
                 "dataType": "number",
+                "name": "Number of upvotes",
                 "id": "68061620832170304",
                 "link": "",
                 "group": "0",
@@ -1802,76 +1073,17 @@ const App = (props) => {
                 "format": "positiveNum",
                 "formatOptions": null,
                 "groupName": null,
+                "typeVariable": {},
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "votes_ids",
-                "name": "Who upvoted",
-                "dataType": "arrayLink",
-                "id": "14001620832180875",
-                "link": "WebUser",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 6,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": true,
                 "linkType": false,
-                "arrayLink": true,
-                "indexExists": false,
-                "typeVariable": {},
                 "json": false
             }
         ],
         "data": [
             {
                 "votes": 6,
-                "subscriber_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    },
-                    {
-                        "firstName": "YURI",
-                        "lastName": "Udalov",
-                        "id": "udalov66@gmail.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "lastName": "Kumswa",
-                        "firstName": "Nanfa",
-                        "id": "nanfa@availsys.com"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "lastName": "Shahbandaryan",
-                        "firstName": "David",
-                        "id": "d.shahbandaryan@bsl.dev"
-                    }
-                ],
                 "description": "For Forms and Cards/Table.",
                 "tags": [
                     "web-pages"
@@ -1887,67 +1099,13 @@ const App = (props) => {
                 "id": "f33f3979-a84f-4904-951e-ae41e52aac6e",
                 "progress": "{\"firstValue\":25}",
                 "dev_status": {
-                    "id": "under_development",
                     "status": "Under development"
                 },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
                 "date_added": 1621374011000,
-                "votes_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    },
-                    {
-                        "firstName": "YURI",
-                        "lastName": "Udalov",
-                        "id": "udalov66@gmail.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "lastName": "Kumswa",
-                        "firstName": "Nanfa",
-                        "id": "nanfa@availsys.com"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "lastName": "Shahbandaryan",
-                        "firstName": "David",
-                        "id": "d.shahbandaryan@bsl.dev"
-                    }
-                ],
                 "title": "File upload control"
             },
             {
                 "votes": 2,
-                "subscriber_ids": [
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "lastName": "Dolgov",
-                        "firstName": "Nikita",
-                        "id": "n.dolgov@directual.com"
-                    },
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
                 "description": "As of today there is statistics about GET and POST requests on app dashboard.\n\nDetailed stats will include info about **scenarios** and **endpoints** which consume resources.",
                 "tags": [
                     "billing"
@@ -1963,42 +1121,13 @@ const App = (props) => {
                 "id": "91a90487-def8-4a35-80e6-7103c568bc7a",
                 "progress": "{\"firstValue\":10}",
                 "dev_status": {
-                    "id": "under_development",
                     "status": "Under development"
                 },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
                 "date_added": 1621373485000,
-                "votes_ids": [
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "lastName": "Dolgov",
-                        "firstName": "Nikita",
-                        "id": "n.dolgov@directual.com"
-                    }
-                ],
                 "title": "📈Detailed load consumption stats"
             },
             {
                 "votes": 2,
-                "subscriber_ids": [
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
                 "description": "Two-step import of CSV/XLS\n\n### Step 1\nFields aliases, with quick structure editing.\n\n### Step 2\nImport itself.\n\nP.S. Webflow has similar mechanism of CSV import.\n\nPlus:\n- import from Airtable\n- import from Google Sheets\n- import from popular CRMs",
                 "tags": [
                     "database"
@@ -2014,42 +1143,13 @@ const App = (props) => {
                 "id": "b5ca7520-f1d3-48da-af26-0cdacab94757",
                 "progress": "{\"firstValue\":40}",
                 "dev_status": {
-                    "id": "under_development",
                     "status": "Under development"
                 },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
                 "date_added": 1621373725000,
-                "votes_ids": [
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
                 "title": "Import updating"
             },
             {
                 "votes": 1,
-                "subscriber_ids": [
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
                 "description": "The same settings for Cards work well.",
                 "tags": [
                     "web-pages"
@@ -2065,31 +1165,12 @@ const App = (props) => {
                 "id": "f9086b28-1e6b-4399-a232-66e923f534df",
                 "progress": "{\"firstValue\":95}",
                 "dev_status": {
-                    "id": "under_development",
                     "status": "Under development"
                 },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
                 "date_added": 1622157439000,
-                "votes_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
                 "title": "QuickSearch option for links in Table doesn't work"
             },
             {
-                "subscriber_ids": [
-                    {
-                        "firstName": "Efim",
-                        "lastName": "Maisak",
-                        "id": "coldnaked@gmail.com"
-                    }
-                ],
                 "description": "After sending a form with **default value** (type number) - \"0\".\nIt`s have not appear in the Database object.\n\nDefault value \"0\" (type decimal) is saved without any problems.",
                 "tags": [
                     "database",
@@ -2105,701 +1186,13 @@ const App = (props) => {
                 "feature_type": "bug",
                 "id": "ffc2d863-92ca-4a98-8382-5cab9aa348bf",
                 "dev_status": {
-                    "id": "under_development",
                     "status": "Under development"
                 },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
                 "date_added": 1622039744000,
-                "title": "Lost values (type  number) from the form when saving to the base",
-                "progress": ""
-            },
-            {
-                "votes": 7,
-                "subscriber_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    },
-                    {
-                        "firstName": "YURI",
-                        "lastName": "Udalov",
-                        "id": "udalov66@gmail.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "lastName": "Kumswa",
-                        "firstName": "Nanfa",
-                        "id": "nanfa@availsys.com"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "firstName": "Efim",
-                        "lastName": "Maisak",
-                        "id": "coldnaked@gmail.com"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    }
-                ],
-                "description": "Filters should be tags-like. The list of tags is based on `link`/`arrayLink` field (as on the directory).",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-104",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "feature_type": "feature",
-                "id": "00e555ce-3faa-47c5-9768-91d224a1f8fe",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621373961000,
-                "votes_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    },
-                    {
-                        "firstName": "YURI",
-                        "lastName": "Udalov",
-                        "id": "udalov66@gmail.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "lastName": "Kumswa",
-                        "firstName": "Nanfa",
-                        "id": "nanfa@availsys.com"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "firstName": "Efim",
-                        "lastName": "Maisak",
-                        "id": "coldnaked@gmail.com"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    }
-                ],
-                "title": "Filters for Table, Cards",
-                "progress": ""
-            },
-            {
-                "votes": 4,
-                "subscriber_ids": [
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "lastName": "Novoseltsev",
-                        "firstName": "Vladimir",
-                        "id": "xtrms@yandex.ru"
-                    },
-                    {
-                        "lastName": "Dolgov",
-                        "firstName": "Nikita",
-                        "id": "n.dolgov@directual.com"
-                    }
-                ],
-                "description": "1. Make API-builder interface easier\n2. Introduce API-endpoint request logs\n3. Improve work with HTTP-parameters",
-                "tags": [
-                    "api-builder"
-                ],
-                "feature_id": "PLT-103",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "feature_type": "feature",
-                "id": "ea8ef168-ca6c-4f6c-b82b-6d6c4f0610f0",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621373826000,
-                "votes_ids": [
-                    {
-                        "lastName": "Dolgov",
-                        "firstName": "Nikita",
-                        "id": "n.dolgov@directual.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    }
-                ],
-                "title": "API-builder UI updating",
-                "progress": ""
-            },
-            {
-                "votes": 4,
-                "subscriber_ids": [
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "firstName": "Efim",
-                        "lastName": "Maisak",
-                        "id": "coldnaked@gmail.com"
-                    },
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
-                "description": "As of today, arrayLink is displayed as a simple list. It would be great to have:\n\n- Comments\n- Sorted list\n- Cards\n- Table\n- Calendar\n- Object-quantity pairs",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-114",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "feature_type": "feature",
-                "id": "db3ce173-737a-4b9b-9872-f9c5d090f015",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621374947000,
-                "votes_ids": [
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "firstName": "Efim",
-                        "lastName": "Maisak",
-                        "id": "coldnaked@gmail.com"
-                    },
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
-                "title": "Sophisticated view for arrayLinks on object cards",
-                "progress": ""
-            },
-            {
-                "votes": 4,
-                "subscriber_ids": [
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "lastName": "Kumswa",
-                        "firstName": "Nanfa",
-                        "id": "nanfa@availsys.com"
-                    }
-                ],
-                "description": "That means, I want to choose an API-endpoint, fetch the first object and manipulate the data from that object.",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-121",
-                "color": "57bf97",
-                "user_id": {
-                    "firstName": "Dimitry",
-                    "lastName": "Novozhilov",
-                    "id": "novozhilov@code-word.ru"
-                },
-                "feature_type": "feature",
-                "id": "64fd31ac-e91c-479f-bdb1-0d8998010fe0",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621380341000,
-                "votes_ids": [
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "lastName": "Kumswa",
-                        "firstName": "Nanfa",
-                        "id": "nanfa@availsys.com"
-                    }
-                ],
-                "title": "Add to HTML and Markdown option to fetch Directual data",
-                "progress": ""
-            },
-            {
-                "votes": 3,
-                "subscriber_ids": [
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "firstName": "YURI",
-                        "lastName": "Udalov",
-                        "id": "udalov66@gmail.com"
-                    }
-                ],
-                "description": "Push your app UI right from scenarios",
-                "tags": [
-                    "scenarios",
-                    "web-pages"
-                ],
-                "feature_id": "PLT-111",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "feature_type": "feature",
-                "id": "6735e327-e1b5-486c-b88e-8ebb33fd2785",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621374431000,
-                "votes_ids": [
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    }
-                ],
-                "title": "🔔 Real-time pushes based on Socket.io",
-                "progress": ""
-            },
-            {
-                "votes": 3,
-                "subscriber_ids": [
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    }
-                ],
-                "description": "Calendar view for the structure",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-113",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "feature_type": "feature",
-                "id": "2c7192b1-cae4-4234-a245-8e5d0160ee2f",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621374804000,
-                "votes_ids": [
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    }
-                ],
-                "title": "Calendar component",
-                "progress": ""
-            },
-            {
-                "votes": 3,
-                "subscriber_ids": [
-                    {
-                        "lastName": "Mozer",
-                        "firstName": "Anna",
-                        "id": "annmozer116@gmail.com"
-                    },
-                    {
-                        "lastName": "Novoseltsev",
-                        "firstName": "Vladimir",
-                        "id": "xtrms@yandex.ru"
-                    },
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
-                "description": "Copy Sections and Components on the page and between different pages",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-136",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Mozer",
-                    "firstName": "Anna",
-                    "id": "annmozer116@gmail.com"
-                },
-                "feature_type": "feature",
-                "id": "1b9163bd-db44-48af-8f7c-ad9c86299d94",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621428952000,
-                "votes_ids": [
-                    {
-                        "lastName": "Mozer",
-                        "firstName": "Anna",
-                        "id": "annmozer116@gmail.com"
-                    },
-                    {
-                        "lastName": "Novoseltsev",
-                        "firstName": "Vladimir",
-                        "id": "xtrms@yandex.ru"
-                    },
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
-                "title": "Copy-paste sections and components",
-                "progress": ""
-            },
-            {
-                "votes": 2,
-                "subscriber_ids": [
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Valentin",
-                        "lastName": "Novikov",
-                        "id": "novikov84@gmail.com"
-                    }
-                ],
-                "description": "That will allow users to define specific filters for quick search in selects in the Form component.",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-109",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "feature_type": "feature",
-                "id": "ddd88fa6-eadc-4ca2-bdd8-21c01b1aeeca",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621374294000,
-                "votes_ids": [
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Valentin",
-                        "lastName": "Novikov",
-                        "id": "novikov84@gmail.com"
-                    }
-                ],
-                "title": "Quick search (selects for links) in Forms via specific API-endpoint",
-                "progress": ""
-            },
-            {
-                "votes": 1,
-                "subscriber_ids": [
-                    {
-                        "lastName": "Dolgov",
-                        "firstName": "Nikita",
-                        "id": "n.dolgov@directual.com"
-                    }
-                ],
-                "description": "Current ES5 is not the best JS-engine :)",
-                "tags": [
-                    "scenarios"
-                ],
-                "feature_id": "PLT-112",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "feature_type": "feature",
-                "id": "63da4103-bb50-4b03-889c-1e5af18677c5",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621374725000,
-                "votes_ids": [
-                    {
-                        "lastName": "Dolgov",
-                        "firstName": "Nikita",
-                        "id": "n.dolgov@directual.com"
-                    }
-                ],
-                "title": "ES-2017  as a JS-engine",
-                "progress": ""
-            },
-            {
-                "votes": 1,
-                "subscriber_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
-                "description": "Now max depth is 2. That would be great if it was greater (ideally — unlimited).",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-122",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "feature_type": "feature",
-                "id": "ad5455d7-dbcb-446b-ac79-dc41f1014234",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621381484000,
-                "votes_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    }
-                ],
-                "title": "Greater depth of linked cards",
-                "progress": ""
-            },
-            {
-                "votes": 1,
-                "subscriber_ids": [
-                    {
-                        "lastName": "Mozer",
-                        "firstName": "Anna",
-                        "id": "annmozer116@gmail.com"
-                    }
-                ],
-                "description": "That would be useful — to use the unique API-endpoint for several components!",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-137",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Mozer",
-                    "firstName": "Anna",
-                    "id": "annmozer116@gmail.com"
-                },
-                "feature_type": "feature",
-                "id": "2a1735c3-7b33-4876-964e-01317eaf3269",
-                "dev_status": {
-                    "id": "planned",
-                    "status": "Planned"
-                },
-                "status": {
-                    "id": "approved",
-                    "status": "Approved"
-                },
-                "date_added": 1621429081000,
-                "votes_ids": [
-                    {
-                        "lastName": "Mozer",
-                        "firstName": "Anna",
-                        "id": "annmozer116@gmail.com"
-                    }
-                ],
-                "title": "Include HTTP-params in Component settings",
-                "progress": ""
+                "title": "Lost values (type  number) from the form when saving to the base"
             }
         ],
-        "totalPages": 2,
+        "totalPages": 1,
         "pageNumber": 0,
         "error": null,
         "fieldScheme": [
@@ -2814,10 +1207,6 @@ const App = (props) => {
             [
                 "description",
                 1385610
-            ],
-            [
-                "dev_status.id",
-                1385613
             ],
             [
                 "dev_status.status",
@@ -2838,26 +1227,6 @@ const App = (props) => {
             [
                 "progress",
                 1385610
-            ],
-            [
-                "status.id",
-                1385612
-            ],
-            [
-                "status.status",
-                1385612
-            ],
-            [
-                "subscriber_ids.firstName",
-                1385542
-            ],
-            [
-                "subscriber_ids.id",
-                1385542
-            ],
-            [
-                "subscriber_ids.lastName",
-                1385542
             ],
             [
                 "tags",
@@ -2882,35 +1251,9 @@ const App = (props) => {
             [
                 "votes",
                 1385610
-            ],
-            [
-                "votes_ids.firstName",
-                1385542
-            ],
-            [
-                "votes_ids.id",
-                1385542
-            ],
-            [
-                "votes_ids.lastName",
-                1385542
-            ],
-            [
-                "votes_ids.user_name",
-                1385542
             ]
         ],
-        "writeFields": [
-            "color",
-            "description",
-            "dev_status",
-            "feature_type",
-            "id",
-            "progress",
-            "status",
-            "tags",
-            "title"
-        ],
+        "writeFields": [],
         "structures": {
             "1385542": {
                 "networkID": 6829,
@@ -2935,8 +1278,8 @@ const App = (props) => {
                 "_nativeIndexSettings": null,
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "Username (login)",
                     "dataType": "id",
+                    "name": "Username (login)",
                     "id": "12",
                     "link": "",
                     "group": "0",
@@ -2953,11 +1296,11 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
+                    "typeVariable": {},
                     "linkOrArrayLinkType": false,
-                    "linkType": false,
                     "arrayLink": false,
                     "indexExists": false,
-                    "typeVariable": {},
+                    "linkType": false,
                     "json": false
                 },
                 "objectIDSysName": "id",
@@ -2986,8 +1329,8 @@ const App = (props) => {
                 "_nativeIndexSettings": null,
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "id",
                     "dataType": "id",
+                    "name": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -3004,62 +1347,11 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
+                    "typeVariable": {},
                     "linkOrArrayLinkType": false,
-                    "linkType": false,
                     "arrayLink": false,
                     "indexExists": false,
-                    "typeVariable": {},
-                    "json": false
-                },
-                "objectIDSysName": "id",
-                "folderId": 33625685
-            },
-            "1385612": {
-                "networkID": 6829,
-                "sysName": "request_status",
-                "name": "request_status",
-                "id": 1385612,
-                "dateCreated": "2021-05-12T15:13:21Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Status\",\"id\":\"76241620832406222\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"status\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-05-12T15:13:35Z",
-                "createBy": 1,
-                "changedBy": 1,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "innerIDField": {
-                    "sysName": "id",
-                    "name": "id",
-                    "dataType": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "linkOrArrayLinkType": false,
                     "linkType": false,
-                    "arrayLink": false,
-                    "indexExists": false,
-                    "typeVariable": {},
                     "json": false
                 },
                 "objectIDSysName": "id",
@@ -3088,8 +1380,8 @@ const App = (props) => {
                 "_nativeIndexSettings": null,
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "id",
                     "dataType": "id",
+                    "name": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -3106,11 +1398,11 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
+                    "typeVariable": {},
                     "linkOrArrayLinkType": false,
-                    "linkType": false,
                     "arrayLink": false,
                     "indexExists": false,
-                    "typeVariable": {},
+                    "linkType": false,
                     "json": false
                 },
                 "objectIDSysName": "id",
@@ -3120,284 +1412,8 @@ const App = (props) => {
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
-        "fileds": [
-            {
-                "sysName": "color",
-                "name": "Card color",
-                "dataType": "string",
-                "id": "61881621017200362",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 9,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "color",
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "description",
-                "name": "Feature description",
-                "dataType": "string",
-                "id": "77031620832091108",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "dev_status",
-                "name": "Development status",
-                "dataType": "link",
-                "id": "85621620832330584",
-                "link": "development_status",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 8,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "feature_type",
-                "name": "Feature type",
-                "dataType": "link",
-                "id": "55371621030232780",
-                "link": "feature_type",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 10,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "id",
-                "name": "id",
-                "dataType": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "progress",
-                "name": "Progress",
-                "dataType": "json",
-                "id": "68751622642385874",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 16,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "slider",
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "unitName": "%",
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {
-                        "min": 0,
-                        "max": 100,
-                        "step": 5
-                    },
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false"
-                },
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": true
-            },
-            {
-                "sysName": "status",
-                "name": "Request status",
-                "dataType": "link",
-                "id": "40251620832303364",
-                "link": "request_status",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 7,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "tags",
-                "name": "Tags",
-                "dataType": "arrayLink",
-                "id": "67851621409605492",
-                "link": "tags",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 15,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": false,
-                "arrayLink": true,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "title",
-                "name": "Feature title",
-                "dataType": "string",
-                "id": "79031620832091734",
-                "link": null,
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            }
-        ],
-        "quickSearch": "true"
+        "fileds": [],
+        "quickSearch": "false"
     }
 
     let newCardActions = {

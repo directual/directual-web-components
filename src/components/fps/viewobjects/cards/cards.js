@@ -174,10 +174,10 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                     const formatJson = (value, formatOptions) => {
                         const jsonParse = def => {
                             try {
-                                return JSON.parse(def)
+                                return JSON.parse(def) || {}
                             } catch (e) {
                                 console.log(e);
-                                return def
+                                return def || {}
                             }
                         }
 
