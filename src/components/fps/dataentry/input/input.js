@@ -293,6 +293,7 @@ export default function Input(props) {
             { key: 'idea', value: 'idea', icon: 'idea' },
             { key: 'star', value: 'star', icon: 'star' },
             { key: 'fuckYou', value: 'fuckYou', icon: 'fuckYou' },
+            { key: 'docker', value: 'docker', icon: 'docker' },
         ]
 
     let inputMargins = {
