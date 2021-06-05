@@ -144,6 +144,8 @@ export default function InputsPage() {
         <React.Fragment>
             <h1>Data entry</h1>
 
+            <Input defaultValue="мороз и солнце день чудесный" width={120} />
+
             <h2>File upload</h2>
             <br />
             <FileUpload />

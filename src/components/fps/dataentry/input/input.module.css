@@ -38,6 +38,9 @@
 .input_wrapper .field_wrapper .input_icon_wrapper:before {
   font-size: 32px;
 }
+.input_wrapper .field_wrapper:hover .field {
+  padding: 1px 39px 1px 18px;
+}
 .input_wrapper .field_wrapper:hover .clear {
   opacity: 0.3;
 }
@@ -155,7 +158,7 @@
   display: flex;
   height: 44px;
   align-items: center;
-  padding: 1px 40px 1px 18px;
+  padding: 1px 18px 1px 18px;
   color: var(--font-color);
   -webkit-appearance: none;
   -moz-appearance: none;
