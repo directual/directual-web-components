@@ -39,7 +39,7 @@
   font-size: 32px;
 }
 .input_wrapper .field_wrapper:hover .field {
-  padding: 1px 39px 1px 18px;
+  padding-right: 39px;
 }
 .input_wrapper .field_wrapper:hover .clear {
   opacity: 0.3;
