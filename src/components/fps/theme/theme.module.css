@@ -346,8 +346,8 @@
 }
 @font-face {
   font-family: 'directual-icons';
-  src: url('https://api.directual.com/fileUploaded/directual-site/59a478ff-5f39-443f-8727-b6f5a87b2ab8.eot');
-  src: url('https://api.directual.com/fileUploaded/directual-site/59a478ff-5f39-443f-8727-b6f5a87b2ab8.eot') format('embedded-opentype'), url('https://api.directual.com/fileUploaded/directual-site/bcb1cfb8-d765-4c9a-9d77-758114ece559.woff') format('woff'), url('https://api.directual.com/fileUploaded/directual-site/9a2f6453-cbe8-43e8-bed7-4f433558a80a.ttf') format('truetype'), url('https://api.directual.com/fileUploaded/directual-site/2d0f74d0-5310-4178-bef7-20c91857c759.svg') format('svg');
+  src: url('https://api.directual.com/fileUploaded/directual-site/6b4857a8-d527-45ac-adc9-cb2fd6932660.eot');
+  src: url('https://api.directual.com/fileUploaded/directual-site/6b4857a8-d527-45ac-adc9-cb2fd6932660.eot') format('embedded-opentype'), url('https://api.directual.com/fileUploaded/directual-site/be1779a0-f2e2-478c-ae3d-b1c1ff93a198.woff') format('woff'), url('https://api.directual.com/fileUploaded/directual-site/414e82c6-1afb-45e9-a763-50df1bdcafa4.ttf') format('truetype'), url('https://api.directual.com/fileUploaded/directual-site/08290a74-00cd-4dd6-9f60-77f80220d13c.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -748,6 +748,9 @@
 }
 :global .icon-docker:before {
   content: "\e980";
+}
+:global .icon-directual:before {
+  content: "\e981";
 }
 /*-- VARIABLES --*/
 :root {
