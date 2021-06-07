@@ -162,7 +162,7 @@ export function ObjectCard(props) {
         // console.log('obj')
         // console.log(obj)
         const structure = getStructure(obj, transformTableFieldScheme(sysname, props.tableFieldScheme), props.tableStructures)
-        console.log(structure)
+        // console.log(structure)
         const linkNameArr = []
         structure.visibleName && structure.visibleName.forEach(field => {
             const fieldDetails = structure.fieldStructure.filter(i => i.sysName == field)[0]
@@ -836,6 +836,7 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
 
     let conds = actionParams ? (actionParams.conditionals ? [...actionParams.conditionals] : null) : null
     if (conds) {
+        console.log(conds)
         conds.forEach(cond => {
             if (cond.target == 'id' && cond.type != 'const') {
                 typeof object[cond.value].value != 'object' ? cond.checkValue = object[cond.value] :

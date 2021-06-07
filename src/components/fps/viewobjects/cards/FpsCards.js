@@ -105,13 +105,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
 
     //Check action conditionals
     const checkActionCond = (actionCond) => {
-        // console.log('actionCond')
-        // console.log(actionCond)
-        // console.log(auth)
-
         if (!actionCond) { return true }
-        //if (!auth && actionCond) { return false }
-
         const compareRoleArrays = (userRolesString, rolesString) => {
             if (!userRolesString || !rolesString) return false
             let match = false
@@ -124,7 +118,6 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
             })
             return match
         }
-
         let match = true
         actionCond.forEach(cond => {
             if (typeof cond.fieldValue == 'object' && cond.fieldValue) { cond.fieldValue = cond.fieldValue.id }
@@ -133,14 +126,14 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
                 // console.log('ID does not match');
                 match = false
             }
-            if (cond.target == 'role' && (!auth || !auth.role || (compareRoleArrays(auth.role && cond.checkValue)))) {
-                // console.log('Role does not match');
+            if (cond.target == 'role' && (!auth || !auth.role || (!compareRoleArrays(auth.role, cond.checkValue)))) {
+                console.log('Role does not match');
                 match = false
             }
             if ((cond.target == 'field' || cond.target == 'linkedField') && (!cond.fieldValue ||
                 cond.fieldValue.toString().toLowerCase() != cond.value.toString().toLowerCase())) {
-                // console.log(cond.fieldValue + ' != ' + cond.value);
-                // console.log('Field is wrong');
+                console.log(cond.fieldValue + ' != ' + cond.value);
+                console.log('Field is wrong');
                 match = false
             }
         })

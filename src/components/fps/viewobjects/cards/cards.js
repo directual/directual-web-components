@@ -104,9 +104,10 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
         // console.log('edenrichConds')
         // console.log(conds)
         // console.log(object)
+        // console.log(auth)
         eConds && eConds.forEach(cond => {
-            console.log(cond)
-            console.log(object)
+            // console.log(cond)
+            // console.log(object)
             if (cond.target == 'id' && cond.type == 'const') {
                 cond.checkValue = cond.value
             }
