@@ -92,7 +92,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                 linkNameArr.push(obj[field])
             }
         })
-        const linkName = linkNameArr.length > 0 ? linkNameArr.join(' ') : null
+        const linkName = linkNameArr ? linkNameArr.length > 0 ? linkNameArr.join(' ') : null : null
         let displayID = ''
         if (typeof obj == 'string') { displayID = obj }
         return linkName || displayID || obj.id || 'No visible name'
@@ -229,7 +229,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                         || cardHeader == '      ') ? (row.id || 'No visible name') :
                         cardHeader
 
-                    cardHeader = (typeof cardHeader == 'object') ? (cardHeader.value || JSON.stringify(cardHeader)) : cardHeader
+                    cardHeader = cardHeader ? (typeof cardHeader == 'object') ? (cardHeader.value || JSON.stringify(cardHeader)) : cardHeader: 'No visible name'
 
                     const cardHeaderComment = row && (typeof row[tableParams.cardHeaderComment] == 'object' ?
                         !Array.isArray(row[tableParams.cardHeaderComment]) ?
