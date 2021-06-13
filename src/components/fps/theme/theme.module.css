@@ -326,14 +326,10 @@
   font-weight: var(--headers-font-weight);
 }
 :global a {
-  transition: 0.5s;
   text-decoration: none;
 }
 :global p {
   line-height: calc(1.6 * var(--text-font-size));
-}
-:global a:hover {
-  transition: 0.5s;
 }
 :global button {
   font-family: var(--main-font-family);

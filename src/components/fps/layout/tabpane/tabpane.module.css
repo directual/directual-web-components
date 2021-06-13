@@ -44,7 +44,6 @@
   margin-right: 24px;
   border-bottom: solid 2px transparent;
   cursor: pointer;
-  transition: 0.5s;
   opacity: 0.6;
   white-space: nowrap;
   font-weight: var(--strong-font-weight);

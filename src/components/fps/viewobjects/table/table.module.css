@@ -23,7 +23,6 @@
   opacity: 1;
 }
 .table_wrapper table td {
-  transition: 0.5s;
   padding: 12px 12px;
   border-top: solid 1px var(--table-border-color);
 }
@@ -162,7 +161,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: 0 !important;
-  transition: 0.5s;
 }
 .tableTitle .tableActions {
   display: flex;
