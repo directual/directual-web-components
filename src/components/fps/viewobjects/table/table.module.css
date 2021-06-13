@@ -344,6 +344,7 @@ div.tableTitle.mobile h2 {
 .linkText {
   border: solid 1px var(--accent-color);
   color: var(--accent-color);
+  background-color: var(--background-color);
   padding: 3px 9px;
 }
 .labelText,

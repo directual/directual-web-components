@@ -80,270 +80,278 @@ const App = (props) => {
     }
 
     let cardActions = {
-        "sl": "getAll",
-        "pageSize": "12",
+        "sl": "money",
+        "pageSize": "10",
         "headerField": null,
         "params": {
-            "cardListLayout": "grid",
-            "cardHeaderComment": "m_director_id",
-            "deleteField": "",
-            "cardBodyText": "m_description",
-            "cardImage": true,
-            "cardImageField": "m_gif",
-            "cardImageType": "top",
-            "cardImageSize": 250,
-            "objectView": {},
             "data": {
                 "readFields": [
+                    {
+                        "fieldSysName": "begin_balance",
+                        "fetch": [],
+                        "sysName": "begin_balance",
+                        "name": "Начальный баланс",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "final_balance",
+                        "fetch": [],
+                        "sysName": "final_balance",
+                        "name": "Конечный баланс",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "gateway",
+                        "fetch": [
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "gateway",
+                        "name": "Способ платежа",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "gateway"
+                    },
+                    {
+                        "fieldSysName": "sum",
+                        "fetch": [],
+                        "sysName": "sum",
+                        "name": "Сумма",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "transaction_date",
+                        "fetch": [],
+                        "sysName": "transaction_date",
+                        "name": "Дата",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "user_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "user_id",
+                        "name": "Плательщик",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    }
+                ],
+                "writeFields": [
+                    {
+                        "fieldSysName": "begin_balance",
+                        "fetch": [],
+                        "sysName": "begin_balance",
+                        "name": "Начальный баланс",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "final_balance",
+                        "fetch": [],
+                        "sysName": "final_balance",
+                        "name": "Конечный баланс",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "gateway",
+                        "fetch": [],
+                        "sysName": "gateway",
+                        "name": "Способ платежа",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "gateway"
+                    },
                     {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
-                        "name": "m_id",
+                        "name": "id",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "m_actor_ids",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "person_birthDate",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "person_name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "m_actor_ids",
-                        "name": "Актеры",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "m_person"
-                    },
-                    {
-                        "fieldSysName": "m_description",
+                        "fieldSysName": "sum",
                         "fetch": [],
-                        "sysName": "m_description",
-                        "name": "Описание фильма",
-                        "dataType": "string",
+                        "sysName": "sum",
+                        "name": "Сумма",
+                        "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "m_director_id",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "person_birthDate",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "person_name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "m_director_id",
-                        "name": "Режиссер",
+                        "fieldSysName": "transaction_date",
+                        "fetch": [],
+                        "sysName": "transaction_date",
+                        "name": "Дата",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "user_id",
+                        "fetch": [],
+                        "sysName": "user_id",
+                        "name": "Плательщик",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "m_person"
-                    },
-                    {
-                        "fieldSysName": "m_genre_ids",
-                        "fetch": [
-                            {
-                                "fieldSysName": "g_name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "m_genre_ids",
-                        "name": "Жанры",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "genre"
-                    },
-                    {
-                        "fieldSysName": "m_gif",
-                        "fetch": [],
-                        "sysName": "m_gif",
-                        "name": "гиф фильма",
-                        "dataType": "file",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "m_likes",
-                        "fetch": [],
-                        "sysName": "m_likes",
-                        "name": "Понравилось",
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "m_name",
-                        "fetch": [],
-                        "sysName": "m_name",
-                        "name": "Название фильма",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "m_year",
-                        "fetch": [],
-                        "sysName": "m_year",
-                        "name": "Год фильма",
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "link": ""
+                        "link": "WebUser"
                     }
                 ],
-                "writeFields": [],
                 "fields": {
-                    "id": {
-                        "id": "id",
-                        "content": "m_id",
+                    "begin_balance": {
+                        "id": "begin_balance",
+                        "content": "Начальный баланс",
                         "type": "field",
-                        "dataType": "id",
+                        "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "m_actor_ids": {
-                        "id": "m_actor_ids",
-                        "content": "Актеры",
+                    "final_balance": {
+                        "id": "final_balance",
+                        "content": "Конечный баланс",
                         "type": "field",
-                        "dataType": "arrayLink",
+                        "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
-                        "read": true,
-                        "link": "m_person",
-                        "actions": []
-                    },
-                    "m_description": {
-                        "id": "m_description",
-                        "content": "Описание фильма",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
+                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "m_director_id": {
-                        "id": "m_director_id",
-                        "content": "Режиссер",
+                    "gateway": {
+                        "id": "gateway",
+                        "content": "Способ платежа",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
-                        "link": "m_person",
+                        "link": "gateway",
                         "actions": []
                     },
-                    "m_genre_ids": {
-                        "id": "m_genre_ids",
-                        "content": "Жанры",
+                    "sum": {
+                        "id": "sum",
+                        "content": "Сумма",
                         "type": "field",
-                        "dataType": "arrayLink",
+                        "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
-                        "link": "genre",
+                        "link": "",
                         "actions": []
                     },
-                    "m_gif": {
-                        "id": "m_gif",
-                        "content": "гиф фильма",
+                    "transaction_date": {
+                        "id": "transaction_date",
+                        "content": "Дата",
                         "type": "field",
-                        "dataType": "file",
+                        "dataType": "date",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "m_likes": {
-                        "id": "m_likes",
-                        "content": "Понравилось",
+                    "user_id": {
+                        "id": "user_id",
+                        "content": "Плательщик",
                         "type": "field",
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "m_name": {
-                        "id": "m_name",
-                        "content": "Название фильма",
-                        "type": "field",
-                        "dataType": "string",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
-                        "link": "",
+                        "link": "WebUser",
                         "actions": []
                     },
-                    "m_year": {
-                        "id": "m_year",
-                        "content": "Год фильма",
+                    "id": {
+                        "id": "id",
+                        "content": "id",
                         "type": "field",
-                        "dataType": "number",
-                        "format": "positiveNum",
+                        "dataType": "id",
+                        "format": "",
                         "formatOptions": {},
-                        "read": true,
+                        "write": true,
                         "link": "",
-                        "actions": []
-                    },
-                    "action__35241622914295883": {
-                        "content": "Delete",
-                        "id": "action__35241622914295883",
-                        "type": "action",
-                        "actions": []
-                    },
-                    "action__42591622976436647": {
-                        "id": "action__42591622976436647",
-                        "content": "Понравилось",
-                        "type": "action",
                         "actions": []
                     }
                 },
                 "fieldParams": {
+                    "begin_balance": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "final_balance": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "gateway": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "sum": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "transaction_date": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
                     "id": {
                         "include": false,
                         "fileImageFormat": "square",
@@ -351,64 +359,36 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "m_actor_ids": {
+                    "user_id": {
                         "include": true,
                         "fileImageFormat": "square",
-                        "quickSearch": false,
+                        "quickSearch": true,
                         "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "m_description": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "m_director_id": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "m_genre_ids": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "m_gif": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 400,
-                        "clickable": false,
-                        "fileImage": true
-                    },
-                    "m_name": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "m_year": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "m_likes": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "descriptionFlag": false,
-                        "description": "Понраыилось:"
+                        "clickable": true,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "name": {
+                                    "id": "name",
+                                    "content": "Name",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                }
+                            },
+                            "fieldParams": {
+                                "name": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                null,
+                                "name"
+                            ]
+                        }
                     }
                 },
                 "columns": {
@@ -416,246 +396,57 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "m_likes",
+                            "begin_balance",
+                            "final_balance",
+                            "gateway",
+                            "sum",
+                            "transaction_date",
                             "id",
-                            "m_gif",
-                            "m_name",
-                            "m_genre_ids",
-                            "m_actor_ids",
-                            "m_description",
-                            "m_director_id",
-                            "m_year",
-                            "action__35241622914295883",
-                            "action__42591622976436647"
+                            "user_id"
                         ]
                     }
                 },
                 "columnOrder": [
                     "tab-1"
                 ],
-                "actions": [
-                    {
-                        "sysName": "saveINPUT",
-                        "id": "35241622914295883",
-                        "name": "Delete",
-                        "displayAs": "button",
-                        "buttonIcon": "delete",
-                        "buttonType": "danger",
-                        "buttonTitle": "Удалить",
-                        "dropdown": true,
-                        "SLtype": "other",
-                        "fields": {
-                            "readFields": [
-                                {
-                                    "fieldSysName": "errorDescription",
-                                    "fetch": [],
-                                    "sysName": "errorDescription",
-                                    "name": "INPUT_Описание ошибки",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": ""
-                                },
-                                {
-                                    "fieldSysName": "id",
-                                    "fetch": [],
-                                    "sysName": "id",
-                                    "name": "m_input_id",
-                                    "dataType": "id",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": ""
-                                },
-                                {
-                                    "fieldSysName": "status",
-                                    "fetch": [],
-                                    "sysName": "status",
-                                    "name": "INPUT_Статус обработки",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": ""
-                                }
-                            ],
-                            "writeFields": [
-                                {
-                                    "fieldSysName": "m_action",
-                                    "fetch": [],
-                                    "sysName": "m_action",
-                                    "name": "m_action",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": ""
-                                },
-                                {
-                                    "fieldSysName": "m_actor_ids",
-                                    "fetch": [],
-                                    "sysName": "m_actor_ids",
-                                    "name": "INPUT_Актеры",
-                                    "dataType": "arrayLink",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": "m_person"
-                                },
-                                {
-                                    "fieldSysName": "m_description",
-                                    "fetch": [],
-                                    "sysName": "m_description",
-                                    "name": "INPUT_Описание фильма",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": ""
-                                },
-                                {
-                                    "fieldSysName": "m_director_id",
-                                    "fetch": [],
-                                    "sysName": "m_director_id",
-                                    "name": "INPUT_Режиссер",
-                                    "dataType": "link",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": "m_person"
-                                },
-                                {
-                                    "fieldSysName": "m_genre_ids",
-                                    "fetch": [],
-                                    "sysName": "m_genre_ids",
-                                    "name": "INPUT_Жанры",
-                                    "dataType": "arrayLink",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": "genre"
-                                },
-                                {
-                                    "fieldSysName": "m_gif",
-                                    "fetch": [],
-                                    "sysName": "m_gif",
-                                    "name": "Input_gif",
-                                    "dataType": "file",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": ""
-                                },
-                                {
-                                    "fieldSysName": "m_name",
-                                    "fetch": [],
-                                    "sysName": "m_name",
-                                    "name": "INPUT_Название фильма",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": ""
-                                },
-                                {
-                                    "fieldSysName": "m_year",
-                                    "fetch": [],
-                                    "sysName": "m_year",
-                                    "name": "INPUT_Год фильма",
-                                    "dataType": "number",
-                                    "format": "positiveNum",
-                                    "formatOptions": {},
-                                    "link": ""
-                                },
-                                {
-                                    "fieldSysName": "rfm_m_id",
-                                    "fetch": [],
-                                    "sysName": "rfm_m_id",
-                                    "name": "id_фильма2mod",
-                                    "dataType": "link",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": "Movie"
-                                }
-                            ]
-                        },
-                        "formMapping": [
-                            {
-                                "id": "39221622914528277",
-                                "target": "m_action",
-                                "type": "const",
-                                "value": "Delete"
-                            },
-                            {
-                                "id": "70991622914833290",
-                                "target": "rfm_m_id",
-                                "type": "objectField",
-                                "value": "id"
-                            }
-                        ]
-                    },
-                    {
-                        "sysName": "liked",
-                        "id": "89271622916127304",
-                        "name": "Like",
-                        "displayAs": "button",
-                        "buttonIcon": "love",
-                        "buttonType": "accent",
-                        "buttonTitle": "Понравилось",
-                        "dropdown": true,
-                        "SLtype": "other",
-                        "fields": {
-                            "readFields": [
-                                {
-                                    "fieldSysName": "m_Input_like",
-                                    "fetch": [],
-                                    "sysName": "m_Input_like",
-                                    "format": "",
-                                    "formatOptions": {}
-                                },
-                                {
-                                    "fieldSysName": "m_name",
-                                    "fetch": [],
-                                    "sysName": "m_name",
-                                    "name": "INPUT_Название фильма",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": ""
-                                }
-                            ],
-                            "writeFields": [
-                                {
-                                    "fieldSysName": "m_action",
-                                    "fetch": [],
-                                    "sysName": "m_action",
-                                    "name": "m_action",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": ""
-                                },
-                                {
-                                    "fieldSysName": "rfm_m_id",
-                                    "fetch": [],
-                                    "sysName": "rfm_m_id",
-                                    "name": "id_фильма2mod",
-                                    "dataType": "link",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": "Movie"
-                                }
-                            ]
-                        },
-                        "formMapping": [
-                            {
-                                "id": "35581622916189968",
-                                "target": "rfm_m_id",
-                                "type": "objectField",
-                                "value": "id"
-                            },
-                            {
-                                "id": "19921622916284490",
-                                "type": "const",
-                                "value": "Like itit",
-                                "target": "m_action"
-                            }
-                        ]
-                    }
-                ]
+                "actions": []
             },
             "fields": {
+                "begin_balance": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "final_balance": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "gateway": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "sum": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "transaction_date": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
                 "id": {
                     "include": false,
                     "fileImageFormat": "square",
@@ -663,317 +454,830 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "m_actor_ids": {
+                "user_id": {
                     "include": true,
                     "fileImageFormat": "square",
-                    "quickSearch": false,
+                    "quickSearch": true,
                     "fileImageSize": 200,
-                    "clickable": false
-                },
-                "m_description": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "m_director_id": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "m_genre_ids": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "m_gif": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 400,
-                    "clickable": false,
-                    "fileImage": true
-                },
-                "m_name": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "m_year": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "m_likes": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "descriptionFlag": false,
-                    "description": "Понраыилось:"
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "name": {
+                                "id": "name",
+                                "content": "Name",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            }
+                        },
+                        "fieldParams": {
+                            "name": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            null,
+                            "name"
+                        ]
+                    },
+                    "searchData": [
+                        {
+                            "key": "manager4",
+                            "value": "Li Wong"
+                        },
+                        {
+                            "key": "manager",
+                            "value": "Piter Watson"
+                        },
+                        {
+                            "key": "manager3",
+                            "value": "Kate Aksenova"
+                        },
+                        {
+                            "key": "manager2",
+                            "value": "Sara Huston"
+                        },
+                        {
+                            "key": "artosiris@gmail.com",
+                            "value": "artosiris@gmail.com"
+                        },
+                        {
+                            "key": "artosiris",
+                            "value": "artosiris"
+                        },
+                        {
+                            "key": "amanager",
+                            "value": "Piter Watson"
+                        },
+                        {
+                            "key": "1",
+                            "value": "1"
+                        },
+                        {
+                            "key": "directual_test",
+                            "value": "directual_test"
+                        },
+                        {
+                            "key": "manager3@mail.ru",
+                            "value": "Kate Aksenova"
+                        },
+                        {
+                            "key": "81bb5060-5ed3-4cbe-a8e7-885c59b32aec",
+                            "value": "81bb5060-5ed3-4cbe-a8e7-885c59b32aec"
+                        },
+                        {
+                            "key": "c07c8003-d85e-4ac3-a20f-a2c4e17bac8f",
+                            "value": "c07c8003-d85e-4ac3-a20f-a2c4e17bac8f"
+                        },
+                        {
+                            "key": "d8577dfd-6657-48f8-b317-6cd694aa6d01",
+                            "value": "d8577dfd-6657-48f8-b317-6cd694aa6d01"
+                        },
+                        {
+                            "key": "3d14ffd5-9aa9-4fb2-a4e8-2c08747c5cc3",
+                            "value": "3d14ffd5-9aa9-4fb2-a4e8-2c08747c5cc3"
+                        },
+                        {
+                            "key": "0b8ed2f3-def6-4b74-b4ab-00919f2da403",
+                            "value": "0b8ed2f3-def6-4b74-b4ab-00919f2da403"
+                        }
+                    ]
                 }
             },
-            "showCounter": true,
-            "actions": [
-                {
-                    "sysName": "delete",
-                    "id": "35241622914295883",
-                    "name": "Delete",
-                    "displayAs": "button",
-                    "buttonIcon": "delete",
-                    "buttonType": "danger",
-                    "buttonTitle": "Удалить",
-                    "dropdown": true,
-                    "SLtype": "other",
-                    "fields": {
-                        "readFields": [
+            "tableParams": {
+                "readFields": [
+                    {
+                        "fieldSysName": "begin_balance",
+                        "fetch": [],
+                        "sysName": "begin_balance",
+                        "name": "Начальный баланс",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "final_balance",
+                        "fetch": [],
+                        "sysName": "final_balance",
+                        "name": "Конечный баланс",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "gateway",
+                        "fetch": [
                             {
-                                "fieldSysName": "id",
-                                "fetch": [],
-                                "sysName": "id",
-                                "name": "m_id",
-                                "dataType": "id",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "m_deleted",
-                                "fetch": [],
-                                "sysName": "m_deleted",
-                                "name": "Удалено",
-                                "dataType": "boolean",
-                                "format": "",
-                                "formatOptions": {
-                                    "customOptionLabel": "My option",
-                                    "keyValue": {
-                                        "key": "key",
-                                        "value": "value",
-                                        "button": "One more"
-                                    },
-                                    "dateLocale": "en-gb",
-                                    "booleanOptions": [
-                                        "True",
-                                        "False"
-                                    ],
-                                    "validWeekDays": {
-                                        "mon": true,
-                                        "thu": true,
-                                        "tue": true,
-                                        "sun": true,
-                                        "fri": true,
-                                        "sat": true,
-                                        "wed": true
-                                    },
-                                    "customOptionPlaceholder": "Describe your option",
-                                    "range": {},
-                                    "customOptionType": "textarea",
-                                    "dateFormat": "DD/MM/Y",
-                                    "timeFormat": " HH:mm",
-                                    "isUTC": "false"
-                                },
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "m_name",
-                                "fetch": [],
-                                "sysName": "m_name",
-                                "name": "Название фильма",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
                             }
                         ],
-                        "writeFields": [
-                            {
-                                "fieldSysName": "id",
-                                "fetch": [],
-                                "sysName": "id",
-                                "name": "m_id",
-                                "dataType": "id",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "m_deleted",
-                                "fetch": [],
-                                "sysName": "m_deleted",
-                                "name": "Удалено",
-                                "dataType": "boolean",
-                                "format": "",
-                                "formatOptions": {
-                                    "customOptionLabel": "My option",
-                                    "keyValue": {
-                                        "key": "key",
-                                        "value": "value",
-                                        "button": "One more"
-                                    },
-                                    "dateLocale": "en-gb",
-                                    "booleanOptions": [
-                                        "True",
-                                        "False"
-                                    ],
-                                    "validWeekDays": {
-                                        "mon": true,
-                                        "thu": true,
-                                        "tue": true,
-                                        "sun": true,
-                                        "fri": true,
-                                        "sat": true,
-                                        "wed": true
-                                    },
-                                    "customOptionPlaceholder": "Describe your option",
-                                    "range": {},
-                                    "customOptionType": "textarea",
-                                    "dateFormat": "DD/MM/Y",
-                                    "timeFormat": " HH:mm",
-                                    "isUTC": "false"
-                                },
-                                "link": ""
-                            }
-                        ]
+                        "sysName": "gateway",
+                        "name": "Способ платежа",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "gateway"
                     },
-                    "formMapping": [
-                        {
-                            "id": "39221622914528277",
-                            "target": "m_deleted",
-                            "type": "const",
-                            "value": "true"
-                        },
-                        {
-                            "id": "70991622914833290",
-                            "target": "id",
-                            "type": "objectField",
-                            "value": "id"
-                        }
-                    ],
-                    "conditionals": [
-                        {
-                            "id": "26581623091651925",
-                            "target": "role",
-                            "value": "admin",
-                            "checkValue": "admin"
-                        }
-                    ],
-                    "closePopup": true
+                    {
+                        "fieldSysName": "sum",
+                        "fetch": [],
+                        "sysName": "sum",
+                        "name": "Сумма",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "transaction_date",
+                        "fetch": [],
+                        "sysName": "transaction_date",
+                        "name": "Дата",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "user_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "user_id",
+                        "name": "Плательщик",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    }
+                ],
+                "writeFields": [
+                    {
+                        "fieldSysName": "begin_balance",
+                        "fetch": [],
+                        "sysName": "begin_balance",
+                        "name": "Начальный баланс",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "final_balance",
+                        "fetch": [],
+                        "sysName": "final_balance",
+                        "name": "Конечный баланс",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "gateway",
+                        "fetch": [],
+                        "sysName": "gateway",
+                        "name": "Способ платежа",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "gateway"
+                    },
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "sum",
+                        "fetch": [],
+                        "sysName": "sum",
+                        "name": "Сумма",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "transaction_date",
+                        "fetch": [],
+                        "sysName": "transaction_date",
+                        "name": "Дата",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "user_id",
+                        "fetch": [],
+                        "sysName": "user_id",
+                        "name": "Плательщик",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    }
+                ],
+                "fields": {
+                    "begin_balance": {
+                        "id": "begin_balance",
+                        "content": "Начальный баланс",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "final_balance": {
+                        "id": "final_balance",
+                        "content": "Конечный баланс",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "gateway": {
+                        "id": "gateway",
+                        "content": "Способ платежа",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "gateway"
+                    },
+                    "sum": {
+                        "id": "sum",
+                        "content": "Сумма",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "transaction_date": {
+                        "id": "transaction_date",
+                        "content": "Дата",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "user_id": {
+                        "id": "user_id",
+                        "content": "Плательщик",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "WebUser"
+                    },
+                    "id": {
+                        "id": "id",
+                        "content": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": ""
+                    }
                 },
-                {
-                    "sysName": "liked",
-                    "id": "42591622976436647",
-                    "name": "Понравилось",
-                    "displayAs": "button",
-                    "buttonIcon": "love",
-                    "buttonType": "accent",
-                    "buttonTitle": "Понравилось",
-                    "SLtype": "other",
-                    "fields": {
-                        "readFields": [
-                            {
-                                "fieldSysName": "m_Input_like",
-                                "fetch": [],
-                                "sysName": "m_Input_like",
-                                "format": "",
-                                "formatOptions": {}
-                            },
-                            {
-                                "fieldSysName": "m_input_like",
-                                "fetch": [],
-                                "sysName": "m_input_like",
-                                "name": "Input_like",
-                                "dataType": "number",
-                                "format": "positiveNum",
-                                "formatOptions": {},
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "m_name",
-                                "fetch": [],
-                                "sysName": "m_name",
-                                "name": "INPUT_Название фильма",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            }
-                        ],
-                        "writeFields": [
-                            {
-                                "fieldSysName": "m_action",
-                                "fetch": [],
-                                "sysName": "m_action",
-                                "name": "m_action",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "m_input_like",
-                                "fetch": [],
-                                "sysName": "m_input_like",
-                                "name": "Input_like",
-                                "dataType": "number",
-                                "format": "positiveNum",
-                                "formatOptions": {},
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "rfm_m_id",
-                                "fetch": [],
-                                "sysName": "rfm_m_id",
-                                "name": "id_фильма2mod",
-                                "dataType": "link",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": "Movie"
-                            }
-                        ]
+                "fieldParams": {
+                    "begin_balance": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80
                     },
-                    "formMapping": [
-                        {
-                            "id": "85531622976487376",
-                            "target": "m_action",
-                            "type": "const",
-                            "value": "Like"
-                        },
-                        {
-                            "id": "78611622976513261",
-                            "target": "rfm_m_id",
-                            "type": "objectField",
-                            "value": "id"
-                        },
-                        {
-                            "id": "69131622976526001",
-                            "target": "m_input_like",
-                            "type": "const",
-                            "value": "1"
-                        }
-                    ],
-                    "dropdown": true,
-                    "closePopup": true
-                }
-            ],
-            "counterField": "m_likes",
-            "counterText": "Likes it"
+                    "final_balance": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80
+                    },
+                    "gateway": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80
+                    },
+                    "sum": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80
+                    },
+                    "transaction_date": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80
+                    },
+                    "id": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80
+                    },
+                    "user_id": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80
+                    }
+                },
+                "fieldOrder": [
+                    "gateway",
+                    "sum",
+                    "transaction_date",
+                    "user_id",
+                    "begin_balance",
+                    "final_balance",
+                    "id"
+                ]
+            }
         },
-        "tableTitle": "Список фильмов",
+        "tableTitle": "",
         "actions": null,
         "headers": [
             {
+                "sysName": "begin_balance",
+                "name": "Начальный баланс",
+                "dataType": "decimal",
+                "id": "45041623602443415",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "arrayLink": false
+            },
+            {
+                "sysName": "final_balance",
+                "name": "Конечный баланс",
+                "dataType": "decimal",
+                "id": "86491623602473378",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "arrayLink": false
+            },
+            {
+                "sysName": "gateway",
+                "name": "Способ платежа",
+                "dataType": "link",
+                "id": "90971623602097369",
+                "link": "gateway",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": true,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "json": false,
+                "arrayLink": false
+            },
+            {
+                "sysName": "sum",
+                "name": "Сумма",
+                "dataType": "decimal",
+                "id": "22491623601994912",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "arrayLink": false
+            },
+            {
+                "sysName": "transaction_date",
+                "name": "Дата",
+                "dataType": "date",
+                "id": "59841623602373099",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "arrayLink": false
+            },
+            {
+                "sysName": "user_id",
+                "name": "Плательщик",
+                "dataType": "link",
+                "id": "25781623601948813",
+                "link": "WebUser",
+                "group": "0",
+                "tags": null,
+                "indexing": true,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [
+                    "id"
+                ],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": true,
+                "indexExists": true,
+                "linkOrArrayLinkType": true,
+                "json": false,
+                "arrayLink": false
+            }
+        ],
+        "data": [
+            {
+                "transaction_date": 1622592000000,
+                "user_id": {
+                    "name": "Kate Aksenova"
+                },
+                "sum": -100,
+                "gateway": {
+                    "name": "Комиссия по сделке"
+                },
+                "begin_balance": "",
+                "final_balance": "",
+                "id": ""
+            }
+        ],
+        "totalPages": 1,
+        "pageNumber": 0,
+        "error": null,
+        "fieldScheme": [
+            [
+                "begin_balance",
+                1395050
+            ],
+            [
+                "final_balance",
+                1395050
+            ],
+            [
+                "gateway.name",
+                1395051
+            ],
+            [
+                "sum",
+                1395050
+            ],
+            [
+                "transaction_date",
+                1395050
+            ],
+            [
+                "user_id.name",
+                1336775
+            ]
+        ],
+        "writeFields": [
+            "begin_balance",
+            "final_balance",
+            "gateway",
+            "id",
+            "sum",
+            "transaction_date",
+            "user_id"
+        ],
+        "structures": {
+            "1336775": {
+                "networkID": 4509,
+                "sysName": "WebUser",
+                "name": "Пользователи",
+                "id": 1336775,
+                "dateCreated": "2021-02-07T12:36:55Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"isBlocked\",\"name\":\"Block user\",\"dataType\":\"boolean\",\"id\":\"1\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"dateCreated\",\"name\":\"dateCreated\",\"dataType\":\"string\",\"id\":\"10\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"password\",\"name\":\"Password (hash)\",\"dataType\":\"string\",\"id\":\"11\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"id\",\"name\":\"Username (login)\",\"dataType\":\"id\",\"id\":\"12\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"gender\",\"name\":\"Gender\",\"dataType\":\"string\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"lastName\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"fb_user\",\"name\":\"Профиль на Фейсбуке\",\"dataType\":\"arrayLink\",\"id\":\"30341623419766159\",\"link\":\"FBusers\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":true},{\"sysName\":\"photo\",\"name\":\"Photo\",\"dataType\":\"file\",\"id\":\"30461606813321074\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"balance\",\"name\":\"Баланс\",\"dataType\":\"decimal\",\"id\":\"34311623602309561\",\"link\":\"\",\"group\":\"1623602302559\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"firstName\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"team\",\"name\":\"Team\",\"dataType\":\"arrayLink\",\"id\":\"49781606825242850\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":true},{\"sysName\":\"role\",\"name\":\"Roles\",\"dataType\":\"string\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"isAuthorization\",\"name\":\"isAuthorization\",\"dataType\":\"boolean\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"manager_id\",\"name\":\"Manager\",\"dataType\":\"link\",\"id\":\"61121606813326688\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":false},{\"sysName\":\"name\",\"name\":\"Name\",\"dataType\":\"string\",\"id\":\"66761606813314167\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"dateLastActivity\",\"name\":\"dateLastActivity\",\"dataType\":\"string\",\"id\":\"7\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"email\",\"name\":\"Email\",\"dataType\":\"string\",\"id\":\"8\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"phone\",\"name\":\"Phone\",\"dataType\":\"string\",\"id\":\"9\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"position\",\"name\":\"Position\",\"dataType\":\"string\",\"id\":\"90061606821486387\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false}]",
+                "jsonGroupSettings": "[{\"id\":1623602302559,\"name\":\"Финансы\",\"order\":0}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+                "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-06-13T16:38:59Z",
+                "createBy": 0,
+                "changedBy": 4244,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "name": "Username (login)",
+                    "dataType": "id",
+                    "id": "12",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "typeVariable": {},
+                    "linkType": false,
+                    "indexExists": false,
+                    "linkOrArrayLinkType": false,
+                    "json": false,
+                    "arrayLink": false
+                },
+                "objectIDSysName": "id",
+                "folderId": 0
+            },
+            "1395050": {
+                "networkID": 4509,
+                "sysName": "transactions",
+                "name": "Транзакции",
+                "id": 1395050,
+                "dateCreated": "2021-06-13T16:32:23Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"sum\",\"name\":\"Сумма\",\"dataType\":\"decimal\",\"id\":\"22491623601994912\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"user_id\",\"name\":\"Плательщик\",\"dataType\":\"link\",\"id\":\"25781623601948813\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":true,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":false},{\"sysName\":\"begin_balance\",\"name\":\"Начальный баланс\",\"dataType\":\"decimal\",\"id\":\"45041623602443415\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"transaction_date\",\"name\":\"Дата\",\"dataType\":\"date\",\"id\":\"59841623602373099\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"final_balance\",\"name\":\"Конечный баланс\",\"dataType\":\"decimal\",\"id\":\"86491623602473378\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"gateway\",\"name\":\"Способ платежа\",\"dataType\":\"link\",\"id\":\"90971623602097369\",\"link\":\"gateway\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": null,
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-06-13T17:28:18Z",
+                "createBy": 4244,
+                "changedBy": 1,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "typeVariable": {},
+                    "linkType": false,
+                    "indexExists": false,
+                    "linkOrArrayLinkType": false,
+                    "json": false,
+                    "arrayLink": false
+                },
+                "objectIDSysName": "id",
+                "folderId": 33631050
+            },
+            "1395051": {
+                "networkID": 4509,
+                "sysName": "gateway",
+                "name": "Виды транзакций",
+                "id": 1395051,
+                "dateCreated": "2021-06-13T16:36:19Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"inside_name\",\"name\":\"Внутреннее имя\",\"dataType\":\"string\",\"id\":\"17131623602235960\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"name\",\"name\":\"Вид транзакции\",\"dataType\":\"string\",\"id\":\"43091623602878774\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": false,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-06-13T16:50:49Z",
+                "createBy": 4244,
+                "changedBy": 4244,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "typeVariable": {},
+                    "linkType": false,
+                    "indexExists": false,
+                    "linkOrArrayLinkType": false,
+                    "json": false,
+                    "arrayLink": false
+                },
+                "objectIDSysName": "id",
+                "folderId": 33631050
+            }
+        },
+        "isSuccessWrite": false,
+        "writeError": null,
+        "writeResponse": null,
+        "fileds": [
+            {
+                "sysName": "begin_balance",
+                "name": "Начальный баланс",
+                "dataType": "decimal",
+                "id": "45041623602443415",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "arrayLink": false
+            },
+            {
+                "sysName": "final_balance",
+                "name": "Конечный баланс",
+                "dataType": "decimal",
+                "id": "86491623602473378",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "arrayLink": false
+            },
+            {
+                "sysName": "gateway",
+                "name": "Способ платежа",
+                "dataType": "link",
+                "id": "90971623602097369",
+                "link": "gateway",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": true,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "json": false,
+                "arrayLink": false
+            },
+            {
                 "sysName": "id",
-                "name": "m_id",
+                "name": "id",
                 "dataType": "id",
                 "id": "0",
                 "link": "",
@@ -992,959 +1296,96 @@ const App = (props) => {
                 "formatOptions": {},
                 "groupName": null,
                 "typeVariable": {},
-                "json": false,
+                "linkType": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false
-            },
-            {
-                "sysName": "m_actor_ids",
-                "name": "Актеры",
-                "dataType": "arrayLink",
-                "id": "77641622457318701",
-                "link": "m_person",
-                "group": "1622457259129",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
                 "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": false,
-                "arrayLink": true,
-                "indexExists": false
+                "arrayLink": false
             },
             {
-                "sysName": "m_description",
-                "name": "Описание фильма",
-                "dataType": "string",
-                "id": "12881622456285950",
-                "link": "",
-                "group": "1622456207469",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false
-            },
-            {
-                "sysName": "m_director_id",
-                "name": "Режиссер",
-                "dataType": "link",
-                "id": "40411622461093168",
-                "link": "m_person",
-                "group": "1622457259129",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": false
-            },
-            {
-                "sysName": "m_genre_ids",
-                "name": "Жанры",
-                "dataType": "arrayLink",
-                "id": "60341622457274710",
-                "link": "genre",
-                "group": "1622457259129",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": false,
-                "arrayLink": true,
-                "indexExists": false
-            },
-            {
-                "sysName": "m_gif",
-                "name": "гиф фильма",
-                "dataType": "file",
-                "id": "44491622644938411",
-                "link": "",
-                "group": "1622456207469",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false
-            },
-            {
-                "sysName": "m_likes",
-                "name": "Понравилось",
-                "dataType": "number",
-                "id": "84261622911054339",
+                "sysName": "sum",
+                "name": "Сумма",
+                "dataType": "decimal",
+                "id": "22491623601994912",
                 "link": "",
                 "group": "0",
-                "tags": "",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 2,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "positiveNum",
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false
-            },
-            {
-                "sysName": "m_name",
-                "name": "Название фильма",
-                "dataType": "string",
-                "id": "19431622456222429",
-                "link": "",
-                "group": "1622456207469",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": null,
                 "groupName": null,
                 "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
                 "linkType": false,
-                "arrayLink": false,
-                "indexExists": false
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "arrayLink": false
             },
             {
-                "sysName": "m_year",
-                "name": "Год фильма",
-                "dataType": "number",
-                "id": "94051622456327433",
+                "sysName": "transaction_date",
+                "name": "Дата",
+                "dataType": "date",
+                "id": "59841623602373099",
                 "link": "",
-                "group": "1622456207469",
-                "tags": "",
+                "group": "0",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 2,
+                "order": 4,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
-                "format": "positiveNum",
-                "formatOptions": {},
+                "format": null,
+                "formatOptions": null,
                 "groupName": null,
                 "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
                 "linkType": false,
-                "arrayLink": false,
-                "indexExists": false
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "arrayLink": false
+            },
+            {
+                "sysName": "user_id",
+                "name": "Плательщик",
+                "dataType": "link",
+                "id": "25781623601948813",
+                "link": "WebUser",
+                "group": "0",
+                "tags": null,
+                "indexing": true,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [
+                    "id"
+                ],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": true,
+                "indexExists": true,
+                "linkOrArrayLinkType": true,
+                "json": false,
+                "arrayLink": false
             }
         ],
-        "data": [
-            {
-                "m_actor_ids": [
-                    {
-                        "person_name": "Борис Плотников",
-                        "id": "41"
-                    },
-                    {
-                        "person_name": "Владимир Гостюхин ",
-                        "id": "42"
-                    },
-                    {
-                        "person_name": "Владимир Рудый ",
-                        "id": "55"
-                    },
-                    {
-                        "person_name": "Людмила Полякова ",
-                        "id": "43"
-                    },
-                    {
-                        "person_name": "Сергей Яковлев ",
-                        "id": "44"
-                    },
-                    {
-                        "person_name": "Николай Сектименко ",
-                        "id": "45"
-                    },
-                    {
-                        "person_name": "Мария Виноградова ",
-                        "id": "46"
-                    },
-                    {
-                        "person_name": "Виктория Гольдентул ",
-                        "id": "47"
-                    },
-                    {
-                        "person_name": "Анатолий Солоницын ",
-                        "id": "48"
-                    },
-                    {
-                        "person_name": "Игорь Безяев ",
-                        "id": "49"
-                    },
-                    {
-                        "person_name": "Станислав Бородокин ",
-                        "id": "50"
-                    },
-                    {
-                        "person_name": "Вадим Гусев ",
-                        "id": "51"
-                    },
-                    {
-                        "person_name": "Станислав Житарев ",
-                        "id": "52"
-                    },
-                    {
-                        "person_name": "Василий Кравцов ",
-                        "id": "53"
-                    },
-                    {
-                        "person_name": "Александр Пятков ",
-                        "id": "54"
-                    },
-                    {
-                        "person_name": "Александра Харитонова ",
-                        "id": "56"
-                    }
-                ],
-                "m_gif": "https://cinema.mosfilm.ru/upload/iblock/a99/a995b33cc2cbbdd651728851a5b5bb2c.jpg",
-                "m_name": "Восхождение",
-                "id": "7b399206-698d-4161-aff7-a91e8c975e58",
-                "m_genre_ids": [
-                    {
-                        "g_name": "Драма",
-                        "id": "3"
-                    }
-                ],
-                "m_year": 1976,
-                "m_director_id": {
-                    "person_name": "Лариса Шепитько",
-                    "id": "05ad4e18-5097-4e3e-b5e9-9b0eb3e97000"
-                },
-                "m_description": "советский художественный фильм 1976 года режиссёра Ларисы Шепитько, военная драма по повести Василя Быкова «Сотников». Премьера состоялась 2 апреля 1977 года.\n\n110 минутный  фильм, повествующий о двух белорусских партизанах, попавших в руки полицаев, получил несколько призов на Международном кинофестивале в Западном Берлине в 1977 году, став единственным советским фильмом, удостоенным высшей награды фестиваля — «Золотой медведь».\n\n«Восхождение» стал последним завершённым фильмом в режиссёрской карьере Ларисы Шепитько. Через три года после выхода ленты на экраны Шепитько погибла в автокатастрофе во время съёмок картины «Прощание с Матёрой». В той же автокатастрофе погиб и оператор «Восхождения» — Владимир Чухнов."
-            },
-            {
-                "m_actor_ids": [
-                    {
-                        "person_name": "Джейсон Стэйтем",
-                        "id": "35"
-                    },
-                    {
-                        "person_name": "Холт Маккэллани",
-                        "id": "36"
-                    },
-                    {
-                        "person_name": "Джеффри Донован",
-                        "id": "37"
-                    },
-                    {
-                        "person_name": "Джош Хартнетт",
-                        "id": "38"
-                    },
-                    {
-                        "person_name": "Лас Алонсо",
-                        "id": "39"
-                    }
-                ],
-                "m_likes": 6,
-                "m_gif": "https://media.giphy.com/media/zYDFHZryZvhLzG1o2J/giphy.gif",
-                "m_name": "Гнев Человеческий",
-                "id": "b36b13ca-11d5-40e4-9467-b5621d5e0dcd",
-                "m_genre_ids": [
-                    {
-                        "g_name": "Триллер",
-                        "id": "2"
-                    },
-                    {
-                        "g_name": "Боевик",
-                        "id": "9"
-                    }
-                ],
-                "m_year": 2021,
-                "m_director_id": {
-                    "person_name": "Гай Ричи",
-                    "id": "4ca5814b-9d75-46ac-9f1d-f714e19be441"
-                },
-                "m_description": "Мегаполис всколыхнула череда дерзких и жестоких преступлений. Жертвами бандитов стали инкассаторы. Похищены миллионы долларов. Полиция ищет любые улики и версии, чтобы выйти на грабителей, но результатов пока маловато. Единственной зацепкой становится сходство почерка преступников. Вполне вероятно, что подлый и корыстный осведомитель затаился в числе сотрудников инкассаторской службы. Туда и устраивается работать Эйч — мрачный и молчаливый мужчина, движимый не праздным интересом. Гнев человеческий, вот какое чувство переполняет новобранца.\n\nЛюди, совершая любые поступки, добрые или злые, героические или совсем незначительные, редко задумываются о последствиях. Так же и грабители, они теоретически понимают, что нарушают закон и сеют зло, но надеются, хорошо просчитав ходы, остаться вне подозрений. Иногда такой маневр удается. Но чаще возмездие настигает хитрых дельцов в самый неподходящий момент. За предательство нужно платить. С такой установкой начинает работу новый член команды инкассаторов. Об его истинных мотивах мало кому известно. Виноват может быть любой из них, а ответственную миссию нужно реализовать как можно скорее. © ГидОнлайн"
-            },
-            {
-                "m_actor_ids": [],
-                "m_likes": 38,
-                "m_name": "Райа и последний дракон",
-                "id": "5689d4ff-a693-4359-b214-111ca2c0e5b4",
-                "m_genre_ids": [
-                    {
-                        "g_name": "Комедия",
-                        "id": "1"
-                    },
-                    {
-                        "g_name": "Приключения",
-                        "id": "5"
-                    },
-                    {
-                        "g_name": "Фэнтези",
-                        "id": "6"
-                    },
-                    {
-                        "g_name": "Мультфильм",
-                        "id": "12"
-                    }
-                ],
-                "m_year": 2021,
-                "m_director_id": {
-                    "person_name": "Дон Холл",
-                    "id": "19"
-                },
-                "m_description": "Давным-давно в волшебной стране Кумандре бок о бок с людьми жили драконы — создатели и хранители воды. Мирной жизни пришел конец, когда появились друуны. Порождения тьмы обращали людей и драконов в каменные изваяния, и только магия драконихи Сису смогла прогнать злых созданий и расколдовать людей, но на драконов не подействовала. Кумандра раскололась на государства Сердца, Клыка, Когтя, Хребта и Хвоста, а волшебный драконий камень хранился в стране Сердца, которой правил отец Райи. Он мечтал объединить земли, но из-за человеческой жадности и зависти артефакт раскололся. Правитель каждой страны заполучил по осколку, а друуны снова стали властвовать безраздельно..."
-            },
-            {
-                "m_actor_ids": [
-                    {
-                        "person_name": "Мэттью МакКонахи",
-                        "id": "24"
-                    },
-                    {
-                        "person_name": "Мэтт Дэймон",
-                        "id": "33"
-                    },
-                    {
-                        "person_name": "Энн Хэтэуэй",
-                        "id": "25"
-                    },
-                    {
-                        "person_name": "Джессика Честейн",
-                        "id": "26"
-                    },
-                    {
-                        "person_name": "Маккензи Фой",
-                        "id": "27"
-                    },
-                    {
-                        "person_name": "Майкл Кейн",
-                        "id": "28"
-                    },
-                    {
-                        "person_name": "Дэвид Гяси",
-                        "id": "29"
-                    },
-                    {
-                        "person_name": "Уэс Бентли",
-                        "id": "30"
-                    },
-                    {
-                        "person_name": "Кейси Аффлек",
-                        "id": "31"
-                    },
-                    {
-                        "person_name": "Джон Литгоу",
-                        "id": "32"
-                    }
-                ],
-                "m_likes": 16,
-                "m_gif": "https://i.pinimg.com/originals/ed/93/93/ed9393735a10d4651147bde3c8b2c2a4.gif",
-                "m_name": "Интерстеллар",
-                "id": "e07ed019-b894-48c0-8da1-6b2422f3f377",
-                "m_genre_ids": [
-                    {
-                        "g_name": "Фантастика",
-                        "id": "13"
-                    },
-                    {
-                        "g_name": "Драма",
-                        "id": "3"
-                    },
-                    {
-                        "g_name": "Приключения",
-                        "id": "5"
-                    }
-                ],
-                "m_year": 2014,
-                "m_director_id": {
-                    "person_name": "Кристофер Нолан",
-                    "id": "23"
-                },
-                "m_description": "Собственно фильм о ....."
-            },
-            {
-                "m_actor_ids": [
-                    {
-                        "person_name": "Кристиан Бейл",
-                        "id": "12"
-                    },
-                    {
-                        "person_name": "Мэт Дэймон",
-                        "id": "13"
-                    },
-                    {
-                        "person_name": "Катрина Балф",
-                        "id": "14"
-                    }
-                ],
-                "m_likes": 5,
-                "m_gif": "https://www.spacetrek66.com.br/arquivo/index/433363/ford_vs_ferrari_2_99.gif",
-                "m_name": "FORD против Ferarri",
-                "id": "d8eac32f-a30b-401e-90d7-5d448349195b",
-                "m_genre_ids": [
-                    {
-                        "g_name": "Биография",
-                        "id": "15"
-                    },
-                    {
-                        "g_name": "Драма",
-                        "id": "3"
-                    },
-                    {
-                        "g_name": "Боевик",
-                        "id": "9"
-                    }
-                ],
-                "m_year": 2019,
-                "m_director_id": {
-                    "person_name": "Джеймс Мэнголд",
-                    "id": "11"
-                },
-                "m_description": "В начале 1960-х Генри Форд II принимает решение улучшить имидж компании и сменить курс на производство более модных автомобилей. После неудавшейся попытки купить практически банкрота Ferrari американцы решают бросить вызов итальянским конкурентам на трассе и выиграть престижную гонку 24 часа Ле-Мана. Чтобы создать подходящую машину, компания нанимает автоконструктора Кэррола Шэлби, а тот отказывается работать без выдающегося, но, как считается, трудного в общении гонщика Кена Майлза. Вместе они принимаются за разработку впоследствии знаменитого спорткара Ford GT40."
-            },
-            {
-                "m_actor_ids": [
-                    {
-                        "person_name": "Элайджа Вуд",
-                        "id": "15"
-                    },
-                    {
-                        "person_name": "Иэн Маккеллен",
-                        "id": "16"
-                    }
-                ],
-                "m_name": "Властелин колец: Братство кольца",
-                "id": "a0d38f17-5cad-4967-ab08-f58d4f737544",
-                "m_genre_ids": [
-                    {
-                        "g_name": "Фэнтези",
-                        "id": "6"
-                    },
-                    {
-                        "g_name": "Мелодрама",
-                        "id": "7"
-                    },
-                    {
-                        "g_name": "Драма",
-                        "id": "3"
-                    }
-                ],
-                "m_year": 2001,
-                "m_director_id": {
-                    "person_name": "Питер Джексон",
-                    "id": "1"
-                },
-                "m_description": "Сказания о Средиземье — это хроника Великой войны за Кольцо, длившейся не одну тысячу лет. Тот, кто владел Кольцом, получал неограниченную власть, но был обязан служить злу. Тихая деревня, где живут хоббиты. Придя на 111-й день рождения к своему старому другу Бильбо Бэггинсу, волшебник Гэндальф начинает вести разговор о кольце, которое Бильбо нашел много лет назад. Это кольцо принадлежало когда-то темному властителю Средиземья Саурону, и оно дает большую власть своему обладателю. Теперь Саурон хочет вернуть себе власть над Средиземьем. Бильбо отдает найденное кольцо племяннику Фродо, чтобы тот отнёс его к Роковой Горе и уничтожил."
-            },
-            {
-                "m_actor_ids": [
-                    {
-                        "person_name": "Виола Дэвис",
-                        "id": "4"
-                    },
-                    {
-                        "person_name": "Эмма Стоун",
-                        "id": "18"
-                    }
-                ],
-                "m_name": "Прислуга",
-                "id": "9e187d13-6722-41b8-b3cd-9e08f77461bb",
-                "m_genre_ids": [
-                    {
-                        "g_name": "Драма",
-                        "id": "3"
-                    }
-                ],
-                "m_year": 2011,
-                "m_director_id": {
-                    "person_name": "Тейт Тэйлор",
-                    "id": "17"
-                },
-                "m_description": "Американский Юг, на дворе 1960-е годы. Скитер только-только закончила университет и возвращается домой, в сонный городок Джексон, где никогда ничего не происходит. Она мечтает стать писательницей, вырваться в большой мир. Но для приличной девушки с Юга не пристало тешиться столь глупыми иллюзиями, приличной девушке следует выйти замуж и хлопотать по дому. Мудрая Эйбилин на тридцать лет старше Скитер, она прислуживает в домах белых всю свою жизнь, вынянчила семнадцать детей и давно уже ничего не ждет от жизни, ибо сердце ее разбито после смерти единственного сына. Минни - самая лучшая стряпуха во всем Джексоне, а еще она самая дерзкая служанка в городе. И острый язык не раз уже сослужил ей плохую службу..."
-            },
-            {
-                "m_actor_ids": [
-                    {
-                        "person_name": "Виола Дэвис",
-                        "id": "4"
-                    },
-                    {
-                        "person_name": "Билли Браун",
-                        "id": "5"
-                    },
-                    {
-                        "person_name": "Джек Фалахи",
-                        "id": "6"
-                    },
-                    {
-                        "person_name": "Аджа Наоми Кинг",
-                        "id": "7"
-                    },
-                    {
-                        "person_name": "Мэт Макгрегори",
-                        "id": "8"
-                    }
-                ],
-                "m_name": "Как избежать наказания за убийство",
-                "id": "7f09542a-77b5-4139-815f-be39c0583e4e",
-                "m_genre_ids": [
-                    {
-                        "g_name": "Триллер",
-                        "id": "2"
-                    },
-                    {
-                        "g_name": "Драма",
-                        "id": "3"
-                    },
-                    {
-                        "g_name": "Детектив",
-                        "id": "10"
-                    },
-                    {
-                        "g_name": "Сериал",
-                        "id": "14"
-                    }
-                ],
-                "m_year": 2014,
-                "m_director_id": {
-                    "person_name": "Лора Иннес",
-                    "id": "3"
-                },
-                "m_description": "Профессор Эннализ Китинг – блестящий адвокат. Она преподает у студентов дисциплину под названием: «Как избежать наказания за убийство». Но те даже не подозревают, что в скором времени им придется применить свои знания в этой области в реальной жизни…"
-            },
-            {
-                "m_actor_ids": [
-                    {
-                        "person_name": "Франсуа Клюзе",
-                        "id": "20"
-                    },
-                    {
-                        "person_name": "Омар Си",
-                        "id": "21"
-                    }
-                ],
-                "m_name": "1+1",
-                "id": "d708dea7-6563-429b-b124-570e26a27c0e",
-                "m_genre_ids": [
-                    {
-                        "g_name": "Комедия",
-                        "id": "1"
-                    },
-                    {
-                        "g_name": "Драма",
-                        "id": "3"
-                    },
-                    {
-                        "g_name": "Биография",
-                        "id": "15"
-                    }
-                ],
-                "m_year": 2011,
-                "m_description": "Пострадав в результате несчастного случая, богатый аристократ Филипп нанимает в помощники человека, который менее всего подходит для этой работы, – молодого жителя предместья Дрисса, только что освободившегося из тюрьмы. Несмотря на то, что Филипп прикован к инвалидному креслу, Дриссу удается привнести в размеренную жизнь аристократа дух приключений."
-            },
-            {
-                "m_actor_ids": [],
-                "m_name": "Душа",
-                "id": "023a247d-c2e6-48ec-8e2e-f3b0a986c34f",
-                "m_genre_ids": [
-                    {
-                        "g_name": "Комедия",
-                        "id": "1"
-                    },
-                    {
-                        "g_name": "Приключения",
-                        "id": "5"
-                    },
-                    {
-                        "g_name": "Фэнтези",
-                        "id": "6"
-                    },
-                    {
-                        "g_name": "Мелодрама",
-                        "id": "7"
-                    },
-                    {
-                        "g_name": "Мультфильм",
-                        "id": "12"
-                    }
-                ],
-                "m_year": 2020,
-                "m_director_id": {
-                    "person_name": "Кристофер Нолан",
-                    "id": "23"
-                },
-                "m_description": "Уже немолодой школьный учитель музыки Джо Гарднер всю жизнь мечтал выступать на сцене в составе джазового ансамбля. Однажды он успешно проходит прослушивание у известной клубной певицы и, возвращаясь домой вне себя от счастья, падает в люк и умирает. Теперь у Джо одна дорога — в Великое После, но он сбегает с идущего в вечность эскалатора и случайно попадает в Великое До. Тут новенькие души обретают себя, и у будущих людей зарождаются увлечения, мечты и интересы. Джо становится наставником упрямой души 22, которая уже много веков не может найти свою искру и отправиться на Землю."
-            },
-            {
-                "m_actor_ids": [],
-                "m_name": "Создаем супер тестовый фильм из постман",
-                "id": "25c988e7-330c-466a-bac9-2140e681d111",
-                "m_genre_ids": [
-                    {
-                        "g_name": "Комедия",
-                        "id": "1"
-                    },
-                    {
-                        "g_name": "Триллер",
-                        "id": "2"
-                    },
-                    {
-                        "g_name": "Драма",
-                        "id": "3"
-                    },
-                    {
-                        "g_name": "Спорт",
-                        "id": "4"
-                    }
-                ],
-                "m_director_id": {
-                    "person_name": "Питер Джексон",
-                    "id": "1"
-                }
-            },
-            {
-                "m_actor_ids": [
-                    {
-                        "person_name": "Питер Джексон",
-                        "id": "1"
-                    },
-                    {
-                        "person_name": "Джо Райт",
-                        "id": "2"
-                    },
-                    {
-                        "person_name": "Лора Иннес",
-                        "id": "3"
-                    },
-                    {
-                        "person_name": "Виола Дэвис",
-                        "id": "4"
-                    }
-                ],
-                "m_name": "Форма-тестовый фильм ",
-                "id": "0e53f51c-11bf-4977-ae8d-97b6097d0d14",
-                "m_genre_ids": [
-                    {
-                        "g_name": "Спорт",
-                        "id": "4"
-                    },
-                    {
-                        "g_name": "Фэнтези",
-                        "id": "6"
-                    },
-                    {
-                        "g_name": "Исторический фильм",
-                        "id": "8"
-                    }
-                ],
-                "m_year": 2021,
-                "m_director_id": {
-                    "person_name": "Лора Иннес",
-                    "id": "3"
-                },
-                "m_description": "Собственно фильм о ....."
-            }
-        ],
-        "totalPages": 1,
-        "pageNumber": 0,
-        "error": null,
-        "fieldScheme": [
-            [
-                "id",
-                1390532
-            ],
-            [
-                "m_actor_ids.id",
-                1390534
-            ],
-            [
-                "m_actor_ids.person_birthDate",
-                1390534
-            ],
-            [
-                "m_actor_ids.person_name",
-                1390534
-            ],
-            [
-                "m_description",
-                1390532
-            ],
-            [
-                "m_director_id.id",
-                1390534
-            ],
-            [
-                "m_director_id.person_birthDate",
-                1390534
-            ],
-            [
-                "m_director_id.person_name",
-                1390534
-            ],
-            [
-                "m_genre_ids.g_name",
-                1390533
-            ],
-            [
-                "m_genre_ids.id",
-                1390533
-            ],
-            [
-                "m_gif",
-                1390532
-            ],
-            [
-                "m_likes",
-                1390532
-            ],
-            [
-                "m_name",
-                1390532
-            ],
-            [
-                "m_year",
-                1390532
-            ]
-        ],
-        "writeFields": [],
-        "structures": {
-            "1390532": {
-                "networkID": 7050,
-                "id": 1390532,
-                "dateCreated": "2021-05-31T10:16:03Z",
-                "hidden": false,
-                "dateHidden": null,
-                "name": "Фильм",
-                "sysName": "Movie",
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"m_id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"m_description\",\"dataType\":\"string\",\"name\":\"Описание фильма\",\"id\":\"12881622456285950\",\"link\":\"\",\"group\":\"1622456207469\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"m_name\",\"dataType\":\"string\",\"name\":\"Название фильма\",\"id\":\"19431622456222429\",\"link\":\"\",\"group\":\"1622456207469\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"m_deleted\",\"dataType\":\"boolean\",\"name\":\"Удалено\",\"id\":\"28271622899913531\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"m_director_id\",\"dataType\":\"link\",\"name\":\"Режиссер\",\"id\":\"40411622461093168\",\"link\":\"m_person\",\"group\":\"1622457259129\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"m_gif\",\"dataType\":\"file\",\"name\":\"гиф фильма\",\"id\":\"44491622644938411\",\"link\":\"\",\"group\":\"1622456207469\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"m_genre_ids\",\"dataType\":\"arrayLink\",\"name\":\"Жанры\",\"id\":\"60341622457274710\",\"link\":\"genre\",\"group\":\"1622457259129\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"m_actor_ids\",\"dataType\":\"arrayLink\",\"name\":\"Актеры\",\"id\":\"77641622457318701\",\"link\":\"m_person\",\"group\":\"1622457259129\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"m_likes\",\"dataType\":\"number\",\"name\":\"Понравилось\",\"id\":\"84261622911054339\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"m_year\",\"dataType\":\"number\",\"name\":\"Год фильма\",\"id\":\"94051622456327433\",\"link\":\"\",\"group\":\"1622456207469\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false}]",
-                "jsonGroupSettings": "[{\"id\":1622456207469,\"name\":\"Основная группа\",\"order\":0},{\"id\":1622457259129,\"name\":\"Ссылки на др структуры\",\"order\":1},{\"id\":1622902896522,\"name\":\"Подсчет лайков\",\"order\":2}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"m_name\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-06-06T21:40:13Z",
-                "createBy": 7167,
-                "changedBy": 7167,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "name": "m_id",
-                    "dataType": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "indexExists": false
-                },
-                "folderId": 33628566
-            },
-            "1390533": {
-                "networkID": 7050,
-                "id": 1390533,
-                "dateCreated": "2021-05-31T10:29:49Z",
-                "hidden": false,
-                "dateHidden": null,
-                "name": "Жанр",
-                "sysName": "genre",
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"genre_id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"g_name\",\"dataType\":\"string\",\"name\":\"Название жанра\",\"id\":\"98311622457022549\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"g_name\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-05-31T11:42:20Z",
-                "createBy": 7167,
-                "changedBy": 7167,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "name": "genre_id",
-                    "dataType": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "indexExists": false
-                },
-                "folderId": 33628566
-            },
-            "1390534": {
-                "networkID": 7050,
-                "id": 1390534,
-                "dateCreated": "2021-05-31T10:31:44Z",
-                "hidden": false,
-                "dateHidden": null,
-                "name": "Личность",
-                "sysName": "m_person",
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"person_id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"person_birthDate\",\"dataType\":\"date\",\"name\":\"Дата рождения\",\"id\":\"46931622457154170\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"person_name\",\"dataType\":\"string\",\"name\":\"Имя\",\"id\":\"52911622457129187\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"person_name\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-06-01T22:36:09Z",
-                "createBy": 7167,
-                "changedBy": 7167,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "name": "person_id",
-                    "dataType": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "indexExists": false
-                },
-                "folderId": 33628566
-            }
-        },
-        "isSuccessWrite": false,
-        "writeError": null,
-        "writeResponse": null,
-        "fileds": [],
         "quickSearch": "true"
     }
 
@@ -4669,7 +4110,8 @@ const App = (props) => {
                         "fileImageSize": 80,
                         "colorCode": true,
                         "colorFormat": "square",
-                        "colorSize": 40
+                        "colorSize": 40,
+                        "colorRow": true
                     }
                 },
                 "fieldOrder": [

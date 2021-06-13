@@ -356,7 +356,7 @@ export function ObjectCard(props) {
                 object[headerField].value
         : null).join(' ')
         :
-        (object.id || 'No visible name')
+        (object.id  || 'No visible name')
 
     cardHeader = (cardHeader == '' 
         || cardHeader == ' '
@@ -367,7 +367,7 @@ export function ObjectCard(props) {
         || cardHeader == '      ') ? (object.id || 'No visible name') :
         cardHeader
 
-    cardHeader = (typeof cardHeader == 'object') ? (cardHeader.value || JSON.stringify(cardHeader)) : cardHeader
+    cardHeader = (typeof cardHeader == 'object') ? (cardHeader.value || 'No visible name') : cardHeader
 
     return (
         <div className={styles.objectCard}>

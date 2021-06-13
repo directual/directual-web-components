@@ -45,8 +45,8 @@ const EditableCell = ({
     //     )
     // }
 
-    console.log(tableParams[id])
-    console.log(fieldDetails[id])
+    // fieldDetails[id].format == "color" && console.log(tableParams[id])
+    // fieldDetails[id].format == "color" && console.log(fieldDetails[id])
 
     //date
     const formatOptions = fieldDetails[id].formatOptions || {}
@@ -197,7 +197,7 @@ function ReactTable({ columns, data, updateMyData, fieldDetails, tableParams, sk
             fieldDetails,
             tableParams,
             getLinkName
-        },
+        }
     )
 
     // Render the UI for your table
@@ -205,14 +205,14 @@ function ReactTable({ columns, data, updateMyData, fieldDetails, tableParams, sk
         <div className={styles.table_wrapper}>
             <table {...getTableProps()}>
                 <thead>
-                    {headerGroups.map(headerGroup => (
-                        <tr {...headerGroup.getHeaderGroupProps()}>
+                    {headerGroups.map(headerGroup => {
+                        return <tr {...headerGroup.getHeaderGroupProps()}>
                             {/* <th style={{ width: 20 }}>
                                 <Checkbox label='' />
                             </th> */}
                             <th style={{ width: 30 }} />
                             {headerGroup.headers.map(column => {
-                                //console.log(column)
+                                if (tableParams[column.id].colorRow) return null
                                 return <React.Fragment>
                                     <th
                                         {...column.getHeaderProps()}
@@ -223,22 +223,42 @@ function ReactTable({ columns, data, updateMyData, fieldDetails, tableParams, sk
                                 </React.Fragment>
                             })}
                         </tr>
-                    ))}
+                    })}
                 </thead>
                 <tbody {...getTableBodyProps()}>
                     {rows.map(row => {
                         prepareRow(row)
+                        const isColorRow = row.cells.filter(cell => tableParams[cell.column.id] && tableParams[cell.column.id].colorRow) ?
+                            row.cells.filter(cell => tableParams[cell.column.id] && tableParams[cell.column.id].colorRow)[0] : null
+                        let colorRow = isColorRow ? isColorRow.row.values[isColorRow.column.id] ?
+                            isColorRow.row.values[isColorRow.column.id] : 'default' : 'default'
+                        colorRow = colorRow == 'default' ? colorRow : colorRow[0] == '#' ? colorRow : '#' + colorRow
+                        console.log(colorRow)
                         return (
                             <tr onDoubleClick={() => onExpand(row.original)}
                                 {...row.getRowProps()}>
                                 {/* <td>
                                     <Checkbox label='' />
                                 </td> */}
-                                <td><a onClick={() => onExpand(row.original)} className={`icon icon-expand ${styles.expand}`} /></td>
-                                {row.cells.map(cell =>
-                                    <td {...cell.getCellProps()}
+                                <td
+                                    style={colorRow == 'default' ? {} :
+                                        {
+                                            backgroundColor: colorRow,
+                                            border: 'none'
+                                        }}
+                                ><a onClick={() => onExpand(row.original)} className={`icon icon-expand ${styles.expand}`} /></td>
+                                {row.cells.map(cell => {
+                                    if (tableParams[cell.column.id] && tableParams[cell.column.id].colorRow) return null
+                                    return <td
+                                        style={colorRow == 'default' ? {} :
+                                            {
+                                                backgroundColor: colorRow,
+                                                border: 'none'
+                                            }}
+                                        {...cell.getCellProps()}
                                         className={`${styles.nowrap} ${styles.ellipsis}`}
                                     >{cell.render('Cell')}</td>
+                                }
                                 )}
                             </tr>
                         )
