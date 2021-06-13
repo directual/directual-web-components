@@ -45,8 +45,8 @@ const EditableCell = ({
     //     )
     // }
 
-    //console.log(tableParams[id])
-    //console.log(fieldDetails[id])
+    console.log(tableParams[id])
+    console.log(fieldDetails[id])
 
     //date
     const formatOptions = fieldDetails[id].formatOptions || {}
@@ -70,22 +70,38 @@ const EditableCell = ({
     if (fieldDetails[id].dataType == 'file' && value) {
         if (tableParams[id].fileImage) {
             return <div className={styles.cardImage}
-            style={{
-                width: tableParams[id].fileImageSize || 80,
-                height: tableParams[id].fileImageSize || 80,
-                backgroundImage: `url(${value})`,
-                borderRadius: tableParams[id].fileImageFormat == 'circle' ? (tableParams[id].fileImageSize || 80) : 0
-            }} />
+                style={{
+                    width: tableParams[id].fileImageSize || 80,
+                    height: tableParams[id].fileImageSize || 80,
+                    backgroundImage: `url(${value})`,
+                    borderRadius: tableParams[id].fileImageFormat == 'circle' ? (tableParams[id].fileImageSize || 80) : 0
+                }} />
         }
         return <div className={`${styles.notEditableValue} ${styles.number}`}>
             {value}
         </div>
     }
 
+    //colour
+    if (fieldDetails[id].format == "color" && value) {
+        let colorValue = ''
+        if (value[0] !== '#') { colorValue = '#' + value } else { colorValue = value }
+        return <div className={styles.colorCell}>
+            <div className={styles.colorLabel}
+                style={{
+                    width: tableParams[id].colorSize || 40,
+                    height: tableParams[id].colorSize || 40,
+                    backgroundColor: colorValue,
+                    borderRadius: tableParams[id].colorFormat == 'circle' ? (tableParams[id].colorSize || 40) : 0
+                }} />
+            {tableParams[id].colorCode ? <span>{colorValue}</span> : ''}</div>
+    }
+
+
     //booleans
     if (fieldDetails[id].dataType == 'boolean') {
-        if (fieldDetails[id].formatOptions && 
-            fieldDetails[id].formatOptions.booleanOptions && 
+        if (fieldDetails[id].formatOptions &&
+            fieldDetails[id].formatOptions.booleanOptions &&
             fieldDetails[id].formatOptions.booleanOptions.length > 0) {
             return <div className={`${styles.notEditableValue} ${styles.boolean}`}>
                 {value === true && <span className='icon icon-done'>{fieldDetails[id].formatOptions.booleanOptions[0]}</span>}
@@ -93,7 +109,7 @@ const EditableCell = ({
             </div>
         } else {
             return <div className={`${styles.notEditableValue} ${styles.boolean}`}>
-                {value === true && <span className='icon icon-done'>true</span>} 
+                {value === true && <span className='icon icon-done'>true</span>}
                 {value === false && <span className='icon icon-ban'>false</span>}
             </div>
         }
@@ -120,30 +136,30 @@ const EditableCell = ({
 
     // link:
     if (fieldDetails[id].dataType == 'link') {
-    return <div className={`${styles.notEditableValue} ${styles.linkWrapper}`}>
-        <div className={`${styles.linkText}`}>
-            {typeof value == 'object' ? getLinkName(id, value) : value}
+        return <div className={`${styles.notEditableValue} ${styles.linkWrapper}`}>
+            <div className={`${styles.linkText}`}>
+                {typeof value == 'object' ? getLinkName(id, value) : value}
+            </div>
         </div>
-    </div>
     }
 
     // array:
     if (fieldDetails[id].dataType == 'array' && value) {
         return <div className={`${styles.notEditableValue} ${styles.linkWrapper}`}>
             {value.length > 0 ?
-            value.map(label=> <div className={`${styles.labelText}`}>{label}</div>) :
-            <div className={`${styles.labelText}`}>{value}</div>}
+                value.map(label => <div className={`${styles.labelText}`}>{label}</div>) :
+                <div className={`${styles.labelText}`}>{value}</div>}
         </div>
-        }
+    }
 
     // arrayLink:
     if (fieldDetails[id].dataType == 'arrayLink' && value) {
         return <div className={`${styles.notEditableValue} ${styles.linkWrapper}`}>
             {Array.isArray(value) ?
-            value.map(label=> <div className={`${styles.linkText}`}>{getLinkName(id, label)}</div>) :
-            <div className={`${styles.linkText}`}>{value}</div>}
+                value.map(label => <div className={`${styles.linkText}`}>{getLinkName(id, label)}</div>) :
+                <div className={`${styles.linkText}`}>{value}</div>}
         </div>
-        }
+    }
 
     // other types:
     return <div className={styles.notEditableValue}>
@@ -253,8 +269,8 @@ export function Table({
 
     // composing Table Header
     const tableParams = { ...data.params.tableParams }
-    const fieldDetails = data.params.data ? { ...data.params.data.fields }: {}
-    const tableFieldparams = data.params.data ? { ...data.params.data.fields }: {}
+    const fieldDetails = data.params.data ? { ...data.params.data.fields } : {}
+    const tableFieldparams = data.params.data ? { ...data.params.data.fields } : {}
 
     // обогащаем поля теми, что не пришли по данным, но мы их можем писать:
     function enrichTableDataWithWriteFields(data) {
@@ -271,8 +287,10 @@ export function Table({
         fieldDetails[field] = { ...fieldDetails[field], ...tableFieldparams[field] }
     }
 
-    if (!tableParams || !tableParams.fieldOrder) { return <div className={styles.emptyTable}>
-        <SomethingWentWrong icon='warning' message='Table is not configured' /></div> }
+    if (!tableParams || !tableParams.fieldOrder) {
+        return <div className={styles.emptyTable}>
+            <SomethingWentWrong icon='warning' message='Table is not configured' /></div>
+    }
 
     let tableColumns = []
     tableParams.fieldOrder = tableParams.fieldOrder || []
@@ -322,9 +340,9 @@ export function Table({
         const tableFieldScheme = data.fieldScheme ? [...data.fieldScheme] : []
         const tableStructures = data.structures ? { ...data.structures } : {}
         const structure = getStructure(obj, transformTableFieldScheme(sysname, tableFieldScheme), tableStructures)
-        const linkNameArr = [] 
-        structure.visibleName && structure.visibleName.forEach(field => { 
-            if(obj[field])  {
+        const linkNameArr = []
+        structure.visibleName && structure.visibleName.forEach(field => {
+            if (obj[field]) {
                 linkNameArr.push(obj[field])
             }
         })

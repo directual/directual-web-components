@@ -374,3 +374,13 @@ div.tableTitle.mobile h2 {
   border-radius: var(--border-radius);
   margin-right: 0;
 }
+.colorCell {
+  display: flex;
+  align-items: center;
+}
+.colorCell .colorLabel {
+  margin-right: 6px;
+}
+.colorCell span {
+  opacity: 0.5;
+}
