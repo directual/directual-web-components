@@ -223,6 +223,8 @@ function ReactTable({ columns, data, updateMyData, fieldDetails, tableParams, sk
                                 return <React.Fragment>
                                     <th
                                         {...column.getHeaderProps()}
+                                        style={ (fieldDetails[column.id].dataType == 'number' || fieldDetails[column.id].dataType == 'decimal' ) ?
+                                            {textAlign: 'right'} : {}}
                                     >
                                         <span className={styles.columnHeader}>
                                             {column.Header || <code>{column.id}</code>}</span>
@@ -260,8 +262,6 @@ function ReactTable({ columns, data, updateMyData, fieldDetails, tableParams, sk
                                 {row.cells.map(cell => {
 
                                     const isColorCell = tableParams[cell.column.id].colorCell ? tableParams[cell.column.id] : null
-
-                                    isColorCell && console.log(isColorCell)
 
                                     let colorCellValue = null
                                     if (isColorCell && (isColorCell.colorCellSource == 'const' || !isColorCell.colorCellSource)) {
