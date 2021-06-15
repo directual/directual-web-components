@@ -37,7 +37,7 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
                                     inputClassName={styles.quickSearchInput}
                                     placeholder='Search...'
                                     //debug
-                                    //width={300}
+                                    //width={500}
                                     onPressEnter={value => {
                                         onSearch(value)
                                     }}
