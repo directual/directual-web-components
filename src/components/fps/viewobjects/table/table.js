@@ -50,6 +50,12 @@ const EditableCell = ({
 
     //date
     const formatOptions = fieldDetails[id].formatOptions || {}
+
+    function numberWithSpaces(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    }
+
+
     if (fieldDetails[id].dataType == 'date') {
         return <div className={`${styles.notEditableValue}`}>
             {formatOptions.isUTC == 'true' ?
@@ -62,7 +68,7 @@ const EditableCell = ({
     //numbers
     if (fieldDetails[id].dataType == 'number' || fieldDetails[id].dataType == 'decimal') {
         return <div className={`${styles.notEditableValue} ${styles.number}`}>
-            {value}
+            {numberWithSpaces(value)}
         </div>
     }
 
@@ -212,7 +218,7 @@ function ReactTable({ columns, data, updateMyData, fieldDetails, tableParams, sk
                             </th> */}
                             <th style={{ width: 30 }} />
                             {headerGroup.headers.map(column => {
-                                if (tableParams[column.id].colorRow) return null
+                                if (tableParams[column.id].colorRow || !tableParams[column.id].include) return null
                                 return <React.Fragment>
                                     <th
                                         {...column.getHeaderProps()}
@@ -228,35 +234,54 @@ function ReactTable({ columns, data, updateMyData, fieldDetails, tableParams, sk
                 <tbody {...getTableBodyProps()}>
                     {rows.map(row => {
                         prepareRow(row)
-                        const isColorRow = row.cells.filter(cell => tableParams[cell.column.id] && tableParams[cell.column.id].colorRow) ?
-                            row.cells.filter(cell => tableParams[cell.column.id] && tableParams[cell.column.id].colorRow)[0] : null
+
+                        const isColorRow = row.cells.filter(cell => tableParams[cell.column.id] &&
+                            tableParams[cell.column.id].include && tableParams[cell.column.id].colorRow) ?
+                            row.cells.filter(cell => tableParams[cell.column.id]
+                                && tableParams[cell.column.id].include
+                                && tableParams[cell.column.id].colorRow)[0] : null
                         let colorRow = isColorRow ? isColorRow.row.values[isColorRow.column.id] ?
                             isColorRow.row.values[isColorRow.column.id] : 'default' : 'default'
+
                         colorRow = colorRow == 'default' ? colorRow : colorRow[0] == '#' ? colorRow : '#' + colorRow
-                        console.log(colorRow)
                         return (
                             <tr onDoubleClick={() => onExpand(row.original)}
+                                style={colorRow == 'default' ? {} :
+                                    {
+                                        backgroundColor: colorRow,
+                                        border: 'none'
+                                    }}
                                 {...row.getRowProps()}>
                                 {/* <td>
                                     <Checkbox label='' />
                                 </td> */}
-                                <td
-                                    style={colorRow == 'default' ? {} :
-                                        {
-                                            backgroundColor: colorRow,
-                                            border: 'none'
-                                        }}
-                                ><a onClick={() => onExpand(row.original)} className={`icon icon-expand ${styles.expand}`} /></td>
+                                <td ><a onClick={() => onExpand(row.original)} className={`icon icon-expand ${styles.expand}`} /></td>
                                 {row.cells.map(cell => {
-                                    if (tableParams[cell.column.id] && tableParams[cell.column.id].colorRow) return null
+
+                                    const isColorCell = tableParams[cell.column.id].colorCell ? tableParams[cell.column.id] : null
+
+                                    isColorCell && console.log(isColorCell)
+
+                                    let colorCellValue = null
+                                    if (isColorCell && (isColorCell.colorCellSource == 'const' || !isColorCell.colorCellSource)) {
+                                        colorCellValue = isColorCell.colorCellConst
+                                    }
+                                    if (isColorCell && isColorCell.colorCellSource == 'field') {
+                                        colorCellValue = row.original[isColorCell.colorCellField]
+                                    }
+                                    colorCellValue = !colorCellValue ? null : colorCellValue[0] == '#' ? colorCellValue : '#' + colorCellValue
+
+                                    if ((tableParams[cell.column.id] && tableParams[cell.column.id].colorRow) ||
+                                        !tableParams[cell.column.id].include) return null
                                     return <td
-                                        style={colorRow == 'default' ? {} :
-                                            {
-                                                backgroundColor: colorRow,
-                                                border: 'none'
-                                            }}
                                         {...cell.getCellProps()}
+                                        style={colorCellValue ?
+                                            isColorCell.colorCellType == 'text' ?
+                                                { color: colorCellValue } :
+                                                { backgroundColor: colorCellValue }
+                                            : {}}
                                         className={`${styles.nowrap} ${styles.ellipsis}`}
+
                                     >{cell.render('Cell')}</td>
                                 }
                                 )}
@@ -315,7 +340,9 @@ export function Table({
     let tableColumns = []
     tableParams.fieldOrder = tableParams.fieldOrder || []
     tableParams.fieldOrder.forEach(field => {
-        if (tableParams.fieldParams[field] && tableParams.fieldParams[field].include) {
+        if (tableParams.fieldParams[field]
+            //&& tableParams.fieldParams[field].include
+        ) {
             tableColumns.push({
                 Header: tableParams.fields[field].content,
                 accessor: field,
