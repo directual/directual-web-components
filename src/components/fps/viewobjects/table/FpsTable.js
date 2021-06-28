@@ -81,14 +81,15 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
         const saveModel = {...model}
         if (saveModel) {
             for (const field in saveModel) {
-                console.log(field)
+                // console.log(field)
                 if (saveModel[field] && typeof saveModel[field] == 'object' && data.params.data.fields[field].dataType != 'date')
-                    {   console.log('removing links')
+                    {   
+                        // console.log('removing links')
                         delete saveModel[field]
                     }  // removing links
                 if (writeFields.indexOf(field) == -1)
                     {
-                        console.log(`removing ${field} as a field not for writing`)
+                        // console.log(`removing ${field} as a field not for writing`)
                         delete saveModel[field]
                     } // removing fields not for writing
                 if (data.params.data.fields[field].dataType == 'date' && typeof saveModel[field] == 'number') {

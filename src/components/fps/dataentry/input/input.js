@@ -12,7 +12,7 @@ import OptionsHandler, { AdvancedOptionsHandler } from '../optionsHandler/option
 
 export function InputGroup(props) {
     return (
-        <div className={styles.input_group} style={{ maxWidth: props.width || 'auto' }}>
+        <div className={styles.input_group} style={{ width: props.width || 'auto' }}>
             {props.children}
         </div>
     )
@@ -373,7 +373,7 @@ export default function Input(props) {
         <div className={`${styles.input_wrapper} ${props.className}`}
             style={
                 {
-                    maxWidth: props.width || 'auto',
+                    width: props.width || 'auto',
                     marginBottom: inputMargins.marginBottom,
                     marginTop: inputMargins.marginTop
                 }

@@ -80,115 +80,30 @@ const App = (props) => {
     }
 
     let cardActions = {
-        "sl": "money",
+        "sl": "isGreat",
         "pageSize": "10",
         "headerField": null,
         "params": {
+            "cardListLayout": "grid",
+            "cardHeaderComment": "",
+            "deleteField": "",
+            "cardBodyText": "",
+            "cardImage": false,
+            "cardImageField": "",
+            "cardImageType": "none",
+            "cardImageSize": 100,
+            "objectView": {},
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "begin_balance",
+                        "fieldSysName": "author",
                         "fetch": [],
-                        "sysName": "begin_balance",
-                        "name": "Начальный баланс",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "final_balance",
-                        "fetch": [],
-                        "sysName": "final_balance",
-                        "name": "Конечный баланс",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "gateway",
-                        "fetch": [
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "gateway",
-                        "name": "Способ платежа",
+                        "sysName": "author",
+                        "name": "",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "gateway"
-                    },
-                    {
-                        "fieldSysName": "sum",
-                        "fetch": [],
-                        "sysName": "sum",
-                        "name": "Сумма",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "transaction_date",
-                        "fetch": [],
-                        "sysName": "transaction_date",
-                        "name": "Дата",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "user_id",
-                        "fetch": [
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "user_id",
-                        "name": "Плательщик",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "WebUser"
-                    }
-                ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "begin_balance",
-                        "fetch": [],
-                        "sysName": "begin_balance",
-                        "name": "Начальный баланс",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "final_balance",
-                        "fetch": [],
-                        "sysName": "final_balance",
-                        "name": "Конечный баланс",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "gateway",
-                        "fetch": [],
-                        "sysName": "gateway",
-                        "name": "Способ платежа",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "gateway"
+                        "link": "Authors"
                     },
                     {
                         "fieldSysName": "id",
@@ -201,107 +116,79 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "sum",
+                        "fieldSysName": "isGreat",
                         "fetch": [],
-                        "sysName": "sum",
-                        "name": "Сумма",
-                        "dataType": "decimal",
+                        "sysName": "isGreat",
+                        "name": "isGreat",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "transaction_date",
+                        "fieldSysName": "title",
                         "fetch": [],
-                        "sysName": "transaction_date",
-                        "name": "Дата",
-                        "dataType": "date",
+                        "sysName": "title",
+                        "name": "",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
-                    },
+                    }
+                ],
+                "writeFields": [
                     {
-                        "fieldSysName": "user_id",
+                        "fieldSysName": "author",
                         "fetch": [],
-                        "sysName": "user_id",
-                        "name": "Плательщик",
+                        "sysName": "author",
+                        "name": "",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "WebUser"
+                        "link": "Authors"
+                    },
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "isGreat",
+                        "fetch": [],
+                        "sysName": "isGreat",
+                        "name": "isGreat",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "title",
+                        "fetch": [],
+                        "sysName": "title",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
                     }
                 ],
                 "fields": {
-                    "begin_balance": {
-                        "id": "begin_balance",
-                        "content": "Начальный баланс",
-                        "type": "field",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "final_balance": {
-                        "id": "final_balance",
-                        "content": "Конечный баланс",
-                        "type": "field",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "gateway": {
-                        "id": "gateway",
-                        "content": "Способ платежа",
+                    "author": {
+                        "id": "author",
+                        "content": "",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
                         "read": true,
-                        "link": "gateway",
-                        "actions": []
-                    },
-                    "sum": {
-                        "id": "sum",
-                        "content": "Сумма",
-                        "type": "field",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "transaction_date": {
-                        "id": "transaction_date",
-                        "content": "Дата",
-                        "type": "field",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "user_id": {
-                        "id": "user_id",
-                        "content": "Плательщик",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "WebUser",
+                        "link": "Authors",
                         "actions": []
                     },
                     "id": {
@@ -312,40 +199,37 @@ const App = (props) => {
                         "format": "",
                         "formatOptions": {},
                         "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "isGreat": {
+                        "id": "isGreat",
+                        "content": "isGreat",
+                        "type": "field",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "title": {
+                        "id": "title",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
                         "link": "",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "begin_balance": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "final_balance": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "gateway": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "sum": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "transaction_date": {
+                    "author": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -359,36 +243,19 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "user_id": {
+                    "isGreat": {
                         "include": true,
                         "fileImageFormat": "square",
-                        "quickSearch": true,
+                        "quickSearch": false,
                         "fileImageSize": 200,
-                        "clickable": true,
-                        "configureLinkedCard": {
-                            "fields": {
-                                "name": {
-                                    "id": "name",
-                                    "content": "Name",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "string",
-                                    "format": null,
-                                    "formatOptions": null
-                                }
-                            },
-                            "fieldParams": {
-                                "name": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                }
-                            },
-                            "fieldOrder": [
-                                null,
-                                "name"
-                            ]
-                        }
+                        "clickable": false
+                    },
+                    "title": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
                     }
                 },
                 "columns": {
@@ -396,13 +263,10 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "begin_balance",
-                            "final_balance",
-                            "gateway",
-                            "sum",
-                            "transaction_date",
+                            "author",
                             "id",
-                            "user_id"
+                            "isGreat",
+                            "title"
                         ]
                     }
                 },
@@ -412,35 +276,7 @@ const App = (props) => {
                 "actions": []
             },
             "fields": {
-                "begin_balance": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "final_balance": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "gateway": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "sum": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "transaction_date": {
+                "author": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -454,819 +290,44 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "user_id": {
+                "isGreat": {
                     "include": true,
                     "fileImageFormat": "square",
-                    "quickSearch": true,
+                    "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": true,
-                    "configureLinkedCard": {
-                        "fields": {
-                            "name": {
-                                "id": "name",
-                                "content": "Name",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "string",
-                                "format": null,
-                                "formatOptions": null
-                            }
-                        },
-                        "fieldParams": {
-                            "name": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            }
-                        },
-                        "fieldOrder": [
-                            null,
-                            "name"
-                        ]
-                    },
-                    "searchData": [
-                        {
-                            "key": "manager4",
-                            "value": "Li Wong"
-                        },
-                        {
-                            "key": "manager",
-                            "value": "Piter Watson"
-                        },
-                        {
-                            "key": "manager3",
-                            "value": "Kate Aksenova"
-                        },
-                        {
-                            "key": "manager2",
-                            "value": "Sara Huston"
-                        },
-                        {
-                            "key": "artosiris@gmail.com",
-                            "value": "artosiris@gmail.com"
-                        },
-                        {
-                            "key": "artosiris",
-                            "value": "artosiris"
-                        },
-                        {
-                            "key": "amanager",
-                            "value": "Piter Watson"
-                        },
-                        {
-                            "key": "1",
-                            "value": "1"
-                        },
-                        {
-                            "key": "directual_test",
-                            "value": "directual_test"
-                        },
-                        {
-                            "key": "manager3@mail.ru",
-                            "value": "Kate Aksenova"
-                        },
-                        {
-                            "key": "81bb5060-5ed3-4cbe-a8e7-885c59b32aec",
-                            "value": "81bb5060-5ed3-4cbe-a8e7-885c59b32aec"
-                        },
-                        {
-                            "key": "c07c8003-d85e-4ac3-a20f-a2c4e17bac8f",
-                            "value": "c07c8003-d85e-4ac3-a20f-a2c4e17bac8f"
-                        },
-                        {
-                            "key": "d8577dfd-6657-48f8-b317-6cd694aa6d01",
-                            "value": "d8577dfd-6657-48f8-b317-6cd694aa6d01"
-                        },
-                        {
-                            "key": "3d14ffd5-9aa9-4fb2-a4e8-2c08747c5cc3",
-                            "value": "3d14ffd5-9aa9-4fb2-a4e8-2c08747c5cc3"
-                        },
-                        {
-                            "key": "0b8ed2f3-def6-4b74-b4ab-00919f2da403",
-                            "value": "0b8ed2f3-def6-4b74-b4ab-00919f2da403"
-                        }
-                    ]
+                    "clickable": false
+                },
+                "title": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
                 }
-            },
-            "tableParams": {
-                "readFields": [
-                    {
-                        "fieldSysName": "begin_balance",
-                        "fetch": [],
-                        "sysName": "begin_balance",
-                        "name": "Начальный баланс",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "final_balance",
-                        "fetch": [],
-                        "sysName": "final_balance",
-                        "name": "Конечный баланс",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "gateway",
-                        "fetch": [
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "gateway",
-                        "name": "Способ платежа",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "gateway"
-                    },
-                    {
-                        "fieldSysName": "sum",
-                        "fetch": [],
-                        "sysName": "sum",
-                        "name": "Сумма",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "transaction_date",
-                        "fetch": [],
-                        "sysName": "transaction_date",
-                        "name": "Дата",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "user_id",
-                        "fetch": [
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "user_id",
-                        "name": "Плательщик",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "WebUser"
-                    }
-                ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "begin_balance",
-                        "fetch": [],
-                        "sysName": "begin_balance",
-                        "name": "Начальный баланс",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "final_balance",
-                        "fetch": [],
-                        "sysName": "final_balance",
-                        "name": "Конечный баланс",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "gateway",
-                        "fetch": [],
-                        "sysName": "gateway",
-                        "name": "Способ платежа",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "gateway"
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "sum",
-                        "fetch": [],
-                        "sysName": "sum",
-                        "name": "Сумма",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "transaction_date",
-                        "fetch": [],
-                        "sysName": "transaction_date",
-                        "name": "Дата",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "user_id",
-                        "fetch": [],
-                        "sysName": "user_id",
-                        "name": "Плательщик",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "WebUser"
-                    }
-                ],
-                "fields": {
-                    "begin_balance": {
-                        "id": "begin_balance",
-                        "content": "Начальный баланс",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "final_balance": {
-                        "id": "final_balance",
-                        "content": "Конечный баланс",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "gateway": {
-                        "id": "gateway",
-                        "content": "Способ платежа",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "gateway"
-                    },
-                    "sum": {
-                        "id": "sum",
-                        "content": "Сумма",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "transaction_date": {
-                        "id": "transaction_date",
-                        "content": "Дата",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "user_id": {
-                        "id": "user_id",
-                        "content": "Плательщик",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "WebUser"
-                    },
-                    "id": {
-                        "id": "id",
-                        "content": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "link": ""
-                    }
-                },
-                "fieldParams": {
-                    "begin_balance": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80
-                    },
-                    "final_balance": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80
-                    },
-                    "gateway": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80
-                    },
-                    "sum": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80
-                    },
-                    "transaction_date": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80
-                    },
-                    "id": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80
-                    },
-                    "user_id": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80
-                    }
-                },
-                "fieldOrder": [
-                    "gateway",
-                    "sum",
-                    "transaction_date",
-                    "user_id",
-                    "begin_balance",
-                    "final_balance",
-                    "id"
-                ]
             }
         },
         "tableTitle": "",
         "actions": null,
         "headers": [
             {
-                "sysName": "begin_balance",
-                "name": "Начальный баланс",
-                "dataType": "decimal",
-                "id": "45041623602443415",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "json": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "final_balance",
-                "name": "Конечный баланс",
-                "dataType": "decimal",
-                "id": "86491623602473378",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 6,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "json": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "gateway",
-                "name": "Способ платежа",
+                "sysName": "author",
+                "name": "",
                 "dataType": "link",
-                "id": "90971623602097369",
-                "link": "gateway",
+                "id": "13781619702243181",
+                "link": "Authors",
                 "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "json": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "sum",
-                "name": "Сумма",
-                "dataType": "decimal",
-                "id": "22491623601994912",
-                "link": "",
-                "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 2,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "json": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "transaction_date",
-                "name": "Дата",
-                "dataType": "date",
-                "id": "59841623602373099",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "json": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "user_id",
-                "name": "Плательщик",
-                "dataType": "link",
-                "id": "25781623601948813",
-                "link": "WebUser",
-                "group": "0",
-                "tags": null,
-                "indexing": true,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [
-                    "id"
-                ],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": true,
-                "linkOrArrayLinkType": true,
-                "json": false,
-                "arrayLink": false
-            }
-        ],
-        "data": [
-            {
-                "transaction_date": 1622592000000,
-                "user_id": {
-                    "name": "Kate Aksenova"
-                },
-                "sum": -100,
-                "gateway": {
-                    "name": "Комиссия по сделке"
-                },
-                "begin_balance": "",
-                "final_balance": "",
-                "id": ""
-            }
-        ],
-        "totalPages": 1,
-        "pageNumber": 0,
-        "error": null,
-        "fieldScheme": [
-            [
-                "begin_balance",
-                1395050
-            ],
-            [
-                "final_balance",
-                1395050
-            ],
-            [
-                "gateway.name",
-                1395051
-            ],
-            [
-                "sum",
-                1395050
-            ],
-            [
-                "transaction_date",
-                1395050
-            ],
-            [
-                "user_id.name",
-                1336775
-            ]
-        ],
-        "writeFields": [
-            "begin_balance",
-            "final_balance",
-            "gateway",
-            "id",
-            "sum",
-            "transaction_date",
-            "user_id"
-        ],
-        "structures": {
-            "1336775": {
-                "networkID": 4509,
-                "sysName": "WebUser",
-                "name": "Пользователи",
-                "id": 1336775,
-                "dateCreated": "2021-02-07T12:36:55Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"isBlocked\",\"name\":\"Block user\",\"dataType\":\"boolean\",\"id\":\"1\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"dateCreated\",\"name\":\"dateCreated\",\"dataType\":\"string\",\"id\":\"10\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"password\",\"name\":\"Password (hash)\",\"dataType\":\"string\",\"id\":\"11\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"id\",\"name\":\"Username (login)\",\"dataType\":\"id\",\"id\":\"12\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"gender\",\"name\":\"Gender\",\"dataType\":\"string\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"lastName\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"fb_user\",\"name\":\"Профиль на Фейсбуке\",\"dataType\":\"arrayLink\",\"id\":\"30341623419766159\",\"link\":\"FBusers\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":true},{\"sysName\":\"photo\",\"name\":\"Photo\",\"dataType\":\"file\",\"id\":\"30461606813321074\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"balance\",\"name\":\"Баланс\",\"dataType\":\"decimal\",\"id\":\"34311623602309561\",\"link\":\"\",\"group\":\"1623602302559\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"firstName\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"team\",\"name\":\"Team\",\"dataType\":\"arrayLink\",\"id\":\"49781606825242850\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":true},{\"sysName\":\"role\",\"name\":\"Roles\",\"dataType\":\"string\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"isAuthorization\",\"name\":\"isAuthorization\",\"dataType\":\"boolean\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"manager_id\",\"name\":\"Manager\",\"dataType\":\"link\",\"id\":\"61121606813326688\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":false},{\"sysName\":\"name\",\"name\":\"Name\",\"dataType\":\"string\",\"id\":\"66761606813314167\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"dateLastActivity\",\"name\":\"dateLastActivity\",\"dataType\":\"string\",\"id\":\"7\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"email\",\"name\":\"Email\",\"dataType\":\"string\",\"id\":\"8\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"phone\",\"name\":\"Phone\",\"dataType\":\"string\",\"id\":\"9\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"position\",\"name\":\"Position\",\"dataType\":\"string\",\"id\":\"90061606821486387\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false}]",
-                "jsonGroupSettings": "[{\"id\":1623602302559,\"name\":\"Финансы\",\"order\":0}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
-                "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-06-13T16:38:59Z",
-                "createBy": 0,
-                "changedBy": 4244,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "innerIDField": {
-                    "sysName": "id",
-                    "name": "Username (login)",
-                    "dataType": "id",
-                    "id": "12",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "typeVariable": {},
-                    "linkType": false,
-                    "indexExists": false,
-                    "linkOrArrayLinkType": false,
-                    "json": false,
-                    "arrayLink": false
-                },
-                "objectIDSysName": "id",
-                "folderId": 0
-            },
-            "1395050": {
-                "networkID": 4509,
-                "sysName": "transactions",
-                "name": "Транзакции",
-                "id": 1395050,
-                "dateCreated": "2021-06-13T16:32:23Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"sum\",\"name\":\"Сумма\",\"dataType\":\"decimal\",\"id\":\"22491623601994912\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"user_id\",\"name\":\"Плательщик\",\"dataType\":\"link\",\"id\":\"25781623601948813\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":true,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":false},{\"sysName\":\"begin_balance\",\"name\":\"Начальный баланс\",\"dataType\":\"decimal\",\"id\":\"45041623602443415\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"transaction_date\",\"name\":\"Дата\",\"dataType\":\"date\",\"id\":\"59841623602373099\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"final_balance\",\"name\":\"Конечный баланс\",\"dataType\":\"decimal\",\"id\":\"86491623602473378\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"gateway\",\"name\":\"Способ платежа\",\"dataType\":\"link\",\"id\":\"90971623602097369\",\"link\":\"gateway\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": null,
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-06-13T17:28:18Z",
-                "createBy": 4244,
-                "changedBy": 1,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "innerIDField": {
-                    "sysName": "id",
-                    "name": "id",
-                    "dataType": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "typeVariable": {},
-                    "linkType": false,
-                    "indexExists": false,
-                    "linkOrArrayLinkType": false,
-                    "json": false,
-                    "arrayLink": false
-                },
-                "objectIDSysName": "id",
-                "folderId": 33631050
-            },
-            "1395051": {
-                "networkID": 4509,
-                "sysName": "gateway",
-                "name": "Виды транзакций",
-                "id": 1395051,
-                "dateCreated": "2021-06-13T16:36:19Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"inside_name\",\"name\":\"Внутреннее имя\",\"dataType\":\"string\",\"id\":\"17131623602235960\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"name\",\"name\":\"Вид транзакции\",\"dataType\":\"string\",\"id\":\"43091623602878774\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-06-13T16:50:49Z",
-                "createBy": 4244,
-                "changedBy": 4244,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "innerIDField": {
-                    "sysName": "id",
-                    "name": "id",
-                    "dataType": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "typeVariable": {},
-                    "linkType": false,
-                    "indexExists": false,
-                    "linkOrArrayLinkType": false,
-                    "json": false,
-                    "arrayLink": false
-                },
-                "objectIDSysName": "id",
-                "folderId": 33631050
-            }
-        },
-        "isSuccessWrite": false,
-        "writeError": null,
-        "writeResponse": null,
-        "fileds": [
-            {
-                "sysName": "begin_balance",
-                "name": "Начальный баланс",
-                "dataType": "decimal",
-                "id": "45041623602443415",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "json": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "final_balance",
-                "name": "Конечный баланс",
-                "dataType": "decimal",
-                "id": "86491623602473378",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 6,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "json": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "gateway",
-                "name": "Способ платежа",
-                "dataType": "link",
-                "id": "90971623602097369",
-                "link": "gateway",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
                 "typeVariable": {},
                 "linkType": true,
@@ -1303,24 +364,210 @@ const App = (props) => {
                 "arrayLink": false
             },
             {
-                "sysName": "sum",
-                "name": "Сумма",
-                "dataType": "decimal",
-                "id": "22491623601994912",
+                "sysName": "isGreat",
+                "name": "isGreat",
+                "dataType": "boolean",
+                "id": "82841623872260049",
                 "link": "",
                 "group": "0",
                 "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "arrayLink": false
+            },
+            {
+                "sysName": "title",
+                "name": "",
+                "dataType": "string",
+                "id": "76761619702242678",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "arrayLink": false
+            }
+        ],
+        "data": [
+            {
+                "author": "ffc054fe-a4ad-476b-9e27-3a5c98b2b10b",
+                "isGreat": true,
+                "title": "War and Peace",
+                "id": "true"
+            },
+            {
+                "author": "ffc054fe-a4ad-476b-9e27-3a5c98b2b10b",
+                "title": "War and Peace",
+                "id": "undefined",
+                "isGreat": ""
+            },
+            {
+                "isGreat": "",
+                "author": "ffc054fe-a4ad-476b-9e27-3a5c98b2b10b",
+                "title": "War and Peace",
+                "id": "false"
+            }
+        ],
+        "totalPages": 1,
+        "pageNumber": 0,
+        "error": null,
+        "fieldScheme": [
+            [
+                "author",
+                1380644
+            ],
+            [
+                "id",
+                1380644
+            ],
+            [
+                "isGreat",
+                1380644
+            ],
+            [
+                "title",
+                1380644
+            ]
+        ],
+        "writeFields": [
+            "author",
+            "id",
+            "isGreat",
+            "title"
+        ],
+        "structures": {
+            "1380644": {
+                "networkID": 5420,
+                "sysName": "actions",
+                "name": "actions",
+                "id": 1380644,
+                "dateCreated": "2021-04-29T13:17:18Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"author\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"13781619702243181\",\"link\":\"Authors\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":false},{\"sysName\":\"title\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"76761619702242678\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"isGreat\",\"name\":\"isGreat\",\"dataType\":\"boolean\",\"id\":\"82841623872260049\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": null,
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-06-16T19:37:51Z",
+                "createBy": 1,
+                "changedBy": 1,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "typeVariable": {},
+                    "linkType": false,
+                    "indexExists": false,
+                    "linkOrArrayLinkType": false,
+                    "json": false,
+                    "arrayLink": false
+                },
+                "objectIDSysName": "id",
+                "folderId": null
+            }
+        },
+        "isSuccessWrite": false,
+        "writeError": null,
+        "writeResponse": null,
+        "fileds": [
+            {
+                "sysName": "author",
+                "name": "",
+                "dataType": "link",
+                "id": "13781619702243181",
+                "link": "Authors",
+                "group": "0",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 2,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": true,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "json": false,
+                "arrayLink": false
+            },
+            {
+                "sysName": "id",
+                "name": "id",
+                "dataType": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
                 "groupName": null,
                 "typeVariable": {},
                 "linkType": false,
@@ -1330,10 +577,10 @@ const App = (props) => {
                 "arrayLink": false
             },
             {
-                "sysName": "transaction_date",
-                "name": "Дата",
-                "dataType": "date",
-                "id": "59841623602373099",
+                "sysName": "isGreat",
+                "name": "isGreat",
+                "dataType": "boolean",
+                "id": "82841623872260049",
                 "link": "",
                 "group": "0",
                 "tags": null,
@@ -1341,7 +588,7 @@ const App = (props) => {
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 4,
+                "order": 3,
                 "linkIndexFieldSysName": [],
                 "defaultValue": null,
                 "constraints": null,
@@ -1357,31 +604,29 @@ const App = (props) => {
                 "arrayLink": false
             },
             {
-                "sysName": "user_id",
-                "name": "Плательщик",
-                "dataType": "link",
-                "id": "25781623601948813",
-                "link": "WebUser",
+                "sysName": "title",
+                "name": "",
+                "dataType": "string",
+                "id": "76761619702242678",
+                "link": "",
                 "group": "0",
-                "tags": null,
-                "indexing": true,
+                "tags": "",
+                "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 1,
-                "linkIndexFieldSysName": [
-                    "id"
-                ],
-                "defaultValue": null,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
                 "typeVariable": {},
-                "linkType": true,
-                "indexExists": true,
-                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
                 "json": false,
                 "arrayLink": false
             }
@@ -3022,8 +2267,8 @@ const App = (props) => {
     }
 
     let exampleTable = {
-        "sl": "adminApps",
-        "pageSize": "25",
+        "sl": "isGreat",
+        "pageSize": "10",
         "headerField": null,
         "params": {
             "cardListLayout": "grid",
@@ -3038,408 +2283,161 @@ const App = (props) => {
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "color",
+                        "fieldSysName": "author",
                         "fetch": [],
-                        "sysName": "color",
+                        "sysName": "author",
                         "name": "",
-                        "dataType": "string",
-                        "format": "color",
+                        "dataType": "link",
+                        "format": "",
                         "formatOptions": {},
-                        "link": ""
+                        "link": "Authors"
                     },
                     {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
-                        "name": "App id",
+                        "name": "id",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "is_excess",
+                        "fieldSysName": "isGreat",
                         "fetch": [],
-                        "sysName": "is_excess",
-                        "name": "Excess plan",
+                        "sysName": "isGreat",
+                        "name": "isGreat",
                         "dataType": "boolean",
                         "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "🔥 hit limits",
-                                " "
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "owner_id",
-                        "fetch": [
-                            {
-                                "fieldSysName": "country",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "first_name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "last_name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "owner_id",
-                        "name": "Owner",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "Cloud_users"
-                    },
-                    {
-                        "fieldSysName": "plan_id",
-                        "fetch": [
-                            {
-                                "fieldSysName": "description",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "price",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "plan_id",
-                        "name": "Billing plan",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "Tariff"
-                    },
-                    {
-                        "fieldSysName": "stat_get",
-                        "fetch": [],
-                        "sysName": "stat_get",
-                        "name": "Stat | GET",
-                        "dataType": "number",
-                        "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "stat_post",
+                        "fieldSysName": "title",
                         "fetch": [],
-                        "sysName": "stat_post",
-                        "name": "Stat | POST",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "stat_proc",
-                        "fetch": [],
-                        "sysName": "stat_proc",
-                        "name": "Stat | Proc exec",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "stat_sync",
-                        "fetch": [],
-                        "sysName": "stat_sync",
-                        "name": "Stat | SYNC Proc exec",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "stat_users",
-                        "fetch": [],
-                        "sysName": "stat_users",
-                        "name": "Stat | Users",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "sysName",
-                        "fetch": [],
-                        "sysName": "sysName",
-                        "name": "System name",
+                        "sysName": "title",
+                        "name": "",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
                     }
                 ],
-                "writeFields": [],
+                "writeFields": [
+                    {
+                        "fieldSysName": "author",
+                        "fetch": [],
+                        "sysName": "author",
+                        "name": "",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "Authors"
+                    },
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "isGreat",
+                        "fetch": [],
+                        "sysName": "isGreat",
+                        "name": "isGreat",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "title",
+                        "fetch": [],
+                        "sysName": "title",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    }
+                ],
                 "fields": {
-                    "color": {
-                        "id": "color",
+                    "author": {
+                        "id": "author",
                         "content": "",
                         "type": "field",
-                        "dataType": "string",
-                        "format": "color",
+                        "dataType": "link",
+                        "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
-                        "link": "",
+                        "link": "Authors",
                         "actions": []
                     },
                     "id": {
                         "id": "id",
-                        "content": "App id",
+                        "content": "id",
                         "type": "field",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "is_excess": {
-                        "id": "is_excess",
-                        "content": "Excess plan",
+                    "isGreat": {
+                        "id": "isGreat",
+                        "content": "isGreat",
                         "type": "field",
                         "dataType": "boolean",
                         "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "🔥 hit limits",
-                                " "
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
+                        "formatOptions": {},
+                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "owner_id": {
-                        "id": "owner_id",
-                        "content": "Owner",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "Cloud_users",
-                        "actions": []
-                    },
-                    "plan_id": {
-                        "id": "plan_id",
-                        "content": "Billing plan",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "Tariff",
-                        "actions": []
-                    },
-                    "stat_get": {
-                        "id": "stat_get",
-                        "content": "Stat | GET",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "stat_post": {
-                        "id": "stat_post",
-                        "content": "Stat | POST",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "stat_proc": {
-                        "id": "stat_proc",
-                        "content": "Stat | Proc exec",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "stat_sync": {
-                        "id": "stat_sync",
-                        "content": "Stat | SYNC Proc exec",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "stat_users": {
-                        "id": "stat_users",
-                        "content": "Stat | Users",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "sysName": {
-                        "id": "sysName",
-                        "content": "System name",
+                    "title": {
+                        "id": "title",
+                        "content": "",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
-                        "link": null,
+                        "link": "",
                         "actions": []
                     }
                 },
                 "fieldParams": {
+                    "author": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
                     "id": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "isGreat": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "owner_id": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "plan_id": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "stat_get": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "stat_post": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "stat_proc": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "stat_sync": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "stat_users": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "sysName": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "color": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "is_excess": {
+                    "title": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -3450,571 +2448,84 @@ const App = (props) => {
                 "columns": {
                     "tab-1": {
                         "id": "tab-1",
-                        "title": "Info",
+                        "title": "New section",
                         "fieldIds": [
+                            "author",
                             "id",
-                            "sysName",
-                            "owner_id",
-                            "color",
-                            "is_excess"
-                        ]
-                    },
-                    "96501623748530500": {
-                        "id": "96501623748530500",
-                        "title": "Billing",
-                        "fieldIds": [
-                            "plan_id",
-                            "stat_users",
-                            "stat_get",
-                            "stat_post",
-                            "stat_proc",
-                            "stat_sync"
+                            "isGreat",
+                            "title"
                         ]
                     }
                 },
                 "columnOrder": [
-                    "tab-1",
-                    "96501623748530500"
+                    "tab-1"
                 ],
                 "actions": []
             },
             "fields": {
+                "author": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
                 "id": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "isGreat": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "owner_id": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "plan_id": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "stat_get": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "stat_post": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "stat_proc": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "stat_sync": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "stat_users": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "sysName": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "color": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "is_excess": {
+                "title": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 }
-            },
-            "tableParams": {
-                "readFields": [
-                    {
-                        "fieldSysName": "color",
-                        "fetch": [],
-                        "sysName": "color",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "App id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "is_excess",
-                        "fetch": [],
-                        "sysName": "is_excess",
-                        "name": "Excess plan",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "🔥 hit limits",
-                                " "
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "owner_id",
-                        "fetch": [
-                            {
-                                "fieldSysName": "country",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "first_name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "last_name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "owner_id",
-                        "name": "Owner",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "Cloud_users"
-                    },
-                    {
-                        "fieldSysName": "plan_id",
-                        "fetch": [
-                            {
-                                "fieldSysName": "description",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "price",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "plan_id",
-                        "name": "Billing plan",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "Tariff"
-                    },
-                    {
-                        "fieldSysName": "stat_get",
-                        "fetch": [],
-                        "sysName": "stat_get",
-                        "name": "Stat | GET",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "stat_post",
-                        "fetch": [],
-                        "sysName": "stat_post",
-                        "name": "Stat | POST",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "stat_proc",
-                        "fetch": [],
-                        "sysName": "stat_proc",
-                        "name": "Stat | Proc exec",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "stat_sync",
-                        "fetch": [],
-                        "sysName": "stat_sync",
-                        "name": "Stat | SYNC Proc exec",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "stat_users",
-                        "fetch": [],
-                        "sysName": "stat_users",
-                        "name": "Stat | Users",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "sysName",
-                        "fetch": [],
-                        "sysName": "sysName",
-                        "name": "System name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    }
-                ],
-                "writeFields": [],
-                "fields": {
-                    "color": {
-                        "id": "color",
-                        "content": "",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "id": {
-                        "id": "id",
-                        "content": "App id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "is_excess": {
-                        "id": "is_excess",
-                        "content": "Excess plan",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "🔥 hit limits",
-                                " "
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "read": true,
-                        "link": ""
-                    },
-                    "owner_id": {
-                        "id": "owner_id",
-                        "content": "Owner",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "Cloud_users"
-                    },
-                    "plan_id": {
-                        "id": "plan_id",
-                        "content": "Billing plan",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "Tariff"
-                    },
-                    "stat_get": {
-                        "id": "stat_get",
-                        "content": "Stat | GET",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "stat_post": {
-                        "id": "stat_post",
-                        "content": "Stat | POST",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "stat_proc": {
-                        "id": "stat_proc",
-                        "content": "Stat | Proc exec",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "stat_sync": {
-                        "id": "stat_sync",
-                        "content": "Stat | SYNC Proc exec",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "stat_users": {
-                        "id": "stat_users",
-                        "content": "Stat | Users",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "sysName": {
-                        "id": "sysName",
-                        "content": "System name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null
-                    }
-                },
-                "fieldParams": {
-                    "id": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "owner_id": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "plan_id": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "stat_get": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40,
-                        "colorCell": true,
-                        "colorCellType": "text",
-                        "colorCellSource": "field",
-                        "colorCellField": "color"
-                    },
-                    "stat_post": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40,
-                        "colorCell": true,
-                        "colorCellType": "background",
-                        "colorCellConst": "#f542e0"
-                    },
-                    "stat_proc": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "stat_sync": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "stat_users": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "sysName": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "color": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40,
-                        "colorRow": true
-                    },
-                    "is_excess": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40,
-                        "colorCell": false
-                    }
-                },
-                "fieldOrder": [
-                    "id",
-                    "color",
-                    "sysName",
-                    "owner_id",
-                    "plan_id",
-                    "is_excess",
-                    "stat_get",
-                    "stat_post",
-                    "stat_proc",
-                    "stat_sync",
-                    "stat_users"
-                ]
             }
         },
-        "tableTitle": "Apps",
+        "tableTitle": "",
         "actions": null,
         "headers": [
             {
-                "sysName": "color",
+                "sysName": "author",
                 "name": "",
-                "dataType": "string",
-                "id": "79011623748876085",
-                "link": "",
-                "group": "1623707015468",
-                "tags": null,
+                "dataType": "link",
+                "id": "13781619702243181",
+                "link": "Authors",
+                "group": "0",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 10,
+                "order": 2,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
-                "format": "color",
-                "formatOptions": null,
+                "format": null,
+                "formatOptions": {},
                 "groupName": null,
                 "typeVariable": {},
-                "linkType": false,
+                "linkType": true,
                 "indexExists": false,
-                "linkOrArrayLinkType": false,
+                "linkOrArrayLinkType": true,
                 "json": false,
                 "arrayLink": false
             },
             {
                 "sysName": "id",
-                "name": "App id",
+                "name": "id",
                 "dataType": "id",
                 "id": "0",
                 "link": "",
@@ -4040,120 +2551,12 @@ const App = (props) => {
                 "arrayLink": false
             },
             {
-                "sysName": "is_excess",
-                "name": "Excess plan",
+                "sysName": "isGreat",
+                "name": "isGreat",
                 "dataType": "boolean",
-                "id": "40361623748858552",
+                "id": "82841623872260049",
                 "link": "",
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 9,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "🔥 hit limits",
-                        " "
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false"
-                },
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "json": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "owner_id",
-                "name": "Owner",
-                "dataType": "link",
-                "id": "41841623707118206",
-                "link": "Cloud_users",
                 "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "json": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "plan_id",
-                "name": "Billing plan",
-                "dataType": "link",
-                "id": "74161623707026653",
-                "link": "Tariff",
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "json": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "stat_get",
-                "name": "Stat | GET",
-                "dataType": "number",
-                "id": "94951623707229504",
-                "link": "",
-                "group": "1623707015468",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
@@ -4175,132 +2578,24 @@ const App = (props) => {
                 "arrayLink": false
             },
             {
-                "sysName": "stat_post",
-                "name": "Stat | POST",
-                "dataType": "number",
-                "id": "37551623707296997",
-                "link": "",
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "json": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "stat_proc",
-                "name": "Stat | Proc exec",
-                "dataType": "number",
-                "id": "16611623707312286",
-                "link": "",
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 6,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "json": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "stat_sync",
-                "name": "Stat | SYNC Proc exec",
-                "dataType": "number",
-                "id": "87341623707329117",
-                "link": "",
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 7,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "json": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "stat_users",
-                "name": "Stat | Users",
-                "dataType": "number",
-                "id": "76861623707270662",
-                "link": "",
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "json": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "sysName",
-                "name": "System name",
+                "sysName": "title",
+                "name": "",
                 "dataType": "string",
-                "id": "27541623706978377",
-                "link": null,
+                "id": "76761619702242678",
+                "link": "",
                 "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 1,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
                 "typeVariable": {},
                 "linkType": false,
@@ -4312,738 +2607,70 @@ const App = (props) => {
         ],
         "data": [
             {
-                "owner_id": {
-                    "country": "RU",
-                    "last_name": "Kholmatov",
-                    "id": "b.kholmatov@bsl.dev",
-                    "first_name": "Bakhrom"
-                },
-                "stat_sync": 931064,
-                "color": "fad8ca",
-                "sysName": "korzinanadom-dev",
-                "plan_id": {
-                    "price": 139,
-                    "name": "Pro",
-                    "description": "Includes advanced features for developing and scaling your app",
-                    "id": "Pro-monthly"
-                },
-                "id": "6283",
-                "stat_users": 2,
-                "stat_post": 11021,
-                "is_excess": true,
-                "stat_get": 66508,
-                "stat_proc": 927822
+                "author": "ffc054fe-a4ad-476b-9e27-3a5c98b2b10b",
+                "title": "War and Peace",
+                "id": "8b6be6b0-8183-4f93-a560-b268c20e62d1",
+                "isGreat": ""
             },
             {
-                "owner_id": {
-                    "country": "RU",
-                    "last_name": "Kholmatov",
-                    "id": "b.kholmatov@bsl.dev",
-                    "first_name": "Bakhrom"
-                },
-                "stat_sync": 26284,
-                "color": "fad8ca",
-                "sysName": "korzinanadom-test",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for building an MVP and learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "6882",
-                "stat_users": 0,
-                "stat_post": 818,
-                "is_excess": true,
-                "stat_get": 26082,
-                "stat_proc": 26564
-            },
-            {
-                "owner_id": {
-                    "country": "IE",
-                    "last_name": "Mirsaitow",
-                    "id": "mirsaitow@gmail.com",
-                    "first_name": "Narkis"
-                },
-                "stat_sync": 14692,
-                "sysName": "autobonum",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for building an MVP and learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "4215",
-                "stat_users": 0,
-                "stat_post": 0,
-                "is_excess": true,
-                "stat_get": 0,
-                "stat_proc": 16251
-            },
-            {
-                "owner_id": {
-                    "id": "leonid.byakov@gmail.com",
-                    "first_name": "Leonid  Byakov"
-                },
-                "stat_sync": 5151,
-                "color": "fad8ca",
-                "sysName": "hh_send_message",
-                "plan_id": {
-                    "price": 300,
-                    "name": "Business (legacy)",
-                    "description": "Legacy plan. Business, monthly payments",
-                    "id": "Business"
-                },
-                "id": "2894",
-                "stat_users": 4,
-                "stat_post": 430932,
-                "is_excess": true,
-                "stat_get": 4270,
-                "stat_proc": 5091585
-            },
-            {
-                "owner_id": {
-                    "id": "n.dolgov@directual.com"
-                },
-                "stat_sync": 2850,
-                "color": "fad8ca",
-                "sysName": "unipro",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for building an MVP and learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "3661",
-                "stat_users": 0,
-                "stat_post": 1573,
-                "is_excess": true,
-                "stat_get": 1860,
-                "stat_proc": 2850
-            },
-            {
-                "owner_id": {
-                    "id": "admin"
-                },
-                "stat_sync": 1173,
-                "color": "fad8ca",
-                "sysName": "ufg2021",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for building an MVP and learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "5751",
-                "stat_users": 2,
-                "stat_post": 172,
-                "is_excess": true,
-                "stat_get": 4134,
-                "stat_proc": 1416
-            },
-            {
-                "owner_id": {
-                    "id": "admin"
-                },
-                "stat_sync": 208,
-                "color": "fad8ca",
-                "sysName": "CHAIRY_TEST",
-                "plan_id": {
-                    "price": 139,
-                    "name": "Pro",
-                    "description": "Includes advanced features for developing and scaling your app",
-                    "id": "Pro-monthly"
-                },
-                "id": "2572",
-                "stat_users": 6,
-                "stat_post": 43,
-                "is_excess": true,
-                "stat_get": 298,
-                "stat_proc": 1465287
-            },
-            {
-                "owner_id": {
-                    "id": "admin"
-                },
-                "stat_sync": 4,
-                "color": "fad8ca",
-                "sysName": "directual-site",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for building an MVP and learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "1822",
-                "stat_users": 3,
-                "stat_post": 19,
-                "is_excess": true,
-                "stat_get": 5,
-                "stat_proc": 14797
-            },
-            {
-                "owner_id": {
-                    "country": "BY",
-                    "last_name": "Myagkov",
-                    "id": "desertpetr@gmail.com",
-                    "first_name": "Petr"
-                },
-                "stat_sync": 0,
-                "color": "fad8ca",
-                "sysName": "project1v1",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for building an MVP and learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "6880",
-                "stat_users": 0,
-                "stat_post": 154,
-                "is_excess": true,
-                "stat_get": 1,
-                "stat_proc": 31131
-            },
-            {
-                "owner_id": {
-                    "country": "RU",
-                    "last_name": "Карпов",
-                    "id": "gelogeern@gmail.com",
-                    "first_name": "Олег"
-                },
-                "stat_sync": 0,
-                "color": "fad8ca",
-                "sysName": "beton-platform",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for building an MVP and learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "7047",
-                "stat_users": 0,
-                "stat_post": 104,
-                "is_excess": true,
-                "stat_get": 1123,
-                "stat_proc": 11333
-            },
-            {
-                "owner_id": {
-                    "country": "EG",
-                    "last_name": "Al",
-                    "id": "myrsaljat@gmail.com",
-                    "first_name": "Mursalyat"
-                },
-                "stat_sync": 0,
-                "color": "fad8ca",
-                "sysName": "my-first-appp",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for building an MVP and learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "6814",
-                "stat_users": 0,
-                "stat_post": 12,
-                "is_excess": true,
-                "stat_get": 84,
-                "stat_proc": 12979941
-            },
-            {
-                "owner_id": {
-                    "id": "admin"
-                },
-                "stat_sync": 0,
-                "color": "fad8ca",
-                "sysName": "Music_bot",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for building an MVP and learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "2050",
-                "stat_users": 4,
-                "stat_post": 1,
-                "is_excess": true,
-                "stat_get": 25,
-                "stat_proc": 15
-            },
-            {
-                "owner_id": {
-                    "id": "admin"
-                },
-                "stat_sync": 0,
-                "color": "fad8ca",
-                "sysName": "CHAIRY_DEV",
-                "plan_id": {
-                    "price": 30,
-                    "name": "Startup (legacy)",
-                    "description": "Legacy plan. Startup, monthly payments",
-                    "id": "Startup"
-                },
-                "id": "2571",
-                "stat_users": 7,
-                "stat_post": 1,
-                "is_excess": true,
-                "stat_get": 0,
-                "stat_proc": 1023989
-            },
-            {
-                "owner_id": {
-                    "id": "admin"
-                },
-                "stat_sync": 0,
-                "color": "fad8ca",
-                "sysName": "SCHLUM_PROD",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for building an MVP and learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "2351",
-                "stat_users": 5,
-                "stat_post": 0,
-                "is_excess": true,
-                "stat_get": 84,
-                "stat_proc": 0
-            },
-            {
-                "owner_id": {
-                    "id": "a.mozer@directual.com"
-                },
-                "stat_sync": 0,
-                "color": "fad8ca",
-                "sysName": "vitrina-clone-dev",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for building an MVP and learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "6867",
-                "stat_users": 0,
-                "stat_post": 0,
-                "is_excess": true,
-                "stat_get": 31,
-                "stat_proc": 10674
-            },
-            {
-                "owner_id": {
-                    "country": "CN",
-                    "id": "zhangqingyu.today@bytedance.com"
-                },
-                "stat_sync": 0,
-                "color": "fad8ca",
-                "sysName": "bookhome",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for building an MVP and learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "6109",
-                "stat_users": 4,
-                "stat_post": 0,
-                "is_excess": true,
-                "stat_get": 4,
-                "stat_proc": 0
-            },
-            {
-                "owner_id": {
-                    "id": "admin"
-                },
-                "stat_sync": 0,
-                "color": "fad8ca",
-                "sysName": "UFG_TEST",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for building an MVP and learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "2569",
-                "stat_users": 5,
-                "stat_post": 0,
-                "is_excess": true,
-                "stat_get": 0,
-                "stat_proc": 150
-            },
-            {
-                "owner_id": {
-                    "id": "admin"
-                },
-                "stat_sync": 0,
-                "color": "fad8ca",
-                "sysName": "UFG_DEV",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for building an MVP and learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "2567",
-                "stat_users": 8,
-                "stat_post": 0,
-                "is_excess": true,
-                "stat_get": 0,
-                "stat_proc": 150
-            },
-            {
-                "owner_id": {
-                    "id": "admin"
-                },
-                "stat_sync": 0,
-                "color": "fad8ca",
-                "sysName": "2019_UFG_PROD",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for building an MVP and learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "2636",
-                "stat_users": 2,
-                "stat_post": 0,
-                "is_excess": true,
-                "stat_get": 0,
-                "stat_proc": 140
-            },
-            {
-                "owner_id": {
-                    "id": "admin"
-                },
-                "stat_sync": 0,
-                "color": "fad8ca",
-                "sysName": "vitrina2252-dev",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for building an MVP and learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "4580",
-                "stat_users": 2,
-                "stat_post": 0,
-                "is_excess": true,
-                "stat_get": 0,
-                "stat_proc": 16
-            },
-            {
-                "owner_id": {
-                    "country": "RU",
-                    "last_name": "Laptev",
-                    "id": "artemlaptev7@gmail.com",
-                    "first_name": "Artem"
-                },
-                "stat_sync": 125402,
-                "color": "c8f7d5",
-                "sysName": "testartem",
-                "plan_id": {
-                    "price": 300,
-                    "name": "Business (legacy)",
-                    "description": "Legacy plan. Business, monthly payments",
-                    "id": "Business"
-                },
-                "id": "4355",
-                "stat_users": 0,
-                "stat_post": 1131,
-                "is_excess": false,
-                "stat_get": 0,
-                "stat_proc": 667734
-            },
-            {
-                "owner_id": {
-                    "id": "admin"
-                },
-                "stat_sync": 5295,
-                "color": "c8f7d5",
-                "sysName": "vitrina2252",
-                "plan_id": {
-                    "price": 300,
-                    "name": "Business (legacy)",
-                    "description": "Legacy plan. Business, monthly payments",
-                    "id": "Business"
-                },
-                "id": "4265",
-                "stat_users": 3,
-                "stat_post": 11118,
-                "is_excess": false,
-                "stat_get": 33980,
-                "stat_proc": 772838
-            },
-            {
-                "owner_id": {
-                    "country": "RU",
-                    "last_name": "Venture",
-                    "id": "addventureplatform@gmail.com",
-                    "first_name": "Add"
-                },
-                "stat_sync": 1654,
-                "color": "c8f7d5",
-                "sysName": "addventure-test",
-                "plan_id": {
-                    "price": 1188,
-                    "name": "Pro",
-                    "description": "Includes advanced features for developing and scaling your app",
-                    "id": "Pro-yearly"
-                },
-                "id": "5836",
-                "stat_users": 1,
-                "stat_post": 14,
-                "is_excess": false,
-                "stat_get": 946,
-                "stat_proc": 8427
-            },
-            {
-                "owner_id": {
-                    "country": "IE",
-                    "last_name": "Б",
-                    "id": "pomnimlubim@gmail.com",
-                    "first_name": "Дмитрий"
-                },
-                "stat_sync": 1358,
-                "color": "c8f7d5",
-                "sysName": "pomnimlubim",
-                "plan_id": {
-                    "price": 139,
-                    "name": "Pro",
-                    "description": "Includes advanced features for developing and scaling your app",
-                    "id": "Pro-monthly"
-                },
-                "id": "3842",
-                "stat_users": 0,
-                "stat_post": 3801,
-                "is_excess": false,
-                "stat_get": 1034,
-                "stat_proc": 37382
-            },
-            {
-                "owner_id": {
-                    "country": "RU",
-                    "last_name": "Гл",
-                    "id": "zhukpaukileopard@gmail.com",
-                    "first_name": "Анна"
-                },
-                "stat_sync": 779,
-                "color": "c8f7d5",
-                "sysName": "movies-beginner",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for building an MVP and learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "6934",
-                "stat_users": 0,
-                "stat_post": 221,
-                "is_excess": false,
-                "stat_get": 598,
-                "stat_proc": 1022
+                "author": "ffc054fe-a4ad-476b-9e27-3a5c98b2b10b",
+                "isGreat": true,
+                "title": "War and Peace",
+                "id": "8b6be6b0-8183-4f93-a560-b268c20e62d"
             }
         ],
-        "totalPages": 172,
+        "totalPages": 1,
         "pageNumber": 0,
         "error": null,
         "fieldScheme": [
             [
-                "color",
-                1395053
+                "author",
+                1380644
             ],
             [
                 "id",
-                1395053
+                1380644
             ],
             [
-                "is_excess",
-                1395053
+                "isGreat",
+                1380644
             ],
             [
-                "owner_id.country",
-                1282551
-            ],
-            [
-                "owner_id.first_name",
-                1282551
-            ],
-            [
-                "owner_id.id",
-                1282551
-            ],
-            [
-                "owner_id.last_name",
-                1282551
-            ],
-            [
-                "plan_id.description",
-                1294700
-            ],
-            [
-                "plan_id.id",
-                1294700
-            ],
-            [
-                "plan_id.name",
-                1294700
-            ],
-            [
-                "plan_id.price",
-                1294700
-            ],
-            [
-                "stat_get",
-                1395053
-            ],
-            [
-                "stat_post",
-                1395053
-            ],
-            [
-                "stat_proc",
-                1395053
-            ],
-            [
-                "stat_sync",
-                1395053
-            ],
-            [
-                "stat_users",
-                1395053
-            ],
-            [
-                "sysName",
-                1395053
+                "title",
+                1380644
             ]
         ],
-        "writeFields": [],
+        "writeFields": [
+            "author",
+            "id",
+            "isGreat",
+            "title"
+        ],
         "structures": {
-            "1282551": {
-                "networkID": 1822,
-                "sysName": "Cloud_users",
-                "name": "👨🏻 Cloud users",
-                "id": 1282551,
-                "dateCreated": "2019-10-05T15:17:37Z",
+            "1380644": {
+                "networkID": 5420,
+                "sysName": "actions",
+                "name": "actions",
+                "id": 1380644,
+                "dateCreated": "2021-04-29T13:17:18Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":true,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"notifications_blog\",\"name\":\"Notify about Blog\",\"dataType\":\"boolean\",\"id\":\"20211572378981407\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"unsubscribed\",\"name\":\"unsubscribed\",\"dataType\":\"boolean\",\"id\":\"20361600521081143\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"admin_notification_text\",\"name\":\"admin_notification_text\",\"dataType\":\"string\",\"id\":\"21331602224278958\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"request_id\",\"name\":\"Request ID\",\"dataType\":\"link\",\"id\":\"23691571997337572\",\"link\":\"Requests\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[\"\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":true,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":false},{\"sysName\":\"first_name\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"23971570288647049\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"survey_ids\",\"name\":\"Surveys\",\"dataType\":\"arrayLink\",\"id\":\"27581591180002769\",\"link\":\"Surveys\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":true},{\"sysName\":\"utm_medium\",\"name\":\"utm_medium\",\"dataType\":\"string\",\"id\":\"27621588673319861\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"country_id\",\"name\":\"Country link (ISO)\",\"dataType\":\"link\",\"id\":\"31401588873548829\",\"link\":\"CountriesISO\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":false},{\"sysName\":\"is_country_synced\",\"name\":\"is_country_synced\",\"dataType\":\"boolean\",\"id\":\"31991605527320825\",\"link\":\"\",\"group\":\"1570379125072\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"note\",\"name\":\"Note\",\"dataType\":\"string\",\"id\":\"34591570383079323\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"register_date\",\"name\":\"Register date\",\"dataType\":\"date\",\"id\":\"36551588868841568\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"country\",\"name\":\"Country\",\"dataType\":\"link\",\"id\":\"37101588673355053\",\"link\":\"CountriesISO\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":false},{\"sysName\":\"email_hash\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"40581588875619696\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"number_of_sl\",\"name\":\"Number of SLs\",\"dataType\":\"number\",\"id\":\"41141570962898360\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"number_of_apps\",\"name\":\"Number of apps\",\"dataType\":\"number\",\"id\":\"41911570383626553\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"logged_in\",\"name\":\"Have logged in\",\"dataType\":\"boolean\",\"id\":\"42361570962605801\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"today_stat_id\",\"name\":\"Today stat link\",\"dataType\":\"link\",\"id\":\"42431587908594891\",\"link\":\"Dashboard_data\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":false},{\"sysName\":\"locale\",\"name\":\"locale\",\"dataType\":\"string\",\"id\":\"47031570379144750\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"notifications_account\",\"name\":\"Notify about Account\",\"dataType\":\"boolean\",\"id\":\"49381572378982097\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"whom_to_alert\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"61381602224446180\",\"link\":\"TUser\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":true},{\"sysName\":\"number_of_structures\",\"name\":\"Number of structures\",\"dataType\":\"number\",\"id\":\"70371570962891170\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"ip\",\"name\":\"ip\",\"dataType\":\"string\",\"id\":\"70561588673350213\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"number_of_scenarios\",\"name\":\"Number of scenarios\",\"dataType\":\"number\",\"id\":\"71201570962890259\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"social_register\",\"name\":\"social_register\",\"dataType\":\"boolean\",\"id\":\"71461588678509868\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"app_description\",\"name\":\"App description\",\"dataType\":\"string\",\"id\":\"72461572603438535\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"gravatar_pic\",\"name\":\" \",\"dataType\":\"file\",\"id\":\"77261619116355317\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"apps\",\"name\":\"Apps\",\"dataType\":\"arrayLink\",\"id\":\"80561587152006234\",\"link\":\"AppInfo\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":true},{\"sysName\":\"last_name\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"81941570288646826\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"mailchimp_segments\",\"name\":\"Mailchimp Segments\",\"dataType\":\"array\",\"id\":\"84981587457354001\",\"link\":\"\",\"group\":\"1570379125072\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"utm_campaign\",\"name\":\"utm_campaign\",\"dataType\":\"string\",\"id\":\"85671588673320381\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"unsibscribed_reason\",\"name\":\"unsibscribed_reason\",\"dataType\":\"string\",\"id\":\"87491600521243757\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"gravatar\",\"name\":\"Gravatar\",\"dataType\":\"string\",\"id\":\"89411588875620336\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"utm_source\",\"name\":\"utm_source\",\"dataType\":\"string\",\"id\":\"91131588673287122\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"source\",\"name\":\"Source\",\"dataType\":\"string\",\"id\":\"92371570288676773\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"customer_type\",\"name\":\"Customer type\",\"dataType\":\"string\",\"id\":\"93281572603437791\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"last_activity_date\",\"name\":\"Last activity date\",\"dataType\":\"date\",\"id\":\"96951570962621002\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"mailchimp_tags\",\"name\":\"Mailchimp labels\",\"dataType\":\"string\",\"id\":\"97421570379132976\",\"link\":null,\"group\":\"1570379125072\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"notifications_academy\",\"name\":\"Notify about Academy\",\"dataType\":\"boolean\",\"id\":\"97951572378981844\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false}]",
-                "jsonGroupSettings": "[{\"id\":1570381436668,\"name\":\"CRM\",\"order\":2},{\"id\":1588875605532,\"name\":\"Gravatar\",\"order\":4},{\"id\":1570288674389,\"name\":\"Cloud usage\",\"order\":0},{\"id\":1572378880897,\"name\":\"Notifications settings\",\"order\":3},{\"id\":1570379125072,\"name\":\"Mailchimp\",\"order\":1}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"first_name\"},{\"sysName\":\"last_name\"},{\"sysName\":\"country\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-06-14T21:55:47Z",
-                "createBy": 21,
-                "changedBy": 1,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "innerIDField": {
-                    "sysName": "id",
-                    "name": "id",
-                    "dataType": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": true,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": null,
-                    "groupName": null,
-                    "typeVariable": {},
-                    "linkType": false,
-                    "indexExists": false,
-                    "linkOrArrayLinkType": false,
-                    "json": false,
-                    "arrayLink": false
-                },
-                "objectIDSysName": "id",
-                "folderId": 667556
-            },
-            "1294700": {
-                "networkID": 1822,
-                "sysName": "Tariff",
-                "name": "Tariffs",
-                "id": 1294700,
-                "dateCreated": "2020-02-27T12:54:30Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"is_default\",\"name\":\"is_default\",\"dataType\":\"boolean\",\"id\":\"1\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false},{\"sysName\":\"visible\",\"name\":\"visible\",\"dataType\":\"boolean\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false},{\"sysName\":\"settings\",\"name\":\"settings\",\"dataType\":\"json\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":true},{\"sysName\":\"description\",\"name\":\"description\",\"dataType\":\"string\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false},{\"sysName\":\"price\",\"name\":\"price\",\"dataType\":\"decimal\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false},{\"sysName\":\"name\",\"name\":\"name\",\"dataType\":\"string\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false},{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"7\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false},{\"sysName\":\"paddle_id\",\"name\":\"paddle_id\",\"dataType\":\"string\",\"id\":\"77771590089291447\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"author\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"13781619702243181\",\"link\":\"Authors\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":false},{\"sysName\":\"title\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"76761619702242678\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"isGreat\",\"name\":\"isGreat\",\"dataType\":\"boolean\",\"id\":\"82841623872260049\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false}]",
                 "jsonGroupSettings": null,
                 "jsonViewIdSettings": null,
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2020-05-21T19:28:14Z",
-                "createBy": 0,
-                "changedBy": 2680,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "innerIDField": {
-                    "sysName": "id",
-                    "name": "id",
-                    "dataType": "id",
-                    "id": "7",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": null,
-                    "groupName": null,
-                    "typeVariable": {},
-                    "linkType": false,
-                    "indexExists": false,
-                    "linkOrArrayLinkType": false,
-                    "json": false,
-                    "arrayLink": false
-                },
-                "objectIDSysName": "id",
-                "folderId": 33575450
-            },
-            "1395053": {
-                "networkID": 1822,
-                "sysName": "Apps",
-                "name": "Apps",
-                "id": 1395053,
-                "dateCreated": "2021-06-14T21:39:39Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"App id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"raw_app_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"12131623746301658\",\"link\":\"AppInfo\",\"group\":\"1623746295898\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":false},{\"sysName\":\"name\",\"name\":\"App name\",\"dataType\":\"string\",\"id\":\"13661623706989350\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"stat_proc\",\"name\":\"Stat | Proc exec\",\"dataType\":\"number\",\"id\":\"16611623707312286\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"sysName\",\"name\":\"System name\",\"dataType\":\"string\",\"id\":\"27541623706978377\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"ondemand_ids\",\"name\":\"On-demand payments\",\"dataType\":\"arrayLink\",\"id\":\"27661623707527675\",\"link\":\"OnDemandBilling\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":true},{\"sysName\":\"isLegacy\",\"name\":\"Legacy app\",\"dataType\":\"boolean\",\"id\":\"30351623746607632\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"stat_post\",\"name\":\"Stat | POST\",\"dataType\":\"number\",\"id\":\"37551623707296997\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"description\",\"name\":\"Description\",\"dataType\":\"string\",\"id\":\"38791623706999272\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"is_excess\",\"name\":\"Excess plan\",\"dataType\":\"boolean\",\"id\":\"40361623748858552\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"🔥 hit limits\",\" \"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"owner_id\",\"name\":\"Owner\",\"dataType\":\"link\",\"id\":\"41841623707118206\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":false},{\"sysName\":\"merchant_event_ids\",\"name\":\"Paddle events\",\"dataType\":\"arrayLink\",\"id\":\"46441623707088217\",\"link\":\"MerchantEvent\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":true},{\"sysName\":\"developer_ids\",\"name\":\"Developers\",\"dataType\":\"arrayLink\",\"id\":\"54301623707131642\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":true},{\"sysName\":\"isTeam\",\"name\":\"Team app\",\"dataType\":\"boolean\",\"id\":\"68981623707196589\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"plan_id\",\"name\":\"Billing plan\",\"dataType\":\"link\",\"id\":\"74161623707026653\",\"link\":\"Tariff\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":false},{\"sysName\":\"change_plan_request_ids\",\"name\":\"Plan change requests\",\"dataType\":\"arrayLink\",\"id\":\"76611623707045935\",\"link\":\"ChangeTariffRequests\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":true},{\"sysName\":\"stat_users\",\"name\":\"Stat | Users\",\"dataType\":\"number\",\"id\":\"76861623707270662\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"color\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"79011623748876085\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"stat_sync\",\"name\":\"Stat | SYNC Proc exec\",\"dataType\":\"number\",\"id\":\"87341623707329117\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"team_id\",\"name\":\"Team\",\"dataType\":\"link\",\"id\":\"94291623707210181\",\"link\":\"Teams\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":false},{\"sysName\":\"stat_get\",\"name\":\"Stat | GET\",\"dataType\":\"number\",\"id\":\"94951623707229504\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"raw_usage_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"96391623747858362\",\"link\":\"UsageHistory\",\"group\":\"1623746295898\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":false}]",
-                "jsonGroupSettings": "[{\"id\":1623707015468,\"name\":\"Billing\",\"order\":0},{\"id\":1623746295898,\"name\":\"RAW_data\",\"order\":1}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"sysName\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-06-15T09:44:45Z",
+                "dateChanged": "2021-06-16T19:37:51Z",
                 "createBy": 1,
                 "changedBy": 1,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "App id",
+                    "name": "id",
                     "dataType": "id",
                     "id": "0",
                     "link": "",
@@ -5069,13 +2696,122 @@ const App = (props) => {
                     "arrayLink": false
                 },
                 "objectIDSysName": "id",
-                "folderId": 667556
+                "folderId": null
             }
         },
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
-        "fileds": [],
+        "fileds": [
+            {
+                "sysName": "author",
+                "name": "",
+                "dataType": "link",
+                "id": "13781619702243181",
+                "link": "Authors",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": true,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "json": false,
+                "arrayLink": false
+            },
+            {
+                "sysName": "id",
+                "name": "id",
+                "dataType": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "arrayLink": false
+            },
+            {
+                "sysName": "isGreat",
+                "name": "isGreat",
+                "dataType": "boolean",
+                "id": "82841623872260049",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "arrayLink": false
+            },
+            {
+                "sysName": "title",
+                "name": "",
+                "dataType": "string",
+                "id": "76761619702242678",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "arrayLink": false
+            }
+        ],
         "quickSearch": "true"
     }
 
