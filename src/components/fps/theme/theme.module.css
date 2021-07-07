@@ -148,28 +148,28 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/rubik/v12/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-WYi1UA.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/rubik/v14/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-WYi1UA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Rubik';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/rubik/v12/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-B4i1UA.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/rubik/v14/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-B4i1UA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Rubik';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/rubik/v12/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-4I-1UA.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/rubik/v14/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-4I-1UA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Rubik';
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/rubik/v12/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-ro-1UA.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/rubik/v14/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-ro-1UA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Ubuntu';
@@ -342,8 +342,8 @@
 }
 @font-face {
   font-family: 'directual-icons';
-  src: url('https://api.directual.com/fileUploaded/directual-site/e027f56d-fdb7-46de-8958-71fe403313fc.eot');
-  src: url('https://api.directual.com/fileUploaded/directual-site/e027f56d-fdb7-46de-8958-71fe403313fc.eot') format('embedded-opentype'), url('https://api.directual.com/fileUploaded/directual-site/6d6e2ec0-ebe5-4010-a082-7799f3cf4c49.woff') format('woff'), url('https://api.directual.com/fileUploaded/directual-site/6d5c7936-0d31-4d58-8926-3a10fb36b37a.ttf') format('truetype'), url('https://api.directual.com/fileUploaded/directual-site/4a2da92c-b57d-4406-87ee-21b30ca50434.svg') format('svg');
+  src: url('https://api.directual.com/fileUploaded/directual-site/e9cdbd78-77e7-4369-9a1c-d33b83ff9dad.eot');
+  src: url('https://api.directual.com/fileUploaded/directual-site/e9cdbd78-77e7-4369-9a1c-d33b83ff9dad.eot') format('embedded-opentype'), url('https://api.directual.com/fileUploaded/directual-site/496cee1e-bdbe-4eb3-862e-5489b44ce02c.woff') format('woff'), url('https://api.directual.com/fileUploaded/directual-site/c5f88395-3ad8-435e-8fe8-5b81f092ed02.ttf') format('truetype'), url('https://api.directual.com/fileUploaded/directual-site/3454d574-4e7a-4788-9e1e-e9fac7f56970.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -750,6 +750,9 @@
 }
 :global .icon-directual:before {
   content: "\e981";
+}
+:global .icon-cube:before {
+  content: "\e983";
 }
 /*-- VARIABLES --*/
 :root {
