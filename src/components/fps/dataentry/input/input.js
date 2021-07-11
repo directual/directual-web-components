@@ -76,7 +76,7 @@ export default function Input(props) {
         }
         if (props.error) {
             setWarningMesg({ type: 'error', msg: props.error })
-        }
+        } else { checkValue() }
     }, [props])
 
     useEffect(() => {

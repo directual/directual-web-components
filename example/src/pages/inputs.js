@@ -139,9 +139,16 @@ export default function InputsPage() {
       const [dateFormat,setDateFormat] = useState('D MMM, YYYY')
       const [timeFormat,setTimeFormat] = useState('HH:mm')
       const [dateLocale,setDateLocale] = useState(null)
+      
+      const [error,setError] = useState('error')
 
     return (
         <React.Fragment>
+
+            <Input error={error} />
+            <Button onClick={()=>setError('')}>reset error</Button>
+            <Button onClick={()=>setError(Math.random().toString())}>set error</Button>
+
             <h1>Data entry</h1>
 
             <Input defaultValue="мороз и солнце день чудесный" width={120} />
