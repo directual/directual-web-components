@@ -96,6 +96,7 @@ export function SignIn({ width, header, signUpheader, google, onSignIn, onSignUp
 
 export function SignUp(props) {
     const [signUpDetails, setSignUpDetails] = useState({})
+    const [isLoginValid,setIsLoginValid] = useState(true)
     return (
         <div className={styles.signinform} style={{ maxWidth: props.width || 'auto' }}>
             <form>
