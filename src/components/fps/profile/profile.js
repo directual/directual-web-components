@@ -22,6 +22,7 @@ export function SignIn({ width, header, signUpheader, google, onSignIn, onSignUp
     const defaultLogin = urlParams.get('login') || null;
 
     const [loginDetails, setLoginDetails] = useState({ login: defaultLogin })
+    const [isLoginValid,setIsLoginValid] = useState(true)
     const [signUp, setSignUp] = useState(false)
 
     if (signUp) {
@@ -52,15 +53,15 @@ export function SignIn({ width, header, signUpheader, google, onSignIn, onSignUp
                     </React.Fragment>}
                     <Input
                         type={userNameFormat || 'string'}
-                        required
+                        //required
                         defaultValue={defaultLogin}
                         label={userNameLabel}
                         onChange={value => setLoginDetails({ ...loginDetails, login: value })}
-                        isValid={value => setLoginDetails({ ...loginDetails, isLoginValid: value })}
+                        isValid={value => setIsLoginValid(value)}
                     />
                     <Input
                         type='password'
-                        required
+                        //required
                         label='Password'
                         onChange={value => setLoginDetails({ ...loginDetails, password: value })}
                     />
@@ -68,7 +69,7 @@ export function SignIn({ width, header, signUpheader, google, onSignIn, onSignUp
                         <Button
                             disabled={
                                 !loginDetails.login ||
-                                !loginDetails.password || !loginDetails.isLoginValid}
+                                !loginDetails.password || !isLoginValid}
                             onClick={submit} accent icon='permission'>{header || 'Sign In'}</Button>
                     </ActionPanel>
                 </form>
@@ -109,14 +110,14 @@ export function SignUp(props) {
                     <Input
                         label='First name'
                         type='string'
-                        required
+                        //required
                         defaultValue={signUpDetails.firstName}
                         onChange={value => setSignUpDetails({ ...signUpDetails, firstName: value })}
                     />
                     <Input
                         label='Last name'
                         type='string'
-                        required
+                        //required
                         defaultValue={signUpDetails.lastName}
                         onChange={value => setSignUpDetails({ ...signUpDetails, lastName: value })}
                     />
@@ -124,22 +125,22 @@ export function SignUp(props) {
                 <Input
                     label={props.userNameLabel}
                     type={props.userNameFormat || 'string'}
-                    required
+                    //required
                     defaultValue={signUpDetails.login}
                     onChange={value => setSignUpDetails({ ...signUpDetails, login: value })}
-                    isValid={value => setSignUpDetails({ ...signUpDetails, isLoginValid: value })}
+                    isValid={value => setIsLoginValid(value)}
                 />
                 <Input
                     type='password'
                     label='Password'
-                    required
+                    //required
                     defaultValue={signUpDetails.password}
                     onChange={value => setSignUpDetails({ ...signUpDetails, password: value })}
                 />
                 <Input
                     type='password'
                     label='Repeat password'
-                    required
+                    //required
                     defaultValue={signUpDetails.repeatPassword}
                     onChange={value => setSignUpDetails({ ...signUpDetails, repeatPassword: value })}
                     error={(signUpDetails.password && signUpDetails.repeatPassword &&
@@ -149,7 +150,7 @@ export function SignUp(props) {
                 <ActionPanel column margin={{ top: 0, bottom: 18 }}>
                     <Button
                         disabled={
-                            !signUpDetails.firstName || !signUpDetails.isLoginValid ||
+                            !signUpDetails.firstName || !isLoginValid ||
                             !signUpDetails.lastName || !signUpDetails.login ||
                             !signUpDetails.password || signUpDetails.password != signUpDetails.repeatPassword}
                         onClick={() => props.onSignUp(signUpDetails)}
