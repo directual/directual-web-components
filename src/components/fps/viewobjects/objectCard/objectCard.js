@@ -839,7 +839,7 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
         console.log(conds)
         conds.forEach(cond => {
             if (cond.target == 'id' && cond.type != 'const') {
-                typeof object[cond.value].value != 'object' ? cond.checkValue = object[cond.value] :
+                typeof (object[cond.value] || {}).value != 'object' ? cond.checkValue = object[cond.value] :
                     cond.checkValue = object[cond.value].value || null // раньше тут было .id, а не .value проверить!
             }
             if (cond.target == 'id' && cond.type == 'const') {
