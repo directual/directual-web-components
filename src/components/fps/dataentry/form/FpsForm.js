@@ -596,7 +596,7 @@ function FpsFormOld({ auth, data, onEvent, id }) {
 
   return (
     <ComponentWrapper>
-      {formName && <h1>{formName}</h1>}
+      {formName && <h2 style={{marginBottom:12}}>{formName}</h2>}
       {formDesc && showForm && (
         <p style={{ maxWidth: formWidth, marginBottom: 22 }}>
           {formDesc}

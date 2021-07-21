@@ -91,6 +91,8 @@ function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue
 }
 
 function FieldStandard({ field, onChange, placeholder, editingOn, defaultValue }) {
+    console.log('FieldStandard')
+    console.log(field)
     if (!editingOn) return <div>
         <span className={styles.label}>
             {field.name || field.sysName}</span>
@@ -110,7 +112,7 @@ function FieldStandard({ field, onChange, placeholder, editingOn, defaultValue }
         placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
         label={placeholder != "true" ? (field.content || field.id) : ''}
         description={field.descriptionFlag && field.description}
-        defaultValue={field.defaultValueOn && field.defaultValue}
+        defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
     />
 }
 
@@ -134,8 +136,8 @@ function FieldBoolean({ field, onChange, placeholder, editingOn, defaultValue })
 }
 
 function FieldDate({ field, onChange, placeholder, editingOn, defaultValue }) {
-    console.log('DATE')
-    console.log(field)
+    // console.log('DATE')
+    // console.log(field)
     return <Input type='date'
         defaultValue={field.defaultValueOn && field.defaultValue}
 

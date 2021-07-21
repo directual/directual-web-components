@@ -31,8 +31,8 @@ export function ObjectCard(props) {
         props.params.data.writeFields && props.params.data.writeFields.length > 0
 
 
-    // console.log('==============CARD MODEL==============')
-    // console.log(model)
+    console.log('==============CARD MODEL==============')
+    console.log(model)
 
     // press 'Esc' for closing a popup:
     const handleUserKeyPress = (e) => {
@@ -497,7 +497,6 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                     onChange={value => setModel({ ...model, [field.sysName]: value })}
                 />}
             {/* ========================== */}
-
             {/* СТРОКИ */}
             { (field.dataType == 'string') &&
                 <React.Fragment>
@@ -602,6 +601,7 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                             type={field.dataType}
                             description={field.descriptionFlag && field.description}
                             label={field.name || field.sysName}
+                            //defaultValue={object[field.sysName].value}
                             defaultValue={model[field.sysName]}
                             onChange={value => setModel({ ...model, [field.sysName]: value })}
                         /> :

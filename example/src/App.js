@@ -80,156 +80,400 @@ const App = (props) => {
     }
 
     let cardActions = {
-        "sl": "isGreat",
+        "sl": "allUsers",
         "pageSize": "10",
         "headerField": null,
         "params": {
             "cardListLayout": "grid",
-            "cardHeaderComment": "",
+            "cardHeaderComment": "lastName",
             "deleteField": "",
-            "cardBodyText": "",
-            "cardImage": false,
-            "cardImageField": "",
+            "cardBodyText": "firstName",
+            "cardImage": true,
+            "cardImageField": null,
             "cardImageType": "none",
             "cardImageSize": 100,
             "objectView": {},
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "author",
+                        "fieldSysName": "email",
                         "fetch": [],
-                        "sysName": "author",
-                        "name": "",
-                        "dataType": "link",
+                        "sysName": "email",
+                        "name": "Email",
+                        "dataType": "string",
+                        "format": "email",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "firstName",
+                        "fetch": [],
+                        "sysName": "firstName",
+                        "name": "First name",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": "Authors"
+                        "link": ""
                     },
                     {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
-                        "name": "id",
+                        "name": "Username (login)",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "isGreat",
+                        "fieldSysName": "lastName",
                         "fetch": [],
-                        "sysName": "isGreat",
-                        "name": "isGreat",
-                        "dataType": "boolean",
+                        "sysName": "lastName",
+                        "name": "Last name",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "title",
+                        "fieldSysName": "middleName",
                         "fetch": [],
-                        "sysName": "title",
-                        "name": "",
+                        "sysName": "middleName",
+                        "name": "Middle name",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
+                    },
+                    {
+                        "fieldSysName": "phone",
+                        "fetch": [],
+                        "sysName": "phone",
+                        "name": "Phone",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "position",
+                        "fetch": [],
+                        "sysName": "position",
+                        "name": "User position",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "userpic",
+                        "fetch": [
+                            {
+                                "fieldSysName": "@dateChanged",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "@dateCreated",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "@who",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "dateCreated",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "dirtyFile",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "extension",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "finalFileName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "folder",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "folderRaw",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "network",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "originalFileName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "source",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "uniqFileName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "uploaded",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "urlLink",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "uuid",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "userpic",
+                        "name": "User pic",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "FileUpload"
                     }
                 ],
                 "writeFields": [
                     {
-                        "fieldSysName": "author",
+                        "fieldSysName": "email",
                         "fetch": [],
-                        "sysName": "author",
-                        "name": "",
-                        "dataType": "link",
+                        "sysName": "email",
+                        "name": "Email",
+                        "dataType": "string",
+                        "format": "email",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "firstName",
+                        "fetch": [],
+                        "sysName": "firstName",
+                        "name": "First name",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": "Authors"
+                        "link": ""
                     },
                     {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
-                        "name": "id",
+                        "name": "Username (login)",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "isGreat",
+                        "fieldSysName": "lastName",
                         "fetch": [],
-                        "sysName": "isGreat",
-                        "name": "isGreat",
-                        "dataType": "boolean",
+                        "sysName": "lastName",
+                        "name": "Last name",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "title",
+                        "fieldSysName": "middleName",
                         "fetch": [],
-                        "sysName": "title",
-                        "name": "",
+                        "sysName": "middleName",
+                        "name": "Middle name",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
+                    },
+                    {
+                        "fieldSysName": "password",
+                        "fetch": [],
+                        "sysName": "password",
+                        "name": "Password (hash)",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "phone",
+                        "fetch": [],
+                        "sysName": "phone",
+                        "name": "Phone",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "position",
+                        "fetch": [],
+                        "sysName": "position",
+                        "name": "User position",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "userpic",
+                        "fetch": [],
+                        "sysName": "userpic",
+                        "name": "User pic",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "FileUpload"
                     }
                 ],
                 "fields": {
-                    "author": {
-                        "id": "author",
-                        "content": "",
+                    "email": {
+                        "id": "email",
+                        "content": "Email",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "email",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "firstName": {
+                        "id": "firstName",
+                        "content": "First name",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "id": {
+                        "id": "id",
+                        "content": "Username (login)",
+                        "type": "field",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "lastName": {
+                        "id": "lastName",
+                        "content": "Last name",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "middleName": {
+                        "id": "middleName",
+                        "content": "Middle name",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "phone": {
+                        "id": "phone",
+                        "content": "Phone",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "position": {
+                        "id": "position",
+                        "content": "User position",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "userpic": {
+                        "id": "userpic",
+                        "content": "User pic",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
                         "read": true,
-                        "link": "Authors",
+                        "link": "FileUpload",
                         "actions": []
                     },
-                    "id": {
-                        "id": "id",
-                        "content": "id",
-                        "type": "field",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "isGreat": {
-                        "id": "isGreat",
-                        "content": "isGreat",
-                        "type": "field",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "title": {
-                        "id": "title",
-                        "content": "",
+                    "password": {
+                        "id": "password",
+                        "content": "Password (hash)",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
-                        "read": true,
                         "link": "",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "author": {
+                    "email": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "displayAsHint": false,
+                        "descriptionFlag": false
+                    },
+                    "firstName": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -243,14 +487,80 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "isGreat": {
+                    "lastName": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "title": {
+                    "middleName": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "phone": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "position": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "userpic": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": true,
+                        "fileImageSize": 200,
+                        "clickable": true,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "id": {
+                                    "id": "id",
+                                    "content": "id",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "source": {
+                                    "id": "source",
+                                    "content": "source",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": {}
+                                }
+                            },
+                            "fieldParams": {
+                                "id": {
+                                    "include": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "source": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "id",
+                                "source"
+                            ]
+                        }
+                    },
+                    "password": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -263,10 +573,15 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "author",
+                            "email",
+                            "firstName",
                             "id",
-                            "isGreat",
-                            "title"
+                            "lastName",
+                            "middleName",
+                            "phone",
+                            "position",
+                            "userpic",
+                            "password"
                         ]
                     }
                 },
@@ -276,7 +591,16 @@ const App = (props) => {
                 "actions": []
             },
             "fields": {
-                "author": {
+                "email": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "displayAsHint": false,
+                    "descriptionFlag": false
+                },
+                "firstName": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -290,31 +614,163 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "isGreat": {
+                "lastName": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "title": {
+                "middleName": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "phone": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "position": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "userpic": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "id": {
+                                "id": "id",
+                                "content": "id",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "source": {
+                                "id": "source",
+                                "content": "source",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": {}
+                            }
+                        },
+                        "fieldParams": {
+                            "id": {
+                                "include": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "source": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "id",
+                            "source"
+                        ]
+                    },
+                    "searchData": [
+                        {
+                            "key": "7a5b71d5-92a8-406e-b8aa-7e7f655883fe",
+                            "value": "7a5b71d5-92a8-406e-b8aa-7e7f655883fe"
+                        },
+                        {
+                            "key": "7d5a5410-842e-4789-acc4-c8840fc8cd52",
+                            "value": "7d5a5410-842e-4789-acc4-c8840fc8cd52"
+                        },
+                        {
+                            "key": "dc556b6f-9393-47df-89fd-5486496b6b1d",
+                            "value": "dc556b6f-9393-47df-89fd-5486496b6b1d"
+                        },
+                        {
+                            "key": "cb1a1c7e-89fd-49a6-933c-4860d10efca3",
+                            "value": "cb1a1c7e-89fd-49a6-933c-4860d10efca3"
+                        },
+                        {
+                            "key": "c1a2a086-7edd-4d0f-9d28-d6bf3a9592f8",
+                            "value": "c1a2a086-7edd-4d0f-9d28-d6bf3a9592f8"
+                        },
+                        {
+                            "key": "b97914db-2747-46e7-9b43-69df5923af2f",
+                            "value": "b97914db-2747-46e7-9b43-69df5923af2f"
+                        },
+                        {
+                            "key": "44da6397-a7c0-4dff-b730-b524b38191e3",
+                            "value": "44da6397-a7c0-4dff-b730-b524b38191e3"
+                        },
+                        {
+                            "key": "a67536d0-e50e-4b68-bb22-7727a527a1d1",
+                            "value": "a67536d0-e50e-4b68-bb22-7727a527a1d1"
+                        },
+                        {
+                            "key": "588aa3f4-6804-4278-8aae-ab025ac6b998",
+                            "value": "588aa3f4-6804-4278-8aae-ab025ac6b998"
+                        }
+                    ]
+                },
+                "password": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 }
-            }
+            },
+            "showCounter": true
         },
-        "tableTitle": "",
+        "tableTitle": "Пользователи",
         "actions": null,
         "headers": [
             {
-                "sysName": "author",
-                "name": "",
-                "dataType": "link",
-                "id": "13781619702243181",
-                "link": "Authors",
+                "sysName": "email",
+                "name": "Email",
+                "dataType": "string",
+                "id": "9",
+                "link": "",
+                "group": "-502807437",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "email",
+                "formatOptions": {},
+                "groupName": "Contacts",
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "firstName",
+                "name": "First name",
+                "dataType": "string",
+                "id": "5",
+                "link": "",
                 "group": "0",
                 "tags": "",
                 "indexing": false,
@@ -329,18 +785,18 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "typeVariable": {},
-                "linkType": true,
+                "arrayLink": false,
                 "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "json": false,
-                "arrayLink": false
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false
             },
             {
                 "sysName": "id",
-                "name": "id",
+                "name": "Username (login)",
                 "dataType": "id",
-                "id": "0",
+                "id": "13",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -356,45 +812,18 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
+                "arrayLink": false,
                 "indexExists": false,
                 "linkOrArrayLinkType": false,
-                "json": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "isGreat",
-                "name": "isGreat",
-                "dataType": "boolean",
-                "id": "82841623872260049",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
                 "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "json": false,
-                "arrayLink": false
+                "typeVariable": {},
+                "json": false
             },
             {
-                "sysName": "title",
-                "name": "",
+                "sysName": "lastName",
+                "name": "Last name",
                 "dataType": "string",
-                "id": "76761619702242678",
+                "id": "4",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -402,7 +831,7 @@ const App = (props) => {
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 1,
+                "order": 3,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
@@ -410,32 +839,216 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
+                "arrayLink": false,
                 "indexExists": false,
                 "linkOrArrayLinkType": false,
-                "json": false,
-                "arrayLink": false
+                "linkType": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "middleName",
+                "name": "Middle name",
+                "dataType": "string",
+                "id": "65751626620445861",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "phone",
+                "name": "Phone",
+                "dataType": "string",
+                "id": "10",
+                "link": "",
+                "group": "-502807437",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": "Contacts",
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "position",
+                "name": "User position",
+                "dataType": "string",
+                "id": "33431626620534959",
+                "link": "",
+                "group": "-502807437",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "userpic",
+                "name": "User pic",
+                "dataType": "link",
+                "id": "1",
+                "link": "FileUpload",
+                "group": "-502807437",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": "Contacts",
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "typeVariable": {},
+                "json": false
             }
         ],
         "data": [
             {
-                "author": "ffc054fe-a4ad-476b-9e27-3a5c98b2b10b",
-                "isGreat": true,
-                "title": "War and Peace",
-                "id": "true"
+                "id": "edyesplatform",
+                "email": "",
+                "firstName": "",
+                "lastName": "",
+                "middleName": "",
+                "password": "",
+                "phone": "",
+                "position": "",
+                "userpic": ""
             },
             {
-                "author": "ffc054fe-a4ad-476b-9e27-3a5c98b2b10b",
-                "title": "War and Peace",
-                "id": "undefined",
-                "isGreat": ""
+                "firstName": "вопрукпк",
+                "id": "53fe3122-5cb9-4497-99b5-aa427e86328c",
+                "email": "",
+                "lastName": "",
+                "middleName": "",
+                "password": "",
+                "phone": "",
+                "position": "",
+                "userpic": ""
             },
             {
-                "isGreat": "",
-                "author": "ffc054fe-a4ad-476b-9e27-3a5c98b2b10b",
-                "title": "War and Peace",
-                "id": "false"
+                "middleName": "Вячеславович",
+                "email": "a@webkrafter.ru",
+                "lastName": "Сидоров",
+                "firstName": "Антон",
+                "id": "9cb2ef50-a988-42d0-b8f4-b55ae7574c0d",
+                "position": "Руководитель групп системного анализа в проектах gosuslugi.ru, utkonos.ru, cооснователь EdYes",
+                "userpic": {
+                    "uuid": "b97914db-2747-46e7-9b43-69df5923af2f",
+                    "urlLink": "//s3.amazonaws.com/appforest_uf/f1626841817417x101100098582072030/DSC07119%20%282%29.jpg"
+                },
+                "phone": "+79255131223",
+                "password": ""
+            },
+            {
+                "firstName": "Тест",
+                "id": "00d1a5ac-992c-4287-b289-0d5c41647b64",
+                "email": "",
+                "lastName": "",
+                "middleName": "",
+                "password": "",
+                "phone": "",
+                "position": "",
+                "userpic": ""
+            },
+            {
+                "email": "as@edyes.ru",
+                "lastName": "Сидоров",
+                "firstName": "Антон",
+                "id": "027a53bc-e2e6-4367-b80a-1eeffc6f7ed7",
+                "middleName": "",
+                "password": "",
+                "phone": "",
+                "position": "",
+                "userpic": ""
+            },
+            {
+                "email": "as@edyes.ru",
+                "lastName": "Сидоров",
+                "firstName": "Антон",
+                "id": "as@edyes.ru",
+                "middleName": "",
+                "password": "",
+                "phone": "",
+                "position": "",
+                "userpic": ""
+            },
+            {
+                "middleName": "Вячеславович",
+                "email": "sidorov.anthon@gmail.com",
+                "lastName": "Sidorov",
+                "firstName": "Anthon",
+                "id": "d05c56f6-1fa8-4881-a472-b2c16dd5e8be",
+                "userpic": {
+                    "uuid": "588aa3f4-6804-4278-8aae-ab025ac6b998",
+                    "urlLink": "https://lh3.googleusercontent.com/a-/AOh14GgIRaYnc92vt2FHR1G7nYA2DlxGWGOpvidM23czmQ=s96-c"
+                },
+                "password": "",
+                "phone": "",
+                "position": ""
+            },
+            {
+                "id": "test@directual.com",
+                "email": "",
+                "firstName": "",
+                "lastName": "",
+                "middleName": "",
+                "password": "",
+                "phone": "",
+                "position": "",
+                "userpic": ""
             }
         ],
         "totalPages": 1,
@@ -443,55 +1056,141 @@ const App = (props) => {
         "error": null,
         "fieldScheme": [
             [
-                "author",
-                1380644
+                "email",
+                1405815
+            ],
+            [
+                "firstName",
+                1405815
             ],
             [
                 "id",
-                1380644
+                1405815
             ],
             [
-                "isGreat",
-                1380644
+                "lastName",
+                1405815
             ],
             [
-                "title",
-                1380644
+                "middleName",
+                1405815
+            ],
+            [
+                "phone",
+                1405815
+            ],
+            [
+                "position",
+                1405815
+            ],
+            [
+                "userpic.@dateChanged",
+                1405816
+            ],
+            [
+                "userpic.@dateCreated",
+                1405816
+            ],
+            [
+                "userpic.@who",
+                1405816
+            ],
+            [
+                "userpic.dateCreated",
+                1405816
+            ],
+            [
+                "userpic.dirtyFile",
+                1405816
+            ],
+            [
+                "userpic.extension",
+                1405816
+            ],
+            [
+                "userpic.finalFileName",
+                1405816
+            ],
+            [
+                "userpic.folder",
+                1405816
+            ],
+            [
+                "userpic.folderRaw",
+                1405816
+            ],
+            [
+                "userpic.id",
+                1405816
+            ],
+            [
+                "userpic.network",
+                1405816
+            ],
+            [
+                "userpic.originalFileName",
+                1405816
+            ],
+            [
+                "userpic.source",
+                1405816
+            ],
+            [
+                "userpic.uniqFileName",
+                1405816
+            ],
+            [
+                "userpic.uploaded",
+                1405816
+            ],
+            [
+                "userpic.urlLink",
+                1405816
+            ],
+            [
+                "userpic.uuid",
+                1405816
             ]
         ],
         "writeFields": [
-            "author",
+            "email",
+            "firstName",
             "id",
-            "isGreat",
-            "title"
+            "lastName",
+            "middleName",
+            "password",
+            "phone",
+            "position",
+            "userpic"
         ],
         "structures": {
-            "1380644": {
-                "networkID": 5420,
-                "sysName": "actions",
-                "name": "actions",
-                "id": 1380644,
-                "dateCreated": "2021-04-29T13:17:18Z",
+            "1405815": {
+                "networkID": 7711,
+                "sysName": "WebUser",
+                "name": "App users",
+                "id": 1405815,
+                "dateCreated": "2021-07-18T14:52:02Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"author\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"13781619702243181\",\"link\":\"Authors\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":false},{\"sysName\":\"title\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"76761619702242678\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"isGreat\",\"name\":\"isGreat\",\"dataType\":\"boolean\",\"id\":\"82841623872260049\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": null,
+                "jsonObject": "[{\"sysName\":\"userpic\",\"name\":\"User pic\",\"dataType\":\"link\",\"id\":\"1\",\"link\":\"FileUpload\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"json\":false,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"arrayLink\":false},{\"sysName\":\"phone\",\"name\":\"Phone\",\"dataType\":\"string\",\"id\":\"10\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"json\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false},{\"sysName\":\"dateCreated\",\"name\":\"dateCreated\",\"dataType\":\"string\",\"id\":\"11\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"json\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false},{\"sysName\":\"password\",\"name\":\"Password (hash)\",\"dataType\":\"string\",\"id\":\"12\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false},{\"sysName\":\"id\",\"name\":\"Username (login)\",\"dataType\":\"id\",\"id\":\"13\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false},{\"sysName\":\"isBlocked\",\"name\":\"Block user\",\"dataType\":\"boolean\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false},{\"sysName\":\"gender\",\"name\":\"Gender\",\"dataType\":\"string\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false},{\"sysName\":\"position\",\"name\":\"User position\",\"dataType\":\"string\",\"id\":\"33431626620534959\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false},{\"sysName\":\"lastName\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false},{\"sysName\":\"firstName\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false},{\"sysName\":\"role\",\"name\":\"Roles\",\"dataType\":\"string\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false},{\"sysName\":\"middleName\",\"name\":\"Middle name\",\"dataType\":\"string\",\"id\":\"65751626620445861\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false},{\"sysName\":\"isAuthorization\",\"name\":\"isAuthorization\",\"dataType\":\"boolean\",\"id\":\"7\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"json\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false},{\"sysName\":\"dateLastActivity\",\"name\":\"dateLastActivity\",\"dataType\":\"string\",\"id\":\"8\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"json\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false},{\"sysName\":\"email\",\"name\":\"Email\",\"dataType\":\"string\",\"id\":\"9\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"email\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"json\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"Additional info\",\"id\":-502807437,\"order\":0},{\"name\":\"System fields\",\"id\":-1776115286,\"order\":1}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"email\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-06-16T19:37:51Z",
-                "createBy": 1,
-                "changedBy": 1,
+                "dateChanged": "2021-07-21T05:28:55Z",
+                "createBy": 0,
+                "changedBy": 7820,
                 "_settings": null,
                 "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "id",
+                    "name": "Username (login)",
                     "dataType": "id",
-                    "id": "0",
+                    "id": "13",
                     "link": "",
                     "group": "0",
                     "tags": "",
@@ -507,14 +1206,64 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "typeVariable": {},
-                    "linkType": false,
+                    "arrayLink": false,
                     "indexExists": false,
                     "linkOrArrayLinkType": false,
-                    "json": false,
-                    "arrayLink": false
+                    "linkType": false,
+                    "typeVariable": {},
+                    "json": false
                 },
-                "objectIDSysName": "id",
+                "folderId": null
+            },
+            "1405816": {
+                "networkID": 7711,
+                "sysName": "FileUpload",
+                "name": "Files",
+                "id": 1405816,
+                "dateCreated": "2021-07-18T14:52:02Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"folderRaw\",\"dataType\":\"string\",\"name\":\"folderRaw\",\"id\":\"1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"network\",\"dataType\":\"string\",\"name\":\"network\",\"id\":\"2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"dirtyFile\",\"dataType\":\"string\",\"name\":\"dirtyFile\",\"id\":\"3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"uniqFileName\",\"dataType\":\"string\",\"name\":\"uniqFileName\",\"id\":\"4\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"uuid\",\"dataType\":\"id\",\"name\":\"uuid\",\"id\":\"13\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"dateCreated\",\"dataType\":\"string\",\"name\":\"dateCreated\",\"id\":\"12\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"extension\",\"dataType\":\"string\",\"name\":\"extension\",\"id\":\"11\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"originalFileName\",\"dataType\":\"string\",\"name\":\"originalFileName\",\"id\":\"10\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"finalFileName\",\"dataType\":\"string\",\"name\":\"finalFileName\",\"id\":\"9\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"folder\",\"dataType\":\"string\",\"name\":\"folder\",\"id\":\"8\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"source\",\"dataType\":\"string\",\"name\":\"source\",\"id\":\"7\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"uploaded\",\"dataType\":\"boolean\",\"name\":\"uploaded\",\"id\":\"6\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"urlLink\",\"dataType\":\"string\",\"name\":\"urlLink\",\"id\":\"5\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"id\",\"dataType\":\"string\",\"name\":\"id\",\"id\":\"14\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false}]",
+                "jsonGroupSettings": "[]",
+                "jsonViewIdSettings": null,
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": null,
+                "createBy": 0,
+                "changedBy": null,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "objectIDSysName": "uuid",
+                "innerIDField": {
+                    "sysName": "uuid",
+                    "name": "uuid",
+                    "dataType": "id",
+                    "id": "13",
+                    "link": "",
+                    "group": "",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 1,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "arrayLink": false,
+                    "indexExists": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "typeVariable": {},
+                    "json": false
+                },
                 "folderId": null
             }
         },
@@ -523,11 +1272,38 @@ const App = (props) => {
         "writeResponse": null,
         "fileds": [
             {
-                "sysName": "author",
-                "name": "",
-                "dataType": "link",
-                "id": "13781619702243181",
-                "link": "Authors",
+                "sysName": "email",
+                "name": "Email",
+                "dataType": "string",
+                "id": "9",
+                "link": "",
+                "group": "-502807437",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "email",
+                "formatOptions": {},
+                "groupName": "Contacts",
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "firstName",
+                "name": "First name",
+                "dataType": "string",
+                "id": "5",
+                "link": "",
                 "group": "0",
                 "tags": "",
                 "indexing": false,
@@ -542,18 +1318,18 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "typeVariable": {},
-                "linkType": true,
+                "arrayLink": false,
                 "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "json": false,
-                "arrayLink": false
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false
             },
             {
                 "sysName": "id",
-                "name": "id",
+                "name": "Username (login)",
                 "dataType": "id",
-                "id": "0",
+                "id": "13",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -569,45 +1345,72 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
+                "arrayLink": false,
                 "indexExists": false,
                 "linkOrArrayLinkType": false,
-                "json": false,
-                "arrayLink": false
+                "linkType": false,
+                "typeVariable": {},
+                "json": false
             },
             {
-                "sysName": "isGreat",
-                "name": "isGreat",
-                "dataType": "boolean",
-                "id": "82841623872260049",
+                "sysName": "lastName",
+                "name": "Last name",
+                "dataType": "string",
+                "id": "4",
                 "link": "",
                 "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 3,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
+                "arrayLink": false,
                 "indexExists": false,
                 "linkOrArrayLinkType": false,
-                "json": false,
-                "arrayLink": false
+                "linkType": false,
+                "typeVariable": {},
+                "json": false
             },
             {
-                "sysName": "title",
-                "name": "",
+                "sysName": "middleName",
+                "name": "Middle name",
                 "dataType": "string",
-                "id": "76761619702242678",
+                "id": "65751626620445861",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "password",
+                "name": "Password (hash)",
+                "dataType": "string",
+                "id": "12",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -623,12 +1426,93 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
+                "arrayLink": false,
                 "indexExists": false,
                 "linkOrArrayLinkType": false,
-                "json": false,
-                "arrayLink": false
+                "linkType": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "phone",
+                "name": "Phone",
+                "dataType": "string",
+                "id": "10",
+                "link": "",
+                "group": "-502807437",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": "Contacts",
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "position",
+                "name": "User position",
+                "dataType": "string",
+                "id": "33431626620534959",
+                "link": "",
+                "group": "-502807437",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "userpic",
+                "name": "User pic",
+                "dataType": "link",
+                "id": "1",
+                "link": "FileUpload",
+                "group": "-502807437",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": "Contacts",
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "typeVariable": {},
+                "json": false
             }
         ],
         "quickSearch": "true"
