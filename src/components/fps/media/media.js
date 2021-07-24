@@ -16,7 +16,7 @@ function YouTubeGetID(url) {
 }
 
 export default function Media(props) {
-    const data = props.data || {}
+    const data = props.data || props || {}
     let videoID = data.source ? YouTubeGetID(data.source) : '';
     console.log('--=== Video component ===--')
     console.log(data)
