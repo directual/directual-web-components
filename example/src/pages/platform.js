@@ -1002,9 +1002,47 @@ export default function PlatformPage() {
     }
   })
 
+  const [num, setNum] = useState()
+  const [dec, setDec] = useState()
+
   return (
     <div>
       <h1>Platform</h1>
+      num = {num}<br />
+      dec = {dec}<br />
+      <Input type='number'
+        label='num'
+        defaultValue={num}
+        debug
+        onChange={value => {
+          console.log('number')
+          console.log(value)
+          setNum(value)
+        }}
+      />
+
+      <Input type='number'
+        label='pos num'
+        defaultValue={num}
+        positive
+        onChange={value => {
+          console.log('number')
+          console.log(value)
+          setNum(value)
+        }}
+      />
+
+      <Input type='decimal'
+        label='dec'
+        defaultValue={dec}
+        onChange={value => {
+          console.log('decimal')
+          console.log(value)
+          setDec(value)
+        }}
+      />
+
+
       {/* <h2>Inline structure field input </h2>
       <p>Оджажды в
       суровую  зимнюю пору я из лесу вышел был сильный мороз.
@@ -1085,7 +1123,7 @@ export default function PlatformPage() {
         horWidth={80}
         defaultValue={validWeekDays}
         onChange={setValidWeekDays}
-        options={weekDays.map(day => {return { value: day, label: day}})}
+        options={weekDays.map(day => { return { value: day, label: day } })}
       />
       {/* <Input
         label='Allowing users to choose day in the past'

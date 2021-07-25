@@ -4600,8 +4600,8 @@ const App = (props) => {
 
 
     let exampleForm = {
-        "sl": "namageUIversions",
-        "formName": "Add UI version",
+        "sl": "test",
+        "formName": "",
         "formDesc": "",
         "formButton": "",
         "placeholder": "",
@@ -4624,48 +4624,38 @@ const App = (props) => {
                         "format": "",
                         "formatOptions": {},
                         "link": ""
-                    },
-                    {
-                        "fieldSysName": "ui_version",
-                        "fetch": [],
-                        "sysName": "ui_version",
-                        "name": "Version",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
                     }
                 ],
                 "writeFields": [
                     {
-                        "fieldSysName": "delete",
+                        "fieldSysName": "decimal",
                         "fetch": [],
-                        "sysName": "delete",
+                        "sysName": "decimal",
                         "name": "",
-                        "dataType": "boolean",
+                        "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "id",
+                        "fieldSysName": "number",
                         "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
+                        "sysName": "number",
+                        "name": "",
+                        "dataType": "number",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "ui_version",
+                        "fieldSysName": "positiveNumber",
                         "fetch": [],
-                        "sysName": "ui_version",
-                        "name": "Version",
-                        "dataType": "string",
-                        "format": "",
+                        "sysName": "positiveNumber",
+                        "name": "",
+                        "dataType": "number",
+                        "format": "positiveNum",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
                     }
                 ],
                 "fields": {
@@ -4676,27 +4666,35 @@ const App = (props) => {
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": ""
                     },
-                    "ui_version": {
-                        "id": "ui_version",
-                        "content": "Version",
+                    "decimal": {
+                        "id": "decimal",
+                        "content": "",
                         "type": "field",
-                        "dataType": "string",
+                        "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
-                        "read": true,
-                        "link": null
+                        "link": ""
                     },
-                    "delete": {
-                        "id": "delete",
+                    "number": {
+                        "id": "number",
                         "content": "",
                         "type": "field",
-                        "dataType": "boolean",
+                        "dataType": "number",
                         "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": ""
+                    },
+                    "positiveNumber": {
+                        "id": "positiveNumber",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "number",
+                        "format": "positiveNum",
                         "formatOptions": {},
                         "write": true,
                         "link": ""
@@ -4710,20 +4708,32 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "ui_version": {
+                    "decimal": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false,
-                        "required": true
+                        "defaultValueOn": true,
+                        "defaultValue": "0"
                     },
-                    "delete": {
-                        "include": false,
+                    "number": {
+                        "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
-                        "clickable": false
+                        "clickable": false,
+                        "defaultValueOn": true,
+                        "defaultValue": 0
+                    },
+                    "positiveNumber": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "defaultValueOn": true,
+                        "defaultValue": 0
                     }
                 },
                 "columns": {
@@ -4732,8 +4742,9 @@ const App = (props) => {
                         "title": "New section",
                         "fieldIds": [
                             "id",
-                            "ui_version",
-                            "delete"
+                            "decimal",
+                            "number",
+                            "positiveNumber"
                         ]
                     }
                 },
@@ -4749,29 +4760,41 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "ui_version": {
+                "decimal": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false,
-                    "required": true
+                    "defaultValueOn": true,
+                    "defaultValue": "0"
                 },
-                "delete": {
-                    "include": false,
+                "number": {
+                    "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": false
+                    "clickable": false,
+                    "defaultValueOn": true,
+                    "defaultValue": 0
+                },
+                "positiveNumber": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "defaultValueOn": true,
+                    "defaultValue": 0
                 }
             }
         },
         "fileds": [
             {
-                "sysName": "delete",
+                "sysName": "decimal",
                 "name": "",
-                "dataType": "boolean",
-                "id": "84651618145763056",
+                "dataType": "decimal",
+                "id": "39181627196538155",
                 "link": "",
                 "group": "0",
                 "tags": null,
@@ -4779,7 +4802,7 @@ const App = (props) => {
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 2,
+                "order": 3,
                 "linkIndexFieldSysName": [],
                 "defaultValue": null,
                 "constraints": null,
@@ -4788,45 +4811,18 @@ const App = (props) => {
                 "formatOptions": null,
                 "groupName": null,
                 "typeVariable": {},
-                "linkType": false,
-                "json": false,
-                "linkOrArrayLinkType": false,
                 "arrayLink": false,
-                "indexExists": false
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "indexExists": false,
+                "linkType": false
             },
             {
-                "sysName": "id",
-                "name": "id",
-                "dataType": "id",
-                "id": "0",
+                "sysName": "number",
+                "name": "",
+                "dataType": "number",
+                "id": "98171627196408944",
                 "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "indexExists": false
-            },
-            {
-                "sysName": "ui_version",
-                "name": "Version",
-                "dataType": "string",
-                "id": "50881618145263107",
-                "link": null,
                 "group": "0",
                 "tags": null,
                 "indexing": false,
@@ -4842,11 +4838,38 @@ const App = (props) => {
                 "formatOptions": null,
                 "groupName": null,
                 "typeVariable": {},
-                "linkType": false,
-                "json": false,
-                "linkOrArrayLinkType": false,
                 "arrayLink": false,
-                "indexExists": false
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "indexExists": false,
+                "linkType": false
+            },
+            {
+                "sysName": "positiveNumber",
+                "name": "",
+                "dataType": "number",
+                "id": "54221627196411522",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "positiveNum",
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "json": false,
+                "indexExists": false,
+                "linkType": false
             }
         ],
         "error": null,

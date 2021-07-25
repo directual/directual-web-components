@@ -51,8 +51,8 @@ function FpsFormNew({ auth, data, onEvent, id }) {
   // console.log(data)
   // console.log('------------ auth: -------------')
   // console.log(auth)
-  // console.log('------------ form model: -------------')
-  // console.log(model)
+  console.log('------------ form model: -------------')
+  console.log(model)
 
   const sendMsg = (msg) => {
     const message = { ...msg, _id: 'form_' + id }
@@ -65,14 +65,15 @@ function FpsFormNew({ auth, data, onEvent, id }) {
 
   const submit = (e) => {
     e.preventDefault()
-    console.log('submitting...')
+    console.log('submitting form...')
+    console.log(model)
     sendMsg(model)
   }
 
   function defaultModel() {
     let defModel = {}
     for (const field in data.params.fields) {
-      if (data.params.fields[field].defaultValueOn && data.params.fields[field].defaultValue) {
+      if (data.params.fields[field].defaultValueOn && (data.params.fields[field].defaultValue || data.params.fields[field].defaultValue == 0)) {
         defModel[field] = typeof data.params.fields[field].defaultValue == 'object' ?
           JSON.stringify(data.params.fields[field].defaultValue)
           : data.params.fields[field].defaultValue
@@ -383,7 +384,8 @@ function FpsFormOld({ auth, data, onEvent, id }) {
 
   const submit = (e) => {
     e.preventDefault()
-    console.log('submitting...')
+    console.log('submitting form...')
+    console.log(model)
     sendMsg(model)
   }
 

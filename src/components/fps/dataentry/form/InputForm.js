@@ -91,8 +91,8 @@ function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue
 }
 
 function FieldStandard({ field, onChange, placeholder, editingOn, defaultValue }) {
-    console.log('FieldStandard')
-    console.log(field)
+    // console.log('FieldStandard')
+    // console.log(field)
     if (!editingOn) return <div>
         <span className={styles.label}>
             {field.name || field.sysName}</span>
