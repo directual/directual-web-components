@@ -247,7 +247,7 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
                 defaultValue={(defaultValue && parseJson(defaultValue)) || (field.defaultValueOn && field.defaultValue) || {}}
             />}
 
-        {field && field.format == 'slider' &&
+        {field && field.format == 'slider' && field.formatOptions.range &&
             <Input type='slider'
                 disabled={!editingOn}
                 onChange={value => onChange(JSON.stringify(value))}
@@ -255,7 +255,7 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
                 description={field.descriptionFlag && field.description}
                 defaultValue={(defaultValue && parseJson(defaultValue)) || ((field.defaultValueOn && field.defaultValue) ? { firstValue: field.defaultValue.firstValue } :
                     {
-                        firstValue: Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 0 + field.formatOptions.range.min)
+                        firstValue: field.formatOptions.range ? Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 0 + field.formatOptions.range.min): null
                     })
                 }
                 min={field.formatOptions.range && field.formatOptions.range.min}
