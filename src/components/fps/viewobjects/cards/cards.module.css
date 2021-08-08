@@ -123,6 +123,7 @@
   background-size: cover;
   background-position: center;
   flex-shrink: 0;
+  z-index: 10;
 }
 .card .cardInnerWrapper .cardImage span {
   display: none;
