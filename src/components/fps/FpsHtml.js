@@ -25,7 +25,7 @@ FpsHtml.settings = {
   sysName: 'FpsHtml',
   form: [
     { name: "Enter your HTML-code", sysName: "html", type: "html-SLenriched" },
-    { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' }
+    { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint-param' }
   ]
 }
 
@@ -45,7 +45,7 @@ FpsMarkdown.settings = {
   sysName: 'FpsMarkdown',
   form: [
     { name: "Enter your text", sysName: "markdown", type: "markdown-SLenriched" },
-    { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' }
+    { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint-param' }
   ]
 }
 
