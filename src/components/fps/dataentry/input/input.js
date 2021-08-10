@@ -28,9 +28,9 @@ export default function Input(props) {
 
     const checkValue = () => {
         // console.log('checking...');
-        ((!value || (value && value.length == 0)) && (value != 0) && props.required) ?
-            setWarningMesg({ type: 'error', msg: 'This field is required' }) :
-            !props.error && setWarningMesg({});
+        // ((!value || (value && value.length == 0)) && (value != 0) && props.required) ?
+        //     setWarningMesg({ type: 'error', msg: 'This field is required' }) :
+        //     !props.error && setWarningMesg({});
     }
 
     const checkJsonValue = (e, v) => {
@@ -98,9 +98,9 @@ export default function Input(props) {
     }, [inputEl])
 
     const checkEmailValue = (v) => {
-        (!v && props.required) ?
-            setWarningMesg({ type: 'error', msg: 'This field is required' }) :
-            setWarningMesg({});
+        // (!v && props.required) ?
+        //     setWarningMesg({ type: 'error', msg: 'This field is required' }) :
+        //     setWarningMesg({});
         (v && !validateEmail(v)) &&
             setWarningMesg({ type: 'error', msg: 'Email format is wrong' })
     }
@@ -125,12 +125,12 @@ export default function Input(props) {
             if (isRestricted) { console.log('restricted character'); return null }
         }
         submit(e)
-        props.required && setWarningMesg({})
+        //props.required && setWarningMesg({})
     }
 
     const handleChangeDecimalNumber = (e) => {
         submit(e)
-        props.required && setWarningMesg({})
+        //props.required && setWarningMesg({})
     }
 
     useEffect(() => {

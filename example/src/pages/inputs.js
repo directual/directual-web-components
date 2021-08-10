@@ -145,6 +145,8 @@ export default function InputsPage() {
     return (
         <React.Fragment>
 
+            <Input required type='select' />
+
             <Input error={error} />
             <Button onClick={()=>setError('')}>reset error</Button>
             <Button onClick={()=>setError(Math.random().toString())}>set error</Button>
