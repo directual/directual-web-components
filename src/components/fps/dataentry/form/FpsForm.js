@@ -47,12 +47,12 @@ function FpsFormNew({ auth, data, onEvent, id }) {
   const fileds = []
   const formWidth = (data.maxWidth && parseInt(data.maxWidth)) || 'auto'
 
-  // console.log('------------ form data: -------------')
-  // console.log(data)
+  console.log('------------ form data: -------------')
+  console.log(data)
   // console.log('------------ auth: -------------')
   // console.log(auth)
-  console.log('------------ form model: -------------')
-  console.log(model)
+  // console.log('------------ form model: -------------')
+  // console.log(model)
 
   const sendMsg = (msg) => {
     const message = { ...msg, _id: 'form_' + id }
@@ -141,8 +141,8 @@ function FpsFormNew({ auth, data, onEvent, id }) {
         data.fileds.filter(i=>i.sysName == field).length > 0 &&
         !model[field] && !model[field] !== false && data.params.data.fieldParams[field].include &&
         !data.params.data.fieldParams[field].hidden) { 
-          console.log('FAILED REQ VALIDATION')
-          console.log(field)
+          // console.log('FAILED REQ VALIDATION')
+          // console.log(field)
           setIsValid(false); }
     }
   }, [model])

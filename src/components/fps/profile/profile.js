@@ -69,7 +69,8 @@ export function SignIn({ width, header, signUpheader, google, onSignIn, onSignUp
                         <Button
                             disabled={
                                 !loginDetails.login ||
-                                !loginDetails.password || !isLoginValid}
+                                !loginDetails.password //|| !isLoginValid
+                            }
                             onClick={submit} accent icon='permission'>{header || 'Sign In'}</Button>
                     </ActionPanel>
                 </form>
@@ -151,7 +152,7 @@ export function SignUp(props) {
                 <ActionPanel column margin={{ top: 0, bottom: 18 }}>
                     <Button
                         disabled={
-                            !signUpDetails.firstName || !isLoginValid ||
+                            !signUpDetails.firstName || //!isLoginValid ||
                             !signUpDetails.lastName || !signUpDetails.login ||
                             !signUpDetails.password || signUpDetails.password != signUpDetails.repeatPassword}
                         onClick={() => props.onSignUp(signUpDetails)}
