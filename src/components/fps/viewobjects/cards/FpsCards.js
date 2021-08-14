@@ -70,7 +70,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
         if (sl === "") { sl = undefined }
         const message = { ...msg, _id: 'form_' + id, _sl_name: sl }
         console.log(message)
-        console.log(pageInfo)
+        // console.log(pageInfo)
         setLoading(true)
         if (onEvent) {
             onEvent(message, pageInfo)
@@ -107,10 +107,11 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
     const checkActionCond = (actionCond) => {
         if (!actionCond) { return true }
         const compareRoleArrays = (userRolesString, rolesString) => {
+            userRolesString = userRolesString + ''
             if (!userRolesString || !rolesString) return false
             let match = false
-            const userRoles = userRolesString.split(',')
-            const roles = rolesString.split(',')
+            const userRoles = (userRolesString + '').split(',')
+            const roles = (rolesString + '').split(',')
             userRoles.forEach(userRole => {
                 roles.forEach(role => {
                     if (userRole == role) { match = true }
@@ -126,14 +127,22 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
                 // console.log('ID does not match');
                 match = false
             }
+            if (cond.target == 'id_in' && (!auth || !auth.user || !compareRoleArrays(auth.user, cond.checkValue))) {
+                console.log(`user id ${auth && auth.user} is not in ${cond.checkValue}`)
+                match = false
+            }
+            if (cond.target == 'id_not_in' && (!auth || !auth.user || compareRoleArrays(auth.user, cond.checkValue))) {
+                console.log(`user id ${auth && auth.user} is in ${cond.checkValue}`)
+                match = false
+            }
             if (cond.target == 'role' && (!auth || !auth.role || (!compareRoleArrays(auth.role, cond.checkValue)))) {
-                console.log('Role does not match');
+                //console.log('Role does not match');
                 match = false
             }
             if ((cond.target == 'field' || cond.target == 'linkedField') && (!cond.fieldValue ||
                 cond.fieldValue.toString().toLowerCase() != cond.value.toString().toLowerCase())) {
-                console.log(cond.fieldValue + ' != ' + cond.value);
-                console.log('Field is wrong');
+                // console.log(cond.fieldValue + ' != ' + cond.value);
+                // console.log('Field is wrong');
                 match = false
             }
         })

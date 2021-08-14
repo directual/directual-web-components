@@ -108,7 +108,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
         eConds && eConds.forEach(cond => {
             // console.log(cond)
             // console.log(object)
-            if (cond.target == 'id' && cond.type == 'const') {
+            if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type == 'const') {
                 cond.checkValue = cond.value
             }
             if (cond.target == 'role') {
@@ -118,7 +118,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                 typeof object[cond.value] != 'object' ? cond.fieldValue = object[cond.field] :
                     cond.fieldValue = object[cond.field].value || null
             }
-            if (cond.target == 'id' && cond.type != 'const') {
+            if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
                 typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
                     cond.checkValue = object[cond.value].value || null // раньше тут было .id, а не .value проверить!
             }

@@ -31,8 +31,8 @@ export function ObjectCard(props) {
         props.params.data.writeFields && props.params.data.writeFields.length > 0
 
 
-    console.log('==============CARD MODEL==============')
-    console.log(model)
+    // console.log('==============CARD MODEL==============')
+    // console.log(model)
 
     // press 'Esc' for closing a popup:
     const handleUserKeyPress = (e) => {
@@ -356,9 +356,9 @@ export function ObjectCard(props) {
                 object[headerField].value
         : null).join(' ')
         :
-        (object.id  || 'No visible name')
+        (object.id || 'No visible name')
 
-    cardHeader = (cardHeader == '' 
+    cardHeader = (cardHeader == ''
         || cardHeader == ' '
         || cardHeader == '  '
         || cardHeader == '   '
@@ -414,6 +414,8 @@ export function ObjectCard(props) {
                     <ObjectCard
                         onClose={() => { setShowLinkedObject(false) }}
                         onTerminate={() => props.onClose()}
+                        auth={props.auth}
+                        loading={props.loading}
                         object={linkedObject && linkedObject.object}
                         params={linkedObject && { ...linkedObject.params, actions: props.params.actions }}
                         parentObject={object}
@@ -437,6 +439,7 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
         return found ? found[0] : ''
     }
 
+    // console.log(field.dataType)
     // console.log(field)
     // console.log(object)
     field.formatOptions = object[field.sysName].formatOptions
@@ -498,7 +501,7 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                 />}
             {/* ========================== */}
             {/* СТРОКИ */}
-            { (field.dataType == 'string') &&
+            {(field.dataType == 'string') &&
                 <React.Fragment>
                     <InputForm
                         field={field}
@@ -512,7 +515,7 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
             }
 
             {/* ДАТЫ */}
-            { (field.dataType == 'date') &&
+            {(field.dataType == 'date') &&
                 <React.Fragment>
                     {(field.write && editingOn) ?
                         <Input
@@ -535,7 +538,7 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                 </React.Fragment>}
 
             {/* BOOLEAN */}
-            { (field.dataType == 'boolean') &&
+            {(field.dataType == 'boolean') &&
                 <React.Fragment>
                     <InputForm
                         field={field}
@@ -562,7 +565,7 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                 </React.Fragment>}
 
             {/* LINK & ARRAY LINK */}
-            { (field.dataType == 'link' || field.dataType == 'arrayLink') &&
+            {(field.dataType == 'link' || field.dataType == 'arrayLink') &&
                 <FieldLink
                     model={model}
                     editingOn={editingOn}
@@ -578,7 +581,7 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
             }
 
             {/* JSON */}
-            { (field.dataType == 'json') &&
+            {(field.dataType == 'json') &&
                 <InputForm
                     field={field}
                     defaultValue={object[field.sysName].value}
@@ -588,7 +591,7 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
             }
 
             {/* ВСЕ ОСТАЛЬНОЕ */}
-            { field.dataType != 'string' &&
+            {field.dataType != 'string' &&
                 field.dataType != 'file' &&
                 field.dataType != 'boolean' &&
                 field.dataType != 'date' &&
@@ -599,6 +602,7 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                     {(field.write && editingOn) ?
                         <Input
                             type={field.dataType}
+                            positive={field.format == 'positiveNum'}
                             description={field.descriptionFlag && field.description}
                             label={field.name || field.sysName}
                             //defaultValue={object[field.sysName].value}
@@ -831,30 +835,45 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
     const [genericLoading, setGenericLoading] = useState(false)
     const [noData, setNoData] = useState(null)
 
+    const [isSubmitted, setIsSubmitted] = useState(false)
+
+    const handleSubmitAction = () => {
+
+        if (((!actionData.formMapping || actionData.formMapping.length == 0) && actionData.displayAs == 'button') ||
+            ((!actionData.formData || actionData.formData.length == 0) && actionData.displayAs == 'form')) { noActionData() }
+        else {
+            setIsSubmitted(true)
+            submitAction(actionData)
+        }
+        actionParams.closePopup && onClose()
+
+    }
+
     // console.log('====actionParams====')
     // console.log(actionParams)
 
     let conds = actionParams ? (actionParams.conditionals ? [...actionParams.conditionals] : null) : null
     if (conds) {
-        console.log(conds)
+        //console.log(conds)
         conds.forEach(cond => {
-            if (cond.target == 'id' && cond.type != 'const') {
-                typeof (object[cond.value] || {}).value != 'object' ? cond.checkValue = object[cond.value] :
-                    cond.checkValue = object[cond.value].value || null // раньше тут было .id, а не .value проверить!
-            }
-            if (cond.target == 'id' && cond.type == 'const') {
+            if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type == 'const') {
                 cond.checkValue = cond.value
             }
             if (cond.target == 'role') {
                 cond.checkValue = cond.value
             }
-            if (cond.target == 'field' || cond.target == 'linkedField') {
-                cond.fieldValue = object[cond.field] && object[cond.field].value
+            if (cond.target == 'field') {
+                typeof object[cond.value] != 'object' ? cond.fieldValue = object[cond.field] :
+                    cond.fieldValue = object[cond.field].value || null
+            }
+            if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
+                typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
+                    cond.checkValue = object[cond.value].value || null // раньше тут было .id, а не .value проверить!
             }
         })
     }
 
-    const noActionData = () => {
+    function noActionData() {
         setGenericLoading(true)
         setTimeout(
             () => {
@@ -869,6 +888,18 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
             },
             4000
         )
+    }
+
+    if (
+        isSubmitted 
+        && actionParams.showMessage
+        //&& !loading
+    ) {
+        return <div style={{width: actionParams.displayAs == 'form' ? '100%' : 'auto'}}>
+            {actionParams.displayAs == 'form' && <FormSection title={actionParams.name} />}
+            <Hint ok margin={{top:1, bottom:12}}>{actionParams.resultMessage || 'Submitted'}</Hint>
+            <Button onClick={()=>setIsSubmitted(false)} icon='refresh'>{actionParams.resultButton || 'Submit again'}</Button>
+        </div>
     }
 
     return (
@@ -896,17 +927,7 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
                         accent={actionParams.buttonType == 'accent'}
                         danger={actionParams.buttonType == 'danger'}
                         loading={loading || genericLoading}
-                        onClick={() => {
-                            // console.log(!actionData.formMapping);
-                            // console.log(!actionData.formMapping && actionData.displayAs == 'button');
-
-                            (((!actionData.formMapping || actionData.formMapping.length == 0) && actionData.displayAs == 'button') ||
-                                ((!actionData.formData || actionData.formData.length == 0) && actionData.displayAs == 'form')) ?
-                                noActionData()
-                                :
-                                submitAction(actionData)
-                            actionParams.closePopup && onClose()
-                        }}
+                        onClick={handleSubmitAction}
                         icon={actionParams.buttonIcon}
                     >
                         {actionParams.buttonTitle || actionParams.name}</Button>}
