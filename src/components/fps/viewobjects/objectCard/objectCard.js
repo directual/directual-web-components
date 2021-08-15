@@ -893,7 +893,7 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
     if (
         isSubmitted 
         && actionParams.showMessage
-        //&& !loading
+        && !loading
     ) {
         return <div style={{width: actionParams.displayAs == 'form' ? '100%' : 'auto'}}>
             {actionParams.displayAs == 'form' && <FormSection title={actionParams.name} />}
