@@ -4191,7 +4191,7 @@ const App = (props) => {
 
 
     let exampleForm = {
-        "sl": "test",
+        "sl": "robokassa",
         "formName": "",
         "formDesc": "",
         "formButton": "",
@@ -4200,99 +4200,31 @@ const App = (props) => {
         "formButtonResubmit": null,
         "params": {
             "result": {
-                "resultTitleField": null,
-                "resultMessageField": null,
-                "isSuccessField": null
+                "resultTitleField": "EMail",
+                "resultMessageField": "paymentUrl",
+                "isSuccessField": "result",
+                "isLink": true,
+                "linkTitle": "Для оплаты перейдите по ссылке"
             },
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "array",
+                        "fieldSysName": "EMail",
                         "fetch": [],
-                        "sysName": "array",
-                        "name": "array",
-                        "dataType": "array",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "arrayLink",
-                        "fetch": [],
-                        "sysName": "arrayLink",
-                        "name": "arrayLink",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "movie"
-                    },
-                    {
-                        "fieldSysName": "boolean",
-                        "fetch": [],
-                        "sysName": "boolean",
-                        "name": "boolean",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "checkboxes",
-                        "fetch": [],
-                        "sysName": "checkboxes",
-                        "name": "checkboxes",
-                        "dataType": "json",
-                        "format": "checkboxes",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "color",
-                        "fetch": [],
-                        "sysName": "color",
-                        "name": "color",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "date",
-                        "fetch": [],
-                        "sysName": "date",
-                        "name": "date",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "email",
-                        "fetch": [],
-                        "sysName": "email",
-                        "name": "email",
+                        "sysName": "EMail",
+                        "name": " eMail",
                         "dataType": "string",
                         "format": "email",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "file",
+                        "fieldSysName": "OutSum",
                         "fetch": [],
-                        "sysName": "file",
-                        "name": "file",
-                        "dataType": "file",
+                        "sysName": "OutSum",
+                        "name": "Сумма",
+                        "dataType": "decimal",
                         "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "html",
-                        "fetch": [],
-                        "sysName": "html",
-                        "name": "html",
-                        "dataType": "string",
-                        "format": "html",
                         "formatOptions": {},
                         "link": ""
                     },
@@ -4307,196 +4239,86 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "json",
+                        "fieldSysName": "paymentUrl",
                         "fetch": [],
-                        "sysName": "json",
-                        "name": "json",
-                        "dataType": "json",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "keyValue",
-                        "fetch": [],
-                        "sysName": "keyValue",
-                        "name": "keyValue",
-                        "dataType": "json",
-                        "format": "keyValue",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "link",
-                        "fetch": [],
-                        "sysName": "link",
-                        "name": "link",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "movie"
-                    },
-                    {
-                        "fieldSysName": "markdown",
-                        "fetch": [],
-                        "sysName": "markdown",
-                        "name": "markdown",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "number",
-                        "fetch": [],
-                        "sysName": "number",
-                        "name": "number",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "phone",
-                        "fetch": [],
-                        "sysName": "phone",
-                        "name": "phone",
-                        "dataType": "string",
-                        "format": "phone",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "radio",
-                        "fetch": [],
-                        "sysName": "radio",
-                        "name": "radio",
-                        "dataType": "json",
-                        "format": "radioOptions",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "rangeSlider",
-                        "fetch": [],
-                        "sysName": "rangeSlider",
-                        "name": "rangeSlider",
-                        "dataType": "json",
-                        "format": "rangeSlider",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "slider",
-                        "fetch": [],
-                        "sysName": "slider",
-                        "name": "slider",
-                        "dataType": "json",
-                        "format": "slider",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "weblink",
-                        "fetch": [],
-                        "sysName": "weblink",
-                        "name": "weblink",
+                        "sysName": "paymentUrl",
+                        "name": "Ссылка на оплату",
                         "dataType": "string",
                         "format": "webLink",
                         "formatOptions": {},
                         "link": ""
+                    },
+                    {
+                        "fieldSysName": "result",
+                        "fetch": [],
+                        "sysName": "result",
+                        "name": "Результат",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "user_id",
+                        "fetch": [],
+                        "sysName": "user_id",
+                        "name": "Плательщик",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
                     }
                 ],
                 "writeFields": [
                     {
-                        "fieldSysName": "array",
+                        "fieldSysName": "EMail",
                         "fetch": [],
-                        "sysName": "array",
-                        "name": "array",
-                        "dataType": "array",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "arrayLink",
-                        "fetch": [],
-                        "sysName": "arrayLink",
-                        "name": "arrayLink",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "movie"
-                    },
-                    {
-                        "fieldSysName": "boolean",
-                        "fetch": [],
-                        "sysName": "boolean",
-                        "name": "boolean",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "checkboxes",
-                        "fetch": [],
-                        "sysName": "checkboxes",
-                        "name": "checkboxes",
-                        "dataType": "json",
-                        "format": "checkboxes",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "color",
-                        "fetch": [],
-                        "sysName": "color",
-                        "name": "color",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "date",
-                        "fetch": [],
-                        "sysName": "date",
-                        "name": "date",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "email",
-                        "fetch": [],
-                        "sysName": "email",
-                        "name": "email",
+                        "sysName": "EMail",
+                        "name": " eMail",
                         "dataType": "string",
                         "format": "email",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "file",
+                        "fieldSysName": "Fee",
                         "fetch": [],
-                        "sysName": "file",
-                        "name": "file",
-                        "dataType": "file",
+                        "sysName": "Fee",
+                        "name": "Комиссия Robokassa",
+                        "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "html",
+                        "fieldSysName": "InvId",
                         "fetch": [],
-                        "sysName": "html",
-                        "name": "html",
+                        "sysName": "InvId",
+                        "name": "Номер заказа",
                         "dataType": "string",
-                        "format": "html",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "OutSum",
+                        "fetch": [],
+                        "sysName": "OutSum",
+                        "name": "Сумма",
+                        "dataType": "decimal",
+                        "format": "",
                         "formatOptions": {},
                         "link": ""
+                    },
+                    {
+                        "fieldSysName": "SignatureValue",
+                        "fetch": [],
+                        "sysName": "SignatureValue",
+                        "name": "Контрольная сумма (hash)",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
                     },
                     {
                         "fieldSysName": "id",
@@ -4509,176 +4331,50 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "json",
+                        "fieldSysName": "paymentUrl",
                         "fetch": [],
-                        "sysName": "json",
-                        "name": "json",
-                        "dataType": "json",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "keyValue",
-                        "fetch": [],
-                        "sysName": "keyValue",
-                        "name": "keyValue",
-                        "dataType": "json",
-                        "format": "keyValue",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "link",
-                        "fetch": [],
-                        "sysName": "link",
-                        "name": "link",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "movie"
-                    },
-                    {
-                        "fieldSysName": "markdown",
-                        "fetch": [],
-                        "sysName": "markdown",
-                        "name": "markdown",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "number",
-                        "fetch": [],
-                        "sysName": "number",
-                        "name": "number",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "phone",
-                        "fetch": [],
-                        "sysName": "phone",
-                        "name": "phone",
-                        "dataType": "string",
-                        "format": "phone",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "radio",
-                        "fetch": [],
-                        "sysName": "radio",
-                        "name": "radio",
-                        "dataType": "json",
-                        "format": "radioOptions",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "rangeSlider",
-                        "fetch": [],
-                        "sysName": "rangeSlider",
-                        "name": "rangeSlider",
-                        "dataType": "json",
-                        "format": "rangeSlider",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "slider",
-                        "fetch": [],
-                        "sysName": "slider",
-                        "name": "slider",
-                        "dataType": "json",
-                        "format": "slider",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "weblink",
-                        "fetch": [],
-                        "sysName": "weblink",
-                        "name": "weblink",
+                        "sysName": "paymentUrl",
+                        "name": "Ссылка на оплату",
                         "dataType": "string",
                         "format": "webLink",
                         "formatOptions": {},
                         "link": ""
-                    }
-                ],
-                "fields": {
-                    "array": {
-                        "id": "array",
-                        "content": "array",
-                        "type": "field",
-                        "dataType": "array",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
                     },
-                    "arrayLink": {
-                        "id": "arrayLink",
-                        "content": "arrayLink",
-                        "type": "field",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "movie"
-                    },
-                    "boolean": {
-                        "id": "boolean",
-                        "content": "boolean",
-                        "type": "field",
+                    {
+                        "fieldSysName": "result",
+                        "fetch": [],
+                        "sysName": "result",
+                        "name": "Результат",
                         "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
-                        "read": true,
                         "link": ""
                     },
-                    "checkboxes": {
-                        "id": "checkboxes",
-                        "content": "checkboxes",
-                        "type": "field",
-                        "dataType": "json",
-                        "format": "checkboxes",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "color": {
-                        "id": "color",
-                        "content": "color",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "date": {
-                        "id": "date",
-                        "content": "date",
-                        "type": "field",
+                    {
+                        "fieldSysName": "timestamp",
+                        "fetch": [],
+                        "sysName": "timestamp",
+                        "name": "Дата",
                         "dataType": "date",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
-                        "read": true,
                         "link": ""
                     },
-                    "email": {
-                        "id": "email",
-                        "content": "email",
+                    {
+                        "fieldSysName": "user_id",
+                        "fetch": [],
+                        "sysName": "user_id",
+                        "name": "Плательщик",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    }
+                ],
+                "fields": {
+                    "EMail": {
+                        "id": "EMail",
+                        "content": " eMail",
                         "type": "field",
                         "dataType": "string",
                         "format": "email",
@@ -4687,23 +4383,12 @@ const App = (props) => {
                         "read": true,
                         "link": ""
                     },
-                    "file": {
-                        "id": "file",
-                        "content": "file",
+                    "OutSum": {
+                        "id": "OutSum",
+                        "content": "Сумма",
                         "type": "field",
-                        "dataType": "file",
+                        "dataType": "decimal",
                         "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "html": {
-                        "id": "html",
-                        "content": "html",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "html",
                         "formatOptions": {},
                         "write": true,
                         "read": true,
@@ -4720,108 +4405,9 @@ const App = (props) => {
                         "read": true,
                         "link": ""
                     },
-                    "json": {
-                        "id": "json",
-                        "content": "json",
-                        "type": "field",
-                        "dataType": "json",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "keyValue": {
-                        "id": "keyValue",
-                        "content": "keyValue",
-                        "type": "field",
-                        "dataType": "json",
-                        "format": "keyValue",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "link": {
-                        "id": "link",
-                        "content": "link",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "movie"
-                    },
-                    "markdown": {
-                        "id": "markdown",
-                        "content": "markdown",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "number": {
-                        "id": "number",
-                        "content": "number",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "phone": {
-                        "id": "phone",
-                        "content": "phone",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "phone",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "radio": {
-                        "id": "radio",
-                        "content": "radio",
-                        "type": "field",
-                        "dataType": "json",
-                        "format": "radioOptions",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "rangeSlider": {
-                        "id": "rangeSlider",
-                        "content": "rangeSlider",
-                        "type": "field",
-                        "dataType": "json",
-                        "format": "rangeSlider",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "slider": {
-                        "id": "slider",
-                        "content": "slider",
-                        "type": "field",
-                        "dataType": "json",
-                        "format": "slider",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "weblink": {
-                        "id": "weblink",
-                        "content": "weblink",
+                    "paymentUrl": {
+                        "id": "paymentUrl",
+                        "content": "Ссылка на оплату",
                         "type": "field",
                         "dataType": "string",
                         "format": "webLink",
@@ -4829,67 +4415,101 @@ const App = (props) => {
                         "write": true,
                         "read": true,
                         "link": ""
+                    },
+                    "result": {
+                        "id": "result",
+                        "content": "Результат",
+                        "type": "field",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "user_id": {
+                        "id": "user_id",
+                        "content": "Плательщик",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "WebUser"
+                    },
+                    "Fee": {
+                        "id": "Fee",
+                        "content": "Комиссия Robokassa",
+                        "type": "field",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": ""
+                    },
+                    "InvId": {
+                        "id": "InvId",
+                        "content": "Номер заказа",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": null
+                    },
+                    "SignatureValue": {
+                        "id": "SignatureValue",
+                        "content": "Контрольная сумма (hash)",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": null
+                    },
+                    "timestamp": {
+                        "id": "timestamp",
+                        "content": "Дата",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": ""
                     }
                 },
                 "fieldParams": {
-                    "array": {
+                    "EMail": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "arrayLink": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "boolean": {
+                    "OutSum": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "checkboxes": {
-                        "include": true,
+                    "Fee": {
+                        "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "color": {
-                        "include": true,
+                    "InvId": {
+                        "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "date": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "email": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "file": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "html": {
-                        "include": true,
+                    "SignatureValue": {
+                        "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
@@ -4902,70 +4522,28 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "json": {
-                        "include": true,
+                    "timestamp": {
+                        "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "keyValue": {
-                        "include": true,
+                    "paymentUrl": {
+                        "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "link": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "markdown": {
-                        "include": true,
+                    "result": {
+                        "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "number": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "phone": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "radio": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "rangeSlider": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "slider": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "weblink": {
+                    "user_id": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -4978,26 +4556,16 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
+                            "OutSum",
+                            "EMail",
+                            "Fee",
+                            "InvId",
+                            "SignatureValue",
                             "id",
-                            "array",
-                            "arrayLink",
-                            "boolean",
-                            "checkboxes",
-                            "color",
-                            "date",
-                            "email",
-                            "file",
-                            "html",
-                            "json",
-                            "keyValue",
-                            "link",
-                            "markdown",
-                            "number",
-                            "phone",
-                            "radio",
-                            "rangeSlider",
-                            "slider",
-                            "weblink"
+                            "timestamp",
+                            "paymentUrl",
+                            "result",
+                            "user_id"
                         ]
                     }
                 },
@@ -5006,106 +4574,36 @@ const App = (props) => {
                 ]
             },
             "fields": {
-                "array": {
+                "EMail": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "arrayLink": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "searchData": [
-                        {
-                            "key": "98f59fdd-4963-49a9-a126-4e55ece9e408",
-                            "value": "FORD против Ferarri"
-                        },
-                        {
-                            "key": "61df7b73-a73d-4a33-9d07-c524d3c7344d",
-                            "value": "Властелин колец: Братство кольца"
-                        },
-                        {
-                            "key": "361b0490-e2db-4b84-acdc-e9277a4b2c33",
-                            "value": "1+1"
-                        },
-                        {
-                            "key": "30fbcd35-88fd-4215-b224-c788e4c13e81",
-                            "value": "Райа и последний дракон"
-                        },
-                        {
-                            "key": "793080b6-3ec0-49cf-a0e7-7deb73354873",
-                            "value": "Прислуга"
-                        },
-                        {
-                            "key": "8131ff85-47e7-4e2b-b788-c94dfc78a854",
-                            "value": "Как избежать наказания за убийство"
-                        },
-                        {
-                            "key": "b2a47c07-055c-4ce0-8487-4b9beb629dbb",
-                            "value": "Душа"
-                        },
-                        {
-                            "key": "087608f1-ff32-44b9-99b3-a1c83ba5bda4",
-                            "value": "Властелин колец: Две башни"
-                        },
-                        {
-                            "key": "35994bb4-deb9-4415-9969-9f12f0a4bce9",
-                            "value": "Форд против Ferrari"
-                        },
-                        {
-                            "key": "f852e8e6-f174-4122-8844-00271174a3c8",
-                            "value": "Изменяем фильм из постмана"
-                        }
-                    ]
-                },
-                "boolean": {
+                "OutSum": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "checkboxes": {
-                    "include": true,
+                "Fee": {
+                    "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "color": {
-                    "include": true,
+                "InvId": {
+                    "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "date": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "email": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "file": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "html": {
-                    "include": true,
+                "SignatureValue": {
+                    "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
@@ -5118,112 +4616,28 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "json": {
-                    "include": true,
+                "timestamp": {
+                    "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "keyValue": {
-                    "include": true,
+                "paymentUrl": {
+                    "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "link": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "searchData": [
-                        {
-                            "key": "98f59fdd-4963-49a9-a126-4e55ece9e408",
-                            "value": "FORD против Ferarri"
-                        },
-                        {
-                            "key": "61df7b73-a73d-4a33-9d07-c524d3c7344d",
-                            "value": "Властелин колец: Братство кольца"
-                        },
-                        {
-                            "key": "361b0490-e2db-4b84-acdc-e9277a4b2c33",
-                            "value": "1+1"
-                        },
-                        {
-                            "key": "30fbcd35-88fd-4215-b224-c788e4c13e81",
-                            "value": "Райа и последний дракон"
-                        },
-                        {
-                            "key": "793080b6-3ec0-49cf-a0e7-7deb73354873",
-                            "value": "Прислуга"
-                        },
-                        {
-                            "key": "8131ff85-47e7-4e2b-b788-c94dfc78a854",
-                            "value": "Как избежать наказания за убийство"
-                        },
-                        {
-                            "key": "b2a47c07-055c-4ce0-8487-4b9beb629dbb",
-                            "value": "Душа"
-                        },
-                        {
-                            "key": "087608f1-ff32-44b9-99b3-a1c83ba5bda4",
-                            "value": "Властелин колец: Две башни"
-                        },
-                        {
-                            "key": "35994bb4-deb9-4415-9969-9f12f0a4bce9",
-                            "value": "Форд против Ferrari"
-                        },
-                        {
-                            "key": "f852e8e6-f174-4122-8844-00271174a3c8",
-                            "value": "Изменяем фильм из постмана"
-                        }
-                    ]
-                },
-                "markdown": {
-                    "include": true,
+                "result": {
+                    "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "number": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "phone": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "radio": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "rangeSlider": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "slider": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "weblink": {
+                "user_id": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -5234,172 +4648,10 @@ const App = (props) => {
         },
         "fileds": [
             {
-                "sysName": "array",
-                "name": "array",
-                "dataType": "array",
-                "id": "33891627300703484",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 8,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "json": false,
-                "linkType": false,
-                "typeVariable": {},
-                "linkOrArrayLinkType": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "arrayLink",
-                "name": "arrayLink",
-                "dataType": "arrayLink",
-                "id": "98591627300773213",
-                "link": "movie",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 12,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "json": false,
-                "linkType": false,
-                "typeVariable": {},
-                "linkOrArrayLinkType": true,
-                "arrayLink": true
-            },
-            {
-                "sysName": "boolean",
-                "name": "boolean",
-                "dataType": "boolean",
-                "id": "78681627300728241",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 10,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "json": false,
-                "linkType": false,
-                "typeVariable": {},
-                "linkOrArrayLinkType": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "checkboxes",
-                "name": "checkboxes",
-                "dataType": "json",
-                "id": "59161627300859211",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 15,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "checkboxes",
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "json": true,
-                "linkType": false,
-                "typeVariable": {},
-                "linkOrArrayLinkType": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "color",
-                "name": "color",
+                "sysName": "EMail",
+                "name": " eMail",
                 "dataType": "string",
-                "id": "11751627300658773",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "color",
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "json": false,
-                "linkType": false,
-                "typeVariable": {},
-                "linkOrArrayLinkType": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "date",
-                "name": "date",
-                "dataType": "date",
-                "id": "83181627300715511",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 9,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "json": false,
-                "linkType": false,
-                "typeVariable": {},
-                "linkOrArrayLinkType": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "email",
-                "name": "email",
-                "dataType": "string",
-                "id": "10581627300629173",
+                "id": "70261629037272513",
                 "link": "",
                 "group": "0",
                 "tags": null,
@@ -5415,18 +4667,18 @@ const App = (props) => {
                 "format": "email",
                 "formatOptions": null,
                 "groupName": null,
-                "indexExists": false,
                 "json": false,
-                "linkType": false,
-                "typeVariable": {},
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
-                "arrayLink": false
+                "arrayLink": false,
+                "linkType": false,
+                "typeVariable": {}
             },
             {
-                "sysName": "file",
-                "name": "file",
-                "dataType": "file",
-                "id": "45291627300823003",
+                "sysName": "Fee",
+                "name": "Комиссия Robokassa",
+                "dataType": "decimal",
+                "id": "13771629037294186",
                 "link": "",
                 "group": "0",
                 "tags": null,
@@ -5434,7 +4686,7 @@ const App = (props) => {
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 13,
+                "order": 4,
                 "linkIndexFieldSysName": [],
                 "defaultValue": null,
                 "constraints": null,
@@ -5442,19 +4694,19 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "indexExists": false,
                 "json": false,
-                "linkType": false,
-                "typeVariable": {},
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
-                "arrayLink": false
+                "arrayLink": false,
+                "linkType": false,
+                "typeVariable": {}
             },
             {
-                "sysName": "html",
-                "name": "html",
+                "sysName": "InvId",
+                "name": "Номер заказа",
                 "dataType": "string",
-                "id": "17691627300613695",
-                "link": "",
+                "id": "30061629037193810",
+                "link": null,
                 "group": "0",
                 "tags": null,
                 "indexing": false,
@@ -5466,15 +4718,69 @@ const App = (props) => {
                 "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
-                "format": "html",
+                "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "indexExists": false,
                 "json": false,
-                "linkType": false,
-                "typeVariable": {},
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
-                "arrayLink": false
+                "arrayLink": false,
+                "linkType": false,
+                "typeVariable": {}
+            },
+            {
+                "sysName": "OutSum",
+                "name": "Сумма",
+                "dataType": "decimal",
+                "id": "19691629037190700",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "json": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "typeVariable": {}
+            },
+            {
+                "sysName": "SignatureValue",
+                "name": "Контрольная сумма (hash)",
+                "dataType": "string",
+                "id": "78111629037313808",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "json": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "typeVariable": {}
             },
             {
                 "sysName": "id",
@@ -5496,126 +4802,18 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "indexExists": false,
                 "json": false,
-                "linkType": false,
-                "typeVariable": {},
-                "linkOrArrayLinkType": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "json",
-                "name": "json",
-                "dataType": "json",
-                "id": "54471627300844360",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 14,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
                 "indexExists": false,
-                "json": true,
-                "linkType": false,
-                "typeVariable": {},
                 "linkOrArrayLinkType": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "keyValue",
-                "name": "keyValue",
-                "dataType": "json",
-                "id": "49641627300972989",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 19,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "keyValue",
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "json": true,
+                "arrayLink": false,
                 "linkType": false,
-                "typeVariable": {},
-                "linkOrArrayLinkType": false,
-                "arrayLink": false
+                "typeVariable": {}
             },
             {
-                "sysName": "link",
-                "name": "link",
-                "dataType": "link",
-                "id": "14151627300750749",
-                "link": "movie",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 11,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "json": false,
-                "linkType": true,
-                "typeVariable": {},
-                "linkOrArrayLinkType": true,
-                "arrayLink": false
-            },
-            {
-                "sysName": "markdown",
-                "name": "markdown",
+                "sysName": "paymentUrl",
+                "name": "Ссылка на оплату",
                 "dataType": "string",
-                "id": "59661627300597313",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "json": false,
-                "linkType": false,
-                "typeVariable": {},
-                "linkOrArrayLinkType": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "number",
-                "name": "number",
-                "dataType": "number",
-                "id": "48741627300687193",
+                "id": "94611629043087524",
                 "link": "",
                 "group": "0",
                 "tags": null,
@@ -5628,129 +4826,48 @@ const App = (props) => {
                 "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
+                "format": "webLink",
+                "formatOptions": null,
+                "groupName": null,
+                "json": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "typeVariable": {}
+            },
+            {
+                "sysName": "result",
+                "name": "Результат",
+                "dataType": "boolean",
+                "id": "27121629043913542",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 8,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "indexExists": false,
                 "json": false,
-                "linkType": false,
-                "typeVariable": {},
-                "linkOrArrayLinkType": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "phone",
-                "name": "phone",
-                "dataType": "string",
-                "id": "44801627300647508",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "phone",
-                "formatOptions": null,
-                "groupName": null,
                 "indexExists": false,
-                "json": false,
-                "linkType": false,
-                "typeVariable": {},
                 "linkOrArrayLinkType": false,
-                "arrayLink": false
+                "arrayLink": false,
+                "linkType": false,
+                "typeVariable": {}
             },
             {
-                "sysName": "radio",
-                "name": "radio",
-                "dataType": "json",
-                "id": "28241627300900270",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 16,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "radioOptions",
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "json": true,
-                "linkType": false,
-                "typeVariable": {},
-                "linkOrArrayLinkType": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "rangeSlider",
-                "name": "rangeSlider",
-                "dataType": "json",
-                "id": "80871627300946034",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 18,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "rangeSlider",
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "json": true,
-                "linkType": false,
-                "typeVariable": {},
-                "linkOrArrayLinkType": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "slider",
-                "name": "slider",
-                "dataType": "json",
-                "id": "27501627300935167",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 17,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "slider",
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "json": true,
-                "linkType": false,
-                "typeVariable": {},
-                "linkOrArrayLinkType": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "weblink",
-                "name": "weblink",
-                "dataType": "string",
-                "id": "68931627300675991",
+                "sysName": "timestamp",
+                "name": "Дата",
+                "dataType": "date",
+                "id": "64721629037415659",
                 "link": "",
                 "group": "0",
                 "tags": null,
@@ -5763,15 +4880,42 @@ const App = (props) => {
                 "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
-                "format": "webLink",
+                "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "indexExists": false,
                 "json": false,
-                "linkType": false,
-                "typeVariable": {},
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
-                "arrayLink": false
+                "arrayLink": false,
+                "linkType": false,
+                "typeVariable": {}
+            },
+            {
+                "sysName": "user_id",
+                "name": "Плательщик",
+                "dataType": "link",
+                "id": "82261629045997563",
+                "link": "WebUser",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "json": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "linkType": true,
+                "typeVariable": {}
             }
         ],
         "error": null,

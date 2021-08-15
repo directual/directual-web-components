@@ -165,11 +165,15 @@ function FpsFormNew({ auth, data, onEvent, id }) {
     if (sync && data.response && !answerTitle) { answerTitle = isSuccess ? 'Success' : 'Error' }
     let answerText = ''
     if (sync && data.response && data.params.result.resultMessageField) { answerText = data.response[0][data.params.result.resultMessageField] }
+    let answer
+    if (data.params.result.isLink) {
+      answer = <a href={answerText} target="_blank">{data.params.result.linkTitle || answerText}</a>
+    } else ( answer = answerText )
     return {
       sync,
       isSuccess,
       answerTitle,
-      answerText
+      answerText: answer
     }
   }
 
@@ -545,11 +549,15 @@ function FpsFormOld({ auth, data, onEvent, id }) {
     if (sync && data.response && !answerTitle) { answerTitle = isSuccess ? 'Success' : 'Error' }
     let answerText = ''
     if (sync && data.response && data.params.result.resultMessageField) { answerText = data.response[0][data.params.result.resultMessageField] }
+    let answer
+    if (data.params.result.isLink) {
+      answer = <a href={answerText} target="_blank">{data.params.result.linkTitle || answerText}</a>
+    } else ( answer = answerText )
     return {
       sync,
       isSuccess,
       answerTitle,
-      answerText
+      answerText: answer
     }
   }
 
