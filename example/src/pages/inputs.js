@@ -144,20 +144,28 @@ export default function InputsPage() {
 
     return (
         <React.Fragment>
+            <h1>Data entry</h1>
 
-            <Input required type='select' />
+            {/* <Input required type='select' />
 
             <Input error={error} />
             <Button onClick={()=>setError('')}>reset error</Button>
             <Button onClick={()=>setError(Math.random().toString())}>set error</Button>
 
-            <h1>Data entry</h1>
 
-            <Input defaultValue="мороз и солнце день чудесный" width={120} />
+            <Input defaultValue="мороз и солнце день чудесный" width={120} /> */}
 
             <h2>File upload</h2>
             <br />
-            <FileUpload />
+            <FileUpload 
+                multiple={false}
+            />
+            
+            <br />
+
+            <FileUpload 
+                multiple={true}
+            />
 
             <br />
 
