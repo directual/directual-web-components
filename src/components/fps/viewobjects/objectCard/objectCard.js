@@ -845,8 +845,6 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
             setIsSubmitted(true)
             submitAction(actionData)
         }
-        actionParams.closePopup && onClose()
-
     }
 
     // console.log('====actionParams====')
@@ -901,6 +899,10 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
             <Button onClick={()=>setIsSubmitted(false)} icon='refresh'>{actionParams.resultButton || 'Submit again'}</Button>
         </div>
     }
+
+    useEffect(()=>{
+        isSubmitted && !loading && actionParams.closePopup && onClose()
+    }, loading)
 
     return (
         actionParams && checkActionCond && checkActionCond(conds) ?
