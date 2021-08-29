@@ -69,6 +69,7 @@ export function Tree(props) {
             isOpenned={isOpenned}
             setIsOppened={setIsOppened}
         />
+        <DraggableTree tree={tree} {...props} />
         <Example />
     </div>
 }
@@ -138,6 +139,51 @@ function Element({ element, selectedID, setSelectedID, draggable }) {
     </div>
 }
 
+function DraggableTree(props) {
+    const { tree } = props
+    const onDragEnd = (result) => {
+        console.log('=================')
+        console.log(result)
+    }
+
+    return <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId='root' type="tree">
+            {(provided, snapshot) => (
+                <div ref={provided.innerRef}
+                    style={{ padding: 10, backgroundColor: snapshot.isDraggingOver ? 'orange' : 'yellow', margin: 5 }}
+                    {...provided.droppableProps}>
+                    Root
+                    {tree.children.map(folder => <DraggableFolder key={folder.id} folder={folder} />)}
+                </div>
+            )}
+        </Droppable>
+
+    </DragDropContext>
+}
+
+function DraggableFolder({ folder }) {
+    return <Draggable draggableId={`drag_${folder.id}`} type="tree">
+    {(provided, snapshot) => (
+        <div>
+            <div {...provided.draggableProps}
+                ref={provided.innerRef}
+            >
+                <div style={{ padding: 10, margin: 5 }}>
+                    <span {...provided.dragHandleProps} >[DRAG ME] </span>
+                    {folder.name}
+                </div>
+            </div>
+            {snapshot.isDragging &&
+                <div style={{ padding: 10, margin: 5, opacity: .5 }}>
+                    <span {...provided.dragHandleProps} >[DRAG ME] </span>
+                    {folder.name}
+                </div>
+            }
+        </div>
+    )}
+</Draggable>
+}
+
 
 function Example() {
 
@@ -150,9 +196,29 @@ function Example() {
         <Droppable droppableId='drop_1' type="tree">
             {(provided, snapshot) => (
                 <div ref={provided.innerRef}
-                    style={{ padding: 10, backgroundColor: snapshot.isDraggingOver ? 'orange' : 'yellow', margin: 5 }}
+                    style={{ backgroundColor: snapshot.isDraggingOver ? 'orange' : 'yellow', margin: 5 }}
                     {...provided.droppableProps}>
-                    droppable 1
+                    <Draggable draggableId='drag_1_1' type="tree">
+                        {(provided, snapshot) => (
+                            <div>
+                                <div {...provided.draggableProps}
+                                    ref={provided.innerRef}
+                                >
+                                    <div style={{ padding: 10, margin: 5 }}>
+                                        <span {...provided.dragHandleProps} >DRAG ME</span>
+                                        draggable 1-1
+                                    </div>
+                                </div>
+                                {snapshot.isDragging &&
+                                    <div style={{ padding: 10, margin: 5, opacity: .5 }}>
+                                        <span {...provided.dragHandleProps} >DRAG ME</span>
+                                        draggable 1-1
+                                    </div>
+                                }
+                            </div>
+                        )}
+                    </Draggable>
+
                     <Draggable draggableId='drag_1' type="tree">
                         {(provided, snapshot) => (
                             <div>
@@ -250,7 +316,6 @@ function Example() {
                                 </Droppable>
                             </div>
                         )}
-
                     </Draggable>
                     {/* {provided.placeholder} */}
                 </div>

@@ -94,11 +94,3 @@ export default function FileUpload(props) {
         </React.Fragment>
     )
 }
-
-function FilePreview(props) {
-    return (
-        <div className={styles.filePreview}>
-
-        </div>
-    )
-}
