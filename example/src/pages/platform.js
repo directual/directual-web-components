@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { Input, CodeInput, StructureField, InputGroup, Button, Checkbox } from 'directual-web-components'
+import { Input, InputGroup, Button } from 'directual-web-components'
 import moment from 'moment'
-import { useSortBy } from 'react-table'
 
 export default function PlatformPage() {
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {
-    FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, FpsTheme,
-    ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, SignIn, SignUp, Media, CodeSnippet,
-    Dnd, Profile, TabsPane, Loader, optionsHandler, Fps400, ImageButtons
+    FpsCards, FpsForm, MainMenu, FpsTable, FpsTheme,
+    FpsWrapper, ContentWrapper, SignIn, Media, CodeSnippet,
+    Dnd, Profile
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 import {
@@ -21,7 +21,6 @@ import TypoPage from './pages/typo'
 import WhatIsIt from './pages/wtf'
 import LayoutPage from './pages/layout'
 import PlatformPage from './pages/platform'
-import { reduceHooks } from 'react-table'
 
 
 function MainMenuWrapper(props) {
@@ -31,10 +30,10 @@ function MainMenuWrapper(props) {
 
     useEffect(() => {
 
-        if (props.themeName.colorScheme == 'darkMint' || props.themeName.colorScheme == 'warmNight' || props.themeName.colorScheme == 'hacker') {
+        if (props.themeName.colorScheme === 'darkMint' || props.themeName.colorScheme === 'warmNight' || props.themeName.colorScheme === 'hacker') {
             setlogoUrl('https://api.alfa.directual.com/fileUploaded/directual-site/b652c768-32eb-4309-bc7f-974863107528.svg')
         }
-        if (props.themeName.colorScheme == 'classic' || props.themeName.colorScheme == 'tiffany' || props.themeName.colorScheme == 'white') {
+        if (props.themeName.colorScheme === 'classic' || props.themeName.colorScheme === 'tiffany' || props.themeName.colorScheme === 'white') {
             setlogoUrl('https://api.alfa.directual.com/fileUploaded/directual-site/31f7185d-f0cc-4063-bc59-1ca46d9f8b7c.svg')
         }
     }, [props.themeName])

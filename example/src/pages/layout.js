@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Button, FpsLayout, Dnd, FpsCards, TabsPane, FpsForm } from 'directual-web-components'
+import React from 'react'
+import { FpsCards, FpsForm, Tree, Dnd } from 'directual-web-components'
 
 
 export default function LayoutPage() {
@@ -1980,11 +1980,23 @@ export default function LayoutPage() {
         { key: '3', disabled: true, title: 'Tab 3 (disabled)', content: <div>Tab content 3</div> }
       ]
 
-    //return <TabsPane tabs={exampleTabs} hideSingleTab currentTabKey={1} fixedScroll={false} />
+    const options = [
+        {id: 1, name: 'System', parentID:'root', icon: 'folder', isFolder: true},
+        {id: 'root', name: 'Root', parentID: null, icon: 'folder', isFolder: true},
+        {id: 'trash', name: 'Root', parentID: null, icon: 'delete', isFolder: false},
+        {id: '2', name: 'Logs', parentID: 1, icon: 'folder', isFolder: true},
+        {id: '3', name: 'App users', parentID: 'root', icon: 'user', isFolder: false},
+        {id: '4', name: 'Files', parentID: 'root', icon: 'clip', isFolder: false},
+    ]
 
-    return <FpsLayout
-        layout={layoutExample}
+    //return <TabsPane tabs={exampleTabs} hideSingleTab currentTabKey={1} fixedScroll={false} />
+    // return <FpsLayout layout={layoutExample} />
+
+    return <div><Tree 
+        draggable
+        options={options}
     />
+    </div>
 }
 
 

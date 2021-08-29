@@ -1,0 +1,81 @@
+.treeWrapper {
+  background-color: var(--background-color);
+  width: 400px;
+  overflow: auto;
+  padding: 6px;
+  font-size: 14px;
+  border-radius: var(--border-radius);
+}
+.folder {
+  border: dashed 1px lightcoral;
+}
+.folder.isDraggingOver {
+  background-color: lightgoldenrodyellow;
+}
+.folderContent {
+  margin-left: 32px;
+}
+.folderContent.noMargin {
+  margin-left: 0;
+}
+.treeElement {
+  border: solid 2px rgba(0, 0, 0, 0);
+  border-radius: var(--border-radius);
+  opacity: 0.6;
+  cursor: pointer;
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  height: 32px;
+  align-items: center;
+}
+.treeElement .noShrink {
+  flex-shrink: 0;
+}
+.treeElement:hover .drag {
+  display: block;
+  opacity: 0.2;
+}
+.treeElement:hover .drag:hover {
+  opacity: 0.9;
+}
+.treeElement .drag {
+  opacity: 0;
+  display: none;
+  cursor: grab;
+}
+.treeElement .treeElementName {
+  overflow: hidden;
+  flex-grow: 2;
+}
+.treeElement .treeElementName span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.treeElement:hover {
+  border: solid 2px var(--field-border-color);
+  opacity: 1;
+}
+.treeElement:active {
+  background-color: var(--font-color);
+  color: var(--background-color);
+  border-color: var(--font-color);
+}
+.treeElement.selected {
+  background-color: var(--button-border-color);
+  color: var(--background-color);
+  opacity: 1;
+  border-color: var(--button-border-color);
+}
+.empty {
+  font-style: italic;
+  margin: 3px 0 6px 32px;
+  opacity: 0.4;
+}
+.expandFolder {
+  transition: 0.5s;
+}
+.expandFolder.expanded {
+  transform: rotate(90deg);
+}

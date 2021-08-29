@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import {
-    FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong, Input, Select, Datepicker, InputGroup,
-    FpsTheme, ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, Radio, CodeSnippet, Slider, FileUpload,
-    Checkbox, OptionsHandler, StructureField, ErrorBoundary, Markdown
+    Button, Input, InputGroup, ComponentDetails, CodeSnippet, FileUpload,
+    Checkbox, Markdown
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 

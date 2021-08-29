@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import {
-    FpsHtml, FpsCards, FpsForm, MainMenu, FpsTable, Button, SomethingWentWrong,
-    FpsTheme, ComponentDetails, FpsWrapper, ContentWrapper, ActionPanel, CodeSnippet
+    Button, ComponentDetails, ActionPanel, CodeSnippet
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 

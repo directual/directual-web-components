@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    Hint, Article, CodeSnippet
+    Article, CodeSnippet
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    Hint, Loader, CodeSnippet, Button, RichText, Tags
+    Hint, Loader, CodeSnippet, Button, Tags
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 

@@ -29,7 +29,7 @@ export default function FileUpload(props) {
                     acceptedFiles.forEach(file => {
                         const body = new FormData
                         body.append("file", file)
-                        fetch('https://api.directual.com/good/api/v5/data/my_files/uploadFiles?appID=ed4fa9af-0061-45a7-926d-ebf24d7a63e4&sessionID=', {
+                        fetch('https://files.directual.app/api/upload', {
                             method: 'POST',
                             body,
                             // headers: {
@@ -37,7 +37,7 @@ export default function FileUpload(props) {
                             // },
                         }).then(res => {
                             console.log('успех')
-                            console.log(res.json)
+                            console.log(res)
                         })
                     })
                 }}

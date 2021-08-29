@@ -41,6 +41,7 @@ import { FpsLayout } from './components/fps/layout/fpsLayout/fpsLayout'
 import SplitPane from './components/fps/layout/splitPane/splitPane'
 import { RichText } from './components/fps/richTextEditor/richTextEditor'
 import { Tags } from './components/fps/tags/Tags'
+import { Tree } from './components/fps/tree/tree'
 
 import FpsTheme, { SetTheme } from './components/fps/theme/theme'
 
@@ -61,6 +62,7 @@ export {
   TabsPane,
   FpsForm,
   Tags,
+  Tree,
   MainMenu,
   ComponentDetails,
   FpsWrapper,
