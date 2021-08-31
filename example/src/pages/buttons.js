@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    Button, ComponentDetails, ActionPanel, CodeSnippet
+    Button, ButtonDropDown, ComponentDetails, ActionPanel, CodeSnippet
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
@@ -8,6 +8,13 @@ export default function ButtonsPage() {
     return (
         <React.Fragment>
             <h1>Action panel, Buttons</h1>
+            <ButtonDropDown accent icon='down' title='Hey hey hey'>
+                <Button accent icon='done' alighLeft>Create foder</Button>
+                <Button danger icon='babai' alighLeft onClick={()=>alert('yay')}>Create this freacking folder</Button>
+                <hr />
+                <Button alighLeft>Plain button</Button>
+                <Button icon='bell' alighLeft>Ring the bell</Button>
+            </ButtonDropDown>
             <CodeSnippet code=
                 {`<ActionPanel 
     margin={{top:6, bottom:12}}>

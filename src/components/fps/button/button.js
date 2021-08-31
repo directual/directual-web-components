@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import styles from './button.module.css'
 import Loader from '../loader/loader'
 
@@ -14,6 +14,7 @@ export default function Button(props) {
                     }}
                     className={`${styles.button} 
                         ${props.small && styles.small}
+                        ${props.alighLeft && styles.alighLeft}
                         ${props.verySmall && styles.verySmall}
                         ${props.accent && styles.accent} 
                         ${props.className} 
@@ -55,4 +56,39 @@ export default function Button(props) {
             }
         </React.Fragment>
     )
+}
+
+export function ButtonDropDown(props) {
+
+    const [show,setShow] = useState(false)
+    const dropMenu = useRef(null);
+    const dropButton = useRef(null);
+
+    useOutsideAlerter(dropMenu);
+
+    function useOutsideAlerter(ref) {
+        useEffect(() => {
+            function handleClickOutside(event) {
+                if (ref.current && !ref.current.contains(event.target) && !dropButton.current.contains(event.target)) {
+                    setShow(false)
+                }
+            }
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => {
+                document.removeEventListener("mousedown", handleClickOutside);
+            };
+        }, [ref]);
+    }
+
+    return <div className={styles.bdd} ref={dropButton}>
+        <Button icon={props.icon} accent={props.accent} danger={props.danger}
+            small={props.small} verySmall={props.verySmall}
+            onClick={(e)=> { 
+                setShow(!show) 
+            } }
+        >{props.title}</Button>
+        <div className={`${styles.dropdownMenu} ${show ? styles.show : ''}`} ref={dropMenu} onClick={()=>setShow(false)}>
+            {props.children}
+        </div>
+    </div>
 }

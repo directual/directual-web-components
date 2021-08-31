@@ -56,6 +56,9 @@ a.button:hover:not(.disabled):not(.transparent) {
   font-size: var(--text-small-size);
   height: 28px;
 }
+.button.alighLeft {
+  justify-content: flex-start;
+}
 .button.verySmall {
   font-size: var(--text-very-small-size);
   padding: 1px 9px;
@@ -75,7 +78,7 @@ a.button:hover:not(.disabled):not(.transparent) {
   opacity: 0.4;
 }
 .button.socialGoogle:before {
-  content: "";
+  content: '';
   display: flex;
   height: 18px;
   width: 18px;
@@ -89,9 +92,9 @@ a.button:hover:not(.disabled):not(.transparent) {
   color: var(--button-accent-color);
 }
 .button.accent:hover:not(.disabled) {
-  background-color: var(--secondary-accent-color);
+  background-color: var(--secondary-accent-color) !important;
   color: var(--button-accent-color) !important;
-  border-color: var(--secondary-accent-color);
+  border-color: var(--secondary-accent-color) !important;
 }
 .button.accent:active:not(.disabled) {
   background-color: var(--font-color) !important;
@@ -125,9 +128,9 @@ a.button:hover:not(.disabled):not(.transparent) {
   color: var(--button-accent-color);
 }
 .button.danger:hover:not(.disabled) {
-  background-color: var(--error-color);
+  background-color: var(--error-color) !important;
   color: var(--button-accent-color) !important;
-  border-color: var(--error-color);
+  border-color: var(--error-color) !important;
 }
 .button.danger:active:not(.disabled) {
   background-color: var(--font-color) !important;
@@ -154,4 +157,44 @@ a.button:hover:not(.disabled):not(.transparent) {
   font-size: 32px;
   margin-left: -9px;
   margin-right: -9px;
+}
+.bdd {
+  position: relative;
+  display: inline-block;
+}
+.bdd .dropdownMenu {
+  position: absolute;
+  transition: 0.3s;
+  transition-timing-function: cubic-bezier(0.6, 0.44, 0.72, 1.45);
+  opacity: 0;
+  margin-top: -10px;
+  z-index: -1;
+  border: solid 1px var(--button-border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+  top: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden;
+}
+.bdd .dropdownMenu.show {
+  z-index: 100;
+  opacity: 1;
+  margin-top: 0px;
+}
+.bdd .dropdownMenu .button {
+  border-color: rgba(0, 0, 0, 0);
+  border-radius: 0;
+}
+.bdd .dropdownMenu .button:hover {
+  background-color: var(--accent-transp-05-color);
+}
+.bdd .dropdownMenu hr {
+  border: none;
+  border-color: rgba(0, 0, 0, 0);
+  border-top: solid 1px var(--button-border-color);
+  opacity: 0.5;
+  margin: 6px 12px;
 }

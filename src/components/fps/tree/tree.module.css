@@ -1,16 +1,16 @@
 .treeWrapper {
   background-color: var(--background-color);
-  width: 400px;
+  max-width: 100%;
   overflow: auto;
   padding: 6px;
-  font-size: 14px;
   border-radius: var(--border-radius);
 }
 .folder {
-  border: dashed 1px lightcoral;
+  font-size: var(--text-small-size);
 }
 .folder.isDraggingOver {
-  background-color: lightgoldenrodyellow;
+  pointer-events: none;
+  background-color: #d4f1dc;
 }
 .folderContent {
   margin-left: 32px;
@@ -51,6 +51,7 @@
 .treeElement .treeElementName span {
   white-space: nowrap;
   overflow: hidden;
+  line-height: 30px;
   text-overflow: ellipsis;
 }
 .treeElement:hover {

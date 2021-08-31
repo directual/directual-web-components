@@ -15,7 +15,7 @@ import FpsTable from './components/fps/viewobjects/table/FpsTable'
 import { Table } from './components/fps/viewobjects/table/table'
 import { FpsWrapper, ContentWrapper, ComponentWrapper } from './components/fps/wrapper/wrapper'
 import Input, { InputGroup } from './components/fps/dataentry/input/input'
-import Button from './components/fps/button/button'
+import Button,{ ButtonDropDown } from './components/fps/button/button'
 import ActionPanel from './components/fps/actionspanel/actionspanel'
 import SomethingWentWrong from './components/fps/SomethingWentWrong/SomethingWentWrong'
 import Radio from './components/fps/dataentry/radio/radio'
@@ -70,6 +70,7 @@ export {
   FpsTable,
   Input,
   Button,
+  ButtonDropDown,
   ActionPanel,
   SomethingWentWrong,
   Radio,

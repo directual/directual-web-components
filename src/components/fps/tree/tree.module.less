@@ -1,18 +1,23 @@
 .treeWrapper {
   background-color: var(--background-color);
-  width: 400px;
+  max-width: 100%;
   overflow: auto;
   padding: 6px;
-  font-size: 14px;
   border-radius: var(--border-radius);
 }
 
 .folder {
-  border: dashed 1px lightcoral;
+  font-size: var(--text-small-size);
   &.isDraggingOver {
-      background-color: lightgoldenrodyellow;
+    pointer-events: none;
+    background-color: rgb(212, 241, 220);
+    // .selected {
+    //     background-color: transparent;
+    //     color: var(--font-color);
+    //     opacity: 0.6;;
+    //     //border-color: var(--button-border-color);
+    //   }
   }
-  //  padding:3px;
 }
 
 .folderContent {
@@ -55,6 +60,7 @@
     span {
       white-space: nowrap;
       overflow: hidden;
+      line-height: 30px;
       text-overflow: ellipsis;
     }
   }
@@ -80,8 +86,8 @@
   opacity: 0.4;
 }
 .expandFolder {
-    transition: .5s;
-    &.expanded {
-        transform: rotate(90deg);
-    }
+  transition: 0.5s;
+  &.expanded {
+    transform: rotate(90deg);
+  }
 }
