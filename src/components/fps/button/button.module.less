@@ -174,12 +174,12 @@ a.button {
     transition: 0.3s;
     transition-timing-function: cubic-bezier(0.6, 0.44, 0.72, 1.45);
     opacity: 0;
-    margin-top: -10px;
+    margin-top: -16px;
     z-index: -1;
     &.show {
       z-index: 100;
       opacity: 1;
-      margin-top: 0px;
+      margin-top: -6px;
     }
     border: solid 1px var(--button-border-color);
     border-radius: var(--border-radius);
@@ -191,10 +191,15 @@ a.button {
     align-items: stretch;
     overflow: hidden;
     .button {
-      border-color: rgba(0, 0, 0, 0);
+      border-color: rgba(0, 0, 0, 0) !important;
       border-radius: 0;
+      margin: 0;
       &:hover {
         background-color: var(--accent-transp-05-color);
+      }
+      &:active {
+        background-color: var(--font-color);
+        color: var(--background-color) !important;
       }
     }
     hr {

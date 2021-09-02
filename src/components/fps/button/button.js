@@ -81,7 +81,7 @@ export function ButtonDropDown(props) {
     }
 
     return <div className={styles.bdd} ref={dropButton}>
-        <Button icon={props.icon} accent={props.accent} danger={props.danger}
+        <Button icon={props.icon} height={props.height} accent={props.accent} danger={props.danger}
             small={props.small} verySmall={props.verySmall}
             onClick={(e)=> { 
                 setShow(!show) 

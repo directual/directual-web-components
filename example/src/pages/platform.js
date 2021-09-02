@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Input, InputGroup, Button } from 'directual-web-components'
+import { Input, InputGroup, Button, StructureField } from 'directual-web-components'
 import moment from 'moment'
 
 export default function PlatformPage() {
@@ -1042,7 +1042,7 @@ export default function PlatformPage() {
       />
 
 
-      {/* <h2>Inline structure field input </h2>
+      <h2>Inline structure field input </h2>
       <p>Оджажды в
       суровую  зимнюю пору я из лесу вышел был сильный мороз.
       Гляжу, поднимается медленно в гору
@@ -1073,7 +1073,7 @@ export default function PlatformPage() {
           — «А кой тебе годик?» — «Шестой миновал…
           Ну, мертвая!» — крикнул малюточка басом,
           Рванул под уздцы и быстрей зашагал.</p>
-      <br /><br /><hr /><br /><br /> */}
+      <br /><br /><hr /><br /><br />
 
       <InputGroup width={400}>
         <Input

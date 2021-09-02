@@ -382,7 +382,7 @@ export default function Input(props) {
             {props.label && <label>{props.label}{props.required && '*'}</label>}
             {props.description &&
                 <div className={styles.description}>{props.description}</div>}
-            {props.debug && <div>
+            {(props.debug) && <div>
                 <div className="dd-debug">searchValue: {JSON.stringify(searchValue)}</div>
                 <div className="dd-debug">value: {JSON.stringify(value)}</div>
                 <div className="dd-debug"> defVal: {JSON.stringify(defVal)}</div>

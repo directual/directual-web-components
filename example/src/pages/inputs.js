@@ -8,7 +8,7 @@ import 'directual-web-components/dist/index.css'
 export default function InputsPage() {
     const [value, setValue] = useState()
 
-    const [testDefValue, setTestDefValue] = useState(null)
+    const [testDefValue, setTestDefValue] = useState(1630443600000)
 
     const testFields = [
         {
@@ -156,7 +156,7 @@ export default function InputsPage() {
 
             <h2>File upload</h2>
             <br />
-            <FileUpload 
+            {/* <FileUpload 
                 multiple={false}
             />
             
@@ -164,7 +164,7 @@ export default function InputsPage() {
 
             <FileUpload 
                 multiple={true}
-            />
+            /> */}
 
             <br />
 
@@ -198,7 +198,7 @@ export default function InputsPage() {
             <Input type='markdown' edit example/>
 
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Special platform selects</h2>
-
+{/* 
             <CodeSnippet code=
                 {`<Input
 label='Structure field'
@@ -269,7 +269,7 @@ type='structurefield' />`} />
                         {key: 'de', value: 'Deutsche (de)'},
                         {key: 'ru', value: 'Russian (ru)'},
                     ]}
-                />
+                /> */}
             <Input 
                 type='date'
                 width={400} 

@@ -70,6 +70,13 @@ export default function Datepicker(props) {
         );
     }
 
+    // console.log('value')
+    // console.log(value)
+    // console.log('renderInput')
+    // console.log(renderInput)
+    // console.log('dateFormat')
+    // console.log(dateFormat)
+
     return (
         <div className={styles.calendar}>
             {/* <div className='dd-debug'>{JSON.stringify(value)}</div> */}
