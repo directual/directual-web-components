@@ -3480,8 +3480,8 @@ const App = (props) => {
     }
 
     let exampleTable = {
-        "sl": "isGreat",
-        "pageSize": "10",
+        "sl": "myProtocols_M74",
+        "pageSize": "20",
         "headerField": null,
         "params": {
             "cardListLayout": "grid",
@@ -3496,16 +3496,6 @@ const App = (props) => {
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "author",
-                        "fetch": [],
-                        "sysName": "author",
-                        "name": "",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "Authors"
-                    },
-                    {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
@@ -3516,21 +3506,53 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "isGreat",
-                        "fetch": [],
-                        "sysName": "isGreat",
-                        "name": "isGreat",
-                        "dataType": "boolean",
+                        "fieldSysName": "score_ids",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "mark",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "score_ids",
+                        "name": "Оценки",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "link": ""
+                        "link": "scores"
                     },
                     {
-                        "fieldSysName": "title",
+                        "fieldSysName": "sportsman_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "firstName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "lastName",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "sportsman_id",
+                        "name": "Участник",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "sportsmen"
+                    },
+                    {
+                        "fieldSysName": "total_score",
                         "fetch": [],
-                        "sysName": "title",
-                        "name": "",
-                        "dataType": "string",
+                        "sysName": "total_score",
+                        "name": "Итоговые баллы",
+                        "dataType": "number",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
@@ -3538,16 +3560,6 @@ const App = (props) => {
                 ],
                 "writeFields": [
                     {
-                        "fieldSysName": "author",
-                        "fetch": [],
-                        "sysName": "author",
-                        "name": "",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "Authors"
-                    },
-                    {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
@@ -3558,39 +3570,17 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "isGreat",
+                        "fieldSysName": "score_ids",
                         "fetch": [],
-                        "sysName": "isGreat",
-                        "name": "isGreat",
-                        "dataType": "boolean",
+                        "sysName": "score_ids",
+                        "name": "Оценки",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "title",
-                        "fetch": [],
-                        "sysName": "title",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
+                        "link": "scores"
                     }
                 ],
                 "fields": {
-                    "author": {
-                        "id": "author",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "Authors",
-                        "actions": []
-                    },
                     "id": {
                         "id": "id",
                         "content": "id",
@@ -3603,33 +3593,105 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "isGreat": {
-                        "id": "isGreat",
-                        "content": "isGreat",
+                    "score_ids": {
+                        "id": "score_ids",
+                        "content": "Оценки",
                         "type": "field",
-                        "dataType": "boolean",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
+                        "read": true,
+                        "link": "scores",
+                        "actions": []
+                    },
+                    "sportsman_id": {
+                        "id": "sportsman_id",
+                        "content": "Участник",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "sportsmen",
+                        "actions": []
+                    },
+                    "total_score": {
+                        "id": "total_score",
+                        "content": "Итоговые баллы",
+                        "type": "field",
+                        "dataType": "number",
+                        "format": "",
+                        "formatOptions": {},
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "title": {
-                        "id": "title",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
+                    "action__59631630951865786": {
+                        "id": "action__59631630951865786",
+                        "content": "–2",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__72971630951876239": {
+                        "id": "action__72971630951876239",
+                        "content": "–1",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__40201630951887158": {
+                        "id": "action__40201630951887158",
+                        "content": "0",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__15641630951893233": {
+                        "id": "action__15641630951893233",
+                        "content": "1",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__18021630951896497": {
+                        "id": "action__18021630951896497",
+                        "content": "2",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__45061630951903587": {
+                        "id": "action__45061630951903587",
+                        "content": "3",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__23061630951908492": {
+                        "id": "action__23061630951908492",
+                        "content": "4",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__30191630951912843": {
+                        "id": "action__30191630951912843",
+                        "content": "Undo!",
+                        "type": "action",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "author": {
+                    "score_ids": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "sportsman_id": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "total_score": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -3642,41 +3704,56 @@ const App = (props) => {
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
-                    },
-                    "isGreat": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "title": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
                     }
                 },
                 "columns": {
                     "tab-1": {
                         "id": "tab-1",
-                        "title": "New section",
+                        "title": "Инфо об участнике",
                         "fieldIds": [
-                            "author",
-                            "id",
-                            "isGreat",
-                            "title"
+                            "sportsman_id",
+                            "total_score",
+                            "score_ids",
+                            "id"
+                        ]
+                    },
+                    "49361630951969705": {
+                        "id": "49361630951969705",
+                        "title": "Оценки",
+                        "fieldIds": [
+                            "action__30191630951912843",
+                            "action__59631630951865786",
+                            "action__72971630951876239",
+                            "action__40201630951887158",
+                            "action__15641630951893233",
+                            "action__18021630951896497",
+                            "action__45061630951903587",
+                            "action__23061630951908492"
                         ]
                     }
                 },
                 "columnOrder": [
-                    "tab-1"
+                    "tab-1",
+                    "49361630951969705"
                 ],
                 "actions": []
             },
             "fields": {
-                "author": {
+                "score_ids": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "sportsman_id": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "total_score": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -3689,53 +3766,646 @@ const App = (props) => {
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
-                },
-                "isGreat": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "title": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
                 }
-            }
+            },
+            "tableParams": {
+                "readFields": [
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "score_ids",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "mark",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "score_ids",
+                        "name": "Оценки",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "scores"
+                    },
+                    {
+                        "fieldSysName": "sportsman_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "firstName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "lastName",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "sportsman_id",
+                        "name": "Участник",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "sportsmen"
+                    },
+                    {
+                        "fieldSysName": "total_score",
+                        "fetch": [],
+                        "sysName": "total_score",
+                        "name": "Итоговые баллы",
+                        "dataType": "number",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    }
+                ],
+                "writeFields": [
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "score_ids",
+                        "fetch": [],
+                        "sysName": "score_ids",
+                        "name": "Оценки",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "scores"
+                    }
+                ],
+                "fields": {
+                    "id": {
+                        "id": "id",
+                        "content": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "score_ids": {
+                        "id": "score_ids",
+                        "content": "Оценки",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "scores"
+                    },
+                    "sportsman_id": {
+                        "id": "sportsman_id",
+                        "content": "Участник",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "sportsmen"
+                    },
+                    "total_score": {
+                        "id": "total_score",
+                        "content": "Итоговые баллы",
+                        "dataType": "number",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    }
+                },
+                "fieldParams": {
+                    "score_ids": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "sportsman_id": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "total_score": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "id": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    }
+                },
+                "fieldOrder": [
+                    "sportsman_id",
+                    "total_score",
+                    "score_ids",
+                    "id"
+                ]
+            },
+            "actions": [
+                {
+                    "sysName": "setScores",
+                    "id": "59631630951865786",
+                    "name": "–2",
+                    "displayAs": "button",
+                    "buttonType": "danger",
+                    "closePopup": true,
+                    "showMessage": false,
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "mark",
+                                "fetch": [],
+                                "sysName": "mark",
+                                "name": "",
+                                "dataType": "number",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "protocol_id",
+                                "fetch": [],
+                                "sysName": "protocol_id",
+                                "name": "",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "protocols"
+                            }
+                        ]
+                    },
+                    "formMapping": [
+                        {
+                            "id": "69961630954574021",
+                            "target": "mark",
+                            "type": "const",
+                            "value": "-2"
+                        },
+                        {
+                            "id": "83761630954581078",
+                            "target": "protocol_id",
+                            "type": "objectField",
+                            "value": "id"
+                        }
+                    ]
+                },
+                {
+                    "sysName": "setScores",
+                    "id": "72971630951876239",
+                    "name": "–1",
+                    "displayAs": "button",
+                    "buttonType": "danger",
+                    "closePopup": true,
+                    "showMessage": false,
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "mark",
+                                "fetch": [],
+                                "sysName": "mark",
+                                "name": "",
+                                "dataType": "number",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "protocol_id",
+                                "fetch": [],
+                                "sysName": "protocol_id",
+                                "name": "",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "protocols"
+                            }
+                        ]
+                    },
+                    "formMapping": [
+                        {
+                            "id": "13641630954595682",
+                            "target": "mark",
+                            "type": "const",
+                            "value": "-1"
+                        },
+                        {
+                            "id": "37091630954605983",
+                            "target": "protocol_id",
+                            "type": "objectField",
+                            "value": "id"
+                        }
+                    ]
+                },
+                {
+                    "sysName": "setScores",
+                    "id": "40201630951887158",
+                    "name": "0",
+                    "displayAs": "button",
+                    "closePopup": true,
+                    "showMessage": false,
+                    "formMapping": [
+                        {
+                            "id": "99181630954631982",
+                            "target": "mark",
+                            "type": "const",
+                            "value": "0"
+                        },
+                        {
+                            "id": "74001630954645650",
+                            "target": "protocol_id",
+                            "type": "objectField",
+                            "value": "id"
+                        }
+                    ],
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "mark",
+                                "fetch": [],
+                                "sysName": "mark",
+                                "name": "",
+                                "dataType": "number",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "protocol_id",
+                                "fetch": [],
+                                "sysName": "protocol_id",
+                                "name": "",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "protocols"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sysName": "setScores",
+                    "id": "15641630951893233",
+                    "name": "1",
+                    "displayAs": "button",
+                    "buttonType": "accent",
+                    "closePopup": true,
+                    "showMessage": false,
+                    "formMapping": [
+                        {
+                            "id": "27621630953162420",
+                            "target": "protocol_id",
+                            "type": "objectField",
+                            "value": "id"
+                        },
+                        {
+                            "id": "26491630954323733",
+                            "target": "mark",
+                            "type": "const",
+                            "value": "1"
+                        }
+                    ],
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "mark",
+                                "fetch": [],
+                                "sysName": "mark",
+                                "name": "",
+                                "dataType": "number",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "protocol_id",
+                                "fetch": [],
+                                "sysName": "protocol_id",
+                                "name": "",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "protocols"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sysName": "setScores",
+                    "id": "18021630951896497",
+                    "name": "2",
+                    "displayAs": "button",
+                    "buttonType": "accent",
+                    "closePopup": true,
+                    "showMessage": false,
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "mark",
+                                "fetch": [],
+                                "sysName": "mark",
+                                "name": "",
+                                "dataType": "number",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "protocol_id",
+                                "fetch": [],
+                                "sysName": "protocol_id",
+                                "name": "",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "protocols"
+                            }
+                        ]
+                    },
+                    "formMapping": [
+                        {
+                            "id": "83811630954665199",
+                            "target": "mark",
+                            "type": "const",
+                            "value": "2"
+                        },
+                        {
+                            "id": "35711630954672874",
+                            "target": "protocol_id",
+                            "type": "objectField",
+                            "value": "id"
+                        }
+                    ]
+                },
+                {
+                    "sysName": "setScores",
+                    "id": "45061630951903587",
+                    "name": "3",
+                    "displayAs": "button",
+                    "buttonType": "accent",
+                    "closePopup": true,
+                    "showMessage": false,
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "mark",
+                                "fetch": [],
+                                "sysName": "mark",
+                                "name": "",
+                                "dataType": "number",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "protocol_id",
+                                "fetch": [],
+                                "sysName": "protocol_id",
+                                "name": "",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "protocols"
+                            }
+                        ]
+                    },
+                    "formMapping": [
+                        {
+                            "id": "94401630954692955",
+                            "target": "mark",
+                            "type": "const",
+                            "value": "3"
+                        },
+                        {
+                            "id": "11921630954698701",
+                            "target": "protocol_id",
+                            "type": "objectField",
+                            "value": "id"
+                        }
+                    ]
+                },
+                {
+                    "sysName": "setScores",
+                    "id": "23061630951908492",
+                    "name": "4",
+                    "displayAs": "button",
+                    "buttonType": "accent",
+                    "closePopup": true,
+                    "showMessage": false,
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "mark",
+                                "fetch": [],
+                                "sysName": "mark",
+                                "name": "",
+                                "dataType": "number",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "protocol_id",
+                                "fetch": [],
+                                "sysName": "protocol_id",
+                                "name": "",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "protocols"
+                            }
+                        ]
+                    },
+                    "formMapping": [
+                        {
+                            "id": "10371630954717574",
+                            "target": "mark",
+                            "type": "const",
+                            "value": "4"
+                        },
+                        {
+                            "id": "45561630954723328",
+                            "target": "protocol_id",
+                            "type": "objectField",
+                            "value": "id"
+                        }
+                    ]
+                },
+                {
+                    "sysName": "undoScores",
+                    "id": "30191630951912843",
+                    "name": "Undo!",
+                    "displayAs": "button",
+                    "buttonType": "danger",
+                    "buttonIcon": "back",
+                    "closePopup": true,
+                    "showMessage": false,
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "protocol_id",
+                                "fetch": [],
+                                "sysName": "protocol_id",
+                                "name": "",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "protocols"
+                            }
+                        ]
+                    },
+                    "formMapping": [
+                        {
+                            "id": "74371630954821461",
+                            "target": "protocol_id",
+                            "type": "objectField",
+                            "value": "id"
+                        }
+                    ]
+                }
+            ]
         },
         "tableTitle": "",
         "actions": null,
         "headers": [
-            {
-                "sysName": "author",
-                "name": "",
-                "dataType": "link",
-                "id": "13781619702243181",
-                "link": "Authors",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "json": false,
-                "arrayLink": false
-            },
             {
                 "sysName": "id",
                 "name": "id",
@@ -3756,18 +4426,74 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "typeVariable": {},
                 "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
                 "json": false,
-                "arrayLink": false
+                "typeVariable": {},
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false
             },
             {
-                "sysName": "isGreat",
-                "name": "isGreat",
-                "dataType": "boolean",
-                "id": "82841623872260049",
+                "sysName": "score_ids",
+                "name": "Оценки",
+                "dataType": "arrayLink",
+                "id": "50671630948309425",
+                "link": "scores",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkType": false,
+                "json": false,
+                "typeVariable": {},
+                "arrayLink": true,
+                "indexExists": false,
+                "linkOrArrayLinkType": true
+            },
+            {
+                "sysName": "sportsman_id",
+                "name": "Участник",
+                "dataType": "link",
+                "id": "19791630948264385",
+                "link": "sportsmen",
+                "group": "0",
+                "tags": null,
+                "indexing": true,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [
+                    "category"
+                ],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkType": true,
+                "json": false,
+                "typeVariable": {},
+                "arrayLink": false,
+                "indexExists": true,
+                "linkOrArrayLinkType": true
+            },
+            {
+                "sysName": "total_score",
+                "name": "Итоговые баллы",
+                "dataType": "number",
+                "id": "72971630948284168",
                 "link": "",
                 "group": "0",
                 "tags": null,
@@ -3783,53 +4509,119 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "typeVariable": {},
                 "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
                 "json": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "title",
-                "name": "",
-                "dataType": "string",
-                "id": "76761619702242678",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
                 "typeVariable": {},
-                "linkType": false,
+                "arrayLink": false,
                 "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "json": false,
-                "arrayLink": false
+                "linkOrArrayLinkType": false
             }
         ],
         "data": [
             {
-                "author": "ffc054fe-a4ad-476b-9e27-3a5c98b2b10b",
-                "title": "War and Peace",
-                "id": "8b6be6b0-8183-4f93-a560-b268c20e62d1",
-                "isGreat": ""
+                "sportsman_id": {
+                    "firstName": "Стивен",
+                    "lastName": "Сигал"
+                },
+                "score_ids": [
+                    {
+                        "mark": 1,
+                        "id": "2d57396d-d544-44e0-b0f1-eeb506130858"
+                    },
+                    {
+                        "mark": 1,
+                        "id": "7920ac3c-c422-4329-94ba-5455a59bbf5a"
+                    },
+                    {
+                        "mark": -1,
+                        "id": "b32fb697-8cc0-4dbe-b77c-e2b80b8639a2"
+                    },
+                    {
+                        "mark": 1,
+                        "id": "72b2f7f7-b0b7-4368-8ae3-c4029a956902"
+                    },
+                    {
+                        "mark": 0,
+                        "id": "9112234e-5df9-4ca5-89b1-470306219960"
+                    },
+                    {
+                        "mark": -1,
+                        "id": "22abbac0-f543-4701-8727-e87965a2c473"
+                    },
+                    {
+                        "mark": 2,
+                        "id": "fe8bb169-d1bf-490d-83c7-7754e18e1103"
+                    }
+                ],
+                "total_score": 3,
+                "id": "87f675731866cc5cdf1f4b66aba0a514"
             },
             {
-                "author": "ffc054fe-a4ad-476b-9e27-3a5c98b2b10b",
-                "isGreat": true,
-                "title": "War and Peace",
-                "id": "8b6be6b0-8183-4f93-a560-b268c20e62d"
+                "sportsman_id": {
+                    "firstName": "Брюс",
+                    "lastName": "Ли"
+                },
+                "score_ids": [
+                    {
+                        "mark": 0,
+                        "id": "21bc062a-0f2c-49c5-aed9-c56e4748d184"
+                    }
+                ],
+                "total_score": 0,
+                "id": "492424da6e7af47f856182d79824118c"
+            },
+            {
+                "score_ids": [
+                    {
+                        "mark": 2,
+                        "id": "3670eb93-065a-49a2-958f-15af9c456660"
+                    },
+                    {
+                        "mark": 3,
+                        "id": "7e242d12-1d3d-4b6d-8e47-6636bb9d0471"
+                    }
+                ],
+                "total_score": 5,
+                "sportsman_id": {
+                    "lastName": "Бонапарт",
+                    "firstName": "Наполеон"
+                },
+                "id": "81380dacc898ef9f02b13dd2c8380f97"
+            },
+            {
+                "score_ids": [],
+                "sportsman_id": {
+                    "firstName": "Антон",
+                    "lastName": "Антонов"
+                },
+                "id": "01b3e161187d9ef3aea79db60cccd95d"
+            },
+            {
+                "total_score": 0,
+                "sportsman_id": {
+                    "lastName": "Лавлинский",
+                    "firstName": "Вадим"
+                },
+                "id": "acaef0f8d2f9782c4ac2e61bb78bc3df",
+                "score_ids": ""
+            },
+            {
+                "total_score": 0,
+                "sportsman_id": {
+                    "firstName": "Чак",
+                    "lastName": "Норрис"
+                },
+                "id": "91c43479d14226f0a2f89fb871f8be39",
+                "score_ids": ""
+            },
+            {
+                "sportsman_id": {
+                    "firstName": "Мохаммед",
+                    "lastName": "Али"
+                },
+                "total_score": 0,
+                "id": "82313de5aba69f68bb1332681cb0c6d8",
+                "score_ids": ""
             }
         ],
         "totalPages": 1,
@@ -3837,50 +4629,57 @@ const App = (props) => {
         "error": null,
         "fieldScheme": [
             [
-                "author",
-                1380644
-            ],
-            [
                 "id",
-                1380644
+                99019951
             ],
             [
-                "isGreat",
-                1380644
+                "score_ids.id",
+                99019952
             ],
             [
-                "title",
-                1380644
+                "score_ids.mark",
+                99019952
+            ],
+            [
+                "sportsman_id.firstName",
+                99019606
+            ],
+            [
+                "sportsman_id.lastName",
+                99019606
+            ],
+            [
+                "total_score",
+                99019951
             ]
         ],
         "writeFields": [
-            "author",
             "id",
-            "isGreat",
-            "title"
+            "score_ids"
         ],
         "structures": {
-            "1380644": {
-                "networkID": 5420,
-                "sysName": "actions",
-                "name": "actions",
-                "id": 1380644,
-                "dateCreated": "2021-04-29T13:17:18Z",
+            "99019606": {
+                "networkID": 9312,
+                "id": 99019606,
+                "dateCreated": "2021-09-05T08:24:02Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"author\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"13781619702243181\",\"link\":\"Authors\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"json\":false,\"arrayLink\":false},{\"sysName\":\"title\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"76761619702242678\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false},{\"sysName\":\"isGreat\",\"name\":\"isGreat\",\"dataType\":\"boolean\",\"id\":\"82841623872260049\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"json\":false,\"arrayLink\":false}]",
+                "name": "Участники",
+                "sysName": "sportsmen",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"lastName\",\"name\":\"Фамилия\",\"dataType\":\"string\",\"id\":\"19871630830408416\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"category\",\"name\":\"Весовая категория\",\"dataType\":\"link\",\"id\":\"24331630830561455\",\"link\":\"Categories\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false},{\"sysName\":\"description\",\"name\":\"Описание\",\"dataType\":\"string\",\"id\":\"26521630847309053\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"city\",\"name\":\"Город\",\"dataType\":\"string\",\"id\":\"42701630830417740\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"weight\",\"name\":\"Вес\",\"dataType\":\"decimal\",\"id\":\"56521630830431627\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"isDelete\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"58681630852410734\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"isWeighed\",\"name\":\"Прошел взвешивание\",\"dataType\":\"boolean\",\"id\":\"68241630924761778\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Прошел взвешивание\",\"Не походил взвешивания\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"school\",\"name\":\"Школа\",\"dataType\":\"string\",\"id\":\"73151630830426463\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"age\",\"name\":\"Возраст\",\"dataType\":\"string\",\"id\":\"76031630830413579\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"photo\",\"name\":\"Фото\",\"dataType\":\"file\",\"id\":\"80051630845397917\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"firstName\",\"name\":\"Имя\",\"dataType\":\"string\",\"id\":\"88411630830369791\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false}]",
                 "jsonGroupSettings": null,
-                "jsonViewIdSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-06-16T19:37:51Z",
-                "createBy": 1,
-                "changedBy": 1,
+                "dateChanged": "2021-09-06T17:42:29Z",
+                "createBy": 21,
+                "changedBy": 21,
                 "_settings": null,
                 "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
                     "name": "id",
@@ -3901,48 +4700,128 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "typeVariable": {},
                     "linkType": false,
-                    "indexExists": false,
-                    "linkOrArrayLinkType": false,
                     "json": false,
-                    "arrayLink": false
+                    "typeVariable": {},
+                    "arrayLink": false,
+                    "indexExists": false,
+                    "linkOrArrayLinkType": false
                 },
+                "folderId": 33657238
+            },
+            "99019951": {
+                "networkID": 9312,
+                "id": 99019951,
+                "dateCreated": "2021-09-06T17:10:01Z",
+                "hidden": false,
+                "dateHidden": null,
+                "name": "Протоколы",
+                "sysName": "protocols",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"sportsman_id\",\"name\":\"Участник\",\"dataType\":\"link\",\"id\":\"19791630948264385\",\"link\":\"sportsmen\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[\"category\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false},{\"sysName\":\"referee_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"34661630948252978\",\"link\":\"referee\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[\"webUser_id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false},{\"sysName\":\"score_ids\",\"name\":\"Оценки\",\"dataType\":\"arrayLink\",\"id\":\"50671630948309425\",\"link\":\"scores\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true},{\"sysName\":\"total_score\",\"name\":\"Итоговые баллы\",\"dataType\":\"number\",\"id\":\"72971630948284168\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"sportsman_id\"},{\"sysName\":\"referee_id\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-09-06T18:07:13Z",
+                "createBy": 21,
+                "changedBy": 21,
+                "_settings": null,
+                "_nativeIndexSettings": null,
                 "objectIDSysName": "id",
-                "folderId": null
+                "innerIDField": {
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "linkType": false,
+                    "json": false,
+                    "typeVariable": {},
+                    "arrayLink": false,
+                    "indexExists": false,
+                    "linkOrArrayLinkType": false
+                },
+                "folderId": 33657423
+            },
+            "99019952": {
+                "networkID": 9312,
+                "id": 99019952,
+                "dateCreated": "2021-09-06T17:13:28Z",
+                "hidden": false,
+                "dateHidden": null,
+                "name": "Оценки судей",
+                "sysName": "scores",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"isUndone\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"21231630954927208\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"mark\",\"name\":\"\",\"dataType\":\"number\",\"id\":\"62721630948449790\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"date\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"69051630948457728\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD MMM\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"protocol_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"85631630948431660\",\"link\":\"protocols\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"mark\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-09-06T19:02:22Z",
+                "createBy": 21,
+                "changedBy": 21,
+                "_settings": {
+                    "inMemory": false,
+                    "isCacheable": false,
+                    "timeCache": 0,
+                    "indexEnabled": true,
+                    "lowPriority": false
+                },
+                "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
+                "innerIDField": {
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "linkType": false,
+                    "json": false,
+                    "typeVariable": {},
+                    "arrayLink": false,
+                    "indexExists": false,
+                    "linkOrArrayLinkType": false
+                },
+                "folderId": 33657423
             }
         },
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
         "fileds": [
-            {
-                "sysName": "author",
-                "name": "",
-                "dataType": "link",
-                "id": "13781619702243181",
-                "link": "Authors",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "json": false,
-                "arrayLink": false
-            },
             {
                 "sysName": "id",
                 "name": "id",
@@ -3963,26 +4842,26 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "typeVariable": {},
                 "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
                 "json": false,
-                "arrayLink": false
+                "typeVariable": {},
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false
             },
             {
-                "sysName": "isGreat",
-                "name": "isGreat",
-                "dataType": "boolean",
-                "id": "82841623872260049",
-                "link": "",
+                "sysName": "score_ids",
+                "name": "Оценки",
+                "dataType": "arrayLink",
+                "id": "50671630948309425",
+                "link": "scores",
                 "group": "0",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 3,
+                "order": 4,
                 "linkIndexFieldSysName": [],
                 "defaultValue": null,
                 "constraints": null,
@@ -3990,42 +4869,15 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "typeVariable": {},
                 "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
                 "json": false,
-                "arrayLink": false
-            },
-            {
-                "sysName": "title",
-                "name": "",
-                "dataType": "string",
-                "id": "76761619702242678",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
                 "typeVariable": {},
-                "linkType": false,
+                "arrayLink": true,
                 "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "json": false,
-                "arrayLink": false
+                "linkOrArrayLinkType": true
             }
         ],
-        "quickSearch": "true"
+        "quickSearch": "false"
     }
 
 

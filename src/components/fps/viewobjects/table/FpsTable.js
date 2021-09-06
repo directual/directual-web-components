@@ -13,8 +13,8 @@ import { Paging } from '../paging/paging'
 function FpsTable({ auth, data, onEvent, id, currentBP }) {
     if (!data) { data = {} }
 
-    // console.log('---data---')
-    // console.log(data)
+    console.log('---data---')
+    console.log(data)
 
     const [loading, setLoading] = useState(false)
     const [searchValue, setSearchValue] = useState()

@@ -88,14 +88,14 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
         // const structure = getStructure(obj, transformTableFieldScheme(sysname, props.tableFieldScheme), props.tableStructures)
         const linkNameArr = []
         structure.visibleName && structure.visibleName.forEach(field => {
-            if (obj[field]) {
+            if (obj[field] || obj[field] == 0) {
                 linkNameArr.push(obj[field])
             }
         })
         const linkName = linkNameArr ? linkNameArr.length > 0 ? linkNameArr.join(' ') : null : null
         let displayID = ''
         if (typeof obj == 'string') { displayID = obj }
-        return linkName || displayID || obj.id || 'No visible name'
+        return linkName == 0 ? '0' : linkName || displayID || obj.id || 'No visible name'
 
     }
 

@@ -166,7 +166,7 @@ export function ObjectCard(props) {
         const linkNameArr = []
         structure.visibleName && structure.visibleName.forEach(field => {
             const fieldDetails = structure.fieldStructure.filter(i => i.sysName == field)[0]
-            if (obj[field]) {
+            if (obj[field] || obj[field] == 0) {
                 if (fieldDetails.dataType == 'date') {
                     linkNameArr.push(formatDate(obj[field], fieldDetails.formatOptions))
                 } else {
@@ -177,7 +177,7 @@ export function ObjectCard(props) {
         const linkName = linkNameArr.length > 0 ? linkNameArr.join(' ') : null
         let displayID = ''
         if (typeof obj == 'string') { displayID = obj }
-        return linkName || displayID || obj.id || 'No visible name'
+        return linkName == 0 ? '0' : linkName || displayID || obj.id || 'No visible name'
     }
 
     const scrollDivRef = useRef(null)
@@ -902,7 +902,7 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
 
     useEffect(()=>{
         isSubmitted && !loading && actionParams.closePopup && onClose()
-    }, loading)
+    }, [loading, isSubmitted])
 
     return (
         actionParams && checkActionCond && checkActionCond(conds) ?

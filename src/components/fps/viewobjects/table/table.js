@@ -52,7 +52,7 @@ const EditableCell = ({
     const formatOptions = fieldDetails[id].formatOptions || {}
 
     function numberWithSpaces(x) {
-        if (!x) return null
+        if (!x && x != 0) return null
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
     }
 
@@ -144,7 +144,7 @@ const EditableCell = ({
     // link:
     if (fieldDetails[id].dataType == 'link') {
         return <div className={`${styles.notEditableValue} ${styles.linkWrapper}`}>
-            <div className={`${styles.linkText}`}>
+            <div className={`${styles.linkText} ${styles.notClickable}`}>
                 {typeof value == 'object' ? getLinkName(id, value) : value}
             </div>
         </div>
@@ -163,8 +163,8 @@ const EditableCell = ({
     if (fieldDetails[id].dataType == 'arrayLink' && value) {
         return <div className={`${styles.notEditableValue} ${styles.linkWrapper}`}>
             {Array.isArray(value) ?
-                value.map(label => <div className={`${styles.linkText}`}>{getLinkName(id, label)}</div>) :
-                <div className={`${styles.linkText}`}>{value}</div>}
+                value.map(label => <div className={`${styles.linkText} ${styles.notClickable}`}>{getLinkName(id, label)}</div>) :
+                <div className={`${styles.linkText} ${styles.notClickable}`}>{value}</div>}
         </div>
     }
 
@@ -390,14 +390,14 @@ export function Table({
         const structure = getStructure(obj, transformTableFieldScheme(sysname, tableFieldScheme), tableStructures)
         const linkNameArr = []
         structure.visibleName && structure.visibleName.forEach(field => {
-            if (obj[field]) {
+            if (obj[field] || obj[field] == 0) {
                 linkNameArr.push(obj[field])
             }
         })
         const linkName = linkNameArr.length > 0 ? linkNameArr.join(' ') : null
         let displayID = ''
         if (typeof obj == 'string') { displayID = obj }
-        return linkName || displayID || obj.id || 'No visible name'
+        return linkName == 0 ? '0' : linkName || displayID || obj.id || 'No visible name'
     }
     //------------------------------
 
