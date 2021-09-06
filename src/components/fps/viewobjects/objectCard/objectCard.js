@@ -286,7 +286,7 @@ export function ObjectCard(props) {
                                         action={action.id}
                                         aType='actionForm'
                                         object={object}
-                                        checkActionCond={props.checkActionCond}
+                                        checkActionCond={cond => props.checkActionCond(cond,object)}
                                         onClose={props.onTerminate}
                                         submitAction={submitAction}
                                         actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
@@ -299,7 +299,7 @@ export function ObjectCard(props) {
                                         aType='actionButton'
                                         object={object}
                                         onClose={props.onTerminate}
-                                        checkActionCond={props.checkActionCond}
+                                        checkActionCond={cond => props.checkActionCond(cond,object)}
                                         submitAction={submitAction}
                                         actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
                                             props.params.actions.filter(i => action.id == 'action__' + i.id)[0]}

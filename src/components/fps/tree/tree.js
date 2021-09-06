@@ -22,6 +22,11 @@ export function Tree(props) {
 
     useEffect(() => composeTree(options), [options])
     useEffect(() => expandTree(), [tree])
+    useEffect(() => { 
+        if (props.selectedID != selectedID) {
+            setSelectedID(props.selectedID)
+        }
+    }, [props.selectedID])
 
     function selectOption(option) {
         setSelectedID(option)

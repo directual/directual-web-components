@@ -59,7 +59,7 @@ const EditableCell = ({
 
     if (fieldDetails[id].dataType == 'date') {
         return <div className={`${styles.notEditableValue}`}>
-            {formatOptions.isUTC == 'true' ?
+            {!value ? null : formatOptions.isUTC == 'true' ?
                 moment.utc(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
                 :
                 moment(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')}

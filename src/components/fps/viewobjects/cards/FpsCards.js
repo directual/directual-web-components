@@ -123,8 +123,8 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
         actionCond.forEach(cond => {
             if (typeof cond.fieldValue == 'object' && cond.fieldValue) { cond.fieldValue = cond.fieldValue.id }
             if (cond.target == 'id' && (!auth || auth.user !== cond.checkValue)) {
-                // console.log(auth.user + ' != ' + cond.checkValue)
-                // console.log('ID does not match');
+                console.log(auth.user + ' != ' + cond.checkValue)
+                console.log('ID does not match');
                 match = false
             }
             if (cond.target == 'id_in' && (!auth || !auth.user || !compareRoleArrays(auth.user, cond.checkValue))) {
@@ -136,17 +136,49 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
                 match = false
             }
             if (cond.target == 'role' && (!auth || !auth.role || (!compareRoleArrays(auth.role, cond.checkValue)))) {
-                //console.log('Role does not match');
+                console.log('Role does not match');
                 match = false
             }
             if ((cond.target == 'field' || cond.target == 'linkedField') && (!cond.fieldValue ||
                 cond.fieldValue.toString().toLowerCase() != cond.value.toString().toLowerCase())) {
-                // console.log(cond.fieldValue + ' != ' + cond.value);
-                // console.log('Field is wrong');
+                console.log(cond.fieldValue + ' != ' + cond.value);
+                console.log(cond)
+                console.log('Field is wrong');
                 match = false
             }
         })
         return match
+    }
+
+    const edenrichConds = (conds, object) => {
+        let eConds = conds ? [...conds] : null
+        // console.log('edenrichConds')
+        // console.log(conds)
+        // console.log(object)
+        // console.log(auth)
+        eConds && eConds.forEach(cond => {
+            // console.log(cond)
+            // console.log(object)
+            if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type == 'const') {
+                cond.checkValue = cond.value
+            }
+            if (cond.target == 'role') {
+                cond.checkValue = cond.value
+            }
+            if (cond.target == 'field') {
+                typeof object[cond.field] != 'object' ? cond.fieldValue = object[cond.field] :
+                    cond.fieldValue = object[cond.field].value || null
+                if (cond.value == 'false' && !cond.fieldValue) { cond.fieldValue = 'false' }
+                // console.log('cond.fieldValue')
+                // console.log(cond.fieldValue)
+
+            }
+            if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
+                typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
+                    cond.checkValue = object[cond.value].value || null // раньше тут было .id, а не .value проверить!
+            }
+        })
+        return eConds
     }
 
     return (
@@ -162,7 +194,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
                             object={showObject}
                             submit={submit}
                             auth={auth}
-                            checkActionCond={checkActionCond}
+                            checkActionCond={(cond,obj) => checkActionCond(edenrichConds(cond,obj))}
                             //shareble
                             firstCard
                             executeAction={submitAction}
@@ -190,7 +222,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
                 data={data}
                 params={data.params}
                 searchValue={searchValue}
-                checkActionCond={checkActionCond}
+                checkActionCond={(cond,obj) => checkActionCond(edenrichConds(cond,obj))}
                 onExpand={val => { setShowObject(val) }}
                 setPage={page => { sendMsg(null, null, { page: page }) }}
                 auth={auth}

@@ -93,7 +93,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
                         delete saveModel[field]
                     } // removing fields not for writing
                 if (data.params.data.fields[field].dataType == 'date' && typeof saveModel[field] == 'number') {
-                    saveModel[field] = moment(saveModel[field])
+                    saveModel[field] = saveModel[field] ? moment(saveModel[field]): null
                 }
             }
         }
@@ -109,10 +109,11 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
     const checkActionCond = (actionCond) => {
         if (!actionCond) { return true }
         const compareRoleArrays = (userRolesString, rolesString) => {
+            userRolesString = userRolesString + ''
             if (!userRolesString || !rolesString) return false
             let match = false
-            const userRoles = userRolesString.split(',')
-            const roles = rolesString.split(',')
+            const userRoles = (userRolesString + '').split(',')
+            const roles = (rolesString + '').split(',')
             userRoles.forEach(userRole => {
                 roles.forEach(role => {
                     if (userRole == role) { match = true }
@@ -124,8 +125,16 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
         actionCond.forEach(cond => {
             if (typeof cond.fieldValue == 'object' && cond.fieldValue) { cond.fieldValue = cond.fieldValue.id }
             if (cond.target == 'id' && (!auth || auth.user !== cond.checkValue)) {
-                // console.log(auth.user + ' != ' + cond.checkValue)
-                // console.log('ID does not match');
+                console.log(auth.user + ' != ' + cond.checkValue)
+                console.log('ID does not match');
+                match = false
+            }
+            if (cond.target == 'id_in' && (!auth || !auth.user || !compareRoleArrays(auth.user, cond.checkValue))) {
+                console.log(`user id ${auth && auth.user} is not in ${cond.checkValue}`)
+                match = false
+            }
+            if (cond.target == 'id_not_in' && (!auth || !auth.user || compareRoleArrays(auth.user, cond.checkValue))) {
+                console.log(`user id ${auth && auth.user} is in ${cond.checkValue}`)
                 match = false
             }
             if (cond.target == 'role' && (!auth || !auth.role || (!compareRoleArrays(auth.role, cond.checkValue)))) {
@@ -135,11 +144,43 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
             if ((cond.target == 'field' || cond.target == 'linkedField') && (!cond.fieldValue ||
                 cond.fieldValue.toString().toLowerCase() != cond.value.toString().toLowerCase())) {
                 console.log(cond.fieldValue + ' != ' + cond.value);
+                console.log(cond)
                 console.log('Field is wrong');
                 match = false
             }
         })
         return match
+    }
+
+    const edenrichConds = (conds, object) => {
+        let eConds = conds ? [...conds] : null
+        // console.log('edenrichConds')
+        // console.log(conds)
+        // console.log(object)
+        // console.log(auth)
+        eConds && eConds.forEach(cond => {
+            // console.log(cond)
+            // console.log(object)
+            if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type == 'const') {
+                cond.checkValue = cond.value
+            }
+            if (cond.target == 'role') {
+                cond.checkValue = cond.value
+            }
+            if (cond.target == 'field') {
+                typeof object[cond.field] != 'object' ? cond.fieldValue = object[cond.field] :
+                    cond.fieldValue = object[cond.field].value || null
+                if (cond.value == 'false' && !cond.fieldValue) { cond.fieldValue = 'false' }
+                // console.log('cond.fieldValue')
+                // console.log(cond.fieldValue)
+
+            }
+            if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
+                typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
+                    cond.checkValue = object[cond.value].value || null // раньше тут было .id, а не .value проверить!
+            }
+        })
+        return eConds
     }
 
     return (
@@ -156,7 +197,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
                             submit={submit}
                             auth={auth}
                             firstCard
-                            checkActionCond={checkActionCond}
+                            checkActionCond={(cond,obj) => checkActionCond(edenrichConds(cond,obj))}
                             //shareble
                             executeAction={submitAction}
                             params={data.params}
@@ -182,7 +223,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
                 data={data}
                 params={data.params}
                 searchValue={searchValue}
-                checkActionCond={checkActionCond}
+                checkActionCond={(cond,obj) => checkActionCond(edenrichConds(cond,obj))}
                 onExpand={val => { setShowObject(val) }}
                 setPage={page => { sendMsg(null, null, { page: page }) }}
                 auth={auth}

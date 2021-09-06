@@ -5,7 +5,7 @@ import ExpandedText from '../../expandedText/expandedText'
 import { Paging } from '../paging/paging'
 import moment from 'moment'
 
-export function Cards({ data, onExpand, loading, searchValue, auth, submitAction, params, checkActionCond, currentBP }) {
+export function Cards({ data, onExpand, edenrichConds, loading, searchValue, auth, submitAction, params, checkActionCond, currentBP }) {
     const tableHeaders = data.headers || []
     const tableData = enrichTableDataWithWriteFields(data) || []
     const tableParams = data.params || {
@@ -99,35 +99,6 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
 
     }
 
-    const edenrichConds = (conds, object) => {
-        let eConds = conds ? [...conds] : null
-        // console.log('edenrichConds')
-        // console.log(conds)
-        // console.log(object)
-        // console.log(auth)
-        eConds && eConds.forEach(cond => {
-            // console.log(cond)
-            // console.log(object)
-            if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type == 'const') {
-                cond.checkValue = cond.value
-            }
-            if (cond.target == 'role') {
-                cond.checkValue = cond.value
-            }
-            if (cond.target == 'field') {
-                typeof object[cond.value] != 'object' ? cond.fieldValue = object[cond.field] :
-                    cond.fieldValue = object[cond.field].value || null
-            }
-            if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
-                typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
-                    cond.checkValue = object[cond.value].value || null // раньше тут было .id, а не .value проверить!
-            }
-        })
-
-
-        return eConds
-    }
-
     return (
         <React.Fragment>
             <div className={`${styles.cardsWrapper} 
@@ -138,7 +109,7 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
                     const quickActions = params.actions ?
                         params.actions.filter(i => i.dropdown && i.displayAs == 'button'
                             && i.callFrom != 'linked'
-                            && checkActionCond(edenrichConds(i.conditionals, object))) : []
+                            && checkActionCond(i.conditionals, object)) : []
                     // выполнить Action
                     function performAction(actionParams) {
                         //console.log(actionParams)
@@ -186,15 +157,15 @@ export function Cards({ data, onExpand, loading, searchValue, auth, submitAction
 
                         // Range слайдер пока не прикрутил, см условие на .secondValue
                         if (!formatOptions.range || jsonParse(value).secondValue) { return }
-                        console.log('SLIDER')
-                        console.log(value)
-                        console.log(formatOptions)
-                        console.log(jsonParse(value))
+                        // console.log('SLIDER')
+                        // console.log(value)
+                        // console.log(formatOptions)
+                        // console.log(jsonParse(value))
 
                         const progress = jsonParse(value) ? 
                             100 * jsonParse(value).firstValue / (formatOptions.range.max - formatOptions.range.min) 
                              : 0
-                        console.log(progress)
+                        // console.log(progress)
 
                         return <div className={styles.cardsSlider}>
                             <div className={styles.line}>

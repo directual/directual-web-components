@@ -19,7 +19,6 @@ export default function FileUpload(props) {
 
     return (
         <React.Fragment>
-            <FilePreview />
             <Dropzone
                 multiple={props.multiple}
                 {...props}

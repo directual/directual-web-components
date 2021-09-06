@@ -156,13 +156,13 @@ export default function InputsPage() {
 
             <h2>File upload</h2>
             <br />
-            {/* <FileUpload 
+            <FileUpload 
                 multiple={false}
             />
             
             <br />
 
-            <FileUpload 
+            {/* <FileUpload 
                 multiple={true}
             /> */}
 
