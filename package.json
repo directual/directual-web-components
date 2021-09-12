@@ -26,13 +26,14 @@
     "bump": "npm version patch -m \"Release v%s\" && git push && git push --tags"
   },
   "peerDependencies": {
-    "react": "^16.0.0",
-    "react-table": "^7.7.0",
-    "react-datetime": "^2.16.3",
     "moment": "^2.26.0",
+    "react": "^16.0.0",
+    "react-beautiful-dnd": "^13.0.0",
+    "react-datetime": "^2.16.3",
     "react-dropzone": "^11.0.1",
     "react-markdown": "^5.0.2",
-    "react-beautiful-dnd": "^13.0.0",
+    "react-table": "^7.7.0",
+    "rehype-raw": "^6.1.0",
     "remark-gfm": "^1.0.0"
   },
   "devDependencies": {
@@ -67,6 +68,7 @@
     "react-dropzone": "^11.0.1",
     "react-markdown": "^5.0.2",
     "react-table": "^7.7.0",
+    "rehype-raw": "^6.1.0",
     "remark-gfm": "^1.0.0"
   }
 }

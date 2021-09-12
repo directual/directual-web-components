@@ -5661,7 +5661,7 @@ const App = (props) => {
         <FpsWrapper>
             <Router>
                 <MainMenuWrapper themeName={currentTheme} />
-                <ContentWrapper themeName={currentTheme}>
+                <ContentWrapper whiteLabel={true} themeName={currentTheme}>
                     <Switch>
                         <Route exact path="/table">
                             <FpsTable data={exampleTable} />

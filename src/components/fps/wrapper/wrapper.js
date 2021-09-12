@@ -43,12 +43,12 @@ export function ContentWrapper(props) {
                     {props.children}
                 </div>
             </div>
-            <div className={styles.diretualFooter}>
+            {!props.whiteLabel &&  <div className={styles.diretualFooter}>
                 <a target="_blank" className={styles.logo} href="https://directual.com?ref=fps_footer">
                     <img src={logoUrl} />
                 </a>
                 <span><span className={styles.madeon}>made on </span><a target="_blank" href="https://directual.com?ref=fps_footer">Directual</a></span>
-            </div>
+            </div>}
         </React.Fragment>
     )
 }

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactMarkdown from 'react-markdown'
-import gfm from 'remark-gfm'
+import remarkGfm from 'remark-gfm'
 
 import styles from './mkd.module.css'
 
@@ -54,11 +54,17 @@ export function Markdown(props) {
         return result;
     }
 
+    const input = `<div class="note">
+Some *emphasis* and <strong>strong</strong>!
+</div>`;
+
     const mkdExample =
         `# Hello world
 
 ## Nice to see you again
     
+
+
 Однажды в суровую зимнюю пору я из лесу вышел
 
 Был сильный мороз
@@ -86,16 +92,16 @@ export function Markdown(props) {
 
 `
 
-    const [value, setValue] = useState(props.value || (props.example && mkdExample))
+    const [value, setValue] = useState(props.value || (props.example && input))
 
-    useEffect(()=>{
+    useEffect(() => {
         if (props.value != value) {
             setValue(props.value)
         }
         if (countLines(inputEl.current, value) != lines) {
             setLines(countLines(inputEl.current, value))
         }
-    },[props.value])
+    }, [props.value])
 
     const changeMkd = val => {
         //console.log(val)
@@ -142,11 +148,17 @@ export function Markdown(props) {
                     </div>
                     {preview &&
                         <div className={styles.preview}>
-                            <ReactMarkdown plugins={[gfm]} children={value} />
+                            <ReactMarkdown
+                                //rehypePlugins={[rehypeRaw]}
+                                remarkPlugins={[remarkGfm]}
+                                children={value} />
                         </div>}
                 </div>
                 :
-                <ReactMarkdown plugins={[gfm]} children={value} />
+                <ReactMarkdown
+                    //rehypePlugins={[rehypeRaw]}
+                    remarkPlugins={[remarkGfm]}
+                    children={value} />
             }
         </div >
     )

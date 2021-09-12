@@ -8,6 +8,12 @@ import 'directual-web-components/dist/index.css'
 export default function InputsPage() {
     const [value, setValue] = useState()
 
+    const input = `
+# Hey
+<Img src="https://tpc.googlesyndication.com/simgad/5999243929061584949" width="300" />
+
+Some *emphasis* and <strong>strong</strong>!`;
+
     const [testDefValue, setTestDefValue] = useState(1630443600000)
 
     const testFields = [
