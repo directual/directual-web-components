@@ -5,6 +5,7 @@ import Loader from '../../loader/loader'
 import Input from '../input/input'
 import Backdrop from '../../backdrop/backdrop'
 import { relativeTimeRounding } from 'moment'
+import Hint from '../../hint/hint'
 
 export default function FileUpload(props) {
 
@@ -83,7 +84,8 @@ export default function FileUpload(props) {
                             method: 'POST',
                             body,
                         }).then(res => {
-                            setError(res.status)
+                            res.status != 200 && setError('Upload error: ' + res.status + ' ' + res.statusText)
+                            console.log(res)
                             res.json().then(result => {
                                 counter = counter + 1
                                 uploadedFiles.push(result.result)
@@ -138,7 +140,7 @@ export default function FileUpload(props) {
                     updateFiles(saveNewFiles)
                 }}
             />
-            {error && <pre style={{fontSize:12}} className='dd-debug'>{JSON.stringify(error,0,2)}</pre>}
+            {error && <Hint error margin={{top:12, bottom:1}}>{error}</Hint>}
         </div>
     )
 }
