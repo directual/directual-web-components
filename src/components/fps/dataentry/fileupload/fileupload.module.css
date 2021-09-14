@@ -149,11 +149,12 @@
   top: 0;
   right: 0;
   background: rgba(255, 255, 255, 0.8);
-  opacity: 0.3;
+  opacity: 0.4;
+  color: #000;
   cursor: pointer;
 }
 .imageList .imagePreview .deleteImage:hover {
-  opacity: 0.8;
+  opacity: 0.9;
 }
 .showImage {
   z-index: 201;
