@@ -48,6 +48,8 @@ export default function FileUpload(props) {
         props.onChange && props.onChange(resultFileString)
     }
 
+    const [error,setError] = useState(null)
+
     if (oldView && props.edit) return <div className={styles.uploadWrapper}>
         {/* {props.allowUpload && <a onClick={()=>setOldView(!oldView)} className={styles.switchView}>switch input view</a>} */}
         <Input 
@@ -81,6 +83,7 @@ export default function FileUpload(props) {
                             method: 'POST',
                             body,
                         }).then(res => {
+                            setError(res.status)
                             res.json().then(result => {
                                 counter = counter + 1
                                 uploadedFiles.push(result.result)
@@ -90,6 +93,7 @@ export default function FileUpload(props) {
                                 }
                             })
                         })
+                        .catch(err=>setError(err))
                     })
                 }}
             >
@@ -134,6 +138,7 @@ export default function FileUpload(props) {
                     updateFiles(saveNewFiles)
                 }}
             />
+            {error && <pre style={{fontSize:12}} className='dd-debug'>{JSON.stringify(error,0,2)}</pre>}
         </div>
     )
 }

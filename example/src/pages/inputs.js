@@ -165,7 +165,7 @@ Some *emphasis* and <strong>strong</strong>!`;
             <FileUpload
                 label='Files'
                 images
-                //edit
+                edit
                 test
                 allowUpload
                 defaultValue='https://api.alfa.directual.com/fileUploaded/testfiles/ee79ed98-5e00-4d51-948e-3ba2d5448ffc.jpeg,https://api.alfa.directual.com/fileUploaded/testfiles/ee79ed98-5e00-4d51-948e-3ba2d5448ffc.jpeg'
