@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
+import gfm from 'remark-gfm'
 
 import styles from './mkd.module.css'
 
@@ -92,7 +92,7 @@ Some *emphasis* and <strong>strong</strong>!
 
 `
 
-    const [value, setValue] = useState(props.value || (props.example && input))
+    const [value, setValue] = useState(props.value || (props.example && mkdExample))
 
     useEffect(() => {
         if (props.value != value) {
@@ -150,14 +150,15 @@ Some *emphasis* and <strong>strong</strong>!
                         <div className={styles.preview}>
                             <ReactMarkdown
                                 //rehypePlugins={[rehypeRaw]}
-                                remarkPlugins={[remarkGfm]}
+                                plugins={[gfm]}
                                 children={value} />
                         </div>}
                 </div>
                 :
                 <ReactMarkdown
                     //rehypePlugins={[rehypeRaw]}
-                    remarkPlugins={[remarkGfm]}
+                    plugins={[gfm]}
+                    //remarkPlugins={[remarkGfm]}
                     children={value} />
             }
         </div >
