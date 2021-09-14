@@ -52,7 +52,7 @@ export default function FileUpload(props) {
     const [error,setError] = useState(null)
 
     if (oldView && props.edit) return <div className={styles.uploadWrapper}>
-        {/* {props.allowUpload && <a onClick={()=>setOldView(!oldView)} className={styles.switchView}>switch input view</a>} */}
+        {props.allowUpload && <a onClick={()=>setOldView(!oldView)} className={styles.switchView}>upload to Directual storage</a>}
         <Input 
             label={props.label} 
             tip={props.tip}
@@ -65,7 +65,7 @@ export default function FileUpload(props) {
 
     return (
         <div className={styles.fileUpload} style={{ marginBottom: props.nomargin ? 0 : 22 }}>
-            {/* <a onClick={()=>setOldView(!oldView)} className={styles.switchView}>switch input view</a> */}
+            <a onClick={()=>setOldView(!oldView)} className={styles.switchView}>paste file URL</a>
             <label>{props.label}{props.required && '*'}</label>
             {props.description && <div className={styles.description}>{props.description}</div>}
             {(props.multiple || files.length == 0) && props.edit &&
