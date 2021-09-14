@@ -28,20 +28,20 @@ export default function FileUpload(props) {
     const [files, setFiles] = useState(toArray(props.defaultValue))
     const [oldView, setOldView] = useState(!props.allowUpload)
 
-    useEffect(()=>setFiles(toArray(props.defaultValue)), [props.defaultValue])
+    useEffect(() => setFiles(toArray(props.defaultValue)), [props.defaultValue])
 
     const updateFiles = newFiles => {
-        const resultFileString = newFiles.join(",")
-        setFiles(newFiles)
+        const resultFileString = Array.isArray(newFiles) ? newFiles.join(",") : newFiles
+        if (Array.isArray(newFiles)) {setFiles(newFiles)} else {setFiles(newFiles.split(','))}
         props.onChange && props.onChange(resultFileString)
     }
 
     const saveFiles = (newFiles) => {
         let resultFileList = [...files]
-        
-        if (newFiles.length == 0) { props.onChange && props.onChange(null); return undefined}
 
-        newFiles.forEach( (file, i) => {
+        if (newFiles.length == 0) { props.onChange && props.onChange(null); return undefined }
+
+        newFiles.forEach((file, i) => {
             resultFileList.push('https://api.directual.com/fileUploaded/' + file.finalFileName)
         })
         const resultFileString = resultFileList.join(",")
@@ -49,72 +49,77 @@ export default function FileUpload(props) {
         props.onChange && props.onChange(resultFileString)
     }
 
-    const [error,setError] = useState(null)
+    const [error, setError] = useState(null)
 
-    if (oldView && props.edit) return <div className={styles.uploadWrapper}>
-        {props.allowUpload && <a onClick={()=>setOldView(!oldView)} className={styles.switchView}>upload to Directual storage</a>}
-        <Input 
-            label={props.label} 
-            tip={props.tip}
-            description={props.description}
-            height={48}
-            onChange={props.onChange}
-            placeholder={props.multiple ? "Files URLs, comma separated, no spaces" : "File URL"}
-            type='file' defaultValue={files} nomargin={props.nomargin} />
-    </div>
+
 
     return (
-        <div className={styles.fileUpload} style={{ marginBottom: props.nomargin ? 0 : 22 }}>
-            <a onClick={()=>setOldView(!oldView)} className={styles.switchView}>paste file URL</a>
-            <label>{props.label}{props.required && '*'}</label>
-            {props.description && <div className={styles.description}>{props.description}</div>}
-            {(props.multiple || files.length == 0) && props.edit &&
-            <Dropzone
-                multiple={props.multiple ? true : false}
-                {...props}
-                accept={props.images ? 'image/*' : null}
-                onDrop={(acceptedFiles, rej, event) => {
-                    setUploading(true)
-                    let counter = 0
-                    let uploadedFiles = []
-                    acceptedFiles.forEach(file => {
-                        const body = new FormData
-                        body.append("file", file)
-                        fetch(props.host, {
-                            method: 'POST',
-                            body,
-                        }).then(res => {
-                            res.status != 200 && setError('Upload error: ' + res.status + ' ' + res.statusText)
-                            console.log(res)
-                            res.json().then(result => {
-                                counter = counter + 1
-                                uploadedFiles.push(result.result)
-                                if (counter == acceptedFiles.length) {
-                                    setUploading(false)
-                                    saveFiles(uploadedFiles)
-                                }
-                            })
-                        })
-                        .catch(err=>setError(err))
-                    })
-                }}
-            >
-                {({ getRootProps, getInputProps }) => (
-                    <section>
-                        {!uploading && <div {...getRootProps({ className: styles.dropzone })}>
-                            <input {...getInputProps()} />
-                            <p className={`icon icon-upload`}>
-                                {props.uploadText ||
-                                    props.multiple ? "Drop files here, or click to select files" :
-                                    "Drop a file here, or click to select one"}
-                            </p>
-                        </div>}
-                        {uploading &&
-                            <div className={styles.progress}>
-                                <Loader>Uploading files...</Loader>
-                            </div>}
+        <React.Fragment>
+            {oldView && props.edit && <div className={styles.uploadWrapper}>
+                {props.allowUpload && <a onClick={() => setOldView(!oldView)} className={styles.switchView}>upload to Directual storage</a>}
+                <Input
+                    label={props.label}
+                    tip={props.tip}
+                    description={props.description}
+                    height={48}
+                    nomargin
+                    onChange={updateFiles}
+                    placeholder={props.multiple ? "Files URLs, comma separated, no spaces" : "File URL"}
+                    type='file' defaultValue={files} />
+            </div>}
 
-                        {/* {files && files.length && <ul className={styles.multipleUpload}>
+            <div className={styles.fileUpload} style={{ marginBottom: props.nomargin ? 0 : 22 }}>
+                {!oldView && <React.Fragment>
+                    <a onClick={() => setOldView(!oldView)} className={styles.switchView}>paste file URL</a>
+                    <label>{props.label}{props.required && '*'}</label>
+                    {props.description && <div className={styles.description}>{props.description}</div>}
+                    {(props.multiple || files.length == 0) && props.edit &&
+                        <Dropzone
+                            multiple={props.multiple ? true : false}
+                            {...props}
+                            accept={props.images ? 'image/*' : null}
+                            onDrop={(acceptedFiles, rej, event) => {
+                                setUploading(true)
+                                let counter = 0
+                                let uploadedFiles = []
+                                acceptedFiles.forEach(file => {
+                                    const body = new FormData
+                                    body.append("file", file)
+                                    fetch(props.host, {
+                                        method: 'POST',
+                                        body,
+                                    }).then(res => {
+                                        res.status != 200 && setError('Upload error: ' + res.status + ' ' + res.statusText)
+                                        console.log(res)
+                                        res.json().then(result => {
+                                            counter = counter + 1
+                                            uploadedFiles.push(result.result)
+                                            if (counter == acceptedFiles.length) {
+                                                setUploading(false)
+                                                saveFiles(uploadedFiles)
+                                            }
+                                        })
+                                    })
+                                        .catch(err => setError(err))
+                                })
+                            }}
+                        >
+                            {({ getRootProps, getInputProps }) => (
+                                <section>
+                                    {!uploading && <div {...getRootProps({ className: styles.dropzone })}>
+                                        <input {...getInputProps()} />
+                                        <p className={`icon icon-upload`}>
+                                            {props.uploadText ||
+                                                props.multiple ? "Drop files here, or click to select files" :
+                                                "Drop a file here, or click to select one"}
+                                        </p>
+                                    </div>}
+                                    {uploading &&
+                                        <div className={styles.progress}>
+                                            <Loader>Uploading files...</Loader>
+                                        </div>}
+
+                                    {/* {files && files.length && <ul className={styles.multipleUpload}>
                             <li><strong>{files.length} file{files.length > 1 ? 's' : ''} being uploaded:</strong></li>
                             {files.map(file => <li key={file.name}>
                                 <span>
@@ -123,25 +128,28 @@ export default function FileUpload(props) {
                             </li>)}
 
                         </ul>} */}
-                    </section>
-                )
-                }
+                                </section>
+                            )
+                            }
 
-            </Dropzone >
-            }
-            <FileList
-                fileList={files}
-                images={props.images}
-                edit={props.edit}
-                onDelete={index => {
-                    console.log('deleting file: ' + index)
-                    const saveNewFiles = [...files]
-                    saveNewFiles.splice(index, 1)
-                    updateFiles(saveNewFiles)
-                }}
-            />
-            {error && <Hint error margin={{top:12, bottom:1}}>{error}</Hint>}
-        </div>
+                        </Dropzone >
+                    }
+                </React.Fragment>}
+                <FileList
+                    fileList={files}
+                    images={props.images}
+                    edit={props.edit}
+                    onDelete={index => {
+                        console.log('deleting file: ' + index)
+                        const saveNewFiles = [...files]
+                        saveNewFiles.splice(index, 1)
+                        updateFiles(saveNewFiles)
+                    }}
+                />
+                {error && <Hint error margin={{ top: 12, bottom: 1 }}>{error}</Hint>}
+            </div>
+
+        </React.Fragment>
     )
 }
 
@@ -229,12 +237,12 @@ function ShowImage({ imageUrl, swipe, swipable, close }) {
     }
 
     return <div className={styles.showImage}>
-        {swipable ? <div className={`${styles.toLeft} icon icon-back`} ref={leftButton} onClick={() => swipe(-1)} />: <div ref={leftButton} />}
+        {swipable ? <div className={`${styles.toLeft} icon icon-back`} ref={leftButton} onClick={() => swipe(-1)} /> : <div ref={leftButton} />}
         <div className={styles.imageWrapper}>
             <img ref={image} src={imageUrl} />
             <span ref={imageName} className={styles.imageName}>{imageUrl}</span>
         </div>
-        {swipable ? <div className={`${styles.toRight} icon icon-forward`} ref={rightButton} onClick={() => swipe(1)} />: <div ref={rightButton} />}
+        {swipable ? <div className={`${styles.toRight} icon icon-forward`} ref={rightButton} onClick={() => swipe(1)} /> : <div ref={rightButton} />}
     </div>
 }
 
