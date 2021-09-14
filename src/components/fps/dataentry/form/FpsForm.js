@@ -284,7 +284,7 @@ function FpsFormNew({ auth, data, onEvent, id }) {
                 return <InputForm
                   field={field}
                   placeholder={data.placeholder}
-                  onChange={value => { onChange(field.id, value) }}
+                  onChange={value => { onChange(field.id, value); console.log('onChange ' + field.id + ' => ' + value) }}
                   defaultValue={getFieldValue(field.id, field.dataType)}
                   editingOn
                 />

@@ -6,6 +6,7 @@ import moment from 'moment'
 import styles from '../../viewobjects/table/table.module.css'
 import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
+import FileUpload from '../fileupload/fileupload'
 
 export function InputForm(props) {
     // console.log(props.field)
@@ -29,8 +30,12 @@ export function InputForm(props) {
         case 'number_positiveNum':
         case 'string_email':
         case 'string_phone':
-        case 'file':
             return <FieldStandard {...props} />
+        case 'file_multipleFiles':
+        case 'file_multipleImages':
+        case 'file_image':
+        case 'file':
+            return <FieldFile {...props} />
         case 'boolean':
             return <FieldBoolean {...props} />
         case 'date':
@@ -112,6 +117,24 @@ function FieldStandard({ field, onChange, placeholder, editingOn, defaultValue }
         placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
         label={placeholder != "true" ? (field.content || field.id) : ''}
         description={field.descriptionFlag && field.description}
+        defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
+    />
+}
+
+function FieldFile({ field, onChange, placeholder, editingOn, defaultValue }) {
+    // console.log('FieldFile')
+    // console.log(field)
+
+    return <FileUpload
+        onChange={onChange}
+        allowUpload={field.fileUpload}
+        edit={editingOn}
+        multiple= {field.format == 'multipleFiles' || field.format == 'multipleImages'}
+        host='/api/upload'
+        images= {field.format == 'image' || field.format == 'multipleImages'}
+        description={field.descriptionFlag && field.description}
+        disabled={!editingOn}
+        label={placeholder != "true" ? (field.content || field.id) : ''}
         defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
     />
 }
@@ -255,7 +278,7 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
                 description={field.descriptionFlag && field.description}
                 defaultValue={(defaultValue && parseJson(defaultValue)) || ((field.defaultValueOn && field.defaultValue) ? { firstValue: field.defaultValue.firstValue } :
                     {
-                        firstValue: field.formatOptions.range ? Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 0 + field.formatOptions.range.min): null
+                        firstValue: field.formatOptions.range ? Math.floor((field.formatOptions.range.max - field.formatOptions.range.min) * 0 + field.formatOptions.range.min) : null
                     })
                 }
                 min={field.formatOptions.range && field.formatOptions.range.min}

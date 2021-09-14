@@ -286,7 +286,7 @@ export function ObjectCard(props) {
                                         action={action.id}
                                         aType='actionForm'
                                         object={object}
-                                        checkActionCond={cond => props.checkActionCond(cond,object)}
+                                        checkActionCond={cond => props.checkActionCond(cond, object)}
                                         onClose={props.onTerminate}
                                         submitAction={submitAction}
                                         actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
@@ -299,7 +299,7 @@ export function ObjectCard(props) {
                                         aType='actionButton'
                                         object={object}
                                         onClose={props.onTerminate}
-                                        checkActionCond={cond => props.checkActionCond(cond,object)}
+                                        checkActionCond={cond => props.checkActionCond(cond, object)}
                                         submitAction={submitAction}
                                         actionParams={props.params.actions && props.params.actions.filter(i => action.id == 'action__' + i.id) &&
                                             props.params.actions.filter(i => action.id == 'action__' + i.id)[0]}
@@ -452,6 +452,16 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                 <p className='dd-debug'><b>object: </b>{JSON.stringify(object[field.sysName])}</p>
             </div>}
 
+            {/* FILES */}
+            {(field.dataType == 'file') &&
+                <InputForm
+                    field={field}
+                    defaultValue={object[field.sysName].value}
+                    editingOn={field.write && editingOn}
+                    onChange={value => setModel({ ...model, [field.sysName]: value })}
+                />
+            }
+            <div style={{display:'none'}}>
             {/* КАРТИНКИ */}
             {field.dataType == 'file' && field.read && field.fileImage &&
                 <React.Fragment>
@@ -499,6 +509,7 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                     defaultValue={model[field.sysName]}
                     onChange={value => setModel({ ...model, [field.sysName]: value })}
                 />}
+            </div>
             {/* ========================== */}
             {/* СТРОКИ */}
             {(field.dataType == 'string') &&
@@ -547,21 +558,6 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                         editingOn={field.write && editingOn}
                         onChange={value => setModel({ ...model, [field.sysName]: value })}
                     />
-                    {/* {(field.write && editingOn) ?
-                        <Input
-                            type='radio'
-                            label={field.name || field.sysName}
-                            defaultValue={field.dataType == 'boolean' ? ((model[field.sysName] == 'true' || model[field.sysName] == true) ? true : false) : model[field.sysName]}
-                            options={
-                                [
-                                    { value: true, label: 'Yes' },
-                                    { value: false, label: 'No' },
-                                ]
-                            }
-                            onChange={value => setModel({ ...model, [field.sysName]: value })}
-                        />
-                        :
-                        <FieldReadOnly field={field} object={object} weblink={{}} />} */}
                 </React.Fragment>}
 
             {/* LINK & ARRAY LINK */}
@@ -889,18 +885,18 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
     }
 
     if (
-        isSubmitted 
+        isSubmitted
         && actionParams.showMessage
         && !loading
     ) {
-        return <div style={{width: actionParams.displayAs == 'form' ? '100%' : 'auto'}}>
+        return <div style={{ width: actionParams.displayAs == 'form' ? '100%' : 'auto' }}>
             {actionParams.displayAs == 'form' && <FormSection title={actionParams.name} />}
-            <Hint ok margin={{top:1, bottom:12}}>{actionParams.resultMessage || 'Submitted'}</Hint>
-            <Button onClick={()=>setIsSubmitted(false)} icon='refresh'>{actionParams.resultButton || 'Submit again'}</Button>
+            <Hint ok margin={{ top: 1, bottom: 12 }}>{actionParams.resultMessage || 'Submitted'}</Hint>
+            <Button onClick={() => setIsSubmitted(false)} icon='refresh'>{actionParams.resultButton || 'Submit again'}</Button>
         </div>
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         isSubmitted && !loading && actionParams.closePopup && onClose()
     }, [loading, isSubmitted])
 

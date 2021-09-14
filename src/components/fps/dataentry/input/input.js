@@ -289,6 +289,7 @@ export default function Input(props) {
             { key: 'radio', value: 'radio', icon: 'radio' },
             { key: 'checkbox', value: 'checkbox', icon: 'checkbox' },
             { key: 'cube', value: 'cube', icon: 'cube' },
+            { key: 'image', value: 'image', icon: 'image' },
 
             { key: 'money', value: 'money', icon: 'money' },
             { key: 'idea', value: 'idea', icon: 'idea' },

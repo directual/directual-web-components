@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import styles from './fileupload.module.css'
 import Dropzone from 'react-dropzone'
 import Loader from '../../loader/loader'
-
+import Input from '../input/input'
+import Backdrop from '../../backdrop/backdrop'
+import { relativeTimeRounding } from 'moment'
 
 export default function FileUpload(props) {
 
-    const [files, setFiles] = useState()
+    const [uploading, setUploading] = useState(false)
 
     function bytesToSize(bytes) {
         const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
@@ -17,66 +19,96 @@ export default function FileUpload(props) {
         return Math.round(bytes / Math.pow(1024, i)) + ' ' + sizes[i]
     }
 
+    const toArray = string => {
+        if (!string) return []
+        return string.split(",")
+    }
+
+    const [files, setFiles] = useState(toArray(props.defaultValue))
+    const [oldView, setOldView] = useState(!props.allowUpload)
+
+    useEffect(()=>setFiles(toArray(props.defaultValue)), [props.defaultValue])
+
+    const updateFiles = newFiles => {
+        const resultFileString = newFiles.join(",")
+        setFiles(newFiles)
+        props.onChange && props.onChange(resultFileString)
+    }
+
+    const saveFiles = (newFiles) => {
+        let resultFileList = [...files]
+        
+        if (newFiles.length == 0) { props.onChange && props.onChange(null); return undefined}
+
+        newFiles.forEach( (file, i) => {
+            resultFileList.push('https://api.directual.com/fileUploaded/' + file.finalFileName)
+        })
+        const resultFileString = resultFileList.join(",")
+        setFiles(resultFileList)
+        props.onChange && props.onChange(resultFileString)
+    }
+
+    if (oldView && props.edit) return <div className={styles.uploadWrapper}>
+        {/* {props.allowUpload && <a onClick={()=>setOldView(!oldView)} className={styles.switchView}>switch input view</a>} */}
+        <Input 
+            label={props.label} 
+            tip={props.tip}
+            description={props.description}
+            height={48}
+            onChange={props.onChange}
+            placeholder={props.multiple ? "Files URLs, comma separated, no spaces" : "File URL"}
+            type='file' defaultValue={files} nomargin={props.nomargin} />
+    </div>
+
     return (
-        <React.Fragment>
+        <div className={styles.fileUpload} style={{ marginBottom: props.nomargin ? 0 : 22 }}>
+            {/* <a onClick={()=>setOldView(!oldView)} className={styles.switchView}>switch input view</a> */}
+            <label>{props.label}{props.required && '*'}</label>
+            {props.description && <div className={styles.description}>{props.description}</div>}
+            {(props.multiple || files.length == 0) && props.edit &&
             <Dropzone
-                multiple={props.multiple}
+                multiple={props.multiple ? true : false}
                 {...props}
-                onDrop={acceptedFiles => {
-                    setFiles(acceptedFiles)
-                    console.log(acceptedFiles)
+                accept={props.images ? 'image/*' : null}
+                onDrop={(acceptedFiles, rej, event) => {
+                    setUploading(true)
+                    let counter = 0
+                    let uploadedFiles = []
                     acceptedFiles.forEach(file => {
                         const body = new FormData
                         body.append("file", file)
-                        fetch('https://files.directual.app/api/upload', {
+                        fetch(props.host, {
                             method: 'POST',
                             body,
-                            // headers: {
-                            //     'Content-Type': 'multipart/form-data; charset=utf-8; boundary=__X_PAW_BOUNDARY__'
-                            // },
                         }).then(res => {
-                            console.log('успех')
-                            console.log(res)
+                            res.json().then(result => {
+                                counter = counter + 1
+                                uploadedFiles.push(result.result)
+                                if (counter == acceptedFiles.length) {
+                                    setUploading(false)
+                                    saveFiles(uploadedFiles)
+                                }
+                            })
                         })
                     })
                 }}
             >
                 {({ getRootProps, getInputProps }) => (
                     <section>
-                        <div {...getRootProps({ className: styles.dropzone })}>
+                        {!uploading && <div {...getRootProps({ className: styles.dropzone })}>
                             <input {...getInputProps()} />
                             <p className={`icon icon-upload`}>
                                 {props.uploadText ||
                                     props.multiple ? "Drop files here, or click to select files" :
                                     "Drop a file here, or click to select one"}
                             </p>
-                        </div>
-                        {files && files.length && !props.multiple &&
+                        </div>}
+                        {uploading &&
                             <div className={styles.progress}>
-                                <Loader>Uploading file... 0%</Loader>
-                                <div className={styles.line}>
-                                    <div className={styles.ready} style={{ width: '25%' }}></div>
-                                </div>
-                                <div className={`icon icon-close ${styles.cancel}`} onClick={() => setFiles(null)}></div>
-                            </div>}
-                        {/* {files && files.length && props.multiple &&
-                        <div className={styles.uploaded}>
-                            <div className={`icon icon-done ${styles.fileName}`}>
-                                <span>
-                                    Uploaded: <strong>Hello_world.mov</strong>, 1.2 MB</span></div>
-                            <div className={`icon icon-delete ${styles.delete}`}></div>
-                        </div>} */}
-
-                        {files && files.length && props.multiple &&
-                            <div className={styles.progress}>
-                                <Loader>Uploading... 1 of {files.length}, 0%</Loader>
-                                <div className={styles.line}>
-                                    <div className={styles.ready} style={{ width: '25%' }}></div>
-                                </div>
-                                <div className={`icon icon-close ${styles.cancel}`}></div>
+                                <Loader>Uploading files...</Loader>
                             </div>}
 
-                        {files && files.length && <ul className={styles.multipleUpload}>
+                        {/* {files && files.length && <ul className={styles.multipleUpload}>
                             <li><strong>{files.length} file{files.length > 1 ? 's' : ''} being uploaded:</strong></li>
                             {files.map(file => <li key={file.name}>
                                 <span>
@@ -84,12 +116,150 @@ export default function FileUpload(props) {
                                 <div className={`icon icon-delete ${styles.delete}`}></div>
                             </li>)}
 
-                        </ul>}
+                        </ul>} */}
                     </section>
                 )
                 }
 
             </Dropzone >
-        </React.Fragment>
+            }
+            <FileList
+                fileList={files}
+                images={props.images}
+                edit={props.edit}
+                onDelete={index => {
+                    console.log('deleting file: ' + index)
+                    const saveNewFiles = [...files]
+                    saveNewFiles.splice(index, 1)
+                    updateFiles(saveNewFiles)
+                }}
+            />
+        </div>
     )
+}
+
+function FileList({ fileList, images, onDelete, edit }) {
+
+    fileList = fileList ? fileList : []
+    const [largeView, setLargeView] = useState(null)
+
+    if (fileList.length == 0) return <div />
+
+    return <React.Fragment>
+
+        {(largeView || largeView == 0) && <React.Fragment>
+            <ShowImage
+                imageUrl={fileList[largeView]}
+                close={() => { setLargeView(null) }}
+                swipable={fileList.length > 1}
+                swipe={i => {
+                    let saveIndex = largeView + i
+                    if (saveIndex > fileList.length - 1) { saveIndex = 0 }
+                    if (saveIndex < 0) { saveIndex = fileList.length - 1 }
+                    setLargeView(saveIndex)
+                }}
+            />
+            <Backdrop top onClick={() => { setLargeView(null) }} />
+        </React.Fragment>}
+
+        {images ? <div className={styles.imageList}>
+            {fileList.length > 0 && fileList.map((image, i) => <ImagePreview
+                key={i}
+                edit={edit}
+                imageUrl={image}
+                openImage={() => setLargeView(i)}
+                onDelete={() => onDelete(i)}
+            />)}
+        </div> :
+            <div className={styles.fileList}>
+                {fileList.length > 0 && fileList.map((file, i) => <FilePreview
+                    key={i}
+                    edit={edit}
+                    fileUrl={file}
+                    onDelete={() => onDelete(i)}
+                />)}
+            </div>}
+
+    </React.Fragment>
+}
+
+function ShowImage({ imageUrl, swipe, swipable, close }) {
+    const leftButton = useRef(null);
+    const rightButton = useRef(null);
+    const image = useRef(null);
+    const imageName = useRef(null);
+
+    // press 'Esc' for closing a popup:
+    const handleUserKeyPress = (e) => {
+        e.key == 'Escape' && close()
+        e.key == 'ArrowLeft' && swipe(-1)
+        e.key == 'ArrowRight' && swipe(1)
+    }
+
+    useEffect(() => {
+        window.addEventListener('keydown', handleUserKeyPress);
+        return () => { window.removeEventListener('keydown', handleUserKeyPress); };
+    }, [handleUserKeyPress]);
+    //----------------------
+
+    useOutsideAlerter(image);
+
+    function useOutsideAlerter(ref) {
+        useEffect(() => {
+            function handleClickOutside(event) {
+                if (!leftButton.current.contains(event.target) &&
+                    !rightButton.current.contains(event.target) &&
+                    !ref.current.contains(event.target) &&
+                    !imageName.current.contains(event.target)) {
+                    close()
+                }
+            }
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => {
+                document.removeEventListener("mousedown", handleClickOutside);
+            };
+        }, [ref]);
+    }
+
+    return <div className={styles.showImage}>
+        {swipable ? <div className={`${styles.toLeft} icon icon-back`} ref={leftButton} onClick={() => swipe(-1)} />: <div ref={leftButton} />}
+        <div className={styles.imageWrapper}>
+            <img ref={image} src={imageUrl} />
+            <span ref={imageName} className={styles.imageName}>{imageUrl}</span>
+        </div>
+        {swipable ? <div className={`${styles.toRight} icon icon-forward`} ref={rightButton} onClick={() => swipe(1)} />: <div ref={rightButton} />}
+    </div>
+}
+
+function ImagePreview({ imageUrl, onDelete, openImage, edit }) {
+    return <div className={styles.imagePreview}>
+        <img src={imageUrl}
+            onClick={() => openImage()}
+        />
+        {edit && <div className={`icon icon-close ${styles.deleteImage}`}
+            onClick={e => {
+                e.stopPropagation()
+                onDelete()
+            }}
+        />}
+    </div>
+}
+
+function FilePreview({ fileUrl, onDelete, edit }) {
+
+    const getResolution = line => {
+        const regex = /\....?.?.?$/g;
+        const found = line.match(regex);
+        return found ? found[0].substring(1) : '?'
+    }
+
+    return <div className={styles.fileWrapper}>
+        <div className={styles.resolutionWrapper}>
+            {getResolution(fileUrl)}
+        </div>
+        <div className={styles.fileUrl}>
+            <a href={fileUrl} target="_blank">{fileUrl}</a>
+        </div>
+        {edit && <div className={`${styles.delete} icon icon-delete`} onClick={onDelete} />}
+    </div>
 }

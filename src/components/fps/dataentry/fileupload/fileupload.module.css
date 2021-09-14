@@ -20,8 +20,30 @@
 .dropzone input {
   outline: none;
 }
+.fileUpload {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.fileUpload label {
+  font-size: var(--text-small-size);
+  opacity: 0.7;
+  padding-bottom: 6px;
+  font-weight: var(--strong-font-weight);
+}
+.uploadWrapper {
+  position: relative;
+}
+.switchView {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+  z-index: 200;
+  opacity: 0.5;
+}
 .progress {
-  height: 44px;
+  height: 50px;
   border: solid 1px var(--field-border-color);
   flex-shrink: 0;
   border-radius: var(--border-radius);
@@ -106,4 +128,120 @@
 }
 .multipleUpload li .delete:hover {
   opacity: 0.9;
+}
+.imageList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.imageList .imagePreview {
+  height: 120px;
+  position: relative;
+  margin-right: 12px;
+  cursor: pointer;
+}
+.imageList .imagePreview img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.imageList .imagePreview .deleteImage {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8);
+  opacity: 0.3;
+  cursor: pointer;
+}
+.imageList .imagePreview .deleteImage:hover {
+  opacity: 0.8;
+}
+.showImage {
+  z-index: 201;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+}
+.showImage .imageWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.showImage .imageWrapper img {
+  max-width: 80vw;
+  max-height: 80vh;
+}
+.showImage .imageWrapper .imageName {
+  margin-top: 12px;
+  opacity: 0.4;
+}
+.showImage .imageWrapper .imageName:hover {
+  opacity: 1;
+}
+.showImage .toLeft {
+  margin-left: 12px;
+}
+.showImage .toRight {
+  margin-right: 12px;
+}
+.showImage .toLeft,
+.showImage .toRight {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.showImage .toLeft:hover,
+.showImage .toRight:hover {
+  opacity: 1;
+}
+.fileList {
+  margin: 12px 0;
+}
+.fileWrapper {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  border-radius: 8px;
+}
+.fileWrapper:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+.fileWrapper .resolutionWrapper {
+  width: 40px;
+  height: 45px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #666;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 12px;
+}
+.fileWrapper .fileUrl {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 12px;
+  opacity: 0.6;
+  white-space: nowrap;
+  flex-grow: 2;
+}
+.fileWrapper .delete {
+  opacity: 0.3;
+  cursor: pointer;
+}
+.fileWrapper .delete:hover {
+  opacity: 0.9;
+}
+.description {
+  font-size: var(--text-small-size);
+  opacity: 0.6;
+  margin: 3px 0 9px;
 }

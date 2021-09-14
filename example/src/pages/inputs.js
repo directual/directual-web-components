@@ -162,8 +162,16 @@ Some *emphasis* and <strong>strong</strong>!`;
 
             <h2>File upload</h2>
             <br />
-            <FileUpload 
-                multiple={false}
+            <FileUpload
+                label='Files'
+                images
+                //edit
+                test
+                allowUpload
+                defaultValue='https://api.alfa.directual.com/fileUploaded/testfiles/ee79ed98-5e00-4d51-948e-3ba2d5448ffc.jpeg,https://api.alfa.directual.com/fileUploaded/testfiles/ee79ed98-5e00-4d51-948e-3ba2d5448ffc.jpeg'
+                host={'host'}
+                multiple={true}
+                onChange={value => console.log(value)}
             />
             
             <br />
