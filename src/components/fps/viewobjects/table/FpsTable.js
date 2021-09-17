@@ -184,37 +184,13 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
     let autoRefreshPeriod = data.params.autoRefreshPeriod || 60 // минута по умолчанию
     autoRefreshPeriod = autoRefreshPeriod * 1000
 
-    function useDebounce() {
-        const [debouncedValue, setDebouncedValue] = useState("");
-        function debounce(debounceFunc, delay) {
-            clearTimeout(debouncedValue)
-            const timeout = setTimeout(debounceFunc, delay)
-            setDebouncedValue(timeout)
-        }
-        return debounce
-    }
-
-    const debounce = useDebounce();
-
-    // useEffect(() => {
-    //     let count = 0
-    //     console.log('rerender!')
-    //     const intervalId = setInterval(() => {
-    //         count++
-    //         console.log('count ' + count)
-    //         // debounce(() => {
-    //         // //     sendMsg()
-    //         // }, 5000)
-    //     }, 1000)
-    //     return clearInterval(intervalId)
-    // }, [])
-
     useEffect(() => {
         let count = 0
         console.log('autoRefreshPeriod')
         console.log(autoRefreshPeriod)
         console.log('autoRefresh')
         console.log(autoRefresh)
+        sendMsg()
         if (!autoRefresh) { return }
         const interval = setInterval(() => {
             count++

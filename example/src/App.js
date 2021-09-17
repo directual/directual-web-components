@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {
     FpsCards, FpsForm, MainMenu, FpsTable, FpsTheme,
     FpsWrapper, ContentWrapper, SignIn, Media, CodeSnippet,
-    Dnd, Profile
+    Dnd, Profile, TabsPane
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 import {
@@ -5519,6 +5519,10 @@ const App = (props) => {
     }, [currentTheme])
 
 
+    const exampleTabs = [
+        { key: '1', title: 'Table', content: <FpsTable data={exampleTable} /> },
+        { key: '2', title: 'Tab 2', content: <div>Tab content 2</div> },
+    ]
 
     return (
         <FpsWrapper>
@@ -5527,7 +5531,7 @@ const App = (props) => {
                 <ContentWrapper whiteLabel={true} themeName={currentTheme}>
                     <Switch>
                         <Route exact path="/table">
-                            <FpsTable data={exampleTable} />
+                            <TabsPane tabs={exampleTabs} hideSingleTab currentTabKey={1} fixedScroll={false} />
                         </Route>
                         <Route exact path="/">
                             <WhatIsIt />
