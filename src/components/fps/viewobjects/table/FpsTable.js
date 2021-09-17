@@ -211,6 +211,10 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
 
     useEffect(() => {
         let count = 0
+        console.log('autoRefreshPeriod')
+        console.log(autoRefreshPeriod)
+        console.log('autoRefresh')
+        console.log(autoRefresh)
         if (!autoRefresh) { return }
         const interval = setInterval(() => {
             count++
