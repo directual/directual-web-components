@@ -16,39 +16,6 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
     // console.log('---data---')
     // console.log(data)
 
-    // function useDebounce(value, delay) {
-    //     const [debouncedValue, setDebouncedValue] = useState(value);
-    //     useEffect(
-    //         () => {
-    //             const handler = setTimeout(() => {
-    //                 setDebouncedValue(value);
-    //             }, delay);
-    //             return () => {
-    //                 clearTimeout(handler);
-    //             };
-    //         },
-    //         [value]
-    //     );
-
-    //     return debouncedValue;
-    // }
-
-
-    // const refreshFunc = useDebounce(()=>console.log('CCC'), 5000);
-
-    // useEffect(
-    //     () => {
-    //         // Make sure we have a value (user has entered something in input)
-    //         if (refreshFunc) {
-    //             console.log('AAA')
-    //         } else {
-    //             console.log('BBB')
-    //         }
-    //     },
-    //     [refreshFunc]
-    // );
-
-
     const [loading, setLoading] = useState(false)
     const [searchValue, setSearchValue] = useState()
 
@@ -77,7 +44,6 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
             console.log(data.writeError)
         }
     }, [data])
-
 
 
     const handleCloseShowObject = () => {
@@ -215,12 +181,45 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
     }
 
     const { hideExpandTD, autoRefresh, largeFont } = data.params
-    const autoRefreshPeriod = data.params.autoRefreshPeriod || 60 // минута по умолчанию
+    let autoRefreshPeriod = data.params.autoRefreshPeriod || 60 // минута по умолчанию
+    autoRefreshPeriod = autoRefreshPeriod * 1000
 
-    if (autoRefresh) { setInterval(()=> { 
-        console.log('autorefresh!')
-        sendMsg()
-    }, autoRefreshPeriod * 1000)}
+    function useDebounce() {
+        const [debouncedValue, setDebouncedValue] = useState("");
+        function debounce(debounceFunc, delay) {
+            clearTimeout(debouncedValue)
+            const timeout = setTimeout(debounceFunc, delay)
+            setDebouncedValue(timeout)
+        }
+        return debounce
+    }
+
+    const debounce = useDebounce();
+
+    // useEffect(() => {
+    //     let count = 0
+    //     console.log('rerender!')
+    //     const intervalId = setInterval(() => {
+    //         count++
+    //         console.log('count ' + count)
+    //         // debounce(() => {
+    //         // //     sendMsg()
+    //         // }, 5000)
+    //     }, 1000)
+    //     return clearInterval(intervalId)
+    // }, [])
+
+    useEffect(() => {
+        let count = 0
+        if (!autoRefresh) { return }
+        const interval = setInterval(() => {
+            count++
+            console.log('rerender № ' + count);
+            sendMsg()
+        }, autoRefreshPeriod);
+        return () => clearInterval(interval);
+    }, []);
+
 
     return (
         <ComponentWrapper currentBP={currentBP}>
