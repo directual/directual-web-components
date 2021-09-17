@@ -180,7 +180,7 @@ const defaultColumn = {
     Cell: EditableCell
 }
 
-function ReactTable({ columns, data, updateMyData, fieldDetails, tableParams, skipPageReset, getLinkName, onExpand }) {
+function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fieldDetails, tableParams, skipPageReset, getLinkName, onExpand }) {
     const {
         getTableProps,
         getTableBodyProps,
@@ -217,7 +217,7 @@ function ReactTable({ columns, data, updateMyData, fieldDetails, tableParams, sk
                             {/* <th style={{ width: 20 }}>
                                 <Checkbox label='' />
                             </th> */}
-                            <th style={{ width: 30 }} />
+                            {!hideExpandTD && <th style={{ width: 30 }} />}
                             {headerGroup.headers.map(column => {
                                 if (tableParams[column.id].colorRow || !tableParams[column.id].include) return null
                                 return <React.Fragment>
@@ -258,7 +258,7 @@ function ReactTable({ columns, data, updateMyData, fieldDetails, tableParams, sk
                                 {/* <td>
                                     <Checkbox label='' />
                                 </td> */}
-                                <td ><a onClick={() => onExpand(row.original)} className={`icon icon-expand ${styles.expand}`} /></td>
+                                {!hideExpandTD && <td ><a onClick={() => onExpand(row.original)} className={`icon icon-expand ${styles.expand}`} /></td>}
                                 {row.cells.map(cell => {
 
                                     const isColorCell = tableParams[cell.column.id].colorCell ? tableParams[cell.column.id] : null
@@ -281,7 +281,7 @@ function ReactTable({ columns, data, updateMyData, fieldDetails, tableParams, sk
                                                 { color: colorCellValue } :
                                                 { backgroundColor: colorCellValue }
                                             : {}}
-                                        className={`${styles.nowrap} ${styles.ellipsis}`}
+                                        className={`${styles.nowrap} ${styles.ellipsis} ${largeFont ? styles.largeFont : ''}`}
 
                                     >{cell.render('Cell')}</td>
                                 }
@@ -303,7 +303,9 @@ export function Table({
     searchValue,
     auth,
     submitAction,
+    largeFont,
     params,
+    hideExpandTD,
     checkActionCond,
 }) {
 
@@ -454,6 +456,8 @@ export function Table({
     return <ReactTable
         columns={columns}
         data={tableData}
+        hideExpandTD={hideExpandTD}
+        largeFont={largeFont}
         getLinkName={getLinkName}
         updateMyData={updateMyData}
         fieldDetails={fieldDetails}

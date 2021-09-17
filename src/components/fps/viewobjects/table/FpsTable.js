@@ -8,13 +8,46 @@ import React, { useState, useEffect } from 'react'
 import { ComponentWrapper } from '../../wrapper/wrapper'
 import moment from 'moment'
 import { Paging } from '../paging/paging'
-
+import Button from '../../button/button'
 
 function FpsTable({ auth, data, onEvent, id, currentBP }) {
     if (!data) { data = {} }
 
-    console.log('---data---')
-    console.log(data)
+    // console.log('---data---')
+    // console.log(data)
+
+    // function useDebounce(value, delay) {
+    //     const [debouncedValue, setDebouncedValue] = useState(value);
+    //     useEffect(
+    //         () => {
+    //             const handler = setTimeout(() => {
+    //                 setDebouncedValue(value);
+    //             }, delay);
+    //             return () => {
+    //                 clearTimeout(handler);
+    //             };
+    //         },
+    //         [value]
+    //     );
+
+    //     return debouncedValue;
+    // }
+
+
+    // const refreshFunc = useDebounce(()=>console.log('CCC'), 5000);
+
+    // useEffect(
+    //     () => {
+    //         // Make sure we have a value (user has entered something in input)
+    //         if (refreshFunc) {
+    //             console.log('AAA')
+    //         } else {
+    //             console.log('BBB')
+    //         }
+    //     },
+    //     [refreshFunc]
+    // );
+
 
     const [loading, setLoading] = useState(false)
     const [searchValue, setSearchValue] = useState()
@@ -78,22 +111,20 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
     }
 
     const submit = (model) => {
-        const saveModel = {...model}
+        const saveModel = { ...model }
         if (saveModel) {
             for (const field in saveModel) {
                 // console.log(field)
-                if (saveModel[field] && typeof saveModel[field] == 'object' && data.params.data.fields[field].dataType != 'date')
-                    {   
-                        // console.log('removing links')
-                        delete saveModel[field]
-                    }  // removing links
-                if (writeFields.indexOf(field) == -1)
-                    {
-                        // console.log(`removing ${field} as a field not for writing`)
-                        delete saveModel[field]
-                    } // removing fields not for writing
+                if (saveModel[field] && typeof saveModel[field] == 'object' && data.params.data.fields[field].dataType != 'date') {
+                    // console.log('removing links')
+                    delete saveModel[field]
+                }  // removing links
+                if (writeFields.indexOf(field) == -1) {
+                    // console.log(`removing ${field} as a field not for writing`)
+                    delete saveModel[field]
+                } // removing fields not for writing
                 if (data.params.data.fields[field].dataType == 'date' && typeof saveModel[field] == 'number') {
-                    saveModel[field] = saveModel[field] ? moment(saveModel[field]): null
+                    saveModel[field] = saveModel[field] ? moment(saveModel[field]) : null
                 }
             }
         }
@@ -183,8 +214,14 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
         return eConds
     }
 
+    const { hideExpandTD, autoRefresh, largeFont } = data.params
+    const autoRefreshPeriod = data.params.autoRefreshPeriod || 60 // минута по умолчанию
+
+    if (autoRefresh) { setInterval(()=> sendMsg(), autoRefreshPeriod * 1000)}
+
     return (
         <ComponentWrapper currentBP={currentBP}>
+            {/* <Button onClick={()=>sendMsg()} icon='refresh'>refresh</Button> */}
             {showObject &&
                 <React.Fragment>
                     <Backdrop onClick={handleCloseShowObject} hoverable />
@@ -197,7 +234,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
                             submit={submit}
                             auth={auth}
                             firstCard
-                            checkActionCond={(cond,obj) => checkActionCond(edenrichConds(cond,obj))}
+                            checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
                             //shareble
                             executeAction={submitAction}
                             params={data.params}
@@ -221,9 +258,11 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
             <Table
                 currentBP={currentBP}
                 data={data}
+                largeFont={largeFont}
+                hideExpandTD={hideExpandTD}
                 params={data.params}
                 searchValue={searchValue}
-                checkActionCond={(cond,obj) => checkActionCond(edenrichConds(cond,obj))}
+                checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
                 onExpand={val => { setShowObject(val) }}
                 setPage={page => { sendMsg(null, null, { page: page }) }}
                 auth={auth}

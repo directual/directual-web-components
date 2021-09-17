@@ -8,6 +8,7 @@ import { Cards } from './cards'
 import { ComponentWrapper } from '../../wrapper/wrapper'
 import moment from 'moment'
 import { Paging } from '../paging/paging'
+import Button from '../../button/button'
 
 
 function FpsCards({ auth, data, onEvent, id, currentBP }) {
@@ -183,6 +184,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
 
     return (
         <ComponentWrapper currentBP={currentBP}>
+            {/* <Button onClick={()=>sendMsg()} icon='refresh'>refresh</Button> */}
             {showObject &&
                 <React.Fragment>
                     <Backdrop onClick={handleCloseShowObject} hoverable />
