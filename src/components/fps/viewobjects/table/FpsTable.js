@@ -217,7 +217,10 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
     const { hideExpandTD, autoRefresh, largeFont } = data.params
     const autoRefreshPeriod = data.params.autoRefreshPeriod || 60 // минута по умолчанию
 
-    if (autoRefresh) { setInterval(()=> sendMsg(), autoRefreshPeriod * 1000)}
+    if (autoRefresh) { setInterval(()=> { 
+        console.log('autorefresh!')
+        sendMsg()
+    }, autoRefreshPeriod * 1000)}
 
     return (
         <ComponentWrapper currentBP={currentBP}>
