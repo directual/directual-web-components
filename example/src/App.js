@@ -5596,7 +5596,7 @@ const App = (props) => {
                             {/* <h2>Youtube</h2>
                             <CodeSnippet code="<Media type='video' source='https://www.youtube.com/watch?v=JAwEWLP-G_M' width='550' height='300'/>" />
                             <Media type='video' source="https://www.youtube.com/watch?v=JAwEWLP-G_M" width='550' height='300' /> */}
-                            <Stopwatch timer min={0} direction='reverse1' sec={10} />
+                            <Stopwatch timer min={60} direction='reverse' sec={0} />
                         </Route>
 
                     </Switch>

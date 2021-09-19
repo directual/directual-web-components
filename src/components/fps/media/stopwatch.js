@@ -18,28 +18,36 @@ export default function Stopwatch(props) {
 
     const isReverse = data.direction == 'reverse'
 
+    // console.log('second = ' + second)
+    // console.log('minute = ' + minute)
+    // console.log('counter = ' + counter)
+
     useEffect(() => {
         let intervalId;
         if (isActive) {
             intervalId = setInterval(() => {
-                const startTime = 60 * startMin + startSec
+                console.log('startMin = ' + startMin)
+                console.log('startSec = ' + startSec)
+                const startTime = 60 * parseInt(startMin) + parseInt(startSec)
                 let nowTimer = isReverse ? startTime - counter : startTime + counter
+                console.log('startTime = ' + startTime)
+                console.log('nowTimer = ' + nowTimer)
                 nowTimer = nowTimer < 0 ? 0 : nowTimer
-
                 const secondCounter = nowTimer % 60
                 const minuteCounter = Math.floor(nowTimer / 60);
+                console.log('secondCounter = ' + secondCounter)
+                console.log('minuteCounter = ' + minuteCounter)
+                // let computedSecond =
+                //     String(secondCounter).length === 1
+                //         ? `0${secondCounter}`
+                //         : secondCounter;
+                // let computedMinute =
+                //     String(minuteCounter).length === 1
+                //         ? `0${minuteCounter}`
+                //         : minuteCounter;
 
-                let computedSecond =
-                    String(secondCounter).length === 1
-                        ? `0${secondCounter}`
-                        : secondCounter;
-                let computedMinute =
-                    String(minuteCounter).length === 1
-                        ? `0${minuteCounter}`
-                        : minuteCounter;
-
-                setSecond(computedSecond);
-                setMinute(computedMinute);
+                setSecond(addZero(secondCounter));
+                setMinute(addZero(minuteCounter));
 
                 setCounter((counter) => counter + 1);
             }, 1000);
