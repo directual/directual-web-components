@@ -5,7 +5,7 @@ import styles from './tree.module.css'
 
 export function Tree(props) {
 
-    const { options, draggable, onCheck, loading, move } = props
+    const { options, draggable, onCheck, loading, move, oneLevel } = props
 
     const defaultTree = {
         id: 'root',
@@ -15,14 +15,16 @@ export function Tree(props) {
         children: []
     }
 
+    const trashFolder = options.filter(i => i.id == 'trash').length > 0 ? options.filter(i => i.id == 'trash')[0] : null
+
     const [tree, setTree] = useState(props.defaultTree || defaultTree)
     const [isOpenned, setIsOppened] = useState({ root: true }) //, 2: true, 6: true, 1: true })
-    const [selectedID, setSelectedID] = useState(props.selectedID || props.defaultTree.id || defaultTree.id)
+    const [selectedID, setSelectedID] = useState(props.selectedID) // || props.defaultTree.id || defaultTree.id)
     const [localLoading, setLocalLoading] = useState(true) // костыль под beautiful-dnd, чтобы DOM-дерево успело подгрузиться
 
     useEffect(() => composeTree(options), [options])
     useEffect(() => expandTree(), [tree])
-    useEffect(() => { 
+    useEffect(() => {
         if (props.selectedID != selectedID) {
             setSelectedID(props.selectedID)
         }
@@ -37,8 +39,9 @@ export function Tree(props) {
         // console.log('====composeTree=====')
         // console.log(options)
         function collectChildren(folder) {
-            let children = (options || []).filter(i => { 
-                return i.parentID == folder }) || []
+            let children = (options || []).filter(i => {
+                return i.parentID == folder
+            }) || []
             if (!children.length) {
                 setLocalLoading(false)
                 return []
@@ -60,6 +63,7 @@ export function Tree(props) {
     }
 
     function expandTree() {
+        if (oneLevel) { return }
         let saveIsOpenned = { ...isOpenned }
         function expandParent(parent) {
             saveIsOpenned[parent] = true
@@ -85,6 +89,24 @@ export function Tree(props) {
         move(ID, to)
     }
 
+    // console.log(tree)
+
+    if (oneLevel) {
+        return <div className={styles.treeWrapper}>
+            {loading || localLoading ? <Loader>Loading tree...</Loader> :
+                <DragDropContext onDragEnd={onDragEnd}>
+                    {options.map(folder => <PlainFolder
+                        key={folder.id}
+                        folder={folder}
+                        selectedID={selectedID}
+                        setSelectedID={selectOption}
+                    //isOpenned={isOpenned}
+                    // setIsOppened={setIsOppened}
+                    />)}
+                </DragDropContext>}
+        </div>
+    }
+
     return <div className={styles.treeWrapper}>
         {loading || localLoading ? <Loader>Loading tree...</Loader> : <DragDropContext onDragEnd={onDragEnd}>
             <Folder
@@ -98,9 +120,33 @@ export function Tree(props) {
                 setIsOppened={setIsOppened}
             />
         </DragDropContext>}
+        <hr className={styles.hr}/>
+        {trashFolder && <PlainFolder
+            folder={{
+                id: trashFolder.id,
+                icon: trashFolder.icon,
+                value: trashFolder.name,
+            }}
+            selectedID={selectedID}
+            setSelectedID={selectOption}
+        />}
     </div>
 }
 
+function PlainFolder({ folder, setSelectedID, selectedID }) {
+
+    return <div className={`
+        ${styles.folderName} 
+        ${styles.treeElement}
+        ${folder.id == selectedID ? styles.selected : ''}`}
+        onClick={() => {
+            //console.log(folder.id)
+            setSelectedID(folder.id)
+        }}
+    >
+        <div className={`${styles.treeElementName} icon icon-${folder.icon}`}><span>{folder.value}</span></div>
+    </div>
+}
 
 
 function Folder({ root, tree, isOpenned, setIsOppened, selectedID, setSelectedID, draggable, index }) {

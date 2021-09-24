@@ -1983,364 +1983,269 @@ export default function LayoutPage() {
 
     const defaultOptions = [
         {
-            "id": "33625676",
+            "id": "33649723",
             "name": "System",
             "parentID": "root",
             "icon": "folder",
             "isFolder": true
         },
         {
-            "id": "33625677",
+            "id": "33649724",
             "name": "Logs",
-            "parentID": "33625676",
+            "parentID": "33649723",
             "icon": "folder",
             "isFolder": true
         },
         {
-            "id": "33625678",
+            "id": "33649725",
             "name": "Integrations",
             "parentID": "root",
             "icon": "folder",
             "isFolder": true
         },
         {
-            "id": "33625679",
+            "id": "33649726",
             "name": "Email",
-            "parentID": "33625678",
+            "parentID": "33649725",
             "icon": "folder",
             "isFolder": true
         },
         {
-            "id": "33625680",
+            "id": "33649727",
             "name": "SMS",
-            "parentID": "33625678",
+            "parentID": "33649725",
             "icon": "folder",
             "isFolder": true
         },
         {
-            "id": "33625681",
+            "id": "33649728",
             "name": "Telegram",
-            "parentID": "33625678",
+            "parentID": "33649725",
             "icon": "folder",
             "isFolder": true
         },
         {
-            "id": "33625682",
+            "id": "33649729",
             "name": "Zapier",
-            "parentID": "33625678",
+            "parentID": "33649725",
             "icon": "folder",
             "isFolder": true
         },
         {
-            "id": "33625683",
+            "id": "33649730",
             "name": "WebFlow",
-            "parentID": "33625678",
+            "parentID": "33649725",
             "icon": "folder",
             "isFolder": true
         },
         {
-            "id": "33625684",
+            "id": "33649731",
             "name": "Webhooks",
-            "parentID": "33625678",
+            "parentID": "33649725",
             "icon": "folder",
             "isFolder": true
         },
         {
-            "id": "33625685",
-            "name": "Feature Requests",
-            "parentID": "root",
-            "icon": "folder",
-            "isFolder": true
-        },
-        {
-            "id": "33625686",
-            "name": "Email confirmation",
-            "parentID": "root",
-            "icon": "folder",
-            "isFolder": true
-        },
-        {
-            "id": "33626486",
-            "name": "Subscriptions",
-            "parentID": "root",
-            "icon": "folder",
-            "isFolder": true
-        },
-        {
-            "id": "33626566",
-            "name": "Chat bot",
-            "parentID": "root",
-            "icon": "folder",
-            "isFolder": true
-        },
-        {
-            "id": "33626586",
-            "name": "Release notes",
+            "id": "33656474",
+            "name": "🛒 ECWID",
             "parentID": "root",
             "icon": "folder",
             "isFolder": true
         },
         {
             "id": "root",
+            "name": "Root",
             "parentID": "null",
             "icon": "folder",
             "isFolder": true
         },
         {
             "id": "trash",
+            "name": "Deleted structures",
             "parentID": "null",
             "icon": "delete",
             "isFolder": false
         },
         {
-            "id": "1385542_structure",
+            "id": "1428580_structure",
             "name": "App users",
             "parentID": "root",
             "icon": "user",
             "isFolder": false
         },
         {
-            "id": "1385543_structure",
+            "id": "1428581_structure",
             "name": "Files",
             "parentID": "root",
             "icon": "clip",
             "isFolder": false
         },
         {
-            "id": "1385544_structure",
+            "id": "1428582_structure",
             "name": "App global constants",
-            "parentID": "33625676",
+            "parentID": "33649723",
             "icon": "database",
             "isFolder": false
         },
         {
-            "id": "1385545_structure",
+            "id": "1428583_structure",
             "name": "System messages",
-            "parentID": "33625677",
+            "parentID": "33649724",
             "icon": "database",
             "isFolder": false
         },
         {
-            "id": "1385546_structure",
+            "id": "1428584_structure",
             "name": "System exceptions",
-            "parentID": "33625677",
+            "parentID": "33649724",
             "icon": "database",
             "isFolder": false
         },
         {
-            "id": "1385547_structure",
+            "id": "1428585_structure",
             "name": "Import data logs",
-            "parentID": "33625677",
+            "parentID": "33649724",
             "icon": "database",
             "isFolder": false
         },
         {
-            "id": "1385548_structure",
+            "id": "1428586_structure",
             "name": "Incoming emails",
-            "parentID": "33625679",
+            "parentID": "33649726",
             "icon": "database",
             "isFolder": false
         },
         {
-            "id": "1385549_structure",
+            "id": "1428587_structure",
             "name": "Sent emails",
-            "parentID": "33625679",
+            "parentID": "33649726",
             "icon": "database",
             "isFolder": false
         },
         {
-            "id": "1385600_structure",
+            "id": "1428588_structure",
             "name": "SMS sent",
-            "parentID": "33625680",
+            "parentID": "33649727",
             "icon": "database",
             "isFolder": false
         },
         {
-            "id": "1385601_structure",
+            "id": "1428589_structure",
             "name": "Incoming Telegram messages",
-            "parentID": "33625681",
+            "parentID": "33649728",
             "icon": "database",
             "isFolder": false
         },
         {
-            "id": "1385602_structure",
+            "id": "1428590_structure",
             "name": "Outcoming Telegram messages",
-            "parentID": "33625681",
+            "parentID": "33649728",
             "icon": "database",
             "isFolder": false
         },
         {
-            "id": "1385603_structure",
+            "id": "1428591_structure",
             "name": "Users Telegram",
-            "parentID": "33625681",
+            "parentID": "33649728",
             "icon": "database",
             "isFolder": false
         },
         {
-            "id": "1385604_structure",
+            "id": "1428592_structure",
             "name": "Chats Telegram",
-            "parentID": "33625681",
+            "parentID": "33649728",
             "icon": "database",
             "isFolder": false
         },
         {
-            "id": "1385605_structure",
+            "id": "1428593_structure",
             "name": "Keyboards Telegram",
-            "parentID": "33625681",
+            "parentID": "33649728",
             "icon": "database",
             "isFolder": false
         },
         {
-            "id": "1385606_structure",
+            "id": "1428594_structure",
             "name": "Zapier access settings",
-            "parentID": "33625682",
+            "parentID": "33649729",
             "icon": "database",
             "isFolder": false
         },
         {
-            "id": "1385607_structure",
+            "id": "1428595_structure",
             "name": "Webflow access settings",
-            "parentID": "33625683",
+            "parentID": "33649730",
             "icon": "database",
             "isFolder": false
         },
         {
-            "id": "1385608_structure",
+            "id": "1428596_structure",
             "name": "Social users",
-            "parentID": "33625676",
+            "parentID": "33649723",
             "icon": "database",
             "isFolder": false
         },
         {
-            "id": "1385609_structure",
+            "id": "1428597_structure",
             "name": "User sessions",
-            "parentID": "33625676",
+            "parentID": "33649723",
             "icon": "database",
             "isFolder": false
         },
         {
-            "id": "1385610_structure",
-            "name": "Feature requests and Bug reports",
-            "parentID": "33625685",
+            "id": "99018107_structure",
+            "name": "ChatBotWebHookData",
+            "parentID": "33649731",
             "icon": "database",
             "isFolder": false
         },
         {
-            "id": "1385611_structure",
-            "name": "votes",
-            "parentID": "33625685",
+            "id": "99018110_structure",
+            "name": "Ecwid Goods",
+            "parentID": "33656474",
             "icon": "database",
             "isFolder": false
         },
         {
-            "id": "1385612_structure",
-            "name": "request_status",
-            "parentID": "33625685",
+            "id": "99018113_structure",
+            "name": "Ecwid updates",
+            "parentID": "33656474",
             "icon": "database",
             "isFolder": false
         },
         {
-            "id": "1385613_structure",
-            "name": "development_status",
-            "parentID": "33625685",
-            "icon": "database",
-            "isFolder": false
-        },
-        {
-            "id": "1385614_structure",
-            "name": "feature_type",
-            "parentID": "33625685",
-            "icon": "database",
-            "isFolder": false
-        },
-        {
-            "id": "1385615_structure",
-            "name": "Email Confirmation Request",
-            "parentID": "33625686",
-            "icon": "database",
-            "isFolder": false
-        },
-        {
-            "id": "1385616_structure",
-            "name": "Email Confirmation Code",
-            "parentID": "33625686",
-            "icon": "database",
-            "isFolder": false
-        },
-        {
-            "id": "1386809_structure",
-            "name": "subscription_requests",
-            "parentID": "33626486",
-            "icon": "database",
-            "isFolder": false
-        },
-        {
-            "id": "1386810_structure",
-            "name": "Subscriptions",
-            "parentID": "33626486",
-            "icon": "database",
-            "isFolder": false
-        },
-        {
-            "id": "1386862_structure",
-            "name": "Message to the Chatbot",
-            "parentID": "33626566",
-            "icon": "database",
-            "isFolder": false
-        },
-        {
-            "id": "1386900_structure",
-            "name": "Releases",
-            "parentID": "33626586",
-            "icon": "database",
-            "isFolder": false
-        },
-        {
-            "id": "1386901_structure",
-            "name": "API versions",
-            "parentID": "33626586",
-            "icon": "database",
-            "isFolder": false
-        },
-        {
-            "id": "1386902_structure",
-            "name": "UI versions",
-            "parentID": "33626586",
-            "icon": "database",
-            "isFolder": false
-        },
-        {
-            "id": "1386924_structure",
-            "name": "tags",
-            "parentID": "33625685",
-            "icon": "database",
-            "isFolder": false
-        },
-        {
-            "id": "1393152_structure",
-            "name": "testWebHookData",
-            "parentID": "33625684",
-            "icon": "database",
-            "isFolder": false
-        },
-        {
-            "id": "1393153_structure",
-            "name": "test2WebHookData",
-            "parentID": "33625684",
-            "icon": "database",
-            "isFolder": false
-        },
-        {
-            "id": "1429192_structure",
-            "name": "fileTest",
+            "id": "99018525_structure",
+            "name": "Mockup Goods",
             "parentID": "root",
+            "icon": "database",
+            "isFolder": false
+        },
+        {
+            "id": "99019069_structure",
+            "name": "Ecwid pull integration",
+            "parentID": "33656474",
             "icon": "database",
             "isFolder": false
         }
     ]
 
+    const oneLevelOptions = [
+        {
+            "id": "root",
+            "icon": "folder",
+            "value": "All scenarios"
+        },
+        {
+            "id": "trash",
+            "icon": "delete",
+            "value": "Deleted"
+        }
+    ]
+
     const [options, setOptions] = useState(defaultOptions)
     const [selectedID, setSelectedID] = useState('root')
+
+
 
     const [loading, setLoading] = useState(false)
 
@@ -2371,6 +2276,15 @@ export default function LayoutPage() {
                 console.log(saveOptions)
                 setOptions(saveOptions)
             } }
+        />
+        <br />
+        <Tree
+            //draggable
+            oneLevel
+            options={oneLevelOptions}
+            //selectedID={selectedID}
+            loading={loading}
+            onCheck={setSelectedID}
         />
     </div>
 }
