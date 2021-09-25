@@ -63,7 +63,10 @@ export function Tree(props) {
     }
 
     function expandTree() {
-        if (oneLevel) { return }
+        // console.log('expandTree')
+        // console.log(selectedID)
+        // console.log(trashFolder.id)
+        if (oneLevel || selectedID == trashFolder.id) { return }
         let saveIsOpenned = { ...isOpenned }
         function expandParent(parent) {
             saveIsOpenned[parent] = true

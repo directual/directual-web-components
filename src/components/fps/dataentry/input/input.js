@@ -462,7 +462,7 @@ export default function Input(props) {
                 <div className={styles.field_wrapper}>
                     <div className={`${styles.input_icon_wrapper} icon icon-mail`} />
                     <input
-                        autoComplete="off"
+                        autoComplete={props.autoComplete || "off"}
                         ref={inputEl}
                         disabled={props.disabled}
                         className={`${styles.field} ${styles.icon} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
