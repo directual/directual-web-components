@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {
     Button, Input, InputGroup, ComponentDetails, CodeSnippet, FileUpload,
-    Checkbox, Markdown
+    Checkbox, Markdown, DropFiles
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
@@ -161,6 +161,12 @@ Some *emphasis* and <strong>strong</strong>!`;
             <Input defaultValue="мороз и солнце день чудесный" width={120} /> */}
 
             <h2>File upload</h2>
+            <br />
+            <DropFiles 
+                label='drop files here'
+                multiple={false}
+                onDrop={value => console.log(value)}
+            />
             <br />
             <FileUpload
                 label='Files'

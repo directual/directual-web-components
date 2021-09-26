@@ -32,7 +32,7 @@ export default function FileUpload(props) {
 
     const updateFiles = newFiles => {
         const resultFileString = Array.isArray(newFiles) ? newFiles.join(",") : newFiles
-        if (Array.isArray(newFiles)) {setFiles(newFiles)} else {setFiles(newFiles.split(','))}
+        if (Array.isArray(newFiles)) { setFiles(newFiles) } else { setFiles(newFiles.split(',')) }
         props.onChange && props.onChange(resultFileString)
     }
 
@@ -50,8 +50,6 @@ export default function FileUpload(props) {
     }
 
     const [error, setError] = useState(null)
-
-
 
     return (
         <React.Fragment>
@@ -277,4 +275,38 @@ function FilePreview({ fileUrl, onDelete, edit }) {
         </div>
         {edit && <div className={`${styles.delete} icon icon-delete`} onClick={onDelete} />}
     </div>
+}
+
+export function DropFiles(props) {
+    return (
+        <React.Fragment>
+            <div className={styles.fileUpload} style={{ marginBottom: props.nomargin ? 0 : 22 }}>
+                <label>{props.label}{props.required && '*'}</label>
+                {props.description && <div className={styles.description}>{props.description}</div>}
+                <Dropzone
+                    // multiple={props.multiple ? true : false}
+                    // accept={props.accept}
+                    // onDrop={props.onDrop}
+                    {...props}
+                >
+                    {({ getRootProps, getInputProps }) => (
+                        <section>
+                            {!props.uploading && <div {...getRootProps({ className: styles.dropzone })}>
+                                <input {...getInputProps()} />
+                                <p className={`icon icon-upload`}>
+                                    {props.uploadText || "Drop a file here, or click to select one"}
+                                </p>
+                            </div>}
+                            {props.uploading &&
+                                <div className={styles.progress}>
+                                    <Loader>Uploading files...</Loader>
+                                </div>}
+                        </section>
+                    )
+                    }
+                </Dropzone >
+            </div>
+
+        </React.Fragment>
+    )
 }
