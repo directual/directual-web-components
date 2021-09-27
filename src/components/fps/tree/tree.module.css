@@ -21,6 +21,7 @@
 .treeElement {
   border: solid 2px rgba(0, 0, 0, 0);
   border-radius: var(--border-radius);
+  color: var(--font-color);
   opacity: 0.6;
   cursor: pointer;
   min-width: 0;
@@ -28,6 +29,9 @@
   display: flex;
   height: 32px;
   align-items: center;
+}
+.treeElement:hover {
+  color: var(--font-color);
 }
 .treeElement .noShrink {
   flex-shrink: 0;

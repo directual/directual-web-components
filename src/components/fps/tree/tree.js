@@ -5,7 +5,7 @@ import styles from './tree.module.css'
 
 export function Tree(props) {
 
-    const { options, draggable, onCheck, loading, move, oneLevel } = props
+    const { options, draggable, onCheck, loading, move, oneLevel, host } = props
 
     const defaultTree = {
         id: 'root',
@@ -52,6 +52,7 @@ export function Tree(props) {
                     name: i.name,
                     isFolder: i.isFolder,
                     icon: i.icon,
+                    sysName: i.sysName,
                     children: collectChildren(i.id)
                 }
             })
@@ -114,6 +115,7 @@ export function Tree(props) {
         {loading || localLoading ? <Loader>Loading tree...</Loader> : <DragDropContext onDragEnd={onDragEnd}>
             <Folder
                 root
+                host={host}
                 key={tree.id}
                 draggable={draggable}
                 tree={tree}
@@ -152,7 +154,7 @@ function PlainFolder({ folder, setSelectedID, selectedID }) {
 }
 
 
-function Folder({ root, tree, isOpenned, setIsOppened, selectedID, setSelectedID, draggable, index }) {
+function Folder({ root, tree, isOpenned, setIsOppened, host, selectedID, setSelectedID, draggable, index }) {
     return <Droppable droppableId={`folder_${tree.id}`} type="tree">
         {(provided, snapshot) => (<div
             ref={provided.innerRef}
@@ -194,6 +196,7 @@ function Folder({ root, tree, isOpenned, setIsOppened, selectedID, setSelectedID
                                         index={index}
                                         draggable={draggable}
                                         tree={child}
+                                        host={host}
                                         selectedID={selectedID}
                                         setSelectedID={setSelectedID}
                                         isOpenned={isOpenned}
@@ -203,6 +206,7 @@ function Folder({ root, tree, isOpenned, setIsOppened, selectedID, setSelectedID
                                     return <Element
                                         element={child}
                                         index={index}
+                                        host={host}
                                         key={child.id}
                                         draggable={draggable}
                                         selectedID={selectedID}
@@ -266,19 +270,23 @@ function Folder({ root, tree, isOpenned, setIsOppened, selectedID, setSelectedID
     </Droppable>
 }
 
-function Element({ element, selectedID, setSelectedID, draggable, index }) {
+function Element({ element, host, selectedID, setSelectedID, draggable, index }) {
+    console.log(element)
     return <Draggable draggableId={`drag_${element.id}`} type="tree">
         {(provided, snapshot) => (<div>
-            <div className={`
+            <a className={`
                 ${styles.treeElement}
                 ${element.id == selectedID ? styles.selected : ''}`}
-                onClick={() => setSelectedID(element.id)}
+                onClick={(e) => { 
+                    e.preventDefault()
+                    setSelectedID(element.id) }}
                 {...provided.draggableProps}
                 ref={provided.innerRef}
+                href={`${host}${element.sysName}`}
             >
                 <div className={`${styles.treeElementName} icon icon-${element.icon}`}><span>{element.name}</span></div>
                 {draggable && <div {...provided.dragHandleProps} className={`${styles.noShrink} ${styles.drag} icon icon-details`} onClick={e => e.stopPropagation()} />}
-            </div>
+            </a>
             {snapshot.isDragging &&
                 <div style={{ opacity: .5 }}>
                     <div className={`

@@ -2071,6 +2071,7 @@ export default function LayoutPage() {
             "name": "App users",
             "parentID": "root",
             "icon": "user",
+            "sysName": 'WebUser',
             "isFolder": false
         },
         {
@@ -2259,6 +2260,7 @@ export default function LayoutPage() {
             options={options}
             selectedID={selectedID}
             loading={loading}
+            host='http://ya.ru/'
             onCheck={setSelectedID}
             move={(id, to) => {
                 const saveOptions = [...options]
