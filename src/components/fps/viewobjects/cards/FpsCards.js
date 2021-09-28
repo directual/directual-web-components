@@ -91,7 +91,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
                     console.log(`removing ${field} as a field not for writing`)
                     delete saveModel[field]
                 } // removing fields not for writing
-                if (data.params.data.fields[field].dataType == 'date' && typeof saveModel[field] == 'number') {
+                if (data.params.data.fields[field] && data.params.data.fields[field].dataType == 'date' && typeof saveModel[field] == 'number') {
                     saveModel[field] = moment(saveModel[field])
                 }
             }

@@ -20,6 +20,7 @@ export default function Datepicker(props) {
     const [value, setValue] = useState(props.defaultValue && props.utc ? moment.utc(props.defaultValue) : moment(props.defaultValue))
 
     const parseJson = json => {
+        if (!json) return {}
         let parsedJson = {}
         if (typeof json == 'object') return json
         try {
