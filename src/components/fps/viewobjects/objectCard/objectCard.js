@@ -46,6 +46,9 @@ export function ObjectCard(props) {
     //----------------------
 
     const transformTableFieldScheme = (sysname, tableFieldScheme) => {
+        // console.log('transformTableFieldScheme')
+        // console.log(sysname)
+        // console.log(tableFieldScheme)
         let newTableFieldScheme = tableFieldScheme.filter(i => i[0].startsWith(sysname + '.'))
         var deepClone = JSON.parse(JSON.stringify(newTableFieldScheme))
         deepClone.forEach(i => i[0] = i[0].substring(sysname.length + 1))
@@ -157,12 +160,15 @@ export function ObjectCard(props) {
         props.executeAction(mapping, sl)
     }
 
+
     //------------------------------
-    function getLinkName(sysname, obj) {
-        // console.log('obj')
+    function getLinkName(sysname, obj, fieldScheme) {
+        // console.log('getLinkName')
+        // console.log(sysname)
         // console.log(obj)
-        const structure = getStructure(obj, transformTableFieldScheme(sysname, props.tableFieldScheme), props.tableStructures)
-        // console.log(structure)
+        // console.log(fieldScheme)
+        fieldScheme = fieldScheme || props.tableFieldScheme
+        const structure = getStructure(obj, transformTableFieldScheme(sysname, fieldScheme), props.tableStructures)
         const linkNameArr = []
         structure.visibleName && structure.visibleName.forEach(field => {
             const fieldDetails = structure.fieldStructure.filter(i => i.sysName == field)[0]
@@ -170,7 +176,11 @@ export function ObjectCard(props) {
                 if (fieldDetails.dataType == 'date') {
                     linkNameArr.push(formatDate(obj[field], fieldDetails.formatOptions))
                 } else {
-                    linkNameArr.push(obj[field])
+                    if (typeof obj[field] == 'object') {
+                        linkNameArr.push(getLinkName(field, obj[field], transformTableFieldScheme(sysname, fieldScheme)))
+                    } else {
+                        linkNameArr.push(obj[field])
+                    }
                 }
             }
         })
@@ -320,6 +330,8 @@ export function ObjectCard(props) {
                         setModel={value => { setModel(value); }}
                         setLinkedObject={setLinkedObject}
                         setShowLinkedObject={setShowLinkedObject}
+                        transformTableFieldScheme={transformTableFieldScheme}
+                        tableFieldScheme={props.tableFieldScheme}
                         getLinkName={getLinkName}
                         setLinkedObjectStruct={fieldSysName =>
                             setLinkedObjectStruct(transformTableFieldScheme(fieldSysName, props.tableFieldScheme))}
@@ -429,8 +441,8 @@ export function ObjectCard(props) {
     )
 }
 
-function CardField({ field, object, model, setModel, debug, editingOn, formatDate,
-    setLinkedObject, setLinkedObjectStruct, setShowLinkedObject, getLinkName }) {
+function CardField({ field, object, model, setModel, debug, editingOn, formatDate, tableFieldScheme,
+    setLinkedObject, setLinkedObjectStruct, setShowLinkedObject, getLinkName, transformTableFieldScheme }) {
     const [edit, setEdit] = useState(false)
 
     const getResolution = line => {
@@ -461,54 +473,54 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                     onChange={value => setModel({ ...model, [field.sysName]: value })}
                 />
             }
-            <div style={{display:'none'}}>
-            {/* КАРТИНКИ */}
-            {field.dataType == 'file' && field.read && field.fileImage &&
-                <React.Fragment>
-                    <span className={styles.label}>
-                        {field.name || field.sysName}</span>
-                    <div className={styles.cardImage}
-                        style={{
-                            width: field.fileImageSize || 200,
-                            height: field.fileImageSize || 200,
-                            backgroundImage: `url(${object[field.sysName].value})`,
-                            borderRadius: field.fileImageFormat == 'circle' ? (field.fileImageSize || 200) : 0
-                        }}
-                    >
-                        {field.write && editingOn && <div
-                            className={`${styles.editPic} icon icon-edit`}
-                            onClick={() => setEdit(!edit)}
-                        ></div>}
-                        {!object[field.sysName].value && <span className={styles.noPic}>no picture</span>}
-                    </div>
-                </React.Fragment>}
+            <div style={{ display: 'none' }}>
+                {/* КАРТИНКИ */}
+                {field.dataType == 'file' && field.read && field.fileImage &&
+                    <React.Fragment>
+                        <span className={styles.label}>
+                            {field.name || field.sysName}</span>
+                        <div className={styles.cardImage}
+                            style={{
+                                width: field.fileImageSize || 200,
+                                height: field.fileImageSize || 200,
+                                backgroundImage: `url(${object[field.sysName].value})`,
+                                borderRadius: field.fileImageFormat == 'circle' ? (field.fileImageSize || 200) : 0
+                            }}
+                        >
+                            {field.write && editingOn && <div
+                                className={`${styles.editPic} icon icon-edit`}
+                                onClick={() => setEdit(!edit)}
+                            ></div>}
+                            {!object[field.sysName].value && <span className={styles.noPic}>no picture</span>}
+                        </div>
+                    </React.Fragment>}
 
-            {/* ФАЙЛЫ */}
-            {field.dataType == 'file' && field.read && !field.fileImage &&
-                <React.Fragment>
-                    <span className={styles.label}>
-                        {field.name || field.sysName}</span>
-                    <div className={styles.cardFile}>
-                        {model[field.sysName] &&
-                            <a href={model[field.sysName]} target="_blank" className={`${styles.download} icon icon-download`}>
-                                <span>Download <code>{' ' + getResolution(model[field.sysName]) || 'file'}</code></span>
-                            </a>}
-                        {field.write && editingOn &&
-                            <Button icon={`${model[field.sysName] ? 'refresh' : 'upload'}`} small onClick={() => setEdit(!edit)}>
-                                {model[field.sysName] ? 'Change file' : 'Upload file'}</Button>}
-                    </div>
-                </React.Fragment>}
+                {/* ФАЙЛЫ */}
+                {field.dataType == 'file' && field.read && !field.fileImage &&
+                    <React.Fragment>
+                        <span className={styles.label}>
+                            {field.name || field.sysName}</span>
+                        <div className={styles.cardFile}>
+                            {model[field.sysName] &&
+                                <a href={model[field.sysName]} target="_blank" className={`${styles.download} icon icon-download`}>
+                                    <span>Download <code>{' ' + getResolution(model[field.sysName]) || 'file'}</code></span>
+                                </a>}
+                            {field.write && editingOn &&
+                                <Button icon={`${model[field.sysName] ? 'refresh' : 'upload'}`} small onClick={() => setEdit(!edit)}>
+                                    {model[field.sysName] ? 'Change file' : 'Upload file'}</Button>}
+                        </div>
+                    </React.Fragment>}
 
-            {/* ЗАГРУЗКА ФАЙЛА ИЛИ КАРТИНКИ */}
-            {field.dataType == 'file' && edit &&
-                <Input
-                    label={!field.read && (field.name || field.sysName)}
-                    icon='clip'
-                    description={field.descriptionFlag && field.description}
-                    placeholder='Enter file URL'
-                    defaultValue={model[field.sysName]}
-                    onChange={value => setModel({ ...model, [field.sysName]: value })}
-                />}
+                {/* ЗАГРУЗКА ФАЙЛА ИЛИ КАРТИНКИ */}
+                {field.dataType == 'file' && edit &&
+                    <Input
+                        label={!field.read && (field.name || field.sysName)}
+                        icon='clip'
+                        description={field.descriptionFlag && field.description}
+                        placeholder='Enter file URL'
+                        defaultValue={model[field.sysName]}
+                        onChange={value => setModel({ ...model, [field.sysName]: value })}
+                    />}
             </div>
             {/* ========================== */}
             {/* СТРОКИ */}
@@ -573,6 +585,8 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                     setLinkedObjectStruct={setLinkedObjectStruct}
                     setShowLinkedObject={setShowLinkedObject}
                     getLinkName={getLinkName}
+                    tableFieldScheme={tableFieldScheme}
+                    transformTableFieldScheme={transformTableFieldScheme}
                 />
             }
 
@@ -693,10 +707,15 @@ function SaveCard({ model, currentObject, submit, setCurrentObject, setModel, lo
     )
 }
 
-function FieldLink({ field, model, onChange, setLinkedObject, object,
-    setLinkedObjectStruct, setShowLinkedObject, getLinkName, editingOn }) {
+function FieldLink({ field, model, onChange, setLinkedObject, object, tableFieldScheme,
+    setLinkedObjectStruct, setShowLinkedObject, getLinkName, editingOn, transformTableFieldScheme }) {
 
     const [edit, setEdit] = useState(false)
+
+    function numberWithSpaces(x) {
+        if (!x && x != 0) return null
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    }
 
     // console.log('Field  Link')
     // console.log(field)
@@ -706,6 +725,107 @@ function FieldLink({ field, model, onChange, setLinkedObject, object,
 
     //     </React.Fragment>
     // }
+
+    const [renderAL, setRenderAL] = useState(object[field.sysName].value || [])
+
+    useEffect(()=>{
+        if (JSON.stringify(model[field.sysName]) != JSON.stringify(renderAL) && typeof model[field.sysName] !== 'string') {
+            setRenderAL(model[field.sysName] || [])
+        }
+        // console.log('model')
+        // console.log(typeof model[field.sysName])
+        // console.log(object[field.sysName].value)
+        // console.log(renderAL)
+    }, [model])
+
+    if (field.veiwOption == 'cart') {
+        if (!field.cartView) { return <div>Cart is not configured</div> }
+        const cart = field.cartView
+
+        const processField = (f, fieldName) => {
+            if (typeof f == 'object') { return getLinkName(fieldName, f, transformTableFieldScheme(field.sysName, tableFieldScheme)) }
+            return f
+        }
+
+        const removeItemCart = i => {
+            // console.log('deleting item... ' + i)
+            const saveAL = [...renderAL]
+            saveAL.splice(i,1)
+            setRenderAL(saveAL)
+            const newValue = saveAL.length > 0 ? saveAL.map(i => i.id || i).join(',') : null
+            onChange(newValue)
+        }
+
+        return <React.Fragment>
+            <span className={styles.label}>
+                {field.name || field.sysName}
+            </span>
+            {field.descriptionFlag && field.description &&
+                <span className={styles.description}>
+                    {field.description}</span>}
+
+            <table className={styles.cart}>
+                <thead>
+                    <tr>
+                        {cart.image && <th></th>}
+                        {cart.title && <th>Title</th>}
+                        {cart.quantity && <th className={styles.right}>Quantity</th>}
+                        {cart.price && <th className={styles.right}>Price</th>}
+                        {(field.write && editingOn && cart.deleteOn) && <th className={styles.right}></th>}
+                    </tr>
+                </thead>
+                <tbody>
+                    {renderAL.map((item, i) => <tr key={i} className={field.clickable ? styles.clickable : ''}
+                        onClick={() => {
+                            if (field.clickable) {
+                                setLinkedObject({
+                                    object: item,
+                                    params: {
+                                        data: {
+                                            fields: field.configureLinkedCard && field.configureLinkedCard.fields,
+                                            fieldParams: field.configureLinkedCard && field.configureLinkedCard.fieldParams,
+                                            columns: {
+                                                main:
+                                                {
+                                                    id: 'main',
+                                                    fieldIds: field.configureLinkedCard && field.configureLinkedCard.fieldOrder
+                                                }
+                                            },
+                                            columnOrder: ['main'],
+                                            subHeader: field.subHeader || ''
+                                        }
+                                    }
+                                })
+                                setLinkedObjectStruct(field.sysName)
+                                setShowLinkedObject(true)
+                            }
+                        }}
+                    >
+                        {cart.image && <td><img src={processField(item[cart.imageField], cart.imageField)} /></td>}
+                        {cart.title && <td>{processField(item[cart.titleField], cart.titleField)}</td>}
+                        {cart.quantity && <td className={styles.right}>{numberWithSpaces(processField(item[cart.quantityField], cart.quantityField))}</td>}
+                        {cart.price && <td className={styles.right}>{cart.priceUnits} <strong>{numberWithSpaces(processField(item[cart.priceField], cart.priceField))}</strong></td>}
+                        {(field.write && editingOn && cart.deleteOn) && <td className={styles.right}>
+                            <div className={`${styles.deleteCartItem} icon icon-delete`} 
+                                onClick={e => {
+                                    e.stopPropagation();
+                                    removeItemCart(i)
+                                }}
+                            /></td>}
+                    </tr>)}
+                    {cart.price && <tr className={styles.total}>
+                        <td className={styles.right} colSpan={4}>Total:&nbsp;&nbsp;{cart.priceUnits} <strong>{renderAL.length ?
+                            numberWithSpaces(renderAL.map(item => parseInt(processField(item[cart.priceField], cart.priceField) * (processField(item[cart.quantityField], cart.quantityField) || 1))).reduce((total, amount) => total + amount))
+                            : 0}</strong></td>
+                        {(field.write && editingOn && cart.deleteOn) && <td></td>}
+                    </tr>}
+                </tbody>
+            </table>
+            {/* <br /><hr />< br />
+            <pre style={{ fontSize: 12 }}>{JSON.stringify(cart, 0, 3)}</pre>
+            <pre style={{ fontSize: 12 }}>{JSON.stringify(object[field.sysName].value, 0, 3)}</pre> */}
+        </React.Fragment>
+    }
 
     return (
         <React.Fragment>

@@ -81,16 +81,26 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
         return deepClone
     }
 
-    const getLinkName = (sysname, obj) => {
-        const structure = getStructure(obj, transformTableFieldScheme(sysname, tableFieldScheme), tableStructures)
-        // const linkName = structure.visibleName && structure.visibleName.map(field => obj[field]).join(' ')
-        // return linkName || 'No visible name'
-        // const structure = getStructure(obj, transformTableFieldScheme(sysname, props.tableFieldScheme), props.tableStructures)
+    const getLinkName = (sysname, obj, fieldScheme) => {
+        fieldScheme = fieldScheme || tableFieldScheme
+        const structure = getStructure(obj, transformTableFieldScheme(sysname, fieldScheme), tableStructures)
         const linkNameArr = []
         structure.visibleName && structure.visibleName.forEach(field => {
+            const fieldDetails = structure.fieldStructure.filter(i => i.sysName == field)[0]
             if (obj[field] || obj[field] == 0) {
-                linkNameArr.push(obj[field])
+                if (fieldDetails.dataType == 'date') {
+                    linkNameArr.push(formatDate(obj[field], fieldDetails.formatOptions))
+                } else {
+                    if (typeof obj[field] == 'object') {
+                        linkNameArr.push(getLinkName(field, obj[field], transformTableFieldScheme(sysname, fieldScheme)))
+                    } else {
+                        linkNameArr.push(obj[field])
+                    }
+                }
             }
+            // if (obj[field] || obj[field] == 0) {
+            //     linkNameArr.push(obj[field])
+            // }
         })
         const linkName = linkNameArr ? linkNameArr.length > 0 ? linkNameArr.join(' ') : null : null
         let displayID = ''

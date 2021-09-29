@@ -14,7 +14,7 @@ import Button from '../../button/button'
 function FpsCards({ auth, data, onEvent, id, currentBP }) {
     if (!data) { data = {} }
 
-    console.log('---data---')
+    console.log('---data FpsCards---')
     console.log(data)
 
     const [loading, setLoading] = useState(false)

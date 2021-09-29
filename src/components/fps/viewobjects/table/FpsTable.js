@@ -13,8 +13,8 @@ import Button from '../../button/button'
 function FpsTable({ auth, data, onEvent, id, currentBP }) {
     if (!data) { data = {} }
 
-    // console.log('---data---')
-    // console.log(data)
+    console.log('---data FpsTable---')
+    console.log(data)
 
     const [loading, setLoading] = useState(false)
     const [searchValue, setSearchValue] = useState()
@@ -186,15 +186,15 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
 
     useEffect(() => {
         let count = 0
-        console.log('autoRefreshPeriod')
-        console.log(autoRefreshPeriod)
-        console.log('autoRefresh')
-        console.log(autoRefresh)
-        sendMsg()
+        // console.log('autoRefreshPeriod')
+        // console.log(autoRefreshPeriod)
+        // console.log('autoRefresh')
+        // console.log(autoRefresh)
+        // sendMsg()
         if (!autoRefresh) { return }
         const interval = setInterval(() => {
             count++
-            console.log('rerender № ' + count);
+            console.log('autoRefresh rerender № ' + count);
             sendMsg()
         }, autoRefreshPeriod);
         return () => clearInterval(interval);

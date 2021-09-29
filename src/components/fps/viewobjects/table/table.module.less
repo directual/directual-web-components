@@ -446,3 +446,42 @@ div.tableTitle.mobile {
     opacity: .5;
   }
 }
+
+.cart {
+  border-collapse: collapse;
+  max-width: 100%;
+  min-width: 50%;
+  th, .total td {
+    //color: var(--field-border-color);
+    background: var(--table-border-color);
+  }
+  tr.clickable:hover {
+    td {
+      background-color: var(--accent-transp-05-color);
+      cursor: pointer;
+    }
+  }
+  th, td {
+    padding: 10px;
+    text-align: left;
+    &.right {
+      text-align: right;
+    }
+    border-bottom: solid 1px var(--table-border-color);
+  }
+  img {
+    max-width: 80px;
+    max-height: 60px;
+    display: block;
+    border: solid 1px var(--table-border-color);
+  }
+  .deleteCartItem {
+    opacity: .4;
+    cursor: pointer;
+    &:hover {
+      opacity: .9;
+      color: var(--error-color);
+    }
+  }
+}
+

@@ -386,14 +386,27 @@ export function Table({
     }
 
     //------------------------------
-    function getLinkName(sysname, obj) {
+    function getLinkName(sysname, obj, fieldScheme) {
         const tableFieldScheme = data.fieldScheme ? [...data.fieldScheme] : []
+        fieldScheme = fieldScheme || tableFieldScheme
         const tableStructures = data.structures ? { ...data.structures } : {}
-        const structure = getStructure(obj, transformTableFieldScheme(sysname, tableFieldScheme), tableStructures)
+        const structure = getStructure(obj, transformTableFieldScheme(sysname, fieldScheme), tableStructures)
         const linkNameArr = []
         structure.visibleName && structure.visibleName.forEach(field => {
+            // if (obj[field] || obj[field] == 0) {
+            //     linkNameArr.push(obj[field])
+            // }
+            const fieldDetails = structure.fieldStructure.filter(i => i.sysName == field)[0]
             if (obj[field] || obj[field] == 0) {
-                linkNameArr.push(obj[field])
+                if (fieldDetails.dataType == 'date') {
+                    linkNameArr.push(formatDate(obj[field], fieldDetails.formatOptions))
+                } else {
+                    if (typeof obj[field] == 'object') {
+                        linkNameArr.push(getLinkName(field, obj[field], transformTableFieldScheme(sysname, fieldScheme)))
+                    } else {
+                        linkNameArr.push(obj[field])
+                    }
+                }
             }
         })
         const linkName = linkNameArr.length > 0 ? linkNameArr.join(' ') : null
