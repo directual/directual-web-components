@@ -371,6 +371,12 @@ export default function Input(props) {
         return result;
     }
 
+    document.addEventListener("wheel", function(event){
+        if(document.activeElement.type === "number"){
+            document.activeElement.blur();
+        }
+    });
+
     return (
         <div className={`${styles.input_wrapper} ${props.className}`}
             style={

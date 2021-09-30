@@ -151,6 +151,7 @@ Some *emphasis* and <strong>strong</strong>!`;
         <React.Fragment>
             <h1>Data entry</h1>
 
+            <Input type='number' defaultValue={0} />
             {/* <Input required type='select' />
 
             <Input error={error} />
