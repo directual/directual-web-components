@@ -743,6 +743,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
         const cart = field.cartView
 
         const processField = (f, fieldName) => {
+            if (!f) { return null }
             if (typeof f == 'object') { return getLinkName(fieldName, f, transformTableFieldScheme(field.sysName, tableFieldScheme)) }
             return f
         }
@@ -775,7 +776,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                     </tr>
                 </thead>
                 <tbody>
-                    {renderAL.map((item, i) => <tr key={i} className={field.clickable ? styles.clickable : ''}
+                    {!renderAL.length ? '—' : renderAL.map((item, i) => <tr key={i} className={field.clickable ? styles.clickable : ''}
                         onClick={() => {
                             if (field.clickable) {
                                 setLinkedObject({
@@ -804,7 +805,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                         {cart.image && <td><img src={processField(item[cart.imageField], cart.imageField)} /></td>}
                         {cart.title && <td>{processField(item[cart.titleField], cart.titleField)}</td>}
                         {cart.quantity && <td className={styles.right}>{numberWithSpaces(processField(item[cart.quantityField], cart.quantityField))}</td>}
-                        {cart.price && <td className={styles.right}>{cart.priceUnits} <strong>{numberWithSpaces(processField(item[cart.priceField], cart.priceField))}</strong></td>}
+                        {cart.price && <td className={styles.right}>{cart.priceUnits == '$' ? cart.priceUnits : ''} <strong>{numberWithSpaces(processField(item[cart.priceField], cart.priceField))}</strong> {cart.priceUnits !== '$' ? cart.priceUnits : ''}</td>}
                         {(field.write && editingOn && cart.deleteOn) && <td className={styles.right}>
                             <div className={`${styles.deleteCartItem} icon icon-delete`} 
                                 onClick={e => {
@@ -814,9 +815,9 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                             /></td>}
                     </tr>)}
                     {cart.price && <tr className={styles.total}>
-                        <td className={styles.right} colSpan={4}>Total:&nbsp;&nbsp;{cart.priceUnits} <strong>{renderAL.length ?
+                        <td className={styles.right} colSpan={4}>Total:&nbsp;&nbsp;{cart.priceUnits == '$' ? cart.priceUnits : ''} <strong>{renderAL.length ?
                             numberWithSpaces(renderAL.map(item => parseInt(processField(item[cart.priceField], cart.priceField) * (processField(item[cart.quantityField], cart.quantityField) || 1))).reduce((total, amount) => total + amount))
-                            : 0}</strong></td>
+                            : 0}</strong> {cart.priceUnits !== '$' ? cart.priceUnits : ''}</td>
                         {(field.write && editingOn && cart.deleteOn) && <td></td>}
                     </tr>}
                 </tbody>
