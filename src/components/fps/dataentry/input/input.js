@@ -371,11 +371,22 @@ export default function Input(props) {
         return result;
     }
 
-    if (document) { document.addEventListener("wheel", function(event){
-        if(document.activeElement.type === "number"){
-            document.activeElement.blur();
+    // if (typeof window !== undefined) {
+    //     window.addEventListener("wheel", function (event) {
+    //         if (document.activeElement.type === "number") {
+    //             document.activeElement.blur();
+    //         }
+    //     })
+    // }
+
+    useEffect(function onFirstMount() {
+        function onScroll() {
+            if (document.activeElement.type === "number") {
+                document.activeElement.blur();
+            }
         }
-    }) }
+        document.addEventListener("scroll", onScroll);
+    }, []);
 
     return (
         <div className={`${styles.input_wrapper} ${props.className}`}
@@ -421,15 +432,15 @@ export default function Input(props) {
                 <div className={`${styles.field_wrapper} ${(props.addonAfter || props.addonBefore || props.preSelect) && styles.hor}`}>
                     {props.addonBefore &&
                         <div className={styles.addonBefore}>{props.addonBefore}</div>}
-                   {props.preSelect &&
+                    {props.preSelect &&
                         <div className={`${styles.addonBefore} ${styles.preSelect}`}>
-                            <select value={props.preSelectDefaultValue} disabled={props.disabled} onChange={e=>props.onChoosePreSelect && props.onChoosePreSelect(e.target.value)}>
-                                {props.preSelectOptions.map(option=><option value={option.key} key={option.key}>{option.value}</option>)}
-                            </select>    
+                            <select value={props.preSelectDefaultValue} disabled={props.disabled} onChange={e => props.onChoosePreSelect && props.onChoosePreSelect(e.target.value)}>
+                                {props.preSelectOptions.map(option => <option value={option.key} key={option.key}>{option.value}</option>)}
+                            </select>
                         </div>}
                     <div className={styles.field_wrapper_additional}>
                         {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
-                    
+
                         <input
                             disabled={props.disabled}
                             key={props.key}
@@ -689,7 +700,7 @@ export default function Input(props) {
                         //height={350}
                         value={value}
                         //example={props.example}
-                        margin={{top:0,bottom:0}}
+                        margin={{ top: 0, bottom: 0 }}
                     />
                 </div>}
 
@@ -815,7 +826,7 @@ export default function Input(props) {
                         correctedHeight={props.correctedHeight}
                         dateFormat={props.dateFormat}
                         timeFormat={props.timeFormat}
-                        //onBlur={checkValue}
+                    //onBlur={checkValue}
                     />
                 </React.Fragment>
             }
@@ -875,10 +886,10 @@ export default function Input(props) {
 
             }
             {props.type == 'checkboxGroup' &&
-                <div style={props.horizontal ? {display: 'flex', flexWrap: 'wrap'} : {}}>
+                <div style={props.horizontal ? { display: 'flex', flexWrap: 'wrap' } : {}}>
                     {props.options && props.options.map(option => {
                         return (
-                            <div className={styles.checkbox_wrapper} style={props.horWidth ? {width: props.horWidth} : {}}>
+                            <div className={styles.checkbox_wrapper} style={props.horWidth ? { width: props.horWidth } : {}}>
                                 <Checkbox
                                     disabled={props.disabled}
                                     label={option.label}
