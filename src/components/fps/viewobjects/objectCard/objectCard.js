@@ -1005,6 +1005,10 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
         )
     }
 
+    useEffect(() => {
+        isSubmitted && !loading && actionParams.closePopup && onClose()
+    }, [loading, isSubmitted])
+
     if (
         isSubmitted
         && actionParams.showMessage
@@ -1013,13 +1017,9 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
         return <div style={{ width: actionParams.displayAs == 'form' ? '100%' : 'auto' }}>
             {actionParams.displayAs == 'form' && <FormSection title={actionParams.name} />}
             <Hint ok margin={{ top: 1, bottom: 12 }}>{actionParams.resultMessage || 'Submitted'}</Hint>
-            <Button onClick={() => setIsSubmitted(false)} icon='refresh'>{actionParams.resultButton || 'Submit again'}</Button>
+            {actionParams.resultButton && <Button onClick={() => setIsSubmitted(false)} icon='refresh'>{actionParams.resultButton}</Button>}
         </div>
     }
-
-    useEffect(() => {
-        isSubmitted && !loading && actionParams.closePopup && onClose()
-    }, [loading, isSubmitted])
 
     return (
         actionParams && checkActionCond && checkActionCond(conds) ?

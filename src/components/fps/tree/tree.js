@@ -271,7 +271,7 @@ function Folder({ root, tree, isOpenned, setIsOppened, host, selectedID, setSele
 }
 
 function Element({ element, host, selectedID, setSelectedID, draggable, index }) {
-    console.log(element)
+    // console.log(element)
     return <Draggable draggableId={`drag_${element.id}`} type="tree">
         {(provided, snapshot) => (<div>
             <a className={`
