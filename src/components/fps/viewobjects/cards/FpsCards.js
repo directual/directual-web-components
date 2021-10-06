@@ -66,6 +66,11 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
         }
     }
 
+    const setPage = page => {
+        sendMsg({ dql: currentDQL }, null, { page: page })
+        //onEvent({ page: page, _id: id })
+    }
+
     const sendMsg = (msg, sl, pageInfo) => {
         console.log('submitting...')
         if (sl === "") { sl = undefined }
@@ -182,9 +187,49 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
         return eConds
     }
 
+
+    // Add object ID into URL:
+
+    const queryString = typeof window !== 'undefined' ? window.location.search : '';
+    const urlParams = new URLSearchParams(queryString);
+    const objectID = urlParams.get('objectID')
+
+    console.log('objectID = ' + objectID)
+
+    function updateURL(params) {
+        //params = [{ key: "param1", value: "value1" }, { key: "param2", value: "20" }]
+        if (history.pushState) {
+            const baseUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            const queryParams = '?' + params.map(p => p.key + "=" + p.value).join('&')
+            const newUrl = baseUrl + queryParams;
+            history.pushState(null, null, newUrl);
+        }
+        if (!history.pushState) {
+            console.warn('History API is not supported');
+        }
+    }
+
+    function clearURL() {
+        if (!history.pushState) {
+            console.warn('History API is not supported');
+        }
+        if (history.pushState) {
+            var baseUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            history.pushState(null, null, baseUrl);
+        }
+    }
+
+    const refresh = () => {
+        sendMsg()
+    }
+
+    
+
     return (
         <ComponentWrapper currentBP={currentBP}>
-            {/* <Button onClick={()=>sendMsg()} icon='refresh'>refresh</Button> */}
+            <Button onClick={() => updateURL([{ key: "objectID", value: "100500" } ])} icon='refresh'>updateURL</Button>
+            <Button onClick={() => clearURL()} icon='refresh'>clearURL</Button>
+            <Button onClick={() => refresh()} icon='refresh'>REFRESH</Button>
             {showObject &&
                 <React.Fragment>
                     <Backdrop onClick={handleCloseShowObject} hoverable />
@@ -196,8 +241,9 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
                             object={showObject}
                             submit={submit}
                             auth={auth}
-                            checkActionCond={(cond,obj) => checkActionCond(edenrichConds(cond,obj))}
-                            //shareble
+                            checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
+                            shareble
+                            refresh={refresh}
                             firstCard
                             executeAction={submitAction}
                             params={data.params}
@@ -224,7 +270,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
                 data={data}
                 params={data.params}
                 searchValue={searchValue}
-                checkActionCond={(cond,obj) => checkActionCond(edenrichConds(cond,obj))}
+                checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
                 onExpand={val => { setShowObject(val) }}
                 setPage={page => { sendMsg(null, null, { page: page }) }}
                 auth={auth}
@@ -237,7 +283,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
             {totalPages > 0 && tableHeaders.length != 0 &&
                 <div className={styles.pagination}>
                     <Paging
-                        setPage={page => onEvent({ page: page, _id: id })}
+                        setPage={page => setPage(page)}
                         pageSize={pageSize}
                         totalPages={totalPages}
                         currentPage={currentPage}

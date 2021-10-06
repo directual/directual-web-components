@@ -381,7 +381,7 @@ export default function Input(props) {
 
     useEffect(function onFirstMount() {
         function onScroll() {
-            if (document.activeElement.type === "number") {
+            if (document.activeElement.type === "number" || document.activeElement.type === "decimal") {
                 document.activeElement.blur();
             }
         }

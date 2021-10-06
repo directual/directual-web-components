@@ -87,7 +87,10 @@ export default function FileUpload(props) {
                                         method: 'POST',
                                         body,
                                     }).then(res => {
-                                        res.status != 200 && setError('Upload error: ' + res.status + ' ' + res.statusText)
+                                        if (res.status != 200) { 
+                                            setUploading(false)
+                                            setError('Upload error: ' + res.status + ' ' + res.statusText) 
+                                        }
                                         console.log(res)
                                         res.json().then(result => {
                                             counter = counter + 1

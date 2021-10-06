@@ -216,6 +216,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
                             submit={submit}
                             auth={auth}
                             firstCard
+                            refresh={() => sendMsg()}
                             checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
                             //shareble
                             executeAction={submitAction}

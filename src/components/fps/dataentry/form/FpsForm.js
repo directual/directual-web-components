@@ -9,6 +9,7 @@ import icon from './../../../../icons/fps-form.svg'
 import { ComponentWrapper } from './../../wrapper/wrapper'
 import { Markdown } from '../../article/mkd'
 import { InputForm } from './InputForm'
+import { dict } from '../../locale'
 
 export function FormSection(props) {
   return (
@@ -20,16 +21,20 @@ export function FormSection(props) {
   )
 }
 
-export default function FpsForm({ auth, data, onEvent, id }) {
+export default function FpsForm({ auth, data, onEvent, id, locale }) {
   if (data.params.data) {
-    return <FpsFormNew auth={auth || {}} data={data} onEvent={onEvent} id={id} />
+    return <FpsFormNew auth={auth || {}} data={data} locale={locale} onEvent={onEvent} id={id} />
   }
   else {
-    return <FpsFormOld auth={auth || {}} data={data} onEvent={onEvent} id={id} />
+    return <FpsFormOld auth={auth || {}} data={data} locale={locale} onEvent={onEvent} id={id} />
   }
 }
 
-function FpsFormNew({ auth, data, onEvent, id }) {
+function FpsFormNew({ auth, data, onEvent, id, locale }) {
+
+  const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
+  console.log('locale')
+  console.log(lang)
 
   let hiddenFields = {}
   const [model, setModel] = useState(defaultModel())
@@ -37,11 +42,11 @@ function FpsFormNew({ auth, data, onEvent, id }) {
   const [loading, setLoading] = useState(false)
   const [showForm, setShowForm] = useState(true)
 
-  const successText = data.successText || 'Submitted successfully'
+  const successText = data.successText || dict[lang].form.submittedSuccessfuly
   const formName = data.formName || ''
   const formDesc = data.formDesc || ''
-  const formButton = data.formButton || 'Submit'
-  const formButtonResubmit = data.formButtonResubmit || 'Submit again'
+  const formButton = data.formButton || dict[lang].form.submit
+  const formButtonResubmit = data.formButtonResubmit || dict[lang].form.submitAgain
   const isSuccessWrite = data.isSuccessWrite
   let params = data.params || {}
   const fileds = []
@@ -87,10 +92,10 @@ function FpsFormNew({ auth, data, onEvent, id }) {
 
   data.error =
     data.error && data.error == '403'
-      ? 'You have no permissions for viewing form'
+      ? dict[lang].form.noPermissions
       : data.error
   data.error =
-    data.error && data.error == '511' ? 'Form is not configured' : data.error
+    data.error && data.error == '511' ? dict[lang].form.notConfigured : data.error
 
   //Hidden fields from URL query params:
   const queryString = typeof window !== 'undefined' ? window.location.search : '';
@@ -162,7 +167,7 @@ function FpsFormNew({ auth, data, onEvent, id }) {
     if (sync && data.response && data.params.result.isSuccessField) { isSuccess = data.response[0][data.params.result.isSuccessField] }
     let answerTitle = ''
     if (sync && data.response && data.params.result.resultTitleField) { answerTitle = data.response[0][data.params.result.resultTitleField] }
-    if (sync && data.response && !answerTitle) { answerTitle = isSuccess ? 'Success' : 'Error' }
+    if (sync && data.response && !answerTitle) { answerTitle = isSuccess ? dict[lang].success : dict[lang].error }
     let answerText = ''
     if (sync && data.response && data.params.result.resultMessageField) { answerText = data.response[0][data.params.result.resultMessageField] }
     let answer
@@ -232,19 +237,19 @@ function FpsFormNew({ auth, data, onEvent, id }) {
           <Markdown value={formDesc} />
         )}</div>
 
-      {loading && <Loader>Loading...</Loader>}
+      {loading && <Loader>{dict[lang].loading}</Loader>}
 
       {data.error && !loading && data.error != 'dql is not allowed for write' &&  // dql это КОСТЫЛЬ — убрать когда пофиксим на API
-        <Hint title='Form Error' error>{data.error}</Hint>}
+        <Hint title={dict[lang].form.error} error>{data.error}</Hint>}
 
       {/* Standard response processing: */}
       {!showForm && !loading && !getResultAnswer().sync && <React.Fragment>
-        {isSuccessWrite && <Hint title='Thank you' ok>{successText}</Hint>}
+        {isSuccessWrite && <Hint title={dict[lang].form.thankYou} ok>{successText}</Hint>}
       </React.Fragment>}
 
 
       {/* Custom response processing: */}
-      {!showForm && !loading && getResultAnswer().sync && <React.Fragment>
+      {!showForm && !data.error && !loading && getResultAnswer().sync && <React.Fragment>
         {data.response && !getResultAnswer().isSuccess && <React.Fragment>
           <Hint title={getResultAnswer().answerTitle} error>{getResultAnswer().answerText}</Hint>
         </React.Fragment>}
@@ -252,7 +257,7 @@ function FpsFormNew({ auth, data, onEvent, id }) {
           <Hint title={getResultAnswer().answerTitle} ok>{getResultAnswer().answerText}</Hint>}
       </React.Fragment>}
 
-      {!showForm && !loading && data.error != 'You have no permissions for viewing form' && data.error != 'Form is not configured' &&
+      {!showForm && !loading && data.error != dict[lang].form.noPermissions && data.error != dict[lang].form.notConfigured &&
         <Button icon='refresh' onClick={() => {
           setShowForm(true);
           data.response == [];
@@ -303,7 +308,9 @@ function FpsFormNew({ auth, data, onEvent, id }) {
 }
 
 
-function FpsFormOld({ auth, data, onEvent, id }) {
+function FpsFormOld({ auth, data, onEvent, id, locale }) {
+  
+  const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
   const defaultParam =
   {
@@ -336,11 +343,11 @@ function FpsFormOld({ auth, data, onEvent, id }) {
   const [loading, setLoading] = useState(false)
   const [showForm, setShowForm] = useState(true)
 
-  const successText = data.successText || 'Submitted successfully'
+  const successText = data.successText || dict[lang].form.submittedSuccessfuly 
   const formName = data.formName || ''
   const formDesc = data.formDesc || ''
-  const formButton = data.formButton || 'Submit'
-  const formButtonResubmit = data.formButtonResubmit || 'Submit again'
+  const formButton = data.formButton || dict[lang].form.submit
+  const formButtonResubmit = data.formButtonResubmit || dict[lang].form.submitAgain
   const isSuccessWrite = data.isSuccessWrite
   let params = data.params || {}
   const fileds = sortFields(data.fileds) || []
@@ -613,7 +620,7 @@ function FpsFormOld({ auth, data, onEvent, id }) {
         </p>
       )}
 
-      {loading && <Loader>Loading...</Loader>}
+      {loading && <Loader>{dict[lang].loading}</Loader>}
 
       {data.error && !loading && data.error != 'dql is not allowed for write' &&  // dql это КОСТЫЛЬ — убрать когда пофиксим на API
         <Hint title='Form Error' error>{data.error}</Hint>}

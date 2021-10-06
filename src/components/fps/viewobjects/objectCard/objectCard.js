@@ -11,6 +11,7 @@ import { Markdown } from '../../article/mkd'
 import moment from 'moment'
 import Hint from '../../hint/hint'
 import { InputForm } from '../../dataentry/form/InputForm'
+import copy from 'copy-to-clipboard';
 
 export function ObjectCard(props) {
 
@@ -37,6 +38,10 @@ export function ObjectCard(props) {
     // press 'Esc' for closing a popup:
     const handleUserKeyPress = (e) => {
         e.key == 'Escape' && props.onClose()
+    }
+
+    const refresh = () => {
+        props.refresh()
     }
 
     useEffect(() => {
@@ -381,13 +386,23 @@ export function ObjectCard(props) {
 
     cardHeader = (typeof cardHeader == 'object') ? (cardHeader.value || 'No visible name') : cardHeader
 
+    const copyUrlToClipboard = () => {
+        copy(window.location.href)
+    }
+
     return (
         <div className={styles.objectCard}>
             {props.shareble && // todo: сделать прямые ссылки на карточку
                 <div title='Copy direct link to the object'
                     className={`${styles.shareObject} icon icon-copy`}
-                    onClick={() => { }}
-                ></div>
+                    onClick={copyUrlToClipboard}
+                />
+            }
+            {props.refresh &&
+                <div title='Refresh object'
+                    className={`${styles.refreshObject} icon icon-refresh`}
+                    onClick={refresh}
+                />
             }
             <div className={styles.objectCardHeader}>
                 <div onClick={props.onClose}
@@ -829,7 +844,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
     }
 
     return (
-        <React.Fragment>
+        (field.write || (field.read && object[field.sysName].value && JSON.stringify(object[field.sysName].value) != '[""]')) ? <React.Fragment>
             <span className={styles.label}>
                 {field.name || field.sysName}
                 {(field.write && editingOn) &&
@@ -878,8 +893,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
             {field.dataType == 'arrayLink' && field.read && object[field.sysName].value && !edit &&
                 <div className={`${styles.linkFieldWrapper} ${!field.clickable && styles.notClickable}`}>
                     {object[field.sysName].value && object[field.sysName].value.length > 0 && object[field.sysName].value.map((link, i) => {
-                        return (
-                            <a
+                        return link ? <a
                                 key={i}
                                 onClick={() => {
                                     if (field.clickable) {
@@ -905,7 +919,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                                         setShowLinkedObject(true)
                                     }
                                 }}
-                            >{getLinkName(field.sysName, link)}</a>)
+                            >{getLinkName(field.sysName, link)}</a> : null
                     })}
                 </div>
             }
@@ -939,10 +953,10 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                             (object[field.sysName].value && object[field.sysName].value.length > 0
                                 && object[field.sysName].value.map(i => i.id))
                     }
-                    tip="Quick search option is disabled. Enter objects' IDs"
+                    tip="Dropdown option is disabled. Enter objects' IDs"
                 />
             }
-        </React.Fragment>
+        </React.Fragment> : <div />
     )
 }
 

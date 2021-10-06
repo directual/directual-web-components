@@ -31,7 +31,7 @@ export default function MainMenu(props) {
                             <li
                                 key={item.name}
                                 className={styles.subheader}>{item.name}</li> :
-                            !item.hidden && 
+                            !item.hidden &&
                             <li
                                 key={item.name}
                                 onClick={hideMM}
@@ -45,33 +45,33 @@ export default function MainMenu(props) {
                 </ul>
                 <div className={styles.menuFooter}>
                     {props.showUserButtons &&
-                    <div className={styles.menuFooterButton}>
-                        {props.loggedIn ?
-                            <ActionPanel margin={{top:1, bottom:1}}>
-                            <div className=
-                                {`
+                        <div className={styles.menuFooterButton}>
+                            {props.loggedIn ?
+                                <ActionPanel margin={{ top: 1, bottom: 1 }}>
+                                    <div className=
+                                        {`
                             ${styles.menuButton} 
                             ${props.profileButton.icon && `${styles.icon} icon icon-${props.profileButton.icon}`}
                             `}
-                                style={{marginRight:6}}
-                                onClick={hideMM}>
-                                {props.profileButton.link}
-                            </div>
-                            {props.logOutButton && 
-                                <Button height={50} icon='logoutAlt' onClick={()=>{hideMM(); props.logout && props.logout()}}/>
-                            } 
-                            </ActionPanel>
-                            :
-                            <div className={`
+                                        style={{ marginRight: 6 }}
+                                        onClick={hideMM}>
+                                        {props.profileButton.link}
+                                    </div>
+                                    {props.logOutButton &&
+                                        <Button height={50} icon='logoutAlt' onClick={() => { hideMM(); props.logout && props.logout() }} />
+                                    }
+                                </ActionPanel>
+                                :
+                                <div className={`
                             ${styles.menuButton}
                             ${props.logInButton.icon && `${styles.icon} icon icon-${props.logInButton.icon}`}
                             ${styles.accent}
                             `}
-                                onClick={hideMM}>
-                                {props.logInButton.link}
-                            </div>
-                        }
-                    </div>}
+                                    onClick={hideMM}>
+                                    {props.logInButton.link}
+                                </div>
+                            }
+                        </div>}
                 </div>
             </div>
 

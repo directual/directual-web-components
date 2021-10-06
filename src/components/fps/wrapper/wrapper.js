@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import styles from './wrapper.module.css'
 import {SetTheme} from '../theme/theme'
+import { dict } from '../locale'
 
 export function FpsWrapper(props) {
     return (
@@ -35,6 +36,8 @@ export function ContentWrapper(props) {
       }
     }, [props.themeName])
 
+    const lang = props.locale ? props.locale.length == 3 ? props.locale : 'ENG' : 'ENG'
+
     return (
         <React.Fragment>
             <SetTheme themeName={currentTheme}/>
@@ -47,7 +50,7 @@ export function ContentWrapper(props) {
                 <a target="_blank" className={styles.logo} href="https://directual.com?ref=fps_footer">
                     <img src={logoUrl} />
                 </a>
-                <span><span className={styles.madeon}>made on </span><a target="_blank" href="https://directual.com?ref=fps_footer">Directual</a></span>
+                <span><span className={styles.madeon}>{dict[lang].madeOn} </span><a target="_blank" href="https://directual.com?ref=fps_footer">Directual</a></span>
             </div>}
         </React.Fragment>
     )
