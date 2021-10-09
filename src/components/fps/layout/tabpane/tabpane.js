@@ -40,11 +40,11 @@ export default function TabsPane({ tabs, currentTabKey, fixedScroll, hideSingleT
         >
             Add param 2
         </Button> */}
-        <Button
+        {/* <Button
             onClick={() => clearURL()}
         >
             Clear url
-        </Button>
+        </Button> */}
         <div className={`${styles.tabsPane} ${fixedScroll && styles.fixedScroll}`}>
             {(!isSingleTab || (isSingleTab && !hideSingleTab)) &&
                 <TabsMenu
