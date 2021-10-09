@@ -50,6 +50,20 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
         setShowObject(false);
     }
 
+    const sendMsg = (msg, sl, pageInfo) => {
+        console.log('submitting...')
+        pageInfo = pageInfo || { page: currentPage }
+        if (sl === "") { sl = undefined }
+        const message =
+            { ...msg, _id: 'form_' + id, _sl_name: sl }
+        console.log(message)
+        console.log(pageInfo)
+        setLoading(true)
+        if (onEvent) {
+            onEvent(message, pageInfo)
+        }
+    }
+
     const search = value => {
         if (value) {
             setSearchValue(value)
@@ -64,17 +78,18 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
         }
     }
 
-    const sendMsg = (msg, sl, pageInfo) => {
-        console.log('submitting...')
-        if (sl === "") { sl = undefined }
-        const message = { ...msg, _id: 'form_' + id, _sl_name: sl }
-        console.log(message)
-        console.log(pageInfo)
+    const refresh = () => {
         setLoading(true)
-        if (onEvent) {
-            onEvent(message, pageInfo)
-        }
+        setCurrentDQL('')
+        setSearchValue('')
+        onEvent({ dql: '', page: currentPage, _id: id })
     }
+
+    const setPage = page => {
+        onEvent({ dql: currentDQL, page: page, _id: id })
+    }
+
+
 
     const submit = (model) => {
         const saveModel = { ...model }
@@ -195,15 +210,16 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
         const interval = setInterval(() => {
             count++
             console.log('autoRefresh rerender № ' + count);
-            sendMsg()
+            refresh()
         }, autoRefreshPeriod);
         return () => clearInterval(interval);
     }, []);
 
 
+
     return (
         <ComponentWrapper currentBP={currentBP}>
-            {/* <Button onClick={()=>sendMsg()} icon='refresh'>refresh</Button> */}
+            {/* <Button onClick={refresh} icon='refresh'>refresh</Button> */}
             {showObject &&
                 <React.Fragment>
                     <Backdrop onClick={handleCloseShowObject} hoverable />
@@ -216,7 +232,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
                             submit={submit}
                             auth={auth}
                             firstCard
-                            refresh={() => sendMsg()}
+                            // refresh={refresh}
                             checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
                             //shareble
                             executeAction={submitAction}
@@ -247,7 +263,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
                 searchValue={searchValue}
                 checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
                 onExpand={val => { setShowObject(val) }}
-                setPage={page => { sendMsg(null, null, { page: page }) }}
+                //setPage={page => { sendMsg(null, null, { page: page }) }}
                 auth={auth}
                 submitAction={submitAction}
                 id={id}
@@ -272,7 +288,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
             {totalPages > 0 && tableHeaders.length != 0 &&
                 <div className={styles.pagination}>
                     <Paging
-                        setPage={page => onEvent({ page: page, _id: id })}
+                        setPage={setPage}
                         pageSize={pageSize}
                         totalPages={totalPages}
                         currentPage={currentPage}

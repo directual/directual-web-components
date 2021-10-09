@@ -696,27 +696,26 @@ function SaveCard({ model, currentObject, submit, setCurrentObject, setModel, lo
         <div>
             {editingOn &&
                 <ActionPanel margin={{ top: 24, bottom: 12 }}>
-                    {loading ? <Loader>Loading...</Loader> :
-                        <React.Fragment>
-                            {/* <pre className='dd-debug'>{JSON.stringify(model,0,3)}</pre> */}
-                            {/* <pre className='dd-debug'>{JSON.stringify(currentObject,0,3)}</pre> */}
-                            <Button
-                                disabled={JSON.stringify(model) === JSON.stringify(currentObject)}
-                                accent
-                                icon='done'
-                                onClick={() => {
-                                    // console.log('Save changes')
-                                    // console.log(model)
-                                    setCurrentObject(model);
-                                    submit(model);
-                                }}
-                            >
-                                Save changes</Button>
-                            <Button danger icon='ban'
-                                onClick={() => setModel(currentObject)}
-                                disabled={JSON.stringify(model) === JSON.stringify(currentObject)}>
-                                Discard changes</Button>
-                        </React.Fragment>}
+                    {/* <pre className='dd-debug'>{JSON.stringify(model,0,3)}</pre> */}
+                    {/* <pre className='dd-debug'>{JSON.stringify(currentObject,0,3)}</pre> */}
+                    <Button
+                        disabled={JSON.stringify(model) === JSON.stringify(currentObject)}
+                        accent
+                        loading={loading}
+                        icon='done'
+                        onClick={() => {
+                            // console.log('Save changes')
+                            // console.log(model)
+                            setCurrentObject(model);
+                            submit(model);
+                        }}
+                    >
+                        Save changes</Button>
+                    <Button danger icon='ban'
+                        onClick={() => setModel(currentObject)}
+                        loading={loading}
+                        disabled={JSON.stringify(model) === JSON.stringify(currentObject)}>
+                        Discard changes</Button>
                 </ActionPanel>}
         </div>
     )
@@ -743,7 +742,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
 
     const [renderAL, setRenderAL] = useState(object[field.sysName].value || [])
 
-    useEffect(()=>{
+    useEffect(() => {
         if (JSON.stringify(model[field.sysName]) != JSON.stringify(renderAL) && typeof model[field.sysName] !== 'string') {
             setRenderAL(model[field.sysName] || [])
         }
@@ -766,7 +765,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
         const removeItemCart = i => {
             // console.log('deleting item... ' + i)
             const saveAL = [...renderAL]
-            saveAL.splice(i,1)
+            saveAL.splice(i, 1)
             setRenderAL(saveAL)
             const newValue = saveAL.length > 0 ? saveAL.map(i => i.id || i).join(',') : null
             onChange(newValue)
@@ -822,7 +821,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                         {cart.quantity && <td className={styles.right}>{numberWithSpaces(processField(item[cart.quantityField], cart.quantityField))}</td>}
                         {cart.price && <td className={styles.right}>{cart.priceUnits == '$' ? cart.priceUnits : ''} <strong>{numberWithSpaces(processField(item[cart.priceField], cart.priceField))}</strong> {cart.priceUnits !== '$' ? cart.priceUnits : ''}</td>}
                         {(field.write && editingOn && cart.deleteOn) && <td className={styles.right}>
-                            <div className={`${styles.deleteCartItem} icon icon-delete`} 
+                            <div className={`${styles.deleteCartItem} icon icon-delete`}
                                 onClick={e => {
                                     e.stopPropagation();
                                     removeItemCart(i)
@@ -894,32 +893,32 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                 <div className={`${styles.linkFieldWrapper} ${!field.clickable && styles.notClickable}`}>
                     {object[field.sysName].value && object[field.sysName].value.length > 0 && object[field.sysName].value.map((link, i) => {
                         return link ? <a
-                                key={i}
-                                onClick={() => {
-                                    if (field.clickable) {
-                                        setLinkedObject({
-                                            object: link,
-                                            params: {
-                                                data: {
-                                                    fields: field.configureLinkedCard && field.configureLinkedCard.fields,
-                                                    fieldParams: field.configureLinkedCard && field.configureLinkedCard.fieldParams,
-                                                    columns: {
-                                                        main:
-                                                        {
-                                                            id: 'main',
-                                                            fieldIds: field.configureLinkedCard && field.configureLinkedCard.fieldOrder
-                                                        }
-                                                    },
-                                                    columnOrder: ['main'],
-                                                    subHeader: field.subHeader || ''
-                                                }
+                            key={i}
+                            onClick={() => {
+                                if (field.clickable) {
+                                    setLinkedObject({
+                                        object: link,
+                                        params: {
+                                            data: {
+                                                fields: field.configureLinkedCard && field.configureLinkedCard.fields,
+                                                fieldParams: field.configureLinkedCard && field.configureLinkedCard.fieldParams,
+                                                columns: {
+                                                    main:
+                                                    {
+                                                        id: 'main',
+                                                        fieldIds: field.configureLinkedCard && field.configureLinkedCard.fieldOrder
+                                                    }
+                                                },
+                                                columnOrder: ['main'],
+                                                subHeader: field.subHeader || ''
                                             }
-                                        })
-                                        setLinkedObjectStruct(field.sysName)
-                                        setShowLinkedObject(true)
-                                    }
-                                }}
-                            >{getLinkName(field.sysName, link)}</a> : null
+                                        }
+                                    })
+                                    setLinkedObjectStruct(field.sysName)
+                                    setShowLinkedObject(true)
+                                }
+                            }}
+                        >{getLinkName(field.sysName, link)}</a> : null
                     })}
                 </div>
             }

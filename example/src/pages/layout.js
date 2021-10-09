@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { FpsCards, FpsForm, Tree, Button } from 'directual-web-components'
-import { useSortBy } from 'react-table'
+import { FpsCards, FpsForm, Tree, Button, TabsPane } from 'directual-web-components'
 
 
 export default function LayoutPage() {
@@ -1976,9 +1975,9 @@ export default function LayoutPage() {
     }
 
     const exampleTabs = [
-        { key: '1', title: 'Tab number 1', content: <div>Tab content 1</div>, hidden: true },
-        { key: '2', title: 'Tab 2', content: <div>Tab content 2</div>, hidden: true },
-        { key: '3', disabled: true, title: 'Tab 3 (disabled)', content: <div>Tab content 3</div> }
+        { key: '1', title: 'Tab number 1', content: <div>Tab content 1</div>, hidden: false },
+        { key: '2', title: 'Tab 2', content: <div>Tab content 2</div>, hidden: false },
+        { key: '3', disabled: false, title: 'Tab 3 (disabled)', content: <div>Tab content 3</div> }
     ]
 
     const defaultOptions = [
@@ -2250,7 +2249,8 @@ export default function LayoutPage() {
 
     const [loading, setLoading] = useState(false)
 
-    //return <TabsPane tabs={exampleTabs} hideSingleTab currentTabKey={1} fixedScroll={false} />
+    return <TabsPane tabs={exampleTabs} hideSingleTab fixedScroll={false} />
+
     // return <FpsLayout layout={layoutExample} />
 
     return <div>

@@ -49,11 +49,17 @@ const EditableCell = ({
     // fieldDetails[id].format == "color" && console.log(fieldDetails[id])
 
     //date
-    const formatOptions = fieldDetails[id].formatOptions || {}
+    const formatOptions = (fieldDetails[id] && fieldDetails[id].formatOptions) || {}
 
     function numberWithSpaces(x) {
         if (!x && x != 0) return null
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    }
+
+    if (!fieldDetails[id] || !fieldDetails[id].dataType) {
+        return <div className={styles.notEditableValue}>
+        {typeof value == 'object' ? JSON.stringify(value) : value}
+    </div>
     }
 
 
@@ -223,7 +229,7 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
                                 return <React.Fragment>
                                     <th
                                         {...column.getHeaderProps()}
-                                        style={ (fieldDetails[column.id].dataType == 'number' || fieldDetails[column.id].dataType == 'decimal' ) ?
+                                        style={ (fieldDetails[column.id] && (fieldDetails[column.id].dataType == 'number' || fieldDetails[column.id].dataType == 'decimal' )) ?
                                             {textAlign: 'right'} : {}}
                                     >
                                         <span className={styles.columnHeader}>
