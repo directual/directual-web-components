@@ -211,7 +211,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
         <ComponentWrapper currentBP={currentBP}>
             {/* <Button onClick={() => updateURL([{ key: "objectID", value: "100500" } ])} icon='refresh'>updateURL</Button>
             <Button onClick={() => clearURL()} icon='refresh'>clearURL</Button> */}
-            <Button onClick={() => refresh()} icon='refresh'>REFRESH</Button>
+            {/* <Button onClick={() => refresh()} icon='refresh'>REFRESH</Button> */}
             {showObject &&
                 <React.Fragment>
                     <Backdrop onClick={handleCloseShowObject} hoverable />
