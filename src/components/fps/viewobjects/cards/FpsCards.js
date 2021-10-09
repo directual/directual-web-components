@@ -202,13 +202,16 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
 
     console.log('objectID = ' + objectID)
 
+    const handleCloseShowObject = () => {
+        setShowObject(false);
+    }
     
 
     return (
         <ComponentWrapper currentBP={currentBP}>
             {/* <Button onClick={() => updateURL([{ key: "objectID", value: "100500" } ])} icon='refresh'>updateURL</Button>
             <Button onClick={() => clearURL()} icon='refresh'>clearURL</Button> */}
-            {/* <Button onClick={() => refresh()} icon='refresh'>REFRESH</Button> */}
+            <Button onClick={() => refresh()} icon='refresh'>REFRESH</Button>
             {showObject &&
                 <React.Fragment>
                     <Backdrop onClick={handleCloseShowObject} hoverable />
@@ -221,8 +224,8 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
                             submit={submit}
                             auth={auth}
                             checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
-                            // shareble
-                            // refresh={refresh}
+                            shareble
+                            refresh={refresh}
                             firstCard
                             executeAction={submitAction}
                             params={data.params}
