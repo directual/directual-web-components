@@ -784,6 +784,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                     <tr>
                         {cart.image && <th></th>}
                         {cart.title && <th>Title</th>}
+                        {cart.status && <th className={styles.right}>Status</th>}
                         {cart.quantity && <th className={styles.right}>Quantity</th>}
                         {cart.price && <th className={styles.right}>Price</th>}
                         {(field.write && editingOn && cart.deleteOn) && <th className={styles.right}></th>}
@@ -818,6 +819,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                     >
                         {cart.image && <td><img src={processField(item[cart.imageField], cart.imageField)} /></td>}
                         {cart.title && <td>{processField(item[cart.titleField], cart.titleField)}</td>}
+                        {cart.status && <td className={styles.right}>{processField(item[cart.statusField], cart.statusField)}</td>}
                         {cart.quantity && <td className={styles.right}>{numberWithSpaces(processField(item[cart.quantityField], cart.quantityField))}</td>}
                         {cart.price && <td className={styles.right}>{cart.priceUnits == '$' ? cart.priceUnits : ''} <strong>{numberWithSpaces(processField(item[cart.priceField], cart.priceField))}</strong> {cart.priceUnits !== '$' ? cart.priceUnits : ''}</td>}
                         {(field.write && editingOn && cart.deleteOn) && <td className={styles.right}>
@@ -829,7 +831,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                             /></td>}
                     </tr>)}
                     {cart.price && <tr className={styles.total}>
-                        <td className={styles.right} colSpan={4}>Total:&nbsp;&nbsp;{cart.priceUnits == '$' ? cart.priceUnits : ''} <strong>{renderAL.length ?
+                        <td className={styles.right} colSpan={5}>Total:&nbsp;&nbsp;{cart.priceUnits == '$' ? cart.priceUnits : ''} <strong>{renderAL.length ?
                             numberWithSpaces(renderAL.map(item => parseInt(processField(item[cart.priceField], cart.priceField) * (processField(item[cart.quantityField], cart.quantityField) || 1))).reduce((total, amount) => total + amount))
                             : 0}</strong> {cart.priceUnits !== '$' ? cart.priceUnits : ''}</td>
                         {(field.write && editingOn && cart.deleteOn) && <td></td>}

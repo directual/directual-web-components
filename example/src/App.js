@@ -152,6 +152,11 @@ const App = (props) => {
                                 "fieldSysName": "quantity",
                                 "condition": null,
                                 "fetch": []
+                            },
+                            {
+                                "fieldSysName": "status",
+                                "condition": null,
+                                "fetch": []
                             }
                         ],
                         "sysName": "goods",
@@ -295,10 +300,12 @@ const App = (props) => {
                             "quantity": true,
                             "price": true,
                             "title": true,
-                            "priceUnits": "руб.",
+                            "priceUnits": "$",
                             "titleField": "good",
                             "priceField": "finalPrice",
-                            "quantityField": "quantity"
+                            "quantityField": "quantity",
+                            "status": true,
+                            "statusField": "status"
                         },
                         "configureLinkedCard": {
                             "fields": {
@@ -346,6 +353,15 @@ const App = (props) => {
                                     "dataType": "number",
                                     "format": null,
                                     "formatOptions": null
+                                },
+                                "status": {
+                                    "id": "status",
+                                    "content": "",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "link",
+                                    "format": null,
+                                    "formatOptions": {}
                                 }
                             },
                             "fieldParams": {
@@ -373,14 +389,21 @@ const App = (props) => {
                                     "include": true,
                                     "fileImageFormat": "square",
                                     "fileImageSize": 200
+                                },
+                                "status": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
                                 }
                             },
                             "fieldOrder": [
+                                null,
                                 "finalPrice",
                                 "good",
                                 "good_in_cart_name",
                                 "image",
-                                "quantity"
+                                "quantity",
+                                "status"
                             ]
                         }
                     },
@@ -446,10 +469,12 @@ const App = (props) => {
                         "quantity": true,
                         "price": true,
                         "title": true,
-                        "priceUnits": "руб.",
+                        "priceUnits": "$",
                         "titleField": "good",
                         "priceField": "finalPrice",
-                        "quantityField": "quantity"
+                        "quantityField": "quantity",
+                        "status": true,
+                        "statusField": "status"
                     },
                     "configureLinkedCard": {
                         "fields": {
@@ -497,6 +522,15 @@ const App = (props) => {
                                 "dataType": "number",
                                 "format": null,
                                 "formatOptions": null
+                            },
+                            "status": {
+                                "id": "status",
+                                "content": "",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": {}
                             }
                         },
                         "fieldParams": {
@@ -524,14 +558,21 @@ const App = (props) => {
                                 "include": true,
                                 "fileImageFormat": "square",
                                 "fileImageSize": 200
+                            },
+                            "status": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
                             }
                         },
                         "fieldOrder": [
+                            null,
                             "finalPrice",
                             "good",
                             "good_in_cart_name",
                             "image",
-                            "quantity"
+                            "quantity",
+                            "status"
                         ]
                     }
                 },
@@ -563,8 +604,8 @@ const App = (props) => {
         "headers": [
             {
                 "sysName": "Cart_price",
-                "name": "",
                 "dataType": "number",
+                "name": "",
                 "id": "99631632654931535",
                 "link": "",
                 "group": "0",
@@ -581,18 +622,18 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "typeVariable": {},
                 "json": false,
-                "indexExists": false,
                 "linkOrArrayLinkType": false,
-                "linkType": false,
+                "indexExists": false,
                 "arrayLink": false,
+                "linkType": false,
+                "typeVariable": {},
                 "array": false
             },
             {
                 "sysName": "goods",
-                "name": "",
                 "dataType": "arrayLink",
+                "name": "",
                 "id": "53151632654863628",
                 "link": "goods_in_cart",
                 "group": "0",
@@ -609,18 +650,18 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "typeVariable": {},
                 "json": false,
-                "indexExists": false,
                 "linkOrArrayLinkType": true,
-                "linkType": false,
+                "indexExists": false,
                 "arrayLink": true,
+                "linkType": false,
+                "typeVariable": {},
                 "array": false
             },
             {
                 "sysName": "id",
-                "name": "id",
                 "dataType": "id",
+                "name": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -637,18 +678,18 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "typeVariable": {},
                 "json": false,
-                "indexExists": false,
                 "linkOrArrayLinkType": false,
-                "linkType": false,
+                "indexExists": false,
                 "arrayLink": false,
+                "linkType": false,
+                "typeVariable": {},
                 "array": false
             },
             {
                 "sysName": "status",
-                "name": "",
                 "dataType": "string",
+                "name": "",
                 "id": "84351632654929010",
                 "link": null,
                 "group": "0",
@@ -665,18 +706,18 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "typeVariable": {},
                 "json": false,
-                "indexExists": false,
                 "linkOrArrayLinkType": false,
-                "linkType": false,
+                "indexExists": false,
                 "arrayLink": false,
+                "linkType": false,
+                "typeVariable": {},
                 "array": false
             },
             {
                 "sysName": "title",
-                "name": "",
                 "dataType": "string",
+                "name": "",
                 "id": "25911632662259172",
                 "link": null,
                 "group": "0",
@@ -693,23 +734,22 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "typeVariable": {},
                 "json": false,
-                "indexExists": false,
                 "linkOrArrayLinkType": false,
-                "linkType": false,
+                "indexExists": false,
                 "arrayLink": false,
+                "linkType": false,
+                "typeVariable": {},
                 "array": false
             }
         ],
         "data": [
             {
                 "title": "Cart",
-                "status": "new",
                 "goods": [
                     {
                         "quantity": 2,
-                        "image": "https://api.directual.com/fileUploaded/cart/7e71ae85-66e9-4e44-9ddc-add69a90c998.jpg",
+                        "image": "https://api.directual.com/fileUploaded/dev/ccb4f331-25a3-4f0d-969f-04b946c8f1d3.jpg",
                         "good": {
                             "price": 10,
                             "name": "apples",
@@ -717,19 +757,8 @@ const App = (props) => {
                         },
                         "good_in_cart_name": "good 3",
                         "id": "1",
+                        "status": "1",
                         "finalPrice": 99
-                    },
-                    {
-                        "quantity": 4,
-                        "image": "https://api.directual.com/fileUploaded/cart/7e71ae85-66e9-4e44-9ddc-add69a90c998.jpg",
-                        "good": {
-                            "price": 20,
-                            "name": "bananas",
-                            "id": "2"
-                        },
-                        "good_in_cart_name": "good 2",
-                        "id": "2",
-                        "finalPrice": 120
                     },
                     {
                         "quantity": 4,
@@ -741,9 +770,11 @@ const App = (props) => {
                         },
                         "good_in_cart_name": "good 1",
                         "id": "3",
+                        "status": "2",
                         "finalPrice": 400
                     }
                 ],
+                "status": "new",
                 "id": "1"
             }
         ],
@@ -788,6 +819,10 @@ const App = (props) => {
                 99031304
             ],
             [
+                "goods.status",
+                99031304
+            ],
+            [
                 "id",
                 99031305
             ],
@@ -813,7 +848,7 @@ const App = (props) => {
                 "dateCreated": "2021-09-26T11:09:07Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"name\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"39841632654618610\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"price\",\"name\":\"\",\"dataType\":\"number\",\"id\":\"16831632654619092\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"image\",\"name\":\"Image\",\"dataType\":\"file\",\"id\":\"61001632654724498\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"39841632654618610\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"price\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"16831632654619092\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"image\",\"dataType\":\"file\",\"name\":\"Image\",\"id\":\"61001632654724498\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false}]",
                 "jsonGroupSettings": null,
                 "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
                 "jsonSettings": null,
@@ -829,8 +864,8 @@ const App = (props) => {
                 "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "id",
                     "dataType": "id",
+                    "name": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -847,12 +882,12 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "typeVariable": {},
                     "json": false,
-                    "indexExists": false,
                     "linkOrArrayLinkType": false,
-                    "linkType": false,
+                    "indexExists": false,
                     "arrayLink": false,
+                    "linkType": false,
+                    "typeVariable": {},
                     "array": false
                 },
                 "folderId": null
@@ -865,24 +900,24 @@ const App = (props) => {
                 "dateCreated": "2021-09-26T11:14:05Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"cart_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"27951632654884383\",\"link\":\"cart\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"good\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"56301632654884854\",\"link\":\"goods\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"quantity\",\"name\":\"\",\"dataType\":\"number\",\"id\":\"10581632654902116\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"finalPrice\",\"name\":\"\",\"dataType\":\"number\",\"id\":\"41241632654906714\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"good_in_cart_name\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"40521632944512531\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"image\",\"name\":\"\",\"dataType\":\"file\",\"id\":\"86301632946954729\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"cart_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"27951632654884383\",\"link\":\"cart\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":false,\"linkType\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"good\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"56301632654884854\",\"link\":\"goods\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":false,\"linkType\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"quantity\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"10581632654902116\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"finalPrice\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"41241632654906714\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"good_in_cart_name\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"40521632944512531\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"image\",\"dataType\":\"file\",\"name\":\"\",\"id\":\"86301632946954729\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"status\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"43591633889912266\",\"link\":\"status\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":false,\"linkType\":true,\"typeVariable\":{},\"array\":false}]",
                 "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"good_in_cart_name\"},{\"sysName\":\"good\"}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"good\"},{\"sysName\":\"quantity\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": false,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-09-29T20:22:41Z",
+                "dateChanged": "2021-10-10T18:19:36Z",
                 "createBy": 21,
-                "changedBy": 1,
+                "changedBy": 21,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "id",
                     "dataType": "id",
+                    "name": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -899,12 +934,12 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "typeVariable": {},
                     "json": false,
-                    "indexExists": false,
                     "linkOrArrayLinkType": false,
-                    "linkType": false,
+                    "indexExists": false,
                     "arrayLink": false,
+                    "linkType": false,
+                    "typeVariable": {},
                     "array": false
                 },
                 "folderId": null
@@ -933,8 +968,8 @@ const App = (props) => {
                 "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "id",
                     "dataType": "id",
+                    "name": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -951,12 +986,12 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "typeVariable": {},
                     "json": false,
-                    "indexExists": false,
                     "linkOrArrayLinkType": false,
-                    "linkType": false,
+                    "indexExists": false,
                     "arrayLink": false,
+                    "linkType": false,
+                    "typeVariable": {},
                     "array": false
                 },
                 "folderId": null
@@ -968,8 +1003,8 @@ const App = (props) => {
         "fileds": [
             {
                 "sysName": "goods",
-                "name": "",
                 "dataType": "arrayLink",
+                "name": "",
                 "id": "53151632654863628",
                 "link": "goods_in_cart",
                 "group": "0",
@@ -986,18 +1021,18 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "typeVariable": {},
                 "json": false,
-                "indexExists": false,
                 "linkOrArrayLinkType": true,
-                "linkType": false,
+                "indexExists": false,
                 "arrayLink": true,
+                "linkType": false,
+                "typeVariable": {},
                 "array": false
             },
             {
                 "sysName": "id",
-                "name": "id",
                 "dataType": "id",
+                "name": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -1014,12 +1049,12 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "typeVariable": {},
                 "json": false,
-                "indexExists": false,
                 "linkOrArrayLinkType": false,
-                "linkType": false,
+                "indexExists": false,
                 "arrayLink": false,
+                "linkType": false,
+                "typeVariable": {},
                 "array": false
             }
         ],
