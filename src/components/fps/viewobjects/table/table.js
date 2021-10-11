@@ -391,6 +391,17 @@ export function Table({
         return deepClone
     }
 
+    // форматируем дату для карточки (если есть) в соответствии с formatOptions
+    const formatDate = (value, formatOptions) => {
+        if (!value) { return null }
+        formatOptions = formatOptions || {}
+        const formattedDate = formatOptions.isUTC == 'true' ?
+            moment.utc(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
+            :
+            moment(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
+        return formattedDate
+    }
+
     //------------------------------
     function getLinkName(sysname, obj, fieldScheme) {
         const tableFieldScheme = data.fieldScheme ? [...data.fieldScheme] : []

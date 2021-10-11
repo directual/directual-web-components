@@ -784,7 +784,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                     <tr>
                         {cart.image && <th></th>}
                         {cart.title && <th>Title</th>}
-                        {cart.status && <th className={styles.right}>Status</th>}
+                        {cart.status && <th>Status</th>}
                         {cart.quantity && <th className={styles.right}>Quantity</th>}
                         {cart.price && <th className={styles.right}>Price</th>}
                         {(field.write && editingOn && cart.deleteOn) && <th className={styles.right}></th>}
