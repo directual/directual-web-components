@@ -379,14 +379,14 @@ export default function Input(props) {
     //     })
     // }
 
-    useEffect(function onFirstMount() {
-        function onScroll() {
-            if (document.activeElement.type === "number" || document.activeElement.type === "decimal") {
-                document.activeElement.blur();
-            }
-        }
-        document.addEventListener("scroll", onScroll);
-    }, []);
+    // useEffect(function onFirstMount() {
+    //     function onScroll() {
+    //         if (document.activeElement.type === "number" || document.activeElement.type === "decimal") {
+    //             document.activeElement.blur();
+    //         }
+    //     }
+    //     document.addEventListener("scroll", onScroll);
+    // }, []);
 
     return (
         <div className={`${styles.input_wrapper} ${props.className}`}
