@@ -58,8 +58,8 @@ const EditableCell = ({
 
     if (!fieldDetails[id] || !fieldDetails[id].dataType) {
         return <div className={styles.notEditableValue}>
-        {typeof value == 'object' ? JSON.stringify(value) : value}
-    </div>
+            {typeof value == 'object' ? JSON.stringify(value) : value}
+        </div>
     }
 
 
@@ -156,6 +156,59 @@ const EditableCell = ({
         </div>
     }
 
+    const parseJson = json => {
+        if (!json) return {}
+        let parsedJson = {}
+        if (typeof json == 'object') return json
+        try {
+            parsedJson = JSON.parse(json)
+        }
+        catch (e) {
+            console.log(json);
+            console.log(e);
+        }
+        return parsedJson
+    }
+
+    // json Radio:
+    if (fieldDetails[id].dataType == 'json' && fieldDetails[id].format == 'radioOptions') {
+        if (!value || value == "{}") return <div />
+        const json = parseJson(value)
+        if (json.value) return <div className={`${styles.notEditableValue}`}>
+            {fieldDetails[id].formatOptions.multipleChoice.filter(i => i.value == json.value)[0].label}
+        </div>
+        if (json.customOption) return <div className={`${styles.notEditableValue}`}>
+            {json.customOption}
+        </div>
+        return <div className={`${styles.notEditableValue}`}>
+        </div>
+    }
+
+    // json Checkboxes:
+    if (fieldDetails[id].dataType == 'json' && fieldDetails[id].format == 'checkboxes') {
+        // console.log('radio')
+        // console.log(fieldDetails[id])
+        if (!value || value == "{}") return <div />
+        const json = parseJson(value)
+        let options = []
+        for (const option in json) {
+            let newOption = ''
+            if (option != 'customOption') {
+                newOption = fieldDetails[id].formatOptions.multipleChoice.filter(i => i.value == option)[0].label
+            }
+            if (option == 'customOption') {
+                newOption = json[option]
+                options.push(newOption)
+            }
+            if (json[option] == true) {
+                options.push(newOption)
+            }
+        }
+        return <div className={`${styles.notEditableValue}`}>
+            {options.map(option => <div className='icon icon-done small'>{option}</div>)}
+        </div>
+    }
+
     // array:
     if (fieldDetails[id].dataType == 'array' && value) {
         return <div className={`${styles.notEditableValue} ${styles.linkWrapper}`}>
@@ -229,8 +282,8 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
                                 return <React.Fragment>
                                     <th
                                         {...column.getHeaderProps()}
-                                        style={ (fieldDetails[column.id] && (fieldDetails[column.id].dataType == 'number' || fieldDetails[column.id].dataType == 'decimal' )) ?
-                                            {textAlign: 'right'} : {}}
+                                        style={(fieldDetails[column.id] && (fieldDetails[column.id].dataType == 'number' || fieldDetails[column.id].dataType == 'decimal')) ?
+                                            { textAlign: 'right' } : {}}
                                     >
                                         <span className={styles.columnHeader}>
                                             {column.Header || <code>{column.id}</code>}</span>
