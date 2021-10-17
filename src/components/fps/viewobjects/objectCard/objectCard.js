@@ -1043,11 +1043,13 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
                     <React.Fragment>
                         <FormSection title={actionParams.name} />
                         {/* <pre className='dd-debug'>{JSON.stringify(actionData, 0, 3)}</pre> */}
-                        {actionParams.formFields && actionParams.formFields.length > 0 && actionParams.formFields.map(field => (field.field && <Input
-                            type={field.field.dataType}
+                        {actionParams.formFields && actionParams.formFields.length > 0 && 
+                            actionParams.formFields.map(field => (field.field && <InputForm
+                            field={{...field.field, include: true}}
                             key={field.field.sysName}
                             width={400}
-                            label={field.field.name}
+                            // label={field.field.name}
+                            editingOn
                             onChange={value => {
                                 const saveData = { ...actionData }
                                 saveData.formData = { ...saveData.formData, [field.field.fieldSysName]: value }
@@ -1068,3 +1070,4 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
             </div> : <React.Fragment></React.Fragment>
     )
 }
+
