@@ -31,11 +31,11 @@ export function SignIn({ width, header, locale, facebookAuth, googleAuth, signUp
 
     return (
         <div className={styles.signinform} style={{ maxWidth: width || 'auto' }}>
+            {header && <h1 style={{ marginBottom: 24 }}>{header || 'Sign In'}</h1>}
+            {googleAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{googleAuth}</ActionPanel>}
+            {facebookAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{facebookAuth}</ActionPanel>}
+            {(googleAuth || facebookAuth) && <FormSection title={dict[lang].profile.or} />}
             <form >
-                {header && <h1 style={{ marginBottom: 24 }}>{header || 'Sign In'}</h1>}
-                {googleAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{googleAuth}</ActionPanel>}
-                {facebookAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{facebookAuth}</ActionPanel>}
-                {(googleAuth || facebookAuth) && <FormSection title={dict[lang].profile.or} />}
                 <Input
                     type={userNameFormat || 'string'}
                     //required
@@ -77,11 +77,12 @@ export function SignUp(props) {
 
     return (
         <div className={styles.signinform} style={{ maxWidth: props.width || 'auto' }}>
+
+            {props.header && <h1 style={{ marginBottom: 24 }}>{props.header || 'Sign Up'}</h1>}
+            {props.googleAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{props.googleAuth}</ActionPanel>}
+            {props.facebookAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{props.facebookAuth}</ActionPanel>}
+            {(props.googleAuth || props.facebookAuth) && <FormSection title={dict[lang].profile.or} />}
             <form>
-                {props.header && <h1 style={{ marginBottom: 24 }}>{props.header || 'Sign Up'}</h1>}
-                {props.googleAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{props.googleAuth}</ActionPanel>}
-                {props.facebookAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{props.facebookAuth}</ActionPanel>}
-                {(props.googleAuth || props.facebookAuth) && <FormSection title={dict[lang].profile.or} />}
                 <InputGroup>
                     <Input
                         label={dict[lang].profile.firstName}
