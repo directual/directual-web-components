@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {
     FpsCards, FpsForm, MainMenu, FpsTable, FpsTheme,
     FpsWrapper, ContentWrapper, SignIn, Media, CodeSnippet,
-    Dnd, Profile, TabsPane, Stopwatch
+    Dnd, Profile, TabsPane, Stopwatch, Button, SignUp, RestorePass
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 import {
@@ -2694,67 +2694,30 @@ const App = (props) => {
     }
 
     let exampleTable = {
-        "sl": "table",
-        "pageSize": "10",
+        "sl": "allserviceinvoices",
+        "pageSize": "50",
         "headerField": null,
         "params": {
-            "cardListLayout": "grid",
-            "cardHeaderComment": "",
-            "deleteField": "",
-            "cardBodyText": "",
-            "cardImage": false,
-            "cardImageField": "",
-            "cardImageType": "none",
-            "cardImageSize": 100,
-            "objectView": {},
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "checkbox",
+                        "fieldSysName": "clientId",
                         "fetch": [],
-                        "sysName": "checkbox",
-                        "name": "",
-                        "dataType": "json",
-                        "format": "checkboxes",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOption": true,
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "multipleChoice": [
-                                {
-                                    "value": "cb 1",
-                                    "label": "option 1"
-                                },
-                                {
-                                    "value": "cb2",
-                                    "label": "option 2"
-                                }
-                            ]
-                        },
+                        "sysName": "clientId",
+                        "name": "Client ID",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "date",
+                        "fetch": [],
+                        "sysName": "date",
+                        "name": "Date",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
                         "link": ""
                     },
                     {
@@ -2768,209 +2731,67 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "radio",
-                        "fetch": [],
-                        "sysName": "radio",
-                        "name": "",
-                        "dataType": "json",
-                        "format": "radioOptions",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
+                        "fieldSysName": "invoiceItemsIds",
+                        "fetch": [
+                            {
+                                "fieldSysName": "amount",
+                                "condition": null,
+                                "fetch": []
                             },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
                             },
-                            "customOption": true,
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "multipleChoice": [
-                                {
-                                    "value": "radio1",
-                                    "label": "radio one"
-                                },
-                                {
-                                    "value": "radio2",
-                                    "label": "radio two"
-                                }
-                            ]
-                        },
-                        "link": ""
-                    }
-                ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "checkbox",
-                        "fetch": [],
-                        "sysName": "checkbox",
-                        "name": "",
-                        "dataType": "json",
-                        "format": "checkboxes",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
+                            {
+                                "fieldSysName": "numRate",
+                                "condition": null,
+                                "fetch": []
                             },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOption": true,
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "multipleChoice": [
-                                {
-                                    "value": "cb 1",
-                                    "label": "option 1"
-                                },
-                                {
-                                    "value": "cb2",
-                                    "label": "option 2"
-                                }
-                            ]
-                        },
-                        "link": ""
+                            {
+                                "fieldSysName": "quantity",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "invoiceItemsIds",
+                        "name": "Invoice items",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "service_invoice_items"
                     },
                     {
-                        "fieldSysName": "id",
+                        "fieldSysName": "total",
                         "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
+                        "sysName": "total",
+                        "name": "Total",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
-                    },
-                    {
-                        "fieldSysName": "radio",
-                        "fetch": [],
-                        "sysName": "radio",
-                        "name": "",
-                        "dataType": "json",
-                        "format": "radioOptions",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOption": true,
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "multipleChoice": [
-                                {
-                                    "value": "radio1",
-                                    "label": "radio one"
-                                },
-                                {
-                                    "value": "radio2",
-                                    "label": "radio two"
-                                }
-                            ]
-                        },
-                        "link": ""
                     }
                 ],
+                "writeFields": [],
                 "fields": {
-                    "checkbox": {
-                        "id": "checkbox",
-                        "content": "",
+                    "clientId": {
+                        "id": "clientId",
+                        "content": "Client ID",
                         "type": "field",
-                        "dataType": "json",
-                        "format": "checkboxes",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOption": true,
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "multipleChoice": [
-                                {
-                                    "value": "cb 1",
-                                    "label": "option 1"
-                                },
-                                {
-                                    "value": "cb2",
-                                    "label": "option 2"
-                                }
-                            ]
-                        },
-                        "write": true,
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "WebUser",
+                        "actions": []
+                    },
+                    "date": {
+                        "id": "date",
+                        "content": "Date",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
                         "read": true,
                         "link": "",
                         "actions": []
@@ -2982,78 +2803,48 @@ const App = (props) => {
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "radio": {
-                        "id": "radio",
-                        "content": "",
+                    "invoiceItemsIds": {
+                        "id": "invoiceItemsIds",
+                        "content": "Invoice items",
                         "type": "field",
-                        "dataType": "json",
-                        "format": "radioOptions",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOption": true,
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "multipleChoice": [
-                                {
-                                    "value": "radio1",
-                                    "label": "radio one"
-                                },
-                                {
-                                    "value": "radio2",
-                                    "label": "radio two"
-                                }
-                            ]
-                        },
-                        "write": true,
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
                         "read": true,
-                        "link": "",
+                        "link": "service_invoice_items",
                         "actions": []
                     },
-                    "action__64081634483661597": {
-                        "content": "cb and radio",
-                        "id": "action__64081634483661597",
-                        "type": "action",
+                    "total": {
+                        "id": "total",
+                        "content": "Total",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "checkbox": {
+                    "clientId": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
-                        "clickable": false
+                        "clickable": true,
+                        "configureLinkedCard": {
+                            "fields": {},
+                            "fieldParams": {},
+                            "fieldOrder": []
+                        }
                     },
-                    "radio": {
-                        "include": true,
+                    "date": {
+                        "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
@@ -3065,6 +2856,33 @@ const App = (props) => {
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
+                    },
+                    "invoiceItemsIds": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "veiwOption": "cart",
+                        "cartView": {
+                            "title": true,
+                            "titleField": "name",
+                            "price": true,
+                            "priceField": "numRate",
+                            "quantity": true,
+                            "quantityField": "quantity",
+                            "priceUnits": "$",
+                            "status": false,
+                            "statusField": "numRate",
+                            "deleteOn": false
+                        }
+                    },
+                    "total": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
                     }
                 },
                 "columns": {
@@ -3072,9 +2890,10 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "checkbox",
-                            "radio",
-                            "action__64081634483661597",
+                            "invoiceItemsIds",
+                            "total",
+                            "clientId",
+                            "date",
                             "id"
                         ]
                     }
@@ -3082,32 +2901,23 @@ const App = (props) => {
                 "columnOrder": [
                     "tab-1"
                 ],
-                "actions": [
-                    {
-                        "sysName": "",
-                        "id": "64081634483661597",
-                        "name": "cb and radio",
-                        "displayAs": "form",
-                        "buttonIcon": "academy",
-                        "formFields": [
-                            {
-                                "id": "48331634483683870"
-                            }
-                        ],
-                        "SLtype": "same"
-                    }
-                ]
+                "actions": []
             },
             "fields": {
-                "checkbox": {
+                "clientId": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": false
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {},
+                        "fieldParams": {},
+                        "fieldOrder": []
+                    }
                 },
-                "radio": {
-                    "include": true,
+                "date": {
+                    "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
@@ -3119,206 +2929,147 @@ const App = (props) => {
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
+                },
+                "invoiceItemsIds": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "veiwOption": "cart",
+                    "cartView": {
+                        "title": true,
+                        "titleField": "name",
+                        "price": true,
+                        "priceField": "numRate",
+                        "quantity": true,
+                        "quantityField": "quantity",
+                        "priceUnits": "",
+                        "status": false,
+                        "statusField": "numRate",
+                        "deleteOn": false
+                    }
+                },
+                "total": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
                 }
             },
             "tableParams": {
                 "readFields": [
                     {
-                        "fieldSysName": "checkbox",
+                        "fieldSysName": "clientId",
                         "fetch": [],
-                        "sysName": "checkbox",
-                        "name": "",
-                        "dataType": "json",
-                        "format": "checkboxes",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOption": true,
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "multipleChoice": [
-                                {
-                                    "value": "cb 1",
-                                    "label": "option 1"
-                                },
-                                {
-                                    "value": "cb2",
-                                    "label": "option 2"
-                                }
-                            ]
-                        },
+                        "sysName": "clientId",
+                        "name": "Client ID",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "date",
+                        "fetch": [],
+                        "sysName": "date",
+                        "name": "Date",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "radio",
+                        "fieldSysName": "id",
                         "fetch": [],
-                        "sysName": "radio",
-                        "name": "",
-                        "dataType": "json",
-                        "format": "radioOptions",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOption": true,
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "multipleChoice": [
-                                {
-                                    "value": "radio1",
-                                    "label": "radio one"
-                                },
-                                {
-                                    "value": "radio2",
-                                    "label": "radio two"
-                                }
-                            ]
-                        },
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "invoiceItemsIds",
+                        "fetch": [],
+                        "sysName": "invoiceItemsIds",
+                        "name": "Invoice items",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "service_invoice_items"
+                    },
+                    {
+                        "fieldSysName": "total",
+                        "fetch": [],
+                        "sysName": "total",
+                        "name": "Total",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
                         "link": ""
                     }
                 ],
                 "writeFields": [],
                 "fields": {
-                    "checkbox": {
-                        "id": "checkbox",
-                        "content": "",
-                        "dataType": "json",
-                        "format": "checkboxes",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOption": true,
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "multipleChoice": [
-                                {
-                                    "value": "cb 1",
-                                    "label": "option 1"
-                                },
-                                {
-                                    "value": "cb2",
-                                    "label": "option 2"
-                                }
-                            ]
-                        },
+                    "clientId": {
+                        "id": "clientId",
+                        "content": "Client ID",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "WebUser"
+                    },
+                    "date": {
+                        "id": "date",
+                        "content": "Date",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
                         "read": true,
                         "link": ""
                     },
-                    "radio": {
-                        "id": "radio",
-                        "content": "",
-                        "dataType": "json",
-                        "format": "radioOptions",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOption": true,
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "multipleChoice": [
-                                {
-                                    "value": "radio1",
-                                    "label": "radio one"
-                                },
-                                {
-                                    "value": "radio2",
-                                    "label": "radio two"
-                                }
-                            ]
-                        },
+                    "id": {
+                        "id": "id",
+                        "content": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "invoiceItemsIds": {
+                        "id": "invoiceItemsIds",
+                        "content": "Invoice items",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "service_invoice_items"
+                    },
+                    "total": {
+                        "id": "total",
+                        "content": "Total",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
                         "read": true,
                         "link": ""
                     }
                 },
                 "fieldParams": {
-                    "checkbox": {
+                    "clientId": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40,
+                        "colorCell": false
+                    },
+                    "date": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -3326,7 +3077,23 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "radio": {
+                    "id": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "invoiceItemsIds": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "total": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -3336,134 +3103,23 @@ const App = (props) => {
                     }
                 },
                 "fieldOrder": [
-                    "checkbox",
-                    "radio"
+                    "date",
+                    "clientId",
+                    "total",
+                    "invoiceItemsIds",
+                    "id"
                 ]
-            },
-            "actions": [
-                {
-                    "sysName": "",
-                    "id": "64081634483661597",
-                    "name": "cb and radio",
-                    "displayAs": "form",
-                    "buttonIcon": "academy",
-                    "formFields": [
-                        {
-                            "id": "48331634483683870",
-                            "field": {
-                                "fieldSysName": "checkbox",
-                                "fetch": [],
-                                "sysName": "checkbox",
-                                "name": "",
-                                "dataType": "json",
-                                "format": "checkboxes",
-                                "formatOptions": {
-                                    "customOptionLabel": "My option",
-                                    "keyValue": {
-                                        "key": "key",
-                                        "value": "value",
-                                        "button": "One more"
-                                    },
-                                    "dateLocale": "en-gb",
-                                    "booleanOptions": [
-                                        "True",
-                                        "False"
-                                    ],
-                                    "validWeekDays": {
-                                        "mon": true,
-                                        "thu": true,
-                                        "tue": true,
-                                        "sun": true,
-                                        "fri": true,
-                                        "sat": true,
-                                        "wed": true
-                                    },
-                                    "customOption": true,
-                                    "customOptionPlaceholder": "Describe your option",
-                                    "range": {},
-                                    "customOptionType": "textarea",
-                                    "dateFormat": "DD/MM/Y",
-                                    "timeFormat": " HH:mm",
-                                    "isUTC": "false",
-                                    "multipleChoice": [
-                                        {
-                                            "value": "cb 1",
-                                            "label": "option 1"
-                                        },
-                                        {
-                                            "value": "cb2",
-                                            "label": "option 2"
-                                        }
-                                    ]
-                                },
-                                "link": ""
-                            }
-                        },
-                        {
-                            "id": "32891634483713244",
-                            "field": {
-                                "fieldSysName": "radio",
-                                "fetch": [],
-                                "sysName": "radio",
-                                "name": "",
-                                "dataType": "json",
-                                "format": "radioOptions",
-                                "formatOptions": {
-                                    "customOptionLabel": "My option",
-                                    "keyValue": {
-                                        "key": "key",
-                                        "value": "value",
-                                        "button": "One more"
-                                    },
-                                    "dateLocale": "en-gb",
-                                    "booleanOptions": [
-                                        "True",
-                                        "False"
-                                    ],
-                                    "validWeekDays": {
-                                        "mon": true,
-                                        "thu": true,
-                                        "tue": true,
-                                        "sun": true,
-                                        "fri": true,
-                                        "sat": true,
-                                        "wed": true
-                                    },
-                                    "customOption": true,
-                                    "customOptionPlaceholder": "Describe your option",
-                                    "range": {},
-                                    "customOptionType": "textarea",
-                                    "dateFormat": "DD/MM/Y",
-                                    "timeFormat": " HH:mm",
-                                    "isUTC": "false",
-                                    "multipleChoice": [
-                                        {
-                                            "value": "radio1",
-                                            "label": "radio one"
-                                        },
-                                        {
-                                            "value": "radio2",
-                                            "label": "radio two"
-                                        }
-                                    ]
-                                },
-                                "link": ""
-                            }
-                        }
-                    ],
-                    "SLtype": "same"
-                }
-            ]
+            }
         },
         "tableTitle": "",
         "actions": null,
         "headers": [
             {
-                "sysName": "checkbox",
-                "name": "",
-                "dataType": "json",
-                "id": "26651634463322688",
-                "link": "",
+                "sysName": "clientId",
+                "dataType": "link",
+                "name": "Client ID",
+                "id": "26841634910965738",
+                "link": "WebUser",
                 "group": "0",
                 "tags": "",
                 "indexing": false,
@@ -3475,59 +3131,49 @@ const App = (props) => {
                 "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
-                "format": "checkboxes",
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOption": true,
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false",
-                    "multipleChoice": [
-                        {
-                            "value": "cb 1",
-                            "label": "option 1"
-                        },
-                        {
-                            "value": "cb2",
-                            "label": "option 2"
-                        }
-                    ]
-                },
+                "format": null,
+                "formatOptions": {},
                 "groupName": null,
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "linkType": true,
+                "array": false
+            },
+            {
+                "sysName": "date",
+                "dataType": "string",
+                "name": "Date",
+                "id": "47631634911065997",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "json": false,
                 "linkOrArrayLinkType": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "linkType": false,
                 "typeVariable": {},
-                "json": true,
+                "linkType": false,
                 "array": false
             },
             {
                 "sysName": "id",
-                "name": "id",
                 "dataType": "id",
+                "name": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -3544,19 +3190,47 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "json": false,
                 "linkOrArrayLinkType": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "linkType": false,
                 "typeVariable": {},
-                "json": false,
+                "linkType": false,
                 "array": false
             },
             {
-                "sysName": "radio",
-                "name": "",
-                "dataType": "json",
-                "id": "39721634463315077",
+                "sysName": "invoiceItemsIds",
+                "dataType": "arrayLink",
+                "name": "Invoice items",
+                "id": "66521634911533480",
+                "link": "service_invoice_items",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "arrayLink": true,
+                "indexExists": false,
+                "typeVariable": {},
+                "linkType": false,
+                "array": false
+            },
+            {
+                "sysName": "total",
+                "dataType": "string",
+                "name": "Total",
+                "id": "35791635002553675",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -3564,71 +3238,59 @@ const App = (props) => {
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 1,
+                "order": 4,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
-                "format": "radioOptions",
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOption": true,
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false",
-                    "multipleChoice": [
-                        {
-                            "value": "radio1",
-                            "label": "radio one"
-                        },
-                        {
-                            "value": "radio2",
-                            "label": "radio two"
-                        }
-                    ]
-                },
+                "format": null,
+                "formatOptions": {},
                 "groupName": null,
+                "json": false,
                 "linkOrArrayLinkType": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "linkType": false,
                 "typeVariable": {},
-                "json": true,
+                "linkType": false,
                 "array": false
             }
         ],
         "data": [
             {
-                "checkbox": "{\"cb2\":true,\"cb 1\":true}",
-                "radio": "{\"value\":\"radio1\"}",
-                "id": "e6243076-50e8-4c4d-a987-dd3a8c75a9d0"
-            },
-            {
-                "checkbox": "{\"cb2\":true,\"customOption\":\"oops\"}",
-                "radio": "{\"customOption\":\"hey hey\"}",
-                "id": "89f35aa2-2c49-4395-927a-6b43901694c3"
+                "clientId": "admin@gmail.com",
+                "invoiceItemsIds": [
+                    {
+                        "name": "Bubble wrap and polybag",
+                        //"quantity": null,
+                        "amount": "$4.00",
+                        "id": "9e1c6c6b-edb0-4640-8d7c-a82195a9c5a1",
+                        "numRate": 0.5
+                    },
+                    {
+                        "name": "Carton forwarding",
+                        "quantity": 1,
+                        "amount": "$4.50",
+                        "id": "85f19dd1-86bb-430d-864a-2eb47fb30de6",
+                        "numRate": 4.5
+                    },
+                    {
+                        "name": "Bundles shipped",
+                        "quantity": 17,
+                        "amount": "$17.00",
+                        "id": "c8f32f25-f621-4e49-a85c-62abc8810257",
+                        "numRate": 1
+                    },
+                    {
+                        "name": "FBA shipped",
+                        "quantity": 36,
+                        "amount": "$43.20",
+                        "id": "58a28308-7e8a-4ef7-a697-ccb6e29ec842",
+                        "numRate": 1.2
+                    }
+                ],
+                "total": "$68.70",
+                "id": "e363317c-188d-451f-a251-6f9d57bc390a",
+                "date": "23.10.2021"
             }
         ],
         "totalPages": 1,
@@ -3636,49 +3298,66 @@ const App = (props) => {
         "error": null,
         "fieldScheme": [
             [
-                "checkbox",
-                99037745
+                "clientId",
+                99039166
+            ],
+            [
+                "date",
+                99039166
             ],
             [
                 "id",
-                99037745
+                99039166
             ],
             [
-                "radio",
-                99037745
+                "invoiceItemsIds.amount",
+                99039164
+            ],
+            [
+                "invoiceItemsIds.name",
+                99039164
+            ],
+            [
+                "invoiceItemsIds.numRate",
+                99039164
+            ],
+            [
+                "invoiceItemsIds.quantity",
+                99039164
+            ],
+            [
+                "total",
+                99039166
             ]
         ],
-        "writeFields": [
-            "checkbox",
-            "id",
-            "radio"
-        ],
+        "writeFields": [],
         "structures": {
-            "99037745": {
-                "networkID": 10181,
-                "sysName": "data",
-                "name": "data",
-                "id": 99037745,
-                "dateCreated": "2021-10-17T09:35:00Z",
+            "99039164": {
+                "networkID": 9538,
+                "sysName": "service_invoice_items",
+                "name": "Service invoice items",
+                "id": 99039164,
+                "dateCreated": "2021-10-22T13:13:43Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"checkbox\",\"dataType\":\"json\",\"name\":\"\",\"id\":\"26651634463322688\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOption\":true,\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"cb 1\",\"label\":\"option 1\"},{\"value\":\"cb2\",\"label\":\"option 2\"}]},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":true,\"array\":false},{\"sysName\":\"radio\",\"dataType\":\"json\",\"name\":\"\",\"id\":\"39721634463315077\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"radioOptions\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOption\":true,\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"radio1\",\"label\":\"radio one\"},{\"value\":\"radio2\",\"label\":\"radio two\"}]},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":true,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Service name\",\"id\":\"76091634835322714\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"quantity\",\"dataType\":\"number\",\"name\":\"Quantity\",\"id\":\"99071634836688512\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"rate\",\"dataType\":\"string\",\"name\":\"Rate\",\"id\":\"25751634836590969\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"numRate\",\"dataType\":\"decimal\",\"name\":\"Rate (decimal)\",\"id\":\"66051635006707224\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"amount\",\"dataType\":\"string\",\"name\":\"Amount\",\"id\":\"77331634836765577\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"managerId\",\"dataType\":\"link\",\"name\":\"Manager ID\",\"id\":\"57291634835268592\",\"link\":\"WebUser\",\"group\":\"1634908554095\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":true,\"typeVariable\":{},\"linkType\":true,\"array\":false},{\"sysName\":\"numAmount\",\"dataType\":\"decimal\",\"name\":\"Amount (Number)\",\"id\":\"18501634837096212\",\"link\":\"\",\"group\":\"1634908554095\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"linkName\",\"dataType\":\"link\",\"name\":\"Service name\",\"id\":\"12781634847044226\",\"link\":\"all_services\",\"group\":\"1634908554095\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":true,\"array\":false},{\"sysName\":\"clientId\",\"dataType\":\"link\",\"name\":\"Client ID\",\"id\":\"51751634908643433\",\"link\":\"WebUser\",\"group\":\"1634908554095\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":true,\"array\":false},{\"sysName\":\"serviceInvoiceId\",\"dataType\":\"link\",\"name\":\"Service invoice\",\"id\":\"97301634911397465\",\"link\":\"service_invoices\",\"group\":\"1634908554095\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":true,\"array\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"System fields\",\"id\":1634908554095,\"order\":0}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
+                "indexEnabled": false,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-10-17T09:36:07Z",
-                "createBy": 1,
-                "changedBy": 1,
+                "dateChanged": "2021-10-23T16:33:42Z",
+                "createBy": 7679,
+                "changedBy": 7679,
                 "_settings": null,
                 "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "id",
                     "dataType": "id",
+                    "name": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -3695,183 +3374,73 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
+                    "json": false,
                     "linkOrArrayLinkType": false,
                     "arrayLink": false,
                     "indexExists": false,
-                    "linkType": false,
                     "typeVariable": {},
-                    "json": false,
+                    "linkType": false,
                     "array": false
                 },
+                "folderId": 33667198
+            },
+            "99039166": {
+                "networkID": 9538,
+                "sysName": "service_invoices",
+                "name": "Service invoices",
+                "id": 99039166,
+                "dateCreated": "2021-10-22T13:22:37Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"managerId\",\"dataType\":\"link\",\"name\":\"Manager ID\",\"id\":\"22891634911136959\",\"link\":\"WebUser\",\"group\":\"1634911176580\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":true,\"array\":false},{\"sysName\":\"clientId\",\"dataType\":\"link\",\"name\":\"Client ID\",\"id\":\"26841634910965738\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":true,\"array\":false},{\"sysName\":\"total\",\"dataType\":\"string\",\"name\":\"Total\",\"id\":\"35791635002553675\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"date\",\"dataType\":\"string\",\"name\":\"Date\",\"id\":\"47631634911065997\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"numTotal\",\"dataType\":\"decimal\",\"name\":\"Total (decimal)\",\"id\":\"48151635002600066\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"invoiceItemsIds\",\"dataType\":\"arrayLink\",\"name\":\"Invoice items\",\"id\":\"66521634911533480\",\"link\":\"service_invoice_items\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"System fields\",\"id\":1634911176580,\"order\":0}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"date\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-10-23T18:23:46Z",
+                "createBy": 7679,
+                "changedBy": 7679,
+                "_settings": null,
+                "_nativeIndexSettings": null,
                 "objectIDSysName": "id",
-                "folderId": null
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "json": false,
+                    "linkOrArrayLinkType": false,
+                    "arrayLink": false,
+                    "indexExists": false,
+                    "typeVariable": {},
+                    "linkType": false,
+                    "array": false
+                },
+                "folderId": 33667198
             }
         },
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
-        "fileds": [
-            {
-                "sysName": "checkbox",
-                "name": "",
-                "dataType": "json",
-                "id": "26651634463322688",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "checkboxes",
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOption": true,
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false",
-                    "multipleChoice": [
-                        {
-                            "value": "cb 1",
-                            "label": "option 1"
-                        },
-                        {
-                            "value": "cb2",
-                            "label": "option 2"
-                        }
-                    ]
-                },
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "linkType": false,
-                "typeVariable": {},
-                "json": true,
-                "array": false
-            },
-            {
-                "sysName": "id",
-                "name": "id",
-                "dataType": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "linkType": false,
-                "typeVariable": {},
-                "json": false,
-                "array": false
-            },
-            {
-                "sysName": "radio",
-                "name": "",
-                "dataType": "json",
-                "id": "39721634463315077",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "radioOptions",
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOption": true,
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false",
-                    "multipleChoice": [
-                        {
-                            "value": "radio1",
-                            "label": "radio one"
-                        },
-                        {
-                            "value": "radio2",
-                            "label": "radio two"
-                        }
-                    ]
-                },
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "linkType": false,
-                "typeVariable": {},
-                "json": true,
-                "array": false
-            }
-        ],
+        "fileds": [],
         "quickSearch": "true"
     }
 
@@ -4318,12 +3887,26 @@ const App = (props) => {
                                 user={exampleUser}
                             />
                             <SignIn
-                                header='Sign in'
+                                header='Sign in!'
                                 width={400}
-                                google
-                                userNameFormat='email'
-                                allowSignUp
-                                signUpheader='Sign Up'
+                                //googleAuth={<Button socialGoogle onClick={()=>alert('Google!')}>Sign In with Google</Button>}
+                                facebookAuth={<Button socialFacebook onClick={()=>alert('Facebook!')}>Sign In with Facebook</Button>}
+                                onSignIn={value=>console.log(value)}
+                                userNameFormat='phone'
+                            />
+                            <SignUp
+                                header='Sign Up!'
+                                width={400}
+                                googleAuth={<Button socialGoogle onClick={()=>alert('Google!')}>Sign Up with Google</Button>}
+                                facebookAuth={<Button socialFacebook onClick={()=>alert('Facebook!')}>Sign Up with Facebook</Button>}
+                                userNameFormat='phone'
+                                onSignUp={value=>console.log(value)}
+                            />
+                            <RestorePass 
+                                header='Reset password'
+                                width={400}
+                                userNameFormat='phone'
+                                onRestore={value=>console.log(value)}
                             />
 
                         </Route>
@@ -4339,7 +3922,7 @@ const App = (props) => {
                             <FpsTheme
                                 onChange={value => { setCurrentTheme(value) }}
                                 defaultValue={currentTheme}
-                                themes={['classic', 'white', 'tiffany', 'darkMint', 'warmNight', 'hacker', 'raspberry', 'baltic']} />
+                                themes={['classic', 'white', 'tiffany', 'darkMint', 'warmNight', 'hacker', 'raspberry', 'baltic', 'custom']} />
                         </Route>
 
                         <Route exact path="/system-typography">

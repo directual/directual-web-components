@@ -82,11 +82,11 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
         setLoading(true)
         setCurrentDQL('')
         setSearchValue('')
-        onEvent({ dql: '', page: currentPage, _id: id })
+        onEvent && onEvent({ dql: '', page: currentPage, _id: id })
     }
 
     const setPage = page => {
-        onEvent({ dql: currentDQL, page: page, _id: id })
+        onEvent && onEvent({ dql: currentDQL, page: page, _id: id })
     }
 
 
@@ -219,7 +219,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
 
     return (
         <ComponentWrapper currentBP={currentBP}>
-            {/* <Button onClick={refresh} icon='refresh'>refresh</Button> */}
+            <Button onClick={refresh} icon='refresh'>refresh</Button>
             {showObject &&
                 <React.Fragment>
                     <Backdrop onClick={handleCloseShowObject} hoverable />

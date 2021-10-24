@@ -24,7 +24,7 @@ import Select from './components/fps/dataentry/select/select'
 import Slider from './components/fps/dataentry/slider/slider'
 import Datepicker from './components/fps/dataentry/datepicker/datepicker'
 import FileUpload, { DropFiles } from './components/fps/dataentry/fileupload/fileupload'
-import { SignIn, SignUp, Profile } from './components/fps/profile/profile'
+import { SignIn, SignUp, Profile, RestorePass } from './components/fps/profile/profile'
 import Hint from './components/fps/hint/hint'
 import Loader from './components/fps/loader/loader'
 import Media from './components/fps/media/media'
@@ -55,6 +55,7 @@ export {
   AdvancedOptionsHandler,
   PageIsEmpty,
   Checkbox,
+  RestorePass,
   OptionsHandler,
   StructureField,
   FpsLogin,

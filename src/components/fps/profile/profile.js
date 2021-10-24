@@ -6,14 +6,18 @@ import Button from '../button/button'
 import { FormSection } from '../dataentry/form/FpsForm'
 import icon from "../../../icons/fps-cards.svg";
 import FpsCards from "../viewobjects/cards/FpsCards";
+import { dict } from '../locale'
 
-export function SignIn({ width, header, signUpheader, google, onSignIn, onSignUp, userNameFormat, allowSignUp }) {
+export function SignIn({ width, header, locale, facebookAuth, googleAuth, signUpheader, google, onSignIn, onSignUp, userNameFormat, allowSignUp }) {
     const submit = () => {
         onSignIn && onSignIn(loginDetails)
     }
 
-    const userNameLabel = userNameFormat == 'email' ? 'Email address' :
-        userNameFormat == 'phone' ? 'Phone number' : 'Login'
+    const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
+
+    const userNameLabel = userNameFormat == 'email' ? dict[lang].profile.email :
+        userNameFormat == 'phone' ? dict[lang].profile.phone : dict[lang].profile.login
+
 
     // Hidden login:
 
@@ -22,102 +26,72 @@ export function SignIn({ width, header, signUpheader, google, onSignIn, onSignUp
     const defaultLogin = urlParams.get('login') || null;
 
     const [loginDetails, setLoginDetails] = useState({ login: defaultLogin })
-    const [isLoginValid,setIsLoginValid] = useState(true)
+    const [isLoginValid, setIsLoginValid] = useState(true)
     const [signUp, setSignUp] = useState(false)
 
-    if (signUp) {
-        return (
-            <React.Fragment>
-                <SignUp
-                    header={signUpheader}
-                    width={width}
-                    google={google}
-                    userNameLabel={userNameLabel}
-                    userNameFormat={userNameFormat}
-                    onSignUp={onSignUp}
+    return (
+        <div className={styles.signinform} style={{ maxWidth: width || 'auto' }}>
+            <form >
+                {header && <h1 style={{ marginBottom: 24 }}>{header || 'Sign In'}</h1>}
+                {googleAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{googleAuth}</ActionPanel>}
+                {facebookAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{facebookAuth}</ActionPanel>}
+                {(googleAuth || facebookAuth) && <FormSection title={dict[lang].profile.or} />}
+                <Input
+                    type={userNameFormat || 'string'}
+                    //required
+                    defaultValue={defaultLogin}
+                    label={userNameLabel}
+                    onChange={value => setLoginDetails({ ...loginDetails, login: value })}
+                    isValid={value => setIsLoginValid(value)}
                 />
-                <a onClick={() => setSignUp(false)}>I have an account</a>
-            </React.Fragment>
-        )
-    } else {
+                <Input
+                    type='password'
+                    //required
+                    label={dict[lang].profile.password}
+                    onChange={value => setLoginDetails({ ...loginDetails, password: value })}
+                />
+                <ActionPanel column margin={{ top: 0, bottom: 18 }}>
+                    <Button
+                        disabled={
+                            !loginDetails.login ||
+                            !loginDetails.password //|| !isLoginValid
+                        }
+                        onClick={submit} accent icon='permission'>{header || 'Sign In'}</Button>
+                </ActionPanel>
+            </form>
+        </div>
+    )
 
-        return (
-            <div className={styles.signinform} style={{ maxWidth: width || 'auto' }}>
-                <form >
-                    {header && <h1 style={{marginBottom:24}}>{header || 'Sign In'}</h1>}
-                    {google && <React.Fragment>
-                        <ActionPanel column margin={{ top: 0, bottom: 18 }}>
-                            <Button socialGoogle>Sign In with Google</Button>
-                        </ActionPanel>
-                        <FormSection title='Or' />
-                    </React.Fragment>}
-                    <Input
-                        type={userNameFormat || 'string'}
-                        //required
-                        defaultValue={defaultLogin}
-                        label={userNameLabel}
-                        onChange={value => setLoginDetails({ ...loginDetails, login: value })}
-                        isValid={value => setIsLoginValid(value)}
-                    />
-                    <Input
-                        type='password'
-                        //required
-                        label='Password'
-                        onChange={value => setLoginDetails({ ...loginDetails, password: value })}
-                    />
-                    <ActionPanel column margin={{ top: 0, bottom: 18 }}>
-                        <Button
-                            disabled={
-                                !loginDetails.login ||
-                                !loginDetails.password //|| !isLoginValid
-                            }
-                            onClick={submit} accent icon='permission'>{header || 'Sign In'}</Button>
-                    </ActionPanel>
-                </form>
-                {allowSignUp && <a onClick={() => setSignUp(true)}>Create an account</a>}
-            </div>
-        )
-    }
 
 }
 
-// SignIn.settings = {
-//   icon: icon,
-//   name: 'SignIn view',
-//   sysName: 'SignIn',
-//   system: true,
-//   form: [
-//     { name: 'Turn on Signing Up', sysName: 'allowRegiter', type: 'switch' },
-//     // { name: 'List title', sysName: 'tableTitle', type: 'input' },
-//     // { name: 'Page size', sysName: 'pageSize', type: 'number' },
-//     // { name: 'Filters', sysName: 'tableFilters', type: 'on_off' },
-//     // { name: 'Quick search', sysName: 'tableQuickSearch', type: 'on_off' },
-//   ]
-// }
-
 export function SignUp(props) {
     const [signUpDetails, setSignUpDetails] = useState({})
-    const [isLoginValid,setIsLoginValid] = useState(true)
+    const [isLoginValid, setIsLoginValid] = useState(true)
+
+    const lang = props.locale ? props.locale.length == 3 ? props.locale : 'ENG' : 'ENG'
+
+    const userNameLabel = props.userNameFormat == 'email' ? dict[lang].profile.email :
+        props.userNameFormat == 'phone' ? dict[lang].profile.phone : dict[lang].profile.login
+
+
     return (
         <div className={styles.signinform} style={{ maxWidth: props.width || 'auto' }}>
             <form>
-                {props.header && <h1 style={{marginBottom:24}}>{props.header || 'Sign Up'}</h1>}
-                {props.google && <React.Fragment>
-                    <ActionPanel column margin={{ top: 0, bottom: 18 }}>
-                        <Button socialGoogle>Sign Up with Google</Button>
-                    </ActionPanel>
-                    <FormSection title='Or' />
-                </React.Fragment>}
+                {props.header && <h1 style={{ marginBottom: 24 }}>{props.header || 'Sign Up'}</h1>}
+                {props.googleAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{props.googleAuth}</ActionPanel>}
+                {props.facebookAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{props.facebookAuth}</ActionPanel>}
+                {(props.googleAuth || props.facebookAuth) && <FormSection title={dict[lang].profile.or} />}
                 <InputGroup>
                     <Input
-                        label='First name'
+                        label={dict[lang].profile.firstName}
                         type='string'
                         //required
                         defaultValue={signUpDetails.firstName}
                         onChange={value => setSignUpDetails({ ...signUpDetails, firstName: value })}
                     />
                     <Input
-                        label='Last name'
+                        label={dict[lang].profile.lastName}
                         type='string'
                         //required
                         defaultValue={signUpDetails.lastName}
@@ -125,7 +99,7 @@ export function SignUp(props) {
                     />
                 </InputGroup>
                 <Input
-                    label={props.userNameLabel}
+                    label={userNameLabel}
                     type={props.userNameFormat || 'string'}
                     //required
                     defaultValue={signUpDetails.login}
@@ -134,19 +108,19 @@ export function SignUp(props) {
                 />
                 <Input
                     type='password'
-                    label='Password'
+                    label={dict[lang].profile.password}
                     //required
                     defaultValue={signUpDetails.password}
                     onChange={value => setSignUpDetails({ ...signUpDetails, password: value })}
                 />
                 <Input
                     type='password'
-                    label='Repeat password'
+                    label={dict[lang].profile.repeatPassword}
                     //required
                     defaultValue={signUpDetails.repeatPassword}
                     onChange={value => setSignUpDetails({ ...signUpDetails, repeatPassword: value })}
                     error={(signUpDetails.password && signUpDetails.repeatPassword &&
-                            signUpDetails.password != signUpDetails.repeatPassword) ? 'Passwords do not match' : null}
+                        signUpDetails.password != signUpDetails.repeatPassword) ? 'Passwords do not match' : null}
 
                 />
                 <ActionPanel column margin={{ top: 0, bottom: 18 }}>
@@ -163,19 +137,34 @@ export function SignUp(props) {
     )
 }
 
-// SignUp.settings = {
-//   icon: icon,
-//   name: 'SignUp view',
-//   sysName: 'SignUp',
-//   system: true,
-//   form: [
-//     // { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
-//     // { name: 'List title', sysName: 'tableTitle', type: 'input' },
-//     // { name: 'Page size', sysName: 'pageSize', type: 'number' },
-//     // { name: 'Filters', sysName: 'tableFilters', type: 'on_off' },
-//     // { name: 'Quick search', sysName: 'tableQuickSearch', type: 'on_off' },
-//   ]
-// }
+export function RestorePass(props) {
+
+    const lang = props.locale ? props.locale.length == 3 ? props.locale : 'ENG' : 'ENG'
+    const [login, setLogin] = useState()
+
+    const userNameLabel = props.userNameFormat == 'email' ? dict[lang].profile.email :
+        props.userNameFormat == 'phone' ? dict[lang].profile.phone : dict[lang].profile.login
+
+    return (
+        <div className={styles.signinform} style={{ maxWidth: props.width || 'auto' }}>
+            <form>
+                {props.header && <h1 style={{ marginBottom: 24 }}>{props.header || 'Reset passwpord'}</h1>}
+                <Input
+                    label={userNameLabel}
+                    type={props.userNameFormat || 'string'}
+                    onChange={setLogin}
+                    defaultValue={login}
+                />
+                <ActionPanel column margin={{ top: 0, bottom: 18 }}>
+                    <Button
+                        disabled={!login}
+                        onClick={() => props.onRestore()}
+                        accent>{props.header || 'Reset password'}</Button>
+                </ActionPanel>
+            </form>
+        </div>
+    )
+}
 
 
 export function Profile(props) {

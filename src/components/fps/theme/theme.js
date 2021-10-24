@@ -8,19 +8,61 @@ export function SetTheme({ themeName }) {
 
     // themeName is like {colors:'tiffany',radius:10}
 
+    const customThemeColors = {
+        button_border_color: '#8E8E8E',
+        field_border_color: '#aaa',
+        table_border_color: 'rgba(0, 0, 0, .12)',
+        accent_color: '#058efc',
+        accent_transp_05_color: 'rgba(5, 142, 252, 0.05)',
+        secondary_accent_color: '#0062BD',
+        button_accent_color: '#ffffff',
+        background_color: '#ffffff',
+        background_contrast_color: '#eee',
+        secondary_background_color: '#eeeeee',
+        font_color: '#333333',
+        hint_color: '#333',
+        code_color: '#333',
+        code_color_background: '#fff',
+        error_color: '#FF525B',
+        error_color_light: '#FFD6D8',
+        alert_color: '#ECA910',
+        alert_color_light: '#F9DFA4',
+        ok_color: '#00C197',
+        ok_color_light: '#D6F8E5',
+        label_color: '#26BE99',
+        label_text_color: '#fff'
+    }
+
     useEffect(() => {
+        // console.log(themeName)
         if (themeName.colorScheme) {
-            setTheme(
-                themeName.colorScheme, themeName.radius || 25,
-                themeName.headersFont || 'Montserrat',
-                themeName.fontText || 'Lato',
-                themeName.headersFontWeight || '700',
-                themeName.bodyFontWeight || '400',
-                themeName.textSize || 16,
-                themeName.h1size || 42,
-                themeName.h2size || 30,
-                themeName.h3size || 22,
-            )
+            if (themeName.colorScheme == 'custom') {
+                setTheme(
+                    'classic',
+                    themeName.radius || 25,
+                    themeName.headersFont || 'Montserrat',
+                    themeName.fontText || 'Lato',
+                    themeName.headersFontWeight || '700',
+                    themeName.bodyFontWeight || '400',
+                    themeName.textSize || 16,
+                    themeName.h1size || 42,
+                    themeName.h2size || 30,
+                    themeName.h3size || 22,
+                )
+            } else {
+                setTheme(
+                    themeName.colorScheme,
+                    themeName.radius || 25,
+                    themeName.headersFont || 'Montserrat',
+                    themeName.fontText || 'Lato',
+                    themeName.headersFontWeight || '700',
+                    themeName.bodyFontWeight || '400',
+                    themeName.textSize || 16,
+                    themeName.h1size || 42,
+                    themeName.h2size || 30,
+                    themeName.h3size || 22,
+                )
+            }
         } else { setTheme(themeName, 25, 'Montserrat', 'Lato', '700', '400', 16, 42, 30, 22) }
     }, [themeName])
 
@@ -84,9 +126,7 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--ok-color', '#00C197')
             document.documentElement.style.setProperty('--ok-color-light', '#D6F8E5')
             document.documentElement.style.setProperty('--label-color', '#26BE99')
-            //document.documentElement.style.setProperty('--label-color', '#B9E0CB')
             document.documentElement.style.setProperty('--label-text-color', '#fff')
-            //document.documentElement.style.setProperty('--label-text-color', '#333')
         }
         if (colorScheme === 'tiffany') {
             document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
@@ -285,6 +325,11 @@ export default function FpsTheme(props) {
                 label: 'Baltic',
                 image: 'https://api.alfa.directual.com/fileUploaded/directual-site/44fbcd36-9525-45d1-ab10-32f57562b8a3.svg'
             },
+            {
+                value: 'custom',
+                label: 'Custom theme',
+                image: 'https://api.alfa.directual.com/fileUploaded/directual-site/c407d11f-bf59-4ef7-9c5a-7fb1d904d1c6.svg'
+            },
         ]
 
     const userOptions = (props.themes && options.filter(option => props.themes.indexOf(option.value) != -1)) || options
@@ -319,6 +364,12 @@ export default function FpsTheme(props) {
         { key: 'Cuprum', value: 'Cuprum' },
         { key: 'Nunito', value: 'Nunito' },
         { key: 'Playfair Display', value: 'Playfair Display' },
+        { key: 'Alice', value: 'Alice' },
+        { key: 'Bitter', value: 'Bitter' },
+        { key: 'Fira Sans', value: 'Fira Sans' },
+        { key: 'Gabriela', value: 'Gabriela' },
+        { key: 'Orelega One', value: 'Orelega One' },
+        { key: 'Philosopher', value: 'Philosopher' },
     ]
     const fontWeights = [
         { key: '900', value: 'Black 900' },
@@ -340,6 +391,11 @@ export default function FpsTheme(props) {
                 defaultValue={selectedColorScheme.colorScheme}
                 onChange={value => setSelectedColorScheme({ ...selectedColorScheme, colorScheme: value })}
             />
+            {selectedColorScheme.colorScheme == 'custom' && <React.Fragment>
+                <FormSection title='Custom coloring scheme' />
+
+            </React.Fragment>}
+            <FormSection title='Typography' />
             <Input
                 type='number'
                 label='Border radius'
@@ -350,11 +406,12 @@ export default function FpsTheme(props) {
                 defaultValue={selectedColorScheme.radius}
                 onChange={value => value ? setSelectedColorScheme({ ...selectedColorScheme, radius: value }) : setSelectedColorScheme({ ...selectedColorScheme, radius: 'none' })}
             />
-            <div className={styles.horInputs}>
+            <div className={styles.horInputs} style={{ fontFamily: selectedColorScheme.headersFont, fontWeight: selectedColorScheme.headersFontWeight }}>
                 <Input
                     type="select"
                     className={styles.input}
-                    label="Headers font face"
+                    width={250}
+                    label="Headers font family"
                     height={props.height}
                     defaultValue={selectedColorScheme.headersFont}
                     options={fontFaces}
@@ -362,6 +419,7 @@ export default function FpsTheme(props) {
                 />
                 <Input
                     type='select'
+                    width={250}
                     className={styles.input}
                     height={props.height}
                     label="Headers font weight"
@@ -370,12 +428,13 @@ export default function FpsTheme(props) {
                     onChange={value => setSelectedColorScheme({ ...selectedColorScheme, headersFontWeight: value })}
                 />
             </div>
-            
+
             <div className={styles.horInputs}>
                 <Input
                     type="select"
+                    width={250}
                     className={styles.input}
-                    label="Text font face"
+                    label="Text font family"
                     height={props.height}
                     defaultValue={selectedColorScheme.fontText}
                     options={fontFaces}
@@ -385,6 +444,7 @@ export default function FpsTheme(props) {
                     type='select'
                     label="Text font weight"
                     height={props.height}
+                    width={250}
                     className={styles.input}
                     options={fontWeights}
                     defaultValue={selectedColorScheme.bodyFontWeight}
@@ -437,7 +497,7 @@ export default function FpsTheme(props) {
                     onChange={value => value ? setSelectedColorScheme({ ...selectedColorScheme, h3size: value }) : setSelectedColorScheme({ ...selectedColorScheme, h3size: 22 })}
                 />
             </div>
-            <FormSection title='Example' />
+            <FormSection title='Typography Example' />
             <Input
                 defaultValue={dummyText}
                 onChange={value => setDummyText(value)}
@@ -482,6 +542,7 @@ export default function FpsTheme(props) {
                     fontSize: selectedColorScheme.textSize
                 }}
             >{dummyText}! {dummyText}? {dummyText}.</p>
+            <FormSection title='Branding' />
         </div>
     )
 }

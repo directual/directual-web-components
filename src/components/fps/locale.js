@@ -13,6 +13,16 @@ export const dict = {
         success: 'Success',
         madeOn: 'made on',
         loading: 'Loading...',
+        profile : {
+            password: 'Password',
+            or: 'Or',
+            firstName: 'First name',
+            lastName: 'Last name',
+            email:'Email address',
+            phone: 'Phone number',
+            login: 'Login',
+            repeatPassword: 'Repeat password'
+        }
     },
 
 
@@ -30,6 +40,16 @@ export const dict = {
         success: 'Erfolg',
         madeOn: 'gemacht auf',
         loading: 'Wird geladen...',
+        profile : {
+            password: 'Passwort',
+            or: 'Oder',
+            firstName: 'Vorname',
+            lastName: 'Nachname',
+            email:'E-Mail-Addresse',
+            phone: 'Telefonnummer',
+            login: 'Anmeldung',
+            repeatPassword: 'Passwort wiederholen'
+        }
     },
 
 
@@ -47,6 +67,17 @@ export const dict = {
         success: 'Éxito',
         madeOn: 'hecho en',
         loading: 'Cargando...',
+        profile : {
+            password: 'Contraseña',
+            or: 'O',
+            firstName: 'Nombre de pila',
+            lastName: 'Apellido',
+            email:'Correo electrónico',
+            phone: 'Número de teléfono',
+            login: 'Acceso',
+            repeatPassword: 'Repite la contraseña'
+        }
+
     },
 
 
@@ -64,6 +95,17 @@ export const dict = {
         success: 'Succès',
         madeOn: 'fait sur',
         loading: 'Chargement...',
+        profile : {
+            password: 'Mot de passe',
+            or: 'Ou',
+            firstName: 'Prénom',
+            lastName: 'Nom de famille',
+            email:'Adresse e-mails',
+            phone: 'Numéro de téléphone',
+            login: 'Login',
+            repeatPassword: 'Répéter le mot de passe'
+        }
+
     },
 
 
@@ -81,5 +123,16 @@ export const dict = {
         success: 'Успех',
         madeOn: 'сделано на',
         loading: 'Загрузка...',
+        profile : {
+            password: 'Пароль',
+            or: 'Или',
+            firstName: 'Имя',
+            lastName: 'Фамилия',
+            email:'Электронная почта',
+            phone: 'Телефон',
+            login: 'Логин',
+            repeatPassword: 'Повторите пароль'
+        }
+
     }
 }

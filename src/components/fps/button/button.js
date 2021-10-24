@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import styles from './button.module.css'
 import Loader from '../loader/loader'
 
@@ -23,11 +23,12 @@ export default function Button(props) {
                         ${!props.children && styles.empty}
                         ${props.icon && !props.loading && `${styles.icon} icon icon-${props.icon}`}
                         ${props.socialGoogle && `${styles.socialGoogle}`}
+                        ${props.socialFacebook && `${styles.socialFacebook}`}
                         ${props.danger && `${styles.danger}`}
                         ${props.inverseColor && `${styles.inverseColor}`}
                         ${props.transparent && `${styles.transparent}`}
                         `}
-                    disabled={ (props.disabled || props.loading) && 'disabled'}
+                    disabled={(props.disabled || props.loading) && 'disabled'}
                 >
                     {props.loading && <Loader small accent={props.accent}></Loader>}
                     {props.children}</button>
@@ -41,6 +42,7 @@ export default function Button(props) {
                     ${props.className} 
                     ${props.disabled && styles.disabled}
                     ${props.socialGoogle && `${styles.socialGoogle}`}
+                    ${props.socialFacebook && `${styles.socialFacebook}`}
                     ${props.danger && `${styles.danger}`}
                     ${props.inverseColor && `${styles.inverseColor}`}
                     ${props.transparent && `${styles.transparent}`}
@@ -60,7 +62,7 @@ export default function Button(props) {
 
 export function ButtonDropDown(props) {
 
-    const [show,setShow] = useState(false)
+    const [show, setShow] = useState(false)
     const dropMenu = useRef(null);
     const dropButton = useRef(null);
 
@@ -83,11 +85,11 @@ export function ButtonDropDown(props) {
     return <div className={styles.bdd} ref={dropButton}>
         <Button icon={props.icon} height={props.height} accent={props.accent} danger={props.danger}
             small={props.small} verySmall={props.verySmall}
-            onClick={(e)=> { 
-                setShow(!show) 
-            } }
+            onClick={(e) => {
+                setShow(!show)
+            }}
         >{props.title}</Button>
-        <div className={`${styles.dropdownMenu} ${show ? styles.show : ''}`} ref={dropMenu} onClick={()=>setShow(false)}>
+        <div className={`${styles.dropdownMenu} ${show ? styles.show : ''}`} ref={dropMenu} onClick={() => setShow(false)}>
             {props.children}
         </div>
     </div>

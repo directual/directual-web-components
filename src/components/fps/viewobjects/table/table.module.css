@@ -431,6 +431,11 @@ div.tableTitle.mobile h2 {
 .cart td.right {
   text-align: right;
 }
+.cart .cardQuantity {
+  opacity: 0.5;
+  font-size: var(--text-small-size);
+  display: block;
+}
 .cart img {
   max-width: 80px;
   max-height: 60px;

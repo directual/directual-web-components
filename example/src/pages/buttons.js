@@ -60,6 +60,7 @@ export default function ButtonsPage() {
                 margin={{ top: 6, bottom: 24 }}>
                 <Button accent icon='bellActive'>Accent icon button</Button>
                 <Button socialGoogle>Google button</Button>
+                <Button socialFacebook>Google button</Button>
                 <Button icon="play">Icon button</Button>
             </ActionPanel>
 

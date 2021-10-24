@@ -820,8 +820,15 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                         {cart.image && <td><img src={processField(item[cart.imageField], cart.imageField)} /></td>}
                         {cart.title && <td>{processField(item[cart.titleField], cart.titleField)}</td>}
                         {cart.status && <td className={styles.right}>{processField(item[cart.statusField], cart.statusField)}</td>}
-                        {cart.quantity && <td className={styles.right}>{numberWithSpaces(processField(item[cart.quantityField], cart.quantityField))}</td>}
-                        {cart.price && <td className={styles.right}>{cart.priceUnits == '$' ? cart.priceUnits : ''} <strong>{numberWithSpaces(processField(item[cart.priceField], cart.priceField))}</strong> {cart.priceUnits !== '$' ? cart.priceUnits : ''}</td>}
+                        {cart.quantity && <td className={styles.right}>{numberWithSpaces(processField(item[cart.quantityField], cart.quantityField) || '0')}</td>}
+                        {cart.quantity && cart.price && <td className={styles.right}>
+                            {cart.priceUnits == '$' ? cart.priceUnits + ' ' : ''}
+                            <strong>{numberWithSpaces((processField(item[cart.priceField], cart.priceField) * (processField(item[cart.quantityField], cart.quantityField) || 0)).toFixed(2)).replace(/\.00$/, '')}</strong>
+                            {cart.priceUnits !== '$' ? ' ' + cart.priceUnits : ''}
+                            <span className={styles.cardQuantity}>
+                                {numberWithSpaces(processField(item[cart.quantityField], cart.quantityField) || '0')} x {cart.priceUnits == '$' ? cart.priceUnits : ''} {numberWithSpaces(processField(item[cart.priceField], cart.priceField).toFixed(2)).replace(/\.00$/, '')} {cart.priceUnits !== '$' ? cart.priceUnits : ''}</span>
+                        </td>}
+                        {!cart.quantity && cart.price && <td className={styles.right}>{cart.priceUnits == '$' ? cart.priceUnits : ''} <strong>{numberWithSpaces(processField(item[cart.priceField], cart.priceField).toFixed(2)).replace(/\.00$/, '')}</strong> {cart.priceUnits !== '$' ? cart.priceUnits : ''}</td>}
                         {(field.write && editingOn && cart.deleteOn) && <td className={styles.right}>
                             <div className={`${styles.deleteCartItem} icon icon-delete`}
                                 onClick={e => {
@@ -832,7 +839,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                     </tr>)}
                     {cart.price && <tr className={styles.total}>
                         <td className={styles.right} colSpan={5}>Total:&nbsp;&nbsp;{cart.priceUnits == '$' ? cart.priceUnits : ''} <strong>{renderAL.length ?
-                            numberWithSpaces(renderAL.map(item => parseInt(processField(item[cart.priceField], cart.priceField) * (processField(item[cart.quantityField], cart.quantityField) || 1))).reduce((total, amount) => total + amount))
+                            numberWithSpaces(renderAL.map(item => parseFloat(processField(item[cart.priceField], cart.priceField) * (cart.quantity ? (processField(item[cart.quantityField], cart.quantityField) || 0) : 1))).reduce((total, amount) => total + amount).toFixed(2)).replace(/\.00$/, '')
                             : 0}</strong> {cart.priceUnits !== '$' ? cart.priceUnits : ''}</td>
                         {(field.write && editingOn && cart.deleteOn) && <td></td>}
                     </tr>}
@@ -1045,7 +1052,10 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
                         {/* <pre className='dd-debug'>{JSON.stringify(actionData, 0, 3)}</pre> */}
                         {actionParams.formFields && actionParams.formFields.length > 0 && 
                             actionParams.formFields.map(field => (field.field && <InputForm
-                            field={{...field.field, include: true}}
+                            field={{...field.field, 
+                                include: true, 
+                                content: field.field && field.field.name,
+                                id: field.field && field.field.fieldSysName }}
                             key={field.field.sysName}
                             width={400}
                             // label={field.field.name}

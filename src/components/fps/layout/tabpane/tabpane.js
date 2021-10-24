@@ -3,7 +3,7 @@ import styles from './tabpane.module.css'
 import Button from '../../button/button'
 import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
 
-export default function TabsPane({ tabs, currentTabKey, fixedScroll, hideSingleTab, preloadTabs }) {
+export default function TabsPane({ tabs, currentTabKey, fixedScroll, hideSingleTab, preloadTabs, saveTabToURL }) {
 
     
 
@@ -17,14 +17,14 @@ export default function TabsPane({ tabs, currentTabKey, fixedScroll, hideSingleT
 
     const chooseTab = tabClicked => {
         setCurrentTab(tabClicked)
-        addUrlParam({ key: 'tab', value: tabClicked })
+        saveTabToURL && addUrlParam({ key: 'tab', value: tabClicked })
     }
 
     useEffect(function onFirstMount() {
         const queryString = typeof window !== 'undefined' ? window.location.search : '';
         const urlParams = new URLSearchParams(queryString);
         const urlTab = urlParams && urlParams.get('tab')
-        if (!currentTabKey && urlTab) {setCurrentTab(urlTab)}
+        if (!currentTabKey && urlTab && saveTabToURL) {setCurrentTab(urlTab)}
     }, []);
 
     return (<div>

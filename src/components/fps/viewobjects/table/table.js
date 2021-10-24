@@ -91,7 +91,7 @@ const EditableCell = ({
                 }} />
         }
         return <div className={`${styles.notEditableValue} ${styles.number}`}>
-            {value}
+            {typeof value == 'object' ? JSON.stringify(value) : value}
         </div>
     }
 
