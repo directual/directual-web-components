@@ -22,6 +22,22 @@ export const dict = {
             phone: 'Phone number',
             login: 'Login',
             repeatPassword: 'Repeat password'
+        },
+        search: "Search",
+        searching: "Searching",
+        prev: "Prev",
+        first: "First",
+        next: "Next",
+        page: "page",
+        of: "of",
+        card: {
+            edit: "edit",
+            cancelEditing: "cancel editing",
+            saveChanges: "Save changes",
+            discardChanges: "Discard changes",
+            noVisibleName: "No visible name",
+            copyLink: "Copy direct link to the object",
+            refreshCard: "Refresh object"
         }
     },
 
@@ -49,6 +65,22 @@ export const dict = {
             phone: 'Telefonnummer',
             login: 'Anmeldung',
             repeatPassword: 'Passwort wiederholen'
+        },
+        search: "Suche",
+        searching: "Suche",
+        prev: "Vorherige",
+        first: "Erste",
+        next: "Nächste",
+        page: "seite",
+        of: "von",
+        card: {
+            edit: "bearbeiten",
+            cancelEditing: "bearbeitung abbrechen",
+            saveChanges: "Änderungen speichern",
+            discardChanges: "Änderungen verwerfen",
+            noVisibleName: "Kein sichtbarer namen",
+            copyLink: "Direktlink zum Objekt kopieren",
+            refreshCard: "Objekt aktualisieren"
         }
     },
 
@@ -76,8 +108,23 @@ export const dict = {
             phone: 'Número de teléfono',
             login: 'Acceso',
             repeatPassword: 'Repite la contraseña'
+        },
+        search: "Buscar",
+        searching: "Buscando",
+        prev: "Anterior",
+        first: "Primera",
+        next: "Siguiente",
+        page: "página",
+        of: "de",
+        card: {
+            edit: "editar",
+            cancelEditing: "cancelar la edición",
+            saveChanges: "Guardar los cambios",
+            discardChanges: "Descartar los cambios",
+            noVisibleName: "Sin nombre visible",
+            copyLink: "Copie el enlace directo al objeto",
+            refreshCard: "Actualizar objeto"
         }
-
     },
 
 
@@ -104,8 +151,23 @@ export const dict = {
             phone: 'Numéro de téléphone',
             login: 'Login',
             repeatPassword: 'Répéter le mot de passe'
+        },
+        search: "Chercher",
+        searching: "Recherche",
+        prev: "Précédente",
+        first: "Première",
+        next: "Suivante",
+        page: "page",
+        of: "sur",
+        card: {
+            edit: "éditer",
+            cancelEditing: "annuler l'édition",
+            saveChanges: "Sauvegarder les modifications",
+            discardChanges: "Annuler les modifications",
+            noVisibleName: "Aucun nom visible",
+            copyLink: "Copiez le lien direct vers l'objet",
+            refreshCard: "Actualiser l'objet"
         }
-
     },
 
 
@@ -132,7 +194,22 @@ export const dict = {
             phone: 'Телефон',
             login: 'Логин',
             repeatPassword: 'Повторите пароль'
+        },
+        search: "Поиск",
+        searching: "Поиск",
+        prev: "Пред",
+        first: "Первая",
+        next: "След",
+        page: "страница",
+        of: "из",
+        card: {
+            edit: "редактировать",
+            cancelEditing: "отменить редактирование",
+            saveChanges: "Сохранить изменения",
+            discardChanges: "Отменить изменения",
+            noVisibleName: "Нет имени объекта",
+            copyLink: "Скопировать прямую ссылку на карточку объекта",
+            refreshCard: "Обновить карточку объекта"
         }
-
     }
 }

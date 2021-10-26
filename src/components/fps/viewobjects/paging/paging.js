@@ -3,20 +3,23 @@ import styles from './paging.module.css'
 import Button from '../../button/button'
 import Loader from '../../loader/loader'
 
-export function Paging({ setPage, pageSize, totalPages, currentPage, setLoading, loading }) {
+export function Paging({ setPage, pageSize, totalPages, currentPage, setLoading, loading, dict, lang }) {
     if (totalPages == 1) return <div />
     return (
         <div className={styles.paging}>
+            {currentPage > 1 &&
+                <Button height={40} disabled={loading} small onClick={() => {setLoading(true); setPage(0)}}>❮❮</Button>
+                }
             {currentPage != 0 &&
-                <Button disabled={loading} small onClick={() => {setLoading(true); setPage(currentPage - 1)}}>❮ Prev</Button>
+                <Button height={40} disabled={loading} small onClick={() => {setLoading(true); setPage(currentPage - 1)}}>❮ {dict[lang].prev}</Button>
                 }
             {currentPage < (totalPages - 1) &&
-                <Button disabled={loading} small onClick={() => {setLoading(true); setPage(currentPage + 1)}}>Next ❯</Button>
+                <Button height={40} disabled={loading} small onClick={() => {setLoading(true); setPage(currentPage + 1)}}>{dict[lang].next} ❯</Button>
                 }
             {!loading ?
-                <div>page <strong>{currentPage + 1}</strong> of <strong>{totalPages}</strong></div>
+                <div>{dict[lang].page} <strong>{currentPage + 1}</strong> {dict[lang].of} <strong>{totalPages}</strong></div>
                 :
-                <Loader>Loading...</Loader>
+                <Loader>{dict[lang].loading}</Loader>
             }
         </div>
     )

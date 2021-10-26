@@ -79,92 +79,73 @@ const App = (props) => {
     }
 
     let cardActions = {
-        "sl": "cart",
+        "sl": "my_company",
         "pageSize": "10",
         "headerField": null,
         "params": {
-            "cardListLayout": "grid",
-            "cardHeaderComment": "",
-            "deleteField": "",
-            "cardBodyText": "",
-            "cardImage": false,
-            "cardImageField": "",
-            "cardImageType": "none",
-            "cardImageSize": 100,
-            "objectView": {},
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "Cart_price",
+                        "fieldSysName": "about",
                         "fetch": [],
-                        "sysName": "Cart_price",
+                        "sysName": "about",
                         "name": "",
-                        "dataType": "number",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "goods",
+                        "fieldSysName": "active_job_ids",
+                        "fetch": [],
+                        "sysName": "active_job_ids",
+                        "name": "",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "all_job_ids",
                         "fetch": [
                             {
-                                "fieldSysName": "finalPrice",
+                                "fieldSysName": "id",
                                 "condition": null,
                                 "fetch": []
                             },
                             {
-                                "fieldSysName": "good",
-                                "condition": null,
-                                "fetch": [
-                                    {
-                                        "fieldSysName": "id",
-                                        "condition": null,
-                                        "fetch": []
-                                    },
-                                    {
-                                        "fieldSysName": "image",
-                                        "condition": null,
-                                        "fetch": []
-                                    },
-                                    {
-                                        "fieldSysName": "name",
-                                        "condition": null,
-                                        "fetch": []
-                                    },
-                                    {
-                                        "fieldSysName": "price",
-                                        "condition": null,
-                                        "fetch": []
-                                    }
-                                ]
-                            },
-                            {
-                                "fieldSysName": "good_in_cart_name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "image",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "quantity",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "status",
+                                "fieldSysName": "type",
                                 "condition": null,
                                 "fetch": []
                             }
                         ],
-                        "sysName": "goods",
+                        "sysName": "all_job_ids",
                         "name": "",
                         "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "link": "goods_in_cart"
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "city_ids",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "city_ids",
+                        "name": "",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "cities"
                     },
                     {
                         "fieldSysName": "id",
@@ -177,36 +158,142 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "status",
+                        "fieldSysName": "insta",
                         "fetch": [],
-                        "sysName": "status",
+                        "sysName": "insta",
                         "name": "",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "title",
+                        "fieldSysName": "invoice_ids",
                         "fetch": [],
-                        "sysName": "title",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    }
-                ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "goods",
-                        "fetch": [],
-                        "sysName": "goods",
+                        "sysName": "invoice_ids",
                         "name": "",
                         "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "link": "goods_in_cart"
+                        "link": "invoice"
+                    },
+                    {
+                        "fieldSysName": "jobs_this_month_displayed",
+                        "fetch": [],
+                        "sysName": "jobs_this_month_displayed",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "name",
+                        "fetch": [],
+                        "sysName": "name",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "owner_id",
+                        "fetch": [],
+                        "sysName": "owner_id",
+                        "name": "владелец",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "site",
+                        "fetch": [],
+                        "sysName": "site",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "tarif_date_end",
+                        "fetch": [],
+                        "sysName": "tarif_date_end",
+                        "name": "",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "tarif_id",
+                        "fetch": [],
+                        "sysName": "tarif_id",
+                        "name": "",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "tarif"
+                    },
+                    {
+                        "fieldSysName": "tarif_status",
+                        "fetch": [],
+                        "sysName": "tarif_status",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "user_ids",
+                        "fetch": [
+                            {
+                                "fieldSysName": "email",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "firstName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "lastName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "phone",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "user_ids",
+                        "name": "сотрудники",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    }
+                ],
+                "writeFields": [
+                    {
+                        "fieldSysName": "about",
+                        "fetch": [],
+                        "sysName": "about",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
                     },
                     {
                         "fieldSysName": "id",
@@ -214,33 +301,75 @@ const App = (props) => {
                         "sysName": "id",
                         "name": "id",
                         "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "name",
+                        "fetch": [],
+                        "sysName": "name",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "site",
+                        "fetch": [],
+                        "sysName": "site",
+                        "name": "",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     }
                 ],
                 "fields": {
-                    "Cart_price": {
-                        "id": "Cart_price",
+                    "about": {
+                        "id": "about",
                         "content": "",
                         "type": "field",
-                        "dataType": "number",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "goods": {
-                        "id": "goods",
+                    "active_job_ids": {
+                        "id": "active_job_ids",
                         "content": "",
                         "type": "field",
                         "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": "goods_in_cart",
+                        "link": "WebUser",
+                        "actions": []
+                    },
+                    "all_job_ids": {
+                        "id": "all_job_ids",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "WebUser",
+                        "actions": []
+                    },
+                    "city_ids": {
+                        "id": "city_ids",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "cities",
                         "actions": []
                     },
                     "id": {
@@ -255,157 +384,366 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "status": {
-                        "id": "status",
+                    "insta": {
+                        "id": "insta",
                         "content": "",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": null,
+                        "link": "",
                         "actions": []
                     },
-                    "title": {
-                        "id": "title",
+                    "invoice_ids": {
+                        "id": "invoice_ids",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "invoice",
+                        "actions": []
+                    },
+                    "jobs_this_month_displayed": {
+                        "id": "jobs_this_month_displayed",
                         "content": "",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": null,
+                        "link": "",
+                        "actions": []
+                    },
+                    "name": {
+                        "id": "name",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "owner_id": {
+                        "id": "owner_id",
+                        "content": "владелец",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "WebUser",
+                        "actions": []
+                    },
+                    "site": {
+                        "id": "site",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "tarif_date_end": {
+                        "id": "tarif_date_end",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "tarif_id": {
+                        "id": "tarif_id",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "tarif",
+                        "actions": []
+                    },
+                    "tarif_status": {
+                        "id": "tarif_status",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "user_ids": {
+                        "id": "user_ids",
+                        "content": "сотрудники",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "WebUser",
+                        "actions": [
+                            {
+                                "sysName": "company_action",
+                                "id": "65931635240671931",
+                                "name": "Удалить сотрудника",
+                                "displayAs": "button",
+                                "buttonType": "danger",
+                                "callFrom": "linked",
+                                "callFromField": "user_ids",
+                                "SLtype": "other",
+                                "fields": {
+                                    "readFields": [
+                                        {
+                                            "fieldSysName": "id",
+                                            "fetch": [],
+                                            "sysName": "id",
+                                            "name": "id",
+                                            "dataType": "id",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": ""
+                                        },
+                                        {
+                                            "fieldSysName": "invoice_link",
+                                            "fetch": [],
+                                            "sysName": "invoice_link",
+                                            "name": "",
+                                            "dataType": "string",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": ""
+                                        },
+                                        {
+                                            "fieldSysName": "output_about",
+                                            "fetch": [],
+                                            "sysName": "output_about",
+                                            "name": "",
+                                            "dataType": "string",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": ""
+                                        },
+                                        {
+                                            "fieldSysName": "output_bool",
+                                            "fetch": [],
+                                            "sysName": "output_bool",
+                                            "name": "",
+                                            "dataType": "boolean",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": ""
+                                        },
+                                        {
+                                            "fieldSysName": "output_headline",
+                                            "fetch": [],
+                                            "sysName": "output_headline",
+                                            "name": "",
+                                            "dataType": "string",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": ""
+                                        }
+                                    ],
+                                    "writeFields": [
+                                        {
+                                            "fieldSysName": "about",
+                                            "fetch": [],
+                                            "sysName": "about",
+                                            "name": "",
+                                            "dataType": "string",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": ""
+                                        },
+                                        {
+                                            "fieldSysName": "action",
+                                            "fetch": [],
+                                            "sysName": "action",
+                                            "name": "действие",
+                                            "dataType": "string",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": ""
+                                        },
+                                        {
+                                            "fieldSysName": "city_ids",
+                                            "fetch": [],
+                                            "sysName": "city_ids",
+                                            "name": "",
+                                            "dataType": "arrayLink",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": "cities"
+                                        },
+                                        {
+                                            "fieldSysName": "company_id",
+                                            "fetch": [],
+                                            "sysName": "company_id",
+                                            "name": "",
+                                            "dataType": "link",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": "company"
+                                        },
+                                        {
+                                            "fieldSysName": "insta",
+                                            "fetch": [],
+                                            "sysName": "insta",
+                                            "name": "Инстаграм компании:",
+                                            "dataType": "string",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": ""
+                                        },
+                                        {
+                                            "fieldSysName": "name",
+                                            "fetch": [],
+                                            "sysName": "name",
+                                            "name": "",
+                                            "dataType": "string",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": ""
+                                        },
+                                        {
+                                            "fieldSysName": "new_user_ids",
+                                            "fetch": [],
+                                            "sysName": "new_user_ids",
+                                            "name": "новый сотрудник",
+                                            "dataType": "string",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": ""
+                                        },
+                                        {
+                                            "fieldSysName": "owner_id",
+                                            "fetch": [],
+                                            "sysName": "owner_id",
+                                            "name": "владелец",
+                                            "dataType": "link",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": "WebUser"
+                                        },
+                                        {
+                                            "fieldSysName": "site",
+                                            "fetch": [],
+                                            "sysName": "site",
+                                            "name": "",
+                                            "dataType": "string",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": ""
+                                        },
+                                        {
+                                            "fieldSysName": "tarif_id",
+                                            "fetch": [],
+                                            "sysName": "tarif_id",
+                                            "name": "тариф",
+                                            "dataType": "link",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": "tarif"
+                                        },
+                                        {
+                                            "fieldSysName": "user_id",
+                                            "fetch": [],
+                                            "sysName": "user_id",
+                                            "name": "кто ввел",
+                                            "dataType": "link",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": "WebUser"
+                                        },
+                                        {
+                                            "fieldSysName": "user_ids",
+                                            "fetch": [],
+                                            "sysName": "user_ids",
+                                            "name": "сотрудники",
+                                            "dataType": "arrayLink",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": "WebUser"
+                                        }
+                                    ]
+                                },
+                                "formMapping": [
+                                    {
+                                        "id": "88411635240711999",
+                                        "target": "action",
+                                        "type": "const",
+                                        "value": "deleteTeamMember"
+                                    },
+                                    {
+                                        "id": "77011635240735265",
+                                        "target": "new_user_ids",
+                                        "type": "linkedField",
+                                        "value": "id"
+                                    },
+                                    {
+                                        "id": "95181635240833234",
+                                        "target": "user_id",
+                                        "type": "user",
+                                        "value": null
+                                    },
+                                    {
+                                        "id": "11891635240845092",
+                                        "target": "company_id",
+                                        "type": "objectField",
+                                        "value": "name"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "action__85861635174847525": {
+                        "content": "Добавить сотрудника",
+                        "id": "action__85861635174847525",
+                        "type": "action",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "Cart_price": {
+                    "about": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "goods": {
+                    "active_job_ids": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
-                        "clickable": true,
-                        "veiwOption": "cart",
-                        "cartView": {
-                            "image": true,
-                            "imageField": "image",
-                            "deleteOn": true,
-                            "quantity": true,
-                            "price": true,
-                            "title": true,
-                            "priceUnits": "$",
-                            "titleField": "good",
-                            "priceField": "finalPrice",
-                            "quantityField": "quantity",
-                            "status": true,
-                            "statusField": "status"
-                        },
-                        "configureLinkedCard": {
-                            "fields": {
-                                "finalPrice": {
-                                    "id": "finalPrice",
-                                    "content": "",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "number",
-                                    "format": null,
-                                    "formatOptions": null
-                                },
-                                "good": {
-                                    "id": "good",
-                                    "content": "",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "link",
-                                    "format": null,
-                                    "formatOptions": null
-                                },
-                                "good_in_cart_name": {
-                                    "id": "good_in_cart_name",
-                                    "content": "",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "string",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "image": {
-                                    "id": "image",
-                                    "content": "",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "file",
-                                    "format": "image",
-                                    "formatOptions": {}
-                                },
-                                "quantity": {
-                                    "id": "quantity",
-                                    "content": "",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "number",
-                                    "format": null,
-                                    "formatOptions": null
-                                },
-                                "status": {
-                                    "id": "status",
-                                    "content": "",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "link",
-                                    "format": null,
-                                    "formatOptions": {}
-                                }
-                            },
-                            "fieldParams": {
-                                "finalPrice": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "good": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "good_in_cart_name": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "image": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "quantity": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "status": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                }
-                            },
-                            "fieldOrder": [
-                                null,
-                                "finalPrice",
-                                "good",
-                                "good_in_cart_name",
-                                "image",
-                                "quantity",
-                                "status"
-                            ]
-                        }
+                        "clickable": false
+                    },
+                    "all_job_ids": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "city_ids": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
                     },
                     "id": {
                         "include": false,
@@ -414,14 +752,182 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "status": {
+                    "invoice_ids": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "title": {
+                    "name": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "owner_id": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "site": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "tarif_date_end": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "tarif_id": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": true,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "quickSearchSL": "addTariff"
+                    },
+                    "user_ids": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": true,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "email": {
+                                    "id": "email",
+                                    "content": "Email",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "firstName": {
+                                    "id": "firstName",
+                                    "content": "First name",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "lastName": {
+                                    "id": "lastName",
+                                    "content": "Last name",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "phone": {
+                                    "id": "phone",
+                                    "content": "Phone",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "action__65931635240671931": {
+                                    "id": "action__65931635240671931",
+                                    "content": "Удалить сотрудника",
+                                    "type": "action"
+                                },
+                                "id": {
+                                    "id": "id",
+                                    "content": "Username (login)",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "id",
+                                    "format": null,
+                                    "formatOptions": {}
+                                }
+                            },
+                            "fieldParams": {
+                                "email": {
+                                    "include": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "firstName": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "lastName": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "phone": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "id": {
+                                    "include": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "email",
+                                "firstName",
+                                "lastName",
+                                "phone",
+                                "action__65931635240671931",
+                                "id"
+                            ]
+                        },
+                        "subHeader": "Управление командой"
+                    },
+                    "action": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "company_id": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "user_id": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "insta": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "tarif_status": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "jobs_this_month_displayed": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -434,147 +940,449 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "Cart_price",
-                            "goods",
+                            "name",
+                            "owner_id",
+                            "about",
+                            "site",
+                            "city_ids",
                             "id",
-                            "status",
-                            "title"
+                            "active_job_ids",
+                            "all_job_ids",
+                            "invoice_ids",
+                            "tarif_date_end",
+                            "tarif_id",
+                            "insta",
+                            "tarif_status",
+                            "jobs_this_month_displayed"
+                        ]
+                    },
+                    "84581635174683616": {
+                        "id": "84581635174683616",
+                        "title": "Сотрудники",
+                        "fieldIds": [
+                            "user_ids",
+                            "action__85861635174847525"
                         ]
                     }
                 },
                 "columnOrder": [
-                    "tab-1"
+                    "tab-1",
+                    "84581635174683616"
                 ],
-                "actions": []
+                "actions": [
+                    {
+                        "sysName": "company_action",
+                        "id": "85861635174847525",
+                        "name": "Добавить сотрудника",
+                        "displayAs": "form",
+                        "buttonIcon": "actions",
+                        "buttonType": "accent",
+                        "SLtype": "other",
+                        "fields": {
+                            "readFields": [
+                                {
+                                    "fieldSysName": "id",
+                                    "fetch": [],
+                                    "sysName": "id",
+                                    "name": "id",
+                                    "dataType": "id",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                }
+                            ],
+                            "writeFields": [
+                                {
+                                    "fieldSysName": "about",
+                                    "fetch": [],
+                                    "sysName": "about",
+                                    "name": "",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "action",
+                                    "fetch": [],
+                                    "sysName": "action",
+                                    "name": "действие",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "city_ids",
+                                    "fetch": [],
+                                    "sysName": "city_ids",
+                                    "name": "",
+                                    "dataType": "arrayLink",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "cities"
+                                },
+                                {
+                                    "fieldSysName": "company_id",
+                                    "fetch": [],
+                                    "sysName": "company_id",
+                                    "name": "",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "company"
+                                },
+                                {
+                                    "fieldSysName": "insta",
+                                    "fetch": [],
+                                    "sysName": "insta",
+                                    "name": "Инстаграм компании:",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "name",
+                                    "fetch": [],
+                                    "sysName": "name",
+                                    "name": "",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "new_user_ids",
+                                    "fetch": [],
+                                    "sysName": "new_user_ids",
+                                    "name": "новый сотрудник",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "owner_id",
+                                    "fetch": [],
+                                    "sysName": "owner_id",
+                                    "name": "владелец",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "WebUser"
+                                },
+                                {
+                                    "fieldSysName": "site",
+                                    "fetch": [],
+                                    "sysName": "site",
+                                    "name": "",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "user_id",
+                                    "fetch": [],
+                                    "sysName": "user_id",
+                                    "name": "кто ввел",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "WebUser"
+                                },
+                                {
+                                    "fieldSysName": "user_ids",
+                                    "fetch": [],
+                                    "sysName": "user_ids",
+                                    "name": "сотрудники",
+                                    "dataType": "arrayLink",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "WebUser"
+                                }
+                            ]
+                        },
+                        "formFields": [
+                            {
+                                "id": "70121635174885495",
+                                "field": {
+                                    "fieldSysName": "new_user_ids",
+                                    "fetch": [],
+                                    "sysName": "new_user_ids",
+                                    "name": "новый сотрудник",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                }
+                            }
+                        ],
+                        "formMapping": [
+                            {
+                                "id": "45351635174889409",
+                                "target": "user_id",
+                                "type": "user",
+                                "value": null
+                            },
+                            {
+                                "id": "29091635174984072",
+                                "target": "company_id",
+                                "type": "objectField",
+                                "value": "id"
+                            },
+                            {
+                                "id": "11231635175218250",
+                                "target": "action",
+                                "type": "const",
+                                "value": "add_members"
+                            }
+                        ],
+                        "buttonTitle": "Добавить сотрудника, введите  ID (номер телефона)"
+                    },
+                    {
+                        "sysName": "company_action",
+                        "id": "65931635240671931",
+                        "name": "Удалить сотрудника",
+                        "displayAs": "button",
+                        "buttonType": "danger",
+                        "callFrom": "linked",
+                        "callFromField": "user_ids",
+                        "SLtype": "other",
+                        "fields": {
+                            "readFields": [
+                                {
+                                    "fieldSysName": "id",
+                                    "fetch": [],
+                                    "sysName": "id",
+                                    "name": "id",
+                                    "dataType": "id",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "invoice_link",
+                                    "fetch": [],
+                                    "sysName": "invoice_link",
+                                    "name": "",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "output_about",
+                                    "fetch": [],
+                                    "sysName": "output_about",
+                                    "name": "",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "output_bool",
+                                    "fetch": [],
+                                    "sysName": "output_bool",
+                                    "name": "",
+                                    "dataType": "boolean",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "output_headline",
+                                    "fetch": [],
+                                    "sysName": "output_headline",
+                                    "name": "",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                }
+                            ],
+                            "writeFields": [
+                                {
+                                    "fieldSysName": "about",
+                                    "fetch": [],
+                                    "sysName": "about",
+                                    "name": "",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "action",
+                                    "fetch": [],
+                                    "sysName": "action",
+                                    "name": "действие",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "city_ids",
+                                    "fetch": [],
+                                    "sysName": "city_ids",
+                                    "name": "",
+                                    "dataType": "arrayLink",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "cities"
+                                },
+                                {
+                                    "fieldSysName": "company_id",
+                                    "fetch": [],
+                                    "sysName": "company_id",
+                                    "name": "",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "company"
+                                },
+                                {
+                                    "fieldSysName": "insta",
+                                    "fetch": [],
+                                    "sysName": "insta",
+                                    "name": "Инстаграм компании:",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "name",
+                                    "fetch": [],
+                                    "sysName": "name",
+                                    "name": "",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "new_user_ids",
+                                    "fetch": [],
+                                    "sysName": "new_user_ids",
+                                    "name": "новый сотрудник",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "owner_id",
+                                    "fetch": [],
+                                    "sysName": "owner_id",
+                                    "name": "владелец",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "WebUser"
+                                },
+                                {
+                                    "fieldSysName": "site",
+                                    "fetch": [],
+                                    "sysName": "site",
+                                    "name": "",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "tarif_id",
+                                    "fetch": [],
+                                    "sysName": "tarif_id",
+                                    "name": "тариф",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "tarif"
+                                },
+                                {
+                                    "fieldSysName": "user_id",
+                                    "fetch": [],
+                                    "sysName": "user_id",
+                                    "name": "кто ввел",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "WebUser"
+                                },
+                                {
+                                    "fieldSysName": "user_ids",
+                                    "fetch": [],
+                                    "sysName": "user_ids",
+                                    "name": "сотрудники",
+                                    "dataType": "arrayLink",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "WebUser"
+                                }
+                            ]
+                        },
+                        "formMapping": [
+                            {
+                                "id": "88411635240711999",
+                                "target": "action",
+                                "type": "const",
+                                "value": "deleteTeamMember"
+                            },
+                            {
+                                "id": "77011635240735265",
+                                "target": "new_user_ids",
+                                "type": "linkedField",
+                                "value": "id"
+                            },
+                            {
+                                "id": "95181635240833234",
+                                "target": "user_id",
+                                "type": "user",
+                                "value": null
+                            },
+                            {
+                                "id": "11891635240845092",
+                                "target": "company_id",
+                                "type": "objectField",
+                                "value": "name"
+                            }
+                        ]
+                    }
+                ]
             },
             "fields": {
-                "Cart_price": {
+                "about": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "goods": {
+                "active_job_ids": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": true,
-                    "veiwOption": "cart",
-                    "cartView": {
-                        "image": true,
-                        "imageField": "image",
-                        "deleteOn": true,
-                        "quantity": true,
-                        "price": true,
-                        "title": true,
-                        "priceUnits": "$",
-                        "titleField": "good",
-                        "priceField": "finalPrice",
-                        "quantityField": "quantity",
-                        "status": true,
-                        "statusField": "status"
-                    },
-                    "configureLinkedCard": {
-                        "fields": {
-                            "finalPrice": {
-                                "id": "finalPrice",
-                                "content": "",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "number",
-                                "format": null,
-                                "formatOptions": null
-                            },
-                            "good": {
-                                "id": "good",
-                                "content": "",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "link",
-                                "format": null,
-                                "formatOptions": null
-                            },
-                            "good_in_cart_name": {
-                                "id": "good_in_cart_name",
-                                "content": "",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "string",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "image": {
-                                "id": "image",
-                                "content": "",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "file",
-                                "format": "image",
-                                "formatOptions": {}
-                            },
-                            "quantity": {
-                                "id": "quantity",
-                                "content": "",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "number",
-                                "format": null,
-                                "formatOptions": null
-                            },
-                            "status": {
-                                "id": "status",
-                                "content": "",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "link",
-                                "format": null,
-                                "formatOptions": {}
-                            }
-                        },
-                        "fieldParams": {
-                            "finalPrice": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "good": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "good_in_cart_name": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "image": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "quantity": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "status": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            }
-                        },
-                        "fieldOrder": [
-                            null,
-                            "finalPrice",
-                            "good",
-                            "good_in_cart_name",
-                            "image",
-                            "quantity",
-                            "status"
-                        ]
-                    }
+                    "clickable": false
+                },
+                "all_job_ids": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "city_ids": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
                 },
                 "id": {
                     "include": false,
@@ -583,77 +1391,688 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "status": {
+                "invoice_ids": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "title": {
+                "name": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "owner_id": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "site": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "tarif_date_end": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "tarif_id": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "quickSearchSL": "addTariff"
+                },
+                "user_ids": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "email": {
+                                "id": "email",
+                                "content": "Email",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "firstName": {
+                                "id": "firstName",
+                                "content": "First name",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "lastName": {
+                                "id": "lastName",
+                                "content": "Last name",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "phone": {
+                                "id": "phone",
+                                "content": "Phone",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "action__65931635240671931": {
+                                "id": "action__65931635240671931",
+                                "content": "Удалить сотрудника",
+                                "type": "action"
+                            },
+                            "id": {
+                                "id": "id",
+                                "content": "Username (login)",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "id",
+                                "format": null,
+                                "formatOptions": {}
+                            }
+                        },
+                        "fieldParams": {
+                            "email": {
+                                "include": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "firstName": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "lastName": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "phone": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "id": {
+                                "include": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "email",
+                            "firstName",
+                            "lastName",
+                            "phone",
+                            "action__65931635240671931",
+                            "id"
+                        ]
+                    },
+                    "subHeader": "Управление командой"
+                },
+                "action": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "company_id": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "user_id": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "insta": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "tarif_status": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "jobs_this_month_displayed": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 }
-            }
+            },
+            "actions": [
+                {
+                    "sysName": "company_action",
+                    "id": "85861635174847525",
+                    "name": "Добавить сотрудника",
+                    "displayAs": "form",
+                    "buttonIcon": "actions",
+                    "buttonType": "accent",
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "about",
+                                "fetch": [],
+                                "sysName": "about",
+                                "name": "",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "action",
+                                "fetch": [],
+                                "sysName": "action",
+                                "name": "действие",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "city_ids",
+                                "fetch": [],
+                                "sysName": "city_ids",
+                                "name": "",
+                                "dataType": "arrayLink",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "cities"
+                            },
+                            {
+                                "fieldSysName": "company_id",
+                                "fetch": [],
+                                "sysName": "company_id",
+                                "name": "",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "company"
+                            },
+                            {
+                                "fieldSysName": "insta",
+                                "fetch": [],
+                                "sysName": "insta",
+                                "name": "Инстаграм компании:",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "name",
+                                "fetch": [],
+                                "sysName": "name",
+                                "name": "",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "new_user_ids",
+                                "fetch": [],
+                                "sysName": "new_user_ids",
+                                "name": "новый сотрудник",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "owner_id",
+                                "fetch": [],
+                                "sysName": "owner_id",
+                                "name": "владелец",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            },
+                            {
+                                "fieldSysName": "site",
+                                "fetch": [],
+                                "sysName": "site",
+                                "name": "",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "fetch": [],
+                                "sysName": "user_id",
+                                "name": "кто ввел",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            },
+                            {
+                                "fieldSysName": "user_ids",
+                                "fetch": [],
+                                "sysName": "user_ids",
+                                "name": "сотрудники",
+                                "dataType": "arrayLink",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            }
+                        ]
+                    },
+                    "formFields": [
+                        {
+                            "id": "70121635174885495",
+                            "field": {
+                                "fieldSysName": "new_user_ids",
+                                "fetch": [],
+                                "sysName": "new_user_ids",
+                                "name": "новый сотрудник",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        }
+                    ],
+                    "formMapping": [
+                        {
+                            "id": "45351635174889409",
+                            "target": "user_id",
+                            "type": "user",
+                            "value": null
+                        },
+                        {
+                            "id": "29091635174984072",
+                            "target": "company_id",
+                            "type": "objectField",
+                            "value": "id"
+                        },
+                        {
+                            "id": "11231635175218250",
+                            "target": "action",
+                            "type": "const",
+                            "value": "add_members"
+                        }
+                    ],
+                    "buttonTitle": "Добавить сотрудника, введите  ID (номер телефона)"
+                },
+                {
+                    "sysName": "company_action",
+                    "id": "65931635240671931",
+                    "name": "Удалить сотрудника",
+                    "displayAs": "button",
+                    "buttonType": "danger",
+                    "callFrom": "linked",
+                    "callFromField": "user_ids",
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "invoice_link",
+                                "fetch": [],
+                                "sysName": "invoice_link",
+                                "name": "",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "output_about",
+                                "fetch": [],
+                                "sysName": "output_about",
+                                "name": "",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "output_bool",
+                                "fetch": [],
+                                "sysName": "output_bool",
+                                "name": "",
+                                "dataType": "boolean",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "output_headline",
+                                "fetch": [],
+                                "sysName": "output_headline",
+                                "name": "",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "about",
+                                "fetch": [],
+                                "sysName": "about",
+                                "name": "",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "action",
+                                "fetch": [],
+                                "sysName": "action",
+                                "name": "действие",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "city_ids",
+                                "fetch": [],
+                                "sysName": "city_ids",
+                                "name": "",
+                                "dataType": "arrayLink",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "cities"
+                            },
+                            {
+                                "fieldSysName": "company_id",
+                                "fetch": [],
+                                "sysName": "company_id",
+                                "name": "",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "company"
+                            },
+                            {
+                                "fieldSysName": "insta",
+                                "fetch": [],
+                                "sysName": "insta",
+                                "name": "Инстаграм компании:",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "name",
+                                "fetch": [],
+                                "sysName": "name",
+                                "name": "",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "new_user_ids",
+                                "fetch": [],
+                                "sysName": "new_user_ids",
+                                "name": "новый сотрудник",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "owner_id",
+                                "fetch": [],
+                                "sysName": "owner_id",
+                                "name": "владелец",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            },
+                            {
+                                "fieldSysName": "site",
+                                "fetch": [],
+                                "sysName": "site",
+                                "name": "",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "tarif_id",
+                                "fetch": [],
+                                "sysName": "tarif_id",
+                                "name": "тариф",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "tarif"
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "fetch": [],
+                                "sysName": "user_id",
+                                "name": "кто ввел",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            },
+                            {
+                                "fieldSysName": "user_ids",
+                                "fetch": [],
+                                "sysName": "user_ids",
+                                "name": "сотрудники",
+                                "dataType": "arrayLink",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            }
+                        ]
+                    },
+                    "formMapping": [
+                        {
+                            "id": "88411635240711999",
+                            "target": "action",
+                            "type": "const",
+                            "value": "deleteTeamMember"
+                        },
+                        {
+                            "id": "77011635240735265",
+                            "target": "new_user_ids",
+                            "type": "linkedField",
+                            "value": "id"
+                        },
+                        {
+                            "id": "95181635240833234",
+                            "target": "user_id",
+                            "type": "user",
+                            "value": null
+                        },
+                        {
+                            "id": "11891635240845092",
+                            "target": "company_id",
+                            "type": "objectField",
+                            "value": "name"
+                        }
+                    ]
+                }
+            ],
+            "cardHeaderComment": "name",
+            "cardBodyText": "jobs_this_month_displayed"
         },
         "tableTitle": "",
         "actions": null,
         "headers": [
             {
-                "sysName": "Cart_price",
-                "dataType": "number",
+                "sysName": "about",
+                "dataType": "string",
                 "name": "",
-                "id": "99631632654931535",
+                "id": "67871635172289571",
                 "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "indexExists": false,
-                "arrayLink": false,
-                "linkType": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "goods",
-                "dataType": "arrayLink",
-                "name": "",
-                "id": "53151632654863628",
-                "link": "goods_in_cart",
-                "group": "0",
-                "tags": null,
+                "group": "1635172276245",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 1,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
                 "json": false,
-                "linkOrArrayLinkType": true,
                 "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "active_job_ids",
+                "dataType": "arrayLink",
+                "name": "",
+                "id": "81721635172299024",
+                "link": "WebUser",
+                "group": "1635172276245",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": true,
                 "arrayLink": true,
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "all_job_ids",
+                "dataType": "arrayLink",
+                "name": "",
+                "id": "19241635172315660",
+                "link": "WebUser",
+                "group": "1635172276245",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "arrayLink": true,
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "city_ids",
+                "dataType": "arrayLink",
+                "name": "",
+                "id": "41571635172398903",
+                "link": "cities",
+                "group": "1635172276245",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "arrayLink": true,
+                "json": false,
+                "indexExists": false,
                 "linkType": false,
                 "typeVariable": {},
                 "array": false
@@ -678,66 +2097,294 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "json": false,
                 "linkOrArrayLinkType": false,
-                "indexExists": false,
                 "arrayLink": false,
+                "json": false,
+                "indexExists": false,
                 "linkType": false,
                 "typeVariable": {},
                 "array": false
             },
             {
-                "sysName": "status",
+                "sysName": "insta",
                 "dataType": "string",
                 "name": "",
-                "id": "84351632654929010",
-                "link": null,
+                "id": "24331635178041025",
+                "link": "",
+                "group": "1635172276245",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "invoice_ids",
+                "dataType": "arrayLink",
+                "name": "",
+                "id": "42791635172440958",
+                "link": "invoice",
+                "group": "1635177746305",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "arrayLink": true,
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "jobs_this_month_displayed",
+                "dataType": "string",
+                "name": "",
+                "id": "38541635249227744",
+                "link": "",
+                "group": "1635185907484",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 7,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "name",
+                "dataType": "string",
+                "name": "",
+                "id": "98711635172250947",
+                "link": "",
+                "group": "1635172276245",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "owner_id",
+                "dataType": "link",
+                "name": "владелец",
+                "id": "84211635172223953",
+                "link": "WebUser",
                 "group": "0",
-                "tags": null,
+                "tags": "",
+                "indexing": true,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [
+                    "id"
+                ],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "json": false,
+                "indexExists": true,
+                "linkType": true,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "site",
+                "dataType": "string",
+                "name": "",
+                "id": "84241635172295062",
+                "link": "",
+                "group": "1635172276245",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 2,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
-                "json": false,
                 "linkOrArrayLinkType": false,
-                "indexExists": false,
                 "arrayLink": false,
+                "json": false,
+                "indexExists": false,
                 "linkType": false,
                 "typeVariable": {},
                 "array": false
             },
             {
-                "sysName": "title",
-                "dataType": "string",
+                "sysName": "tarif_date_end",
+                "dataType": "date",
                 "name": "",
-                "id": "25911632662259172",
-                "link": null,
-                "group": "0",
-                "tags": null,
+                "id": "91041635172429933",
+                "link": "",
+                "group": "1635185907484",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 4,
+                "order": 2,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
-                "json": false,
                 "linkOrArrayLinkType": false,
-                "indexExists": false,
                 "arrayLink": false,
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "tarif_id",
+                "dataType": "link",
+                "name": "",
+                "id": "70121635172416173",
+                "link": "tarif",
+                "group": "1635185907484",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "json": false,
+                "indexExists": false,
+                "linkType": true,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "tarif_status",
+                "dataType": "string",
+                "name": "",
+                "id": "92611635183460417",
+                "link": "",
+                "group": "1635185907484",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "user_ids",
+                "dataType": "arrayLink",
+                "name": "сотрудники",
+                "id": "54361635172235972",
+                "link": "WebUser",
+                "group": "0",
+                "tags": "",
+                "indexing": true,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [
+                    "id"
+                ],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "arrayLink": true,
+                "json": false,
+                "indexExists": true,
                 "linkType": false,
                 "typeVariable": {},
                 "array": false
@@ -745,37 +2392,24 @@ const App = (props) => {
         ],
         "data": [
             {
-                "title": "Cart",
-                "goods": [
+                "name": "Directual",
+                "owner_id": "79151845361",
+                "city_ids": [],
+                "id": "dfa1dfef-44f8-4820-b8b2-6327158d6202",
+                "tarif_status": "none",
+                "user_ids": [
                     {
-                        "quantity": 2,
-                        "image": "https://api.directual.com/fileUploaded/dev/ccb4f331-25a3-4f0d-969f-04b946c8f1d3.jpg",
-                        "good": {
-                            "price": 10,
-                            "name": "apples",
-                            "id": "1"
-                        },
-                        "good_in_cart_name": "good 3",
-                        "id": "1",
-                        "status": "1",
-                        "finalPrice": 99
-                    },
-                    {
-                        "quantity": 4,
-                        "image": "https://api.directual.com/fileUploaded/cart/7e71ae85-66e9-4e44-9ddc-add69a90c998.jpg",
-                        "good": {
-                            "price": 15,
-                            "name": "oranges",
-                            "id": "3"
-                        },
-                        "good_in_cart_name": "good 1",
-                        "id": "3",
-                        "status": "2",
-                        "finalPrice": 400
+                        "lastName": "Ershov",
+                        "phone": "79151845361",
+                        "firstName": "Pavel",
+                        "id": "79151845361"
                     }
                 ],
-                "status": "new",
-                "id": "1"
+                "about": "no-code",
+                "invoice_ids": [
+                    "b82701f4-e03f-4c1c-be47-d522ce044354"
+                ],
+                "site": ""
             }
         ],
         "totalPages": 1,
@@ -783,185 +2417,167 @@ const App = (props) => {
         "error": null,
         "fieldScheme": [
             [
-                "Cart_price",
-                99031305
+                "about",
+                99040000
             ],
             [
-                "goods.finalPrice",
-                99031304
+                "active_job_ids",
+                99040000
             ],
             [
-                "goods.good.id",
-                99031302
+                "all_job_ids.id",
+                99026956
             ],
             [
-                "goods.good.image",
-                99031302
+                "all_job_ids.type",
+                99026956
             ],
             [
-                "goods.good.name",
-                99031302
+                "city_ids.id",
+                99026976
             ],
             [
-                "goods.good.price",
-                99031302
-            ],
-            [
-                "goods.good_in_cart_name",
-                99031304
-            ],
-            [
-                "goods.image",
-                99031304
-            ],
-            [
-                "goods.quantity",
-                99031304
-            ],
-            [
-                "goods.status",
-                99031304
+                "city_ids.name",
+                99026976
             ],
             [
                 "id",
-                99031305
+                99040000
             ],
             [
-                "status",
-                99031305
+                "insta",
+                99040000
             ],
             [
-                "title",
-                99031305
+                "invoice_ids",
+                99040000
+            ],
+            [
+                "jobs_this_month_displayed",
+                99040000
+            ],
+            [
+                "name",
+                99040000
+            ],
+            [
+                "owner_id",
+                99040000
+            ],
+            [
+                "site",
+                99040000
+            ],
+            [
+                "tarif_date_end",
+                99040000
+            ],
+            [
+                "tarif_id",
+                99040000
+            ],
+            [
+                "tarif_status",
+                99040000
+            ],
+            [
+                "user_ids.email",
+                99026956
+            ],
+            [
+                "user_ids.firstName",
+                99026956
+            ],
+            [
+                "user_ids.id",
+                99026956
+            ],
+            [
+                "user_ids.lastName",
+                99026956
+            ],
+            [
+                "user_ids.phone",
+                99026956
             ]
         ],
         "writeFields": [
-            "goods",
-            "id"
+            "about",
+            "id",
+            "name",
+            "site"
         ],
         "structures": {
-            "99031302": {
-                "networkID": 9877,
-                "sysName": "goods",
-                "name": "goods",
-                "id": 99031302,
-                "dateCreated": "2021-09-26T11:09:07Z",
+            "99026956": {
+                "networkID": 9667,
+                "sysName": "WebUser",
+                "name": "App users",
+                "id": 99026956,
+                "dateCreated": "2021-09-21T15:24:50Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"39841632654618610\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"price\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"16831632654619092\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"image\",\"dataType\":\"file\",\"name\":\"Image\",\"id\":\"61001632654724498\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-09-26T11:13:42Z",
-                "createBy": 21,
-                "changedBy": 21,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "indexExists": false,
-                    "arrayLink": false,
-                    "linkType": false,
-                    "typeVariable": {},
-                    "array": false
-                },
-                "folderId": null
-            },
-            "99031304": {
-                "networkID": 9877,
-                "sysName": "goods_in_cart",
-                "name": "goods in cart",
-                "id": 99031304,
-                "dateCreated": "2021-09-26T11:14:05Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"cart_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"27951632654884383\",\"link\":\"cart\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":false,\"linkType\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"good\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"56301632654884854\",\"link\":\"goods\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":false,\"linkType\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"quantity\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"10581632654902116\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"finalPrice\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"41241632654906714\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"good_in_cart_name\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"40521632944512531\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"image\",\"dataType\":\"file\",\"name\":\"\",\"id\":\"86301632946954729\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"status\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"43591633889912266\",\"link\":\"status\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":false,\"linkType\":true,\"typeVariable\":{},\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"good\"},{\"sysName\":\"quantity\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-10-10T18:19:36Z",
-                "createBy": 21,
-                "changedBy": 21,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "indexExists": false,
-                    "arrayLink": false,
-                    "linkType": false,
-                    "typeVariable": {},
-                    "array": false
-                },
-                "folderId": null
-            },
-            "99031305": {
-                "networkID": 9877,
-                "sysName": "cart",
-                "name": "cart",
-                "id": 99031305,
-                "dateCreated": "2021-09-26T11:14:14Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"title\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"25911632662259172\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"goods\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"53151632654863628\",\"link\":\"goods_in_cart\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"array\":false},{\"sysName\":\"status\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"84351632654929010\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"Cart_price\",\"name\":\"\",\"dataType\":\"number\",\"id\":\"99631632654931535\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"goods\"}]",
-                "jsonSettings": null,
+                "jsonObject": "[{\"sysName\":\"userpic\",\"dataType\":\"file\",\"name\":\"User pic\",\"id\":\"1\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"phone\",\"dataType\":\"string\",\"name\":\"Phone\",\"id\":\"10\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"jobs_active\",\"dataType\":\"number\",\"name\":\"Количество активных вакансий\",\"id\":\"10941610887494618\",\"link\":\"\",\"group\":\"1607938855954\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"dateCreated\",\"dataType\":\"string\",\"name\":\"dateCreated\",\"id\":\"11\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"password\",\"dataType\":\"string\",\"name\":\"Password (hash)\",\"id\":\"12\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"Username (login)\",\"id\":\"13\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"jobs_new\",\"dataType\":\"number\",\"name\":\"Количество вакансий, ожидающих оплату\",\"id\":\"17741610887511981\",\"link\":\"\",\"group\":\"1607938855954\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"my_job_ids\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"19261634130420795\",\"link\":\"my_jobs\",\"group\":\"1607016878115\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"isBlocked\",\"dataType\":\"boolean\",\"name\":\"Block user\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"52_functions\",\"dataType\":\"arrayLink\",\"name\":\"Функции для категории 52\",\"id\":\"22101607077116998\",\"link\":\"functions52\",\"group\":\"1607016878115\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"testChek\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"29031633679872466\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"Gender\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"owner_my_company_ids\",\"dataType\":\"arrayLink\",\"name\":\"ваши компании\",\"id\":\"32291635175642945\",\"link\":\"company\",\"group\":\"1635175638990\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"TG_username\",\"dataType\":\"string\",\"name\":\"Telegram\",\"id\":\"33601607938915585\",\"link\":\"\",\"group\":\"1606985920923\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"22_functions\",\"dataType\":\"arrayLink\",\"name\":\"Функции для категории 22\",\"id\":\"34391607077096514\",\"link\":\"functions22\",\"group\":\"1607016878115\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"employer_description\",\"dataType\":\"string\",\"name\":\"Описание компании\",\"id\":\"34671609671007166\",\"link\":\"\",\"group\":\"1607938855954\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"churn\",\"dataType\":\"boolean\",\"name\":\"Вышел из бота\",\"id\":\"37051614937701032\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"my_company_ids\",\"dataType\":\"arrayLink\",\"name\":\"ваши компании\",\"id\":\"38041635175678021\",\"link\":\"company\",\"group\":\"1635175638990\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"lastName\",\"dataType\":\"string\",\"name\":\"Last name\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"about_last_job\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"48551634130491392\",\"link\":null,\"group\":\"1607016878115\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"jobs_selected\",\"dataType\":\"number\",\"name\":\"Количество подходящих вакансий\",\"id\":\"49081610887960593\",\"link\":\"\",\"group\":\"1607016878115\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"salary_text\",\"dataType\":\"string\",\"name\":\"Ожидания по доходу\",\"id\":\"49741607082338411\",\"link\":\"\",\"group\":\"1607016878115\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"my_last_job_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"49861634201581281\",\"link\":\"my_jobs\",\"group\":\"1607016878115\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":true,\"array\":false},{\"sysName\":\"firstName\",\"dataType\":\"string\",\"name\":\"First name\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"TG_user_id\",\"dataType\":\"link\",\"name\":\"TG_user\",\"id\":\"55611607016886218\",\"link\":\"TUser\",\"group\":\"1607016878115\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":true,\"array\":false},{\"sysName\":\"role\",\"dataType\":\"string\",\"name\":\"Roles\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"salary_raw\",\"dataType\":\"json\",\"name\":\"Ожидания по доходу \",\"id\":\"63391607082324656\",\"link\":\"\",\"group\":\"1607016878115\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"rangeSlider\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"unitName\":\"k ₽\",\"booleanOptions\":[\"True\",\"False\"],\"customOptionPlaceholder\":\"Describe your option\",\"range\":{\"max\":300,\"min\":20,\"step\":10},\"customOptionType\":\"textarea\"},\"groupName\":null,\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"image\",\"dataType\":\"file\",\"name\":\"image\",\"id\":\"63411607068082205\",\"link\":\"\",\"group\":\"1607016878115\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"Facebook_lonk\",\"dataType\":\"string\",\"name\":\"Facebook\",\"id\":\"64931609825374119\",\"link\":\"\",\"group\":\"1607016878115\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"_salary_from\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"67141609921387509\",\"link\":\"\",\"group\":\"1607016878115\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"employer_name\",\"dataType\":\"string\",\"name\":\"Название компании\",\"id\":\"68021607939162171\",\"link\":\"\",\"group\":\"1607938855954\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"employer_city_id\",\"dataType\":\"arrayLink\",\"name\":\"Город(а) компании\",\"id\":\"68231607939175436\",\"link\":\"cities\",\"group\":\"1607938855954\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"type\",\"dataType\":\"link\",\"name\":\"Категория вакансий\",\"id\":\"68641607070972375\",\"link\":\"Type2252\",\"group\":\"1607016878115\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"booleanOptions\":[\"2 через 2\",\"5 через 2\"],\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\"},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":true,\"array\":false},{\"sysName\":\"jobs_selected_ids\",\"dataType\":\"arrayLink\",\"name\":\"Подходящие вакансии\",\"id\":\"69211616063671236\",\"link\":\"Jobs\",\"group\":\"1607016878115\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"isAuthorization\",\"dataType\":\"boolean\",\"name\":\"isAuthorization\",\"id\":\"7\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"_salary_to\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"77421609921394419\",\"link\":\"\",\"group\":\"1607016878115\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"dateLastActivity\",\"dataType\":\"string\",\"name\":\"dateLastActivity\",\"id\":\"8\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"city\",\"dataType\":\"link\",\"name\":\"Город\",\"id\":\"80181607081867668\",\"link\":\"cities\",\"group\":\"1606985920923\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":true,\"array\":false},{\"sysName\":\"CV_file\",\"dataType\":\"file\",\"name\":\"Резюме\",\"id\":\"84081609825345581\",\"link\":\"\",\"group\":\"1607016878115\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"feedback_ids\",\"dataType\":\"arrayLink\",\"name\":\"Фидбеки юзера\",\"id\":\"86081613409739256\",\"link\":\"Feedback\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"employer_website\",\"dataType\":\"string\",\"name\":\"Сайт компании\",\"id\":\"89401607939216442\",\"link\":\"\",\"group\":\"1607938855954\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"email\",\"dataType\":\"string\",\"name\":\"Email\",\"id\":\"9\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"Instagram_link\",\"dataType\":\"string\",\"name\":\"Instagram\",\"id\":\"91391609825359387\",\"link\":\"\",\"group\":\"1607016878115\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"CV_update_date\",\"dataType\":\"string\",\"name\":\"Дата обновления резюме\",\"id\":\"92571610010803323\",\"link\":\"\",\"group\":\"1607016878115\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"Contacts\",\"id\":1606985920923,\"order\":0},{\"name\":\"Кандидат\",\"id\":1607016878115,\"order\":1},{\"name\":\"Работодатель\",\"id\":1607938855954,\"order\":2},{\"name\":\"Company\",\"id\":1635175638990,\"order\":3}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
+                "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-09-29T20:04:55Z",
-                "createBy": 21,
+                "dateChanged": "2021-10-25T15:29:10Z",
+                "createBy": 0,
+                "changedBy": 6452,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "Username (login)",
+                    "id": "13",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "linkOrArrayLinkType": false,
+                    "arrayLink": false,
+                    "json": false,
+                    "indexExists": false,
+                    "linkType": false,
+                    "typeVariable": {},
+                    "array": false
+                },
+                "folderId": null
+            },
+            "99026976": {
+                "networkID": 9667,
+                "sysName": "cities",
+                "name": "Cities",
+                "id": 99026976,
+                "dateCreated": "2020-09-18T07:42:27Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"delete\",\"dataType\":\"boolean\",\"name\":\"Delete\",\"id\":\"48871612514340554\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"City name\",\"id\":\"64661600414975068\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false}]",
+                "jsonGroupSettings": "[]",
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+                "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-02-05T08:39:09Z",
+                "createBy": 1,
                 "changedBy": 1,
                 "_settings": null,
                 "_nativeIndexSettings": null,
@@ -984,17 +2600,69 @@ const App = (props) => {
                     "constraints": null,
                     "synthetic": false,
                     "format": null,
-                    "formatOptions": {},
+                    "formatOptions": null,
                     "groupName": null,
-                    "json": false,
                     "linkOrArrayLinkType": false,
-                    "indexExists": false,
                     "arrayLink": false,
+                    "json": false,
+                    "indexExists": false,
                     "linkType": false,
                     "typeVariable": {},
                     "array": false
                 },
-                "folderId": null
+                "folderId": 33661035
+            },
+            "99040000": {
+                "networkID": 9667,
+                "sysName": "company",
+                "name": "company",
+                "id": 99040000,
+                "dateCreated": "2021-10-25T14:30:12Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"all_job_ids\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"19241635172315660\",\"link\":\"WebUser\",\"group\":\"1635172276245\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"insta\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"24331635178041025\",\"link\":\"\",\"group\":\"1635172276245\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"jobs_this_month\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"28581635185938325\",\"link\":\"\",\"group\":\"1635185907484\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"max_jobs_this_month\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"30381635185908992\",\"link\":\"\",\"group\":\"1635185907484\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"jobs_this_month_displayed\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"38541635249227744\",\"link\":\"\",\"group\":\"1635185907484\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"city_ids\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"41571635172398903\",\"link\":\"cities\",\"group\":\"1635172276245\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"invoice_ids\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"42791635172440958\",\"link\":\"invoice\",\"group\":\"1635177746305\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"month_end\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"43761635186014704\",\"link\":\"\",\"group\":\"1635185907484\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"isDelete\",\"dataType\":\"boolean\",\"name\":\"компания удалена?\",\"id\":\"45351635177750715\",\"link\":\"\",\"group\":\"1635177746305\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"удалить компанию\",\"компания на портале\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"user_ids\",\"dataType\":\"arrayLink\",\"name\":\"сотрудники\",\"id\":\"54361635172235972\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":true,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"tarif_date_end_displayed\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"59721635186162085\",\"link\":\"\",\"group\":\"1635185907484\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"about\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"67871635172289571\",\"link\":\"\",\"group\":\"1635172276245\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"tarif_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"70121635172416173\",\"link\":\"tarif\",\"group\":\"1635185907484\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"active_job_ids\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"81721635172299024\",\"link\":\"WebUser\",\"group\":\"1635172276245\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"owner_id\",\"dataType\":\"link\",\"name\":\"владелец\",\"id\":\"84211635172223953\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":true,\"linkType\":true,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"site\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"84241635172295062\",\"link\":\"\",\"group\":\"1635172276245\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"tarif_date_end\",\"dataType\":\"date\",\"name\":\"\",\"id\":\"91041635172429933\",\"link\":\"\",\"group\":\"1635185907484\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"tarif_status\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"92611635183460417\",\"link\":\"\",\"group\":\"1635185907484\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"98711635172250947\",\"link\":\"\",\"group\":\"1635172276245\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"array\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"about\",\"id\":1635172276245,\"order\":0},{\"name\":\"New Group 2\",\"id\":1635177746305,\"order\":1},{\"name\":\"New Group 3\",\"id\":1635185907484,\"order\":2}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-10-26T11:54:09Z",
+                "createBy": 6452,
+                "changedBy": 6452,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "linkOrArrayLinkType": false,
+                    "arrayLink": false,
+                    "json": false,
+                    "indexExists": false,
+                    "linkType": false,
+                    "typeVariable": {},
+                    "array": false
+                },
+                "folderId": 33667800
             }
         },
         "isSuccessWrite": false,
@@ -1002,29 +2670,29 @@ const App = (props) => {
         "writeResponse": null,
         "fileds": [
             {
-                "sysName": "goods",
-                "dataType": "arrayLink",
+                "sysName": "about",
+                "dataType": "string",
                 "name": "",
-                "id": "53151632654863628",
-                "link": "goods_in_cart",
-                "group": "0",
-                "tags": null,
+                "id": "67871635172289571",
+                "link": "",
+                "group": "1635172276245",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 1,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
                 "json": false,
-                "linkOrArrayLinkType": true,
                 "indexExists": false,
-                "arrayLink": true,
                 "linkType": false,
                 "typeVariable": {},
                 "array": false
@@ -1049,16 +2717,72 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "json": false,
                 "linkOrArrayLinkType": false,
-                "indexExists": false,
                 "arrayLink": false,
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "name",
+                "dataType": "string",
+                "name": "",
+                "id": "98711635172250947",
+                "link": "",
+                "group": "1635172276245",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "site",
+                "dataType": "string",
+                "name": "",
+                "id": "84241635172295062",
+                "link": "",
+                "group": "1635172276245",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "json": false,
+                "indexExists": false,
                 "linkType": false,
                 "typeVariable": {},
                 "array": false
             }
         ],
-        "quickSearch": "false"
+        "quickSearch": "true"
     }
 
     let newCardActions = {
@@ -3911,7 +5635,7 @@ const App = (props) => {
 
                         </Route>
                         <Route exact path="/cards">
-                            <FpsCards data={cardActions} auth={authExample} currentBP='desktop' />
+                            <FpsCards locale="ESP" data={cardActions} auth={authExample} currentBP='desktop' />
                             {/* <FpsCards data={newCardActions} currentBP='tablet' /> */}
                             {/* <FpsCards data={exampleTable} /> */}
                             {/* <br /><br />

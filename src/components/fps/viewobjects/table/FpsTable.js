@@ -9,12 +9,16 @@ import { ComponentWrapper } from '../../wrapper/wrapper'
 import moment from 'moment'
 import { Paging } from '../paging/paging'
 import Button from '../../button/button'
+import { dict } from '../../locale'
+import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
 
-function FpsTable({ auth, data, onEvent, id, currentBP }) {
+function FpsTable({ auth, data, onEvent, id, currentBP, locale }) {
     if (!data) { data = {} }
 
     console.log('---data FpsTable---')
     console.log(data)
+
+    const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
     const [loading, setLoading] = useState(false)
     const [searchValue, setSearchValue] = useState()
@@ -46,10 +50,6 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
     }, [data])
 
 
-    const handleCloseShowObject = () => {
-        setShowObject(false);
-    }
-
     const sendMsg = (msg, sl, pageInfo) => {
         console.log('submitting...')
         pageInfo = pageInfo || { page: currentPage }
@@ -64,16 +64,20 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
         }
     }
 
-    const search = value => {
+    const search = (value, page) => {
         if (value) {
             setSearchValue(value)
+            !currentDQL && !page && removeUrlParam(id + '_page')
             const fieldsDQL = data.headers && data.headers.map(i => i.sysName);
             const requestDQL = fieldsDQL.map(i => "'" + i + "'" + ' like ' + "'" + value + "'").join(' OR ')
             setCurrentDQL(requestDQL)
-            sendMsg({ dql: requestDQL }, null, { page: 0 })
+            addUrlParam({ key: id + '_dql', value: value })
+            sendMsg({ dql: requestDQL }, null, { page: page || 0 })
         } else {
             setSearchValue('')
             setCurrentDQL('')
+            removeUrlParam(id + '_dql')
+            removeUrlParam(id + '_page')
             sendMsg({ dql: '' }, null, { page: 0 })
         }
     }
@@ -82,30 +86,32 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
         setLoading(true)
         setCurrentDQL('')
         setSearchValue('')
-        onEvent && onEvent({ dql: '', page: currentPage, _id: id })
+        onEvent({ dql: '', page: currentPage, _id: id })
+        removeUrlParam(id + '_dql')
     }
 
     const setPage = page => {
-        onEvent && onEvent({ dql: currentDQL, page: page, _id: id })
+        onEvent({ dql: currentDQL, page: page, _id: id })
+        page !== 0 ? addUrlParam({ key: id + '_page', value: page }) : removeUrlParam(id + '_page')
     }
 
-
+    
 
     const submit = (model) => {
         const saveModel = { ...model }
         if (saveModel) {
             for (const field in saveModel) {
-                // console.log(field)
+                console.log(field)
                 if (saveModel[field] && typeof saveModel[field] == 'object' && data.params.data.fields[field].dataType != 'date') {
-                    // console.log('removing links')
+                    console.log('removing links')
                     delete saveModel[field]
                 }  // removing links
                 if (writeFields.indexOf(field) == -1) {
-                    // console.log(`removing ${field} as a field not for writing`)
+                    console.log(`removing ${field} as a field not for writing`)
                     delete saveModel[field]
                 } // removing fields not for writing
-                if (data.params.data.fields[field].dataType == 'date' && typeof saveModel[field] == 'number') {
-                    saveModel[field] = saveModel[field] ? moment(saveModel[field]) : null
+                if (data.params.data.fields[field] && data.params.data.fields[field].dataType == 'date' && typeof saveModel[field] == 'number') {
+                    saveModel[field] = moment(saveModel[field])
                 }
             }
         }
@@ -195,17 +201,42 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
         return eConds
     }
 
+    const handleCloseShowObject = () => {
+        setShowObject(false);
+        removeUrlParam(id + '_id')
+    }
+
+    // get direct link ID
+    useEffect(() => {
+        const queryString = typeof window !== 'undefined' ? window.location.search : '';
+        const urlParams = new URLSearchParams(queryString);
+        const currentID = urlParams && urlParams.get(id + '_id')
+        const urlPage = urlParams && urlParams.get(id + '_page')
+        const urlDql = urlParams && urlParams.get(id + '_dql')
+        // if (urlDql && !currentDQL) {search(urlDql, urlPage || 0)}
+        // if (!urlDql && urlPage && urlPage != currentPage) {setPage(urlPage)}
+        if (currentID) {
+            const foundObject = data.data.filter(i=> i.id == currentID) ? data.data.filter(i=> i.id == currentID)[0] : null
+            if (foundObject) { setShowObject(foundObject)} else { console.log("no foundObject")}
+        }
+    }, [data]);
+
+    useEffect(()=> {
+        if (showObject && showObject.id) {
+            addUrlParam({ key: id + '_id', value: showObject.id })
+        } else {
+            //removeUrlParam(id + '_id')
+        }
+    }, [showObject])
+
+
+
     const { hideExpandTD, autoRefresh, largeFont } = data.params
     let autoRefreshPeriod = data.params.autoRefreshPeriod || 60 // минута по умолчанию
     autoRefreshPeriod = autoRefreshPeriod * 1000
 
     useEffect(() => {
         let count = 0
-        // console.log('autoRefreshPeriod')
-        // console.log(autoRefreshPeriod)
-        // console.log('autoRefresh')
-        // console.log(autoRefresh)
-        // sendMsg()
         if (!autoRefresh) { return }
         const interval = setInterval(() => {
             count++
@@ -216,10 +247,9 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
     }, []);
 
 
-
     return (
         <ComponentWrapper currentBP={currentBP}>
-            <Button onClick={refresh} icon='refresh'>refresh</Button>
+            {/* <Button onClick={refresh} icon='refresh'>refresh</Button> */}
             {showObject &&
                 <React.Fragment>
                     <Backdrop onClick={handleCloseShowObject} hoverable />
@@ -230,11 +260,13 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
                             onTerminate={handleCloseShowObject}
                             object={showObject}
                             submit={submit}
+                            dict={dict}
+                            lang={lang}
                             auth={auth}
                             firstCard
-                            // refresh={refresh}
+                            refresh={refresh}
                             checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
-                            //shareble
+                            shareble
                             executeAction={submitAction}
                             params={data.params}
                             loading={loading}
@@ -252,11 +284,15 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
                 search={data.data && data.data.length > 0 ? true : false}
                 onSearch={value => search(value)}
                 loading={loading}
+                dict={dict}
+                lang={lang}
                 onFilter={() => { }}
             />
             <Table
                 currentBP={currentBP}
                 data={data}
+                dict={dict}
+                lang={lang}
                 largeFont={largeFont}
                 hideExpandTD={hideExpandTD}
                 params={data.params}
@@ -270,26 +306,14 @@ function FpsTable({ auth, data, onEvent, id, currentBP }) {
                 loading={loading}
                 setLoading={value => setLoading(value)}
             />
-            {/* <Cards
-                currentBP={currentBP}
-                data={data}
-                params={data.params}
-                searchValue={searchValue}
-                checkActionCond={checkActionCond}
-                onExpand={val => { setShowObject(val) }}
-                setPage={page => { sendMsg(null, null, { page: page }) }}
-                auth={auth}
-                submitAction={submitAction}
-                id={id}
-                loading={loading}
-                setLoading={value => setLoading(value)}
-            /> */}
 
             {totalPages > 0 && tableHeaders.length != 0 &&
                 <div className={styles.pagination}>
                     <Paging
                         setPage={setPage}
                         pageSize={pageSize}
+                        dict={dict}
+                        lang={lang}
                         totalPages={totalPages}
                         currentPage={currentPage}
                         setLoading={setLoading}

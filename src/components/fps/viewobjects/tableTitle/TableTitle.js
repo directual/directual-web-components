@@ -5,7 +5,8 @@ import Filters from '../filters/Filters'
 import Input from '../../dataentry/input/input'
 import Loader from '../../loader/loader'
 
-export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters, onFilter, onSearch, loading, searchValue, currentBP }) {
+export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters, onFilter, currentDQL,
+    onSearch, loading, searchValue, currentBP, lang, dict }) {
     const [showSearch, setShowSearch] = useState(search)
     const [showFilters, setShowFilters] = useState(false)
     return (
@@ -17,7 +18,7 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
                     {loading && searchValue && <div className={styles.subtitle}><Loader>Loading...</Loader></div>}
                     {searchValue && !loading &&
                         <div className={styles.titleSearch}>
-                            <span>Searching: <strong>{searchValue}</strong></span>
+                            <span>{dict[lang].searching}: <strong>{searchValue}</strong></span>
                         </div>
                     }
                 </div>
@@ -34,8 +35,9 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
                                 <Input
                                     type='search'
                                     searchOnEnter={true}
+                                    defaultValue={searchValue}
                                     inputClassName={styles.quickSearchInput}
-                                    placeholder='Search...'
+                                    placeholder={`${dict[lang].search}...`}
                                     //debug
                                     //width={500}
                                     onPressEnter={value => {

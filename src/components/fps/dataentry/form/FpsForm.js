@@ -33,8 +33,8 @@ export default function FpsForm({ auth, data, onEvent, id, locale }) {
 function FpsFormNew({ auth, data, onEvent, id, locale }) {
 
   const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
-  // console.log('locale')
-  // console.log(lang)
+  console.log('locale')
+  console.log(locale)
 
   let hiddenFields = {}
   const [model, setModel] = useState(defaultModel())

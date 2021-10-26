@@ -9,14 +9,17 @@ import { ComponentWrapper } from '../../wrapper/wrapper'
 import moment from 'moment'
 import { Paging } from '../paging/paging'
 import Button from '../../button/button'
+import { dict } from '../../locale'
+import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
 
 
-function FpsCards({ auth, data, onEvent, id, currentBP }) {
+function FpsCards({ auth, data, onEvent, id, currentBP, locale }) {
     if (!data) { data = {} }
 
     console.log('---data FpsCards---')
     console.log(data)
-    console.log(id)
+    // console.log(id)
+    const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
     const [loading, setLoading] = useState(false)
     const [searchValue, setSearchValue] = useState()
@@ -62,16 +65,20 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
         }
     }
 
-    const search = value => {
+    const search = (value, page) => {
         if (value) {
             setSearchValue(value)
+            !currentDQL && !page && removeUrlParam(id + '_page')
             const fieldsDQL = data.headers && data.headers.map(i => i.sysName);
             const requestDQL = fieldsDQL.map(i => "'" + i + "'" + ' like ' + "'" + value + "'").join(' OR ')
             setCurrentDQL(requestDQL)
-            sendMsg({ dql: requestDQL }, null, { page: 0 })
+            addUrlParam({ key: id + '_dql', value: value })
+            sendMsg({ dql: requestDQL }, null, { page: page || 0 })
         } else {
             setSearchValue('')
             setCurrentDQL('')
+            removeUrlParam(id + '_dql')
+            removeUrlParam(id + '_page')
             sendMsg({ dql: '' }, null, { page: 0 })
         }
     }
@@ -81,10 +88,12 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
         setCurrentDQL('')
         setSearchValue('')
         onEvent({ dql: '', page: currentPage, _id: id })
+        removeUrlParam(id + '_dql')
     }
 
     const setPage = page => {
         onEvent({ dql: currentDQL, page: page, _id: id })
+        page !== 0 ? addUrlParam({ key: id + '_page', value: page }) : removeUrlParam(id + '_page')
     }
 
     
@@ -193,25 +202,41 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
         return eConds
     }
 
-
-    // Add object ID into URL:
-
-    const queryString = typeof window !== 'undefined' ? window.location.search : '';
-    const urlParams = new URLSearchParams(queryString);
-    const objectID = urlParams.get('objectID')
-
-    console.log('objectID = ' + objectID)
-
     const handleCloseShowObject = () => {
         setShowObject(false);
+        removeUrlParam(id + '_id')
     }
+
+    // get direct link ID
+    useEffect(() => {
+        const queryString = typeof window !== 'undefined' ? window.location.search : '';
+        const urlParams = new URLSearchParams(queryString);
+        const currentID = urlParams && urlParams.get(id + '_id')
+        const urlPage = urlParams && urlParams.get(id + '_page')
+        const urlDql = urlParams && urlParams.get(id + '_dql')
+        // if (urlDql && !currentDQL) {search(urlDql, urlPage || 0)}
+        // if (!urlDql && urlPage && urlPage != currentPage) {setPage(urlPage)}
+        if (currentID) {
+            const foundObject = data.data.filter(i=> i.id == currentID) ? data.data.filter(i=> i.id == currentID)[0] : null
+            if (foundObject) { setShowObject(foundObject)} else { console.log("no Object found")}
+        }
+    }, [data]);
+
+    useEffect(()=> {
+        if (showObject && showObject.id) {
+            addUrlParam({ key: id + '_id', value: showObject.id })
+        } else {
+            //removeUrlParam(id + '_id')
+        }
+    }, [showObject])
     
 
     return (
         <ComponentWrapper currentBP={currentBP}>
+
             {/* <Button onClick={() => updateURL([{ key: "objectID", value: "100500" } ])} icon='refresh'>updateURL</Button>
             <Button onClick={() => clearURL()} icon='refresh'>clearURL</Button> */}
-            {/* <Button onClick={() => refresh()} icon='refresh'>REFRESH</Button> */}
+            {/* <Button onClick={() => removeUrlParam(id + '_page')} icon='refresh'>refresh page</Button> */}
             {showObject &&
                 <React.Fragment>
                     <Backdrop onClick={handleCloseShowObject} hoverable />
@@ -223,6 +248,8 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
                             object={showObject}
                             submit={submit}
                             auth={auth}
+                            dict={dict}
+                            lang={lang}
                             checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
                             shareble
                             refresh={refresh}
@@ -240,6 +267,9 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
             <TableTitle
                 currentBP={currentBP}
                 tableTitle={tableTitle}
+                dict={dict}
+                lang={lang}
+                //currentDQL={currentDQL}
                 searchValue={searchValue}
                 tableQuickSearch={data.quickSearch == 'true'}
                 search={data.data && data.data.length > 0 ? true : false}
@@ -250,6 +280,8 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
             <Cards
                 currentBP={currentBP}
                 data={data}
+                dict={dict}
+                lang={lang}
                 params={data.params}
                 searchValue={searchValue}
                 checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
@@ -267,6 +299,8 @@ function FpsCards({ auth, data, onEvent, id, currentBP }) {
                     <Paging
                         setPage={setPage}
                         pageSize={pageSize}
+                        dict={dict}
+                        lang={lang}
                         totalPages={totalPages}
                         currentPage={currentPage}
                         setLoading={setLoading}

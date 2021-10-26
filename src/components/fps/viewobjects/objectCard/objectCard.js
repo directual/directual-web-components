@@ -21,6 +21,8 @@ export function ObjectCard(props) {
     const [model, setModel] = useState(props.object)
     const [currentObject, setCurrentObject] = useState(props.object)
 
+    const {dict, lang} = props
+
     // support previous component version:
     const oldFashioned = (props.params && !props.params.data) ? true : false
 
@@ -138,12 +140,14 @@ export function ObjectCard(props) {
             if (row.type == 'user') { mapping[row.target] = props.auth ? props.auth.user : null }
             if (row.type == 'const') { mapping[row.target] = row.value }
             if (row.type == 'objectField') {
+                // console.log('props.parentObject')
+                // console.log(props.parentObject)
                 if (props.parentObject && props.parentObject[row.value]) { // из дочерней карточки дергаем поле из родительской
-                    mapping[row.target] = typeof props.parentObject[row.value] != 'object' ?
-                        props.parentObject[row.value] :
-                        Array.isArray(props.parentObject[row.value]) ?
-                            props.parentObject[row.value].map(i => i.id).join(',') :
-                            props.parentObject[row.value].id
+                    mapping[row.target] = typeof props.parentObject[row.value].value != 'object' ?
+                        props.parentObject[row.value].value : // вроде бы надо добавить value
+                        Array.isArray(props.parentObject[row.value].value) ?
+                            props.parentObject[row.value].value.map(i => i.id).join(',') :
+                            props.parentObject[row.value].value.id
                 } else { // из основной карточки дергаем из основной же
                     mapping[row.target] = typeof props.object[row.value] != 'object' ?
                         props.object[row.value] :
@@ -192,7 +196,7 @@ export function ObjectCard(props) {
         const linkName = linkNameArr.length > 0 ? linkNameArr.join(' ') : null
         let displayID = ''
         if (typeof obj == 'string') { displayID = obj }
-        return linkName == 0 ? '0' : linkName || displayID || obj.id || 'No visible name'
+        return linkName == 0 ? '0' : linkName || displayID || obj.id || dict[lang].card.noVisibleName
     }
 
     const scrollDivRef = useRef(null)
@@ -329,6 +333,8 @@ export function ObjectCard(props) {
                         //debug
                         model={model}
                         editingOn={editingOn}
+                        dict={dict}
+                        lang={lang}
                         field={field}
                         formatDate={formatDate}
                         object={object}
@@ -353,6 +359,8 @@ export function ObjectCard(props) {
                         model={model}
                         loading={props.loading}
                         editingOn={editingOn}
+                        dict={dict}
+                        lang={lang}
                         currentObject={currentObject}
                         submit={props.submit}
                         setCurrentObject={setCurrentObject}
@@ -373,7 +381,7 @@ export function ObjectCard(props) {
                 object[headerField].value
         : null).join(' ')
         :
-        (object.id || 'No visible name')
+        (object.id || dict[lang].card.noVisibleName)
 
     cardHeader = (cardHeader == ''
         || cardHeader == ' '
@@ -381,10 +389,10 @@ export function ObjectCard(props) {
         || cardHeader == '   '
         || cardHeader == '    '
         || cardHeader == '     '
-        || cardHeader == '      ') ? (object.id || 'No visible name') :
+        || cardHeader == '      ') ? (object.id || dict[lang].card.noVisibleName) :
         cardHeader
 
-    cardHeader = (typeof cardHeader == 'object') ? (cardHeader.value || 'No visible name') : cardHeader
+    cardHeader = (typeof cardHeader == 'object') ? (cardHeader.value || dict[lang].card.noVisibleName) : cardHeader
 
     const copyUrlToClipboard = () => {
         copy(window.location.href)
@@ -393,13 +401,13 @@ export function ObjectCard(props) {
     return (
         <div className={styles.objectCard}>
             {props.shareble && // todo: сделать прямые ссылки на карточку
-                <div title='Copy direct link to the object'
+                <div title={dict[lang].card.copyLink}
                     className={`${styles.shareObject} icon icon-copy`}
                     onClick={copyUrlToClipboard}
                 />
             }
             {props.refresh &&
-                <div title='Refresh object'
+                <div title={dict[lang].card.refreshCard}
                     className={`${styles.refreshObject} icon icon-refresh`}
                     onClick={refresh}
                 />
@@ -437,11 +445,13 @@ export function ObjectCard(props) {
                     <Backdrop onClick={() => setShowLinkedObject(false)} hoverable rounded
                         label={structure.visibleName ? structure.visibleName.map(headerField => object[headerField] ? object[headerField].value : null).join(' ')
                             :
-                            (object.id || 'No visible name')} />
+                            (object.id || dict[lang].card.noVisibleName)} />
                     <ObjectCard
                         onClose={() => { setShowLinkedObject(false) }}
                         onTerminate={() => props.onClose()}
                         auth={props.auth}
+                        dict={dict}
+                        lang={lang}
                         loading={props.loading}
                         object={linkedObject && linkedObject.object}
                         params={linkedObject && { ...linkedObject.params, actions: props.params.actions }}
@@ -456,7 +466,7 @@ export function ObjectCard(props) {
     )
 }
 
-function CardField({ field, object, model, setModel, debug, editingOn, formatDate, tableFieldScheme,
+function CardField({ field, object, model, setModel, debug, editingOn, formatDate, tableFieldScheme, dict, lang,
     setLinkedObject, setLinkedObjectStruct, setShowLinkedObject, getLinkName, transformTableFieldScheme }) {
     const [edit, setEdit] = useState(false)
 
@@ -593,6 +603,8 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                     model={model}
                     editingOn={editingOn}
                     object={object}
+                    dict={dict}
+                    lang={lang}
                     editingOn={editingOn}
                     field={field}
                     onChange={value => setModel({ ...model, [field.sysName]: value })}
@@ -690,7 +702,7 @@ function FieldReadOnly({ field, object, weblink, date, formatDate }) {
     )
 }
 
-function SaveCard({ model, currentObject, submit, setCurrentObject, setModel, loading, editingOn }) {
+function SaveCard({ model, currentObject, submit, setCurrentObject, setModel, loading, editingOn, dict, lang }) {
 
     return (
         <div>
@@ -710,18 +722,18 @@ function SaveCard({ model, currentObject, submit, setCurrentObject, setModel, lo
                             submit(model);
                         }}
                     >
-                        Save changes</Button>
+                        {dict[lang].card.saveChanges}</Button>
                     <Button danger icon='ban'
                         onClick={() => setModel(currentObject)}
                         loading={loading}
                         disabled={JSON.stringify(model) === JSON.stringify(currentObject)}>
-                        Discard changes</Button>
+                        {dict[lang].card.discardChanges}</Button>
                 </ActionPanel>}
         </div>
     )
 }
 
-function FieldLink({ field, model, onChange, setLinkedObject, object, tableFieldScheme,
+function FieldLink({ field, model, onChange, setLinkedObject, object, tableFieldScheme, dict, lang,
     setLinkedObjectStruct, setShowLinkedObject, getLinkName, editingOn, transformTableFieldScheme }) {
 
     const [edit, setEdit] = useState(false)
@@ -751,6 +763,12 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
         // console.log(object[field.sysName].value)
         // console.log(renderAL)
     }, [model])
+
+    // useEffect(() => {
+    //     console.log('object')
+    //     console.log(object)
+    //     setEdit(false)
+    // }, [object])
 
     if (field.veiwOption == 'cart') {
         if (!field.cartView) { return <div>Cart is not configured</div> }
@@ -859,7 +877,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                     <span
                         onClick={() => setEdit(!edit)}
                         className={`${styles.editPedal} icon icon-edit small`}>
-                        {edit ? 'cancel editing' : 'edit'}
+                        {edit ? dict[lang].card.cancelEditing : dict[lang].card.edit}
                     </span>
                 }
             </span>
@@ -986,8 +1004,8 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
         }
     }
 
-    // console.log('====actionParams====')
-    // console.log(actionParams)
+    console.log('====actionParams====')
+    console.log(actionParams)
 
     let conds = actionParams ? (actionParams.conditionals ? [...actionParams.conditionals] : null) : null
     if (conds) {

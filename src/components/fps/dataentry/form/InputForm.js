@@ -9,8 +9,8 @@ import ActionPanel from '../../actionspanel/actionspanel'
 import FileUpload from '../fileupload/fileupload'
 
 export function InputForm(props) {
-    console.log('InputForm')
-    console.log(props.field)
+    // console.log('InputForm')
+    // console.log(props.field)
     if (!props.field.include) { return null }
     const type = `${props.field.dataType}${props.field.format ? `_${props.field.format}` : ''}`
     // console.log(type)
