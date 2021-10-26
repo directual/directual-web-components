@@ -11,7 +11,8 @@ import { Markdown } from '../../article/mkd'
 import moment from 'moment'
 import Hint from '../../hint/hint'
 import { InputForm } from '../../dataentry/form/InputForm'
-import copy from 'copy-to-clipboard';
+//import copy from 'copy-to-clipboard';
+
 
 export function ObjectCard(props) {
 
@@ -395,12 +396,12 @@ export function ObjectCard(props) {
     cardHeader = (typeof cardHeader == 'object') ? (cardHeader.value || dict[lang].card.noVisibleName) : cardHeader
 
     const copyUrlToClipboard = () => {
-        copy(window.location.href)
+        //copy(window.location.href)
     }
 
     return (
         <div className={styles.objectCard}>
-            {props.shareble && // todo: сделать прямые ссылки на карточку
+            {/* {props.shareble && // todo: сделать прямые ссылки на карточку
                 <div title={dict[lang].card.copyLink}
                     className={`${styles.shareObject} icon icon-copy`}
                     onClick={copyUrlToClipboard}
@@ -411,7 +412,7 @@ export function ObjectCard(props) {
                     className={`${styles.refreshObject} icon icon-refresh`}
                     onClick={refresh}
                 />
-            }
+            } */}
             <div className={styles.objectCardHeader}>
                 <div onClick={props.onClose}
                     className={`${styles.closeObjectCard} icon ${props.firstCard ? 'icon-close' : 'icon-back'} ${showLinkedObject && styles.hidden}`}></div>

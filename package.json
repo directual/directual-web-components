@@ -26,6 +26,7 @@
     "bump": "npm version patch -m \"Release v%s\" && git push && git push --tags"
   },
   "peerDependencies": {
+    "react-copy-to-clipboard": "^5.0.4",
     "moment": "^2.26.0",
     "react": "^16.0.0",
     "react-beautiful-dnd": "^13.0.0",
@@ -33,8 +34,7 @@
     "react-dropzone": "^11.0.1",
     "react-markdown": "^5.0.2",
     "react-table": "^7.7.0",
-    "remark-gfm": "^1.0.0",
-    "copy-to-clipboard": "^3.3.1"
+    "remark-gfm": "^1.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
@@ -56,16 +56,15 @@
     "prettier": "^2.0.4",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "copy-to-clipboard": "^3.3.1",
     "react-scripts": "^3.4.1"
   },
   "files": [
     "dist"
   ],
   "dependencies": {
-    "copy-to-clipboard": "^3.3.1",
     "moment": "^2.26.0",
     "react-beautiful-dnd": "^13.0.0",
+    "react-copy-to-clipboard": "^5.0.4",
     "react-datetime": "^2.16.3",
     "react-dropzone": "^11.0.1",
     "react-markdown": "^5.0.2",
