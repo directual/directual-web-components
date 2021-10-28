@@ -8,6 +8,7 @@ import Checkbox from '../checkbox/checkbox'
 import StructureField from '../structurefield/structurefield'
 import { Markdown } from '../../article/mkd'
 import OptionsHandler, { AdvancedOptionsHandler } from '../optionsHandler/optionsHandler'
+import Map from '../map/map'
 
 
 export function InputGroup(props) {

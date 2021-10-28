@@ -26,11 +26,13 @@
     "bump": "npm version patch -m \"Release v%s\" && git push && git push --tags"
   },
   "peerDependencies": {
+    "mapbox-gl": "^2.5.1",
     "moment": "^2.26.0",
     "react": "^16.0.0",
     "react-beautiful-dnd": "^13.0.0",
     "react-datetime": "^2.16.3",
     "react-dropzone": "^11.0.1",
+    "react-map-gl": "^6.1.17",
     "react-markdown": "^5.0.2",
     "react-table": "^7.7.0",
     "remark-gfm": "^1.0.0"
@@ -50,21 +52,26 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-standard": "^4.0.1",
     "gh-pages": "^2.2.0",
+    "json-loader": "^0.5.7",
     "microbundle-crl": "^0.13.10",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-scripts": "^3.4.1"
+    "react-scripts": "^3.4.1",
+    "transform-loader": "^0.2.4",
+    "webworkify-webpack": "^1.0.6"
   },
   "files": [
     "dist"
   ],
   "dependencies": {
+    "mapbox-gl": "^2.5.1",
     "moment": "^2.26.0",
     "react-beautiful-dnd": "^13.0.0",
     "react-datetime": "^2.16.3",
     "react-dropzone": "^11.0.1",
+    "react-map-gl": "^6.1.17",
     "react-markdown": "^5.0.2",
     "react-table": "^7.7.0",
     "remark-gfm": "^1.0.0"

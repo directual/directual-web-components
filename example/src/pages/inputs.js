@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {
     Button, Input, InputGroup, ComponentDetails, CodeSnippet, FileUpload,
-    Checkbox, Markdown, DropFiles
+    Checkbox, Markdown, DropFiles, Map
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
@@ -151,7 +151,13 @@ Some *emphasis* and <strong>strong</strong>!`;
         <React.Fragment>
             <h1>Data entry</h1>
 
-            <Input type='number' defaultValue={0} />
+            <Map 
+                height='400px'
+                width='400px'
+            />
+            <br />
+            
+            {/* <Input type='number' defaultValue={0} /> */}
             {/* <Input required type='select' />
 
             <Input error={error} />
