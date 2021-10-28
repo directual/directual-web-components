@@ -290,6 +290,7 @@ export default function Input(props) {
             { key: 'checkbox', value: 'checkbox', icon: 'checkbox' },
             { key: 'cube', value: 'cube', icon: 'cube' },
             { key: 'image', value: 'image', icon: 'image' },
+            { key: 'map', value: 'map', icon: 'map' },
 
             { key: 'money', value: 'money', icon: 'money' },
             { key: 'idea', value: 'idea', icon: 'idea' },
