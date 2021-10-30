@@ -175,7 +175,9 @@ const EditableCell = ({
         if (!value || value == "{}") return <div />
         const json = parseJson(value)
         if (json.value) return <div className={`${styles.notEditableValue}`}>
-            {fieldDetails[id].formatOptions.multipleChoice.filter(i => i.value == json.value)[0].label}
+            {fieldDetails[id].formatOptions.multipleChoice.filter(i => i.value == json.value)[0] ? 
+                fieldDetails[id].formatOptions.multipleChoice.filter(i => i.value == json.value)[0].label :
+                json.value}
         </div>
         if (json.customOption) return <div className={`${styles.notEditableValue}`}>
             {json.customOption}
@@ -194,7 +196,9 @@ const EditableCell = ({
         for (const option in json) {
             let newOption = ''
             if (option != 'customOption') {
-                newOption = fieldDetails[id].formatOptions.multipleChoice.filter(i => i.value == option)[0].label
+                newOption = fieldDetails[id].formatOptions.multipleChoice.filter(i => i.value == option)[0] ?
+                    fieldDetails[id].formatOptions.multipleChoice.filter(i => i.value == option)[0].label :
+                    option
             }
             if (option == 'customOption') {
                 newOption = json[option]

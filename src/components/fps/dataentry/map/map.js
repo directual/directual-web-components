@@ -10,7 +10,7 @@ export default function Map({
     width,
     zoom, // zoom 0-100
     mapStyle, // map style
-    //maptoken, // Mapbox token
+    maptoken, // Mapbox token
     hideNav, // hide navigation controls 
 }) {
     const defaultMaptoken = "pk.eyJ1IjoiZGlyZWN0dWFsIiwiYSI6ImNrdmJncTl0eTBkcWIyc3BuYjlpYXp2cnkifQ.mVDgIP-E8tA2FlBttPdi4A"
@@ -35,8 +35,8 @@ export default function Map({
 
     return <ReactMapGL
         {...viewport}
-        mapStyle={defaultStyle}
-        mapboxApiAccessToken={defaultMaptoken}
+        mapStyle={mapStyle || defaultStyle}
+        mapboxApiAccessToken={maptoken || defaultMaptoken}
         onViewportChange={setViewport}
     >
         {!hideNav && <div className="nav" style={navStyle}>
