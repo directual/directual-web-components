@@ -147,6 +147,7 @@
 }
 .mainmenu .list {
   flex-grow: 2;
+  padding: 0;
 }
 .mainmenu .menuFooter {
   padding-bottom: 48px;
