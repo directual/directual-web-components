@@ -10,6 +10,7 @@ import TabsPane from '../../layout/tabpane/tabpane'
 import { Markdown } from '../../article/mkd'
 import moment from 'moment'
 import Hint from '../../hint/hint'
+import Media from '../../media/media'
 import { InputForm } from '../../dataentry/form/InputForm'
 //import copy from 'copy-to-clipboard';
 

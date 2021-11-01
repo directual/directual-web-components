@@ -7,6 +7,7 @@ import styles from '../../viewobjects/table/table.module.css'
 import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
 import FileUpload from '../fileupload/fileupload'
+import Media from '../../media/media'
 
 export function InputForm(props) {
     // console.log('InputForm')
@@ -54,6 +55,7 @@ function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue
         if (link.substring(0, 4) != 'http') { link = 'http://' + link }
         return link
     }
+    if (field.format == 'youTube') return <Media type='video' source={defaultValue} width='500' height='300' />
     if (!editingOn) return <div>
         {!field.displayAsButton &&
             <span className={styles.label}>
