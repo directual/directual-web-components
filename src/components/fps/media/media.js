@@ -31,8 +31,9 @@ export default function Media(props) {
                         height={props.height || '315'}
                         src={`https://www.youtube.com/embed/${videoID}`}
                         frameborder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
+                        allow="accelerometer; fullscreen; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        >
                     </iframe>
                 </div>
                 :
