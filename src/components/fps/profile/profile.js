@@ -159,7 +159,7 @@ export function RestorePass(props) {
                 <ActionPanel column margin={{ top: 0, bottom: 18 }}>
                     <Button
                         disabled={!login}
-                        onClick={() => props.onRestore()}
+                        onClick={() => props.onRestore(login)}
                         accent>{props.header || 'Reset password'}</Button>
                 </ActionPanel>
             </form>
