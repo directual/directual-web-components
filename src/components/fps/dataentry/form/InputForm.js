@@ -85,7 +85,7 @@ function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue
             <Hint margin={{ top: 1, bottom: 24 }} ok={hintType == 'ok'} error={hintType == 'danger'}>{defaultValue}</Hint>}
     </div>
     return <Input
-        type='textarea'
+        type={`${field.format == 'password' ? 'password' : 'textarea'}`}
         rows='auto'
         code={code}
         onChange={onChange}

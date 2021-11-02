@@ -56,8 +56,8 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
   console.log(data)
   // console.log('------------ auth: -------------')
   // console.log(auth)
-  // console.log('------------ form model: -------------')
-  // console.log(model)
+  console.log('------------ form model: -------------')
+  console.log(model)
 
   const sendMsg = (msg) => {
     const message = { ...msg, _id: 'form_' + id }
@@ -144,10 +144,11 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
       if (data.params.data.fieldParams[field] && data.params.data.fieldParams[field].required &&
         data.fileds && data.fileds.length > 0 && data.fileds.filter(i=>i.sysName == field) &&
         data.fileds.filter(i=>i.sysName == field).length > 0 &&
-        !model[field] && !model[field] !== false && data.params.data.fieldParams[field].include &&
-        !data.params.data.fieldParams[field].hidden) { 
-          // console.log('FAILED REQ VALIDATION')
-          // console.log(field)
+        !model[field] && !model[field] !== false && data.params.data.fieldParams[field].include 
+        //&& !data.params.data.fieldParams[field].hidden
+        ) { 
+          console.log('FAILED REQ VALIDATION')
+          console.log(field)
           setIsValid(false); }
     }
   }, [model])
@@ -286,6 +287,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
                 }
                 if (field.id[0] == '@') return null //системные поля
                 if (!field.write) return null
+                if (field.hidden) return null
                 return <InputForm
                   field={field}
                   placeholder={data.placeholder}

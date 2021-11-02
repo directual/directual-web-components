@@ -21844,12 +21844,12 @@ const App = (props) => {
 
 
     let exampleForm = {
-        "sl": "testFiles",
-        "formName": "",
+        "sl": "resetPassInput",
+        "formName": "Set new password",
         "formDesc": "",
         "formButton": "",
         "placeholder": "",
-        "maxWidth": "",
+        "maxWidth": "400",
         "formButtonResubmit": null,
         "params": {
             "result": {
@@ -21872,54 +21872,44 @@ const App = (props) => {
                 ],
                 "writeFields": [
                     {
-                        "fieldSysName": "file",
+                        "fieldSysName": "newPass",
                         "fetch": [],
-                        "sysName": "file",
+                        "sysName": "newPass",
+                        "name": "New password",
+                        "dataType": "string",
+                        "format": "password",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "repeatPass",
+                        "fetch": [],
+                        "sysName": "repeatPass",
+                        "name": "Repeat password",
+                        "dataType": "string",
+                        "format": "password",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "secret",
+                        "fetch": [],
+                        "sysName": "secret",
                         "name": "",
-                        "dataType": "file",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": ""
+                        "link": null
                     },
                     {
-                        "fieldSysName": "id",
+                        "fieldSysName": "user_id",
                         "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
+                        "sysName": "user_id",
+                        "name": "",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "image",
-                        "fetch": [],
-                        "sysName": "image",
-                        "name": "",
-                        "dataType": "file",
-                        "format": "image",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "multiFiles",
-                        "fetch": [],
-                        "sysName": "multiFiles",
-                        "name": "",
-                        "dataType": "file",
-                        "format": "multipleFiles",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "multiImages",
-                        "fetch": [],
-                        "sysName": "multiImages",
-                        "name": "",
-                        "dataType": "file",
-                        "format": "multipleImages",
-                        "formatOptions": {},
-                        "link": ""
+                        "link": null
                     }
                 ],
                 "fields": {
@@ -21930,49 +21920,48 @@ const App = (props) => {
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": ""
                     },
-                    "file": {
-                        "id": "file",
+                    "newPass": {
+                        "id": "newPass",
+                        "content": "New password",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "password",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": ""
+                    },
+                    "repeatPass": {
+                        "id": "repeatPass",
+                        "content": "Repeat password",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "password",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": ""
+                    },
+                    "secret": {
+                        "id": "secret",
                         "content": "",
                         "type": "field",
-                        "dataType": "file",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
-                        "link": ""
+                        "link": null
                     },
-                    "image": {
-                        "id": "image",
+                    "user_id": {
+                        "id": "user_id",
                         "content": "",
                         "type": "field",
-                        "dataType": "file",
-                        "format": "image",
+                        "dataType": "string",
+                        "format": "",
                         "formatOptions": {},
                         "write": true,
-                        "link": ""
-                    },
-                    "multiFiles": {
-                        "id": "multiFiles",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "file",
-                        "format": "multipleFiles",
-                        "formatOptions": {},
-                        "write": true,
-                        "link": ""
-                    },
-                    "multiImages": {
-                        "id": "multiImages",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "file",
-                        "format": "multipleImages",
-                        "formatOptions": {},
-                        "write": true,
-                        "link": ""
+                        "link": null
                     }
                 },
                 "fieldParams": {
@@ -21983,37 +21972,37 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "file": {
+                    "newPass": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
-                        "clickable": false,
-                        "fileUpload": true
+                        "clickable": false
                     },
-                    "image": {
+                    "repeatPass": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
-                        "clickable": false,
-                        "fileUpload": true
+                        "clickable": false
                     },
-                    "multiFiles": {
+                    "secret": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false,
-                        "fileUpload": true
+                        "hidden": true,
+                        "required": true
                     },
-                    "multiImages": {
+                    "user_id": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false,
-                        "fileUpload": true
+                        "hidden": true,
+                        "required": true
                     }
                 },
                 "columns": {
@@ -22022,10 +22011,10 @@ const App = (props) => {
                         "title": "New section",
                         "fieldIds": [
                             "id",
-                            "file",
-                            "image",
-                            "multiFiles",
-                            "multiImages"
+                            "newPass",
+                            "repeatPass",
+                            "secret",
+                            "user_id"
                         ]
                     }
                 },
@@ -22041,180 +22030,161 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "file": {
+                "newPass": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": false,
-                    "fileUpload": true
+                    "clickable": false
                 },
-                "image": {
+                "repeatPass": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": false,
-                    "fileUpload": true
+                    "clickable": false
                 },
-                "multiFiles": {
+                "secret": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false,
-                    "fileUpload": true
+                    "hidden": true,
+                    "required": true
                 },
-                "multiImages": {
+                "user_id": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false,
-                    "fileUpload": true
+                    "hidden": true,
+                    "required": true
                 }
             }
         },
         "fileds": [
             {
-                "sysName": "file",
-                "dataType": "file",
-                "name": "",
-                "id": "39501631550751631",
+                "sysName": "newPass",
+                "dataType": "string",
+                "name": "New password",
+                "id": "40081635832999321",
                 "link": "",
                 "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false
-            },
-            {
-                "sysName": "id",
-                "dataType": "id",
-                "name": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false
-            },
-            {
-                "sysName": "image",
-                "dataType": "file",
-                "name": "",
-                "id": "78161631550767971",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "image",
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false
-            },
-            {
-                "sysName": "multiFiles",
-                "dataType": "file",
-                "name": "",
-                "id": "77061631550759737",
-                "link": "",
-                "group": "0",
-                "tags": "",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 2,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
-                "format": "multipleFiles",
-                "formatOptions": {},
+                "format": "password",
+                "formatOptions": null,
                 "groupName": null,
-                "json": false,
-                "typeVariable": {},
                 "indexExists": false,
+                "linkType": false,
+                "json": false,
                 "linkOrArrayLinkType": false,
                 "arrayLink": false,
-                "linkType": false
+                "typeVariable": {},
+                "array": false
             },
             {
-                "sysName": "multiImages",
-                "dataType": "file",
-                "name": "",
-                "id": "64151631550776568",
+                "sysName": "repeatPass",
+                "dataType": "string",
+                "name": "Repeat password",
+                "id": "44501635833015623",
                 "link": "",
                 "group": "0",
-                "tags": "",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 4,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
-                "format": "multipleImages",
-                "formatOptions": {},
+                "format": "password",
+                "formatOptions": null,
                 "groupName": null,
-                "json": false,
-                "typeVariable": {},
                 "indexExists": false,
+                "linkType": false,
+                "json": false,
                 "linkOrArrayLinkType": false,
                 "arrayLink": false,
-                "linkType": false
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "secret",
+                "dataType": "string",
+                "name": "",
+                "id": "38011635832996831",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkType": false,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "user_id",
+                "dataType": "string",
+                "name": "",
+                "id": "75721635833006125",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkType": false,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "array": false
             }
         ],
-        "error": null,
-        "isSuccessWrite": false,
-        "response": null,
+        "error": "",
+        "isSuccessWrite": true,
+        "response": [
+            {
+                "id": "10620ce8-7dbe-4fa3-8f71-7240886a2d4c"
+            }
+        ],
         "data": null
     }
 
