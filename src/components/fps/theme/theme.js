@@ -3,71 +3,85 @@ import styles from './theme.module.css'
 import Radio from '../dataentry/radio/radio'
 import Input, { InputGroup } from '../dataentry/input/input'
 import { FormSection } from '../dataentry/form/FpsForm'
+import _ from 'lodash'
+import TabsPane from '../layout/tabpane/tabpane'
+import Checkbox  from '../dataentry/checkbox/checkbox'
+import Button from '../button/button'
+import ActionPanel from '../actionspanel/actionspanel'
+
+
+const customThemeColors = {
+    button_border_color: '#8E8E8E',
+    field_border_color: '#AAAAAA',
+    table_border_color: 'rgba(0,0,0,0.12)',
+    accent_color: '#058EFC',
+    accent_transp_05_color: 'rgba(5,142,252,0.05)',
+    secondary_accent_color: '#0062BD',
+    button_accent_color: '#FFFFFF',
+    background_color: '#FFFFFF',
+    background_contrast_color: '#EEEEEE',
+    secondary_background_color: '#EEEEEE',
+    font_color: '#333333',
+    hint_color: '#333333',
+    code_color: '#333333',
+    code_color_background: '#FFFFFF',
+    error_color: '#FF525B',
+    error_color_light: '#FFD6D8',
+    alert_color: '#ECA910',
+    alert_color_light: '#F9DFA4',
+    ok_color: '#00C197',
+    ok_color_light: '#D6F8E5',
+    label_color: '#26BE99',
+    label_text_color: '#FFFFFF'
+}
+
+const customThemeColorNames = {
+    button_border_color: 'Borders colour',
+    field_border_color: 'Fields borders colour',
+    table_border_color: 'Tables borders colour',
+    accent_color: 'Accent colour',
+    accent_transp_05_color: 'Accent transparent colour',
+    secondary_accent_color: 'Secondary accent colour',
+    button_accent_color: 'Accent button text colour',
+    background_color: 'Main background colour',
+    background_contrast_color: 'Background contrast colour',
+    secondary_background_color: 'Secondary background colour',
+    font_color: 'Main text colour',
+    hint_color: 'Hint text colour',
+    code_color: 'Code text colour',
+    code_color_background: 'Code text background',
+    error_color: 'Error colour',
+    error_color_light: 'Error light colour',
+    alert_color: 'ALert colour',
+    alert_color_light: 'Alert light colour',
+    ok_color: 'OK colour',
+    ok_color_light: 'OK light colour',
+    label_color: 'Labels colour',
+    label_text_color: 'Labels text colour'
+}
 
 export function SetTheme({ themeName }) {
 
     // themeName is like {colors:'tiffany',radius:10}
 
-    const customThemeColors = {
-        button_border_color: '#8E8E8E',
-        field_border_color: '#aaa',
-        table_border_color: 'rgba(0, 0, 0, .12)',
-        accent_color: '#058efc',
-        accent_transp_05_color: 'rgba(5, 142, 252, 0.05)',
-        secondary_accent_color: '#0062BD',
-        button_accent_color: '#ffffff',
-        background_color: '#ffffff',
-        background_contrast_color: '#eee',
-        secondary_background_color: '#eeeeee',
-        font_color: '#333333',
-        hint_color: '#333',
-        code_color: '#333',
-        code_color_background: '#fff',
-        error_color: '#FF525B',
-        error_color_light: '#FFD6D8',
-        alert_color: '#ECA910',
-        alert_color_light: '#F9DFA4',
-        ok_color: '#00C197',
-        ok_color_light: '#D6F8E5',
-        label_color: '#26BE99',
-        label_text_color: '#fff'
-    }
-
     useEffect(() => {
-        // console.log(themeName)
         if (themeName.colorScheme) {
-            if (themeName.colorScheme == 'custom') {
-                setTheme(
-                    'classic',
-                    themeName.radius || 25,
-                    themeName.headersFont || 'Montserrat',
-                    themeName.fontText || 'Lato',
-                    themeName.headersFontWeight || '700',
-                    themeName.bodyFontWeight || '400',
-                    themeName.textSize || 16,
-                    themeName.h1size || 42,
-                    themeName.h2size || 30,
-                    themeName.h3size || 22,
-                )
-            } else {
-                setTheme(
-                    themeName.colorScheme,
-                    themeName.radius || 25,
-                    themeName.headersFont || 'Montserrat',
-                    themeName.fontText || 'Lato',
-                    themeName.headersFontWeight || '700',
-                    themeName.bodyFontWeight || '400',
-                    themeName.textSize || 16,
-                    themeName.h1size || 42,
-                    themeName.h2size || 30,
-                    themeName.h3size || 22,
-                )
-            }
+            setTheme(
+                themeName.colorScheme,
+                themeName.radius || 25,
+                themeName.headersFont || 'Montserrat',
+                themeName.fontText || 'Lato',
+                themeName.headersFontWeight || '700',
+                themeName.bodyFontWeight || '400',
+                themeName.textSize || 16,
+                themeName.h1size || 42,
+                themeName.h2size || 30,
+                themeName.h3size || 22,
+                themeName.h3size || 22,
+                themeName.customThemeColors || customThemeColors
+            )
         } else { setTheme(themeName, 25, 'Montserrat', 'Lato', '700', '400', 16, 42, 30, 22) }
     }, [themeName])
-
-
-
 
     const setTheme = (colorScheme, radius, headersFont, fontText, headersFontWeight, bodyFontWeight,
         textSize, h1size, h2size, h3size) => {
@@ -200,7 +214,6 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--label-color', '#ce9306')
             document.documentElement.style.setProperty('--label-text-color', 'rgba(255,255,255,.85)')
         }
-
         if (colorScheme === 'hacker') {
             document.documentElement.style.setProperty('--button-border-color', '#F8E71C')
             document.documentElement.style.setProperty('--field-border-color', 'rgba(255,255,255,.2)')
@@ -225,7 +238,6 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--label-color', '#F8E71C')
             document.documentElement.style.setProperty('--label-text-color', 'rgba(0,0,0,.85)')
         }
-
         if (colorScheme === 'raspberry') {
             document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
             document.documentElement.style.setProperty('--field-border-color', '#eaafa7')
@@ -250,7 +262,6 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--label-color', '#a6e97a')
             document.documentElement.style.setProperty('--label-text-color', 'rgba(0,0,0,.5)')
         }
-
         if (colorScheme === 'baltic') {
             document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
             document.documentElement.style.setProperty('--field-border-color', '#aaa')
@@ -274,6 +285,30 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--ok-color-light', '#d7f1d5')
             document.documentElement.style.setProperty('--label-color', '#8f6d7d')
             document.documentElement.style.setProperty('--label-text-color', '#fff')
+        }
+        if (colorScheme === 'custom') {
+            document.documentElement.style.setProperty('--button-border-color', _.get(themeName, 'customThemeColors.button_border_color') || customThemeColors.button_border_color)
+            document.documentElement.style.setProperty('--field-border-color', _.get(themeName, 'customThemeColors.field_border_color') || customThemeColors.field_border_color)
+            document.documentElement.style.setProperty('--table-border-color', _.get(themeName, 'customThemeColors.table_border_color') || customThemeColors.table_border_color)
+            document.documentElement.style.setProperty('--accent-color', _.get(themeName, 'customThemeColors.accent_color') || customThemeColors.accent_color)
+            document.documentElement.style.setProperty('--accent-transp-05-color', _.get(themeName, 'customThemeColors.accent_transp_05_color') || customThemeColors.accent_transp_05_color)
+            document.documentElement.style.setProperty('--secondary-accent-color', _.get(themeName, 'customThemeColors.secondary_accent_color') || customThemeColors.secondary_accent_color)
+            document.documentElement.style.setProperty('--button-accent-color', _.get(themeName, 'customThemeColors.button_accent_color') || customThemeColors.button_accent_color)
+            document.documentElement.style.setProperty('--background-color', _.get(themeName, 'customThemeColors.background_color') || customThemeColors.background_color)
+            document.documentElement.style.setProperty('--background-contrast-color', _.get(themeName, 'customThemeColors.background_contrast_color') || customThemeColors.background_contrast_color)
+            document.documentElement.style.setProperty('--secondary-background-color', _.get(themeName, 'customThemeColors.secondary_background_color') || customThemeColors.secondary_background_color)
+            document.documentElement.style.setProperty('--font-color', _.get(themeName, 'customThemeColors.font_color') || customThemeColors.font_color)
+            document.documentElement.style.setProperty('--hint-color', _.get(themeName, 'customThemeColors.hint_color') || customThemeColors.hint_color)
+            document.documentElement.style.setProperty('--code-color', _.get(themeName, 'customThemeColors.code_color') || customThemeColors.code_color)
+            document.documentElement.style.setProperty('--code-color-background', _.get(themeName, 'customThemeColors.code_color_background') || customThemeColors.code_color_background)
+            document.documentElement.style.setProperty('--error-color', _.get(themeName, 'customThemeColors.error_color') || customThemeColors.error_color)
+            document.documentElement.style.setProperty('--error-color-light', _.get(themeName, 'customThemeColors.error_color_light') || customThemeColors.error_color_light)
+            document.documentElement.style.setProperty('--alert-color', _.get(themeName, 'customThemeColors.alert_color') || customThemeColors.alert_color)
+            document.documentElement.style.setProperty('--alert-color-light', _.get(themeName, 'customThemeColors.alert_color_light') || customThemeColors.alert_color_light)
+            document.documentElement.style.setProperty('--ok-color', _.get(themeName, 'customThemeColors.ok_color') || customThemeColors.ok_color)
+            document.documentElement.style.setProperty('--ok-color-light', _.get(themeName, 'customThemeColors.ok_color_light') || customThemeColors.ok_color_light)
+            document.documentElement.style.setProperty('--label-color', _.get(themeName, 'customThemeColors.label_color') || customThemeColors.label_color)
+            document.documentElement.style.setProperty('--label-text-color', _.get(themeName, 'customThemeColors.label_text_color') || customThemeColors.label_text_color)
         }
 
     }
@@ -345,7 +380,8 @@ export default function FpsTheme(props) {
             textSize: props.defaultValue.textSize || 16,
             h1size: props.defaultValue.h1size || 42,
             h2size: props.defaultValue.h2size || 30,
-            h3size: props.defaultValue.h3size || 22
+            h3size: props.defaultValue.h3size || 22,
+            customThemeColors: props.defaultValue.customThemeColors
         }
     )
 
@@ -379,7 +415,69 @@ export default function FpsTheme(props) {
         { key: '300', value: 'Light 300' },
     ]
 
+    const parseJson = json => {
+        let parsedJson = {}
+        if (typeof json == 'object') return json
+        try {
+            parsedJson = JSON.parse(json)
+        }
+        catch (e) {
+            console.log(json);
+            console.log(e);
+        }
+        return parsedJson
+    }
+
+    const stringifyJson = json => {
+        if (typeof json == 'string') return json
+        return JSON.stringify(json)
+    }
+
     const [dummyText, setDummyText] = useState('The quick brown fox jumps over the lazy dog')
+
+    const deepCloneCustomThemeColors = JSON.parse(JSON.stringify(customThemeColors))
+
+    const [themeRawView, setThemeRawView] = useState(false)
+    const myCustomTheme = <div> 
+        <Checkbox className={styles.checkbox} label ='Raw mode (JSON)' defaultValue={themeRawView} onChange={setThemeRawView}/>
+        {!themeRawView ? <div>
+        <span className={styles.colorTip}>Use HEX, e.g. <code>#123000</code> or RGBA, e.g. <code>rgba(0,0,0,0.5)</code></span>    
+        <div className={styles.horInputs}>
+        {Object.keys(customThemeColors).map(key => <Input
+            type='colour'
+            label={customThemeColorNames[key]}
+            height={props.height}
+            width={290}
+            className={styles.input}
+            code
+            defaultValue={_.get(selectedColorScheme, `customThemeColors.${key}`)}
+            onChange={value => {
+                let correctedValue = !value ? '' : (value[0] == '#' || value[0] == 'r') ? value : '#' + value
+                const copyCS = { ...selectedColorScheme }
+                _.set(copyCS, `customThemeColors.${key}`, correctedValue)
+                setSelectedColorScheme(copyCS)
+            }}
+        />)}
+    </div></div> :
+        <Input type="json"
+        description='Share this JSON as your custom colouring scheme with other Directual users'
+            onChange={value=>setSelectedColorScheme({...selectedColorScheme, customThemeColors: parseJson(value)})}
+            rows='auto' defaultValue={stringifyJson(_.merge({...customThemeColors}, selectedColorScheme.customThemeColors))} />}
+    <ActionPanel>
+        <Button danger 
+            icon='ban'
+            onClick={()=>{ 
+                const saveCS = {...selectedColorScheme, customThemeColors: {...deepCloneCustomThemeColors}}
+                console.log(saveCS)
+                setSelectedColorScheme(saveCS) 
+            }}
+            >Reset colour scheme to default&nbsp;<strong>Directual Blue</strong></Button>
+    </ActionPanel>
+    </div>
+
+    const tabs = [
+        { key: 'myTheme', title: 'My custom theme', content: myCustomTheme },
+    ]
 
     return (
         <div className={styles.themeSettings}>
@@ -393,7 +491,9 @@ export default function FpsTheme(props) {
             />
             {selectedColorScheme.colorScheme == 'custom' && <React.Fragment>
                 <FormSection title='Custom coloring scheme' />
-
+                <TabsPane tabs={tabs}
+                    hideSingleTab 
+                    currentTabKey='myTheme' fixedScroll={false} />
             </React.Fragment>}
             <FormSection title='Typography' />
             <Input

@@ -431,9 +431,11 @@ export default function Input(props) {
                 props.type != 'decimal' &&
                 props.type != 'json' &&
                 props.type != 'optionsHandler' &&
-                <div className={`${styles.field_wrapper} ${(props.addonAfter || props.addonBefore || props.preSelect) && styles.hor}`}>
+                <div className={`${styles.field_wrapper} ${(props.addonAfter || props.addonBefore || props.preSelect || (props.type == 'color' || props.type == 'colour')) && styles.hor}`}>
                     {props.addonBefore &&
                         <div className={styles.addonBefore}>{props.addonBefore}</div>}
+                    {(props.type == 'color' || props.type == 'colour')  &&
+                        <div className={styles.addonBefore} style={{backgroundColor: value}}>&nbsp;</div>}
                     {props.preSelect &&
                         <div className={`${styles.addonBefore} ${styles.preSelect}`}>
                             <select value={props.preSelectDefaultValue} disabled={props.disabled} onChange={e => props.onChoosePreSelect && props.onChoosePreSelect(e.target.value)}>
@@ -454,7 +456,7 @@ export default function Input(props) {
                             {`${styles.field} 
                             ${props.icon && styles.icon}
                             ${props.addonAfter && styles.addonAfterInput}
-                            ${(props.addonBefore || props.preSelect) && styles.addonBeforeInput}
+                            ${(props.addonBefore || props.preSelect || (props.type == 'color' || props.type == 'colour')) && styles.addonBeforeInput}
                             ${props.code && styles.code} 
                             ${warningMsg.type && styles[warningMsg.type]}
                             ${props.disabled && styles.disabled}`}

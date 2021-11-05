@@ -22188,6 +22188,20 @@ const App = (props) => {
         "data": null
     }
 
+    const parseJson = json => {
+        if (!json) return {}
+        let parsedJson = {}
+        if (typeof json == 'object') return json
+        try {
+            parsedJson = JSON.parse(json)
+        }
+        catch (e) {
+            console.log(json);
+            console.log(e);
+        }
+        return parsedJson
+    }
+
 
 
     const exampleUser = {
@@ -22205,20 +22219,26 @@ const App = (props) => {
         headersFont: localStorage.getItem('dd-theme-headersFont') || 'Montserrat',
         fontText: localStorage.getItem('dd-theme-fontText') || 'Lato',
         headersFontWeight: localStorage.getItem('dd-theme-headersFontWeight') || '700',
-        bodyFontWeight: localStorage.getItem('dd-theme-bodyFontWeight') || '400'
+        bodyFontWeight: localStorage.getItem('dd-theme-bodyFontWeight') || '400',
+        customThemeColors: parseJson(localStorage.getItem('dd-theme-customThemeColors'))
     }
 
     const [currentTheme, setCurrentTheme] = useState(basicTheme)
 
     useEffect(() => {
+        // console.log('currentTheme')
+        // console.log(currentTheme)
         localStorage.setItem('dd-theme-color', currentTheme.colorScheme)
         localStorage.setItem('dd-theme-radius', currentTheme.radius)
         localStorage.setItem('dd-theme-headersFont', currentTheme.headersFont)
         localStorage.setItem('dd-theme-fontText', currentTheme.fontText)
         localStorage.setItem('dd-theme-headersFontWeight', currentTheme.headersFontWeight)
         localStorage.setItem('dd-theme-bodyFontWeight', currentTheme.bodyFontWeight)
+        localStorage.setItem('dd-theme-customThemeColors', JSON.stringify(currentTheme.customThemeColors))
     }, [currentTheme])
 
+    // console.log('localStorage')
+    // console.log(localStorage)
 
     const exampleTabs = [
         { key: '1', title: 'Table', content: <FpsTable data={exampleTable} /> },
