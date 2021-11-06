@@ -82,7 +82,7 @@ export function ButtonDropDown(props) {
         }, [ref]);
     }
 
-    return <div className={styles.bdd} ref={dropButton}>
+    return <div className={`${styles.bdd} ${props.rightSide ? styles.rightSide : ''}`} ref={dropButton}>
         <Button icon={props.icon} height={props.height} accent={props.accent} danger={props.danger}
             small={props.small} verySmall={props.verySmall}
             onClick={(e) => {

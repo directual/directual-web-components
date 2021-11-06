@@ -3,10 +3,7 @@ import styles from './tabpane.module.css'
 import Button from '../../button/button'
 import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
 
-export default function TabsPane({ tabs, currentTabKey, fixedScroll, hideSingleTab, preloadTabs, saveTabToURL }) {
-
-    
-
+export default function TabsPane({ tabs, currentTabKey, fixedScroll, hideSingleTab, preloadTabs, saveTabToURL, style }) {
 
     const [currentTab, setCurrentTab] = useState(currentTabKey || tabs[0].id || '')
 
@@ -45,7 +42,7 @@ export default function TabsPane({ tabs, currentTabKey, fixedScroll, hideSingleT
         >
             Clear url
         </Button> */}
-        <div className={`${styles.tabsPane} ${fixedScroll && styles.fixedScroll}`}>
+        <div className={`${styles.tabsPane} ${fixedScroll && styles.fixedScroll}`} style={style}>
             {(!isSingleTab || (isSingleTab && !hideSingleTab)) &&
                 <TabsMenu
                     tabs={tabs}

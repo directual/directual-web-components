@@ -47,12 +47,12 @@ export default function MainMenu(props) {
 
     let horizontalMenu = (props.menu || []).filter(i => i.subheader || !i.group) || []
 
-    if (props.horizontal) return <React.Fragment>
+    return <React.Fragment>
         {showBackdrop && <Backdrop top onClick={hideMM} />}
         <div className={styles.show_mobile_menu}
             onClick={() => { setShowMM(true); setShowBackdrop(true) }}></div>
 
-        <div className={`${styles.horMainmenu} ${showMM && styles.show}`}>
+        <div className={`${styles.horMainmenu} ${showMM && styles.show} ${!props.horizontal ? styles.hideHorizontal : ''}`}>
             {props.logoUrl ?
                 <div className={styles.logo} style={{ backgroundImage: `url(${props.logoUrl})` }} /> :
                 <div className={styles.title}>{props.title}</div>
@@ -69,14 +69,14 @@ export default function MainMenu(props) {
                             <div className={styles.ddMenu}>
                                 {(props.menu || []).filter(i => i.group == item.name).map(ddItem => (
                                     <div
-                                    key={ddItem.name}
-                                    onClick={hideMM}
-                                    className={`${styles.itemHor} ${props.currentRoute == ddItem.route && styles.active} 
+                                        key={ddItem.name}
+                                        onClick={hideMM}
+                                        className={`${styles.itemHor} ${props.currentRoute == ddItem.route && styles.active} 
                                     ${ddItem.disabled && styles.disabled} icon ${ddItem.icon ? `icon-${ddItem.icon}` : `icon-forward`}`}>
-                                    {ddItem.link ? ddItem.link :
-                                        <a href={!ddItem.disabled && ddItem.route}>{ddItem.name}</a>
-                                    }
-                                </div>
+                                        {ddItem.link ? ddItem.link :
+                                            <a href={!ddItem.disabled && ddItem.route}>{ddItem.name}</a>
+                                        }
+                                    </div>
                                 ))}
                             </div>
                         </DropDown>
@@ -94,76 +94,81 @@ export default function MainMenu(props) {
                 ))}
             </div>
             <div className={styles.horMenuProfile}>
-                <ButtonDropDown icon='down' title='Pavel Ershov'>
-                    <Button icon='user'>Profile</Button>
-                    <Button icon='logout' danger>Log out</Button>
-                </ButtonDropDown>
+                {props.loggedIn ?
+                    <ButtonDropDown rightSide icon='down' title={props.userName}>
+                        <div className=
+                            {`
+                            ${styles.menuButton} ${styles.horMenuProfileButton}
+                            ${props.profileButton.icon && `${styles.icon} icon icon-${props.profileButton.icon}`}
+                            `}>
+                            {props.profileButton.link}
+                        </div>
+                        <Button icon='logoutAlt' danger onClick={() => { props.logout && props.logout() }}>{props.logoutText || 'Log out'}</Button>
+                    </ButtonDropDown> :
+                    <div className={`
+                        ${styles.menuButton}
+                        ${props.logInButton.icon && `${styles.icon} icon icon-${props.logInButton.icon}`}
+                        ${styles.accent}`}>
+                        {props.logInButton.link}
+                    </div>}
             </div>
         </div>
-    </React.Fragment>
 
-    return (
-        <React.Fragment>
-            {showBackdrop && <Backdrop top onClick={hideMM} />}
-            <div className={styles.show_mobile_menu}
-                onClick={() => { setShowMM(true); setShowBackdrop(true) }}></div>
-            <div className={`${styles.mainmenu} ${showMM && styles.show}`}>
-                <div className={styles.hide_mobile_menu}
-                    onClick={hideMM}></div>
-                {props.logoUrl ?
-                    <div className={styles.logo} style={{ backgroundImage: `url(${props.logoUrl})` }} /> :
-                    <div className={styles.title}>{props.title}</div>
-                }
-                <ul className={styles.list}>
-                    {props.menu.map(item => (
-                        !item.hidden && (item.subheader == 'true' || item.subheader == true) ?
-                            <li
-                                key={item.name}
-                                className={styles.subheader}>{item.name}</li> :
-                            !item.hidden &&
-                            <li
-                                key={item.name}
-                                onClick={hideMM}
-                                className={`${styles.item} ${props.currentRoute == item.route && styles.active} 
+        <div className={`${styles.mainmenu} ${showMM && styles.show} ${props.horizontal ? styles.hideHorizontal : ''}`}>
+            <div className={styles.hide_mobile_menu}
+                onClick={hideMM}></div>
+            {props.logoUrl ?
+                <div className={styles.logo} style={{ backgroundImage: `url(${props.logoUrl})` }} /> :
+                <div className={styles.title}>{props.title}</div>
+            }
+            <ul className={styles.list}>
+                {props.menu.map(item => (
+                    !item.hidden && (item.subheader == 'true' || item.subheader == true) ?
+                        <li
+                            key={item.name}
+                            className={styles.subheader}>{item.name}</li> :
+                        !item.hidden &&
+                        <li
+                            key={item.name}
+                            onClick={hideMM}
+                            className={`${styles.item} ${props.currentRoute == item.route && styles.active} 
                                 ${item.disabled && styles.disabled} icon ${item.icon ? `icon-${item.icon}` : `icon-forward`}`}>
-                                {item.link ? item.link :
-                                    <a href={!item.disabled && item.route}>{item.name}</a>
-                                }
-                            </li>
-                    ))}
-                </ul>
-                <div className={styles.menuFooter}>
-                    {props.showUserButtons &&
-                        <div className={styles.menuFooterButton}>
-                            {props.loggedIn ?
-                                <ActionPanel margin={{ top: 1, bottom: 1 }}>
-                                    <div className=
-                                        {`
+                            {item.link ? item.link :
+                                <a href={!item.disabled && item.route}>{item.name}</a>
+                            }
+                        </li>
+                ))}
+            </ul>
+            <div className={styles.menuFooter}>
+                {props.showUserButtons &&
+                    <div className={styles.menuFooterButton}>
+                        {props.loggedIn ?
+                            <ActionPanel margin={{ top: 1, bottom: 1 }}>
+                                <div className=
+                                    {`
                             ${styles.menuButton} 
                             ${props.profileButton.icon && `${styles.icon} icon icon-${props.profileButton.icon}`}
                             `}
-                                        style={{ marginRight: 6 }}
-                                        onClick={hideMM}>
-                                        {props.profileButton.link}
-                                    </div>
-                                    {props.logOutButton &&
-                                        <Button height={50} icon='logoutAlt' onClick={() => { hideMM(); props.logout && props.logout() }} />
-                                    }
-                                </ActionPanel>
-                                :
-                                <div className={`
+                                    style={{ marginRight: 6 }}
+                                    onClick={hideMM}>
+                                    {props.profileButton.link}
+                                </div>
+                                {props.logOutButton &&
+                                    <Button height={50} icon='logoutAlt' onClick={() => { hideMM(); props.logout && props.logout() }} />
+                                }
+                            </ActionPanel>
+                            :
+                            <div className={`
                                     ${styles.menuButton}
                                     ${props.logInButton.icon && `${styles.icon} icon icon-${props.logInButton.icon}`}
                                     ${styles.accent}
                                     `}
-                                    onClick={hideMM}>
-                                    {props.logInButton.link}
-                                </div>
-                            }
-                        </div>}
-                </div>
+                                onClick={hideMM}>
+                                {props.logInButton.link}
+                            </div>
+                        }
+                    </div>}
             </div>
-
-        </React.Fragment>
-    )
+        </div>
+    </React.Fragment>
 }

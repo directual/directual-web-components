@@ -19,6 +19,9 @@
 }
 
 @media all and (max-width: 1020px) {
+  .horMainmenu {
+    display: none !important;
+  }
   .logo,
   .title {
     margin-right: 90px;
@@ -115,8 +118,8 @@
 }
 
 @media all and (min-width: 1020px) {
-  .show_mobile_menu {
-    display: none;
+  .show_mobile_menu, .hideHorizontal {
+    display: none !important;
   }
 }
 
@@ -327,6 +330,7 @@
   display: inline-block;
   .dropdownMenu {
     position: absolute;
+    //right: 0;
     transition: 0.3s;
     transition-timing-function: cubic-bezier(0.6, 0.44, 0.72, 1.45);
     opacity: 0;
@@ -380,4 +384,11 @@
       padding: 10px 0;
     }
   }
+}
+
+.horMenuProfileButton {
+    border-color: rgba(0,0,0,0) !important;
+    &:hover {
+        background-color: var(--accent-transp-05-color);
+    }
 }

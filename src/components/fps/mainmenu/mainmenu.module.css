@@ -18,6 +18,9 @@
   border-radius: 4px;
 }
 @media all and (max-width: 1020px) {
+  .horMainmenu {
+    display: none !important;
+  }
   .logo,
   .title {
     margin-right: 90px;
@@ -111,8 +114,9 @@
   opacity: 0.5;
 }
 @media all and (min-width: 1020px) {
-  .show_mobile_menu {
-    display: none;
+  .show_mobile_menu,
+  .hideHorizontal {
+    display: none !important;
   }
 }
 .hide_mobile_menu {
@@ -360,4 +364,10 @@
 .ddMenu .itemHor a,
 .ddMenu .itemHor:before {
   padding: 10px 0;
+}
+.horMenuProfileButton {
+  border-color: rgba(0, 0, 0, 0) !important;
+}
+.horMenuProfileButton:hover {
+  background-color: var(--accent-transp-05-color);
 }

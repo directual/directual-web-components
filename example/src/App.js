@@ -45,10 +45,12 @@ function MainMenuWrapper(props) {
             showUserButtons={true}
             loggedIn={true}
             horizontal={props.horizontal}
+            logoutText='Выйти'
             //loggedIn={false}
             logInButton={{ name: "Sign in", route: "/profile", icon: "logoutAlt", link: <Link to="/profile">Sign in</Link> }}
             profileButton={{ name: "Profile", route: "/profile", icon: "user", link: <Link to="/profile">Profile</Link> }}
             logoUrl={logoUrl}
+            userName={'Pavel Ershov'}
             logOutButton
             currentRoute={location.pathname || '/'}
             menu={[

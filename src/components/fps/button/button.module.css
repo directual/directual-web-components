@@ -171,6 +171,9 @@ a.button:hover:not(.disabled):not(.transparent) {
   position: relative;
   display: inline-block;
 }
+.bdd.rightSide .dropdownMenu {
+  right: 0;
+}
 .bdd .dropdownMenu {
   position: absolute;
   transition: 0.3s;
