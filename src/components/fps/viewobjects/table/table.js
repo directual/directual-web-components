@@ -309,7 +309,7 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
                         let colorRow = isColorRow ? isColorRow.row.values[isColorRow.column.id] ?
                             isColorRow.row.values[isColorRow.column.id] : 'default' : 'default'
 
-                        colorRow = colorRow == 'default' ? colorRow : colorRow[0] == '#' ? colorRow : '#' + colorRow
+                        colorRow = colorRow == 'default' ? colorRow : (colorRow[0] == '#' || colorRow[0] == 'r') ? colorRow : '#' + colorRow
                         return (
                             <tr onDoubleClick={() => onExpand(row.original)}
                                 style={colorRow == 'default' ? {} :
@@ -333,7 +333,7 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
                                     if (isColorCell && isColorCell.colorCellSource == 'field') {
                                         colorCellValue = row.original[isColorCell.colorCellField]
                                     }
-                                    colorCellValue = !colorCellValue ? null : colorCellValue[0] == '#' ? colorCellValue : '#' + colorCellValue
+                                    colorCellValue = !colorCellValue ? null : (colorCellValue[0] == '#' || colorCellValue[0] == 'r') ? colorCellValue : '#' + colorCellValue
 
                                     if ((tableParams[cell.column.id] && tableParams[cell.column.id].colorRow) ||
                                         !tableParams[cell.column.id].include) return null

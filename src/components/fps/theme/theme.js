@@ -5,7 +5,7 @@ import Input, { InputGroup } from '../dataentry/input/input'
 import { FormSection } from '../dataentry/form/FpsForm'
 import _ from 'lodash'
 import TabsPane from '../layout/tabpane/tabpane'
-import Checkbox  from '../dataentry/checkbox/checkbox'
+import Checkbox from '../dataentry/checkbox/checkbox'
 import Button from '../button/button'
 import ActionPanel from '../actionspanel/actionspanel'
 
@@ -22,6 +22,7 @@ const customThemeColors = {
     background_contrast_color: '#EEEEEE',
     secondary_background_color: '#EEEEEE',
     font_color: '#333333',
+    header_color: '#333333',
     hint_color: '#333333',
     code_color: '#333333',
     code_color_background: '#FFFFFF',
@@ -47,6 +48,7 @@ const customThemeColorNames = {
     background_contrast_color: 'Background contrast colour',
     secondary_background_color: 'Secondary background colour',
     font_color: 'Main text colour',
+    header_color: 'Headers colour',
     hint_color: 'Hint text colour',
     code_color: 'Code text colour',
     code_color_background: 'Code text background',
@@ -106,6 +108,7 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--background-contrast-color', '#ddd')
             document.documentElement.style.setProperty('--secondary-background-color', '#fff')
             document.documentElement.style.setProperty('--font-color', '#333333')
+            document.documentElement.style.setProperty('--header-color', '#333333')
             document.documentElement.style.setProperty('--hint-color', '#333')
             document.documentElement.style.setProperty('--code-color', '#333')
             document.documentElement.style.setProperty('--code-color-background', '#fff')
@@ -130,6 +133,7 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--background-contrast-color', '#eee')
             document.documentElement.style.setProperty('--secondary-background-color', '#eeeeee')
             document.documentElement.style.setProperty('--font-color', '#333333')
+            document.documentElement.style.setProperty('--header-color', '#333333')
             document.documentElement.style.setProperty('--hint-color', '#333')
             document.documentElement.style.setProperty('--code-color', '#333')
             document.documentElement.style.setProperty('--code-color-background', '#fff')
@@ -154,6 +158,7 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--background-contrast-color', '#eee')
             document.documentElement.style.setProperty('--secondary-background-color', '#eeeeee')
             document.documentElement.style.setProperty('--font-color', '#333333')
+            document.documentElement.style.setProperty('--header-color', '#333333')
             document.documentElement.style.setProperty('--hint-color', '#333')
             document.documentElement.style.setProperty('--code-color', '#333')
             document.documentElement.style.setProperty('--code-color-background', '#fff')
@@ -178,6 +183,7 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--background-contrast-color', '#131022')
             document.documentElement.style.setProperty('--secondary-background-color', '#131022')
             document.documentElement.style.setProperty('--font-color', '#fff')
+            document.documentElement.style.setProperty('--header-color', '#fff')
             document.documentElement.style.setProperty('--hint-color', '#fff')
             document.documentElement.style.setProperty('--code-color', '#333')
             document.documentElement.style.setProperty('--code-color-background', 'rgba(255,255,255,0.7)')
@@ -202,6 +208,7 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--background-contrast-color', '#142025')
             document.documentElement.style.setProperty('--secondary-background-color', '#142025')
             document.documentElement.style.setProperty('--font-color', '#c2c6cb')
+            document.documentElement.style.setProperty('--header-color', '#c2c6cb')
             document.documentElement.style.setProperty('--hint-color', '#fff')
             document.documentElement.style.setProperty('--code-color', '#333')
             document.documentElement.style.setProperty('--code-color-background', 'rgba(255,255,255,0.7)')
@@ -226,6 +233,7 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--background-contrast-color', '#000000')
             document.documentElement.style.setProperty('--secondary-background-color', '#000000')
             document.documentElement.style.setProperty('--font-color', '#fff')
+            document.documentElement.style.setProperty('--header-color', '#60FF00')
             document.documentElement.style.setProperty('--hint-color', '#fff')
             document.documentElement.style.setProperty('--code-color', '#333')
             document.documentElement.style.setProperty('--code-color-background', 'rgba(255,255,255,0.7)')
@@ -250,6 +258,7 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--background-contrast-color', '#f5e8e4')
             document.documentElement.style.setProperty('--secondary-background-color', '#f5e8e4')
             document.documentElement.style.setProperty('--font-color', '#333333')
+            document.documentElement.style.setProperty('--header-color', '#db004a')
             document.documentElement.style.setProperty('--hint-color', '#333')
             document.documentElement.style.setProperty('--code-color', '#333')
             document.documentElement.style.setProperty('--code-color-background', '#fff')
@@ -274,6 +283,7 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--background-contrast-color', '#eeefe7')
             document.documentElement.style.setProperty('--secondary-background-color', '#eeefe7')
             document.documentElement.style.setProperty('--font-color', '#515a5a')
+            document.documentElement.style.setProperty('--header-color', '#515a5a')
             document.documentElement.style.setProperty('--hint-color', '#515a5a')
             document.documentElement.style.setProperty('--code-color', '#515a5a')
             document.documentElement.style.setProperty('--code-color-background', '#fff')
@@ -298,6 +308,7 @@ export function SetTheme({ themeName }) {
             document.documentElement.style.setProperty('--background-contrast-color', _.get(themeName, 'customThemeColors.background_contrast_color') || customThemeColors.background_contrast_color)
             document.documentElement.style.setProperty('--secondary-background-color', _.get(themeName, 'customThemeColors.secondary_background_color') || customThemeColors.secondary_background_color)
             document.documentElement.style.setProperty('--font-color', _.get(themeName, 'customThemeColors.font_color') || customThemeColors.font_color)
+            document.documentElement.style.setProperty('--header-color', _.get(themeName, 'customThemeColors.header_color') || customThemeColors.header_color)
             document.documentElement.style.setProperty('--hint-color', _.get(themeName, 'customThemeColors.hint_color') || customThemeColors.hint_color)
             document.documentElement.style.setProperty('--code-color', _.get(themeName, 'customThemeColors.code_color') || customThemeColors.code_color)
             document.documentElement.style.setProperty('--code-color-background', _.get(themeName, 'customThemeColors.code_color_background') || customThemeColors.code_color_background)
@@ -381,7 +392,9 @@ export default function FpsTheme(props) {
             h1size: props.defaultValue.h1size || 42,
             h2size: props.defaultValue.h2size || 30,
             h3size: props.defaultValue.h3size || 22,
-            customThemeColors: props.defaultValue.customThemeColors
+            customThemeColors: props.defaultValue.customThemeColors,
+            desktopMenu: props.defaultValue.desktopMenu || 'left',
+            mobileMenu: props.defaultValue.mobileMenu || 'right',
         }
     )
 
@@ -406,6 +419,11 @@ export default function FpsTheme(props) {
         { key: 'Gabriela', value: 'Gabriela' },
         { key: 'Orelega One', value: 'Orelega One' },
         { key: 'Philosopher', value: 'Philosopher' },
+        { key: 'Poppins', value: 'Poppins' },
+        { key: 'Chakra Petch', value: 'Chakra Petch' },
+        { key: 'Comfortaa', value: 'Comfortaa' },
+        { key: 'Kanit', value: 'Kanit' },
+        { key: 'Noto Serif JP', value: 'すべての (Noto Serif)' },
     ]
     const fontWeights = [
         { key: '900', value: 'Black 900' },
@@ -438,41 +456,48 @@ export default function FpsTheme(props) {
     const deepCloneCustomThemeColors = JSON.parse(JSON.stringify(customThemeColors))
 
     const [themeRawView, setThemeRawView] = useState(false)
-    const myCustomTheme = <div> 
-        <Checkbox className={styles.checkbox} label ='Raw mode (JSON)' defaultValue={themeRawView} onChange={setThemeRawView}/>
+
+    useEffect(() => {
+        if (!selectedColorScheme.customThemeColors || customThemeColors.customThemeColors == {}) {
+            const saveCS = { ...selectedColorScheme, customThemeColors: { ...deepCloneCustomThemeColors } }
+            setSelectedColorScheme(saveCS)
+        }
+    }, [])
+
+    const myCustomTheme = <div>
+        <Checkbox className={styles.checkbox} label='Raw mode (JSON)' defaultValue={themeRawView} onChange={setThemeRawView} />
         {!themeRawView ? <div>
-        <span className={styles.colorTip}>Use HEX, e.g. <code>#123000</code> or RGBA, e.g. <code>rgba(0,0,0,0.5)</code></span>    
-        <div className={styles.horInputs}>
-        {Object.keys(customThemeColors).map(key => <Input
-            type='colour'
-            label={customThemeColorNames[key]}
-            height={props.height}
-            width={290}
-            className={styles.input}
-            code
-            defaultValue={_.get(selectedColorScheme, `customThemeColors.${key}`)}
-            onChange={value => {
-                let correctedValue = !value ? '' : (value[0] == '#' || value[0] == 'r') ? value : '#' + value
-                const copyCS = { ...selectedColorScheme }
-                _.set(copyCS, `customThemeColors.${key}`, correctedValue)
-                setSelectedColorScheme(copyCS)
-            }}
-        />)}
-    </div></div> :
-        <Input type="json"
-        description='Share this JSON as your custom colouring scheme with other Directual users'
-            onChange={value=>setSelectedColorScheme({...selectedColorScheme, customThemeColors: parseJson(value)})}
-            rows='auto' defaultValue={stringifyJson(_.merge({...customThemeColors}, selectedColorScheme.customThemeColors))} />}
-    <ActionPanel>
-        <Button danger 
-            icon='ban'
-            onClick={()=>{ 
-                const saveCS = {...selectedColorScheme, customThemeColors: {...deepCloneCustomThemeColors}}
-                console.log(saveCS)
-                setSelectedColorScheme(saveCS) 
-            }}
+            <span className={styles.colorTip}>Use HEX, e.g. <code>#123000</code> or RGBA, e.g. <code>rgba(0,0,0,0.5)</code></span>
+            <div className={styles.horInputs}>
+                {Object.keys(customThemeColors).map(key => <Input
+                    type='colour'
+                    label={customThemeColorNames[key]}
+                    height={props.height}
+                    width={290}
+                    className={styles.input}
+                    code
+                    defaultValue={_.get(selectedColorScheme, `customThemeColors.${key}`)}
+                    onChange={value => {
+                        let correctedValue = !value ? '' : (value[0] == '#' || value[0] == 'r') ? value : '#' + value
+                        const copyCS = { ...selectedColorScheme }
+                        _.set(copyCS, `customThemeColors.${key}`, correctedValue)
+                        setSelectedColorScheme(copyCS)
+                    }}
+                />)}
+            </div></div> :
+            <Input type="json"
+                description='Share this JSON as your custom colouring scheme with other Directual users'
+                onChange={value => setSelectedColorScheme({ ...selectedColorScheme, customThemeColors: parseJson(value) })}
+                rows='auto' defaultValue={stringifyJson(_.merge({ ...customThemeColors }, selectedColorScheme.customThemeColors))} />}
+        <ActionPanel>
+            <Button danger
+                icon='ban'
+                onClick={() => {
+                    const saveCS = { ...selectedColorScheme, customThemeColors: { ...deepCloneCustomThemeColors } }
+                    setSelectedColorScheme(saveCS)
+                }}
             >Reset colour scheme to default&nbsp;<strong>Directual Blue</strong></Button>
-    </ActionPanel>
+        </ActionPanel>
     </div>
 
     const tabs = [
@@ -481,6 +506,32 @@ export default function FpsTheme(props) {
 
     return (
         <div className={styles.themeSettings}>
+            <div className={styles.horInputs}>
+                <Input
+                    type='radio'
+                    width={250}
+                    className={styles.input}
+                    label='Desktop menu layout'
+                    options={[
+                        { value: 'left', label: 'Left side' },
+                        { value: 'top', label: 'Top side' },
+                    ]}
+                    defaultValue={selectedColorScheme.desktopMenu}
+                    onChange={value => setSelectedColorScheme({ ...selectedColorScheme, desktopMenu: value })}
+                />
+                <Input
+                    type='radio'
+                    width={250}
+                    className={styles.input}
+                    label='Mobile menu layout'
+                    options={[
+                        { value: 'right', label: 'On the right' },
+                        { value: 'left', label: 'On the left' },
+                    ]}
+                    defaultValue={selectedColorScheme.mobileMenu}
+                    onChange={value => setSelectedColorScheme({ ...selectedColorScheme, mobileMenu: value })}
+                />
+            </div>
             <Input
                 type='radio'
                 label='Choose color scheme'
@@ -492,7 +543,7 @@ export default function FpsTheme(props) {
             {selectedColorScheme.colorScheme == 'custom' && <React.Fragment>
                 <FormSection title='Custom coloring scheme' />
                 <TabsPane tabs={tabs}
-                    hideSingleTab 
+                    hideSingleTab
                     currentTabKey='myTheme' fixedScroll={false} />
             </React.Fragment>}
             <FormSection title='Typography' />

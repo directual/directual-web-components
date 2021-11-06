@@ -240,6 +240,9 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                     )
                     // ==================================
 
+                    const cardColor = row[tableParams.cardColor] ? ((row[tableParams.cardColor][0] =='#' || row[tableParams.cardColor][0] =='r') ? row[tableParams.cardColor] 
+                        : '#' + row[tableParams.cardColor]): null
+
                     return (
                         <div key={i} className={`${styles.card} ${styles[currentBP]} ${styles[tableParams.cardListLayout || 'grid']}`}>
                             {/* quick actions menu */}
@@ -252,7 +255,7 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                                 `}
                                 style={
                                     (tableParams.cardColor && tableParams.cardColorOption == 'border') ? {
-                                        borderColor: '#' + row[tableParams.cardColor]
+                                        borderColor: cardColor
                                     } : {}
                                 }
                                 onClick={() => {
@@ -263,7 +266,7 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                                 {tableParams.cardColor && tableParams.cardColorOption != 'none' &&
                                     <div
                                         style={{
-                                            backgroundColor: '#' + row[tableParams.cardColor]
+                                            backgroundColor: cardColor
                                         }}
                                         className={`${styles.color} ${styles[tableParams.cardColorOption]}`} />}
                                 {/* Картинка карточки */}

@@ -6,6 +6,10 @@
     flex-grow: 2;
 }
 
+.horizontal.wrapper {
+    flex-direction: column;
+}
+
 .outer_content_wrapper {
     position: relative;
     max-height: 100%;

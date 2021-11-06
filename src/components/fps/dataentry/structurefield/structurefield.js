@@ -11,6 +11,8 @@ const dataTypesIcons = {
     string_phone: 'phone',
     string_color: 'styles',
     string_webLink: 'move',
+    string_youTube: 'play',
+    string_password: 'lock',
     number: 'num',
     number_positiveNum: 'num',
     decimal: 'decimal',
@@ -21,17 +23,19 @@ const dataTypesIcons = {
     arrayLink: 'bracketsArray',
     file: 'clip',
     file_multipleFiles: 'clip',
+    file_image: 'image',
+    file_multipleImages: 'image',
     json: 'code',
     json_checkboxes: 'checkbox',
     json_radioOptions: 'radio',
     json_slider: 'slider',
     json_keyValue: 'tag',
     json_rangeSlider: 'range',
+    json_geo: 'map',
     json_dateRange: 'calendar',
     json_choosePicture: 'keynote',
     operator: 'filter',
-    id: 'id',
-    unknown: 'ban'
+    id: 'id'
 }
 
 export default function StructureField(props) {
@@ -99,7 +103,7 @@ export default function StructureField(props) {
 
     // тут мы получаем данные для отображения текущего Value: имя поля и тип
     const getValueDetails = val => {
-        console.log(val)        
+        console.log(val)
         const objPath = val && val.split('.')
         let currentStruct = props.structSysName
         let counter = 0;
@@ -559,7 +563,7 @@ function StructListFields(props) {
     // key select
     const handleUserKeyPress = (e) => {
         console.log(e.key)
-        if (e.key == 'ArrowLeft') {goBack()}
+        if (e.key == 'ArrowLeft') { goBack() }
         if ((e.key == 'ArrowDown' || e.key == 'ArrowUp') && isLast() && filteredFields) {
             // console.log(filteredFields)
             const currentKeyIndex = !currentKeyFocus ? -1 :

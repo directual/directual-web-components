@@ -8,6 +8,7 @@ import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
 import FileUpload from '../fileupload/fileupload'
 import Media from '../../media/media'
+import _ from 'lodash'
 
 export function InputForm(props) {
     // console.log('InputForm')
@@ -316,9 +317,21 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
 }
 
 function FieldLink({ field, onChange, placeholder, editingOn, defaultValue }) {
-    //console.log(field)
+   
     const [edit, setEdit] = useState(false)
-    if (field.searchData && field.searchData.length > 0) {
+
+    const getIDs = (value,multi) => {
+        if (!multi && typeof value == 'object') return _.get(value,'id')
+        if (multi && value.length && typeof value[0] == 'object') return value.map(i=>_.get(i,'id'))
+        return value
+    }
+
+    console.log('FieldLink')
+    console.log(field)
+    console.log(defaultValue)
+    console.log(defaultValue)
+
+    if (field.searchData && field.quickSearch && field.searchData.length > 0) {
         return <Input
             type={field.dataType == 'link' ? 'select' : 'multiselect'}
             onChange={onChange}
@@ -327,7 +340,7 @@ function FieldLink({ field, onChange, placeholder, editingOn, defaultValue }) {
             placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
             label={placeholder != "true" ? (field.content || field.id) : ''}
             description={field.descriptionFlag && field.description}
-            defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
+            defaultValue={getIDs(defaultValue, field.dataType != 'link') || (field.defaultValueOn && field.defaultValue)}
             options={field.searchData}
         />
     } else {
@@ -340,7 +353,7 @@ function FieldLink({ field, onChange, placeholder, editingOn, defaultValue }) {
             placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
             label={placeholder != "true" ? (field.content || field.id) : ''}
             description={field.descriptionFlag && field.description}
-            defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
+            defaultValue={getIDs(defaultValue, field.dataType != 'link') || (field.defaultValueOn && field.defaultValue)}
         />
     }
 }

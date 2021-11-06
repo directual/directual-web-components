@@ -5,7 +5,7 @@ import { dict } from '../locale'
 
 export function FpsWrapper(props) {
     return (
-        <div className={styles.wrapper}>
+        <div className={`${styles.wrapper} ${props.horizontal ? styles.horizontal : ''}`}>
             {props.children}
         </div>
     )
