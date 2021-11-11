@@ -521,7 +521,7 @@ options={
                 label="Range slider"
                 defaultValue={{ firstValue: 200, secondValue: 400 }}
                 min={0}
-                disabled
+                //disabled
                 max={600}
                 step={10}
                 unitName='€'
@@ -541,7 +541,7 @@ options={
             <Input
                 type="slider"
                 width={500}
-                disabled
+                //disabled
                 label="Slider"
                 defaultValue={{ firstValue: 300 }}
                 min={200}

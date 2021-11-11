@@ -68,7 +68,7 @@ export default function FileUpload(props) {
 
             <div className={styles.fileUpload} style={{ marginBottom: props.nomargin ? 0 : 22 }}>
                 {(!oldView || !props.edit) && <React.Fragment>
-                    {(props.multiple || files.length == 0) && props.edit && <a onClick={() => setOldView(!oldView)} className={styles.switchView}>paste file URL</a>}
+                    {/* {(props.multiple || files.length == 0) && props.edit && <a onClick={() => setOldView(!oldView)} className={styles.switchView}>paste file URL</a>} */}
                     {props.label && <label>{props.label}{props.required && '*'}</label>}
                     {props.description && <div className={styles.description}>{props.description}</div>}
                     {(props.multiple || files.length == 0) && props.edit &&
