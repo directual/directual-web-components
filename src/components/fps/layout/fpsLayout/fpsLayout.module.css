@@ -1,5 +1,7 @@
 .fpsLayout .layoutHeader {
   margin: 0;
+  padding-bottom: 24px;
+  line-height: 1em;
 }
 .section {
   display: flex;

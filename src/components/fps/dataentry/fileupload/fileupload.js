@@ -68,7 +68,7 @@ export default function FileUpload(props) {
 
             <div className={styles.fileUpload} style={{ marginBottom: props.nomargin ? 0 : 22 }}>
                 {(!oldView || !props.edit) && <React.Fragment>
-                    {/* {(props.multiple || files.length == 0) && props.edit && <a onClick={() => setOldView(!oldView)} className={styles.switchView}>paste file URL</a>} */}
+                    {(props.multiple || files.length == 0) && props.edit && <a onClick={() => setOldView(!oldView)} className={styles.switchView}>paste file URL</a>}
                     {props.label && <label>{props.label}{props.required && '*'}</label>}
                     {props.description && <div className={styles.description}>{props.description}</div>}
                     {(props.multiple || files.length == 0) && props.edit &&
@@ -241,7 +241,7 @@ function ShowImage({ imageUrl, swipe, swipable, close }) {
         {swipable ? <div className={`${styles.toLeft} icon icon-back`} ref={leftButton} onClick={() => swipe(-1)} /> : <div ref={leftButton} />}
         <div className={styles.imageWrapper}>
             <img ref={image} src={imageUrl} />
-            <span ref={imageName} className={styles.imageName}>{imageUrl}</span>
+            {/* <span ref={imageName} className={styles.imageName}>{imageUrl}</span> */}
         </div>
         {swipable ? <div className={`${styles.toRight} icon icon-forward`} ref={rightButton} onClick={() => swipe(1)} /> : <div ref={rightButton} />}
     </div>

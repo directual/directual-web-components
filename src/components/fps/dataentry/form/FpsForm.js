@@ -111,6 +111,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
     eidtID = auth.user // если стоит галка, то забираем айди из юзера
   }
   eidtID = urlParams.get('@editObject') || eidtID; // если задаем в URL, приоритет выше
+  console.log('eidtID = ' + eidtID)
 
   const [fetchedObj, setFetchetObj] = useState(false)
   const fetchObjectFields = (objId) => {
@@ -740,7 +741,7 @@ FpsForm.settings = {
     { name: 'Form title', sysName: 'formName', type: 'input' },
     { name: 'Form description', sysName: 'formDesc', type: 'textarea' },
     { name: 'Submit button text', sysName: 'formButton', type: 'input' },
-    { name: 'Re-submit button text', sysName: 'formButtonResubmit', type: 'input' },
+    // // { name: 'Re-submit button text', sysName: 'formButtonResubmit', type: 'input' },
     { name: 'Labels or Placeholders', sysName: 'placeholder', type: 'labelOrPlaceholder' },
     { name: 'Form max width, px', sysName: 'maxWidth', type: 'number' },
   ]
