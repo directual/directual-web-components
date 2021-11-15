@@ -323,7 +323,7 @@ function FieldLink({ field, onChange, placeholder, editingOn, defaultValue }) {
 
     const getIDs = (value,multi) => {
         if (!multi && typeof value == 'object') return _.get(value,'id')
-        if (multi && value.length && typeof value[0] == 'object') return value.map(i=>_.get(i,'id'))
+        if (multi && value && value.length && typeof value[0] == 'object') return value.map(i=>_.get(i,'id'))
         return value
     }
 
