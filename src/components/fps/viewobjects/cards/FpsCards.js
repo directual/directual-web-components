@@ -92,11 +92,9 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale }) {
     }
 
     const setPage = page => {
-        onEvent({ dql: currentDQL, page: page, _id: id })
+        onEvent({ dql: currentDQL, _id: id, pageInfo: { page: page }, pageReq: {reqParam1: true} })
         page !== 0 ? addUrlParam({ key: id + '_page', value: page }) : removeUrlParam(id + '_page')
     }
-
-    
 
     const submit = (model) => {
         const saveModel = { ...model }
@@ -229,7 +227,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale }) {
             //removeUrlParam(id + '_id')
         }
     }, [showObject])
-    
+
 
     return (
         <ComponentWrapper currentBP={currentBP}>
