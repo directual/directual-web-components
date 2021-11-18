@@ -92,7 +92,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale }) {
     }
 
     const setPage = page => {
-        onEvent({ dql: currentDQL, _id: id, pageInfo: { page: page }, pageReq: {reqParam1: true} })
+        onEvent({ dql: currentDQL, _id: id},  { page: page }, {reqParam1: "true"} )
         page !== 0 ? addUrlParam({ key: id + '_page', value: page }) : removeUrlParam(id + '_page')
     }
 
