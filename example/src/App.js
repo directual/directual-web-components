@@ -82,317 +82,52 @@ const App = (props) => {
     }
 
     let cardActions = {
-        "sl": "myBootcamps_ETALONS",
+        "sl": "getBooks",
         "pageSize": "10",
         "headerField": null,
         "params": {
             "cardListLayout": "grid",
-            "cardHeaderComment": "type",
+            "cardHeaderComment": "author",
             "deleteField": "",
-            "cardBodyText": "HE_display_status",
-            "cardImage": false,
-            "cardImageField": "",
-            "cardImageType": "none",
+            "cardBodyText": "year",
+            "cardImage": true,
+            "cardImageField": "poster",
+            "cardImageType": "left",
             "cardImageSize": 100,
             "objectView": {},
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "Description_1",
-                        "fetch": [],
-                        "sysName": "Description_1",
-                        "name": "Description",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Description_2",
-                        "fetch": [],
-                        "sysName": "Description_2",
-                        "name": "Description",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Description_3",
-                        "fetch": [],
-                        "sysName": "Description_3",
-                        "name": "Description",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Description_4",
-                        "fetch": [],
-                        "sysName": "Description_4",
-                        "name": "Description",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Description_5",
-                        "fetch": [],
-                        "sysName": "Description_5",
-                        "name": "Description",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Description_6",
-                        "fetch": [],
-                        "sysName": "Description_6",
-                        "name": "Description",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "HE_checke_status",
-                        "fetch": [],
-                        "sysName": "HE_checke_status",
-                        "name": "Status",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "HE_display_status",
-                        "fetch": [],
-                        "sysName": "HE_display_status",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "HW_answer",
-                        "fetch": [],
-                        "sysName": "HW_answer",
-                        "name": "Home work screencast",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "HW_app_link",
-                        "fetch": [],
-                        "sysName": "HW_app_link",
-                        "name": "Link to the app or App system name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "HW_comment",
-                        "fetch": [],
-                        "sysName": "HW_comment",
-                        "name": "Instructor's Comment",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "HW_files",
-                        "fetch": [],
-                        "sysName": "HW_files",
-                        "name": "Files (optional)",
-                        "dataType": "file",
-                        "format": "multipleFiles",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "HW_no_status",
-                        "fetch": [],
-                        "sysName": "HW_no_status",
-                        "name": "Status",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "HW_status",
-                        "fetch": [],
-                        "sysName": "HW_status",
-                        "name": "Status",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "HW_submitted_status",
-                        "fetch": [],
-                        "sysName": "HW_submitted_status",
-                        "name": "Status",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "HW_your_comment",
-                        "fetch": [],
-                        "sysName": "HW_your_comment",
-                        "name": "Your comment (optional)",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "Hometask",
-                        "fetch": [],
-                        "sysName": "Hometask",
-                        "name": "Home task",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Video_1",
-                        "fetch": [],
-                        "sysName": "Video_1",
-                        "name": "Video",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Video_2",
-                        "fetch": [],
-                        "sysName": "Video_2",
-                        "name": "Video",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Video_3",
-                        "fetch": [],
-                        "sysName": "Video_3",
-                        "name": "Video",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Video_4",
-                        "fetch": [],
-                        "sysName": "Video_4",
-                        "name": "Video",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Video_5",
-                        "fetch": [],
-                        "sysName": "Video_5",
-                        "name": "Video",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Video_6",
-                        "fetch": [],
-                        "sysName": "Video_6",
-                        "name": "Video",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "color",
-                        "fetch": [],
-                        "sysName": "color",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "current_status",
-                        "fetch": [],
-                        "sysName": "current_status",
-                        "name": "Current status",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "date",
-                        "fetch": [],
-                        "sysName": "date",
-                        "name": "Date purchased",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
+                        "fieldSysName": "author",
+                        "fetch": [
+                            {
+                                "fieldSysName": "books",
+                                "condition": null,
+                                "fetch": [
+                                    {
+                                        "fieldSysName": "title",
+                                        "condition": null,
+                                        "fetch": []
+                                    }
+                                ]
                             },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
                             },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD MMM, Y",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "description",
-                        "fetch": [],
-                        "sysName": "description",
-                        "name": "Description",
-                        "dataType": "string",
-                        "format": "markdown",
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "author",
+                        "name": "Author",
+                        "dataType": "link",
+                        "format": "",
                         "formatOptions": {},
-                        "link": ""
+                        "link": "writers"
                     },
                     {
                         "fieldSysName": "id",
@@ -401,6 +136,16 @@ const App = (props) => {
                         "name": "id",
                         "dataType": "id",
                         "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "poster",
+                        "fetch": [],
+                        "sysName": "poster",
+                        "name": "Poster",
+                        "dataType": "file",
+                        "format": "image",
                         "formatOptions": {},
                         "link": ""
                     },
@@ -412,220 +157,59 @@ const App = (props) => {
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "type",
-                        "fetch": [
-                            {
-                                "fieldSysName": "description",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "instructor",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "title",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "type",
-                        "name": "Bootcamp type",
+                        "fieldSysName": "upvote_number",
+                        "fetch": [],
+                        "sysName": "upvote_number",
+                        "name": "Upvotes number",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "user_owner",
+                        "fetch": [],
+                        "sysName": "user_owner",
+                        "name": "",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "bootcamp_descriptions"
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "year",
+                        "fetch": [],
+                        "sysName": "year",
+                        "name": "Year",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "link": ""
                     }
                 ],
                 "writeFields": [
                     {
-                        "fieldSysName": "Description_1",
+                        "fieldSysName": "author",
                         "fetch": [],
-                        "sysName": "Description_1",
-                        "name": "Description",
-                        "dataType": "string",
-                        "format": "markdown",
+                        "sysName": "author",
+                        "name": "Author",
+                        "dataType": "link",
+                        "format": "",
                         "formatOptions": {},
-                        "link": ""
+                        "link": "writers"
                     },
                     {
-                        "fieldSysName": "Description_2",
+                        "fieldSysName": "delete_reason",
                         "fetch": [],
-                        "sysName": "Description_2",
-                        "name": "Description",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Description_3",
-                        "fetch": [],
-                        "sysName": "Description_3",
-                        "name": "Description",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Description_4",
-                        "fetch": [],
-                        "sysName": "Description_4",
-                        "name": "Description",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Description_5",
-                        "fetch": [],
-                        "sysName": "Description_5",
-                        "name": "Description",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Description_6",
-                        "fetch": [],
-                        "sysName": "Description_6",
-                        "name": "Description",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "HW_answer",
-                        "fetch": [],
-                        "sysName": "HW_answer",
-                        "name": "Home work screencast",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "HW_app_link",
-                        "fetch": [],
-                        "sysName": "HW_app_link",
-                        "name": "Link to the app or App system name",
+                        "sysName": "delete_reason",
+                        "name": "Delete reason",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": null
-                    },
-                    {
-                        "fieldSysName": "HW_files",
-                        "fetch": [],
-                        "sysName": "HW_files",
-                        "name": "Files (optional)",
-                        "dataType": "file",
-                        "format": "multipleFiles",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "HW_your_comment",
-                        "fetch": [],
-                        "sysName": "HW_your_comment",
-                        "name": "Your comment (optional)",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "Hometask",
-                        "fetch": [],
-                        "sysName": "Hometask",
-                        "name": "Home task",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Video_1",
-                        "fetch": [],
-                        "sysName": "Video_1",
-                        "name": "Video",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Video_2",
-                        "fetch": [],
-                        "sysName": "Video_2",
-                        "name": "Video",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Video_3",
-                        "fetch": [],
-                        "sysName": "Video_3",
-                        "name": "Video",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Video_4",
-                        "fetch": [],
-                        "sysName": "Video_4",
-                        "name": "Video",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Video_5",
-                        "fetch": [],
-                        "sysName": "Video_5",
-                        "name": "Video",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Video_6",
-                        "fetch": [],
-                        "sysName": "Video_6",
-                        "name": "Video",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "description",
-                        "fetch": [],
-                        "sysName": "description",
-                        "name": "Description",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
                     },
                     {
                         "fieldSysName": "id",
@@ -636,349 +220,69 @@ const App = (props) => {
                         "format": "",
                         "formatOptions": {},
                         "link": ""
+                    },
+                    {
+                        "fieldSysName": "isHidden",
+                        "fetch": [],
+                        "sysName": "isHidden",
+                        "name": "",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "poster",
+                        "fetch": [],
+                        "sysName": "poster",
+                        "name": "Poster",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "title",
+                        "fetch": [],
+                        "sysName": "title",
+                        "name": "Title",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "user_owner",
+                        "fetch": [],
+                        "sysName": "user_owner",
+                        "name": "",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "year",
+                        "fetch": [],
+                        "sysName": "year",
+                        "name": "Year",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "link": ""
                     }
                 ],
                 "fields": {
-                    "Description_1": {
-                        "id": "Description_1",
-                        "content": "Description",
+                    "author": {
+                        "id": "author",
+                        "content": "Author",
                         "type": "field",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "Description_2": {
-                        "id": "Description_2",
-                        "content": "Description",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "Description_3": {
-                        "id": "Description_3",
-                        "content": "Description",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "Description_4": {
-                        "id": "Description_4",
-                        "content": "Description",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "Description_5": {
-                        "id": "Description_5",
-                        "content": "Description",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "Description_6": {
-                        "id": "Description_6",
-                        "content": "Description",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "HE_checke_status": {
-                        "id": "HE_checke_status",
-                        "content": "Status",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "HE_display_status": {
-                        "id": "HE_display_status",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "HW_answer": {
-                        "id": "HW_answer",
-                        "content": "Home work screencast",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "HW_app_link": {
-                        "id": "HW_app_link",
-                        "content": "Link to the app or App system name",
-                        "type": "field",
-                        "dataType": "string",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
                         "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "HW_comment": {
-                        "id": "HW_comment",
-                        "content": "Instructor's Comment",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "HW_files": {
-                        "id": "HW_files",
-                        "content": "Files (optional)",
-                        "type": "field",
-                        "dataType": "file",
-                        "format": "multipleFiles",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "HW_no_status": {
-                        "id": "HW_no_status",
-                        "content": "Status",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "HW_status": {
-                        "id": "HW_status",
-                        "content": "Status",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "HW_submitted_status": {
-                        "id": "HW_submitted_status",
-                        "content": "Status",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "HW_your_comment": {
-                        "id": "HW_your_comment",
-                        "content": "Your comment (optional)",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "Hometask": {
-                        "id": "Hometask",
-                        "content": "Home task",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "Video_1": {
-                        "id": "Video_1",
-                        "content": "Video",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "Video_2": {
-                        "id": "Video_2",
-                        "content": "Video",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "Video_3": {
-                        "id": "Video_3",
-                        "content": "Video",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "Video_4": {
-                        "id": "Video_4",
-                        "content": "Video",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "Video_5": {
-                        "id": "Video_5",
-                        "content": "Video",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "Video_6": {
-                        "id": "Video_6",
-                        "content": "Video",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "youTube",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "color": {
-                        "id": "color",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "current_status": {
-                        "id": "current_status",
-                        "content": "Current status",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "date": {
-                        "id": "date",
-                        "content": "Date purchased",
-                        "type": "field",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD MMM, Y",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "description": {
-                        "id": "description",
-                        "content": "Description",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
+                        "link": "writers",
                         "actions": []
                     },
                     "id": {
@@ -993,6 +297,18 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
+                    "poster": {
+                        "id": "poster",
+                        "content": "Poster",
+                        "type": "field",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
                     "title": {
                         "id": "title",
                         "content": "Title",
@@ -1000,53 +316,99 @@ const App = (props) => {
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
-                        "link": null,
+                        "link": "",
                         "actions": []
                     },
-                    "type": {
-                        "id": "type",
-                        "content": "Bootcamp type",
+                    "upvote_number": {
+                        "id": "upvote_number",
+                        "content": "Upvotes number",
+                        "type": "field",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "user_owner": {
+                        "id": "user_owner",
+                        "content": "",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
-                        "link": "bootcamp_descriptions",
+                        "link": "WebUser",
+                        "actions": []
+                    },
+                    "year": {
+                        "id": "year",
+                        "content": "Year",
+                        "type": "field",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "delete_reason": {
+                        "id": "delete_reason",
+                        "content": "Delete reason",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": null,
+                        "actions": []
+                    },
+                    "isHidden": {
+                        "id": "isHidden",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "action__46801637486998874": {
+                        "content": "Upvote",
+                        "id": "action__46801637486998874",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__10481637487615613": {
+                        "content": "Delete",
+                        "id": "action__10481637487615613",
+                        "type": "action",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "id": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "title": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "type": {
+                    "author": {
                         "include": true,
                         "fileImageFormat": "square",
-                        "quickSearch": false,
+                        "quickSearch": true,
                         "fileImageSize": 200,
                         "clickable": true,
+                        "quickSearchSL": "getAuthors",
                         "configureLinkedCard": {
                             "fields": {
-                                "description": {
-                                    "id": "description",
-                                    "content": "Description",
+                                "books": {
+                                    "id": "books",
+                                    "content": "Books",
                                     "type": "field",
                                     "read": true,
-                                    "dataType": "string",
-                                    "format": "markdown",
-                                    "formatOptions": {}
+                                    "dataType": "arrayLink",
+                                    "format": null,
+                                    "formatOptions": null
                                 },
                                 "id": {
                                     "id": "id",
@@ -1057,27 +419,18 @@ const App = (props) => {
                                     "format": null,
                                     "formatOptions": {}
                                 },
-                                "instructor": {
-                                    "id": "instructor",
-                                    "content": "Instructor",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "link",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "title": {
-                                    "id": "title",
-                                    "content": "Title",
+                                "name": {
+                                    "id": "name",
+                                    "content": "Name",
                                     "type": "field",
                                     "read": true,
                                     "dataType": "string",
                                     "format": null,
-                                    "formatOptions": {}
+                                    "formatOptions": null
                                 }
                             },
                             "fieldParams": {
-                                "description": {
+                                "books": {
                                     "include": true,
                                     "fileImageFormat": "square",
                                     "fileImageSize": 200
@@ -1087,227 +440,79 @@ const App = (props) => {
                                     "fileImageFormat": "square",
                                     "fileImageSize": 200
                                 },
-                                "instructor": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "title": {
+                                "name": {
                                     "include": true,
                                     "fileImageFormat": "square",
                                     "fileImageSize": 200
                                 }
                             },
                             "fieldOrder": [
-                                "title",
-                                "instructor",
-                                "description",
+                                "name",
+                                "books",
                                 "id"
                             ]
-                        }
+                        },
+                        "subHeader": "Author: "
                     },
-                    "date": {
+                    "poster": {
                         "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "current_status": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "displayAsHint": true,
-                        "hintType": "ok"
-                    },
-                    "description": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "Description_1": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "Description_2": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "Description_3": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "Description_4": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "HW_app_link": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "displayAsHint": false
-                    },
-                    "HW_comment": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "displayAsHint": true
-                    },
-                    "HW_files": {
-                        "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false,
                         "fileUpload": true
                     },
-                    "HW_status": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "displayAsHint": true
-                    },
-                    "Video_1": {
+                    "title": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "Video_2": {
+                    "year": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "Video_3": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "Video_4": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "Hometask": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "HE_checke_status": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "displayAsHint": true,
-                        "hintType": "ok"
-                    },
-                    "HW_no_status": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "displayAsHint": true,
-                        "hintType": "danger"
-                    },
-                    "HW_submitted_status": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "displayAsHint": true
-                    },
-                    "color": {
+                    "id": {
                         "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "HE_display_status": {
+                    "isHidden": {
                         "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "HW_your_comment": {
+                    "user_owner": {
                         "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "HW_answer": {
+                    "upvotes_number": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "upvote_number": {
                         "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "batch": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "Description_5": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "Description_6": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "Video_5": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "Video_6": {
-                        "include": true,
+                    "delete_reason": {
+                        "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
@@ -1317,91 +522,152 @@ const App = (props) => {
                 "columns": {
                     "tab-1": {
                         "id": "tab-1",
-                        "title": "General info",
+                        "title": "New section",
                         "fieldIds": [
-                            "id",
-                            "type",
-                            "current_status",
-                            "date",
-                            "description",
+                            "author",
+                            "poster",
                             "title",
-                            "color",
-                            "HE_display_status"
-                        ]
-                    },
-                    "62001635772544729": {
-                        "id": "62001635772544729",
-                        "title": "Homework",
-                        "fieldIds": [
-                            "HW_no_status",
-                            "HW_submitted_status",
-                            "HW_status",
-                            "HW_comment",
-                            "Hometask",
-                            "HW_app_link",
-                            "HW_files",
-                            "HW_your_comment",
-                            "HW_answer"
-                        ]
-                    },
-                    "17901635772579395": {
-                        "id": "17901635772579395",
-                        "title": "Education materials",
-                        "fieldIds": [
-                            "Video_1",
-                            "Description_1",
-                            "Video_2",
-                            "Description_2",
-                            "Video_3",
-                            "Description_3",
-                            "Video_4",
-                            "Description_4",
-                            "Video_5",
-                            "Description_5",
-                            "Video_6",
-                            "Description_6",
-                            "HE_checke_status"
+                            "year",
+                            "id",
+                            "isHidden",
+                            "user_owner",
+                            "delete_reason",
+                            "upvote_number",
+                            "action__46801637486998874",
+                            "action__10481637487615613"
                         ]
                     }
                 },
                 "columnOrder": [
-                    "tab-1",
-                    "17901635772579395",
-                    "62001635772544729"
+                    "tab-1"
                 ],
-                "actions": []
+                "actions": [
+                    {
+                        "sysName": "newUpvote",
+                        "id": "46801637486998874",
+                        "name": "Upvote",
+                        "displayAs": "button",
+                        "buttonIcon": "arrowUp",
+                        "buttonType": "accent",
+                        "SLtype": "other",
+                        "fields": {
+                            "readFields": [
+                                {
+                                    "fieldSysName": "id",
+                                    "fetch": [],
+                                    "sysName": "id",
+                                    "name": "id",
+                                    "dataType": "id",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                }
+                            ],
+                            "writeFields": [
+                                {
+                                    "fieldSysName": "book_id",
+                                    "fetch": [],
+                                    "sysName": "book_id",
+                                    "name": "Book",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "books"
+                                },
+                                {
+                                    "fieldSysName": "user_id",
+                                    "fetch": [],
+                                    "sysName": "user_id",
+                                    "name": "User",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "WebUser"
+                                }
+                            ]
+                        },
+                        "formMapping": [
+                            {
+                                "id": "57541637487033526",
+                                "target": "book_id",
+                                "type": "objectField",
+                                "value": "id"
+                            },
+                            {
+                                "id": "67011637487049519",
+                                "target": "user_id",
+                                "type": "user",
+                                "value": null
+                            }
+                        ],
+                        "dropdown": true,
+                        "closePopup": true,
+                        "showMessage": false
+                    },
+                    {
+                        "sysName": "",
+                        "id": "10481637487615613",
+                        "name": "Delete",
+                        "displayAs": "form",
+                        "closePopup": true,
+                        "showMessage": false,
+                        "formFields": [
+                            {
+                                "id": "87071637487687834",
+                                "field": {
+                                    "fieldSysName": "delete_reason",
+                                    "fetch": [],
+                                    "sysName": "delete_reason",
+                                    "name": "Delete reason",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": null
+                                }
+                            }
+                        ],
+                        "formMapping": [
+                            {
+                                "id": "63791637487694557",
+                                "target": "id",
+                                "type": "objectField",
+                                "value": "id"
+                            },
+                            {
+                                "id": "88751637487706528",
+                                "target": "isHidden",
+                                "type": "const",
+                                "value": "true"
+                            }
+                        ],
+                        "conditionals": [
+                            {
+                                "id": "35431637487958550",
+                                "target": "field",
+                                "value": null
+                            }
+                        ]
+                    }
+                ]
             },
             "fields": {
-                "id": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "title": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "type": {
+                "author": {
                     "include": true,
                     "fileImageFormat": "square",
-                    "quickSearch": false,
+                    "quickSearch": true,
                     "fileImageSize": 200,
                     "clickable": true,
+                    "quickSearchSL": "getAuthors",
                     "configureLinkedCard": {
                         "fields": {
-                            "description": {
-                                "id": "description",
-                                "content": "Description",
+                            "books": {
+                                "id": "books",
+                                "content": "Books",
                                 "type": "field",
                                 "read": true,
-                                "dataType": "string",
-                                "format": "markdown",
-                                "formatOptions": {}
+                                "dataType": "arrayLink",
+                                "format": null,
+                                "formatOptions": null
                             },
                             "id": {
                                 "id": "id",
@@ -1412,27 +678,18 @@ const App = (props) => {
                                 "format": null,
                                 "formatOptions": {}
                             },
-                            "instructor": {
-                                "id": "instructor",
-                                "content": "Instructor",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "link",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "title": {
-                                "id": "title",
-                                "content": "Title",
+                            "name": {
+                                "id": "name",
+                                "content": "Name",
                                 "type": "field",
                                 "read": true,
                                 "dataType": "string",
                                 "format": null,
-                                "formatOptions": {}
+                                "formatOptions": null
                             }
                         },
                         "fieldParams": {
-                            "description": {
+                            "books": {
                                 "include": true,
                                 "fileImageFormat": "square",
                                 "fileImageSize": 200
@@ -1442,1019 +699,247 @@ const App = (props) => {
                                 "fileImageFormat": "square",
                                 "fileImageSize": 200
                             },
-                            "instructor": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "title": {
+                            "name": {
                                 "include": true,
                                 "fileImageFormat": "square",
                                 "fileImageSize": 200
                             }
                         },
                         "fieldOrder": [
-                            "title",
-                            "instructor",
-                            "description",
+                            "name",
+                            "books",
                             "id"
                         ]
-                    }
+                    },
+                    "subHeader": "Author: ",
+                    "searchData": [
+                        {
+                            "key": "b5664ae5-a71e-4cb0-8df7-b1d8b69ef239",
+                            "value": "Ernest Hemingway"
+                        },
+                        {
+                            "key": "7ce559c2-699f-41d3-b659-50488d68da92",
+                            "value": "Arkady and Boris Strugatsky"
+                        },
+                        {
+                            "key": "10a5d589-84f9-4c23-b81e-b5b044bc47fe",
+                            "value": "Fyodor Dostoevsky"
+                        },
+                        {
+                            "key": "253f33f9-bdc3-458a-833a-e3ea948a8691",
+                            "value": "John Fowles"
+                        }
+                    ]
                 },
-                "date": {
+                "poster": {
                     "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "current_status": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "displayAsHint": true,
-                    "hintType": "ok"
-                },
-                "description": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "Description_1": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "Description_2": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "Description_3": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "Description_4": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "HW_app_link": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "displayAsHint": false
-                },
-                "HW_comment": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "displayAsHint": true
-                },
-                "HW_files": {
-                    "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false,
                     "fileUpload": true
                 },
-                "HW_status": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "displayAsHint": true
-                },
-                "Video_1": {
+                "title": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "Video_2": {
+                "year": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "Video_3": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "Video_4": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "Hometask": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "HE_checke_status": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "displayAsHint": true,
-                    "hintType": "ok"
-                },
-                "HW_no_status": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "displayAsHint": true,
-                    "hintType": "danger"
-                },
-                "HW_submitted_status": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "displayAsHint": true
-                },
-                "color": {
+                "id": {
                     "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "HE_display_status": {
+                "isHidden": {
                     "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "HW_your_comment": {
+                "user_owner": {
                     "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "HW_answer": {
+                "upvotes_number": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "upvote_number": {
                     "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "batch": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "Description_5": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "Description_6": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "Video_5": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "Video_6": {
-                    "include": true,
+                "delete_reason": {
+                    "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 }
             },
-            "cardColor": "color",
-            "cardColorOption": "fill"
+            "showCounter": true,
+            "counterField": "upvote_number",
+            "counterText": " upvotes",
+            "actions": [
+                {
+                    "sysName": "newUpvote",
+                    "id": "46801637486998874",
+                    "name": "Upvote",
+                    "displayAs": "button",
+                    "buttonIcon": "arrowUp",
+                    "buttonType": "accent",
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "book_id",
+                                "fetch": [],
+                                "sysName": "book_id",
+                                "name": "Book",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "books"
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "fetch": [],
+                                "sysName": "user_id",
+                                "name": "User",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            }
+                        ]
+                    },
+                    "formMapping": [
+                        {
+                            "id": "57541637487033526",
+                            "target": "book_id",
+                            "type": "objectField",
+                            "value": "id"
+                        },
+                        {
+                            "id": "67011637487049519",
+                            "target": "user_id",
+                            "type": "user",
+                            "value": null
+                        }
+                    ],
+                    "dropdown": true,
+                    "closePopup": true,
+                    "showMessage": false
+                },
+                {
+                    "sysName": "",
+                    "id": "10481637487615613",
+                    "name": "Delete",
+                    "displayAs": "form",
+                    "closePopup": true,
+                    "showMessage": false,
+                    "formFields": [
+                        {
+                            "id": "87071637487687834",
+                            "field": {
+                                "fieldSysName": "delete_reason",
+                                "fetch": [],
+                                "sysName": "delete_reason",
+                                "name": "Delete reason",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": null
+                            }
+                        }
+                    ],
+                    "formMapping": [
+                        {
+                            "id": "63791637487694557",
+                            "target": "id",
+                            "type": "objectField",
+                            "value": "id"
+                        },
+                        {
+                            "id": "88751637487706528",
+                            "target": "isHidden",
+                            "type": "const",
+                            "value": "true"
+                        }
+                    ],
+                    "conditionals": [
+                        {
+                            "id": "35431637487958550",
+                            "target": "id",
+                            "value": "user_owner",
+                            "field": "user_owner",
+                            "type": "objectField"
+                        }
+                    ]
+                }
+            ]
         },
-        "tableTitle": "Etalon bootcamps",
+        "tableTitle": "All my books",
         "actions": null,
         "headers": [
             {
-                "sysName": "Description_1",
-                "name": "Description",
-                "dataType": "string",
-                "id": "66041635771841066",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Description_2",
-                "name": "Description",
-                "dataType": "string",
-                "id": "20291635771869628",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Description_3",
-                "name": "Description",
-                "dataType": "string",
-                "id": "87121635771904978",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Description_4",
-                "name": "Description",
-                "dataType": "string",
-                "id": "58181635771928504",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 7,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Description_5",
-                "name": "Description",
-                "dataType": "string",
-                "id": "44361637318408039",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 9,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Description_6",
-                "name": "Description",
-                "dataType": "string",
-                "id": "60971637318422379",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 11,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "HE_checke_status",
-                "name": "Status",
-                "dataType": "string",
-                "id": "43271635775439991",
-                "link": null,
-                "group": "1635771935402",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 7,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "HE_display_status",
-                "name": "",
-                "dataType": "string",
-                "id": "45311635776194331",
-                "link": null,
-                "group": "1635771935402",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 8,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "HW_answer",
-                "name": "Home work screencast",
-                "dataType": "string",
-                "id": "10161636815929551",
-                "link": "",
-                "group": "1635771935402",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 10,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "youTube",
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "HW_app_link",
-                "name": "Link to the app or App system name",
-                "dataType": "string",
-                "id": "83081635771956771",
-                "link": null,
-                "group": "1635771935402",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "HW_comment",
-                "name": "Instructor's Comment",
-                "dataType": "string",
-                "id": "43561635771999936",
-                "link": null,
-                "group": "1635771935402",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "HW_files",
-                "name": "Files (optional)",
-                "dataType": "file",
-                "id": "66351635771943458",
-                "link": "",
-                "group": "1635771935402",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "multipleFiles",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "HW_no_status",
-                "name": "Status",
-                "dataType": "string",
-                "id": "61191635775420294",
-                "link": null,
-                "group": "1635771935402",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "HW_status",
-                "name": "Status",
-                "dataType": "string",
-                "id": "81631635771988464",
-                "link": null,
-                "group": "1635771935402",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "HW_submitted_status",
-                "name": "Status",
-                "dataType": "string",
-                "id": "56961635775432475",
-                "link": null,
-                "group": "1635771935402",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 6,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "HW_your_comment",
-                "name": "Your comment (optional)",
-                "dataType": "string",
-                "id": "30881635787227168",
-                "link": null,
-                "group": "1635771935402",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 9,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Hometask",
-                "name": "Home task",
-                "dataType": "string",
-                "id": "18051635772870635",
-                "link": "",
-                "group": "1635771935402",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Video_1",
-                "name": "Video",
-                "dataType": "string",
-                "id": "50281635771832190",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "youTube",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Video_2",
-                "name": "Video",
-                "dataType": "string",
-                "id": "72151635771856933",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "youTube",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Video_3",
-                "name": "Video",
-                "dataType": "string",
-                "id": "67451635771894280",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "youTube",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Video_4",
-                "name": "Video",
-                "dataType": "string",
-                "id": "57361635771914757",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 6,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "youTube",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Video_5",
-                "name": "Video",
-                "dataType": "string",
-                "id": "48591637318407503",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 8,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "youTube",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Video_6",
-                "name": "Video",
-                "dataType": "string",
-                "id": "18321637318417678",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 10,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "youTube",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "color",
-                "name": "",
-                "dataType": "string",
-                "id": "99131635776061579",
-                "link": "",
+                "sysName": "author",
+                "name": "Author",
+                "dataType": "link",
+                "id": "11501635749806057",
+                "link": "writers",
                 "group": "0",
                 "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 7,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "color",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "current_status",
-                "name": "Current status",
-                "dataType": "string",
-                "id": "14921633610242535",
-                "link": "",
-                "group": "1633609815539",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "date",
-                "name": "Date purchased",
-                "dataType": "date",
-                "id": "85121632654035210",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
+                "indexing": true,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 3,
-                "linkIndexFieldSysName": [],
+                "linkIndexFieldSysName": [
+                    "country"
+                ],
                 "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD MMM, Y",
-                    "timeFormat": "",
-                    "isUTC": "false"
-                },
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "description",
-                "name": "Description",
-                "dataType": "string",
-                "id": "45811634547211804",
-                "link": "",
-                "group": "1633609815539",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
                 "formatOptions": null,
                 "groupName": null,
                 "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
                 "arrayLink": false,
-                "indexExists": false,
+                "indexExists": true,
                 "typeVariable": {},
                 "array": false
             },
@@ -2487,11 +972,39 @@ const App = (props) => {
                 "array": false
             },
             {
+                "sysName": "poster",
+                "name": "Poster",
+                "dataType": "file",
+                "id": "36271635749824406",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "image",
+                "formatOptions": null,
+                "groupName": null,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
                 "sysName": "title",
                 "name": "Title",
                 "dataType": "string",
-                "id": "46531632599948268",
-                "link": null,
+                "id": "31231635749786486",
+                "link": "",
                 "group": "0",
                 "tags": null,
                 "indexing": false,
@@ -2515,18 +1028,46 @@ const App = (props) => {
                 "array": false
             },
             {
-                "sysName": "type",
-                "name": "Bootcamp type",
-                "dataType": "link",
-                "id": "16561633281256990",
-                "link": "bootcamp_descriptions",
+                "sysName": "upvote_number",
+                "name": "Upvotes number",
+                "dataType": "number",
+                "id": "37191637486819294",
+                "link": "",
                 "group": "0",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 4,
+                "order": 7,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "positiveNum",
+                "formatOptions": null,
+                "groupName": null,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "user_owner",
+                "name": "",
+                "dataType": "link",
+                "id": "44781635879020411",
+                "link": "WebUser",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
                 "linkIndexFieldSysName": [],
                 "defaultValue": null,
                 "constraints": null,
@@ -2541,130 +1082,157 @@ const App = (props) => {
                 "indexExists": false,
                 "typeVariable": {},
                 "array": false
+            },
+            {
+                "sysName": "year",
+                "name": "Year",
+                "dataType": "number",
+                "id": "25951635749794490",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "positiveNum",
+                "formatOptions": null,
+                "groupName": null,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "array": false
             }
         ],
         "data": [
             {
-                "description": "Welcome to Directual basic bootcamp, batch 01.\n\nDuring 4 weeks we will help you to get through everything you need to acquire fundamental Directual skills, enough to start building your app.\n\nImportant things to know:\n\n1. Join the private Slack group (if you haven't received the invite, reach us out on Chat in the right bottom corner)\n2. You'll have a Team with two slots for your apps with Pro-sandbox plans, for 3 months (1 Nov 2021 – 1 Feb 2022)\n3. Each of four weeks contains 1-2 hour long video tutorial, the homework and a live QnA session on Saturday, 10 a.m. PST\n\nHope you will enjoy Directual!",
-                "Description_1": "No educational materials here, go to Weeks →",
-                "HW_no_status": "No home task here ",
-                "id": "intro",
-                "title": "Introduction",
-                "type": {
-                    "instructor": "pavel@directual.com",
-                    "description": "![bootcamp](https://api.alfa.directual.com/fileUploaded/bootcamps/94e0acd4-ad91-427b-b768-0f47db5a6a65.png)\n\nWeek 1. Understanding  conceptual structures of an app. Database and API sections\n\nWeek 2. Web-pages builder and Scenarios basics.\n\nWeek 3. Web-page builder and Scenarios advanced techniques.\n\nWeek 4. Launching a marketplace app.",
-                    "id": "beginner_01",
-                    "title": "Bootcamp 01"
+                "author": {
+                    "books": [
+                        {
+                            "title": "The Old Man and The Sea",
+                            "id": "a4555493-1af2-4957-b73c-45a418962863"
+                        },
+                        {
+                            "title": "The Sun Also Rises",
+                            "id": "8d073226-d593-44f9-9361-2b87144a8bca"
+                        }
+                    ],
+                    "name": "Ernest Hemingway",
+                    "id": "b5664ae5-a71e-4cb0-8df7-b1d8b69ef239"
                 },
-                "HE_display_status": "ETALON",
-                "current_status": "Bootcamp has started!",
-                "Description_2": "",
-                "Description_3": "",
-                "Description_4": "",
-                "Description_5": "",
-                "Description_6": "",
-                "HW_answer": "",
-                "HW_app_link": "",
-                "HW_files": "",
-                "HW_your_comment": "",
-                "Hometask": "",
-                "Video_1": "",
-                "Video_2": "",
-                "Video_3": "",
-                "Video_4": "",
-                "Video_5": "",
-                "Video_6": ""
+                "year": 1923,
+                "upvote_number": 1,
+                "poster": "https://api.alfa.directual.com/fileUploaded/bootcamp-demo/a0f089e4-14f6-4b84-80be-17a2b455bf5b.jpeg",
+                "id": "8d073226-d593-44f9-9361-2b87144a8bca",
+                "user_owner": "user",
+                "title": "The Sun Also Rises",
+                "delete_reason": "",
+                "isHidden": ""
             },
             {
-                "HW_comment": "Correct!",
-                "HW_app_link": "https://my.directual.com/platform/apps/bootcamp-demo",
-                "description": "The goal of the Week 1 is getting to know two essential modules:\n- Database\n- API-builder\n\n### Agenda:\n\n- Getting to know the Key parts of an app;\n- Creating a new app, activating a Sandbox slot;\n**Database** \n- Data types, links, arrayLinks, - - Visible names;\n- Using DQL (quick search);\n- System data structures;\n- File storage;\n- JSON data type;\n**API-builder basics** \n- Endpoints (GET, POST);\n- Playing with API using [Postman](https://www.postman.com/downloads/);\n- Filtering on Endpoints;\n- Deleting (hiding) the objects;\n- Webhooks;\n- Using query params;\n- App users;\n- User-based security on Endpoints;\n\n**API-builder advanced** \n- Using custom query params;\n- Authentication via API;\n- Building complex filters;\n- Validation for POST requests.\n\n### Live QnA session\n\nLive QnA session happened on Zoom on **November, 6th, 10 a.m. Pacific Time (US and Canada) (UTC–7)**",
-                "Video_2": "https://www.youtube.com/watch?v=kkdzTk9RzbU",
-                "Description_1": "**Database** \n- Data types, links, arrayLinks, - - Visible names;\n- Using DQL (quick search);\n- System data structures;\n- File storage;\n- JSON data type.",
-                "HE_checke_status": "✅ Homework is checked and approved",
-                "HW_your_comment": "еще раз 2!!!",
-                "Video_3": "https://www.youtube.com/watch?v=LYwHDVnddb0",
-                "id": "week1",
-                "Description_2": "**API-builder basics** \n- Endpoints (GET, POST);\n- Playing with API using [Postman](https://www.postman.com/downloads/);\n- Filtering on Endpoints;\n- Deleting (hiding) the objects;\n- Webhooks;\n- Using query params;\n- App users;\n- User-based security on Endpoints.",
-                "HW_answer": "https://www.youtube.com/watch?v=q-NWl3sAwOI",
-                "title": "Week 1. Database and API",
-                "type": {
-                    "instructor": "pavel@directual.com",
-                    "description": "![bootcamp](https://api.alfa.directual.com/fileUploaded/bootcamps/94e0acd4-ad91-427b-b768-0f47db5a6a65.png)\n\nWeek 1. Understanding  conceptual structures of an app. Database and API sections\n\nWeek 2. Web-pages builder and Scenarios basics.\n\nWeek 3. Web-page builder and Scenarios advanced techniques.\n\nWeek 4. Launching a marketplace app.",
-                    "id": "beginner_01",
-                    "title": "Bootcamp 01"
+                "author": {
+                    "books": [
+                        {
+                            "title": "The Old Man and The Sea",
+                            "id": "a4555493-1af2-4957-b73c-45a418962863"
+                        },
+                        {
+                            "title": "The Sun Also Rises",
+                            "id": "8d073226-d593-44f9-9361-2b87144a8bca"
+                        }
+                    ],
+                    "name": "Ernest Hemingway",
+                    "id": "b5664ae5-a71e-4cb0-8df7-b1d8b69ef239"
                 },
-                "HE_display_status": "ETALON",
-                "Hometask": "Let's begin building our two-sided marketplace!\n\nFrom the top-level point of view there will be:\n\n- **Service Providers** and **Clients** (actually we will store them in one data structure, `WebUser`)  \n- Several **Types of Service** (e. g. \"Babysitting\" or \"Guitar tutoring\")\n- Each Service provider can perform one or a few types of work\n- Client creates a **Request** for the service\n- Service provider creates an **Offer** to the request \n\n### The home task is the following:\n\n1. create (three) and configure (one) following data structures: App users (`WebUsers`), `ServiceTypes`, `Requests`, `Offers`\n2. Add some dummy data, just for playing with it\n3. Create and test (using [Postman](https://www.postman.com/downloads/)) APIs for receiving (on behalf of a client) Requests and Offers for those Requests.\n\n\n\nThe data structures should include (at least) the following fields:\n\n**App Users (WebUser)**\n\n- _Tip: better to organise the field groups_\n- Client's field: `requests` (arrayLink to **Requests**)\n- Provider's field: `service_types` (arrayLink)\n\n**Service Types**\n\n- `id` by default\n- `title` (string)\n\n**Requests**\n\n- `id` by default\n- `title` (string)\n- `status` (string)\n- `description` (markdown)\n- `date` (date)\n- `client` (link to **WebUser**)\n- `matching_providers` (arrayLink to **WebUser**)\n- `required_service_type` (link to **Service Types**)\n\n**Offers**\n\n- `id` by default\n- `request` (link to **Requests**)\n- `provider` (link to **WebUser**)\n- `price` (positiveNumber)\n\n### Include into the submission below:\n- Link to your app (or just a sysName)\n- Screenshots/Videos, if needed\n- Comment, if needed",
-                "Description_3": "**API-builder advanced** \n- Using custom query params;\n- Authentication via API;\n- Building complex filters;\n- Validation for POST requests.",
-                "Video_1": "https://www.youtube.com/watch?v=kRNvRUAlpD4",
-                "Description_4": "",
-                "Description_5": "",
-                "Description_6": "",
-                "HW_files": "",
-                "Video_4": "",
-                "Video_5": "",
-                "Video_6": ""
+                "year": 1951,
+                "poster": "https://api.alfa.directual.com/fileUploaded/bootcamp-demo/c5044d7d-6178-4333-8fd3-b1951f96c092.jpeg",
+                "id": "a4555493-1af2-4957-b73c-45a418962863",
+                "user_owner": "user",
+                "title": "The Old Man and The Sea",
+                "delete_reason": "",
+                "isHidden": ""
             },
             {
-                "description": "The goal of the Week 2 is learning the basics of:\n- Web-page builder\n- Scenarios\n\n### Agenda:\n\n**Web-page builder basics Part 1** \n- Pages and menu;\n- Layout;\n- Components: Markdown, HTML;\n**Web-page builder basics Part 2** \n- Authentication;\n- Role-based access to: pages, tabs;\n- Components: Form;\n- Components: Cards;\nsections.\n**Scenarios basics Part 1** \n- General principles;\n- Event model and Real-time triggers: New, Changed;\n- Editing scenarios: publishing, versioning;\n- Edit object;\n- Interconnected scenarios;\n- Link scenario step;\n**Scenarios basics Part 2** \n- Scheduled scenarios\n**Scenarios basics Part 3** \n- Context variables;\n- Global constants;\n**Scenarios basics Part 4** \n- Condition step;\n- New object step;\n- Search step;\n\n### Live QnA session\n\nLive QnA session happened on Zoom on **November, 13th, 10 a.m. Pacific Time (US and Canada) (UTC–7)**",
-                "Video_2": "https://www.youtube.com/watch?v=idcqfORg8Xw",
-                "Description_1": "**Web-page builder basics Part 1** \n- Pages and menu;\n- Layout;\n- Components: Markdown, HTML",
-                "Video_3": "https://youtu.be/62KAOm8kQdU",
-                "id": "week2",
-                "Description_2": "**Web-page builder basics Part 2** \n- Authentication;\n- Role-based access to: pages, tabs;\n- Components: Form;\n- Components: Cards;",
-                "HW_submitted_status": "Homework is not submitted",
-                "Video_4": "https://youtu.be/rSLrRsoFra4",
-                "title": "Week 2. Web-pages and Scenarios basics",
-                "type": {
-                    "instructor": "pavel@directual.com",
-                    "description": "![bootcamp](https://api.alfa.directual.com/fileUploaded/bootcamps/94e0acd4-ad91-427b-b768-0f47db5a6a65.png)\n\nWeek 1. Understanding  conceptual structures of an app. Database and API sections\n\nWeek 2. Web-pages builder and Scenarios basics.\n\nWeek 3. Web-page builder and Scenarios advanced techniques.\n\nWeek 4. Launching a marketplace app.",
-                    "id": "beginner_01",
-                    "title": "Bootcamp 01"
+                "author": {
+                    "books": [
+                        {
+                            "title": "Roadside Picnic",
+                            "id": "ed971f8a-1082-4b06-b6bd-f6fa2893b9be"
+                        },
+                        {
+                            "title": "The Doomed City",
+                            "id": "fedaed1e-d205-44c3-927b-4bda53af961f"
+                        }
+                    ],
+                    "name": "Arkady and Boris Strugatsky",
+                    "id": "7ce559c2-699f-41d3-b659-50488d68da92"
                 },
-                "Description_4": "**Scenarios basics** \n- Scheduled scenarios: manual and regular running.",
-                "HE_display_status": "ETALON",
-                "Hometask": "### Home task for the Week 2\n\n**Configure the portal**\n\n- Turn on Sign on and Sign up features;\n- Configure the Appearance as you like;\n- Sign up yourself.\n\n**Create \"Service Types management\" page for admin**\n\n- Add a role `admin` for your user;\n- add a page **Service types management**, available for `admin` only;\n- Add Form on that page for adding Service types (don't forget to add Endpoints);\n- Add Cards (or Table) on that page for viewing and editing Service types;\n\n**Create \"New request\" page**\n\n- Any authorised user can access the page;\n- Add a Form for submitting a request \n\n**Process all new Requests in a scenario**\n\n- Create a scenario, triggered for every new Request;\n- Using **Edit object** step, set submitting date (tip: use [now](https://readme.directual.com/template-system/basics-of-template-system/advanced-templating-techniques#using-now-today-+-days))\n- set status to `new`\n\n**Create \"All request\" page for admin**\n\n- Only `admin` can access the page;\n- Add a Cards/Table for viewing all request.\n\nIf any questions appeared, feel free to ask. In a week the video-answer will be posted.",
-                "Description_3": "**Scenarios basics Part 1** \n- General principles;\n- Event model and Real-time triggers: New, Changed;\n- Editing scenarios: publishing, versioning;\n- Edit object;\n- Interconnected scenarios;\n- Link scenario step;",
-                "Video_1": "https://www.youtube.com/watch?v=3oFjp4LFbJQ",
-                "Description_5": "",
-                "Description_6": "",
-                "HW_answer": "",
-                "HW_app_link": "",
-                "HW_files": "",
-                "HW_your_comment": "",
-                "Video_5": "",
-                "Video_6": ""
+                "year": 1972,
+                "poster": "https://api.alfa.directual.com/fileUploaded/bootcamp-demo/fb24d301-df99-4da1-9ba0-5f10f8c60022.jpeg",
+                "id": "fedaed1e-d205-44c3-927b-4bda53af961f",
+                "title": "The Doomed City",
+                "delete_reason": "",
+                "isHidden": "",
+                "user_owner": ""
             },
             {
-                "description": "The goal of the Week 2 is to delve into:\n- Web-page builder\n- Scenarios\n\n### Agenda:\n\n**Web-page builder advanced. Cards/Table** \n- Using actions in Cards/Table\n- Conditionals on actions\n- Custom colouring scheme for Cards/Table\n\n**Web-page builder advanced. Form** \n- Hidden fields in Form\n- Hidden auth fields in Form\n- Object editing in Form\n- Conditional sections in Form\n\n**Scenarios advanced** \n- Applying synchronic scenarios\n- Applying Context variables\n- Applying Global constants\n- JS-evaluation in scenarios\n- HTTP-requests\n- Synch scenarios\n- JSON parsing and composing\n\n**Plugins**\n- Auth plugins\n- Scenario plugins\n- Developing a scenario plugin\n\n\n### Live QnA session\n\nIs happening on Zoom on **November, 20th, 10 a.m. Pacific Time (US and Canada) (UTC–7)**",
-                "Description_1": "**Web-page builder advanced. Cards/Table** \n- Using actions in Cards/Table\n- Conditionals on actions\n- Custom colouring scheme for Cards/Table",
-                "id": "week3",
-                "Description_2": "**Scenarios advanced** \n\nVideo is being prepared...",
-                "HW_submitted_status": "Homework is not submitted",
-                "title": "Week 3. Web-pages and Scenarios advanced",
-                "type": {
-                    "instructor": "pavel@directual.com",
-                    "description": "![bootcamp](https://api.alfa.directual.com/fileUploaded/bootcamps/94e0acd4-ad91-427b-b768-0f47db5a6a65.png)\n\nWeek 1. Understanding  conceptual structures of an app. Database and API sections\n\nWeek 2. Web-pages builder and Scenarios basics.\n\nWeek 3. Web-page builder and Scenarios advanced techniques.\n\nWeek 4. Launching a marketplace app.",
-                    "id": "beginner_01",
-                    "title": "Bootcamp 01"
+                "author": {
+                    "books": [
+                        {
+                            "title": "Roadside Picnic",
+                            "id": "ed971f8a-1082-4b06-b6bd-f6fa2893b9be"
+                        },
+                        {
+                            "title": "The Doomed City",
+                            "id": "fedaed1e-d205-44c3-927b-4bda53af961f"
+                        }
+                    ],
+                    "name": "Arkady and Boris Strugatsky",
+                    "id": "7ce559c2-699f-41d3-b659-50488d68da92"
                 },
-                "HE_display_status": "ETALON",
-                "Hometask": "Home task is being prepared...",
-                "Video_1": "https://youtu.be/-sUJE3ibhs0",
-                "Description_3": "",
-                "Description_4": "",
-                "Description_5": "",
-                "Description_6": "",
-                "HW_answer": "",
-                "HW_app_link": "",
-                "HW_files": "",
-                "HW_your_comment": "",
-                "Video_2": "",
-                "Video_3": "",
-                "Video_4": "",
-                "Video_5": "",
-                "Video_6": ""
+                "year": 1991,
+                "poster": "https://api.alfa.directual.com/fileUploaded/bootcamp-demo/df47ddc2-cca4-44de-ad1c-0174fd411b19.jpeg",
+                "id": "ed971f8a-1082-4b06-b6bd-f6fa2893b9be",
+                "title": "Roadside Picnic",
+                "delete_reason": "",
+                "isHidden": "",
+                "user_owner": ""
+            },
+            {
+                "author": {
+                    "books": [],
+                    "name": "John Fowles",
+                    "id": "253f33f9-bdc3-458a-833a-e3ea948a8691"
+                },
+                "year": 1965,
+                "poster": "https://api.directual.com/fileUploaded/bootcamp-demo/web/5fc74ce4-769b-44df-b8b7-d86f6e0a0a26.jpeg",
+                "id": "986948f3-402a-4f9e-8b3a-3dee6e67eca1",
+                "title": "The Magus",
+                "delete_reason": "",
+                "isHidden": "",
+                "user_owner": ""
+            },
+            {
+                "author": {
+                    "books": [],
+                    "name": "John Fowles",
+                    "id": "253f33f9-bdc3-458a-833a-e3ea948a8691"
+                },
+                "year": 1984,
+                "poster": "https://api.directual.com/fileUploaded/bootcamp-demo/web/24ed0151-04d8-4458-ab76-3e07725da0b9.jpeg",
+                "id": "53e11c1d-1f95-4c7b-bf4b-fd2f84682e2d",
+                "user_owner": "pavel@directual.com",
+                "title": "The French Lieutenant's Woman (UK)",
+                "delete_reason": "",
+                "isHidden": ""
             }
         ],
         "totalPages": 1,
@@ -2672,179 +1240,72 @@ const App = (props) => {
         "error": null,
         "fieldScheme": [
             [
-                "Description_1",
-                99027139
+                "author.books.title",
+                99042268
             ],
             [
-                "Description_2",
-                99027139
+                "author.id",
+                99042269
             ],
             [
-                "Description_3",
-                99027139
-            ],
-            [
-                "Description_4",
-                99027139
-            ],
-            [
-                "Description_5",
-                99027139
-            ],
-            [
-                "Description_6",
-                99027139
-            ],
-            [
-                "HE_checke_status",
-                99027139
-            ],
-            [
-                "HE_display_status",
-                99027139
-            ],
-            [
-                "HW_answer",
-                99027139
-            ],
-            [
-                "HW_app_link",
-                99027139
-            ],
-            [
-                "HW_comment",
-                99027139
-            ],
-            [
-                "HW_files",
-                99027139
-            ],
-            [
-                "HW_no_status",
-                99027139
-            ],
-            [
-                "HW_status",
-                99027139
-            ],
-            [
-                "HW_submitted_status",
-                99027139
-            ],
-            [
-                "HW_your_comment",
-                99027139
-            ],
-            [
-                "Hometask",
-                99027139
-            ],
-            [
-                "Video_1",
-                99027139
-            ],
-            [
-                "Video_2",
-                99027139
-            ],
-            [
-                "Video_3",
-                99027139
-            ],
-            [
-                "Video_4",
-                99027139
-            ],
-            [
-                "Video_5",
-                99027139
-            ],
-            [
-                "Video_6",
-                99027139
-            ],
-            [
-                "color",
-                99027139
-            ],
-            [
-                "current_status",
-                99027139
-            ],
-            [
-                "date",
-                99027139
-            ],
-            [
-                "description",
-                99027139
+                "author.name",
+                99042269
             ],
             [
                 "id",
-                99027139
+                99042268
+            ],
+            [
+                "poster",
+                99042268
             ],
             [
                 "title",
-                99027139
+                99042268
             ],
             [
-                "type.description",
-                99035158
+                "upvote_number",
+                99042268
             ],
             [
-                "type.id",
-                99035158
+                "user_owner",
+                99042268
             ],
             [
-                "type.instructor",
-                99035158
-            ],
-            [
-                "type.title",
-                99035158
+                "year",
+                99042268
             ]
         ],
         "writeFields": [
-            "Description_1",
-            "Description_2",
-            "Description_3",
-            "Description_4",
-            "Description_5",
-            "Description_6",
-            "HW_answer",
-            "HW_app_link",
-            "HW_files",
-            "HW_your_comment",
-            "Hometask",
-            "Video_1",
-            "Video_2",
-            "Video_3",
-            "Video_4",
-            "Video_5",
-            "Video_6",
-            "description",
-            "id"
+            "author",
+            "delete_reason",
+            "id",
+            "isHidden",
+            "poster",
+            "title",
+            "user_owner",
+            "year"
         ],
         "structures": {
-            "99027139": {
-                "networkID": 9660,
-                "sysName": "bootcamps",
-                "name": "User Bootcamps",
-                "id": 99027139,
-                "dateCreated": "2021-09-21T19:34:14Z",
+            "99042268": {
+                "networkID": 10389,
+                "sysName": "books",
+                "name": "Books",
+                "id": 99042268,
+                "dateCreated": "2021-11-01T06:56:07Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"HW_answer\",\"name\":\"Home work screencast\",\"dataType\":\"string\",\"id\":\"10161636815929551\",\"link\":\"\",\"group\":\"1635771935402\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"youTube\",\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"current_status\",\"name\":\"Current status\",\"dataType\":\"string\",\"id\":\"14921633610242535\",\"link\":\"\",\"group\":\"1633609815539\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"batch\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"15111637083695140\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"type\",\"name\":\"Bootcamp type\",\"dataType\":\"link\",\"id\":\"16561633281256990\",\"link\":\"bootcamp_descriptions\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"order\",\"name\":\"\",\"dataType\":\"number\",\"id\":\"17911637083098103\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"Hometask\",\"name\":\"Home task\",\"dataType\":\"string\",\"id\":\"18051635772870635\",\"link\":\"\",\"group\":\"1635771935402\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"Video_6\",\"name\":\"Video\",\"dataType\":\"string\",\"id\":\"18321637318417678\",\"link\":\"\",\"group\":\"1635703713415\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"youTube\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"Description_2\",\"name\":\"Description\",\"dataType\":\"string\",\"id\":\"20291635771869628\",\"link\":\"\",\"group\":\"1635703713415\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"HW_your_comment\",\"name\":\"Your comment (optional)\",\"dataType\":\"string\",\"id\":\"30881635787227168\",\"link\":null,\"group\":\"1635771935402\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"HE_checke_status\",\"name\":\"Status\",\"dataType\":\"string\",\"id\":\"43271635775439991\",\"link\":null,\"group\":\"1635771935402\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"HW_comment\",\"name\":\"Instructor's Comment\",\"dataType\":\"string\",\"id\":\"43561635771999936\",\"link\":null,\"group\":\"1635771935402\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"Description_5\",\"name\":\"Description\",\"dataType\":\"string\",\"id\":\"44361637318408039\",\"link\":\"\",\"group\":\"1635703713415\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"price\",\"name\":\"Price, $\",\"dataType\":\"string\",\"id\":\"45061633608717845\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"HE_display_status\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"45311635776194331\",\"link\":null,\"group\":\"1635771935402\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"description\",\"name\":\"Description\",\"dataType\":\"string\",\"id\":\"45811634547211804\",\"link\":\"\",\"group\":\"1633609815539\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"user_id\",\"name\":\"User\",\"dataType\":\"link\",\"id\":\"46241632599953689\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"title\",\"name\":\"Title\",\"dataType\":\"string\",\"id\":\"46531632599948268\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"Video_5\",\"name\":\"Video\",\"dataType\":\"string\",\"id\":\"48591637318407503\",\"link\":\"\",\"group\":\"1635703713415\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"youTube\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"Video_1\",\"name\":\"Video\",\"dataType\":\"string\",\"id\":\"50281635771832190\",\"link\":\"\",\"group\":\"1635703713415\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"youTube\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"isEtalon\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"50701635787441875\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"HW_submitted_status\",\"name\":\"Status\",\"dataType\":\"string\",\"id\":\"56961635775432475\",\"link\":null,\"group\":\"1635771935402\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"Video_4\",\"name\":\"Video\",\"dataType\":\"string\",\"id\":\"57361635771914757\",\"link\":\"\",\"group\":\"1635703713415\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"youTube\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"Description_4\",\"name\":\"Description\",\"dataType\":\"string\",\"id\":\"58181635771928504\",\"link\":\"\",\"group\":\"1635703713415\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"Description_6\",\"name\":\"Description\",\"dataType\":\"string\",\"id\":\"60971637318422379\",\"link\":\"\",\"group\":\"1635703713415\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"HW_no_status\",\"name\":\"Status\",\"dataType\":\"string\",\"id\":\"61191635775420294\",\"link\":null,\"group\":\"1635771935402\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"Description_1\",\"name\":\"Description\",\"dataType\":\"string\",\"id\":\"66041635771841066\",\"link\":\"\",\"group\":\"1635703713415\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"HW_files\",\"name\":\"Files (optional)\",\"dataType\":\"file\",\"id\":\"66351635771943458\",\"link\":\"\",\"group\":\"1635771935402\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleFiles\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"Video_3\",\"name\":\"Video\",\"dataType\":\"string\",\"id\":\"67451635771894280\",\"link\":\"\",\"group\":\"1635703713415\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"youTube\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"Video_2\",\"name\":\"Video\",\"dataType\":\"string\",\"id\":\"72151635771856933\",\"link\":\"\",\"group\":\"1635703713415\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"youTube\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"firstNotification\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"72311635780458361\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"App_tariff_requested\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"75071635614185676\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"HW_status\",\"name\":\"Status\",\"dataType\":\"string\",\"id\":\"81631635771988464\",\"link\":null,\"group\":\"1635771935402\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"HW_app_link\",\"name\":\"Link to the app or App system name\",\"dataType\":\"string\",\"id\":\"83081635771956771\",\"link\":null,\"group\":\"1635771935402\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"date\",\"name\":\"Date purchased\",\"dataType\":\"date\",\"id\":\"85121632654035210\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD MMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"Description_3\",\"name\":\"Description\",\"dataType\":\"string\",\"id\":\"87121635771904978\",\"link\":\"\",\"group\":\"1635703713415\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"color\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"99131635776061579\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false}]",
-                "jsonGroupSettings": "[{\"name\":\"Education\",\"id\":1633609815539,\"order\":0},{\"name\":\"Tutorials\",\"id\":1635703713415,\"order\":1},{\"name\":\"Homework\",\"id\":1635771935402,\"order\":2}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"title\",\"name\":\"Title\",\"dataType\":\"string\",\"id\":\"31231635749786486\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"year\",\"name\":\"Year\",\"dataType\":\"number\",\"id\":\"25951635749794490\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"author\",\"name\":\"Author\",\"dataType\":\"link\",\"id\":\"11501635749806057\",\"link\":\"writers\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[\"country\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"poster\",\"name\":\"Poster\",\"dataType\":\"file\",\"id\":\"36271635749824406\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"isHidden\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"99541635849030655\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"user_owner\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"44781635879020411\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"upvote_number\",\"name\":\"Upvotes number\",\"dataType\":\"number\",\"id\":\"37191637486819294\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"upvotes_ids\",\"name\":\"Upvotes\",\"dataType\":\"arrayLink\",\"id\":\"91701637486882242\",\"link\":\"upvotes\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"delete_reason\",\"name\":\"Delete reason\",\"dataType\":\"string\",\"id\":\"26531637487639212\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false}]",
+                "jsonGroupSettings": "[]",
+                "jsonViewIdSettings": "[{\"sysName\":\"title\"},{\"sysName\":\"year\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-11-19T10:40:43Z",
-                "createBy": 21,
-                "changedBy": 1,
+                "dateChanged": "2021-11-21T09:40:50Z",
+                "createBy": 1,
+                "changedBy": 3527,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "objectIDSysName": "id",
@@ -2876,25 +1337,25 @@ const App = (props) => {
                     "typeVariable": {},
                     "array": false
                 },
-                "folderId": 33661138
+                "folderId": 33668957
             },
-            "99035158": {
-                "networkID": 9660,
-                "sysName": "bootcamp_descriptions",
-                "name": "Bootcamp Descriptions",
-                "id": 99035158,
-                "dateCreated": "2021-10-07T12:44:46Z",
+            "99042269": {
+                "networkID": 10389,
+                "sysName": "writers",
+                "name": "Writers",
+                "id": 99042269,
+                "dateCreated": "2021-11-01T06:56:15Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"descr_intro\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"26351637085373643\",\"link\":\"\",\"group\":\"1637085334847\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"scheduled\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"41471637085341422\",\"link\":null,\"group\":\"1637085334847\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"instructor\",\"name\":\"Instructor\",\"dataType\":\"link\",\"id\":\"43811633610721148\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"title\",\"name\":\"Title\",\"dataType\":\"string\",\"id\":\"46231633610798268\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"description\",\"name\":\"Description\",\"dataType\":\"string\",\"id\":\"47481633610737359\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false}]",
-                "jsonGroupSettings": "[{\"name\":\"Introduction\",\"id\":1637085334847,\"order\":0}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"name\",\"name\":\"Name\",\"dataType\":\"string\",\"id\":\"10631635749855801\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"books\",\"name\":\"Books\",\"dataType\":\"arrayLink\",\"id\":\"32901635749861943\",\"link\":\"books\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"country\",\"name\":\"Country\",\"dataType\":\"string\",\"id\":\"47431636052063449\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
+                "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-11-16T17:58:12Z",
+                "dateChanged": "2021-11-04T18:54:32Z",
                 "createBy": 1,
                 "changedBy": 1,
                 "_settings": null,
@@ -2928,7 +1389,7 @@ const App = (props) => {
                     "typeVariable": {},
                     "array": false
                 },
-                "folderId": 33661138
+                "folderId": 33668957
             }
         },
         "isSuccessWrite": false,
@@ -2936,215 +1397,21 @@ const App = (props) => {
         "writeResponse": null,
         "fileds": [
             {
-                "sysName": "Description_1",
-                "name": "Description",
-                "dataType": "string",
-                "id": "66041635771841066",
-                "link": "",
-                "group": "1635703713415",
+                "sysName": "author",
+                "name": "Author",
+                "dataType": "link",
+                "id": "11501635749806057",
+                "link": "writers",
+                "group": "0",
                 "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Description_2",
-                "name": "Description",
-                "dataType": "string",
-                "id": "20291635771869628",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
+                "indexing": true,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Description_3",
-                "name": "Description",
-                "dataType": "string",
-                "id": "87121635771904978",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Description_4",
-                "name": "Description",
-                "dataType": "string",
-                "id": "58181635771928504",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 7,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Description_5",
-                "name": "Description",
-                "dataType": "string",
-                "id": "44361637318408039",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 9,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Description_6",
-                "name": "Description",
-                "dataType": "string",
-                "id": "60971637318422379",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 11,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "HW_answer",
-                "name": "Home work screencast",
-                "dataType": "string",
-                "id": "10161636815929551",
-                "link": "",
-                "group": "1635771935402",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 10,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "youTube",
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "HW_app_link",
-                "name": "Link to the app or App system name",
-                "dataType": "string",
-                "id": "83081635771956771",
-                "link": null,
-                "group": "1635771935402",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
+                "linkIndexFieldSysName": [
+                    "country"
+                ],
                 "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
@@ -3152,48 +1419,20 @@ const App = (props) => {
                 "formatOptions": null,
                 "groupName": null,
                 "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
                 "arrayLink": false,
-                "indexExists": false,
+                "indexExists": true,
                 "typeVariable": {},
                 "array": false
             },
             {
-                "sysName": "HW_files",
-                "name": "Files (optional)",
-                "dataType": "file",
-                "id": "66351635771943458",
-                "link": "",
-                "group": "1635771935402",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "multipleFiles",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "HW_your_comment",
-                "name": "Your comment (optional)",
+                "sysName": "delete_reason",
+                "name": "Delete reason",
                 "dataType": "string",
-                "id": "30881635787227168",
+                "id": "26531637487639212",
                 "link": null,
-                "group": "1635771935402",
+                "group": "0",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
@@ -3205,230 +1444,6 @@ const App = (props) => {
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Hometask",
-                "name": "Home task",
-                "dataType": "string",
-                "id": "18051635772870635",
-                "link": "",
-                "group": "1635771935402",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Video_1",
-                "name": "Video",
-                "dataType": "string",
-                "id": "50281635771832190",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "youTube",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Video_2",
-                "name": "Video",
-                "dataType": "string",
-                "id": "72151635771856933",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "youTube",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Video_3",
-                "name": "Video",
-                "dataType": "string",
-                "id": "67451635771894280",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "youTube",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Video_4",
-                "name": "Video",
-                "dataType": "string",
-                "id": "57361635771914757",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 6,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "youTube",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Video_5",
-                "name": "Video",
-                "dataType": "string",
-                "id": "48591637318407503",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 8,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "youTube",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Video_6",
-                "name": "Video",
-                "dataType": "string",
-                "id": "18321637318417678",
-                "link": "",
-                "group": "1635703713415",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 10,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "youTube",
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "description",
-                "name": "Description",
-                "dataType": "string",
-                "id": "45811634547211804",
-                "link": "",
-                "group": "1633609815539",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
                 "formatOptions": null,
                 "groupName": null,
                 "json": false,
@@ -3466,9 +1481,149 @@ const App = (props) => {
                 "indexExists": false,
                 "typeVariable": {},
                 "array": false
+            },
+            {
+                "sysName": "isHidden",
+                "name": "",
+                "dataType": "boolean",
+                "id": "99541635849030655",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "poster",
+                "name": "Poster",
+                "dataType": "file",
+                "id": "36271635749824406",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "image",
+                "formatOptions": null,
+                "groupName": null,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "title",
+                "name": "Title",
+                "dataType": "string",
+                "id": "31231635749786486",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "user_owner",
+                "name": "",
+                "dataType": "link",
+                "id": "44781635879020411",
+                "link": "WebUser",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "year",
+                "name": "Year",
+                "dataType": "number",
+                "id": "25951635749794490",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "positiveNum",
+                "formatOptions": null,
+                "groupName": null,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "array": false
             }
         ],
-        "quickSearch": "false"
+        "quickSearch": "true"
     }
 
     let newCardActions = {

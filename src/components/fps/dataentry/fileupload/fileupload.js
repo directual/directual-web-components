@@ -225,8 +225,10 @@ function ShowImage({ imageUrl, swipe, swipable, close }) {
             function handleClickOutside(event) {
                 if (!leftButton.current.contains(event.target) &&
                     !rightButton.current.contains(event.target) &&
-                    !ref.current.contains(event.target) &&
-                    !imageName.current.contains(event.target)) {
+                    !ref.current.contains(event.target) 
+                    //&& !imageName.current.contains(event.target)
+                    ) 
+                    {
                     close()
                 }
             }
