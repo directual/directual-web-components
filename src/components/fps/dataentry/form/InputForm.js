@@ -56,7 +56,16 @@ function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue
         if (link.substring(0, 4) != 'http') { link = 'http://' + link }
         return link
     }
-    if (field.format == 'youTube') return <Media type='video' source={defaultValue} width='500' height='315' />
+    if (field.format == 'youTube') return <Media 
+        onChange={onChange}
+        disabled={!editingOn}
+        required={field.required}
+        placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
+        description={field.descriptionFlag && field.description}
+        label={placeholder != "true" ? (field.content || field.id) : ''}
+        editingOn={editingOn} 
+        type='video' 
+        source={defaultValue} width='500' height='315' />
     if (!editingOn) return <div>
         {!field.displayAsButton &&
             <span className={styles.label}>

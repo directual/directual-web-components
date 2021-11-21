@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from './media.module.css'
 import icon from './../../../icons/fps-video.svg'
+import Input from '../dataentry/input/input';
 
 function YouTubeGetID(url) {
     var ID = '';
@@ -18,10 +19,11 @@ function YouTubeGetID(url) {
 export default function Media(props) {
     const data = props.data || props || {}
     let videoID = data.source ? YouTubeGetID(data.source) : '';
-    console.log('--=== Video component ===--')
-    console.log(data)
+    // console.log('--=== Video component ===--')
+    // console.log(data)
     return (
         <React.Fragment>
+            {props.editingOn && <Input {...props} defaultValue={data.source}/>}
             {videoID ?
                 <div style={{
                     maxWidth: parseInt(data.width) || 350
@@ -37,7 +39,7 @@ export default function Media(props) {
                     </iframe>
                 </div>
                 :
-                <div>Can't parse youtube url</div>}
+                <div />}
         </React.Fragment>
     )
 }

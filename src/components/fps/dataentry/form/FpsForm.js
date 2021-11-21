@@ -10,6 +10,7 @@ import { ComponentWrapper } from './../../wrapper/wrapper'
 import { Markdown } from '../../article/mkd'
 import { InputForm } from './InputForm'
 import { dict } from '../../locale'
+import moment from 'moment'
 
 export function FormSection(props) {
   return (
@@ -115,6 +116,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
 
   const [fetchedObj, setFetchetObj] = useState(false)
   const fetchObjectFields = (objId) => {
+    console.log('fetching... id = ' + objId)
     setFetchetObj(true)
     const message = { dql: "id = '" + objId + "'", _id: id }
     if (onEvent) {
@@ -139,7 +141,6 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
   // Validation:
   useEffect(() => {
     setIsValid(true)
-    
     for (const field in data.params.data.fieldParams) {
       //if (field.isValid == false) { setIsValid(false); }
       if (data.params.data.fieldParams[field] && data.params.data.fieldParams[field].required &&
@@ -193,6 +194,9 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
         if (getFieldVal === true) { getFieldVal = 'true' }
         if (getFieldVal === false) { getFieldVal = 'false' }
       }
+      if (dataType == 'date') {
+        getFieldVal = moment(getFieldVal)
+      }
       if (eidtID && getFieldVal && fetchedObjectFields[sysName] != getFieldVal) {
         fetchedObjectFields = { ...fetchedObjectFields, id: eidtID, [sysName]: getFieldVal }
       }
@@ -219,7 +223,6 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
     // console.log('===cond===')
     // console.log(conditionals)
     // console.log(model)
-
     if (conditionals.length == 0) return true;
     conditionals.forEach(cond => {
       if (model[cond.field] != cond.value) {

@@ -23,7 +23,7 @@ export function ObjectCard(props) {
     const [model, setModel] = useState(props.object)
     const [currentObject, setCurrentObject] = useState(props.object)
 
-    const {dict, lang} = props
+    const { dict, lang } = props
 
     // support previous component version:
     const oldFashioned = (props.params && !props.params.data) ? true : false
@@ -66,6 +66,8 @@ export function ObjectCard(props) {
 
     // Gathers current structure info:
     const getStructure = (obj, tableFieldScheme, tableStructures) => {
+        tableFieldScheme = tableFieldScheme || [...props.tableFieldScheme]
+        tableStructures = tableStructures || props.tableStructures
         let structure = {}
         for (const field in obj) {
             if (typeof obj[field] != 'object') {
@@ -82,18 +84,21 @@ export function ObjectCard(props) {
         }
         return structure
     }
-    const structure = getStructure(props.object, [...props.tableFieldScheme], props.tableStructures)
+    const structure = getStructure(props.object)
     //-----------------------------
 
+    console.log('props.object')
+    console.log(props.object)
+
     //Gathers current object info (e.g. sysName, type):
-    const composeObject = () => {
+    const composeObject = (obj,str) => {
         let object = {}
-        if (props.object && structure) {
-            for (const field in props.object) {
+        if (obj && str) {
+            for (const field in obj) {
                 object[field] = {}
-                if (structure.fieldStructure && field && field[0] != '@') {
-                    object[field].value = props.object[field]
-                    let fieldStructure = structure.fieldStructure.filter(i => i.sysName == field)[0]
+                if (str.fieldStructure && field && field[0] != '@') {
+                    object[field].value = obj[field]
+                    let fieldStructure = str.fieldStructure.filter(i => i.sysName == field)[0]
                     // console.log('====structure====')
                     // console.log(fieldStructure)
                     // console.log(field)
@@ -107,7 +112,7 @@ export function ObjectCard(props) {
         }
         return object
     }
-    const object = composeObject()
+    const object = composeObject(props.object, structure)
     //console.log(object)
 
     // arrange tabs:
@@ -745,12 +750,11 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
     }
 
-    // console.log('Field  Link')
-    // console.log(field)
+    console.log('Field  Link')
+    console.log(field)
     // console.log(object[field.sysName].value)
     // if (!object[field.sysName].value || object[field.sysName].value.length == 0) {
     //     return <React.Fragment>
-
     //     </React.Fragment>
     // }
 
@@ -760,20 +764,10 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
         if (JSON.stringify(model[field.sysName]) != JSON.stringify(renderAL) && typeof model[field.sysName] !== 'string') {
             setRenderAL(model[field.sysName] || [])
         }
-        // console.log('model')
-        // console.log(typeof model[field.sysName])
-        // console.log(object[field.sysName].value)
-        // console.log(renderAL)
     }, [model])
 
-    // useEffect(() => {
-    //     console.log('object')
-    //     console.log(object)
-    //     setEdit(false)
-    // }, [object])
-
     if (field.veiwOption == 'cart') {
-        if (!field.cartView) { return <div>Cart is not configured</div> }
+        if (!field.cartView) { return <div>{dict[lang].card.cart.notConfigured}</div> }
         const cart = field.cartView
 
         const processField = (f, fieldName) => {
@@ -803,10 +797,10 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                 <thead>
                     <tr>
                         {cart.image && <th></th>}
-                        {cart.title && <th>Title</th>}
-                        {cart.status && <th>Status</th>}
-                        {cart.quantity && <th className={styles.right}>Quantity</th>}
-                        {cart.price && <th className={styles.right}>Price</th>}
+                        {cart.title && <th>{dict[lang].card.cart.Title}</th>}
+                        {cart.status && <th>{dict[lang].card.cart.Status}</th>}
+                        {cart.quantity && <th className={styles.right}>{dict[lang].card.cart.Quantity}</th>}
+                        {cart.price && <th className={styles.right}>{dict[lang].card.cart.Price}</th>}
                         {(field.write && editingOn && cart.deleteOn) && <th className={styles.right}></th>}
                     </tr>
                 </thead>
@@ -858,7 +852,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                             /></td>}
                     </tr>)}
                     {cart.price && <tr className={styles.total}>
-                        <td className={styles.right} colSpan={5}>Total:&nbsp;&nbsp;{cart.priceUnits == '$' ? cart.priceUnits : ''} <strong>{renderAL.length ?
+                        <td className={styles.right} colSpan={5}>{dict[lang].card.cart.Total}:&nbsp;&nbsp;{cart.priceUnits == '$' ? cart.priceUnits : ''} <strong>{renderAL.length ?
                             numberWithSpaces(renderAL.map(item => parseFloat(processField(item[cart.priceField], cart.priceField) * (cart.quantity ? (processField(item[cart.quantityField], cart.quantityField) || 0) : 1))).reduce((total, amount) => total + amount).toFixed(2)).replace(/\.00$/, '')
                             : 0}</strong> {cart.priceUnits !== '$' ? cart.priceUnits : ''}</td>
                         {(field.write && editingOn && cart.deleteOn) && <td></td>}
@@ -868,6 +862,90 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
             {/* <br /><hr />< br />
             <pre style={{ fontSize: 12 }}>{JSON.stringify(cart, 0, 3)}</pre>
             <pre style={{ fontSize: 12 }}>{JSON.stringify(object[field.sysName].value, 0, 3)}</pre> */}
+        </React.Fragment>
+    }
+
+    if (field.veiwOption == 'table') {
+        if (!field.tableView) { return <div>Cart is not configured</div> }
+        
+        const table = field.tableView
+
+        const processField = (f, fieldName) => {
+            if (!f) { return null }
+            if (typeof f == 'object') { return getLinkName(fieldName, f, transformTableFieldScheme(field.sysName, tableFieldScheme)) }
+            return f
+        }
+
+        const removeItemCart = i => {
+            // console.log('deleting item... ' + i)
+            const saveAL = [...renderAL]
+            saveAL.splice(i, 1)
+            setRenderAL(saveAL)
+            const newValue = saveAL.length > 0 ? saveAL.map(i => i.id || i).join(',') : null
+            onChange(newValue)
+        }
+
+        return <React.Fragment>
+            <span className={styles.label}>
+                {field.name || field.sysName}
+            </span>
+            {field.descriptionFlag && field.description &&
+                <span className={styles.description}>
+                    {field.description}</span>}
+
+            <table className={`${styles.cart} ${styles.tableAL}`}>
+                <thead>
+                    <tr>
+                        <th>header</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {!renderAL.length ? '—' : renderAL.map((item, i) => <tr key={i} className={field.clickable ? styles.clickable : ''}
+                        onClick={() => {
+                            if (field.clickable) {
+                                setLinkedObject({
+                                    object: item,
+                                    params: {
+                                        data: {
+                                            fields: field.configureLinkedCard && field.configureLinkedCard.fields,
+                                            fieldParams: field.configureLinkedCard && field.configureLinkedCard.fieldParams,
+                                            columns: {
+                                                main:
+                                                {
+                                                    id: 'main',
+                                                    fieldIds: field.configureLinkedCard && field.configureLinkedCard.fieldOrder
+                                                }
+                                            },
+                                            columnOrder: ['main'],
+                                            subHeader: field.subHeader || ''
+                                        }
+                                    }
+                                })
+                                setLinkedObjectStruct(field.sysName)
+                                setShowLinkedObject(true)
+                            }
+                        }}
+                    >
+                        <td>field</td>
+                        {/* {(field.write && editingOn && cart.deleteOn) && <td className={styles.right}>
+                            <div className={`${styles.deleteCartItem} icon icon-delete`}
+                                onClick={e => {
+                                    e.stopPropagation();
+                                    removeItemCart(i)
+                                }}
+                            /></td>} */}
+                    </tr>)}
+                    {/* {cart.price && <tr className={styles.total}>
+                        <td className={styles.right} colSpan={5}>Total:&nbsp;&nbsp;{cart.priceUnits == '$' ? cart.priceUnits : ''} <strong>{renderAL.length ?
+                            numberWithSpaces(renderAL.map(item => parseFloat(processField(item[cart.priceField], cart.priceField) * (cart.quantity ? (processField(item[cart.quantityField], cart.quantityField) || 0) : 1))).reduce((total, amount) => total + amount).toFixed(2)).replace(/\.00$/, '')
+                            : 0}</strong> {cart.priceUnits !== '$' ? cart.priceUnits : ''}</td>
+                        {(field.write && editingOn && cart.deleteOn) && <td></td>}
+                    </tr>} */}
+                </tbody>
+            </table>
+            <br /><hr />< br />
+            <pre style={{ fontSize: 12 }}>{JSON.stringify(table, 0, 3)}</pre>
+            <pre style={{ fontSize: 12 }}>{JSON.stringify(object[field.sysName].value, 0, 3)}</pre>
         </React.Fragment>
     }
 
@@ -1006,8 +1084,8 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
         }
     }
 
-    console.log('====actionParams====')
-    console.log(actionParams)
+    // console.log('====actionParams====')
+    // console.log(actionParams)
 
     let conds = actionParams ? (actionParams.conditionals ? [...actionParams.conditionals] : null) : null
     if (conds) {
@@ -1070,22 +1148,24 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
                     <React.Fragment>
                         <FormSection title={actionParams.name} />
                         {/* <pre className='dd-debug'>{JSON.stringify(actionData, 0, 3)}</pre> */}
-                        {actionParams.formFields && actionParams.formFields.length > 0 && 
+                        {actionParams.formFields && actionParams.formFields.length > 0 &&
                             actionParams.formFields.map(field => (field.field && <InputForm
-                            field={{...field.field, 
-                                include: true, 
-                                content: field.field && field.field.name,
-                                id: field.field && field.field.fieldSysName }}
-                            key={field.field.sysName}
-                            width={400}
-                            // label={field.field.name}
-                            editingOn
-                            onChange={value => {
-                                const saveData = { ...actionData }
-                                saveData.formData = { ...saveData.formData, [field.field.fieldSysName]: value }
-                                setActionData(saveData)
-                            }}
-                        />))}
+                                field={{
+                                    ...field.field,
+                                    include: true,
+                                    content: field.field && field.field.name,
+                                    id: field.field && field.field.fieldSysName
+                                }}
+                                key={field.field.sysName}
+                                width={400}
+                                // label={field.field.name}
+                                editingOn
+                                onChange={value => {
+                                    const saveData = { ...actionData }
+                                    saveData.formData = { ...saveData.formData, [field.field.fieldSysName]: value }
+                                    setActionData(saveData)
+                                }}
+                            />))}
                     </React.Fragment>
                 }
                 {noData ? <div className={styles.noData}>{noData}</div> :

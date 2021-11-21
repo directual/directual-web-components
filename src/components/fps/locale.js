@@ -37,7 +37,15 @@ export const dict = {
             discardChanges: "Discard changes",
             noVisibleName: "No visible name",
             copyLink: "Copy direct link to the object",
-            refreshCard: "Refresh object"
+            refreshCard: "Refresh object",
+            cart: {
+                notConfigured: 'Cart is not configured',
+                Total: 'Total',
+                Price: 'Price',
+                Quantity: 'Quantity',
+                Status: 'Status',
+                Title: 'Title'
+            }
         }
     },
 
@@ -80,7 +88,15 @@ export const dict = {
             discardChanges: "Änderungen verwerfen",
             noVisibleName: "Kein sichtbarer namen",
             copyLink: "Direktlink zum Objekt kopieren",
-            refreshCard: "Objekt aktualisieren"
+            refreshCard: "Objekt aktualisieren",
+            cart: {
+                notConfigured: 'Cart is not configured',
+                Total: 'Gesamt',
+                Price: 'Preis',
+                Quantity: 'Menge',
+                Status: 'Status',
+                Title: 'Titel'
+            }
         }
     },
 
@@ -123,7 +139,15 @@ export const dict = {
             discardChanges: "Descartar los cambios",
             noVisibleName: "Sin nombre visible",
             copyLink: "Copie el enlace directo al objeto",
-            refreshCard: "Actualizar objeto"
+            refreshCard: "Actualizar objeto",
+            cart: {
+                notConfigured: 'Cart is not configured',
+                Total: 'Total',
+                Price: 'Precio',
+                Quantity: 'Cantidad',
+                Status: 'Estado',
+                Title: 'Título'
+            }
         }
     },
 
@@ -166,7 +190,15 @@ export const dict = {
             discardChanges: "Annuler les modifications",
             noVisibleName: "Aucun nom visible",
             copyLink: "Copiez le lien direct vers l'objet",
-            refreshCard: "Actualiser l'objet"
+            refreshCard: "Actualiser l'objet",
+            cart: {
+                notConfigured: 'Cart is not configured',
+                Total: 'Total,',
+                Price: 'Prix',
+                Quantity: 'Quantité',
+                Status: 'Statut',
+                Title: 'Titre'
+            }
         }
     },
 
@@ -209,7 +241,65 @@ export const dict = {
             discardChanges: "Отменить изменения",
             noVisibleName: "Нет имени объекта",
             copyLink: "Скопировать прямую ссылку на карточку объекта",
-            refreshCard: "Обновить карточку объекта"
+            refreshCard: "Обновить карточку объекта",
+            cart: {
+                notConfigured: 'Корзина не настроена',
+                Total: 'Итого',
+                Price: 'Цена',
+                Quantity: 'Количество',
+                Status: 'Статус',
+                Title: 'Название'
+            }
+        }
+    },
+
+    JPN: {
+        form: {
+            noPermissions: 'フォームを閲覧する権限がありません',
+            notConfigured: 'フォームが設定されていません',
+            error: 'フォームエラー',
+            submittedSuccessfuly: '送信されました',
+            submit: '送信する',
+            submitAgain: '再送信する',
+            thankYou: 'ありがとうございます'
+        },
+        error: 'エラー',
+        success: '成功しました',
+        madeOn: 'made on',
+        loading: '読み込んでいます…',
+        profile : {
+            password: 'パスワード',
+            or: 'または',
+            firstName: '名前',
+            lastName: '名字',
+            email:'メールアドレス',
+            phone: '電話番号',
+            login: 'ログイン',
+            repeatPassword: 'パスワードをリセットする'
+        },
+        search: "検索する",
+        searching: "検索しています",
+        prev: "前へ",
+        first: "最初へ",
+        next: "次へ",
+        page: "ページ",
+        of: "/",
+        card: {
+            edit: "編集する",
+            cancelEditing: "編集をキャンセルする",
+            saveChanges: "変更を保存する",
+            discardChanges: "変更を破棄する",
+            noVisibleName: "表示可能な名前はありません",
+            copyLink: "ダイレクトリンクをオブジェクトにコピーする",
+            refreshCard: "オブジェクトをリフレッシュする",
+            cart: {
+                notConfigured: 'カートは設定されていません',
+                Total: 'トータル',
+                Price: '価格',
+                Quantity: '数量',
+                Status: 'ステータス',
+                Title: 'タイトル'
+            }
         }
     }
 }
