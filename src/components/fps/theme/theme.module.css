@@ -246,35 +246,35 @@
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/playfairdisplay/v22/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_qiTbtY.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v25/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_qiTbtY.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Playfair Display';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/playfairdisplay/v22/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvUDQ.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v25/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvUDQ.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Playfair Display';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/playfairdisplay/v22/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKd3vUDQ.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v25/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKd3vUDQ.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Playfair Display';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/playfairdisplay/v22/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKeiukDQ.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v25/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKeiukDQ.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Playfair Display';
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/playfairdisplay/v22/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKfsukDQ.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v25/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKfsukDQ.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Alice';
@@ -531,8 +531,8 @@
 }
 @font-face {
   font-family: 'directual-icons';
-  src: url('https://api.directual.com/fileUploaded/directual-site/272af1fb-9fec-4e02-961f-cdf6d184a33f.eot');
-  src: url('https://api.directual.com/fileUploaded/directual-site/272af1fb-9fec-4e02-961f-cdf6d184a33f.eot') format('embedded-opentype'), url('https://api.directual.com/fileUploaded/directual-site/cf986a86-ea1a-42e5-974b-b1202572c3fc.woff') format('woff'), url('https://api.directual.com/fileUploaded/directual-site/6f736794-6736-4727-93be-1f099457d812.ttf') format('truetype'), url('https://api.directual.com/fileUploaded/directual-site/73d34f58-33bd-458e-ad97-389169fa62f9.svg') format('svg');
+  src: url('https://api.directual.com/fileUploaded/directual-site/3f0862ac-6d38-4772-a6b3-e0212d968d37.eot');
+  src: url('https://api.directual.com/fileUploaded/directual-site/3f0862ac-6d38-4772-a6b3-e0212d968d37.eot') format('embedded-opentype'), url('https://api.directual.com/fileUploaded/directual-site/74c4d4ce-b97c-45c9-a49f-c6b2ba909470.woff') format('woff'), url('https://api.directual.com/fileUploaded/directual-site/4bc70d14-d8c4-47ac-8259-04f86c502e1c.ttf') format('truetype'), url('https://api.directual.com/fileUploaded/directual-site/aa81add6-27a7-49ef-9389-a787c58aba5c.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -948,6 +948,9 @@
 }
 :global .icon-map:before {
   content: '\e985';
+}
+:global .icon-kanban:before {
+  content: '\e986';
 }
 /*-- VARIABLES --*/
 :root {

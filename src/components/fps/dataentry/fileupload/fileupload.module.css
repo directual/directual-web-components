@@ -43,7 +43,7 @@
   top: 0;
   right: 0;
   font-size: 12px;
-  z-index: 200;
+  z-index: 101;
   opacity: 0.5;
 }
 .progress {

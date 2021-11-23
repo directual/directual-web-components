@@ -1,0 +1,12 @@
+.kanban {
+  display: flex;
+  justify-content: flex-start;
+  overflow: auto;
+  border: solid 1px red;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}

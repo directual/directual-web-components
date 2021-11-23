@@ -12,6 +12,7 @@ import FpsForm, { FormSection } from './components/fps/dataentry/form/FpsForm'
 import MainMenu from './components/fps/mainmenu/mainmenu'
 import ComponentDetails from './components/fps/componentdetails/componentdetails'
 import FpsTable from './components/fps/viewobjects/table/FpsTable'
+import FpsKanban from './components/fps/viewobjects/kanban/FpsKanban'
 import { Table } from './components/fps/viewobjects/table/table'
 import Map from './components/fps/dataentry/map/map'
 import { FpsWrapper, ContentWrapper, ComponentWrapper } from './components/fps/wrapper/wrapper'
@@ -65,6 +66,7 @@ export {
   FpsHtml,
   TabsPane,
   FpsForm,
+  FpsKanban,
   Tags,
   Tree,
   Stopwatch,

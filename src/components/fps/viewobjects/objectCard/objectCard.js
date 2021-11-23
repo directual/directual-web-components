@@ -12,6 +12,7 @@ import moment from 'moment'
 import Hint from '../../hint/hint'
 import Media from '../../media/media'
 import { InputForm } from '../../dataentry/form/InputForm'
+import _, { isInteger, isNumber } from 'lodash'
 //import copy from 'copy-to-clipboard';
 
 
@@ -87,11 +88,14 @@ export function ObjectCard(props) {
     const structure = getStructure(props.object)
     //-----------------------------
 
-    console.log('props.object')
-    console.log(props.object)
+    // console.log('props.object')
+    // console.log(props.object)
 
     //Gathers current object info (e.g. sysName, type):
-    const composeObject = (obj,str) => {
+    const composeObject = (obj, str) => {
+        // console.log('composeObject')
+        // console.log(obj)
+        // console.log(str)
         let object = {}
         if (obj && str) {
             for (const field in obj) {
@@ -113,7 +117,6 @@ export function ObjectCard(props) {
         return object
     }
     const object = composeObject(props.object, structure)
-    //console.log(object)
 
     // arrange tabs:
     let cardTabs = []
@@ -253,42 +256,8 @@ export function ObjectCard(props) {
                     return [...acc, item];
                 }
             }, []);
-
-            // let newArr = [];
-            // let count = 0;
-            // let flag = false;
-            // arr.forEach((a, i) => {
-            //     if (i == 0 && a.type != "action") {
-            //         newArr.push(a);
-            //     }
-            //     if (i == 0 && a.type == "action") {
-            //         newArr.push({ type: "actions", content: [a] });
-            //         flag = true;
-            //     }
-            //     if (i != 0 && !flag && a.type == "action") {
-            //         newArr.push({ type: "actions", content: [a] });
-            //         flag = true;
-            //         count++;
-            //     }
-            //     if (i != 0 && flag && a.type == "action") {
-            //         newArr[count].content.push(a);
-            //     }
-            //     if (i != 0 && flag && a.type != "action") {
-            //         newArr.push(a);
-            //         count++;
-            //         flag = false;
-            //     }
-            //     if (i != 0 && !flag && a.type != "action") {
-            //         newArr.push(a);
-            //         count++;
-            //     }
-            // });
-            // return newArr;
         };
         const transformedFields = fields && fieldParams ? transform(fields, fieldParams) : []
-
-        // console.log('transformedFields')
-        // console.log(transformedFields)
 
         return (
             <React.Fragment>
@@ -348,6 +317,8 @@ export function ObjectCard(props) {
                         setModel={value => { setModel(value); }}
                         setLinkedObject={setLinkedObject}
                         setShowLinkedObject={setShowLinkedObject}
+                        getStructure={getStructure}
+                        composeObject={composeObject}
                         transformTableFieldScheme={transformTableFieldScheme}
                         tableFieldScheme={props.tableFieldScheme}
                         getLinkName={getLinkName}
@@ -431,7 +402,7 @@ export function ObjectCard(props) {
                 onScroll={handleScroll}
                 className=
                 {`
-                        ${styles.objectCardBody} 
+                        ${styles.objectCardBody}
                         ${showBorder && styles.bordered}
                         ${oldFashioned && styles.notabs}
                         ${cardTabs.length == 1 && styles.notabs}
@@ -474,7 +445,7 @@ export function ObjectCard(props) {
 }
 
 function CardField({ field, object, model, setModel, debug, editingOn, formatDate, tableFieldScheme, dict, lang,
-    setLinkedObject, setLinkedObjectStruct, setShowLinkedObject, getLinkName, transformTableFieldScheme }) {
+    setLinkedObject, setLinkedObjectStruct, setShowLinkedObject, getLinkName, transformTableFieldScheme, getStructure, composeObject }) {
     const [edit, setEdit] = useState(false)
 
     const getResolution = line => {
@@ -614,11 +585,13 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                     lang={lang}
                     editingOn={editingOn}
                     field={field}
+                    composeObject={composeObject}
                     onChange={value => setModel({ ...model, [field.sysName]: value })}
                     setLinkedObject={setLinkedObject}
                     setLinkedObjectStruct={setLinkedObjectStruct}
                     setShowLinkedObject={setShowLinkedObject}
                     getLinkName={getLinkName}
+                    getStructure={getStructure}
                     tableFieldScheme={tableFieldScheme}
                     transformTableFieldScheme={transformTableFieldScheme}
                 />
@@ -740,8 +713,15 @@ function SaveCard({ model, currentObject, submit, setCurrentObject, setModel, lo
     )
 }
 
-function FieldLink({ field, model, onChange, setLinkedObject, object, tableFieldScheme, dict, lang,
-    setLinkedObjectStruct, setShowLinkedObject, getLinkName, editingOn, transformTableFieldScheme }) {
+function FieldLink({ field, model, onChange, setLinkedObject, object, tableFieldScheme, dict, lang, composeObject,
+    setLinkedObjectStruct, setShowLinkedObject, getLinkName, editingOn, transformTableFieldScheme, getStructure }) {
+
+    const linkedObj = object[field.sysName].value ? Array.isArray(object[field.sysName].value) ? object[field.sysName].value[0] : object[field.sysName].value : {}
+    const struct = getStructure(linkedObj, transformTableFieldScheme(field.sysName, tableFieldScheme))
+    const enrichedObject = composeObject(linkedObj, struct)
+
+    console.log('enrichedObject')
+    console.log(enrichedObject)
 
     const [edit, setEdit] = useState(false)
 
@@ -750,40 +730,86 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
     }
 
-    console.log('Field  Link')
-    console.log(field)
-    // console.log(object[field.sysName].value)
-    // if (!object[field.sysName].value || object[field.sysName].value.length == 0) {
-    //     return <React.Fragment>
-    //     </React.Fragment>
-    // }
+    const formatDate = (value, formatOptions) => {
+        if (!value) { return null }
+        formatOptions = formatOptions || {}
+        const formattedDate = formatOptions.isUTC == 'true' ?
+            moment.utc(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
+            :
+            moment(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
+        return formattedDate
+    }
 
-    const [renderAL, setRenderAL] = useState(object[field.sysName].value || [])
+    // console.log('Field  Link')
+    // console.log(field)
+
+    const { sortArrayLink, sortByField, sortDirection } = field
+
+    const sortArray = array => {
+        const legacy = { // кусочек легаси, пусть будет
+            asc: 'asc',
+            desc: 'desc',
+            ascending: 'asc',
+            descending: 'desc'
+        }
+        const sort = sortDirection ? legacy[sortDirection] : 'asc'
+
+        if (!Array.isArray(array) || !sortArrayLink || !sortByField) return array
+        const sortedrray = _.orderBy(array, sortByField, sort)
+        return sortedrray
+    }
+
+    const [renderAL, setRenderAL] = useState(sortArray(object[field.sysName].value) || [])
+
 
     useEffect(() => {
         if (JSON.stringify(model[field.sysName]) != JSON.stringify(renderAL) && typeof model[field.sysName] !== 'string') {
-            setRenderAL(model[field.sysName] || [])
+            setRenderAL(sortArray(model[field.sysName]) || [])
         }
     }, [model])
+
+    const processField = (f, fieldName) => {
+        if (!f) return null
+        if (!enrichedObject[fieldName]) return typeof f == 'object' ? getLinkName(fieldName, f, transformTableFieldScheme(field.sysName, tableFieldScheme)) : f
+        if (enrichedObject[fieldName].dataType == 'date') return formatDate(f, enrichedObject[fieldName].formatOptions)
+        if (enrichedObject[fieldName].dataType == 'file' && enrichedObject[fieldName].format == "image") return <img src={f} className={styles.cartImage} />
+        if (enrichedObject[fieldName].dataType == 'file' && enrichedObject[fieldName].format == "multipleImages") return <img src={f.split(',') ? f.split(',')[0] : null} className={styles.cartImage} />
+        if (enrichedObject[fieldName].dataType == 'number') return numberWithSpaces(f)
+        if (typeof f == 'object') return getLinkName(fieldName, f, transformTableFieldScheme(field.sysName, tableFieldScheme))
+        return f
+    }
+
+    const removeItemCart = i => {
+        // console.log('deleting item... ' + i)
+        const saveAL = [...renderAL]
+        saveAL.splice(i, 1)
+        setRenderAL(saveAL)
+        const newValue = saveAL.length > 0 ? saveAL.map(i => i.id || i).join(',') : null
+        onChange(newValue)
+    }
+
+    // console.log(renderAL)
+
+    const summByColumn = fieldName => {
+        if (!renderAL.length) return 0
+        if (renderAL.length == 1) return typeof renderAL[0][fieldName] == 'object' ? 1 : renderAL[0][fieldName]
+
+        const sum = renderAL.reduce((total, num) => {
+            console.log(total[fieldName])
+            console.log(typeof total[fieldName])
+            const newTotal = typeof total == 'number' ? total :
+                typeof total[fieldName] == 'number' ? total[fieldName] : total[fieldName] ? 1 : 0
+            const plus = typeof num[fieldName] == 'number' ? num[fieldName] :  num[fieldName] ? 1 : 0
+            return parseFloat(newTotal) + parseFloat(plus)
+        })
+        let summ = typeof sum == 'number' ? parseFloat(sum) : 0 //.toFixed(2)
+
+        return JSON.stringify(sum)
+    }
 
     if (field.veiwOption == 'cart') {
         if (!field.cartView) { return <div>{dict[lang].card.cart.notConfigured}</div> }
         const cart = field.cartView
-
-        const processField = (f, fieldName) => {
-            if (!f) { return null }
-            if (typeof f == 'object') { return getLinkName(fieldName, f, transformTableFieldScheme(field.sysName, tableFieldScheme)) }
-            return f
-        }
-
-        const removeItemCart = i => {
-            // console.log('deleting item... ' + i)
-            const saveAL = [...renderAL]
-            saveAL.splice(i, 1)
-            setRenderAL(saveAL)
-            const newValue = saveAL.length > 0 ? saveAL.map(i => i.id || i).join(',') : null
-            onChange(newValue)
-        }
 
         return <React.Fragment>
             <span className={styles.label}>
@@ -831,7 +857,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                             }
                         }}
                     >
-                        {cart.image && <td><img src={processField(item[cart.imageField], cart.imageField)} /></td>}
+                        {cart.image && <td>{processField(item[cart.imageField], cart.imageField)}</td>}
                         {cart.title && <td>{processField(item[cart.titleField], cart.titleField)}</td>}
                         {cart.status && <td className={styles.right}>{processField(item[cart.statusField], cart.statusField)}</td>}
                         {cart.quantity && <td className={styles.right}>{numberWithSpaces(processField(item[cart.quantityField], cart.quantityField) || '0')}</td>}
@@ -866,24 +892,10 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
     }
 
     if (field.veiwOption == 'table') {
-        if (!field.tableView) { return <div>Cart is not configured</div> }
-        
-        const table = field.tableView
+        if (!field.tableView) { return <div>Table is not configured</div> }
 
-        const processField = (f, fieldName) => {
-            if (!f) { return null }
-            if (typeof f == 'object') { return getLinkName(fieldName, f, transformTableFieldScheme(field.sysName, tableFieldScheme)) }
-            return f
-        }
-
-        const removeItemCart = i => {
-            // console.log('deleting item... ' + i)
-            const saveAL = [...renderAL]
-            saveAL.splice(i, 1)
-            setRenderAL(saveAL)
-            const newValue = saveAL.length > 0 ? saveAL.map(i => i.id || i).join(',') : null
-            onChange(newValue)
-        }
+        const table = field.tableView || []
+        // console.log(table)
 
         return <React.Fragment>
             <span className={styles.label}>
@@ -896,7 +908,8 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
             <table className={`${styles.cart} ${styles.tableAL}`}>
                 <thead>
                     <tr>
-                        <th>header</th>
+                        {(table.columns || []).map(column => <th>{(enrichedObject[column.field] && enrichedObject[column.field].name) || column.field}</th>)}
+                        {(field.write && editingOn && table.deleteOn) && <th className={styles.right}></th>}
                     </tr>
                 </thead>
                 <tbody>
@@ -926,31 +939,33 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                             }
                         }}
                     >
-                        <td>field</td>
-                        {/* {(field.write && editingOn && cart.deleteOn) && <td className={styles.right}>
+                        {(table.columns || []).map(column => <td>{processField(item[column.field], column.field)}</td>)}
+                        {(field.write && editingOn && table.deleteOn) && <td className={styles.right}>
                             <div className={`${styles.deleteCartItem} icon icon-delete`}
                                 onClick={e => {
                                     e.stopPropagation();
                                     removeItemCart(i)
                                 }}
-                            /></td>} */}
+                            /></td>}
                     </tr>)}
-                    {/* {cart.price && <tr className={styles.total}>
-                        <td className={styles.right} colSpan={5}>Total:&nbsp;&nbsp;{cart.priceUnits == '$' ? cart.priceUnits : ''} <strong>{renderAL.length ?
-                            numberWithSpaces(renderAL.map(item => parseFloat(processField(item[cart.priceField], cart.priceField) * (cart.quantity ? (processField(item[cart.quantityField], cart.quantityField) || 0) : 1))).reduce((total, amount) => total + amount).toFixed(2)).replace(/\.00$/, '')
-                            : 0}</strong> {cart.priceUnits !== '$' ? cart.priceUnits : ''}</td>
-                        {(field.write && editingOn && cart.deleteOn) && <td></td>}
-                    </tr>} */}
+                    {table.itogo && <tr className={styles.total}>
+                        {(table.columns || []).map(column => <td>
+                            {column.itogo ? summByColumn(column.field) : ''}
+                        </td>)}
+
+                        {(field.write && editingOn && table.deleteOn) && <td></td>}
+                    </tr>}
                 </tbody>
             </table>
-            <br /><hr />< br />
+            {/* <br /><hr />< br />
+            <pre style={{ fontSize: 12 }}>{JSON.stringify(enrichedObject, 0, 3)}</pre>
             <pre style={{ fontSize: 12 }}>{JSON.stringify(table, 0, 3)}</pre>
-            <pre style={{ fontSize: 12 }}>{JSON.stringify(object[field.sysName].value, 0, 3)}</pre>
+            <pre style={{ fontSize: 12 }}>{JSON.stringify(object[field.sysName].value, 0, 3)}</pre> */}
         </React.Fragment>
     }
 
     return (
-        (field.write || (field.read && object[field.sysName].value && JSON.stringify(object[field.sysName].value) != '[""]')) ? <React.Fragment>
+        (field.write || (field.read && renderAL && JSON.stringify(renderAL) != '[""]')) ? <React.Fragment>
             <span className={styles.label}>
                 {field.name || field.sysName}
                 {(field.write && editingOn) &&
@@ -965,7 +980,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                 <span className={styles.description}>
                     {field.description}</span>}
 
-            {field.dataType == 'link' && field.read && object[field.sysName].value && !edit &&
+            {field.dataType == 'link' && field.read && renderAL && !edit &&
                 <div className={`${styles.linkFieldWrapper} ${!field.clickable && styles.notClickable}`}>
                     <a
                         onClick={() => {
@@ -996,7 +1011,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                 </div>
             }
 
-            {field.dataType == 'arrayLink' && field.read && object[field.sysName].value && !edit &&
+            {field.dataType == 'arrayLink' && field.read && renderAL && !edit &&
                 <div className={`${styles.linkFieldWrapper} ${!field.clickable && styles.notClickable}`}>
                     {object[field.sysName].value && object[field.sysName].value.length > 0 && object[field.sysName].value.map((link, i) => {
                         return link ? <a
@@ -1030,7 +1045,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                 </div>
             }
 
-            {(!object[field.sysName].value || object[field.sysName].value.length == 0) && !edit && '—'}
+            {(!renderAL || renderAL.length == 0) && !edit && '—'}
 
             {edit && field.searchData &&
                 <Input
@@ -1042,9 +1057,9 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                             (value && Array.isArray(value)) ? onChange(value.join(',')) : onChange(value)
                     }}
                     defaultValue={
-                        field.dataType == 'link' ? (object[field.sysName].value.id || object[field.sysName].value) :
-                            (object[field.sysName].value && object[field.sysName].value.length > 0
-                                && object[field.sysName].value.map(i => i.id || i))
+                        field.dataType == 'link' ? (renderAL.id || renderAL) :
+                            (renderAL && renderAL.length > 0
+                                && renderAL.map(i => i.id || i))
                     }
                     tip={field.searchData.length > 990 && 'Quick search is limited by 1000 options'}
                 />
@@ -1055,9 +1070,9 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                     type='string'
                     onChange={onChange}
                     defaultValue={
-                        field.dataType == 'link' ? object[field.sysName].value.id :
-                            (object[field.sysName].value && object[field.sysName].value.length > 0
-                                && object[field.sysName].value.map(i => i.id))
+                        field.dataType == 'link' ? renderAL.id :
+                            (renderAL && renderAL.length > 0
+                                && renderAL.map(i => i.id))
                     }
                     tip="Dropdown option is disabled. Enter objects' IDs"
                 />

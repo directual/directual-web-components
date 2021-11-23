@@ -332,7 +332,7 @@
   overflow: hidden;
 }
 .bdd .dropdownMenu.show {
-  z-index: 100;
+  z-index: 300;
   opacity: 1;
   margin-top: -6px;
 }

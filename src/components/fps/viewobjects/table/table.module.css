@@ -436,12 +436,6 @@ div.tableTitle.mobile h2 {
   font-size: var(--text-small-size);
   display: block;
 }
-.cart img {
-  max-width: 80px;
-  max-height: 60px;
-  display: block;
-  border: solid 1px var(--table-border-color);
-}
 .cart .deleteCartItem {
   opacity: 0.4;
   cursor: pointer;
@@ -449,4 +443,10 @@ div.tableTitle.mobile h2 {
 .cart .deleteCartItem:hover {
   opacity: 0.9;
   color: var(--error-color);
+}
+.cartImage {
+  max-width: 80px;
+  max-height: 60px;
+  display: block;
+  border: solid 1px var(--table-border-color);
 }
