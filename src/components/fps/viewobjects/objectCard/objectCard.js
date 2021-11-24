@@ -720,8 +720,8 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
     const struct = getStructure(linkedObj, transformTableFieldScheme(field.sysName, tableFieldScheme))
     const enrichedObject = composeObject(linkedObj, struct)
 
-    console.log('enrichedObject')
-    console.log(enrichedObject)
+    // console.log('enrichedObject')
+    // console.log(enrichedObject)
 
     const [edit, setEdit] = useState(false)
 
@@ -760,9 +760,25 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
     }
 
     const [renderAL, setRenderAL] = useState(sortArray(object[field.sysName].value) || [])
-
+    const [costyl,setCostyl]= useState(object)
 
     useEffect(() => {
+        console.log('object has changed')
+        console.log(object)
+        console.log(costyl)
+        if (JSON.stringify(costyl) != JSON.stringify(object)) {
+            setCostyl(object)
+            setRenderAL(sortArray(object[field.sysName].value) || [])
+            console.log('оп оп костылёк')
+        }
+        // if (JSON.stringify(object[field.sysName].value) != JSON.stringify(renderAL) && typeof object[field.sysName] !== 'string') {
+        //     setRenderAL(sortArray(object[field.sysName].value) || [])
+        // }
+    }, [object])
+
+    useEffect(() => {
+        console.log('model has changed')
+        console.log(model)
         if (JSON.stringify(model[field.sysName]) != JSON.stringify(renderAL) && typeof model[field.sysName] !== 'string') {
             setRenderAL(sortArray(model[field.sysName]) || [])
         }
