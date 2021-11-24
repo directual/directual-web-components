@@ -21243,12 +21243,12 @@ const App = (props) => {
 
 
     let exampleForm = {
-        "sl": "editEmployeeProfile",
-        "formName": "Профиль кандидата",
+        "sl": "addGoods",
+        "formName": "Новая модель товара",
         "formDesc": "",
-        "formButton": "Сохранить",
+        "formButton": "Добавить",
         "placeholder": "",
-        "maxWidth": "500",
+        "maxWidth": "600",
         "formButtonResubmit": null,
         "params": {
             "result": {
@@ -21259,746 +21259,93 @@ const App = (props) => {
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "22_functions",
-                        "fetch": [],
-                        "sysName": "22_functions",
-                        "name": "Функции для категории 22",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "functions22"
-                    },
-                    {
-                        "fieldSysName": "52_functions",
-                        "fetch": [],
-                        "sysName": "52_functions",
-                        "name": "Функции для категории 52",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "functions52"
-                    },
-                    {
-                        "fieldSysName": "Facebook_lonk",
-                        "fetch": [],
-                        "sysName": "Facebook_lonk",
-                        "name": "Facebook",
-                        "dataType": "string",
-                        "format": "webLink",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Instagram_link",
-                        "fetch": [],
-                        "sysName": "Instagram_link",
-                        "name": "Instagram",
-                        "dataType": "string",
-                        "format": "webLink",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "about_last_job",
-                        "fetch": [],
-                        "sysName": "about_last_job",
-                        "name": "Последнее место работы",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "about_last_job_bool",
-                        "fetch": [],
-                        "sysName": "about_last_job_bool",
-                        "name": "Опыт работы",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "есть опыт",
-                                "нет опыта"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "birthday",
-                        "fetch": [],
-                        "sysName": "birthday",
-                        "name": "Дата рождения",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "ru",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD.MM.Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "city",
-                        "fetch": [],
-                        "sysName": "city",
-                        "name": "Город",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "cities"
-                    },
-                    {
-                        "fieldSysName": "firstName",
-                        "fetch": [],
-                        "sysName": "firstName",
-                        "name": "Имя",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
-                        "name": "Username (login)",
+                        "name": "id",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
-                    },
-                    {
-                        "fieldSysName": "lang",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "lang",
-                        "name": "Знание иностранных языков",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "lang_cat"
-                    },
-                    {
-                        "fieldSysName": "lang_ch",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "lang_cat_id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "lang_ch",
-                        "name": "Уровень владения китайским языком",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "lang"
-                    },
-                    {
-                        "fieldSysName": "lang_de",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "lang_cat_id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "lang_de",
-                        "name": "Уровень владения немецким языком",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "lang"
-                    },
-                    {
-                        "fieldSysName": "lang_en",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "lang_cat_id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "lang_en",
-                        "name": "Уровень владения английским языком",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "lang"
-                    },
-                    {
-                        "fieldSysName": "lang_fr",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "lang_cat_id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "lang_fr",
-                        "name": "Уровень владения французским языком",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "lang"
-                    },
-                    {
-                        "fieldSysName": "lang_from_user",
-                        "fetch": [],
-                        "sysName": "lang_from_user",
-                        "name": "свой вариант",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "lang_id",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "lang_cat_id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "lang_id",
-                        "name": "Знание иностранных языков",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "lang_it",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "lang_cat_id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "lang_it",
-                        "name": "Уровень владения итальянским языком",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "lang"
-                    },
-                    {
-                        "fieldSysName": "lang_sp",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "lang_cat_id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "lang_sp",
-                        "name": "Уровень владения испанским языком",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "lang"
-                    },
-                    {
-                        "fieldSysName": "lastName",
-                        "fetch": [],
-                        "sysName": "lastName",
-                        "name": "Фамилия",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "salary_raw",
-                        "fetch": [],
-                        "sysName": "salary_raw",
-                        "name": "Ожидания по доходу ",
-                        "dataType": "json",
-                        "format": "rangeSlider",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "unitName": "k ₽",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {
-                                "max": 300,
-                                "min": 20,
-                                "step": 10
-                            },
-                            "customOptionType": "textarea"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "schedule",
-                        "fetch": [],
-                        "sysName": "schedule",
-                        "name": "Занятость",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "schedule"
-                    },
-                    {
-                        "fieldSysName": "type",
-                        "fetch": [],
-                        "sysName": "type",
-                        "name": "Категория вакансий",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "booleanOptions": [
-                                "2 через 2",
-                                "5 через 2"
-                            ],
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea"
-                        },
-                        "link": "Type2252"
                     }
                 ],
                 "writeFields": [
                     {
-                        "fieldSysName": "22_functions",
+                        "fieldSysName": "brand",
                         "fetch": [],
-                        "sysName": "22_functions",
-                        "name": "Функции для категории 22",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "functions22"
-                    },
-                    {
-                        "fieldSysName": "52_functions",
-                        "fetch": [],
-                        "sysName": "52_functions",
-                        "name": "Функции для категории 52",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "functions52"
-                    },
-                    {
-                        "fieldSysName": "Facebook_lonk",
-                        "fetch": [],
-                        "sysName": "Facebook_lonk",
-                        "name": "Facebook",
-                        "dataType": "string",
-                        "format": "webLink",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "Instagram_link",
-                        "fetch": [],
-                        "sysName": "Instagram_link",
-                        "name": "Instagram",
-                        "dataType": "string",
-                        "format": "webLink",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "about_last_job",
-                        "fetch": [],
-                        "sysName": "about_last_job",
-                        "name": "Последнее место работы",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "about_last_job_bool",
-                        "fetch": [],
-                        "sysName": "about_last_job_bool",
-                        "name": "Опыт работы",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "есть опыт",
-                                "нет опыта"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "birthday",
-                        "fetch": [],
-                        "sysName": "birthday",
-                        "name": "Дата рождения",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "ru",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD.MM.Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "city",
-                        "fetch": [],
-                        "sysName": "city",
-                        "name": "Город",
+                        "sysName": "brand",
+                        "name": "Бренд",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "cities"
+                        "link": "Brands"
                     },
                     {
-                        "fieldSysName": "firstName",
+                        "fieldSysName": "category",
                         "fetch": [],
-                        "sysName": "firstName",
-                        "name": "Имя",
-                        "dataType": "string",
+                        "sysName": "category",
+                        "name": "Категория",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
+                        "link": "category"
+                    },
+                    {
+                        "fieldSysName": "categoryType",
+                        "fetch": [],
+                        "sysName": "categoryType",
+                        "name": "Подтип категории",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "categoryType"
+                    },
+                    {
+                        "fieldSysName": "color",
+                        "fetch": [],
+                        "sysName": "color",
+                        "name": "Цвет",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "colors"
+                    },
+                    {
+                        "fieldSysName": "description",
+                        "fetch": [],
+                        "sysName": "description",
+                        "name": "Описание",
+                        "dataType": "string",
+                        "format": "markdown",
+                        "formatOptions": {},
                         "link": ""
+                    },
+                    {
+                        "fieldSysName": "gender",
+                        "fetch": [],
+                        "sysName": "gender",
+                        "name": "Пол",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "gender"
                     },
                     {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
-                        "name": "Username (login)",
+                        "name": "id",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "lang",
+                        "fieldSysName": "isNew",
                         "fetch": [],
-                        "sysName": "lang",
-                        "name": "Знание иностранных языков",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "lang_cat"
-                    },
-                    {
-                        "fieldSysName": "lang_ch",
-                        "fetch": [],
-                        "sysName": "lang_ch",
-                        "name": "Уровень владения китайским языком",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "lang"
-                    },
-                    {
-                        "fieldSysName": "lang_de",
-                        "fetch": [],
-                        "sysName": "lang_de",
-                        "name": "Уровень владения немецким языком",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "lang"
-                    },
-                    {
-                        "fieldSysName": "lang_en",
-                        "fetch": [],
-                        "sysName": "lang_en",
-                        "name": "Уровень владения английским языком",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "lang"
-                    },
-                    {
-                        "fieldSysName": "lang_fr",
-                        "fetch": [],
-                        "sysName": "lang_fr",
-                        "name": "Уровень владения французским языком",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "lang"
-                    },
-                    {
-                        "fieldSysName": "lang_from_user",
-                        "fetch": [],
-                        "sysName": "lang_from_user",
-                        "name": "свой вариант",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "lang_id",
-                        "fetch": [],
-                        "sysName": "lang_id",
-                        "name": "Знание иностранных языков",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "lang_it",
-                        "fetch": [],
-                        "sysName": "lang_it",
-                        "name": "Уровень владения итальянским языком",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "lang"
-                    },
-                    {
-                        "fieldSysName": "lang_sp",
-                        "fetch": [],
-                        "sysName": "lang_sp",
-                        "name": "Уровень владения испанским языком",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "lang"
-                    },
-                    {
-                        "fieldSysName": "lastName",
-                        "fetch": [],
-                        "sysName": "lastName",
-                        "name": "Фамилия",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "salary_raw",
-                        "fetch": [],
-                        "sysName": "salary_raw",
-                        "name": "Ожидания по доходу ",
-                        "dataType": "json",
-                        "format": "rangeSlider",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "unitName": "k ₽",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {
-                                "max": 300,
-                                "min": 20,
-                                "step": 10
-                            },
-                            "customOptionType": "textarea"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "schedule",
-                        "fetch": [],
-                        "sysName": "schedule",
-                        "name": "Занятость",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "schedule"
-                    },
-                    {
-                        "fieldSysName": "type",
-                        "fetch": [],
-                        "sysName": "type",
-                        "name": "Категория вакансий",
-                        "dataType": "link",
+                        "sysName": "isNew",
+                        "name": "Новый товар",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {
                             "customOptionLabel": "My option",
@@ -22007,76 +21354,195 @@ const App = (props) => {
                                 "value": "value",
                                 "button": "One more"
                             },
+                            "dateLocale": "en-gb",
                             "booleanOptions": [
-                                "2 через 2",
-                                "5 через 2"
+                                "Да",
+                                "Нет"
                             ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
                             "customOptionPlaceholder": "Describe your option",
                             "range": {},
-                            "customOptionType": "textarea"
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
                         },
-                        "link": "Type2252"
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "name",
+                        "fetch": [],
+                        "sysName": "name",
+                        "name": "Название",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "photo",
+                        "fetch": [],
+                        "sysName": "photo",
+                        "name": "Фото",
+                        "dataType": "file",
+                        "format": "multipleImages",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "price",
+                        "fetch": [],
+                        "sysName": "price",
+                        "name": "Цена, ₽",
+                        "dataType": "number",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "subcategoryBeauty",
+                        "fetch": [],
+                        "sysName": "subcategoryBeauty",
+                        "name": "Бьюти",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "subcategoryBeauty"
+                    },
+                    {
+                        "fieldSysName": "subcategoryInterior",
+                        "fetch": [],
+                        "sysName": "subcategoryInterior",
+                        "name": "Интерьер",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "subcategoryInterior"
+                    },
+                    {
+                        "fieldSysName": "subcategoryKids",
+                        "fetch": [],
+                        "sysName": "subcategoryKids",
+                        "name": "Детское",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "subcategoryKids"
+                    },
+                    {
+                        "fieldSysName": "subcategoryMen",
+                        "fetch": [],
+                        "sysName": "subcategoryMen",
+                        "name": "Мужское",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "subcategoryMen"
+                    },
+                    {
+                        "fieldSysName": "subcategoryWomen",
+                        "fetch": [],
+                        "sysName": "subcategoryWomen",
+                        "name": "Женское",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "subcategoryWomen"
+                    },
+                    {
+                        "fieldSysName": "vendorCode",
+                        "fetch": [],
+                        "sysName": "vendorCode",
+                        "name": "Артикул",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
                     }
                 ],
                 "fields": {
-                    "22_functions": {
-                        "id": "22_functions",
-                        "content": "Функции для категории 22",
+                    "id": {
+                        "id": "id",
+                        "content": "id",
                         "type": "field",
-                        "dataType": "arrayLink",
+                        "dataType": "id",
                         "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "functions22"
-                    },
-                    "52_functions": {
-                        "id": "52_functions",
-                        "content": "Функции для категории 52",
-                        "type": "field",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "functions52"
-                    },
-                    "Facebook_lonk": {
-                        "id": "Facebook_lonk",
-                        "content": "Facebook",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "webLink",
                         "formatOptions": {},
                         "write": true,
                         "read": true,
                         "link": ""
                     },
-                    "Instagram_link": {
-                        "id": "Instagram_link",
-                        "content": "Instagram",
+                    "brand": {
+                        "id": "brand",
+                        "content": "Бренд",
                         "type": "field",
-                        "dataType": "string",
-                        "format": "webLink",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "about_last_job": {
-                        "id": "about_last_job",
-                        "content": "Последнее место работы",
-                        "type": "field",
-                        "dataType": "string",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
-                        "read": true,
-                        "link": null
+                        "link": "Brands"
                     },
-                    "about_last_job_bool": {
-                        "id": "about_last_job_bool",
-                        "content": "Опыт работы",
+                    "category": {
+                        "id": "category",
+                        "content": "Категория",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": "category"
+                    },
+                    "categoryType": {
+                        "id": "categoryType",
+                        "content": "Подтип категории",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": "categoryType"
+                    },
+                    "color": {
+                        "id": "color",
+                        "content": "Цвет",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": "colors"
+                    },
+                    "description": {
+                        "id": "description",
+                        "content": "Описание",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "markdown",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": ""
+                    },
+                    "gender": {
+                        "id": "gender",
+                        "content": "Пол",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": "gender"
+                    },
+                    "isNew": {
+                        "id": "isNew",
+                        "content": "Новый товар",
                         "type": "field",
                         "dataType": "boolean",
                         "format": "",
@@ -22089,8 +21555,8 @@ const App = (props) => {
                             },
                             "dateLocale": "en-gb",
                             "booleanOptions": [
-                                "есть опыт",
-                                "нет опыта"
+                                "Да",
+                                "Нет"
                             ],
                             "validWeekDays": {
                                 "mon": true,
@@ -22109,296 +21575,100 @@ const App = (props) => {
                             "isUTC": "false"
                         },
                         "write": true,
-                        "read": true,
                         "link": ""
                     },
-                    "birthday": {
-                        "id": "birthday",
-                        "content": "Дата рождения",
-                        "type": "field",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "ru",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD.MM.Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "city": {
-                        "id": "city",
-                        "content": "Город",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "cities"
-                    },
-                    "firstName": {
-                        "id": "firstName",
-                        "content": "Имя",
+                    "name": {
+                        "id": "name",
+                        "content": "Название",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
-                        "read": true,
                         "link": ""
                     },
-                    "id": {
-                        "id": "id",
-                        "content": "Username (login)",
+                    "photo": {
+                        "id": "photo",
+                        "content": "Фото",
                         "type": "field",
-                        "dataType": "id",
-                        "format": "",
+                        "dataType": "file",
+                        "format": "multipleImages",
                         "formatOptions": {},
                         "write": true,
-                        "read": true,
                         "link": ""
                     },
-                    "lang": {
-                        "id": "lang",
-                        "content": "Знание иностранных языков",
+                    "price": {
+                        "id": "price",
+                        "content": "Цена, ₽",
+                        "type": "field",
+                        "dataType": "number",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": ""
+                    },
+                    "subcategoryBeauty": {
+                        "id": "subcategoryBeauty",
+                        "content": "Бьюти",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
-                        "read": true,
-                        "link": "lang_cat"
+                        "link": "subcategoryBeauty"
                     },
-                    "lang_ch": {
-                        "id": "lang_ch",
-                        "content": "Уровень владения китайским языком",
+                    "subcategoryInterior": {
+                        "id": "subcategoryInterior",
+                        "content": "Интерьер",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
-                        "read": true,
-                        "link": "lang"
+                        "link": "subcategoryInterior"
                     },
-                    "lang_de": {
-                        "id": "lang_de",
-                        "content": "Уровень владения немецким языком",
+                    "subcategoryKids": {
+                        "id": "subcategoryKids",
+                        "content": "Детское",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
-                        "read": true,
-                        "link": "lang"
+                        "link": "subcategoryKids"
                     },
-                    "lang_en": {
-                        "id": "lang_en",
-                        "content": "Уровень владения английским языком",
+                    "subcategoryMen": {
+                        "id": "subcategoryMen",
+                        "content": "Мужское",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
-                        "read": true,
-                        "link": "lang"
+                        "link": "subcategoryMen"
                     },
-                    "lang_fr": {
-                        "id": "lang_fr",
-                        "content": "Уровень владения французским языком",
+                    "subcategoryWomen": {
+                        "id": "subcategoryWomen",
+                        "content": "Женское",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
-                        "read": true,
-                        "link": "lang"
+                        "link": "subcategoryWomen"
                     },
-                    "lang_from_user": {
-                        "id": "lang_from_user",
-                        "content": "свой вариант",
+                    "vendorCode": {
+                        "id": "vendorCode",
+                        "content": "Артикул",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
-                        "read": true,
                         "link": ""
-                    },
-                    "lang_id": {
-                        "id": "lang_id",
-                        "content": "Знание иностранных языков",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "lang_it": {
-                        "id": "lang_it",
-                        "content": "Уровень владения итальянским языком",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "lang"
-                    },
-                    "lang_sp": {
-                        "id": "lang_sp",
-                        "content": "Уровень владения испанским языком",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "lang"
-                    },
-                    "lastName": {
-                        "id": "lastName",
-                        "content": "Фамилия",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "salary_raw": {
-                        "id": "salary_raw",
-                        "content": "Ожидания по доходу ",
-                        "type": "field",
-                        "dataType": "json",
-                        "format": "rangeSlider",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "unitName": "k ₽",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {
-                                "max": 300,
-                                "min": 20,
-                                "step": 10
-                            },
-                            "customOptionType": "textarea"
-                        },
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "schedule": {
-                        "id": "schedule",
-                        "content": "Занятость",
-                        "type": "field",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "schedule"
-                    },
-                    "type": {
-                        "id": "type",
-                        "content": "Категория вакансий",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "booleanOptions": [
-                                "2 через 2",
-                                "5 через 2"
-                            ],
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea"
-                        },
-                        "write": true,
-                        "read": true,
-                        "link": "Type2252"
                     }
                 },
                 "fieldParams": {
-                    "22_functions": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "descriptionFlag": true,
-                        "defaultValueOn": false,
-                        "description": "Вакансии в шоурумах, магазинах, салонах, фитнес-клубах и ресторанном бизнесе",
-                        "quickSearchSL": "function22Displayed"
-                    },
-                    "52_functions": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "descriptionFlag": true,
-                        "description": "Вакансии в креативе, бизнесе и стажировки"
-                    },
-                    "city": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "defaultValueOn": false,
-                        "defaultValue": "95ddc157-f2dc-4ab1-a1e5-ce9c6398bfdf",
-                        "required": true
-                    },
-                    "firstName": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "required": true
-                    },
                     "id": {
                         "include": false,
                         "fileImageFormat": "square",
@@ -22406,7 +21676,31 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "lastName": {
+                    "brand": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": true,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "quickSearchSL": "addGoodChooseBrand",
+                        "required": true
+                    },
+                    "category": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": true,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "required": true
+                    },
+                    "color": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": true,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "description": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -22414,1369 +21708,223 @@ const App = (props) => {
                         "clickable": false,
                         "required": true
                     },
-                    "salary_raw": {
+                    "isNew": {
                         "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false,
                         "defaultValueOn": true,
-                        "defaultValue": {
-                            "secondValue": 100,
-                            "firstValue": 50
-                        },
-                        "descriptionFlag": true,
-                        "description": "Доход в месяц, тыс.  ₽"
+                        "required": false,
+                        "defaultValue": "true"
                     },
-                    "type": {
+                    "name": {
                         "include": true,
                         "fileImageFormat": "square",
-                        "quickSearch": true,
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "required": true
+                    },
+                    "photo": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false,
                         "required": false,
-                        "defaultValueOn": false,
-                        "defaultValue": "22"
+                        "fileUpload": true
                     },
-                    "Facebook_lonk": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "descriptionFlag": true,
-                        "description": "опционально"
-                    },
-                    "Instagram_link": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "descriptionFlag": true,
-                        "description": "опционально"
-                    },
-                    "lang_id": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "quickSearchSL": "langEng"
-                    },
-                    "about_last_job": {
+                    "price": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false,
+                        "required": true,
                         "descriptionFlag": true,
-                        "description": "Опишите последнее место работы: должность, название компании, продолжительность"
+                        "description": "Базовая цена, без скидки"
                     },
-                    "schedule": {
+                    "subcategoryBeauty": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": true,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "about_last_job_bool": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "required": true
-                    },
-                    "birthday": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "required": true
-                    },
-                    "lang": {
+                    "subcategoryInterior": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": true,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "lang_ch": {
+                    "subcategoryKids": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": true,
                         "fileImageSize": 200,
-                        "clickable": false,
-                        "quickSearchSL": "langCh"
+                        "clickable": false
                     },
-                    "lang_de": {
+                    "subcategoryMen": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": true,
                         "fileImageSize": 200,
-                        "clickable": false,
-                        "quickSearchSL": "langDe"
+                        "clickable": false
                     },
-                    "lang_en": {
+                    "subcategoryWomen": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": true,
                         "fileImageSize": 200,
-                        "clickable": false,
-                        "quickSearchSL": "langEng"
+                        "clickable": false
                     },
-                    "lang_fr": {
+                    "categoryType": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": true,
                         "fileImageSize": 200,
-                        "clickable": false,
-                        "quickSearchSL": "langFr"
+                        "clickable": false
                     },
-                    "lang_it": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "quickSearchSL": "langIt"
-                    },
-                    "lang_sp": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "quickSearchSL": "langSp"
-                    },
-                    "lang_from_user": {
+                    "vendorCode": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
+                    },
+                    "gender": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": true,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "required": false
                     }
                 },
                 "columns": {
                     "tab-1": {
                         "id": "tab-1",
-                        "title": "Основная информация",
+                        "title": "New section",
                         "fieldIds": [
-                            "firstName",
-                            "lastName",
-                            "birthday",
-                            "city",
                             "id",
-                            "Instagram_link",
-                            "Facebook_lonk",
-                            "about_last_job_bool"
+                            "brand",
+                            "vendorCode",
+                            "name",
+                            "description",
+                            "color",
+                            "isNew",
+                            "photo",
+                            "price",
+                            "category",
+                            "gender"
                         ]
                     },
-                    "39401609181601788": {
-                        "id": "39401609181601788",
-                        "title": "Ожидаемый доход",
+                    "49311629039407639": {
+                        "id": "49311629039407639",
+                        "title": "New section",
                         "fieldIds": [
-                            "salary_raw"
-                        ]
-                    },
-                    "24571609181681819": {
-                        "id": "24571609181681819",
-                        "title": "Функции для графика 2/2",
-                        "fieldIds": [
-                            "22_functions"
-                        ],
-                        "cond": [
-                            {
-                                "id": "10781637228072872",
-                                "field": "type",
-                                "value": "22"
-                            }
-                        ]
-                    },
-                    "21061609181696456": {
-                        "id": "21061609181696456",
-                        "title": "Функции для графика 5/2",
-                        "fieldIds": [
-                            "52_functions"
-                        ],
-                        "cond": [
-                            {
-                                "id": "58551609181799429",
-                                "field": "type",
-                                "value": "52"
-                            }
-                        ]
-                    },
-                    "82661637227887760": {
-                        "id": "82661637227887760",
-                        "title": "Последнее место работы",
-                        "fieldIds": [
-                            "about_last_job"
+                            "subcategoryMen"
                         ],
                         "display": false,
                         "cond": [
                             {
-                                "id": "88691637227953719",
-                                "field": "about_last_job_bool",
-                                "value": "true"
+                                "id": "35971629039562232",
+                                "field": "category",
+                                "value": "men"
                             }
                         ]
                     },
-                    "27871637227987594": {
-                        "id": "27871637227987594",
+                    "52911629039421742": {
+                        "id": "52911629039421742",
                         "title": "New section",
                         "fieldIds": [
-                            "schedule",
-                            "type"
+                            "subcategoryWomen"
+                        ],
+                        "display": false,
+                        "cond": [
+                            {
+                                "id": "87391629039576971",
+                                "field": "category",
+                                "value": "women"
+                            }
                         ]
                     },
-                    "74791637228100031": {
-                        "id": "74791637228100031",
+                    "24781629039428006": {
+                        "id": "24781629039428006",
                         "title": "New section",
                         "fieldIds": [
-                            "lang"
-                        ]
-                    },
-                    "88181637228548417": {
-                        "id": "88181637228548417",
-                        "title": "английский",
-                        "fieldIds": [
-                            "lang_en",
-                            "lang_id"
+                            "subcategoryKids"
                         ],
                         "cond": [
                             {
-                                "id": "82981637228575224",
-                                "field": "lang",
-                                "value": "английский"
+                                "id": "87061629041334154",
+                                "field": "category",
+                                "value": "kids"
                             }
                         ]
                     },
-                    "67101637228634133": {
-                        "id": "67101637228634133",
-                        "title": "испанский",
+                    "92061629039428511": {
+                        "id": "92061629039428511",
+                        "title": "New section",
                         "fieldIds": [
-                            "lang_sp"
+                            "subcategoryBeauty"
                         ],
                         "cond": [
                             {
-                                "id": "68871637231125355",
-                                "field": "lang",
-                                "value": "испанский"
+                                "id": "42351629042060046",
+                                "field": "category",
+                                "value": "beauty"
                             }
                         ]
                     },
-                    "19341637231047628": {
-                        "id": "19341637231047628",
-                        "title": "немецкий",
+                    "96561629039429008": {
+                        "id": "96561629039429008",
+                        "title": "New section",
                         "fieldIds": [
-                            "lang_de"
+                            "subcategoryInterior"
                         ],
                         "cond": [
                             {
-                                "id": "75251637231068811",
-                                "field": "lang",
-                                "value": "немецкий"
+                                "id": "65591629042072515",
+                                "field": "category",
+                                "value": "interior"
                             }
                         ]
                     },
-                    "99191637231132351": {
-                        "id": "99191637231132351",
-                        "title": "итальянский",
+                    "16321629039867927": {
+                        "id": "16321629039867927",
+                        "title": "New section",
                         "fieldIds": [
-                            "lang_it"
+                            "categoryType"
                         ],
                         "cond": [
                             {
-                                "id": "50761637231198132",
-                                "field": "lang",
-                                "value": "итальянский"
-                            }
-                        ]
-                    },
-                    "17421637231143781": {
-                        "id": "17421637231143781",
-                        "title": "французский",
-                        "fieldIds": [
-                            "lang_fr"
-                        ],
-                        "cond": [
+                                "id": "28951637787811501",
+                                "field": "category",
+                                "value": "null"
+                            },
                             {
-                                "id": "88991637231153851",
-                                "field": "lang",
-                                "value": "французский"
+                                "id": "41911637787817828",
+                                "field": "category",
+                                "value": "men"
                             }
-                        ]
-                    },
-                    "79481637231168015": {
-                        "id": "79481637231168015",
-                        "title": "китайский",
-                        "fieldIds": [
-                            "lang_ch"
                         ],
-                        "cond": [
-                            {
-                                "id": "23081637231182473",
-                                "field": "lang",
-                                "value": "китайский"
-                            }
-                        ]
-                    },
-                    "49231637235858050": {
-                        "id": "49231637235858050",
-                        "title": "другой язык",
-                        "fieldIds": [
-                            "lang_from_user"
-                        ],
-                        "cond": [
-                            {
-                                "id": "97911637235860697",
-                                "field": "lang",
-                                "value": "другой язык"
-                            }
-                        ]
+                        "condOperator": "or"
                     }
                 },
                 "columnOrder": [
                     "tab-1",
-                    "82661637227887760",
-                    "27871637227987594",
-                    "24571609181681819",
-                    "21061609181696456",
-                    "39401609181601788",
-                    "74791637228100031",
-                    "88181637228548417",
-                    "67101637228634133",
-                    "19341637231047628",
-                    "99191637231132351",
-                    "17421637231143781",
-                    "79481637231168015",
-                    "49231637235858050"
+                    "16321629039867927",
+                    "49311629039407639",
+                    "52911629039421742",
+                    "24781629039428006",
+                    "92061629039428511",
+                    "96561629039429008"
                 ]
             },
             "fields": {
-                "22_functions": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "descriptionFlag": true,
-                    "defaultValueOn": false,
-                    "description": "Вакансии в шоурумах, магазинах, салонах, фитнес-клубах и ресторанном бизнесе",
-                    "quickSearchSL": "function22Displayed",
-                    "searchData": [
-                        {
-                            "key": "b5d6682c-09da-4d8b-86ef-abe3295da502",
-                            "value": "Шеф"
-                        },
-                        {
-                            "key": "772fafad-36a7-4ccc-b338-ebb3b670e554",
-                            "value": "Официант"
-                        },
-                        {
-                            "key": "ee6cd622-e697-4d59-bca0-d34d4d6fa058",
-                            "value": "Хостес"
-                        },
-                        {
-                            "key": "8736e749-48f8-4dfb-ba6d-483d0ce9f350",
-                            "value": "Бариста"
-                        },
-                        {
-                            "key": "cf10904f-55e2-4678-8b88-3f01f70b8308",
-                            "value": "Повар"
-                        },
-                        {
-                            "key": "d6d250fd-4f29-4b09-a140-9757ac0266aa",
-                            "value": "Управляющий"
-                        },
-                        {
-                            "key": "cee393b6-1f7f-459b-8d5f-a9b59c41cf92",
-                            "value": "Администратор"
-                        },
-                        {
-                            "key": "58b198e4-6ec9-4cde-87cf-8edf8d88af95",
-                            "value": "Продавец-консультант"
-                        },
-                        {
-                            "key": "3a6782d8-5938-4d7c-acc3-00c072db4b71",
-                            "value": "Визажист"
-                        },
-                        {
-                            "key": "c127df30-c9ce-4063-9a66-a005d4c9695a",
-                            "value": "Мастер маникюра"
-                        },
-                        {
-                            "key": "622fe247-51cb-4295-a8b4-eaf189dd807d",
-                            "value": "Косметолог"
-                        },
-                        {
-                            "key": "d91564fe-70ce-406a-8119-cbbe2deef5a4",
-                            "value": "Фитнес-тренер"
-                        },
-                        {
-                            "key": "9b643b1a-5e5d-45c2-9bfa-847fca9201c0",
-                            "value": "Стилист"
-                        },
-                        {
-                            "key": "9153c4b7-e930-48ed-92e8-da4abbf63d3f",
-                            "value": "Бровист"
-                        },
-                        {
-                            "key": "bd30b2d4-5c78-4619-8a3d-d8d7846b9ff3",
-                            "value": "Массаж"
-                        },
-                        {
-                            "key": "b6b7ec50-543f-43a9-9b6e-47c7859de0a9",
-                            "value": "Кондитер"
-                        },
-                        {
-                            "key": "1b4c64cd-a6b6-4039-ad51-dd96bddc4c19",
-                            "value": "Бармен"
-                        },
-                        {
-                            "key": "819710b2-4402-4dba-9d84-3508670a5aa4",
-                            "value": "Лашмейкер"
-                        },
-                        {
-                            "key": "cca21f9d-7265-4faf-848c-5cce731d806f",
-                            "value": "Мерчендайзер"
-                        },
-                        {
-                            "key": "3d557adf-d332-4741-afaf-8538bdca86a4",
-                            "value": "Остеопат"
-                        },
-                        {
-                            "key": "fbbb2666-e00e-47f3-8235-0a5f59eadc8c",
-                            "value": "Менеджер интернет-магазина"
-                        },
-                        {
-                            "key": "9e071824-e8b4-4fb8-82a4-7567ecd6876a",
-                            "value": "Флорист"
-                        },
-                        {
-                            "key": "6db6c43a-0b91-4dd6-a872-19afe943f23f",
-                            "value": "Кондитер"
-                        },
-                        {
-                            "key": "86ec0c01-83b7-47d9-b346-99c90a33037d",
-                            "value": "Пекарь"
-                        },
-                        {
-                            "key": "d4dbbd3d-2351-4019-aba1-b82890fd8b26",
-                            "value": "Менеджер шоурума"
-                        },
-                        {
-                            "key": "45d41e97-bb33-4776-9c6c-901bbc341bf0",
-                            "value": "Оператор заказов"
-                        },
-                        {
-                            "key": "70d1cea8-f027-43d3-b225-a4b33b36fccd",
-                            "value": "Заготовщик"
-                        },
-                        {
-                            "key": "166d6234-0a64-4f17-b88e-43e28495a951",
-                            "value": "Курьер"
-                        }
-                    ]
-                },
-                "52_functions": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "descriptionFlag": true,
-                    "description": "Вакансии в креативе, бизнесе и стажировки",
-                    "searchData": [
-                        {
-                            "key": "14746650-98aa-44d7-8989-472c8162dba8",
-                            "value": "Контент"
-                        },
-                        {
-                            "key": "5c696884-c6e8-4608-a928-06ca86d28f52",
-                            "value": "SMM"
-                        },
-                        {
-                            "key": "5b27b967-9c4d-4dbe-89f0-abb4186e64a1",
-                            "value": "PR"
-                        },
-                        {
-                            "key": "605143a0-bb72-49ec-a7c2-16d6a84baa6b",
-                            "value": "Копирайтинг"
-                        },
-                        {
-                            "key": "565e74f1-6a97-491b-a97b-7578d26f9b0e",
-                            "value": "Редактор"
-                        },
-                        {
-                            "key": "d4e838bd-8e32-4a65-9d08-09ccf5e8956c",
-                            "value": "Фотограф"
-                        },
-                        {
-                            "key": "b0458bef-2b44-42a7-a27f-69f4043eb19a",
-                            "value": " Таргетинг"
-                        },
-                        {
-                            "key": "02b3892a-9ca7-40e3-bb79-2a4682fe445c",
-                            "value": "Графический дизайн"
-                        },
-                        {
-                            "key": "f9e6e8ea-aea5-4a2e-b46c-4dfa353fec64",
-                            "value": "HR"
-                        },
-                        {
-                            "key": "aaa68f68-4196-4561-b4ca-6957ee1f5271",
-                            "value": "Видеограф"
-                        },
-                        {
-                            "key": "f357eb22-9b97-4889-ae7b-1359a837626e",
-                            "value": "Fashion-дизайнер"
-                        },
-                        {
-                            "key": "d8a43cf3-5903-4073-95e3-d7f400ff28cc",
-                            "value": "Баер"
-                        },
-                        {
-                            "key": "35a1a90b-b7bf-44dd-b2cb-0537f35c995a",
-                            "value": "Бренд менеджер"
-                        },
-                        {
-                            "key": "57816d4e-5d1a-4240-8eda-0041ccdc3d55",
-                            "value": "IT"
-                        },
-                        {
-                            "key": "2ee7a4c1-51a4-46d9-b93a-f4c06f9dc095",
-                            "value": "Стилист"
-                        },
-                        {
-                            "key": "fdd5dd01-1867-4f2d-a579-4032bc691551",
-                            "value": "UI/UX дизайн"
-                        },
-                        {
-                            "key": "69cf9997-fd45-442e-8590-74815535e949",
-                            "value": "Продюссер"
-                        },
-                        {
-                            "key": "b5ecf298-bc0b-4010-964a-9eb1f36e88c7",
-                            "value": "Маркетинг"
-                        },
-                        {
-                            "key": "42793449-612e-4a86-b519-e59c8c4d0f7b",
-                            "value": "Art-директор"
-                        },
-                        {
-                            "key": "9d328ba3-59c4-43f8-809d-068d86dada3c",
-                            "value": "Стажер "
-                        },
-                        {
-                            "key": "e3673d9f-84cc-4e92-bdae-5bd81ad3fefc",
-                            "value": "Менеджер проектов"
-                        },
-                        {
-                            "key": "6110b6ca-dada-4db8-ae7a-3c5750cfabb2",
-                            "value": "Личный помощник"
-                        },
-                        {
-                            "key": "805e95ec-380a-4822-ad5f-bddbd2b0f695",
-                            "value": "Motion-дизайнер"
-                        },
-                        {
-                            "key": "dca9b4e9-c48c-4626-80bd-c8efc04d3c5b",
-                            "value": "Продакт менеджер "
-                        },
-                        {
-                            "key": "5379db04-9d22-4ee2-963d-4244435c4c08",
-                            "value": "Пошив"
-                        },
-                        {
-                            "key": "f51b17ea-ace5-487a-a043-3259040495e3",
-                            "value": "Производство"
-                        },
-                        {
-                            "key": "635b333a-33e8-4b59-91bd-ed54f0508235",
-                            "value": "Бухгалтер"
-                        },
-                        {
-                            "key": "2b5a280e-052e-430a-a5bd-0f340d6f9298",
-                            "value": "Ретушер"
-                        },
-                        {
-                            "key": "c68109f6-1b68-4f09-ac34-67a8390ea2dd",
-                            "value": "Account "
-                        },
-                        {
-                            "key": "00ad0a1c-5600-458e-8b2b-7e12b9e6588d",
-                            "value": "Sale менеджер"
-                        },
-                        {
-                            "key": "56890dd6-b40c-4293-83b9-bc0ad4e4cf6f",
-                            "value": "Дизайн"
-                        },
-                        {
-                            "key": "8bc295b5-4239-4bd2-a21d-3f305f6e210b",
-                            "value": "Ювелир"
-                        },
-                        {
-                            "key": "de84414a-0886-41c4-bc51-1321abf1f722",
-                            "value": "Администратор"
-                        },
-                        {
-                            "key": "286b253f-f862-49a5-bdca-2301edc2a679",
-                            "value": "Event"
-                        },
-                        {
-                            "key": "d7d77bb4-7414-456a-9bef-843bd3e3d800",
-                            "value": "Интернет-магазин"
-                        },
-                        {
-                            "key": "a879abc4-6a98-436c-8042-40010a0c62d7",
-                            "value": "Заместитель директора "
-                        },
-                        {
-                            "key": "73b56a2a-78fe-447e-a9d4-8a574b9e9359",
-                            "value": "Ассистент"
-                        },
-                        {
-                            "key": "eccbdeb2-465b-423b-a1a4-753f80061e5d",
-                            "value": "Рекрутер"
-                        },
-                        {
-                            "key": "71474bd7-a847-45e2-a4e9-fa24dd3c4214",
-                            "value": "Менеджер по персоналу "
-                        },
-                        {
-                            "key": "df34e35c-e896-4a08-830d-57a2371f053c",
-                            "value": "CRM"
-                        },
-                        {
-                            "key": "35c05b79-a66b-4fad-b330-b0ab7f56a224",
-                            "value": "Шеф"
-                        },
-                        {
-                            "key": "8dda2828-3c80-4004-8793-64fd8009000e",
-                            "value": "Повар"
-                        },
-                        {
-                            "key": "af45d23d-e18a-402a-8fbc-82e3b5389057",
-                            "value": "Заготовщик"
-                        },
-                        {
-                            "key": "a6780878-7f4d-4e16-8a96-32a49da4b262",
-                            "value": "Тренинги"
-                        },
-                        {
-                            "key": "8889e6da-417a-48bd-9acb-46391c47d886",
-                            "value": "Документооборот"
-                        },
-                        {
-                            "key": "fa8284b2-40fd-4c45-bad9-94bd71eb53d5",
-                            "value": "Управляющий"
-                        },
-                        {
-                            "key": "64543439-15f7-41f1-abaa-ef71d2094c4e",
-                            "value": "Менеджер по работе с клиентами"
-                        },
-                        {
-                            "key": "a59110ed-077c-426f-99e1-09d3b0d11ef3",
-                            "value": "Креатор"
-                        }
-                    ]
-                },
-                "city": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "defaultValueOn": false,
-                    "defaultValue": "95ddc157-f2dc-4ab1-a1e5-ce9c6398bfdf",
-                    "required": true,
-                    "searchData": [
-                        {
-                            "key": "5f07b0e5-cdeb-4b6d-bd7d-1b5aa25d597b",
-                            "value": "Астрахань"
-                        },
-                        {
-                            "key": "efd0190e-1a19-40a7-9d00-b695b60e7b18",
-                            "value": "Новосибирск"
-                        },
-                        {
-                            "key": "71a52f70-4701-476f-a9eb-065ed0ce34c0",
-                            "value": "Тюмень"
-                        },
-                        {
-                            "key": "cf89852c-0979-4dc2-a688-9f5f40e5f7b1",
-                            "value": "Иркутск"
-                        },
-                        {
-                            "key": "9f937f4d-fff3-4e95-9833-05edba95e9fb",
-                            "value": "Киров"
-                        },
-                        {
-                            "key": "2985fa84-8a83-4cfe-8ac8-086b46480e1b",
-                            "value": "Уфа"
-                        },
-                        {
-                            "key": "c272e7cd-d3c1-41a6-8ef3-731c1b6d3b0b",
-                            "value": "Тольятти"
-                        },
-                        {
-                            "key": "fa3a51d6-2784-48aa-acb6-58a4934260cb",
-                            "value": "Нижний Новгород"
-                        },
-                        {
-                            "key": "e32a86b6-07a0-4ee6-b380-6b51a72f4937",
-                            "value": "Пенза"
-                        },
-                        {
-                            "key": "fa8828c2-03ab-4a44-9301-407331a645bc",
-                            "value": "Томск"
-                        },
-                        {
-                            "key": "155a6363-9fb5-4d1c-b033-774825f25f1d",
-                            "value": "Калининград"
-                        },
-                        {
-                            "key": "a537ad97-3d9a-4247-ab7c-c5fd09e323d4",
-                            "value": "Пятигорск"
-                        },
-                        {
-                            "key": "419030a9-a9dc-4a41-a633-a23dbbb65116",
-                            "value": "Норильск"
-                        },
-                        {
-                            "key": "141bf2ba-a924-4d61-8f4a-abe19dd79b5f",
-                            "value": "Арзамас"
-                        },
-                        {
-                            "key": "beed9e2a-51f1-447b-973a-c369bf297e19",
-                            "value": "Сыктывкар"
-                        },
-                        {
-                            "key": "8ab91dfb-83c1-44fb-af26-7487894a1569",
-                            "value": "Нижнекамск"
-                        },
-                        {
-                            "key": "a0ec46a3-44de-4a4a-a0dc-126b0c4afbf5",
-                            "value": "Балашиха"
-                        },
-                        {
-                            "key": "4f04826b-a0f7-4abd-8261-e81b5f869b69",
-                            "value": "Санкт-Петербург"
-                        },
-                        {
-                            "key": "fff854f9-473f-46d8-afd2-318abd771a04",
-                            "value": "Воронеж"
-                        },
-                        {
-                            "key": "b7ca406f-71d8-4125-b22b-1c4b3b5b3873",
-                            "value": "Междуреченск"
-                        },
-                        {
-                            "key": "f6c16e58-b736-4fb3-b1f4-bf988f2b7fc2",
-                            "value": "Северодвинск"
-                        },
-                        {
-                            "key": "8d8ee02c-05ca-4f16-b118-405f0a4a2028",
-                            "value": "Магнитогорск"
-                        },
-                        {
-                            "key": "15d359fc-e894-4f19-8279-0195fa45b8f3",
-                            "value": "Улан-Удэ"
-                        },
-                        {
-                            "key": "35926902-ce08-4620-b791-a957b8e030bf",
-                            "value": "Ульяновск"
-                        },
-                        {
-                            "key": "3625e59b-92be-4931-be3b-1657b1f1eab4",
-                            "value": "Великий Новгород"
-                        },
-                        {
-                            "key": "f5df55f5-7f2a-4d85-b9c3-c88b89fdf8b6",
-                            "value": "Химки"
-                        },
-                        {
-                            "key": "64dfbbca-a11f-4ca5-a9fa-4fbb6b2d868c",
-                            "value": "Батайск"
-                        },
-                        {
-                            "key": "42af9a7c-b7ea-4079-91a5-65b408ddc2de",
-                            "value": "Тула"
-                        },
-                        {
-                            "key": "95ddc157-f2dc-4ab1-a1e5-ce9c6398bfdf",
-                            "value": "Москва"
-                        },
-                        {
-                            "key": "c8c7d6d0-4fc6-41dd-a799-a8ad91e86fe7",
-                            "value": "Казань"
-                        },
-                        {
-                            "key": "387c5608-bfe7-48a9-808e-1f394fd46228",
-                            "value": "Уссурийск"
-                        },
-                        {
-                            "key": "5347ab07-6807-496e-932b-4db13ec17ac3",
-                            "value": "Вологда"
-                        },
-                        {
-                            "key": "aa11ad14-a9f4-42ee-acad-06047ebdf17a",
-                            "value": "Саранск"
-                        },
-                        {
-                            "key": "e55baa9d-693a-4b17-8dd5-492d67a9bc69",
-                            "value": "Рыбинск"
-                        },
-                        {
-                            "key": "c7e0c655-930b-455a-b21e-09b823ec6ba8",
-                            "value": "Ноябрьск"
-                        },
-                        {
-                            "key": "6a9fc335-cbc3-4f44-addf-8c8ca81ac238",
-                            "value": "Находка"
-                        },
-                        {
-                            "key": "e37beb72-222e-4cdf-acd2-f36100784e15",
-                            "value": "Волжский"
-                        },
-                        {
-                            "key": "e980a012-b87e-46fa-98b9-bc62c29f432f",
-                            "value": "Ижевск"
-                        },
-                        {
-                            "key": "d317eccc-2c59-4443-adda-5dcb267453a0",
-                            "value": "Красноярск"
-                        },
-                        {
-                            "key": "2fda8d82-7c06-46f8-bc25-6df163a7b554",
-                            "value": "Волгоград"
-                        },
-                        {
-                            "key": "dbe428b0-33d4-451d-ba51-82d8bcd0d6d4",
-                            "value": "Нефтеюганск"
-                        },
-                        {
-                            "key": "ecb2b6a4-dd90-4d7a-9873-97f2417042cc",
-                            "value": "Пушкино"
-                        },
-                        {
-                            "key": "20a74ee5-5cd4-45b1-a243-aa7db323a0c2",
-                            "value": "Тамбов"
-                        },
-                        {
-                            "key": "14aca2a9-a7c1-4b94-baa3-011851f8c2f1",
-                            "value": "Новочеркасск"
-                        },
-                        {
-                            "key": "dfc75bdc-ac4d-41b6-bdad-220ea284a00e",
-                            "value": "Ярославль"
-                        },
-                        {
-                            "key": "d7b0a7a9-71ca-484f-9a43-5629d9226850",
-                            "value": "Северск"
-                        },
-                        {
-                            "key": "b2a7a390-a8cd-46e3-b2b0-219bd356343f",
-                            "value": "Новомосковск"
-                        },
-                        {
-                            "key": "a4d031ad-645c-4c5c-86f9-2a85819dc283",
-                            "value": "Мытищи"
-                        },
-                        {
-                            "key": "8b9c8a1d-8429-43a6-acc3-b4d2fd2ddf80",
-                            "value": "Люберцы"
-                        },
-                        {
-                            "key": "1d0dc234-a8d0-4d14-93a4-42f8beb6e474",
-                            "value": "Саратов"
-                        },
-                        {
-                            "key": "a92b6c0a-cabe-4a03-b1b8-808dc039869f",
-                            "value": "Липецк "
-                        },
-                        {
-                            "key": "db96b2ff-efb5-48e3-a079-1449024642ea",
-                            "value": "Ставрополь"
-                        },
-                        {
-                            "key": "87413717-a238-4c2b-b8b8-b9ebbbd13d88",
-                            "value": "Златоуст"
-                        },
-                        {
-                            "key": "ab697bbb-564b-47f3-aa26-2b963422aa45",
-                            "value": "Березники"
-                        },
-                        {
-                            "key": "51f7889b-2afd-49e9-b9fe-fdc3d43bb4cb",
-                            "value": "Комсомольск-на-Амуре"
-                        },
-                        {
-                            "key": "34b49b0b-f99d-4e79-a433-1a6612d712c5",
-                            "value": "Октябрьский"
-                        },
-                        {
-                            "key": "ee7c7efc-2577-4efa-9675-f2bf3b4e3ba1",
-                            "value": "Оренбург"
-                        },
-                        {
-                            "key": "a0734bbe-965e-4be4-bf3e-0058587fb0d1",
-                            "value": "Чебоксары"
-                        },
-                        {
-                            "key": "6cb5b487-5cb7-4bf4-a197-c1fb7fd141ad",
-                            "value": "Курск"
-                        },
-                        {
-                            "key": "e0e43003-5d03-4ed2-812f-13f29d79c5e6",
-                            "value": "Рязань"
-                        },
-                        {
-                            "key": "1b8475ce-5637-486c-8902-8e763c05053c",
-                            "value": "Набережные Челны"
-                        },
-                        {
-                            "key": "293bb3e2-22b7-4dbd-9d18-1fa7e5321b48",
-                            "value": "Иваново"
-                        },
-                        {
-                            "key": "6451bc49-0213-416c-a656-119d4b52b63b",
-                            "value": "Армавир"
-                        },
-                        {
-                            "key": "18686d6b-3c73-4e03-9329-2f4c46e0c430",
-                            "value": "Рубцовск"
-                        },
-                        {
-                            "key": "81dce290-2cff-406c-bc0d-3914be9534c1",
-                            "value": "Артем"
-                        },
-                        {
-                            "key": "a952104f-36d4-4ed0-9ebb-a52b3135c8a8",
-                            "value": "Шахты"
-                        },
-                        {
-                            "key": "a20d2a73-9aa6-4353-8aad-e0556648dbea",
-                            "value": "Каспийск"
-                        },
-                        {
-                            "key": "0430d3db-b2b6-4745-a6b7-7aa3d1e2cd00",
-                            "value": "Новороссийск"
-                        },
-                        {
-                            "key": "923858f8-28a2-4ff8-8c3c-fc96aa7081c7",
-                            "value": "Коломна"
-                        },
-                        {
-                            "key": "2c7b72c2-c88d-4478-8a87-9f1c442b6dd4",
-                            "value": "Камышин"
-                        },
-                        {
-                            "key": "312c47b1-855c-462f-bcbc-92616220e080",
-                            "value": "Стерлитамак"
-                        },
-                        {
-                            "key": "59dc4c08-4a5b-4a21-bede-5772eae25d69",
-                            "value": "Ессентуки "
-                        },
-                        {
-                            "key": "c0f6e5fe-15e7-469a-9dcc-6740e29585ac",
-                            "value": "Якутск"
-                        },
-                        {
-                            "key": "6483da5c-3d7d-4e62-a5b7-c259f5b11f0f",
-                            "value": "Орел"
-                        },
-                        {
-                            "key": "6aa99a15-e1d3-4318-9f63-2a07b63690e1",
-                            "value": "Подольск"
-                        },
-                        {
-                            "key": "9e5fb78a-03c1-4016-a7f3-8341c0cbfcf6",
-                            "value": "Краснодар"
-                        },
-                        {
-                            "key": "68bcde48-bffe-4d82-aab2-c04dd3393e89",
-                            "value": "Омск"
-                        },
-                        {
-                            "key": "ff68b6d3-8478-4520-8a59-897b992f5f87",
-                            "value": "Нижний Тагил"
-                        },
-                        {
-                            "key": "0385a585-a0bf-4c62-835d-5c2343341ac4",
-                            "value": "Белгород"
-                        },
-                        {
-                            "key": "5c236ec0-8f7a-4fa5-8e48-24d21f1ea39e",
-                            "value": "Чита"
-                        },
-                        {
-                            "key": "8cb8d65f-0e5b-4af3-a41f-db90ca5a9647",
-                            "value": "Грозный"
-                        },
-                        {
-                            "key": "1dca24bc-dcbe-49a2-9392-1cbf0cd6a729",
-                            "value": "Ангарск"
-                        },
-                        {
-                            "key": "5f4e2ed6-c77c-4ce3-bc36-5e639a4a975b",
-                            "value": "Новокузнецк"
-                        },
-                        {
-                            "key": "a5e850fa-0ce2-4f5f-a276-de5c731626ff",
-                            "value": "Барнаул"
-                        },
-                        {
-                            "key": "405608e6-a8d2-44c3-b371-87ac6762741a",
-                            "value": "Владивосток"
-                        },
-                        {
-                            "key": "7a211c47-1b4a-42b2-97ee-4c690ae147fd",
-                            "value": "Самара"
-                        },
-                        {
-                            "key": "49e45256-e242-41a6-b7ba-ea5c597dc67d",
-                            "value": "Кисловодск"
-                        },
-                        {
-                            "key": "11edc61d-a00f-4ec8-b88e-d35b4eca2a19",
-                            "value": "Обнинск"
-                        },
-                        {
-                            "key": "183be710-49ea-42b1-bfcb-8391188d1864",
-                            "value": "Волгодонск"
-                        },
-                        {
-                            "key": "411c9c4a-6590-4f12-9340-b268d1bade7b",
-                            "value": "Екатеринбург"
-                        },
-                        {
-                            "key": "ee69e04b-bb3b-4835-a8c9-2a2fa47c9c1a",
-                            "value": "Кемерово"
-                        },
-                        {
-                            "key": "4df6ed07-84ce-4324-a75c-b80b4138b8fa",
-                            "value": "Сургут"
-                        },
-                        {
-                            "key": "573d8f7f-2227-4a4e-801b-f77e04a532db",
-                            "value": "Дзержинск"
-                        },
-                        {
-                            "key": "b37f7d2f-78fa-48ff-8915-0ce7fcd6e220",
-                            "value": "Серпухов"
-                        },
-                        {
-                            "key": "e2591b96-b2ba-4ce8-8c63-9477481effb5",
-                            "value": "Тверь"
-                        },
-                        {
-                            "key": "a6b631d7-1456-421a-a8b7-a8880a9d3383",
-                            "value": "Челябинск"
-                        },
-                        {
-                            "key": "d1bfc6ed-4a83-4f0a-a553-45a3152a03ff",
-                            "value": "Ростов-на-Дону"
-                        },
-                        {
-                            "key": "296ceb44-e414-4026-8037-303680b519af",
-                            "value": "Кызыл"
-                        },
-                        {
-                            "key": "796783ae-c833-4dbf-91b2-3e31682ac3ba",
-                            "value": "Ковров"
-                        },
-                        {
-                            "key": "88c9dcaa-3f67-4ac7-b852-d4843abd2e0f",
-                            "value": "Нефтекамск"
-                        },
-                        {
-                            "key": "2a58d436-70b0-4707-b52e-21c4a91f1ddd",
-                            "value": "Хабаровск"
-                        },
-                        {
-                            "key": "fa5befd0-2901-433a-8605-ab4a9e6727cc",
-                            "value": "Благовещенск"
-                        },
-                        {
-                            "key": "766bf994-acfb-449b-a637-8ed86a83d4b9",
-                            "value": "Абакан"
-                        },
-                        {
-                            "key": "886de159-f52c-4e0f-8fbf-c290e42b8880",
-                            "value": "Махачкала"
-                        },
-                        {
-                            "key": "aeeffdac-8680-4de7-a6b9-fbeee9732752",
-                            "value": "Брянск"
-                        },
-                        {
-                            "key": "a8b3fdc6-32ca-4210-adee-f779417c6bb6",
-                            "value": "Пермь"
-                        },
-                        {
-                            "key": "962b61df-8781-4eec-9943-901c7d411592",
-                            "value": "Хасавюрт"
-                        },
-                        {
-                            "key": "d32dbef5-8cff-4874-828b-af6db8aa9846",
-                            "value": "Новочебоксарск"
-                        },
-                        {
-                            "key": "f35e0627-33b3-495d-b12b-86a2c9cf5afe",
-                            "value": "Димитровград"
-                        },
-                        {
-                            "key": "52b6844a-669d-470a-b3bd-617a8cf18e89",
-                            "value": "Первоуральск"
-                        },
-                        {
-                            "key": "59746661-04a6-431f-913c-7100ae693e45",
-                            "value": "Салават"
-                        },
-                        {
-                            "key": "07aadf04-2e21-4311-9466-512a18a4afd9",
-                            "value": "Щелково"
-                        },
-                        {
-                            "key": "6237f1fb-f593-42ef-bd41-180e83381e30",
-                            "value": "Новокуйбышевск"
-                        },
-                        {
-                            "key": "8e3e81bd-5999-4e15-a87b-df3c869c7454",
-                            "value": "Петропавловск-Камчатский"
-                        },
-                        {
-                            "key": "fbe1bea9-9ba3-42c3-a708-4e29e2601dbb",
-                            "value": "Братск"
-                        },
-                        {
-                            "key": "1653dbff-d223-4dee-8045-dada8685e366",
-                            "value": "Альметьевск"
-                        },
-                        {
-                            "key": "25c415a2-29a6-49cb-a9f0-0daaf112175e",
-                            "value": "Йошкар-Ола"
-                        },
-                        {
-                            "key": "0b8a1695-8a68-4491-88f1-562ecbbbeab6",
-                            "value": "Новый Уренгой"
-                        },
-                        {
-                            "key": "2d0da3cb-1d1c-490e-b67b-70b9f78f8d2f",
-                            "value": "Воткинск"
-                        },
-                        {
-                            "key": "e70f3e35-6f6e-4b45-8861-17716a2a3927",
-                            "value": "Курган"
-                        },
-                        {
-                            "key": "7a70eb26-b75a-4ce1-bd40-776742689221",
-                            "value": "Дербент"
-                        },
-                        {
-                            "key": "ccf4061b-b791-4bd6-925c-245c6257485f",
-                            "value": "Невинномысск"
-                        },
-                        {
-                            "key": "cf53a24a-3a9d-4192-acd4-c5829dec337b",
-                            "value": "Орск"
-                        },
-                        {
-                            "key": "42790cbf-02d7-4585-b274-117e6ccb0c60",
-                            "value": "Сарапул"
-                        },
-                        {
-                            "key": "6d4d13b3-f0b9-40f0-8b88-0c2c76cd8a9e",
-                            "value": "Новошахтинск"
-                        },
-                        {
-                            "key": "6b171a2c-af75-46bc-9429-79ec29b54a1d",
-                            "value": "Балаково"
-                        },
-                        {
-                            "key": "21bf7b64-5b43-4c95-ba7b-0c678e73b9f6",
-                            "value": "Смоленск"
-                        },
-                        {
-                            "key": "0bae7c17-0e1f-40f6-b27c-47458c2c81d8",
-                            "value": "Сергиев Посад"
-                        },
-                        {
-                            "key": "b9ac35fb-ef27-4d4b-9fcd-3a806c871ed4",
-                            "value": "Бийск"
-                        },
-                        {
-                            "key": "b4a5efd6-0013-4f47-9f5b-709070821c61",
-                            "value": "Ачинск"
-                        },
-                        {
-                            "key": "3a132be6-eb78-468e-bfc4-d0d369ff2ff6",
-                            "value": "Старый Оскол"
-                        },
-                        {
-                            "key": "1e7dd1af-6fce-4e04-8dcd-bdceaef37f8e",
-                            "value": "Владикавказ"
-                        },
-                        {
-                            "key": "9b5e8b83-d806-4855-ae3d-3b5d7f425536",
-                            "value": "Кострома"
-                        },
-                        {
-                            "key": "e31eed11-c387-4dbe-882d-dbd624eeaba3",
-                            "value": "Жуковский"
-                        },
-                        {
-                            "key": "8176f813-1930-4a5d-a67d-e7a60beb14cc",
-                            "value": "Миасс"
-                        },
-                        {
-                            "key": "e7041943-68b2-4a50-b760-5e15ca6a3603",
-                            "value": "Ленинск-Кузнецкий"
-                        },
-                        {
-                            "key": "a81cace3-0ae3-4c48-9346-ebd67f740e2b",
-                            "value": "Елец"
-                        },
-                        {
-                            "key": "704f3ef5-a27b-4988-baca-f6e002e9a164",
-                            "value": "Красногорск"
-                        },
-                        {
-                            "key": "aa1b9dfe-9b26-4a88-84db-212f35dcc7e1",
-                            "value": "Владимир"
-                        },
-                        {
-                            "key": "991e734f-a888-4340-ae4c-d5bd32273188",
-                            "value": "Архангельск"
-                        },
-                        {
-                            "key": "944b7750-cdfb-43b9-a2cc-9dd94ca49f15",
-                            "value": "Сочи"
-                        },
-                        {
-                            "key": "60911776-c88f-48bb-b619-06a61c8ffd05",
-                            "value": "Мурманск"
-                        },
-                        {
-                            "key": "e1e8063c-23d1-432e-8e57-5d618410b3b7",
-                            "value": "Прокопьевск"
-                        },
-                        {
-                            "key": "1fa0dda4-186d-4192-8a3f-923c7944d95d",
-                            "value": "Южно-Сахалинск"
-                        },
-                        {
-                            "key": "900710e0-c8ed-4e3c-961c-32261fb1c6ed",
-                            "value": "Черкесск"
-                        },
-                        {
-                            "key": "673f8960-e484-4b9e-83e3-989ff7759e7b",
-                            "value": "Петрозаводск"
-                        },
-                        {
-                            "key": "other",
-                            "value": "Другой город / за пределами РФ"
-                        },
-                        {
-                            "key": "1dfaa028-6c8b-4bd7-9ce9-b9462848e7b2",
-                            "value": "Каменск-Уральский"
-                        },
-                        {
-                            "key": "75bf8bc5-b1ec-454e-973d-368253b4ca46",
-                            "value": "Элиста"
-                        },
-                        {
-                            "key": "beda39e1-253f-44d5-a4b8-c717433a7511",
-                            "value": "Железнодорожный"
-                        },
-                        {
-                            "key": "52a85978-37eb-4b02-b0d9-eb857686469c",
-                            "value": "Орехово-Зуево"
-                        },
-                        {
-                            "key": "01046d0e-326a-4289-85d8-208625de89e4",
-                            "value": "Копейск"
-                        },
-                        {
-                            "key": "2b70ca02-bdad-4d84-864d-909c0a3e8b2c",
-                            "value": "Нижневартовск"
-                        },
-                        {
-                            "key": "fe4548ac-431f-4b11-84f7-b84d884f2bd3",
-                            "value": "Электросталь"
-                        },
-                        {
-                            "key": "adcb3d0d-ca62-4f35-a892-4e7c71be563f",
-                            "value": "Одинцово"
-                        },
-                        {
-                            "key": "44cf953a-3673-41a2-a763-382e1e6c95ed",
-                            "value": "Псков"
-                        },
-                        {
-                            "key": "05ae4d4b-2ff2-4cfc-92ff-1153ea27fd7f",
-                            "value": "Калуга"
-                        },
-                        {
-                            "key": "da4f760e-f3db-44dd-93d8-5a42873062b9",
-                            "value": "Энгельс "
-                        },
-                        {
-                            "key": "1ad5cced-44c5-456e-9f83-2099fc678dfd",
-                            "value": "Королев"
-                        },
-                        {
-                            "key": "729165b3-1352-450c-a7c8-aca6f89eafeb",
-                            "value": "Сызрань"
-                        },
-                        {
-                            "key": "51f0a82c-49af-4ea7-b1ea-c1e99099923c",
-                            "value": "Майкоп"
-                        },
-                        {
-                            "key": "ccf34bd4-1720-49f8-8d98-a11d4ab6c629",
-                            "value": "Таганрог"
-                        },
-                        {
-                            "key": "33599e07-6e48-490a-b918-360d51d307fb",
-                            "value": "Нальчик"
-                        },
-                        {
-                            "key": "191bc69a-cd30-4456-8e11-59dd98476e2b",
-                            "value": "Череповец"
-                        },
-                        {
-                            "key": "f0ffa934-f809-4d28-a9d0-c6276c148189",
-                            "value": "Муром"
-                        },
-                        {
-                            "key": "c084b3f3-572e-4fe5-b263-a17f7ce86fa6",
-                            "value": "Киев (Украина)"
-                        },
-                        {
-                            "key": "52d76ee4-de85-46ed-b69b-e4f4cde5086e",
-                            "value": "Одесса (Украина)"
-                        },
-                        {
-                            "key": "102ddf64-14fa-43c1-9c85-1d2b821ac61d",
-                            "value": "Минск (Белоруссия)"
-                        }
-                    ]
-                },
-                "firstName": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "required": true
-                },
                 "id": {
                     "include": false,
                     "fileImageFormat": "square",
@@ -23784,7 +21932,81 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "lastName": {
+                "brand": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "quickSearchSL": "addGoodChooseBrand",
+                    "required": true,
+                    "searchData": [
+                        {
+                            "key": "cf877e5c-eb03-4660-8e84-db1926acaf77",
+                            "value": "UNIQLO"
+                        }
+                    ]
+                },
+                "category": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": true,
+                    "searchData": [
+                        {
+                            "key": "men",
+                            "value": "Мужское"
+                        },
+                        {
+                            "key": "women",
+                            "value": "Женское"
+                        },
+                        {
+                            "key": "kids",
+                            "value": "Дети"
+                        },
+                        {
+                            "key": "beauty",
+                            "value": "Бьюти"
+                        },
+                        {
+                            "key": "interior",
+                            "value": "Интерьер"
+                        }
+                    ]
+                },
+                "color": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "searchData": [
+                        {
+                            "key": "black",
+                            "value": "Черный"
+                        },
+                        {
+                            "key": "white",
+                            "value": "Белый"
+                        },
+                        {
+                            "key": "dark-blue",
+                            "value": "Синий"
+                        },
+                        {
+                            "key": "blue",
+                            "value": "Голубой"
+                        },
+                        {
+                            "key": "yellow",
+                            "value": "Жёлтый"
+                        }
+                    ]
+                },
+                "description": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -23792,90 +22014,44 @@ const App = (props) => {
                     "clickable": false,
                     "required": true
                 },
-                "salary_raw": {
+                "isNew": {
                     "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false,
                     "defaultValueOn": true,
-                    "defaultValue": {
-                        "secondValue": 100,
-                        "firstValue": 50
-                    },
-                    "descriptionFlag": true,
-                    "description": "Доход в месяц, тыс.  ₽"
+                    "required": false,
+                    "defaultValue": "true"
                 },
-                "type": {
+                "name": {
                     "include": true,
                     "fileImageFormat": "square",
-                    "quickSearch": true,
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": true
+                },
+                "photo": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false,
                     "required": false,
-                    "defaultValueOn": false,
-                    "defaultValue": "22",
-                    "searchData": [
-                        {
-                            "key": "22",
-                            "value": "22 — сфера услуг, сменный график"
-                        },
-                        {
-                            "key": "52",
-                            "value": "52 — офисная работа и креатив"
-                        }
-                    ]
+                    "fileUpload": true
                 },
-                "Facebook_lonk": {
-                    "include": false,
+                "price": {
+                    "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false,
+                    "required": true,
                     "descriptionFlag": true,
-                    "description": "опционально"
+                    "description": "Базовая цена, без скидки"
                 },
-                "Instagram_link": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "descriptionFlag": true,
-                    "description": "опционально"
-                },
-                "lang_id": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "quickSearchSL": "langEng",
-                    "searchData": [
-                        {
-                            "key": "4db31229-8ef7-4bca-af91-04c9eadddb7b",
-                            "value": "🇬🇧английский элементарный"
-                        },
-                        {
-                            "key": "196b452a-4565-4c2f-910e-11f32afb7dfb",
-                            "value": "🇬🇧 английский средний"
-                        },
-                        {
-                            "key": "82ddd9e8-132c-4703-aeee-2f893cd0fb3f",
-                            "value": "🇬🇧английский свободный"
-                        }
-                    ]
-                },
-                "about_last_job": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "descriptionFlag": true,
-                    "description": "Опишите последнее место работы: должность, название компании, продолжительность"
-                },
-                "schedule": {
+                "subcategoryBeauty": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": true,
@@ -23883,36 +22059,24 @@ const App = (props) => {
                     "clickable": false,
                     "searchData": [
                         {
-                            "key": "7a2a3f81-49de-4946-bbeb-1b20047c7572",
-                            "value": "полная"
+                            "key": "care",
+                            "value": "Уход"
                         },
                         {
-                            "key": "866e112c-7777-4387-a89a-32ab1f6466b6",
-                            "value": "частичная"
+                            "key": "beautyProducts",
+                            "value": "Косметика"
                         },
                         {
-                            "key": "606f809f-32ba-479b-91f6-3e14f02a5d10",
-                            "value": "неважно"
+                            "key": "faceMassageTools",
+                            "value": "Массажеры"
+                        },
+                        {
+                            "key": "hygiene",
+                            "value": "Гигиена"
                         }
                     ]
                 },
-                "about_last_job_bool": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "required": true
-                },
-                "birthday": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "required": true
-                },
-                "lang": {
+                "subcategoryInterior": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": true,
@@ -23920,332 +22084,684 @@ const App = (props) => {
                     "clickable": false,
                     "searchData": [
                         {
-                            "key": "английский",
-                            "value": "английский"
+                            "key": "furniture",
+                            "value": "мебель"
                         },
                         {
-                            "key": "немецкий",
-                            "value": "немецкий"
+                            "key": "lifestyle",
+                            "value": "аксессуары для дома"
                         },
                         {
-                            "key": "французский",
-                            "value": "французский"
+                            "key": "bedclothes",
+                            "value": "постельное белье"
                         },
                         {
-                            "key": "итальянский",
-                            "value": "итальянский"
+                            "key": "candles",
+                            "value": "свечи и ароматы для дома "
                         },
                         {
-                            "key": "испанский",
-                            "value": "испанский"
+                            "key": "tableware",
+                            "value": "посуда"
                         },
                         {
-                            "key": "китайский",
-                            "value": "китайский"
-                        },
-                        {
-                            "key": "другой язык",
-                            "value": "другой язык"
+                            "key": "stationery",
+                            "value": "канцелярия "
                         }
                     ]
                 },
-                "lang_ch": {
+                "subcategoryKids": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": true,
                     "fileImageSize": 200,
                     "clickable": false,
-                    "quickSearchSL": "langCh",
                     "searchData": [
                         {
-                            "key": "fc6901f6-d2b2-4bb1-926e-0c4bf5a3e32a",
-                            "value": "🇨🇳 китайский  элементарный"
+                            "key": "kidsClothing",
+                            "value": "Вся одежда"
                         },
                         {
-                            "key": "2a6b67a9-1d1b-40b6-8f3c-3e2f9e0df868",
-                            "value": "🇨🇳 китайский средний"
+                            "key": "kidsSuits",
+                            "value": "Костюмы"
                         },
                         {
-                            "key": "971610cc-ed02-4eb5-b60b-741760ddc570",
-                            "value": "🇨🇳 китайский свободный"
+                            "key": "kidsCoats",
+                            "value": "Пальто "
+                        },
+                        {
+                            "key": "kidsDresses",
+                            "value": "Платья"
+                        },
+                        {
+                            "key": "kidsJackets",
+                            "value": "Куртки"
+                        },
+                        {
+                            "key": "kidsShorts",
+                            "value": "Шорты "
+                        },
+                        {
+                            "key": "kidsSkirts",
+                            "value": "Юбки"
+                        },
+                        {
+                            "key": "kidsPajamas",
+                            "value": "Пижамы"
+                        },
+                        {
+                            "key": "kidsSwimwear",
+                            "value": "Пляжная одежда"
+                        },
+                        {
+                            "key": "kidsTshirts",
+                            "value": "Футболки и топы"
+                        },
+                        {
+                            "key": "kidsTracksuits",
+                            "value": "Спортивные костюмы"
+                        },
+                        {
+                            "key": "kidsTrousers",
+                            "value": "Брюки "
+                        },
+                        {
+                            "key": "kidsAccessories",
+                            "value": "Аксессуары "
+                        },
+                        {
+                            "key": "kidsShoes ",
+                            "value": "Обувь"
+                        },
+                        {
+                            "key": "babyClothing",
+                            "value": "Все для новорожденных"
+                        },
+                        {
+                            "key": "babyGifts",
+                            "value": "Подарки"
                         }
                     ]
                 },
-                "lang_de": {
+                "subcategoryMen": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": true,
                     "fileImageSize": 200,
                     "clickable": false,
-                    "quickSearchSL": "langDe",
                     "searchData": [
                         {
-                            "key": "55f1305d-6d14-4c0f-8571-2888e4606b3c",
-                            "value": "🇩🇪 немецкий  элементарный"
+                            "key": "outerwear",
+                            "value": "Верхняя одежда"
                         },
                         {
-                            "key": "625c0933-ed30-4d9e-9f84-b847348e8cbe",
-                            "value": "🇩🇪 немецкий средний"
+                            "key": "jeans",
+                            "value": "Джинсы "
                         },
                         {
-                            "key": "b633c61d-8d67-477e-a452-f3a5b0558795",
-                            "value": "🇩🇪 немецкий свободный"
+                            "key": "trousers",
+                            "value": "Брюки"
+                        },
+                        {
+                            "key": "jumpsuits",
+                            "value": "Комбинезоны "
+                        },
+                        {
+                            "key": "sweaters",
+                            "value": "Свитеры и джемперы"
+                        },
+                        {
+                            "key": "hoodies",
+                            "value": "Толстовки и худи"
+                        },
+                        {
+                            "key": "tshirts",
+                            "value": "Футболки и поло"
+                        },
+                        {
+                            "key": "shorts",
+                            "value": "Шорты"
+                        },
+                        {
+                            "key": "shirts",
+                            "value": "Рубашки"
+                        },
+                        {
+                            "key": "jackets",
+                            "value": "Пиджаки "
+                        },
+                        {
+                            "key": "suits",
+                            "value": "Костюмы"
+                        },
+                        {
+                            "key": "swimwear",
+                            "value": "Пляжная одежда"
+                        },
+                        {
+                            "key": "underwear",
+                            "value": "Белье и носки"
+                        },
+                        {
+                            "key": "sneakers",
+                            "value": "Кроссовки и кеды"
+                        },
+                        {
+                            "key": "sandals",
+                            "value": "Сандалии"
+                        },
+                        {
+                            "key": "boots",
+                            "value": "Ботинки "
+                        },
+                        {
+                            "key": "hats",
+                            "value": "Головные уборы "
+                        },
+                        {
+                            "key": "ties",
+                            "value": "Галстуки"
+                        },
+                        {
+                            "key": "glasses",
+                            "value": "Очки "
+                        },
+                        {
+                            "key": "gloves",
+                            "value": "Перчатки"
+                        },
+                        {
+                            "key": "belts",
+                            "value": "Ремни "
+                        },
+                        {
+                            "key": "cases",
+                            "value": "Чехлы"
+                        },
+                        {
+                            "key": "keyrings",
+                            "value": "Брелоки "
+                        },
+                        {
+                            "key": "other",
+                            "value": "Другое"
+                        },
+                        {
+                            "key": "backpacks",
+                            "value": "Рюкзаки "
+                        },
+                        {
+                            "key": "bags",
+                            "value": "Сумки и клатчи "
+                        },
+                        {
+                            "key": "wallets",
+                            "value": "Кошельки"
+                        },
+                        {
+                            "key": "briefcases",
+                            "value": "Портфели и папки"
+                        },
+                        {
+                            "key": "rings",
+                            "value": "Кольца"
+                        },
+                        {
+                            "key": "earrings",
+                            "value": "Серьги "
+                        },
+                        {
+                            "key": "necklaces",
+                            "value": "Колье и подвески"
+                        },
+                        {
+                            "key": "bracelets",
+                            "value": "Браслеты "
+                        },
+                        {
+                            "key": "cufflinks",
+                            "value": "Запонки"
+                        },
+                        {
+                            "key": "watches",
+                            "value": "Часы"
                         }
                     ]
                 },
-                "lang_en": {
+                "subcategoryWomen": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": true,
                     "fileImageSize": 200,
                     "clickable": false,
-                    "quickSearchSL": "langEng",
                     "searchData": [
                         {
-                            "key": "4db31229-8ef7-4bca-af91-04c9eadddb7b",
-                            "value": "🇬🇧английский элементарный"
+                            "key": "outerwear",
+                            "value": "Верхняя одежда"
                         },
                         {
-                            "key": "196b452a-4565-4c2f-910e-11f32afb7dfb",
-                            "value": "🇬🇧 английский средний"
+                            "key": "dresses",
+                            "value": "Платья "
                         },
                         {
-                            "key": "82ddd9e8-132c-4703-aeee-2f893cd0fb3f",
-                            "value": "🇬🇧английский свободный"
+                            "key": "jeans",
+                            "value": "Джинсы "
+                        },
+                        {
+                            "key": "trousers",
+                            "value": "Брюки"
+                        },
+                        {
+                            "key": "jumpsuits",
+                            "value": "Комбинезоны "
+                        },
+                        {
+                            "key": "sweaters",
+                            "value": "Свитеры и джемперы"
+                        },
+                        {
+                            "key": "hoodies",
+                            "value": "Толстовки и худи"
+                        },
+                        {
+                            "key": "tshirts",
+                            "value": "Футболки и поло"
+                        },
+                        {
+                            "key": "shorts",
+                            "value": "Шорты"
+                        },
+                        {
+                            "key": "shirts",
+                            "value": "Рубашки"
+                        },
+                        {
+                            "key": "tops",
+                            "value": "Топы"
+                        },
+                        {
+                            "key": "jackets",
+                            "value": "Пиджаки "
+                        },
+                        {
+                            "key": "suits",
+                            "value": "Костюмы"
+                        },
+                        {
+                            "key": "skirts",
+                            "value": "Юбки"
+                        },
+                        {
+                            "key": "swimwear",
+                            "value": "Купальники"
+                        },
+                        {
+                            "key": "underwear",
+                            "value": "Белье и носки"
+                        },
+                        {
+                            "key": "sneakers",
+                            "value": "Кроссовки и кеды"
+                        },
+                        {
+                            "key": "sandals",
+                            "value": "Сандалии и босоножки"
+                        },
+                        {
+                            "key": "brogues",
+                            "value": "Ботинки "
+                        },
+                        {
+                            "key": "boots",
+                            "value": "Сапоги и ботильоны"
+                        },
+                        {
+                            "key": "pumps",
+                            "value": "Туфли "
+                        },
+                        {
+                            "key": "hats",
+                            "value": "Головные уборы "
+                        },
+                        {
+                            "key": "glasses",
+                            "value": "Очки "
+                        },
+                        {
+                            "key": "gloves",
+                            "value": "Перчатки"
+                        },
+                        {
+                            "key": "belts",
+                            "value": "Ремни "
+                        },
+                        {
+                            "key": "covers",
+                            "value": "Чехлы"
+                        },
+                        {
+                            "key": "keyrings",
+                            "value": "Брелоки "
+                        },
+                        {
+                            "key": "other",
+                            "value": "Другое"
+                        },
+                        {
+                            "key": "backpacks",
+                            "value": "Рюкзаки "
+                        },
+                        {
+                            "key": "bags",
+                            "value": "Сумки и клатчи "
+                        },
+                        {
+                            "key": "wallets",
+                            "value": "Кошельки"
+                        },
+                        {
+                            "key": "briefcases",
+                            "value": "Портфели и папки"
+                        },
+                        {
+                            "key": "rings",
+                            "value": "Кольца"
+                        },
+                        {
+                            "key": "earrings",
+                            "value": "Серьги "
+                        },
+                        {
+                            "key": "necklaces",
+                            "value": "Колье и подвески"
+                        },
+                        {
+                            "key": "bracelets",
+                            "value": "Браслеты "
+                        },
+                        {
+                            "key": "hairAccessories",
+                            "value": "Аксессуары для волос"
+                        },
+                        {
+                            "key": "watches",
+                            "value": "Часы"
                         }
                     ]
                 },
-                "lang_fr": {
+                "categoryType": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": true,
                     "fileImageSize": 200,
                     "clickable": false,
-                    "quickSearchSL": "langFr",
                     "searchData": [
                         {
-                            "key": "d5a86c50-ec5b-43eb-b798-50cd6ac28cd0",
-                            "value": "🇫🇷 французский  элементарный"
+                            "key": "footwear",
+                            "value": "Обувь"
                         },
                         {
-                            "key": "51fb73e7-9c83-4a13-810e-c828b9cf2c18",
-                            "value": "🇫🇷 французский средний"
+                            "key": "accessories",
+                            "value": "Аксессуары"
                         },
                         {
-                            "key": "fb26028c-b723-4ec5-bd6a-8b8e73f4384a",
-                            "value": "🇫🇷 французский свободный"
+                            "key": "bags",
+                            "value": "Сумки"
+                        },
+                        {
+                            "key": "underwear",
+                            "value": "Белье"
+                        },
+                        {
+                            "key": "jewelry",
+                            "value": "Украшения"
+                        },
+                        {
+                            "key": "clothes",
+                            "value": "Одежда"
                         }
                     ]
                 },
-                "lang_it": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "quickSearchSL": "langIt",
-                    "searchData": [
-                        {
-                            "key": "d4948816-5857-4760-b407-b5bfdc5f42b0",
-                            "value": "🇮🇹 итальянский  элементарный"
-                        },
-                        {
-                            "key": "24e70c72-177a-4db0-83aa-6f32ef242dfb",
-                            "value": "🇮🇹 итальянский средний"
-                        },
-                        {
-                            "key": "66546cd5-ec5f-4b67-a796-741c4e961103",
-                            "value": "🇮🇹 итальянский свободный"
-                        }
-                    ]
-                },
-                "lang_sp": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "quickSearchSL": "langSp",
-                    "searchData": [
-                        {
-                            "key": "ea0fcd72-e279-4dd3-bb7a-656adc91ccc8",
-                            "value": "🇪🇸 испанский  элементарный"
-                        },
-                        {
-                            "key": "7644b466-fa5e-4bf1-b362-edcb34600347",
-                            "value": "🇪🇸 испанский средний"
-                        },
-                        {
-                            "key": "22fbaa72-76d3-494b-bcea-b0271ceb7284",
-                            "value": "🇪🇸 испанский свободный"
-                        }
-                    ]
-                },
-                "lang_from_user": {
+                "vendorCode": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
+                },
+                "gender": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": false,
+                    "searchData": [
+                        {
+                            "key": "men",
+                            "value": "Мужское"
+                        },
+                        {
+                            "key": "women",
+                            "value": "Женское"
+                        }
+                    ]
                 }
-            },
-            "useEditing": true,
-            "edit": true
+            }
         },
         "fileds": [
             {
-                "sysName": "22_functions",
-                "name": "Функции для категории 22",
-                "dataType": "arrayLink",
-                "id": "34391607077096514",
-                "link": "functions22",
-                "group": "1607016878115",
-                "tags": null,
+                "sysName": "brand",
+                "dataType": "link",
+                "name": "Бренд",
+                "id": "67261624310684962",
+                "link": "Brands",
+                "group": "0",
+                "tags": "",
+                "indexing": true,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 7,
+                "linkIndexFieldSysName": [
+                    "brandName",
+                    "owner_id",
+                    "id"
+                ],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkType": true,
+                "typeVariable": {},
+                "json": false,
+                "arrayLink": false,
+                "indexExists": true,
+                "linkOrArrayLinkType": true,
+                "array": false
+            },
+            {
+                "sysName": "category",
+                "dataType": "link",
+                "name": "Категория",
+                "id": "99311624310596554",
+                "link": "category",
+                "group": "1624486873153",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkType": true,
+                "typeVariable": {},
+                "json": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "array": false
+            },
+            {
+                "sysName": "categoryType",
+                "dataType": "link",
+                "name": "Подтип категории",
+                "id": "32291628759887053",
+                "link": "categoryType",
+                "group": "1624486873153",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 6,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": false,
-                "arrayLink": true,
-                "indexExists": false,
+                "linkType": true,
                 "typeVariable": {},
+                "json": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
                 "array": false
             },
             {
-                "sysName": "52_functions",
-                "name": "Функции для категории 52",
-                "dataType": "arrayLink",
-                "id": "22101607077116998",
-                "link": "functions52",
-                "group": "1607016878115",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": false,
-                "arrayLink": true,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "Facebook_lonk",
-                "name": "Facebook",
-                "dataType": "string",
-                "id": "64931609825374119",
-                "link": "",
-                "group": "1607016878115",
+                "sysName": "color",
+                "dataType": "link",
+                "name": "Цвет",
+                "id": "85091624310580305",
+                "link": "colors",
+                "group": "0",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 9,
+                "order": 4,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
-                "format": "webLink",
+                "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "linkType": true,
+                "typeVariable": {},
                 "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
+                "linkOrArrayLinkType": true,
                 "array": false
             },
             {
-                "sysName": "Instagram_link",
-                "name": "Instagram",
+                "sysName": "description",
                 "dataType": "string",
-                "id": "91391609825359387",
+                "name": "Описание",
+                "id": "93171624310572841",
                 "link": "",
-                "group": "1607016878115",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "markdown",
+                "formatOptions": {},
+                "groupName": null,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "array": false
+            },
+            {
+                "sysName": "gender",
+                "dataType": "link",
+                "name": "Пол",
+                "id": "66261634401502556",
+                "link": "gender",
+                "group": "1624486873153",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 7,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkType": true,
+                "typeVariable": {},
+                "json": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "array": false
+            },
+            {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "array": false
+            },
+            {
+                "sysName": "isNew",
+                "dataType": "boolean",
+                "name": "Новый товар",
+                "id": "80961624316987394",
+                "link": "",
+                "group": "0",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 8,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "webLink",
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "about_last_job",
-                "name": "Последнее место работы",
-                "dataType": "string",
-                "id": "48551634130491392",
-                "link": null,
-                "group": "1607016878115",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 15,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "about_last_job_bool",
-                "name": "Опыт работы",
-                "dataType": "boolean",
-                "id": "59381637227629563",
-                "link": "",
-                "group": "1607016878115",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 20,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
@@ -24260,8 +22776,8 @@ const App = (props) => {
                     },
                     "dateLocale": "en-gb",
                     "booleanOptions": [
-                        "есть опыт",
-                        "нет опыта"
+                        "Да",
+                        "Нет"
                     ],
                     "validWeekDays": {
                         "mon": true,
@@ -24280,244 +22796,21 @@ const App = (props) => {
                     "isUTC": "false"
                 },
                 "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
                 "linkType": false,
+                "typeVariable": {},
+                "json": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "birthday",
-                "name": "Дата рождения",
-                "dataType": "date",
-                "id": "78441637227542072",
-                "link": "",
-                "group": "1607016878115",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 19,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "ru",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD.MM.Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false"
-                },
-                "groupName": null,
-                "json": false,
                 "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
                 "array": false
             },
             {
-                "sysName": "city",
-                "name": "Город",
-                "dataType": "link",
-                "id": "80181607081867668",
-                "link": "cities",
-                "group": "1606985920923",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "firstName",
-                "name": "Имя",
+                "sysName": "name",
                 "dataType": "string",
-                "id": "5",
+                "name": "Название",
+                "id": "90461624310568714",
                 "link": "",
                 "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "id",
-                "name": "Username (login)",
-                "dataType": "id",
-                "id": "13",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "lang",
-                "name": "Знание иностранных языков",
-                "dataType": "link",
-                "id": "57241635953910336",
-                "link": "lang_cat",
-                "group": "1637230118801",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "lang_ch",
-                "name": "Уровень владения китайским языком",
-                "dataType": "link",
-                "id": "82121637230433990",
-                "link": "lang",
-                "group": "1637230118801",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 7,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "lang_de",
-                "name": "Уровень владения немецким языком",
-                "dataType": "link",
-                "id": "30111637230295842",
-                "link": "lang",
-                "group": "1637230118801",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "lang_en",
-                "name": "Уровень владения английским языком",
-                "dataType": "link",
-                "id": "78151637230252127",
-                "link": "lang",
-                "group": "1637230118801",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
@@ -24531,133 +22824,21 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "lang_fr",
-                "name": "Уровень владения французским языком",
-                "dataType": "link",
-                "id": "55011637230342892",
-                "link": "lang",
-                "group": "1637230118801",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "lang_from_user",
-                "name": "свой вариант",
-                "dataType": "string",
-                "id": "98651637235752912",
-                "link": "",
-                "group": "1637230118801",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 8,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
                 "linkType": false,
+                "typeVariable": {},
+                "json": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "lang_id",
-                "name": "Знание иностранных языков",
-                "dataType": "string",
-                "id": "64741635954610219",
-                "link": "",
-                "group": "1637230118801",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
                 "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
                 "array": false
             },
             {
-                "sysName": "lang_it",
-                "name": "Уровень владения итальянским языком",
-                "dataType": "link",
-                "id": "61961637230368791",
-                "link": "lang",
-                "group": "1637230118801",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "lang_sp",
-                "name": "Уровень владения испанским языком",
-                "dataType": "link",
-                "id": "77751637230396792",
-                "link": "lang",
-                "group": "1637230118801",
+                "sysName": "photo",
+                "dataType": "file",
+                "name": "Фото",
+                "id": "31701624310616441",
+                "link": "",
+                "group": "0",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
@@ -24668,22 +22849,22 @@ const App = (props) => {
                 "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
-                "format": null,
+                "format": "multipleImages",
                 "formatOptions": {},
                 "groupName": null,
+                "linkType": false,
+                "typeVariable": {},
                 "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
+                "linkOrArrayLinkType": false,
                 "array": false
             },
             {
-                "sysName": "lastName",
-                "name": "Фамилия",
-                "dataType": "string",
-                "id": "4",
+                "sysName": "price",
+                "dataType": "number",
+                "name": "Цена, ₽",
+                "id": "74391627677598162",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -24691,7 +22872,7 @@ const App = (props) => {
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 4,
+                "order": 10,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
@@ -24699,96 +22880,21 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
                 "linkType": false,
+                "typeVariable": {},
+                "json": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "salary_raw",
-                "name": "Ожидания по доходу ",
-                "dataType": "json",
-                "id": "63391607082324656",
-                "link": "",
-                "group": "1607016878115",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "rangeSlider",
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "unitName": "k ₽",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {
-                        "max": 300,
-                        "min": 20,
-                        "step": 10
-                    },
-                    "customOptionType": "textarea"
-                },
-                "groupName": null,
-                "json": true,
                 "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
                 "array": false
             },
             {
-                "sysName": "schedule",
-                "name": "Занятость",
-                "dataType": "arrayLink",
-                "id": "90801635956020309",
-                "link": "schedule",
-                "group": "1607016878115",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 18,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": false,
-                "arrayLink": true,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "type",
-                "name": "Категория вакансий",
+                "sysName": "subcategoryBeauty",
                 "dataType": "link",
-                "id": "68641607070972375",
-                "link": "Type2252",
-                "group": "1607016878115",
+                "name": "Бьюти",
+                "id": "88001624486752931",
+                "link": "subcategoryBeauty",
+                "group": "1624486873153",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
@@ -24800,54 +22906,161 @@ const App = (props) => {
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "booleanOptions": [
-                        "2 через 2",
-                        "5 через 2"
-                    ],
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea"
-                },
+                "formatOptions": null,
                 "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": true,
                 "linkType": true,
+                "typeVariable": {},
+                "json": false,
                 "arrayLink": false,
                 "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "array": false
+            },
+            {
+                "sysName": "subcategoryInterior",
+                "dataType": "link",
+                "name": "Интерьер",
+                "id": "12011624486790587",
+                "link": "subcategoryInterior",
+                "group": "1624486873153",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkType": true,
                 "typeVariable": {},
+                "json": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "array": false
+            },
+            {
+                "sysName": "subcategoryKids",
+                "dataType": "link",
+                "name": "Детское",
+                "id": "35001624486729783",
+                "link": "subcategoryKids",
+                "group": "1624486873153",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkType": true,
+                "typeVariable": {},
+                "json": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "array": false
+            },
+            {
+                "sysName": "subcategoryMen",
+                "dataType": "link",
+                "name": "Мужское",
+                "id": "63351624486661483",
+                "link": "subcategoryMen",
+                "group": "1624486873153",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkType": true,
+                "typeVariable": {},
+                "json": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "array": false
+            },
+            {
+                "sysName": "subcategoryWomen",
+                "dataType": "link",
+                "name": "Женское",
+                "id": "54621624486680601",
+                "link": "subcategoryWomen",
+                "group": "1624486873153",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkType": true,
+                "typeVariable": {},
+                "json": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "array": false
+            },
+            {
+                "sysName": "vendorCode",
+                "dataType": "string",
+                "name": "Артикул",
+                "id": "51831627942104491",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
                 "array": false
             }
         ],
         "error": null,
         "isSuccessWrite": false,
         "response": null,
-        "data": [
-            {
-                "birthday": 1636578000000,
-                "city": "95ddc157-f2dc-4ab1-a1e5-ce9c6398bfdf",
-                "52_functions": [
-                    ""
-                ],
-                "salary_raw": "{\"secondValue\":100,\"firstValue\":50}",
-                "about_last_job_bool": false,
-                "22_functions": [
-                    "ee6cd622-e697-4d59-bca0-d34d4d6fa058",
-                    "772fafad-36a7-4ccc-b338-ebb3b670e554",
-                    "b5d6682c-09da-4d8b-86ef-abe3295da502"
-                ],
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "79151845361",
-                "type": "22"
-            }
-        ]
+        "data": null
     }
 
     const parseJson = json => {

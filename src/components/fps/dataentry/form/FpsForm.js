@@ -144,14 +144,15 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
     for (const field in data.params.data.fieldParams) {
       //if (field.isValid == false) { setIsValid(false); }
       if (data.params.data.fieldParams[field] && data.params.data.fieldParams[field].required &&
-        data.fileds && data.fileds.length > 0 && data.fileds.filter(i=>i.sysName == field) &&
-        data.fileds.filter(i=>i.sysName == field).length > 0 &&
-        !model[field] && !model[field] !== false && data.params.data.fieldParams[field].include 
+        data.fileds && data.fileds.length > 0 && data.fileds.filter(i => i.sysName == field) &&
+        data.fileds.filter(i => i.sysName == field).length > 0 &&
+        !model[field] && !model[field] !== false && data.params.data.fieldParams[field].include
         //&& !data.params.data.fieldParams[field].hidden
-        ) { 
-          console.log('FAILED REQ VALIDATION')
-          console.log(field)
-          setIsValid(false); }
+      ) {
+        console.log('FAILED REQ VALIDATION')
+        console.log(field)
+        setIsValid(false);
+      }
     }
   }, [model])
 
@@ -176,7 +177,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
     let answer
     if (data.params.result.isLink) {
       answer = <a href={answerText} target="_blank">{data.params.result.linkTitle || answerText}</a>
-    } else ( answer = answerText )
+    } else (answer = answerText)
     return {
       sync,
       isSuccess,
@@ -204,11 +205,11 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     let modelCopy = { ...fetchedObjectFields, ...hiddenFieldsValues, ...hiddenAuth, ...model }; // model в конце! Иначе нахуй перетирается все что ввели
     if (eidtID) { modelCopy.id = eidtID } // тут проебывался где-то или перетирался id, посему записываем в явном виде
     setModel(modelCopy)
-  },[data.data])
+  }, [data.data])
 
   const onChange = (field, value) => {
     let modelCopy = { ...fetchedObjectFields, ...hiddenFieldsValues, ...hiddenAuth, ...model }; // model в конце! Иначе нахуй перетирается все что ввели
@@ -217,20 +218,41 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
     setModel(modelCopy)
   }
 
-  const checkSectionConditionals = conditionals => {
+  const checkSectionConditionals = (conditionals, operator) => {
+    operator = operator || 'and'
     if (!conditionals) { return true }
-    let showSection = true
+    let showSection
     // console.log('===cond===')
     // console.log(conditionals)
     // console.log(model)
     if (conditionals.length == 0) return true;
-    conditionals.forEach(cond => {
-      if (model[cond.field] != cond.value) {
-        console.log("section can't be shown")
-        console.log(model[cond.field] + ' != ' + cond.value)
-        showSection = false
-      }
-    })
+    if (operator == 'and') {
+      showSection = true
+      conditionals.forEach(cond => {
+        if (model[cond.field] != cond.value && cond.value != 'null') {
+          console.log("section can't be shown")
+          console.log(cond.field + ' = ' + model[cond.field] + ' != ' + cond.value)
+          showSection = false
+        }
+        if (model[cond.field] && cond.value == 'null') {
+          console.log("section can't be shown")
+          console.log(cond.field + ' = ' + model[cond.field] + ' is not empty ')
+          showSection = false
+        }
+      })
+    }
+    if (operator == 'or') {
+      showSection = false
+      conditionals.forEach(cond => {
+        if (model[cond.field] == cond.value && cond.value != 'null') {
+          showSection = true
+        }
+        if (!model[cond.field] && cond.value == 'null') {
+          showSection = true
+        }
+      })
+      if (!showSection) { console.log("section can't be shown") }
+    }
     return showSection
   }
 
@@ -277,7 +299,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
           {data.params.data.columnOrder.map(section =>
             data.params.data.columns[section].fieldIds
             && data.params.data.columns[section].fieldIds.length > 0
-            && checkSectionConditionals(data.params.data.columns[section].cond) &&
+            && checkSectionConditionals(data.params.data.columns[section].cond, data.params.data.columns[section].condOperator) &&
             <div style={{ marginBottom: 38 }}>
               {data.params.data.columnOrder.length > 1 && data.params.data.columns[section].display &&
                 <FormSection title=
@@ -315,7 +337,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
 
 
 function FpsFormOld({ auth, data, onEvent, id, locale }) {
-  
+
   const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
   const defaultParam =
@@ -349,7 +371,7 @@ function FpsFormOld({ auth, data, onEvent, id, locale }) {
   const [loading, setLoading] = useState(false)
   const [showForm, setShowForm] = useState(true)
 
-  const successText = data.successText || dict[lang].form.submittedSuccessfuly 
+  const successText = data.successText || dict[lang].form.submittedSuccessfuly
   const formName = data.formName || ''
   const formDesc = data.formDesc || ''
   const formButton = data.formButton || dict[lang].form.submit
@@ -531,11 +553,11 @@ function FpsFormOld({ auth, data, onEvent, id, locale }) {
     setIsValid(true)
     fileds.forEach(field => {
       if (field.isValid == false) { setIsValid(false); }
-      if (field.params.required && !model[field.sysName] && !model[field.sysName] !== false && field.params.include && !field.params.hidden) 
-        { 
-          // console.log('FAILED REQ VALIDATION')
-          // console.log(field)
-          setIsValid(false); }
+      if (field.params.required && !model[field.sysName] && !model[field.sysName] !== false && field.params.include && !field.params.hidden) {
+        // console.log('FAILED REQ VALIDATION')
+        // console.log(field)
+        setIsValid(false);
+      }
     }
     )
   }, [model])
@@ -565,7 +587,7 @@ function FpsFormOld({ auth, data, onEvent, id, locale }) {
     let answer
     if (data.params.result.isLink) {
       answer = <a href={answerText} target="_blank">{data.params.result.linkTitle || answerText}</a>
-    } else ( answer = answerText )
+    } else (answer = answerText)
     return {
       sync,
       isSuccess,
@@ -619,7 +641,7 @@ function FpsFormOld({ auth, data, onEvent, id, locale }) {
 
   return (
     <ComponentWrapper>
-      {formName && <h2 style={{marginBottom:12}}>{formName}</h2>}
+      {formName && <h2 style={{ marginBottom: 12 }}>{formName}</h2>}
       {formDesc && showForm && (
         <p style={{ maxWidth: formWidth, marginBottom: 22 }}>
           {formDesc}
