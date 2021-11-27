@@ -3,6 +3,11 @@ import ReactMapGL, { Marker, NavigationControl } from 'react-map-gl';
 //import 'mapbox-gl/dist/mapbox-gl.css';
 import './map.module.css'
 
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp.js';
+import MapboxGLWorker from 'mapbox-gl/dist/mapbox-gl-csp-worker.js';
+
+mapboxgl.workerClass = MapboxGLWorker;
+
 export default function Map({
     lng, // longitude
     lat, // latitude
@@ -11,7 +16,7 @@ export default function Map({
     zoom, // zoom 0-100
     mapStyle, // map style
     maptoken, // Mapbox token
-    hideNav, // hide navigation controls 
+    hideNav, // hide navigation controls
 }) {
     const defaultMaptoken = "pk.eyJ1IjoiZGlyZWN0dWFsIiwiYSI6ImNrdmJncTl0eTBkcWIyc3BuYjlpYXp2cnkifQ.mVDgIP-E8tA2FlBttPdi4A"
     const navStyle = {

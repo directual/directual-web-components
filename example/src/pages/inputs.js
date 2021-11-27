@@ -5,6 +5,12 @@ import {
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
+import * as Comlink from 'comlink';
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
+/* eslint-disable import/no-webpack-loader-syntax */
+const worker = new Worker("mapbox-gl/dist/mapbox-gl-csp-worker");
+//import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
+
 export default function InputsPage() {
     const [value, setValue] = useState()
 
@@ -144,19 +150,19 @@ Some *emphasis* and <strong>strong</strong>!`;
       const [dateFormat,setDateFormat] = useState('D MMM, YYYY')
       const [timeFormat,setTimeFormat] = useState('HH:mm')
       const [dateLocale,setDateLocale] = useState(null)
-      
+
       const [error,setError] = useState('error')
 
     return (
         <React.Fragment>
             <h1>Data entry</h1>
 
-            <Map 
+            <Map
                 height='400px'
                 width='400px'
             />
             <br />
-            
+
             {/* <Input type='number' defaultValue={0} /> */}
             {/* <Input required type='select' />
 
@@ -169,7 +175,7 @@ Some *emphasis* and <strong>strong</strong>!`;
 
             <h2>File upload</h2>
             <br />
-            <DropFiles 
+            <DropFiles
                 label='drop files here'
                 multiple={false}
                 onDrop={value => console.log(value)}
@@ -185,16 +191,16 @@ Some *emphasis* and <strong>strong</strong>!`;
                 multiple={true}
                 onChange={value => console.log(value)}
             />
-            
+
             <br />
 
-            {/* <FileUpload 
+            {/* <FileUpload
                 multiple={true}
             /> */}
 
             <br />
 
-            <Input type='multiselect' 
+            <Input type='multiselect'
             defaultValue={['id','хуе-мое']}
             options ={[
                 {
@@ -224,7 +230,7 @@ Some *emphasis* and <strong>strong</strong>!`;
             <Input type='markdown' edit example/>
 
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Special platform selects</h2>
-{/* 
+{/*
             <CodeSnippet code=
                 {`<Input
 label='Structure field'
@@ -269,13 +275,13 @@ type='structurefield' />`} />
                 type='structurefield' />
 
                 <InputGroup width={400}>
-                <Input 
+                <Input
                     label='Date format'
                     code
                     defaultValue={dateFormat}
                     onChange={setDateFormat}
                 />
-                <Input 
+                <Input
                     label='Time format'
                     code
                     defaultValue={timeFormat}
@@ -283,7 +289,7 @@ type='structurefield' />`} />
                 />
                 </InputGroup>
                 <Input
-                    width={400} 
+                    width={400}
                     label='Date locale'
                     type='select'
                     defaultValue={dateLocale}
@@ -296,9 +302,9 @@ type='structurefield' />`} />
                         {key: 'ru', value: 'Russian (ru)'},
                     ]}
                 /> */}
-            <Input 
+            <Input
                 type='date'
-                width={400} 
+                width={400}
                 //debug
                 label='test date'
                 locale={dateLocale}
@@ -418,7 +424,7 @@ disabled`}
                 label='Request query params'
             />
 
-            
+
 
             <CodeSnippet code=
                 {`<Input
