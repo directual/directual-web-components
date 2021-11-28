@@ -11,6 +11,7 @@ import { Markdown } from '../../article/mkd'
 import { InputForm } from './InputForm'
 import { dict } from '../../locale'
 import moment from 'moment'
+import { map } from 'lodash'
 
 export function FormSection(props) {
   return (
@@ -198,6 +199,8 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
       if (dataType == 'date') {
         getFieldVal = moment(getFieldVal)
       }
+      if (typeof getFieldVal == 'object' && getFieldVal && Array.isArray(getFieldVal)) { getFieldVal = getFieldVal.map(i=> { return i.id})}
+      if (typeof getFieldVal == 'object' && getFieldVal && !Array.isArray(getFieldVal)) { getFieldVal = getFieldVal.id }
       if (eidtID && getFieldVal && fetchedObjectFields[sysName] != getFieldVal) {
         fetchedObjectFields = { ...fetchedObjectFields, id: eidtID, [sysName]: getFieldVal }
       }
