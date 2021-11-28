@@ -147,7 +147,7 @@ export default function FileUpload(props) {
                         updateFiles(saveNewFiles)
                     }}
                 />
-                {error && <Hint error margin={{ top: 12, bottom: 1 }}>{error}</Hint>}
+                {error && <Hint error margin={{ top: 12, bottom: 1 }}>{JSON.stringify(error)}</Hint>}
             </div>
 
         </React.Fragment>
