@@ -12,9 +12,15 @@
   "engines": {
     "node": ">=10"
   },
+  "browserslist": [
+    ">0.2%",
+    "not ie 11",
+    "not dead",
+    "not chrome 49"
+  ],
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs",
-    "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "build": "microbundle-crl --no-compress --workers --format modern,cjs",
+    "start": "microbundle-crl watch --no-compress --workers --format modern,cjs",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
     "test:build": "run-s build",
@@ -26,17 +32,17 @@
     "bump": "npm version patch -m \"Release v%s\" && git push && git push --tags"
   },
   "peerDependencies": {
+    "lodash": "^4.17.21",
     "mapbox-gl": "^2.5.1",
     "moment": "^2.26.0",
     "react": "^16.0.0",
     "react-beautiful-dnd": "^13.0.0",
     "react-datetime": "^2.16.3",
     "react-dropzone": "^11.0.1",
-    "react-map-gl": "^6.1.17",
+    "react-map-gl": "5.3.17",
     "react-markdown": "^5.0.2",
     "react-table": "^7.7.0",
-    "remark-gfm": "^1.0.0",
-    "lodash": "^4.17.21"
+    "remark-gfm": "^1.0.0"
   },
   "devDependencies": {
     "@babel/runtime": "^7.15.4",
@@ -70,13 +76,14 @@
   "dependencies": {
     "lodash": "^4.17.21",
     "mapbox-gl": "^2.5.1",
+    "maplibre-gl": "^1.15.2",
     "moment": "^2.26.0",
     "react-beautiful-dnd": "^13.0.0",
     "react-datetime": "^2.16.3",
     "react-dropzone": "^11.0.1",
-    "react-map-gl": "^6.1.17",
     "react-markdown": "^5.0.2",
     "react-table": "^7.7.0",
-    "remark-gfm": "^1.0.0"
+    "remark-gfm": "^1.0.0",
+    "worker-loader": "^3.0.8"
   }
 }
