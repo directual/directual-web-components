@@ -9,10 +9,10 @@
   min-width: 80px;
 }
 .select_wrapper.inline.noSuchField .select_field {
-  background-color: var(--error-color);
+  background-color: var(--hint-error);
 }
 .select_wrapper.inline .select_field {
-  background-color: var(--accent-color);
+  background-color: var(--form-accent);
   height: 18px;
   margin: -3px 0;
   min-height: 0;
@@ -125,35 +125,35 @@
 }
 .select_wrapper .select_field {
   outline: none;
-  border: solid 1px var(--field-border-color);
+  border: solid 1px var(--form-field-border);
   border-radius: var(--border-radius);
-  background-color: var(--background-color);
+  background-color: var(--form-field-bgr);
   display: flex;
   align-items: center;
   padding: 7px 36px 7px 18px;
   overflow-x: auto;
   overflow-y: hidden;
   min-height: 32px;
-  color: var(--font-color);
+  color: var(--form-placeholder);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   cursor: text;
 }
 .select_wrapper .select_field.disabled {
-  background-color: var(--table-border-color);
+  background-color: var(--table-borders);
   cursor: not-allowed;
-  color: var(--field-border-color);
+  color: var(--form-field-border);
 }
 .select_wrapper .select_field.error {
   border-width: 2px;
   padding: 6px 35px 6px 17px;
-  border-color: var(--error-color);
+  border-color: var(--hint-error);
 }
 .select_wrapper .select_field.ok {
   border-width: 2px;
   padding: 6px 35px 6px 17px;
-  border-color: var(--ok-color);
+  border-color: var(--hint-ok);
 }
 .select_wrapper .select_field:hover:not(.disabled) {
   border-width: 2px;
@@ -162,7 +162,7 @@
 .select_wrapper .select_field.focus:not(.disabled) {
   border-width: 2px;
   padding: 6px 35px 6px 17px;
-  border-color: var(--accent-color);
+  border-color: var(--form-accent);
 }
 .select_wrapper .select_field.focus:not(.disabled) .placeholder {
   padding-right: 50px;
@@ -175,7 +175,7 @@
   margin: 0;
   overflow-y: auto;
   overflow-x: auto;
-  border: solid 1px var(--field-border-color);
+  border: solid 1px var(--form-field-border);
 }
 .select_wrapper .select_field .list {
   display: flex;
@@ -188,7 +188,7 @@
   top: 100%;
   left: 0;
   border-radius: var(--border-radius);
-  background-color: var(--background-color);
+  background-color: var(--form-field-bgr);
   z-index: 0;
   margin-top: 0;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
@@ -209,10 +209,10 @@
   margin: 0;
 }
 .select_wrapper .select_field .list .structFields ul.bordered {
-  border-top: solid 1px var(--field-border-color);
+  border-top: solid 1px var(--form-field-border);
 }
 .select_wrapper .select_field .list .structFields.odd {
-  background: var(--secondary-background-color);
+  background: var(--layout-secondary-bgr);
 }
 .select_wrapper .select_field .list .structFields .structName {
   font-size: var(--text-small-size);
@@ -260,51 +260,51 @@
   text-overflow: ellipsis;
 }
 .select_wrapper .select_field .list .structFields .option:hover {
-  background: var(--table-border-color);
+  background: var(--table-borders);
 }
 .select_wrapper .select_field .list .structFields .option.keyfocus {
-  border: solid 2px var(--font-color);
+  border: solid 2px var(--form-placeholder);
   padding: 4px 26px 4px 10px;
 }
 .select_wrapper .select_field .list .structFields .option.keyfocus .goToLink {
   right: -2px;
 }
 .select_wrapper .select_field .list .structFields .option.selected {
-  background-color: var(--accent-color);
-  color: var(--button-accent-color);
+  background-color: var(--form-accent);
+  color: var(--button-accent-text);
 }
 .select_wrapper .select_field .list .structFields .option.selected .sysName,
 .select_wrapper .select_field .list .structFields .option.selected .dataType {
-  color: var(--background-color);
+  color: var(--form-field-bgr);
 }
 .select_wrapper .select_field .list .structFields .option.selected .objectDetails {
-  color: var(--background-color);
+  color: var(--form-field-bgr);
 }
 .select_wrapper .select_field .list .structFields .option.keySelected {
   padding: 6px 10px;
-  border: solid 2px var(--font-color);
+  border: solid 2px var(--form-placeholder);
 }
 .select_wrapper .select_field .list .structFields .option.keySelected.optionIcon {
   padding: 0px 6px;
 }
 .select_wrapper .select_field .list .structFields .option:active:not(.disabled) {
-  background: var(--font-color);
-  color: var(--background-color);
+  background: var(--form-placeholder);
+  color: var(--form-field-bgr);
 }
 .select_wrapper .select_field .list .structFields .option:active:not(.disabled) .sysName,
 .select_wrapper .select_field .list .structFields .option:active:not(.disabled) .dataType {
-  color: var(--background-color);
+  color: var(--form-field-bgr);
 }
 .select_wrapper .select_field .list .structFields .option:active:not(.disabled) .objectDetails {
-  color: var(--background-color);
+  color: var(--form-field-bgr);
 }
 .select_wrapper .select_field .list .structFields .option .sysName {
   font-family: 'Source Code Pro', monospace;
-  color: var(--accent-color);
+  color: var(--form-accent);
 }
 .select_wrapper .select_field .list .structFields .option .objectDetails {
   padding-top: 2px;
-  color: var(--button-border-color);
+  color: var(--form-field-border);
   font-family: 'Source Code Pro', monospace;
 }
 .select_wrapper .select_field .list .structFields .option .objectDetails .sysName {
@@ -316,11 +316,11 @@
 .select_wrapper .select_field.error {
   border-width: 2px;
   padding: 6px 35px 6px 17px;
-  border-color: var(--error-color);
+  border-color: var(--hint-error);
 }
 .select_wrapper .select_field:active:not(.disabled) {
   padding: 6px 35px 6px 17px;
-  border: solid 2px var(--font-color);
+  border: solid 2px var(--form-placeholder);
 }
 .select_wrapper .select_field .icon {
   margin-left: -8px;
@@ -329,7 +329,7 @@
 .select_wrapper .select_field .filterFields {
   position: absolute;
   right: 40px;
-  color: var(--label-color);
+  color: var(--label);
   opacity: 0.3;
   transition: 0.5s;
 }
@@ -344,7 +344,7 @@
 }
 .select_wrapper .select_field .value_wrapper .placeholder {
   opacity: 0.5;
-  color: var(--font-color);
+  color: var(--form-placeholder);
   font-size: var(--text-small-size);
   white-space: nowrap;
   overflow: hidden;
@@ -368,14 +368,14 @@
 }
 .select_wrapper .select_field .value_wrapper .currentField .objectDetails {
   padding-top: 2px;
-  color: var(--button-border-color);
+  color: var(--form-field-border);
   font-family: 'Source Code Pro', monospace;
 }
 .select_wrapper .select_field .value_wrapper .currentField .objectDetails.small {
   font-size: var(--text-very-small-size);
 }
 .select_wrapper .select_field .value_wrapper .currentField .objectDetails span {
-  color: var(--accent-color);
+  color: var(--form-accent);
 }
 .select_wrapper .select_field .value_wrapper .filter {
   border: none;
@@ -386,11 +386,11 @@
   margin-top: -10px;
   display: block;
   background: transparent;
-  color: var(--font-color);
+  color: var(--form-placeholder);
   min-width: 170px;
 }
 .select_wrapper .select_field .value_wrapper .filter::placeholder {
   opacity: 0.5;
-  color: var(--font-color);
+  color: var(--form-placeholder);
   font-size: var(--text-small-size);
 }

@@ -36,10 +36,10 @@ a.button:hover:not(.disabled):not(.transparent) {
   padding: 1px 18px;
   text-decoration: none;
   font-size: var(--text-font-size);
-  color: var(--font-color);
-  border: solid 1px var(--button-border-color);
+  color: var(--button-text);
+  border: solid 1px var(--button-border);
   border-radius: var(--border-radius);
-  background-color: var(--background-color);
+  background-color: var(--button-bgr);
   cursor: pointer;
   outline: none;
   transition: 0s;
@@ -96,19 +96,19 @@ a.button:hover:not(.disabled):not(.transparent) {
   background-size: contain;
 }
 .button.accent {
-  border-color: var(--accent-color);
-  background-color: var(--accent-color);
-  color: var(--button-accent-color);
+  border-color: var(--button-accent-border);
+  background-color: var(--button-accent-bgr);
+  color: var(--button-accent-text);
 }
 .button.accent:hover:not(.disabled) {
-  background-color: var(--secondary-accent-color) !important;
-  color: var(--button-accent-color) !important;
-  border-color: var(--secondary-accent-color) !important;
+  background-color: var(--button-accent-hover-bgr);
+  color: var(--button-accent-hover-text);
+  border-color: var(--button-accent-hover-border);
 }
 .button.accent:active:not(.disabled) {
-  background-color: var(--font-color) !important;
-  color: var(--background-color) !important;
-  border-color: var(--font-color) !important;
+  background-color: var(--button-accent-active-bgr);
+  color: var(--button-accent-active-text);
+  border-color: var(--button-accent-active-border);
 }
 .button.transparent {
   padding: 2px 10px;
@@ -134,29 +134,39 @@ a.button:hover:not(.disabled):not(.transparent) {
   margin-right: -9px;
 }
 .button.inverseColor {
-  color: var(--button-accent-color);
+  color: var(--button-accent-text);
+}
+.button.danger {
+  background-color: var(--button-danger-bgr);
+  color: var(--button-danger-text);
+  border-color: var(--button-danger-border);
 }
 .button.danger:hover:not(.disabled) {
-  background-color: var(--error-color) !important;
-  color: var(--button-accent-color) !important;
-  border-color: var(--error-color) !important;
+  background-color: var(--button-danger-hover-bgr);
+  color: var(--button-danger-hover-text);
+  border-color: var(--button-danger-hover-border);
 }
 .button.danger:active:not(.disabled) {
-  background-color: var(--font-color) !important;
-  color: var(--background-color) !important;
-  border-color: var(--font-color) !important;
+  background-color: var(--button-danger-active-bgr);
+  color: var(--button-danger-active-text);
+  border-color: var(--button-danger-active-border);
 }
-.button:hover:not(.disabled):not(.transparent):not(.loading) {
+.button:hover:not(.disabled):not(.transparent):not(.loading):not(.accent):not(.danger) {
   height: 48px;
   padding: 0 17px !important;
   border-width: 2px;
   transition: 0;
-  color: var(--font-color);
+  background-color: var(--button-hover-bgr);
+  color: var(--button-hover-text);
+  border-color: var(--button-hover-border);
 }
-.button:active:not(.disabled):not(.transparent) {
-  background-color: var(--button-border-color);
-  color: var(--background-color);
-  border-color: var(--button-border-color);
+.button:hover:not(.disabled):not(.transparent):not(.loading):not(.accent):not(.danger) a {
+  color: var(--button-hover-text);
+}
+.button:active:not(.disabled):not(.transparent):not(.accent):not(.danger) {
+  background-color: var(--button-active-bgr) !important;
+  color: var(--button-active-text) !important;
+  border-color: var(--button-active-border) !important;
 }
 .button.icon:before {
   font-size: 28px;
@@ -181,9 +191,10 @@ a.button:hover:not(.disabled):not(.transparent) {
   opacity: 0;
   margin-top: -16px;
   z-index: -1;
-  border: solid 1px var(--button-border-color);
+  border: solid 1px var(--button-border);
   border-radius: var(--border-radius);
-  background-color: var(--background-color);
+  background-color: var(--button-bgr);
+  color: var(--button-text);
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
   top: 100%;
   display: flex;
@@ -197,21 +208,22 @@ a.button:hover:not(.disabled):not(.transparent) {
   margin-top: -6px;
 }
 .bdd .dropdownMenu .button {
-  border-color: rgba(0, 0, 0, 0) !important;
+  border-color: rgba(0, 0, 0, 0);
   border-radius: 0;
   margin: 0;
+  border-color: transparent !important;
 }
-.bdd .dropdownMenu .button:hover {
-  background-color: var(--accent-transp-05-color);
+.bdd .dropdownMenu .button:hover:not(.accent):not(.danger) {
+  background-color: var(--button-dropdown-hover-bgr) !important;
 }
-.bdd .dropdownMenu .button:active {
-  background-color: var(--font-color);
-  color: var(--background-color) !important;
+.bdd .dropdownMenu .button:active:not(.accent):not(.danger) {
+  background-color: var(--button-bgr);
+  color: var(--button-text);
 }
 .bdd .dropdownMenu hr {
   border: none;
   border-color: rgba(0, 0, 0, 0);
-  border-top: solid 1px var(--button-border-color);
+  border-top: solid 1px var(--button-border);
   opacity: 0.5;
   margin: 6px 12px;
 }

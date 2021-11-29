@@ -1,5 +1,5 @@
 .treeWrapper {
-  background-color: var(--background-color);
+  background-color: var(--layout-bgr);
   max-width: 100%;
   overflow: auto;
   padding: 6px;
@@ -21,7 +21,7 @@
 .treeElement {
   border: solid 2px rgba(0, 0, 0, 0);
   border-radius: var(--border-radius);
-  color: var(--font-color);
+  color: var(--layout-text);
   opacity: 0.6;
   cursor: pointer;
   min-width: 0;
@@ -31,7 +31,7 @@
   align-items: center;
 }
 .treeElement:hover {
-  color: var(--font-color);
+  color: var(--layout-text);
 }
 .treeElement .noShrink {
   flex-shrink: 0;
@@ -59,19 +59,19 @@
   text-overflow: ellipsis;
 }
 .treeElement:hover {
-  border: solid 2px var(--field-border-color);
+  border: solid 2px var(--form-field-border);
   opacity: 1;
 }
 .treeElement:active {
-  background-color: var(--font-color);
-  color: var(--background-color);
-  border-color: var(--font-color);
+  background-color: var(--layout-text);
+  color: var(--layout-bgr);
+  border-color: var(--layout-text);
 }
 .treeElement.selected {
-  background-color: var(--button-border-color);
-  color: var(--background-color);
+  background-color: var(--button-border);
+  color: var(--layout-bgr);
   opacity: 1;
-  border-color: var(--button-border-color);
+  border-color: var(--button-border);
 }
 .empty {
   font-style: italic;
@@ -87,5 +87,5 @@
 .hr {
   margin: 6px 12px;
   border: none;
-  border-top: solid 1px var(--table-border-color);
+  border-top: solid 1px var(--table-borders);
 }

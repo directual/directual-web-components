@@ -22,14 +22,14 @@
 }
 .select_wrapper .select_field {
   outline: none;
-  border: solid 1px var(--field-border-color);
+  border: solid 1px var(--form-field-border);
   border-radius: var(--border-radius);
-  background-color: var(--background-color);
+  background-color: var(--form-field-bgr);
   display: flex;
   align-items: center;
   padding: 7px 36px 7px 18px;
   min-height: 34px;
-  color: var(--font-color);
+  color: var(--form-placeholder);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -45,15 +45,15 @@
 .select_wrapper .select_field .multilist li {
   display: flex;
   border-radius: calc(var(--border-radius) / 2);
-  background-color: var(--label-color);
-  color: var(--label-text-color);
+  background-color: var(--label);
+  color: var(--label-text);
   font-size: var(--text-very-small-size);
   margin: 0 6px 6px 0;
 }
 .select_wrapper .select_field .multilist li.multiplaceholder {
   background: none;
   opacity: 0.5;
-  color: var(--font-color);
+  color: var(--form-placeholder);
   font-size: var(--text-small-size);
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -72,7 +72,7 @@
   left: 0;
   display: block;
   background: transparent;
-  color: var(--font-color);
+  color: var(--form-placeholder);
 }
 .select_wrapper .select_field .multilist li .title_item {
   padding: 6px;
@@ -96,25 +96,25 @@
 }
 .select_wrapper .select_field .placeholder {
   opacity: 0.5;
-  color: var(--font-color);
+  color: var(--form-placeholder);
   font-size: var(--text-small-size);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .select_wrapper .select_field.disabled {
-  background-color: var(--table-border-color);
+  background-color: var(--form-field-bgr-disabled);
   cursor: not-allowed;
 }
 .select_wrapper .select_field.error {
   border-width: 2px;
   padding: 6px 35px 6px 17px;
-  border-color: var(--error-color);
+  border-color: var(--hint-error);
 }
 .select_wrapper .select_field.ok {
   border-width: 2px;
   padding: 6px 35px 6px 17px;
-  border-color: var(--ok-color);
+  border-color: var(--hint-ok);
 }
 .select_wrapper .select_field:hover:not(.disabled) {
   border-width: 2px;
@@ -130,7 +130,7 @@
 .select_wrapper .select_field.focus:not(.disabled) {
   border-width: 2px;
   padding: 6px 35px 6px 17px;
-  border-color: var(--accent-color);
+  border-color: var(--form-accent);
 }
 .select_wrapper .select_field.focus:not(.disabled) .multilist {
   min-width: calc(100% - 56px);
@@ -155,16 +155,16 @@
   margin: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  border: solid 1px var(--field-border-color);
+  border: solid 1px var(--table-borders);
 }
 .select_wrapper .select_field.error {
   border-width: 2px;
   padding: 6px 35px 6px 17px;
-  border-color: var(--error-color);
+  border-color: var(--hint-error);
 }
 .select_wrapper .select_field:active:not(.disabled) {
   padding: 6px 35px 6px 17px;
-  border: solid 2px var(--font-color);
+  border: solid 2px var(--form-placeholder);
 }
 .select_wrapper .select_field .icon {
   margin-left: -8px;
@@ -185,7 +185,7 @@
   left: 0;
   display: block;
   background: transparent;
-  color: var(--font-color);
+  color: var(--form-placeholder);
 }
 .select_wrapper .select_field .options_counter {
   position: absolute;
@@ -206,7 +206,7 @@
   left: 0;
   flex-direction: column;
   border-radius: var(--border-radius);
-  background-color: var(--background-color);
+  background-color: var(--form-field-bgr);
   margin-top: 0;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
 }
@@ -224,34 +224,34 @@
   padding: 2px 8px;
 }
 .select_wrapper .select_field .list .option:hover {
-  background: var(--secondary-background-color);
+  background: var(--table-raw-hover);
 }
 .select_wrapper .select_field .list .option.selected {
-  background-color: var(--accent-color);
-  color: var(--button-accent-color);
+  background-color: var(--button-accent-bgr);
+  color: var(--button-accent-text);
 }
 .select_wrapper .select_field .list .option.selected .displayKey {
-  color: var(--button-accent-color);
+  color: var(--button-accent-text);
 }
 .select_wrapper .select_field .list .option.selected .displayKeyShort {
-  color: var(--background-color);
+  color: var(--form-field-bgr);
 }
 .select_wrapper .select_field .list .option.keySelected {
   padding: 6px 10px;
-  border: solid 2px var(--font-color);
+  border: solid 2px var(--form-placeholder);
 }
 .select_wrapper .select_field .list .option.keySelected.optionIcon {
   padding: 0px 6px;
 }
 .select_wrapper .select_field .list .option:active:not(.disabled) {
-  background: var(--font-color);
-  color: var(--background-color);
+  background: var(--form-placeholder);
+  color: var(--form-field-bgr);
 }
 .select_wrapper .select_field .list .option:active:not(.disabled) .displayKey {
-  color: var(--button-accent-color);
+  color: var(--button-accent-text);
 }
 .select_wrapper .select_field .list .option:active:not(.disabled) .displayKeyShort {
-  color: var(--background-color);
+  color: var(--form-field-bgr);
 }
 .subselect {
   position: absolute;
@@ -261,8 +261,8 @@
   align-items: center;
   height: 31px;
   border-radius: calc(var(--border-radius) / 2);
-  background-color: var(--label-color);
-  color: var(--label-text-color);
+  background-color: var(--label);
+  color: var(--label-text);
   font-size: var(--text-very-small-size);
   z-index: 10;
   cursor: pointer;
@@ -273,10 +273,10 @@
   padding: 0 26px 0 9px !important;
   height: 100% !important;
   min-height: auto !important;
-  color: var(--label-text-color) !important;
+  color: var(--label-text) !important;
 }
 .subselect .select_wrapper .arrow {
-  color: var(--label-text-color);
+  color: var(--label-text);
   opacity: 0.6;
   top: 4px;
   right: 4px;
@@ -289,7 +289,7 @@
 }
 .subselect .select_wrapper .placeholder {
   padding: 0 !important;
-  color: var(--label-text-color);
+  color: var(--label-text);
   font-size: var(--text-very-small-size);
 }
 .subselect .select_wrapper .currentValue {
@@ -301,7 +301,7 @@
   opacity: 1 !important;
 }
 .subselect .select_wrapper .value_wrapper .filter {
-  color: var(--label-text-color);
+  color: var(--label-text);
   font-size: var(--text-very-small-size);
 }
 .subselect .select_wrapper .noOptionsSmall {
@@ -310,8 +310,8 @@
 }
 .subselect .select_wrapper .list {
   border-radius: calc(var(--border-radius) / 2);
-  background-color: var(--label-color);
-  color: var(--label-text-color);
+  background-color: var(--label);
+  color: var(--label-text);
   border: none !important;
 }
 .subselect .select_wrapper .list .option {
@@ -319,20 +319,20 @@
 }
 .subselect .select_wrapper .list .option:hover {
   background: rgba(0, 0, 0, 0.25);
-  color: var(--label-text-color);
+  color: var(--label-text);
 }
 .subselect .select_wrapper .list .option.selected {
   background: rgba(0, 0, 0, 0.5);
-  color: var(--label-text-color);
+  color: var(--label-text);
 }
 .displayKey {
   font-size: var(--text-small-size);
   font-family: 'Source Code Pro', monospace;
-  color: var(--accent-color);
+  color: var(--form-accent);
 }
 .displayKeyShort {
   font-size: var(--text-small-size);
   font-family: 'Source Code Pro', monospace;
-  color: var(--font-color);
+  color: var(--form-placeholder);
   opacity: 0.6;
 }

@@ -1,21 +1,21 @@
  
 .dd_mdn {
-    color: var(--font-color);
+    color: var(--layout-text);
     //border:solid 1px var(--background-contrast-color);
     font-size: var( --text-font-size);
     font-weight: var( --text-font-weight);
     overflow: auto;
     a {
-        color: var(--accent-color);
+        color: var(--layout-accent);
         text-decoration: none;
         &:hover {
-            color: var(--secondary-accent-color);
+            color: var(--layout-accent-hover);
             text-decoration: none;
         }
     }
     blockquote {
-        color: var(--font-color);
-        border-left: 3px solid var(--table-border-color);
+        color: var(--layout-text);
+        border-left: 3px solid var(--table-borders);
         padding-left: 20px;
         opacity: .6;
         margin:10px 0;
@@ -74,14 +74,14 @@
     table {
         margin:18px 0;
         border-collapse: collapse;
-        background-color: var(--background-color);
+        background-color: var(--form-field-bgr);
         //border: solid 1px var(--table-border-color);
         //margin:6px;
         th {
             padding: 12px;
         }
         td {
-            border-top: solid 1px var(--table-border-color);
+            border-top: solid 1px var(--table-borders);
             padding: 12px;
         }
     }
@@ -89,7 +89,7 @@
 
 .mkd_edit {
     display: flex;
-    border:solid 1px var(--field-border-color);
+    border:solid 1px var(--form-field-border);
     border-radius: var(--border-radius);
     max-height: 99%;
     min-height: 99%;
@@ -97,16 +97,16 @@
     align-items: stretch;
     .editField {
         flex-grow: 2;
-        background: var(--background-color);
+        background: var(--form-field-bgr);
         .mkd_header {
             height: 32px;
             font-size: var(--text-small-size);
-            background-color: var(--background-color);
+            background-color: var(--form-field-bgr);
             display: flex;
             align-items: center;
-            color: var(--field-border-color);
+            color: var(--form-field-border);
             margin:0 18px;
-            border-bottom:solid 1px var(--table-border-color);
+            border-bottom:solid 1px var(--table-borders);
             * {
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -115,13 +115,13 @@
             .rasporka {
                 flex-grow: 2;
             }
-        }
+        } 
         textarea {
             border:none;
             width: calc(100% - 36px);
             height: calc(100% - 76px);
             resize: none;
-            color: var(--font-color);
+            color: var(--layout-text);
             padding:18px;
             font-family: 'Source Code Pro', monospace;
             background: transparent;
@@ -130,7 +130,7 @@
         }
     }
     .preview {
-        border-left: solid 1px var(--field-border-color);
+        border-left: solid 1px var(--form-field-border);
         padding-left: 12px;
         flex-grow: 2;
         min-width: 50%;

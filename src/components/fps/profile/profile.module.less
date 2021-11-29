@@ -4,7 +4,7 @@
      margin-bottom: 12px;
      overflow: hidden;
      .profilePicture {
-         background-color: var(--label-color);
+         background-color: var(--label);
          flex-shrink: 0;
          width: 50px;
          height: 50px;
@@ -14,7 +14,7 @@
          overflow: hidden;
          border-radius: var( --border-radius);
          margin-right: 12px;
-         border:solid 1px var(--field-border-color);
+         border:solid 1px var(--form-field-border);
          .profileImageHolder {
             height: 100%;
             width: 100%;
@@ -35,10 +35,10 @@
  }
 
  .profileBody {
-    background-color: var(--background-color);
+    background-color: var(--layout-secondary-bgr);
     padding: 24px;
     border-radius: var(--border-radius);
-    border: solid 1px var(--background-contrast-color);
+    border: solid 1px var(--layout-bgr);
  }
 
  .logOut {
@@ -54,7 +54,7 @@
         font-size: var(--text-small-size);
         //margin-left: 12px;
         padding-top: 2px;
-        color: var(--error-color);
+        color: var(--hint-error);
         opacity: .5;
         &:hover {
             opacity: 1;

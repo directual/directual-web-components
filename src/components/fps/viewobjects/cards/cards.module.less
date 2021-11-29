@@ -7,7 +7,7 @@
      &.emptyTable {
         justify-content: center;
         align-items: center;
-        background-color: var(--background-color);
+        background-color: var(--layout-bgr);
         margin-bottom: 12px;
         border-radius: var(--border-radius);
         margin-right: 0;
@@ -61,8 +61,8 @@
             transform: scale(1);
             opacity: 1;
             border-radius: calc(var(--border-radius)/1.2);
-            background-color: var(--background-color);
-            border: solid 1px var(--field-border-color);
+            background-color: var(--layout-bgr);
+            border: solid 1px var(--form-field-border);
             &.hide {
                 transform: scale(0);
                 opacity: 0;
@@ -87,22 +87,22 @@
                 border-radius: var(--border-radius);
                 cursor: pointer;
                 &:hover {
-                    background: var( --secondary-background-color);
+                    background: var( --button-dropdown-hover-bgr);
                 }
                 &:active:not(.disabled) {
-                    background: var(--font-color);
-                    color: var(--background-color);
+                    background: var(--layout-text);
+                    color: var(--layout-bgr);
                     .displayKey {
-                        color: var(--button-accent-color);
+                        color: var(--button-accent-text);
                     }
                 }
             }
         }
-    }
+}
     .cardInnerWrapper {
-        background-color: var(--background-color);
+        background-color: var(--cards-bgr);
         border-radius: var(--border-radius);
-        border: solid 1px var(--background-contrast-color);
+        border: solid 1px var(--cards-border);
         padding: 1px;
         width: calc(100% - 2px);
         overflow: hidden;
@@ -167,7 +167,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: var(--background-color);
+                color: var(--layout-secondary-bgr);
                 span {
                     opacity: .5;
                     display: flex;
@@ -181,7 +181,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: var(--background-color);
+                color: var(--layout-secondary-bgr);
                 border-radius: 100%;
                 margin:12px 0 12px 12px;
                 span {
@@ -198,7 +198,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: var(--background-color);
+                color: var(--layout-secondary-bgr);
                 span {
                     opacity: .5;
                     display: flex;
@@ -208,12 +208,13 @@
         &:hover {
             width: 100%;
             padding: 0;
-            border:solid 2px var(--field-border-color);
+            background-color: var(--cards-hover-bgr);
+            border:solid 2px var(--cards-hover-border);
         }
         &:active {
             width: 100%;
             padding: 0;
-            border: solid 2px var(--font-color);
+            border: solid 2px var(--layout-text);
         }
         .cardText {
             padding: 18px 26px 18px 18px;
@@ -240,7 +241,7 @@
                     box-shadow: 0 1px 3px rgba(0,0,0,.2);
                     flex-shrink: 0;
                     margin: 0 8px;
-                    background: var(--error-color);
+                    background: var(--cards-notification);
                     color: #fff;
                     font-family: var( --main-font-family);
                     font-size: var( --text-font-size);
@@ -281,8 +282,8 @@
                 }
             }
             .linkText {
-                border:solid 1px var(--accent-color);
-                color:var(--accent-color);
+                border:solid 1px var(--layout-accent);
+                color:var(--layout-accent);
                 padding: 3px 9px;
             }
             .labelText, .linkText {
@@ -291,8 +292,8 @@
                 border-radius: calc(var(--border-radius) / 2);
             }
             .labelText {
-                color:var(--label-text-color);
-                background-color: var(--label-color);
+                color:var(--label-text);
+                background-color: var(--label);
                 padding: 4px 9px;
             }
         }
@@ -347,7 +348,7 @@
         padding-left: 6px;
     }
     .line {
-        background:var(--table-border-color);
+        background:var(--table-borders);
         height: 4px;
         width: 100%;
         border-radius: 6px;
@@ -358,7 +359,7 @@
         .fill {
             border-radius: 6px;
             height: 4px;
-            background: var(--accent-color);
+            background: var(--layout-accent);
             position: absolute;
             z-index: 2;
         }

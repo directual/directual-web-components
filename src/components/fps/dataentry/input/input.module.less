@@ -7,7 +7,7 @@
     font-size: var(--text-font-size);
     //line-height: 1em;
     align-items: stretch;
-    color: var(--font-color);
+    color: var(--form-placeholder);
     label {
         font-size: var(--text-small-size);
         opacity: .7;
@@ -100,7 +100,7 @@
             }
         }
         &.disabled {
-            background-color: var(--table-border-color);
+            background-color: var(--form-field-bgr-disabled);
             cursor: not-allowed;
             padding: 14px 36px 14px 18px !important;
             //color: var(--field-border-color);
@@ -113,8 +113,8 @@
     }
     .addonAfter {
         border-radius: 0 var( --border-radius) var( --border-radius) 0;
-        border:solid 1px var( --field-border-color);
-        background-color: var(--secondary-background-color);
+        border:solid 1px var( --form-field-border);
+        background-color: var(--layout-bgr);
         padding: 0 12px;
         display: flex;
         align-items: center;
@@ -125,8 +125,8 @@
     }
     .addonBefore {
         border-radius: var( --border-radius) 0 0 var( --border-radius);
-        border:solid 1px var( --field-border-color);
-        background-color: var(--secondary-background-color);
+        border:solid 1px var(--form-field-border);
+        background-color: var(--layout-bgr);
         padding: 0 12px;
         display: flex;
         align-items: center;
@@ -142,7 +142,7 @@
             background: none;
             border:none;
             outline: none;
-            color: var(--accent-color);
+            color: var(--form-accent);
         }
     }
     .field {
@@ -151,7 +151,7 @@
         // }
         flex-grow: 2;
         outline: none !important;
-        border:solid 1px var( --field-border-color);
+        border:solid 1px var( --form-field-border);
         border-radius: var( --border-radius);
         &.addonAfterInput {
             border-radius: var( --border-radius) 0 0 var( --border-radius);
@@ -161,13 +161,13 @@
             border-radius: 0 var( --border-radius) var( --border-radius) 0;
             //border-right: none;
         }
-        background-color: var(--background-color);
+        background-color: var(--form-field-bgr);
         font-size: var(--text-font-size);
         display: flex;
         height: 44px;
         align-items: center;
         padding: 1px 40px 1px 18px;
-        color: var(--font-color);
+        color: var(--form-placeholder);
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
@@ -183,7 +183,7 @@
             padding-left: 40px;
         }
         &.disabled {
-            background-color: var(--table-border-color);
+            background-color: var(--form-field-bgr-disabled);
             cursor: not-allowed;
             &.icon {
                 padding-left: 40px;
@@ -196,7 +196,7 @@
             border-width: 2px;
             //height: 46px;
             padding: 0 39px 0 17px;
-            border-color: var(--error-color);
+            border-color: var(--hint-error);
             &.icon {
                 padding-left: 39px;
             }
@@ -205,7 +205,7 @@
             border-width: 2px;
             //height: 46px;
             padding: 0 39px 0 17px;
-            border-color: var(--alert-color);
+            border-color: var(--hint-alert);
             &.icon {
                 padding-left: 39px;
             }
@@ -214,7 +214,7 @@
             border-width: 2px;
             //height: 46px;
             padding: 0 39px 0 17px;
-            border-color: var(--ok-color);
+            border-color: var(--hint-ok);
             &.icon {
                 padding-left: 39px;
             }
@@ -231,7 +231,7 @@
             border-width: 2px;
             //height: 46px;
             padding: 0 39px 0 17px;
-            border-color: var(--accent-color);
+            border-color: var(--form-accent);
             &.icon {
                 padding-left: 39px;
             }
@@ -239,14 +239,14 @@
         &:active:not(.disabled) {
             //height: 46px;
             padding: 0 39px 0 17px;
-            border: solid 2px var(--font-color);
+            border: solid 2px var(--form-placeholder);
             &.icon {
                 padding-left: 39px;
             }
         }
         &::placeholder {
             opacity:.5;
-            color: var(--font-color);
+            color: var(--form-placeholder);
             font-size: var(--text-small-size);
         }
     }
@@ -254,7 +254,7 @@
         font-size: var(--text-small-size);
         code {
             font-size: var(--text-very-small-size);
-            background-color: var(--background-contrast-color);
+            background-color: var(--code-background);
         }
         opacity: .6;
         margin: 3px 0 9px 0px;
@@ -265,16 +265,16 @@
         margin: 3px 0 0 12px;
         code {
             font-size: var(--text-very-small-size);
-            background-color: var(--background-contrast-color);
+            background-color: var(--code-background);
         }
         &.ok {
-            color:var(--ok-color);
+            color:var(--hint-ok);
         }
         &.error {
-            color:var(--error-color);
+            color:var(--hint-error);
         }
         &.warning {
-            color:var(--alert-color);
+            color:var(--hint-alert);
         }
     }
  }

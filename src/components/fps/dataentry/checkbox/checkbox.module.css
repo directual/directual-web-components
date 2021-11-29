@@ -28,38 +28,38 @@
   visibility: hidden;
 }
 .cb_wrap .checkbox .cb_wrapper .pretty_checkbox {
-  background-color: var(--background-color);
+  background-color: var(--layout-bgr);
   height: 20px;
   width: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--background-color);
-  border: solid 1px var(--field-border-color);
+  color: var(--layout-bgr);
+  border: solid 1px var(--form-field-border);
   border-radius: 4px;
 }
 .cb_wrap .checkbox .cb_wrapper .pretty_checkbox.checked {
-  background-color: var(--accent-color);
-  border-color: var(--accent-color);
+  background-color: var(--form-accent);
+  border-color: var(--form-accent);
 }
 .cb_wrap .checkbox .cb_wrapper .pretty_checkbox.checked:before {
   font-size: 22px;
 }
 .cb_wrap .checkbox:hover:not(.disabled) .cb_wrapper .pretty_checkbox {
-  border: solid 2px var(--field-border-color);
+  border: solid 2px var(--form-field-border);
   height: 18px;
   width: 18px;
 }
 .cb_wrap .checkbox:hover:not(.disabled) .cb_wrapper .pretty_checkbox.checked {
-  background-color: var(--accent-color);
-  border-color: var(--accent-color);
+  background-color: var(--form-accent);
+  border-color: var(--form-accent);
 }
 .cb_wrap .checkbox:active:not(.disabled) .cb_wrapper .pretty_checkbox {
-  background-color: var(--font-color);
+  background-color: var(--layout-text);
 }
 .cb_wrap .checkbox:active:not(.disabled) .cb_wrapper .pretty_checkbox.checked {
-  background-color: var(--font-color);
-  border-color: var(--font-color);
+  background-color: var(--layout-text);
+  border-color: var(--layout-text);
 }
 .customOptionWrapper {
   margin-top: 8px;

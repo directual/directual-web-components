@@ -4,7 +4,7 @@
 }
 .codepiece pre {
   padding: 12px;
-  background-color: var(--background-color);
+  background-color: var(--form-field-bgr);
   border-radius: 4px;
 }
 .showhide {

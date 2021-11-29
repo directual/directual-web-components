@@ -4,7 +4,7 @@
   flex-direction: column;
   font-size: var(--text-font-size);
   align-items: stretch;
-  color: var(--font-color);
+  color: var(--form-placeholder);
 }
 .input_wrapper label {
   font-size: var(--text-small-size);
@@ -105,7 +105,7 @@
   padding: 13px 35px 13px 17px;
 }
 .input_wrapper textarea.disabled {
-  background-color: var(--table-border-color);
+  background-color: var(--form-field-bgr-disabled);
   cursor: not-allowed;
   padding: 14px 36px 14px 18px !important;
 }
@@ -116,8 +116,8 @@
 }
 .input_wrapper .addonAfter {
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
-  border: solid 1px var(--field-border-color);
-  background-color: var(--secondary-background-color);
+  border: solid 1px var(--form-field-border);
+  background-color: var(--layout-bgr);
   padding: 0 12px;
   display: flex;
   align-items: center;
@@ -128,8 +128,8 @@
 }
 .input_wrapper .addonBefore {
   border-radius: var(--border-radius) 0 0 var(--border-radius);
-  border: solid 1px var(--field-border-color);
-  background-color: var(--secondary-background-color);
+  border: solid 1px var(--form-field-border);
+  background-color: var(--layout-bgr);
   padding: 0 12px;
   display: flex;
   align-items: center;
@@ -146,20 +146,20 @@
   background: none;
   border: none;
   outline: none;
-  color: var(--accent-color);
+  color: var(--form-accent);
 }
 .input_wrapper .field {
   flex-grow: 2;
   outline: none !important;
-  border: solid 1px var(--field-border-color);
+  border: solid 1px var(--form-field-border);
   border-radius: var(--border-radius);
-  background-color: var(--background-color);
+  background-color: var(--form-field-bgr);
   font-size: var(--text-font-size);
   display: flex;
   height: 44px;
   align-items: center;
   padding: 1px 40px 1px 18px;
-  color: var(--font-color);
+  color: var(--form-placeholder);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -182,7 +182,7 @@
   padding-left: 40px;
 }
 .input_wrapper .field.disabled {
-  background-color: var(--table-border-color);
+  background-color: var(--form-field-bgr-disabled);
   cursor: not-allowed;
   padding: 1px 18px 1px 18px;
   opacity: 0.6;
@@ -193,7 +193,7 @@
 .input_wrapper .field.error {
   border-width: 2px;
   padding: 0 39px 0 17px;
-  border-color: var(--error-color);
+  border-color: var(--hint-error);
 }
 .input_wrapper .field.error.icon {
   padding-left: 39px;
@@ -201,7 +201,7 @@
 .input_wrapper .field.warning {
   border-width: 2px;
   padding: 0 39px 0 17px;
-  border-color: var(--alert-color);
+  border-color: var(--hint-alert);
 }
 .input_wrapper .field.warning.icon {
   padding-left: 39px;
@@ -209,7 +209,7 @@
 .input_wrapper .field.ok {
   border-width: 2px;
   padding: 0 39px 0 17px;
-  border-color: var(--ok-color);
+  border-color: var(--hint-ok);
 }
 .input_wrapper .field.ok.icon {
   padding-left: 39px;
@@ -224,21 +224,21 @@
 .input_wrapper .field:focus:not(.disabled) {
   border-width: 2px;
   padding: 0 39px 0 17px;
-  border-color: var(--accent-color);
+  border-color: var(--form-accent);
 }
 .input_wrapper .field:focus:not(.disabled).icon {
   padding-left: 39px;
 }
 .input_wrapper .field:active:not(.disabled) {
   padding: 0 39px 0 17px;
-  border: solid 2px var(--font-color);
+  border: solid 2px var(--form-placeholder);
 }
 .input_wrapper .field:active:not(.disabled).icon {
   padding-left: 39px;
 }
 .input_wrapper .field::placeholder {
   opacity: 0.5;
-  color: var(--font-color);
+  color: var(--form-placeholder);
   font-size: var(--text-small-size);
 }
 .input_wrapper .description {
@@ -248,7 +248,7 @@
 }
 .input_wrapper .description code {
   font-size: var(--text-very-small-size);
-  background-color: var(--background-contrast-color);
+  background-color: var(--code-background);
 }
 .input_wrapper .status {
   font-size: var(--text-small-size);
@@ -257,16 +257,16 @@
 }
 .input_wrapper .status code {
   font-size: var(--text-very-small-size);
-  background-color: var(--background-contrast-color);
+  background-color: var(--code-background);
 }
 .input_wrapper .status.ok {
-  color: var(--ok-color);
+  color: var(--hint-ok);
 }
 .input_wrapper .status.error {
-  color: var(--error-color);
+  color: var(--hint-error);
 }
 .input_wrapper .status.warning {
-  color: var(--alert-color);
+  color: var(--hint-alert);
 }
 .slider_field_wrapper {
   display: flex;

@@ -23,6 +23,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cuprum:wght@400;500;700&family=Nunito:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alice&family=Bitter:wght@100;300;500;800&family=Fira+Sans:wght@100;200;400;700&family=Gabriela&family=Orelega+One&family=Philosopher:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;500;700&family=Comfortaa:wght@300;500;700&family=Kanit:wght@100;400;700&family=Noto+Serif+JP&family=Poppins:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap');
 
 :root {
   --headers-font-family: 'Montserrat', sans-serif;
@@ -553,62 +554,165 @@
 
 /*-- VARIABLES --*/
 :root {
-  /* DEFAULT GRAY-BLUE SCHEME */
+  // Main Menu
+  --menu-bgr: #ffffff;
+  --menu-border-color: #eeeeee;
+  --menu-item: #999999;
+  --menu-item-hover: #333333;
+  --menu-item-selected: #058efc;
+  --menu-group: #333333;
 
-  //Borders
-  --border-radius: 25px;
-  --button-border-color: #8e8e8e;
-  --field-border-color: #aaaaaa;
-  --table-border-color: rgba(0, 0, 0, 0.12);
+  // Button - regular
+  --button-bgr: #ffffff;
+  --button-border: #8e8e8e;
+  --button-text: #333333;
 
-  //Main accent color
-  --accent-color: #058efc;
-  --accent-transp-05-color: rgba(5, 142, 252, 0.05);
-  --secondary-accent-color: #0062bd;
-  --button-accent-color: #fff;
+  --button-hover-bgr: #ffffff;
+  --button-hover-border: #8e8e8e;
+  --button-hover-text: #333333;
 
-  // Backgroungd and font colors
-  --background-color: #ffffff;
-  --background-contrast-color: #eeeeee;
-  --secondary-background-color: #eeeeee;
-  --font-color: #333333;
-  --header-color: #333333;
+  --button-active-bgr: #8e8e8e;
+  --button-active-border: #333333;
+  --button-active-text: #ffffff;
 
-  //Code
-  --code-color: #333333;
-  --code-color-background: #fff;
+  --button-dropdown-hover-bgr: rgba(5, 142, 252, 0.05);
+
+  // Button - accent
+  --button-accent-bgr: #058efc;
+  --button-accent-border: #058efc;
+  --button-accent-text: #ffffff;
+
+  --button-accent-hover-bgr: #0062bd;
+  --button-accent-hover-border: #0062bd;
+  --button-accent-hover-text: #ffffff;
+
+  --button-accent-active-bgr: #333333;
+  --button-accent-active-border: #333333;
+  --button-accent-active-text: #ffffff;
+
+  // Button - danger
+  --button-danger-bgr: #ffffff;
+  --button-danger-border: #8e8e8e;
+  --button-danger-text: #333333;
+
+  --button-danger-hover-bgr: #ff525b;
+  --button-danger-hover-border: #ff525b;
+  --button-danger-hover-text: #ffffff;
+
+  --button-danger-active-bgr: #333333;
+  --button-danger-active-border: #333333;
+  --button-danger-active-text: #ffffff;
+
+  // Table
+  --table-borders: rgba(0, 0, 0, 0.12);
+  --table-raw-hover: rgba(5, 142, 252, 0.05);
+
+  // Cards
+  --cards-bgr: #ffffff;
+  --cards-border: #aaaaaa;
+  --cards-hover-bgr: #ffffff;
+  --cards-hover-border: #aaaaaa;
+  --cards-notification: #ff525b;
+
+
+  // Layout
+  --layout-bgr: #eeeeee;
+  --layout-secondary-bgr: #ffffff;
+  --layout-accent: #058efc;
+  --layout-accent-hover: #0062bd;
+  --layout-text: #333333;
+  --layout-headers: #333333;
+
+  // Forms
+  --form-field-border: #aaaaaa;
+  --form-field-bgr: #ffffff;
+  --form-placeholder: #333333;
+  --form-placeholder-disabled: #999999;
+  --form-field-border-disabled: #bbbbbb;
+  --form-field-bgr-disabled: #cccccc;
+  --form-accent: #058efc;
+
+  // Code blocks
+  --code: #333333;
+  --code-background: #fff;
 
   // Hints
-  --error-color: #ff525b;
-  --error-color-light: #ffd6d8;
-  --alert-color: #eca910;
-  --alert-color-light: #f9dfa4;
-  --ok-color: #00c197;
-  --ok-color-light: #d6f8e5;
+  --hint-error: #ff525b;
+  --hint-error-light: #ffd6d8;
+  --hint-alert: #eca910;
+  --hint-alert-light: #f9dfa4;
+  --hint-ok: #00c197;
+  --hint-ok-light: #d6f8e5;
+  --hint-text-color: #333333;
 
   // Labels (tags)
-  --label-color: #26be99;
-  --label-text-color: #fff;
+  --label: #26be99;
+  --label-text: #ffffff;
+
+  // ===========================================
+
+  --border-radius: 25px;
+
+  /* OLD DEFAULT GRAY-BLUE SCHEME */
+
+  //Borders
+
+  // --button-border-color: #8e8e8e;
+  // --field-border-color: #aaaaaa;
+  // --table-border-color: rgba(0, 0, 0, 0.12);
+
+  // //Main accent color
+  // --accent-color: #058efc;
+  // --accent-transp-05-color: rgba(5, 142, 252, 0.05);
+  // --secondary-accent-color: #0062bd;
+  // --button-accent-color: #fff;
+
+  // // Backgroungd and font colors
+  // --background-color: #ffffff;
+  // --background-contrast-color: #eeeeee;
+  // --secondary-background-color: #eeeeee;
+  // --font-color: #333333;
+  // --header-color: #333333;
+
+  // //Code
+  // --code-color: #333333;
+  // --code-color-background: #fff;
+
+  // // Hints
+  // --error-color: #ff525b;
+  // --error-color-light: #ffd6d8;
+  // --alert-color: #eca910;
+  // --alert-color-light: #f9dfa4;
+  // --ok-color: #00c197;
+  // --ok-color-light: #d6f8e5;
+
+  // // Labels (tags)
+  // --label-color: #26be99;
+  // --label-text-color: #fff;
 }
 
 :global {
   body {
-    color: var(--font-color);
-    background-color: var(--background-color);
+    color: var(--layout-text);
+    background-color: var(--layout-bgr);
   }
-  h1,h2,h3,h4,h5 {
-      color: var(--header-color)
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: var(--layout-headers);
   }
   a {
-    color: var(--accent-color);
+    color: var(--layout-accent);
     cursor: pointer;
   }
   a:hover {
-    color: var(--secondary-accent-color);
+    color: var(--layout-accent-hover);
   }
   p code {
-    color: var(--code-color);
-    background-color: var(--code-color-background);
+    color: var(--code);
+    background-color: var(--code-background);
     border-radius: 4px;
     padding: 0px 2px;
   }
@@ -653,9 +757,9 @@
 }
 
 .colorTip {
-    margin: 16px 0;
-    display: block;
-    opacity: .5;
-    border-left: solid 3px var(--table-border-color);
-    padding-left: 12px;
+  margin: 16px 0;
+  display: block;
+  opacity: 0.5;
+  border-left: solid 3px var(--table-borders);
+  padding-left: 12px;
 }

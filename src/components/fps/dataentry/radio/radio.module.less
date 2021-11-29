@@ -19,16 +19,16 @@
         
         label {
             cursor: not-allowed;
-            color: var(--field-border-color);
+            color: var(--form-field-border);
         }
         input[type=radio] {
             cursor: not-allowed;
-            border: solid 1px var(--field-border-color);
+            border: solid 1px var(--cards-border);
             &:hover {
-                border: solid 1px var(--field-border-color);
+                border: solid 1px var(--cards-border);
             }
             &:checked {
-                border: solid 4px var(--accent-color);
+                border: solid 4px var(--form-accent);
                 opacity: .5;
             }
         }
@@ -48,8 +48,8 @@
         }
 
         label {
-            background-color: var(--background-color);
-            border: solid 1px var(--background-contrast-color);
+            background-color: var(--layout-secondary-bgr);
+            border: solid 1px var(--cards-border);
             padding:12px;
             margin:0 12px 12px 0;
             width: 146px;
@@ -80,7 +80,7 @@
         font-weight: var(--text-font-weight) !important;
         cursor: pointer;
         &:hover input[type=radio] {
-            border: solid 4px var(--field-border-color);
+            border: solid 4px var(--form-field-border);
         }
         input[type=radio] {
             width: 20px;
@@ -90,14 +90,14 @@
             -moz-appearance: none;
             appearance: none;
             border-radius: 50%;
-            border: solid 1px var(--field-border-color);
+            border: solid 1px var(--form-field-border);
             margin: 6px 11px 6px 1px;
             outline: none !important;
             &:checked {
-                border: solid 4px var(--accent-color);
+                border: solid 4px var(--form-accent);
             }
             &:active {
-                border: solid 4px var(--font-color);
+                border: solid 4px var(--form-placeholder);
             }
             
         }

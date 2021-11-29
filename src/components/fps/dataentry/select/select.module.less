@@ -20,15 +20,15 @@
     }
     .select_field {
         outline: none;
-        border:solid 1px var( --field-border-color);
+        border:solid 1px var(--form-field-border);
         border-radius: var( --border-radius);
-        background-color: var(--background-color);
+        background-color: var(--form-field-bgr);
         display: flex;
         //height: 48px;
         align-items: center;
         padding: 7px 36px 7px 18px;
         min-height: 34px;
-        color: var(--font-color);
+        color: var(--form-placeholder);
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
@@ -45,14 +45,14 @@
             li {
                 display: flex;
                 border-radius: calc(var(--border-radius) / 2);
-                background-color: var(--label-color);
-                color: var(--label-text-color);
+                background-color: var(--label);
+                color: var(--label-text);
                 font-size: var(--text-very-small-size);
                 margin: 0 6px 6px 0;
                 &.multiplaceholder {
                     background: none;
                     opacity:.5;
-                    color: var(--font-color);
+                    color: var(--form-placeholder);
                     font-size: var(--text-small-size);
                     white-space: nowrap;
                     overflow: hidden;
@@ -71,7 +71,7 @@
                         left: 0;
                         display: block;
                         background: transparent;
-                        color: var(--font-color);
+                        color: var(--form-placeholder);
                     }
                 }
                 .title_item {
@@ -98,14 +98,14 @@
         }
         .placeholder {
             opacity:.5;
-            color: var(--font-color);
+            color: var(--form-placeholder);
             font-size: var(--text-small-size);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
         &.disabled {
-            background-color: var(--table-border-color);
+            background-color: var(--form-field-bgr-disabled);
             cursor: not-allowed;
             //color: var(--field-border-color);
         }
@@ -113,12 +113,12 @@
             border-width: 2px;
             //height: 46px;
             padding: 6px 35px 6px 17px;
-            border-color: var(--error-color);
+            border-color: var(--hint-error);
         }
         &.ok {
             border-width: 2px;
             padding: 6px 35px 6px 17px;
-            border-color: var(--ok-color);
+            border-color: var(--hint-ok);
         }
         &:hover:not(.disabled) {
             border-width: 2px;
@@ -134,7 +134,7 @@
         &.focus:not(.disabled) {
             border-width: 2px;
             padding: 6px 35px 6px 17px;
-            border-color: var(--accent-color);
+            border-color: var(--form-accent);
             .multilist {
                 min-width: calc(100% - 56px);
             }
@@ -156,17 +156,17 @@
                 //max-height: 200px;
                 overflow-y: auto;
                 overflow-x: hidden;
-                border:solid 1px var( --field-border-color);
+                border:solid 1px var(--table-borders);
             }
         }
         &.error {
             border-width: 2px;
             padding: 6px 35px 6px 17px;
-            border-color: var(--error-color);
+            border-color: var(--hint-error);
         }
         &:active:not(.disabled) {
             padding: 6px 35px 6px 17px;
-            border: solid 2px var(--font-color);
+            border: solid 2px var(--form-placeholder);
         }
         .icon {
             margin-left: -8px;
@@ -186,7 +186,7 @@
                 left: 0;
                 display: block;
                 background: transparent;
-                color: var(--font-color);
+                color: var(--form-placeholder);
             }
         }
         .options_counter {
@@ -213,7 +213,7 @@
             left:0;
             flex-direction: column;
             border-radius: var( --border-radius);
-            background-color: var(--background-color);
+            background-color: var(--form-field-bgr);
             //z-index: 100;
             margin-top: 0;
             box-shadow: 0 5px 12px rgba(0,0,0,.15);
@@ -230,33 +230,33 @@
                 //text-overflow: ellipsis;
                 cursor: pointer;
                 &:hover {
-                    background: var( --secondary-background-color);
+                    background: var(--table-raw-hover);
                 }
                 &.selected {
-                    background-color: var(--accent-color);
-                    color: var(--button-accent-color);
+                    background-color: var(--button-accent-bgr);
+                    color: var(--button-accent-text);
                     .displayKey {
-                        color: var(--button-accent-color);
+                        color: var(--button-accent-text);
                     }
                     .displayKeyShort {
-                        color: var(--background-color);
+                        color: var(--form-field-bgr);
                     }
                 }
                 &.keySelected {
                     padding:6px 10px;
-                    border: solid 2px var(--font-color);
+                    border: solid 2px var(--form-placeholder);
                     &.optionIcon {
                         padding:0px 6px;
                     }
                 }
                 &:active:not(.disabled) {
-                    background: var(--font-color);
-                    color: var(--background-color);
+                    background: var(--form-placeholder);
+                    color: var(--form-field-bgr);
                     .displayKey {
-                        color: var(--button-accent-color);
+                        color: var(--button-accent-text);
                     }
                     .displayKeyShort {
-                        color: var(--background-color);
+                        color: var(--form-field-bgr);
                     }
                 }
             }
@@ -272,8 +272,8 @@
     align-items: center;
     height: 31px;
     border-radius: calc(var(--border-radius) / 2);
-    background-color: var(--label-color);
-    color: var(--label-text-color);
+    background-color: var(--label);
+    color: var(--label-text);
     font-size: var(--text-very-small-size);
     z-index: 10;
     cursor: pointer;
@@ -284,10 +284,10 @@
             padding: 0 26px 0 9px !important;
             height: 100% !important;
             min-height: auto !important;
-            color: var(--label-text-color) !important;
+            color: var(--label-text) !important;
         }
         .arrow {
-            color: var(--label-text-color);
+            color: var(--label-text);
             opacity: .6;
             top:4px;
             right: 4px;
@@ -298,7 +298,7 @@
         }
         .placeholder {
             padding: 0 !important;
-            color: var(--label-text-color);
+            color: var(--label-text);
             font-size: var(--text-very-small-size);
         }
         .currentValue {
@@ -309,7 +309,7 @@
             min-width: 50px !important;
             opacity: 1 !important;
             .filter {
-                color: var(--label-text-color);
+                color: var(--label-text);
                 font-size: var(--text-very-small-size);
             }
         }
@@ -319,18 +319,18 @@
         }
         .list {
             border-radius: calc(var(--border-radius) / 2);
-            background-color: var(--label-color);
-            color: var(--label-text-color);
+            background-color: var(--label);
+            color: var(--label-text);
             border: none !important;
             .option {
                 border-radius: calc(var(--border-radius) / 2);
                 &:hover {
                     background: rgba(0,0,0,.25);
-                    color: var(--label-text-color);
+                    color: var(--label-text);
                 }
                 &.selected {
                     background: rgba(0,0,0,.5);
-                    color: var(--label-text-color);
+                    color: var(--label-text);
                 }
             }
         }
@@ -340,11 +340,11 @@
 .displayKey {
     font-size: var(--text-small-size);
     font-family: 'Source Code Pro', monospace;
-    color:var(--accent-color)
+    color:var(--form-accent)
 }
 .displayKeyShort {
     font-size: var(--text-small-size);
     font-family: 'Source Code Pro', monospace;
-    color:var(--font-color);
+    color:var(--form-placeholder);
     opacity: .6;
 }

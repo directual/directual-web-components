@@ -1,5 +1,5 @@
 .dropzone {
-  border: dashed 2px var(--field-border-color);
+  border: dashed 2px var(--form-field-border);
   cursor: pointer;
   padding: 6px;
   outline: none;
@@ -14,11 +14,11 @@
   margin: 0;
 }
 .dropzone:hover {
-  border: solid 2px var(--field-border-color);
+  border: solid 2px var(--form-field-border);
   padding: 6px;
 }
 .dropzone:active {
-  border: solid 2px var(--font-color);
+  border: solid 2px var(--layout-text);
   padding: 6px;
 }
 .dropzone input {
@@ -48,16 +48,16 @@
 }
 .progress {
   height: 50px;
-  border: solid 1px var(--field-border-color);
+  border: solid 1px var(--form-field-border);
   flex-shrink: 0;
   border-radius: var(--border-radius);
   display: flex;
   align-items: center;
   padding: 0 1px;
-  background-color: var(--background-color);
+  background-color: var(--form-field-bgr);
 }
 .progress .line {
-  background: var(--table-border-color);
+  background: var(--table-borders);
   height: 4px;
   border-radius: 6px;
   flex-grow: 2;
@@ -67,7 +67,7 @@
 .progress .line .ready {
   height: 4px;
   border-radius: 6px;
-  background: var(--accent-color);
+  background: var(--form-accent);
   position: absolute;
   top: 0;
   left: 0;
@@ -83,13 +83,13 @@
 }
 .uploaded {
   height: 44px;
-  border: solid 1px var(--field-border-color);
+  border: solid 1px var(--form-field-border);
   flex-shrink: 0;
   border-radius: var(--border-radius);
   display: flex;
   align-items: center;
   padding: 0 6px 0 10px;
-  background-color: var(--background-color);
+  background-color: var(--form-field-bgr);
 }
 .uploaded .fileName {
   flex-grow: 2;

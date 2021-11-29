@@ -8,8 +8,8 @@
     display: flex;
     align-items: center;
     font-size: var(--text-small-size);
-    background-color: var(--label-color);
-    color: var(--label-text-color) !important;
+    background-color: var(--label);
+    color: var(--label-text) !important;
     border-radius: 12px;
     padding: 4px 9px;
     margin: 2px;
@@ -23,11 +23,12 @@
         opacity: .3;
     }
     &.addButton {
-        background-color: var(--accent-color);
-        color: var(--button-accent-color);
+        background-color: var(--button-accent-bgr);
+        color: var(--button-accent-text);
         padding-left: 4px;
         &:hover:not(.disabled) {
-            background-color: var(--secondary-accent-color);
+            background-color: var(--button-accent-hover-bgr);
+            color: var(--button-accent-hover-text);
         }
     }
     &.clickable {

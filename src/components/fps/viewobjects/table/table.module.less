@@ -1,9 +1,9 @@
 .table_wrapper {
-  background-color: var(--background-color);
+  background-color: var(--layout-secondary-bgr);
   padding: 6px;
   border-radius: var(--border-radius);
   overflow: auto;
-  border: solid 1px var(--background-contrast-color);
+  border: solid 1px var(--layout-bgr);
   margin-bottom: 12px;
   table {
     min-width: 100%;
@@ -12,7 +12,7 @@
     tr {
       &:hover {
         td {
-          background-color: var(--accent-transp-05-color);
+          background-color: var(--table-raw-hover);
         }
       }
       .expand {
@@ -32,7 +32,7 @@
         background-size: cover;
       }
       padding: 12px 12px;
-      border-top: solid 1px var(--table-border-color);
+      border-top: solid 1px var(--table-borders);
       &.nowrap {
         white-space: nowrap;
       }
@@ -68,7 +68,7 @@
     }
   }
   .pagination {
-    border-top: solid 1px var(--table-border-color);
+    border-top: solid 1px var(--table-borders);
     padding: 12px;
     font-size: var(--text-very-small-size);
     display: flex;
@@ -104,8 +104,8 @@
   display: flex;
   flex-direction: column;
   border-radius: var(--border-radius);
-  border: solid 1px var(--background-contrast-color);
-  background-color: var(--background-color);
+  border: solid 1px var(--layout-bgr);
+  background-color: var(--layout-secondary-bgr);
   z-index: 101;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
 
@@ -142,7 +142,7 @@
       margin: 12px 24px 24px 44px;
     }
     &.bordered {
-      border-top: solid 1px var(--field-border-color);
+      border-top: solid 1px var(--form-field-border);
     }
   }
   .fieldValue {
@@ -252,11 +252,11 @@ div.tableTitle.mobile {
     font-weight: var(--strong-font-weight);
     .editPedal {
       margin-left: 6px;
-      color: var(--accent-color);
+      color: var(--layout-accent);
       cursor: pointer;
       font-weight: var(--text-font-weight);
       &:hover {
-        color: var(--secondary-accent-color);
+        color: var(--layout-accent-hover);
       }
     }
   }
@@ -276,18 +276,18 @@ div.tableTitle.mobile {
     &.notClickable {
       a {
         cursor: default;
-        color: var(--label-text-color);
-        background-color: var(--label-color);
+        color: var(--label-text);
+        background-color: var(--label);
         border: none;
       }
     }
     a {
       margin: 0px 6px 6px 0;
-      border: solid 1px var(--accent-color);
+      border: solid 1px var(--layout-accent);
       padding: 3px 9px;
       border-radius: calc(var(--border-radius) / 2);
       &:hover {
-        border-color: var(--secondary-accent-color);
+        border-color: var(--layout-accent-hover);
       }
     }
   }
@@ -297,8 +297,8 @@ div.tableTitle.mobile {
     align-items: center;
     margin-bottom: 12px;
     .download {
-      background-color: var(--label-color);
-      color: var(--label-text-color);
+      background-color: var(--label);
+      color: var(--label-text);
       border-radius: var(--border-radius);
       height: 48px;
       padding: 0 22px 0 16px;
@@ -308,7 +308,7 @@ div.tableTitle.mobile {
 }
 
 .cardImage {
-  background-color: var(--field-border-color);
+  background-color: var(--form-field-border);
   display: flex;
   overflow: hidden;
   align-items: center;
@@ -320,12 +320,12 @@ div.tableTitle.mobile {
   position: relative;
   .noPic {
     font-size: var(--text-small-size);
-    color: var(--background-color);
+    color: var(--layout-secondary-bgr);
     opacity: 0.5;
   }
   .editPic {
     position: absolute;
-    background: var(--accent-color);
+    background: var(--layout-accent);
     opacity: 0;
     width: 100%;
     height: 100%;
@@ -337,7 +337,7 @@ div.tableTitle.mobile {
       opacity: 0.35;
     }
     &:before {
-      color: var(--button-accent-color);
+      color: var(--button-accent-text);
       font-size: 80px;
     }
   }
@@ -408,14 +408,14 @@ div.tableTitle.mobile {
 }
 
 .linkText {
-  border: solid 1px var(--accent-color);
-  color: var(--accent-color);
-  background-color: var(--background-color);
+  border: solid 1px var(--layout-accent);
+  color: var(--layout-accent);
+  background-color: var(--layout-secondary-bgr);
   padding: 3px 9px;
   &.notClickable {
     cursor: default;
-    color: var(--label-text-color);
-    background-color: var(--label-color);
+    color: var(--label-text);
+    background-color: var(--label);
     border: none;
   }
 }
@@ -429,8 +429,8 @@ div.tableTitle.mobile {
   text-overflow: ellipsis;
 }
 .labelText {
-  color: var(--label-text-color);
-  background-color: var(--label-color);
+  color: var(--label-text);
+  background-color: var(--label);
   padding: 4px 9px;
 }
 
@@ -444,7 +444,7 @@ div.tableTitle.mobile {
 .emptyTable {
   justify-content: center;
   align-items: center;
-  background-color: var(--background-color);
+  background-color: var(--layout-secondary-bgr);
   margin-bottom: 12px;
   border-radius: var(--border-radius);
   margin-right: 0;
@@ -471,11 +471,11 @@ div.tableTitle.mobile {
 
   th, .total td {
     //color: var(--field-border-color);
-    background: var(--table-border-color);
+    background: var(--table-borders);
   }
   tr.clickable:hover {
     td {
-      background-color: var(--accent-transp-05-color);
+      background-color: var(--table-raw-hover);
       cursor: pointer;
     }
   }
@@ -485,7 +485,7 @@ div.tableTitle.mobile {
     &.right {
       text-align: right;
     }
-    border-bottom: solid 1px var(--table-border-color);
+    border-bottom: solid 1px var(--table-borders);
   }
   .cardQuantity {
     opacity: .5;
@@ -497,7 +497,7 @@ div.tableTitle.mobile {
     cursor: pointer;
     &:hover {
       opacity: .9;
-      color: var(--error-color);
+      color: var(--hint-error);
     }
   }
 }
@@ -506,6 +506,6 @@ div.tableTitle.mobile {
   max-width: 80px;
   max-height: 60px;
   display: block;
-  border: solid 1px var(--table-border-color);
+  border: solid 1px var(--table-borders);
 }
 

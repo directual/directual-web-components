@@ -8,11 +8,11 @@
         min-width: 80px;
         &.noSuchField {
             .select_field {
-                background-color: var(--error-color);
+                background-color: var(--hint-error);
             }
         }
         .select_field {
-            background-color: var(--accent-color);
+            background-color: var(--form-accent);
             height: 18px;
             margin: -3px 0;
             min-height: 0;
@@ -126,9 +126,9 @@
     }
     .select_field {
         outline: none;
-        border:solid 1px var( --field-border-color);
+        border:solid 1px var( --form-field-border);
         border-radius: var( --border-radius);
-        background-color: var(--background-color);
+        background-color: var(--form-field-bgr);
         display: flex;
         //height: 48px;
         align-items: center;
@@ -136,26 +136,26 @@
         overflow-x: auto;
         overflow-y: hidden;
         min-height: 32px;
-        color: var(--font-color);
+        color: var(--form-placeholder);
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
         cursor: text;
         &.disabled {
-            background-color: var(--table-border-color);
+            background-color: var(--table-borders);
             cursor: not-allowed;
-            color: var(--field-border-color);
+            color: var(--form-field-border);
         }
         &.error {
             border-width: 2px;
             //height: 46px;
             padding: 6px 35px 6px 17px;
-            border-color: var(--error-color);
+            border-color: var(--hint-error);
         }
         &.ok {
             border-width: 2px;
             padding: 6px 35px 6px 17px;
-            border-color: var(--ok-color);
+            border-color: var(--hint-ok);
         }
         &:hover:not(.disabled) {
             border-width: 2px;
@@ -164,7 +164,7 @@
         &.focus:not(.disabled) {
             border-width: 2px;
             padding: 6px 35px 6px 17px;
-            border-color: var(--accent-color);
+            border-color: var(--form-accent);
             .placeholder {
                 padding-right: 50px;
             }
@@ -176,7 +176,7 @@
                 margin: 0;
                 overflow-y: auto;
                 overflow-x: auto;
-                border:solid 1px var( --field-border-color);
+                border:solid 1px var(--form-field-border);
             }
         }
         .list {
@@ -191,7 +191,7 @@
             top:100%;
             left:0;
             border-radius: var( --border-radius);
-            background-color: var(--background-color);
+            background-color: var(--form-field-bgr);
             z-index: 0;
             margin-top: 0;
             box-shadow: 0 5px 12px rgba(0,0,0,.15);
@@ -213,11 +213,11 @@
                     overflow:auto;
                     margin: 0;
                     &.bordered {
-                        border-top: solid 1px var(--field-border-color);
+                        border-top: solid 1px var(--form-field-border);
                     }
                 }
                 &.odd {
-                    background: var( --secondary-background-color);
+                    background: var(--layout-secondary-bgr);
                 }
                 .structName {
                     font-size: var(--text-small-size);
@@ -267,49 +267,49 @@
                         text-overflow: ellipsis;
                     }
                     &:hover {
-                        background: var( --table-border-color);
+                        background: var(--table-borders);
                     }
                     &.keyfocus {
-                        border: solid 2px var(--font-color);
+                        border: solid 2px var(--form-placeholder);
                         padding:4px 26px 4px 10px;
                         .goToLink {
                             right: -2px;
                         }
                     }
                     &.selected {
-                        background-color: var(--accent-color);
-                        color: var(--button-accent-color);
+                        background-color: var(--form-accent);
+                        color: var(--button-accent-text);
                         .sysName, .dataType {
-                            color: var(--background-color);
+                            color: var(--form-field-bgr);
                         }
                         .objectDetails {
-                            color: var(--background-color);
+                            color: var(--form-field-bgr);
                         }
                     }
                     &.keySelected {
                         padding:6px 10px;
-                        border: solid 2px var(--font-color);
+                        border: solid 2px var(--form-placeholder);
                         &.optionIcon {
                             padding:0px 6px;
                         }
                     }
                     &:active:not(.disabled) {
-                        background: var(--font-color);
-                        color: var(--background-color);
+                        background: var(--form-placeholder);
+                        color: var(--form-field-bgr);
                         .sysName, .dataType {
-                            color: var(--background-color);
+                            color: var(--form-field-bgr);
                         }
                         .objectDetails {
-                            color: var(--background-color);
+                            color: var(--form-field-bgr);
                         }
                     }
                     .sysName {
                         font-family: 'Source Code Pro', monospace;
-                        color: var(--accent-color);
+                        color: var(--form-accent);
                     }
                     .objectDetails {
                         padding-top:2px;
-                        color: var(--button-border-color);
+                        color: var(--form-field-border);
                         font-family: 'Source Code Pro', monospace;
                         .sysName {
                             font-size: var(--text-very-small-size);
@@ -324,11 +324,11 @@
         &.error {
             border-width: 2px;
             padding: 6px 35px 6px 17px;
-            border-color: var(--error-color);
+            border-color: var(--hint-error);
         }
         &:active:not(.disabled) {
             padding: 6px 35px 6px 17px;
-            border: solid 2px var(--font-color);
+            border: solid 2px var(--form-placeholder);
         }
         .icon {
             margin-left: -8px;
@@ -337,7 +337,7 @@
         .filterFields {
             position: absolute;
             right: 40px;
-            color: var(--label-color);
+            color: var(--label);
             opacity: .3;
             transition: .5s;
         }
@@ -353,7 +353,7 @@
             }
             .placeholder {
                 opacity:.5;
-                color: var(--font-color);
+                color: var(--form-placeholder);
                 font-size: var(--text-small-size);
                 white-space: nowrap;
                 overflow: hidden;
@@ -377,13 +377,13 @@
                 //font-size: var(--text-small-size);
                 .objectDetails {
                     padding-top:2px;
-                    color: var(--button-border-color);
+                    color: var(--form-field-border);
                     font-family: 'Source Code Pro', monospace;
                     &.small {
                         font-size: var(--text-very-small-size);
                     }
                     span {
-                        color: var(--accent-color);
+                        color: var(--form-accent);
                     }
                 }
             }
@@ -397,11 +397,11 @@
                 display: block;
                 background: transparent;
                 //background: red;
-                color: var(--font-color);
+                color: var(--form-placeholder);
                 min-width: 170px;
                 &::placeholder {
                     opacity:.5;
-                    color: var(--font-color);
+                    color: var(--form-placeholder);
                     font-size: var(--text-small-size);
                 }
             }

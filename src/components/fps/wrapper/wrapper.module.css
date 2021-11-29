@@ -18,7 +18,7 @@
 }
 
 .content_wrapper {
-    background-color: var(--secondary-background-color);
+    background-color: var(--layout-bgr);
     padding: 32px 32px 46px 32px;
     flex-grow: 2;
     overflow-x: hidden;
@@ -41,8 +41,8 @@
 
 .diretualFooter {
     position: fixed;
-    background-color: var(--background-color);
-    border-top:solid 1px var(--background-contrast-color);
+    background-color: var(--layout-secondary-bgr);
+    border-top:solid 1px var(--menu-border-color);
     padding:5px 8px;
     bottom: 0;
     left:0;

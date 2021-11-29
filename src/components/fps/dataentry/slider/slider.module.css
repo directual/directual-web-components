@@ -1,8 +1,7 @@
 .slider_wrapper {
   display: flex;
   height: 4px;
-  padding: 18px 12px;
-  overflow: hidden;
+  padding: 18px 0;
   min-width: 100px;
 }
 .slider_wrapper.disabled {
@@ -12,7 +11,7 @@
   cursor: default !important;
 }
 .slider_wrapper .line {
-  background: var(--table-border-color);
+  background: var(--table-borders);
   height: 4px;
   width: 100%;
   border-radius: 6px;
@@ -24,12 +23,12 @@
 .slider_wrapper .line .fill {
   border-radius: 6px;
   height: 4px;
-  background: var(--accent-color);
+  background: var(--layout-accent);
   position: absolute;
   z-index: 2;
 }
 .slider_wrapper .line .knob {
-  background: var(--accent-color);
+  background: var(--layout-accent);
   height: 16px;
   width: 16px;
   position: absolute;
@@ -60,7 +59,7 @@
   transition: 0.5s;
 }
 .slider_wrapper .line .knob:active {
-  background-color: var(--secondary-accent-color);
+  background-color: var(--layout-accent-hover);
 }
 .slider_wrapper .line .knob.rightKnob {
   transform: translate(8px, 0);
