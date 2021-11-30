@@ -47,7 +47,7 @@ export function Markdown(props) {
 
         // Copy value.
         _buffer.value = text || textarea.value;
-        console.log(_buffer.scrollHeight / lh)
+        // console.log(_buffer.scrollHeight / lh)
 
         var result = Math.round(_buffer.scrollHeight / lh);
         if (result == 0) result = 1;

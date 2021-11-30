@@ -153,13 +153,32 @@ Some *emphasis* and <strong>strong</strong>!`;
 
       const [error,setError] = useState('error')
 
+      const testData = [
+        {
+            latitude: 35.786868,
+            longitude: -121.252865,
+            id: 'pointer1',
+            title: 'Pointer 1',
+            image: 'https://api.directual.com/fileUploaded/dev/f13801f2-c52e-463b-9904-8eb36c1f82a7.jpg',
+            text: 'pointer description pointer description pointer description pointer description pointer description pointer description description pointer description pointer description pointer description pointer description',
+            link: 'https://www.mapbox.com/'
+        }
+    ]
+
     return (
         <React.Fragment>
             <h1>Data entry</h1>
 
             <Map
-                height='400px'
-                width='400px'
+                label='This is my map'
+                height='600px'
+                width='600px'
+                edit
+                //oneMarker
+                defaultValue={testData}
+                jsonView
+                maptoken="pk.eyJ1IjoiZGlyZWN0dWFsIiwiYSI6ImNrdmJncTl0eTBkcWIyc3BuYjlpYXp2cnkifQ.mVDgIP-E8tA2FlBttPdi4A"
+                mapStyle="mapbox://styles/mapbox/dark-v10"
             />
             <br />
 

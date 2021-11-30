@@ -12,196 +12,870 @@ import ActionPanel from '../actionspanel/actionspanel'
 
 const customThemeColors = {
     classic: {
-        menu_bgr: "#ffffff",
-        menu_border_color: "#eeeeee",
-        menu_item: "#999999",
-        menu_item_hover: "#333333",
-        menu_item_selected: "#058efc",
-        menu_group: "#333333",
+        '--menu-bgr': "#ffffff",
+        '--menu-border-color': "#eeeeee",
+        '--menu-item': "#999999",
+        '--menu-item-hover': "#333333",
+        '--menu-item-selected': "#058efc",
+        '--menu-group': "#333333",
 
-        // Button _ regular
-        button_bgr: "#ffffff",
-        button_border: "#8e8e8e",
-        button_text: "#333333",
+        // Button regular
+        '--button-bgr': "#ffffff",
+        '--button-border': "#8e8e8e",
+        '--button-text': "#333333",
 
-        button_hover_bgr: "#ffffff",
-        button_hover_border: "#8e8e8e",
-        button_hover_text: "#333333",
+        '--button-hover-bgr': "#ffffff",
+        '--button-hover-border': "#8e8e8e",
+        '--button-hover-text': "#333333",
 
-        button_active_bgr: "#8e8e8e",
-        button_active_border: "#333333",
-        button_active_text: "#ffffff",
+        '--button-active-bgr': "#8e8e8e",
+        '--button-active-border': "#333333",
+        '--button-active-text': "#ffffff",
 
-        button_dropdown_hover_bgr: "rgba(5, 142, 252, 0.05)",
+        // Button dropdown
+        '--button-dropdown-hover-bgr': "rgba(5, 142, 252, 0.05)",
 
-        // Button _ accent
-        button_accent_bgr: "#058efc",
-        button_accent_border: "#058efc",
-        button_accent_text: "#ffffff",
+        // Button accent
+        '--button-accent-bgr': "#058efc",
+        '--button-accent-border': "#058efc",
+        '--button-accent-text': "#ffffff",
 
-        button_accent_hover_bgr: "#0062bd",
-        button_accent_hover_border: "#0062bd",
-        button_accent_hover_text: "#ffffff",
+        '--button-accent-hover-bgr': "#0062bd",
+        '--button-accent-hover-border': "#0062bd",
+        '--button-accent-hover-text': "#ffffff",
 
-        button_accent_active_bgr: "#333333",
-        button_accent_active_border: "#333333",
-        button_accent_active_text: "#ffffff",
+        '--button-accent-active-bgr': "#333333",
+        '--button-accent-active-border': "#333333",
+        '--button-accent-active-text': "#ffffff",
 
-        // Button _ danger
-        button_danger_bgr: "#ffffff",
-        button_danger_border: "#8e8e8e",
-        button_danger_text: "#333333",
+        // Button danger
+        '--button-danger-bgr': "#ffffff",
+        '--button-danger-border': "#8e8e8e",
+        '--button-danger-text': "#333333",
 
-        button_danger_hover_bgr: "#ff525b",
-        button_danger_hover_border: "#ff525b",
-        button_danger_hover_text: "#ffffff",
+        '--button-danger-hover-bgr': "#ff525b",
+        '--button-danger-hover-border': "#ff525b",
+        '--button-danger-hover-text': "#ffffff",
 
-        button_danger_active_bgr: "#333333",
-        button_danger_active_border: "#333333",
-        button_danger_active_text: "#ffffff",
+        '--button-danger-active-bgr': "#333333",
+        '--button-danger-active-border': "#333333",
+        '--button-danger-active-text': "#ffffff",
 
         // Table
-        table_borders: "rgba(0, 0, 0, 0.12)",
-        table_raw_hover: "rgba(5, 142, 252, 0.05)",
+        '--table-borders': "rgba(0, 0, 0, 0.12)",
+        '--table-raw-hover': "rgba(5, 142, 252, 0.05)",
 
         // Cards
-        cards_bgr: "#ffffff",
-        cards_border: "#aaaaaa",
-        cards_hover_bgr: "#ffffff",
-        cards_hover_border: "#aaaaaa",
-        cards_notification: "#ff525b",
+        '--cards-bgr': "#ffffff",
+        '--cards-border': "#aaaaaa",
+        '--cards-hover-bgr': "#ffffff",
+        '--cards-hover-border': "#aaaaaa",
+        '--cards-notification': "#ff525b",
+        '--cards-notification-text': "#fff",
 
         // Layout
-        layout_bgr: "#eeeeee",
-        layout_secondary_bgr: "#ffffff",
-        layout_accent: "#058efc",
-        layout_accent_hover: "#0062bd",
-        layout_text: "#333333",
-        layout_headers: "#333333",
+        '--layout-bgr': "#eeeeee",
+        '--layout-secondary-bgr': "#ffffff",
+        '--layout-accent': "#058efc",
+        '--layout-accent-hover': "#0062bd",
+        '--layout-text': "#333333",
+        '--layout-headers': "#333333",
 
         // Forms
-        form_field_border: "#aaaaaa",
-        form_field_bgr: "#ffffff",
-        form_placeholder: "#333333",
-        form_placeholder_disabled: "#999999",
-        form_field_border_disabled: "#bbbbbb",
-        form_field_bgr_disabled: "#cccccc",
-        form_accent: "#058efc",
+        '--form-field-border': "#aaaaaa",
+        '--form-field-bgr': "#ffffff",
+        '--form-placeholder': "#333333",
+        '--form-placeholder-disabled': "#999999",
+        '--form-field-border-disabled': "#bbbbbb",
+        '--form-field-bgr-disabled': "#cccccc",
+        '--form-accent': "#058efc",
 
         // Code blocks
-        code: "#333333",
-        code_background: "#fff",
+        '--code': "#333333",
+        '--code-background': "#fff",
 
         // Hints
-        hint_error: "#ff525b",
-        hint_error_light: "#ffd6d8",
-        hint_alert: "#eca910",
-        hint_alert_light: "#f9dfa4",
-        hint_ok: "#00c197",
-        hint_ok_light: "#d6f8e5",
-        hint_text_color: "#333333",
+        '--hint-error': "#ff525b",
+        '--hint-error-light': "#ffd6d8",
+        '--hint-alert': "#eca910",
+        '--hint-alert-light': "#f9dfa4",
+        '--hint-ok': "#00c197",
+        '--hint-ok-light': "#d6f8e5",
+        '--hint-text-color': "#333333",
 
         // Labels (tags)
-        label: "#26be99",
-        label_text: "#fff",
-    }
+        '--label': "#26be99",
+        '--label-text': "#ffffff",
+    },
+    white: {
+        '--menu-bgr': "#ffffff",
+        '--menu-border-color': "#aaaaaa",
+        '--menu-item': "#999999",
+        '--menu-item-hover': "#333333",
+        '--menu-item-selected': "#058efc",
+        '--menu-group': "#333333",
 
+        // Button regular
+        '--button-bgr': "#ffffff",
+        '--button-border': "#8e8e8e",
+        '--button-text': "#333333",
+
+        '--button-hover-bgr': "#ffffff",
+        '--button-hover-border': "#8e8e8e",
+        '--button-hover-text': "#333333",
+
+        '--button-active-bgr': "#8e8e8e",
+        '--button-active-border': "#333333",
+        '--button-active-text': "#ffffff",
+
+        // Button dropdown
+        '--button-dropdown-hover-bgr': "rgba(5, 142, 252, 0.05)",
+
+        // Button accent
+        '--button-accent-bgr': "#058efc",
+        '--button-accent-border': "#058efc",
+        '--button-accent-text': "#ffffff",
+
+        '--button-accent-hover-bgr': "#0062bd",
+        '--button-accent-hover-border': "#0062bd",
+        '--button-accent-hover-text': "#ffffff",
+
+        '--button-accent-active-bgr': "#333333",
+        '--button-accent-active-border': "#333333",
+        '--button-accent-active-text': "#ffffff",
+
+        // Button danger
+        '--button-danger-bgr': "#ffffff",
+        '--button-danger-border': "#8e8e8e",
+        '--button-danger-text': "#333333",
+
+        '--button-danger-hover-bgr': "#ff525b",
+        '--button-danger-hover-border': "#ff525b",
+        '--button-danger-hover-text': "#ffffff",
+
+        '--button-danger-active-bgr': "#333333",
+        '--button-danger-active-border': "#333333",
+        '--button-danger-active-text': "#ffffff",
+
+        // Table
+        '--table-borders': "rgba(0, 0, 0, 0.12)",
+        '--table-raw-hover': "rgba(5, 142, 252, 0.05)",
+
+        // Cards
+        '--cards-bgr': "#ffffff",
+        '--cards-border': "#aaaaaa",
+        '--cards-hover-bgr': "#ffffff",
+        '--cards-hover-border': "#aaaaaa",
+        '--cards-notification': "#ff525b",
+        '--cards-notification-text': "#fff",
+
+        // Layout
+        '--layout-bgr': "#ffffff",
+        '--layout-secondary-bgr': "#ffffff",
+        '--layout-accent': "#058efc",
+        '--layout-accent-hover': "#0062bd",
+        '--layout-text': "#333333",
+        '--layout-headers': "#333333",
+
+        // Forms
+        '--form-field-border': "#aaaaaa",
+        '--form-field-bgr': "#ffffff",
+        '--form-placeholder': "#333333",
+        '--form-placeholder-disabled': "#999999",
+        '--form-field-border-disabled': "#bbbbbb",
+        '--form-field-bgr-disabled': "#cccccc",
+        '--form-accent': "#058efc",
+
+        // Code blocks
+        '--code': "#333333",
+        '--code-background': "#fff",
+
+        // Hints
+        '--hint-error': "#ff525b",
+        '--hint-error-light': "#ffd6d8",
+        '--hint-alert': "#eca910",
+        '--hint-alert-light': "#f9dfa4",
+        '--hint-ok': "#00c197",
+        '--hint-ok-light': "#d6f8e5",
+        '--hint-text-color': "#333333",
+
+        // Labels (tags)
+        '--label': "#26be99",
+        '--label-text': "#ffffff",
+    },
+    tiffany: {
+        '--menu-bgr': "#ffffff",
+        '--menu-border-color': "#aaaaaa",
+        '--menu-item': "#999999",
+        '--menu-item-hover': "#333333",
+        '--menu-item-selected': "#058efc",
+        '--menu-group': "#333333",
+
+        // Button regular
+        '--button-bgr': "#ffffff",
+        '--button-border': "#8e8e8e",
+        '--button-text': "#333333",
+
+        '--button-hover-bgr': "#ffffff",
+        '--button-hover-border': "#8e8e8e",
+        '--button-hover-text': "#333333",
+
+        '--button-active-bgr': "#8e8e8e",
+        '--button-active-border': "#333333",
+        '--button-active-text': "#ffffff",
+
+        // Button dropdown
+        '--button-dropdown-hover-bgr': "rgba(5, 142, 252, 0.05)",
+
+        // Button accent
+        '--button-accent-bgr': "#4ad5c8",
+        '--button-accent-border': "#4ad5c8",
+        '--button-accent-text': "#ffffff",
+
+        '--button-accent-hover-bgr': "#37aea3",
+        '--button-accent-hover-border': "#37aea3",
+        '--button-accent-hover-text': "#ffffff",
+
+        '--button-accent-active-bgr': "#333333",
+        '--button-accent-active-border': "#333333",
+        '--button-accent-active-text': "#ffffff",
+
+        // Button danger
+        '--button-danger-bgr': "#ffffff",
+        '--button-danger-border': "#8e8e8e",
+        '--button-danger-text': "#333333",
+
+        '--button-danger-hover-bgr': "#ff525b",
+        '--button-danger-hover-border': "#ff525b",
+        '--button-danger-hover-text': "#ffffff",
+
+        '--button-danger-active-bgr': "#333333",
+        '--button-danger-active-border': "#333333",
+        '--button-danger-active-text': "#ffffff",
+
+        // Table
+        '--table-borders': "rgba(0, 0, 0, 0.12)",
+        '--table-raw-hover': "rgba(5, 142, 252, 0.05)",
+
+        // Cards
+        '--cards-bgr': "#ffffff",
+        '--cards-border': "#aaaaaa",
+        '--cards-hover-bgr': "#ffffff",
+        '--cards-hover-border': "#aaaaaa",
+        '--cards-notification': "#ff525b",
+        '--cards-notification-text': "#fff",
+
+        // Layout
+        '--layout-bgr': "#eeeeee",
+        '--layout-secondary-bgr': "#ffffff",
+        '--layout-accent': "#4ad5c8",
+        '--layout-accent-hover': "#37aea3",
+        '--layout-text': "#333333",
+        '--layout-headers': "#333333",
+
+        // Forms
+        '--form-field-border': "#aaaaaa",
+        '--form-field-bgr': "#ffffff",
+        '--form-placeholder': "#333333",
+        '--form-placeholder-disabled': "#999999",
+        '--form-field-border-disabled': "#bbbbbb",
+        '--form-field-bgr-disabled': "#cccccc",
+        '--form-accent': "#4ad5c8",
+
+        // Code blocks
+        '--code': "#333333",
+        '--code-background': "#fff",
+
+        // Hints
+        '--hint-error': "#ff525b",
+        '--hint-error-light': "#ffd6d8",
+        '--hint-alert': "#eca910",
+        '--hint-alert-light': "#f9dfa4",
+        '--hint-ok': "#00c197",
+        '--hint-ok-light': "#d6f8e5",
+        '--hint-text-color': "#333333",
+
+        // Labels (tags)
+        '--label': "#FFCCA9",
+        '--label-text': "#333333",
+    },
+    darkMint: {
+        '--menu-bgr': "#1c1d3b",
+        '--menu-border-color': "#131022",
+        '--menu-item': "#aaaaaa",
+        '--menu-item-hover': "#ffffff",
+        '--menu-item-selected': "#1ae191",
+        '--menu-group': "#fff",
+
+        // Button regular
+        '--button-bgr': "#1c1d3b",
+        '--button-border': "#2f00ff",
+        '--button-text': "#fff",
+
+        '--button-hover-bgr': "#1c1d3b",
+        '--button-hover-border': "#2f00ff",
+        '--button-hover-text': "#fff",
+
+        '--button-active-bgr': "#2f00ff",
+        '--button-active-border': "#2f00ff",
+        '--button-active-text': "#ffffff",
+
+        // Button dropdown
+        '--button-dropdown-hover-bgr': "rgba(255, 255, 255, 0.05)",
+
+        // Button accent
+        '--button-accent-bgr': "#1ae191",
+        '--button-accent-border': "#1ae191",
+        '--button-accent-text': "#131022",
+
+        '--button-accent-hover-bgr': "#00ff98",
+        '--button-accent-hover-border': "#00ff98",
+        '--button-accent-hover-text': "#131022",
+
+        '--button-accent-active-bgr': "#fff",
+        '--button-accent-active-border': "#fff",
+        '--button-accent-active-text': "#333",
+
+        // Button danger
+        '--button-danger-bgr': "#1c1d3b",
+        '--button-danger-border': "#ff525b",
+        '--button-danger-text': "#fff",
+
+        '--button-danger-hover-bgr': "#ff525b",
+        '--button-danger-hover-border': "#ff525b",
+        '--button-danger-hover-text': "#ffffff",
+
+        '--button-danger-active-bgr': "#333333",
+        '--button-danger-active-border': "#333333",
+        '--button-danger-active-text': "#ffffff",
+
+        // Table
+        '--table-borders': "rgba(255,255,255,.2)",
+        '--table-raw-hover': "rgba(255, 255, 255, 0.05)",
+
+        // Cards
+        '--cards-bgr': "#1c1d3b",
+        '--cards-border': "#1c1d3b",
+        '--cards-hover-bgr': "#1c1d3b",
+        '--cards-hover-border': "#fff",
+        '--cards-notification': "#ff525b",
+        '--cards-notification-text': "#fff",
+
+        // Layout
+        '--layout-bgr': "#131022",
+        '--layout-secondary-bgr': "#1c1d3b",
+        '--layout-accent': "#1ae191",
+        '--layout-accent-hover': "#00ff98",
+        '--layout-text': "#fff",
+        '--layout-headers': "#fff",
+
+        // Forms
+        '--form-field-border': "rgba(255,255,255,.2)",
+        '--form-field-bgr': "#1c1d3b",
+        '--form-placeholder': "#fff",
+        '--form-placeholder-disabled': "rgba(255,255,255,.8)",
+        '--form-field-border-disabled': "rgba(255,255,255,.5)",
+        '--form-field-bgr-disabled': "rgba(255,255,255,.4)",
+        '--form-accent': "#1ae191",
+
+        // Code blocks
+        '--code': "#333",
+        '--code-background': "rgba(0,0,0,.5)",
+
+        // Hints
+        '--hint-error': "#ce4144",
+        '--hint-error-light': "#763136",
+        '--hint-alert': "#cd9300",
+        '--hint-alert-light': "#745b0e",
+        '--hint-ok': "#76ab24",
+        '--hint-ok-light': "#476927",
+        '--hint-text-color': "#fff",
+
+        // Labels (tags)
+        '--label': "#2f00ff",
+        '--label-text': "rgba(255,255,255,.85)",
+    },
+    warmNight: {
+        '--menu-bgr': "#303d47",
+        '--menu-border-color': "#142025",
+        '--menu-item': "#aaaaaa",
+        '--menu-item-hover': "#ffffff",
+        '--menu-item-selected': "#85c92e",
+        '--menu-group': "#fff",
+
+        // Button regular
+        '--button-bgr': "#303d47",
+        '--button-border': "#ce9306",
+        '--button-text': "#fff",
+
+        '--button-hover-bgr': "#303d47",
+        '--button-hover-border': "#ce9306",
+        '--button-hover-text': "#fff",
+
+        '--button-active-bgr': "#ce9306",
+        '--button-active-border': "#ce9306",
+        '--button-active-text': "#ffffff",
+
+        // Button dropdown
+        '--button-dropdown-hover-bgr': "rgba(255, 255, 255, 0.05)",
+
+        // Button accent
+        '--button-accent-bgr': "#85c92e",
+        '--button-accent-border': "#85c92e",
+        '--button-accent-text': "#131022",
+
+        '--button-accent-hover-bgr': "#8fff00",
+        '--button-accent-hover-border': "#8fff00",
+        '--button-accent-hover-text': "#131022",
+
+        '--button-accent-active-bgr': "#fff",
+        '--button-accent-active-border': "#fff",
+        '--button-accent-active-text': "#333",
+
+        // Button danger
+        '--button-danger-bgr': "#303d47",
+        '--button-danger-border': "#ce4144",
+        '--button-danger-text': "#fff",
+
+        '--button-danger-hover-bgr': "#ce4144",
+        '--button-danger-hover-border': "#ce4144",
+        '--button-danger-hover-text': "#ffffff",
+
+        '--button-danger-active-bgr': "#333333",
+        '--button-danger-active-border': "#333333",
+        '--button-danger-active-text': "#ffffff",
+
+        // Table
+        '--table-borders': "rgba(255,255,255,.2)",
+        '--table-raw-hover': "rgba(255, 255, 255, 0.05)",
+
+        // Cards
+        '--cards-bgr': "#303d47",
+        '--cards-border': "#303d47",
+        '--cards-hover-bgr': "#303d47",
+        '--cards-hover-border': "rgba(255,255,255,.5)",
+        '--cards-notification': "#ce4144",
+        '--cards-notification-text': "#fff",
+
+        // Layout
+        '--layout-bgr': "#142025",
+        '--layout-secondary-bgr': "#303d47",
+        '--layout-accent': "#85c92e",
+        '--layout-accent-hover': "#8fff00",
+        '--layout-text': "#fff",
+        '--layout-headers': "#fff",
+
+        // Forms
+        '--form-field-border': "rgba(255,255,255,.2)",
+        '--form-field-bgr': "#303d47",
+        '--form-placeholder': "#fff",
+        '--form-placeholder-disabled': "rgba(255,255,255,.8)",
+        '--form-field-border-disabled': "rgba(255,255,255,.5)",
+        '--form-field-bgr-disabled': "rgba(255,255,255,.4)",
+        '--form-accent': "#85c92e",
+
+        // Code blocks
+        '--code': "#333",
+        '--code-background': "rgba(0,0,0,.5)",
+
+        // Hints
+        '--hint-error': "#ce4144",
+        '--hint-error-light': "#763136",
+        '--hint-alert': "#cd9300",
+        '--hint-alert-light': "#745b0e",
+        '--hint-ok': "#76ab24",
+        '--hint-ok-light': "#476927",
+        '--hint-text-color': "#fff",
+
+        // Labels (tags)
+        '--label': "#ce9306",
+        '--label-text': "rgba(255,255,255,.85)",
+    },
+    hacker: {
+        '--menu-bgr': "#333333",
+        '--menu-border-color': "#111",
+        '--menu-item': "#aaaaaa",
+        '--menu-item-hover': "#ffffff",
+        '--menu-item-selected': "#60FF00",
+        '--menu-group': "#fff",
+
+        // Button regular
+        '--button-bgr': "#303d47",
+        '--button-border': "#F8E71C",
+        '--button-text': "#fff",
+
+        '--button-hover-bgr': "#F8E71C",
+        '--button-hover-border': "#F8E71C",
+        '--button-hover-text': "#000",
+
+        '--button-active-bgr': "#fff",
+        '--button-active-border': "#fff",
+        '--button-active-text': "#000",
+
+        // Button dropdown
+        '--button-dropdown-hover-bgr': "rgba(255, 255, 255, 0.05)",
+
+        // Button accent
+        '--button-accent-bgr': "#60FF00",
+        '--button-accent-border': "#60FF00",
+        '--button-accent-text': "#131022",
+
+        '--button-accent-hover-bgr': "#8fff00",
+        '--button-accent-hover-border': "#8fff00",
+        '--button-accent-hover-text': "#131022",
+
+        '--button-accent-active-bgr': "#fff",
+        '--button-accent-active-border': "#fff",
+        '--button-accent-active-text': "#333",
+
+        // Button danger
+        '--button-danger-bgr': "#303d47",
+        '--button-danger-border': "#ce4144",
+        '--button-danger-text': "#fff",
+
+        '--button-danger-hover-bgr': "#ce4144",
+        '--button-danger-hover-border': "#ce4144",
+        '--button-danger-hover-text': "#ffffff",
+
+        '--button-danger-active-bgr': "#333333",
+        '--button-danger-active-border': "#333333",
+        '--button-danger-active-text': "#ffffff",
+
+        // Table
+        '--table-borders': "rgba(255,255,255,.2)",
+        '--table-raw-hover': "rgba(255, 255, 255, 0.05)",
+
+        // Cards
+        '--cards-bgr': "#333333",
+        '--cards-border': "#333333",
+        '--cards-hover-bgr': "#333333",
+        '--cards-hover-border': "rgba(255,255,255,.5)",
+        '--cards-notification': "#ce4144",
+        '--cards-notification-text': "#fff",
+
+        // Layout
+        '--layout-bgr': "#111",
+        '--layout-secondary-bgr': "#333333",
+        '--layout-accent': "#60FF00",
+        '--layout-accent-hover': "#98fe5b",
+        '--layout-text': "#fff",
+        '--layout-headers': "#60FF00",
+
+        // Forms
+        '--form-field-border': "rgba(255,255,255,.2)",
+        '--form-field-bgr': "#333",
+        '--form-placeholder': "#fff",
+        '--form-placeholder-disabled': "rgba(255,255,255,.8)",
+        '--form-field-border-disabled': "rgba(255,255,255,.5)",
+        '--form-field-bgr-disabled': "rgba(255,255,255,.4)",
+        '--form-accent': "#60FF00",
+
+        // Code blocks
+        '--code': "#333",
+        '--code-background': "rgba(0,0,0,.5)",
+
+        // Hints
+        '--hint-error': "#ce4144",
+        '--hint-error-light': "#763136",
+        '--hint-alert': "#cd9300",
+        '--hint-alert-light': "#745b0e",
+        '--hint-ok': "#76ab24",
+        '--hint-ok-light': "#476927",
+        '--hint-text-color': "#fff",
+
+        // Labels (tags)
+        '--label': "#F8E71C",
+        '--label-text': "rgba(0,0,0,.85)",
+    },
+    raspberry: {
+        '--menu-bgr': "#ffffff",
+        '--menu-border-color': "#f5e8e4",
+        '--menu-item': "#999999",
+        '--menu-item-hover': "#333333",
+        '--menu-item-selected': "#db004a",
+        '--menu-group': "#333333",
+
+        // Button regular
+        '--button-bgr': "#ffffff",
+        '--button-border': "#8E8E8E",
+        '--button-text': "#333333",
+
+        '--button-hover-bgr': "#ffffff",
+        '--button-hover-border': "#8E8E8E",
+        '--button-hover-text': "#333333",
+
+        '--button-active-bgr': "#8e8e8e",
+        '--button-active-border': "#333333",
+        '--button-active-text': "#ffffff",
+
+        // Button dropdown
+        '--button-dropdown-hover-bgr': "rgba(219, 0, 74, 0.05)",
+
+        // Button accent
+        '--button-accent-bgr': "#db004a",
+        '--button-accent-border': "#db004a",
+        '--button-accent-text': "#ffffff",
+
+        '--button-accent-hover-bgr': "#d40037",
+        '--button-accent-hover-border': "#d40037",
+        '--button-accent-hover-text': "#ffffff",
+
+        '--button-accent-active-bgr': "#333333",
+        '--button-accent-active-border': "#333333",
+        '--button-accent-active-text': "#ffffff",
+
+        // Button danger
+        '--button-danger-bgr': "#ffffff",
+        '--button-danger-border': "#8e8e8e",
+        '--button-danger-text': "#333333",
+
+        '--button-danger-hover-bgr': "#ff525b",
+        '--button-danger-hover-border': "#ff525b",
+        '--button-danger-hover-text': "#ffffff",
+
+        '--button-danger-active-bgr': "#333333",
+        '--button-danger-active-border': "#333333",
+        '--button-danger-active-text': "#ffffff",
+
+        // Table
+        '--table-borders': "rgba(0,0,0,.12)",
+        '--table-raw-hover': "rgba(219, 0, 74, 0.05)",
+
+        // Cards
+        '--cards-bgr': "#ffffff",
+        '--cards-border': "#f5e8e4",
+        '--cards-hover-bgr': "#ffffff",
+        '--cards-hover-border': "#f5e8e4",
+        '--cards-notification': "#ff525b",
+        '--cards-notification-text': "#fff",
+
+        // Layout
+        '--layout-bgr': "#f5e8e4",
+        '--layout-secondary-bgr': "#fff",
+        '--layout-accent': "#db004a",
+        '--layout-accent-hover': "#d40037",
+        '--layout-text': "#333333",
+        '--layout-headers': "#666",
+
+        // Forms
+        '--form-field-border': "#eaafa7",
+        '--form-field-bgr': "#ffffff",
+        '--form-placeholder': "#333333",
+        '--form-placeholder-disabled': "#999999",
+        '--form-field-border-disabled': "#bbbbbb",
+        '--form-field-bgr-disabled': "#cccccc",
+        '--form-accent': "#db004a",
+
+        // Code blocks
+        '--code': "#333333",
+        '--code-background': "#fff",
+
+        // Hints
+        '--hint-error': "#ff525b",
+        '--hint-error-light': "#ffd6d8",
+        '--hint-alert': "#eca910",
+        '--hint-alert-light': "#f9dfa4",
+        '--hint-ok': "#00c197",
+        '--hint-ok-light': "#d6f8e5",
+        '--hint-text-color': "#333333",
+
+        // Labels (tags)
+        '--label': "#a6e97a",
+        '--label-text': "rgba(0,0,0,.5)",
+    },
+    baltic: {
+        '--menu-bgr': "#ffffff",
+        '--menu-border-color': "#eeefe7",
+        '--menu-item': "#999999",
+        '--menu-item-hover': "#333333",
+        '--menu-item-selected': "#8ca3a3",
+        '--menu-group': "#333333",
+
+        // Button regular
+        '--button-bgr': "#ffffff",
+        '--button-border': "#8E8E8E",
+        '--button-text': "#333333",
+
+        '--button-hover-bgr': "#ffffff",
+        '--button-hover-border': "#8E8E8E",
+        '--button-hover-text': "#333333",
+
+        '--button-active-bgr': "#8e8e8e",
+        '--button-active-border': "#333333",
+        '--button-active-text': "#ffffff",
+
+        // Button dropdown
+        '--button-dropdown-hover-bgr': "rgba(140, 163, 163, 0.05)",
+
+        // Button accent
+        '--button-accent-bgr': "#8ca3a3",
+        '--button-accent-border': "#8ca3a3",
+        '--button-accent-text': "#ffffff",
+
+        '--button-accent-hover-bgr': "#6a8d8d",
+        '--button-accent-hover-border': "#6a8d8d",
+        '--button-accent-hover-text': "#ffffff",
+
+        '--button-accent-active-bgr': "#333333",
+        '--button-accent-active-border': "#333333",
+        '--button-accent-active-text': "#ffffff",
+
+        // Button danger
+        '--button-danger-bgr': "#ffffff",
+        '--button-danger-border': "#8e8e8e",
+        '--button-danger-text': "#333333",
+
+        '--button-danger-hover-bgr': "#ff525b",
+        '--button-danger-hover-border': "#ff525b",
+        '--button-danger-hover-text': "#ffffff",
+
+        '--button-danger-active-bgr': "#333333",
+        '--button-danger-active-border': "#333333",
+        '--button-danger-active-text': "#ffffff",
+
+        // Table
+        '--table-borders': "rgba(0,0,0,.12)",
+        '--table-raw-hover': "rgba(140, 163, 163, 0.05)",
+
+        // Cards
+        '--cards-bgr': "#ffffff",
+        '--cards-border': "#eeefe7",
+        '--cards-hover-bgr': "#ffffff",
+        '--cards-hover-border': "#eeefe7",
+        '--cards-notification': "#ff525b",
+        '--cards-notification-text': "#fff",
+
+        // Layout
+        '--layout-bgr': "#eeefe7",
+        '--layout-secondary-bgr': "#fff",
+        '--layout-accent': "#8ca3a3",
+        '--layout-accent-hover': "#6a8d8d",
+        '--layout-text': "#333333",
+        '--layout-headers': "#666",
+
+        // Forms
+        '--form-field-border': "#aaa",
+        '--form-field-bgr': "#ffffff",
+        '--form-placeholder': "#333333",
+        '--form-placeholder-disabled': "#999999",
+        '--form-field-border-disabled': "#bbbbbb",
+        '--form-field-bgr-disabled': "#cccccc",
+        '--form-accent': "#8ca3a3",
+
+        // Code blocks
+        '--code': "#333333",
+        '--code-background': "#fff",
+
+        // Hints
+        '--hint-error': "#ff525b",
+        '--hint-error-light': "#ffd6d8",
+        '--hint-alert': "#eca910",
+        '--hint-alert-light': "#f9dfa4",
+        '--hint-ok': "#00c197",
+        '--hint-ok-light': "#d6f8e5",
+        '--hint-text-color': "#333333",
+
+        // Labels (tags)
+        '--label': "#8f6d7d",
+        '--label-text': "#fff",
+    },
 }
 
 const customThemeColorNames = {
-    menu_bgr: "Menu | Background color",
-    menu_border_color: "Menu | Border color",
-    menu_item: "Menu | Item color",
-    menu_item_hover: "Menu | Hevered ttem color",
-    menu_item_selected: "Menu | Selected item color",
-    menu_group: "Menu | Subheader (group) color",
+    '--menu-bgr': "Menu | Background color",
+    '--menu-border-color': "Menu | Border color",
+    '--menu-item': "Menu | Item color",
+    '--menu-item-hover': "Menu | Hevered ttem color",
+    '--menu-item-selected': "Menu | Selected item color",
+    '--menu-group': "Menu | Subheader (group) color",
 
     // Button _ regular
-    button_bgr: "Button | Regular | Button color",
-    button_border: "Button | Regular | Border color",
-    button_text: "Button | Regular | Text color",
+    '--button-bgr': "Button | Regular | Button color",
+    '--button-border': "Button | Regular | Border color",
+    '--button-text': "Button | Regular | Text color",
 
-    button_hover_bgr: "Button | Regular | Hover button color",
-    button_hover_border: "Button | Regular | Hover border color",
-    button_hover_text: "Button | Regular | Hover text color",
+    '--button-hover-bgr': "Button | Regular | Hover button color",
+    '--button-hover-border': "Button | Regular | Hover border color",
+    '--button-hover-text': "Button | Regular | Hover text color",
 
-    button_active_bgr: "Button | Regular | Active button color",
-    button_active_border: "Button | Regular | Active border color",
-    button_active_text: "Button | Regular | Active text color",
+    '--button-active-bgr': "Button | Regular | Active button color",
+    '--button-active-border': "Button | Regular | Active border color",
+    '--button-active-text': "Button | Regular | Active text color",
 
-    button_dropdown_hover_bgr: "Button | Dropdown | Hover color",
+    '--button-dropdown-hover-bgr': "Button | Dropdown | Hover color",
 
     // Button _ accent
-    button_accent_bgr: "Button | Accent | Button color",
-    button_accent_border: "Button | Accent | Border color",
-    button_accent_text: "Button | Accent | Text color",
+    '--button-accent-bgr': "Button | Accent | Button color",
+    '--button-accent-border': "Button | Accent | Border color",
+    '--button-accent-text': "Button | Accent | Text color",
 
-    button_accent_hover_bgr: "Button | Accent | Hover button color",
-    button_accent_hover_border: "Button | Accent | Hover border color",
-    button_accent_hover_text: "Button | Accent | Hover text color",
+    '--button-accent-hover-bgr': "Button | Accent | Hover button color",
+    '--button-accent-hover-border': "Button | Accent | Hover border color",
+    '--button-accent-hover-text': "Button | Accent | Hover text color",
 
-    button_accent_active_bgr: "Button | Accent | Active button color",
-    button_accent_active_border: "Button | Accent | Active border color",
-    button_accent_active_text: "Button | Accent | Active text color",
+    '--button-accent-active-bgr': "Button | Accent | Active button color",
+    '--button-accent-active-border': "Button | Accent | Active border color",
+    '--button-accent-active-text': "Button | Accent | Active text color",
 
     // Button _ danger
-    button_danger_bgr: "Button | Danger | Button color",
-    button_danger_border: "Button | Danger | Border color",
-    button_danger_text: "Button | Danger | Text color",
+    '--button-danger-bgr': "Button | Danger | Button color",
+    '--button-danger-border': "Button | Danger | Border color",
+    '--button-danger-text': "Button | Danger | Text color",
 
-    button_danger_hover_bgr: "Button | Danger | Hover button color",
-    button_danger_hover_border: "Button | Danger | Hover border color",
-    button_danger_hover_text: "Button | Danger | Hover text color",
+    '--button-danger-hover-bgr': "Button | Danger | Hover button color",
+    '--button-danger-hover-border': "Button | Danger | Hover border color",
+    '--button-danger-hover-text': "Button | Danger | Hover text color",
 
-    button_danger_active_bgr: "Button | Danger | Active button color",
-    button_danger_active_border: "Button | Danger | Active border color",
-    button_danger_active_text: "Button | Danger | Active text color",
+    '--button-danger-active-bgr': "Button | Danger | Active button color",
+    '--button-danger-active-border': "Button | Danger | Active border color",
+    '--button-danger-active-text': "Button | Danger | Active text color",
 
     // Table
-    table_borders: "Table borders color",
-    table_raw_hover: "Table hover row color",
+    '--table-borders': "Table borders color",
+    '--table-raw-hover': "Table hover row color",
 
     // Cards
-    cards_bgr: "Cards color",
-    cards_border: "Cards border",
-    cards_hover_bgr: "Cards hover color",
-    cards_hover_border: "Cards hover border color",
-    cards_notification: "Cards notification (counter)",
+    '--cards-bgr': "Cards color",
+    '--cards-border': "Cards border",
+    '--cards-hover-bgr': "Cards hover color",
+    '--cards-hover-border': "Cards hover border color",
+    '--cards-notification': "Cards notification (counter)",
+    '--cards-notification-text': "Cards notification text",
 
 
     // Layout
-    layout_bgr: "Layout background color",
-    layout_secondary_bgr: "Layout secondary background color",
-    layout_accent: "Accent color",
-    layout_accent_hover: "Accent hover color",
-    layout_text: "Main text color",
-    layout_headers: "Headers color",
+    '--layout-bgr': "Layout background color",
+    '--layout-secondary-bgr': "Layout secondary background color",
+    '--layout-accent': "Accent color",
+    '--layout-accent-hover': "Accent hover color",
+    '--layout-text': "Main text color",
+    '--layout-headers': "Headers color",
 
     // Forms
-    form_field_border: "Form fields border color",
-    form_field_bgr: "Form fields background color",
-    form_placeholder: "Form field text color",
-    form_placeholder_disabled: "Form disabled field color",
-    form_field_border_disabled: "Form disabled field border color",
-    form_field_bgr_disabled: "Form disabled field background",
-    form_accent: "Form accent color",
+    '--form-field-border': "Form fields border color",
+    '--form-field-bgr': "Form fields background color",
+    '--form-placeholder': "Form field text color",
+    '--form-placeholder-disabled': "Form disabled field color",
+    '--form-field-border-disabled': "Form disabled field border color",
+    '--form-field-bgr-disabled': "Form disabled field background",
+    '--form-accent': "Form accent color",
 
     // Code blocks
-    code: "Code text color",
-    code_background: "Code text background",
+    '--code': "Code text color",
+    '--code-background': "Code text background",
 
     // Hints
-    hint_error: "Error color",
-    hint_error_light: "Error light color",
-    hint_alert: "Alert color",
-    hint_alert_light: "Alert light color",
-    hint_ok: "OK color",
-    hint_ok_light: "OK light color",
-    hint_text_color: "Hint text color",
+    '--hint-error': "Error color",
+    '--hint-error-light': "Error light color",
+    '--hint-alert': "Alert color",
+    '--hint-alert-light': "Alert light color",
+    '--hint-ok': "OK color",
+    '--hint-ok-light': "OK light color",
+    '--hint-text-color': "Hint text color",
 
     // Labels (tags)
-    label: "Label (tag) color",
-    label_text: "Label (tag) text color",
+    '--label': "Label (tag) color",
+    '--label-text': "Label (tag) text color",
 }
 
 export function SetTheme({ themeName }) {
@@ -238,671 +912,20 @@ export function SetTheme({ themeName }) {
         document.documentElement.style.setProperty('--h1-font-size', h1size + 'px')
         document.documentElement.style.setProperty('--h2-font-size', h2size + 'px')
         document.documentElement.style.setProperty('--h3-font-size', h3size + 'px')
-        if (colorScheme === 'white') {
-            // Menu
-            document.documentElement.style.setProperty('--menu-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--menu-border-color', '#aaaaaa')
-            document.documentElement.style.setProperty('--menu-item', '#999999')
-            document.documentElement.style.setProperty('--menu-item-hover', '#333333')
-            document.documentElement.style.setProperty('--menu-item-selected', '#058efc')
-            document.documentElement.style.setProperty('--menu-group', '#333333')
-
-            //Buttons
-            document.documentElement.style.setProperty('--button-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--button-border', '#8e8e8e')
-            document.documentElement.style.setProperty('--button-text', '#333333')
-            document.documentElement.style.setProperty('--button-hover-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--button-hover-border', '#8e8e8e')
-            document.documentElement.style.setProperty('--button-hover-text', '#333333')
-            document.documentElement.style.setProperty('--button-active-bgr', '#8e8e8e')
-            document.documentElement.style.setProperty('--button-active-border', '#333333')
-            document.documentElement.style.setProperty('--button-active-text', '#ffffff')
-
-            document.documentElement.style.setProperty('--button-accent-bgr', '#058efc')
-            document.documentElement.style.setProperty('--button-accent-border', '#058efc')
-            document.documentElement.style.setProperty('--button-accent-text', '#ffffff')
-            document.documentElement.style.setProperty('--button-accent-hover-bgr', '#0062bd')
-            document.documentElement.style.setProperty('--button-accent-hover-border', '#0062bd')
-            document.documentElement.style.setProperty('--button-accent-hover-text', '#ffffff')
-            document.documentElement.style.setProperty('--button-accent-active-bgr', '#333333')
-            document.documentElement.style.setProperty('--button-accent-active-border', '#333333')
-            document.documentElement.style.setProperty('--button-accent-active-text', '#ffffff')
-
-            document.documentElement.style.setProperty('--button-danger-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--button-danger-border', '#8e8e8e')
-            document.documentElement.style.setProperty('--button-danger-text', '#333333')
-            document.documentElement.style.setProperty('--button-danger-hover-bgr', '#ff525b')
-            document.documentElement.style.setProperty('--button-danger-hover-border', '#ff525b')
-            document.documentElement.style.setProperty('--button-danger-hover-text', '#ffffff')
-            document.documentElement.style.setProperty('--button-danger-active-bgr', '#333333')
-            document.documentElement.style.setProperty('--button-danger-active-border', '#333333')
-            document.documentElement.style.setProperty('--button-danger-active-text', '#ffffff')
-
-            document.documentElement.style.setProperty('--button-dropdown-hover-bgr', 'rgba(5, 142, 252, 0.05)')
-
-            //Table, Cards
-            document.documentElement.style.setProperty('--table-borders', 'rgba(0, 0, 0, 0.12)')
-            document.documentElement.style.setProperty('--table-raw-hover', 'rgba(5, 142, 252, 0.05)')
-
-            document.documentElement.style.setProperty('--cards-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--cards-border', '#aaaaaa')
-            document.documentElement.style.setProperty('--cards-hover-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--cards-hover-border', '#aaaaaa')
-            document.documentElement.style.setProperty('--cards-notification', '#ff525b;')
-
-            // Layout
-            document.documentElement.style.setProperty('--layout-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--layout-secondary-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--layout-accent', '#058efc')
-            document.documentElement.style.setProperty('--layout-accent-hover', '#0062bd')
-            document.documentElement.style.setProperty('--layout-text', '#333333')
-            document.documentElement.style.setProperty('--layout-headers', '#333333')
-
-            // Form
-            document.documentElement.style.setProperty('--form-field-border', '#aaaaaa')
-            document.documentElement.style.setProperty('--form-field-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--form-placeholder', '#333333')
-            document.documentElement.style.setProperty('--form-placeholder-disabled', '#999999')
-            document.documentElement.style.setProperty('--form-field-border-disabled', '#bbbbbb')
-            document.documentElement.style.setProperty('--form-field-bgr-disabled', '#cccccc')
-            document.documentElement.style.setProperty('--form-accent', '#058efc')
-
-            document.documentElement.style.setProperty('--code', '#333333')
-            document.documentElement.style.setProperty('--code-background', '#fff')
-
-            document.documentElement.style.setProperty('--hint-error', '#ff525b')
-            document.documentElement.style.setProperty('--hint-error-light', '#ffd6d8')
-            document.documentElement.style.setProperty('--hint-alert', '#eca910')
-            document.documentElement.style.setProperty('--hint-alert-light', '#f9dfa4')
-            document.documentElement.style.setProperty('--hint-ok', '#00c197')
-            document.documentElement.style.setProperty('--hint-ok-light', '#d6f8e5')
-            document.documentElement.style.setProperty('--hint-text-color', '#333333')
-
-            document.documentElement.style.setProperty('--label', '#26be99')
-            document.documentElement.style.setProperty('--label-text', '#ffffff')
-        }
-        if (colorScheme === 'classic') {
-            // Menu
-            document.documentElement.style.setProperty('--menu-bgr', customThemeColors.classic.menu_bgr)
-            document.documentElement.style.setProperty('--menu-border-color', customThemeColors.classic.)
-            document.documentElement.style.setProperty('--menu-item', customThemeColors.classic.)
-            document.documentElement.style.setProperty('--menu-item-hover', customThemeColors.classic.)
-            document.documentElement.style.setProperty('--menu-item-selected', customThemeColors.classic.)
-            document.documentElement.style.setProperty('--menu-group', customThemeColors.classic.)
-
-            //Buttons
-            document.documentElement.style.setProperty('--button-bgr', customThemeColors.classic.)
-            document.documentElement.style.setProperty('--button-border', customThemeColors.classic.)
-            document.documentElement.style.setProperty('--button-text', customThemeColors.classic.)
-            document.documentElement.style.setProperty('--button-hover-bgr', customThemeColors.classic.)
-            document.documentElement.style.setProperty('--button-hover-border', customThemeColors.classic.)
-            document.documentElement.style.setProperty('--button-hover-text', '#333333')
-            document.documentElement.style.setProperty('--button-active-bgr', '#8e8e8e')
-            document.documentElement.style.setProperty('--button-active-border', '#333333')
-            document.documentElement.style.setProperty('--button-active-text', '#ffffff')
-
-            document.documentElement.style.setProperty('--button-accent-bgr', '#058efc')
-            document.documentElement.style.setProperty('--button-accent-border', '#058efc')
-            document.documentElement.style.setProperty('--button-accent-text', '#ffffff')
-            document.documentElement.style.setProperty('--button-accent-hover-bgr', '#0062bd')
-            document.documentElement.style.setProperty('--button-accent-hover-border', '#0062bd')
-            document.documentElement.style.setProperty('--button-accent-hover-text', '#ffffff')
-            document.documentElement.style.setProperty('--button-accent-active-bgr', '#333333')
-            document.documentElement.style.setProperty('--button-accent-active-border', '#333333')
-            document.documentElement.style.setProperty('--button-accent-active-text', '#ffffff')
-
-            document.documentElement.style.setProperty('--button-danger-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--button-danger-border', '#8e8e8e')
-            document.documentElement.style.setProperty('--button-danger-text', '#333333')
-            document.documentElement.style.setProperty('--button-danger-hover-bgr', '#ff525b')
-            document.documentElement.style.setProperty('--button-danger-hover-border', '#ff525b')
-            document.documentElement.style.setProperty('--button-danger-hover-text', '#ffffff')
-            document.documentElement.style.setProperty('--button-danger-active-bgr', '#333333')
-            document.documentElement.style.setProperty('--button-danger-active-border', '#333333')
-            document.documentElement.style.setProperty('--button-danger-active-text', '#ffffff')
-
-            document.documentElement.style.setProperty('--button-dropdown-hover-bgr', 'rgba(5, 142, 252, 0.05)')
-
-            //Table, Cards
-            document.documentElement.style.setProperty('--table-borders', 'rgba(0, 0, 0, 0.12)')
-            document.documentElement.style.setProperty('--table-raw-hover', 'rgba(5, 142, 252, 0.05)')
-
-            document.documentElement.style.setProperty('--cards-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--cards-border', '#aaaaaa')
-            document.documentElement.style.setProperty('--cards-hover-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--cards-hover-border', '#aaaaaa')
-            document.documentElement.style.setProperty('--cards-notification', '#ff525b;')
-
-            // Layout
-            document.documentElement.style.setProperty('--layout-bgr', '#eeeeee')
-            document.documentElement.style.setProperty('--layout-secondary-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--layout-accent', '#058efc')
-            document.documentElement.style.setProperty('--layout-accent-hover', '#0062bd')
-            document.documentElement.style.setProperty('--layout-text', '#333333')
-            document.documentElement.style.setProperty('--layout-headers', '#333333')
-
-            // Form
-            document.documentElement.style.setProperty('--form-field-border', '#aaaaaa')
-            document.documentElement.style.setProperty('--form-field-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--form-placeholder', '#333333')
-            document.documentElement.style.setProperty('--form-placeholder-disabled', '#999999')
-            document.documentElement.style.setProperty('--form-field-border-disabled', '#bbbbbb')
-            document.documentElement.style.setProperty('--form-field-bgr-disabled', '#cccccc')
-            document.documentElement.style.setProperty('--form-accent', '#058efc')
-
-            document.documentElement.style.setProperty('--code', '#333333')
-            document.documentElement.style.setProperty('--code-background', '#fff')
-
-            document.documentElement.style.setProperty('--hint-error', '#ff525b')
-            document.documentElement.style.setProperty('--hint-error-light', '#ffd6d8')
-            document.documentElement.style.setProperty('--hint-alert', '#eca910')
-            document.documentElement.style.setProperty('--hint-alert-light', '#f9dfa4')
-            document.documentElement.style.setProperty('--hint-ok', '#00c197')
-            document.documentElement.style.setProperty('--hint-ok-light', '#d6f8e5')
-            document.documentElement.style.setProperty('--hint-text-color', '#333333')
-
-            document.documentElement.style.setProperty('--label', '#26be99')
-            document.documentElement.style.setProperty('--label-text', '#ffffff')
-        }
-        if (colorScheme === 'tiffany') {
-            // Menu
-            document.documentElement.style.setProperty('--menu-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--menu-border-color', '#eeeeee')
-            document.documentElement.style.setProperty('--menu-item', '#999999')
-            document.documentElement.style.setProperty('--menu-item-hover', '#333333')
-            document.documentElement.style.setProperty('--menu-item-selected', '#4ad5c8')
-            document.documentElement.style.setProperty('--menu-group', '#333333')
-
-            //Buttons
-            document.documentElement.style.setProperty('--button-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--button-border', '#8e8e8e')
-            document.documentElement.style.setProperty('--button-text', '#333333')
-            document.documentElement.style.setProperty('--button-hover-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--button-hover-border', '#8e8e8e')
-            document.documentElement.style.setProperty('--button-hover-text', '#333333')
-            document.documentElement.style.setProperty('--button-active-bgr', '#8e8e8e')
-            document.documentElement.style.setProperty('--button-active-border', '#333333')
-            document.documentElement.style.setProperty('--button-active-text', '#ffffff')
-
-            document.documentElement.style.setProperty('--button-accent-bgr', '#4ad5c8')
-            document.documentElement.style.setProperty('--button-accent-border', '#4ad5c8')
-            document.documentElement.style.setProperty('--button-accent-text', '#ffffff')
-            document.documentElement.style.setProperty('--button-accent-hover-bgr', '#37aea3')
-            document.documentElement.style.setProperty('--button-accent-hover-border', '#37aea3')
-            document.documentElement.style.setProperty('--button-accent-hover-text', '#ffffff')
-            document.documentElement.style.setProperty('--button-accent-active-bgr', '#333333')
-            document.documentElement.style.setProperty('--button-accent-active-border', '#333333')
-            document.documentElement.style.setProperty('--button-accent-active-text', '#ffffff')
-
-            document.documentElement.style.setProperty('--button-danger-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--button-danger-border', '#8e8e8e')
-            document.documentElement.style.setProperty('--button-danger-text', '#333333')
-            document.documentElement.style.setProperty('--button-danger-hover-bgr', '#ff525b')
-            document.documentElement.style.setProperty('--button-danger-hover-border', '#ff525b')
-            document.documentElement.style.setProperty('--button-danger-hover-text', '#ffffff')
-            document.documentElement.style.setProperty('--button-danger-active-bgr', '#333333')
-            document.documentElement.style.setProperty('--button-danger-active-border', '#333333')
-            document.documentElement.style.setProperty('--button-danger-active-text', '#ffffff')
-
-            document.documentElement.style.setProperty('--button-dropdown-hover-bgr', 'rgba(5, 142, 252, 0.05)')
-
-            //Table, Cards
-            document.documentElement.style.setProperty('--table-borders', 'rgba(0, 0, 0, 0.12)')
-            document.documentElement.style.setProperty('--table-raw-hover', 'rgba(5, 142, 252, 0.05)')
-
-            document.documentElement.style.setProperty('--cards-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--cards-border', '#aaaaaa')
-            document.documentElement.style.setProperty('--cards-hover-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--cards-hover-border', '#aaaaaa')
-            document.documentElement.style.setProperty('--cards-notification', '#ff525b;')
-
-            // Layout
-            document.documentElement.style.setProperty('--layout-bgr', '#eeeeee')
-            document.documentElement.style.setProperty('--layout-secondary-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--layout-accent', '#4ad5c8')
-            document.documentElement.style.setProperty('--layout-accent-hover', '#37aea3')
-            document.documentElement.style.setProperty('--layout-text', '#333333')
-            document.documentElement.style.setProperty('--layout-headers', '#333333')
-
-            // Form
-            document.documentElement.style.setProperty('--form-field-border', '#aaaaaa')
-            document.documentElement.style.setProperty('--form-field-bgr', '#ffffff')
-            document.documentElement.style.setProperty('--form-placeholder', '#333333')
-            document.documentElement.style.setProperty('--form-placeholder-disabled', '#999999')
-            document.documentElement.style.setProperty('--form-field-border-disabled', '#bbbbbb')
-            document.documentElement.style.setProperty('--form-field-bgr-disabled', '#cccccc')
-            document.documentElement.style.setProperty('--form-accent', '#4ad5c8')
-
-            document.documentElement.style.setProperty('--code', '#333333')
-            document.documentElement.style.setProperty('--code-background', '#fff')
-
-            document.documentElement.style.setProperty('--hint-error', '#ff525b')
-            document.documentElement.style.setProperty('--hint-error-light', '#ffd6d8')
-            document.documentElement.style.setProperty('--hint-alert', '#eca910')
-            document.documentElement.style.setProperty('--hint-alert-light', '#f9dfa4')
-            document.documentElement.style.setProperty('--hint-ok', '#00c197')
-            document.documentElement.style.setProperty('--hint-ok-light', '#d6f8e5')
-            document.documentElement.style.setProperty('--hint-text-color', '#333333')
-
-            document.documentElement.style.setProperty('--label', '#FFCCA9')
-            document.documentElement.style.setProperty('--label-text', '#333333')
-
-            // =================== OLD STUFF ==================
-
-            document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
-            document.documentElement.style.setProperty('--field-border-color', '#aaa')
-            document.documentElement.style.setProperty('--table-border-color', 'rgba(0,0,0,.12)')
-            document.documentElement.style.setProperty('--accent-color', '#4ad5c8')
-            document.documentElement.style.setProperty('--accent-transp-05-color', 'rgba(74, 213, 200, 0.05)')
-            document.documentElement.style.setProperty('--secondary-accent-color', '#37aea3')
-            document.documentElement.style.setProperty('--button-accent-color', '#fff')
-            document.documentElement.style.setProperty('--background-color', '#ffffff')
-            document.documentElement.style.setProperty('--background-contrast-color', '#eee')
-            document.documentElement.style.setProperty('--secondary-background-color', '#eeeeee')
-            document.documentElement.style.setProperty('--font-color', '#333333')
-            document.documentElement.style.setProperty('--header-color', '#333333')
-            document.documentElement.style.setProperty('--hint-color', '#333')
-            document.documentElement.style.setProperty('--code-color', '#333')
-            document.documentElement.style.setProperty('--code-color-background', '#fff')
-            document.documentElement.style.setProperty('--error-color', '#FF525B')
-            document.documentElement.style.setProperty('--error-color-light', '#FFD6D8')
-            document.documentElement.style.setProperty('--alert-color', '#ECA910')
-            document.documentElement.style.setProperty('--alert-color-light', '#F9DFA4')
-            document.documentElement.style.setProperty('--ok-color', '#00C197')
-            document.documentElement.style.setProperty('--ok-color-light', '#D6F8E5')
-            document.documentElement.style.setProperty('--label-color', '#FFCCA9')
-            document.documentElement.style.setProperty('--label-text-color', '#333')
-        }
-        if (colorScheme === 'darkMint') {
-
-            // Menu
-            document.documentElement.style.setProperty('--menu-bgr', '#1c1d3b')
-            document.documentElement.style.setProperty('--menu-border-color', '#131022')
-            document.documentElement.style.setProperty('--menu-item', '#aaa')
-            document.documentElement.style.setProperty('--menu-item-hover', '#fff')
-            document.documentElement.style.setProperty('--menu-item-selected', '#1ae191')
-            document.documentElement.style.setProperty('--menu-group', '#fff')
-
-            //Buttons
-            document.documentElement.style.setProperty('--button-bgr', '#1c1d3b')
-            document.documentElement.style.setProperty('--button-border', '#2f00ff')
-            document.documentElement.style.setProperty('--button-text', '#fff')
-            document.documentElement.style.setProperty('--button-hover-bgr', '#1c1d3b')
-            document.documentElement.style.setProperty('--button-hover-border', '#2f00ff')
-            document.documentElement.style.setProperty('--button-hover-text', '#fff')
-            document.documentElement.style.setProperty('--button-active-bgr', '#2f00ff')
-            document.documentElement.style.setProperty('--button-active-border', '#2f00ff')
-            document.documentElement.style.setProperty('--button-active-text', '#ffffff')
-
-            document.documentElement.style.setProperty('--button-accent-bgr', '#1ae191')
-            document.documentElement.style.setProperty('--button-accent-border', '#1ae191')
-            document.documentElement.style.setProperty('--button-accent-text', '#131022')
-            document.documentElement.style.setProperty('--button-accent-hover-bgr', '#00ff98')
-            document.documentElement.style.setProperty('--button-accent-hover-border', '#00ff98')
-            document.documentElement.style.setProperty('--button-accent-hover-text', '#131022')
-            document.documentElement.style.setProperty('--button-accent-active-bgr', '#fff')
-            document.documentElement.style.setProperty('--button-accent-active-border', '#fff')
-            document.documentElement.style.setProperty('--button-accent-active-text', '#333')
-
-            document.documentElement.style.setProperty('--button-danger-bgr', '#1c1d3b')
-            document.documentElement.style.setProperty('--button-danger-border', '#ff525b')
-            document.documentElement.style.setProperty('--button-danger-text', '#fff')
-            document.documentElement.style.setProperty('--button-danger-hover-bgr', '#ff525b')
-            document.documentElement.style.setProperty('--button-danger-hover-border', '#ff525b')
-            document.documentElement.style.setProperty('--button-danger-hover-text', '#fff')
-            document.documentElement.style.setProperty('--button-danger-active-bgr', '#333333')
-            document.documentElement.style.setProperty('--button-danger-active-border', '#333333')
-            document.documentElement.style.setProperty('--button-danger-active-text', '#ffffff')
-
-            document.documentElement.style.setProperty('--button-dropdown-hover-bgr', 'rgba(5, 142, 252, 0.05)')
-
-            //Table, Cards
-            document.documentElement.style.setProperty('--table-borders', 'rgba(255,255,255,.2)')
-            document.documentElement.style.setProperty('--table-raw-hover', 'rgba(26, 225, 145, 0.05)')
-
-            document.documentElement.style.setProperty('--cards-bgr', '#1c1d3b')
-            document.documentElement.style.setProperty('--cards-border', '#1c1d3b')
-            document.documentElement.style.setProperty('--cards-hover-bgr', '#1c1d3b')
-            document.documentElement.style.setProperty('--cards-hover-border', '#fff')
-            document.documentElement.style.setProperty('--cards-notification', '#ff525b;')
-
-            // Layout
-            document.documentElement.style.setProperty('--layout-bgr', '#131022')
-            document.documentElement.style.setProperty('--layout-secondary-bgr', '#1c1d3b')
-            document.documentElement.style.setProperty('--layout-accent', '#4ad5c8')
-            document.documentElement.style.setProperty('--layout-accent-hover', '#37aea3')
-            document.documentElement.style.setProperty('--layout-text', '#fff')
-            document.documentElement.style.setProperty('--layout-headers', '#fff')
-
-            // Form
-            document.documentElement.style.setProperty('--form-field-border', 'rgba(255,255,255,.2)')
-            document.documentElement.style.setProperty('--form-field-bgr', '#1c1d3b')
-            document.documentElement.style.setProperty('--form-placeholder', '#fff')
-            document.documentElement.style.setProperty('--form-placeholder-disabled', '#999999')
-            document.documentElement.style.setProperty('--form-field-border-disabled', '#bbbbbb')
-            document.documentElement.style.setProperty('--form-field-bgr-disabled', '#cccccc')
-            document.documentElement.style.setProperty('--form-accent', '#1ae191')
-
-            document.documentElement.style.setProperty('--code', '#333333')
-            document.documentElement.style.setProperty('--code-background', 'rgba(0,0,0,.5)')
-
-            document.documentElement.style.setProperty('--hint-error', '#ce4144')
-            document.documentElement.style.setProperty('--hint-error-light', '#763136')
-            document.documentElement.style.setProperty('--hint-alert', '#cd9300')
-            document.documentElement.style.setProperty('--hint-alert-light', '#745b0e')
-            document.documentElement.style.setProperty('--hint-ok', '#76ab24')
-            document.documentElement.style.setProperty('--hint-ok-light', '#476927')
-            document.documentElement.style.setProperty('--hint-text-color', '#fff')
-
-            document.documentElement.style.setProperty('--label', '#2f00ff')
-            document.documentElement.style.setProperty('--label-text', 'rgba(255,255,255,.85)')
-
-            // =================== OLD STUFF ==================
-
-            document.documentElement.style.setProperty('--button-border-color', '#2f00ff')
-            document.documentElement.style.setProperty('--field-border-color', 'rgba(255,255,255,.2)')
-            document.documentElement.style.setProperty('--table-border-color', 'rgba(255,255,255,.2)')
-            document.documentElement.style.setProperty('--accent-color', '#1ae191')
-            document.documentElement.style.setProperty('--accent-transp-05-color', 'rgba(26, 225, 145, 0.05)')
-            document.documentElement.style.setProperty('--secondary-accent-color', '#00ff98')
-            document.documentElement.style.setProperty('--button-accent-color', ' #131022')
-            document.documentElement.style.setProperty('--background-color', '#1c1d3b')
-            document.documentElement.style.setProperty('--background-contrast-color', '#131022')
-            document.documentElement.style.setProperty('--secondary-background-color', '#131022')
-            document.documentElement.style.setProperty('--font-color', '#fff')
-            document.documentElement.style.setProperty('--header-color', '#fff')
-            document.documentElement.style.setProperty('--hint-color', '#fff')
-            document.documentElement.style.setProperty('--code-color', '#333')
-            document.documentElement.style.setProperty('--code-color-background', 'rgba(255,255,255,0.7)')
-            document.documentElement.style.setProperty('--error-color', '#FF525B')
-            document.documentElement.style.setProperty('--error-color-light', '#6B4151')
-            document.documentElement.style.setProperty('--alert-color', '#ECA910')
-            document.documentElement.style.setProperty('--alert-color-light', '#665846')
-            document.documentElement.style.setProperty('--ok-color', '#00C197')
-            document.documentElement.style.setProperty('--ok-color-light', '#346266')
-            document.documentElement.style.setProperty('--label-color', '#2f00ff')
-            document.documentElement.style.setProperty('--label-text-color', 'rgba(255,255,255,.85)')
-        }
-        if (colorScheme === 'warmNight') {
-
-            // Menu
-            document.documentElement.style.setProperty('--menu-bgr', '#303d47')
-            document.documentElement.style.setProperty('--menu-border-color', '#142025')
-            document.documentElement.style.setProperty('--menu-item', '#aaa')
-            document.documentElement.style.setProperty('--menu-item-hover', '#fff')
-            document.documentElement.style.setProperty('--menu-item-selected', '#85c92e')
-            document.documentElement.style.setProperty('--menu-group', '#fff')
-
-            //Buttons
-            document.documentElement.style.setProperty('--button-bgr', '#303d47')
-            document.documentElement.style.setProperty('--button-border', '#ce9306')
-            document.documentElement.style.setProperty('--button-text', '#fff')
-            document.documentElement.style.setProperty('--button-hover-bgr', '#303d47')
-            document.documentElement.style.setProperty('--button-hover-border', '#ce9306')
-            document.documentElement.style.setProperty('--button-hover-text', '#fff')
-            document.documentElement.style.setProperty('--button-active-bgr', '#ce9306')
-            document.documentElement.style.setProperty('--button-active-border', '#ce9306')
-            document.documentElement.style.setProperty('--button-active-text', '#ffffff')
-
-            document.documentElement.style.setProperty('--button-accent-bgr', '#85c92e')
-            document.documentElement.style.setProperty('--button-accent-border', '#85c92e')
-            document.documentElement.style.setProperty('--button-accent-text', '#131022')
-            document.documentElement.style.setProperty('--button-accent-hover-bgr', '#8fff00')
-            document.documentElement.style.setProperty('--button-accent-hover-border', '#8fff00')
-            document.documentElement.style.setProperty('--button-accent-hover-text', '#131022')
-            document.documentElement.style.setProperty('--button-accent-active-bgr', '#fff')
-            document.documentElement.style.setProperty('--button-accent-active-border', '#fff')
-            document.documentElement.style.setProperty('--button-accent-active-text', '#333')
-
-            document.documentElement.style.setProperty('--button-danger-bgr', '#303d47')
-            document.documentElement.style.setProperty('--button-danger-border', '#ce4144')
-            document.documentElement.style.setProperty('--button-danger-text', '#fff')
-            document.documentElement.style.setProperty('--button-danger-hover-bgr', '#ce4144')
-            document.documentElement.style.setProperty('--button-danger-hover-border', '#ce4144')
-            document.documentElement.style.setProperty('--button-danger-hover-text', '#fff')
-            document.documentElement.style.setProperty('--button-danger-active-bgr', '#333333')
-            document.documentElement.style.setProperty('--button-danger-active-border', '#333333')
-            document.documentElement.style.setProperty('--button-danger-active-text', '#ffffff')
-
-            document.documentElement.style.setProperty('--button-dropdown-hover-bgr', 'rgba(133, 201, 46, 0.05)')
-
-            //Table, Cards
-            document.documentElement.style.setProperty('--table-borders', 'rgba(255,255,255,.2)')
-            document.documentElement.style.setProperty('--table-raw-hover', 'rgba(133, 201, 46, 0.05)')
-
-            document.documentElement.style.setProperty('--cards-bgr', '#303d47')
-            document.documentElement.style.setProperty('--cards-border', '#303d47')
-            document.documentElement.style.setProperty('--cards-hover-bgr', '#303d47')
-            document.documentElement.style.setProperty('--cards-hover-border', 'rgba(255,255,255,.5)')
-            document.documentElement.style.setProperty('--cards-notification', '#ce4144;')
-
-            // Layout
-            document.documentElement.style.setProperty('--layout-bgr', '#142025')
-            document.documentElement.style.setProperty('--layout-secondary-bgr', '#303d47')
-            document.documentElement.style.setProperty('--layout-accent', '#85c92e')
-            document.documentElement.style.setProperty('--layout-accent-hover', '#8fff00')
-            document.documentElement.style.setProperty('--layout-text', '#fff')
-            document.documentElement.style.setProperty('--layout-headers', '#fff')
-
-            // Form
-            document.documentElement.style.setProperty('--form-field-border', 'rgba(255,255,255,.2)')
-            document.documentElement.style.setProperty('--form-field-bgr', '#303d47')
-            document.documentElement.style.setProperty('--form-placeholder', '#fff')
-            document.documentElement.style.setProperty('--form-placeholder-disabled', '#999999')
-            document.documentElement.style.setProperty('--form-field-border-disabled', '#bbbbbb')
-            document.documentElement.style.setProperty('--form-field-bgr-disabled', '#cccccc')
-            document.documentElement.style.setProperty('--form-accent', '#85c92e')
-
-            document.documentElement.style.setProperty('--code', '#333333')
-            document.documentElement.style.setProperty('--code-background', 'rgba(0,0,0,.5)')
-
-            document.documentElement.style.setProperty('--hint-error', '#ce4144')
-            document.documentElement.style.setProperty('--hint-error-light', '#763136')
-            document.documentElement.style.setProperty('--hint-alert', '#cd9300')
-            document.documentElement.style.setProperty('--hint-alert-light', '#745b0e')
-            document.documentElement.style.setProperty('--hint-ok', '#76ab24')
-            document.documentElement.style.setProperty('--hint-ok-light', '#476927')
-            document.documentElement.style.setProperty('--hint-text-color', '#fff')
-
-            document.documentElement.style.setProperty('--label', '#ce9306')
-            document.documentElement.style.setProperty('--label-text', 'rgba(255,255,255,.85)')
-
-            // =================== OLD STUFF ==================
-
-            document.documentElement.style.setProperty('--button-border-color', '#ce9306') //!
-            document.documentElement.style.setProperty('--field-border-color', 'rgba(255,255,255,.2)') //!
-            document.documentElement.style.setProperty('--table-border-color', 'rgba(255,255,255,.2)') //!
-            document.documentElement.style.setProperty('--accent-color', '#85c92e') //!
-            document.documentElement.style.setProperty('--accent-transp-05-color', 'rgba(133, 201, 46, 0.05)') //!
-            document.documentElement.style.setProperty('--secondary-accent-color', '#8fff00') //!
-            document.documentElement.style.setProperty('--button-accent-color', ' #142025') //!
-            document.documentElement.style.setProperty('--background-color', '#303d47') //!
-            document.documentElement.style.setProperty('--background-contrast-color', '#142025') //!
-            document.documentElement.style.setProperty('--secondary-background-color', '#142025') //!
-            document.documentElement.style.setProperty('--font-color', '#c2c6cb') //!
-            document.documentElement.style.setProperty('--header-color', '#c2c6cb') //!
-            document.documentElement.style.setProperty('--hint-color', '#fff')
-            document.documentElement.style.setProperty('--code-color', '#333')
-            document.documentElement.style.setProperty('--code-color-background', 'rgba(255,255,255,0.7)')
-            document.documentElement.style.setProperty('--error-color', '#ce4144')
-            document.documentElement.style.setProperty('--error-color-light', '#763136')
-            document.documentElement.style.setProperty('--alert-color', '#cd9300')
-            document.documentElement.style.setProperty('--alert-color-light', '#745b0e')
-            document.documentElement.style.setProperty('--ok-color', '#76ab24')
-            document.documentElement.style.setProperty('--ok-color-light', '#476927')
-            document.documentElement.style.setProperty('--label-color', '#ce9306')
-            document.documentElement.style.setProperty('--label-text-color', 'rgba(255,255,255,.85)')
-        }
-        if (colorScheme === 'hacker') {
-
-            // Menu
-            document.documentElement.style.setProperty('--menu-bgr', '#333333')
-            document.documentElement.style.setProperty('--menu-border-color', '#000000')
-            document.documentElement.style.setProperty('--menu-item', '#aaa')
-            document.documentElement.style.setProperty('--menu-item-hover', '#fff')
-            document.documentElement.style.setProperty('--menu-item-selected', '#60FF00')
-            document.documentElement.style.setProperty('--menu-group', '#fff')
-
-            //Buttons
-            document.documentElement.style.setProperty('--button-bgr', '#303d47')
-            document.documentElement.style.setProperty('--button-border', '#F8E71C')
-            document.documentElement.style.setProperty('--button-text', '#fff')
-            document.documentElement.style.setProperty('--button-hover-bgr', '#F8E71C')
-            document.documentElement.style.setProperty('--button-hover-border', '#F8E71C')
-            document.documentElement.style.setProperty('--button-hover-text', '#000000')
-            document.documentElement.style.setProperty('--button-active-bgr', '#fff')
-            document.documentElement.style.setProperty('--button-active-border', '#fff')
-            document.documentElement.style.setProperty('--button-active-text', '#000')
-
-            document.documentElement.style.setProperty('--button-accent-bgr', '#60FF00')
-            document.documentElement.style.setProperty('--button-accent-border', '#60FF00')
-            document.documentElement.style.setProperty('--button-accent-text', '#131022')
-            document.documentElement.style.setProperty('--button-accent-hover-bgr', '#8fff00')
-            document.documentElement.style.setProperty('--button-accent-hover-border', '#8fff00')
-            document.documentElement.style.setProperty('--button-accent-hover-text', '#131022')
-            document.documentElement.style.setProperty('--button-accent-active-bgr', '#fff')
-            document.documentElement.style.setProperty('--button-accent-active-border', '#fff')
-            document.documentElement.style.setProperty('--button-accent-active-text', '#333')
-
-            document.documentElement.style.setProperty('--button-danger-bgr', '#303d47')
-            document.documentElement.style.setProperty('--button-danger-border', '#ce4144')
-            document.documentElement.style.setProperty('--button-danger-text', '#fff')
-            document.documentElement.style.setProperty('--button-danger-hover-bgr', '#ce4144')
-            document.documentElement.style.setProperty('--button-danger-hover-border', '#ce4144')
-            document.documentElement.style.setProperty('--button-danger-hover-text', '#fff')
-            document.documentElement.style.setProperty('--button-danger-active-bgr', '#333333')
-            document.documentElement.style.setProperty('--button-danger-active-border', '#333333')
-            document.documentElement.style.setProperty('--button-danger-active-text', '#ffffff')
-
-            document.documentElement.style.setProperty('--button-dropdown-hover-bgr', 'rgba(96, 255, 0, 0.05)')
-
-            //Table, Cards
-            document.documentElement.style.setProperty('--table-borders', 'rgba(255,255,255,.2)')
-            document.documentElement.style.setProperty('--table-raw-hover', 'rgba(96, 255, 0, 0.05)')
-
-            document.documentElement.style.setProperty('--cards-bgr', '#333333')
-            document.documentElement.style.setProperty('--cards-border', '#333333')
-            document.documentElement.style.setProperty('--cards-hover-bgr', '#333333')
-            document.documentElement.style.setProperty('--cards-hover-border', 'rgba(255,255,255,.5)')
-            document.documentElement.style.setProperty('--cards-notification', '#ce4144;')
-
-            // Layout
-            document.documentElement.style.setProperty('--layout-bgr', '#000000')
-            document.documentElement.style.setProperty('--layout-secondary-bgr', '#333333')
-            document.documentElement.style.setProperty('--layout-accent', '#60FF00')
-            document.documentElement.style.setProperty('--layout-accent-hover', '#98fe5b')
-            document.documentElement.style.setProperty('--layout-text', '#fff')
-            document.documentElement.style.setProperty('--layout-headers', '#60FF00')
-
-            // Form
-            document.documentElement.style.setProperty('--form-field-border', 'rgba(255,255,255,.2)')
-            document.documentElement.style.setProperty('--form-field-bgr', '#303d47')
-            document.documentElement.style.setProperty('--form-placeholder', '#fff')
-            document.documentElement.style.setProperty('--form-placeholder-disabled', '#999999')
-            document.documentElement.style.setProperty('--form-field-border-disabled', '#bbbbbb')
-            document.documentElement.style.setProperty('--form-field-bgr-disabled', '#cccccc')
-            document.documentElement.style.setProperty('--form-accent', '#60FF00')
-
-            document.documentElement.style.setProperty('--code', '#333333')
-            document.documentElement.style.setProperty('--code-background', 'rgba(0,0,0,.5)')
-
-            document.documentElement.style.setProperty('--hint-error', '#ce4144')
-            document.documentElement.style.setProperty('--hint-error-light', '#763136')
-            document.documentElement.style.setProperty('--hint-alert', '#cd9300')
-            document.documentElement.style.setProperty('--hint-alert-light', '#745b0e')
-            document.documentElement.style.setProperty('--hint-ok', '#76ab24')
-            document.documentElement.style.setProperty('--hint-ok-light', '#476927')
-            document.documentElement.style.setProperty('--hint-text-color', '#fff')
-
-            document.documentElement.style.setProperty('--label', '#F8E71C')
-            document.documentElement.style.setProperty('--label-text', 'rgba(0,0,0,.85)')
-
-            // =================== OLD STUFF ==================
-
-            document.documentElement.style.setProperty('--button-border-color', '#F8E71C')
-            document.documentElement.style.setProperty('--field-border-color', 'rgba(255,255,255,.2)')
-            document.documentElement.style.setProperty('--table-border-color', 'rgba(255,255,255,.2)')
-            document.documentElement.style.setProperty('--accent-color', '#60FF00')
-            document.documentElement.style.setProperty('--accent-transp-05-color', 'rgba(96, 255, 0, 0.05)')
-            document.documentElement.style.setProperty('--secondary-accent-color', '#98fe5b')
-            document.documentElement.style.setProperty('--button-accent-color', ' #000000')
-            document.documentElement.style.setProperty('--background-color', '#333333')
-            document.documentElement.style.setProperty('--background-contrast-color', '#000000')
-            document.documentElement.style.setProperty('--secondary-background-color', '#000000')
-            document.documentElement.style.setProperty('--font-color', '#fff')
-            document.documentElement.style.setProperty('--header-color', '#60FF00')
-            document.documentElement.style.setProperty('--hint-color', '#fff')
-            document.documentElement.style.setProperty('--code-color', '#333')
-            document.documentElement.style.setProperty('--code-color-background', 'rgba(255,255,255,0.7)')
-            document.documentElement.style.setProperty('--error-color', '#ce4144')
-            document.documentElement.style.setProperty('--error-color-light', '#763136')
-            document.documentElement.style.setProperty('--alert-color', '#cd9300')
-            document.documentElement.style.setProperty('--alert-color-light', '#745b0e')
-            document.documentElement.style.setProperty('--ok-color', '#76ab24')
-            document.documentElement.style.setProperty('--ok-color-light', '#476927')
-            document.documentElement.style.setProperty('--label-color', '#F8E71C')
-            document.documentElement.style.setProperty('--label-text-color', 'rgba(0,0,0,.85)')
-        }
-        if (colorScheme === 'raspberry') {
-            document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
-            document.documentElement.style.setProperty('--field-border-color', '#eaafa7')
-            document.documentElement.style.setProperty('--table-border-color', 'rgba(0,0,0,.12)')
-            document.documentElement.style.setProperty('--accent-color', '#db004a')
-            document.documentElement.style.setProperty('--accent-transp-05-color', 'rgba(219, 0, 74, 0.05)')
-            document.documentElement.style.setProperty('--secondary-accent-color', '#d40037')
-            document.documentElement.style.setProperty('--button-accent-color', '#fff')
-            document.documentElement.style.setProperty('--background-color', '#ffffff')
-            document.documentElement.style.setProperty('--background-contrast-color', '#f5e8e4')
-            document.documentElement.style.setProperty('--secondary-background-color', '#f5e8e4')
-            document.documentElement.style.setProperty('--font-color', '#333333')
-            document.documentElement.style.setProperty('--header-color', '#db004a')
-            document.documentElement.style.setProperty('--hint-color', '#333')
-            document.documentElement.style.setProperty('--code-color', '#333')
-            document.documentElement.style.setProperty('--code-color-background', '#fff')
-            document.documentElement.style.setProperty('--error-color', '#FF525B')
-            document.documentElement.style.setProperty('--error-color-light', '#FFD6D8')
-            document.documentElement.style.setProperty('--alert-color', '#ECA910')
-            document.documentElement.style.setProperty('--alert-color-light', '#F9DFA4')
-            document.documentElement.style.setProperty('--ok-color', '#00C197')
-            document.documentElement.style.setProperty('--ok-color-light', '#D6F8E5')
-            document.documentElement.style.setProperty('--label-color', '#a6e97a')
-            document.documentElement.style.setProperty('--label-text-color', 'rgba(0,0,0,.5)')
-        }
-        if (colorScheme === 'baltic') {
-            document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
-            document.documentElement.style.setProperty('--field-border-color', '#aaa')
-            document.documentElement.style.setProperty('--table-border-color', 'rgba(0,0,0,.12)')
-            document.documentElement.style.setProperty('--accent-color', '#8ca3a3')
-            document.documentElement.style.setProperty('--accent-transp-05-color', 'rgba(140, 163, 163, 0.05)')
-            document.documentElement.style.setProperty('--secondary-accent-color', '#6a8d8d')
-            document.documentElement.style.setProperty('--button-accent-color', '#ffffff')
-            document.documentElement.style.setProperty('--background-color', '#fff')
-            document.documentElement.style.setProperty('--background-contrast-color', '#eeefe7')
-            document.documentElement.style.setProperty('--secondary-background-color', '#eeefe7')
-            document.documentElement.style.setProperty('--font-color', '#515a5a')
-            document.documentElement.style.setProperty('--header-color', '#515a5a')
-            document.documentElement.style.setProperty('--hint-color', '#515a5a')
-            document.documentElement.style.setProperty('--code-color', '#515a5a')
-            document.documentElement.style.setProperty('--code-color-background', '#fff')
-            document.documentElement.style.setProperty('--error-color', '#b2473d')
-            document.documentElement.style.setProperty('--error-color-light', '#e2c3bf')
-            document.documentElement.style.setProperty('--alert-color', '#ECA910')
-            document.documentElement.style.setProperty('--alert-color-light', '#F9DFA4')
-            document.documentElement.style.setProperty('--ok-color', '#588654')
-            document.documentElement.style.setProperty('--ok-color-light', '#d7f1d5')
-            document.documentElement.style.setProperty('--label-color', '#8f6d7d')
-            document.documentElement.style.setProperty('--label-text-color', '#fff')
-        }
         if (colorScheme === 'custom') {
-            document.documentElement.style.setProperty('--button-border-color', _.get(themeName, 'customThemeColors.button_border_color') || customThemeColors.classic.prop)
-
+            for (const param in customThemeColors.classic) {
+                document.documentElement.style.setProperty(param,
+                    (themeName.customThemeColors && themeName.customThemeColors[param]) || customThemeColors.classic[param])
+            }
+        } else {
+            for (const param in customThemeColors[colorScheme]) {
+                document.documentElement.style.setProperty(param, customThemeColors[colorScheme][param])
+            }
         }
 
     }
     return null
 }
-
-
 
 export default function FpsTheme(props) {
     const options =
@@ -949,7 +972,7 @@ export default function FpsTheme(props) {
             },
             {
                 value: 'custom',
-                label: 'Custom theme',
+                label: 'Customise theme',
                 image: 'https://api.alfa.directual.com/fileUploaded/directual-site/c407d11f-bf59-4ef7-9c5a-7fb1d904d1c6.svg'
             },
         ]
@@ -1030,7 +1053,7 @@ export default function FpsTheme(props) {
 
     const [dummyText, setDummyText] = useState('The quick brown fox jumps over the lazy dog')
 
-    const deepCloneCustomThemeColors = JSON.parse(JSON.stringify(customThemeColors))
+    //const deepCloneCustomThemeColors = JSON.parse(JSON.stringify(customThemeColors.classic))
 
     const [themeRawView, setThemeRawView] = useState(false)
 
@@ -1044,9 +1067,10 @@ export default function FpsTheme(props) {
     const myCustomTheme = <div>
         <Checkbox className={styles.checkbox} label='Raw mode (JSON)' defaultValue={themeRawView} onChange={setThemeRawView} />
         {!themeRawView ? <div>
-            <span className={styles.colorTip}>Use HEX, e.g. <code>#123000</code> or RGBA, e.g. <code>rgba(0,0,0,0.5)</code></span>
+            <span className={styles.colorTip}>Use HEX, e.g. <code>#123000</code> or RGBA, e.g. <code>rgba(0,0,0,0.5)</code>, 
+            or <code>red</code>, <code>coral</code>, <code>green</code>, etc.</span>
             <div className={styles.horInputs}>
-                {Object.keys(customThemeColors).map(key => <Input
+                {Object.keys(customThemeColors.classic).map(key => <Input
                     type='colour'
                     label={customThemeColorNames[key]}
                     height={props.height}
@@ -1055,7 +1079,7 @@ export default function FpsTheme(props) {
                     code
                     defaultValue={_.get(selectedColorScheme, `customThemeColors.${key}`)}
                     onChange={value => {
-                        let correctedValue = !value ? '' : (value[0] == '#' || value[0] == 'r') ? value : '#' + value
+                        let correctedValue = !value ? '' : !value[0].match(/[0-9]/gm) ? value : '#' + value
                         const copyCS = { ...selectedColorScheme }
                         _.set(copyCS, `customThemeColors.${key}`, correctedValue)
                         setSelectedColorScheme(copyCS)
@@ -1065,8 +1089,8 @@ export default function FpsTheme(props) {
             <Input type="json"
                 description='Share this JSON as your custom colouring scheme with other Directual users'
                 onChange={value => setSelectedColorScheme({ ...selectedColorScheme, customThemeColors: parseJson(value) })}
-                rows='auto' defaultValue={stringifyJson(_.merge({ ...customThemeColors }, selectedColorScheme.customThemeColors))} />}
-        <ActionPanel>
+                rows='auto' defaultValue={stringifyJson(_.merge({ ...customThemeColors.classic }, selectedColorScheme.customThemeColors))} />}
+        {/* <ActionPanel>
             <Button danger
                 icon='ban'
                 onClick={() => {
@@ -1074,7 +1098,7 @@ export default function FpsTheme(props) {
                     setSelectedColorScheme(saveCS)
                 }}
             >Reset colour scheme to default&nbsp;<strong>Directual Blue</strong></Button>
-        </ActionPanel>
+        </ActionPanel> */}
     </div>
 
     const tabs = [
@@ -1094,7 +1118,7 @@ export default function FpsTheme(props) {
                         { value: 'top', label: 'Top side' },
                     ]}
                     defaultValue={selectedColorScheme.desktopMenu}
-                    onChange={value => setSelectedColorScheme({ ...selectedColorScheme, desktopMenu: value })}
+                    onChange={value => setSelectedColorScheme({ ...selectedColorScheme, desktopMenu: value }) }
                 />
                 <Input
                     type='radio'
@@ -1115,7 +1139,11 @@ export default function FpsTheme(props) {
                 radioImages
                 options={userOptions}
                 defaultValue={selectedColorScheme.colorScheme}
-                onChange={value => setSelectedColorScheme({ ...selectedColorScheme, colorScheme: value })}
+                onChange={value => value === 'custom' ? 
+                    setSelectedColorScheme({ ...selectedColorScheme, colorScheme: value, })
+                    :
+                    setSelectedColorScheme({ ...selectedColorScheme, colorScheme: value, customThemeColors: { ...customThemeColors[value] } })
+                }
             />
             {selectedColorScheme.colorScheme == 'custom' && <React.Fragment>
                 <FormSection title='Custom coloring scheme' />
