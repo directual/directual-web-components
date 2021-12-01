@@ -1053,16 +1053,15 @@ export default function FpsTheme(props) {
 
     const [dummyText, setDummyText] = useState('The quick brown fox jumps over the lazy dog')
 
-    //const deepCloneCustomThemeColors = JSON.parse(JSON.stringify(customThemeColors.classic))
 
     const [themeRawView, setThemeRawView] = useState(false)
 
-    useEffect(() => {
-        if (!selectedColorScheme.customThemeColors || customThemeColors.customThemeColors == {}) {
-            const saveCS = { ...selectedColorScheme, customThemeColors: { ...deepCloneCustomThemeColors } }
-            setSelectedColorScheme(saveCS)
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (!selectedColorScheme.customThemeColors || customThemeColors.customThemeColors == {}) {
+    //         const saveCS = { ...selectedColorScheme, customThemeColors: { ...deepCloneCustomThemeColors } }
+    //         setSelectedColorScheme(saveCS)
+    //     }
+    // }, [])
 
     const myCustomTheme = <div>
         <Checkbox className={styles.checkbox} label='Raw mode (JSON)' defaultValue={themeRawView} onChange={setThemeRawView} />
@@ -1090,15 +1089,6 @@ export default function FpsTheme(props) {
                 description='Share this JSON as your custom colouring scheme with other Directual users'
                 onChange={value => setSelectedColorScheme({ ...selectedColorScheme, customThemeColors: parseJson(value) })}
                 rows='auto' defaultValue={stringifyJson(_.merge({ ...customThemeColors.classic }, selectedColorScheme.customThemeColors))} />}
-        {/* <ActionPanel>
-            <Button danger
-                icon='ban'
-                onClick={() => {
-                    const saveCS = { ...selectedColorScheme, customThemeColors: { ...deepCloneCustomThemeColors } }
-                    setSelectedColorScheme(saveCS)
-                }}
-            >Reset colour scheme to default&nbsp;<strong>Directual Blue</strong></Button>
-        </ActionPanel> */}
     </div>
 
     const tabs = [
