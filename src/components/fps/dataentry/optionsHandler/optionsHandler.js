@@ -5,7 +5,7 @@ import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
 
 export default function OptionsHandler({ defaultValue, disabled, objectStructure, onChange, width, margin, debug, addButtonText, code }) {
-    const [options, setOptions] = useState(defaultValue)
+    const [options, setOptions] = useState(defaultValue || [])
     return (
         <div className={styles.optionsList}
             style={

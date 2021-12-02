@@ -153,7 +153,7 @@ Some *emphasis* and <strong>strong</strong>!`;
 
       const [error,setError] = useState('error')
 
-      const testData = [
+      const testData = { data: [
         {
             latitude: 35.786868,
             longitude: -121.252865,
@@ -163,7 +163,7 @@ Some *emphasis* and <strong>strong</strong>!`;
             text: 'pointer description pointer description pointer description pointer description pointer description pointer description description pointer description pointer description pointer description pointer description',
             link: 'https://www.mapbox.com/'
         }
-    ]
+    ]}
 
     return (
         <React.Fragment>
@@ -175,10 +175,10 @@ Some *emphasis* and <strong>strong</strong>!`;
                 width='600px'
                 edit
                 //oneMarker
-                defaultValue={testData}
+                //defaultValue={testData}
                 jsonView
                 maptoken="pk.eyJ1IjoiZGlyZWN0dWFsIiwiYSI6ImNrdmJncTl0eTBkcWIyc3BuYjlpYXp2cnkifQ.mVDgIP-E8tA2FlBttPdi4A"
-                mapStyle="mapbox://styles/mapbox/dark-v10"
+                //mapStyle="mapbox://styles/mapbox/dark-v10"
             />
             <br />
 
@@ -430,7 +430,7 @@ disabled`}
             <Input
                 type='optionsHandler'
                 code
-                disabled
+                //disabled
                 description='you can use {{template system}} here'
                 defaultValue={[
                     { key: '1', value: 'val 1' },

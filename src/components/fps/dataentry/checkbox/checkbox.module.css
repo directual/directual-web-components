@@ -28,7 +28,7 @@
   visibility: hidden;
 }
 .cb_wrap .checkbox .cb_wrapper .pretty_checkbox {
-  background-color: var(--layout-bgr);
+  background-color: var(--layout-secondary-bgr);
   height: 20px;
   width: 20px;
   display: flex;

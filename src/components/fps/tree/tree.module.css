@@ -1,5 +1,5 @@
 .treeWrapper {
-  background-color: var(--layout-bgr);
+  background-color: var(--layout-secondary-bgr);
   max-width: 100%;
   overflow: auto;
   padding: 6px;

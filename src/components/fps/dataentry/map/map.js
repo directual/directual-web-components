@@ -69,7 +69,7 @@ export default function Map({
     const defaultStyle = 'mapbox://styles/mapbox/streets-v11'
 
     const [json, setJson] = useState(false)
-    const [value, setValue] = useState(defaultValue)
+    const [value, setValue] = useState((defaultValue && defaultValue.data) || [])
     const [showPopup, setShowPopup] = useState(null);
     const [initialPositioning, setInitialPositioning] = useState(false)
     const [addMarker, setAddMarker] = useState(false)
@@ -77,11 +77,11 @@ export default function Map({
     const [editValue, setEditValue] = useState({})
 
     useEffect(() => {
-        if (defaultValue && JSON.stringify(value) != JSON.stringify(defaultValue)) {
-            setValue(defaultValue)
-            if (!initialPositioning && defaultValue.length) {
+        if (defaultValue && defaultValue.data && JSON.stringify(value) != JSON.stringify(defaultValue.data)) {
+            setValue(defaultValue.data)
+            if (!initialPositioning && defaultValue.data.length) {
                 setInitialPositioning(true)
-                positionMap(defaultValue[0].longitude, defaultValue[0].latitude)
+                positionMap(defaultValue.data[0].longitude, defaultValue.data[0].latitude)
             }
         }
     }, [defaultValue])
@@ -96,7 +96,7 @@ export default function Map({
     const save = val => {
         if (!edit) return null
         setValue(val)
-        onChange && onChange(val)
+        onChange && onChange({ data: val })
     }
 
     const positionMap = (lng, lat) => {
@@ -106,6 +106,9 @@ export default function Map({
         viewportCopy.longitude = lng
         setViewport(viewportCopy)
     }
+
+    // console.log('map value')
+    // console.log(value)
 
     const newMarker = (lngLat) => {
         setAddMarker(false)
@@ -157,8 +160,12 @@ export default function Map({
         }
     }, [isEdit])
 
+    console.log('map')
+    console.log(value)
+    console.log(defaultValue)
+
     return <div className={styles.mapWrapper} style={{ maxWidth: width || 'auto' }}>
-        {label && <div className={styles.label}>label</div>}
+        {label && <div className={styles.label}>{label}</div>}
         {jsonView && !json && <a onClick={() => setJson(true)} className={styles.jsonView}>Show as JSON</a>}
         {jsonView && json && <a onClick={() => setJson(false)} className={styles.jsonView}>Show as Map</a>}
         {json ?
@@ -181,7 +188,7 @@ export default function Map({
                     newMarker(e.lngLat)
                 }}
             >
-                {value && value.length && value.map(marker => (
+                {value && value.length ? value.map(marker => (
                     <Marker
                         key={marker.id}
                         draggable={edit}
@@ -196,7 +203,7 @@ export default function Map({
                         longitude={marker.longitude}>
                         <div className={styles.pointer} style={{ backgroundImage: `url(${pointer})` }} />
                     </Marker>
-                ))}
+                )) : null }
                 {showPopup && <Popup
                     latitude={showPopup.latitude}
                     longitude={showPopup.longitude}
@@ -241,7 +248,7 @@ export default function Map({
                         </div>
                         :
                         <div>
-                            <h3>{showPopup.title}</h3>
+                            <strong>{showPopup.title}</strong>
                             {showPopup.image && <img src={showPopup.image} />}
                             {!showPopup.text && <div style={{height:18}}/>}
                             <ExpandedText textLength={150}>{showPopup.text}</ExpandedText>
