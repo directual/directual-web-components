@@ -154,15 +154,15 @@ export default function Map({
     }, [handleUserKeyPress]);
     //----------------------
 
-    useEffect(()=> {
+    useEffect(() => {
         if (isEdit) {
             setEditValue(showPopup)
         }
     }, [isEdit])
 
-    console.log('map')
-    console.log(value)
-    console.log(defaultValue)
+    // console.log('map')
+    // console.log(value)
+    // console.log(defaultValue)
 
     return <div className={styles.mapWrapper} style={{ maxWidth: width || 'auto' }}>
         {label && <div className={styles.label}>{label}</div>}
@@ -203,44 +203,44 @@ export default function Map({
                         longitude={marker.longitude}>
                         <div className={styles.pointer} style={{ backgroundImage: `url(${pointer})` }} />
                     </Marker>
-                )) : null }
+                )) : null}
                 {showPopup && <Popup
                     latitude={showPopup.latitude}
                     longitude={showPopup.longitude}
                     closeButton={true}
                     className={styles.popup}
                     closeOnClick={true}
-                    onClose={() => { setShowPopup(null); setIsEdit(false)}}
+                    onClose={() => { setShowPopup(null); setIsEdit(false) }}
                     anchor="bottom" >
                     {isEdit ?
                         <div className={styles.editWrapper}>
-                            <Input defaultValue={editValue.title} onChange={value =>{
-                                const saveData = {...editValue}
+                            <Input defaultValue={editValue.title} onChange={value => {
+                                const saveData = { ...editValue }
                                 saveData.title = value
                                 setEditValue(saveData)
-                            }} placeholder='Title' equalMargin={6}/>
-                            <Input defaultValue={editValue.image} onChange={value =>{
-                                const saveData = {...editValue}
+                            }} placeholder='Title' equalMargin={6} />
+                            <Input defaultValue={editValue.image} onChange={value => {
+                                const saveData = { ...editValue }
                                 saveData.image = value
                                 setEditValue(saveData)
-                            }} placeholder='Image' type='file' equalMargin={6}/>
-                            <Input defaultValue={editValue.text} onChange={value =>{
-                                const saveData = {...editValue}
+                            }} placeholder='Image' type='file' equalMargin={6} />
+                            <Input defaultValue={editValue.text} onChange={value => {
+                                const saveData = { ...editValue }
                                 saveData.text = value
                                 setEditValue(saveData)
-                            }} placeholder='Description' type='textarea' rows='auto' equalMargin={6}/>
-                            <Input defaultValue={editValue.link} onChange={value =>{
-                                const saveData = {...editValue}
+                            }} placeholder='Description' type='textarea' rows='auto' equalMargin={6} />
+                            <Input defaultValue={editValue.link} onChange={value => {
+                                const saveData = { ...editValue }
                                 saveData.link = value
                                 setEditValue(saveData)
-                            }} placeholder='Link' equalMargin={6}/>
-                            <ActionPanel margin={{top:1,bottom:-10}}>
-                                <Button small onClick={()=> {
+                            }} placeholder='Link' equalMargin={6} />
+                            <ActionPanel margin={{ top: 1, bottom: -10 }}>
+                                <Button small onClick={() => {
                                     setIsEdit(false)
                                     editMarker(editValue.id, editValue)
                                     setShowPopup(editValue)
                                 }} height={26} accent icon='done small'>Save</Button>
-                                <Button small onClick={()=> {
+                                <Button small onClick={() => {
                                     setIsEdit(false)
                                     setEditValue({})
                                 }} height={26} danger icon='ban small'>Cancel</Button>
@@ -250,16 +250,18 @@ export default function Map({
                         <div>
                             <strong>{showPopup.title}</strong>
                             {showPopup.image && <img src={showPopup.image} />}
-                            {!showPopup.text && <div style={{height:18}}/>}
+                            {!showPopup.text && <div style={{ height: 18 }} />}
                             <ExpandedText textLength={150}>{showPopup.text}</ExpandedText>
                             {showPopup.link && <a target="_blank" href={showPopup.link}>{showPopup.link}</a>}
 
                             {edit && <a onClick={e => {
                                 e.stopPropagation()
+                                e.preventDefault();
                                 deleteMarker(showPopup.id)
                             }} className={`icon icon-delete ${styles.deleteMarker}`} />}
 
                             {edit && <a onClick={e => {
+                                e.preventDefault();
                                 e.stopPropagation()
                                 setIsEdit(true)
                             }} className={`icon icon-edit ${styles.editMarker}`} />}
@@ -270,6 +272,7 @@ export default function Map({
                     icon='plus'
                     className={styles.addPoint}
                     onClick={e => {
+                        e.preventDefault();
                         setTimeout(() => setAddMarker(true), 300)
                     }}
                 />}
@@ -277,6 +280,7 @@ export default function Map({
                     icon='ban'
                     className={styles.addPoint}
                     onClick={e => {
+                        e.preventDefault();
                         setAddMarker(false)
                     }}
                 />}

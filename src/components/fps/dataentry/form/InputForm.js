@@ -9,6 +9,7 @@ import ActionPanel from '../../actionspanel/actionspanel'
 import FileUpload from '../fileupload/fileupload'
 import Media from '../../media/media'
 import _ from 'lodash'
+import Map from '../map/map'
 
 export function InputForm(props) {
     // console.log('InputForm')
@@ -23,6 +24,7 @@ export function InputForm(props) {
         case 'json_rangeSlider':
         case 'json_radioOptions':
         case 'json_keyValue':
+        case 'json_geo':
             return <FieldJson {...props} />
         case 'string_markdown':
             return <FieldMkd {...props} />
@@ -56,15 +58,15 @@ function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue
         if (link.substring(0, 4) != 'http') { link = 'http://' + link }
         return link
     }
-    if (field.format == 'youTube') return <Media 
+    if (field.format == 'youTube') return <Media
         onChange={onChange}
         disabled={!editingOn}
         required={field.required}
         placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
         description={field.descriptionFlag && field.description}
         label={placeholder != "true" ? (field.content || field.id) : ''}
-        editingOn={editingOn} 
-        type='video' 
+        editingOn={editingOn}
+        type='video'
         source={defaultValue} width='500' height='315' />
     if (!editingOn) return <div>
         {!field.displayAsButton &&
@@ -143,9 +145,9 @@ function FieldFile({ field, onChange, placeholder, editingOn, defaultValue }) {
         allowUpload={field.fileUpload}
         edit={editingOn}
         allowUpload
-        multiple= {field.format == 'multipleFiles' || field.format == 'multipleImages'}
+        multiple={field.format == 'multipleFiles' || field.format == 'multipleImages'}
         host='/api/upload'
-        images= {field.format == 'image' || field.format == 'multipleImages'}
+        images={field.format == 'image' || field.format == 'multipleImages'}
         description={field.descriptionFlag && field.description}
         disabled={!editingOn}
         label={placeholder != "true" ? (field.content || field.id) : ''}
@@ -213,6 +215,9 @@ function FieldMkd({ field, onChange, placeholder, editingOn, defaultValue }) {
 
 function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
 
+    console.log('FieldJson')
+    console.log(field)
+
     const parseJson = json => {
         let parsedJson = {}
         if (typeof json == 'object') return json
@@ -257,6 +262,24 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
                 customOption={field.formatOptions.customOption}
                 defaultValue={(defaultValue && parseJson(defaultValue)) || (field.defaultValueOn && field.defaultValue) || {}}
             />}
+
+        {field && field.format == 'geo' &&
+        <div style={{marginBottom:22}}>
+            {!_.get(field,'formatOptions.mapToken') ?
+            <Hint>Map token is not set (go to data structure fields configurations)</Hint>
+            : 
+            <Map
+                edit={editingOn}
+                oneMarker={_.get(field,'formatOptions.oneMarker')}
+                height={_.get(field,'formatOptions.height') || 400}
+                maptoken={_.get(field,'formatOptions.mapToken')}
+                mapStyle={_.get(field,'formatOptions.mapColour')}
+                onChange={value => onChange(JSON.stringify(value))}
+                label={placeholder != "true" ? (field.content || field.id) : ''}
+                defaultValue={(defaultValue && parseJson(defaultValue)) || (field.defaultValueOn && field.defaultValue) || {}}
+            />}
+            
+            </div>}
 
         {field && field.format == 'radioOptions' &&
             <Input type='radioJson'
@@ -327,12 +350,12 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
 }
 
 function FieldLink({ field, onChange, placeholder, editingOn, defaultValue }) {
-   
+
     const [edit, setEdit] = useState(false)
 
-    const getIDs = (value,multi) => {
-        if (!multi && typeof value == 'object') return _.get(value,'id')
-        if (multi && value && value.length && typeof value[0] == 'object') return value.map(i=>_.get(i,'id'))
+    const getIDs = (value, multi) => {
+        if (!multi && typeof value == 'object') return _.get(value, 'id')
+        if (multi && value && value.length && typeof value[0] == 'object') return value.map(i => _.get(i, 'id'))
         return value
     }
 
