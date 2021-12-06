@@ -601,7 +601,8 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
             {(field.dataType == 'json') &&
                 <InputForm
                     field={field}
-                    defaultValue={object[field.sysName].value}
+                    //mapRefreshOff
+                    defaultValue={model[field.sysName] && (model[field.sysName].value || model[field.sysName])}
                     editingOn={field.write && editingOn}
                     onChange={value => setModel({ ...model, [field.sysName]: value })}
                 />

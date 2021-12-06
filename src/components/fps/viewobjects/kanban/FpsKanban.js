@@ -261,7 +261,8 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale }) {
                         /></div>
                 </React.Fragment>}
 
-                <Kanban />
+                <div>Component is under development</div>
+                {/* <Kanban /> */}
             
         </ComponentWrapper>
     )

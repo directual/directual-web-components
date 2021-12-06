@@ -213,10 +213,10 @@ function FieldMkd({ field, onChange, placeholder, editingOn, defaultValue }) {
     </React.Fragment>
 }
 
-function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
+function FieldJson({ field, onChange, placeholder, editingOn, defaultValue, mapRefreshOff }) {
 
-    console.log('FieldJson')
-    console.log(field)
+    // console.log('FieldJson')
+    // console.log(field)
 
     const parseJson = json => {
         let parsedJson = {}
@@ -235,6 +235,9 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
         if (typeof json == 'string') return json
         return JSON.stringify(json)
     }
+
+    // console.log('defaultValue - ' + field.content)
+    // console.log(defaultValue)
 
     return <React.Fragment>
         {field && !field.format &&
@@ -270,6 +273,7 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue }) {
             : 
             <Map
                 edit={editingOn}
+                mapRefreshOff={mapRefreshOff}
                 oneMarker={_.get(field,'formatOptions.oneMarker')}
                 height={_.get(field,'formatOptions.height') || 400}
                 maptoken={_.get(field,'formatOptions.mapToken')}

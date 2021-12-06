@@ -226,7 +226,7 @@
   align-items: center;
 }
 .card .cardInnerWrapper .cardText .cardHeader .txt {
-  overflow: hidden;
+  overflow: auto;
   text-overflow: ellipsis;
   flex-grow: 2;
 }

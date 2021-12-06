@@ -109,8 +109,9 @@
   padding: 24px 24px 12px 12px;
 }
 .objectCard .objectCardHeader h2 {
-  overflow: hidden;
+  overflow: auto;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .objectCard .objectCardHeader h2.narrowH2 {
   margin-right: 25px;

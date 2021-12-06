@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import ReactMapGL, { Marker, NavigationControl, Popup } from 'react-map-gl';
 //import 'mapbox-gl/dist/mapbox-gl.css';
 import styles from './map.module.css'
@@ -8,6 +8,7 @@ import ExpandedText from '../../expandedText/expandedText'
 import _ from 'lodash'
 import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
+import Loader from '../../loader/loader'
 
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp.js';
 import MapboxGLWorker from 'mapbox-gl/dist/mapbox-gl-csp-worker.js';
@@ -20,6 +21,7 @@ export default function Map({
     height,
     width,
     edit,
+    mapRefreshOff,
     label,
     oneMarker,
     defaultValue,
@@ -76,9 +78,56 @@ export default function Map({
     const [isEdit, setIsEdit] = useState(false)
     const [editValue, setEditValue] = useState({})
 
+    const mapWrapper = useRef(null);
+    const [wrapperWidth, setWrapperWidth] = useState(0)
+    const [mapLoader, setMapLoader] = useState(false)
+
+    useEffect(() => {
+        const resizeListener = () => {
+            if (mapWrapper.current && mapWrapper.current.offsetWidth !== wrapperWidth) {
+                setWrapperWidth(mapWrapper.current.offsetWidth);
+            }
+        }
+        window.addEventListener("resize", resizeListener);
+        return () => { window.removeEventListener('resize', resizeListener); };
+    }, []);
+
+    useEffect(() => {
+        if (mapWrapper.current && mapWrapper.current.offsetWidth !== wrapperWidth) {
+            setWrapperWidth(mapWrapper.current.offsetWidth);
+        }
+    })
+
+    // const reloadMap = () => { setMapLoader(true) }
+
+    // const reload = _.debounce(reloadMap, 1000)
+
+    // useEffect(() => { reload() }, [wrapperWidth])
+
+    useEffect(() => {
+        console.log('==== 1 ====')
+        console.log(wrapperWidth)
+        const saveViewport = { ...viewport }
+        saveViewport.width = wrapperWidth
+        setViewport(saveViewport)
+    }, [wrapperWidth])
+
+    useEffect(() => {
+        if (viewport.width !== wrapperWidth) {
+            console.log('==== 2 ====')
+            console.log(wrapperWidth)
+            const saveViewport = { ...viewport }
+            saveViewport.width = wrapperWidth
+            setViewport(saveViewport)
+        }
+    }, [viewport])
+
+    console.log('wrapperWidth = ' + wrapperWidth)
+    console.log(viewport)
+
     useEffect(() => {
         if (defaultValue && defaultValue.data && JSON.stringify(value) != JSON.stringify(defaultValue.data)) {
-            setValue(defaultValue.data)
+            !mapRefreshOff && setValue(defaultValue.data)
             if (!initialPositioning && defaultValue.data.length) {
                 setInitialPositioning(true)
                 positionMap(defaultValue.data[0].longitude, defaultValue.data[0].latitude)
@@ -164,7 +213,16 @@ export default function Map({
     // console.log(value)
     // console.log(defaultValue)
 
-    return <div className={styles.mapWrapper} style={{ maxWidth: width || 'auto' }}>
+    useEffect(() => {
+        if (mapLoader) {
+            setTimeout(() => setMapLoader(false), 500)
+        }
+    }, [mapLoader])
+
+    if (mapLoader) return <Loader />
+
+    return <div className={styles.mapWrapper} style={{ maxWidth: width || 'auto' }} ref={mapWrapper}>
+        {/* <a onClick={() => setMapLoader(true)}>laoder</a> */}
         {label && <div className={styles.label}>{label}</div>}
         {jsonView && !json && <a onClick={() => setJson(true)} className={styles.jsonView}>Show as JSON</a>}
         {jsonView && json && <a onClick={() => setJson(false)} className={styles.jsonView}>Show as Map</a>}
@@ -177,7 +235,6 @@ export default function Map({
             />
             :
             <ReactMapGL
-
                 {...viewport}
                 mapStyle={mapStyle || defaultStyle}
                 mapboxApiAccessToken={maptoken || defaultMaptoken}

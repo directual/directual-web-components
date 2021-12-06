@@ -35,15 +35,17 @@ export function FpsLayout({ layout }) {
         }
         if (layoutWidth >= brakePoints.wideDesktop.from) {
             setCurrentBP('wideDesktop')
-        } 
+        }
     }, [layoutWidth])
 
     useEffect(() => {
-        window.addEventListener("resize", () => {
+        const resizeListener = () => {
             if (layoutRef.current && layoutRef.current.offsetWidth !== layoutWidth) {
                 setLayoutWidth(layoutRef.current.offsetWidth);
             }
-        });
+        }
+        window.addEventListener("resize", resizeListener);
+        return () => { window.removeEventListener('resize', resizeListener); };
     }, []);
     // =========================
 
@@ -64,8 +66,8 @@ export function FpsLayout({ layout }) {
     return (
         (tabs && tabs[0]) ? <div className={styles.fpsLayout} ref={layoutRef}>
             {layout.showHeader && layout.header && <h1 className={styles.layoutHeader}>{layout.header}</h1>}
-            {tabs && <TabsPane style={{marginTop: -18}} hideSingleTab tabs={tabs} saveTabToURL //currentTabKey={tabs[0].key} 
-                //fixedScroll 
+            {tabs && <TabsPane style={{ marginTop: -18 }} hideSingleTab tabs={tabs} saveTabToURL //currentTabKey={tabs[0].key} 
+            //fixedScroll 
             />}
         </div> : <div />)
 }
@@ -76,7 +78,7 @@ const Section = ({ section, currentBP }) => {
     const correctedBP = currentBP == 'wideDesktop' ? 'desktop' : currentBP;
 
     return <div className={styles.section} style={{ flexDirection: section.flexDirection[correctedBP] }}>
-        {section.columns.map( (column, i) => <Column last={section.columns.length == i + 1} key={column.id} row={section.flexDirection[correctedBP] == 'row'} column={column} />)}
+        {section.columns.map((column, i) => <Column last={section.columns.length == i + 1} key={column.id} row={section.flexDirection[correctedBP] == 'row'} column={column} />)}
     </div>
 }
 
@@ -128,7 +130,7 @@ function ComponentWrapper(props) {
     // =========================
 
     return (
-        <div className={styles.componentWrapper} ref={layoutRef} style={{paddingRight: !props.last && props.row ? paddingRight : 0}}>
+        <div className={styles.componentWrapper} ref={layoutRef} style={{ paddingRight: !props.last && props.row ? paddingRight : 0 }}>
             {/* <div className={styles.componentWidth}>{layoutWidth} – {currentBP}</div> */}
             {props.children(currentBP)}
         </div>)
