@@ -806,7 +806,7 @@ const customThemeColorNames = {
     '--menu-bgr': "Menu | Background color",
     '--menu-border-color': "Menu | Border color",
     '--menu-item': "Menu | Item color",
-    '--menu-item-hover': "Menu | Hevered item color",
+    '--menu-item-hover': "Menu | Hovered item color",
     '--menu-item-selected': "Menu | Selected item color",
     '--menu-group': "Menu | Subheader (group) color",
 
