@@ -35,8 +35,8 @@ export default function FpsForm({ auth, data, onEvent, id, locale }) {
 function FpsFormNew({ auth, data, onEvent, id, locale }) {
 
   const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
-  console.log('locale')
-  console.log(locale)
+  // console.log('locale')
+  // console.log(locale)
 
   let hiddenFields = {}
   const [model, setModel] = useState(defaultModel())
@@ -196,13 +196,13 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
         if (getFieldVal === true) { getFieldVal = 'true' }
         if (getFieldVal === false) { getFieldVal = 'false' }
       }
-      if (dataType == 'date') {
-        getFieldVal = moment(getFieldVal)
-      }
       if (typeof getFieldVal == 'object' && getFieldVal && Array.isArray(getFieldVal)) { getFieldVal = getFieldVal.map(i=> { return i.id})}
       if (typeof getFieldVal == 'object' && getFieldVal && !Array.isArray(getFieldVal)) { getFieldVal = getFieldVal.id }
       if (eidtID && getFieldVal && fetchedObjectFields[sysName] != getFieldVal) {
         fetchedObjectFields = { ...fetchedObjectFields, id: eidtID, [sysName]: getFieldVal }
+      }
+      if (dataType == 'date') {
+        getFieldVal = moment(getFieldVal)
       }
       return getFieldVal
     }
