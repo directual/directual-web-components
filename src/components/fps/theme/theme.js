@@ -80,6 +80,9 @@ const customThemeColors = {
         '--layout-accent-hover': "#0062bd",
         '--layout-text': "#333333",
         '--layout-headers': "#333333",
+        '--layout-footer-bgr': "#fff",
+        '--layout-footer-text': "#333",
+        '--layout-footer-border': "#eeeeee",
 
         // Forms
         '--form-field-border': "#aaaaaa",
@@ -176,6 +179,9 @@ const customThemeColors = {
         '--layout-accent-hover': "#0062bd",
         '--layout-text': "#333333",
         '--layout-headers': "#333333",
+        '--layout-footer-bgr': "#fff",
+        '--layout-footer-text': "#333",
+        '--layout-footer-border': "#eeeeee",
 
         // Forms
         '--form-field-border': "#aaaaaa",
@@ -272,6 +278,9 @@ const customThemeColors = {
         '--layout-accent-hover': "#37aea3",
         '--layout-text': "#333333",
         '--layout-headers': "#333333",
+        '--layout-footer-bgr': "#fff",
+        '--layout-footer-text': "#333",
+        '--layout-footer-border': "#eeeeee",
 
         // Forms
         '--form-field-border': "#aaaaaa",
@@ -368,6 +377,9 @@ const customThemeColors = {
         '--layout-accent-hover': "#00ff98",
         '--layout-text': "#fff",
         '--layout-headers': "#fff",
+        '--layout-footer-bgr': "#1c1d3b",
+        '--layout-footer-text': "#fff",
+        '--layout-footer-border': "#131022",
 
         // Forms
         '--form-field-border': "rgba(255,255,255,.2)",
@@ -464,6 +476,9 @@ const customThemeColors = {
         '--layout-accent-hover': "#8fff00",
         '--layout-text': "#fff",
         '--layout-headers': "#fff",
+        '--layout-footer-bgr': "#303d47",
+        '--layout-footer-text': "#fff",
+        '--layout-footer-border': "#142025",
 
         // Forms
         '--form-field-border': "rgba(255,255,255,.2)",
@@ -656,6 +671,9 @@ const customThemeColors = {
         '--layout-accent-hover': "#d40037",
         '--layout-text': "#333333",
         '--layout-headers': "#666",
+        '--layout-footer-bgr': "#fff",
+        '--layout-footer-text': "#333",
+        '--layout-footer-border': "#f5e8e4",
 
         // Forms
         '--form-field-border': "#eaafa7",
@@ -752,6 +770,9 @@ const customThemeColors = {
         '--layout-accent-hover': "#6a8d8d",
         '--layout-text': "#333333",
         '--layout-headers': "#666",
+        '--layout-footer-bgr': "#fff",
+        '--layout-footer-text': "#333",
+        '--layout-footer-border': "#eeefe7",
 
         // Forms
         '--form-field-border': "#aaa",
@@ -850,6 +871,9 @@ const customThemeColorNames = {
     '--layout-accent-hover': "Accent hover color",
     '--layout-text': "Main text color",
     '--layout-headers': "Headers color",
+    '--layout-footer-bgr': "Footer color",
+    '--layout-footer-text': "Footer text color",
+    '--layout-footer-border': "Footer border color",
 
     // Forms
     '--form-field-border': "Form fields border color",
@@ -1066,8 +1090,8 @@ export default function FpsTheme(props) {
     const myCustomTheme = <div>
         <Checkbox className={styles.checkbox} label='Raw mode (JSON)' defaultValue={themeRawView} onChange={setThemeRawView} />
         {!themeRawView ? <div>
-            <span className={styles.colorTip}>Use HEX, e.g. <code>#123000</code> or RGBA, e.g. <code>rgba(0,0,0,0.5)</code>, 
-            or <code>red</code>, <code>coral</code>, <code>green</code>, etc.</span>
+            <span className={styles.colorTip}>Use HEX, e.g. <code>#123000</code> or RGBA, e.g. <code>rgba(0,0,0,0.5)</code>,
+                or <code>red</code>, <code>coral</code>, <code>green</code>, etc.</span>
             <div className={styles.horInputs}>
                 {Object.keys(customThemeColors.classic).map(key => <Input
                     type='colour'
@@ -1108,7 +1132,7 @@ export default function FpsTheme(props) {
                         { value: 'top', label: 'Top side' },
                     ]}
                     defaultValue={selectedColorScheme.desktopMenu}
-                    onChange={value => setSelectedColorScheme({ ...selectedColorScheme, desktopMenu: value }) }
+                    onChange={value => setSelectedColorScheme({ ...selectedColorScheme, desktopMenu: value })}
                 />
                 <Input
                     type='radio'
@@ -1129,7 +1153,7 @@ export default function FpsTheme(props) {
                 radioImages
                 options={userOptions}
                 defaultValue={selectedColorScheme.colorScheme}
-                onChange={value => value === 'custom' ? 
+                onChange={value => value === 'custom' ?
                     setSelectedColorScheme({ ...selectedColorScheme, colorScheme: value, })
                     :
                     setSelectedColorScheme({ ...selectedColorScheme, colorScheme: value, customThemeColors: { ...customThemeColors[value] } })

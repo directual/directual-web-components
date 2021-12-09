@@ -15,14 +15,14 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/sourcecodepro/v14/HI_SiYsKILxRpg3hIP6sJ7fM7PqVOg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/sourcecodepro/v18/HI_diYsKILxRpg3hIP6sJ7fM7PqPMcMnZFqUwX28DMyQhM4.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Source Code Pro';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/sourcecodepro/v14/HI_XiYsKILxRpg3hIP6sJ7fM7Pqths7ztA.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/sourcecodepro/v18/HI_diYsKILxRpg3hIP6sJ7fM7PqPMcMnZFqUwX28DCuXhM4.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Fira Code';
@@ -71,28 +71,28 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/merriweather/v25/u-4n0qyriQwlOrhSvowK_l521wRpXw.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/merriweather/v27/u-4n0qyriQwlOrhSvowK_l521wRpXw.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Merriweather';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/merriweather/v25/u-440qyriQwlOrhSvowK_l5Oew.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/merriweather/v27/u-440qyriQwlOrhSvowK_l5Oew.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Merriweather';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/merriweather/v25/u-4n0qyriQwlOrhSvowK_l52xwNpXw.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/merriweather/v27/u-4n0qyriQwlOrhSvowK_l52xwNpXw.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Merriweather';
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/merriweather/v25/u-4n0qyriQwlOrhSvowK_l52_wFpXw.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/merriweather/v27/u-4n0qyriQwlOrhSvowK_l52_wFpXw.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Montserrat';
@@ -218,28 +218,28 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/nunito/v16/XRXW3I6Li01BKofAnsSkZg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/nunito/v20/XRXI3I6Li01BKofiOc5wtlZ2di8HDOUhRTM.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Nunito';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/nunito/v16/XRXV3I6Li01BKof4Mg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/nunito/v20/XRXI3I6Li01BKofiOc5wtlZ2di8HDLshRTM.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Nunito';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/nunito/v16/XRXW3I6Li01BKofAjsOkZg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/nunito/v20/XRXI3I6Li01BKofiOc5wtlZ2di8HDFwmRTM.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Nunito';
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/nunito/v16/XRXW3I6Li01BKofAtsGkZg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/nunito/v20/XRXI3I6Li01BKofiOc5wtlZ2di8HDBImRTM.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Playfair Display';
@@ -1029,6 +1029,9 @@
   --layout-accent-hover: #0062bd;
   --layout-text: #333333;
   --layout-headers: #333333;
+  --layout-footer-bgr: #fff;
+  --layout-footer-text: #333333;
+  --layout-footer-border: #eee;
   --form-field-border: #aaaaaa;
   --form-field-bgr: #ffffff;
   --form-placeholder: #333333;

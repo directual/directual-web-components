@@ -3,7 +3,7 @@
   padding: 6px;
   border-radius: var(--border-radius);
   overflow: auto;
-  border: solid 1px var(--layout-bgr);
+  border: solid 1px var(--cards-border);
   margin-bottom: 12px;
 }
 .table_wrapper table {
