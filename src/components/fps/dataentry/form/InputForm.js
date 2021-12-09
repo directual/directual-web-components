@@ -36,6 +36,8 @@ export function InputForm(props) {
         case 'string_email':
         case 'string_phone':
             return <FieldStandard {...props} />
+        case 'string_html':
+            return <FieldHTML {...props} />
         case 'file_multipleFiles':
         case 'file_multipleImages':
         case 'file_image':
@@ -213,6 +215,31 @@ function FieldMkd({ field, onChange, placeholder, editingOn, defaultValue }) {
     </React.Fragment>
 }
 
+function FieldHTML({ field, onChange, placeholder, editingOn, defaultValue }) {
+    //console.log(field)
+    if (editingOn) return <React.Fragment>
+        <Input
+            type='textarea'
+            onChange={onChange}
+            code
+            rows='auto'
+            edit={editingOn}
+            required={field.required}
+            placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
+            label={placeholder != "true" ? (field.content || field.id) : ''}
+            description={field.descriptionFlag && field.description}
+            defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
+        />
+    </React.Fragment>
+
+    return <div className={styles.objFieldWrapper}>
+        <label className={styles.label}>{field.content || field.id}</label>
+        <div
+            dangerouslySetInnerHTML={{ __html: defaultValue || (field.defaultValueOn && field.defaultValue) }}
+        />
+    </div>
+}
+
 function FieldJson({ field, onChange, placeholder, editingOn, defaultValue, mapRefreshOff }) {
 
     // console.log('FieldJson')
@@ -267,22 +294,22 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue, mapR
             />}
 
         {field && field.format == 'geo' &&
-        <div style={{marginBottom:22}}>
-            {!_.get(field,'formatOptions.mapToken') ?
-            <Hint>Map token is not set (go to data structure fields configurations)</Hint>
-            : 
-            <Map
-                edit={editingOn}
-                mapRefreshOff={mapRefreshOff}
-                oneMarker={_.get(field,'formatOptions.oneMarker')}
-                height={_.get(field,'formatOptions.height') || 400}
-                maptoken={_.get(field,'formatOptions.mapToken')}
-                mapStyle={_.get(field,'formatOptions.mapColour')}
-                onChange={value => onChange(JSON.stringify(value))}
-                label={placeholder != "true" ? (field.content || field.id) : ''}
-                defaultValue={(defaultValue && parseJson(defaultValue)) || (field.defaultValueOn && field.defaultValue) || {}}
-            />}
-            
+            <div style={{ marginBottom: 22 }}>
+                {!_.get(field, 'formatOptions.mapToken') ?
+                    <Hint>Map token is not set (go to data structure fields configurations)</Hint>
+                    :
+                    <Map
+                        edit={editingOn}
+                        mapRefreshOff={mapRefreshOff}
+                        oneMarker={_.get(field, 'formatOptions.oneMarker')}
+                        height={_.get(field, 'formatOptions.height') || 400}
+                        maptoken={_.get(field, 'formatOptions.mapToken')}
+                        mapStyle={_.get(field, 'formatOptions.mapColour')}
+                        onChange={value => onChange(JSON.stringify(value))}
+                        label={placeholder != "true" ? (field.content || field.id) : ''}
+                        defaultValue={(defaultValue && parseJson(defaultValue)) || (field.defaultValueOn && field.defaultValue) || {}}
+                    />}
+
             </div>}
 
         {field && field.format == 'radioOptions' &&

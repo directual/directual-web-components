@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styles from './structurefield.module.css'
 import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong';
-
+import _ from 'lodash'
 
 const dataTypesIcons = {
     string: 'string',
@@ -482,16 +482,18 @@ function StructListFields(props) {
 
     // этой функцией мы выдергиваем детали поля из структуры
     const getFieldDetails = (fieldSysName, structSysName) => {
-        const struct = props.fields && props.fields.filter(i => i.structName == structSysName) && props.fields.filter(i => i.structName == structSysName)[0] && props.fields.filter(i => i.structName == structSysName)[0].fields
+        const struct = props.fields && props.fields.filter(i => i.structName == structSysName) && 
+            props.fields.filter(i => i.structName == structSysName)[0] && props.fields.filter(i => i.structName == structSysName)[0].fields
+
         const fieldDetails = struct && struct.filter(i => i.sysName == fieldSysName) && struct.filter(i => i.sysName == fieldSysName)[0]
         return fieldDetails
     }
+    
     const fields = props && props.fields && props.structSysName &&
         props.fields.filter(i =>
             (i.structName == props.structSysName)
         ) && props.fields.filter(i =>
-            i.structName == props.structSysName
-        )[0].fields
+            i.structName == props.structSysName)[0] && props.fields.filter(i => i.structName == props.structSysName)[0].fields
 
     const currentField = props.value && props.value.split('.')[0]
     const [currentKeyFocus, setCurrentKeyFocus] = useState(props.keyFocus && props.keyFocus.split('.')[0])
