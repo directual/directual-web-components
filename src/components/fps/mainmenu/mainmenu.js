@@ -54,8 +54,8 @@ export default function MainMenu(props) {
 
         <div className={`${styles.horMainmenu} ${showMM && styles.show} ${!props.horizontal ? styles.hideHorizontal : ''}`}>
             {props.logoUrl ?
-                <div className={styles.logo} style={{ backgroundImage: `url(${props.logoUrl})` }} /> :
-                <div className={styles.title}>{props.title}</div>
+                <a href="/" className={styles.logo} style={{ backgroundImage: `url(${props.logoUrl})` }} /> :
+                <a href="/" className={styles.title}>{props.title}</a>
             }
 
             <div className={styles.horMenuItems}>
@@ -118,8 +118,8 @@ export default function MainMenu(props) {
             <div className={styles.hide_mobile_menu}
                 onClick={hideMM}></div>
             {props.logoUrl ?
-                <div className={styles.logo} style={{ backgroundImage: `url(${props.logoUrl})` }} /> :
-                <div className={styles.title}>{props.title}</div>
+                <a href="/" className={styles.logo} style={{ backgroundImage: `url(${props.logoUrl})` }} /> :
+                <a href="/" className={styles.title}>{props.title}</a>
             }
             <ul className={styles.list}>
                 {props.menu.map(item => (

@@ -11,7 +11,7 @@ import { Markdown } from '../../article/mkd'
 import { InputForm } from './InputForm'
 import { dict } from '../../locale'
 import moment from 'moment'
-import { map } from 'lodash'
+import _ from 'lodash'
 
 export function FormSection(props) {
   return (
@@ -196,7 +196,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
         if (getFieldVal === true) { getFieldVal = 'true' }
         if (getFieldVal === false) { getFieldVal = 'false' }
       }
-      if (typeof getFieldVal == 'object' && getFieldVal && Array.isArray(getFieldVal)) { getFieldVal = getFieldVal.map(i=> { return i.id})}
+      if (typeof getFieldVal == 'object' && getFieldVal && Array.isArray(getFieldVal)) { getFieldVal = getFieldVal.map(i => { return i.id }) }
       if (typeof getFieldVal == 'object' && getFieldVal && !Array.isArray(getFieldVal)) { getFieldVal = getFieldVal.id }
       if (eidtID && getFieldVal && fetchedObjectFields[sysName] != getFieldVal) {
         fetchedObjectFields = { ...fetchedObjectFields, id: eidtID, [sysName]: getFieldVal }
@@ -259,8 +259,37 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
     return showSection
   }
 
+  // RESULT
+  const resultButton = _.get(data,'params.resultScreen.resubmitButtonLabel') || formButtonResubmit
+  const resultTitle = _.get(data,'params.resultScreen.successMessageTitle') || dict[lang].form.thankYou
+  const resultMessage = _.get(data,'params.resultScreen.successMessage') || successText
+  const disableResubmit = _.get(data,'params.resultScreen.disableResubmit')
+  const resubmitType = _.get(data,'params.resultScreen.resubmitType') || 'button'
+
+  const resubmit = () => {
+    setShowForm(true)
+    data.response == [];
+    data.error = '';
+    fetchObjectFields(eidtID)
+    getResultAnswer().isSuccess && !data.error &&
+      setModel({ ...defaultModel(), ...hiddenFieldsValues, ...hiddenAuth, ...fetchedObjectFields }) // скрытые поля, авторизация и фетч
+  }
+
+  useEffect(()=>{
+    if (!showForm && resubmitType == "timer_3sec"  && !disableResubmit) {
+      setTimeout(resubmit, 3000)
+    }
+    if (!showForm && resubmitType == "timer_6sec"  && !disableResubmit) {
+      setTimeout(resubmit, 6000)
+    }
+    if (!showForm && resubmitType == "timer_10sec"  && !disableResubmit) {
+      setTimeout(resubmit, 10000)
+    }
+  },[data])
+
   return (
     <ComponentWrapper>
+      {/* <Button icon='refresh' onClick={resubmit}>refresh</Button> */}
       {formName && <h2 className={styles.form_header}>{formName}</h2>}
       <div style={{ maxWidth: formWidth, marginBottom: 12 }}>
         {formDesc && showForm && (
@@ -274,11 +303,11 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
 
       {/* Standard response processing: */}
       {!showForm && !loading && !getResultAnswer().sync && <React.Fragment>
-        {isSuccessWrite && <Hint title={dict[lang].form.thankYou} ok>{successText}</Hint>}
+        {isSuccessWrite && <Hint title={resultTitle} ok><div dangerouslySetInnerHTML={{ __html: resultMessage }} /></Hint>}
       </React.Fragment>}
 
 
-      {/* Custom response processing: */}
+      {/* Sync response processing: */}
       {!showForm && !data.error && !loading && getResultAnswer().sync && <React.Fragment>
         {data.response && !getResultAnswer().isSuccess && <React.Fragment>
           <Hint title={getResultAnswer().answerTitle} error>{getResultAnswer().answerText}</Hint>
@@ -287,15 +316,8 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
           <Hint title={getResultAnswer().answerTitle} ok>{getResultAnswer().answerText}</Hint>}
       </React.Fragment>}
 
-      {!showForm && !loading && data.error != dict[lang].form.noPermissions && data.error != dict[lang].form.notConfigured &&
-        <Button icon='refresh' onClick={() => {
-          setShowForm(true);
-          data.response == [];
-          data.error = '';
-          fetchObjectFields(eidtID)
-          getResultAnswer().isSuccess && !data.error &&
-            setModel({ ...defaultModel(), ...hiddenFieldsValues, ...hiddenAuth, ...fetchedObjectFields }) // скрытые поля, авторизация и фетч
-        }}>{formButtonResubmit}</Button>}
+      {!showForm && resubmitType == 'button' && !disableResubmit && !loading && data.error != dict[lang].form.noPermissions && data.error != dict[lang].form.notConfigured &&
+        <Button icon='refresh' onClick={resubmit}>{resultButton}</Button>}
 
       {showForm && !loading &&
         <form onSubmit={submit} style={{ maxWidth: formWidth }}>

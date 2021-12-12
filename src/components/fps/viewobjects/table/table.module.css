@@ -110,7 +110,6 @@
 }
 .objectCard .objectCardHeader h2 {
   overflow: auto;
-  text-overflow: ellipsis;
   white-space: nowrap;
 }
 .objectCard .objectCardHeader h2.narrowH2 {

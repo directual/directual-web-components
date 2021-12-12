@@ -1058,6 +1058,7 @@ export default function FpsTheme(props) {
     ]
 
     const parseJson = json => {
+        if (!json) return null
         let parsedJson = {}
         if (typeof json == 'object') return json
         try {
@@ -1112,7 +1113,7 @@ export default function FpsTheme(props) {
             <Input type="json"
                 description='Share this JSON as your custom colouring scheme with other Directual users'
                 onChange={value => setSelectedColorScheme({ ...selectedColorScheme, customThemeColors: parseJson(value) })}
-                rows='auto' defaultValue={stringifyJson(_.merge({ ...customThemeColors.classic }, selectedColorScheme.customThemeColors))} />}
+                rows='auto' defaultValue={stringifyJson(_.merge({ ...customThemeColors.darkMint }, selectedColorScheme.customThemeColors))} />}
     </div>
 
     const tabs = [
