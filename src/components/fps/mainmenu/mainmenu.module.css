@@ -285,7 +285,7 @@
 .itemHor {
   border-bottom: solid 3px rgba(0, 0, 0, 0);
   color: var(--menu-item);
-  padding-right: 26px;
+  margin-right: 26px;
   cursor: pointer;
 }
 .itemHor:before {
@@ -375,6 +375,8 @@
   background-color: var(--button-bgr);
   color: var(--button-text);
   opacity: 0.6;
+  padding-right: 26px;
+  margin-right: 0;
 }
 .ddMenu .itemHor.active {
   border: none;
