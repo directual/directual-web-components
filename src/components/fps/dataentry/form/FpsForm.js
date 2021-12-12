@@ -198,11 +198,11 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
       }
       if (typeof getFieldVal == 'object' && getFieldVal && Array.isArray(getFieldVal)) { getFieldVal = getFieldVal.map(i => { return i.id }) }
       if (typeof getFieldVal == 'object' && getFieldVal && !Array.isArray(getFieldVal)) { getFieldVal = getFieldVal.id }
+      if (dataType == 'date') {
+        getFieldVal =  moment(getFieldVal)
+      }
       if (eidtID && getFieldVal && fetchedObjectFields[sysName] != getFieldVal) {
         fetchedObjectFields = { ...fetchedObjectFields, id: eidtID, [sysName]: getFieldVal }
-      }
-      if (dataType == 'date') {
-        getFieldVal = moment(getFieldVal)
       }
       return getFieldVal
     }
