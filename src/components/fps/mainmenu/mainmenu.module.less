@@ -120,7 +120,7 @@
     font-family: 'directual-icons';
     content: '\e940';
     font-size: 50px;
-    color: var(--menu-item);
+    //color: var(--menu-item);
     opacity: 0.5;
   }
 }
@@ -149,6 +149,7 @@
       font-family: 'directual-icons';
       content: '\e918';
       font-size: 50px;
+      color: var(--menu-item);
       opacity: 0.5;
     }
   }
@@ -300,7 +301,7 @@
 .itemHor {
   border-bottom: solid 3px rgba(0, 0, 0, 0);
   color: var(--menu-item);
-  margin-right: 26px;
+  padding-right: 26px;
   &:before {
     font-size: 36px !important;
     opacity: 1;
@@ -391,13 +392,29 @@
 .ddMenu {
   .itemHor {
     border: none !important;
-    margin-left: 10px;
+    padding-left: 10px;
+    background-color: var(--button-bgr);
+    color: var(--button-text);
+    opacity: .6;
     &.active {
       border: none;
+      opacity: 1;
+      color: var(--layout-accent);
+      a {
+        color: var(--layout-accent);
+      }
+      &::before {
+        color: var(--layout-accent);
+      }
+    }
+    &:hover {
+      background-color: var(--button-dropdown-hover-bgr);
+      opacity: 1;
     }
     a,
     &:before {
       padding: 10px 0;
+      color: var(--button-text);
     }
   }
 }

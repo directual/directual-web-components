@@ -118,7 +118,6 @@
   font-family: 'directual-icons';
   content: '\e940';
   font-size: 50px;
-  color: var(--menu-item);
   opacity: 0.5;
 }
 @media all and (min-width: 1020px) {
@@ -145,6 +144,7 @@
     font-family: 'directual-icons';
     content: '\e918';
     font-size: 50px;
+    color: var(--menu-item);
     opacity: 0.5;
   }
 }
@@ -285,7 +285,7 @@
 .itemHor {
   border-bottom: solid 3px rgba(0, 0, 0, 0);
   color: var(--menu-item);
-  margin-right: 26px;
+  padding-right: 26px;
   cursor: pointer;
 }
 .itemHor:before {
@@ -371,14 +371,30 @@
 }
 .ddMenu .itemHor {
   border: none !important;
-  margin-left: 10px;
+  padding-left: 10px;
+  background-color: var(--button-bgr);
+  color: var(--button-text);
+  opacity: 0.6;
 }
 .ddMenu .itemHor.active {
   border: none;
+  opacity: 1;
+  color: var(--layout-accent);
+}
+.ddMenu .itemHor.active a {
+  color: var(--layout-accent);
+}
+.ddMenu .itemHor.active::before {
+  color: var(--layout-accent);
+}
+.ddMenu .itemHor:hover {
+  background-color: var(--button-dropdown-hover-bgr);
+  opacity: 1;
 }
 .ddMenu .itemHor a,
 .ddMenu .itemHor:before {
   padding: 10px 0;
+  color: var(--button-text);
 }
 .horMenuProfileButton {
   border-color: rgba(0, 0, 0, 0) !important;
