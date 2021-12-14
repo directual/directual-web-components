@@ -83,7 +83,7 @@ const App = (props) => {
     }
 
     let cardActions = {
-        "sl": "geo",
+        "sl": "cards",
         "pageSize": "10",
         "headerField": null,
         "params": {
@@ -99,9 +99,9 @@ const App = (props) => {
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "field1",
+                        "fieldSysName": "field",
                         "fetch": [],
-                        "sysName": "field1",
+                        "sysName": "field",
                         "name": "",
                         "dataType": "string",
                         "format": "",
@@ -109,204 +109,193 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "geo",
-                        "fetch": [],
-                        "sysName": "geo",
-                        "name": "Map",
-                        "dataType": "json",
-                        "format": "geo",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
+                        "fieldSysName": "linked",
+                        "fetch": [
+                            {
+                                "fieldSysName": "field1",
+                                "condition": null,
+                                "fetch": []
                             },
-                            "dateLocale": "en-gb",
-                            "mapToken": "pk.eyJ1IjoiZGlyZWN0dWFsIiwiYSI6ImNrdmJncTl0eTBkcWIyc3BuYjlpYXp2cnkifQ.mVDgIP-E8tA2FlBttPdi4A",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "mapColour": "mapbox://styles/mapbox/outdoors-v11"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    }
-                ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "field1",
-                        "fetch": [],
-                        "sysName": "field1",
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "linked",
                         "name": "",
-                        "dataType": "string",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "geo",
-                        "fetch": [],
-                        "sysName": "geo",
-                        "name": "Map",
-                        "dataType": "json",
-                        "format": "geo",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "mapToken": "pk.eyJ1IjoiZGlyZWN0dWFsIiwiYSI6ImNrdmJncTl0eTBkcWIyc3BuYjlpYXp2cnkifQ.mVDgIP-E8tA2FlBttPdi4A",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "mapColour": "mapbox://styles/mapbox/outdoors-v11"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
+                        "link": "linkedcards"
                     }
                 ],
+                "writeFields": [],
                 "fields": {
-                    "field1": {
-                        "id": "field1",
+                    "field": {
+                        "id": "field",
                         "content": "",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "geo": {
-                        "id": "geo",
-                        "content": "Map",
+                    "linked": {
+                        "id": "linked",
+                        "content": "",
                         "type": "field",
-                        "dataType": "json",
-                        "format": "geo",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "mapToken": "pk.eyJ1IjoiZGlyZWN0dWFsIiwiYSI6ImNrdmJncTl0eTBkcWIyc3BuYjlpYXp2cnkifQ.mVDgIP-E8tA2FlBttPdi4A",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "mapColour": "mapbox://styles/mapbox/outdoors-v11"
-                        },
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "id": {
-                        "id": "id",
-                        "content": "id",
-                        "type": "field",
-                        "dataType": "id",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": "",
+                        "link": "linkedcards",
+                        "actions": [
+                            {
+                                "sysName": "action",
+                                "id": "67831639512701541",
+                                "name": "ERROR action (LINKED)",
+                                "displayAs": "button",
+                                "showMessage": true,
+                                "closePopup": false,
+                                "resultMessage": "OK",
+                                "SLtype": "other",
+                                "fields": {
+                                    "readFields": [
+                                        {
+                                            "fieldSysName": "id",
+                                            "fetch": [],
+                                            "sysName": "id",
+                                            "name": "id",
+                                            "dataType": "id",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": ""
+                                        }
+                                    ],
+                                    "writeFields": [
+                                        {
+                                            "fieldSysName": "field1",
+                                            "fetch": [],
+                                            "sysName": "field1",
+                                            "name": "",
+                                            "dataType": "string",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": ""
+                                        },
+                                        {
+                                            "fieldSysName": "field2",
+                                            "fetch": [],
+                                            "sysName": "field2",
+                                            "name": "",
+                                            "dataType": "string",
+                                            "format": "",
+                                            "formatOptions": {},
+                                            "link": ""
+                                        }
+                                    ]
+                                },
+                                "formMapping": [
+                                    {
+                                        "id": "42451639513474950",
+                                        "target": "field1",
+                                        "type": "objectField",
+                                        "value": "field"
+                                    },
+                                    {
+                                        "id": "60101639513494802",
+                                        "target": "field2",
+                                        "type": "linkedField",
+                                        "value": "field1"
+                                    }
+                                ],
+                                "callFrom": "linked",
+                                "callFromField": "linked",
+                                "conditionals": [
+                                    {
+                                        "id": "74511639515773963",
+                                        "target": "linkedField",
+                                        "value": "foo",
+                                        "field": "field1"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "action__45241639512637285": {
+                        "id": "action__45241639512637285",
+                        "content": "auth",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__48391639512674916": {
+                        "id": "action__48391639512674916",
+                        "content": "not auth",
+                        "type": "action",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "field1": {
+                    "field": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "geo": {
+                    "linked": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "id": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
+                        "clickable": true,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "field1": {
+                                    "id": "field1",
+                                    "content": "",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "id": {
+                                    "id": "id",
+                                    "content": "id",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "id",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "action__67831639512701541": {
+                                    "id": "action__67831639512701541",
+                                    "content": "ERROR action (LINKED)",
+                                    "type": "action"
+                                }
+                            },
+                            "fieldParams": {
+                                "field1": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "id": {
+                                    "include": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "field1",
+                                "id",
+                                "action__67831639512701541"
+                            ]
+                        }
                     }
                 },
                 "columns": {
@@ -314,9 +303,10 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "field1",
-                            "geo",
-                            "id"
+                            "field",
+                            "linked",
+                            "action__45241639512637285",
+                            "action__48391639512674916"
                         ]
                     }
                 },
@@ -326,38 +316,207 @@ const App = (props) => {
                 "actions": []
             },
             "fields": {
-                "field1": {
+                "field": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "geo": {
+                "linked": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": false
-                },
-                "id": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "field1": {
+                                "id": "field1",
+                                "content": "",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "id": {
+                                "id": "id",
+                                "content": "id",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "id",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "action__67831639512701541": {
+                                "id": "action__67831639512701541",
+                                "content": "ERROR action (LINKED)",
+                                "type": "action"
+                            }
+                        },
+                        "fieldParams": {
+                            "field1": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "id": {
+                                "include": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "field1",
+                            "id",
+                            "action__67831639512701541"
+                        ]
+                    }
                 }
-            }
+            },
+            "actions": [
+                {
+                    "sysName": "",
+                    "id": "45241639512637285",
+                    "name": "auth",
+                    "displayAs": "button",
+                    "showMessage": true,
+                    "closePopup": false,
+                    "resultMessage": "<h1>HOLLY SHIT</h1>",
+                    "conditionals": [
+                        {
+                            "id": "32511639512663942",
+                            "target": "isAutn",
+                            "value": null
+                        }
+                    ]
+                },
+                {
+                    "sysName": "",
+                    "id": "48391639512674916",
+                    "name": "not auth",
+                    "displayAs": "button",
+                    "showMessage": false,
+                    "closePopup": false,
+                    "resultMessage": "",
+                    "conditionals": [
+                        {
+                            "id": "72781639512689449",
+                            "target": "isNotAuth",
+                            "value": null
+                        }
+                    ]
+                },
+                {
+                    "sysName": "action",
+                    "id": "67831639512701541",
+                    "name": "ERROR action (LINKED)",
+                    "displayAs": "button",
+                    "showMessage": true,
+                    "closePopup": false,
+                    "resultMessage": "OK",
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "field1",
+                                "fetch": [],
+                                "sysName": "field1",
+                                "name": "",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "field2",
+                                "fetch": [],
+                                "sysName": "field2",
+                                "name": "",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ]
+                    },
+                    "formMapping": [
+                        {
+                            "id": "42451639513474950",
+                            "target": "field1",
+                            "type": "objectField",
+                            "value": "field"
+                        },
+                        {
+                            "id": "60101639513494802",
+                            "target": "field2",
+                            "type": "linkedField",
+                            "value": "field1"
+                        }
+                    ],
+                    "callFrom": "linked",
+                    "callFromField": "linked",
+                    "conditionals": [
+                        {
+                            "id": "74511639515773963",
+                            "target": "linkedField",
+                            "value": "foo",
+                            "field": "field1"
+                        }
+                    ]
+                }
+            ]
         },
         "tableTitle": "",
         "actions": null,
         "headers": [
             {
-                "sysName": "field1",
+                "sysName": "field",
                 "dataType": "string",
                 "name": "",
-                "id": "12791636541036950",
+                "id": "26221639512516507",
                 "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "linked",
+                "dataType": "arrayLink",
+                "name": "",
+                "id": "67271639512514978",
+                "link": "linkedcards",
                 "group": "0",
                 "tags": "",
                 "indexing": false,
@@ -372,115 +531,32 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
                 "linkType": false,
-                "arrayLink": false,
+                "typeVariable": {},
                 "json": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "geo",
-                "dataType": "json",
-                "name": "Map",
-                "id": "57981638296428929",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "geo",
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "mapToken": "pk.eyJ1IjoiZGlyZWN0dWFsIiwiYSI6ImNrdmJncTl0eTBkcWIyc3BuYjlpYXp2cnkifQ.mVDgIP-E8tA2FlBttPdi4A",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false",
-                    "mapColour": "mapbox://styles/mapbox/outdoors-v11"
-                },
-                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "arrayLink": true,
                 "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "json": true,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "id",
-                "dataType": "id",
-                "name": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
                 "array": false
             }
         ],
         "data": [
             {
-                "field1": "1",
-                "id": "ea11586d-8257-4fe5-997d-d94a3671d327",
-                "geo": ""
+                "field": "there",
+                "linked": [
+                    {
+                        "field1": "foo",
+                        "id": "1"
+                    },
+                    {
+                        "field1": "bar",
+                        "id": "2"
+                    }
+                ]
             },
             {
-                "field1": "1",
-                "id": "095cc2ce-3956-4c17-9ea1-13d177b3b74b",
-                "geo": ""
-            },
-            {
-                "geo": "{\"data\":[{\"id\":1638470933844,\"title\":\"New Marker!\",\"longitude\":-122.41820927180835,\"latitude\":37.78876858263251}]}",
-                "id": "b13f7987-ccd9-4fa7-826a-4f6e1d67b75e",
-                "field1": ""
+                "linked": [],
+                "field": "hello"
             }
         ],
         "totalPages": 1,
@@ -488,42 +564,38 @@ const App = (props) => {
         "error": null,
         "fieldScheme": [
             [
-                "field1",
-                99045374
+                "field",
+                99056299
             ],
             [
-                "geo",
-                99045374
+                "linked.field1",
+                99056300
             ],
             [
-                "id",
-                99045374
+                "linked.id",
+                99056300
             ]
         ],
-        "writeFields": [
-            "field1",
-            "geo",
-            "id"
-        ],
+        "writeFields": [],
         "structures": {
-            "99045374": {
-                "networkID": 9877,
-                "sysName": "test",
-                "name": "test",
-                "id": 99045374,
-                "dateCreated": "2021-11-10T10:43:35Z",
+            "99056299": {
+                "networkID": 10926,
+                "id": 99056299,
+                "dateCreated": "2021-12-14T20:07:16Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"field1\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"12791636541036950\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"kewyValue\",\"name\":\"\",\"dataType\":\"json\",\"id\":\"34151638296515637\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"keyValue\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"array\":false},{\"sysName\":\"range\",\"name\":\"\",\"dataType\":\"json\",\"id\":\"51431638296512874\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"rangeSlider\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"array\":false},{\"sysName\":\"geo\",\"name\":\"Map\",\"dataType\":\"json\",\"id\":\"57981638296428929\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"geo\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"mapToken\":\"pk.eyJ1IjoiZGlyZWN0dWFsIiwiYSI6ImNrdmJncTl0eTBkcWIyc3BuYjlpYXp2cnkifQ.mVDgIP-E8tA2FlBttPdi4A\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"mapColour\":\"mapbox://styles/mapbox/outdoors-v11\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"array\":false},{\"sysName\":\"slider\",\"name\":\"\",\"dataType\":\"json\",\"id\":\"76181638296510140\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"slider\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{\"max\":10,\"min\":0,\"step\":1},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"array\":false},{\"sysName\":\"json\",\"name\":\"\",\"dataType\":\"json\",\"id\":\"77471638296496532\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"1\",\"label\":\"2\"},{\"value\":\"3\",\"label\":\"5\"}]},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"array\":false},{\"sysName\":\"field2\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"85731636541037473\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
+                "name": "cards",
+                "sysName": "cards",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"field\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"26221639512516507\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"linked\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"67271639512514978\",\"link\":\"linkedcards\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"indexExists\":false,\"array\":false}]",
                 "jsonGroupSettings": null,
-                "jsonViewIdSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"field\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-11-30T18:22:56Z",
-                "createBy": 1,
+                "dateChanged": "2021-12-14T20:25:49Z",
+                "createBy": 21,
                 "changedBy": 21,
                 "_settings": null,
                 "_nativeIndexSettings": null,
@@ -547,12 +619,64 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "indexExists": false,
-                    "linkOrArrayLinkType": false,
                     "linkType": false,
-                    "arrayLink": false,
-                    "json": false,
                     "typeVariable": {},
+                    "json": false,
+                    "linkOrArrayLinkType": false,
+                    "arrayLink": false,
+                    "indexExists": false,
+                    "array": false
+                },
+                "objectIDSysName": "id",
+                "folderId": null
+            },
+            "99056300": {
+                "networkID": 10926,
+                "id": 99056300,
+                "dateCreated": "2021-12-14T20:07:30Z",
+                "hidden": false,
+                "dateHidden": null,
+                "name": "linkedCards",
+                "sysName": "linkedcards",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"field1\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"60511639512461487\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": null,
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": false,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-12-14T20:07:54Z",
+                "createBy": 21,
+                "changedBy": 21,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "linkType": false,
+                    "typeVariable": {},
+                    "json": false,
+                    "linkOrArrayLinkType": false,
+                    "arrayLink": false,
+                    "indexExists": false,
                     "array": false
                 },
                 "objectIDSysName": "id",
@@ -562,121 +686,7 @@ const App = (props) => {
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
-        "fileds": [
-            {
-                "sysName": "field1",
-                "dataType": "string",
-                "name": "",
-                "id": "12791636541036950",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "geo",
-                "dataType": "json",
-                "name": "Map",
-                "id": "57981638296428929",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "geo",
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "mapToken": "pk.eyJ1IjoiZGlyZWN0dWFsIiwiYSI6ImNrdmJncTl0eTBkcWIyc3BuYjlpYXp2cnkifQ.mVDgIP-E8tA2FlBttPdi4A",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false",
-                    "mapColour": "mapbox://styles/mapbox/outdoors-v11"
-                },
-                "groupName": null,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "json": true,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "id",
-                "dataType": "id",
-                "name": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "array": false
-            }
-        ],
+        "fileds": [],
         "quickSearch": "true"
     }
 
@@ -2699,7 +2709,7 @@ const App = (props) => {
         isAuth: true,
         role: "admin",
         token: "a256c0c6-6aa1-4706-afad-521d0d37e3f3",
-        user: "pavel@directual.com"
+        //user: "pavel@directual.com"
     }
 
     let exampleForm = {
@@ -6628,7 +6638,7 @@ const App = (props) => {
                         </Route>
                         <Route exact path="/cards">
                             <FpsCards locale="ESP" data={cardActions} auth={authExample} currentBP='desktop' />
-                            <FpsCards data={newCardActions} currentBP='desktop' />
+                            {/* <FpsCards data={newCardActions} currentBP='desktop' /> */}
                             {/* <FpsCards data={exampleTable} /> */}
                             {/* <br /><br />
               <FpsCards data={exampleTable2} /> */}

@@ -32,6 +32,8 @@ export function ObjectCard(props) {
     // console.log('==============card props==============')
     // console.log(props)
 
+    const data = props.data || {}
+
     const editingOn = props.params.data && props.params.data.fields &&
         props.params.data.fields.id && props.params.data.fields.id.write && props.params.data.fields.id.read &&
         props.params.data.writeFields && props.params.data.writeFields.length > 0
@@ -279,6 +281,7 @@ export function ObjectCard(props) {
                                     return <CardAction
                                         loading={props.loading}
                                         action={action.id}
+                                        writeError={data.writeError}
                                         aType='actionForm'
                                         object={object}
                                         checkActionCond={cond => props.checkActionCond(cond, object)}
@@ -291,6 +294,7 @@ export function ObjectCard(props) {
                                     return <CardAction
                                         loading={props.loading}
                                         action={action.id}
+                                        writeError={data.writeError}
                                         aType='actionButton'
                                         object={object}
                                         onClose={props.onTerminate}
@@ -428,6 +432,7 @@ export function ObjectCard(props) {
                         onClose={() => { setShowLinkedObject(false) }}
                         onTerminate={() => props.onClose()}
                         auth={props.auth}
+                        data={data}
                         dict={dict}
                         lang={lang}
                         loading={props.loading}
@@ -761,7 +766,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
     }
 
     const [renderAL, setRenderAL] = useState(sortArray(object[field.sysName].value) || [])
-    const [costyl,setCostyl]= useState(object)
+    const [costyl, setCostyl] = useState(object)
 
     useEffect(() => {
         console.log('object has changed')
@@ -816,7 +821,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
             console.log(typeof total[fieldName])
             const newTotal = typeof total == 'number' ? total :
                 typeof total[fieldName] == 'number' ? total[fieldName] : total[fieldName] ? 1 : 0
-            const plus = typeof num[fieldName] == 'number' ? num[fieldName] :  num[fieldName] ? 1 : 0
+            const plus = typeof num[fieldName] == 'number' ? num[fieldName] : num[fieldName] ? 1 : 0
             return parseFloat(newTotal) + parseFloat(plus)
         })
         let summ = typeof sum == 'number' ? parseFloat(sum) : 0 //.toFixed(2)
@@ -1098,7 +1103,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
     )
 }
 
-function CardAction({ action, actionParams, debug, submitAction, onClose, checkActionCond, object, aType, loading }) {
+function CardAction({ action, writeError, actionParams, debug, submitAction, onClose, checkActionCond, object, aType, loading }) {
 
     const [actionData, setActionData] = useState(actionParams)
     const [genericLoading, setGenericLoading] = useState(false)
@@ -1121,7 +1126,7 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
 
     let conds = actionParams ? (actionParams.conditionals ? [...actionParams.conditionals] : null) : null
     if (conds) {
-        //console.log(conds)
+        
         conds.forEach(cond => {
             if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type == 'const') {
                 cond.checkValue = cond.value
@@ -1129,8 +1134,15 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
             if (cond.target == 'role') {
                 cond.checkValue = cond.value
             }
+            if (cond.target == 'linkedField') {
+                // console.log('ЕБАТЬ')
+                // console.log(conds)
+                // console.log(object)
+                typeof object[cond.field] != 'object' ? cond.fieldValue = object[cond.field] :
+                    cond.fieldValue = object[cond.field].value || null
+            }
             if (cond.target == 'field') {
-                typeof object[cond.value] != 'object' ? cond.fieldValue = object[cond.field] :
+                typeof object[cond.field] != 'object' ? cond.fieldValue = object[cond.field] :
                     cond.fieldValue = object[cond.field].value || null
             }
             if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
@@ -1153,7 +1165,7 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
             () => {
                 setNoData(null)
             },
-            4000
+            10000
         )
     }
 
@@ -1161,14 +1173,24 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
         isSubmitted && !loading && actionParams.closePopup && onClose()
     }, [loading, isSubmitted])
 
+    if (isSubmitted && writeError && !loading) {
+        return <div style={{ width: '100%' }}>
+            {actionParams.displayAs == 'form' && <FormSection title={actionParams.name} />}
+            <Hint error>{writeError}</Hint>
+        </div>
+    }
+
+
     if (
         isSubmitted
         && actionParams.showMessage
         && !loading
     ) {
-        return <div style={{ width: actionParams.displayAs == 'form' ? '100%' : 'auto' }}>
+        return <div style={{ width: '100%' }}>
             {actionParams.displayAs == 'form' && <FormSection title={actionParams.name} />}
-            <Hint ok margin={{ top: 1, bottom: 12 }}>{actionParams.resultMessage || 'Submitted'}</Hint>
+            <Hint ok margin={{ top: 1, bottom: 12 }}>
+                <div dangerouslySetInnerHTML={{ __html: actionParams.resultMessage || 'Submitted' }} />
+            </Hint>
             {actionParams.resultButton && <Button onClick={() => setIsSubmitted(false)} icon='refresh'>{actionParams.resultButton}</Button>}
         </div>
     }
@@ -1200,7 +1222,17 @@ function CardAction({ action, actionParams, debug, submitAction, onClose, checkA
                             />))}
                     </React.Fragment>
                 }
-                {noData ? <div className={styles.noData}>{noData}</div> :
+
+                {noData ? <React.Fragment>
+                    {actionParams.showMessage ?
+                        <div style={{ width: '100%' }}>
+                            <Hint margin={{ top: 1, bottom: 12 }}>
+                                <div dangerouslySetInnerHTML={{ __html: actionParams.resultMessage || noData }} />
+                            </Hint>
+                        </div>
+                        : <div className={styles.noData}>{noData}</div>}
+
+                </React.Fragment> :
                     <Button
                         accent={actionParams.buttonType == 'accent'}
                         danger={actionParams.buttonType == 'danger'}

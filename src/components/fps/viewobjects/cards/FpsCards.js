@@ -150,6 +150,14 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale }) {
                 console.log(`user id ${auth && auth.user} is not in ${cond.checkValue}`)
                 match = false
             }
+            if (cond.target == 'isAutn' && (!auth || !auth.user)) {
+                console.log(`user is not authorised!`)
+                match = false
+            }
+            if (cond.target == 'isNotAuth' && auth.user) {
+                console.log(`user is authorised!`)
+                match = false
+            }
             if (cond.target == 'id_not_in' && (!auth || !auth.user || compareRoleArrays(auth.user, cond.checkValue))) {
                 console.log(`user id ${auth && auth.user} is in ${cond.checkValue}`)
                 match = false
@@ -252,6 +260,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale }) {
                             shareble
                             refresh={refresh}
                             firstCard
+                            data={data}
                             executeAction={submitAction}
                             params={data.params}
                             loading={loading}

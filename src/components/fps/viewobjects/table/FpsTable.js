@@ -155,6 +155,14 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale }) {
                 console.log(`user id ${auth && auth.user} is in ${cond.checkValue}`)
                 match = false
             }
+            if (cond.target == 'isAutn' && (!auth || !auth.user)) {
+                console.log(`user is not authorised!`)
+                match = false
+            }
+            if (cond.target == 'isNotAuth' && auth.user) {
+                console.log(`user is authorised!`)
+                match = false
+            }
             if (cond.target == 'role' && (!auth || !auth.role || (!compareRoleArrays(auth.role, cond.checkValue)))) {
                 console.log('Role does not match');
                 match = false
