@@ -794,5 +794,6 @@ FpsForm.settings = {
     // // { name: 'Re-submit button text', sysName: 'formButtonResubmit', type: 'input' },
     { name: 'Labels or Placeholders', sysName: 'placeholder', type: 'labelOrPlaceholder' },
     { name: 'Form max width, px', sysName: 'maxWidth', type: 'number' },
+    { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
   ]
 }

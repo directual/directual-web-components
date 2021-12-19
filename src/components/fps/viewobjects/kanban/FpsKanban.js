@@ -281,6 +281,7 @@ FpsKanban.settings = {
     sysName: 'FpsKanban',
     form: [
         { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
+        { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
     ]
 }
 export default FpsKanban

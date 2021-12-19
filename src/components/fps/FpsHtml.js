@@ -25,9 +25,9 @@ FpsHtml.settings = {
   sysName: 'FpsHtml',
   form: [
     { name: "Enter your HTML-code", sysName: "html", type: "html-SLenriched" },
-    { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint-param' },
+    { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' },
     { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
-    { name: 'Contains template variables', sysName: 'withTemplate', type: 'boolean' },
+    // { name: 'Contains template variables', sysName: 'withTemplate', type: 'boolean' },
   ]
 }
 
@@ -47,9 +47,9 @@ FpsMarkdown.settings = {
   sysName: 'FpsMarkdown',
   form: [
     { name: "Enter your text", sysName: "markdown", type: "markdown-SLenriched" },
-    { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint-param' },
+    { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' },
     { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
-    { name: 'Contains template variables', sysName: 'withTemplate', type: 'boolean' },
+    // { name: 'Contains template variables', sysName: 'withTemplate', type: 'boolean' },
   ]
 }
 

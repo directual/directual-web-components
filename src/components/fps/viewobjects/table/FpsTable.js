@@ -340,6 +340,7 @@ FpsTable.settings = {
         { name: 'Table title', sysName: 'tableTitle', type: 'input' },
         { name: 'Page size', sysName: 'pageSize', type: 'number' },
         { name: 'Quick search', sysName: 'quickSearch', type: 'turn_on_off' },
+        { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
     ]
 }
 export default FpsTable
