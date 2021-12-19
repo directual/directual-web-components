@@ -310,10 +310,14 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
       {/* Sync response processing: */}
       {!showForm && !data.error && !loading && getResultAnswer().sync && <React.Fragment>
         {data.response && !getResultAnswer().isSuccess && <React.Fragment>
-          <Hint title={getResultAnswer().answerTitle} error>{getResultAnswer().answerText}</Hint>
+          <Hint title={getResultAnswer().answerTitle} error>
+            <div dangerouslySetInnerHTML={{ __html: getResultAnswer().answerText }} />
+          </Hint>
         </React.Fragment>}
         {data.response && getResultAnswer().isSuccess &&
-          <Hint title={getResultAnswer().answerTitle} ok>{getResultAnswer().answerText}</Hint>}
+          <Hint title={getResultAnswer().answerTitle} ok>
+            <div dangerouslySetInnerHTML={{ __html: getResultAnswer().answerText }} />
+          </Hint>}
       </React.Fragment>}
 
       {!showForm && resubmitType == 'button' && !disableResubmit && !loading && data.error != dict[lang].form.noPermissions && data.error != dict[lang].form.notConfigured &&
