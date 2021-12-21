@@ -312,6 +312,7 @@ export function ObjectCard(props) {
                     return <CardField
                         //debug
                         model={model}
+                        key={i}
                         editingOn={editingOn}
                         dict={dict}
                         lang={lang}
@@ -769,9 +770,9 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
     const [costyl, setCostyl] = useState(object)
 
     useEffect(() => {
-        console.log('object has changed')
-        console.log(object)
-        console.log(costyl)
+        // console.log('object has changed')
+        // console.log(object)
+        // console.log(costyl)
         if (JSON.stringify(costyl) != JSON.stringify(object)) {
             setCostyl(object)
             setRenderAL(sortArray(object[field.sysName].value) || [])
@@ -783,8 +784,8 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
     }, [object])
 
     useEffect(() => {
-        console.log('model has changed')
-        console.log(model)
+        // console.log('model has changed')
+        // console.log(model)
         if (JSON.stringify(model[field.sysName]) != JSON.stringify(renderAL) && typeof model[field.sysName] !== 'string') {
             setRenderAL(sortArray(model[field.sysName]) || [])
         }
@@ -817,8 +818,8 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
         if (renderAL.length == 1) return typeof renderAL[0][fieldName] == 'object' ? 1 : renderAL[0][fieldName]
 
         const sum = renderAL.reduce((total, num) => {
-            console.log(total[fieldName])
-            console.log(typeof total[fieldName])
+            // console.log(total[fieldName])
+            // console.log(typeof total[fieldName])
             const newTotal = typeof total == 'number' ? total :
                 typeof total[fieldName] == 'number' ? total[fieldName] : total[fieldName] ? 1 : 0
             const plus = typeof num[fieldName] == 'number' ? num[fieldName] : num[fieldName] ? 1 : 0
@@ -1139,15 +1140,15 @@ function CardAction({ action, writeError, actionParams, debug, submitAction, onC
                 // console.log(conds)
                 // console.log(object)
                 typeof object[cond.field] != 'object' ? cond.fieldValue = object[cond.field] :
-                    cond.fieldValue = object[cond.field].value || null
+                    cond.fieldValue = object[cond.field].id || object[cond.field].value || null
             }
             if (cond.target == 'field') {
                 typeof object[cond.field] != 'object' ? cond.fieldValue = object[cond.field] :
-                    cond.fieldValue = object[cond.field].value || null
+                    cond.fieldValue = object[cond.field].id || object[cond.field].value || null
             }
             if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
                 typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
-                    cond.checkValue = object[cond.value].value || null // раньше тут было .id, а не .value проверить!
+                    cond.checkValue = object[cond.field].id || object[cond.value].value || null // раньше тут было .id, а не .value проверить!
             }
         })
     }

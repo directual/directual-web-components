@@ -178,6 +178,20 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale }) {
         return match
     }
 
+    const parseJson = json => {
+        if (!json) return {}
+        let parsedJson = {}
+        if (typeof json == 'object') return json
+        try {
+            parsedJson = JSON.parse(json)
+        }
+        catch (e) {
+            console.log(json);
+            console.log(e);
+        }
+        return parsedJson
+    }
+
     const edenrichConds = (conds, object) => {
         let eConds = conds ? [...conds] : null
         // console.log('edenrichConds')
@@ -195,15 +209,19 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale }) {
             }
             if (cond.target == 'field') {
                 typeof object[cond.field] != 'object' ? cond.fieldValue = object[cond.field] :
-                    cond.fieldValue = object[cond.field].value || null
+                    cond.fieldValue = object[cond.field].id || (typeof parseJson(object[cond.value].value) == 'object' && (parseJson(object[cond.value].value).id || parseJson(object[cond.value].value).value)) || (typeof object[cond.value].value == 'object' ? object[cond.value].value.id : object[cond.value].value) || null
                 if (cond.value == 'false' && !cond.fieldValue) { cond.fieldValue = 'false' }
                 // console.log('cond.fieldValue')
                 // console.log(cond.fieldValue)
+                // console.log(typeof parseJson(object[cond.value].value))
+                // console.log(parseJson(object[cond.value].value).id)
+                // console.log(parseJson(object[cond.value].value))
+                // console.log(typeof object[cond.value].value)
 
             }
             if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
                 typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
-                    cond.checkValue = object[cond.value].value || null // раньше тут было .id, а не .value проверить!
+                    cond.checkValue = object[cond.field].id || (typeof object[cond.value].value == 'object' ? object[cond.value].value.id : object[cond.value].value) || null // раньше тут было .id, а не .value проверить!
             }
         })
         return eConds
