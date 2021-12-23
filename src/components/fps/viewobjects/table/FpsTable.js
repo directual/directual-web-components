@@ -208,15 +208,19 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale }) {
                 cond.checkValue = cond.value
             }
             if (cond.target == 'field') {
-                typeof object[cond.field] != 'object' ? cond.fieldValue = object[cond.field] :
-                    cond.fieldValue = object[cond.field].id || (typeof parseJson(object[cond.value].value) == 'object' && (parseJson(object[cond.value].value).id || parseJson(object[cond.value].value).value)) || (typeof object[cond.value].value == 'object' ? object[cond.value].value.id : object[cond.value].value) || null
+                if (typeof object[cond.field] == 'object') {
+                    if (object[cond.field].value) {
+                        if (typeof object[cond.field].value == object || parseJson(object[cond.field].value) == 'object') {
+                            cond.fieldValue = (parseJson(object[cond.field].value) || {}).id
+                        } else {
+                            cond.fieldValue = object[cond.field].value
+                        }
+                    } else {
+                        cond.fieldValue = object[cond.field].id
+                    }
+                } else { cond.fieldValue = object[cond.field] } 
+                    
                 if (cond.value == 'false' && !cond.fieldValue) { cond.fieldValue = 'false' }
-                // console.log('cond.fieldValue')
-                // console.log(cond.fieldValue)
-                // console.log(typeof parseJson(object[cond.value].value))
-                // console.log(parseJson(object[cond.value].value).id)
-                // console.log(parseJson(object[cond.value].value))
-                // console.log(typeof object[cond.value].value)
 
             }
             if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
