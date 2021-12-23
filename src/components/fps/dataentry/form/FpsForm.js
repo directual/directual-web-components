@@ -316,7 +316,8 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
         </React.Fragment>}
         {data.response && getResultAnswer().isSuccess &&
           <Hint title={getResultAnswer().answerTitle} ok>
-            <div dangerouslySetInnerHTML={{ __html: getResultAnswer().answerText }} />
+            {data.params.result.isLink ? getResultAnswer().answerText : 
+            <div dangerouslySetInnerHTML={{ __html: getResultAnswer().answerText }} />}
           </Hint>}
       </React.Fragment>}
 
