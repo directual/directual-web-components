@@ -791,13 +791,13 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
         }
     }, [model])
 
-    const processField = (f, fieldName) => {
+    const processField = (f, fieldName, nospaces) => {
         if (!f) return null
         if (!enrichedObject[fieldName]) return typeof f == 'object' ? getLinkName(fieldName, f, transformTableFieldScheme(field.sysName, tableFieldScheme)) : f
         if (enrichedObject[fieldName].dataType == 'date') return formatDate(f, enrichedObject[fieldName].formatOptions)
         if (enrichedObject[fieldName].dataType == 'file' && enrichedObject[fieldName].format == "image") return <img src={f} className={styles.cartImage} />
         if (enrichedObject[fieldName].dataType == 'file' && enrichedObject[fieldName].format == "multipleImages") return <img src={f.split(',') ? f.split(',')[0] : null} className={styles.cartImage} />
-        if (enrichedObject[fieldName].dataType == 'number') return numberWithSpaces(f)
+        if (enrichedObject[fieldName].dataType == 'number') return nospaces ? f : numberWithSpaces(f)
         if (typeof f == 'object') return getLinkName(fieldName, f, transformTableFieldScheme(field.sysName, tableFieldScheme))
         return f
     }
@@ -883,15 +883,15 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                         {cart.image && <td>{processField(item[cart.imageField], cart.imageField)}</td>}
                         {cart.title && <td>{processField(item[cart.titleField], cart.titleField)}</td>}
                         {cart.status && <td className={styles.right}>{processField(item[cart.statusField], cart.statusField)}</td>}
-                        {cart.quantity && <td className={styles.right}>{numberWithSpaces(processField(item[cart.quantityField], cart.quantityField) || '0')}</td>}
+                        {cart.quantity && <td className={styles.right}>{numberWithSpaces(processField(item[cart.quantityField], cart.quantityField, true) || '0')}</td>}
                         {cart.quantity && cart.price && <td className={styles.right}>
                             {cart.priceUnits == '$' ? cart.priceUnits + ' ' : ''}
-                            <strong>{numberWithSpaces((processField(item[cart.priceField], cart.priceField) * (processField(item[cart.quantityField], cart.quantityField) || 0)).toFixed(2)).replace(/\.00$/, '')}</strong>
+                            <strong>{numberWithSpaces((processField(item[cart.priceField], cart.priceField, true) * (processField(item[cart.quantityField], cart.quantityField, true) || 0)).toFixed(2)).replace(/\.00$/, '')}</strong>
                             {cart.priceUnits !== '$' ? ' ' + cart.priceUnits : ''}
                             <span className={styles.cardQuantity}>
-                                {numberWithSpaces(processField(item[cart.quantityField], cart.quantityField) || '0')} x {cart.priceUnits == '$' ? cart.priceUnits : ''} {numberWithSpaces(processField(item[cart.priceField], cart.priceField).toFixed(2)).replace(/\.00$/, '')} {cart.priceUnits !== '$' ? cart.priceUnits : ''}</span>
+                                {numberWithSpaces(processField(item[cart.quantityField], cart.quantityField) || '0', true)} x {cart.priceUnits == '$' ? cart.priceUnits : ''} {numberWithSpaces(processField(item[cart.priceField], cart.priceField, true).toFixed(2)).replace(/\.00$/, '')} {cart.priceUnits !== '$' ? cart.priceUnits : ''}</span>
                         </td>}
-                        {!cart.quantity && cart.price && <td className={styles.right}>{cart.priceUnits == '$' ? cart.priceUnits : ''} <strong>{numberWithSpaces(processField(item[cart.priceField], cart.priceField).toFixed(2)).replace(/\.00$/, '')}</strong> {cart.priceUnits !== '$' ? cart.priceUnits : ''}</td>}
+                        {!cart.quantity && cart.price && <td className={styles.right}>{cart.priceUnits == '$' ? cart.priceUnits : ''} <strong>{numberWithSpaces(processField(item[cart.priceField], cart.priceField, true).toFixed(2)).replace(/\.00$/, '')}</strong> {cart.priceUnits !== '$' ? cart.priceUnits : ''}</td>}
                         {(field.write && editingOn && cart.deleteOn) && <td className={styles.right}>
                             <div className={`${styles.deleteCartItem} icon icon-delete`}
                                 onClick={e => {
@@ -902,7 +902,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                     </tr>)}
                     {cart.price && <tr className={styles.total}>
                         <td className={styles.right} colSpan={5}>{dict[lang].card.cart.Total}:&nbsp;&nbsp;{cart.priceUnits == '$' ? cart.priceUnits : ''} <strong>{renderAL.length ?
-                            numberWithSpaces(renderAL.map(item => parseFloat(processField(item[cart.priceField], cart.priceField) * (cart.quantity ? (processField(item[cart.quantityField], cart.quantityField) || 0) : 1))).reduce((total, amount) => total + amount).toFixed(2)).replace(/\.00$/, '')
+                            numberWithSpaces(renderAL.map(item => parseFloat(processField(item[cart.priceField], cart.priceField, true) * (cart.quantity ? (processField(item[cart.quantityField], cart.quantityField, true) || 0) : 1))).reduce((total, amount) => total + amount).toFixed(2)).replace(/\.00$/, '')
                             : 0}</strong> {cart.priceUnits !== '$' ? cart.priceUnits : ''}</td>
                         {(field.write && editingOn && cart.deleteOn) && <td></td>}
                     </tr>}
