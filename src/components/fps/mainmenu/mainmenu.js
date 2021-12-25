@@ -46,10 +46,11 @@ export default function MainMenu(props) {
     }
 
     let horizontalMenu = (props.menu || []).filter(i => i.subheader || !i.group) || []
+    const isLeft = props.mobileLeftSide
 
     return <React.Fragment>
         {showBackdrop && <Backdrop top onClick={hideMM} />}
-        <div className={styles.show_mobile_menu}
+        <div className={`${styles.show_mobile_menu} ${isLeft ? styles.leftSide : ''}`}
             onClick={() => { setShowMM(true); setShowBackdrop(true) }}></div>
 
         <div className={`${styles.horMainmenu} ${showMM && styles.show} ${!props.horizontal ? styles.hideHorizontal : ''}`}>
@@ -57,7 +58,6 @@ export default function MainMenu(props) {
                 <a href="/" className={styles.logo} style={{ backgroundImage: `url(${props.logoUrl})` }} /> :
                 <a href="/" className={styles.title}>{props.title}</a>
             }
-
             <div className={styles.horMenuItems}>
                 {horizontalMenu.map(item => (
                     !item.hidden && (item.subheader == 'true' || item.subheader == true) ?
@@ -70,7 +70,10 @@ export default function MainMenu(props) {
                                 {(props.menu || []).filter(i => i.group == item.name).map(ddItem => (
                                     <div
                                         key={ddItem.name}
-                                        onClick={hideMM}
+                                        onClick={e=> {
+                                            hideMM();
+                                            props.handleRoute(ddItem.route)(e)
+                                        }}
                                         className={`${styles.itemHor} ${props.currentRoute == ddItem.route && styles.active} 
                                     ${ddItem.disabled && styles.disabled} icon ${ddItem.icon ? `icon-${ddItem.icon}` : `icon-forward`}`}>
                                         {ddItem.link ? ddItem.link :
@@ -84,7 +87,10 @@ export default function MainMenu(props) {
                         !item.hidden &&
                         <div
                             key={item.name}
-                            onClick={hideMM}
+                            onClick={e=> {
+                                hideMM();
+                                props.handleRoute(item.route)(e)
+                            }}
                             className={`${styles.itemHor} ${props.currentRoute == item.route && styles.active} 
                             ${item.disabled && styles.disabled} icon ${item.icon ? `icon-${item.icon}` : `icon-forward`}`}>
                             {item.link ? item.link :
@@ -100,7 +106,10 @@ export default function MainMenu(props) {
                             {`
                             ${styles.menuButton} ${styles.horMenuProfileButton}
                             ${props.profileButton.icon && `${styles.icon} icon icon-${props.profileButton.icon}`}
-                            `}>
+                            `}
+                            onClick={e=> {
+                                props.handleRoute('/profile')(e)
+                            }}>
                             {props.profileButton.link}
                         </div>
                         <Button icon='logoutAlt' danger onClick={() => { props.logout && props.logout() }}>{props.logoutText || 'Log out'}</Button>
@@ -108,13 +117,16 @@ export default function MainMenu(props) {
                     <div className={`
                         ${styles.menuButton}
                         ${props.logInButton.icon && `${styles.icon} icon icon-${props.logInButton.icon}`}
-                        ${styles.accent}`}>
+                        ${styles.accent}`}
+                        onClick={e=> {
+                            props.handleRoute('/signin')(e)
+                        }}>
                         {props.logInButton.link}
                     </div>}
             </div>
         </div>
 
-        <div className={`${styles.mainmenu} ${showMM && styles.show} ${props.horizontal ? styles.hideHorizontal : ''}`}>
+        <div className={`${styles.mainmenu} ${showMM && styles.show} ${isLeft ? styles.leftSide : ''} ${props.horizontal ? styles.hideHorizontal : ''}`}>
             <div className={styles.hide_mobile_menu}
                 onClick={hideMM}></div>
             {props.logoUrl ?
@@ -130,7 +142,10 @@ export default function MainMenu(props) {
                         !item.hidden &&
                         <li
                             key={item.name}
-                            onClick={hideMM}
+                            onClick={e=> {
+                                hideMM();
+                                props.handleRoute(item.route)(e)
+                            }}
                             className={`${styles.item} ${props.currentRoute == item.route && styles.active} 
                                 ${item.disabled && styles.disabled} icon ${item.icon ? `icon-${item.icon}` : `icon-forward`}`}>
                             {item.link ? item.link :
@@ -150,7 +165,10 @@ export default function MainMenu(props) {
                             ${props.profileButton.icon && `${styles.icon} icon icon-${props.profileButton.icon}`}
                             `}
                                     style={{ marginRight: 6 }}
-                                    onClick={hideMM}>
+                                    onClick={e=> {
+                                        hideMM();
+                                        props.handleRoute('/profile')(e)
+                                    }}>
                                     {props.profileButton.link}
                                 </div>
                                 {props.logOutButton &&
@@ -163,7 +181,10 @@ export default function MainMenu(props) {
                                     ${props.logInButton.icon && `${styles.icon} icon icon-${props.logInButton.icon}`}
                                     ${styles.accent}
                                     `}
-                                onClick={hideMM}>
+                                    onClick={e=> {
+                                        hideMM();
+                                        props.handleRoute('/signin')(e)
+                                    }}>
                                 {props.logInButton.link}
                             </div>
                         }

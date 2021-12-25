@@ -44,8 +44,10 @@ function MainMenuWrapper(props) {
             title='directual-design'
             showUserButtons={true}
             loggedIn={true}
+            handleRoute={href => e => console.log(href)}
             horizontal={props.horizontal}
             logoutText='Выйти'
+            mobileLeftSide={props.mobileLeftSide}
             //loggedIn={false}
             logInButton={{ name: "Sign in", route: "/profile", icon: "logoutAlt", link: <Link to="/profile">Sign in</Link> }}
             profileButton={{ name: "Profile", route: "/profile", icon: "user", link: <Link to="/profile">Profile</Link> }}
@@ -57,13 +59,13 @@ function MainMenuWrapper(props) {
                 { name: "What?", group: null, route: "/", icon: "info", link: <Link to="/">What is it?</Link> },
                 { name: "Components", subheader: true },
                 { name: "Sign In / Sign Up / Profile", group: 'Components', route: "/profile", icon: "user", link: <Link to="/profile">Sign in, Sign up, Profile</Link> },
-                { name: "Form", route: "/form",  group: 'Components', icon: "edit", link: <Link to="/form">Form</Link> },
-                { name: "Theme management",  group: 'Components', route: "/theme", icon: "styles", link: <Link to="/theme">Theme management</Link> },
-                { name: "Cards",  group: 'Components', route: "/cards", icon: "cards", link: <Link to="/cards">Cards view</Link> },
-                { name: "Table",  group: 'Components', route: "/table", icon: "database" },
-                { name: "Kanban",  group: 'Components', route: "/kanban", icon: "kanban" },
-                { name: "Chat (soon)",  group: 'Components', route: "/chat", icon: "bubble", disabled: true },
-                { name: "Comments (soon)",  group: 'Components', route: "/comments", icon: "version", disabled: true },
+                { name: "Form", route: "/form", group: 'Components', icon: "edit", link: <Link to="/form">Form</Link> },
+                { name: "Theme management", group: 'Components', route: "/theme", icon: "styles", link: <Link to="/theme">Theme management</Link> },
+                { name: "Cards", group: 'Components', route: "/cards", icon: "cards", link: <Link to="/cards">Cards view</Link> },
+                { name: "Table", group: 'Components', route: "/table", icon: "database" },
+                { name: "Kanban", group: 'Components', route: "/kanban", icon: "kanban" },
+                { name: "Chat (soon)", group: 'Components', route: "/chat", icon: "bubble", disabled: true },
+                { name: "Comments (soon)", group: 'Components', route: "/comments", icon: "version", disabled: true },
                 { name: "Design system", subheader: true },
                 { name: "Typography", group: 'Design system', route: "/system-typography", icon: "paragraph", link: <Link to="/system-typography">Typography</Link> },
                 { name: "Directual Icons", group: 'Design system', route: "/system-icons", icon: "babai", link: <Link to="/system-icons">Directual icons</Link> },
@@ -31290,11 +31292,12 @@ const App = (props) => {
     ]
 
     return (
-        <FpsWrapper 
-            horizontal={currentTheme.desktopMenu=='top'}
+        <FpsWrapper
+            horizontal={currentTheme.desktopMenu == 'top'}
+            mobileLeftSide={currentTheme.mobileMenu == 'left'}
         >
             <Router>
-                <MainMenuWrapper themeName={currentTheme} horizontal={currentTheme.desktopMenu=='top'}/>
+                <MainMenuWrapper themeName={currentTheme} horizontal={currentTheme.desktopMenu == 'top'} mobileLeftSide={currentTheme.mobileMenu == 'left'} />
                 <ContentWrapper whiteLabel={false} locale='FRA' themeName={currentTheme}>
                     <Switch>
                         <Route exact path="/table">
@@ -31318,23 +31321,23 @@ const App = (props) => {
                                 header='Sign in!'
                                 width={400}
                                 //googleAuth={<Button socialGoogle onClick={()=>alert('Google!')}>Sign In with Google</Button>}
-                                facebookAuth={<Button socialFacebook onClick={()=>alert('Facebook!')}>Sign In with Facebook</Button>}
-                                onSignIn={value=>console.log(value)}
+                                facebookAuth={<Button socialFacebook onClick={() => alert('Facebook!')}>Sign In with Facebook</Button>}
+                                onSignIn={value => console.log(value)}
                                 userNameFormat='phone'
                             />
                             <SignUp
                                 header='Sign Up!'
                                 width={400}
-                                googleAuth={<Button socialGoogle onClick={()=>alert('Google!')}>Sign Up with Google</Button>}
-                                facebookAuth={<Button socialFacebook onClick={()=>alert('Facebook!')}>Sign Up with Facebook</Button>}
+                                googleAuth={<Button socialGoogle onClick={() => alert('Google!')}>Sign Up with Google</Button>}
+                                facebookAuth={<Button socialFacebook onClick={() => alert('Facebook!')}>Sign Up with Facebook</Button>}
                                 userNameFormat='phone'
-                                onSignUp={value=>console.log(value)}
+                                onSignUp={value => console.log(value)}
                             />
-                            <RestorePass 
+                            <RestorePass
                                 header='Reset password'
                                 width={400}
                                 userNameFormat='phone'
-                                onRestore={value=>console.log(value)}
+                                onRestore={value => console.log(value)}
                             />
 
                         </Route>

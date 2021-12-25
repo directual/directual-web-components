@@ -28,6 +28,12 @@
   .title {
     margin-right: 90px;
   }
+  // .leftSide {
+  //   .logo,
+  //   .title {
+  //     margin-left: 90px;
+  //   }
+  // }
 }
 
 .menuButton {
@@ -107,14 +113,18 @@
 }
 
 .show_mobile_menu {
+  &.leftSide {
+    right: auto;
+    left: 6px;
+  }
   position: absolute;
   width: 40px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  right: 18px;
-  top: 18px;
+  right: 6px;
+  top: 6px;
   z-index: 190;
   &:before {
     font-family: 'directual-icons';
@@ -126,7 +136,8 @@
 }
 
 @media all and (min-width: 1020px) {
-  .show_mobile_menu, .hideHorizontal {
+  .show_mobile_menu,
+  .hideHorizontal {
     display: none !important;
   }
 }
@@ -136,6 +147,11 @@
 }
 
 @media all and (max-width: 1020px) {
+  .leftSide {
+    .hide_mobile_menu {
+      right: 20px;
+    }
+  }
   .hide_mobile_menu {
     position: absolute;
     width: 40px;
@@ -181,6 +197,13 @@
 
 @media all and (max-width: 1020px) {
   .mainmenu {
+    &.leftSide {
+      left: 0;
+      right: auto;
+      transform: translateX(-100%);
+      padding-left: 40px;
+      padding-right: 0;
+    }
     position: absolute;
     right: 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -193,6 +216,11 @@
       padding-bottom: 24px;
     }
     &.show {
+      &.leftSide {
+        left: 0;
+        right: auto;
+        transform: translateX(-40px);
+      }
       transform: translateX(40px);
       transition: 0;
       transition-timing-function: cubic-bezier(0.81, 0.12, 0.55, 1.4);
@@ -215,6 +243,20 @@
     &.active {
       border-right: solid 3px rgba(0, 0, 0, 0);
       border-left: solid 3px var(--menu-item-selected);
+    }
+  }
+  .leftSide {
+    li.item {
+      border-right: solid 3px rgba(0, 0, 0, 0);
+      border-left: solid 3px rgba(0, 0, 0, 0);
+      margin-left: 0;
+      // padding-left: 0;
+      margin-right: 0;
+      padding-right: 21px;
+      &.active {
+        border-right: solid 3px var(--menu-item-selected);
+        border-left: solid 3px rgba(0, 0, 0, 0);
+      }
     }
   }
 }
@@ -395,7 +437,7 @@
     padding-left: 10px;
     background-color: var(--button-bgr);
     color: var(--button-text);
-    opacity: .6;
+    opacity: 0.6;
     padding-right: 26px;
     margin-right: 0;
     &.active {
@@ -422,8 +464,8 @@
 }
 
 .horMenuProfileButton {
-    border-color: rgba(0,0,0,0) !important;
-    &:hover {
-        background-color: var(--button-dropdown-hover-bgr);
-    }
+  border-color: rgba(0, 0, 0, 0) !important;
+  &:hover {
+    background-color: var(--button-dropdown-hover-bgr);
+  }
 }
