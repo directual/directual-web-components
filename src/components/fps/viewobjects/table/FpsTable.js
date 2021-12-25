@@ -11,8 +11,9 @@ import { Paging } from '../paging/paging'
 import Button from '../../button/button'
 import { dict } from '../../locale'
 import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
+import _ from 'lodash'
 
-function FpsTable({ auth, data, onEvent, id, currentBP, locale }) {
+function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     if (!data) { data = {} }
 
     console.log('---data FpsTable---')
@@ -328,7 +329,8 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale }) {
                 params={data.params}
                 searchValue={searchValue}
                 checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
-                onExpand={val => { setShowObject(val) }}
+                onExpand={val => { _.get(data,'params.data.cardsOrPage') == 'page' ? handleRoute('./' + val.id)() : setShowObject(val) }}
+                // onExpand={val => { setShowObject(val) }}
                 //setPage={page => { sendMsg(null, null, { page: page }) }}
                 auth={auth}
                 submitAction={submitAction}

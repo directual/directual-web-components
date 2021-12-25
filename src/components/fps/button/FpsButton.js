@@ -40,6 +40,7 @@ FpsButton.settings = {
         { name: 'Icon', sysName: 'icon', type: 'icon' },
         { name: 'Icon size', sysName: 'size', type: 'iconSize' },
         { name: 'Height, px', sysName: 'height', type: 'number' },
+        { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' },
         { name: 'Apply template engine', sysName: 'withTemplate', type: 'boolean' },
     ]
 }

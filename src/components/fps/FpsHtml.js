@@ -32,7 +32,7 @@ FpsHtml.settings = {
 }
 
 export function FpsMarkdown(props) {
-console.log(props)
+// console.log(props)
   const text = (props && props.data && props.data.markdown) || ''
   return <ComponentWrapper>
     <Article>
