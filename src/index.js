@@ -8,6 +8,7 @@ import FpsLogin from './components/fps/FpsLogin'
 import CodeInput from './components/fps/dataentry/codeinput/codeinput'
 import FpsCards from './components/fps/viewobjects/cards/FpsCards'
 import FpsHtml, { FpsMarkdown } from './components/fps/FpsHtml'
+import FpsButton from './components/fps/button/FpsButton'
 import FpsForm, { FormSection } from './components/fps/dataentry/form/FpsForm'
 import MainMenu from './components/fps/mainmenu/mainmenu'
 import ComponentDetails from './components/fps/componentdetails/componentdetails'
@@ -52,6 +53,7 @@ export {
   Fps404,
   Fps400,
   Fps500,
+  FpsButton,
   FpsIsEmpty,
   ComponentWrapper,
   AdvancedOptionsHandler,
