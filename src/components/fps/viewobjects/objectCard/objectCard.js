@@ -284,6 +284,7 @@ export function ObjectCard(props) {
                                         writeError={data.writeError}
                                         aType='actionForm'
                                         object={object}
+                                        refresh={refresh}
                                         checkActionCond={cond => props.checkActionCond(cond, object)}
                                         onClose={props.onTerminate}
                                         submitAction={submitAction}
@@ -294,6 +295,7 @@ export function ObjectCard(props) {
                                     return <CardAction
                                         loading={props.loading}
                                         action={action.id}
+                                        refresh={refresh}
                                         writeError={data.writeError}
                                         aType='actionButton'
                                         object={object}
@@ -388,13 +390,13 @@ export function ObjectCard(props) {
                     className={`${styles.shareObject} icon icon-copy`}
                     onClick={copyUrlToClipboard}
                 />
-            }
+            }*/}
             {props.refresh &&
                 <div title={dict[lang].card.refreshCard}
                     className={`${styles.refreshObject} icon icon-refresh`}
                     onClick={refresh}
                 />
-            } */}
+            } 
             <div className={styles.objectCardHeader}>
                 <div onClick={props.onClose}
                     className={`${styles.closeObjectCard} icon ${props.firstCard ? 'icon-close' : 'icon-back'} ${showLinkedObject && styles.hidden}`}></div>
@@ -433,6 +435,7 @@ export function ObjectCard(props) {
                         onClose={() => { setShowLinkedObject(false) }}
                         onTerminate={() => props.onClose()}
                         auth={props.auth}
+                        refresh={refresh}
                         data={data}
                         dict={dict}
                         lang={lang}
@@ -1104,7 +1107,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
     )
 }
 
-function CardAction({ action, writeError, actionParams, debug, submitAction, onClose, checkActionCond, object, aType, loading }) {
+function CardAction({ action, writeError, actionParams, debug, submitAction, onClose, checkActionCond, object, aType, loading, refresh }) {
 
     const [actionData, setActionData] = useState(actionParams)
     const [genericLoading, setGenericLoading] = useState(false)

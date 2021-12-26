@@ -331,7 +331,7 @@ div.tableTitle.mobile h2 {
   opacity: 0.15;
   cursor: pointer;
   top: 25px;
-  right: 65px;
+  right: 25px;
   transition: 0.5s;
 }
 .objectCard .refreshObject:hover {
@@ -345,7 +345,7 @@ div.tableTitle.mobile h2 {
   opacity: 0.15;
   cursor: pointer;
   top: 25px;
-  right: 25px;
+  right: 65px;
   transition: 0.5s;
 }
 .objectCard .shareObject:hover {
