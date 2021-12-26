@@ -263,8 +263,8 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale }) {
     // }
 
     const handleCloseShowObject = () => {
-        setShowObject(false);
-        removeUrlParam(id + '_id')
+        setShowObject(null);
+        setTimeout(()=>removeUrlParam(id + '_id'),300)
     }
 
     // get direct link ID

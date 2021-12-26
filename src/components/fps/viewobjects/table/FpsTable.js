@@ -233,8 +233,8 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     }
 
     const handleCloseShowObject = () => {
-        setShowObject(false);
-        removeUrlParam(id + '_id')
+        setShowObject(null);
+        setTimeout(()=>removeUrlParam(id + '_id'),300)
     }
 
     // get direct link ID
@@ -248,12 +248,13 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         // if (!urlDql && urlPage && urlPage != currentPage) {setPage(urlPage)}
         if (currentID) {
             const foundObject = data.data.filter(i=> i.id == currentID) ? data.data.filter(i=> i.id == currentID)[0] : null
-            if (foundObject) { setShowObject(foundObject)} else { console.log("no foundObject")}
+            if (foundObject) { setShowObject(foundObject) } else { console.log("no foundObject")}
         }
     }, [data]);
 
     useEffect(()=> {
         if (showObject && showObject.id) {
+            console.log(showObject)
             addUrlParam({ key: id + '_id', value: showObject.id })
         } else {
             //removeUrlParam(id + '_id')
