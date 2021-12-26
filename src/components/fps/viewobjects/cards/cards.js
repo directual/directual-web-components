@@ -273,9 +273,11 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                                 {tableParams.cardImageField &&
                                     <div className={`${styles.cardImage}`}
                                         style={{
+                                            backgroundSize: tableParams.cardImageResize == 'contain' ? 'contain' : 'cover',
                                             backgroundImage: `url(${row[tableParams.cardImageField]})`,
                                             width: (tableParams.cardImageType == "left" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) : 'auto',
                                             height: (tableParams.cardImageType == "top" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) : 'auto',
+                                            minHeight: (tableParams.cardImageType == "left" && tableParams.cardImageSizeHeight) ? parseInt(tableParams.cardImageSizeHeight) : 'none',
                                         }}
                                     >
                                         {!row[tableParams.cardImageField] && <span className='icon icon-ban'>no&nbsp;picture</span>}

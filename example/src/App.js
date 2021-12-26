@@ -85,15 +85,29 @@ const App = (props) => {
     }
 
     let cardActions = {
-        "sl": "TEST",
+        "sl": "projects",
         "pageSize": "10",
         "headerField": null,
         "params": {
+            "cardListLayout": "grid",
+            "cardHeaderComment": "website",
+            "deleteField": "",
+            "cardBodyText": null,
+            "cardImage": true,
+            "cardImageField": "logo",
+            "cardImageType": "left",
+            "cardImageSize": 150,
+            "objectView": {},
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "arraylinkoff",
+                        "fieldSysName": "analyst_ids",
                         "fetch": [
+                            {
+                                "fieldSysName": "displayedName",
+                                "condition": null,
+                                "fetch": []
+                            },
                             {
                                 "fieldSysName": "firstName",
                                 "condition": null,
@@ -103,72 +117,329 @@ const App = (props) => {
                                 "fieldSysName": "id",
                                 "condition": null,
                                 "fetch": []
+                            },
+                            {
+                                "fieldSysName": "lastName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "userpic",
+                                "condition": null,
+                                "fetch": []
                             }
                         ],
-                        "sysName": "arraylinkoff",
-                        "name": "",
+                        "sysName": "analyst_ids",
+                        "name": "Analysts team",
                         "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
                         "link": "WebUser"
                     },
                     {
-                        "fieldSysName": "bool",
+                        "fieldSysName": "attached_files",
                         "fetch": [],
-                        "sysName": "bool",
-                        "name": "",
-                        "dataType": "boolean",
-                        "format": "",
+                        "sysName": "attached_files",
+                        "name": "Attached files",
+                        "dataType": "file",
+                        "format": "multipleFiles",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "foo",
+                        "fieldSysName": "description",
                         "fetch": [],
-                        "sysName": "foo",
-                        "name": "",
+                        "sysName": "description",
+                        "name": "Short description",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "link",
+                        "fieldSysName": "emails",
                         "fetch": [
+                            {
+                                "fieldSysName": "attachments",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "date",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "from",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "subject",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "text",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "emails",
+                        "name": "Emails",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "parsed_emails"
+                    },
+                    {
+                        "fieldSysName": "event_ids",
+                        "fetch": [
+                            {
+                                "fieldSysName": "date",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "event",
+                                "condition": null,
+                                "fetch": []
+                            },
                             {
                                 "fieldSysName": "id",
                                 "condition": null,
                                 "fetch": []
                             },
                             {
-                                "fieldSysName": "title",
+                                "fieldSysName": "project_id",
+                                "condition": null,
+                                "fetch": [
+                                    {
+                                        "fieldSysName": "title",
+                                        "condition": null,
+                                        "fetch": []
+                                    }
+                                ]
+                            },
+                            {
+                                "fieldSysName": "user",
+                                "condition": null,
+                                "fetch": [
+                                    {
+                                        "fieldSysName": "displayedName",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "firstName",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "id",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "lastName",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "userpic",
+                                        "condition": null,
+                                        "fetch": []
+                                    }
+                                ]
+                            }
+                        ],
+                        "sysName": "event_ids",
+                        "name": "Events",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "projects_events"
+                    },
+                    {
+                        "fieldSysName": "investor_ids",
+                        "fetch": [
+                            {
+                                "fieldSysName": "displayedName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "firstName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "lastName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "userpic",
                                 "condition": null,
                                 "fetch": []
                             }
                         ],
-                        "sysName": "link",
-                        "name": "",
-                        "dataType": "link",
+                        "sysName": "investor_ids",
+                        "name": "Investors who have an access",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "link": "projects"
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "logo",
+                        "fetch": [],
+                        "sysName": "logo",
+                        "name": "Logo",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "partner_ids",
+                        "fetch": [
+                            {
+                                "fieldSysName": "displayedName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "firstName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "lastName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "userpic",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "partner_ids",
+                        "name": "Partners",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "servise_provider_ids",
+                        "fetch": [
+                            {
+                                "fieldSysName": "displayedName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "firstName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "lastName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "userpic",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "servise_provider_ids",
+                        "name": "Service provoders",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "team",
+                        "fetch": [
+                            {
+                                "fieldSysName": "displayedName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "firstName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "lastName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "position",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "userpic",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "team",
+                        "name": "Startup Team",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "title",
+                        "fetch": [],
+                        "sysName": "title",
+                        "name": "Title",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "website",
+                        "fetch": [],
+                        "sysName": "website",
+                        "name": "Web-site",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
                     }
                 ],
                 "writeFields": [],
                 "fields": {
-                    "arraylinkoff": {
-                        "id": "arraylinkoff",
-                        "content": "",
+                    "analyst_ids": {
+                        "id": "analyst_ids",
+                        "content": "Analysts team",
                         "type": "field",
                         "dataType": "arrayLink",
                         "format": "",
@@ -177,72 +448,284 @@ const App = (props) => {
                         "link": "WebUser",
                         "actions": []
                     },
-                    "bool": {
-                        "id": "bool",
-                        "content": "",
+                    "attached_files": {
+                        "id": "attached_files",
+                        "content": "Attached files",
                         "type": "field",
-                        "dataType": "boolean",
-                        "format": "",
+                        "dataType": "file",
+                        "format": "multipleFiles",
                         "formatOptions": {},
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "foo": {
-                        "id": "foo",
-                        "content": "",
+                    "description": {
+                        "id": "description",
+                        "content": "Short description",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": null,
+                        "link": "",
                         "actions": []
                     },
-                    "id": {
-                        "id": "id",
-                        "content": "id",
+                    "emails": {
+                        "id": "emails",
+                        "content": "Emails",
                         "type": "field",
-                        "dataType": "id",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "parsed_emails",
+                        "actions": []
+                    },
+                    "event_ids": {
+                        "id": "event_ids",
+                        "content": "Events",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "projects_events",
+                        "actions": []
+                    },
+                    "investor_ids": {
+                        "id": "investor_ids",
+                        "content": "Investors who have an access",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "WebUser",
+                        "actions": []
+                    },
+                    "logo": {
+                        "id": "logo",
+                        "content": "Logo",
+                        "type": "field",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "partner_ids": {
+                        "id": "partner_ids",
+                        "content": "Partners",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "WebUser",
+                        "actions": []
+                    },
+                    "servise_provider_ids": {
+                        "id": "servise_provider_ids",
+                        "content": "Service provoders",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "WebUser",
+                        "actions": []
+                    },
+                    "team": {
+                        "id": "team",
+                        "content": "Startup Team",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "WebUser",
+                        "actions": []
+                    },
+                    "title": {
+                        "id": "title",
+                        "content": "Title",
+                        "type": "field",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "link": {
-                        "id": "link",
-                        "content": "",
+                    "website": {
+                        "id": "website",
+                        "content": "Web-site",
                         "type": "field",
-                        "dataType": "link",
-                        "format": "",
+                        "dataType": "string",
+                        "format": "webLink",
                         "formatOptions": {},
                         "read": true,
-                        "link": "projects",
+                        "link": "",
+                        "actions": []
+                    },
+                    "action__69421639220245895": {
+                        "content": "Move to Screening",
+                        "id": "action__69421639220245895",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__13251639220246787": {
+                        "content": "Reject",
+                        "id": "action__13251639220246787",
+                        "type": "action",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "arraylinkoff": {
+                    "description": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "bool": {
+                    "emails": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "foo": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
+                        "clickable": true,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "attachments": {
+                                    "id": "attachments",
+                                    "content": "Attachments",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "file",
+                                    "format": "multipleFiles",
+                                    "formatOptions": null
+                                },
+                                "date": {
+                                    "id": "date",
+                                    "content": "Date",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "date",
+                                    "format": null,
+                                    "formatOptions": {
+                                        "customOptionLabel": "My option",
+                                        "keyValue": {
+                                            "key": "key",
+                                            "value": "value",
+                                            "button": "One more"
+                                        },
+                                        "dateLocale": "en-gb",
+                                        "booleanOptions": [
+                                            "True",
+                                            "False"
+                                        ],
+                                        "validWeekDays": {
+                                            "mon": true,
+                                            "thu": true,
+                                            "tue": true,
+                                            "sun": true,
+                                            "fri": true,
+                                            "sat": true,
+                                            "wed": true
+                                        },
+                                        "customOptionPlaceholder": "Describe your option",
+                                        "range": {},
+                                        "customOptionType": "textarea",
+                                        "dateFormat": "DD MMM, Y",
+                                        "timeFormat": " HH:mm",
+                                        "isUTC": "false"
+                                    }
+                                },
+                                "from": {
+                                    "id": "from",
+                                    "content": "From",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "subject": {
+                                    "id": "subject",
+                                    "content": "Subject",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "text": {
+                                    "id": "text",
+                                    "content": "Text",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                }
+                            },
+                            "fieldParams": {
+                                "attachments": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "date": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "from": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "subject": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "text": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "from",
+                                "subject",
+                                "date",
+                                "text",
+                                "attachments"
+                            ]
+                        },
+                        "subHeader": "Email: ",
+                        "veiwOption": "table",
+                        "tableView": {
+                            "columns": [
+                                {
+                                    "id": "1639220374384",
+                                    "field": "from"
+                                },
+                                {
+                                    "id": "1639220377524",
+                                    "field": "subject"
+                                },
+                                {
+                                    "id": "1639220381447",
+                                    "field": "date"
+                                }
+                            ]
+                        },
+                        "sortArrayLink": true,
+                        "sortByField": "date"
                     },
                     "id": {
                         "include": false,
@@ -251,7 +734,229 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "link": {
+                    "title": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "reject_reason": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "attached_files": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "logo": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "team": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "veiwOption": "table",
+                        "tableView": {
+                            "columns": [
+                                {
+                                    "id": "1639404773172",
+                                    "field": "userpic"
+                                },
+                                {
+                                    "id": "1639404761649",
+                                    "field": "firstName"
+                                },
+                                {
+                                    "id": "1639404764809",
+                                    "field": "lastName"
+                                },
+                                {
+                                    "id": "1639404766810",
+                                    "field": "position"
+                                }
+                            ]
+                        }
+                    },
+                    "website": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "analyst_ids": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "event_ids": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": true,
+                        "veiwOption": "table",
+                        "tableView": {
+                            "columns": [
+                                {
+                                    "id": "1639667712314",
+                                    "field": "event"
+                                },
+                                {
+                                    "id": "1639667715942",
+                                    "field": "user"
+                                },
+                                {
+                                    "id": "1639667720510",
+                                    "field": "date"
+                                }
+                            ]
+                        },
+                        "sortArrayLink": true,
+                        "sortByField": "date",
+                        "sortDirection": "desc",
+                        "configureLinkedCard": {
+                            "fields": {
+                                "date": {
+                                    "id": "date",
+                                    "content": "Date",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "date",
+                                    "format": null,
+                                    "formatOptions": {
+                                        "customOptionLabel": "My option",
+                                        "keyValue": {
+                                            "key": "key",
+                                            "value": "value",
+                                            "button": "One more"
+                                        },
+                                        "dateLocale": "en-gb",
+                                        "booleanOptions": [
+                                            "True",
+                                            "False"
+                                        ],
+                                        "validWeekDays": {
+                                            "mon": true,
+                                            "thu": true,
+                                            "tue": true,
+                                            "sun": true,
+                                            "fri": true,
+                                            "sat": true,
+                                            "wed": true
+                                        },
+                                        "customOptionPlaceholder": "Describe your option",
+                                        "range": {},
+                                        "customOptionType": "textarea",
+                                        "dateFormat": "DD MMM, Y,",
+                                        "timeFormat": " HH:mm",
+                                        "isUTC": "false"
+                                    }
+                                },
+                                "event": {
+                                    "id": "event",
+                                    "content": "Event",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "id": {
+                                    "id": "id",
+                                    "content": "id",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "id",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "project_id": {
+                                    "id": "project_id",
+                                    "content": "Project",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "link",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "user": {
+                                    "id": "user",
+                                    "content": "User",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "link",
+                                    "format": null,
+                                    "formatOptions": {}
+                                }
+                            },
+                            "fieldParams": {
+                                "date": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "event": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "id": {
+                                    "include": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "project_id": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "user": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "date",
+                                "user",
+                                "project_id",
+                                "event",
+                                "id"
+                            ]
+                        },
+                        "subHeader": "Event: "
+                    },
+                    "investor_ids": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "partner_ids": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "servise_provider_ids": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -264,41 +969,224 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "arraylinkoff",
-                            "bool",
-                            "foo",
-                            "id",
-                            "link"
+                            "logo",
+                            "title",
+                            "website",
+                            "description",
+                            "attached_files"
+                        ]
+                    },
+                    "96961639220414996": {
+                        "id": "96961639220414996",
+                        "title": "Actions",
+                        "fieldIds": [
+                            "action__69421639220245895",
+                            "action__13251639220246787"
+                        ]
+                    },
+                    "61821639220419046": {
+                        "id": "61821639220419046",
+                        "title": "Communication",
+                        "fieldIds": [
+                            "emails"
+                        ]
+                    },
+                    "85221639667665927": {
+                        "id": "85221639667665927",
+                        "title": "Events",
+                        "fieldIds": [
+                            "event_ids"
+                        ]
+                    },
+                    "78351639667677940": {
+                        "id": "78351639667677940",
+                        "title": "Participants",
+                        "fieldIds": [
+                            "team",
+                            "analyst_ids",
+                            "investor_ids",
+                            "partner_ids",
+                            "servise_provider_ids"
                         ]
                     }
                 },
                 "columnOrder": [
-                    "tab-1"
+                    "tab-1",
+                    "78351639667677940",
+                    "85221639667665927",
+                    "61821639220419046",
+                    "96961639220414996"
                 ],
-                "actions": [],
-                "cardsOrPage": "page"
+                "actions": [
+                    {
+                        "sysName": "",
+                        "id": "69421639220245895",
+                        "name": "Move to Screening",
+                        "displayAs": "button",
+                        "buttonType": "accent",
+                        "buttonIcon": "done",
+                        "closePopup": true,
+                        "showMessage": false,
+                        "dropdown": true
+                    },
+                    {
+                        "sysName": "",
+                        "id": "13251639220246787",
+                        "name": "Reject",
+                        "displayAs": "form",
+                        "buttonType": "danger",
+                        "buttonIcon": "ban",
+                        "closePopup": true,
+                        "showMessage": false,
+                        "dropdown": true,
+                        "formFields": []
+                    }
+                ]
             },
             "fields": {
-                "arraylinkoff": {
+                "description": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "bool": {
+                "emails": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": false
-                },
-                "foo": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "attachments": {
+                                "id": "attachments",
+                                "content": "Attachments",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "file",
+                                "format": "multipleFiles",
+                                "formatOptions": null
+                            },
+                            "date": {
+                                "id": "date",
+                                "content": "Date",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "date",
+                                "format": null,
+                                "formatOptions": {
+                                    "customOptionLabel": "My option",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "dateLocale": "en-gb",
+                                    "booleanOptions": [
+                                        "True",
+                                        "False"
+                                    ],
+                                    "validWeekDays": {
+                                        "mon": true,
+                                        "thu": true,
+                                        "tue": true,
+                                        "sun": true,
+                                        "fri": true,
+                                        "sat": true,
+                                        "wed": true
+                                    },
+                                    "customOptionPlaceholder": "Describe your option",
+                                    "range": {},
+                                    "customOptionType": "textarea",
+                                    "dateFormat": "DD MMM, Y",
+                                    "timeFormat": " HH:mm",
+                                    "isUTC": "false"
+                                }
+                            },
+                            "from": {
+                                "id": "from",
+                                "content": "From",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "subject": {
+                                "id": "subject",
+                                "content": "Subject",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "text": {
+                                "id": "text",
+                                "content": "Text",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            }
+                        },
+                        "fieldParams": {
+                            "attachments": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "date": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "from": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "subject": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "text": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "from",
+                            "subject",
+                            "date",
+                            "text",
+                            "attachments"
+                        ]
+                    },
+                    "subHeader": "Email: ",
+                    "veiwOption": "table",
+                    "tableView": {
+                        "columns": [
+                            {
+                                "id": "1639220374384",
+                                "field": "from"
+                            },
+                            {
+                                "id": "1639220377524",
+                                "field": "subject"
+                            },
+                            {
+                                "id": "1639220381447",
+                                "field": "date"
+                            }
+                        ]
+                    },
+                    "sortArrayLink": true,
+                    "sortByField": "date"
                 },
                 "id": {
                     "include": false,
@@ -307,31 +1195,364 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "link": {
+                "title": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "reject_reason": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "attached_files": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "logo": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "team": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "veiwOption": "table",
+                    "tableView": {
+                        "columns": [
+                            {
+                                "id": "1639404773172",
+                                "field": "userpic"
+                            },
+                            {
+                                "id": "1639404761649",
+                                "field": "firstName"
+                            },
+                            {
+                                "id": "1639404764809",
+                                "field": "lastName"
+                            },
+                            {
+                                "id": "1639404766810",
+                                "field": "position"
+                            }
+                        ]
+                    }
+                },
+                "website": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "analyst_ids": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "event_ids": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": true,
+                    "veiwOption": "table",
+                    "tableView": {
+                        "columns": [
+                            {
+                                "id": "1639667712314",
+                                "field": "event"
+                            },
+                            {
+                                "id": "1639667715942",
+                                "field": "user"
+                            },
+                            {
+                                "id": "1639667720510",
+                                "field": "date"
+                            }
+                        ]
+                    },
+                    "sortArrayLink": true,
+                    "sortByField": "date",
+                    "sortDirection": "desc",
+                    "configureLinkedCard": {
+                        "fields": {
+                            "date": {
+                                "id": "date",
+                                "content": "Date",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "date",
+                                "format": null,
+                                "formatOptions": {
+                                    "customOptionLabel": "My option",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "dateLocale": "en-gb",
+                                    "booleanOptions": [
+                                        "True",
+                                        "False"
+                                    ],
+                                    "validWeekDays": {
+                                        "mon": true,
+                                        "thu": true,
+                                        "tue": true,
+                                        "sun": true,
+                                        "fri": true,
+                                        "sat": true,
+                                        "wed": true
+                                    },
+                                    "customOptionPlaceholder": "Describe your option",
+                                    "range": {},
+                                    "customOptionType": "textarea",
+                                    "dateFormat": "DD MMM, Y,",
+                                    "timeFormat": " HH:mm",
+                                    "isUTC": "false"
+                                }
+                            },
+                            "event": {
+                                "id": "event",
+                                "content": "Event",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "id": {
+                                "id": "id",
+                                "content": "id",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "id",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "project_id": {
+                                "id": "project_id",
+                                "content": "Project",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "user": {
+                                "id": "user",
+                                "content": "User",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": {}
+                            }
+                        },
+                        "fieldParams": {
+                            "date": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "event": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "id": {
+                                "include": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "project_id": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "user": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "date",
+                            "user",
+                            "project_id",
+                            "event",
+                            "id"
+                        ]
+                    },
+                    "subHeader": "Event: "
+                },
+                "investor_ids": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "partner_ids": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "servise_provider_ids": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 }
-            }
+            },
+            "actions": [
+                {
+                    "sysName": "",
+                    "id": "69421639220245895",
+                    "name": "Move to Screening",
+                    "displayAs": "button",
+                    "buttonType": "accent",
+                    "buttonIcon": "done",
+                    "closePopup": true,
+                    "showMessage": false,
+                    "dropdown": true
+                },
+                {
+                    "sysName": "",
+                    "id": "13251639220246787",
+                    "name": "Reject",
+                    "displayAs": "button",
+                    "buttonType": "danger",
+                    "buttonIcon": "ban",
+                    "closePopup": true,
+                    "showMessage": false,
+                    "dropdown": true,
+                    "formFields": []
+                }
+            ],
+            "cardImageSizeHeight": 150,
+            "cardImageResize": "contain"
         },
         "tableTitle": "",
         "actions": null,
         "headers": [
             {
-                "sysName": "arraylinkoff",
-                "name": "",
+                "sysName": "analyst_ids",
+                "name": "Analysts team",
                 "dataType": "arrayLink",
-                "id": "27131639930360744",
+                "id": "14231639663934567",
                 "link": "WebUser",
+                "group": "1639663912103",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "indexExists": false,
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "arrayLink": true,
+                "array": false
+            },
+            {
+                "sysName": "attached_files",
+                "name": "Attached files",
+                "dataType": "file",
+                "id": "63191639403918882",
+                "link": "",
                 "group": "0",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 3,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "multipleFiles",
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "indexExists": false,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "description",
+                "name": "Short description",
+                "dataType": "string",
+                "id": "24521636920364485",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "indexExists": false,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "emails",
+                "name": "Emails",
+                "dataType": "arrayLink",
+                "id": "73331637165505301",
+                "link": "parsed_emails",
+                "group": "1636918595238",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
                 "linkIndexFieldSysName": [],
                 "defaultValue": null,
                 "constraints": null,
@@ -348,68 +1569,40 @@ const App = (props) => {
                 "array": false
             },
             {
-                "sysName": "bool",
-                "name": "",
-                "dataType": "boolean",
-                "id": "25651639931600442",
-                "link": "",
-                "group": "0",
-                "tags": null,
+                "sysName": "event_ids",
+                "name": "Events",
+                "dataType": "arrayLink",
+                "id": "34621639665365546",
+                "link": "projects_events",
+                "group": "1639663912103",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 4,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
                 "typeVariable": {},
                 "linkType": false,
                 "indexExists": false,
                 "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
+                "linkOrArrayLinkType": true,
+                "arrayLink": true,
                 "array": false
             },
             {
-                "sysName": "foo",
-                "name": "",
-                "dataType": "string",
-                "id": "58361639930346647",
-                "link": null,
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "id",
-                "name": "id",
-                "dataType": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
+                "sysName": "investor_ids",
+                "name": "Investors who have an access",
+                "dataType": "arrayLink",
+                "id": "43731639663918598",
+                "link": "WebUser",
+                "group": "1639663912103",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
@@ -427,23 +1620,107 @@ const App = (props) => {
                 "linkType": false,
                 "indexExists": false,
                 "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
+                "linkOrArrayLinkType": true,
+                "arrayLink": true,
                 "array": false
             },
             {
-                "sysName": "link",
-                "name": "",
-                "dataType": "link",
-                "id": "25581639930347194",
-                "link": "projects",
+                "sysName": "logo",
+                "name": "Logo",
+                "dataType": "file",
+                "id": "25231639403856783",
+                "link": "",
                 "group": "0",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "image",
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "indexExists": false,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "partner_ids",
+                "name": "Partners",
+                "dataType": "arrayLink",
+                "id": "75041639663942840",
+                "link": "WebUser",
+                "group": "1639663912103",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
                 "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "indexExists": false,
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "arrayLink": true,
+                "array": false
+            },
+            {
+                "sysName": "servise_provider_ids",
+                "name": "Service provoders",
+                "dataType": "arrayLink",
+                "id": "77591639664137543",
+                "link": "WebUser",
+                "group": "1639663912103",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "indexExists": false,
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "arrayLink": true,
+                "array": false
+            },
+            {
+                "sysName": "team",
+                "name": "Startup Team",
+                "dataType": "arrayLink",
+                "id": "39861639403965801",
+                "link": "WebUser",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
                 "linkIndexFieldSysName": [],
                 "defaultValue": null,
                 "constraints": null,
@@ -452,49 +1729,116 @@ const App = (props) => {
                 "formatOptions": null,
                 "groupName": null,
                 "typeVariable": {},
-                "linkType": true,
+                "linkType": false,
                 "indexExists": false,
                 "json": false,
                 "linkOrArrayLinkType": true,
+                "arrayLink": true,
+                "array": false
+            },
+            {
+                "sysName": "title",
+                "name": "Title",
+                "dataType": "string",
+                "id": "99321636920358355",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "indexExists": false,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "website",
+                "name": "Web-site",
+                "dataType": "string",
+                "id": "26451639403842222",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "webLink",
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "linkType": false,
+                "indexExists": false,
+                "json": false,
+                "linkOrArrayLinkType": false,
                 "arrayLink": false,
                 "array": false
             }
         ],
         "data": [
             {
-                "arraylinkoff": [
+                "website": "funspace.ru",
+                "description": "Фанспейс – это быстро растущий интернет-стартап. Команда выпускников Физтеха при поддержке известного бизнес-ангела создали и запустили легальный музыкальный стриминг-портал FunSpace.ru Запуск проекта состоялся 1 ноября 2010 года. Работа программистом в команде проекта даст большой опыт работы с современными средствами веб-разработки (C#, MSSQL, собственный js-фреймворк).",
+                "logo": "https://api.directual.com/fileUploaded/jj/web/b06e967b-35c5-49bd-9288-d5e4931f1326.jpeg",
+                "team": [
                     {
-                        "firstName": "Darya",
-                        "id": "daryakyk@gmail.com"
+                        "lastName": "Ершов",
+                        "firstName": "Павел",
+                        "id": "pavel@ershov.org",
+                        "position": "founder",
+                        "displayedName": "founder at Funspace"
+                    }
+                ],
+                "title": "Funspace",
+                "event_ids": [
+                    {
+                        "event": "Request is created",
+                        "id": "2b870b9c-920a-4500-98fd-adeeffbfde88",
+                        "date": 1640551095000,
+                        "project_id": {
+                            "title": "Funspace"
+                        },
+                        "user": {
+                            "firstName": "Павел",
+                            "lastName": "Ершов",
+                            "displayedName": "founder at Funspace",
+                            "id": "pavel@ershov.org"
+                        }
                     },
                     {
-                        "firstName": "Pavel",
-                        "id": "liat@frtk.ru"
+                        "event": "Request is approved",
+                        "id": "c85ea738-c866-441c-87eb-28f8ae382085",
+                        "date": 1640551135000,
+                        "project_id": {
+                            "title": "Funspace"
+                        },
+                        "user": {
+                            "lastName": "Ershov",
+                            "firstName": "Pavel",
+                            "id": "liat@frtk.ru",
+                            "displayedName": "Super Admin",
+                            "userpic": "https://api.directual.com/fileUploaded/jj/web/f13021d4-691f-431b-b212-6b69aacebcec.jpg"
+                        }
                     }
-                ],
-                "id": "1",
-                "bool": true,
-                "link": {
-                    "id": "8e3b3497-28a5-42ee-9d3b-ac21c2376530",
-                    "title": "Directual"
-                },
-                "foo": "bar"
-            },
-            {
-                "foo": "foo",
-                "bool": false,
-                "arraylinkoff": [],
-                "id": "2"
-            },
-            {
-                "foo": "ohuenna",
-                "arraylinkoff": [
-                    {
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    }
-                ],
-                "id": "3"
+                ]
             }
         ],
         "totalPages": 1,
@@ -502,31 +1846,179 @@ const App = (props) => {
         "error": null,
         "fieldScheme": [
             [
-                "arraylinkoff.firstName",
+                "analyst_ids.displayedName",
                 99046526
             ],
             [
-                "arraylinkoff.id",
+                "analyst_ids.firstName",
                 99046526
             ],
             [
-                "bool",
-                99057384
+                "analyst_ids.id",
+                99046526
             ],
             [
-                "foo",
-                99057384
+                "analyst_ids.lastName",
+                99046526
             ],
             [
-                "id",
-                99057384
+                "analyst_ids.userpic",
+                99046526
             ],
             [
-                "link.id",
+                "attached_files",
                 99055454
             ],
             [
-                "link.title",
+                "description",
+                99055454
+            ],
+            [
+                "emails.attachments",
+                99055457
+            ],
+            [
+                "emails.date",
+                99055457
+            ],
+            [
+                "emails.from",
+                99055457
+            ],
+            [
+                "emails.subject",
+                99055457
+            ],
+            [
+                "emails.text",
+                99055457
+            ],
+            [
+                "event_ids.date",
+                99056682
+            ],
+            [
+                "event_ids.event",
+                99056682
+            ],
+            [
+                "event_ids.id",
+                99056682
+            ],
+            [
+                "event_ids.project_id.title",
+                99055454
+            ],
+            [
+                "event_ids.user.displayedName",
+                99046526
+            ],
+            [
+                "event_ids.user.firstName",
+                99046526
+            ],
+            [
+                "event_ids.user.id",
+                99046526
+            ],
+            [
+                "event_ids.user.lastName",
+                99046526
+            ],
+            [
+                "event_ids.user.userpic",
+                99046526
+            ],
+            [
+                "investor_ids.displayedName",
+                99046526
+            ],
+            [
+                "investor_ids.firstName",
+                99046526
+            ],
+            [
+                "investor_ids.id",
+                99046526
+            ],
+            [
+                "investor_ids.lastName",
+                99046526
+            ],
+            [
+                "investor_ids.userpic",
+                99046526
+            ],
+            [
+                "logo",
+                99055454
+            ],
+            [
+                "partner_ids.displayedName",
+                99046526
+            ],
+            [
+                "partner_ids.firstName",
+                99046526
+            ],
+            [
+                "partner_ids.id",
+                99046526
+            ],
+            [
+                "partner_ids.lastName",
+                99046526
+            ],
+            [
+                "partner_ids.userpic",
+                99046526
+            ],
+            [
+                "servise_provider_ids.displayedName",
+                99046526
+            ],
+            [
+                "servise_provider_ids.firstName",
+                99046526
+            ],
+            [
+                "servise_provider_ids.id",
+                99046526
+            ],
+            [
+                "servise_provider_ids.lastName",
+                99046526
+            ],
+            [
+                "servise_provider_ids.userpic",
+                99046526
+            ],
+            [
+                "team.displayedName",
+                99046526
+            ],
+            [
+                "team.firstName",
+                99046526
+            ],
+            [
+                "team.lastName",
+                99046526
+            ],
+            [
+                "team.position",
+                99046526
+            ],
+            [
+                "team.userpic",
+                99046526
+            ],
+            [
+                "title",
+                99055454
+            ],
+            [
+                "website",
                 99055454
             ]
         ],
@@ -540,17 +2032,17 @@ const App = (props) => {
                 "dateCreated": "2021-11-13T20:03:09Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"dateLastActivity\",\"name\":\"dateLastActivity\",\"dataType\":\"string\",\"id\":\"8\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"dateCreated\",\"name\":\"dateCreated\",\"dataType\":\"string\",\"id\":\"11\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"isAuthorization\",\"name\":\"isAuthorization\",\"dataType\":\"boolean\",\"id\":\"7\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"phone\",\"name\":\"Phone\",\"dataType\":\"string\",\"id\":\"10\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"email\",\"name\":\"Email\",\"dataType\":\"string\",\"id\":\"9\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"userpic\",\"name\":\"User pic\",\"dataType\":\"file\",\"id\":\"1\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"id\",\"name\":\"Username (login)\",\"dataType\":\"id\",\"id\":\"13\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"role\",\"name\":\"Roles\",\"dataType\":\"string\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"password\",\"name\":\"Password (hash)\",\"dataType\":\"string\",\"id\":\"12\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"firstName\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"lastName\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"gender\",\"name\":\"Gender\",\"dataType\":\"string\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"isBlocked\",\"name\":\"Block user\",\"dataType\":\"boolean\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"position\",\"name\":\"Position\",\"dataType\":\"string\",\"id\":\"80781639404250182\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"displayedName\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"36841639666350964\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"secret\",\"name\":\"secret\",\"dataType\":\"string\",\"id\":\"81131636839496227\",\"link\":\"\",\"group\":\"1636839487957\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"project_startup_ids\",\"name\":\"Startups I work for\",\"dataType\":\"arrayLink\",\"id\":\"99101639666544049\",\"link\":\"projects\",\"group\":\"1639404461476\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"project_related_ids\",\"name\":\"Startups I work on\",\"dataType\":\"arrayLink\",\"id\":\"10591639666580160\",\"link\":\"projects\",\"group\":\"1639404461476\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"notif_TG\",\"name\":\"Notify me on Telegram\",\"dataType\":\"boolean\",\"id\":\"55581639915058553\",\"link\":\"\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Yes\",\"No\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"notif_Email\",\"name\":\"Notify me by Email\",\"dataType\":\"boolean\",\"id\":\"61231639915065277\",\"link\":\"\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Yes\",\"No\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"TChat\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"51251639915154028\",\"link\":\"TChat\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"TG_connected\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"14511639917675138\",\"link\":\"\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false}]",
-                "jsonGroupSettings": "[{\"name\":\"Password restoring\",\"id\":1636839487957,\"order\":3},{\"name\":\"System fields (LEGACY)\",\"id\":-1776115286,\"order\":4},{\"name\":\"Notifications\",\"id\":1639915049523,\"order\":2},{\"name\":\"Contacts\",\"id\":-502807437,\"order\":1},{\"name\":\"My projects\",\"id\":1639404461476,\"order\":0}]",
+                "jsonObject": "[{\"sysName\":\"dateLastActivity\",\"name\":\"dateLastActivity\",\"dataType\":\"string\",\"id\":\"8\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"dateCreated\",\"name\":\"dateCreated\",\"dataType\":\"string\",\"id\":\"11\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"isAuthorization\",\"name\":\"isAuthorization\",\"dataType\":\"boolean\",\"id\":\"7\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"phone\",\"name\":\"Phone\",\"dataType\":\"string\",\"id\":\"10\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"phone\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"email\",\"name\":\"Email\",\"dataType\":\"string\",\"id\":\"9\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"email\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"userpic\",\"name\":\"User pic\",\"dataType\":\"file\",\"id\":\"1\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"id\",\"name\":\"Username (login)\",\"dataType\":\"id\",\"id\":\"13\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"role\",\"name\":\"Roles\",\"dataType\":\"string\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"password\",\"name\":\"Password (hash)\",\"dataType\":\"string\",\"id\":\"12\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"firstName\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"lastName\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"gender\",\"name\":\"Gender\",\"dataType\":\"string\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"isBlocked\",\"name\":\"Block user\",\"dataType\":\"boolean\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"displayedName\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"36841639666350964\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"secret\",\"name\":\"secret\",\"dataType\":\"string\",\"id\":\"81131636839496227\",\"link\":\"\",\"group\":\"1636839487957\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"project_related_ids\",\"name\":\"Startups I work with\",\"dataType\":\"arrayLink\",\"id\":\"10591639666580160\",\"link\":\"projects\",\"group\":\"1639404461476\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"notif_TG\",\"name\":\"Notify me on Telegram\",\"dataType\":\"boolean\",\"id\":\"55581639915058553\",\"link\":\"\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Yes\",\"No\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"notif_Email\",\"name\":\"Notify me by Email\",\"dataType\":\"boolean\",\"id\":\"61231639915065277\",\"link\":\"\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Yes\",\"No\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"TChat\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"51251639915154028\",\"link\":\"TChat\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"TG_connected\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"14511639917675138\",\"link\":\"\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"project_startup_ids\",\"name\":\"Startups I founded\",\"dataType\":\"arrayLink\",\"id\":\"99101639666544049\",\"link\":\"projects\",\"group\":\"1640545084014\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"position\",\"name\":\"Position\",\"dataType\":\"string\",\"id\":\"80781639404250182\",\"link\":null,\"group\":\"1640545084014\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"investor_description\",\"name\":\"Investor description\",\"dataType\":\"string\",\"id\":\"20761640545659727\",\"link\":null,\"group\":\"1640545217327\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"investor_name\",\"name\":\"Fund name\",\"dataType\":\"string\",\"id\":\"92711640545660269\",\"link\":null,\"group\":\"1640545217327\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"investor_url\",\"name\":\"Fund web-site or Linkedin\",\"dataType\":\"string\",\"id\":\"66071640545660807\",\"link\":\"\",\"group\":\"1640545217327\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"partner_name\",\"name\":\"Partner name\",\"dataType\":\"string\",\"id\":\"50731640545683109\",\"link\":null,\"group\":\"1640545225304\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"partner_description\",\"name\":\"Partner description\",\"dataType\":\"string\",\"id\":\"63771640545684282\",\"link\":null,\"group\":\"1640545225304\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"partner_url\",\"name\":\"Web-site\",\"dataType\":\"string\",\"id\":\"35691640545684840\",\"link\":\"\",\"group\":\"1640545225304\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"sp_name\",\"name\":\"Service Provider name\",\"dataType\":\"string\",\"id\":\"42411640545708896\",\"link\":null,\"group\":\"1640545234672\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"sp_description\",\"name\":\"What service it provides\",\"dataType\":\"string\",\"id\":\"20711640545710396\",\"link\":null,\"group\":\"1640545234672\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"sp_url\",\"name\":\"Web-site\",\"dataType\":\"string\",\"id\":\"66271640545710955\",\"link\":\"\",\"group\":\"1640545234672\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"Password restoring\",\"id\":1636839487957,\"order\":7},{\"name\":\"Startuper fields\",\"id\":1640545084014,\"order\":0},{\"name\":\"Service Provider fields\",\"id\":1640545234672,\"order\":4},{\"name\":\"Investor fields\",\"id\":1640545217327,\"order\":2},{\"name\":\"System fields (LEGACY)\",\"id\":-1776115286,\"order\":8},{\"name\":\"Partner fields\",\"id\":1640545225304,\"order\":3},{\"name\":\"Notifications\",\"id\":1639915049523,\"order\":6},{\"name\":\"Contacts\",\"id\":-502807437,\"order\":5},{\"name\":\"My projects\",\"id\":1639404461476,\"order\":1}]",
                 "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"},{\"sysName\":\"displayedName\"}]",
                 "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-12-19T13:12:56Z",
+                "dateChanged": "2021-12-26T20:14:54Z",
                 "createBy": 0,
-                "changedBy": 21,
+                "changedBy": 1,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "innerIDField": {
@@ -587,12 +2079,12 @@ const App = (props) => {
             "99055454": {
                 "networkID": 10594,
                 "sysName": "projects",
-                "name": "Projects",
+                "name": "Projects (pipeline)",
                 "id": 99055454,
                 "dateCreated": "2021-11-14T19:35:37Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"title\",\"name\":\"Title\",\"dataType\":\"string\",\"id\":\"99321636920358355\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"description\",\"name\":\"Short description\",\"dataType\":\"string\",\"id\":\"24521636920364485\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"logo\",\"name\":\"Logo\",\"dataType\":\"file\",\"id\":\"25231639403856783\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"website\",\"name\":\"Web-site\",\"dataType\":\"string\",\"id\":\"26451639403842222\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"attached_files\",\"name\":\"Attached files\",\"dataType\":\"file\",\"id\":\"63191639403918882\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleFiles\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"team\",\"name\":\"Startup Team\",\"dataType\":\"arrayLink\",\"id\":\"39861639403965801\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"domains\",\"name\":\"List of domains\",\"dataType\":\"array\",\"id\":\"23651636918569823\",\"link\":\"\",\"group\":\"1636918595238\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":true},{\"sysName\":\"attachments\",\"name\":\"Attachments\",\"dataType\":\"arrayLink\",\"id\":\"53061636920409833\",\"link\":\"attachments\",\"group\":\"1636918595238\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"emails\",\"name\":\"Emails\",\"dataType\":\"arrayLink\",\"id\":\"73331637165505301\",\"link\":\"parsed_emails\",\"group\":\"1636918595238\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"investor_ids\",\"name\":\"Investors who have an access\",\"dataType\":\"arrayLink\",\"id\":\"43731639663918598\",\"link\":\"WebUser\",\"group\":\"1639663912103\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"analyst_ids\",\"name\":\"Analysts team\",\"dataType\":\"arrayLink\",\"id\":\"14231639663934567\",\"link\":\"WebUser\",\"group\":\"1639663912103\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"partner_ids\",\"name\":\"Partners\",\"dataType\":\"arrayLink\",\"id\":\"75041639663942840\",\"link\":\"WebUser\",\"group\":\"1639663912103\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"servise_provider_ids\",\"name\":\"Service provoders\",\"dataType\":\"arrayLink\",\"id\":\"77591639664137543\",\"link\":\"WebUser\",\"group\":\"1639663912103\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"event_ids\",\"name\":\"Events\",\"dataType\":\"arrayLink\",\"id\":\"34621639665365546\",\"link\":\"projects_events\",\"group\":\"1639663912103\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"admin\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"30561639664906663\",\"link\":\"\",\"group\":\"1639664898470\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"title\",\"name\":\"Title\",\"dataType\":\"string\",\"id\":\"99321636920358355\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"description\",\"name\":\"Short description\",\"dataType\":\"string\",\"id\":\"24521636920364485\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"logo\",\"name\":\"Logo\",\"dataType\":\"file\",\"id\":\"25231639403856783\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"website\",\"name\":\"Web-site\",\"dataType\":\"string\",\"id\":\"26451639403842222\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"attached_files\",\"name\":\"Attached files\",\"dataType\":\"file\",\"id\":\"63191639403918882\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleFiles\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"team\",\"name\":\"Startup Team\",\"dataType\":\"arrayLink\",\"id\":\"39861639403965801\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"domains\",\"name\":\"List of domains\",\"dataType\":\"array\",\"id\":\"23651636918569823\",\"link\":\"\",\"group\":\"1636918595238\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":true},{\"sysName\":\"attachments\",\"name\":\"Attachments\",\"dataType\":\"arrayLink\",\"id\":\"53061636920409833\",\"link\":\"attachments\",\"group\":\"1636918595238\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"emails\",\"name\":\"Emails\",\"dataType\":\"arrayLink\",\"id\":\"73331637165505301\",\"link\":\"parsed_emails\",\"group\":\"1636918595238\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"investor_ids\",\"name\":\"Investors who have an access\",\"dataType\":\"arrayLink\",\"id\":\"43731639663918598\",\"link\":\"WebUser\",\"group\":\"1639663912103\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"analyst_ids\",\"name\":\"Analysts team\",\"dataType\":\"arrayLink\",\"id\":\"14231639663934567\",\"link\":\"WebUser\",\"group\":\"1639663912103\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"partner_ids\",\"name\":\"Partners\",\"dataType\":\"arrayLink\",\"id\":\"75041639663942840\",\"link\":\"WebUser\",\"group\":\"1639663912103\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"servise_provider_ids\",\"name\":\"Service provoders\",\"dataType\":\"arrayLink\",\"id\":\"77591639664137543\",\"link\":\"WebUser\",\"group\":\"1639663912103\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"event_ids\",\"name\":\"Events\",\"dataType\":\"arrayLink\",\"id\":\"34621639665365546\",\"link\":\"projects_events\",\"group\":\"1639663912103\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"pipeline_status\",\"name\":\"Pipeline status\",\"dataType\":\"link\",\"id\":\"64161640539258747\",\"link\":\"pipeline_statuses\",\"group\":\"1639663912103\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"admin\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"30561639664906663\",\"link\":\"\",\"group\":\"1639664898470\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
                 "jsonGroupSettings": "[{\"name\":\"Emails parsing\",\"id\":1636918595238,\"order\":0},{\"name\":\"Workflow\",\"id\":1639663912103,\"order\":1},{\"name\":\"Technical group\",\"id\":1639664898470,\"order\":2}]",
                 "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
                 "jsonSettings": null,
@@ -600,7 +2092,7 @@ const App = (props) => {
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-12-16T14:36:19Z",
+                "dateChanged": "2021-12-26T18:21:08Z",
                 "createBy": 21,
                 "changedBy": 1,
                 "_settings": null,
@@ -634,25 +2126,25 @@ const App = (props) => {
                     "array": false
                 },
                 "objectIDSysName": "id",
-                "folderId": null
+                "folderId": 33677059
             },
-            "99057384": {
+            "99055457": {
                 "networkID": 10594,
-                "sysName": "test",
-                "name": "TEST",
-                "id": 99057384,
-                "dateCreated": "2021-12-19T16:12:13Z",
+                "sysName": "parsed_emails",
+                "name": "parsed emails",
+                "id": 99055457,
+                "dateCreated": "2021-11-14T19:39:02Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"link\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"25581639930347194\",\"link\":\"projects\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"arrayLink\":false,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"array\":false},{\"sysName\":\"bool\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"25651639931600442\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"arraylinkoff\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"27131639930360744\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"arrayLink\":true,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"array\":false},{\"sysName\":\"foo\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"58361639930346647\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"subject\",\"dataType\":\"string\",\"name\":\"Subject\",\"id\":\"92441637161160551\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"from\",\"dataType\":\"string\",\"name\":\"From\",\"id\":\"11801637161162900\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"project_id\",\"dataType\":\"link\",\"name\":\"Project\",\"id\":\"62851637161178710\",\"link\":\"projects\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"text\",\"dataType\":\"string\",\"name\":\"Text\",\"id\":\"79841637161192563\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"html\",\"dataType\":\"string\",\"name\":\"Html text\",\"id\":\"42911637161208858\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"html\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"attachment_ids\",\"dataType\":\"arrayLink\",\"name\":\"Attachments\",\"id\":\"99301637161220184\",\"link\":\"attachments\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"date\",\"dataType\":\"date\",\"name\":\"Date\",\"id\":\"53721637161237442\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD MMM, Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"attachments\",\"dataType\":\"file\",\"name\":\"Attachments\",\"id\":\"47501637166464151\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleFiles\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"routed\",\"dataType\":\"boolean\",\"name\":\"Routed to a project\",\"id\":\"35031637165370928\",\"link\":\"\",\"group\":\"1637165364040\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"Auto routing\",\"id\":1637165364040,\"order\":0}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"from\"},{\"sysName\":\"subject\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-12-19T16:33:25Z",
+                "dateChanged": "2021-11-17T16:35:26Z",
                 "createBy": 21,
                 "changedBy": 21,
                 "_settings": null,
@@ -686,15 +2178,67 @@ const App = (props) => {
                     "array": false
                 },
                 "objectIDSysName": "id",
-                "folderId": null
+                "folderId": 33671252
+            },
+            "99056682": {
+                "networkID": 10594,
+                "sysName": "projects_events",
+                "name": "🛎 Projects' Events",
+                "id": 99056682,
+                "dateCreated": "2021-12-16T14:33:47Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"project_id\",\"name\":\"Project\",\"dataType\":\"link\",\"id\":\"85031639665247381\",\"link\":\"projects\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"event\",\"name\":\"Event\",\"dataType\":\"string\",\"id\":\"25531639665248085\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"user\",\"name\":\"User\",\"dataType\":\"link\",\"id\":\"48011639665266301\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"date\",\"name\":\"Date\",\"dataType\":\"date\",\"id\":\"25831639665278300\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD MMM, Y,\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"event\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": false,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-12-26T18:21:31Z",
+                "createBy": 1,
+                "changedBy": 1,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "typeVariable": {},
+                    "linkType": false,
+                    "indexExists": false,
+                    "json": false,
+                    "linkOrArrayLinkType": false,
+                    "arrayLink": false,
+                    "array": false
+                },
+                "objectIDSysName": "id",
+                "folderId": 33677059
             }
         },
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
         "fileds": [],
-        "quickSearch": "true",
-        "httpParams": {}
+        "quickSearch": "false",
+        "httpParams": []
     }
 
     let newCardActions = {

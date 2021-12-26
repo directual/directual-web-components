@@ -1117,6 +1117,10 @@ function CardAction({ action, writeError, actionParams, debug, submitAction, onC
 
     const handleSubmitAction = () => {
 
+        // это мы даем сценариям просраться и обновляем карточки/таблицу :)
+        setTimeout(()=>refresh(),3000)
+        setTimeout(()=>refresh(),5000)
+
         if (((!actionData.formMapping || actionData.formMapping.length == 0) && actionData.displayAs == 'button') ||
             ((!actionData.formData || actionData.formData.length == 0) && actionData.displayAs == 'form')) { noActionData() }
         else {

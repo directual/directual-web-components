@@ -121,6 +121,7 @@
 }
 .card .cardInnerWrapper .cardImage {
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
   flex-shrink: 0;
   z-index: 10;
@@ -155,6 +156,7 @@
 }
 .card .cardInnerWrapper.left {
   display: flex;
+  align-items: center;
 }
 .card .cardInnerWrapper.left .cardImage {
   background-color: var(--field-border-color);
