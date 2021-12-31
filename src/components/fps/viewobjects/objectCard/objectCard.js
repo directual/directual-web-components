@@ -396,7 +396,7 @@ export function ObjectCard(props) {
                     className={`${styles.refreshObject} icon icon-refresh`}
                     onClick={refresh}
                 />
-            } 
+            }
             <div className={styles.objectCardHeader}>
                 <div onClick={props.onClose}
                     className={`${styles.closeObjectCard} icon ${props.firstCard ? 'icon-close' : 'icon-back'} ${showLinkedObject && styles.hidden}`}></div>
@@ -728,10 +728,23 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
 
     const linkedObj = object[field.sysName].value ? Array.isArray(object[field.sysName].value) ? object[field.sysName].value[0] : object[field.sysName].value : {}
     const struct = getStructure(linkedObj, transformTableFieldScheme(field.sysName, tableFieldScheme))
-    const enrichedObject = composeObject(linkedObj, struct)
+    //const enrichedObject = composeObject(linkedObj, struct)
 
     // console.log('enrichedObject')
     // console.log(enrichedObject)
+    // console.log(object[field.sysName])
+    // console.log(linkedObj)
+    // console.log(struct)
+
+    // в объекте может не быть каких-то полей, поэтому я ебанул синтетический объект, чтобы собрать
+    // по структуре всю метаинформацию:
+    let syntheticObject = {}
+    struct && struct.fieldStructure && struct.fieldStructure.length &&
+        struct.fieldStructure.forEach(i => {
+            syntheticObject[i.sysName] = ''
+        })
+
+    const enrichedObject = composeObject(syntheticObject, struct)
 
     const [edit, setEdit] = useState(false)
 
@@ -779,7 +792,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
         if (JSON.stringify(costyl) != JSON.stringify(object)) {
             setCostyl(object)
             setRenderAL(sortArray(object[field.sysName].value) || [])
-            console.log('оп оп костылёк')
+            // console.log('оп оп костылёк')
         }
         // if (JSON.stringify(object[field.sysName].value) != JSON.stringify(renderAL) && typeof object[field.sysName] !== 'string') {
         //     setRenderAL(sortArray(object[field.sysName].value) || [])
@@ -1118,8 +1131,8 @@ function CardAction({ action, writeError, actionParams, debug, submitAction, onC
     const handleSubmitAction = () => {
 
         // это мы даем сценариям просраться и обновляем карточки/таблицу :)
-        setTimeout(()=>refresh(),3000)
-        setTimeout(()=>refresh(),5000)
+        setTimeout(() => refresh(), 3000)
+        setTimeout(() => refresh(), 5000)
 
         if (((!actionData.formMapping || actionData.formMapping.length == 0) && actionData.displayAs == 'button') ||
             ((!actionData.formData || actionData.formData.length == 0) && actionData.displayAs == 'form')) { noActionData() }
@@ -1134,7 +1147,7 @@ function CardAction({ action, writeError, actionParams, debug, submitAction, onC
 
     let conds = actionParams ? (actionParams.conditionals ? [...actionParams.conditionals] : null) : null
     if (conds) {
-        
+
         conds.forEach(cond => {
             if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type == 'const') {
                 cond.checkValue = cond.value

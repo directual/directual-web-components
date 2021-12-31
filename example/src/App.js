@@ -3608,8 +3608,8 @@ const App = (props) => {
     }
 
     let exampleTable = {
-        "sl": "getOrdersToDelivery",
-        "pageSize": "20",
+        "sl": "4stage-offers",
+        "pageSize": "10",
         "headerField": null,
         "params": {
             "cardListLayout": "grid",
@@ -3624,377 +3624,222 @@ const App = (props) => {
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "CheckStatusErrorCode",
+                        "fieldSysName": "clients_email",
                         "fetch": [],
-                        "sysName": "CheckStatusErrorCode",
-                        "name": "errorCode",
+                        "sysName": "clients_email",
+                        "name": "Эмейл клиента",
                         "dataType": "string",
-                        "format": "",
+                        "format": "email",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "CheckStatusErrorMessage",
+                        "fieldSysName": "company_inn",
                         "fetch": [],
-                        "sysName": "CheckStatusErrorMessage",
-                        "name": "errorMessage",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "approveStatus",
-                        "fetch": [],
-                        "sysName": "approveStatus",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "approveStatusText",
-                        "fetch": [],
-                        "sysName": "approveStatusText",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "approvedCost",
-                        "fetch": [],
-                        "sysName": "approvedCost",
-                        "name": "Стоимость подтвер.",
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "approvedNumber",
-                        "fetch": [],
-                        "sysName": "approvedNumber",
-                        "name": "Количество согласованных позиций",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "bankOrderID",
-                        "fetch": [],
-                        "sysName": "bankOrderID",
-                        "name": "bankOrderID",
+                        "sysName": "company_inn",
+                        "name": "ИНН",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": null
                     },
                     {
-                        "fieldSysName": "checkStatusResponse",
+                        "fieldSysName": "company_name",
                         "fetch": [],
-                        "sysName": "checkStatusResponse",
-                        "name": "checkStatusResponse",
-                        "dataType": "json",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "cost",
-                        "fetch": [],
-                        "sysName": "cost",
-                        "name": "Стоимость заказа",
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "customer",
-                        "fetch": [],
-                        "sysName": "customer",
-                        "name": "Покупатель",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "WebUser"
-                    },
-                    {
-                        "fieldSysName": "delivery",
-                        "fetch": [
-                            {
-                                "fieldSysName": "description",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "price",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "delivery",
-                        "name": "Доставка",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "delivery"
-                    },
-                    {
-                        "fieldSysName": "errorCode",
-                        "fetch": [],
-                        "sysName": "errorCode",
-                        "name": "Error code",
+                        "sysName": "company_name",
+                        "name": "Название компании",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": null
                     },
                     {
-                        "fieldSysName": "errorMessage",
+                        "fieldSysName": "email_send_date",
                         "fetch": [],
-                        "sysName": "errorMessage",
-                        "name": "Error message",
-                        "dataType": "string",
+                        "sysName": "email_send_date",
+                        "name": "Дата отправки эмейла",
+                        "dataType": "date",
                         "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "finishPaymentErrorCode",
-                        "fetch": [],
-                        "sysName": "finishPaymentErrorCode",
-                        "name": "finishPaymentErrorCode",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
                         "link": ""
-                    },
-                    {
-                        "fieldSysName": "finishPaymentErrorMessage",
-                        "fetch": [],
-                        "sysName": "finishPaymentErrorMessage",
-                        "name": "finishPaymentErrorMessage",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "finishPaymentResponse",
-                        "fetch": [],
-                        "sysName": "finishPaymentResponse",
-                        "name": "finishPaymentResponse",
-                        "dataType": "json",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "good",
-                        "fetch": [
-                            {
-                                "fieldSysName": "agreed",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "agreedAction",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "brandID",
-                                "condition": null,
-                                "fetch": [
-                                    {
-                                        "fieldSysName": "brandName",
-                                        "condition": null,
-                                        "fetch": []
-                                    },
-                                    {
-                                        "fieldSysName": "id",
-                                        "condition": null,
-                                        "fetch": []
-                                    }
-                                ]
-                            },
-                            {
-                                "fieldSysName": "brandName",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "colorName",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "customer",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "deliveryNumber",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "description",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "good",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "goodsDescription_id",
-                                "condition": null,
-                                "fetch": [
-                                    {
-                                        "fieldSysName": "id",
-                                        "condition": null,
-                                        "fetch": []
-                                    },
-                                    {
-                                        "fieldSysName": "name",
-                                        "condition": null,
-                                        "fetch": []
-                                    }
-                                ]
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "isNew",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "isSale",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "itemCost",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "oldPrice",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "photo",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "price",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "quantity",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "status",
-                                "condition": null,
-                                "fetch": [
-                                    {
-                                        "fieldSysName": "id",
-                                        "condition": null,
-                                        "fetch": []
-                                    },
-                                    {
-                                        "fieldSysName": "status",
-                                        "condition": null,
-                                        "fetch": []
-                                    },
-                                    {
-                                        "fieldSysName": "userStatus",
-                                        "condition": null,
-                                        "fetch": []
-                                    }
-                                ]
-                            }
-                        ],
-                        "sysName": "good",
-                        "name": "Позиции в заказе",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "itemsInCart"
                     },
                     {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
-                        "name": "id",
+                        "name": "ID",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "itemsNumber",
-                        "fetch": [],
-                        "sysName": "itemsNumber",
-                        "name": "Количество позиций",
-                        "dataType": "number",
+                        "fieldSysName": "invoices_arrayLink",
+                        "fetch": [
+                            {
+                                "fieldSysName": "company_inn",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "company_name",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "invoiceDate",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "invoiceID",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "invoice_status",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "order_description",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "order_id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "order_sum",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "paymentMethod_terminalID",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "paymentStatus",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "paymentUrl",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "payment_date",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "invoices_arrayLink",
+                        "name": "Инвойсы",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
+                        "link": "invoice"
+                    },
+                    {
+                        "fieldSysName": "offer_date",
+                        "fetch": [],
+                        "sysName": "offer_date",
+                        "name": "Дата начало",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "ru",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
                         "link": ""
                     },
                     {
-                        "fieldSysName": "notApprovedNumber",
+                        "fieldSysName": "offer_text",
                         "fetch": [],
-                        "sysName": "notApprovedNumber",
-                        "name": "Количество несогласованных позиций",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "orderNumber",
-                        "fetch": [],
-                        "sysName": "orderNumber",
-                        "name": "Номер заказа",
+                        "sysName": "offer_text",
+                        "name": "Офер",
                         "dataType": "string",
-                        "format": "",
+                        "format": "markdown",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "orderStatus",
+                        "fieldSysName": "payment_color",
+                        "fetch": [],
+                        "sysName": "payment_color",
+                        "name": "payment_color",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "payment_date",
+                        "fetch": [],
+                        "sysName": "payment_date",
+                        "name": "Дата оплаты",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "payment_status",
                         "fetch": [
                             {
                                 "fieldSysName": "id",
@@ -4002,57 +3847,79 @@ const App = (props) => {
                                 "fetch": []
                             },
                             {
-                                "fieldSysName": "status",
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "status_color",
                                 "condition": null,
                                 "fetch": []
                             }
                         ],
-                        "sysName": "orderStatus",
-                        "name": "Статус заказа",
+                        "sysName": "payment_status",
+                        "name": "Статус оплаты",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "orderStatuses"
+                        "link": "4_stage_payment_status"
                     },
                     {
-                        "fieldSysName": "paymentStatus",
+                        "fieldSysName": "payment_sum",
                         "fetch": [],
-                        "sysName": "paymentStatus",
-                        "name": "paymentStatus",
-                        "dataType": "string",
+                        "sysName": "payment_sum",
+                        "name": "Сумма оплаты",
+                        "dataType": "number",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "paymentURL",
+                        "fieldSysName": "payment_webLink",
                         "fetch": [],
-                        "sysName": "paymentURL",
-                        "name": "paymentURL",
+                        "sysName": "payment_webLink",
+                        "name": "Ссылка на страницу с оплатой",
                         "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "registrationResponse",
-                        "fetch": [],
-                        "sysName": "registrationResponse",
-                        "name": "Registration response",
-                        "dataType": "json",
-                        "format": "",
+                        "format": "webLink",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "returnURL",
-                        "fetch": [],
-                        "sysName": "returnURL",
-                        "name": "returnURL",
-                        "dataType": "string",
+                        "fieldSysName": "requestID_link",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "requestID_link",
+                        "name": "ID заявки",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": "scoring_request_tgbot"
+                    },
+                    {
+                        "fieldSysName": "stage_status",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "stage_status",
+                        "name": "Статус этапа",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "4_stage_statuses"
                     }
                 ],
                 "writeFields": [
@@ -4060,83 +3927,58 @@ const App = (props) => {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
-                        "name": "id",
+                        "name": "ID",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
+                    },
+                    {
+                        "fieldSysName": "payment_doc",
+                        "fetch": [],
+                        "sysName": "payment_doc",
+                        "name": "Платежный документ",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "payment_status",
+                        "fetch": [],
+                        "sysName": "payment_status",
+                        "name": "Статус оплаты",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "4_stage_payment_status"
+                    },
+                    {
+                        "fieldSysName": "stage_status",
+                        "fetch": [],
+                        "sysName": "stage_status",
+                        "name": "Статус этапа",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "4_stage_statuses"
                     }
                 ],
                 "fields": {
-                    "CheckStatusErrorCode": {
-                        "id": "CheckStatusErrorCode",
-                        "content": "errorCode",
+                    "clients_email": {
+                        "id": "clients_email",
+                        "content": "Эмейл клиента",
                         "type": "field",
                         "dataType": "string",
-                        "format": "",
+                        "format": "email",
                         "formatOptions": {},
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "CheckStatusErrorMessage": {
-                        "id": "CheckStatusErrorMessage",
-                        "content": "errorMessage",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "approveStatus": {
-                        "id": "approveStatus",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "approveStatusText": {
-                        "id": "approveStatusText",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "approvedCost": {
-                        "id": "approvedCost",
-                        "content": "Стоимость подтвер.",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "approvedNumber": {
-                        "id": "approvedNumber",
-                        "content": "Количество согласованных позиций",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "bankOrderID": {
-                        "id": "bankOrderID",
-                        "content": "bankOrderID",
+                    "company_inn": {
+                        "id": "company_inn",
+                        "content": "ИНН",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
@@ -4145,53 +3987,9 @@ const App = (props) => {
                         "link": null,
                         "actions": []
                     },
-                    "checkStatusResponse": {
-                        "id": "checkStatusResponse",
-                        "content": "checkStatusResponse",
-                        "type": "field",
-                        "dataType": "json",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "cost": {
-                        "id": "cost",
-                        "content": "Стоимость заказа",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "customer": {
-                        "id": "customer",
-                        "content": "Покупатель",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "WebUser",
-                        "actions": []
-                    },
-                    "delivery": {
-                        "id": "delivery",
-                        "content": "Доставка",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "delivery",
-                        "actions": []
-                    },
-                    "errorCode": {
-                        "id": "errorCode",
-                        "content": "Error code",
+                    "company_name": {
+                        "id": "company_name",
+                        "content": "Название компании",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
@@ -4200,191 +3998,47 @@ const App = (props) => {
                         "link": null,
                         "actions": []
                     },
-                    "errorMessage": {
-                        "id": "errorMessage",
-                        "content": "Error message",
+                    "email_send_date": {
+                        "id": "email_send_date",
+                        "content": "Дата отправки эмейла",
                         "type": "field",
-                        "dataType": "string",
+                        "dataType": "date",
                         "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "finishPaymentErrorCode": {
-                        "id": "finishPaymentErrorCode",
-                        "content": "finishPaymentErrorCode",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "finishPaymentErrorMessage": {
-                        "id": "finishPaymentErrorMessage",
-                        "content": "finishPaymentErrorMessage",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "finishPaymentResponse": {
-                        "id": "finishPaymentResponse",
-                        "content": "finishPaymentResponse",
-                        "type": "field",
-                        "dataType": "json",
-                        "format": "",
-                        "formatOptions": {},
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
                         "read": true,
                         "link": "",
                         "actions": []
-                    },
-                    "good": {
-                        "id": "good",
-                        "content": "Позиции в заказе",
-                        "type": "field",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "itemsInCart",
-                        "actions": [
-                            {
-                                "sysName": "enterDeliveryNum",
-                                "id": "88401632207650438",
-                                "name": "Enter Deliver Number",
-                                "displayAs": "form",
-                                "callFrom": "linked",
-                                "callFromField": "good",
-                                "SLtype": "other",
-                                "fields": {
-                                    "readFields": [
-                                        {
-                                            "fieldSysName": "id",
-                                            "fetch": [],
-                                            "sysName": "id",
-                                            "name": "id",
-                                            "dataType": "id",
-                                            "format": "",
-                                            "formatOptions": {},
-                                            "link": ""
-                                        }
-                                    ],
-                                    "writeFields": [
-                                        {
-                                            "fieldSysName": "deliveryNumber",
-                                            "fetch": [],
-                                            "sysName": "deliveryNumber",
-                                            "name": "Номер доставки",
-                                            "dataType": "string",
-                                            "format": "",
-                                            "formatOptions": {},
-                                            "link": null
-                                        },
-                                        {
-                                            "fieldSysName": "good",
-                                            "fetch": [],
-                                            "sysName": "good",
-                                            "name": "Товар",
-                                            "dataType": "link",
-                                            "format": "",
-                                            "formatOptions": {},
-                                            "link": "goodSpecification"
-                                        },
-                                        {
-                                            "fieldSysName": "id",
-                                            "fetch": [],
-                                            "sysName": "id",
-                                            "name": "id",
-                                            "dataType": "id",
-                                            "format": "",
-                                            "formatOptions": {},
-                                            "link": ""
-                                        },
-                                        {
-                                            "fieldSysName": "order",
-                                            "fetch": [],
-                                            "sysName": "order",
-                                            "name": "Заказ",
-                                            "dataType": "link",
-                                            "format": "",
-                                            "formatOptions": {},
-                                            "link": "orders"
-                                        },
-                                        {
-                                            "fieldSysName": "orderStatus",
-                                            "fetch": [],
-                                            "sysName": "orderStatus",
-                                            "name": "Статус заказа",
-                                            "dataType": "link",
-                                            "format": "",
-                                            "formatOptions": {},
-                                            "link": "orderStatuses"
-                                        },
-                                        {
-                                            "fieldSysName": "status",
-                                            "fetch": [],
-                                            "sysName": "status",
-                                            "name": "Статус",
-                                            "dataType": "link",
-                                            "format": "",
-                                            "formatOptions": {},
-                                            "link": "orderStatuses"
-                                        }
-                                    ]
-                                },
-                                "formFields": [
-                                    {
-                                        "id": "25741632207700698",
-                                        "field": {
-                                            "fieldSysName": "deliveryNumber",
-                                            "fetch": [],
-                                            "sysName": "deliveryNumber",
-                                            "name": "Номер доставки",
-                                            "dataType": "string",
-                                            "format": "",
-                                            "formatOptions": {},
-                                            "link": null
-                                        }
-                                    }
-                                ],
-                                "formMapping": [
-                                    {
-                                        "id": "24331632207708264",
-                                        "target": "id",
-                                        "type": "linkedField",
-                                        "value": "id"
-                                    },
-                                    {
-                                        "id": "39451633080607965",
-                                        "target": "status",
-                                        "type": "const",
-                                        "value": "withConsignmentNote"
-                                    },
-                                    {
-                                        "id": "33181633692047504",
-                                        "target": "orderStatus",
-                                        "type": "const",
-                                        "value": "withConsignmentNote"
-                                    }
-                                ],
-                                "buttonTitle": "Отправить",
-                                "conditionals": [],
-                                "buttonIcon": "cube",
-                                "buttonType": "accent",
-                                "closePopup": true,
-                                "showMessage": false
-                            }
-                        ]
                     },
                     "id": {
                         "id": "id",
-                        "content": "id",
+                        "content": "ID",
                         "type": "field",
                         "dataType": "id",
                         "format": "",
@@ -4394,230 +4048,342 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "itemsNumber": {
-                        "id": "itemsNumber",
-                        "content": "Количество позиций",
+                    "invoices_arrayLink": {
+                        "id": "invoices_arrayLink",
+                        "content": "Инвойсы",
                         "type": "field",
-                        "dataType": "number",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
+                        "read": true,
+                        "link": "invoice",
+                        "actions": []
+                    },
+                    "offer_date": {
+                        "id": "offer_date",
+                        "content": "Дата начало",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "ru",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "notApprovedNumber": {
-                        "id": "notApprovedNumber",
-                        "content": "Количество несогласованных позиций",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "orderNumber": {
-                        "id": "orderNumber",
-                        "content": "Номер заказа",
+                    "offer_text": {
+                        "id": "offer_text",
+                        "content": "Офер",
                         "type": "field",
                         "dataType": "string",
+                        "format": "markdown",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "payment_color": {
+                        "id": "payment_color",
+                        "content": "payment_color",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "payment_date": {
+                        "id": "payment_date",
+                        "content": "Дата оплаты",
+                        "type": "field",
+                        "dataType": "date",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": null,
+                        "link": "",
                         "actions": []
                     },
-                    "orderStatus": {
-                        "id": "orderStatus",
-                        "content": "Статус заказа",
+                    "payment_status": {
+                        "id": "payment_status",
+                        "content": "Статус оплаты",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "4_stage_payment_status",
+                        "actions": []
+                    },
+                    "payment_sum": {
+                        "id": "payment_sum",
+                        "content": "Сумма оплаты",
+                        "type": "field",
+                        "dataType": "number",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "payment_webLink": {
+                        "id": "payment_webLink",
+                        "content": "Ссылка на страницу с оплатой",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "requestID_link": {
+                        "id": "requestID_link",
+                        "content": "ID заявки",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "orderStatuses",
+                        "link": "scoring_request_tgbot",
                         "actions": []
                     },
-                    "paymentStatus": {
-                        "id": "paymentStatus",
-                        "content": "paymentStatus",
+                    "stage_status": {
+                        "id": "stage_status",
+                        "content": "Статус этапа",
                         "type": "field",
-                        "dataType": "string",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
+                        "link": "4_stage_statuses",
+                        "actions": []
+                    },
+                    "payment_doc": {
+                        "id": "payment_doc",
+                        "content": "Платежный документ",
+                        "type": "field",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "write": true,
                         "link": "",
                         "actions": []
                     },
-                    "paymentURL": {
-                        "id": "paymentURL",
-                        "content": "paymentURL",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "registrationResponse": {
-                        "id": "registrationResponse",
-                        "content": "Registration response",
-                        "type": "field",
-                        "dataType": "json",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "returnURL": {
-                        "id": "returnURL",
-                        "content": "returnURL",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "action__88401632207650438": {
-                        "content": "Enter Deliver Number",
-                        "id": "action__88401632207650438",
+                    "action__77911639409041124": {
+                        "content": "  ",
+                        "id": "action__77911639409041124",
                         "type": "action",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "CheckStatusErrorCode": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "CheckStatusErrorMessage": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "approveStatus": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "approveStatusText": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "approvedCost": {
+                    "clients_email": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "approvedNumber": {
+                    "company_inn": {
                         "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "bankOrderID": {
+                    "company_name": {
                         "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "checkStatusResponse": {
+                    "id": {
                         "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "cost": {
+                    "offer_date": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "customer": {
+                    "offer_text": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "errorCode": {
+                    "payment_date": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "payment_status": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": true,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "displayAsHint": true,
+                        "quickSearchSL": "offers_status"
+                    },
+                    "payment_sum": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "payment_webLink": {
                         "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "errorMessage": {
+                    "payments_link": {
                         "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "finishPaymentErrorCode": {
+                    "requestID_link": {
                         "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "finishPaymentErrorMessage": {
+                    "email_send_date": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "payment_descr": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "sum": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "payment_color": {
                         "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "finishPaymentResponse": {
-                        "include": false,
+                    "payment_doc": {
+                        "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "good": {
+                    "stage_status": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": true,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "quickSearchSL": "getStatuses4stage"
+                    },
+                    "invoices_arrayLink": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": true,
+                        "veiwOption": "table",
+                        "tableView": {
+                            "columns": [
+                                {
+                                    "id": "1640865252633",
+                                    "field": "invoiceDate"
+                                },
+                                {
+                                    "id": "1640861324860",
+                                    "field": "invoice_status"
+                                },
+                                {
+                                    "id": "1640865282772",
+                                    "field": "payment_date"
+                                }
+                            ]
+                        },
                         "configureLinkedCard": {
                             "fields": {
-                                "agreed": {
-                                    "id": "agreed",
-                                    "content": "Согласован",
+                                "company_inn": {
+                                    "id": "company_inn",
+                                    "content": "ИНН",
                                     "type": "field",
                                     "read": true,
                                     "dataType": "string",
                                     "format": null,
-                                    "formatOptions": null
+                                    "formatOptions": {}
                                 },
-                                "agreedAction": {
-                                    "id": "agreedAction",
-                                    "content": "Выбери согласование",
+                                "company_name": {
+                                    "id": "company_name",
+                                    "content": "Компания",
                                     "type": "field",
                                     "read": true,
-                                    "dataType": "boolean",
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "invoiceDate": {
+                                    "id": "invoiceDate",
+                                    "content": "Дата инвойса",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "date",
                                     "format": null,
                                     "formatOptions": {
                                         "customOptionLabel": "My option",
@@ -4626,10 +4392,10 @@ const App = (props) => {
                                             "value": "value",
                                             "button": "One more"
                                         },
-                                        "dateLocale": "en-gb",
+                                        "dateLocale": "ru",
                                         "booleanOptions": [
-                                            "Согласован",
-                                            "Не согласован"
+                                            "True",
+                                            "False"
                                         ],
                                         "validWeekDays": {
                                             "mon": true,
@@ -4643,461 +4409,235 @@ const App = (props) => {
                                         "customOptionPlaceholder": "Describe your option",
                                         "range": {},
                                         "customOptionType": "textarea",
-                                        "dateFormat": "DD/MM/Y",
+                                        "dateFormat": "DD/MM/Y,",
                                         "timeFormat": " HH:mm",
                                         "isUTC": "false"
                                     }
                                 },
-                                "brandID": {
-                                    "id": "brandID",
-                                    "content": "Бренд",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "link",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "brandName": {
-                                    "id": "brandName",
-                                    "content": "Бренд",
+                                "invoice_status": {
+                                    "id": "invoice_status",
+                                    "content": "Статус инвойса",
                                     "type": "field",
                                     "read": true,
                                     "dataType": "string",
                                     "format": null,
                                     "formatOptions": {}
                                 },
-                                "colorName": {
-                                    "id": "colorName",
-                                    "content": "Цвет",
+                                "order_description": {
+                                    "id": "order_description",
+                                    "content": "Назначение платежа",
                                     "type": "field",
                                     "read": true,
                                     "dataType": "string",
                                     "format": null,
                                     "formatOptions": {}
                                 },
-                                "customer": {
-                                    "id": "customer",
-                                    "content": "Покупатель",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "link",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "deliveryNumber": {
-                                    "id": "deliveryNumber",
-                                    "content": "Номер доставки",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "string",
-                                    "format": null,
-                                    "formatOptions": null
-                                },
-                                "description": {
-                                    "id": "description",
-                                    "content": "Описание",
+                                "order_id": {
+                                    "id": "order_id",
+                                    "content": "ID  заявки",
                                     "type": "field",
                                     "read": true,
                                     "dataType": "string",
                                     "format": null,
                                     "formatOptions": {}
                                 },
-                                "good": {
-                                    "id": "good",
-                                    "content": "Товар",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "link",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "goodsDescription_id": {
-                                    "id": "goodsDescription_id",
-                                    "content": "Модель товара",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "link",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "id": {
-                                    "id": "id",
-                                    "content": "id",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "id",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "isNew": {
-                                    "id": "isNew",
-                                    "content": "Новый",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "boolean",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "isSale": {
-                                    "id": "isSale",
-                                    "content": "Скидка",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "boolean",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "itemCost": {
-                                    "id": "itemCost",
-                                    "content": "Стоимость",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "number",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "name": {
-                                    "id": "name",
-                                    "content": "Название",
+                                "order_sum": {
+                                    "id": "order_sum",
+                                    "content": "Сумма инвойса",
                                     "type": "field",
                                     "read": true,
                                     "dataType": "string",
                                     "format": null,
                                     "formatOptions": {}
                                 },
-                                "oldPrice": {
-                                    "id": "oldPrice",
-                                    "content": "Старая цена ₽",
+                                "paymentMethod_terminalID": {
+                                    "id": "paymentMethod_terminalID",
+                                    "content": "paymentMethod_terminalID",
                                     "type": "field",
                                     "read": true,
-                                    "dataType": "number",
+                                    "dataType": "string",
                                     "format": null,
                                     "formatOptions": {}
                                 },
-                                "photo": {
-                                    "id": "photo",
-                                    "content": "Фото",
+                                "paymentStatus": {
+                                    "id": "paymentStatus",
+                                    "content": "Статус оплаты",
                                     "type": "field",
                                     "read": true,
-                                    "dataType": "file",
-                                    "format": "multipleImages",
-                                    "formatOptions": {}
-                                },
-                                "price": {
-                                    "id": "price",
-                                    "content": "Цена ₽",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "number",
+                                    "dataType": "string",
                                     "format": null,
                                     "formatOptions": {}
                                 },
-                                "quantity": {
-                                    "id": "quantity",
-                                    "content": "Количество",
+                                "paymentUrl": {
+                                    "id": "paymentUrl",
+                                    "content": "Ссылка для оплаты",
                                     "type": "field",
                                     "read": true,
-                                    "dataType": "number",
+                                    "dataType": "string",
+                                    "format": "webLink",
+                                    "formatOptions": {}
+                                },
+                                "payment_date": {
+                                    "id": "payment_date",
+                                    "content": "Дата оплаты",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "date",
                                     "format": null,
                                     "formatOptions": {}
                                 },
-                                "status": {
-                                    "id": "status",
-                                    "content": "Статус",
+                                "invoiceID": {
+                                    "id": "invoiceID",
+                                    "content": "ID в системе Инвойс",
                                     "type": "field",
                                     "read": true,
-                                    "dataType": "link",
+                                    "dataType": "string",
                                     "format": null,
-                                    "formatOptions": null
-                                },
-                                "action__88401632207650438": {
-                                    "id": "action__88401632207650438",
-                                    "content": "Enter Deliver Number",
-                                    "type": "action"
+                                    "formatOptions": {}
                                 }
                             },
                             "fieldParams": {
-                                "@dateChanged": {
-                                    "include": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "@dateCreated": {
-                                    "include": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "@who": {
-                                    "include": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "agreed": {
-                                    "include": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "agreedAction": {
-                                    "include": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "brandID": {
+                                "company_inn": {
                                     "include": true,
                                     "fileImageFormat": "square",
                                     "fileImageSize": 200
                                 },
-                                "brandName": {
+                                "company_name": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "invoiceDate": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "invoice_status": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "order_description": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "order_id": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "order_sum": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "paymentMethod_terminalID": {
                                     "include": false,
                                     "fileImageFormat": "square",
                                     "fileImageSize": 200
                                 },
-                                "colorName": {
-                                    "include": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "customer": {
+                                "paymentStatus": {
                                     "include": true,
                                     "fileImageFormat": "square",
                                     "fileImageSize": 200
                                 },
-                                "deliveryNumber": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200,
-                                    "displayAsHint": true,
-                                    "hintType": "ok"
-                                },
-                                "description": {
-                                    "include": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "good": {
+                                "paymentUrl": {
                                     "include": true,
                                     "fileImageFormat": "square",
                                     "fileImageSize": 200
                                 },
-                                "goodsDescription_id": {
+                                "payment_date": {
                                     "include": true,
                                     "fileImageFormat": "square",
                                     "fileImageSize": 200
                                 },
-                                "id": {
-                                    "include": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "isNew": {
-                                    "include": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "isSale": {
-                                    "include": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "itemCost": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "name": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "oldPrice": {
-                                    "include": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "order": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "photo": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "price": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "quantity": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "status": {
+                                "invoiceID": {
                                     "include": true,
                                     "fileImageFormat": "square",
                                     "fileImageSize": 200
                                 }
                             },
                             "fieldOrder": [
-                                "action__88401632207650438",
-                                "deliveryNumber",
-                                "@dateChanged",
-                                "@dateCreated",
-                                "@who",
-                                "status",
-                                "agreed",
-                                "agreedAction",
-                                "photo",
-                                "order",
-                                "name",
-                                "brandID",
-                                "customer",
-                                "goodsDescription_id",
-                                "good",
-                                "price",
-                                "quantity",
-                                "itemCost",
-                                "brandName",
-                                "colorName",
-                                "description",
-                                null,
-                                "id",
-                                "isNew",
-                                "isSale",
-                                "oldPrice"
+                                "company_name",
+                                "company_inn",
+                                "order_id",
+                                "invoiceDate",
+                                "order_sum",
+                                "invoice_status",
+                                "order_description",
+                                "paymentUrl",
+                                "paymentMethod_terminalID",
+                                "paymentStatus",
+                                "payment_date",
+                                "invoiceID"
                             ]
                         },
-                        "veiwOption": "cart",
-                        "cartView": {
-                            "image": true,
-                            "imageField": "photo",
-                            "title": true,
-                            "titleField": "name",
-                            "price": true,
-                            "priceField": "price",
-                            "priceUnits": "₽",
-                            "quantity": true,
-                            "quantityField": "quantity"
-                        }
-                    },
-                    "id": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "itemsNumber": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "notApprovedNumber": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "orderNumber": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "orderStatus": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "paymentStatus": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "paymentURL": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "registrationResponse": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "returnURL": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "delivery": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
+                        "sortArrayLink": true,
+                        "sortByField": "invoiceDate"
                     }
                 },
                 "columns": {
                     "tab-1": {
                         "id": "tab-1",
-                        "title": "New section",
+                        "title": "Статус",
                         "fieldIds": [
-                            "CheckStatusErrorCode",
-                            "CheckStatusErrorMessage",
-                            "approveStatus",
-                            "approveStatusText",
-                            "approvedNumber",
-                            "bankOrderID",
-                            "checkStatusResponse",
-                            "errorCode",
-                            "errorMessage",
-                            "finishPaymentErrorCode",
-                            "finishPaymentErrorMessage",
-                            "finishPaymentResponse",
-                            "orderNumber",
-                            "customer",
-                            "cost",
-                            "approvedCost",
-                            "good",
                             "id",
-                            "itemsNumber",
-                            "orderStatus",
-                            "notApprovedNumber",
-                            "paymentStatus",
-                            "paymentURL",
-                            "registrationResponse",
-                            "returnURL",
-                            "delivery"
+                            "company_inn",
+                            "company_name",
+                            "offer_date",
+                            "stage_status",
+                            "requestID_link",
+                            "payment_color"
+                        ]
+                    },
+                    "93301640543644372": {
+                        "id": "93301640543644372",
+                        "title": "Оплата",
+                        "fieldIds": [
+                            "payment_status",
+                            "payment_date",
+                            "payment_sum",
+                            "payment_doc"
+                        ]
+                    },
+                    "85181640543680908": {
+                        "id": "85181640543680908",
+                        "title": "Офер клиенту",
+                        "fieldIds": [
+                            "offer_text",
+                            "payment_webLink",
+                            "clients_email",
+                            "email_send_date",
+                            "action__77911639409041124"
+                        ]
+                    },
+                    "57191640861044741": {
+                        "id": "57191640861044741",
+                        "title": "Инвойсы",
+                        "fieldIds": [
+                            "invoices_arrayLink"
                         ]
                     }
                 },
                 "columnOrder": [
-                    "tab-1"
+                    "tab-1",
+                    "85181640543680908",
+                    "93301640543644372",
+                    "57191640861044741"
                 ],
                 "actions": [
                     {
-                        "sysName": "enterDeliveryNum",
-                        "id": "88401632207650438",
-                        "name": "Enter Deliver Number",
+                        "sysName": "sendEmail",
+                        "id": "77911639409041124",
+                        "name": "  ",
                         "displayAs": "form",
-                        "callFrom": "linked",
-                        "callFromField": "good",
+                        "buttonIcon": "mail",
+                        "buttonType": "accent",
+                        "buttonTitle": "Отправить",
+                        "showMessage": true,
+                        "closePopup": false,
+                        "resultMessage": "Отпрвлено!",
                         "SLtype": "other",
                         "fields": {
                             "readFields": [
@@ -5114,24 +4654,14 @@ const App = (props) => {
                             ],
                             "writeFields": [
                                 {
-                                    "fieldSysName": "deliveryNumber",
+                                    "fieldSysName": "clients_email",
                                     "fetch": [],
-                                    "sysName": "deliveryNumber",
-                                    "name": "Номер доставки",
+                                    "sysName": "clients_email",
+                                    "name": "Эмейл",
                                     "dataType": "string",
-                                    "format": "",
+                                    "format": "email",
                                     "formatOptions": {},
-                                    "link": null
-                                },
-                                {
-                                    "fieldSysName": "good",
-                                    "fetch": [],
-                                    "sysName": "good",
-                                    "name": "Товар",
-                                    "dataType": "link",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": "goodSpecification"
+                                    "link": ""
                                 },
                                 {
                                     "fieldSysName": "id",
@@ -5142,212 +4672,238 @@ const App = (props) => {
                                     "format": "",
                                     "formatOptions": {},
                                     "link": ""
-                                },
-                                {
-                                    "fieldSysName": "order",
-                                    "fetch": [],
-                                    "sysName": "order",
-                                    "name": "Заказ",
-                                    "dataType": "link",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": "orders"
-                                },
-                                {
-                                    "fieldSysName": "orderStatus",
-                                    "fetch": [],
-                                    "sysName": "orderStatus",
-                                    "name": "Статус заказа",
-                                    "dataType": "link",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": "orderStatuses"
-                                },
-                                {
-                                    "fieldSysName": "status",
-                                    "fetch": [],
-                                    "sysName": "status",
-                                    "name": "Статус",
-                                    "dataType": "link",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": "orderStatuses"
                                 }
                             ]
                         },
                         "formFields": [
                             {
-                                "id": "25741632207700698",
+                                "id": "68371639409116019",
                                 "field": {
-                                    "fieldSysName": "deliveryNumber",
+                                    "fieldSysName": "clients_email",
                                     "fetch": [],
-                                    "sysName": "deliveryNumber",
-                                    "name": "Номер доставки",
+                                    "sysName": "clients_email",
+                                    "name": "Эмейл",
                                     "dataType": "string",
-                                    "format": "",
+                                    "format": "email",
                                     "formatOptions": {},
-                                    "link": null
+                                    "link": ""
                                 }
                             }
                         ],
                         "formMapping": [
                             {
-                                "id": "24331632207708264",
+                                "id": "71541639409119688",
                                 "target": "id",
-                                "type": "linkedField",
+                                "type": "objectField",
                                 "value": "id"
-                            },
-                            {
-                                "id": "39451633080607965",
-                                "target": "status",
-                                "type": "const",
-                                "value": "withConsignmentNote"
-                            },
-                            {
-                                "id": "33181633692047504",
-                                "target": "orderStatus",
-                                "type": "const",
-                                "value": "withConsignmentNote"
                             }
-                        ],
-                        "buttonTitle": "Отправить",
-                        "conditionals": [],
-                        "buttonIcon": "cube",
-                        "buttonType": "accent",
-                        "closePopup": true,
-                        "showMessage": false
+                        ]
                     }
                 ]
             },
             "fields": {
-                "CheckStatusErrorCode": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "CheckStatusErrorMessage": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "approveStatus": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "approveStatusText": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "approvedCost": {
+                "clients_email": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "approvedNumber": {
+                "company_inn": {
                     "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "bankOrderID": {
+                "company_name": {
                     "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "checkStatusResponse": {
+                "id": {
                     "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "cost": {
+                "offer_date": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "customer": {
+                "offer_text": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "errorCode": {
+                "payment_date": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "payment_status": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "displayAsHint": true,
+                    "quickSearchSL": "offers_status",
+                    "searchData": [
+                        {
+                            "key": "0",
+                            "value": "Не оплачен"
+                        },
+                        {
+                            "key": "1",
+                            "value": "Оплачен"
+                        }
+                    ]
+                },
+                "payment_sum": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "payment_webLink": {
                     "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "errorMessage": {
+                "payments_link": {
                     "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "finishPaymentErrorCode": {
+                "requestID_link": {
                     "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "finishPaymentErrorMessage": {
+                "email_send_date": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "payment_descr": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "sum": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "payment_color": {
                     "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "finishPaymentResponse": {
-                    "include": false,
+                "payment_doc": {
+                    "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "good": {
+                "stage_status": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "quickSearchSL": "getStatuses4stage",
+                    "searchData": [
+                        {
+                            "key": "0",
+                            "value": "Ожидание оплаты"
+                        },
+                        {
+                            "key": "1",
+                            "value": "Успешно завершено"
+                        },
+                        {
+                            "key": "2",
+                            "value": "Отказ клиента"
+                        }
+                    ]
+                },
+                "invoices_arrayLink": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": true,
+                    "veiwOption": "table",
+                    "tableView": {
+                        "columns": [
+                            {
+                                "id": "1640865252633",
+                                "field": "invoiceDate"
+                            },
+                            {
+                                "id": "1640861324860",
+                                "field": "invoice_status"
+                            },
+                            {
+                                "id": "1640865282772",
+                                "field": "payment_date"
+                            }
+                        ]
+                    },
                     "configureLinkedCard": {
                         "fields": {
-                            "agreed": {
-                                "id": "agreed",
-                                "content": "Согласован",
+                            "company_inn": {
+                                "id": "company_inn",
+                                "content": "ИНН",
                                 "type": "field",
                                 "read": true,
                                 "dataType": "string",
                                 "format": null,
-                                "formatOptions": null
+                                "formatOptions": {}
                             },
-                            "agreedAction": {
-                                "id": "agreedAction",
-                                "content": "Выбери согласование",
+                            "company_name": {
+                                "id": "company_name",
+                                "content": "Компания",
                                 "type": "field",
                                 "read": true,
-                                "dataType": "boolean",
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "invoiceDate": {
+                                "id": "invoiceDate",
+                                "content": "Дата инвойса",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "date",
                                 "format": null,
                                 "formatOptions": {
                                     "customOptionLabel": "My option",
@@ -5356,10 +4912,10 @@ const App = (props) => {
                                         "value": "value",
                                         "button": "One more"
                                     },
-                                    "dateLocale": "en-gb",
+                                    "dateLocale": "ru",
                                     "booleanOptions": [
-                                        "Согласован",
-                                        "Не согласован"
+                                        "True",
+                                        "False"
                                     ],
                                     "validWeekDays": {
                                         "mon": true,
@@ -5373,790 +4929,393 @@ const App = (props) => {
                                     "customOptionPlaceholder": "Describe your option",
                                     "range": {},
                                     "customOptionType": "textarea",
-                                    "dateFormat": "DD/MM/Y",
+                                    "dateFormat": "DD/MM/Y,",
                                     "timeFormat": " HH:mm",
                                     "isUTC": "false"
                                 }
                             },
-                            "brandID": {
-                                "id": "brandID",
-                                "content": "Бренд",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "link",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "brandName": {
-                                "id": "brandName",
-                                "content": "Бренд",
+                            "invoice_status": {
+                                "id": "invoice_status",
+                                "content": "Статус инвойса",
                                 "type": "field",
                                 "read": true,
                                 "dataType": "string",
                                 "format": null,
                                 "formatOptions": {}
                             },
-                            "colorName": {
-                                "id": "colorName",
-                                "content": "Цвет",
+                            "order_description": {
+                                "id": "order_description",
+                                "content": "Назначение платежа",
                                 "type": "field",
                                 "read": true,
                                 "dataType": "string",
                                 "format": null,
                                 "formatOptions": {}
                             },
-                            "customer": {
-                                "id": "customer",
-                                "content": "Покупатель",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "link",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "deliveryNumber": {
-                                "id": "deliveryNumber",
-                                "content": "Номер доставки",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "string",
-                                "format": null,
-                                "formatOptions": null
-                            },
-                            "description": {
-                                "id": "description",
-                                "content": "Описание",
+                            "order_id": {
+                                "id": "order_id",
+                                "content": "ID  заявки",
                                 "type": "field",
                                 "read": true,
                                 "dataType": "string",
                                 "format": null,
                                 "formatOptions": {}
                             },
-                            "good": {
-                                "id": "good",
-                                "content": "Товар",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "link",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "goodsDescription_id": {
-                                "id": "goodsDescription_id",
-                                "content": "Модель товара",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "link",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "id": {
-                                "id": "id",
-                                "content": "id",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "id",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "isNew": {
-                                "id": "isNew",
-                                "content": "Новый",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "boolean",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "isSale": {
-                                "id": "isSale",
-                                "content": "Скидка",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "boolean",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "itemCost": {
-                                "id": "itemCost",
-                                "content": "Стоимость",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "number",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "name": {
-                                "id": "name",
-                                "content": "Название",
+                            "order_sum": {
+                                "id": "order_sum",
+                                "content": "Сумма инвойса",
                                 "type": "field",
                                 "read": true,
                                 "dataType": "string",
                                 "format": null,
                                 "formatOptions": {}
                             },
-                            "oldPrice": {
-                                "id": "oldPrice",
-                                "content": "Старая цена ₽",
+                            "paymentMethod_terminalID": {
+                                "id": "paymentMethod_terminalID",
+                                "content": "paymentMethod_terminalID",
                                 "type": "field",
                                 "read": true,
-                                "dataType": "number",
+                                "dataType": "string",
                                 "format": null,
                                 "formatOptions": {}
                             },
-                            "photo": {
-                                "id": "photo",
-                                "content": "Фото",
+                            "paymentStatus": {
+                                "id": "paymentStatus",
+                                "content": "Статус оплаты",
                                 "type": "field",
                                 "read": true,
-                                "dataType": "file",
-                                "format": "multipleImages",
-                                "formatOptions": {}
-                            },
-                            "price": {
-                                "id": "price",
-                                "content": "Цена ₽",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "number",
+                                "dataType": "string",
                                 "format": null,
                                 "formatOptions": {}
                             },
-                            "quantity": {
-                                "id": "quantity",
-                                "content": "Количество",
+                            "paymentUrl": {
+                                "id": "paymentUrl",
+                                "content": "Ссылка для оплаты",
                                 "type": "field",
                                 "read": true,
-                                "dataType": "number",
+                                "dataType": "string",
+                                "format": "webLink",
+                                "formatOptions": {}
+                            },
+                            "payment_date": {
+                                "id": "payment_date",
+                                "content": "Дата оплаты",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "date",
                                 "format": null,
                                 "formatOptions": {}
                             },
-                            "status": {
-                                "id": "status",
-                                "content": "Статус",
+                            "invoiceID": {
+                                "id": "invoiceID",
+                                "content": "ID в системе Инвойс",
                                 "type": "field",
                                 "read": true,
-                                "dataType": "link",
+                                "dataType": "string",
                                 "format": null,
-                                "formatOptions": null
-                            },
-                            "action__88401632207650438": {
-                                "id": "action__88401632207650438",
-                                "content": "Enter Deliver Number",
-                                "type": "action"
+                                "formatOptions": {}
                             }
                         },
                         "fieldParams": {
-                            "@dateChanged": {
-                                "include": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "@dateCreated": {
-                                "include": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "@who": {
-                                "include": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "agreed": {
-                                "include": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "agreedAction": {
-                                "include": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "brandID": {
+                            "company_inn": {
                                 "include": true,
                                 "fileImageFormat": "square",
                                 "fileImageSize": 200
                             },
-                            "brandName": {
+                            "company_name": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "invoiceDate": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "invoice_status": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "order_description": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "order_id": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "order_sum": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "paymentMethod_terminalID": {
                                 "include": false,
                                 "fileImageFormat": "square",
                                 "fileImageSize": 200
                             },
-                            "colorName": {
-                                "include": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "customer": {
+                            "paymentStatus": {
                                 "include": true,
                                 "fileImageFormat": "square",
                                 "fileImageSize": 200
                             },
-                            "deliveryNumber": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200,
-                                "displayAsHint": true,
-                                "hintType": "ok"
-                            },
-                            "description": {
-                                "include": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "good": {
+                            "paymentUrl": {
                                 "include": true,
                                 "fileImageFormat": "square",
                                 "fileImageSize": 200
                             },
-                            "goodsDescription_id": {
+                            "payment_date": {
                                 "include": true,
                                 "fileImageFormat": "square",
                                 "fileImageSize": 200
                             },
-                            "id": {
-                                "include": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "isNew": {
-                                "include": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "isSale": {
-                                "include": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "itemCost": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "name": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "oldPrice": {
-                                "include": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "order": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "photo": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "price": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "quantity": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "status": {
+                            "invoiceID": {
                                 "include": true,
                                 "fileImageFormat": "square",
                                 "fileImageSize": 200
                             }
                         },
                         "fieldOrder": [
-                            "action__88401632207650438",
-                            "deliveryNumber",
-                            "@dateChanged",
-                            "@dateCreated",
-                            "@who",
-                            "status",
-                            "agreed",
-                            "agreedAction",
-                            "photo",
-                            "order",
-                            "name",
-                            "brandID",
-                            "customer",
-                            "goodsDescription_id",
-                            "good",
-                            "price",
-                            "quantity",
-                            "itemCost",
-                            "brandName",
-                            "colorName",
-                            "description",
-                            null,
-                            "id",
-                            "isNew",
-                            "isSale",
-                            "oldPrice"
+                            "company_name",
+                            "company_inn",
+                            "order_id",
+                            "invoiceDate",
+                            "order_sum",
+                            "invoice_status",
+                            "order_description",
+                            "paymentUrl",
+                            "paymentMethod_terminalID",
+                            "paymentStatus",
+                            "payment_date",
+                            "invoiceID"
                         ]
                     },
-                    "veiwOption": "cart",
-                    "cartView": {
-                        "image": true,
-                        "imageField": "photo",
-                        "title": true,
-                        "titleField": "name",
-                        "price": true,
-                        "priceField": "price",
-                        "priceUnits": "₽",
-                        "quantity": true,
-                        "quantityField": "quantity"
-                    }
-                },
-                "id": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "itemsNumber": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "notApprovedNumber": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "orderNumber": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "orderStatus": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "paymentStatus": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "paymentURL": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "registrationResponse": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "returnURL": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "delivery": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
+                    "sortArrayLink": true,
+                    "sortByField": "invoiceDate"
                 }
             },
             "tableParams": {
                 "readFields": [
                     {
-                        "fieldSysName": "CheckStatusErrorCode",
+                        "fieldSysName": "clients_email",
                         "fetch": [],
-                        "sysName": "CheckStatusErrorCode",
-                        "name": "errorCode",
+                        "sysName": "clients_email",
+                        "name": "Эмейл клиента",
                         "dataType": "string",
-                        "format": "",
+                        "format": "email",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "CheckStatusErrorMessage",
+                        "fieldSysName": "company_inn",
                         "fetch": [],
-                        "sysName": "CheckStatusErrorMessage",
-                        "name": "errorMessage",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "approveStatus",
-                        "fetch": [],
-                        "sysName": "approveStatus",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "approveStatusText",
-                        "fetch": [],
-                        "sysName": "approveStatusText",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "approvedCost",
-                        "fetch": [],
-                        "sysName": "approvedCost",
-                        "name": "Стоимость подтвер.",
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "approvedNumber",
-                        "fetch": [],
-                        "sysName": "approvedNumber",
-                        "name": "Количество согласованных позиций",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "bankOrderID",
-                        "fetch": [],
-                        "sysName": "bankOrderID",
-                        "name": "bankOrderID",
+                        "sysName": "company_inn",
+                        "name": "ИНН",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": null
                     },
                     {
-                        "fieldSysName": "checkStatusResponse",
+                        "fieldSysName": "company_name",
                         "fetch": [],
-                        "sysName": "checkStatusResponse",
-                        "name": "checkStatusResponse",
-                        "dataType": "json",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "cost",
-                        "fetch": [],
-                        "sysName": "cost",
-                        "name": "Стоимость заказа",
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "customer",
-                        "fetch": [],
-                        "sysName": "customer",
-                        "name": "Покупатель",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "WebUser"
-                    },
-                    {
-                        "fieldSysName": "delivery",
-                        "fetch": [
-                            {
-                                "fieldSysName": "description",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "price",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "delivery",
-                        "name": "Доставка",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "delivery"
-                    },
-                    {
-                        "fieldSysName": "errorCode",
-                        "fetch": [],
-                        "sysName": "errorCode",
-                        "name": "Error code",
+                        "sysName": "company_name",
+                        "name": "Название компании",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": null
                     },
                     {
-                        "fieldSysName": "errorMessage",
+                        "fieldSysName": "email_send_date",
                         "fetch": [],
-                        "sysName": "errorMessage",
-                        "name": "Error message",
-                        "dataType": "string",
+                        "sysName": "email_send_date",
+                        "name": "Дата отправки эмейла",
+                        "dataType": "date",
                         "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "finishPaymentErrorCode",
-                        "fetch": [],
-                        "sysName": "finishPaymentErrorCode",
-                        "name": "finishPaymentErrorCode",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
                         "link": ""
-                    },
-                    {
-                        "fieldSysName": "finishPaymentErrorMessage",
-                        "fetch": [],
-                        "sysName": "finishPaymentErrorMessage",
-                        "name": "finishPaymentErrorMessage",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "finishPaymentResponse",
-                        "fetch": [],
-                        "sysName": "finishPaymentResponse",
-                        "name": "finishPaymentResponse",
-                        "dataType": "json",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "good",
-                        "fetch": [
-                            {
-                                "fieldSysName": "agreed",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "agreedAction",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "brandID",
-                                "condition": null,
-                                "fetch": [
-                                    {
-                                        "fieldSysName": "brandName",
-                                        "condition": null,
-                                        "fetch": []
-                                    },
-                                    {
-                                        "fieldSysName": "id",
-                                        "condition": null,
-                                        "fetch": []
-                                    }
-                                ]
-                            },
-                            {
-                                "fieldSysName": "brandName",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "colorName",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "customer",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "deliveryNumber",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "description",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "good",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "goodsDescription_id",
-                                "condition": null,
-                                "fetch": [
-                                    {
-                                        "fieldSysName": "id",
-                                        "condition": null,
-                                        "fetch": []
-                                    },
-                                    {
-                                        "fieldSysName": "name",
-                                        "condition": null,
-                                        "fetch": []
-                                    }
-                                ]
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "isNew",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "isSale",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "itemCost",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "oldPrice",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "photo",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "price",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "quantity",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "status",
-                                "condition": null,
-                                "fetch": [
-                                    {
-                                        "fieldSysName": "id",
-                                        "condition": null,
-                                        "fetch": []
-                                    },
-                                    {
-                                        "fieldSysName": "status",
-                                        "condition": null,
-                                        "fetch": []
-                                    },
-                                    {
-                                        "fieldSysName": "userStatus",
-                                        "condition": null,
-                                        "fetch": []
-                                    }
-                                ]
-                            }
-                        ],
-                        "sysName": "good",
-                        "name": "Позиции в заказе",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "itemsInCart"
                     },
                     {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
-                        "name": "id",
+                        "name": "ID",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "itemsNumber",
-                        "fetch": [],
-                        "sysName": "itemsNumber",
-                        "name": "Количество позиций",
-                        "dataType": "number",
+                        "fieldSysName": "invoices_arrayLink",
+                        "fetch": [
+                            {
+                                "fieldSysName": "company_inn",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "company_name",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "invoiceDate",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "invoiceID",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "invoice_status",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "order_description",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "order_id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "order_sum",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "paymentMethod_terminalID",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "paymentStatus",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "paymentUrl",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "payment_date",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "invoices_arrayLink",
+                        "name": "Инвойсы",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
+                        "link": "invoice"
+                    },
+                    {
+                        "fieldSysName": "offer_date",
+                        "fetch": [],
+                        "sysName": "offer_date",
+                        "name": "Дата начало",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "ru",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
                         "link": ""
                     },
                     {
-                        "fieldSysName": "notApprovedNumber",
+                        "fieldSysName": "offer_text",
                         "fetch": [],
-                        "sysName": "notApprovedNumber",
-                        "name": "Количество несогласованных позиций",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "orderNumber",
-                        "fetch": [],
-                        "sysName": "orderNumber",
-                        "name": "Номер заказа",
+                        "sysName": "offer_text",
+                        "name": "Офер",
                         "dataType": "string",
-                        "format": "",
+                        "format": "markdown",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "orderStatus",
+                        "fieldSysName": "payment_color",
+                        "fetch": [],
+                        "sysName": "payment_color",
+                        "name": "payment_color",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "payment_date",
+                        "fetch": [],
+                        "sysName": "payment_date",
+                        "name": "Дата оплаты",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "payment_status",
                         "fetch": [
                             {
                                 "fieldSysName": "id",
@@ -6164,57 +5323,79 @@ const App = (props) => {
                                 "fetch": []
                             },
                             {
-                                "fieldSysName": "status",
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "status_color",
                                 "condition": null,
                                 "fetch": []
                             }
                         ],
-                        "sysName": "orderStatus",
-                        "name": "Статус заказа",
+                        "sysName": "payment_status",
+                        "name": "Статус оплаты",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "orderStatuses"
+                        "link": "4_stage_payment_status"
                     },
                     {
-                        "fieldSysName": "paymentStatus",
+                        "fieldSysName": "payment_sum",
                         "fetch": [],
-                        "sysName": "paymentStatus",
-                        "name": "paymentStatus",
-                        "dataType": "string",
+                        "sysName": "payment_sum",
+                        "name": "Сумма оплаты",
+                        "dataType": "number",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "paymentURL",
+                        "fieldSysName": "payment_webLink",
                         "fetch": [],
-                        "sysName": "paymentURL",
-                        "name": "paymentURL",
+                        "sysName": "payment_webLink",
+                        "name": "Ссылка на страницу с оплатой",
                         "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "registrationResponse",
-                        "fetch": [],
-                        "sysName": "registrationResponse",
-                        "name": "Registration response",
-                        "dataType": "json",
-                        "format": "",
+                        "format": "webLink",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "returnURL",
-                        "fetch": [],
-                        "sysName": "returnURL",
-                        "name": "returnURL",
-                        "dataType": "string",
+                        "fieldSysName": "requestID_link",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "requestID_link",
+                        "name": "ID заявки",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": "scoring_request_tgbot"
+                    },
+                    {
+                        "fieldSysName": "stage_status",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "stage_status",
+                        "name": "Статус этапа",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "4_stage_statuses"
                     }
                 ],
                 "writeFields": [
@@ -6222,170 +5403,110 @@ const App = (props) => {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
-                        "name": "id",
+                        "name": "ID",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
+                    },
+                    {
+                        "fieldSysName": "payment_doc",
+                        "fetch": [],
+                        "sysName": "payment_doc",
+                        "name": "Платежный документ",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "payment_status",
+                        "fetch": [],
+                        "sysName": "payment_status",
+                        "name": "Статус оплаты",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "4_stage_payment_status"
+                    },
+                    {
+                        "fieldSysName": "stage_status",
+                        "fetch": [],
+                        "sysName": "stage_status",
+                        "name": "Статус этапа",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "4_stage_statuses"
                     }
                 ],
                 "fields": {
-                    "CheckStatusErrorCode": {
-                        "id": "CheckStatusErrorCode",
-                        "content": "errorCode",
+                    "clients_email": {
+                        "id": "clients_email",
+                        "content": "Эмейл клиента",
                         "dataType": "string",
-                        "format": "",
+                        "format": "email",
                         "formatOptions": {},
                         "read": true,
                         "link": ""
                     },
-                    "CheckStatusErrorMessage": {
-                        "id": "CheckStatusErrorMessage",
-                        "content": "errorMessage",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "approveStatus": {
-                        "id": "approveStatus",
-                        "content": "",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "approveStatusText": {
-                        "id": "approveStatusText",
-                        "content": "",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "approvedCost": {
-                        "id": "approvedCost",
-                        "content": "Стоимость подтвер.",
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "approvedNumber": {
-                        "id": "approvedNumber",
-                        "content": "Количество согласованных позиций",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "bankOrderID": {
-                        "id": "bankOrderID",
-                        "content": "bankOrderID",
+                    "company_inn": {
+                        "id": "company_inn",
+                        "content": "ИНН",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
                         "link": null
                     },
-                    "checkStatusResponse": {
-                        "id": "checkStatusResponse",
-                        "content": "checkStatusResponse",
-                        "dataType": "json",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "cost": {
-                        "id": "cost",
-                        "content": "Стоимость заказа",
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "customer": {
-                        "id": "customer",
-                        "content": "Покупатель",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "WebUser"
-                    },
-                    "delivery": {
-                        "id": "delivery",
-                        "content": "Доставка",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "delivery"
-                    },
-                    "errorCode": {
-                        "id": "errorCode",
-                        "content": "Error code",
+                    "company_name": {
+                        "id": "company_name",
+                        "content": "Название компании",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
                         "link": null
                     },
-                    "errorMessage": {
-                        "id": "errorMessage",
-                        "content": "Error message",
-                        "dataType": "string",
+                    "email_send_date": {
+                        "id": "email_send_date",
+                        "content": "Дата отправки эмейла",
+                        "dataType": "date",
                         "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null
-                    },
-                    "finishPaymentErrorCode": {
-                        "id": "finishPaymentErrorCode",
-                        "content": "finishPaymentErrorCode",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
                         "read": true,
                         "link": ""
-                    },
-                    "finishPaymentErrorMessage": {
-                        "id": "finishPaymentErrorMessage",
-                        "content": "finishPaymentErrorMessage",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "finishPaymentResponse": {
-                        "id": "finishPaymentResponse",
-                        "content": "finishPaymentResponse",
-                        "dataType": "json",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "good": {
-                        "id": "good",
-                        "content": "Позиции в заказе",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "itemsInCart"
                     },
                     "id": {
                         "id": "id",
-                        "content": "id",
+                        "content": "ID",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
@@ -6393,81 +5514,137 @@ const App = (props) => {
                         "read": true,
                         "link": ""
                     },
-                    "itemsNumber": {
-                        "id": "itemsNumber",
-                        "content": "Количество позиций",
-                        "dataType": "number",
+                    "invoices_arrayLink": {
+                        "id": "invoices_arrayLink",
+                        "content": "Инвойсы",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": ""
+                        "link": "invoice"
                     },
-                    "notApprovedNumber": {
-                        "id": "notApprovedNumber",
-                        "content": "Количество несогласованных позиций",
-                        "dataType": "number",
+                    "offer_date": {
+                        "id": "offer_date",
+                        "content": "Дата начало",
+                        "dataType": "date",
                         "format": "",
-                        "formatOptions": {},
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "ru",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
                         "read": true,
                         "link": ""
                     },
-                    "orderNumber": {
-                        "id": "orderNumber",
-                        "content": "Номер заказа",
+                    "offer_text": {
+                        "id": "offer_text",
+                        "content": "Офер",
                         "dataType": "string",
+                        "format": "markdown",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "payment_color": {
+                        "id": "payment_color",
+                        "content": "payment_color",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "payment_date": {
+                        "id": "payment_date",
+                        "content": "Дата оплаты",
+                        "dataType": "date",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": null
+                        "link": ""
                     },
-                    "orderStatus": {
-                        "id": "orderStatus",
-                        "content": "Статус заказа",
+                    "payment_status": {
+                        "id": "payment_status",
+                        "content": "Статус оплаты",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "4_stage_payment_status"
+                    },
+                    "payment_sum": {
+                        "id": "payment_sum",
+                        "content": "Сумма оплаты",
+                        "dataType": "number",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "payment_webLink": {
+                        "id": "payment_webLink",
+                        "content": "Ссылка на страницу с оплатой",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "requestID_link": {
+                        "id": "requestID_link",
+                        "content": "ID заявки",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "orderStatuses"
+                        "link": "scoring_request_tgbot"
                     },
-                    "paymentStatus": {
-                        "id": "paymentStatus",
-                        "content": "paymentStatus",
-                        "dataType": "string",
+                    "stage_status": {
+                        "id": "stage_status",
+                        "content": "Статус этапа",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
+                        "link": "4_stage_statuses"
+                    },
+                    "payment_doc": {
+                        "id": "payment_doc",
+                        "content": "Платежный документ",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "write": true,
                         "link": ""
-                    },
-                    "paymentURL": {
-                        "id": "paymentURL",
-                        "content": "paymentURL",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null
-                    },
-                    "registrationResponse": {
-                        "id": "registrationResponse",
-                        "content": "Registration response",
-                        "dataType": "json",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "returnURL": {
-                        "id": "returnURL",
-                        "content": "returnURL",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null
                     }
                 },
                 "fieldParams": {
-                    "CheckStatusErrorCode": {
+                    "clients_email": {
                         "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -6475,31 +5652,7 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "CheckStatusErrorMessage": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "approveStatus": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "approveStatusText": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "approvedCost": {
+                    "company_inn": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -6507,87 +5660,7 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "approvedNumber": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "bankOrderID": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "checkStatusResponse": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "cost": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "customer": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "errorCode": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "errorMessage": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "finishPaymentErrorCode": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "finishPaymentErrorMessage": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "finishPaymentResponse": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "good": {
+                    "company_name": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -6603,23 +5676,7 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "itemsNumber": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "notApprovedNumber": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "orderNumber": {
+                    "offer_date": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -6627,7 +5684,15 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "orderStatus": {
+                    "offer_text": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "payment_date": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -6635,40 +5700,80 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "paymentStatus": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "paymentURL": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "registrationResponse": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "returnURL": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "delivery": {
+                    "payment_status": {
                         "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "payment_sum": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "payment_webLink": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "payments_link": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "requestID_link": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "email_send_date": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "payment_color": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "payment_doc": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "stage_status": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "invoices_arrayLink": {
+                        "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
                         "colorCode": false,
@@ -6677,42 +5782,36 @@ const App = (props) => {
                     }
                 },
                 "fieldOrder": [
-                    "CheckStatusErrorCode",
-                    "CheckStatusErrorMessage",
-                    "approveStatus",
-                    "approveStatusText",
-                    "approvedNumber",
-                    "bankOrderID",
-                    "checkStatusResponse",
-                    "errorCode",
-                    "errorMessage",
-                    "finishPaymentErrorCode",
-                    "finishPaymentErrorMessage",
-                    "finishPaymentResponse",
-                    "orderNumber",
-                    "customer",
-                    "cost",
-                    "approvedCost",
-                    "good",
-                    "orderStatus",
-                    "itemsNumber",
                     "id",
-                    "notApprovedNumber",
-                    "paymentStatus",
-                    "paymentURL",
-                    "registrationResponse",
-                    "returnURL",
-                    "delivery"
+                    "offer_date",
+                    "company_name",
+                    "company_inn",
+                    "stage_status",
+                    "payment_status",
+                    "payment_date",
+                    "clients_email",
+                    "offer_text",
+                    "payment_sum",
+                    "payment_webLink",
+                    "requestID_link",
+                    "email_send_date",
+                    "payment_color",
+                    "payment_doc",
+                    "invoices_arrayLink"
                 ]
             },
             "actions": [
                 {
-                    "sysName": "enterDeliveryNum",
-                    "id": "88401632207650438",
-                    "name": "Enter Deliver Number",
+                    "sysName": "sendEmail",
+                    "id": "77911639409041124",
+                    "name": "  ",
                     "displayAs": "form",
-                    "callFrom": "linked",
-                    "callFromField": "good",
+                    "buttonIcon": "mail",
+                    "buttonType": "accent",
+                    "buttonTitle": "Отправить",
+                    "showMessage": true,
+                    "closePopup": false,
+                    "resultMessage": "Отпрвлено!",
                     "SLtype": "other",
                     "fields": {
                         "readFields": [
@@ -6729,24 +5828,14 @@ const App = (props) => {
                         ],
                         "writeFields": [
                             {
-                                "fieldSysName": "deliveryNumber",
+                                "fieldSysName": "clients_email",
                                 "fetch": [],
-                                "sysName": "deliveryNumber",
-                                "name": "Номер доставки",
+                                "sysName": "clients_email",
+                                "name": "Эмейл",
                                 "dataType": "string",
-                                "format": "",
+                                "format": "email",
                                 "formatOptions": {},
-                                "link": null
-                            },
-                            {
-                                "fieldSysName": "good",
-                                "fetch": [],
-                                "sysName": "good",
-                                "name": "Товар",
-                                "dataType": "link",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": "goodSpecification"
+                                "link": ""
                             },
                             {
                                 "fieldSysName": "id",
@@ -6757,80 +5846,32 @@ const App = (props) => {
                                 "format": "",
                                 "formatOptions": {},
                                 "link": ""
-                            },
-                            {
-                                "fieldSysName": "order",
-                                "fetch": [],
-                                "sysName": "order",
-                                "name": "Заказ",
-                                "dataType": "link",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": "orders"
-                            },
-                            {
-                                "fieldSysName": "orderStatus",
-                                "fetch": [],
-                                "sysName": "orderStatus",
-                                "name": "Статус заказа",
-                                "dataType": "link",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": "orderStatuses"
-                            },
-                            {
-                                "fieldSysName": "status",
-                                "fetch": [],
-                                "sysName": "status",
-                                "name": "Статус",
-                                "dataType": "link",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": "orderStatuses"
                             }
                         ]
                     },
                     "formFields": [
                         {
-                            "id": "25741632207700698",
+                            "id": "68371639409116019",
                             "field": {
-                                "fieldSysName": "deliveryNumber",
+                                "fieldSysName": "clients_email",
                                 "fetch": [],
-                                "sysName": "deliveryNumber",
-                                "name": "Номер доставки",
+                                "sysName": "clients_email",
+                                "name": "Эмейл",
                                 "dataType": "string",
-                                "format": "",
+                                "format": "email",
                                 "formatOptions": {},
-                                "link": null
+                                "link": ""
                             }
                         }
                     ],
                     "formMapping": [
                         {
-                            "id": "24331632207708264",
+                            "id": "71541639409119688",
                             "target": "id",
-                            "type": "linkedField",
+                            "type": "objectField",
                             "value": "id"
-                        },
-                        {
-                            "id": "39451633080607965",
-                            "target": "status",
-                            "type": "const",
-                            "value": "withConsignmentNote"
-                        },
-                        {
-                            "id": "33181633692047504",
-                            "target": "orderStatus",
-                            "type": "const",
-                            "value": "withConsignmentNote"
                         }
-                    ],
-                    "buttonTitle": "Отправить",
-                    "conditionals": [],
-                    "buttonIcon": "cube",
-                    "buttonType": "accent",
-                    "closePopup": true,
-                    "showMessage": false
+                    ]
                 }
             ]
         },
@@ -6838,12 +5879,179 @@ const App = (props) => {
         "actions": null,
         "headers": [
             {
-                "sysName": "CheckStatusErrorCode",
+                "sysName": "clients_email",
                 "dataType": "string",
-                "name": "errorCode",
-                "id": "96501630678736702",
+                "name": "Эмейл клиента",
+                "id": "97771639403501712",
                 "link": "",
-                "group": "1630678669874",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "email",
+                "formatOptions": {},
+                "groupName": null,
+                "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "array": false
+            },
+            {
+                "sysName": "company_inn",
+                "dataType": "string",
+                "name": "ИНН",
+                "id": "10131639406091671",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 8,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "array": false
+            },
+            {
+                "sysName": "company_name",
+                "dataType": "string",
+                "name": "Название компании",
+                "id": "24331639406110698",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "array": false
+            },
+            {
+                "sysName": "email_send_date",
+                "dataType": "date",
+                "name": "Дата отправки эмейла",
+                "id": "17941639410299451",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 10,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD/MM/Y",
+                    "timeFormat": " HH:mm",
+                    "isUTC": "false"
+                },
+                "groupName": null,
+                "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "array": false
+            },
+            {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "ID",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "array": false
+            },
+            {
+                "sysName": "invoices_arrayLink",
+                "dataType": "arrayLink",
+                "name": "Инвойсы",
+                "id": "20461640858093584",
+                "link": "invoice",
+                "group": "1639403909672",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
@@ -6857,47 +6065,130 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
+                "arrayLink": true,
+                "linkOrArrayLinkType": true,
                 "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
                 "array": false
             },
             {
-                "sysName": "CheckStatusErrorMessage",
-                "dataType": "string",
-                "name": "errorMessage",
-                "id": "14001630678743346",
+                "sysName": "offer_date",
+                "dataType": "date",
+                "name": "Дата начало",
+                "id": "82591639403449086",
                 "link": "",
-                "group": "1630678669874",
+                "group": "0",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 3,
+                "order": 1,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "ru",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD/MM/Y",
+                    "timeFormat": " HH:mm",
+                    "isUTC": "false"
+                },
                 "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
                 "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
+                "linkOrArrayLinkType": false,
                 "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
                 "array": false
             },
             {
-                "sysName": "approveStatus",
+                "sysName": "offer_text",
                 "dataType": "string",
-                "name": "",
-                "id": "22221632170388065",
+                "name": "Офер",
+                "id": "44141639403468400",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "markdown",
+                "formatOptions": {},
+                "groupName": null,
+                "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "array": false
+            },
+            {
+                "sysName": "payment_color",
+                "dataType": "string",
+                "name": "payment_color",
+                "id": "23961639718760502",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 12,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "color",
+                "formatOptions": {},
+                "groupName": null,
+                "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "array": false
+            },
+            {
+                "sysName": "payment_date",
+                "dataType": "date",
+                "name": "Дата оплаты",
+                "id": "93341639403865328",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -6913,860 +6204,300 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
                 "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
+                "linkOrArrayLinkType": false,
                 "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
                 "array": false
             },
             {
-                "sysName": "approveStatusText",
-                "dataType": "string",
-                "name": "",
-                "id": "53051632170412476",
+                "sysName": "payment_status",
+                "dataType": "link",
+                "name": "Статус оплаты",
+                "id": "46131639403829927",
+                "link": "4_stage_payment_status",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "arrayLink": false,
+                "linkOrArrayLinkType": true,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "linkType": true,
+                "array": false
+            },
+            {
+                "sysName": "payment_sum",
+                "dataType": "number",
+                "name": "Сумма оплаты",
+                "id": "67961639403853161",
                 "link": "",
                 "group": "0",
                 "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "array": false
+            },
+            {
+                "sysName": "payment_webLink",
+                "dataType": "string",
+                "name": "Ссылка на страницу с оплатой",
+                "id": "76831639403924581",
+                "link": "",
+                "group": "1639403909672",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "webLink",
+                "formatOptions": {},
+                "groupName": null,
+                "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "array": false
+            },
+            {
+                "sysName": "requestID_link",
+                "dataType": "link",
+                "name": "ID заявки",
+                "id": "64301639406053197",
+                "link": "scoring_request_tgbot",
+                "group": "0",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 7,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "approvedCost",
-                "dataType": "number",
-                "name": "Стоимость подтвер.",
-                "id": "69031632174627431",
-                "link": "",
-                "group": "1632203677843",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "positiveNum",
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "approvedNumber",
-                "dataType": "number",
-                "name": "Количество согласованных позиций",
-                "id": "94221632203697814",
-                "link": "",
-                "group": "1632203677843",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "bankOrderID",
-                "dataType": "string",
-                "name": "bankOrderID",
-                "id": "15641630458179728",
-                "link": null,
-                "group": "1630368229089",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
                 "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
                 "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "checkStatusResponse",
-                "dataType": "json",
-                "name": "checkStatusResponse",
-                "id": "19581630678684081",
-                "link": "",
-                "group": "1630678669874",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": true,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "cost",
-                "dataType": "number",
-                "name": "Стоимость заказа",
-                "id": "97951627940223097",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "positiveNum",
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "customer",
-                "dataType": "link",
-                "name": "Покупатель",
-                "id": "55421627940261791",
-                "link": "WebUser",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
                 "linkOrArrayLinkType": true,
-                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
                 "linkType": true,
-                "indexExists": false,
-                "typeVariable": {},
                 "array": false
             },
             {
-                "sysName": "delivery",
+                "sysName": "stage_status",
                 "dataType": "link",
-                "name": "Доставка",
-                "id": "79041633937148454",
-                "link": "delivery",
+                "name": "Статус этапа",
+                "id": "26741640542688653",
+                "link": "4_stage_statuses",
                 "group": "0",
-                "tags": "",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 11,
+                "order": 16,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": null,
                 "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": true,
                 "arrayLink": false,
+                "linkOrArrayLinkType": true,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
                 "linkType": true,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "errorCode",
-                "dataType": "string",
-                "name": "Error code",
-                "id": "45421630453284300",
-                "link": null,
-                "group": "1630368229089",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "errorMessage",
-                "dataType": "string",
-                "name": "Error message",
-                "id": "90191630453292316",
-                "link": null,
-                "group": "1630368229089",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "finishPaymentErrorCode",
-                "dataType": "string",
-                "name": "finishPaymentErrorCode",
-                "id": "10671632205391719",
-                "link": "",
-                "group": "1632205348515",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "finishPaymentErrorMessage",
-                "dataType": "string",
-                "name": "finishPaymentErrorMessage",
-                "id": "91351632205399307",
-                "link": "",
-                "group": "1632205348515",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "finishPaymentResponse",
-                "dataType": "json",
-                "name": "finishPaymentResponse",
-                "id": "86821632205362496",
-                "link": "",
-                "group": "1632205348515",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": true,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "good",
-                "dataType": "arrayLink",
-                "name": "Позиции в заказе",
-                "id": "82021625428782418",
-                "link": "itemsInCart",
-                "group": "0",
-                "tags": "",
-                "indexing": true,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [
-                    "brandID.id",
-                    "good.good.id",
-                    "id",
-                    "good.good"
-                ],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": true,
-                "linkType": false,
-                "indexExists": true,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "id",
-                "dataType": "id",
-                "name": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "itemsNumber",
-                "dataType": "number",
-                "name": "Количество позиций",
-                "id": "21231632171784740",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 8,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "notApprovedNumber",
-                "dataType": "number",
-                "name": "Количество несогласованных позиций",
-                "id": "70891632203715872",
-                "link": "",
-                "group": "1632203677843",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "orderNumber",
-                "dataType": "string",
-                "name": "Номер заказа",
-                "id": "24861630368180012",
-                "link": null,
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "orderStatus",
-                "dataType": "link",
-                "name": "Статус заказа",
-                "id": "95151630619162902",
-                "link": "orderStatuses",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "linkType": true,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "paymentStatus",
-                "dataType": "string",
-                "name": "paymentStatus",
-                "id": "36481630678719313",
-                "link": "",
-                "group": "1630678669874",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "paymentURL",
-                "dataType": "string",
-                "name": "paymentURL",
-                "id": "31521630458197492",
-                "link": null,
-                "group": "1630368229089",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "registrationResponse",
-                "dataType": "json",
-                "name": "Registration response",
-                "id": "17441630453259760",
-                "link": "",
-                "group": "1630368229089",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": true,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "array": false
-            },
-            {
-                "sysName": "returnURL",
-                "dataType": "string",
-                "name": "returnURL",
-                "id": "71171630456433244",
-                "link": null,
-                "group": "1630368229089",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
                 "array": false
             }
         ],
         "data": [
             {
-                "CheckStatusErrorCode": "0",
-                "checkStatusResponse": "{\"Success\":true,\"ErrorCode\":\"0\",\"Message\":\"OK\",\"TerminalKey\":\"1638974080500DEMO\",\"Status\":\"AUTHORIZED\",\"PaymentId\":\"917844807\",\"OrderId\":\"vitrinabrands_1000116\",\"Params\":[{\"Key\":\"Route\",\"Value\":\"ACQ\"}],\"Amount\":2079800}",
-                "orderNumber": "vitrinabrands_1000116",
-                "errorMessage": "Неверный статус транзакции.",
-                "paymentStatus": "CONFIRMED",
-                "good": [],
-                "orderStatus": {
-                    "id": "payed",
-                    "status": "Без накладной"
+                "company_inn": "7743330499",
+                "offer_date": 1640865358000,
+                "company_name": "ООО \"СЕВЕРСТРОЙГРУПП\"",
+                "stage_status": {
+                    "name": "Ожидание оплаты",
+                    "id": "0"
                 },
-                "finishPaymentErrorCode": "0",
-                "errorCode": "8",
-                "id": "1000116",
-                "cost": 20798,
-                "paymentURL": "https://securepay.tinkoff.ru/new/UASiOFCj",
-                "itemsNumber": 1,
-                "customer": "mxf@mail.ru",
-                "returnURL": "https://virtualbrand.bubbleapps.io/version-test/vd_index",
-                "finishPaymentResponse": "{\"Success\":true,\"ErrorCode\":\"0\",\"TerminalKey\":\"1638974080500DEMO\",\"Status\":\"CONFIRMED\",\"PaymentId\":\"917844807\",\"OrderId\":\"vitrinabrands_1000116\"}",
-                "registrationResponse": "{\"Success\":false,\"ErrorCode\":\"8\",\"Message\":\"Неверный статус транзакции.\",\"Details\":\"Заказ vitrinabrands_1000116 был оплачен.\"}",
-                "approvedCost": 799,
-                "delivery": {
-                    "price": 799,
-                    "name": "Курьер СДЭК",
-                    "description": "Описание",
-                    "id": "courier"
+                "offer_text": "Поздравляем!\n\nМы одобрили вам заём в сумме от 3000000р. до 5000000р. на Карме:\n- Исполнение государственного контракта/закупки ;\n- Ставка 2% в месяц;\n- Комиссия: 3% от суммы займа;\n- Срок: 8 месяцев, погашение в конце срока, с условием обязателого досрочного погашения за счет выручки по госконтракту;\n- Поручительство бенефициаров (учредителей) с долей более 30%;\n- Внесение номинального счета в Банке Точка в реквизиты госконтракта;\n- Срок предоставления займа: до 3 дней c момента подписания документов;\n- Прочие существенные условия: Перевод выручки на номинальный счет под контроль Кармы\n\nДля размещения заявки на платформе оплатите комиссию 9900 рублей за подготовку документов.\n\n**Ссылка для оплаты комиссии - https://pay.invoice.su/P16408653586022**\n\nДанное предложение действительно в течение 14 дней!\nДля уточнения деталей вы можете связаться с вашим менеджером - Тереховой Евгенией или ответить на данное электронное письмо.\n\nС уважением, команда инвестиционной платформы Карма",
+                "payment_status": {
+                    "name": "Не оплачен",
+                    "status_color": "#FFE4B5",
+                    "id": "0"
                 },
-                "bankOrderID": "917844807"
-            },
-            {
-                "CheckStatusErrorCode": "0",
-                "checkStatusResponse": "{\n\"ErrorCode\": \"0\",\n\"ErrorMessage\": \"Без ошибок\",\n\"Status\": \"AUTHORIZED\"\n}",
-                "orderNumber": "vitrinabrands_1000048",
-                "errorMessage": "Деньги авторизированы",
-                "paymentStatus": "CONFIRMED",
-                "good": [],
-                "approveStatusText": "✅ 2, ❌2 из 4",
-                "orderStatus": {
-                    "id": "payed",
-                    "status": "Без накладной"
-                },
-                "approvedNumber": 2,
-                "finishPaymentErrorCode": "0",
-                "errorCode": "0",
-                "id": "1000048",
-                "cost": 140000,
-                "paymentURL": "https://securepay.tinkoff.ru/new/pGXfFOsR",
-                "notApprovedNumber": 2,
-                "itemsNumber": 4,
-                "finishPaymentErrorMessage": "Без ошибок",
-                "customer": "test4@test.ru",
-                "returnURL": "https://virtualbrand.bubbleapps.io/version-test/vd_index",
-                "finishPaymentResponse": "{\"token_type\":\"Bearer\",\"expires_in\":3600,\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImFlOTlkNGI2NTExNTkzMDA1YjY1MTI2ZjkwMTQ4NzE1NmI2NGYwZTZiNzQ0OThmYjdmZDQ3MDQzODEzMjRmYzg3MDgzNmVhM2E5NWMzZjIxIn0.eyJhdWQiOiIyMjkwMTczZWUwY2U1NDIzYzIxOWY2NmRlMGNjY2RmYSIsImp0aSI6ImFlOTlkNGI2NTExNTkzMDA1YjY1MTI2ZjkwMTQ4NzE1NmI2NGYwZTZiNzQ0OThmYjdmZDQ3MDQzODEzMjRmYzg3MDgzNmVhM2E5NWMzZjIxIiwiaWF0IjoxNjM0OTAyMzA2LCJuYmYiOjE2MzQ5MDIzMDYsImV4cCI6MTYzNDkwNTkwNiwic3ViIjoiIiwic2NvcGVzIjpbXSwidXNlciI6eyJpZCI6NzgyODYxMiwiZ3JvdXBfaWQiOm51bGwsInBhcmVudF9pZCI6bnVsbCwiYXJlYSI6InJlc3QifX0.BhpX4QlWlLqqj_MKCPNJhioGSMWYeOdo3ngGOBlO6rpIy_kQLI2ZUzE1QPKFOgM3ak0WqeENxMK9KU9LOGL2hd7VQ7VKevf3eYjKII40M-Xp6wgWQBEkVdOiLAf4eoKwxvn2yKR5SJkax2PJ9WzpN7SqCJTZXCCaa-yRYGVWBWFAxxVR4A_Ow3KOWXUuZIAGMt4tf5h_pPafeAZrMAcby9LsAFPDOPzY-hnTxMqknFyhW8jHvJmvNP9NZtvlihBc_MbnbYLej2otXGKOMVDGbeRdzRdWS0CJ8326lhc_T_7iC-mRiitHRD2-kYhxTiUA9YWI09kLdFmHI86cxX60RA\"}",
-                "registrationResponse": "{\n   \"Success\": true,\n   \"ErrorCode\": \"0\",\n   \"TerminalKey\": \"DEMO\",\n   \"Status\": \"NEW\",\n   \"PaymentId\": \"666739248\",\n   \"OrderId\": \"1d5ff5e7b2194d20a4fc1fde3fdc733c\",\n   \"Amount\": 50000,\n   \"PaymentURL\": \"https://securepay.tinkoff.ru/new/pGXfFOsR\",\n   \"Message\": \"Деньги авторизированы\"\n}",
-                "approvedCost": 60000,
-                "CheckStatusErrorMessage": "Без ошибок",
-                "delivery": "delivery1",
-                "bankOrderID": "666739248"
-            },
-            {
-                "CheckStatusErrorCode": "0",
-                "checkStatusResponse": "{\n\"ErrorCode\": \"0\",\n\"ErrorMessage\": \"Без ошибок\",\n\"Status\": \"AUTHORIZED\"\n}",
-                "orderNumber": "vitrinabrands_1000043",
-                "errorMessage": "Деньги авторизированы",
-                "paymentStatus": "CONFIRMED",
-                "good": [],
-                "approveStatusText": "✅ 2, ❌0 из 2",
-                "orderStatus": {
-                    "id": "payed",
-                    "status": "Без накладной"
-                },
-                "approvedNumber": 2,
-                "finishPaymentErrorCode": "0",
-                "errorCode": "0",
-                "id": "1000043",
-                "cost": 72000,
-                "paymentURL": "https://securepay.tinkoff.ru/new/pGXfFOsR",
-                "notApprovedNumber": 0,
-                "itemsNumber": 2,
-                "finishPaymentErrorMessage": "Без ошибок",
-                "customer": "test1@test.ru",
-                "returnURL": "https://virtualbrand.bubbleapps.io/version-test/vd_index",
-                "finishPaymentResponse": "{\n  \"ErrorCode\": \"0\",\n  \"ErrorMessage\": \"Без ошибок\",\n  \"Status\": \"CONFIRMED\"\n}",
-                "registrationResponse": "{\n   \"Success\": true,\n   \"ErrorCode\": \"0\",\n   \"TerminalKey\": \"DEMO\",\n   \"Status\": \"NEW\",\n   \"PaymentId\": \"666739248\",\n   \"OrderId\": \"1d5ff5e7b2194d20a4fc1fde3fdc733c\",\n   \"Amount\": 50000,\n   \"PaymentURL\": \"https://securepay.tinkoff.ru/new/pGXfFOsR\",\n   \"Message\": \"Деньги авторизированы\"\n}",
-                "approvedCost": 72000,
-                "CheckStatusErrorMessage": "Без ошибок",
-                "bankOrderID": "666739248"
-            },
-            {
-                "CheckStatusErrorCode": "0",
-                "checkStatusResponse": "{\n\"ErrorCode\": \"0\",\n\"ErrorMessage\": \"Без ошибок\",\n\"Status\": \"AUTHORIZED\"\n}",
-                "orderNumber": "vitrinabrands_1000044",
-                "errorMessage": "Деньги авторизированы",
-                "paymentStatus": "CONFIRMED",
-                "good": [],
-                "approveStatusText": "✅ 2, ❌0 из 2",
-                "orderStatus": {
-                    "id": "payed",
-                    "status": "Без накладной"
-                },
-                "approvedNumber": 2,
-                "finishPaymentErrorCode": "0",
-                "errorCode": "0",
-                "id": "1000044",
-                "cost": 72000,
-                "paymentURL": "https://securepay.tinkoff.ru/new/pGXfFOsR",
-                "notApprovedNumber": 0,
-                "itemsNumber": 2,
-                "finishPaymentErrorMessage": "Без ошибок",
-                "customer": "test1@test.ru",
-                "returnURL": "https://virtualbrand.bubbleapps.io/version-test/vd_index",
-                "finishPaymentResponse": "{\n  \"ErrorCode\": \"0\",\n  \"ErrorMessage\": \"Без ошибок\",\n  \"Status\": \"CONFIRMED\"\n}",
-                "registrationResponse": "{\n   \"Success\": true,\n   \"ErrorCode\": \"0\",\n   \"TerminalKey\": \"DEMO\",\n   \"Status\": \"NEW\",\n   \"PaymentId\": \"666739248\",\n   \"OrderId\": \"1d5ff5e7b2194d20a4fc1fde3fdc733c\",\n   \"Amount\": 50000,\n   \"PaymentURL\": \"https://securepay.tinkoff.ru/new/pGXfFOsR\",\n   \"Message\": \"Деньги авторизированы\"\n}",
-                "approvedCost": 72000,
-                "CheckStatusErrorMessage": "Без ошибок",
-                "bankOrderID": "666739248"
-            },
-            {
-                "orderNumber": "vitrinabrands_1000004",
-                "errorMessage": "Заказ с таким номером уже обработан",
-                "good": [],
-                "orderStatus": {
-                    "id": "payed",
-                    "status": "Без накладной"
-                },
-                "errorCode": "1",
-                "id": "1000004",
-                "cost": 100,
-                "customer": "test1@test.ru",
-                "returnURL": "https://virtualbrand.bubbleapps.io/version-test/favorites?debug_mode=true",
-                "registrationResponse": "{\"errorCode\":\"1\",\"errorMessage\":\"Заказ с таким номером уже обработан\"}"
-            },
-            {
-                "orderNumber": "vitrinabrands_1000036",
-                "good": [
+                "payment_webLink": "https://pay.invoice.su/P16408653586022",
+                "id": "90a10744-4be9-4f38-a61c-04e2a4bda7a3",
+                "requestID_link": "90a10744-4be9-4f38-a61c-04e2a4bda7a3",
+                "invoices_arrayLink": [
                     {
-                        "name": "Diesel D-Amny-y super skinny jeans in mid wash",
-                        "quantity": 3,
-                        "oldPrice": 10000,
-                        "good": "2ab2c278-903a-4794-838e-409eaa5d18e8",
-                        "description": "Super-skinny jeans by Diesel\n- It’s all in the jeans\n- Regular rise\n- Belt loops\n- Five pockets\n- Super-skinny fit\n\n**LOOK AFTER ME**\n\nMachine wash according to instructions on care label\n\n**ABOUT ME**\n\n- Stretch denim\n- Mid-blue wash\n\nMain: 98% Cotton, 2% Elastane.",
-                        "price": 12000,
-                        "brandName": "Diesel",
-                        "id": "7bdaf9b3-ec17-4815-895d-7be9e5633e38",
-                        "brandID": "e3e7dad9-b2a1-4448-8c41-61f1d4fa7a4f",
-                        "customer": "test1@test.ru",
-                        "isNew": false,
-                        "itemCost": 12000,
-                        "goodsDescription_id": "5c73f7a4-9c16-4ca5-bef1-42c4f8fddb5a",
-                        "isSale": true,
-                        "colorName": "dark-blue"
+                        "company_inn": "7743330499",
+                        "company_name": "ООО \"СЕВЕРСТРОЙГРУПП\"",
+                        "order_sum": "10",
+                        "paymentMethod_terminalID": "60efa0a81b6c4ae8f0b846df5432e210",
+                        "id": "ad06944f-ef8c-4eb9-aa3f-2bbfe51b1978",
+                        "invoiceID": "16408646773676",
+                        "order_description": "ООО \"СЕВЕРСТРОЙГРУПП\""
                     },
                     {
-                        "name": "Diesel D-Amny-y super skinny jeans in mid wash",
-                        "quantity": 1,
-                        "oldPrice": 10000,
-                        "good": "2ab2c278-903a-4794-838e-409eaa5d18e8",
-                        "description": "Super-skinny jeans by Diesel\n- It’s all in the jeans\n- Regular rise\n- Belt loops\n- Five pockets\n- Super-skinny fit\n\n**LOOK AFTER ME**\n\nMachine wash according to instructions on care label\n\n**ABOUT ME**\n\n- Stretch denim\n- Mid-blue wash\n\nMain: 98% Cotton, 2% Elastane.",
-                        "price": 12000,
-                        "brandName": "Diesel",
-                        "id": "1a897976-3ce5-47cb-b096-aa5b422b5388",
-                        "brandID": "e3e7dad9-b2a1-4448-8c41-61f1d4fa7a4f",
-                        "customer": "test1@test.ru",
-                        "isNew": false,
-                        "itemCost": 12000,
-                        "goodsDescription_id": "5c73f7a4-9c16-4ca5-bef1-42c4f8fddb5a",
-                        "isSale": true,
-                        "colorName": "dark-blue"
+                        "company_inn": "7743330499",
+                        "company_name": "ООО \"СЕВЕРСТРОЙГРУПП\"",
+                        "order_sum": "10",
+                        "invoiceDate": 1640864892000,
+                        "paymentUrl": "https://pay.invoice.su/P16408648927763",
+                        "invoice_status": "init",
+                        "paymentMethod_terminalID": "60efa0a81b6c4ae8f0b846df5432e210",
+                        "id": "47f24ad9-025f-425a-901d-86b06a96814c",
+                        "invoiceID": "16408648927763",
+                        "order_description": "ООО \"СЕВЕРСТРОЙГРУПП\""
+                    },
+                    {
+                        "company_inn": "7743330499",
+                        "company_name": "ООО \"СЕВЕРСТРОЙГРУПП\"",
+                        "order_sum": "10",
+                        "invoiceDate": 1640865358000,
+                        "paymentUrl": "https://pay.invoice.su/P16408653586022",
+                        "invoice_status": "Ожидает оплаты",
+                        "paymentMethod_terminalID": "60efa0a81b6c4ae8f0b846df5432e210",
+                        "id": "db6c2e65-8c3e-4637-a590-0df02e74ed25",
+                        "invoiceID": "16408653586022",
+                        "order_description": "ООО \"СЕВЕРСТРОЙГРУПП\""
                     }
                 ],
-                "orderStatus": {
-                    "id": "payed",
-                    "status": "Без накладной"
-                },
-                "id": "1000036",
-                "cost": 44500,
-                "itemsNumber": 4,
-                "customer": "test1@test.ru",
-                "returnURL": "https://virtualbrand.bubbleapps.io/version-test/vd_index",
-                "approvedCost": 0
+                "payment_doc": ""
             },
             {
-                "orderNumber": "vitrinabrands_1000041",
-                "good": [],
-                "orderStatus": {
-                    "id": "payed",
-                    "status": "Без накладной"
+                "company_inn": "7719857830",
+                "offer_date": 1640849051000,
+                "company_name": "ООО СК \"СТРОЙОТЕЛЬ\"",
+                "offer_text": "Поздравляем!\n\nМы одобрили вам заём в сумме от 4500000р. до 4500000р. на Карме:\n- Исполнение государственного контракта/закупки 2772939766021000144;\n- Ставка 1.5% в месяц;\n- Комиссия: 3% от суммы займа;\n- Срок: 7 месяцев, погашение в конце срока, с условием обязателого досрочного погашения за счет выручки по госконтракту;\n- Поручительство бенефициаров (учредителей) с долей более 30%;\n- Внесение номинального счета в Банке Точка в реквизиты госконтракта;\n- Срок предоставления займа: до 2 дней c момента подписания документов;\n- Прочие существенные условия: \n\nДля размещения заявки на платформе оплатите комиссию 9900 рублей за подготовку документов.\n\n**Ссылка для оплаты комиссии - pay.karma.red/nwx**\n\nДанное предложение действительно в течение 14 дней!\nДля уточнения деталей вы можете связаться с вашим менеджером - Тереховой Евгенией или ответить на данное электронное письмо.\n\nС уважением, команда инвестиционной платформы Карма",
+                "payment_status": "не оплачено",
+                "payment_webLink": "pay.karma.red/nwx",
+                "id": "7719857830|2772939766021000144",
+                "requestID_link": "7719857830|2772939766021000144",
+                "payment_doc": "",
+                "stage_status": ""
+            },
+            {
+                "company_inn": "4632057986",
+                "offer_date": 1640795656000,
+                "company_name": "ООО \"Курскгазопровод\"",
+                "stage_status": {
+                    "name": "Ожидание оплаты",
+                    "id": "0"
                 },
-                "id": "1000041",
-                "cost": 128000,
-                "itemsNumber": 2,
-                "customer": "test1@test.ru",
-                "returnURL": "https://virtualbrand.bubbleapps.io/version-test/vd_index",
-                "approvedCost": 0
+                "offer_text": "Поздравляем!\n\nМы одобрили вам заём в сумме от 4000000р. до 4000000р. на Карме:\n- Исполнение государственного контракта/закупки ;\n- Ставка 1.7% в месяц;\n- Комиссия: 3% от суммы займа;\n- Срок: 5 месяцев, погашение в конце срока, с условием обязателого досрочного погашения за счет выручки по госконтракту;\n- Поручительство бенефициаров (учредителей) с долей более 30%;\n- Внесение номинального счета в Банке Точка в реквизиты госконтракта;\n- Срок предоставления займа: до 2 дней c момента подписания документов;\n- Прочие существенные условия: \n\nДля размещения заявки на платформе оплатите комиссию 9900 рублей за подготовку документов.\n\n**Ссылка для оплаты комиссии - pay.karma.red/ijz**\n\nДанное предложение действительно в течение 14 дней!\nДля уточнения деталей вы можете связаться с вашим менеджером - Тереховой Евгенией или ответить на данное электронное письмо.\n\nС уважением, команда инвестиционной платформы Карма",
+                "payment_status": "не оплачено",
+                "payment_webLink": "pay.karma.red/ijz",
+                "id": "e1be4df0-6098-4c99-87fa-a5bdd84314e3",
+                "requestID_link": "e1be4df0-6098-4c99-87fa-a5bdd84314e3",
+                "payment_doc": ""
+            },
+            {
+                "company_inn": "7611997952",
+                "offer_date": 1640693798000,
+                "company_name": "ООО СК \"ДЕЛИКАТСТРОЙ\"",
+                "stage_status": {
+                    "name": "Успешно завершено",
+                    "id": "1"
+                },
+                "offer_text": "Поздравляем!\n\nМы одобрили вам заём в сумме от 3000000р. до 3000000р. на Карме:\n- Исполнение государственного контракта/закупки 32110762916;\n- Ставка 1.5% в месяц;\n- Комиссия: 3% от суммы займа;\n- Срок: 11 месяцев, погашение в конце срока, с условием обязателого досрочного погашения за счет выручки по госконтракту;\n- Поручительство бенефициаров (учредителей) с долей более 30%;\n- Внесение номинального счета в Банке Точка в реквизиты госконтракта;\n- Срок предоставления займа: до 2 дней c момента подписания документов;\n- Прочие существенные условия: \n\nДля размещения заявки на платформе оплатите комиссию 9900 рублей за подготовку документов.\n\n**Ссылка для оплаты комиссии - pay.karma.red/y7q**\n\nДанное предложение действительно в течение 14 дней!\nДля уточнения деталей вы можете связаться с вашим менеджером - Тереховой Евгенией или ответить на данное электронное письмо.\n\nС уважением, команда инвестиционной платформы Карма",
+                "payment_status": {
+                    "status_color": "#7CFC00",
+                    "name": "Оплачен",
+                    "id": "1"
+                },
+                "payment_webLink": "pay.karma.red/y7q",
+                "id": "7611997952|32110762916",
+                "payment_color": "#7CFC00",
+                "requestID_link": "7611997952|32110762916",
+                "clients_email": "zaem@karma.red",
+                "email_send_date": 1640784548000,
+                "payment_doc": ""
+            },
+            {
+                "company_inn": "2365024766",
+                "offer_date": 1640243524000,
+                "company_name": "ООО \"ЮТ-ЖИЛСТРОЙ\"",
+                "stage_status": {
+                    "name": "Ожидание оплаты",
+                    "id": "0"
+                },
+                "offer_text": "Поздравляем!\n\nМы одобрили вам заём в сумме от 1000000р. до 1000000р. на Карме:\n- Исполнение государственного контракта/закупки 32110651643;\n- Ставка 1.7% в месяц;\n- Комиссия: 3% от суммы займа;\n- Срок: 5 месяцев, погашение в конце срока, с условием обязателого досрочного погашения за счет выручки по госконтракту;\n- Поручительство бенефициаров (учредителей) с долей более 30%;\n- Внесение номинального счета в Банке Точка в реквизиты госконтракта;\n- Срок предоставления займа: до 1000000 дней c момента подписания документов;\n- Прочие существенные условия: \n\nДля размещения заявки на платформе оплатите комиссию 9900 рублей за подготовку документов.\n\n**Ссылка для оплаты комиссии - pay.karma.red/spx**\n\nДанное предложение действительно в течение 14 дней!\nДля уточнения деталей вы можете связаться с вашим менеджером - Тереховой Евгенией или ответить на данное электронное письмо.\n\nС уважением, команда инвестиционной платформы Карма",
+                "payment_status": {
+                    "name": "Не оплачен",
+                    "status_color": "#FFE4B5",
+                    "id": "0"
+                },
+                "payment_webLink": "pay.karma.red/spx",
+                "id": "2365024766|32110651643",
+                "payment_color": "#FFE4B5",
+                "requestID_link": "2365024766|32110651643",
+                "payment_doc": ""
+            },
+            {
+                "company_inn": "5321178517",
+                "offer_date": 1639663203000,
+                "company_name": "ООО \"ТСК-ВН\"",
+                "stage_status": {
+                    "name": "Успешно завершено",
+                    "id": "1"
+                },
+                "offer_text": "Поздравляем!\n\nМы одобрили вам заём в сумме от 4000000р. до 4000000р. на Карме:\n- Исполнение государственного контракта/закупки 3470503110021000028;\n- Ставка 1.6% в месяц;\n- Комиссия: 3% от суммы займа;\n- Срок: 11 месяцев, погашение в конце срока, с условием обязателого досрочного погашения за счет выручки по госконтракту;\n- Поручительство бенефициаров (учредителей) с долей более 30%;\n- Внесение номинального счета в Банке Точка в реквизиты госконтракта;\n- Срок предоставления займа: до 2 дней c момента подписания документов.\n\nДля размещения заявки на платформе оплатите комиссию 9900 рублей за подготовку документов \n\nСсылка для оплаты - pay.karma.red/dg3\n\nДанное предложение действительно в течение 14 дней!\nДля уточнения деталей вы можете связаться с вашим менеджером - Тереховой Евгенией или ответить на данное электронное письмо.\n\nКоманда инвестиционной платформы Карма",
+                "payment_status": {
+                    "status_color": "#7CFC00",
+                    "name": "Оплачен",
+                    "id": "1"
+                },
+                "payment_webLink": "pay.karma.red/4r7",
+                "id": "5321178517|3470503110021000028",
+                "payment_color": "#7CFC00",
+                "requestID_link": "5321178517|3470503110021000028",
+                "clients_email": "a@karma.red",
+                "email_send_date": 1639976457000,
+                "payment_doc": ""
             }
         ],
         "totalPages": 1,
@@ -7774,243 +6505,151 @@ const App = (props) => {
         "error": null,
         "fieldScheme": [
             [
-                "CheckStatusErrorCode",
-                1402300
+                "clients_email",
+                99055927
             ],
             [
-                "CheckStatusErrorMessage",
-                1402300
+                "company_inn",
+                99055927
             ],
             [
-                "approveStatus",
-                1402300
+                "company_name",
+                99055927
             ],
             [
-                "approveStatusText",
-                1402300
-            ],
-            [
-                "approvedCost",
-                1402300
-            ],
-            [
-                "approvedNumber",
-                1402300
-            ],
-            [
-                "bankOrderID",
-                1402300
-            ],
-            [
-                "checkStatusResponse",
-                1402300
-            ],
-            [
-                "cost",
-                1402300
-            ],
-            [
-                "customer",
-                1402300
-            ],
-            [
-                "delivery.description",
-                99035406
-            ],
-            [
-                "delivery.id",
-                99035406
-            ],
-            [
-                "delivery.name",
-                99035406
-            ],
-            [
-                "delivery.price",
-                99035406
-            ],
-            [
-                "errorCode",
-                1402300
-            ],
-            [
-                "errorMessage",
-                1402300
-            ],
-            [
-                "finishPaymentErrorCode",
-                1402300
-            ],
-            [
-                "finishPaymentErrorMessage",
-                1402300
-            ],
-            [
-                "finishPaymentResponse",
-                1402300
-            ],
-            [
-                "good.agreed",
-                1402255
-            ],
-            [
-                "good.agreedAction",
-                1402255
-            ],
-            [
-                "good.brandID.brandName",
-                1426040
-            ],
-            [
-                "good.brandID.id",
-                1426040
-            ],
-            [
-                "good.brandName",
-                1402255
-            ],
-            [
-                "good.colorName",
-                1402255
-            ],
-            [
-                "good.customer",
-                1402255
-            ],
-            [
-                "good.deliveryNumber",
-                1402255
-            ],
-            [
-                "good.description",
-                1402255
-            ],
-            [
-                "good.good",
-                1402255
-            ],
-            [
-                "good.goodsDescription_id.id",
-                1397569
-            ],
-            [
-                "good.goodsDescription_id.name",
-                1397569
-            ],
-            [
-                "good.id",
-                1402255
-            ],
-            [
-                "good.isNew",
-                1402255
-            ],
-            [
-                "good.isSale",
-                1402255
-            ],
-            [
-                "good.itemCost",
-                1402255
-            ],
-            [
-                "good.name",
-                1402255
-            ],
-            [
-                "good.oldPrice",
-                1402255
-            ],
-            [
-                "good.photo",
-                1402255
-            ],
-            [
-                "good.price",
-                1402255
-            ],
-            [
-                "good.quantity",
-                1402255
-            ],
-            [
-                "good.status.id",
-                99023983
-            ],
-            [
-                "good.status.status",
-                99023983
-            ],
-            [
-                "good.status.userStatus",
-                99023983
+                "email_send_date",
+                99055927
             ],
             [
                 "id",
-                1402300
+                99055927
             ],
             [
-                "itemsNumber",
-                1402300
+                "invoices_arrayLink.company_inn",
+                99059324
             ],
             [
-                "notApprovedNumber",
-                1402300
+                "invoices_arrayLink.company_name",
+                99059324
             ],
             [
-                "orderNumber",
-                1402300
+                "invoices_arrayLink.invoiceDate",
+                99059324
             ],
             [
-                "orderStatus.id",
-                99023983
+                "invoices_arrayLink.invoiceID",
+                99059324
             ],
             [
-                "orderStatus.status",
-                99023983
+                "invoices_arrayLink.invoice_status",
+                99059324
             ],
             [
-                "paymentStatus",
-                1402300
+                "invoices_arrayLink.order_description",
+                99059324
             ],
             [
-                "paymentURL",
-                1402300
+                "invoices_arrayLink.order_id",
+                99059324
             ],
             [
-                "registrationResponse",
-                1402300
+                "invoices_arrayLink.order_sum",
+                99059324
             ],
             [
-                "returnURL",
-                1402300
+                "invoices_arrayLink.paymentMethod_terminalID",
+                99059324
+            ],
+            [
+                "invoices_arrayLink.paymentStatus",
+                99059324
+            ],
+            [
+                "invoices_arrayLink.paymentUrl",
+                99059324
+            ],
+            [
+                "invoices_arrayLink.payment_date",
+                99059324
+            ],
+            [
+                "offer_date",
+                99055927
+            ],
+            [
+                "offer_text",
+                99055927
+            ],
+            [
+                "payment_color",
+                99055927
+            ],
+            [
+                "payment_date",
+                99055927
+            ],
+            [
+                "payment_status.id",
+                99056814
+            ],
+            [
+                "payment_status.name",
+                99056814
+            ],
+            [
+                "payment_status.status_color",
+                99056814
+            ],
+            [
+                "payment_sum",
+                99055927
+            ],
+            [
+                "payment_webLink",
+                99055927
+            ],
+            [
+                "requestID_link.id",
+                1350501
+            ],
+            [
+                "stage_status.id",
+                99058963
+            ],
+            [
+                "stage_status.name",
+                99058963
             ]
         ],
         "writeFields": [
-            "id"
+            "id",
+            "payment_doc",
+            "payment_status",
+            "stage_status"
         ],
         "structures": {
-            "1397569": {
-                "networkID": 7332,
-                "sysName": "goods",
-                "name": "Модель товара (номенклатура)",
-                "id": 1397569,
-                "dateCreated": "2021-06-21T21:22:23Z",
+            "1350501": {
+                "networkID": 4355,
+                "sysName": "scoring_request_tgbot",
+                "name": "Заявки на КИК",
+                "id": 1350501,
+                "dateCreated": "2021-03-03T10:27:37Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"vendorCode\",\"name\":\"Артикул\",\"dataType\":\"string\",\"id\":\"51831627942104491\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"name\",\"name\":\"Название\",\"dataType\":\"string\",\"id\":\"90461624310568714\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"description\",\"name\":\"Описание\",\"dataType\":\"string\",\"id\":\"93171624310572841\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"color\",\"name\":\"Цвет\",\"dataType\":\"link\",\"id\":\"85091624310580305\",\"link\":\"colors\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"tags\",\"name\":\"Тэги\",\"dataType\":\"string\",\"id\":\"22641624310590765\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"photo\",\"name\":\"Фото\",\"dataType\":\"file\",\"id\":\"31701624310616441\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"brand\",\"name\":\"Бренд\",\"dataType\":\"link\",\"id\":\"67261624310684962\",\"link\":\"Brands\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[\"moderation_status\",\"brandName\",\"owner_id\",\"id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":true,\"array\":false},{\"sysName\":\"isNew\",\"name\":\"Новый товар\",\"dataType\":\"boolean\",\"id\":\"80961624316987394\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isSale\",\"name\":\"Распродажа\",\"dataType\":\"boolean\",\"id\":\"70721624317005679\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"price\",\"name\":\"Цена, ₽\",\"dataType\":\"number\",\"id\":\"74391627677598162\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"goodSpecification\",\"name\":\"Товарные позиции\",\"dataType\":\"arrayLink\",\"id\":\"16081627942155485\",\"link\":\"goodSpecification\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"typeVariable\":{},\"linkType\":false,\"indexExists\":true,\"array\":false},{\"sysName\":\"oldPrice\",\"name\":\"Старая цена\",\"dataType\":\"number\",\"id\":\"64811628534783413\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"category\",\"name\":\"Категория\",\"dataType\":\"link\",\"id\":\"99311624310596554\",\"link\":\"category\",\"group\":\"1624486873153\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"subcategoryMen\",\"name\":\"Мужское, подкатегория\",\"dataType\":\"link\",\"id\":\"63351624486661483\",\"link\":\"subcategoryMen\",\"group\":\"1624486873153\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"subcategoryWomen\",\"name\":\"Женское, подкатегория\",\"dataType\":\"link\",\"id\":\"54621624486680601\",\"link\":\"subcategoryWomen\",\"group\":\"1624486873153\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"subcategoryKids\",\"name\":\"Детское, подкатегория\",\"dataType\":\"link\",\"id\":\"35001624486729783\",\"link\":\"subcategoryKids\",\"group\":\"1624486873153\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"subcategoryBeauty\",\"name\":\"Бьюти, подкатегория\",\"dataType\":\"link\",\"id\":\"88001624486752931\",\"link\":\"subcategoryBeauty\",\"group\":\"1624486873153\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"subcategoryInterior\",\"name\":\"Интерьер, подкатегория\",\"dataType\":\"link\",\"id\":\"12011624486790587\",\"link\":\"subcategoryInterior\",\"group\":\"1624486873153\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"categoryType\",\"name\":\"Тип товара\",\"dataType\":\"link\",\"id\":\"32291628759887053\",\"link\":\"categoryType\",\"group\":\"1624486873153\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"gender\",\"name\":\"Пол\",\"dataType\":\"link\",\"id\":\"66261634401502556\",\"link\":\"gender\",\"group\":\"1624486873153\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"isDeleted\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"79241630009759326\",\"link\":\"\",\"group\":\"1630009990145\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"moderation_status\",\"name\":\"new,approved,declined\",\"dataType\":\"string\",\"id\":\"77881630010002681\",\"link\":null,\"group\":\"1630009990145\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"decline_reason\",\"name\":\"Причина отказа\",\"dataType\":\"string\",\"id\":\"82001630010018372\",\"link\":null,\"group\":\"1630009990145\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"moderation_status_text\",\"name\":\"Статус модерации\",\"dataType\":\"string\",\"id\":\"66871630010028924\",\"link\":null,\"group\":\"1630009990145\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"weight\",\"name\":\"Значимость для Главной страницы\",\"dataType\":\"number\",\"id\":\"54001633954678861\",\"link\":\"\",\"group\":\"1633954671381\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"seoTitle\",\"name\":\"seoTitle\",\"dataType\":\"string\",\"id\":\"30971639572889023\",\"link\":\"\",\"group\":\"1639572879608\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"seoDescription\",\"name\":\"seoDescription\",\"dataType\":\"string\",\"id\":\"59081639572904825\",\"link\":\"\",\"group\":\"1639572879608\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"seoKeywords\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"58371639572933399\",\"link\":\"\",\"group\":\"1639572879608\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false}]",
-                "jsonGroupSettings": "[{\"name\":\"Category\",\"id\":1624486873153,\"order\":0},{\"name\":\"Workflow\",\"id\":1630009990145,\"order\":1},{\"name\":\"Новости\",\"id\":1633954671381,\"order\":2},{\"name\":\"SEO\",\"id\":1639572879608,\"order\":3}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_cred_history\",\"dataType\":\"string\",\"name\":\"Согласие на запрос БКИ\",\"id\":\"10041628778275617\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"contracts_current_count_Plus_contracts_aff\",\"dataType\":\"number\",\"name\":\"contracts_current_count_Plus_contracts_aff\",\"id\":\"10081637505600973\",\"link\":\"\",\"group\":\"1637505341738\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_HasDebtFNS\",\"dataType\":\"string\",\"name\":\"company_HasDebtFNS\",\"id\":\"10151637411847904\",\"link\":null,\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_fssp_active_1\",\"dataType\":\"number\",\"name\":\"affilates_fssp_active_F1\",\"id\":\"10401617642939913\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder2_contractsFinished_sum\",\"dataType\":\"number\",\"name\":\"founder2_contractsFinished_ALL_sum\",\"id\":\"11821619592355477\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_date\",\"dataType\":\"date\",\"name\":\"founder1_date\",\"id\":\"12121619588352045\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ul_employees_payroll_forTKB\",\"dataType\":\"number\",\"name\":\"ul_employees_payroll_forTKB\",\"id\":\"12441637924600253\",\"link\":\"\",\"group\":\"1637399992291\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"revenue_lastYear_Plus_revenue_aff\",\"dataType\":\"number\",\"name\":\"revenue_lastYear_Plus_revenue_aff\",\"id\":\"12881637505447216\",\"link\":\"\",\"group\":\"1637505341738\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"inn_check_status_tkb\",\"dataType\":\"boolean\",\"name\":\"inn_check_status_tkb\",\"id\":\"13101637848458693\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_contracts_inProcess_count_F2\",\"dataType\":\"number\",\"name\":\"affilates_contracts_inProcess_count_F2\",\"id\":\"13981637488704282\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"tkb_response\",\"dataType\":\"string\",\"name\":\"Результат ТКБ\",\"id\":\"14381638209202523\",\"link\":null,\"group\":\"1635316815357\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_phone\",\"dataType\":\"string\",\"name\":\"Контактный телефон\",\"id\":\"14561637762342313\",\"link\":null,\"group\":\"1637685688438\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"courtsSum_devide_revenueLastYear\",\"dataType\":\"decimal\",\"name\":\"courtsSum_devide_revenueLastYear\",\"id\":\"14601637505819611\",\"link\":\"\",\"group\":\"1637505341738\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_passport\",\"dataType\":\"string\",\"name\":\"Статус загрузки основной разворот\",\"id\":\"14601637686491408\",\"link\":\"\",\"group\":\"1637685688438\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"listing_fee\",\"dataType\":\"number\",\"name\":\"Комиссия за выдачу\",\"id\":\"15171636451157189\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_region_code\",\"dataType\":\"string\",\"name\":\"company_region_code\",\"id\":\"16001637411810443\",\"link\":null,\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_email\",\"dataType\":\"string\",\"name\":\"Эмейл\",\"id\":\"16351637762331766\",\"link\":null,\"group\":\"1637685688438\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilatesF2_courts_active_count\",\"dataType\":\"number\",\"name\":\"affilatesF2_courts_active_count\",\"id\":\"16721637490137239\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"verification_link\",\"dataType\":\"link\",\"name\":\"verification_link\",\"id\":\"16821637863153646\",\"link\":\"vertification\",\"group\":\"1639220671976\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"experience_stop\",\"dataType\":\"boolean\",\"name\":\"experience_stop\",\"id\":\"17341633343130460\",\"link\":\"\",\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"bankruptcy_stop\",\"dataType\":\"string\",\"name\":\"bankruptcy_stop\",\"id\":\"17381615309644031\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"newDB_founder1_check_status\",\"dataType\":\"string\",\"name\":\"newDB_founder1_check_status\",\"id\":\"17411619711934154\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_status\",\"dataType\":\"string\",\"name\":\"company_status\",\"id\":\"17571622211293259\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"courts_to_finishedContracts_36M\",\"dataType\":\"number\",\"name\":\"courts_to_finishedContracts_36M\",\"id\":\"17651622103928902\",\"link\":\"\",\"group\":\"1637487441419\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"fssp_active_arrayLink\",\"dataType\":\"arrayLink\",\"name\":\"Текущие исполнительные производства\",\"id\":\"17901639311484601\",\"link\":\"8_1_seldon_cases_list\",\"group\":\"1637410768588\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":30,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"founder1_passport_2page_parse_link\",\"dataType\":\"link\",\"name\":\"founder1_passport_2page_parse_link\",\"id\":\"18931637757146406\",\"link\":\"dbrain_passports_check\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":26,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"request_tkb_loan_sum\",\"dataType\":\"number\",\"name\":\"Запрашиваемая у ТКБ сумма займа\",\"id\":\"18971638207443027\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"tg_chat\",\"dataType\":\"link\",\"name\":\"Ссылка на ТГ чат\",\"id\":\"19081614769919099\",\"link\":\"TChat\",\"group\":\"1637402544308\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"link_user\",\"dataType\":\"link\",\"name\":\"link_user\",\"id\":\"20051617913201594\",\"link\":\"WebUser\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":32,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_company_cred_history_consent\",\"dataType\":\"file\",\"name\":\"Скан согласия на запрос КИ юрлица\",\"id\":\"20061635494973366\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_contracts_inProcess_2\",\"dataType\":\"number\",\"name\":\"affilates_contracts_inProcess_2\",\"id\":\"20121617642785998\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"request_comments\",\"dataType\":\"string\",\"name\":\"Комментарии к заявке\",\"id\":\"20161640158848392\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_passport_hand_input\",\"dataType\":\"string\",\"name\":\"Заполнить данные паспорта вручную\",\"id\":\"20231638899256561\",\"link\":\"\",\"group\":\"1637685688438\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_courts_stop\",\"dataType\":\"string\",\"name\":\"affilates_courts_stop\",\"id\":\"20651616949252452\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_bankrapcy_1\",\"dataType\":\"number\",\"name\":\"affilates_bankrapcy_F1\",\"id\":\"21191617643024089\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"status_2nd_stage\",\"dataType\":\"link\",\"name\":\"Статус 2 этап\",\"id\":\"21401638543027682\",\"link\":\"statuses_2nd_stage\",\"group\":\"1639206012090\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_massCoowner_stop\",\"dataType\":\"string\",\"name\":\"ceo_massCoowner_stop\",\"id\":\"21531637661861027\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":23,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_cred_history_UL_bki\",\"dataType\":\"string\",\"name\":\"Выгрузка КИ ЮЛ\",\"id\":\"22161629466294917\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"purchase_number_isFilled\",\"dataType\":\"string\",\"name\":\"purchase_number_isFilled\",\"id\":\"22251640153510570\",\"link\":\"\",\"group\":\"1639206012090\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"revenue_lasteYear\",\"dataType\":\"string\",\"name\":\"revenue_lasteYear\",\"id\":\"22731631474126844\",\"link\":\"\",\"group\":\"1631474118117\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_contractsFinished_sum\",\"dataType\":\"number\",\"name\":\"founder1_contractsFinished_ALL_sum\",\"id\":\"22951619592333725\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f1_taxDue_arrayLink\",\"dataType\":\"arrayLink\",\"name\":\"Долги по налогам учредитель 1\",\"id\":\"22951639677451830\",\"link\":\"dolgi_fl\",\"group\":\"1617642712846\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":35,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"affilates_fssp_active\",\"dataType\":\"number\",\"name\":\"affilates_fssp_active\",\"id\":\"23121616701407928\",\"link\":\"\",\"group\":\"1637403982889\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"request_contract_link\",\"dataType\":\"link\",\"name\":\"Ссылка на контракт под займ\",\"id\":\"23591638207337667\",\"link\":\"6_2_gos_contracts\",\"group\":\"1638688560441\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"request_sum_string_separated\",\"dataType\":\"string\",\"name\":\"request_sum_string_separated\",\"id\":\"24091629378568200\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_name\",\"dataType\":\"string\",\"name\":\"Компания\",\"id\":\"24101615328068558\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_disqualificationStatus_stop\",\"dataType\":\"string\",\"name\":\"ceo_disqualificationStatus_stop\",\"id\":\"24261637661744631\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":22,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"link_requests_gpn\",\"dataType\":\"string\",\"name\":\"link_requests_gpn\",\"id\":\"24621615381028707\",\"link\":\"\",\"group\":\"1615572593280\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[\"\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f2_email\",\"dataType\":\"string\",\"name\":\"Эмейл\",\"id\":\"24651637762401750\",\"link\":null,\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":27,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_contracts_inProcess_1\",\"dataType\":\"number\",\"name\":\"affilates_contracts_inProcess_F1\",\"id\":\"24961617642770537\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"result_isSend_TG\",\"dataType\":\"boolean\",\"name\":\"result_isSend_TG\",\"id\":\"24961619796626173\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ul_employees_forTKB_fact\",\"dataType\":\"number\",\"name\":\"ul_employees_forTKB_fact\",\"id\":\"25521637924699311\",\"link\":\"\",\"group\":\"1637399992291\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f1_passport_1page_status_fail\",\"dataType\":\"string\",\"name\":\"Статус загрузки основной разворот\",\"id\":\"26011638708833723\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":31,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder2_json\",\"dataType\":\"json\",\"name\":\"founder2_json\",\"id\":\"26331615568570232\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_contracts_inProcess_count_F1\",\"dataType\":\"number\",\"name\":\"affilates_contracts_inProcess_count_F1\",\"id\":\"26381637488646957\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_passport_2page_status_fail\",\"dataType\":\"string\",\"name\":\"Статус загрузки разворот с пропиской\",\"id\":\"26411638708813690\",\"link\":\"\",\"group\":\"1637685688438\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_recordDate_stop\",\"dataType\":\"string\",\"name\":\"ceo_recordDate_stop_6months\",\"id\":\"26441637659889904\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"request_status\",\"dataType\":\"link\",\"name\":\"Статус заявки\",\"id\":\"26821618985864619\",\"link\":\"kik_requests_statuses\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder2_contractsFinished_count_1m\",\"dataType\":\"number\",\"name\":\"founder2_contractsFinished__ALL_count100к\",\"id\":\"26861619592319330\",\"link\":\"\",\"group\":\"1637487441419\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"cred_score_FL_bki\",\"dataType\":\"string\",\"name\":\"cred_score_FL_bki\",\"id\":\"26951629466389634\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_passport_issuer\",\"dataType\":\"date\",\"name\":\"орган, выдавший паспорт\",\"id\":\"27371619035813042\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"link_founder2_fl_scoring\",\"dataType\":\"link\",\"name\":\"link_founder2_fl_scoring\",\"id\":\"27531616666577907\",\"link\":\"fl_scoring\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"contracts_lastYear_sum_stop\",\"dataType\":\"string\",\"name\":\"contracts_lastYear_sum_stop\",\"id\":\"27771615309529993\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"okb_creditburo_report\",\"dataType\":\"file\",\"name\":\"Отчет ОКБ\",\"id\":\"27791638900271255\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":23,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_passport_2page_file\",\"dataType\":\"file\",\"name\":\"Паспорт разворот с пропиской\",\"id\":\"27891637757230132\",\"link\":\"\",\"group\":\"1637685688438\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_badSupplier\",\"dataType\":\"number\",\"name\":\"affilates_badSupplier\",\"id\":\"28071616701415658\",\"link\":\"\",\"group\":\"1637403982889\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"fssp_active_count\",\"dataType\":\"number\",\"name\":\"fssp_active_count\",\"id\":\"28201637411684148\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affiliated_copmanies_array\",\"dataType\":\"array\",\"name\":\"affiliated_copmanies_array\",\"id\":\"28261637566298044\",\"link\":\"\",\"group\":\"1637403982889\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":true},{\"sysName\":\"founder1_stop\",\"dataType\":\"string\",\"name\":\"founder1_taxDue_stop\",\"id\":\"28281636624393637\",\"link\":null,\"group\":\"1637397537360\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_founder1_persdata_consent\",\"dataType\":\"file\",\"name\":\"Cкан согласия на обработку ПД поручителя 1\",\"id\":\"28771635494836156\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"fl_scoring_status\",\"dataType\":\"string\",\"name\":\"Статус проверки\",\"id\":\"29011638795259743\",\"link\":\"\",\"group\":\"1639206012090\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_passport_foto\",\"dataType\":\"string\",\"name\":\"Статус загрузки основной разворот\",\"id\":\"29061619035843312\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":25,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ready_for_verification\",\"dataType\":\"boolean\",\"name\":\"Корректность введенных данных для проверки ФЛ\",\"id\":\"30011637859979186\",\"link\":\"\",\"group\":\"1639206012090\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder2_passport_2page_file\",\"dataType\":\"file\",\"name\":\"Паспорт разворот с пропиской\",\"id\":\"30091637756680508\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":24,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"purchase_link\",\"dataType\":\"link\",\"name\":\"Ссылка на закупку под займ\",\"id\":\"30631639206951914\",\"link\":\"6_3_purchases\",\"group\":\"1638688560441\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f2_passport_2page_status_success\",\"dataType\":\"string\",\"name\":\"Статус загрузки разворот с пропиской\",\"id\":\"30841638709060139\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":34,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"scoring_result\",\"dataType\":\"string\",\"name\":\"Проверка стоп-факторов для эмейл рассылки\",\"id\":\"31141615326583640\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_passport_num\",\"dataType\":\"string\",\"name\":\"номер/серия паспорта\",\"id\":\"31201619035751898\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"tkb_credit_report\",\"dataType\":\"file\",\"name\":\"tkb_credit_report\",\"id\":\"31251635316843214\",\"link\":\"\",\"group\":\"1635316815357\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_osv_58\",\"dataType\":\"file\",\"name\":\"ОСВ 58 счет\",\"id\":\"31281638816900683\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"request_contract_term_mo\",\"dataType\":\"number\",\"name\":\"request_contract_term_mo\",\"id\":\"31341629125617381\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"disc_to_front\",\"dataType\":\"string\",\"name\":\"Описание для фронта\",\"id\":\"31541618986305964\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"courtsSum_devide_contractsOnProcess\",\"dataType\":\"decimal\",\"name\":\"courtsSum_devide_contractsOnProcess\",\"id\":\"31601637505770383\",\"link\":\"\",\"group\":\"1637505341738\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"verification_result_text\",\"dataType\":\"string\",\"name\":\" \",\"id\":\"31911638281685268\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilatesF2_net_income_lastYear\",\"dataType\":\"decimal\",\"name\":\"affilatesF2_net_income_lastYear\",\"id\":\"32401637490364521\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder2_name\",\"dataType\":\"string\",\"name\":\"ФИО учредитель 2\",\"id\":\"32721616333603481\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"request_id\",\"dataType\":\"string\",\"name\":\"ID заявки\",\"id\":\"33801639125590548\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"courtsSum_Plus_aff\",\"dataType\":\"number\",\"name\":\"courtsRisk_Plus_aff\",\"id\":\"33941637505625624\",\"link\":\"\",\"group\":\"1637505341738\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"fsspSum_Plus_aff\",\"dataType\":\"number\",\"name\":\"fssp_Plus_aff\",\"id\":\"34251637505670142\",\"link\":\"\",\"group\":\"1637505341738\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"verification_finished_date\",\"dataType\":\"date\",\"name\":\"Дата завершения андеррайтинга\",\"id\":\"34471637935419649\",\"link\":\"\",\"group\":\"1639220671976\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"tkb_anketa\",\"dataType\":\"file\",\"name\":\"tkb_anketa\",\"id\":\"34611635316824859\",\"link\":\"\",\"group\":\"1635316815357\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"contracts44_finished_qnt\",\"dataType\":\"number\",\"name\":\"contracts44_finished_qnt\",\"id\":\"34971637411596051\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f2_stop_factors_array\",\"dataType\":\"array\",\"name\":\"Стоп-факторы\",\"id\":\"35111637942430315\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":31,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":true},{\"sysName\":\"ceo_passport_1page_status_fail\",\"dataType\":\"string\",\"name\":\"Статус загрузки основной разворот\",\"id\":\"35261638708779186\",\"link\":\"\",\"group\":\"1637685688438\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"2nd_step_check_result\",\"dataType\":\"string\",\"name\":\"Результат 2 этап\",\"id\":\"35381638210687318\",\"link\":null,\"group\":\"1639206012090\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"bubble_user_id\",\"dataType\":\"string\",\"name\":\"bubble_Scroing_Request2\",\"id\":\"35901628509165840\",\"link\":\"\",\"group\":\"1637402544308\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f1_email\",\"dataType\":\"string\",\"name\":\"Эмейл\",\"id\":\"36181637762366774\",\"link\":null,\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":27,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_courts_active_1\",\"dataType\":\"number\",\"name\":\"affilates_courts_active_F1\",\"id\":\"36391617642903688\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder2_stop\",\"dataType\":\"string\",\"name\":\"founder2_taxDue_stop\",\"id\":\"36551636624409683\",\"link\":null,\"group\":\"1637397537360\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"inn_check_link\",\"dataType\":\"string\",\"name\":\"inn_check_link\",\"id\":\"36641639402982794\",\"link\":\"\",\"group\":\"1639206012090\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_phones_array\",\"dataType\":\"string\",\"name\":\"company_phones_array\",\"id\":\"37161637411884622\",\"link\":null,\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"revenue_str\",\"dataType\":\"string\",\"name\":\"Выручка\",\"id\":\"37171639733567462\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":34,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"contracts_current_Sum_Plus_contracts_aff\",\"dataType\":\"number\",\"name\":\"contracts_current_Plus_contracts_aff\",\"id\":\"37771637505478416\",\"link\":\"\",\"group\":\"1637505341738\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_bankrapcy_2\",\"dataType\":\"number\",\"name\":\"affilates_bankrapcy_2\",\"id\":\"37961617643042780\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f2_is_ceo\",\"dataType\":\"boolean\",\"name\":\"Является генеральным директором\",\"id\":\"38791637838680229\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":29,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_founder2_tgInfo\",\"dataType\":\"string\",\"name\":\"founder1_founder2_tgInfo\",\"id\":\"38931631300363141\",\"link\":null,\"group\":\"1631474118117\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_okved_array\",\"dataType\":\"string\",\"name\":\"company_okved_array\",\"id\":\"39161637411979167\",\"link\":null,\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":22,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"addContract_operation_result\",\"dataType\":\"string\",\"name\":\" \",\"id\":\"39781639399961381\",\"link\":null,\"group\":\"1638688560441\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"bad_supplier_stop\",\"dataType\":\"string\",\"name\":\"bad_supplier_stop\",\"id\":\"40001615309623326\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"transfer_to_tkb\",\"dataType\":\"boolean\",\"name\":\"Передавать в ТКБ\",\"id\":\"40071638205752928\",\"link\":\"\",\"group\":\"1635316815357\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_pers_data\",\"dataType\":\"string\",\"name\":\"Согласие на обработку перс.данных\",\"id\":\"40151628778231470\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_net_income_lastYear\",\"dataType\":\"decimal\",\"name\":\"affilates_net_income_lastYear\",\"id\":\"40331637487098610\",\"link\":\"\",\"group\":\"1637403982889\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"stop_factors_front\",\"dataType\":\"string\",\"name\":\"Стоп-факторы\",\"id\":\"40441638282820478\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_fl_scoring_link\",\"dataType\":\"link\",\"name\":\"ceo_fl_scoring_link\",\"id\":\"40921637686542776\",\"link\":\"fl_scoring\",\"group\":\"1637685688438\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder2_affilatedCompanies_30percPlus\",\"dataType\":\"array\",\"name\":\"founder2_affilatedCompanies_30percPlus\",\"id\":\"41391637567276403\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":true},{\"sysName\":\"file_beneficiary_passport\",\"dataType\":\"string\",\"name\":\"Скан паспорта бенефициара\",\"id\":\"41701628778649076\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"source\",\"dataType\":\"string\",\"name\":\"source\",\"id\":\"42861615329015776\",\"link\":null,\"group\":\"1637402544308\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"contract_end_date_day\",\"dataType\":\"string\",\"name\":\"contract_end_date_day\",\"id\":\"43091629128753712\",\"link\":null,\"group\":\"1637397537360\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":27,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_courts_to_lastYear_revenue\",\"dataType\":\"decimal\",\"name\":\"affilates_courts_to_lastYear_revenue\",\"id\":\"43371637487393611\",\"link\":\"\",\"group\":\"1637403982889\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_courts_active_count\",\"dataType\":\"number\",\"name\":\"affilates_courts_active_count\",\"id\":\"43891637487244818\",\"link\":\"\",\"group\":\"1637403982889\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_fssp_stop\",\"dataType\":\"string\",\"name\":\"affilates_fssp_stop\",\"id\":\"43901616949269751\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilatesF1_revenue_lastYear\",\"dataType\":\"decimal\",\"name\":\"affilatesF1_revenue_lastYear\",\"id\":\"43951637488756526\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_form_1_2\",\"dataType\":\"file\",\"name\":\"Бухгалтерская отчетность\",\"id\":\"44191635494996001\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder2_deBrain_passport_parse_1str\",\"dataType\":\"link\",\"name\":\"Данные паспорта\",\"id\":\"44671637756509725\",\"link\":\"dbrain_passports_check\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":23,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_badSupplier_1\",\"dataType\":\"number\",\"name\":\"affilates_badSupplier_F1\",\"id\":\"45431617642980165\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilatesF1_fssp_active_count\",\"dataType\":\"number\",\"name\":\"affilatesF1_fssp_active_count\",\"id\":\"45541637488919412\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"isMassHeadFNS\",\"dataType\":\"string\",\"name\":\"isMassHeadFNS\",\"id\":\"45741637651311907\",\"link\":null,\"group\":\"1637685688438\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"karma_fee\",\"dataType\":\"number\",\"name\":\"karma_fee\",\"id\":\"46791629125635235\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"contracts_current_sum\",\"dataType\":\"number\",\"name\":\"contracts_current_sum\",\"id\":\"47421615308655979\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"date_of_verification_str\",\"dataType\":\"string\",\"name\":\"Дата заявки\",\"id\":\"47561637677738812\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"approved_APR\",\"dataType\":\"decimal\",\"name\":\"Одобренная ставка годовых\",\"id\":\"47611636451087461\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_founder2_dolgi_TG\",\"dataType\":\"array\",\"name\":\"founder1_founder2_dolgi_TG\",\"id\":\"47691619369642713\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":true},{\"sysName\":\"soglasie_persDannie\",\"dataType\":\"string\",\"name\":\"согласие на передачу персональных данных\",\"id\":\"47781619035988898\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"soglasie_Bki\",\"dataType\":\"string\",\"name\":\"согласие на запрос БКИ\",\"id\":\"49411619036028075\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"request_date\",\"dataType\":\"date\",\"name\":\"Дата заявки\",\"id\":\"49591618987063315\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_cred_history_sig\",\"dataType\":\"string\",\"name\":\"Согласие на запрос БКИ. ЭЦП\",\"id\":\"49601628778845466\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_courts_active_count\",\"dataType\":\"number\",\"name\":\"company_courts_active_count\",\"id\":\"49601637487195860\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":25,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_osv_67\",\"dataType\":\"file\",\"name\":\"ОСВ 67 счет\",\"id\":\"49791638817030735\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"bubble_status\",\"dataType\":\"string\",\"name\":\"bubble_status\",\"id\":\"50741629363590527\",\"link\":null,\"group\":\"1637397537360\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":25,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"bad_supplier\",\"dataType\":\"number\",\"name\":\"bad_supplier\",\"id\":\"50901615306200181\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_osv_62\",\"dataType\":\"file\",\"name\":\"ОСВ 62 счет\",\"id\":\"50931638817051973\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":22,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder2_passport_2page_parse_link\",\"dataType\":\"link\",\"name\":\"founder2_passport_2page_parse_link\",\"id\":\"51071637756766920\",\"link\":\"dbrain_passports_check\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":26,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_courts_active\",\"dataType\":\"number\",\"name\":\"affilates_courts_active\",\"id\":\"51451616701381065\",\"link\":\"\",\"group\":\"1637403982889\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f2_disp_on_front\",\"dataType\":\"boolean\",\"name\":\"f2_disp_on_front\",\"id\":\"51651637848494483\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":30,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"tg_user\",\"dataType\":\"link\",\"name\":\"ТГ Юзер\",\"id\":\"51801614767283835\",\"link\":\"TUser\",\"group\":\"1637402544308\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"cred_score_UL_bki\",\"dataType\":\"string\",\"name\":\"cred_score_UL_bki\",\"id\":\"52481629466359222\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":31,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_disqualificationStatus\",\"dataType\":\"string\",\"name\":\"ceo_disqualificationStatus\",\"id\":\"52571637412331774\",\"link\":null,\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":23,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"approved_MPR\",\"dataType\":\"decimal\",\"name\":\"Одобренная ставка в мес\",\"id\":\"52751636451134250\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"newDB_check_status\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"52891619711876525\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"reg_date_stop\",\"dataType\":\"string\",\"name\":\"reg_date_stop\",\"id\":\"52961637572803439\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"fssp_tax\",\"dataType\":\"number\",\"name\":\"Исполнительные производства по налогам 12 мес.\",\"id\":\"52971639311627555\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":32,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_osv_66\",\"dataType\":\"file\",\"name\":\"ОСВ 66 счет\",\"id\":\"53061638817020634\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"isMassHeadSeldon\",\"dataType\":\"string\",\"name\":\"isMassHeadSeldon\",\"id\":\"54141637651302617\",\"link\":null,\"group\":\"1637685688438\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_affilatedCompanies_30percPlus\",\"dataType\":\"array\",\"name\":\"founder1_affilatedCompanies_30percPlus\",\"id\":\"54871637567087280\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":true},{\"sysName\":\"fsspCount_Plus_aff\",\"dataType\":\"number\",\"name\":\"fsspCount_Plus_aff\",\"id\":\"54901637505741499\",\"link\":\"\",\"group\":\"1637505341738\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"contracts_lastYear_count_Plus_contracts_aff\",\"dataType\":\"number\",\"name\":\"contracts_lastYear_count_Plus_contracts_aff\",\"id\":\"55591637505570990\",\"link\":\"\",\"group\":\"1637505341738\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founders_json_test\",\"dataType\":\"string\",\"name\":\"founders_json_null_test\",\"id\":\"55611633353758385\",\"link\":\"\",\"group\":\"1615568532385\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_inn\",\"dataType\":\"string\",\"name\":\"ИНН\",\"id\":\"55821616333612266\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"contracts44_finished_all_sum\",\"dataType\":\"decimal\",\"name\":\"contracts44_finished_all_sum\",\"id\":\"56221634556076890\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"user\",\"dataType\":\"link\",\"name\":\"Пользователь\",\"id\":\"56361638345550170\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilatesF1_net_income_lastYear\",\"dataType\":\"decimal\",\"name\":\"affilatesF1_net_income_lastYear\",\"id\":\"56451637488798888\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"net_assets\",\"dataType\":\"string\",\"name\":\"Чистые активы\",\"id\":\"56501639728317096\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":33,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"1st_stage_scoring_status\",\"dataType\":\"string\",\"name\":\" \",\"id\":\"58271639293425314\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_founder2_Stake_stop\",\"dataType\":\"string\",\"name\":\"founder1_founder2_Stake_stop\",\"id\":\"58391615309661185\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_NotReportFNS\",\"dataType\":\"string\",\"name\":\"company_NotReportFNS\",\"id\":\"58611637411824187\",\"link\":null,\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_inn\",\"dataType\":\"string\",\"name\":\"ИНН\",\"id\":\"58841637412314390\",\"link\":null,\"group\":\"1637685688438\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_fssp_active_2\",\"dataType\":\"number\",\"name\":\"affilates_fssp_active_2\",\"id\":\"59081617642967324\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"inn\",\"dataType\":\"string\",\"name\":\"ИНН\",\"id\":\"59451614767265195\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"loan_cost_from_contract\",\"dataType\":\"decimal\",\"name\":\"loan_cost_from_contract\",\"id\":\"60901629125710951\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":22,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"contract_end_date_month\",\"dataType\":\"number\",\"name\":\"contract_end_date_month\",\"id\":\"61111629128742312\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":24,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ul_employees_forTKB\",\"dataType\":\"number\",\"name\":\"ul_employees_forTKB\",\"id\":\"61151637924568907\",\"link\":\"\",\"group\":\"1637399992291\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f1_passport_2page_status_success\",\"dataType\":\"string\",\"name\":\"Статус загрузки разворот с пропиской\",\"id\":\"61511638708908864\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":33,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_founder2_stake\",\"dataType\":\"number\",\"name\":\"founder1_founder2_stake\",\"id\":\"61731615573275242\",\"link\":\"\",\"group\":\"1615568532385\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"fssp_stop\",\"dataType\":\"string\",\"name\":\"fssp_stop\",\"id\":\"61961615309612494\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_passport_date\",\"dataType\":\"string\",\"name\":\"дата выдачи паспорта\",\"id\":\"61991619035776449\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"courts_stop\",\"dataType\":\"string\",\"name\":\"courts_stop\",\"id\":\"62271615309588548\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_legal_form\",\"dataType\":\"string\",\"name\":\"company_legal_form_stop\",\"id\":\"62451633500675635\",\"link\":\"\",\"group\":\"1615309515999\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founders_json\",\"dataType\":\"json\",\"name\":\"founders_json\",\"id\":\"62841615567878056\",\"link\":\"\",\"group\":\"1615568532385\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"223fz_contracts\",\"dataType\":\"arrayLink\",\"name\":\"223fz_contracts\",\"id\":\"63031634478736587\",\"link\":\"look_for_contracts\",\"group\":\"1638688560441\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"courts_active_arrayLink\",\"dataType\":\"arrayLink\",\"name\":\"Текущие судебные дела\",\"id\":\"63311639234462712\",\"link\":\"5_2_seldon_courts_cases\",\"group\":\"1637410768588\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":28,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"company_reg_date\",\"dataType\":\"date\",\"name\":\"company_reg_date\",\"id\":\"63771637411775435\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"debt_lasteYear\",\"dataType\":\"string\",\"name\":\"debt_lasteYear\",\"id\":\"64351631474223275\",\"link\":null,\"group\":\"1631474118117\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affiliated_copmanies\",\"dataType\":\"arrayLink\",\"name\":\"affiliated_copmanies_ulAnalisys\",\"id\":\"64921633501212085\",\"link\":\"ul_analysys\",\"group\":\"1637403982889\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"request_status_history\",\"dataType\":\"array\",\"name\":\"request_status_history (удалить)\",\"id\":\"65081637943008627\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":true},{\"sysName\":\"massCoowner\",\"dataType\":\"string\",\"name\":\"massCoowner\",\"id\":\"65201637651320862\",\"link\":null,\"group\":\"1637685688438\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_passport_2page_file\",\"dataType\":\"file\",\"name\":\"Паспорт разворот с пропиской\",\"id\":\"66371637757113797\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":24,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_revenue_lastYear\",\"dataType\":\"decimal\",\"name\":\"affilates_revenue_lastYear\",\"id\":\"66861637487084786\",\"link\":\"\",\"group\":\"1637403982889\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"rejected_contracts_link\",\"dataType\":\"arrayLink\",\"name\":\"Отмененные контракты 2 года\",\"id\":\"67191638433925288\",\"link\":\"6_2_gos_contracts\",\"group\":\"1638688560441\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"courtsCount_Plus_aff\",\"dataType\":\"number\",\"name\":\"courtsCount_Plus_aff\",\"id\":\"67481637505721992\",\"link\":\"\",\"group\":\"1637505341738\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_contracts_finished_12M_1\",\"dataType\":\"number\",\"name\":\"affilates_contracts_finished_12M_F1\",\"id\":\"68041617642799008\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"main_request_link\",\"dataType\":\"link\",\"name\":\"main_request_link\",\"id\":\"68391633504139121\",\"link\":\"scoring_request_tgbot\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":28,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_contracts_inProcess_count\",\"dataType\":\"number\",\"name\":\"affilates_contracts_inProcess_count\",\"id\":\"68641637486998049\",\"link\":\"\",\"group\":\"1637403982889\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder2_stake\",\"dataType\":\"number\",\"name\":\"Доля в компании учредитель 2\",\"id\":\"68721615568917905\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_scoring_tgInfo\",\"dataType\":\"string\",\"name\":\"ceo_scoring_tgInfo\",\"id\":\"68751638435918581\",\"link\":\"\",\"group\":\"1631474118117\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_name\",\"dataType\":\"string\",\"name\":\"ФИО учредитель 1\",\"id\":\"69811616333588416\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"request_contract_sum\",\"dataType\":\"number\",\"name\":\"Сумма контракта\",\"id\":\"69881638207965679\",\"link\":\"\",\"group\":\"1638688560441\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"stop_factors_persons\",\"dataType\":\"boolean\",\"name\":\"Стоп-факторы\",\"id\":\"70141637942504135\",\"link\":\"\",\"group\":\"1639206012090\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"contract_number_isFilled\",\"dataType\":\"string\",\"name\":\"contract_number_isFilled\",\"id\":\"70341640153122885\",\"link\":\"\",\"group\":\"1639206012090\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilatesF2_revenue_lastYear\",\"dataType\":\"decimal\",\"name\":\"affilatesF2_revenue_lastYear\",\"id\":\"70741637490340743\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"bankruptcy\",\"dataType\":\"number\",\"name\":\"bankruptcy messages\",\"id\":\"70841615306222455\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"inn_length\",\"dataType\":\"number\",\"name\":\"Длина ИНН\",\"id\":\"71051614769408307\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":30,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"tgUser_name\",\"dataType\":\"string\",\"name\":\"tgUser_name\",\"id\":\"71311620811321031\",\"link\":null,\"group\":\"1637402544308\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_contracts_inProcess\",\"dataType\":\"number\",\"name\":\"affilates_contracts_inProcess\",\"id\":\"71551616701312169\",\"link\":\"\",\"group\":\"1637403982889\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_contracts_finished_12M\",\"dataType\":\"number\",\"name\":\"affilates_contracts_finished_12M\",\"id\":\"72031616701358703\",\"link\":\"\",\"group\":\"1637403982889\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f1_passport_hand_input\",\"dataType\":\"string\",\"name\":\"Заполнить данные паспорта вручную\",\"id\":\"72231638899438216\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":34,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_passport_1page_parse_link\",\"dataType\":\"link\",\"name\":\"Данные паспорта\",\"id\":\"72361637757074262\",\"link\":\"dbrain_passports_check\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":23,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_passport_2page_parse_link\",\"dataType\":\"link\",\"name\":\"ceo_passport_2page_parse_link\",\"id\":\"72891637757288880\",\"link\":\"dbrain_passports_check\",\"group\":\"1637685688438\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_sites_array\",\"dataType\":\"string\",\"name\":\"company_sites_array\",\"id\":\"72981637411904875\",\"link\":null,\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_stake\",\"dataType\":\"number\",\"name\":\"Доля в компании учредитель 1\",\"id\":\"73481615568909612\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f2_phone\",\"dataType\":\"string\",\"name\":\"Контактный телефон\",\"id\":\"73531637762410972\",\"link\":null,\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":28,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f1_stop_factors_array\",\"dataType\":\"array\",\"name\":\"Стоп-факторы\",\"id\":\"74131637942404270\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":30,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":true},{\"sysName\":\"fssp_active\",\"dataType\":\"number\",\"name\":\"fssp_active_sum\",\"id\":\"74631615306175574\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_stop_factors_array\",\"dataType\":\"array\",\"name\":\"Стоп-факторы\",\"id\":\"74961637942338248\",\"link\":\"\",\"group\":\"1637685688438\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":true},{\"sysName\":\"founder1_json\",\"dataType\":\"json\",\"name\":\"founder1_json\",\"id\":\"75141615568550421\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_accept_pers_data_founder1\",\"dataType\":\"string\",\"name\":\"Согласие на ПД от Беника1\",\"id\":\"75371631631544470\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"mailto_directual\",\"dataType\":\"string\",\"name\":\"mailto_directual\",\"id\":\"75391629470333919\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":26,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"max_term_mo\",\"dataType\":\"number\",\"name\":\"max_term_mo\",\"id\":\"75421629125622914\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f1_phone\",\"dataType\":\"string\",\"name\":\"Контактный телефон\",\"id\":\"75611637762375558\",\"link\":null,\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":28,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_contracts_finished_12M_count_F1\",\"dataType\":\"number\",\"name\":\"affilates_contracts_finished_12M_count_F1\",\"id\":\"75941637488550122\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"approved_sum\",\"dataType\":\"number\",\"name\":\"Одобренная сумма займа\",\"id\":\"75981636451053113\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilatesF2_fssp_active_count\",\"dataType\":\"number\",\"name\":\"affilatesF2_fssp_active_count\",\"id\":\"76011637490151140\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"request_term\",\"dataType\":\"number\",\"name\":\"Ожидаемый срок кредита\",\"id\":\"76431636451183068\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"contracts_lastYear_sum\",\"dataType\":\"number\",\"name\":\"contracts_lastYear_sum\",\"id\":\"76721615305960960\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"tkb_requests_link\",\"dataType\":\"link\",\"name\":\"tkb_requests_link\",\"id\":\"77001638206802791\",\"link\":\"requests_for_loans_kik_1_10m\",\"group\":\"1635316815357\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"netIncome_str\",\"dataType\":\"string\",\"name\":\"Чистая прибыль\",\"id\":\"77451639733874476\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":35,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_founder2_passport\",\"dataType\":\"file\",\"name\":\"Паспорт основной разворот или несколько станиц\",\"id\":\"77481635494955482\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":22,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_badSupplier_stop\",\"dataType\":\"string\",\"name\":\"affilates_badSupplier_stop\",\"id\":\"77591616949293970\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"link_founder1_fl_scoring\",\"dataType\":\"link\",\"name\":\"link_founder1_fl_scoring\",\"id\":\"78321616666592749\",\"link\":\"fl_scoring\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"credit_limit\",\"dataType\":\"number\",\"name\":\"Кредитный лимит max\",\"id\":\"78461636017393639\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_contracts_finished_ALL\",\"dataType\":\"decimal\",\"name\":\"affilates_contracts_finished_ALL\",\"id\":\"78801637489078131\",\"link\":\"\",\"group\":\"1637403982889\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"purchase_law\",\"dataType\":\"string\",\"name\":\"purchase_law\",\"id\":\"79081640157260240\",\"link\":\"\",\"group\":\"1638688560441\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_51acc_report\",\"dataType\":\"file\",\"name\":\"Карточка 51 счета\",\"id\":\"79091638816819060\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_tgInfo\",\"dataType\":\"string\",\"name\":\"founder1_tgInfo\",\"id\":\"79391631299594735\",\"link\":null,\"group\":\"1631474118117\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"contracts44_onProcess_qnt\",\"dataType\":\"number\",\"name\":\"contracts44_onProcess_qnt\",\"id\":\"80771634556118813\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_recordDate\",\"dataType\":\"date\",\"name\":\"ceo_recordDate\",\"id\":\"81351637412323165\",\"link\":\"\",\"group\":\"1637685688438\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f2_taxDue_arrayLink\",\"dataType\":\"arrayLink\",\"name\":\"Долги по налогам учредитель 2\",\"id\":\"81491639677547506\",\"link\":\"dolgi_fl\",\"group\":\"1617642741592\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":36,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"ulanalis_link\",\"dataType\":\"link\",\"name\":\"Ссылка на базу анализа ЮЛ \",\"id\":\"81541614770111873\",\"link\":\"ul_analysys\",\"group\":\"1637399992291\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f1_is_ceo\",\"dataType\":\"boolean\",\"name\":\"Является генеральным директором\",\"id\":\"82041637838436048\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":29,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"link_massScoring\",\"dataType\":\"string\",\"name\":\"link_massScoring\",\"id\":\"82121615386191476\",\"link\":\"\",\"group\":\"1615572593280\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"scoring_errors\",\"dataType\":\"array\",\"name\":\"Ошибки при проверке\",\"id\":\"82391638433227333\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":true},{\"sysName\":\"date_of_verification\",\"dataType\":\"date\",\"name\":\"Дата заявки\",\"id\":\"82671637572228767\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ogrn\",\"dataType\":\"string\",\"name\":\"ogrn\",\"id\":\"82681637676541032\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_HasDebtFNS_stop\",\"dataType\":\"string\",\"name\":\"company_HasDebtFNS_stop\",\"id\":\"82951637661792053\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder2_inn\",\"dataType\":\"string\",\"name\":\"founder2_inn\",\"id\":\"83491616333620078\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"stop_factors_array\",\"dataType\":\"array\",\"name\":\"stop_factors_array\",\"id\":\"83551636629851082\",\"link\":\"\",\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":true},{\"sysName\":\"company_emails_array\",\"dataType\":\"string\",\"name\":\"company_emails_array\",\"id\":\"83581637411864419\",\"link\":null,\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"request_contract_buyer\",\"dataType\":\"string\",\"name\":\"Заказчик\",\"id\":\"83631638207480382\",\"link\":null,\"group\":\"1638688560441\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_NotReportFNS_stop\",\"dataType\":\"string\",\"name\":\"company_NotReportFNS_stop\",\"id\":\"84161637661709579\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_founder2_Stake\",\"dataType\":\"number\",\"name\":\"НЕ ИСПОЛЬЗОВАТЬ!\",\"id\":\"84171615306238000\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":33,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"verification_finished_date_str\",\"dataType\":\"string\",\"name\":\"Дата завершения андеррайтинга\",\"id\":\"84961637935483930\",\"link\":\"\",\"group\":\"1639220671976\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_courts_to_currentContracts\",\"dataType\":\"decimal\",\"name\":\"affilates_courts_to_currentContracts\",\"id\":\"85081637487268092\",\"link\":\"\",\"group\":\"1637403982889\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"purchase_contract_num\",\"dataType\":\"string\",\"name\":\"purchase_contract_num\",\"id\":\"85101639220036375\",\"link\":\"\",\"group\":\"1638688560441\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"isAffilatedCompanyScoring\",\"dataType\":\"boolean\",\"name\":\"isAffilatedCompanyScoring (удалить)\",\"id\":\"85521617031440970\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_passport_2page_status_success\",\"dataType\":\"string\",\"name\":\"Статус загрузки разворот с пропиской\",\"id\":\"85561638708961087\",\"link\":\"\",\"group\":\"1637685688438\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_contracts_finished_12M_count_F2\",\"dataType\":\"number\",\"name\":\"affilates_contracts_finished_12M_count_F2\",\"id\":\"85811637488612819\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"nbki_creditburo_report\",\"dataType\":\"file\",\"name\":\"Отчет НБКИ\",\"id\":\"85961638900313182\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":24,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilatesF1_courts_active_count\",\"dataType\":\"number\",\"name\":\"affilatesF1_courts_active_count\",\"id\":\"86161637488883362\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_address\",\"dataType\":\"string\",\"name\":\"company_address\",\"id\":\"86271637411769316\",\"link\":null,\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"verification_result_text2\",\"dataType\":\"string\",\"name\":\"Результат проверки\",\"id\":\"86301638283259404\",\"link\":\"\",\"group\":\"1639206012090\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"loan_cost_from_loan\",\"dataType\":\"decimal\",\"name\":\"loan_cost_from_loan\",\"id\":\"86491629125681914\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_bankruptcy_alert\",\"dataType\":\"string\",\"name\":\"affilates_bankruptcy_stop\",\"id\":\"86601617552110402\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_founder2_cred_history_consent\",\"dataType\":\"file\",\"name\":\"Cкан согласия на запрос КИ поручителя 2\",\"id\":\"86861635494941092\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_regDate_stop\",\"dataType\":\"string\",\"name\":\"founder1_regDate_stop\",\"id\":\"86921637572823406\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"percent_to_pay\",\"dataType\":\"number\",\"name\":\"percent_to_pay\",\"id\":\"87131629125664389\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"link_GasContract\",\"dataType\":\"link\",\"name\":\"link_GasContract\",\"id\":\"87181615572602843\",\"link\":\"GasContract\",\"group\":\"1615572593280\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"profit_lasteYear\",\"dataType\":\"string\",\"name\":\"profit_lasteYear\",\"id\":\"88141631474204216\",\"link\":null,\"group\":\"1631474118117\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_massHead\",\"dataType\":\"string\",\"name\":\"ceo_massHead\",\"id\":\"88211637651291032\",\"link\":null,\"group\":\"1637685688438\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"loan_contract\",\"dataType\":\"string\",\"name\":\"Контракт для финансирования (удалить)\",\"id\":\"88361638546128308\",\"link\":\"\",\"group\":\"1638688560441\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_fssp_count\",\"dataType\":\"number\",\"name\":\"affilates_fssp_count\",\"id\":\"88551637486970921\",\"link\":\"\",\"group\":\"1637403982889\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"passport_user\",\"dataType\":\"string\",\"name\":\"Статус загрузки основной разворот\",\"id\":\"88651619023702760\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":25,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder2_tgInfo\",\"dataType\":\"string\",\"name\":\"founder2_tgInfo\",\"id\":\"88771631299608516\",\"link\":null,\"group\":\"1631474118117\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"request_sum\",\"dataType\":\"number\",\"name\":\"Сумма запрошенного займа\",\"id\":\"88801629096458022\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_passport_1page_file\",\"dataType\":\"file\",\"name\":\"Паспорт основной разворот или несколько станиц\",\"id\":\"89231637757206387\",\"link\":\"\",\"group\":\"1637685688438\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"front_request_link\",\"dataType\":\"link\",\"name\":\"front_request_link\",\"id\":\"89321639221152526\",\"link\":\"look_for_contracts\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_courts_to_lastYear_revenue\",\"dataType\":\"decimal\",\"name\":\"company_courts_to_lastYear_revenue\",\"id\":\"89481637487358412\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":27,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"fssp_closed_arrayLink\",\"dataType\":\"arrayLink\",\"name\":\"Завершенные исполнительные производства\",\"id\":\"89631639311549729\",\"link\":\"8_1_seldon_cases_list\",\"group\":\"1637410768588\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":31,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"finished_contracts_link\",\"dataType\":\"arrayLink\",\"name\":\"Завершенные контракты 2 года\",\"id\":\"89791638347060068\",\"link\":\"6_2_gos_contracts\",\"group\":\"1638688560441\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"ceo_name\",\"dataType\":\"string\",\"name\":\"ФИО генеральный директор\",\"id\":\"90081637412292133\",\"link\":\"\",\"group\":\"1637685688438\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"contract_end_date_year\",\"dataType\":\"number\",\"name\":\"contract_end_date_year\",\"id\":\"90111629128730811\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":23,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"request_contract_url\",\"dataType\":\"string\",\"name\":\"request_contract_url\",\"id\":\"90701629096471245\",\"link\":\"\",\"group\":\"1638688560441\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"approved_term\",\"dataType\":\"number\",\"name\":\"Одобренный срок займа в мес\",\"id\":\"91661636451068994\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f2_passport_1page_status_fail\",\"dataType\":\"string\",\"name\":\"Статус загрузки основной разворот\",\"id\":\"92181638709026065\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":32,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder1_contractsFinished_count_1m\",\"dataType\":\"number\",\"name\":\"founder1_contractsFinished_ALL_count100к\",\"id\":\"92971619592251815\",\"link\":\"\",\"group\":\"1637487441419\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"newDB_founder2_check_status\",\"dataType\":\"string\",\"name\":\"newDB_founder2_check_status\",\"id\":\"92981619711951008\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"request_contract_end_date\",\"dataType\":\"number\",\"name\":\"request_contract_end_date\",\"id\":\"94011629096485355\",\"link\":\"\",\"group\":\"1637397537360\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"courts_closed_arrayLink\",\"dataType\":\"arrayLink\",\"name\":\"Завершенные судебные дела\",\"id\":\"94071639234503811\",\"link\":\"5_2_seldon_courts_cases\",\"group\":\"1637410768588\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":29,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"f2_scoring_tgInfo\",\"dataType\":\"string\",\"name\":\"f2_scoring_tgInfo\",\"id\":\"94111638435902771\",\"link\":\"\",\"group\":\"1631474118117\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_employeesFNS\",\"dataType\":\"string\",\"name\":\"company_employeesFNS\",\"id\":\"94181637411815099\",\"link\":null,\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f2_passport_2page_status_fail\",\"dataType\":\"string\",\"name\":\"Статус загрузки разворот с пропиской\",\"id\":\"94451638709034118\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":33,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"current_contracts_link\",\"dataType\":\"arrayLink\",\"name\":\"Текущие контракты\",\"id\":\"94711638342955962\",\"link\":\"6_2_gos_contracts\",\"group\":\"1638688560441\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"affilates_badSupplier_2\",\"dataType\":\"number\",\"name\":\"affilates_badSupplier_2\",\"id\":\"94841617643008238\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_contracts_finished_12M_count\",\"dataType\":\"number\",\"name\":\"affilates_contracts_finished_12M_count\",\"id\":\"94841637487029829\",\"link\":\"\",\"group\":\"1637403982889\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f2_passport_hand_input\",\"dataType\":\"string\",\"name\":\"Заполнить данные паспорта вручную\",\"id\":\"94861638899460880\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":35,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_net_income_lastYear\",\"dataType\":\"decimal\",\"name\":\"company_net_income_lastYear\",\"id\":\"95091637412370243\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f1_passport_2page_status_fail\",\"dataType\":\"string\",\"name\":\"Статус загрузки разворот с пропиской\",\"id\":\"95261638708845803\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":32,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_passport_1page_parse_link\",\"dataType\":\"link\",\"name\":\"Данные паспорта\",\"id\":\"95281637757249759\",\"link\":\"dbrain_passports_check\",\"group\":\"1637685688438\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_okved_main\",\"dataType\":\"string\",\"name\":\"company_okved_main\",\"id\":\"95701637412872207\",\"link\":null,\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"2nd_step_addcontract_success_error\",\"dataType\":\"string\",\"name\":\"Результат\",\"id\":\"95721638816210367\",\"link\":null,\"group\":\"1639206012090\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_contracts_finished_12M_2\",\"dataType\":\"number\",\"name\":\"affilates_contracts_finished_12M_2\",\"id\":\"95841617642839408\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ceo_massHead_stop\",\"dataType\":\"string\",\"name\":\"ceo_massHead\",\"id\":\"96011637661829987\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_status_stop\",\"dataType\":\"string\",\"name\":\"company_status_stop\",\"id\":\"96201622212091176\",\"link\":\"\",\"group\":\"1615309515999\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_courts_to_currentContracts\",\"dataType\":\"decimal\",\"name\":\"company_courts_to_currentContracts\",\"id\":\"96211637487337696\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":26,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_founder2_persdata_consent\",\"dataType\":\"file\",\"name\":\"Cкан согласия на обработку ПД поручителя 2\",\"id\":\"96441635494923300\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"f1_scoring_tgInfo\",\"dataType\":\"string\",\"name\":\"f1_scoring_tgInfo\",\"id\":\"96441638435864095\",\"link\":\"\",\"group\":\"1631474118117\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"contracts_lastYear_Plus_contracts_aff\",\"dataType\":\"number\",\"name\":\"contracts_lastYear_Plus_contracts_aff\",\"id\":\"96731631453056084\",\"link\":\"\",\"group\":\"1637505341738\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"founder2_date\",\"dataType\":\"date\",\"name\":\"founder2_date\",\"id\":\"97801619588363357\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_bankrapcy\",\"dataType\":\"number\",\"name\":\"affilates_bankrapcy\",\"id\":\"98641616701433777\",\"link\":\"\",\"group\":\"1637403982889\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"company_revenue_lastYear\",\"dataType\":\"decimal\",\"name\":\"company_revenue_lastYear\",\"id\":\"98871637412360715\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"scor_Result\",\"dataType\":\"string\",\"name\":\"Результат проверки\",\"id\":\"98931616950347813\",\"link\":null,\"group\":\"1615309515999\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_osv_60\",\"dataType\":\"file\",\"name\":\"ОСВ 60 счет\",\"id\":\"99481638817037528\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"courts_active\",\"dataType\":\"number\",\"name\":\"courts_active\",\"id\":\"99521615306135268\",\"link\":\"\",\"group\":\"1637410768588\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":24,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_founder1_passport\",\"dataType\":\"file\",\"name\":\"Паспорт основной разворот или несколько станиц\",\"id\":\"99531635494902371\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":22,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"affilates_courts_active_2\",\"dataType\":\"number\",\"name\":\"affilates_courts_active_2\",\"id\":\"99651617642920101\",\"link\":\"\",\"group\":\"1617642741592\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_cred_history_FL_bki\",\"dataType\":\"string\",\"name\":\"Выгрузка КИ ФЛ\",\"id\":\"99671629466324332\",\"link\":\"\",\"group\":\"1637685839307\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"file_founder1_cred_history_consent\",\"dataType\":\"file\",\"name\":\"Cкан согласия на запрос КИ поручителя 1\",\"id\":\"99801635494872457\",\"link\":\"\",\"group\":\"1617642712846\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"Контракты\",\"id\":1638688560441,\"order\":2},{\"name\":\"Request source/contacts\",\"id\":1637402544308,\"order\":16},{\"name\":\"New Group 16\",\"id\":1637685839307,\"order\":4},{\"name\":\"Сводный результат аффилированные компании\",\"id\":1637403982889,\"order\":8},{\"name\":\"ссылки\",\"id\":1615572593280,\"order\":18},{\"name\":\"Учредители\",\"id\":1615568532385,\"order\":14},{\"name\":\"founder 2\",\"id\":1617642741592,\"order\":11},{\"name\":\"main UL + aff. campanies\",\"id\":1637505341738,\"order\":9},{\"name\":\"founder 1\",\"id\":1617642712846,\"order\":10},{\"name\":\"New Group 20\",\"id\":1639231449924,\"order\":0},{\"name\":\"3й этап андеррайтинг\",\"id\":1639220671976,\"order\":1},{\"name\":\"UL Info\",\"id\":1637399992291,\"order\":5},{\"name\":\"Удалить\",\"id\":1637397537360,\"order\":19},{\"name\":\"Генеральный директор\",\"id\":1637685688438,\"order\":7},{\"name\":\"TKB\",\"id\":1635316815357,\"order\":17},{\"name\":\"TG fields\",\"id\":1631474118117,\"order\":15},{\"name\":\"Стоп-Факторы Чек Лист\",\"id\":1615309515999,\"order\":12},{\"name\":\"ScorResults UL data\",\"id\":1637410768588,\"order\":6},{\"name\":\"удалить2\",\"id\":1637487441419,\"order\":13},{\"name\":\"Второй этап доп. проверка\",\"id\":1639206012090,\"order\":3}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"company_name\"},{\"sysName\":\"id\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-12-15T12:55:57Z",
-                "createBy": 4400,
-                "changedBy": 6452,
+                "dateChanged": "2021-12-22T07:41:52Z",
+                "createBy": 4798,
+                "changedBy": 4798,
                 "_settings": null,
                 "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
                     "dataType": "id",
@@ -8031,42 +6670,42 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "json": false,
-                    "linkOrArrayLinkType": false,
                     "arrayLink": false,
-                    "linkType": false,
-                    "indexExists": false,
+                    "linkOrArrayLinkType": false,
                     "typeVariable": {},
+                    "json": false,
+                    "indexExists": false,
+                    "linkType": false,
                     "array": false
                 },
-                "objectIDSysName": "id",
-                "folderId": 33635177
+                "folderId": 33607201
             },
-            "1402255": {
-                "networkID": 7332,
-                "sysName": "itemsInCart",
-                "name": "Товары в корзине",
-                "id": 1402255,
-                "dateCreated": "2021-07-04T19:04:24Z",
+            "99055927": {
+                "networkID": 4355,
+                "sysName": "4_stage_offers_payments",
+                "name": "4 этап. Предложение заёмщикам",
+                "id": 99055927,
+                "dateCreated": "2021-12-13T13:50:40Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Название\",\"id\":\"11371630843747160\",\"link\":\"\",\"group\":\"1630843672402\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"cart\",\"dataType\":\"link\",\"name\":\"Корзина\",\"id\":\"15961639141750099\",\"link\":\"cart\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"goodsDescription_id\",\"dataType\":\"link\",\"name\":\"Модель товара\",\"id\":\"20761630835730713\",\"link\":\"goods\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[\"brand.owner_id.id\",\"brand.id\",\"brand\",\"brand.owner_id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"deliveryNumber\",\"dataType\":\"string\",\"name\":\"Номер доставки\",\"id\":\"26941632140768432\",\"link\":null,\"group\":\"1632140758049\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"pushBrand\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"27321640244772681\",\"link\":\"\",\"group\":\"1640244762423\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"orderStatus\",\"dataType\":\"link\",\"name\":\"Статус заказа(del)\",\"id\":\"30371632988728881\",\"link\":\"orderStatuses\",\"group\":\"1630859367483\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"isSale\",\"dataType\":\"boolean\",\"name\":\"Скидка\",\"id\":\"31131630843864948\",\"link\":\"\",\"group\":\"1630843672402\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"itemCost\",\"dataType\":\"number\",\"name\":\"Стоимость\",\"id\":\"35261627890193579\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"status\",\"dataType\":\"link\",\"name\":\"Статус\",\"id\":\"38811630452697484\",\"link\":\"orderStatuses\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"photo\",\"dataType\":\"file\",\"name\":\"Фото\",\"id\":\"42151630843779057\",\"link\":\"\",\"group\":\"1630843672402\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"agreedAction\",\"dataType\":\"boolean\",\"name\":\"Выбери согласование\",\"id\":\"44901630869302044\",\"link\":\"\",\"group\":\"1630859367483\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Согласован\",\"Не согласован\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Описание\",\"id\":\"45251630843760961\",\"link\":\"\",\"group\":\"1630843672402\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"oldPrice\",\"dataType\":\"number\",\"name\":\"Старая цена ₽\",\"id\":\"46501630843904447\",\"link\":\"\",\"group\":\"1630843672402\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"quantity\",\"dataType\":\"number\",\"name\":\"Количество\",\"id\":\"61771625428487124\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"order\",\"dataType\":\"link\",\"name\":\"Заказ\",\"id\":\"66671630859384324\",\"link\":\"orders\",\"group\":\"1630859367483\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"colorName\",\"dataType\":\"string\",\"name\":\"Цвет\",\"id\":\"67821630843685022\",\"link\":\"\",\"group\":\"1630843672402\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"dateChange\",\"dataType\":\"date\",\"name\":\"Дата изменения\",\"id\":\"70091633939249116\",\"link\":\"\",\"group\":\"1630859367483\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YY\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"brandID\",\"dataType\":\"link\",\"name\":\"Бренд\",\"id\":\"70171631851976052\",\"link\":\"Brands\",\"group\":\"1630843672402\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"good\",\"dataType\":\"link\",\"name\":\"Товар\",\"id\":\"75511625428234499\",\"link\":\"goodSpecification\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"customer\",\"dataType\":\"link\",\"name\":\"Покупатель\",\"id\":\"81641627890324484\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"agreed\",\"dataType\":\"string\",\"name\":\"Согласован\",\"id\":\"82191630854462175\",\"link\":null,\"group\":\"1630843672402\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"tax\",\"dataType\":\"string\",\"name\":\"НДС\",\"id\":\"82841640106171557\",\"link\":\"\",\"group\":\"1630843672402\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"brandName\",\"dataType\":\"string\",\"name\":\"Бренд\",\"id\":\"84781630844173461\",\"link\":\"\",\"group\":\"1630843672402\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"isNew\",\"dataType\":\"boolean\",\"name\":\"Новый\",\"id\":\"91591630843853021\",\"link\":\"\",\"group\":\"1630843672402\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"price\",\"dataType\":\"number\",\"name\":\"Цена ₽\",\"id\":\"95431630843711798\",\"link\":\"\",\"group\":\"1630843672402\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"dateCreate\",\"dataType\":\"date\",\"name\":\"Дата создания\",\"id\":\"96141633939241010\",\"link\":\"\",\"group\":\"1630859367483\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YY\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false}]",
-                "jsonGroupSettings": "[{\"name\":\"Good Description\",\"id\":1630843672402,\"order\":0},{\"name\":\"Order\",\"id\":1630859367483,\"order\":1},{\"name\":\"Delivery\",\"id\":1632140758049,\"order\":2},{\"name\":\"push\",\"id\":1640244762423,\"order\":3}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"agreed\"},{\"sysName\":\"name\"}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"ID\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"company_inn\",\"name\":\"ИНН\",\"dataType\":\"string\",\"id\":\"10131639406091671\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"underrating_link\",\"name\":\"underrating_link\",\"dataType\":\"link\",\"id\":\"15081639410515779\",\"link\":\"vertification\",\"group\":\"1639403909672\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"invoices_lastInvoice_link\",\"name\":\"invoices_lastInvoice_link\",\"dataType\":\"link\",\"id\":\"17501640860031125\",\"link\":\"invoice\",\"group\":\"1639403909672\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"email_send_date\",\"name\":\"Дата отправки эмейла\",\"dataType\":\"date\",\"id\":\"17941639410299451\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"invoices_arrayLink\",\"name\":\"Инвойсы\",\"dataType\":\"arrayLink\",\"id\":\"20461640858093584\",\"link\":\"invoice\",\"group\":\"1639403909672\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":true,\"json\":false,\"linkOrArrayLinkType\":true,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"payment_color\",\"name\":\"payment_color\",\"dataType\":\"string\",\"id\":\"23961639718760502\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"company_name\",\"name\":\"Название компании\",\"dataType\":\"string\",\"id\":\"24331639406110698\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"stage_status\",\"name\":\"Статус этапа\",\"dataType\":\"link\",\"id\":\"26741640542688653\",\"link\":\"4_stage_statuses\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"offer_text\",\"name\":\"Офер\",\"dataType\":\"string\",\"id\":\"44141639403468400\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"payment_status\",\"name\":\"Статус оплаты\",\"dataType\":\"link\",\"id\":\"46131639403829927\",\"link\":\"4_stage_payment_status\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"offer_text_email\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"52881639923778640\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"payment_id\",\"name\":\"ID платежа\",\"dataType\":\"string\",\"id\":\"60191639641813114\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"payment_doc\",\"name\":\"Платежный документ\",\"dataType\":\"file\",\"id\":\"62741639737591552\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"requestID_link\",\"name\":\"ID заявки\",\"dataType\":\"link\",\"id\":\"64301639406053197\",\"link\":\"scoring_request_tgbot\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"payment_sum\",\"name\":\"Сумма оплаты\",\"dataType\":\"number\",\"id\":\"67961639403853161\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"5stage_link\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"72581639921786799\",\"link\":\"5_stage_documents_signing\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"payment_webLink\",\"name\":\"Ссылка на страницу с оплатой\",\"dataType\":\"string\",\"id\":\"76831639403924581\",\"link\":\"\",\"group\":\"1639403909672\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"offer_date\",\"name\":\"Дата начало\",\"dataType\":\"date\",\"id\":\"82591639403449086\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"payment_date\",\"name\":\"Дата оплаты\",\"dataType\":\"date\",\"id\":\"93341639403865328\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"clients_email\",\"name\":\"Эмейл клиента\",\"dataType\":\"string\",\"id\":\"97771639403501712\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"email\",\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false}]",
+                "jsonGroupSettings": "[{\"id\":1639403909672,\"name\":\"offer_params\",\"order\":0}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"company_name\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-12-23T07:35:53Z",
-                "createBy": 4400,
-                "changedBy": 6452,
+                "dateChanged": "2021-12-30T10:27:46Z",
+                "createBy": 4798,
+                "changedBy": 4798,
                 "_settings": null,
                 "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
                     "dataType": "id",
-                    "name": "id",
+                    "name": "ID",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -8083,182 +6722,25 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "json": false,
-                    "linkOrArrayLinkType": false,
                     "arrayLink": false,
-                    "linkType": false,
-                    "indexExists": false,
+                    "linkOrArrayLinkType": false,
                     "typeVariable": {},
+                    "json": false,
+                    "indexExists": false,
+                    "linkType": false,
                     "array": false
                 },
-                "objectIDSysName": "id",
-                "folderId": 33635178
+                "folderId": 33638913
             },
-            "1402300": {
-                "networkID": 7332,
-                "sysName": "orders",
-                "name": "Заказы",
-                "id": 1402300,
-                "dateCreated": "2021-07-04T19:59:25Z",
+            "99056814": {
+                "networkID": 4355,
+                "sysName": "4_stage_payment_status",
+                "name": "Статусы 4 этап. Оплата по оферу",
+                "id": 99056814,
+                "dateCreated": "2021-12-17T05:43:31Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"finishPaymentErrorCode\",\"dataType\":\"string\",\"name\":\"finishPaymentErrorCode\",\"id\":\"10671632205391719\",\"link\":\"\",\"group\":\"1632205348515\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"CheckStatusErrorMessage\",\"dataType\":\"string\",\"name\":\"errorMessage\",\"id\":\"14001630678743346\",\"link\":\"\",\"group\":\"1630678669874\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"bankOrderID\",\"dataType\":\"string\",\"name\":\"bankOrderID\",\"id\":\"15641630458179728\",\"link\":null,\"group\":\"1630368229089\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"registrationResponse\",\"dataType\":\"json\",\"name\":\"Registration response\",\"id\":\"17441630453259760\",\"link\":\"\",\"group\":\"1630368229089\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"checkStatusResponse\",\"dataType\":\"json\",\"name\":\"checkStatusResponse\",\"id\":\"19581630678684081\",\"link\":\"\",\"group\":\"1630678669874\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"itemsNumber\",\"dataType\":\"number\",\"name\":\"Количество позиций\",\"id\":\"21231632171784740\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"approveStatus\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"22221632170388065\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"orderNumber\",\"dataType\":\"string\",\"name\":\"Номер заказа\",\"id\":\"24861630368180012\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"paymentURL\",\"dataType\":\"string\",\"name\":\"paymentURL\",\"id\":\"31521630458197492\",\"link\":null,\"group\":\"1630368229089\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"paymentStatus\",\"dataType\":\"string\",\"name\":\"paymentStatus\",\"id\":\"36481630678719313\",\"link\":\"\",\"group\":\"1630678669874\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"errorCode\",\"dataType\":\"string\",\"name\":\"Error code\",\"id\":\"45421630453284300\",\"link\":null,\"group\":\"1630368229089\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"emailBody\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"45461633509481917\",\"link\":\"\",\"group\":\"1633509473142\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"approveStatusText\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"53051632170412476\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"customer\",\"dataType\":\"link\",\"name\":\"Покупатель\",\"id\":\"55421627940261791\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"approvedCost\",\"dataType\":\"number\",\"name\":\"Стоимость подтвер.\",\"id\":\"69031632174627431\",\"link\":\"\",\"group\":\"1632203677843\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"notApprovedNumber\",\"dataType\":\"number\",\"name\":\"Количество несогласованных позиций\",\"id\":\"70891632203715872\",\"link\":\"\",\"group\":\"1632203677843\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"returnURL\",\"dataType\":\"string\",\"name\":\"returnURL\",\"id\":\"71171630456433244\",\"link\":null,\"group\":\"1630368229089\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"delivery\",\"dataType\":\"link\",\"name\":\"Доставка\",\"id\":\"79041633937148454\",\"link\":\"delivery\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"dateUpdate\",\"dataType\":\"date\",\"name\":\"Дата обновления\",\"id\":\"79401633759236551\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YY\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"address\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"79491640187070416\",\"link\":\"\",\"group\":\"1640187068057\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"good\",\"dataType\":\"arrayLink\",\"name\":\"Позиции в заказе\",\"id\":\"82021625428782418\",\"link\":\"itemsInCart\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[\"brandID.id\",\"good.good.id\",\"id\",\"good.good\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"dateCreate\",\"dataType\":\"date\",\"name\":\"Дата создания\",\"id\":\"83271633759077802\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YY\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"finishPaymentResponse\",\"dataType\":\"json\",\"name\":\"finishPaymentResponse\",\"id\":\"86821632205362496\",\"link\":\"\",\"group\":\"1632205348515\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"errorMessage\",\"dataType\":\"string\",\"name\":\"Error message\",\"id\":\"90191630453292316\",\"link\":null,\"group\":\"1630368229089\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"finishPaymentErrorMessage\",\"dataType\":\"string\",\"name\":\"finishPaymentErrorMessage\",\"id\":\"91351632205399307\",\"link\":\"\",\"group\":\"1632205348515\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"approvedNumber\",\"dataType\":\"number\",\"name\":\"Количество согласованных позиций\",\"id\":\"94221632203697814\",\"link\":\"\",\"group\":\"1632203677843\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"orderStatus\",\"dataType\":\"link\",\"name\":\"Статус заказа\",\"id\":\"95151630619162902\",\"link\":\"orderStatuses\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"CheckStatusErrorCode\",\"dataType\":\"string\",\"name\":\"errorCode\",\"id\":\"96501630678736702\",\"link\":\"\",\"group\":\"1630678669874\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"cost\",\"dataType\":\"number\",\"name\":\"Стоимость заказа\",\"id\":\"97951627940223097\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false}]",
-                "jsonGroupSettings": "[{\"name\":\"Approve\",\"id\":1632203677843,\"order\":0},{\"name\":\"Email\",\"id\":1633509473142,\"order\":4},{\"name\":\"Finish payment\",\"id\":1632205348515,\"order\":3},{\"name\":\"Bank registration\",\"id\":1630368229089,\"order\":1},{\"name\":\"Bank check status\",\"id\":1630678669874,\"order\":2},{\"name\":\"New Group 7\",\"id\":1640187068057,\"order\":6},{\"name\":\"User Status\",\"id\":1633593921481,\"order\":5}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"orderNumber\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-12-22T16:37:58Z",
-                "createBy": 4400,
-                "changedBy": 6452,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "linkType": false,
-                    "indexExists": false,
-                    "typeVariable": {},
-                    "array": false
-                },
-                "objectIDSysName": "id",
-                "folderId": 33635178
-            },
-            "1426040": {
-                "networkID": 7332,
-                "sysName": "Brands",
-                "name": "Brands",
-                "id": 1426040,
-                "dateCreated": "2021-08-10T10:38:26Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"descriptionHeader\",\"dataType\":\"string\",\"name\":\"Заголовок описания\",\"id\":\"10691634394430253\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"moderation_status_message\",\"dataType\":\"string\",\"name\":\"Статус\",\"id\":\"16321628685693721\",\"link\":null,\"group\":\"1628610366405\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"year\",\"dataType\":\"number\",\"name\":\"Год создания\",\"id\":\"17061628592689240\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"shopRules\",\"dataType\":\"string\",\"name\":\"Правила магазина\",\"id\":\"17571628592771666\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"holidays\",\"dataType\":\"boolean\",\"name\":\"каникулы\",\"id\":\"20341639751041570\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"salesCity\",\"dataType\":\"string\",\"name\":\"Города продаж\",\"id\":\"21471628592699059\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"companyName\",\"dataType\":\"string\",\"name\":\"Юридическое наименование  \",\"id\":\"22421640093084982\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"pending_goods_ids\",\"dataType\":\"arrayLink\",\"name\":\"Товары, ожидающие модерации\",\"id\":\"22601628703842456\",\"link\":\"goods\",\"group\":\"1628684864978\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"accept_TOS\",\"dataType\":\"json\",\"name\":\"Правила площадки\",\"id\":\"23631634982276889\",\"link\":\"\",\"group\":\"1628610366405\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"accept\",\"label\":\"Принимаю правила использования площадки VitrinaBrands\"}]},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"good_ids\",\"dataType\":\"arrayLink\",\"name\":\"Товары (модели)\",\"id\":\"26571628684869720\",\"link\":\"goods\",\"group\":\"1628684864978\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"brandName\",\"dataType\":\"string\",\"name\":\"Название бренда\",\"id\":\"34541628592680613\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"seoKeywords\",\"dataType\":\"string\",\"name\":\"seoKeywords\",\"id\":\"35051639573194166\",\"link\":\"\",\"group\":\"1639573183227\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"owner_id\",\"dataType\":\"link\",\"name\":\"Владелец\",\"id\":\"36491628592826659\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"delivery\",\"dataType\":\"string\",\"name\":\"Опции доставки\",\"id\":\"37351628592700811\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"INN\",\"dataType\":\"string\",\"name\":\"ИНН\",\"id\":\"45701640093071832\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Описание\",\"id\":\"47341628592699578\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"manager_alert\",\"dataType\":\"string\",\"name\":\"Внимание\",\"id\":\"47341637789593389\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"tax\",\"dataType\":\"link\",\"name\":\"НДС\",\"id\":\"47381640101252292\",\"link\":\"tax\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"seoTitle\",\"dataType\":\"string\",\"name\":\"seoTitle\",\"id\":\"55861639573191684\",\"link\":\"\",\"group\":\"1639573183227\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"moderation_colour\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"63801628703966398\",\"link\":\"\",\"group\":\"1628610366405\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"logo\",\"dataType\":\"file\",\"name\":\"Логотип\",\"id\":\"72191628592688721\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"seoDescription\",\"dataType\":\"string\",\"name\":\"seoDescription\",\"id\":\"74241639573193321\",\"link\":\"\",\"group\":\"1639573183227\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"moderation_status\",\"dataType\":\"string\",\"name\":\"Статус модерации\",\"id\":\"74811628610372656\",\"link\":null,\"group\":\"1628610366405\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"isOnHolidays\",\"dataType\":\"boolean\",\"name\":\"каникулы\",\"id\":\"78701640093054576\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"city\",\"dataType\":\"string\",\"name\":\"Город\",\"id\":\"80531628592689780\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"phone\",\"dataType\":\"string\",\"name\":\"Телефон\",\"id\":\"86461640093085688\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"isHidden\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"88081628672775037\",\"link\":\"\",\"group\":\"1628610366405\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"image_hor\",\"dataType\":\"file\",\"name\":\"Иллюстрация (900x320)\",\"id\":\"91731634981558700\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"image_vert\",\"dataType\":\"file\",\"name\":\"Иллюстрация (300x460)\",\"id\":\"95951634981559396\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false}]",
-                "jsonGroupSettings": "[{\"name\":\"Tech fields\",\"id\":1628610366405,\"order\":0},{\"name\":\"Goods\",\"id\":1628684864978,\"order\":1},{\"name\":\"seo\",\"id\":1639573183227,\"order\":2}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"brandName\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-12-21T15:41:27Z",
-                "createBy": 21,
-                "changedBy": 4400,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "linkType": false,
-                    "indexExists": false,
-                    "typeVariable": {},
-                    "array": false
-                },
-                "objectIDSysName": "id",
-                "folderId": 33648500
-            },
-            "99023983": {
-                "networkID": 7332,
-                "sysName": "orderStatuses",
-                "name": "Order Statuses",
-                "id": 99023983,
-                "dateCreated": "2021-09-17T05:37:28Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"userStatus\",\"name\":\"Статус Пользователя\",\"dataType\":\"string\",\"id\":\"59971633594014791\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"status\",\"name\":\"Статус\",\"dataType\":\"string\",\"id\":\"89961631857075918\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"status\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-10-07T08:07:19Z",
-                "createBy": 4400,
-                "changedBy": 4232,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "linkType": false,
-                    "indexExists": false,
-                    "typeVariable": {},
-                    "array": false
-                },
-                "objectIDSysName": "id",
-                "folderId": 33632409
-            },
-            "99035406": {
-                "networkID": 7332,
-                "sysName": "delivery",
-                "name": "Delivery",
-                "id": 99035406,
-                "dateCreated": "2021-10-08T12:12:03Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"price\",\"dataType\":\"number\",\"name\":\"Цена\",\"id\":\"18551633695198014\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"58121633695261291\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Название\",\"id\":\"71691633695191189\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Статус\",\"id\":\"64771639719820213\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"status_color\",\"dataType\":\"string\",\"name\":\"status_color\",\"id\":\"97901639719913038\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
                 "jsonGroupSettings": null,
                 "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
                 "jsonSettings": null,
@@ -8266,11 +6748,12 @@ const App = (props) => {
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-10-08T12:14:34Z",
-                "createBy": 4400,
-                "changedBy": 4400,
+                "dateChanged": "2021-12-17T10:39:28Z",
+                "createBy": 4798,
+                "changedBy": 4798,
                 "_settings": null,
                 "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
                     "dataType": "id",
@@ -8291,16 +6774,119 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "json": false,
-                    "linkOrArrayLinkType": false,
                     "arrayLink": false,
-                    "linkType": false,
-                    "indexExists": false,
+                    "linkOrArrayLinkType": false,
                     "typeVariable": {},
+                    "json": false,
+                    "indexExists": false,
+                    "linkType": false,
                     "array": false
                 },
+                "folderId": 33673948
+            },
+            "99058963": {
+                "networkID": 4355,
+                "sysName": "4_stage_statuses",
+                "name": "Статусы 4 этап",
+                "id": 99058963,
+                "dateCreated": "2021-12-26T18:19:43Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Статус\",\"id\":\"19071640542816542\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-12-26T18:20:28Z",
+                "createBy": 4798,
+                "changedBy": 4798,
+                "_settings": null,
+                "_nativeIndexSettings": null,
                 "objectIDSysName": "id",
-                "folderId": 33632409
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "arrayLink": false,
+                    "linkOrArrayLinkType": false,
+                    "typeVariable": {},
+                    "json": false,
+                    "indexExists": false,
+                    "linkType": false,
+                    "array": false
+                },
+                "folderId": 33673948
+            },
+            "99059324": {
+                "networkID": 4355,
+                "sysName": "invoice",
+                "name": "4.3 Invoice",
+                "id": 99059324,
+                "dateCreated": "2021-12-28T15:05:39Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"paymentUrl\",\"name\":\"Ссылка для оплаты\",\"dataType\":\"string\",\"id\":\"12661640760576471\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"paymentMethod_terminalID\",\"name\":\"paymentMethod_terminalID\",\"dataType\":\"string\",\"id\":\"13321640762617610\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"order_id\",\"name\":\"ID  заявки\",\"dataType\":\"string\",\"id\":\"19011640760816694\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"json_resp\",\"name\":\"json_resp\",\"dataType\":\"json\",\"id\":\"19711640704000408\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"arrayLink\":false,\"json\":true,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"company_name\",\"name\":\"Компания\",\"dataType\":\"string\",\"id\":\"20101640856347310\",\"link\":\"\",\"group\":\"1640856317089\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"payment_date\",\"name\":\"Дата оплаты\",\"dataType\":\"date\",\"id\":\"44691640762838963\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"loanRequest_link\",\"name\":\"loanRequest_link\",\"dataType\":\"link\",\"id\":\"45361640856359323\",\"link\":\"tgbot_moderation_requests\",\"group\":\"1640856317089\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"order_sum\",\"name\":\"Сумма инвойса\",\"dataType\":\"string\",\"id\":\"47851640760609416\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"invoiceDate\",\"name\":\"Дата инвойса\",\"dataType\":\"date\",\"id\":\"63931640760632101\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y,\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"invoiceID\",\"name\":\"ID в системе Инвойс\",\"dataType\":\"string\",\"id\":\"71741640760666369\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"invoice_status\",\"name\":\"Статус инвойса\",\"dataType\":\"string\",\"id\":\"72921640762761441\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"order_description\",\"name\":\"Назначение платежа\",\"dataType\":\"string\",\"id\":\"79261640760754687\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"offer_stage_link\",\"name\":\"offer_stage_link\",\"dataType\":\"link\",\"id\":\"81741640858540846\",\"link\":\"4_stage_offers_payments\",\"group\":\"1640856317089\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"company_inn\",\"name\":\"ИНН\",\"dataType\":\"string\",\"id\":\"83221640856328068\",\"link\":\"\",\"group\":\"1640856317089\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"paymentStatus\",\"name\":\"Статус оплаты\",\"dataType\":\"string\",\"id\":\"90321640846259379\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"company\",\"id\":1640856317089,\"order\":0}]",
+                "jsonViewIdSettings": null,
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-12-30T12:24:09Z",
+                "createBy": 4798,
+                "changedBy": 1,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "arrayLink": false,
+                    "linkOrArrayLinkType": false,
+                    "typeVariable": {},
+                    "json": false,
+                    "indexExists": false,
+                    "linkType": false,
+                    "array": false
+                },
+                "folderId": 33638913
             }
         },
         "isSuccessWrite": false,
@@ -8310,7 +6896,7 @@ const App = (props) => {
             {
                 "sysName": "id",
                 "dataType": "id",
-                "name": "id",
+                "name": "ID",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -8327,12 +6913,96 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "json": false,
-                "linkOrArrayLinkType": false,
                 "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
+                "linkOrArrayLinkType": false,
                 "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "array": false
+            },
+            {
+                "sysName": "payment_doc",
+                "dataType": "file",
+                "name": "Платежный документ",
+                "id": "62741639737591552",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 13,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "image",
+                "formatOptions": {},
+                "groupName": null,
+                "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "linkType": false,
+                "array": false
+            },
+            {
+                "sysName": "payment_status",
+                "dataType": "link",
+                "name": "Статус оплаты",
+                "id": "46131639403829927",
+                "link": "4_stage_payment_status",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "arrayLink": false,
+                "linkOrArrayLinkType": true,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "linkType": true,
+                "array": false
+            },
+            {
+                "sysName": "stage_status",
+                "dataType": "link",
+                "name": "Статус этапа",
+                "id": "26741640542688653",
+                "link": "4_stage_statuses",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 16,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "arrayLink": false,
+                "linkOrArrayLinkType": true,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "linkType": true,
                 "array": false
             }
         ],
