@@ -172,7 +172,8 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 console.log(cond.fieldValue + ' != ' + cond.value);
                 console.log(cond)
                 console.log('Field is wrong');
-                match = false
+                if (cond.value == 'false' && typeof cond.fieldValue == 'undefined') { match = true } else 
+                { match = false }
             }
         })
         return match

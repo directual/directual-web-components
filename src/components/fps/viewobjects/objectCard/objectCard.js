@@ -808,8 +808,10 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
     }, [model])
 
     const processField = (f, fieldName, nospaces) => {
+        // if (enrichedObject[fieldName].dataType == 'boolean') console.log(enrichedObject[fieldName])
         if (!f) return null
         if (!enrichedObject[fieldName]) return typeof f == 'object' ? getLinkName(fieldName, f, transformTableFieldScheme(field.sysName, tableFieldScheme)) : f
+        if (enrichedObject[fieldName].dataType == 'boolean' && !enrichedObject[fieldName].formatOptions) return f ? 'true' : 'false'
         if (enrichedObject[fieldName].dataType == 'date') return formatDate(f, enrichedObject[fieldName].formatOptions)
         if (enrichedObject[fieldName].dataType == 'file' && enrichedObject[fieldName].format == "image") return <img src={f} className={styles.cartImage} />
         if (enrichedObject[fieldName].dataType == 'file' && enrichedObject[fieldName].format == "multipleImages") return <img src={f.split(',') ? f.split(',')[0] : null} className={styles.cartImage} />
