@@ -2,7 +2,7 @@ import React from 'react'
 import icon from './../../../icons/fps-button.svg'
 import Button from './button'
 // import Input from '../dataentry/input/input'
-// import ActionPanel from '../actionspanel/actionspanel'
+import ActionPanel from '../actionspanel/actionspanel'
 import { ComponentWrapper } from '../wrapper/wrapper'
 
 export default function FpsButton({ data, handleRoute }) {
@@ -12,18 +12,25 @@ export default function FpsButton({ data, handleRoute }) {
     const buttonColor = data.buttonColor
     const iconSize = data.size
     const height = data.height
+    const align = data.align
     return (
         <ComponentWrapper>
-            <Button
-                onClick={handleRoute(href)}
-                small={iconSize == 'small'}
-                verySmall={iconSize == 'verySmall'}
-                icon={icon}
-                accent={buttonColor == 'accent'}
-                danger={buttonColor == 'danger'}
-                height={height}>
-                {data.buttonLabel}
-            </Button>
+            <ActionPanel
+                alignRight={align == 'right'}
+                alignCenter={align == 'center'}
+            >
+                <Button
+                    onClick={handleRoute(href)}
+                    small={iconSize == 'small'}
+
+                    verySmall={iconSize == 'verySmall'}
+                    icon={icon}
+                    accent={buttonColor == 'accent'}
+                    danger={buttonColor == 'danger'}
+                    height={height}>
+                    {data.buttonLabel}
+                </Button>
+            </ActionPanel>
         </ComponentWrapper>
     )
 }
@@ -40,6 +47,7 @@ FpsButton.settings = {
         { name: 'Icon', sysName: 'icon', type: 'icon' },
         { name: 'Icon size', sysName: 'size', type: 'iconSize' },
         { name: 'Height, px', sysName: 'height', type: 'number' },
+        { name: 'Align', sysName: 'align', type: 'align' },
         { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' },
         { name: 'Apply template engine', sysName: 'withTemplate', type: 'boolean' },
     ]

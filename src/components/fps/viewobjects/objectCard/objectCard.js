@@ -1174,6 +1174,20 @@ function CardAction({ action, writeError, actionParams, debug, submitAction, onC
     //     })
     // }
 
+    const parseJson = json => {
+        if (!json) return {}
+        let parsedJson = {}
+        if (typeof json == 'object') return json
+        try {
+            parsedJson = JSON.parse(json)
+        }
+        catch (e) {
+            console.log(json);
+            console.log(e);
+        }
+        return parsedJson
+    }
+
     conds && conds.forEach(cond => {
         // console.log(cond)
         // console.log(object)

@@ -277,7 +277,6 @@
 }
 .input_group {
   display: flex;
-  flex-grow: 2;
   justify-content: space-between;
 }
 .input_group .input_wrapper {

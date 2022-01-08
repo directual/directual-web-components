@@ -9,6 +9,7 @@ import CodeInput from './components/fps/dataentry/codeinput/codeinput'
 import FpsCards from './components/fps/viewobjects/cards/FpsCards'
 import FpsHtml, { FpsMarkdown } from './components/fps/FpsHtml'
 import FpsButton from './components/fps/button/FpsButton'
+import FpsHint from './components/fps/hint/FpsHint'
 import FpsForm, { FormSection } from './components/fps/dataentry/form/FpsForm'
 import MainMenu from './components/fps/mainmenu/mainmenu'
 import ComponentDetails from './components/fps/componentdetails/componentdetails'
@@ -79,6 +80,7 @@ export {
   FpsTable,
   Input,
   Button,
+  FpsHint,
   ButtonDropDown,
   ActionPanel,
   SomethingWentWrong,

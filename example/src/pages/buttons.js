@@ -67,8 +67,30 @@ export default function ButtonsPage() {
 
             <CodeSnippet code=
                 {`<ActionPanel 
+    title='Align center side panel' 
+    width={600} 
+    alignCenter
+    border 
+    margin={{ top: 6, bottom: 24 }}>
+    <Button accent>Accent button</Button>
+    <Button socialGoogle>Google button</Button>
+    <Button icon="play">Icon button</Button>
+</ActionPanel>`} />
+            <ActionPanel 
+                title='Align center side panel' 
+                width={600} 
+                alignCenter
+                border 
+                margin={{ top: 6, bottom: 24 }}>
+                <Button accent>Accent button</Button>
+                <Button socialGoogle newWindow height={44} link='http://google.com'>Google button</Button>
+                <Button icon="play">Icon button</Button>
+            </ActionPanel>
+
+            <CodeSnippet code=
+                {`<ActionPanel 
     title='Align right side panel' 
-    width={500} 
+    width={600} 
     alignRight
     border 
     margin={{ top: 6, bottom: 24 }}>
@@ -78,7 +100,7 @@ export default function ButtonsPage() {
 </ActionPanel>`} />
             <ActionPanel 
                 title='Align right side panel' 
-                width={500} 
+                width={600} 
                 alignRight
                 border 
                 margin={{ top: 6, bottom: 24 }}>

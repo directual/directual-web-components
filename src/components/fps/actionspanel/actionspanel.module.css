@@ -7,6 +7,13 @@
 .panel a {
   margin: 0 6px 6px 0;
 }
+.panel.alignCenter {
+  justify-content: center;
+}
+.panel.alignCenter button,
+.panel.alignCenter a {
+  margin: 0 6px 6px 6px;
+}
 .panel.alignRight {
   justify-content: flex-end;
 }

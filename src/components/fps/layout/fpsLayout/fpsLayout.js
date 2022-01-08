@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import styles from './fpsLayout.module.css'
 // import FpsCards from '../../viewobjects/cards/FpsCards'
 import TabsPane from '../tabpane/tabpane'
+import _ from 'lodash'
 
 const brakePoints = {
     mobile: { from: 0, to: 478, display: 400 },
@@ -74,10 +75,24 @@ export function FpsLayout({ layout }) {
 
 const Section = ({ section, currentBP }) => {
 
+    console.log('section')
+    console.log(section)
+
     if (!section.columns || section.columns.length == 0) return <div>no columns</div>
     const correctedBP = currentBP == 'wideDesktop' ? 'desktop' : currentBP;
 
-    return <div className={styles.section} style={{ flexDirection: section.flexDirection[correctedBP] }}>
+    const marginTop = _.get(section, 'marginTop') || _.get(section, 'marginTop') === 0 ? _.get(section, 'marginTop') : 0
+    const marginBottom = _.get(section, 'marginBottom') || _.get(section, 'marginBottom') === 0 ? _.get(section, 'marginBottom') : 24
+    const maxWidth = _.get(section, 'maxWidth') || _.get(section, 'maxWidth') === 0 ? _.get(section, 'maxWidth') : 'none'
+    const align = _.get(section, 'align')
+
+    return <div className={`${styles.section} ${align == 'center' ? styles.alignCenter : ''}`}
+        style={{
+            flexDirection: section.flexDirection[correctedBP],
+            marginTop: marginTop,
+            marginBottom: marginBottom,
+            maxWidth: maxWidth,
+        }}>
         {section.columns.map((column, i) => <Column last={section.columns.length == i + 1} key={column.id} row={section.flexDirection[correctedBP] == 'row'} column={column} />)}
     </div>
 }
