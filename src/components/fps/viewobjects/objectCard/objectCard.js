@@ -1148,32 +1148,62 @@ function CardAction({ action, writeError, actionParams, debug, submitAction, onC
     // console.log(actionParams)
 
     let conds = actionParams ? (actionParams.conditionals ? [...actionParams.conditionals] : null) : null
-    if (conds) {
+    // if (conds) {
+    //     conds.forEach(cond => {
+    //         if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type == 'const') {
+    //             cond.checkValue = cond.value
+    //         }
+    //         if (cond.target == 'role') {
+    //             cond.checkValue = cond.value
+    //         }
+    //         if (cond.target == 'linkedField') {
+    //             // console.log('ЕБАТЬ')
+    //             // console.log(conds)
+    //             // console.log(object)
+    //             typeof object[cond.field] != 'object' ? cond.fieldValue = object[cond.field] :
+    //                 cond.fieldValue = object[cond.field].id || object[cond.field].value || null
+    //         }
+    //         if (cond.target == 'field') {
+    //             typeof object[cond.field] != 'object' ? cond.fieldValue = object[cond.field] :
+    //                 cond.fieldValue = object[cond.field].id || object[cond.field].value || null
+    //         }
+    //         if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
+    //             typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
+    //                 cond.checkValue = object[cond.field].id || object[cond.value].value || null // раньше тут было .id, а не .value проверить!
+    //         }
+    //     })
+    // }
 
-        conds.forEach(cond => {
-            if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type == 'const') {
-                cond.checkValue = cond.value
-            }
-            if (cond.target == 'role') {
-                cond.checkValue = cond.value
-            }
-            if (cond.target == 'linkedField') {
-                // console.log('ЕБАТЬ')
-                // console.log(conds)
-                // console.log(object)
-                typeof object[cond.field] != 'object' ? cond.fieldValue = object[cond.field] :
-                    cond.fieldValue = object[cond.field].id || object[cond.field].value || null
-            }
-            if (cond.target == 'field') {
-                typeof object[cond.field] != 'object' ? cond.fieldValue = object[cond.field] :
-                    cond.fieldValue = object[cond.field].id || object[cond.field].value || null
-            }
-            if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
-                typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
-                    cond.checkValue = object[cond.field].id || object[cond.value].value || null // раньше тут было .id, а не .value проверить!
-            }
-        })
-    }
+    conds && conds.forEach(cond => {
+        // console.log(cond)
+        // console.log(object)
+        if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type == 'const') {
+            cond.checkValue = cond.value
+        }
+        if (cond.target == 'role') {
+            cond.checkValue = cond.value
+        }
+        if (cond.target == 'field') {
+            if (typeof object[cond.field] == 'object') {
+                if (object[cond.field].value) {
+                    if (typeof object[cond.field].value == object || parseJson(object[cond.field].value) == 'object') {
+                        cond.fieldValue = (parseJson(object[cond.field].value) || {}).id
+                    } else {
+                        cond.fieldValue = object[cond.field].value
+                    }
+                } else {
+                    cond.fieldValue = object[cond.field].id
+                }
+            } else { cond.fieldValue = object[cond.field] } 
+                
+            if (cond.value == 'false' && !cond.fieldValue) { cond.fieldValue = 'false' }
+
+        }
+        if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
+            typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
+                object[cond.value] ? cond.checkValue = (object[cond.value].id || (typeof object[cond.value].value == 'object' && object[cond.value].value ? object[cond.value].value.id : object[cond.value].value) || null) : cond.checkValue = null // раньше тут было .id, а не .value проверить!
+        }
+    })
 
     function noActionData() {
         setGenericLoading(true)

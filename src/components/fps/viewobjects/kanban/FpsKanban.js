@@ -226,7 +226,7 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale }) {
             }
             if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
                 typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
-                    cond.checkValue = object[cond.field].id || (typeof object[cond.value].value == 'object' ? object[cond.value].value.id : object[cond.value].value) || null // раньше тут было .id, а не .value проверить!
+                    object[cond.value] ? cond.checkValue = (object[cond.value].id || (typeof object[cond.value].value == 'object' && object[cond.value].value ? object[cond.value].value.id : object[cond.value].value) || null) : cond.checkValue = null // раньше тут было .id, а не .value проверить!
             }
         })
         return eConds

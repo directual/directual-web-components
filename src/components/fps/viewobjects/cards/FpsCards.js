@@ -93,7 +93,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     }
 
     const setPage = page => {
-        onEvent({ dql: currentDQL, _id: id},  { page: page }, {reqParam1: "true"} )
+        onEvent({ dql: currentDQL, _id: id }, { page: page }, { reqParam1: "true" })
         page !== 0 ? addUrlParam({ key: id + '_page', value: page }) : removeUrlParam(id + '_page')
     }
 
@@ -172,8 +172,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 console.log(cond.fieldValue + ' != ' + cond.value);
                 console.log(cond)
                 console.log('Field is wrong');
-                if (cond.value == 'false' && typeof cond.fieldValue == 'undefined') { match = true } else 
-                { match = false }
+                if (cond.value == 'false' && typeof cond.fieldValue == 'undefined') { match = true } else { match = false }
             }
         })
         return match
@@ -200,8 +199,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         // console.log(object)
         // console.log(auth)
         eConds && eConds.forEach(cond => {
-            // console.log(cond)
-            // console.log(object)
+
             if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type == 'const') {
                 cond.checkValue = cond.value
             }
@@ -219,15 +217,18 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                     } else {
                         cond.fieldValue = object[cond.field].id
                     }
-                } else { cond.fieldValue = object[cond.field] } 
-                    
+                } else { cond.fieldValue = object[cond.field] }
+
                 if (cond.value == 'false' && !cond.fieldValue) { cond.fieldValue = 'false' }
 
             }
             if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
                 typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
-                    cond.checkValue = object[cond.field].id || (typeof object[cond.value].value == 'object' ? object[cond.value].value.id : object[cond.value].value) || null // раньше тут было .id, а не .value проверить!
+                    object[cond.value] ? cond.checkValue = (object[cond.value].id || (typeof object[cond.value].value == 'object' && object[cond.value].value ? object[cond.value].value.id : object[cond.value].value) || null) : cond.checkValue = null // раньше тут было .id, а не .value проверить!
             }
+            // console.log('========')
+            // console.log(cond)
+            // console.log(object)
         })
         return eConds
     }
@@ -265,7 +266,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     const handleCloseShowObject = () => {
         setShowObject(null);
-        setTimeout(()=>removeUrlParam(id + '_id'),300)
+        setTimeout(() => removeUrlParam(id + '_id'), 300)
     }
 
     // get direct link ID
@@ -278,12 +279,12 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         // if (urlDql && !currentDQL) {search(urlDql, urlPage || 0)}
         // if (!urlDql && urlPage && urlPage != currentPage) {setPage(urlPage)}
         if (currentID) {
-            const foundObject = data.data.filter(i=> i.id == currentID) ? data.data.filter(i=> i.id == currentID)[0] : null
-            if (foundObject) { setShowObject(foundObject)} else { console.log("no Object found")}
+            const foundObject = data.data.filter(i => i.id == currentID) ? data.data.filter(i => i.id == currentID)[0] : null
+            if (foundObject) { setShowObject(foundObject) } else { console.log("no Object found") }
         }
     }, [data]);
 
-    useEffect(()=> {
+    useEffect(() => {
         if (showObject && showObject.id) {
             addUrlParam({ key: id + '_id', value: showObject.id })
         } else {
@@ -347,7 +348,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 params={data.params}
                 searchValue={searchValue}
                 checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
-                onExpand={val => { _.get(data,'params.data.cardsOrPage') == 'page' ? handleRoute('./' + val.id)() : setShowObject(val) }}
+                onExpand={val => { _.get(data, 'params.data.cardsOrPage') == 'page' ? handleRoute('./' + val.id)() : setShowObject(val) }}
                 setPage={page => { sendMsg(null, null, { page: page }) }}
                 auth={auth}
                 submitAction={submitAction}
