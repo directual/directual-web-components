@@ -20,6 +20,9 @@
   overflow: auto;
   padding: 0 6px;
 }
+.tabsMenu.fpsTabs {
+  margin: 6px 24px 0 24px;
+}
 .tabWrapper {
   font-size: var(--text-font-size);
   display: none;

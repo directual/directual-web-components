@@ -67,7 +67,7 @@ export function FpsLayout({ layout }) {
     return (
         (tabs && tabs[0]) ? <div className={styles.fpsLayout} ref={layoutRef}>
             {layout.showHeader && layout.header && <h1 className={styles.layoutHeader}>{layout.header}</h1>}
-            {tabs && <TabsPane style={{ marginTop: -18 }} hideSingleTab tabs={tabs} saveTabToURL //currentTabKey={tabs[0].key} 
+            {tabs && <TabsPane fpsTabs hideSingleTab tabs={tabs} saveTabToURL //currentTabKey={tabs[0].key} 
             //fixedScroll 
             />}
         </div> : <div />)
@@ -75,14 +75,16 @@ export function FpsLayout({ layout }) {
 
 const Section = ({ section, currentBP }) => {
 
-    console.log('section')
-    console.log(section)
+    // console.log('section')
+    // console.log(section)
 
     if (!section.columns || section.columns.length == 0) return <div>no columns</div>
     const correctedBP = currentBP == 'wideDesktop' ? 'desktop' : currentBP;
 
-    const marginTop = _.get(section, 'marginTop') || _.get(section, 'marginTop') === 0 ? _.get(section, 'marginTop') : 0
+    const marginTop = _.get(section, 'marginTop') || _.get(section, 'marginTop') === 0 ? _.get(section, 'marginTop') : 24
     const marginBottom = _.get(section, 'marginBottom') || _.get(section, 'marginBottom') === 0 ? _.get(section, 'marginBottom') : 24
+    const marginLeft = _.get(section, 'marginLeft') || _.get(section, 'marginLeft') === 0 ? _.get(section, 'marginLeft') : 24
+    const marginRight = _.get(section, 'marginRight') || _.get(section, 'marginRight') === 0 ? _.get(section, 'marginRight') : 24
     const maxWidth = _.get(section, 'maxWidth') || _.get(section, 'maxWidth') === 0 ? _.get(section, 'maxWidth') : 'none'
     const align = _.get(section, 'align')
 
@@ -91,6 +93,8 @@ const Section = ({ section, currentBP }) => {
             flexDirection: section.flexDirection[correctedBP],
             marginTop: marginTop,
             marginBottom: marginBottom,
+            marginLeft: marginLeft,
+            marginRight: marginRight,
             maxWidth: maxWidth,
         }}>
         {section.columns.map((column, i) => <Column last={section.columns.length == i + 1} key={column.id} row={section.flexDirection[correctedBP] == 'row'} column={column} />)}

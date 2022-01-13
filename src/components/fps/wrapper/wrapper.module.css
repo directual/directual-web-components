@@ -19,11 +19,12 @@
 
 .content_wrapper {
     background-color: var(--layout-bgr);
-    padding: 32px 32px 46px 32px;
+    /* padding: 32px 32px 46px 32px; */
     flex-grow: 2;
     overflow-x: hidden;
     overflow-y: auto;
-    height: calc(100% - 78px);
+    height: 100% 
+    /* calc(100% - 78px); */
 }
 
 .componentWrapper {

@@ -12,7 +12,7 @@ import _ from 'lodash'
 import Map from '../map/map'
 
 export function InputForm(props) {
-    // console.log('InputForm')
+    // console.log('== InputForm == ' + props.field.content)
     // console.log(props.field)
     if (!props.field.include) { return null }
     const type = `${props.field.dataType}${props.field.format ? `_${props.field.format}` : ''}`
@@ -70,10 +70,10 @@ function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue
         editingOn={editingOn}
         type='video'
         source={defaultValue} width='500' height='315' />
-    if (!editingOn) return <div>
+    if (!editingOn) return <div className={styles.objFieldWrapper}>
         {!field.displayAsButton &&
             <span className={styles.label}>
-                {field.name || field.sysName}</span>}
+                {field.name || field.content || field.sysName}</span>}
 
         {field.descriptionFlag && field.description &&
             <span className={styles.description}>
@@ -115,9 +115,9 @@ function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue
 function FieldStandard({ field, onChange, placeholder, editingOn, defaultValue }) {
     // console.log('FieldStandard')
     // console.log(field)
-    if (!editingOn) return <div>
+    if (!editingOn) return <div className={styles.objFieldWrapper}>
         <span className={styles.label}>
-            {field.name || field.sysName}</span>
+            {field.name || field.content || field.sysName}</span>
 
         {field.descriptionFlag && field.description &&
             <span className={styles.description}>
@@ -233,7 +233,7 @@ function FieldHTML({ field, onChange, placeholder, editingOn, defaultValue }) {
     </React.Fragment>
 
     return <div className={styles.objFieldWrapper}>
-        <label className={styles.label}>{field.content || field.id}</label>
+        <label className={styles.label}>{field.content || field.name || field.id}</label>
         <div
             dangerouslySetInnerHTML={{ __html: defaultValue || (field.defaultValueOn && field.defaultValue) }}
         />

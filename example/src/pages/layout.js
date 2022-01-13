@@ -2249,7 +2249,7 @@ export default function LayoutPage() {
 
     const [loading, setLoading] = useState(false)
 
-    return <TabsPane tabs={exampleTabs} hideSingleTab fixedScroll={false} />
+    return <TabsPane fpsTabs saveTabToURL tabs={exampleTabs} hideSingleTab fixedScroll={false} />
 
     // return <FpsLayout layout={layoutExample} />
 

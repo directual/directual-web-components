@@ -101,6 +101,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
 
   //Hidden fields from URL query params:
   const queryString = typeof window !== 'undefined' ? window.location.search : '';
+  const pathName = typeof window !== 'undefined' ? window.location.pathname : '';
   const urlParams = new URLSearchParams(queryString);
   let hiddenFieldsValues
   for (const hiddenField in hiddenFields) {
@@ -109,11 +110,19 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
 
   //Editting object
   let eidtID
-  if (data.params.edit && auth.isAuth && auth.user) {
+  if ((data.params.edit || data.params.editObject == 'userID') && auth.isAuth && auth.user) {
     eidtID = auth.user // если стоит галка, то забираем айди из юзера
   }
   eidtID = urlParams.get('@editObject') || eidtID; // если задаем в URL, приоритет выше
-  console.log('eidtID = ' + eidtID)
+
+  if (data.params.editObject == "url") {
+    console.log("URL " + pathName)
+    const params = pathName.split('/')
+    eidtID = params.length ? params[params.length - 1] : null
+  }
+
+  // а если редактирование вырублено, вообще все обнуляем
+  if (!data.params.useEditing) { eidtID = null } else { console.log('eidtID = ' + eidtID) }
 
   const [fetchedObj, setFetchetObj] = useState(false)
   const fetchObjectFields = (objId) => {
@@ -165,16 +174,16 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
 
   const getResultAnswer = () => {
     let sync = false
-    if (data.params.result.isSuccessField ||
-      data.params.result.resultMessageField ||
-      data.params.result.resultTitleField) { sync = true }
+    if (_.get(data, 'params.result.isSuccessField') ||
+      _.get(data, 'params.result.resultMessageField') ||
+      _.get(data, 'params.result.resultTitleField')) { sync = true }
     let isSuccess = true
-    if (sync && data.response && data.params.result.isSuccessField) { isSuccess = data.response[0][data.params.result.isSuccessField] }
+    if (sync && data.response && _.get(data, 'params.result.isSuccessField')) { isSuccess = data.response[0] ? data.response[0][data.params.result.isSuccessField] : null }
     let answerTitle = ''
-    if (sync && data.response && data.params.result.resultTitleField) { answerTitle = data.response[0][data.params.result.resultTitleField] }
+    if (sync && data.response && data.params.result.resultTitleField) { answerTitle = data.response[0] ? data.response[0][data.params.result.resultTitleField] : null }
     if (sync && data.response && !answerTitle) { answerTitle = isSuccess ? dict[lang].success : dict[lang].error }
     let answerText = ''
-    if (sync && data.response && data.params.result.resultMessageField) { answerText = data.response[0][data.params.result.resultMessageField] }
+    if (sync && data.response && data.params.result.resultMessageField) { answerText = data.response[0] ? data.response[0][data.params.result.resultMessageField] : null }
     let answer
     if (data.params.result.isLink) {
       answer = <a href={answerText} target="_blank">{data.params.result.linkTitle || answerText}</a>
@@ -199,7 +208,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
       if (typeof getFieldVal == 'object' && getFieldVal && Array.isArray(getFieldVal)) { getFieldVal = getFieldVal.map(i => { return i.id }) }
       if (typeof getFieldVal == 'object' && getFieldVal && !Array.isArray(getFieldVal)) { getFieldVal = getFieldVal.id }
       if (dataType == 'date') {
-        getFieldVal =  moment(getFieldVal)
+        getFieldVal = moment(getFieldVal)
       }
       if (eidtID && getFieldVal && fetchedObjectFields[sysName] != getFieldVal) {
         fetchedObjectFields = { ...fetchedObjectFields, id: eidtID, [sysName]: getFieldVal }
@@ -260,11 +269,11 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
   }
 
   // RESULT
-  const resultButton = _.get(data,'params.resultScreen.resubmitButtonLabel') || formButtonResubmit
-  const resultTitle = _.get(data,'params.resultScreen.successMessageTitle') || dict[lang].form.thankYou
-  const resultMessage = _.get(data,'params.resultScreen.successMessage') || successText
-  const disableResubmit = _.get(data,'params.resultScreen.disableResubmit')
-  const resubmitType = _.get(data,'params.resultScreen.resubmitType') || 'button'
+  const resultButton = _.get(data, 'params.resultScreen.resubmitButtonLabel') || formButtonResubmit
+  const resultTitle = _.get(data, 'params.resultScreen.successMessageTitle') || dict[lang].form.thankYou
+  const resultMessage = _.get(data, 'params.resultScreen.successMessage') || successText
+  const disableResubmit = _.get(data, 'params.resultScreen.disableResubmit')
+  const resubmitType = _.get(data, 'params.resultScreen.resubmitType') || 'button'
 
   const resubmit = () => {
     setShowForm(true)
@@ -275,17 +284,17 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
       setModel({ ...defaultModel(), ...hiddenFieldsValues, ...hiddenAuth, ...fetchedObjectFields }) // скрытые поля, авторизация и фетч
   }
 
-  useEffect(()=>{
-    if (!showForm && resubmitType == "timer_3sec"  && !disableResubmit) {
+  useEffect(() => {
+    if (!showForm && resubmitType == "timer_3sec" && !disableResubmit) {
       setTimeout(resubmit, 3000)
     }
-    if (!showForm && resubmitType == "timer_6sec"  && !disableResubmit) {
+    if (!showForm && resubmitType == "timer_6sec" && !disableResubmit) {
       setTimeout(resubmit, 6000)
     }
-    if (!showForm && resubmitType == "timer_10sec"  && !disableResubmit) {
+    if (!showForm && resubmitType == "timer_10sec" && !disableResubmit) {
       setTimeout(resubmit, 10000)
     }
-  },[data])
+  }, [data])
 
   return (
     <ComponentWrapper>
@@ -316,8 +325,8 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
         </React.Fragment>}
         {data.response && getResultAnswer().isSuccess &&
           <Hint title={getResultAnswer().answerTitle} ok>
-            {data.params.result.isLink ? getResultAnswer().answerText : 
-            <div dangerouslySetInnerHTML={{ __html: getResultAnswer().answerText }} />}
+            {data.params.result.isLink ? getResultAnswer().answerText :
+              <div dangerouslySetInnerHTML={{ __html: getResultAnswer().answerText }} />}
           </Hint>}
       </React.Fragment>}
 
@@ -342,14 +351,14 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
                   ...data.params.data.fieldParams[fieldName]
                 }
                 if (field.id[0] == '@') return null //системные поля
-                if (!field.write) return null
+                //if (!field.write) return null // на чтение!
                 if (field.hidden) return null
                 return <InputForm
                   field={field}
+                  editingOn={field.write && !field.disableEditing}
                   placeholder={data.placeholder}
                   onChange={value => { onChange(field.id, value); console.log('onChange ' + field.id + ' => ' + value) }}
                   defaultValue={getFieldValue(field.id, field.dataType)}
-                  editingOn
                 />
               }
               )}
@@ -476,13 +485,23 @@ function FpsFormOld({ auth, data, onEvent, id, locale }) {
   }
 
   //Get Object ID to edit
-  let eidtID
+  let eidtID = null
 
-  if (data.params.edit && auth.isAuth && auth.user) {
+  if ((data.params.edit || data.params.editObject == 'userID') && auth.isAuth && auth.user) {
     eidtID = auth.user // если стоит галка, то забираем айди из юзера
   }
 
   eidtID = urlParams.get('@editObject') || eidtID; // если задаем в URL, приоритет выше
+
+  if (data.params.editObject == "url") {
+    console.log("URL")
+    console.log(queryString)
+  }
+
+  // а если редактирование вырублено, вообще все обнуляем
+  if (!data.params.useEditing) { eidtID = null }
+
+
 
   const [fetchedObj, setFetchetObj] = useState(false)
 
@@ -494,8 +513,6 @@ function FpsFormOld({ auth, data, onEvent, id, locale }) {
       console.log('onEvent')
       console.log(message)
     }
-
-
   }
 
   if (eidtID && !fetchedObj) {

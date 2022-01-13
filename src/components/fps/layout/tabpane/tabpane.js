@@ -3,9 +3,9 @@ import styles from './tabpane.module.css'
 import Button from '../../button/button'
 import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
 
-export default function TabsPane({ tabs, currentTabKey, fixedScroll, hideSingleTab, preloadTabs, saveTabToURL, style }) {
+export default function TabsPane({ tabs, currentTabKey, fpsTabs, fixedScroll, hideSingleTab, preloadTabs, saveTabToURL, style }) {
 
-    const [currentTab, setCurrentTab] = useState(currentTabKey || tabs[0].id || '')
+    const [currentTab, setCurrentTab] = useState(currentTabKey || tabs[0].key || tabs[0].id || '')
 
     let counter = 0
     tabs.forEach(tab => { counter = !tab.hidden ? counter + 1 : counter })
@@ -21,7 +21,7 @@ export default function TabsPane({ tabs, currentTabKey, fixedScroll, hideSingleT
         const queryString = typeof window !== 'undefined' ? window.location.search : '';
         const urlParams = new URLSearchParams(queryString);
         const urlTab = urlParams && urlParams.get('tab')
-        if (!currentTabKey && urlTab && saveTabToURL) {setCurrentTab(urlTab)}
+        if (!currentTabKey && urlTab && saveTabToURL && tabs.filter(i => i.key == urlTab).length) { setCurrentTab(urlTab) }
     }, []);
 
     return (<div>
@@ -46,6 +46,7 @@ export default function TabsPane({ tabs, currentTabKey, fixedScroll, hideSingleT
             {(!isSingleTab || (isSingleTab && !hideSingleTab)) &&
                 <TabsMenu
                     tabs={tabs}
+                    fpsTabs={fpsTabs}
                     currentTabKey={currentTab}
                     onClick={tabClicked => tabClicked && chooseTab(tabClicked)} />}
             {preloadTabs && tabs.map(tab => <Tab
@@ -58,9 +59,9 @@ export default function TabsPane({ tabs, currentTabKey, fixedScroll, hideSingleT
     )
 }
 
-function TabsMenu({ tabs, currentTabKey, onClick }) {
+function TabsMenu({ tabs, currentTabKey, onClick, fpsTabs }) {
     return (
-        <ul className={styles.tabsMenu}>
+        <ul className={`${styles.tabsMenu} ${fpsTabs && styles.fpsTabs}`}>
             {tabs && tabs.map(tab =>
                 <React.Fragment key={tab.key}>
                     {!tab.hidden &&
