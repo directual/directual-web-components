@@ -331,7 +331,12 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 params={data.params}
                 searchValue={searchValue}
                 checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
-                onExpand={val => { _.get(data,'params.data.cardsOrPage') == 'page' ? handleRoute('./' + val.id)() : setShowObject(val) }}
+                // onExpand={val => { _.get(data,'params.data.cardsOrPage') == 'page' ? handleRoute('./' + val.id)() : setShowObject(val) }}
+                onExpand={val => { 
+                    _.get(data, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(data, 'params.data.additionalPath') ? _.get(data, 'params.data.additionalPath') + '/' : ''}` + val.id)() : 
+                    _.get(data, 'params.data.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(data, 'params.data.anotherPage')}/` + val.id)() :
+                    _.get(data, 'params.data.cardsOrPage') == 'disable' ? undefined :
+                    setShowObject(val) }}
                 // onExpand={val => { setShowObject(val) }}
                 //setPage={page => { sendMsg(null, null, { page: page }) }}
                 auth={auth}

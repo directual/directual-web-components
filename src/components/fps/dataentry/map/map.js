@@ -105,8 +105,8 @@ export default function Map({
     // useEffect(() => { reload() }, [wrapperWidth])
 
     useEffect(() => {
-        console.log('==== 1 ====')
-        console.log(wrapperWidth)
+        // console.log('==== 1 ====')
+        // console.log(wrapperWidth)
         const saveViewport = { ...viewport }
         saveViewport.width = wrapperWidth
         setViewport(saveViewport)
@@ -114,16 +114,16 @@ export default function Map({
 
     useEffect(() => {
         if (viewport.width !== wrapperWidth) {
-            console.log('==== 2 ====')
-            console.log(wrapperWidth)
+            // console.log('==== 2 ====')
+            // console.log(wrapperWidth)
             const saveViewport = { ...viewport }
             saveViewport.width = wrapperWidth
             setViewport(saveViewport)
         }
     }, [viewport])
 
-    console.log('wrapperWidth = ' + wrapperWidth)
-    console.log(viewport)
+    // console.log('wrapperWidth = ' + wrapperWidth)
+    // console.log(viewport)
 
     useEffect(() => {
         if (defaultValue && defaultValue.data && JSON.stringify(value) != JSON.stringify(defaultValue.data)) {
@@ -149,7 +149,7 @@ export default function Map({
     }
 
     const positionMap = (lng, lat) => {
-        console.log('positionMap')
+        // console.log('positionMap')
         const viewportCopy = { ...viewport }
         viewportCopy.latitude = lat
         viewportCopy.longitude = lng

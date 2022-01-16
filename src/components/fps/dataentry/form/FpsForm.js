@@ -74,7 +74,14 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
     e.preventDefault()
     console.log('submitting form...')
     console.log(model)
-    sendMsg(model)
+    const modelCopy = {}
+    for (const f in model) {
+      const isWritable = (_.get(data,'params.data.writeFields') || []).filter(w => w.sysName == f).length > 0
+      if (isWritable) {
+        modelCopy[f] = model[f]
+      }
+    }
+    sendMsg(modelCopy)
   }
 
   function defaultModel() {
@@ -296,6 +303,14 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
     }
   }, [data])
 
+
+  // чекаем надо ли спрятать кнопку сабмита
+  const wf = (_.get(data,'params.data.writeFields') || [])
+    .filter(f => _.get(data,`params.fields.${f.sysName}.include`) && !_.get(data,`params.fields.${f.sysName}.disableEditing`))
+  let idInclude = false;
+  _.get(data,'params.data.writeFields').forEach(f => { if (f.sysName == 'id') { idInclude = true} })
+  const isEditable = idInclude && wf.length > 0
+
   return (
     <ComponentWrapper>
       {/* <Button icon='refresh' onClick={resubmit}>refresh</Button> */}
@@ -333,6 +348,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
       {!showForm && resubmitType == 'button' && !disableResubmit && !loading && data.error != dict[lang].form.noPermissions && data.error != dict[lang].form.notConfigured &&
         <Button icon='refresh' onClick={resubmit}>{resultButton}</Button>}
 
+
       {showForm && !loading &&
         <form onSubmit={submit} style={{ maxWidth: formWidth }}>
           {data.params.data.columnOrder.map(section =>
@@ -355,7 +371,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
                 if (field.hidden) return null
                 return <InputForm
                   field={field}
-                  editingOn={field.write && !field.disableEditing}
+                  editingOn={field.write && !field.disableEditing && isEditable}
                   placeholder={data.placeholder}
                   onChange={value => { onChange(field.id, value); console.log('onChange ' + field.id + ' => ' + value) }}
                   defaultValue={getFieldValue(field.id, field.dataType)}
@@ -365,7 +381,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
             </div>
           )}
 
-          {(!data.error || data.error == 'dql is not allowed for write') &&  // dql это КОСТЫЛЬ — убрать когда пофиксим на API
+          {(!data.error || data.error == 'dql is not allowed for write') && isEditable &&  // dql это КОСТЫЛЬ — убрать когда пофиксим на API
             <ActionPanel>
               <Button accent disabled={!isValid}>{formButton}</Button>
             </ActionPanel>}
@@ -373,6 +389,12 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
         </form>}
     </ComponentWrapper>)
 }
+
+
+
+
+
+
 
 
 function FpsFormOld({ auth, data, onEvent, id, locale }) {

@@ -390,6 +390,9 @@ function FieldLink({ field, onChange, placeholder, editingOn, defaultValue }) {
         return value
     }
 
+    // console.log('FieldLink')
+    // console.log(field)
+
     if (field.searchData && field.quickSearch && field.searchData.length > 0) {
         return <Input
             type={field.dataType == 'link' ? 'select' : 'multiselect'}

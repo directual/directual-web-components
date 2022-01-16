@@ -4,6 +4,7 @@ import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
 import ExpandedText from '../../expandedText/expandedText'
 import { Paging } from '../paging/paging'
 import moment from 'moment'
+import _ from 'lodash'
 
 export function Cards({ data, onExpand, edenrichConds, loading, searchValue, auth, submitAction, params, checkActionCond, currentBP }) {
     const tableHeaders = data.headers || []
@@ -255,8 +256,11 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                                 `}
                                 style={
                                     (tableParams.cardColor && tableParams.cardColorOption == 'border') ? {
-                                        borderColor: cardColor
-                                    } : {}
+                                        borderColor: cardColor,
+                                        minHeight: tableParams.cardImageType == 'cover' ? tableParams.cardCoverHeight ? tableParams.cardCoverHeight : 'auto' : 'auto'
+                                    } : {
+                                        minHeight: tableParams.cardImageType == 'cover' ? tableParams.cardCoverHeight ? tableParams.cardCoverHeight : 'auto' : 'auto'
+                                    }
                                 }
                                 onClick={() => {
                                     //console.log(row) 
@@ -274,9 +278,9 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                                     <div className={`${styles.cardImage}`}
                                         style={{
                                             backgroundSize: tableParams.cardImageResize == 'contain' ? 'contain' : 'cover',
-                                            backgroundImage: `url(${row[tableParams.cardImageField]})`,
-                                            width: (tableParams.cardImageType == "left" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) : 'auto',
-                                            height: (tableParams.cardImageType == "top" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) : 'auto',
+                                            backgroundImage: `url(${(row[tableParams.cardImageField] || '').split(",") ? (row[tableParams.cardImageField] || '').split(",")[0] : ''})`,
+                                            width: (tableParams.cardImageType == "left" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) ? parseInt(tableParams.cardImageSize) : 100 : 'auto',
+                                            height: (tableParams.cardImageType == "top" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) ? parseInt(tableParams.cardImageSize) : 100 : 'auto',
                                             minHeight: (tableParams.cardImageType == "left" && tableParams.cardImageSizeHeight) ? parseInt(tableParams.cardImageSizeHeight) : 'none',
                                         }}
                                     >
@@ -317,7 +321,10 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                                         {cardBodyText && (
                                             // все также как у cardHeaderComment
                                             !Array.isArray(cardBodyText) ?
-                                                <ExpandedText className={`${styles.cardBodyText} ${typeof row[tableParams.cardBodyText] == 'object' && styles.linkText}`}>
+                                                <ExpandedText 
+                                                    textLength={tableParams.cardBodyTextLength == 0 ? 0 : tableParams.cardBodyTextLength || 300}
+                                                    className={`${styles.cardBodyText} ${typeof row[tableParams.cardBodyText] == 'object' && styles.linkText}`}>
+                                                    {/* {currentBP} */}
                                                     {cardBodyText}
                                                 </ExpandedText> :
                                                 <div className={`${styles.headerArray} ${styles.cardBodyText}`}>

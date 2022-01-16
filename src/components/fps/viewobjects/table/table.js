@@ -86,7 +86,7 @@ const EditableCell = ({
                 style={{
                     width: tableParams[id].fileImageSize || 80,
                     height: tableParams[id].fileImageSize || 80,
-                    backgroundImage: `url(${value})`,
+                    backgroundImage: `url(${(value || '').split(",") ? (value || '').split(",")[0] : ''})`,
                     borderRadius: tableParams[id].fileImageFormat == 'circle' ? (tableParams[id].fileImageSize || 80) : 0
                 }} />
         }

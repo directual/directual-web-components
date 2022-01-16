@@ -137,11 +137,13 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 12px;
+  margin-bottom: -6px;
 }
 .imageList .imagePreview {
   height: 120px;
   position: relative;
   margin-right: 12px;
+  margin-bottom: 12px;
   cursor: pointer;
 }
 .imageList .imagePreview img {
