@@ -309,7 +309,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
     .filter(f => _.get(data,`params.fields.${f.sysName}.include`) && !_.get(data,`params.fields.${f.sysName}.disableEditing`))
   let idInclude = false;
   _.get(data,'params.data.writeFields').forEach(f => { if (f.sysName == 'id') { idInclude = true} })
-  const isEditable = idInclude && wf.length > 0
+  const isEditable = (idInclude || !data.params.useEditing) && wf.length > 0
 
   return (
     <ComponentWrapper>
