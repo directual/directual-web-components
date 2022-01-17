@@ -248,7 +248,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
     if (operator == 'and') {
       showSection = true
       conditionals.forEach(cond => {
-        if (model[cond.field] != cond.value && cond.value != 'null') {
+        if (model[cond.field] != cond.value && cond.value != 'null' && cond.value != 'isNotNull') {
           console.log("section can't be shown")
           console.log(cond.field + ' = ' + model[cond.field] + ' != ' + cond.value)
           showSection = false
@@ -258,15 +258,23 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
           console.log(cond.field + ' = ' + model[cond.field] + ' is not empty ')
           showSection = false
         }
+        if (!model[cond.field] && cond.value == 'isNotNull') {
+          console.log("section can't be shown")
+          console.log(cond.field + ' = ' + model[cond.field] + ' is empty ')
+          showSection = false
+        }
       })
     }
     if (operator == 'or') {
       showSection = false
       conditionals.forEach(cond => {
-        if (model[cond.field] == cond.value && cond.value != 'null') {
+        if (model[cond.field] == cond.value && cond.value != 'null' && cond.value != 'isNotNull') {
           showSection = true
         }
         if (!model[cond.field] && cond.value == 'null') {
+          showSection = true
+        }
+        if (model[cond.field] && cond.value == 'isNotNull') {
           showSection = true
         }
       })
