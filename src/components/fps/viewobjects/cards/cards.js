@@ -279,9 +279,9 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                                         style={{
                                             backgroundSize: tableParams.cardImageResize == 'contain' ? 'contain' : 'cover',
                                             backgroundImage: `url(${(row[tableParams.cardImageField] || '').split(",") ? (row[tableParams.cardImageField] || '').split(",")[0] : ''})`,
-                                            width: (tableParams.cardImageType == "left" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) ? parseInt(tableParams.cardImageSize) : 100 : 'auto',
-                                            height: (tableParams.cardImageType == "top" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) ? parseInt(tableParams.cardImageSize) : 100 : 'auto',
-                                            minHeight: (tableParams.cardImageType == "left" && tableParams.cardImageSizeHeight) ? parseInt(tableParams.cardImageSizeHeight) : 'none',
+                                            width: (tableParams.cardImageType == "left" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) ? parseInt(currentBP == 'mobile' ? Math.floor(tableParams.cardImageSize/1.5) : tableParams.cardImageSize) : 100 : 'auto',
+                                            height: (tableParams.cardImageType == "top" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) ? parseInt(currentBP == 'mobile' ? Math.floor(tableParams.cardImageSize/1.5) : tableParams.cardImageSize) : 100 : 'auto',
+                                            minHeight: (tableParams.cardImageType == "left" && tableParams.cardImageSizeHeight) ? parseInt(currentBP == 'mobile' ? Math.floor(tableParams.cardImageSize/1.5) : tableParams.cardImageSize) : 'none',
                                         }}
                                     >
                                         {!row[tableParams.cardImageField] && <span className='icon icon-ban'>no&nbsp;picture</span>}
