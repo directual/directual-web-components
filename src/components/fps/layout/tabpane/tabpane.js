@@ -3,7 +3,7 @@ import styles from './tabpane.module.css'
 import Button from '../../button/button'
 import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
 
-export default function TabsPane({ tabs, currentTabKey, fpsTabs, fixedScroll, hideSingleTab, preloadTabs, saveTabToURL, style }) {
+export default function TabsPane({ tabs, currentTabKey, fpsTabs, fixedScroll, hideSingleTab, preloadTabs, saveTabToURL, style, onChangeTab }) {
 
     const [currentTab, setCurrentTab] = useState(currentTabKey || tabs[0].key || tabs[0].id || '')
 
@@ -14,6 +14,7 @@ export default function TabsPane({ tabs, currentTabKey, fpsTabs, fixedScroll, hi
 
     const chooseTab = tabClicked => {
         setCurrentTab(tabClicked)
+        onChangeTab(tabClicked)
         saveTabToURL && addUrlParam({ key: 'tab', value: tabClicked })
     }
 
@@ -69,7 +70,7 @@ function TabsMenu({ tabs, currentTabKey, onClick, fpsTabs }) {
                             onClick={() => (tab.key && !tab.disabled) && onClick(tab.key)}
                             key={tab.key}
                             className={`
-                        ${styles.tabMenuItem} 
+                        ${styles.tabMenuItem}
                         ${(tab.key && tab.disabled) && styles.disabled}
                         ${currentTabKey == tab.key && styles.current}
                     `}>
@@ -97,7 +98,7 @@ export function Tab({ tabContent, currentTabKey, isSingleTab }) {
             className=
             {`
                 ${isSingleTab && styles.singleTab}
-                ${styles.tabWrapper} 
+                ${styles.tabWrapper}
                 ${currentTabKey == tabContent.key && styles.current}
                 ${showBorder && styles.bordered}
             `}>

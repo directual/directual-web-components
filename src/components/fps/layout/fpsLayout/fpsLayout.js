@@ -12,7 +12,7 @@ const brakePoints = {
     wideDesktop: { from: 1202, to: '∞', display: 1400 },
 }
 
-export function FpsLayout({ layout }) {
+export function FpsLayout({ layout, onChangeTab }) {
 
     const layoutRef = useRef(null);
     const [currentBP, setCurrentBP] = useState('desktop')
@@ -67,8 +67,8 @@ export function FpsLayout({ layout }) {
     return (
         (tabs && tabs[0]) ? <div className={styles.fpsLayout} ref={layoutRef}>
             {layout.showHeader && layout.header && <h1 className={styles.layoutHeader}>{layout.header}</h1>}
-            {tabs && <TabsPane fpsTabs hideSingleTab tabs={tabs} saveTabToURL //currentTabKey={tabs[0].key} 
-            //fixedScroll 
+            {tabs && <TabsPane fpsTabs hideSingleTab tabs={tabs} saveTabToURL onChangeTab={onChangeTab} //currentTabKey={tabs[0].key}
+            //fixedScroll
             />}
         </div> : <div />)
 }
