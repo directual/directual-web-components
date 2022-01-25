@@ -26,11 +26,11 @@ export function ContentWrapper(props) {
     const [logoUrl, setlogoUrl] = useState('https://api.alfa.directual.com/fileUploaded/directual-site/8b09feb3-0e52-45cc-b776-b0a7f9fc4a0e.svg')
 
     useEffect(()=>{
-  
+
       if (props.themeName.colorScheme == 'darkMint' || props.themeName.colorScheme == 'warmNight' || props.themeName.colorScheme == 'hacker') {
         setlogoUrl('https://api.alfa.directual.com/fileUploaded/directual-site/0ec2892d-c7a8-46ac-8500-6b5069563d21.svg')
       }
-      if (props.themeName.colorScheme == 'classic' || props.themeName.colorScheme == 'tiffany' || 
+      if (props.themeName.colorScheme == 'classic' || props.themeName.colorScheme == 'tiffany' ||
       props.themeName.colorScheme == 'white' || props.themeName.colorScheme ==  'raspberry') {
         setlogoUrl('https://api.alfa.directual.com/fileUploaded/directual-site/8b09feb3-0e52-45cc-b776-b0a7f9fc4a0e.svg')
       }
@@ -50,7 +50,7 @@ export function ContentWrapper(props) {
                 <a target="_blank" className={styles.logo} href="https://directual.com?ref=fps_footer">
                     <img src={logoUrl} />
                 </a>
-                <span><span className={styles.madeon}>{dict[lang].madeOn} </span><a target="_blank" href="https://directual.com?ref=fps_footer">Directual</a></span>
+                <span><span className={styles.madeon}>{dict[lang].madeOn} </span><a target="_blank" href="https://directual.com?ref=fps_footer">Directual</a> v.{props.version || 1}</span>
             </div>}
         </React.Fragment>
     )
