@@ -23,6 +23,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
     const [loading, setLoading] = useState(false)
+    const [qSearch, setQSearch] = useState(data.quickSearch === "true")
     const [searchValue, setSearchValue] = useState()
 
     const [currentDQL, setCurrentDQL] = useState('')
@@ -49,6 +50,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
             console.log('data write error')
             console.log(data.writeError)
         }
+        setQSearch(data.quickSearch === "true")
     }, [data])
 
 
@@ -348,8 +350,8 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 params={data.params}
                 searchValue={searchValue}
                 checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
-                onExpand={val => { 
-                    _.get(data, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(data, 'params.data.additionalPath') ? _.get(data, 'params.data.additionalPath') + '/' : ''}` + val.id)() : 
+                onExpand={val => {
+                    _.get(data, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(data, 'params.data.additionalPath') ? _.get(data, 'params.data.additionalPath') + '/' : ''}` + val.id)() :
                     _.get(data, 'params.data.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(data, 'params.data.anotherPage')}/` + val.id)() :
                     _.get(data, 'params.data.cardsOrPage') == 'disable' ? undefined :
                     setShowObject(val) }}
