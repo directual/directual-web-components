@@ -47,8 +47,8 @@ export function ObjectCard(props) {
         e.key == 'Escape' && props.onClose()
     }
 
-    const refresh = () => {
-        props.refresh()
+    const refresh = (notLoading) => {
+        props.refresh(notLoading)
     }
 
     useEffect(() => {
@@ -1133,8 +1133,8 @@ function CardAction({ action, writeError, actionParams, debug, submitAction, onC
     const handleSubmitAction = () => {
 
         // это мы даем сценариям просраться и обновляем карточки/таблицу :)
-        setTimeout(() => refresh(), 3000)
-        setTimeout(() => refresh(), 5000)
+        setTimeout(() => refresh(true), 3000)
+        setTimeout(() => refresh(true), 5000)
 
         if (((!actionData.formMapping || actionData.formMapping.length == 0) && actionData.displayAs == 'button') ||
             ((!actionData.formData || actionData.formData.length == 0) && actionData.displayAs == 'form')) { noActionData() }

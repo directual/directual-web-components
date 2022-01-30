@@ -83,8 +83,8 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         }
     }
 
-    const refresh = () => {
-        setLoading(true)
+    const refresh = (skipLoading) => {
+        !skipLoading && setLoading(true)
         setCurrentDQL('')
         setSearchValue('')
         onEvent({ dql: '', page: currentPage, _id: id })
@@ -274,7 +274,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         const interval = setInterval(() => {
             count++
             console.log('autoRefresh rerender № ' + count);
-            refresh()
+            refresh(true)
         }, autoRefreshPeriod);
         return () => clearInterval(interval);
     }, []);
