@@ -741,6 +741,7 @@ export default function Input(props) {
                     horizontal={props.horizontal}
                     options={props.options}
                     disabled={props.disabled}
+                    radioImagesWidth={props.radioImagesWidth}
                     placeholder={props.placeholder}
                     radioImages={props.radioImages}
                     small={props.small}
