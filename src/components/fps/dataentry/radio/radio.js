@@ -65,7 +65,7 @@ export default function Radio(props) {
                 {props.radioImages && <div className={`${styles.radioImages} ${props.small && styles.small}`}>
 
                     {props.options && props.options.map(option =>
-                        <label>
+                        <label style={{width: props.radioImagesWidth || 146}}>
                             <div className={styles.label}>
                                 <input
                                     type="radio"
