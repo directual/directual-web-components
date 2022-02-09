@@ -730,8 +730,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
     const struct = getStructure(linkedObj, transformTableFieldScheme(field.sysName, tableFieldScheme))
     //const enrichedObject = composeObject(linkedObj, struct)
 
-    // console.log('enrichedObject')
-    // console.log(enrichedObject)
+    
     // console.log(object[field.sysName])
     // console.log(linkedObj)
     // console.log(struct)
@@ -745,6 +744,8 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
         })
 
     const enrichedObject = composeObject(syntheticObject, struct)
+    // console.log('enrichedObject')
+    // console.log(enrichedObject)
 
     const [edit, setEdit] = useState(false)
 
@@ -808,10 +809,10 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
     }, [model])
 
     const processField = (f, fieldName, nospaces) => {
-        // if (enrichedObject[fieldName].dataType == 'boolean') console.log(enrichedObject[fieldName])
+        // if (enrichedObject[fieldName].dataType == 'boolean') console.log(f ? _.get(enrichedObject[fieldName],'formatOptions.booleanOptions[0]') : _.get(enrichedObject[fieldName],'formatOptions.booleanOptions[1]'))
+        if (enrichedObject[fieldName].dataType == 'boolean') return f ? <div className='icon icon-done'>{_.get(enrichedObject[fieldName],'formatOptions.booleanOptions[0]') || 'true'}</div> : <div className='icon icon-ban'>{_.get(enrichedObject[fieldName],'formatOptions.booleanOptions[1]') || 'false'}</div>
         if (!f) return null
         if (!enrichedObject[fieldName]) return typeof f == 'object' ? getLinkName(fieldName, f, transformTableFieldScheme(field.sysName, tableFieldScheme)) : f
-        if (enrichedObject[fieldName].dataType == 'boolean' && !enrichedObject[fieldName].formatOptions) return f ? 'true' : 'false'
         if (enrichedObject[fieldName].dataType == 'date') return formatDate(f, enrichedObject[fieldName].formatOptions)
         if (enrichedObject[fieldName].dataType == 'file' && enrichedObject[fieldName].format == "image") return <img src={f} className={styles.cartImage} />
         if (enrichedObject[fieldName].dataType == 'file' && enrichedObject[fieldName].format == "multipleImages") return <img src={f.split(',') ? f.split(',')[0] : null} className={styles.cartImage} />

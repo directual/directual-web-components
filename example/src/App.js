@@ -2659,175 +2659,325 @@ const App = (props) => {
     }
 
     let exampleTable = {
-        "sl": "manageGoodsProd",
-        "pageSize": "30",
+        "sl": "allListings",
+        "pageSize": "7",
         "headerField": null,
         "params": {
-            "cardListLayout": "grid",
-            "cardHeaderComment": "",
-            "deleteField": "",
-            "cardBodyText": "",
-            "cardImage": false,
-            "cardImageField": "",
-            "cardImageType": "none",
-            "cardImageSize": 100,
-            "objectView": {},
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "brand",
-                        "fetch": [
-                            {
-                                "fieldSysName": "brandName",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "logo",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "owner_id",
-                                "condition": null,
-                                "fetch": [
-                                    {
-                                        "fieldSysName": "firstName",
-                                        "condition": null,
-                                        "fetch": []
-                                    },
-                                    {
-                                        "fieldSysName": "id",
-                                        "condition": null,
-                                        "fetch": []
-                                    },
-                                    {
-                                        "fieldSysName": "lastName",
-                                        "condition": null,
-                                        "fetch": []
-                                    }
-                                ]
-                            }
-                        ],
-                        "sysName": "brand",
-                        "name": "Бренд",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "Brands"
-                    },
-                    {
-                        "fieldSysName": "category",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "nameEng",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "category",
-                        "name": "Категория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "category"
-                    },
-                    {
-                        "fieldSysName": "color",
-                        "fetch": [
-                            {
-                                "fieldSysName": "color",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "colorEng",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "color",
-                        "name": "Цвет",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "colors"
-                    },
-                    {
-                        "fieldSysName": "decline_reason",
+                        "fieldSysName": "ArtNowArtwork_id",
                         "fetch": [],
-                        "sysName": "decline_reason",
-                        "name": "Причина отказа",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "description",
-                        "fetch": [],
-                        "sysName": "description",
-                        "name": "Описание",
-                        "dataType": "string",
-                        "format": "markdown",
+                        "sysName": "ArtNowArtwork_id",
+                        "name": "ID картины на ArtNow",
+                        "dataType": "number",
+                        "format": "positiveNum",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "goodSpecification",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
+                        "fieldSysName": "ArtNowDiscountOn",
+                        "fetch": [],
+                        "sysName": "ArtNowDiscountOn",
+                        "name": "Скидка на ArtNow",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
                             },
-                            {
-                                "fieldSysName": "quantity",
-                                "condition": null,
-                                "fetch": []
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Скидка",
+                                "Обычная цена"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
                             },
-                            {
-                                "fieldSysName": "reserve",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "size",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "spec_name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "goodSpecification",
-                        "name": "Товарные позиции",
-                        "dataType": "arrayLink",
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ArtNowDiscount_id",
+                        "fetch": [],
+                        "sysName": "ArtNowDiscount_id",
+                        "name": "Скидка на ArtNow (ID и срок акции)",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "goodSpecification"
+                        "link": "artnow_discount"
+                    },
+                    {
+                        "fieldSysName": "ArtNowPrice",
+                        "fetch": [],
+                        "sysName": "ArtNowPrice",
+                        "name": "Цена для ArtNow",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ArtNowPublishTime",
+                        "fetch": [],
+                        "sysName": "ArtNowPublishTime",
+                        "name": "Время публикации на ArtNow",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ArtNowResponse",
+                        "fetch": [],
+                        "sysName": "ArtNowResponse",
+                        "name": "Ответ сервера",
+                        "dataType": "json",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ArtNowStatus",
+                        "fetch": [],
+                        "sysName": "ArtNowStatus",
+                        "name": "Статус  на ArtNow",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "placesStatus"
+                    },
+                    {
+                        "fieldSysName": "ArtNowStatusColor",
+                        "fetch": [],
+                        "sysName": "ArtNowStatusColor",
+                        "name": "Цвет (статус)",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ArtNow_url",
+                        "fetch": [],
+                        "sysName": "ArtNow_url",
+                        "name": "ArtNow",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "active",
+                        "fetch": [],
+                        "sysName": "active",
+                        "name": "Активная карточка",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Активная",
+                                "Архивная"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "artfinderStatusColor",
+                        "fetch": [],
+                        "sysName": "artfinderStatusColor",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "artfinder_url",
+                        "fetch": [],
+                        "sysName": "artfinder_url",
+                        "name": "ArtFinder",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "artist",
+                        "fetch": [],
+                        "sysName": "artist",
+                        "name": "Автор",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "artists"
+                    },
+                    {
+                        "fieldSysName": "artmajeurStatusColor",
+                        "fetch": [],
+                        "sysName": "artmajeurStatusColor",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "artmajeur_url",
+                        "fetch": [],
+                        "sysName": "artmajeur_url",
+                        "name": "Artmajeur",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "artworkStatus",
+                        "fetch": [],
+                        "sysName": "artworkStatus",
+                        "name": "Статус картины",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "Status"
+                    },
+                    {
+                        "fieldSysName": "artworkStatusColor",
+                        "fetch": [],
+                        "sysName": "artworkStatusColor",
+                        "name": "Статус картины (цвет)",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ebayItem_id",
+                        "fetch": [],
+                        "sysName": "ebayItem_id",
+                        "name": "ID лота на eBay",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ebayStatus",
+                        "fetch": [],
+                        "sysName": "ebayStatus",
+                        "name": "Статус на сайте",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "placesStatus"
+                    },
+                    {
+                        "fieldSysName": "ebayStatusColor",
+                        "fetch": [],
+                        "sysName": "ebayStatusColor",
+                        "name": "Статус на сайте (цвет)",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ebay_account",
+                        "fetch": [],
+                        "sysName": "ebay_account",
+                        "name": "Аккаунт eBay",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ebay_url",
+                        "fetch": [],
+                        "sysName": "ebay_url",
+                        "name": "eBay",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ebayauctionStatusColor",
+                        "fetch": [],
+                        "sysName": "ebayauctionStatusColor",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ebayauction_url",
+                        "fetch": [],
+                        "sysName": "ebayauction_url",
+                        "name": "eBay Auction",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "etsyStatusColor",
+                        "fetch": [],
+                        "sysName": "etsyStatusColor",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "etsy_url",
+                        "fetch": [],
+                        "sysName": "etsy_url",
+                        "name": "Etsy",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
                     },
                     {
                         "fieldSysName": "id",
@@ -2840,20 +2990,180 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "isDeleted",
+                        "fieldSysName": "listingLog",
+                        "fetch": [
+                            {
+                                "fieldSysName": "api_response",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "date",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "event",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "places",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "status",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "value",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "listingLog",
+                        "name": "Лог",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "listingLog"
+                    },
+                    {
+                        "fieldSysName": "meshokBold",
                         "fetch": [],
-                        "sysName": "isDeleted",
-                        "name": "",
+                        "sysName": "meshokBold",
+                        "name": "Выделение жирным (Y/N)",
                         "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Yes",
+                                "No"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshokDescription",
+                        "fetch": [],
+                        "sysName": "meshokDescription",
+                        "name": "Описание лота",
+                        "dataType": "string",
+                        "format": "html",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshokFree",
+                        "fetch": [],
+                        "sysName": "meshokFree",
+                        "name": "Бесплатный лот",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Бесплатный лот",
+                                "Обычный лот"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshokItem_id",
+                        "fetch": [],
+                        "sysName": "meshokItem_id",
+                        "name": "ID лота на Мешке",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshokLongevity",
+                        "fetch": [],
+                        "sysName": "meshokLongevity",
+                        "name": "Продолжительность торгов в днях",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshokPrice",
+                        "fetch": [],
+                        "sysName": "meshokPrice",
+                        "name": "Цена на Мешке (купить сейчас)",
+                        "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "isNew",
+                        "fieldSysName": "meshokPublishTime",
                         "fetch": [],
-                        "sysName": "isNew",
-                        "name": "Новый товар",
+                        "sysName": "meshokPublishTime",
+                        "name": "Время публикации на Мешке",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshokRecommended",
+                        "fetch": [],
+                        "sysName": "meshokRecommended",
+                        "name": "Рекомендуемый (Y/N)",
                         "dataType": "boolean",
                         "format": "",
                         "formatOptions": {
@@ -2865,8 +3175,8 @@ const App = (props) => {
                             },
                             "dateLocale": "en-gb",
                             "booleanOptions": [
-                                "Да",
-                                "Нет"
+                                "Yes",
+                                "No"
                             ],
                             "validWeekDays": {
                                 "mon": true,
@@ -2887,10 +3197,20 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "isSale",
+                        "fieldSysName": "meshokRespond",
                         "fetch": [],
-                        "sysName": "isSale",
-                        "name": "Распродажа",
+                        "sysName": "meshokRespond",
+                        "name": "Ответ сервера",
+                        "dataType": "json",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshokSaleType",
+                        "fetch": [],
+                        "sysName": "meshokSaleType",
+                        "name": "Тип продажи (Sale или Auction)",
                         "dataType": "boolean",
                         "format": "",
                         "formatOptions": {
@@ -2902,8 +3222,8 @@ const App = (props) => {
                             },
                             "dateLocale": "en-gb",
                             "booleanOptions": [
-                                "Да",
-                                "Нет"
+                                "Sale",
+                                "Auction"
                             ],
                             "validWeekDays": {
                                 "mon": true,
@@ -2924,14 +3244,54 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "moderation_status",
+                        "fieldSysName": "meshokStartPrice",
                         "fetch": [],
-                        "sysName": "moderation_status",
-                        "name": "new,approved,declined",
+                        "sysName": "meshokStartPrice",
+                        "name": "Аукционная цена",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshokStatus",
+                        "fetch": [],
+                        "sysName": "meshokStatus",
+                        "name": "Статус на Мешке",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "placesStatus"
+                    },
+                    {
+                        "fieldSysName": "meshokStatusColor",
+                        "fetch": [],
+                        "sysName": "meshokStatusColor",
+                        "name": "Статус (цвет)",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshokTitle",
+                        "fetch": [],
+                        "sysName": "meshokTitle",
+                        "name": "Заголовок лота (max 100)",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshok_url",
+                        "fetch": [],
+                        "sysName": "meshok_url",
+                        "name": " Мешок",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
                     },
                     {
                         "fieldSysName": "name",
@@ -2944,273 +3304,120 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "oldPrice",
+                        "fieldSysName": "ozonStatusColor",
                         "fetch": [],
-                        "sysName": "oldPrice",
-                        "name": "Старая цена",
-                        "dataType": "number",
-                        "format": "positiveNum",
+                        "sysName": "ozonStatusColor",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "color",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "photo",
+                        "fieldSysName": "ozon_url",
                         "fetch": [],
-                        "sysName": "photo",
-                        "name": "Фото",
+                        "sysName": "ozon_url",
+                        "name": "Озон",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "pictures",
+                        "fetch": [],
+                        "sysName": "pictures",
+                        "name": "Изображения",
                         "dataType": "file",
                         "format": "multipleImages",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "price",
+                        "fieldSysName": "short_description",
                         "fetch": [],
-                        "sysName": "price",
-                        "name": "Цена, ₽",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "subcategoryBeauty",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "nameEng",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "type",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "subcategoryBeauty",
-                        "name": "Бьюти, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryBeauty"
-                    },
-                    {
-                        "fieldSysName": "subcategoryInterior",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "nameEng",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "type",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "subcategoryInterior",
-                        "name": "Интерьер, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryInterior"
-                    },
-                    {
-                        "fieldSysName": "subcategoryKids",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "nameEng",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "type",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "subcategoryKids",
-                        "name": "Детское, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryKids"
-                    },
-                    {
-                        "fieldSysName": "subcategoryMen",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "nameEng",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "type",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "subcategoryMen",
-                        "name": "Мужское, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryMen"
-                    },
-                    {
-                        "fieldSysName": "subcategoryWomen",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "nameEng",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "type",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "subcategoryWomen",
-                        "name": "Женское, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryWomen"
-                    },
-                    {
-                        "fieldSysName": "tags",
-                        "fetch": [],
-                        "sysName": "tags",
-                        "name": "Тэги",
+                        "sysName": "short_description",
+                        "name": "Описание",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "vendorCode",
-                        "fetch": [],
-                        "sysName": "vendorCode",
+                        "fieldSysName": "sku",
+                        "fetch": [
+                            {
+                                "fieldSysName": "cost",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "paid",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "warehouse",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "sku",
                         "name": "Артикул",
-                        "dataType": "string",
+                        "dataType": "link",
                         "format": "",
+                        "formatOptions": {},
+                        "link": "artworks"
+                    },
+                    {
+                        "fieldSysName": "stickerColor",
+                        "fetch": [],
+                        "sysName": "stickerColor",
+                        "name": "Стикер (подсветка)",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "stickers",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "sticker",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "stickers",
+                        "name": "Стикеры",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "listingStickers"
+                    },
+                    {
+                        "fieldSysName": "thumbnail",
+                        "fetch": [],
+                        "sysName": "thumbnail",
+                        "name": "Миниатюра",
+                        "dataType": "file",
+                        "format": "image",
                         "formatOptions": {},
                         "link": ""
                     }
                 ],
                 "writeFields": [
                     {
-                        "fieldSysName": "brand",
-                        "fetch": [],
-                        "sysName": "brand",
-                        "name": "Бренд",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "Brands"
-                    },
-                    {
-                        "fieldSysName": "category",
-                        "fetch": [],
-                        "sysName": "category",
-                        "name": "Категория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "category"
-                    },
-                    {
-                        "fieldSysName": "color",
-                        "fetch": [],
-                        "sysName": "color",
-                        "name": "Цвет",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "colors"
-                    },
-                    {
-                        "fieldSysName": "decline_reason",
-                        "fetch": [],
-                        "sysName": "decline_reason",
-                        "name": "Причина отказа",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "description",
-                        "fetch": [],
-                        "sysName": "description",
-                        "name": "Описание",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "goodSpecification",
-                        "fetch": [],
-                        "sysName": "goodSpecification",
-                        "name": "Товарные позиции",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "goodSpecification"
-                    },
-                    {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
@@ -3221,281 +3428,355 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "isDeleted",
+                        "fieldSysName": "stickers",
                         "fetch": [],
-                        "sysName": "isDeleted",
-                        "name": "",
-                        "dataType": "boolean",
+                        "sysName": "stickers",
+                        "name": "Стикеры",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "isNew",
-                        "fetch": [],
-                        "sysName": "isNew",
-                        "name": "Новый товар",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "Да",
-                                "Нет"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "isSale",
-                        "fetch": [],
-                        "sysName": "isSale",
-                        "name": "Распродажа",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "Да",
-                                "Нет"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "moderation_status",
-                        "fetch": [],
-                        "sysName": "moderation_status",
-                        "name": "new,approved,declined",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "name",
-                        "fetch": [],
-                        "sysName": "name",
-                        "name": "Название",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "oldPrice",
-                        "fetch": [],
-                        "sysName": "oldPrice",
-                        "name": "Старая цена",
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "photo",
-                        "fetch": [],
-                        "sysName": "photo",
-                        "name": "Фото",
-                        "dataType": "file",
-                        "format": "multipleImages",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "price",
-                        "fetch": [],
-                        "sysName": "price",
-                        "name": "Цена, ₽",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "subcategoryBeauty",
-                        "fetch": [],
-                        "sysName": "subcategoryBeauty",
-                        "name": "Бьюти, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryBeauty"
-                    },
-                    {
-                        "fieldSysName": "subcategoryInterior",
-                        "fetch": [],
-                        "sysName": "subcategoryInterior",
-                        "name": "Интерьер, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryInterior"
-                    },
-                    {
-                        "fieldSysName": "subcategoryKids",
-                        "fetch": [],
-                        "sysName": "subcategoryKids",
-                        "name": "Детское, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryKids"
-                    },
-                    {
-                        "fieldSysName": "subcategoryMen",
-                        "fetch": [],
-                        "sysName": "subcategoryMen",
-                        "name": "Мужское, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryMen"
-                    },
-                    {
-                        "fieldSysName": "subcategoryWomen",
-                        "fetch": [],
-                        "sysName": "subcategoryWomen",
-                        "name": "Женское, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryWomen"
-                    },
-                    {
-                        "fieldSysName": "tags",
-                        "fetch": [],
-                        "sysName": "tags",
-                        "name": "Тэги",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "vendorCode",
-                        "fetch": [],
-                        "sysName": "vendorCode",
-                        "name": "Артикул",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
+                        "link": "listingStickers"
                     }
                 ],
                 "fields": {
-                    "brand": {
-                        "id": "brand",
-                        "content": "Бренд",
+                    "ArtNowArtwork_id": {
+                        "id": "ArtNowArtwork_id",
+                        "content": "ID картины на ArtNow",
                         "type": "field",
-                        "dataType": "link",
-                        "format": "",
+                        "dataType": "number",
+                        "format": "positiveNum",
                         "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "Brands",
-                        "actions": []
-                    },
-                    "category": {
-                        "id": "category",
-                        "content": "Категория",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "category",
-                        "actions": []
-                    },
-                    "color": {
-                        "id": "color",
-                        "content": "Цвет",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "colors",
-                        "actions": []
-                    },
-                    "decline_reason": {
-                        "id": "decline_reason",
-                        "content": "Причина отказа",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "description": {
-                        "id": "description",
-                        "content": "Описание",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "goodSpecification": {
-                        "id": "goodSpecification",
-                        "content": "Товарные позиции",
+                    "ArtNowDiscountOn": {
+                        "id": "ArtNowDiscountOn",
+                        "content": "Скидка на ArtNow",
                         "type": "field",
-                        "dataType": "arrayLink",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Скидка",
+                                "Обычная цена"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "ArtNowDiscount_id": {
+                        "id": "ArtNowDiscount_id",
+                        "content": "Скидка на ArtNow (ID и срок акции)",
+                        "type": "field",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": "goodSpecification",
+                        "link": "artnow_discount",
+                        "actions": []
+                    },
+                    "ArtNowPrice": {
+                        "id": "ArtNowPrice",
+                        "content": "Цена для ArtNow",
+                        "type": "field",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "ArtNowPublishTime": {
+                        "id": "ArtNowPublishTime",
+                        "content": "Время публикации на ArtNow",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "ArtNowResponse": {
+                        "id": "ArtNowResponse",
+                        "content": "Ответ сервера",
+                        "type": "field",
+                        "dataType": "json",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "ArtNowStatus": {
+                        "id": "ArtNowStatus",
+                        "content": "Статус  на ArtNow",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "placesStatus",
+                        "actions": []
+                    },
+                    "ArtNowStatusColor": {
+                        "id": "ArtNowStatusColor",
+                        "content": "Цвет (статус)",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "ArtNow_url": {
+                        "id": "ArtNow_url",
+                        "content": "ArtNow",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "active": {
+                        "id": "active",
+                        "content": "Активная карточка",
+                        "type": "field",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Активная",
+                                "Архивная"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "artfinderStatusColor": {
+                        "id": "artfinderStatusColor",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "artfinder_url": {
+                        "id": "artfinder_url",
+                        "content": "ArtFinder",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "artist": {
+                        "id": "artist",
+                        "content": "Автор",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "artists",
+                        "actions": []
+                    },
+                    "artmajeurStatusColor": {
+                        "id": "artmajeurStatusColor",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "artmajeur_url": {
+                        "id": "artmajeur_url",
+                        "content": "Artmajeur",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "artworkStatus": {
+                        "id": "artworkStatus",
+                        "content": "Статус картины",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "Status",
+                        "actions": []
+                    },
+                    "artworkStatusColor": {
+                        "id": "artworkStatusColor",
+                        "content": "Статус картины (цвет)",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "ebayItem_id": {
+                        "id": "ebayItem_id",
+                        "content": "ID лота на eBay",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "ebayStatus": {
+                        "id": "ebayStatus",
+                        "content": "Статус на сайте",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "placesStatus",
+                        "actions": []
+                    },
+                    "ebayStatusColor": {
+                        "id": "ebayStatusColor",
+                        "content": "Статус на сайте (цвет)",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "ebay_account": {
+                        "id": "ebay_account",
+                        "content": "Аккаунт eBay",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "ebay_url": {
+                        "id": "ebay_url",
+                        "content": "eBay",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "ebayauctionStatusColor": {
+                        "id": "ebayauctionStatusColor",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "ebayauction_url": {
+                        "id": "ebayauction_url",
+                        "content": "eBay Auction",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "etsyStatusColor": {
+                        "id": "etsyStatusColor",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "etsy_url": {
+                        "id": "etsy_url",
+                        "content": "Etsy",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
                         "actions": []
                     },
                     "id": {
@@ -3510,21 +3791,20 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "isDeleted": {
-                        "id": "isDeleted",
-                        "content": "",
+                    "listingLog": {
+                        "id": "listingLog",
+                        "content": "Лог",
                         "type": "field",
-                        "dataType": "boolean",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": "",
+                        "link": "listingLog",
                         "actions": []
                     },
-                    "isNew": {
-                        "id": "isNew",
-                        "content": "Новый товар",
+                    "meshokBold": {
+                        "id": "meshokBold",
+                        "content": "Выделение жирным (Y/N)",
                         "type": "field",
                         "dataType": "boolean",
                         "format": "",
@@ -3537,8 +3817,8 @@ const App = (props) => {
                             },
                             "dateLocale": "en-gb",
                             "booleanOptions": [
-                                "Да",
-                                "Нет"
+                                "Yes",
+                                "No"
                             ],
                             "validWeekDays": {
                                 "mon": true,
@@ -3556,14 +3836,24 @@ const App = (props) => {
                             "timeFormat": " HH:mm",
                             "isUTC": "false"
                         },
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "isSale": {
-                        "id": "isSale",
-                        "content": "Распродажа",
+                    "meshokDescription": {
+                        "id": "meshokDescription",
+                        "content": "Описание лота",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "html",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "meshokFree": {
+                        "id": "meshokFree",
+                        "content": "Бесплатный лот",
                         "type": "field",
                         "dataType": "boolean",
                         "format": "",
@@ -3576,8 +3866,8 @@ const App = (props) => {
                             },
                             "dateLocale": "en-gb",
                             "booleanOptions": [
-                                "Да",
-                                "Нет"
+                                "Бесплатный лот",
+                                "Обычный лот"
                             ],
                             "validWeekDays": {
                                 "mon": true,
@@ -3595,21 +3885,194 @@ const App = (props) => {
                             "timeFormat": " HH:mm",
                             "isUTC": "false"
                         },
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "moderation_status": {
-                        "id": "moderation_status",
-                        "content": "new,approved,declined",
+                    "meshokItem_id": {
+                        "id": "meshokItem_id",
+                        "content": "ID лота на Мешке",
+                        "type": "field",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "meshokLongevity": {
+                        "id": "meshokLongevity",
+                        "content": "Продолжительность торгов в днях",
+                        "type": "field",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "meshokPrice": {
+                        "id": "meshokPrice",
+                        "content": "Цена на Мешке (купить сейчас)",
+                        "type": "field",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "meshokPublishTime": {
+                        "id": "meshokPublishTime",
+                        "content": "Время публикации на Мешке",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "meshokRecommended": {
+                        "id": "meshokRecommended",
+                        "content": "Рекомендуемый (Y/N)",
+                        "type": "field",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Yes",
+                                "No"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "meshokRespond": {
+                        "id": "meshokRespond",
+                        "content": "Ответ сервера",
+                        "type": "field",
+                        "dataType": "json",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "meshokSaleType": {
+                        "id": "meshokSaleType",
+                        "content": "Тип продажи (Sale или Auction)",
+                        "type": "field",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Sale",
+                                "Auction"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "meshokStartPrice": {
+                        "id": "meshokStartPrice",
+                        "content": "Аукционная цена",
+                        "type": "field",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "meshokStatus": {
+                        "id": "meshokStatus",
+                        "content": "Статус на Мешке",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "placesStatus",
+                        "actions": []
+                    },
+                    "meshokStatusColor": {
+                        "id": "meshokStatusColor",
+                        "content": "Статус (цвет)",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "meshokTitle": {
+                        "id": "meshokTitle",
+                        "content": "Заголовок лота (max 100)",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": null,
+                        "link": "",
+                        "actions": []
+                    },
+                    "meshok_url": {
+                        "id": "meshok_url",
+                        "content": " Мешок",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
                         "actions": []
                     },
                     "name": {
@@ -3619,182 +4082,684 @@ const App = (props) => {
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "oldPrice": {
-                        "id": "oldPrice",
-                        "content": "Старая цена",
+                    "ozonStatusColor": {
+                        "id": "ozonStatusColor",
+                        "content": "",
                         "type": "field",
-                        "dataType": "number",
-                        "format": "positiveNum",
+                        "dataType": "string",
+                        "format": "color",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "photo": {
-                        "id": "photo",
-                        "content": "Фото",
+                    "ozon_url": {
+                        "id": "ozon_url",
+                        "content": "Озон",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "pictures": {
+                        "id": "pictures",
+                        "content": "Изображения",
                         "type": "field",
                         "dataType": "file",
                         "format": "multipleImages",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "price": {
-                        "id": "price",
-                        "content": "Цена, ₽",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "subcategoryBeauty": {
-                        "id": "subcategoryBeauty",
-                        "content": "Бьюти, подкатегория",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "subcategoryBeauty",
-                        "actions": []
-                    },
-                    "subcategoryInterior": {
-                        "id": "subcategoryInterior",
-                        "content": "Интерьер, подкатегория",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "subcategoryInterior",
-                        "actions": []
-                    },
-                    "subcategoryKids": {
-                        "id": "subcategoryKids",
-                        "content": "Детское, подкатегория",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "subcategoryKids",
-                        "actions": []
-                    },
-                    "subcategoryMen": {
-                        "id": "subcategoryMen",
-                        "content": "Мужское, подкатегория",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "subcategoryMen",
-                        "actions": []
-                    },
-                    "subcategoryWomen": {
-                        "id": "subcategoryWomen",
-                        "content": "Женское, подкатегория",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "subcategoryWomen",
-                        "actions": []
-                    },
-                    "tags": {
-                        "id": "tags",
-                        "content": "Тэги",
+                    "short_description": {
+                        "id": "short_description",
+                        "content": "Описание",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "vendorCode": {
-                        "id": "vendorCode",
+                    "sku": {
+                        "id": "sku",
                         "content": "Артикул",
                         "type": "field",
-                        "dataType": "string",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
+                        "read": true,
+                        "link": "artworks",
+                        "actions": []
+                    },
+                    "stickerColor": {
+                        "id": "stickerColor",
+                        "content": "Стикер (подсветка)",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "action__64141630047679031": {
-                        "content": "Удалить модель",
-                        "id": "action__64141630047679031",
+                    "stickers": {
+                        "id": "stickers",
+                        "content": "Стикеры",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "listingStickers",
+                        "actions": []
+                    },
+                    "thumbnail": {
+                        "id": "thumbnail",
+                        "content": "Миниатюра",
+                        "type": "field",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "action__15121644188982379": {
+                        "content": "Добавить в рекомендуемые Мешок",
+                        "id": "action__15121644188982379",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__47121644189217526": {
+                        "content": " Выделить жирным Мешок",
+                        "id": "action__47121644189217526",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__89551644189427987": {
+                        "content": "Добавить в раздел скидок ArtNow",
+                        "id": "action__89551644189427987",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__29301644190223527": {
+                        "content": "Убрать из раздела скидок ArtNow",
+                        "id": "action__29301644190223527",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__56461644348009506": {
+                        "content": "Опубликовать на ArtNow прямо сейчас",
+                        "id": "action__56461644348009506",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__24121644352990727": {
+                        "content": "Изменить цену на ArtNow ",
+                        "id": "action__24121644352990727",
                         "type": "action",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "brand": {
+                    "@dateChanged": {
                         "include": true,
+                        "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "category": {
-                        "include": true,
+                    "ArtNowArtwork_id": {
+                        "include": false,
+                        "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "color": {
+                    "ArtNowDiscountOn": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "ArtNowDiscount_id": {
                         "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": true,
+                        "configureLinkedCard": {
+                            "fields": {},
+                            "fieldParams": {},
+                            "fieldOrder": []
+                        },
+                        "descriptionFlag": true,
+                        "description": "Скидка 50% на эту картину от указанной цены! "
+                    },
+                    "ArtNowPrice": {
+                        "include": true,
+                        "disableEditing": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "descriptionFlag": false,
+                        "description": "1"
+                    },
+                    "ArtNowPublishTime": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "ArtNowResponse": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "ArtNowStatus": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "ArtNowStatusColor": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "ArtNow_url": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "descriptionFlag": false,
+                        "displayAsButton": true,
+                        "button": {
+                            "type": "accent"
+                        }
+                    },
+                    "active": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "artist": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": true,
+                        "configureLinkedCard": {
+                            "fields": {},
+                            "fieldParams": {},
+                            "fieldOrder": []
+                        }
+                    },
+                    "ebayItem_id": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "ebayStatus": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "ebayStatusColor": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "ebay_account": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "ebay_url": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "displayAsButton": true
+                    },
+                    "id": {
+                        "include": false,
+                        "disableEditing": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "listing_result": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "listing_status": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "meshokBold": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "meshokDescription": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "meshokFree": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "meshokItem_id": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "meshokLongevity": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "meshokPrice": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "meshokPublishTime": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "meshokRecommended": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "meshokRespond": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "meshokSaleType": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "meshokStartPrice": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "meshokStatus": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "meshokStatusColor": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "meshokTitle": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "meshok_url": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "displayAsButton": true
+                    },
+                    "name": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "place": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "short_description": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "sku": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": true,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "cost": {
+                                    "id": "cost",
+                                    "content": "Закупочная стоимость",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "decimal",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "paid": {
+                                    "id": "paid",
+                                    "content": "Оплачено",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "boolean",
+                                    "format": null,
+                                    "formatOptions": {
+                                        "customOptionLabel": "My option",
+                                        "keyValue": {
+                                            "key": "key",
+                                            "value": "value",
+                                            "button": "One more"
+                                        },
+                                        "booleanOptions": [
+                                            "Yes",
+                                            "No"
+                                        ],
+                                        "customOptionPlaceholder": "Describe your option",
+                                        "range": {},
+                                        "customOptionType": "textarea"
+                                    }
+                                },
+                                "warehouse": {
+                                    "id": "warehouse",
+                                    "content": "Склад",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "link",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "id": {
+                                    "id": "id",
+                                    "content": "SKU",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "id",
+                                    "format": null,
+                                    "formatOptions": {}
+                                }
+                            },
+                            "fieldParams": {
+                                "cost": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "paid": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "warehouse": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "id": {
+                                    "include": false,
+                                    "disableEditing": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "name": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "id",
+                                "action__24121644352990727",
+                                "warehouse",
+                                "cost",
+                                null,
+                                "paid"
+                            ]
+                        }
+                    },
+                    "thumbnail": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "artfinder_url": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "artmajeur_url": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "ebayauction_url": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "etsy_url": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "ozon_url": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "displayAsButton": true
+                    },
+                    "artfinderStatusColor": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "artmajeurStatusColor": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "ebayauctionStatusColor": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "etsyStatusColor": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "ozonStatusColor": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "artworkStatus": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "artworkStatusColor": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "pictures": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "stickers": {
+                        "include": true,
+                        "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": true,
                         "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "decline_reason": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "displayAsHint": true,
-                        "hintType": "danger"
-                    },
-                    "description": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "goodSpecification": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
+                        "clickable": true,
                         "configureLinkedCard": {
                             "fields": {
                                 "id": {
@@ -3806,36 +4771,498 @@ const App = (props) => {
                                     "format": null,
                                     "formatOptions": {}
                                 },
-                                "quantity": {
-                                    "id": "quantity",
-                                    "content": "Количество",
+                                "sticker": {
+                                    "id": "sticker",
+                                    "content": "Стикер",
                                     "type": "field",
                                     "read": true,
-                                    "dataType": "number",
-                                    "format": "positiveNum",
+                                    "dataType": "string",
+                                    "format": null,
                                     "formatOptions": {}
+                                }
+                            },
+                            "fieldParams": {
+                                "@dateChanged": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
                                 },
-                                "reserve": {
-                                    "id": "reserve",
-                                    "content": "Резерв",
+                                "@dateCreated": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "@who": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "artfinder_id": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "artistPlanfix": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "artist_bio": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "artist_bio_eng": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "artist_by": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "artist_by_eng": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "artist_comment": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "artist_places": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "artist_short": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "artist_short_eng": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "artist_tags": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "artist_tags_eng": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "artnowDiscount": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "artnow_id": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "artworks": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "artworksInGallery": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "artworksNeedPay": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "artworksWarehouse_pdf": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "costNeedPay": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "costSoldArtworksAll": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "costSoldArtworksMonth": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "costSoldArtworksThree": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "counter": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "driveFolder": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "driveFolderArtist": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "driveFolderBig": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "driveFolderMore": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "driveFolderReserved": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "driveFolderSold": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "driveFolderSoldMore": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "driveFolderURL": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "id": {
+                                    "include": false,
+                                    "disableEditing": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "json": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "last_name": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "last_name_eng": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "name": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "name_eng": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "perfix": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "photo": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "profitSoldArtworksAll": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "profitSoldArtworksMonth": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "profitSoldArtworksThree": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "soldArtworks": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "soldStatus": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "sumSoldArtworkMonth": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "sumSoldArtworkThree": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "sumSoldArtworksAll": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "sticker": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "@dateChanged",
+                                "@dateCreated",
+                                null,
+                                "id",
+                                "sticker"
+                            ]
+                        },
+                        "veiwOption": "tags",
+                        "cartView": {
+                            "image": false,
+                            "title": true,
+                            "titleField": "sticker"
+                        }
+                    },
+                    "stickerColor": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "listingLog": {
+                        "include": true,
+                        "disableEditing": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": true,
+                        "fileImageSize": 200,
+                        "clickable": true,
+                        "veiwOption": "table",
+                        "tableView": {
+                            "columns": [
+                                {
+                                    "id": "1644403988274",
+                                    "field": "date"
+                                },
+                                {
+                                    "id": "1644403992425",
+                                    "field": "places"
+                                },
+                                {
+                                    "id": "1644415273999",
+                                    "field": "event"
+                                },
+                                {
+                                    "id": "1644403995690",
+                                    "field": "status"
+                                },
+                                {
+                                    "id": "1644405219945",
+                                    "field": "id"
+                                },
+                                {
+                                    "id": "1644415356697",
+                                    "field": "value"
+                                }
+                            ],
+                            "deleteOn": true,
+                            "itogo": false
+                        },
+                        "configureLinkedCard": {
+                            "fields": {
+                                "id": {
+                                    "id": "id",
+                                    "content": "id",
                                     "type": "field",
                                     "read": true,
-                                    "dataType": "number",
-                                    "format": "positiveNum",
+                                    "dataType": "id",
+                                    "format": null,
                                     "formatOptions": {}
                                 },
-                                "size": {
-                                    "id": "size",
-                                    "content": "Размер",
+                                "date": {
+                                    "id": "date",
+                                    "content": "Дата",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "date",
+                                    "format": null,
+                                    "formatOptions": {
+                                        "customOptionLabel": "My option",
+                                        "keyValue": {
+                                            "key": "key",
+                                            "value": "value",
+                                            "button": "One more"
+                                        },
+                                        "dateLocale": "ru",
+                                        "booleanOptions": [
+                                            "True",
+                                            "False"
+                                        ],
+                                        "validWeekDays": {
+                                            "mon": true,
+                                            "thu": true,
+                                            "tue": true,
+                                            "sun": true,
+                                            "fri": true,
+                                            "sat": true,
+                                            "wed": true
+                                        },
+                                        "customOptionPlaceholder": "Describe your option",
+                                        "range": {},
+                                        "customOptionType": "textarea",
+                                        "dateFormat": "DD/MM/YY",
+                                        "timeFormat": " HH:mm",
+                                        "isUTC": "false"
+                                    }
+                                },
+                                "status": {
+                                    "id": "status",
+                                    "content": "Статус",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "boolean",
+                                    "format": null,
+                                    "formatOptions": {
+                                        "customOptionLabel": "My option",
+                                        "keyValue": {
+                                            "key": "key",
+                                            "value": "value",
+                                            "button": "One more"
+                                        },
+                                        "dateLocale": "en-gb",
+                                        "booleanOptions": [
+                                            "Успех",
+                                            "Ошибка"
+                                        ],
+                                        "validWeekDays": {
+                                            "mon": true,
+                                            "thu": true,
+                                            "tue": true,
+                                            "sun": true,
+                                            "fri": true,
+                                            "sat": true,
+                                            "wed": true
+                                        },
+                                        "customOptionPlaceholder": "Describe your option",
+                                        "range": {},
+                                        "customOptionType": "textarea",
+                                        "dateFormat": "DD/MM/Y",
+                                        "timeFormat": " HH:mm",
+                                        "isUTC": "false"
+                                    }
+                                },
+                                "places": {
+                                    "id": "places",
+                                    "content": "Площадка",
                                     "type": "field",
                                     "read": true,
                                     "dataType": "link",
                                     "format": null,
+                                    "formatOptions": null
+                                },
+                                "api_response": {
+                                    "id": "api_response",
+                                    "content": "Ответ сервера",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "json",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "value": {
+                                    "id": "value",
+                                    "content": "Передаваемое значение",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
                                     "formatOptions": {}
                                 },
-                                "spec_name": {
-                                    "id": "spec_name",
-                                    "content": "Человеческое название позиции",
+                                "event": {
+                                    "id": "event",
+                                    "content": "Событие",
                                     "type": "field",
                                     "read": true,
                                     "dataType": "string",
@@ -3844,365 +5271,1702 @@ const App = (props) => {
                                 }
                             },
                             "fieldParams": {
+                                "api_response": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "date": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "event": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
                                 "id": {
-                                    "include": false,
+                                    "include": true,
+                                    "disableEditing": true,
                                     "fileImageFormat": "square",
                                     "fileImageSize": 200
                                 },
-                                "quantity": {
+                                "places": {
                                     "include": true,
+                                    "disableEditing": false,
                                     "fileImageFormat": "square",
                                     "fileImageSize": 200
                                 },
-                                "reserve": {
+                                "status": {
                                     "include": true,
+                                    "disableEditing": false,
                                     "fileImageFormat": "square",
                                     "fileImageSize": 200
                                 },
-                                "size": {
+                                "value": {
                                     "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "spec_name": {
-                                    "include": true,
+                                    "disableEditing": false,
                                     "fileImageFormat": "square",
                                     "fileImageSize": 200
                                 }
                             },
                             "fieldOrder": [
+                                null,
                                 "id",
-                                "quantity",
-                                "reserve",
-                                "size",
-                                "spec_name"
+                                "date",
+                                "status",
+                                "places",
+                                "api_response",
+                                "value",
+                                null,
+                                "event"
                             ]
                         },
-                        "subHeader": ""
-                    },
-                    "id": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "descriptionFlag": true,
-                        "description": "НЕ ИЗМЕНЯТЬ"
-                    },
-                    "isDeleted": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "isNew": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "isSale": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "moderation_status": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "name": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "oldPrice": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "photo": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "fileImage": true
-                    },
-                    "price": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "sizes": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "subcategoryBeauty": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "subcategoryInterior": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "subcategoryKids": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "subcategoryMen": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "subcategoryWomen": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "tags": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "vendorCode": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
+                        "sortArrayLink": true,
+                        "sortByField": "date",
+                        "cartView": {
+                            "title": true,
+                            "titleField": "event",
+                            "status": true,
+                            "statusField": "status"
+                        },
+                        "quickSearchSL": "ListingsLog",
+                        "sortDirection": "desc"
                     }
                 },
                 "columns": {
                     "tab-1": {
                         "id": "tab-1",
-                        "title": "Информация о товаре",
+                        "title": "Другие",
                         "fieldIds": [
-                            "photo",
+                            "artfinder_url",
+                            "artmajeur_url",
+                            "ebayauction_url",
+                            "artfinderStatusColor",
+                            "artmajeurStatusColor",
+                            "ebayauctionStatusColor"
+                        ]
+                    },
+                    "78241644180299156": {
+                        "id": "78241644180299156",
+                        "title": "ArtNow",
+                        "fieldIds": [
+                            "ArtNow_url",
+                            "ArtNowStatus",
+                            "ArtNowPrice",
+                            "action__24121644352990727",
+                            "action__56461644348009506",
+                            "ArtNowDiscount_id",
+                            "action__89551644189427987",
+                            "action__29301644190223527",
+                            "ArtNowArtwork_id",
+                            "ArtNowPublishTime",
+                            "ArtNowResponse",
+                            "ArtNowStatusColor"
+                        ]
+                    },
+                    "29941644180310098": {
+                        "id": "29941644180310098",
+                        "title": "Мешок",
+                        "fieldIds": [
+                            "meshokSaleType",
+                            "meshokTitle",
+                            "meshokDescription",
+                            "meshokFree",
+                            "meshokPrice",
+                            "meshokItem_id",
+                            "meshokPublishTime",
+                            "meshokLongevity",
+                            "meshokStartPrice",
+                            "meshokRespond",
+                            "meshokStatus",
+                            "meshokStatusColor",
+                            "meshok_url",
+                            "meshokRecommended",
+                            "action__15121644188982379",
+                            "meshokBold",
+                            "action__47121644189217526"
+                        ]
+                    },
+                    "14451644180441918": {
+                        "id": "14451644180441918",
+                        "title": "О предмете",
+                        "fieldIds": [
+                            "artworkStatus",
+                            "sku",
+                            "pictures",
+                            "thumbnail",
                             "name",
-                            "description",
-                            "brand",
-                            "vendorCode",
-                            "price",
-                            "color",
-                            "isNew",
-                            "isSale",
-                            "oldPrice",
-                            "isDeleted",
-                            "decline_reason",
-                            "moderation_status",
-                            "tags"
-                        ]
-                    },
-                    "82141630047479311": {
-                        "id": "82141630047479311",
-                        "title": "Товарные позиции на складе",
-                        "fieldIds": [
-                            "goodSpecification"
-                        ]
-                    },
-                    "67591630047536004": {
-                        "id": "67591630047536004",
-                        "title": "Категории каталога",
-                        "fieldIds": [
-                            "category",
-                            "subcategoryKids",
-                            "subcategoryInterior",
-                            "subcategoryWomen",
-                            "subcategoryBeauty",
-                            "subcategoryMen"
-                        ]
-                    },
-                    "35671630047657439": {
-                        "id": "35671630047657439",
-                        "title": "Удалить модель",
-                        "fieldIds": [
+                            "short_description",
+                            "artist",
                             "id",
-                            "action__64141630047679031"
+                            "active",
+                            "artworkStatusColor",
+                            "ArtNowDiscountOn",
+                            "stickers",
+                            "stickerColor"
+                        ]
+                    },
+                    "45991644180493676": {
+                        "id": "45991644180493676",
+                        "title": "eBay",
+                        "fieldIds": [
+                            "ebay_account",
+                            "ebayStatus",
+                            "ebayStatusColor",
+                            "ebay_url",
+                            "ebayItem_id"
+                        ]
+                    },
+                    "71271644180525350": {
+                        "id": "71271644180525350",
+                        "title": "Озон",
+                        "fieldIds": [
+                            "ozon_url",
+                            "ozonStatusColor"
+                        ]
+                    },
+                    "80081644180546734": {
+                        "id": "80081644180546734",
+                        "title": "Etsy",
+                        "fieldIds": [
+                            "etsyStatusColor",
+                            "etsy_url"
+                        ]
+                    },
+                    "57711644414895650": {
+                        "id": "57711644414895650",
+                        "title": "Лог (НЕРАБОТАЮЩАЯ ТАБЛИЦА ДЛЯ ПАВЛА)",
+                        "fieldIds": [
+                            "listingLog"
                         ]
                     }
                 },
                 "columnOrder": [
-                    "tab-1",
-                    "82141630047479311",
-                    "67591630047536004",
-                    "35671630047657439"
+                    "57711644414895650",
+                    "14451644180441918",
+                    "78241644180299156",
+                    "29941644180310098",
+                    "45991644180493676",
+                    "71271644180525350",
+                    "80081644180546734",
+                    "tab-1"
                 ],
                 "actions": [
                     {
                         "sysName": "",
-                        "id": "64141630047679031",
-                        "name": "Удалить модель",
+                        "id": "15121644188982379",
+                        "name": "Добавить в рекомендуемые Мешок",
                         "displayAs": "button",
-                        "buttonIcon": "delete",
-                        "buttonType": "danger",
-                        "dropdown": true,
+                        "buttonTitle": "Добавить в рекомендуемые (44 руб.)",
+                        "conditionals": [
+                            {
+                                "id": "49791644189005764",
+                                "target": "field",
+                                "value": "false",
+                                "field": "meshokRecommended"
+                            },
+                            {
+                                "id": "43101644348468089",
+                                "target": "field",
+                                "value": "Active",
+                                "field": "meshokStatus"
+                            }
+                        ],
+                        "buttonIcon": "money",
+                        "buttonType": "accent"
+                    },
+                    {
+                        "sysName": "",
+                        "id": "47121644189217526",
+                        "name": " Выделить жирным Мешок",
+                        "displayAs": "button",
+                        "buttonTitle": "Выделить жирным (5 руб.)",
+                        "buttonType": "accent",
+                        "buttonIcon": "stopFill",
+                        "conditionals": [
+                            {
+                                "id": "19271644189413910",
+                                "target": "field",
+                                "value": "false",
+                                "field": "meshokBold"
+                            },
+                            {
+                                "id": "61771644348500181",
+                                "target": "field",
+                                "value": "Active",
+                                "field": "meshokStatus"
+                            }
+                        ]
+                    },
+                    {
+                        "sysName": "actions",
+                        "id": "89551644189427987",
+                        "name": "Добавить в раздел скидок ArtNow",
+                        "displayAs": "button",
+                        "buttonIcon": "hook",
+                        "buttonType": "accent",
+                        "buttonTitle": "Добавить в раздел скидок",
+                        "conditionals": [
+                            {
+                                "id": "61051644189537653",
+                                "target": "field",
+                                "value": "false",
+                                "field": "ArtNowDiscountOn"
+                            },
+                            {
+                                "id": "25841644348525148",
+                                "target": "field",
+                                "value": "Active",
+                                "field": "ArtNowStatus"
+                            }
+                        ],
                         "closePopup": true,
+                        "showMessage": false,
+                        "dropdown": true,
+                        "SLtype": "other",
+                        "fields": {
+                            "readFields": [
+                                {
+                                    "fieldSysName": "actionDescription",
+                                    "fetch": [],
+                                    "sysName": "actionDescription",
+                                    "name": "Что делаем",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "actionForm",
+                                    "fetch": [],
+                                    "sysName": "actionForm",
+                                    "name": "Откуда запустили",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "artwork_id",
+                                    "fetch": [],
+                                    "sysName": "artwork_id",
+                                    "name": "Картина",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "artworks"
+                                },
+                                {
+                                    "fieldSysName": "id",
+                                    "fetch": [],
+                                    "sysName": "id",
+                                    "name": "id",
+                                    "dataType": "id",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "listing_id",
+                                    "fetch": [],
+                                    "sysName": "listing_id",
+                                    "name": "Листинг",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "listings"
+                                },
+                                {
+                                    "fieldSysName": "priceArtNow",
+                                    "fetch": [],
+                                    "sysName": "priceArtNow",
+                                    "name": "Новая цена для ArtNow",
+                                    "dataType": "decimal",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "trigger",
+                                    "fetch": [],
+                                    "sysName": "trigger",
+                                    "name": "Команда триггер",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "user_id",
+                                    "fetch": [],
+                                    "sysName": "user_id",
+                                    "name": "Кто нажал",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "WebUser"
+                                }
+                            ],
+                            "writeFields": [
+                                {
+                                    "fieldSysName": "actionDescription",
+                                    "fetch": [],
+                                    "sysName": "actionDescription",
+                                    "name": "Что делаем",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "actionForm",
+                                    "fetch": [],
+                                    "sysName": "actionForm",
+                                    "name": "Откуда запустили",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "artwork_id",
+                                    "fetch": [],
+                                    "sysName": "artwork_id",
+                                    "name": "Картина",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "artworks"
+                                },
+                                {
+                                    "fieldSysName": "id",
+                                    "fetch": [],
+                                    "sysName": "id",
+                                    "name": "id",
+                                    "dataType": "id",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "listing_id",
+                                    "fetch": [],
+                                    "sysName": "listing_id",
+                                    "name": "Листинг",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "listings"
+                                },
+                                {
+                                    "fieldSysName": "priceArtNow",
+                                    "fetch": [],
+                                    "sysName": "priceArtNow",
+                                    "name": "Новая цена для ArtNow",
+                                    "dataType": "decimal",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "trigger",
+                                    "fetch": [],
+                                    "sysName": "trigger",
+                                    "name": "Команда триггер",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "user_id",
+                                    "fetch": [],
+                                    "sysName": "user_id",
+                                    "name": "Кто нажал",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "WebUser"
+                                }
+                            ]
+                        },
                         "formMapping": [
                             {
-                                "id": "77841630047694817",
-                                "target": "id",
+                                "id": "25321644414317264",
+                                "target": "listing_id",
                                 "type": "objectField",
                                 "value": "id"
                             },
                             {
-                                "id": "67611630047700906",
-                                "target": "isDeleted",
+                                "id": "88571644414321365",
+                                "target": "trigger",
                                 "type": "const",
-                                "value": "true"
+                                "value": "WorkToDiscount"
+                            },
+                            {
+                                "id": "36111644414329237",
+                                "target": "user_id",
+                                "type": "user",
+                                "value": null
+                            },
+                            {
+                                "id": "30491644414332619",
+                                "target": "actionDescription",
+                                "type": "const",
+                                "value": "Добавить в раздел скидок ArtNow"
+                            },
+                            {
+                                "id": "11021644414336405",
+                                "target": "actionForm",
+                                "type": "const",
+                                "value": "Listings"
+                            }
+                        ]
+                    },
+                    {
+                        "sysName": "actions",
+                        "id": "29301644190223527",
+                        "name": "Убрать из раздела скидок ArtNow",
+                        "displayAs": "button",
+                        "buttonTitle": "Убрать из раздела скидок",
+                        "buttonType": "danger",
+                        "buttonIcon": "refresh",
+                        "conditionals": [
+                            {
+                                "id": "67011644190274984",
+                                "target": "field",
+                                "value": "true",
+                                "field": "ArtNowDiscountOn"
+                            }
+                        ],
+                        "closePopup": true,
+                        "showMessage": false,
+                        "formMapping": [
+                            {
+                                "id": "15441644414167193",
+                                "target": "listing_id",
+                                "type": "objectField",
+                                "value": "id"
+                            },
+                            {
+                                "id": "72101644414218534",
+                                "target": "trigger",
+                                "type": "const",
+                                "value": "WorkUnDiscount"
+                            },
+                            {
+                                "id": "17221644414256985",
+                                "target": "actionForm",
+                                "type": "const",
+                                "value": "Listings"
+                            },
+                            {
+                                "id": "27941644414259670",
+                                "target": "actionDescription",
+                                "type": "const",
+                                "value": "Удалить из раздела скидок ArtNow"
+                            },
+                            {
+                                "id": "56231644414263568",
+                                "target": "user_id",
+                                "type": "user",
+                                "value": null
+                            }
+                        ],
+                        "dropdown": true,
+                        "SLtype": "other",
+                        "fields": {
+                            "readFields": [
+                                {
+                                    "fieldSysName": "actionDescription",
+                                    "fetch": [],
+                                    "sysName": "actionDescription",
+                                    "name": "Что делаем",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "actionForm",
+                                    "fetch": [],
+                                    "sysName": "actionForm",
+                                    "name": "Откуда запустили",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "artwork_id",
+                                    "fetch": [],
+                                    "sysName": "artwork_id",
+                                    "name": "Картина",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "artworks"
+                                },
+                                {
+                                    "fieldSysName": "id",
+                                    "fetch": [],
+                                    "sysName": "id",
+                                    "name": "id",
+                                    "dataType": "id",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "listing_id",
+                                    "fetch": [],
+                                    "sysName": "listing_id",
+                                    "name": "Листинг",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "listings"
+                                },
+                                {
+                                    "fieldSysName": "priceArtNow",
+                                    "fetch": [],
+                                    "sysName": "priceArtNow",
+                                    "name": "Новая цена для ArtNow",
+                                    "dataType": "decimal",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "trigger",
+                                    "fetch": [],
+                                    "sysName": "trigger",
+                                    "name": "Команда триггер",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "user_id",
+                                    "fetch": [],
+                                    "sysName": "user_id",
+                                    "name": "Кто нажал",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "WebUser"
+                                }
+                            ],
+                            "writeFields": [
+                                {
+                                    "fieldSysName": "actionDescription",
+                                    "fetch": [],
+                                    "sysName": "actionDescription",
+                                    "name": "Что делаем",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "actionForm",
+                                    "fetch": [],
+                                    "sysName": "actionForm",
+                                    "name": "Откуда запустили",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "artwork_id",
+                                    "fetch": [],
+                                    "sysName": "artwork_id",
+                                    "name": "Картина",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "artworks"
+                                },
+                                {
+                                    "fieldSysName": "id",
+                                    "fetch": [],
+                                    "sysName": "id",
+                                    "name": "id",
+                                    "dataType": "id",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "listing_id",
+                                    "fetch": [],
+                                    "sysName": "listing_id",
+                                    "name": "Листинг",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "listings"
+                                },
+                                {
+                                    "fieldSysName": "priceArtNow",
+                                    "fetch": [],
+                                    "sysName": "priceArtNow",
+                                    "name": "Новая цена для ArtNow",
+                                    "dataType": "decimal",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "trigger",
+                                    "fetch": [],
+                                    "sysName": "trigger",
+                                    "name": "Команда триггер",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "user_id",
+                                    "fetch": [],
+                                    "sysName": "user_id",
+                                    "name": "Кто нажал",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "WebUser"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "sysName": "actions",
+                        "id": "56461644348009506",
+                        "name": "Опубликовать на ArtNow прямо сейчас",
+                        "displayAs": "form",
+                        "buttonType": "accent",
+                        "buttonIcon": "actions",
+                        "SLtype": "other",
+                        "formMapping": [
+                            {
+                                "id": "70371644348868988",
+                                "target": "user_id",
+                                "type": "user",
+                                "value": null
+                            },
+                            {
+                                "id": "13461644348872716",
+                                "target": "actionForm",
+                                "type": "const",
+                                "value": "Listings"
+                            },
+                            {
+                                "id": "88681644348876114",
+                                "target": "actionDescription",
+                                "type": "const",
+                                "value": "Опубликовать на ArtNow прямо сейчас (без расписания)"
+                            },
+                            {
+                                "id": "82191644348878966",
+                                "target": "listing_id",
+                                "type": "objectField",
+                                "value": "id"
+                            },
+                            {
+                                "id": "70701644348886447",
+                                "target": "trigger",
+                                "type": "const",
+                                "value": "addToArtnowImmediately"
+                            }
+                        ],
+                        "conditionals": [
+                            {
+                                "id": "63711644348121207",
+                                "target": "field",
+                                "value": "Draft",
+                                "field": "ArtNowStatus"
+                            }
+                        ],
+                        "fields": {
+                            "readFields": [
+                                {
+                                    "fieldSysName": "actionDescription",
+                                    "fetch": [],
+                                    "sysName": "actionDescription",
+                                    "name": "Что делаем",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "actionForm",
+                                    "fetch": [],
+                                    "sysName": "actionForm",
+                                    "name": "Откуда запустили",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "artwork_id",
+                                    "fetch": [],
+                                    "sysName": "artwork_id",
+                                    "name": "Картина",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "artworks"
+                                },
+                                {
+                                    "fieldSysName": "id",
+                                    "fetch": [],
+                                    "sysName": "id",
+                                    "name": "id",
+                                    "dataType": "id",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "listing_id",
+                                    "fetch": [],
+                                    "sysName": "listing_id",
+                                    "name": "Листинг",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "listings"
+                                },
+                                {
+                                    "fieldSysName": "priceArtNow",
+                                    "fetch": [],
+                                    "sysName": "priceArtNow",
+                                    "name": "Новая цена для ArtNow",
+                                    "dataType": "decimal",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "trigger",
+                                    "fetch": [],
+                                    "sysName": "trigger",
+                                    "name": "Команда триггер",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "user_id",
+                                    "fetch": [],
+                                    "sysName": "user_id",
+                                    "name": "Кто нажал",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "WebUser"
+                                }
+                            ],
+                            "writeFields": [
+                                {
+                                    "fieldSysName": "actionDescription",
+                                    "fetch": [],
+                                    "sysName": "actionDescription",
+                                    "name": "Что делаем",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "actionForm",
+                                    "fetch": [],
+                                    "sysName": "actionForm",
+                                    "name": "Откуда запустили",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "artwork_id",
+                                    "fetch": [],
+                                    "sysName": "artwork_id",
+                                    "name": "Картина",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "artworks"
+                                },
+                                {
+                                    "fieldSysName": "id",
+                                    "fetch": [],
+                                    "sysName": "id",
+                                    "name": "id",
+                                    "dataType": "id",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "listing_id",
+                                    "fetch": [],
+                                    "sysName": "listing_id",
+                                    "name": "Листинг",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "listings"
+                                },
+                                {
+                                    "fieldSysName": "priceArtNow",
+                                    "fetch": [],
+                                    "sysName": "priceArtNow",
+                                    "name": "Новая цена для ArtNow",
+                                    "dataType": "decimal",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "trigger",
+                                    "fetch": [],
+                                    "sysName": "trigger",
+                                    "name": "Команда триггер",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "user_id",
+                                    "fetch": [],
+                                    "sysName": "user_id",
+                                    "name": "Кто нажал",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "WebUser"
+                                }
+                            ]
+                        },
+                        "showMessage": true,
+                        "closePopup": false,
+                        "resultMessage": "",
+                        "resultButton": "Опубликовано!",
+                        "formFields": [
+                            {
+                                "id": "87521644351050055",
+                                "field": {
+                                    "fieldSysName": "priceArtNow",
+                                    "fetch": [],
+                                    "sysName": "priceArtNow",
+                                    "name": "Цена для ArtNow",
+                                    "dataType": "decimal",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                }
+                            }
+                        ],
+                        "buttonTitle": "Опубликовать!"
+                    },
+                    {
+                        "sysName": "actions",
+                        "id": "24121644352990727",
+                        "name": "Изменить цену на ArtNow ",
+                        "displayAs": "form",
+                        "callFrom": "main",
+                        "callFromField": "sku",
+                        "formMapping": [
+                            {
+                                "id": "94901644353093262",
+                                "target": "listing_id",
+                                "type": "objectField",
+                                "value": "id"
+                            },
+                            {
+                                "id": "70971644353784344",
+                                "target": "actionDescription",
+                                "type": "const",
+                                "value": "Меняем цену на ArtNow"
+                            },
+                            {
+                                "id": "37151644353787577",
+                                "target": "actionForm",
+                                "type": "const",
+                                "value": "Listings"
+                            },
+                            {
+                                "id": "95821644353791373",
+                                "target": "trigger",
+                                "type": "const",
+                                "value": "changePriceArtnow"
+                            },
+                            {
+                                "id": "80361644353800803",
+                                "target": "user_id",
+                                "type": "user",
+                                "value": null
+                            }
+                        ],
+                        "closePopup": true,
+                        "showMessage": false,
+                        "SLtype": "other",
+                        "buttonIcon": "money",
+                        "fields": {
+                            "readFields": [
+                                {
+                                    "fieldSysName": "actionDescription",
+                                    "fetch": [],
+                                    "sysName": "actionDescription",
+                                    "name": "Что делаем",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "actionForm",
+                                    "fetch": [],
+                                    "sysName": "actionForm",
+                                    "name": "Откуда запустили",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "artwork_id",
+                                    "fetch": [],
+                                    "sysName": "artwork_id",
+                                    "name": "Картина",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "artworks"
+                                },
+                                {
+                                    "fieldSysName": "id",
+                                    "fetch": [],
+                                    "sysName": "id",
+                                    "name": "id",
+                                    "dataType": "id",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "listing_id",
+                                    "fetch": [],
+                                    "sysName": "listing_id",
+                                    "name": "Листинг",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "listings"
+                                },
+                                {
+                                    "fieldSysName": "priceArtNow",
+                                    "fetch": [],
+                                    "sysName": "priceArtNow",
+                                    "name": "Новая цена для ArtNow",
+                                    "dataType": "decimal",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "trigger",
+                                    "fetch": [],
+                                    "sysName": "trigger",
+                                    "name": "Команда триггер",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "user_id",
+                                    "fetch": [],
+                                    "sysName": "user_id",
+                                    "name": "Кто нажал",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "WebUser"
+                                }
+                            ],
+                            "writeFields": [
+                                {
+                                    "fieldSysName": "actionDescription",
+                                    "fetch": [],
+                                    "sysName": "actionDescription",
+                                    "name": "Что делаем",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "actionForm",
+                                    "fetch": [],
+                                    "sysName": "actionForm",
+                                    "name": "Откуда запустили",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "artwork_id",
+                                    "fetch": [],
+                                    "sysName": "artwork_id",
+                                    "name": "Картина",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "artworks"
+                                },
+                                {
+                                    "fieldSysName": "id",
+                                    "fetch": [],
+                                    "sysName": "id",
+                                    "name": "id",
+                                    "dataType": "id",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "listing_id",
+                                    "fetch": [],
+                                    "sysName": "listing_id",
+                                    "name": "Листинг",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "listings"
+                                },
+                                {
+                                    "fieldSysName": "priceArtNow",
+                                    "fetch": [],
+                                    "sysName": "priceArtNow",
+                                    "name": "Новая цена для ArtNow",
+                                    "dataType": "decimal",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "trigger",
+                                    "fetch": [],
+                                    "sysName": "trigger",
+                                    "name": "Команда триггер",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "user_id",
+                                    "fetch": [],
+                                    "sysName": "user_id",
+                                    "name": "Кто нажал",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "WebUser"
+                                }
+                            ]
+                        },
+                        "formFields": [
+                            {
+                                "id": "22661644353603603",
+                                "field": {
+                                    "fieldSysName": "priceArtNow",
+                                    "fetch": [],
+                                    "sysName": "priceArtNow",
+                                    "name": "Новая цена для ArtNow",
+                                    "dataType": "decimal",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                }
+                            }
+                        ],
+                        "buttonTitle": "Изменить цену на ArtNow",
+                        "buttonType": "accent",
+                        "conditionals": [
+                            {
+                                "id": "84461644354875555",
+                                "target": "field",
+                                "value": "Active",
+                                "field": "ArtNowStatus"
                             }
                         ]
                     }
                 ]
             },
             "fields": {
-                "brand": {
+                "@dateChanged": {
                     "include": true,
+                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "category": {
-                    "include": true,
+                "ArtNowArtwork_id": {
+                    "include": false,
+                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "color": {
+                "ArtNowDiscountOn": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "ArtNowDiscount_id": {
                     "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {},
+                        "fieldParams": {},
+                        "fieldOrder": []
+                    },
+                    "descriptionFlag": true,
+                    "description": "Скидка 50% на эту картину от указанной цены! "
+                },
+                "ArtNowPrice": {
+                    "include": true,
+                    "disableEditing": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "descriptionFlag": false,
+                    "description": "1"
+                },
+                "ArtNowPublishTime": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "ArtNowResponse": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "ArtNowStatus": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "ArtNowStatusColor": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "ArtNow_url": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "descriptionFlag": false,
+                    "displayAsButton": true,
+                    "button": {
+                        "type": "accent"
+                    }
+                },
+                "active": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "artist": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {},
+                        "fieldParams": {},
+                        "fieldOrder": []
+                    }
+                },
+                "ebayItem_id": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "ebayStatus": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "ebayStatusColor": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "ebay_account": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "ebay_url": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "displayAsButton": true
+                },
+                "id": {
+                    "include": false,
+                    "disableEditing": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "listing_result": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "listing_status": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "meshokBold": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "meshokDescription": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "meshokFree": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "meshokItem_id": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "meshokLongevity": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "meshokPrice": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "meshokPublishTime": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "meshokRecommended": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "meshokRespond": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "meshokSaleType": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "meshokStartPrice": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "meshokStatus": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "meshokStatusColor": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "meshokTitle": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "meshok_url": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "displayAsButton": true
+                },
+                "name": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "place": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "short_description": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "sku": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "cost": {
+                                "id": "cost",
+                                "content": "Закупочная стоимость",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "decimal",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "paid": {
+                                "id": "paid",
+                                "content": "Оплачено",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "boolean",
+                                "format": null,
+                                "formatOptions": {
+                                    "customOptionLabel": "My option",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "booleanOptions": [
+                                        "Yes",
+                                        "No"
+                                    ],
+                                    "customOptionPlaceholder": "Describe your option",
+                                    "range": {},
+                                    "customOptionType": "textarea"
+                                }
+                            },
+                            "warehouse": {
+                                "id": "warehouse",
+                                "content": "Склад",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "id": {
+                                "id": "id",
+                                "content": "SKU",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "id",
+                                "format": null,
+                                "formatOptions": {}
+                            }
+                        },
+                        "fieldParams": {
+                            "cost": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "paid": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "warehouse": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "id": {
+                                "include": false,
+                                "disableEditing": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "name": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "id",
+                            "action__24121644352990727",
+                            "warehouse",
+                            "cost",
+                            null,
+                            "paid"
+                        ]
+                    }
+                },
+                "thumbnail": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "artfinder_url": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "artmajeur_url": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "ebayauction_url": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "etsy_url": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "ozon_url": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "displayAsButton": true
+                },
+                "artfinderStatusColor": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "artmajeurStatusColor": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "ebayauctionStatusColor": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "etsyStatusColor": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "ozonStatusColor": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "artworkStatus": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "artworkStatusColor": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "pictures": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "stickers": {
+                    "include": true,
+                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": true,
                     "fileImageSize": 200,
-                    "clickable": false,
-                    "searchData": [
-                        {
-                            "key": "black",
-                            "value": "Черный"
-                        },
-                        {
-                            "key": "white",
-                            "value": "Белый"
-                        },
-                        {
-                            "key": "dark-blue",
-                            "value": "Синий"
-                        },
-                        {
-                            "key": "blue",
-                            "value": "Голубой"
-                        },
-                        {
-                            "key": "yellow",
-                            "value": "Жёлтый"
-                        },
-                        {
-                            "key": "red",
-                            "value": "Красный"
-                        },
-                        {
-                            "key": "green",
-                            "value": "Зеленый"
-                        },
-                        {
-                            "key": "beige",
-                            "value": "Бежевый"
-                        },
-                        {
-                            "key": "pink",
-                            "value": "Розовый"
-                        },
-                        {
-                            "key": "violet",
-                            "value": "Фиолетовый"
-                        },
-                        {
-                            "key": "lilac",
-                            "value": "Сиреневый"
-                        },
-                        {
-                            "key": "hacky",
-                            "value": "Хаки"
-                        },
-                        {
-                            "key": "gray",
-                            "value": "Серый"
-                        },
-                        {
-                            "key": "brown",
-                            "value": "Коричневый"
-                        },
-                        {
-                            "key": "burgundy",
-                            "value": "Бордовый"
-                        },
-                        {
-                            "key": "golden",
-                            "value": "Золотой"
-                        },
-                        {
-                            "key": "silver",
-                            "value": "Серебрянный"
-                        },
-                        {
-                            "key": "orange",
-                            "value": "Оранжевый"
-                        }
-                    ]
-                },
-                "decline_reason": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "displayAsHint": true,
-                    "hintType": "danger"
-                },
-                "description": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "goodSpecification": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
+                    "clickable": true,
                     "configureLinkedCard": {
                         "fields": {
                             "id": {
@@ -4214,36 +6978,508 @@ const App = (props) => {
                                 "format": null,
                                 "formatOptions": {}
                             },
-                            "quantity": {
-                                "id": "quantity",
-                                "content": "Количество",
+                            "sticker": {
+                                "id": "sticker",
+                                "content": "Стикер",
                                 "type": "field",
                                 "read": true,
-                                "dataType": "number",
-                                "format": "positiveNum",
+                                "dataType": "string",
+                                "format": null,
                                 "formatOptions": {}
+                            }
+                        },
+                        "fieldParams": {
+                            "@dateChanged": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
                             },
-                            "reserve": {
-                                "id": "reserve",
-                                "content": "Резерв",
+                            "@dateCreated": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "@who": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "artfinder_id": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "artistPlanfix": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "artist_bio": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "artist_bio_eng": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "artist_by": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "artist_by_eng": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "artist_comment": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "artist_places": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "artist_short": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "artist_short_eng": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "artist_tags": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "artist_tags_eng": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "artnowDiscount": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "artnow_id": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "artworks": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "artworksInGallery": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "artworksNeedPay": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "artworksWarehouse_pdf": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "costNeedPay": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "costSoldArtworksAll": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "costSoldArtworksMonth": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "costSoldArtworksThree": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "counter": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "driveFolder": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "driveFolderArtist": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "driveFolderBig": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "driveFolderMore": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "driveFolderReserved": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "driveFolderSold": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "driveFolderSoldMore": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "driveFolderURL": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "id": {
+                                "include": false,
+                                "disableEditing": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "json": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "last_name": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "last_name_eng": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "name": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "name_eng": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "perfix": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "photo": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "profitSoldArtworksAll": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "profitSoldArtworksMonth": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "profitSoldArtworksThree": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "soldArtworks": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "soldStatus": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "sumSoldArtworkMonth": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "sumSoldArtworkThree": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "sumSoldArtworksAll": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "sticker": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "@dateChanged",
+                            "@dateCreated",
+                            null,
+                            "id",
+                            "sticker"
+                        ]
+                    },
+                    "veiwOption": "tags",
+                    "cartView": {
+                        "image": false,
+                        "title": true,
+                        "titleField": "sticker"
+                    },
+                    "searchData": [
+                        {
+                            "key": "artnowDiscount50%",
+                            "value": "Скидка ArtNow"
+                        },
+                        {
+                            "key": "error",
+                            "value": "Ошибка!"
+                        }
+                    ]
+                },
+                "stickerColor": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "listingLog": {
+                    "include": true,
+                    "disableEditing": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": true,
+                    "veiwOption": "table",
+                    "tableView": {
+                        "columns": [
+                            {
+                                "id": "1644403988274",
+                                "field": "date"
+                            },
+                            {
+                                "id": "1644403992425",
+                                "field": "places"
+                            },
+                            {
+                                "id": "1644415273999",
+                                "field": "event"
+                            },
+                            {
+                                "id": "1644403995690",
+                                "field": "status"
+                            },
+                            {
+                                "id": "1644405219945",
+                                "field": "id"
+                            },
+                            {
+                                "id": "1644415356697",
+                                "field": "value"
+                            }
+                        ],
+                        "deleteOn": true,
+                        "itogo": false
+                    },
+                    "configureLinkedCard": {
+                        "fields": {
+                            "id": {
+                                "id": "id",
+                                "content": "id",
                                 "type": "field",
                                 "read": true,
-                                "dataType": "number",
-                                "format": "positiveNum",
+                                "dataType": "id",
+                                "format": null,
                                 "formatOptions": {}
                             },
-                            "size": {
-                                "id": "size",
-                                "content": "Размер",
+                            "date": {
+                                "id": "date",
+                                "content": "Дата",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "date",
+                                "format": null,
+                                "formatOptions": {
+                                    "customOptionLabel": "My option",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "dateLocale": "ru",
+                                    "booleanOptions": [
+                                        "True",
+                                        "False"
+                                    ],
+                                    "validWeekDays": {
+                                        "mon": true,
+                                        "thu": true,
+                                        "tue": true,
+                                        "sun": true,
+                                        "fri": true,
+                                        "sat": true,
+                                        "wed": true
+                                    },
+                                    "customOptionPlaceholder": "Describe your option",
+                                    "range": {},
+                                    "customOptionType": "textarea",
+                                    "dateFormat": "DD/MM/YY",
+                                    "timeFormat": " HH:mm",
+                                    "isUTC": "false"
+                                }
+                            },
+                            "status": {
+                                "id": "status",
+                                "content": "Статус",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "boolean",
+                                "format": null,
+                                "formatOptions": {
+                                    "customOptionLabel": "My option",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "dateLocale": "en-gb",
+                                    "booleanOptions": [
+                                        "Успех",
+                                        "Ошибка"
+                                    ],
+                                    "validWeekDays": {
+                                        "mon": true,
+                                        "thu": true,
+                                        "tue": true,
+                                        "sun": true,
+                                        "fri": true,
+                                        "sat": true,
+                                        "wed": true
+                                    },
+                                    "customOptionPlaceholder": "Describe your option",
+                                    "range": {},
+                                    "customOptionType": "textarea",
+                                    "dateFormat": "DD/MM/Y",
+                                    "timeFormat": " HH:mm",
+                                    "isUTC": "false"
+                                }
+                            },
+                            "places": {
+                                "id": "places",
+                                "content": "Площадка",
                                 "type": "field",
                                 "read": true,
                                 "dataType": "link",
                                 "format": null,
+                                "formatOptions": null
+                            },
+                            "api_response": {
+                                "id": "api_response",
+                                "content": "Ответ сервера",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "json",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "value": {
+                                "id": "value",
+                                "content": "Передаваемое значение",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
                                 "formatOptions": {}
                             },
-                            "spec_name": {
-                                "id": "spec_name",
-                                "content": "Человеческое название позиции",
+                            "event": {
+                                "id": "event",
+                                "content": "Событие",
                                 "type": "field",
                                 "read": true,
                                 "dataType": "string",
@@ -4252,321 +7488,388 @@ const App = (props) => {
                             }
                         },
                         "fieldParams": {
+                            "api_response": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "date": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "event": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
                             "id": {
-                                "include": false,
+                                "include": true,
+                                "disableEditing": true,
                                 "fileImageFormat": "square",
                                 "fileImageSize": 200
                             },
-                            "quantity": {
+                            "places": {
                                 "include": true,
+                                "disableEditing": false,
                                 "fileImageFormat": "square",
                                 "fileImageSize": 200
                             },
-                            "reserve": {
+                            "status": {
                                 "include": true,
+                                "disableEditing": false,
                                 "fileImageFormat": "square",
                                 "fileImageSize": 200
                             },
-                            "size": {
+                            "value": {
                                 "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "spec_name": {
-                                "include": true,
+                                "disableEditing": false,
                                 "fileImageFormat": "square",
                                 "fileImageSize": 200
                             }
                         },
                         "fieldOrder": [
+                            null,
                             "id",
-                            "quantity",
-                            "reserve",
-                            "size",
-                            "spec_name"
+                            "date",
+                            "status",
+                            "places",
+                            "api_response",
+                            "value",
+                            null,
+                            "event"
                         ]
                     },
-                    "subHeader": ""
-                },
-                "id": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "descriptionFlag": true,
-                    "description": "НЕ ИЗМЕНЯТЬ"
-                },
-                "isDeleted": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "isNew": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "isSale": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "moderation_status": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "name": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "oldPrice": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "photo": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "fileImage": true
-                },
-                "price": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "sizes": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "subcategoryBeauty": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "subcategoryInterior": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "subcategoryKids": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "subcategoryMen": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "subcategoryWomen": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "tags": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "vendorCode": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
+                    "sortArrayLink": true,
+                    "sortByField": "date",
+                    "cartView": {
+                        "title": true,
+                        "titleField": "event",
+                        "status": true,
+                        "statusField": "status"
+                    },
+                    "quickSearchSL": "ListingsLog",
+                    "sortDirection": "desc"
                 }
             },
             "tableParams": {
                 "readFields": [
                     {
-                        "fieldSysName": "brand",
-                        "fetch": [
-                            {
-                                "fieldSysName": "brandName",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "logo",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "owner_id",
-                                "condition": null,
-                                "fetch": [
-                                    {
-                                        "fieldSysName": "firstName",
-                                        "condition": null,
-                                        "fetch": []
-                                    },
-                                    {
-                                        "fieldSysName": "id",
-                                        "condition": null,
-                                        "fetch": []
-                                    },
-                                    {
-                                        "fieldSysName": "lastName",
-                                        "condition": null,
-                                        "fetch": []
-                                    }
-                                ]
-                            }
-                        ],
-                        "sysName": "brand",
-                        "name": "Бренд",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "Brands"
-                    },
-                    {
-                        "fieldSysName": "category",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "nameEng",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "category",
-                        "name": "Категория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "category"
-                    },
-                    {
-                        "fieldSysName": "color",
-                        "fetch": [
-                            {
-                                "fieldSysName": "color",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "colorEng",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "color",
-                        "name": "Цвет",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "colors"
-                    },
-                    {
-                        "fieldSysName": "decline_reason",
+                        "fieldSysName": "ArtNowArtwork_id",
                         "fetch": [],
-                        "sysName": "decline_reason",
-                        "name": "Причина отказа",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "description",
-                        "fetch": [],
-                        "sysName": "description",
-                        "name": "Описание",
-                        "dataType": "string",
-                        "format": "markdown",
+                        "sysName": "ArtNowArtwork_id",
+                        "name": "ID картины на ArtNow",
+                        "dataType": "number",
+                        "format": "positiveNum",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "goodSpecification",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
+                        "fieldSysName": "ArtNowDiscountOn",
+                        "fetch": [],
+                        "sysName": "ArtNowDiscountOn",
+                        "name": "Скидка на ArtNow",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
                             },
-                            {
-                                "fieldSysName": "quantity",
-                                "condition": null,
-                                "fetch": []
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Скидка",
+                                "Обычная цена"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
                             },
-                            {
-                                "fieldSysName": "reserve",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "size",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "spec_name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "goodSpecification",
-                        "name": "Товарные позиции",
-                        "dataType": "arrayLink",
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ArtNowDiscount_id",
+                        "fetch": [],
+                        "sysName": "ArtNowDiscount_id",
+                        "name": "Скидка на ArtNow (ID и срок акции)",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "goodSpecification"
+                        "link": "artnow_discount"
+                    },
+                    {
+                        "fieldSysName": "ArtNowPrice",
+                        "fetch": [],
+                        "sysName": "ArtNowPrice",
+                        "name": "Цена для ArtNow",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ArtNowPublishTime",
+                        "fetch": [],
+                        "sysName": "ArtNowPublishTime",
+                        "name": "Время публикации на ArtNow",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ArtNowResponse",
+                        "fetch": [],
+                        "sysName": "ArtNowResponse",
+                        "name": "Ответ сервера",
+                        "dataType": "json",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ArtNowStatus",
+                        "fetch": [],
+                        "sysName": "ArtNowStatus",
+                        "name": "Статус  на ArtNow",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "placesStatus"
+                    },
+                    {
+                        "fieldSysName": "ArtNowStatusColor",
+                        "fetch": [],
+                        "sysName": "ArtNowStatusColor",
+                        "name": "Цвет (статус)",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ArtNow_url",
+                        "fetch": [],
+                        "sysName": "ArtNow_url",
+                        "name": "ArtNow",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "active",
+                        "fetch": [],
+                        "sysName": "active",
+                        "name": "Активная карточка",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Активная",
+                                "Архивная"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "artfinderStatusColor",
+                        "fetch": [],
+                        "sysName": "artfinderStatusColor",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "artfinder_url",
+                        "fetch": [],
+                        "sysName": "artfinder_url",
+                        "name": "ArtFinder",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "artist",
+                        "fetch": [],
+                        "sysName": "artist",
+                        "name": "Автор",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "artists"
+                    },
+                    {
+                        "fieldSysName": "artmajeurStatusColor",
+                        "fetch": [],
+                        "sysName": "artmajeurStatusColor",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "artmajeur_url",
+                        "fetch": [],
+                        "sysName": "artmajeur_url",
+                        "name": "Artmajeur",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "artworkStatus",
+                        "fetch": [],
+                        "sysName": "artworkStatus",
+                        "name": "Статус картины",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "Status"
+                    },
+                    {
+                        "fieldSysName": "artworkStatusColor",
+                        "fetch": [],
+                        "sysName": "artworkStatusColor",
+                        "name": "Статус картины (цвет)",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ebayItem_id",
+                        "fetch": [],
+                        "sysName": "ebayItem_id",
+                        "name": "ID лота на eBay",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ebayStatus",
+                        "fetch": [],
+                        "sysName": "ebayStatus",
+                        "name": "Статус на сайте",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "placesStatus"
+                    },
+                    {
+                        "fieldSysName": "ebayStatusColor",
+                        "fetch": [],
+                        "sysName": "ebayStatusColor",
+                        "name": "Статус на сайте (цвет)",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ebay_account",
+                        "fetch": [],
+                        "sysName": "ebay_account",
+                        "name": "Аккаунт eBay",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ebay_url",
+                        "fetch": [],
+                        "sysName": "ebay_url",
+                        "name": "eBay",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ebayauctionStatusColor",
+                        "fetch": [],
+                        "sysName": "ebayauctionStatusColor",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "ebayauction_url",
+                        "fetch": [],
+                        "sysName": "ebayauction_url",
+                        "name": "eBay Auction",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "etsyStatusColor",
+                        "fetch": [],
+                        "sysName": "etsyStatusColor",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "etsy_url",
+                        "fetch": [],
+                        "sysName": "etsy_url",
+                        "name": "Etsy",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
                     },
                     {
                         "fieldSysName": "id",
@@ -4579,20 +7882,165 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "isDeleted",
+                        "fieldSysName": "listingLog",
+                        "fetch": [
+                            {
+                                "fieldSysName": "date",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "places",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "status",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "listingLog",
+                        "name": "Лог",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "listingLog"
+                    },
+                    {
+                        "fieldSysName": "meshokBold",
                         "fetch": [],
-                        "sysName": "isDeleted",
-                        "name": "",
+                        "sysName": "meshokBold",
+                        "name": "Выделение жирным (Y/N)",
                         "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Yes",
+                                "No"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshokDescription",
+                        "fetch": [],
+                        "sysName": "meshokDescription",
+                        "name": "Описание лота",
+                        "dataType": "string",
+                        "format": "html",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshokFree",
+                        "fetch": [],
+                        "sysName": "meshokFree",
+                        "name": "Бесплатный лот",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Бесплатный лот",
+                                "Обычный лот"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshokItem_id",
+                        "fetch": [],
+                        "sysName": "meshokItem_id",
+                        "name": "ID лота на Мешке",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshokLongevity",
+                        "fetch": [],
+                        "sysName": "meshokLongevity",
+                        "name": "Продолжительность торгов в днях",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshokPrice",
+                        "fetch": [],
+                        "sysName": "meshokPrice",
+                        "name": "Цена на Мешке (купить сейчас)",
+                        "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "isNew",
+                        "fieldSysName": "meshokPublishTime",
                         "fetch": [],
-                        "sysName": "isNew",
-                        "name": "Новый товар",
+                        "sysName": "meshokPublishTime",
+                        "name": "Время публикации на Мешке",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshokRecommended",
+                        "fetch": [],
+                        "sysName": "meshokRecommended",
+                        "name": "Рекомендуемый (Y/N)",
                         "dataType": "boolean",
                         "format": "",
                         "formatOptions": {
@@ -4604,8 +8052,8 @@ const App = (props) => {
                             },
                             "dateLocale": "en-gb",
                             "booleanOptions": [
-                                "Да",
-                                "Нет"
+                                "Yes",
+                                "No"
                             ],
                             "validWeekDays": {
                                 "mon": true,
@@ -4626,10 +8074,20 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "isSale",
+                        "fieldSysName": "meshokRespond",
                         "fetch": [],
-                        "sysName": "isSale",
-                        "name": "Распродажа",
+                        "sysName": "meshokRespond",
+                        "name": "Ответ сервера",
+                        "dataType": "json",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshokSaleType",
+                        "fetch": [],
+                        "sysName": "meshokSaleType",
+                        "name": "Тип продажи (Sale или Auction)",
                         "dataType": "boolean",
                         "format": "",
                         "formatOptions": {
@@ -4641,8 +8099,8 @@ const App = (props) => {
                             },
                             "dateLocale": "en-gb",
                             "booleanOptions": [
-                                "Да",
-                                "Нет"
+                                "Sale",
+                                "Auction"
                             ],
                             "validWeekDays": {
                                 "mon": true,
@@ -4663,14 +8121,54 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "moderation_status",
+                        "fieldSysName": "meshokStartPrice",
                         "fetch": [],
-                        "sysName": "moderation_status",
-                        "name": "new,approved,declined",
+                        "sysName": "meshokStartPrice",
+                        "name": "Аукционная цена",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshokStatus",
+                        "fetch": [],
+                        "sysName": "meshokStatus",
+                        "name": "Статус на Мешке",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "placesStatus"
+                    },
+                    {
+                        "fieldSysName": "meshokStatusColor",
+                        "fetch": [],
+                        "sysName": "meshokStatusColor",
+                        "name": "Статус (цвет)",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshokTitle",
+                        "fetch": [],
+                        "sysName": "meshokTitle",
+                        "name": "Заголовок лота (max 100)",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "meshok_url",
+                        "fetch": [],
+                        "sysName": "meshok_url",
+                        "name": " Мешок",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
                     },
                     {
                         "fieldSysName": "name",
@@ -4683,273 +8181,120 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "oldPrice",
+                        "fieldSysName": "ozonStatusColor",
                         "fetch": [],
-                        "sysName": "oldPrice",
-                        "name": "Старая цена",
-                        "dataType": "number",
-                        "format": "positiveNum",
+                        "sysName": "ozonStatusColor",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "color",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "photo",
+                        "fieldSysName": "ozon_url",
                         "fetch": [],
-                        "sysName": "photo",
-                        "name": "Фото",
+                        "sysName": "ozon_url",
+                        "name": "Озон",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "pictures",
+                        "fetch": [],
+                        "sysName": "pictures",
+                        "name": "Изображения",
                         "dataType": "file",
                         "format": "multipleImages",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "price",
+                        "fieldSysName": "short_description",
                         "fetch": [],
-                        "sysName": "price",
-                        "name": "Цена, ₽",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "subcategoryBeauty",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "nameEng",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "type",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "subcategoryBeauty",
-                        "name": "Бьюти, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryBeauty"
-                    },
-                    {
-                        "fieldSysName": "subcategoryInterior",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "nameEng",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "type",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "subcategoryInterior",
-                        "name": "Интерьер, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryInterior"
-                    },
-                    {
-                        "fieldSysName": "subcategoryKids",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "nameEng",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "type",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "subcategoryKids",
-                        "name": "Детское, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryKids"
-                    },
-                    {
-                        "fieldSysName": "subcategoryMen",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "nameEng",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "type",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "subcategoryMen",
-                        "name": "Мужское, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryMen"
-                    },
-                    {
-                        "fieldSysName": "subcategoryWomen",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "nameEng",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "type",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "subcategoryWomen",
-                        "name": "Женское, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryWomen"
-                    },
-                    {
-                        "fieldSysName": "tags",
-                        "fetch": [],
-                        "sysName": "tags",
-                        "name": "Тэги",
+                        "sysName": "short_description",
+                        "name": "Описание",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "vendorCode",
-                        "fetch": [],
-                        "sysName": "vendorCode",
+                        "fieldSysName": "sku",
+                        "fetch": [
+                            {
+                                "fieldSysName": "cost",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "paid",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "warehouse",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "sku",
                         "name": "Артикул",
-                        "dataType": "string",
+                        "dataType": "link",
                         "format": "",
+                        "formatOptions": {},
+                        "link": "artworks"
+                    },
+                    {
+                        "fieldSysName": "stickerColor",
+                        "fetch": [],
+                        "sysName": "stickerColor",
+                        "name": "Стикер (подсветка)",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "stickers",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "sticker",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "stickers",
+                        "name": "Стикеры",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "listingStickers"
+                    },
+                    {
+                        "fieldSysName": "thumbnail",
+                        "fetch": [],
+                        "sysName": "thumbnail",
+                        "name": "Миниатюра",
+                        "dataType": "file",
+                        "format": "image",
                         "formatOptions": {},
                         "link": ""
                     }
                 ],
                 "writeFields": [
                     {
-                        "fieldSysName": "brand",
-                        "fetch": [],
-                        "sysName": "brand",
-                        "name": "Бренд",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "Brands"
-                    },
-                    {
-                        "fieldSysName": "category",
-                        "fetch": [],
-                        "sysName": "category",
-                        "name": "Категория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "category"
-                    },
-                    {
-                        "fieldSysName": "color",
-                        "fetch": [],
-                        "sysName": "color",
-                        "name": "Цвет",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "colors"
-                    },
-                    {
-                        "fieldSysName": "decline_reason",
-                        "fetch": [],
-                        "sysName": "decline_reason",
-                        "name": "Причина отказа",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "description",
-                        "fetch": [],
-                        "sysName": "description",
-                        "name": "Описание",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "goodSpecification",
-                        "fetch": [],
-                        "sysName": "goodSpecification",
-                        "name": "Товарные позиции",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "goodSpecification"
-                    },
-                    {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
@@ -4960,270 +8305,304 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "isDeleted",
+                        "fieldSysName": "stickers",
                         "fetch": [],
-                        "sysName": "isDeleted",
-                        "name": "",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "isNew",
-                        "fetch": [],
-                        "sysName": "isNew",
-                        "name": "Новый товар",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "Да",
-                                "Нет"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "isSale",
-                        "fetch": [],
-                        "sysName": "isSale",
-                        "name": "Распродажа",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "Да",
-                                "Нет"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "moderation_status",
-                        "fetch": [],
-                        "sysName": "moderation_status",
-                        "name": "new,approved,declined",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "name",
-                        "fetch": [],
-                        "sysName": "name",
-                        "name": "Название",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "oldPrice",
-                        "fetch": [],
-                        "sysName": "oldPrice",
-                        "name": "Старая цена",
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "photo",
-                        "fetch": [],
-                        "sysName": "photo",
-                        "name": "Фото",
-                        "dataType": "file",
-                        "format": "multipleImages",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "price",
-                        "fetch": [],
-                        "sysName": "price",
-                        "name": "Цена, ₽",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "subcategoryBeauty",
-                        "fetch": [],
-                        "sysName": "subcategoryBeauty",
-                        "name": "Бьюти, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryBeauty"
-                    },
-                    {
-                        "fieldSysName": "subcategoryInterior",
-                        "fetch": [],
-                        "sysName": "subcategoryInterior",
-                        "name": "Интерьер, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryInterior"
-                    },
-                    {
-                        "fieldSysName": "subcategoryKids",
-                        "fetch": [],
-                        "sysName": "subcategoryKids",
-                        "name": "Детское, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryKids"
-                    },
-                    {
-                        "fieldSysName": "subcategoryMen",
-                        "fetch": [],
-                        "sysName": "subcategoryMen",
-                        "name": "Мужское, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryMen"
-                    },
-                    {
-                        "fieldSysName": "subcategoryWomen",
-                        "fetch": [],
-                        "sysName": "subcategoryWomen",
-                        "name": "Женское, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subcategoryWomen"
-                    },
-                    {
-                        "fieldSysName": "tags",
-                        "fetch": [],
-                        "sysName": "tags",
-                        "name": "Тэги",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "vendorCode",
-                        "fetch": [],
-                        "sysName": "vendorCode",
-                        "name": "Артикул",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    }
-                ],
-                "fields": {
-                    "brand": {
-                        "id": "brand",
-                        "content": "Бренд",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "Brands"
-                    },
-                    "category": {
-                        "id": "category",
-                        "content": "Категория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "category"
-                    },
-                    "color": {
-                        "id": "color",
-                        "content": "Цвет",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "colors"
-                    },
-                    "decline_reason": {
-                        "id": "decline_reason",
-                        "content": "Причина отказа",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": null
-                    },
-                    "description": {
-                        "id": "description",
-                        "content": "Описание",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "goodSpecification": {
-                        "id": "goodSpecification",
-                        "content": "Товарные позиции",
+                        "sysName": "stickers",
+                        "name": "Стикеры",
                         "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
+                        "link": "listingStickers"
+                    }
+                ],
+                "fields": {
+                    "ArtNowArtwork_id": {
+                        "id": "ArtNowArtwork_id",
+                        "content": "ID картины на ArtNow",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
                         "read": true,
-                        "link": "goodSpecification"
+                        "link": ""
+                    },
+                    "ArtNowDiscountOn": {
+                        "id": "ArtNowDiscountOn",
+                        "content": "Скидка на ArtNow",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Скидка",
+                                "Обычная цена"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "read": true,
+                        "link": ""
+                    },
+                    "ArtNowDiscount_id": {
+                        "id": "ArtNowDiscount_id",
+                        "content": "Скидка на ArtNow (ID и срок акции)",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "artnow_discount"
+                    },
+                    "ArtNowPrice": {
+                        "id": "ArtNowPrice",
+                        "content": "Цена для ArtNow",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "ArtNowPublishTime": {
+                        "id": "ArtNowPublishTime",
+                        "content": "Время публикации на ArtNow",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "ArtNowResponse": {
+                        "id": "ArtNowResponse",
+                        "content": "Ответ сервера",
+                        "dataType": "json",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "ArtNowStatus": {
+                        "id": "ArtNowStatus",
+                        "content": "Статус  на ArtNow",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "placesStatus"
+                    },
+                    "ArtNowStatusColor": {
+                        "id": "ArtNowStatusColor",
+                        "content": "Цвет (статус)",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "ArtNow_url": {
+                        "id": "ArtNow_url",
+                        "content": "ArtNow",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "active": {
+                        "id": "active",
+                        "content": "Активная карточка",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Активная",
+                                "Архивная"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "read": true,
+                        "link": ""
+                    },
+                    "artfinderStatusColor": {
+                        "id": "artfinderStatusColor",
+                        "content": "",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "artfinder_url": {
+                        "id": "artfinder_url",
+                        "content": "ArtFinder",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "artist": {
+                        "id": "artist",
+                        "content": "Автор",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "artists"
+                    },
+                    "artmajeurStatusColor": {
+                        "id": "artmajeurStatusColor",
+                        "content": "",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "artmajeur_url": {
+                        "id": "artmajeur_url",
+                        "content": "Artmajeur",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "artworkStatus": {
+                        "id": "artworkStatus",
+                        "content": "Статус картины",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "Status"
+                    },
+                    "artworkStatusColor": {
+                        "id": "artworkStatusColor",
+                        "content": "Статус картины (цвет)",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "ebayItem_id": {
+                        "id": "ebayItem_id",
+                        "content": "ID лота на eBay",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "ebayStatus": {
+                        "id": "ebayStatus",
+                        "content": "Статус на сайте",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "placesStatus"
+                    },
+                    "ebayStatusColor": {
+                        "id": "ebayStatusColor",
+                        "content": "Статус на сайте (цвет)",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "ebay_account": {
+                        "id": "ebay_account",
+                        "content": "Аккаунт eBay",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "ebay_url": {
+                        "id": "ebay_url",
+                        "content": "eBay",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "ebayauctionStatusColor": {
+                        "id": "ebayauctionStatusColor",
+                        "content": "",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "ebayauction_url": {
+                        "id": "ebayauction_url",
+                        "content": "eBay Auction",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "etsyStatusColor": {
+                        "id": "etsyStatusColor",
+                        "content": "",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "etsy_url": {
+                        "id": "etsy_url",
+                        "content": "Etsy",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
                     },
                     "id": {
                         "id": "id",
@@ -5235,19 +8614,18 @@ const App = (props) => {
                         "read": true,
                         "link": ""
                     },
-                    "isDeleted": {
-                        "id": "isDeleted",
-                        "content": "",
-                        "dataType": "boolean",
+                    "listingLog": {
+                        "id": "listingLog",
+                        "content": "Лог",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": ""
+                        "link": "listingLog"
                     },
-                    "isNew": {
-                        "id": "isNew",
-                        "content": "Новый товар",
+                    "meshokBold": {
+                        "id": "meshokBold",
+                        "content": "Выделение жирным (Y/N)",
                         "dataType": "boolean",
                         "format": "",
                         "formatOptions": {
@@ -5259,8 +8637,8 @@ const App = (props) => {
                             },
                             "dateLocale": "en-gb",
                             "booleanOptions": [
-                                "Да",
-                                "Нет"
+                                "Yes",
+                                "No"
                             ],
                             "validWeekDays": {
                                 "mon": true,
@@ -5278,13 +8656,21 @@ const App = (props) => {
                             "timeFormat": " HH:mm",
                             "isUTC": "false"
                         },
-                        "write": true,
                         "read": true,
                         "link": ""
                     },
-                    "isSale": {
-                        "id": "isSale",
-                        "content": "Распродажа",
+                    "meshokDescription": {
+                        "id": "meshokDescription",
+                        "content": "Описание лота",
+                        "dataType": "string",
+                        "format": "html",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "meshokFree": {
+                        "id": "meshokFree",
+                        "content": "Бесплатный лот",
                         "dataType": "boolean",
                         "format": "",
                         "formatOptions": {
@@ -5296,8 +8682,8 @@ const App = (props) => {
                             },
                             "dateLocale": "en-gb",
                             "booleanOptions": [
-                                "Да",
-                                "Нет"
+                                "Бесплатный лот",
+                                "Обычный лот"
                             ],
                             "validWeekDays": {
                                 "mon": true,
@@ -5315,19 +8701,170 @@ const App = (props) => {
                             "timeFormat": " HH:mm",
                             "isUTC": "false"
                         },
-                        "write": true,
                         "read": true,
                         "link": ""
                     },
-                    "moderation_status": {
-                        "id": "moderation_status",
-                        "content": "new,approved,declined",
+                    "meshokItem_id": {
+                        "id": "meshokItem_id",
+                        "content": "ID лота на Мешке",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "meshokLongevity": {
+                        "id": "meshokLongevity",
+                        "content": "Продолжительность торгов в днях",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "meshokPrice": {
+                        "id": "meshokPrice",
+                        "content": "Цена на Мешке (купить сейчас)",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "meshokPublishTime": {
+                        "id": "meshokPublishTime",
+                        "content": "Время публикации на Мешке",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "meshokRecommended": {
+                        "id": "meshokRecommended",
+                        "content": "Рекомендуемый (Y/N)",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Yes",
+                                "No"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "read": true,
+                        "link": ""
+                    },
+                    "meshokRespond": {
+                        "id": "meshokRespond",
+                        "content": "Ответ сервера",
+                        "dataType": "json",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "meshokSaleType": {
+                        "id": "meshokSaleType",
+                        "content": "Тип продажи (Sale или Auction)",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Sale",
+                                "Auction"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "read": true,
+                        "link": ""
+                    },
+                    "meshokStartPrice": {
+                        "id": "meshokStartPrice",
+                        "content": "Аукционная цена",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "meshokStatus": {
+                        "id": "meshokStatus",
+                        "content": "Статус на Мешке",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "placesStatus"
+                    },
+                    "meshokStatusColor": {
+                        "id": "meshokStatusColor",
+                        "content": "Статус (цвет)",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "meshokTitle": {
+                        "id": "meshokTitle",
+                        "content": "Заголовок лота (max 100)",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": null
+                        "link": ""
+                    },
+                    "meshok_url": {
+                        "id": "meshok_url",
+                        "content": " Мешок",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
                     },
                     "name": {
                         "id": "name",
@@ -5335,140 +8872,175 @@ const App = (props) => {
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": ""
                     },
-                    "oldPrice": {
-                        "id": "oldPrice",
-                        "content": "Старая цена",
-                        "dataType": "number",
-                        "format": "positiveNum",
+                    "ozonStatusColor": {
+                        "id": "ozonStatusColor",
+                        "content": "",
+                        "dataType": "string",
+                        "format": "color",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": ""
                     },
-                    "photo": {
-                        "id": "photo",
-                        "content": "Фото",
+                    "ozon_url": {
+                        "id": "ozon_url",
+                        "content": "Озон",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "pictures": {
+                        "id": "pictures",
+                        "content": "Изображения",
                         "dataType": "file",
                         "format": "multipleImages",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": ""
                     },
-                    "price": {
-                        "id": "price",
-                        "content": "Цена, ₽",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "subcategoryBeauty": {
-                        "id": "subcategoryBeauty",
-                        "content": "Бьюти, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "subcategoryBeauty"
-                    },
-                    "subcategoryInterior": {
-                        "id": "subcategoryInterior",
-                        "content": "Интерьер, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "subcategoryInterior"
-                    },
-                    "subcategoryKids": {
-                        "id": "subcategoryKids",
-                        "content": "Детское, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "subcategoryKids"
-                    },
-                    "subcategoryMen": {
-                        "id": "subcategoryMen",
-                        "content": "Мужское, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "subcategoryMen"
-                    },
-                    "subcategoryWomen": {
-                        "id": "subcategoryWomen",
-                        "content": "Женское, подкатегория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "subcategoryWomen"
-                    },
-                    "tags": {
-                        "id": "tags",
-                        "content": "Тэги",
+                    "short_description": {
+                        "id": "short_description",
+                        "content": "Описание",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": ""
                     },
-                    "vendorCode": {
-                        "id": "vendorCode",
+                    "sku": {
+                        "id": "sku",
                         "content": "Артикул",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "artworks"
+                    },
+                    "stickerColor": {
+                        "id": "stickerColor",
+                        "content": "Стикер (подсветка)",
                         "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "stickers": {
+                        "id": "stickers",
+                        "content": "Стикеры",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
+                        "read": true,
+                        "link": "listingStickers"
+                    },
+                    "thumbnail": {
+                        "id": "thumbnail",
+                        "content": "Миниатюра",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
                         "read": true,
                         "link": ""
                     }
                 },
                 "fieldParams": {
-                    "brand": {
-                        "include": true,
+                    "@dateChanged": {
+                        "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
                         "colorCode": false,
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "category": {
-                        "include": true,
+                    "ArtNowArtwork_id": {
+                        "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
                         "colorCode": false,
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "color": {
+                    "ArtNowDiscountOn": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "ArtNowDiscount_id": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "ArtNowPrice": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "ArtNowPublishTime": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "ArtNowResponse": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "ArtNowStatus": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "ArtNowStatusColor": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "ArtNow_url": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
                         "colorCode": false,
                         "colorFormat": "square",
                         "colorSize": 40,
-                        "colorCell": false,
-                        "colorCellType": "text",
-                        "colorCellSource": "field"
+                        "colorCell": true,
+                        "colorCellSource": "field",
+                        "colorCellField": "ArtNowStatusColor",
+                        "displayAsButton": true,
+                        "button": {
+                            "title": " ",
+                            "type": "accent",
+                            "icon": "done"
+                        },
+                        "colorCellConst": "#138808"
                     },
-                    "decline_reason": {
+                    "active": {
                         "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -5476,7 +9048,7 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "description": {
+                    "artist": {
                         "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -5484,13 +9056,55 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "goodSpecification": {
+                    "ebayItem_id": {
                         "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
                         "colorCode": false,
                         "colorFormat": "square",
                         "colorSize": 40
+                    },
+                    "ebayStatus": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "ebayStatusColor": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "ebay_account": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "ebay_url": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40,
+                        "colorCell": true,
+                        "displayAsButton": true,
+                        "button": {
+                            "title": " ",
+                            "type": "accent",
+                            "icon": "done"
+                        },
+                        "colorCellSource": "field",
+                        "colorCellField": "ebayStatusColor",
+                        "colorCellConst": "#00E6F2"
                     },
                     "id": {
                         "include": false,
@@ -5500,37 +9114,151 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "isDeleted": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "isNew": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "isSale": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "moderation_status": {
+                    "listing_result": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
                         "colorCode": false,
                         "colorFormat": "square",
                         "colorSize": 40
+                    },
+                    "listing_status": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "meshokBold": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "meshokDescription": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "meshokFree": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "meshokItem_id": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "meshokLongevity": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "meshokPrice": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "meshokPublishTime": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "meshokRecommended": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "meshokRespond": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "meshokSaleType": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "meshokStartPrice": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "meshokStatus": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "meshokStatusColor": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "meshokTitle": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "meshok_url": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40,
+                        "displayAsButton": true,
+                        "colorCell": true,
+                        "colorCellSource": "field",
+                        "colorCellField": "meshokStatusColor",
+                        "button": {
+                            "title": " ",
+                            "type": "accent",
+                            "icon": "done"
+                        },
+                        "colorCellConst": "#0088AE"
                     },
                     "name": {
                         "include": true,
@@ -5538,9 +9266,18 @@ const App = (props) => {
                         "fileImageSize": 80,
                         "colorCode": false,
                         "colorFormat": "square",
+                        "colorSize": 40,
+                        "colorCell": false
+                    },
+                    "place": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "oldPrice": {
+                    "short_description": {
                         "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -5548,24 +9285,187 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "photo": {
+                    "sku": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40,
+                        "colorCell": false,
+                        "colorCellSource": "field",
+                        "colorCellField": "artworkStatusColor",
+                        "colorCellType": "text"
+                    },
+                    "thumbnail": {
                         "include": true,
-                        "fileImageFormat": "circle",
-                        "fileImageSize": 40,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40,
+                        "fileImage": true,
+                        "colorCell": false,
+                        "colorCellSource": "field",
+                        "colorCellField": "artworkStatusColor"
+                    },
+                    "artfinder_url": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40,
+                        "displayAsButton": true,
+                        "colorCell": true,
+                        "colorCellSource": "field",
+                        "colorCellField": "artmajeurStatusColor",
+                        "button": {
+                            "title": " ",
+                            "icon": "academy"
+                        }
+                    },
+                    "artmajeur_url": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40,
+                        "colorCell": true,
+                        "displayAsButton": true,
+                        "colorCellSource": "field",
+                        "colorCellField": "artmajeurStatusColor"
+                    },
+                    "ebayauction_url": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40,
+                        "displayAsButton": true,
+                        "button": {
+                            "title": " ",
+                            "icon": "academy"
+                        },
+                        "colorCell": true,
+                        "colorCellSource": "field",
+                        "colorCellField": "ebayauctionStatusColor"
+                    },
+                    "etsy_url": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40,
+                        "displayAsButton": true,
+                        "button": {
+                            "type": "accent",
+                            "title": " ",
+                            "icon": "babai"
+                        },
+                        "colorCell": true,
+                        "colorCellSource": "field",
+                        "colorCellField": "etsyStatusColor"
+                    },
+                    "ozon_url": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40,
+                        "colorCell": true,
+                        "displayAsButton": true,
+                        "colorCellSource": "field",
+                        "colorCellField": "ozonStatusColor",
+                        "button": {
+                            "icon": "done",
+                            "title": " ",
+                            "type": "accent"
+                        },
+                        "colorCellType": "background"
+                    },
+                    "artfinderStatusColor": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "artmajeurStatusColor": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "ebayauctionStatusColor": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "etsyStatusColor": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "ozonStatusColor": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "artworkStatus": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "artworkStatusColor": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40,
+                        "colorRow": true
+                    },
+                    "pictures": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
                         "colorCode": false,
                         "colorFormat": "square",
                         "colorSize": 40,
                         "fileImage": true
                     },
-                    "price": {
+                    "stickers": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
                         "colorCode": false,
                         "colorFormat": "square",
-                        "colorSize": 40
+                        "colorSize": 40,
+                        "colorCell": true,
+                        "colorCellSource": "field",
+                        "colorCellField": "stickerColor"
                     },
-                    "sizes": {
+                    "stickerColor": {
                         "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -5573,56 +9473,8 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "subcategoryBeauty": {
+                    "listingLog": {
                         "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "subcategoryInterior": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "subcategoryKids": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "subcategoryMen": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "subcategoryWomen": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "tags": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "vendorCode": {
-                        "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
                         "colorCode": false,
@@ -5631,298 +9483,1062 @@ const App = (props) => {
                     }
                 },
                 "fieldOrder": [
-                    "photo",
-                    "vendorCode",
+                    "thumbnail",
+                    "artist",
                     "name",
-                    "brand",
-                    "category",
-                    "color",
-                    "price",
-                    "moderation_status",
-                    "decline_reason",
-                    "description",
-                    "goodSpecification",
+                    "stickers",
+                    "short_description",
+                    "artworkStatusColor",
+                    "sku",
+                    "meshok_url",
+                    "ArtNow_url",
+                    "ebay_url",
+                    "ArtNowStatusColor",
+                    "ArtNowArtwork_id",
+                    "ArtNowDiscount_id",
+                    "ArtNowPrice",
+                    "ArtNowPublishTime",
+                    "ArtNowResponse",
+                    "ArtNowStatus",
+                    "active",
+                    "ebayItem_id",
+                    "ebayStatus",
+                    "ebayStatusColor",
+                    "ebay_account",
                     "id",
-                    "isDeleted",
-                    "isNew",
-                    "isSale",
-                    "oldPrice",
-                    "subcategoryBeauty",
-                    "subcategoryInterior",
-                    "subcategoryKids",
-                    "subcategoryMen",
-                    "subcategoryWomen",
-                    "tags"
+                    "meshokBold",
+                    "meshokDescription",
+                    "meshokFree",
+                    "meshokItem_id",
+                    "meshokLongevity",
+                    "meshokPrice",
+                    "meshokPublishTime",
+                    "meshokRecommended",
+                    "meshokRespond",
+                    "meshokSaleType",
+                    "meshokStartPrice",
+                    "meshokStatus",
+                    "meshokStatusColor",
+                    "meshokTitle",
+                    "artfinder_url",
+                    "ozon_url",
+                    "artmajeur_url",
+                    "ebayauction_url",
+                    "etsy_url",
+                    "artfinderStatusColor",
+                    "artmajeurStatusColor",
+                    "ebayauctionStatusColor",
+                    "etsyStatusColor",
+                    "ozonStatusColor",
+                    "artworkStatus",
+                    "ArtNowDiscountOn",
+                    "pictures",
+                    "stickerColor",
+                    "listingLog"
                 ]
             },
+            "hideExpandTD": true,
             "actions": [
                 {
                     "sysName": "",
-                    "id": "64141630047679031",
-                    "name": "Удалить модель",
+                    "id": "15121644188982379",
+                    "name": "Добавить в рекомендуемые Мешок",
                     "displayAs": "button",
-                    "buttonIcon": "delete",
-                    "buttonType": "danger",
-                    "dropdown": true,
+                    "buttonTitle": "Добавить в рекомендуемые (44 руб.)",
+                    "conditionals": [
+                        {
+                            "id": "49791644189005764",
+                            "target": "field",
+                            "value": "false",
+                            "field": "meshokRecommended"
+                        },
+                        {
+                            "id": "43101644348468089",
+                            "target": "field",
+                            "value": "Active",
+                            "field": "meshokStatus"
+                        }
+                    ],
+                    "buttonIcon": "money",
+                    "buttonType": "accent"
+                },
+                {
+                    "sysName": "",
+                    "id": "47121644189217526",
+                    "name": " Выделить жирным Мешок",
+                    "displayAs": "button",
+                    "buttonTitle": "Выделить жирным (5 руб.)",
+                    "buttonType": "accent",
+                    "buttonIcon": "stopFill",
+                    "conditionals": [
+                        {
+                            "id": "19271644189413910",
+                            "target": "field",
+                            "value": "false",
+                            "field": "meshokBold"
+                        },
+                        {
+                            "id": "61771644348500181",
+                            "target": "field",
+                            "value": "Active",
+                            "field": "meshokStatus"
+                        }
+                    ]
+                },
+                {
+                    "sysName": "actions",
+                    "id": "89551644189427987",
+                    "name": "Добавить в раздел скидок ArtNow",
+                    "displayAs": "button",
+                    "buttonIcon": "hook",
+                    "buttonType": "accent",
+                    "buttonTitle": "Добавить в раздел скидок",
+                    "conditionals": [
+                        {
+                            "id": "61051644189537653",
+                            "target": "field",
+                            "value": "false",
+                            "field": "ArtNowDiscount_id"
+                        },
+                        {
+                            "id": "25841644348525148",
+                            "target": "field",
+                            "value": "Active",
+                            "field": "ArtNowStatus"
+                        }
+                    ],
                     "closePopup": true,
+                    "showMessage": false,
+                    "dropdown": true,
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "actionDescription",
+                                "fetch": [],
+                                "sysName": "actionDescription",
+                                "name": "Что делаем",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "actionForm",
+                                "fetch": [],
+                                "sysName": "actionForm",
+                                "name": "Откуда запустили",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "artwork_id",
+                                "fetch": [],
+                                "sysName": "artwork_id",
+                                "name": "Картина",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "artworks"
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "listing_id",
+                                "fetch": [],
+                                "sysName": "listing_id",
+                                "name": "Листинг",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "listings"
+                            },
+                            {
+                                "fieldSysName": "priceArtNow",
+                                "fetch": [],
+                                "sysName": "priceArtNow",
+                                "name": "Новая цена для ArtNow",
+                                "dataType": "decimal",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "trigger",
+                                "fetch": [],
+                                "sysName": "trigger",
+                                "name": "Команда триггер",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "fetch": [],
+                                "sysName": "user_id",
+                                "name": "Кто нажал",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "actionDescription",
+                                "fetch": [],
+                                "sysName": "actionDescription",
+                                "name": "Что делаем",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "actionForm",
+                                "fetch": [],
+                                "sysName": "actionForm",
+                                "name": "Откуда запустили",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "artwork_id",
+                                "fetch": [],
+                                "sysName": "artwork_id",
+                                "name": "Картина",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "artworks"
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "listing_id",
+                                "fetch": [],
+                                "sysName": "listing_id",
+                                "name": "Листинг",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "listings"
+                            },
+                            {
+                                "fieldSysName": "priceArtNow",
+                                "fetch": [],
+                                "sysName": "priceArtNow",
+                                "name": "Новая цена для ArtNow",
+                                "dataType": "decimal",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "trigger",
+                                "fetch": [],
+                                "sysName": "trigger",
+                                "name": "Команда триггер",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "fetch": [],
+                                "sysName": "user_id",
+                                "name": "Кто нажал",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            }
+                        ]
+                    },
                     "formMapping": [
                         {
-                            "id": "77841630047694817",
-                            "target": "id",
+                            "id": "25321644414317264",
+                            "target": "listing_id",
                             "type": "objectField",
                             "value": "id"
                         },
                         {
-                            "id": "67611630047700906",
-                            "target": "isDeleted",
+                            "id": "88571644414321365",
+                            "target": "trigger",
                             "type": "const",
-                            "value": "true"
+                            "value": "WorkToDiscount"
+                        },
+                        {
+                            "id": "36111644414329237",
+                            "target": "user_id",
+                            "type": "user",
+                            "value": null
+                        },
+                        {
+                            "id": "30491644414332619",
+                            "target": "actionDescription",
+                            "type": "const",
+                            "value": "Добавить в раздел скидок ArtNow"
+                        },
+                        {
+                            "id": "11021644414336405",
+                            "target": "actionForm",
+                            "type": "const",
+                            "value": "Listings"
+                        }
+                    ]
+                },
+                {
+                    "sysName": "actions",
+                    "id": "29301644190223527",
+                    "name": "Убрать из раздела скидок ArtNow",
+                    "displayAs": "button",
+                    "buttonTitle": "Убрать из раздела скидок",
+                    "buttonType": "danger",
+                    "buttonIcon": "refresh",
+                    "conditionals": [
+                        {
+                            "id": "67011644190274984",
+                            "target": "field",
+                            "value": "true",
+                            "field": "ArtNowDiscountOn"
+                        }
+                    ],
+                    "closePopup": true,
+                    "showMessage": false,
+                    "formMapping": [
+                        {
+                            "id": "15441644414167193",
+                            "target": "listing_id",
+                            "type": "objectField",
+                            "value": "id"
+                        },
+                        {
+                            "id": "72101644414218534",
+                            "target": "trigger",
+                            "type": "const",
+                            "value": "WorkUnDiscount"
+                        },
+                        {
+                            "id": "17221644414256985",
+                            "target": "actionForm",
+                            "type": "const",
+                            "value": "Listings"
+                        },
+                        {
+                            "id": "27941644414259670",
+                            "target": "actionDescription",
+                            "type": "const",
+                            "value": "Удалить из раздела скидок ArtNow"
+                        },
+                        {
+                            "id": "56231644414263568",
+                            "target": "user_id",
+                            "type": "user",
+                            "value": null
+                        }
+                    ],
+                    "dropdown": true,
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "actionDescription",
+                                "fetch": [],
+                                "sysName": "actionDescription",
+                                "name": "Что делаем",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "actionForm",
+                                "fetch": [],
+                                "sysName": "actionForm",
+                                "name": "Откуда запустили",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "artwork_id",
+                                "fetch": [],
+                                "sysName": "artwork_id",
+                                "name": "Картина",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "artworks"
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "listing_id",
+                                "fetch": [],
+                                "sysName": "listing_id",
+                                "name": "Листинг",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "listings"
+                            },
+                            {
+                                "fieldSysName": "priceArtNow",
+                                "fetch": [],
+                                "sysName": "priceArtNow",
+                                "name": "Новая цена для ArtNow",
+                                "dataType": "decimal",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "trigger",
+                                "fetch": [],
+                                "sysName": "trigger",
+                                "name": "Команда триггер",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "fetch": [],
+                                "sysName": "user_id",
+                                "name": "Кто нажал",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "actionDescription",
+                                "fetch": [],
+                                "sysName": "actionDescription",
+                                "name": "Что делаем",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "actionForm",
+                                "fetch": [],
+                                "sysName": "actionForm",
+                                "name": "Откуда запустили",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "artwork_id",
+                                "fetch": [],
+                                "sysName": "artwork_id",
+                                "name": "Картина",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "artworks"
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "listing_id",
+                                "fetch": [],
+                                "sysName": "listing_id",
+                                "name": "Листинг",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "listings"
+                            },
+                            {
+                                "fieldSysName": "priceArtNow",
+                                "fetch": [],
+                                "sysName": "priceArtNow",
+                                "name": "Новая цена для ArtNow",
+                                "dataType": "decimal",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "trigger",
+                                "fetch": [],
+                                "sysName": "trigger",
+                                "name": "Команда триггер",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "fetch": [],
+                                "sysName": "user_id",
+                                "name": "Кто нажал",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sysName": "actions",
+                    "id": "56461644348009506",
+                    "name": "Опубликовать на ArtNow прямо сейчас",
+                    "displayAs": "form",
+                    "buttonType": "accent",
+                    "buttonIcon": "actions",
+                    "SLtype": "other",
+                    "formMapping": [
+                        {
+                            "id": "70371644348868988",
+                            "target": "user_id",
+                            "type": "user",
+                            "value": null
+                        },
+                        {
+                            "id": "13461644348872716",
+                            "target": "actionForm",
+                            "type": "const",
+                            "value": "Listings"
+                        },
+                        {
+                            "id": "88681644348876114",
+                            "target": "actionDescription",
+                            "type": "const",
+                            "value": "Опубликовать на ArtNow прямо сейчас (без расписания)"
+                        },
+                        {
+                            "id": "82191644348878966",
+                            "target": "listing_id",
+                            "type": "objectField",
+                            "value": "id"
+                        },
+                        {
+                            "id": "70701644348886447",
+                            "target": "trigger",
+                            "type": "const",
+                            "value": "addToArtnowImmediately"
+                        }
+                    ],
+                    "conditionals": [
+                        {
+                            "id": "63711644348121207",
+                            "target": "field",
+                            "value": "Draft",
+                            "field": "ArtNowStatus"
+                        }
+                    ],
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "actionDescription",
+                                "fetch": [],
+                                "sysName": "actionDescription",
+                                "name": "Что делаем",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "actionForm",
+                                "fetch": [],
+                                "sysName": "actionForm",
+                                "name": "Откуда запустили",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "artwork_id",
+                                "fetch": [],
+                                "sysName": "artwork_id",
+                                "name": "Картина",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "artworks"
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "listing_id",
+                                "fetch": [],
+                                "sysName": "listing_id",
+                                "name": "Листинг",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "listings"
+                            },
+                            {
+                                "fieldSysName": "priceArtNow",
+                                "fetch": [],
+                                "sysName": "priceArtNow",
+                                "name": "Новая цена для ArtNow",
+                                "dataType": "decimal",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "trigger",
+                                "fetch": [],
+                                "sysName": "trigger",
+                                "name": "Команда триггер",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "fetch": [],
+                                "sysName": "user_id",
+                                "name": "Кто нажал",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "actionDescription",
+                                "fetch": [],
+                                "sysName": "actionDescription",
+                                "name": "Что делаем",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "actionForm",
+                                "fetch": [],
+                                "sysName": "actionForm",
+                                "name": "Откуда запустили",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "artwork_id",
+                                "fetch": [],
+                                "sysName": "artwork_id",
+                                "name": "Картина",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "artworks"
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "listing_id",
+                                "fetch": [],
+                                "sysName": "listing_id",
+                                "name": "Листинг",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "listings"
+                            },
+                            {
+                                "fieldSysName": "priceArtNow",
+                                "fetch": [],
+                                "sysName": "priceArtNow",
+                                "name": "Новая цена для ArtNow",
+                                "dataType": "decimal",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "trigger",
+                                "fetch": [],
+                                "sysName": "trigger",
+                                "name": "Команда триггер",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "fetch": [],
+                                "sysName": "user_id",
+                                "name": "Кто нажал",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            }
+                        ]
+                    },
+                    "showMessage": true,
+                    "closePopup": false,
+                    "resultMessage": "",
+                    "resultButton": "Опубликовано!",
+                    "formFields": [
+                        {
+                            "id": "87521644351050055",
+                            "field": {
+                                "fieldSysName": "priceArtNow",
+                                "fetch": [],
+                                "sysName": "priceArtNow",
+                                "name": "Цена для ArtNow",
+                                "dataType": "decimal",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        }
+                    ],
+                    "buttonTitle": "Опубликовать!"
+                },
+                {
+                    "sysName": "actions",
+                    "id": "24121644352990727",
+                    "name": "Изменить цену на ArtNow ",
+                    "displayAs": "form",
+                    "callFrom": "main",
+                    "callFromField": "sku",
+                    "formMapping": [
+                        {
+                            "id": "94901644353093262",
+                            "target": "listing_id",
+                            "type": "objectField",
+                            "value": "id"
+                        },
+                        {
+                            "id": "70971644353784344",
+                            "target": "actionDescription",
+                            "type": "const",
+                            "value": "Меняем цену на ArtNow"
+                        },
+                        {
+                            "id": "37151644353787577",
+                            "target": "actionForm",
+                            "type": "const",
+                            "value": "Listings"
+                        },
+                        {
+                            "id": "95821644353791373",
+                            "target": "trigger",
+                            "type": "const",
+                            "value": "changePriceArtnow"
+                        },
+                        {
+                            "id": "80361644353800803",
+                            "target": "user_id",
+                            "type": "user",
+                            "value": null
+                        }
+                    ],
+                    "closePopup": true,
+                    "showMessage": false,
+                    "SLtype": "other",
+                    "buttonIcon": "money",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "actionDescription",
+                                "fetch": [],
+                                "sysName": "actionDescription",
+                                "name": "Что делаем",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "actionForm",
+                                "fetch": [],
+                                "sysName": "actionForm",
+                                "name": "Откуда запустили",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "artwork_id",
+                                "fetch": [],
+                                "sysName": "artwork_id",
+                                "name": "Картина",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "artworks"
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "listing_id",
+                                "fetch": [],
+                                "sysName": "listing_id",
+                                "name": "Листинг",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "listings"
+                            },
+                            {
+                                "fieldSysName": "priceArtNow",
+                                "fetch": [],
+                                "sysName": "priceArtNow",
+                                "name": "Новая цена для ArtNow",
+                                "dataType": "decimal",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "trigger",
+                                "fetch": [],
+                                "sysName": "trigger",
+                                "name": "Команда триггер",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "fetch": [],
+                                "sysName": "user_id",
+                                "name": "Кто нажал",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "actionDescription",
+                                "fetch": [],
+                                "sysName": "actionDescription",
+                                "name": "Что делаем",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "actionForm",
+                                "fetch": [],
+                                "sysName": "actionForm",
+                                "name": "Откуда запустили",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "artwork_id",
+                                "fetch": [],
+                                "sysName": "artwork_id",
+                                "name": "Картина",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "artworks"
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "listing_id",
+                                "fetch": [],
+                                "sysName": "listing_id",
+                                "name": "Листинг",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "listings"
+                            },
+                            {
+                                "fieldSysName": "priceArtNow",
+                                "fetch": [],
+                                "sysName": "priceArtNow",
+                                "name": "Новая цена для ArtNow",
+                                "dataType": "decimal",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "trigger",
+                                "fetch": [],
+                                "sysName": "trigger",
+                                "name": "Команда триггер",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "fetch": [],
+                                "sysName": "user_id",
+                                "name": "Кто нажал",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            }
+                        ]
+                    },
+                    "formFields": [
+                        {
+                            "id": "22661644353603603",
+                            "field": {
+                                "fieldSysName": "priceArtNow",
+                                "fetch": [],
+                                "sysName": "priceArtNow",
+                                "name": "Новая цена для ArtNow",
+                                "dataType": "decimal",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        }
+                    ],
+                    "buttonTitle": "Изменить цену на ArtNow",
+                    "buttonType": "accent",
+                    "conditionals": [
+                        {
+                            "id": "84461644354875555",
+                            "target": "field",
+                            "value": "Active",
+                            "field": "ArtNowStatus"
                         }
                     ]
                 }
             ]
         },
-        "tableTitle": "Товары на витрине",
+        "tableTitle": "",
         "actions": null,
         "headers": [
             {
-                "sysName": "brand",
-                "dataType": "link",
-                "name": "Бренд",
-                "id": "67261624310684962",
-                "link": "Brands",
-                "group": "0",
-                "tags": "",
-                "indexing": true,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 7,
-                "linkIndexFieldSysName": [
-                    "moderation_status",
-                    "brandName",
-                    "owner_id",
-                    "id"
-                ],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": true,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "category",
-                "dataType": "link",
-                "name": "Категория",
-                "id": "99311624310596554",
-                "link": "category",
-                "group": "1624486873153",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "color",
-                "dataType": "link",
-                "name": "Цвет",
-                "id": "85091624310580305",
-                "link": "colors",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "decline_reason",
-                "dataType": "string",
-                "name": "Причина отказа",
-                "id": "82001630010018372",
-                "link": null,
-                "group": "1630009990145",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "description",
-                "dataType": "string",
-                "name": "Описание",
-                "id": "93171624310572841",
+                "sysName": "ArtNowArtwork_id",
+                "name": "ID картины на ArtNow",
+                "dataType": "number",
+                "id": "73911644167167312",
                 "link": "",
-                "group": "0",
+                "group": "1644166943042",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 3,
+                "order": 1,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
-                "format": "markdown",
+                "format": "positiveNum",
                 "formatOptions": {},
                 "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
                 "linkOrArrayLinkType": false,
+                "linkType": false,
                 "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "goodSpecification",
-                "dataType": "arrayLink",
-                "name": "Товарные позиции",
-                "id": "16081627942155485",
-                "link": "goodSpecification",
-                "group": "0",
-                "tags": "",
-                "indexing": true,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 11,
-                "linkIndexFieldSysName": [
-                    "id"
-                ],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
                 "typeVariable": {},
-                "linkType": false,
-                "indexExists": true,
-                "linkOrArrayLinkType": true,
-                "arrayLink": true,
-                "array": false
-            },
-            {
-                "sysName": "id",
-                "dataType": "id",
-                "name": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
                 "json": false,
-                "typeVariable": {},
-                "linkType": false,
                 "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
                 "array": false
             },
             {
-                "sysName": "isDeleted",
+                "sysName": "ArtNowDiscountOn",
+                "name": "Скидка на ArtNow",
                 "dataType": "boolean",
-                "name": "",
-                "id": "79241630009759326",
+                "id": "86401644189698747",
                 "link": "",
-                "group": "1630009990145",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "isNew",
-                "dataType": "boolean",
-                "name": "Новый товар",
-                "id": "80961624316987394",
-                "link": "",
-                "group": "0",
+                "group": "1644166943042",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
@@ -5943,8 +10559,8 @@ const App = (props) => {
                     },
                     "dateLocale": "en-gb",
                     "booleanOptions": [
-                        "Да",
-                        "Нет"
+                        "Скидка",
+                        "Обычная цена"
                     ],
                     "validWeekDays": {
                         "mon": true,
@@ -5963,27 +10579,223 @@ const App = (props) => {
                     "isUTC": "false"
                 },
                 "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
                 "linkOrArrayLinkType": false,
+                "linkType": false,
                 "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
                 "array": false
             },
             {
-                "sysName": "isSale",
-                "dataType": "boolean",
-                "name": "Распродажа",
-                "id": "70721624317005679",
-                "link": "",
-                "group": "0",
+                "sysName": "ArtNowDiscount_id",
+                "name": "Скидка на ArtNow (ID и срок акции)",
+                "dataType": "link",
+                "id": "65311644167302182",
+                "link": "artnow_discount",
+                "group": "1644166943042",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 9,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "ArtNowPrice",
+                "name": "Цена для ArtNow",
+                "dataType": "decimal",
+                "id": "67171644167110674",
+                "link": "",
+                "group": "1644166943042",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "ArtNowPublishTime",
+                "name": "Время публикации на ArtNow",
+                "dataType": "date",
+                "id": "24521644167207062",
+                "link": "",
+                "group": "1644166943042",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "ArtNowResponse",
+                "name": "Ответ сервера",
+                "dataType": "json",
+                "id": "13251644167322915",
+                "link": "",
+                "group": "1644166943042",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": true,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "ArtNowStatus",
+                "name": "Статус  на ArtNow",
+                "dataType": "link",
+                "id": "99041644168072624",
+                "link": "placesStatus",
+                "group": "1644166943042",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 7,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "ArtNowStatusColor",
+                "name": "Цвет (статус)",
+                "dataType": "string",
+                "id": "32131644168115144",
+                "link": "",
+                "group": "1644166943042",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "color",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "ArtNow_url",
+                "name": "ArtNow",
+                "dataType": "string",
+                "id": "92671644167182314",
+                "link": "",
+                "group": "1644166943042",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "webLink",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "active",
+                "name": "Активная карточка",
+                "dataType": "boolean",
+                "id": "43441644168198277",
+                "link": "",
+                "group": "1644166315031",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
@@ -5998,8 +10810,8 @@ const App = (props) => {
                     },
                     "dateLocale": "en-gb",
                     "booleanOptions": [
-                        "Да",
-                        "Нет"
+                        "Активная",
+                        "Архивная"
                     ],
                     "validWeekDays": {
                         "mon": true,
@@ -6018,48 +10830,160 @@ const App = (props) => {
                     "isUTC": "false"
                 },
                 "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
                 "linkOrArrayLinkType": false,
+                "linkType": false,
                 "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
                 "array": false
             },
             {
-                "sysName": "moderation_status",
+                "sysName": "artfinderStatusColor",
+                "name": "",
                 "dataType": "string",
-                "name": "new,approved,declined",
-                "id": "77881630010002681",
-                "link": null,
-                "group": "1630009990145",
-                "tags": null,
+                "id": "43181644176653644",
+                "link": "",
+                "group": "1644176344635",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 1,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
-                "format": null,
-                "formatOptions": null,
+                "format": "color",
+                "formatOptions": {},
                 "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
                 "linkOrArrayLinkType": false,
+                "linkType": false,
                 "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
                 "array": false
             },
             {
-                "sysName": "name",
+                "sysName": "artfinder_url",
+                "name": "ArtFinder",
                 "dataType": "string",
-                "name": "Название",
-                "id": "90461624310568714",
+                "id": "96881644176458295",
                 "link": "",
+                "group": "1644176344635",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "webLink",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "artist",
+                "name": "Автор",
+                "dataType": "link",
+                "id": "21291644172744708",
+                "link": "artists",
+                "group": "1644166315031",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "artmajeurStatusColor",
+                "name": "",
+                "dataType": "string",
+                "id": "78831644176663231",
+                "link": "",
+                "group": "1644176364118",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "color",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "artmajeur_url",
+                "name": "Artmajeur",
+                "dataType": "string",
+                "id": "51941644176483110",
+                "link": "",
+                "group": "1644176364118",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "webLink",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "artworkStatus",
+                "name": "Статус картины",
+                "dataType": "link",
+                "id": "84191644180986673",
+                "link": "Status",
                 "group": "0",
                 "tags": "",
                 "indexing": false,
@@ -6074,19 +10998,19 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
                 "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
                 "array": false
             },
             {
-                "sysName": "oldPrice",
-                "dataType": "number",
-                "name": "Старая цена",
-                "id": "64811628534783413",
+                "sysName": "artworkStatusColor",
+                "name": "Статус картины (цвет)",
+                "dataType": "string",
+                "id": "67481644181000890",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -6094,57 +11018,420 @@ const App = (props) => {
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 12,
+                "order": 3,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
-                "format": "positiveNum",
+                "format": "color",
                 "formatOptions": {},
                 "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
                 "linkOrArrayLinkType": false,
+                "linkType": false,
                 "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
                 "array": false
             },
             {
-                "sysName": "photo",
-                "dataType": "file",
-                "name": "Фото",
-                "id": "31701624310616441",
+                "sysName": "ebayItem_id",
+                "name": "ID лота на eBay",
+                "dataType": "string",
+                "id": "55091644169488622",
+                "link": "",
+                "group": "1644166973166",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "ebayStatus",
+                "name": "Статус на сайте",
+                "dataType": "link",
+                "id": "22031644169505254",
+                "link": "placesStatus",
+                "group": "1644166973166",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "ebayStatusColor",
+                "name": "Статус на сайте (цвет)",
+                "dataType": "string",
+                "id": "97291644169514157",
+                "link": "",
+                "group": "1644166973166",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "color",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "ebay_account",
+                "name": "Аккаунт eBay",
+                "dataType": "string",
+                "id": "73851644169464887",
+                "link": "",
+                "group": "1644166973166",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "ebay_url",
+                "name": "eBay",
+                "dataType": "string",
+                "id": "18211644169498004",
+                "link": "",
+                "group": "1644166973166",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "webLink",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "ebayauctionStatusColor",
+                "name": "",
+                "dataType": "string",
+                "id": "44821644176644662",
+                "link": "",
+                "group": "1644176327535",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "color",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "ebayauction_url",
+                "name": "eBay Auction",
+                "dataType": "string",
+                "id": "48561644176507680",
+                "link": "",
+                "group": "1644176327535",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "webLink",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "etsyStatusColor",
+                "name": "",
+                "dataType": "string",
+                "id": "65311644176642614",
+                "link": "",
+                "group": "1644176293721",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "color",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "etsy_url",
+                "name": "Etsy",
+                "dataType": "string",
+                "id": "19001644176435778",
+                "link": "",
+                "group": "1644176293721",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "webLink",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "id",
+                "name": "id",
+                "dataType": "id",
+                "id": "0",
                 "link": "",
                 "group": "0",
                 "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "listingLog",
+                "name": "Лог",
+                "dataType": "arrayLink",
+                "id": "46981644399878505",
+                "link": "listingLog",
+                "group": "0",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 6,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
-                "format": "multipleImages",
-                "formatOptions": {},
+                "format": null,
+                "formatOptions": null,
                 "groupName": null,
-                "json": false,
-                "typeVariable": {},
+                "linkOrArrayLinkType": true,
                 "linkType": false,
+                "arrayLink": true,
+                "typeVariable": {},
+                "json": false,
                 "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
                 "array": false
             },
             {
-                "sysName": "price",
-                "dataType": "number",
-                "name": "Цена, ₽",
-                "id": "74391627677598162",
+                "sysName": "meshokBold",
+                "name": "Выделение жирным (Y/N)",
+                "dataType": "boolean",
+                "id": "63531644168581207",
                 "link": "",
-                "group": "0",
+                "group": "1644166961082",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "Yes",
+                        "No"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD/MM/Y",
+                    "timeFormat": " HH:mm",
+                    "isUTC": "false"
+                },
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "meshokDescription",
+                "name": "Описание лота",
+                "dataType": "string",
+                "id": "88341644168781274",
+                "link": "",
+                "group": "1644166961082",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 8,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "html",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "meshokFree",
+                "name": "Бесплатный лот",
+                "dataType": "boolean",
+                "id": "12211644169258476",
+                "link": "",
+                "group": "1644166961082",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
@@ -6156,23 +11443,640 @@ const App = (props) => {
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "Бесплатный лот",
+                        "Обычный лот"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD/MM/Y",
+                    "timeFormat": " HH:mm",
+                    "isUTC": "false"
+                },
                 "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
                 "linkOrArrayLinkType": false,
+                "linkType": false,
                 "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
                 "array": false
             },
             {
-                "sysName": "subcategoryBeauty",
+                "sysName": "meshokItem_id",
+                "name": "ID лота на Мешке",
+                "dataType": "number",
+                "id": "62541644168737226",
+                "link": "",
+                "group": "1644166961082",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "positiveNum",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "meshokLongevity",
+                "name": "Продолжительность торгов в днях",
+                "dataType": "number",
+                "id": "65491644168952791",
+                "link": "",
+                "group": "1644166961082",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "positiveNum",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "meshokPrice",
+                "name": "Цена на Мешке (купить сейчас)",
+                "dataType": "decimal",
+                "id": "44791644168647442",
+                "link": "",
+                "group": "1644166961082",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "meshokPublishTime",
+                "name": "Время публикации на Мешке",
+                "dataType": "date",
+                "id": "86931644169370276",
+                "link": "",
+                "group": "1644166961082",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 14,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "meshokRecommended",
+                "name": "Рекомендуемый (Y/N)",
+                "dataType": "boolean",
+                "id": "37131644168579706",
+                "link": "",
+                "group": "1644166961082",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "Yes",
+                        "No"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD/MM/Y",
+                    "timeFormat": " HH:mm",
+                    "isUTC": "false"
+                },
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "meshokRespond",
+                "name": "Ответ сервера",
+                "dataType": "json",
+                "id": "96721644168999188",
+                "link": "",
+                "group": "1644166961082",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 11,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": true,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "meshokSaleType",
+                "name": "Тип продажи (Sale или Auction)",
+                "dataType": "boolean",
+                "id": "14951644168469793",
+                "link": "",
+                "group": "1644166961082",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "Sale",
+                        "Auction"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD/MM/Y",
+                    "timeFormat": " HH:mm",
+                    "isUTC": "false"
+                },
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "meshokStartPrice",
+                "name": "Аукционная цена",
+                "dataType": "decimal",
+                "id": "89791644169142743",
+                "link": "",
+                "group": "1644166961082",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "meshokStatus",
+                "name": "Статус на Мешке",
                 "dataType": "link",
-                "name": "Бьюти, подкатегория",
-                "id": "88001624486752931",
-                "link": "subcategoryBeauty",
-                "group": "1624486873153",
+                "id": "20191644169008692",
+                "link": "placesStatus",
+                "group": "1644166961082",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 13,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "meshokStatusColor",
+                "name": "Статус (цвет)",
+                "dataType": "string",
+                "id": "19721644169001088",
+                "link": "",
+                "group": "1644166961082",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 12,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "color",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "meshokTitle",
+                "name": "Заголовок лота (max 100)",
+                "dataType": "string",
+                "id": "15441644168410613",
+                "link": "",
+                "group": "1644166961082",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "meshok_url",
+                "name": " Мешок",
+                "dataType": "string",
+                "id": "45671644168738640",
+                "link": "",
+                "group": "1644166961082",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 7,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "webLink",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "name",
+                "name": "Название",
+                "dataType": "string",
+                "id": "27581644172742591",
+                "link": "",
+                "group": "1644166315031",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "ozonStatusColor",
+                "name": "",
+                "dataType": "string",
+                "id": "76351644176628939",
+                "link": "",
+                "group": "1644176279964",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "color",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "ozon_url",
+                "name": "Озон",
+                "dataType": "string",
+                "id": "66021644176417456",
+                "link": "",
+                "group": "1644176279964",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "webLink",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "pictures",
+                "name": "Изображения",
+                "dataType": "file",
+                "id": "94741644172959225",
+                "link": "",
+                "group": "1644166315031",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "multipleImages",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "short_description",
+                "name": "Описание",
+                "dataType": "string",
+                "id": "55501644172744029",
+                "link": "",
+                "group": "1644166315031",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "sku",
+                "name": "Артикул",
+                "dataType": "link",
+                "id": "74951617307790142",
+                "link": "artworks",
+                "group": "0",
+                "tags": null,
+                "indexing": true,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [
+                    "places_for_change.id",
+                    "places_for_change.place",
+                    "places_for_change"
+                ],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": true,
+                "array": false
+            },
+            {
+                "sysName": "stickerColor",
+                "name": "Стикер (подсветка)",
+                "dataType": "string",
+                "id": "10391644399367241",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "color",
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "stickers",
+                "name": "Стикеры",
+                "dataType": "arrayLink",
+                "id": "26441644356516508",
+                "link": "listingStickers",
+                "group": "0",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
@@ -6186,926 +12090,645 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": false,
                 "linkOrArrayLinkType": true,
-                "arrayLink": false,
+                "linkType": false,
+                "arrayLink": true,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
                 "array": false
             },
             {
-                "sysName": "subcategoryInterior",
-                "dataType": "link",
-                "name": "Интерьер, подкатегория",
-                "id": "12011624486790587",
-                "link": "subcategoryInterior",
-                "group": "1624486873153",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "subcategoryKids",
-                "dataType": "link",
-                "name": "Детское, подкатегория",
-                "id": "35001624486729783",
-                "link": "subcategoryKids",
-                "group": "1624486873153",
-                "tags": null,
+                "sysName": "thumbnail",
+                "name": "Миниатюра",
+                "dataType": "file",
+                "id": "52731644167254431",
+                "link": "",
+                "group": "1644166315031",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 3,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "subcategoryMen",
-                "dataType": "link",
-                "name": "Мужское, подкатегория",
-                "id": "63351624486661483",
-                "link": "subcategoryMen",
-                "group": "1624486873153",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "subcategoryWomen",
-                "dataType": "link",
-                "name": "Женское, подкатегория",
-                "id": "54621624486680601",
-                "link": "subcategoryWomen",
-                "group": "1624486873153",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "tags",
-                "dataType": "string",
-                "name": "Тэги",
-                "id": "22641624310590765",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
-                "format": null,
+                "format": "image",
                 "formatOptions": {},
                 "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
                 "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "vendorCode",
-                "dataType": "string",
-                "name": "Артикул",
-                "id": "51831627942104491",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
                 "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
                 "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
                 "array": false
             }
         ],
         "data": [
             {
-                "goodSpecification": [
+                "listingLog": [
                     {
-                        "quantity": 5,
-                        "reserve": 0,
-                        "size": "-",
-                        "spec_name": "Размер - – 5 шт.",
-                        "id": "471dc573-0bbd-42ae-9e2c-f8b3cad3d63d"
+                        "api_response": "ArtNowResponse",
+                        "date": 1644420922839,
+                        "id": "64238e2f-cc81-4c50-98e8-2d0e6aee1730"
                     }
                 ],
-                "name": "Парфюмированное масло 50˚14˚ ",
-                "photo": "https://api.directual.com/fileUploaded/brands247/web/b960b72c-cc4a-4965-b3fa-9f2f4a1043fa.jpg,https://api.directual.com/fileUploaded/brands247/web/af4d5eb1-a573-4591-a244-91b3f94d3fb6.jpg,https://api.directual.com/fileUploaded/brands247/web/ced6a49e-de3a-457f-86c1-5ff30f803bae.jpg",
-                "description": "**Парфюмированное масло 50˚14˚**\n\nСкалы Бастай на границе Германии и Чехии. Место где среди величественных скал и древних лесов гуляют холодные ветра, разнося насыщенные ароматы хвои, листы, земли и кофе из кафе на самом верху.\n\nПока поднимаешься проходишь через небольшой лес, потом он постепенно редеет уступая место голым камням, лестницам и туристам, но на самом верху снова берет свое. Так и  аромат встречает яркими хвойными нотами пихты и кедра, сменяясь на умиротворенную полноту петитгрейна в окружении травянистых нот пачули и завершаясь величественным дубовым мхом и ветивером\n\n**Ноты:** Ветивер, Канадская Пихта, Кедр Атласский, Пачули, Дубовый Мох, Петитгрейн\n\n**Состав:** В основе эфир кокосового масла: мягкое масло, которое быстро впитывается в кожу и ярко раскрывает аромат. При составлении аромата духов мы используем преймущественно натуральные эфирные масла, абсолюты и экстракты, добавляя акценты ароматических молекул преймущественно натурального происхождения.\n\n**Обьем:** 5мл\n\n**Рекомендации:** Наносить рекомендуем на пульсирующие точки: запастья, шея, за ухом, виски, сгиб локтя. В этих местах кожа имеет самую высокую температуру, потому аромат будет активнее испаряться.\n\nПреимущество масляных духов в их компактном размере и высокой концентрации ароматических компонентов. Ими можно воспользоваться в любой обстановке, в отличии от духов с распылителем. Не боятся перепадов температуры.",
-                "price": 1100,
-                "brand": {
-                    "brandName": "Forfolks",
-                    "owner_id": {
-                        "lastName": "Амбросевич",
-                        "firstName": "Татьяна",
-                        "id": "hello@forfolks.co"
-                    },
-                    "logo": "https://api.directual.com/fileUploaded/brands247/web/7f195c75-4fea-4898-86f0-1eb20532fed2.jpg",
-                    "id": "Forfolks_18"
-                },
-                "id": "Parfyumirovannoe_maslo_50˚14˚__8",
-                "subcategoryBeauty": {
-                    "nameEng": "Beauty products",
-                    "name": "Косметика",
-                    "id": "beautyProducts"
-                },
-                "moderation_status": "approved",
-                "category": {
-                    "nameEng": "Beauty",
-                    "name": "Бьюти",
-                    "id": "beauty"
-                },
-                "vendorCode": "1221003(1)",
-                "color": "",
-                "decline_reason": "",
-                "isDeleted": "",
-                "isNew": "",
-                "isSale": "",
-                "oldPrice": "",
-                "subcategoryInterior": "",
-                "subcategoryKids": "",
-                "subcategoryMen": "",
-                "subcategoryWomen": "",
-                "tags": ""
+                "id": "1",
+                "ArtNowResponse": "{\n   \"status\": \"success\"\n}",
+                "stickers": [
+                    {
+                        "sticker": "Ошибка!",
+                        "id": "error"
+                    }
+                ],
+                "stickerColor": "#FF631C"
             },
             {
-                "goodSpecification": [
+                "meshokStatusColor": "#0088AE",
+                "name": "Река Гремячая, май",
+                "listingLog": [
                     {
-                        "quantity": 7,
-                        "reserve": 0,
-                        "size": "S",
-                        "spec_name": "Размер S – 7 шт.",
-                        "id": "f83ba9f8-0cb1-47d8-baf4-520bb48ba8cf"
-                    },
-                    {
-                        "quantity": 3,
-                        "reserve": 0,
-                        "size": "M",
-                        "spec_name": "Размер M – 3 шт.",
-                        "id": "ef832113-85e5-4ad1-8054-0fb55139de25"
+                        "event": "Изменить цену",
+                        "api_response": "ArtNowResponse",
+                        "id": "e9fcfcb1-149e-4a1d-bd2f-3ea7f7f4b478",
+                        "date": 1644418131691,
+                        "status": true,
+                        "value": "30000",
+                        "places": "ArtNow"
                     }
                 ],
-                "name": "Боди «TERRA»",
-                "photo": "https://api.directual.com/fileUploaded/brands247/web/47630074-b61e-48b0-9c3b-3e5ad6b4d4ed.jpg,https://api.directual.com/fileUploaded/brands247/web/e509a4aa-a284-4ae7-b91d-8a68dcd239c5.jpg,https://api.directual.com/fileUploaded/brands247/web/bdf9ea7d-38f7-4b5a-8584-179e5048dabe.jpg,https://api.directual.com/fileUploaded/brands247/web/13a656a6-cd98-4e4b-a809-50e93c919147.jpg,https://api.directual.com/fileUploaded/brands247/web/1938be15-3122-4523-9d8d-cc6418b1884f.jpg,https://api.directual.com/fileUploaded/brands247/web/675753ea-c245-4535-a3a6-cb78c6a475a2.jpg",
-                "description": "Открыть для себя нестандартную классику легко вместе с нами! Ведь многие уже устали от обычных моделей боди-водолазки. Поэтому специально для тебя мы постарались разработать нетривиальный фасон с возможностью внедрения в повседневный образ. Фигурное декольте и лиф корсетного типа подчеркнут естественную красоту груди и ключиц, а дышащая приятная телу ткань обеспечит тебя комфортом на весь день. Отлично сочетается с жакетом, который можно снять при игривом настроении, чтобы показать эффектный вырез со спины, делающий акцент на ее изящности.",
-                "price": 5800,
-                "brand": {
-                    "brandName": "Vioto",
-                    "owner_id": {
-                        "lastName": "Толоконцева",
-                        "firstName": "Виолетта",
-                        "id": "info@vioto.ru"
-                    },
-                    "logo": "https://api.directual.com/fileUploaded/brands247/web/0def359e-8c0c-44cf-a6df-872f3a032468.png",
-                    "id": "Vioto_20"
+                "sku": {
+                    "cost": 7500,
+                    "paid": false,
+                    "id": "Alexandrovsky_111809",
+                    "warehouse": "Оптиков"
                 },
-                "subcategoryWomen": {
-                    "nameEng": "Other",
-                    "name": "Другое",
-                    "id": "other",
-                    "type": "accessories"
-                },
-                "id": "Bodi_«TERRA»_25",
-                "moderation_status": "approved",
-                "category": {
-                    "nameEng": "Women",
-                    "name": "Женское",
-                    "id": "women"
-                },
-                "vendorCode": "06CC1221",
-                "color": "",
-                "decline_reason": "",
-                "isDeleted": "",
-                "isNew": "",
-                "isSale": "",
-                "oldPrice": "",
-                "subcategoryBeauty": "",
-                "subcategoryInterior": "",
-                "subcategoryKids": "",
-                "subcategoryMen": "",
-                "tags": ""
+                "meshokLongevity": 1,
+                "ArtNow_url": "https://artnow.ru/ru/gallery/3/30877/picture/0/971959.html",
+                "short_description": "Холст / Масло, 40x61 см",
+                "meshokFree": false,
+                "ArtNowPrice": 30000,
+                "thumbnail": "https://api.alfa.directual.com/fileUploaded/artline/8e82f11c-14cd-4848-9ca4-b36eed3d4ba2.jpg",
+                "ArtNowStatusColor": "#138808",
+                "meshokDescription": "Настоящая картина \"Река Гремячая, май\", выполнена профессиональным живописцем Александром Александровским масляными красками на холсте. Жанр произведения - Пейзаж. Выполнено в стиле Реализм.\nРазмер - 40х61 см.\n\nПробуждение всех красок природы в безмолвном спокойствии реки.\n\nАлександр Александровский родился в 1951 году в г.Пушкин, Ленинградской области. В 1983 по 1989 гг. он учился в Санкт- Петербургской Академии Художеств им. И.Репина на факультете живописи в мастерской профессора Б.С.Угарова. Его основным учителем живописи можно считать профессора П.И.Рейхета. С 1996 г. - член Союза Художников России.",
+                "pictures": "https://api.alfa.directual.com/fileUploaded/artline/27ced4d3-3738-4d14-a460-dfc7a01b6bdc.jpg,https://api.alfa.directual.com/fileUploaded/artline/fdd30224-ad90-438b-978c-a2f4e7eea06d.jpg,https://api.alfa.directual.com/fileUploaded/artline/379eadeb-4187-44bc-9e43-62db8358f4a2.jpg",
+                "meshokSaleType": true,
+                "id": "Alexandrovsky_111809",
+                "artist": "Alexandrovsky",
+                "ArtNowArtwork_id": 971959,
+                "ArtNowResponse": "{\"status\":\"success\"}",
+                "stickers": [],
+                "ArtNowStatus": "Active",
+                "meshokTitle": "КАРТИНА \"Река Гремячая, май\" Художник Александр АЛЕКСАНДРОВСКИЙ Холст / Масло, 40x61 см",
+                "meshokRecommended": false,
+                "artworkStatusColor": "#1265B5",
+                "artworkStatus": "Sale",
+                "meshokBold": false,
+                "meshokStatus": "Dfart",
+                "meshokPrice": 29000,
+                "active": true
             },
             {
-                "goodSpecification": [
+                "meshokStatusColor": "#0088AE",
+                "name": "Близ Спаса Нередицы",
+                "listingLog": [
                     {
-                        "quantity": 9,
-                        "reserve": 0,
-                        "size": "Small",
-                        "spec_name": "Размер Small – 9 шт.",
-                        "id": "04b517d3-06ee-4aef-8e86-b9bd9c30f2ed"
+                        "event": "Добавить в раздел Скидки",
+                        "api_response": "{\"status\":\"success\"}",
+                        "id": "8bc78580-954a-4c78-99d5-a9acaad0f91c",
+                        "date": 1644417376903,
+                        "status": true,
+                        "places": "ArtNow"
                     },
                     {
-                        "quantity": 1,
-                        "reserve": 0,
-                        "size": "Large",
-                        "spec_name": "Размер Large – 1 шт.",
-                        "id": "ccb398bd-ff2e-4aff-bf1c-dc74d952126e"
+                        "event": "Добавить в раздел Скидки",
+                        "api_response": "{\"status\":\"error\",\"description\":\"\\u0420\\u0430\\u0431\\u043e\\u0442\\u0430 objectid \\u0443\\u0436\\u0435 \\u043f\\u0440\\u0438\\u0441\\u0443\\u0442\\u0441\\u0442\\u0432\\u0443\\u0435\\u0442 \\u0432 \\u0440\\u0430\\u0437\\u0434\\u0435\\u043b\\u0435 \\u0421\\u043a\\u0438\\u0434\\u043a\\u0438\"}",
+                        "id": "bd267bec-80c9-41a8-9500-97cabff7af92",
+                        "date": 1644417418110,
+                        "status": false,
+                        "places": "ArtNow"
+                    },
+                    {
+                        "event": "Добавить в раздел Скидки",
+                        "api_response": "{\"status\":\"success\"}",
+                        "id": "7f811ac7-13d7-433b-8c51-4cde09a9d0e2",
+                        "date": 1644417469087,
+                        "status": true,
+                        "places": "ArtNow"
                     }
                 ],
-                "name": " TEST 2 Сумка Беж",
-                "photo": "https://api.directual.com/fileUploaded/brands247/web/ed7b3133-af28-4a14-9f03-2402e23e8ee7.jpeg",
-                "description": "Очень милая сумочка",
-                "price": 14500,
-                "color": {
-                    "color": "Бежевый",
-                    "id": "beige"
+                "sku": {
+                    "cost": 8000,
+                    "paid": false,
+                    "id": "Alexandrovsky_101746",
+                    "warehouse": "Оптиков"
                 },
-                "brand": {
-                    "brandName": "TEST 1 Next Chapter",
-                    "owner_id": {
-                        "firstName": "Валерия ",
-                        "lastName": "Шабалина",
-                        "id": "lvoox@mail.ru"
-                    },
-                    "logo": "https://api.directual.com/fileUploaded/brands247/web/1a8a56cc-cb07-4ad1-8a69-13dd30d41ac9.jpeg",
-                    "id": "LERA_22"
-                },
-                "subcategoryWomen": {
-                    "nameEng": "Bags and clutches",
-                    "name": "Сумки и клатчи ",
-                    "id": "bags",
-                    "type": "bags"
-                },
-                "id": "_TEST_2_Sumka_Bezh_29",
-                "moderation_status": "approved",
-                "category": {
-                    "nameEng": "Women",
-                    "name": "Женское",
-                    "id": "women"
-                },
-                "vendorCode": "0001б",
-                "decline_reason": "",
-                "isDeleted": "",
-                "isNew": "",
-                "isSale": "",
-                "oldPrice": "",
-                "subcategoryBeauty": "",
-                "subcategoryInterior": "",
-                "subcategoryKids": "",
-                "subcategoryMen": "",
-                "tags": ""
+                "meshokLongevity": 1,
+                "ArtNow_url": "https://artnow.ru/ru/gallery/3/30877/picture/0/923221.html",
+                "short_description": "Холст / Масло, 50x70 см",
+                "meshokFree": false,
+                "ArtNowPrice": 24000,
+                "thumbnail": "https://api.alfa.directual.com/fileUploaded/artline/bc3e47e7-b052-4d86-8b2b-fda4839f831f.jpg",
+                "ArtNowStatusColor": "#138808",
+                "meshokDescription": "Настоящая картина \"Близ Спаса Нередицы\", выполнена профессиональным живописцем Александром Александровским масляными красками на холсте. Жанр произведения - Пейзаж. Выполнено в стиле Реализм.\nРазмер - 50х70 см.\n\nЛетний день в русской деревне недалеко от Великого Новгорода. Ровные ряды грядок обрабатывают крестьяне. Рядом скошенный луг и стог сена. За серым забором под широкими ветвистыми деревьями видны крыши деревянных домов. Вдали на высоких зеленых холмах под облаками голубого неба купола церкви Спаса Нередицы. \n\nАлександр Александровский родился в 1951 году в г.Пушкин, Ленинградской области. В 1983 по 1989 гг. он учился в Санкт- Петербургской Академии Художеств им. И.Репина на факультете живописи в мастерской профессора Б.С.Угарова. Его основным учителем живописи можно считать профессора П.И.Рейхета. С 1996 г. - член Союза Художников России.",
+                "pictures": "https://api.alfa.directual.com/fileUploaded/artline/38da72ca-252b-4d41-9dd5-a53f2b497a67.jpg,,",
+                "meshokSaleType": true,
+                "id": "Alexandrovsky_101746",
+                "artist": "Alexandrovsky",
+                "ArtNowArtwork_id": 923221,
+                "ArtNowResponse": "{\"status\":\"success\"}",
+                "stickers": [
+                    {
+                        "sticker": "Скидка ArtNow",
+                        "id": "artnowDiscount50%"
+                    }
+                ],
+                "ArtNowStatus": "Active",
+                "meshokTitle": "КАРТИНА \"Близ Спаса Нередицы\" Художник Александр АЛЕКСАНДРОВСКИЙ Холст / Масло, 50x70 см",
+                "meshokRecommended": false,
+                "artworkStatusColor": "#1265B5",
+                "ArtNowDiscount_id": "Alexandrovsky_Painting_374",
+                "artworkStatus": "Sale",
+                "meshokBold": false,
+                "meshokStatus": "Dfart",
+                "meshokPrice": 24000,
+                "active": true
             },
             {
-                "goodSpecification": [
+                "meshokStatusColor": "#0088AE",
+                "name": "Девушка с коровой и петухом",
+                "listingLog": [
                     {
-                        "quantity": 11,
-                        "reserve": 0,
-                        "size": "Large",
-                        "spec_name": "Размер Large – 11 шт.",
-                        "id": "70dab064-d321-44a5-9772-07dda3fa98c6"
+                        "event": "Измененить цену",
+                        "api_response": "ArtNowResponse}}",
+                        "id": "98390fbc-3912-457b-bf81-5e0e8007c446",
+                        "date": 1644414684316,
+                        "status": true,
+                        "places": "ArtNow"
                     },
                     {
-                        "quantity": 7,
-                        "reserve": 0,
-                        "size": "Small ",
-                        "spec_name": "Размер Small  – 7 шт.",
-                        "id": "79200dbe-e936-49da-96a9-fd08f95cd201"
+                        "event": "Измененить цену",
+                        "api_response": "ArtNowResponse",
+                        "id": "9b0b4fff-9167-45e9-bf4e-0dbbe3d7544d",
+                        "date": 1644415498415,
+                        "status": true,
+                        "places": "ArtNow"
+                    },
+                    {
+                        "event": "Измененить цену",
+                        "api_response": "{\"status\":\"success\"}",
+                        "id": "8b7dc076-62e3-4ee6-90d0-e6a717affc3d",
+                        "date": 1644416116641,
+                        "status": true,
+                        "places": "ArtNow"
+                    },
+                    {
+                        "event": "Изменить цену",
+                        "api_response": "{\"status\":\"success\"}",
+                        "id": "fab4bb80-c06a-477a-a7b2-9e0c21fda8ef",
+                        "date": 1644417156201,
+                        "status": true,
+                        "value": "84000",
+                        "places": "ArtNow"
+                    },
+                    {
+                        "event": "Добавить в раздел Скидки",
+                        "api_response": "{\"status\":\"success\"}",
+                        "id": "1481e14e-a91d-4a95-a151-dec75a25007b",
+                        "date": 1644417183576,
+                        "status": true,
+                        "places": "ArtNow"
+                    },
+                    {
+                        "event": "Измененить цену на ArtNow",
+                        "api_response": "{\"status\":\"success\"}",
+                        "id": "faf62f7f-75aa-4ee4-9824-325789e36720",
+                        "date": 1644402615106,
+                        "status": false,
+                        "places": "ArtNow"
+                    },
+                    {
+                        "event": "Измененить цену на ArtNow",
+                        "api_response": "{\"status\":\"success\"}",
+                        "id": "f42b6391-81ea-4ff7-b857-3b7259c94d84",
+                        "date": 1644403769022,
+                        "status": true,
+                        "places": "ArtNow"
                     }
                 ],
-                "name": "TEST 3 Сумка Грин",
-                "photo": "https://api.directual.com/fileUploaded/brands247/web/e35301c9-af8f-4c5f-8786-36c82d9bdd60.jpeg",
-                "description": "Маленькая сумка",
-                "price": 13990,
-                "color": {
-                    "color": "Зеленый",
-                    "id": "green"
+                "sku": {
+                    "cost": 14000,
+                    "paid": false,
+                    "id": "Chatinyan_003726",
+                    "warehouse": "Чатинян Армения"
                 },
-                "brand": {
-                    "brandName": "TEST 1 Next Chapter",
-                    "owner_id": {
-                        "firstName": "Валерия ",
-                        "lastName": "Шабалина",
-                        "id": "lvoox@mail.ru"
-                    },
-                    "logo": "https://api.directual.com/fileUploaded/brands247/web/1a8a56cc-cb07-4ad1-8a69-13dd30d41ac9.jpeg",
-                    "id": "LERA_22"
-                },
-                "subcategoryWomen": {
-                    "nameEng": "Bags and clutches",
-                    "name": "Сумки и клатчи ",
-                    "id": "bags",
-                    "type": "bags"
-                },
-                "id": "TEST_3_Sumka_Grin_31",
-                "moderation_status": "approved",
-                "category": {
-                    "nameEng": "Women",
-                    "name": "Женское",
-                    "id": "women"
-                },
-                "vendorCode": "0001в",
-                "decline_reason": "",
-                "isDeleted": "",
-                "isNew": "",
-                "isSale": "",
-                "oldPrice": "",
-                "subcategoryBeauty": "",
-                "subcategoryInterior": "",
-                "subcategoryKids": "",
-                "subcategoryMen": "",
-                "tags": ""
+                "meshokLongevity": 30,
+                "ArtNow_url": "https://artnow.ru/ru/gallery/3/51232/picture/0/1061383.html",
+                "short_description": "Холст/Масло, 70х60см",
+                "meshokFree": false,
+                "ArtNowPrice": 84000,
+                "thumbnail": "https://api.alfa.directual.com/fileUploaded/artline/d1383b00-8b4b-49d3-ab45-697ea5c1b0f0.jpeg",
+                "ArtNowStatusColor": "4A8E10",
+                "meshokDescription": "Настоящая картина \"Девушка с коровой и петухом\", выполнена известным армянским художником Мгером Чатиняном масляными красками на холсте. Жанр произведения - Жанровая композиция. Выполнено в стиле Реализм.\nРазмер - 70х60 см.\n\n\n\n﻿﻿﻿Мгер Чатинян родился в Армении в 1989 году. Окончив среднюю школу в 2006 году, увлёкся живописью и рисованием. Первым его учителем и вдохновителем стал отец - преподаватель живописи и истории искусств.\nВ 2010 году окончил Ванадзорский государственный педагогический институт, где обучался на факультете живописи и графики. С 2012 года - член Всемирного союза армянских художников. С 2019 года - член Союза художников Армении.",
+                "pictures": "https://api.directual.com/fileUploaded/artline/web/12074341-4537-4557-abbc-a6d9b5a71439.jpeg,,",
+                "meshokSaleType": true,
+                "id": "Chatinyan_003726",
+                "artist": "Chatinyan",
+                "ArtNowArtwork_id": 1061383,
+                "ArtNowResponse": "{\"status\":\"success\"}",
+                "stickers": [
+                    {
+                        "sticker": "Скидка ArtNow",
+                        "id": "artnowDiscount50%"
+                    }
+                ],
+                "ArtNowStatus": "Active",
+                "meshokTitle": "КАРТИНА \"Девушка с коровой и петухом\" Художник Мгер ЧАТИНЯН Холст/Масло, 70х60см",
+                "meshokRecommended": false,
+                "artworkStatusColor": "4A8E10",
+                "ArtNowDiscount_id": "Chatinyan_Painting_305",
+                "artworkStatus": "Sale",
+                "meshokStartPrice": 31500,
+                "ArtNowDiscountOn": false,
+                "meshokBold": false,
+                "meshokStatus": "Draft",
+                "meshokPrice": 42000,
+                "active": true
             },
             {
-                "goodSpecification": [
-                    {
-                        "quantity": 5,
-                        "reserve": 0,
-                        "size": "S",
-                        "spec_name": "Размер S – 5 шт.",
-                        "id": "473153ae-daf0-4f20-887d-c7383f55a8cf"
-                    },
-                    {
-                        "quantity": 13,
-                        "reserve": 0,
-                        "size": "M",
-                        "spec_name": "Размер M – 13 шт.",
-                        "id": "6ae3d722-a79b-43e6-9202-b744927da1cd"
-                    }
-                ],
-                "name": "TEST 4 Пальто Роза",
-                "photo": "https://api.directual.com/fileUploaded/brands247/web/a82db12f-9530-4261-9d10-ed98ed6b0cf2.jpeg",
-                "description": "Детское розовое пальто",
-                "price": 1500,
-                "subcategoryKids": {
-                    "nameEng": "Kids coats",
-                    "name": "Пальто ",
-                    "id": "kidsCoats"
+                "meshokStatusColor": "#138808",
+                "name": "Валаам, Владимирский мост",
+                "sku": {
+                    "cost": 8500,
+                    "id": "Alexandrovsky_061706-4",
+                    "warehouse": "Оптиков"
                 },
-                "color": {
-                    "color": "Розовый",
-                    "id": "pink"
-                },
-                "brand": {
-                    "brandName": "TEST 3 BIKE",
-                    "owner_id": {
-                        "lastName": "Шулакова",
-                        "firstName": "Таня",
-                        "id": "tmshulakova@gmail.com"
-                    },
-                    "logo": "https://api.directual.com/fileUploaded/brands247/web/32bcd84e-5c99-4b3d-a2c0-788d8164e11b.png",
-                    "id": "TEST_3__24"
-                },
-                "id": "TEST_4_Pal'to_Roza_32",
-                "moderation_status": "approved",
-                "category": {
-                    "nameEng": "Kids",
-                    "name": "Дети",
-                    "id": "kids"
-                },
-                "vendorCode": "EE100",
-                "decline_reason": "",
-                "isDeleted": "",
-                "isNew": "",
-                "isSale": "",
-                "oldPrice": "",
-                "subcategoryBeauty": "",
-                "subcategoryInterior": "",
-                "subcategoryMen": "",
-                "subcategoryWomen": "",
-                "tags": ""
+                "meshokLongevity": 3,
+                "ArtNow_url": "https://artnow.ru/ru/gallery/3/30877/picture/0/906347.html",
+                "short_description": "Холст/Масло, 55х70см",
+                "meshokFree": false,
+                "ArtNowPrice": 34000,
+                "thumbnail": "https://api.alfa.directual.com/fileUploaded/artline/920330f5-528b-487e-99eb-7733c7ec0dc2.jpg",
+                "ArtNowStatusColor": "#138808",
+                "meshokDescription": "Настоящая картина \"Валлам, Владимирский мост\", выполнена профессиональным живописцем Александром Александровским масляными красками на холсте. Жанр произведения - Пейзаж. Выполнено в стиле Реализм.\nРазмер - 55х70 см.\n\nВладимирский мост на Валааме. Монах ловит рыбу с лодки. Картина создана с натуры, на пленэре.\n\nАлександр Александровский родился в 1951 году в г.Пушкин, Ленинградской области. В 1983 по 1989 гг. он учился в Санкт- Петербургской Академии Художеств им. И.Репина на факультете живописи в мастерской профессора Б.С.Угарова. Его основным учителем живописи можно считать профессора П.И.Рейхета. С 1996 г. - член Союза Художников России.",
+                "pictures": "https://api.alfa.directual.com/fileUploaded/artline/26fe6806-9355-47a9-8f88-e8ef5169ee89.jpg,https://api.alfa.directual.com/fileUploaded/artline/73e422d9-0ac5-49e1-8a53-80f8f0d0ab08.jpg,https://api.alfa.directual.com/fileUploaded/artline/605dbdc7-63a8-4a07-948a-287824cdae75.jpg",
+                "meshokSaleType": false,
+                "id": "Alexandrovsky_061706-4",
+                "meshokItem_id": 115956752,
+                "artist": "Alexandrovsky",
+                "ArtNowArtwork_id": 906347,
+                "ArtNowStatus": "Active",
+                "meshokTitle": "КАРТИНА \"Валлам, Владимирский мост\" Художник Александр АЛЕКСАНДРОВСКИЙ Холст/Масло, 55х70см",
+                "meshokRecommended": false,
+                "artworkStatusColor": "#1265B5",
+                "artworkStatus": "Sale",
+                "meshokPublishTime": 1643308637945,
+                "meshok_url": "https://meshok.net/item/115956752",
+                "meshokStartPrice": 16500,
+                "meshokBold": false,
+                "meshokStatus": "Active",
+                "meshokPrice": 34000,
+                "active": true,
+                "stickers": ""
             },
             {
-                "goodSpecification": [
-                    {
-                        "quantity": 19,
-                        "reserve": 0,
-                        "size": "One Size",
-                        "spec_name": "Размер One Size – 19 шт.",
-                        "id": "d5b65ceb-b330-4406-b9c9-dc0f7005f240"
-                    }
-                ],
-                "name": "TEST 5 Комбинезон Мишка",
-                "oldPrice": 2300,
-                "photo": "https://api.directual.com/fileUploaded/brands247/web/37b0acb6-4cd5-4258-9ee9-d83aec95e3aa.jpeg",
-                "description": "Детская удобная вещь",
-                "price": 2100,
-                "subcategoryKids": {
-                    "nameEng": "Baby clothing",
-                    "name": "Все для новорожденных",
-                    "id": "babyClothing"
+                "meshokStatusColor": "#0088AE",
+                "name": "Аничков мост в Санкт-Петербурге",
+                "sku": {
+                    "cost": 7000,
+                    "id": "Alexandrovsky_091403-14",
+                    "warehouse": "Оптиков"
                 },
-                "color": {
-                    "color": "Коричневый",
-                    "id": "brown"
-                },
-                "brand": {
-                    "brandName": "TEST 3 BIKE",
-                    "owner_id": {
-                        "lastName": "Шулакова",
-                        "firstName": "Таня",
-                        "id": "tmshulakova@gmail.com"
-                    },
-                    "logo": "https://api.directual.com/fileUploaded/brands247/web/32bcd84e-5c99-4b3d-a2c0-788d8164e11b.png",
-                    "id": "TEST_3__24"
-                },
-                "id": "TEST_5_Kombinezon_Mishka_33",
-                "moderation_status": "approved",
-                "category": {
-                    "nameEng": "Kids",
-                    "name": "Дети",
-                    "id": "kids"
-                },
-                "vendorCode": "УУ900",
-                "decline_reason": "",
-                "isDeleted": "",
-                "isNew": "",
-                "isSale": "",
-                "subcategoryBeauty": "",
-                "subcategoryInterior": "",
-                "subcategoryMen": "",
-                "subcategoryWomen": "",
-                "tags": ""
+                "short_description": "Холст / Масло, 40х60 см",
+                "thumbnail": "https://api.alfa.directual.com/fileUploaded/artline/2e0a4330-4e69-42e0-92f8-ad3df52f5192.jpg",
+                "ArtNowStatusColor": "#0088AE",
+                "pictures": "https://api.alfa.directual.com/fileUploaded/artline/da1fe1d7-d7f1-4c3f-ab12-7eb42c6d3fa2.jpg,https://api.alfa.directual.com/fileUploaded/artline/7d8f44df-66c2-41d7-980f-95970e302e50.jpg,https://api.alfa.directual.com/fileUploaded/artline/2baa6ce3-60af-4abf-a577-b6b5ff3dc5cc.jpg",
+                "id": "Alexandrovsky_091403-14",
+                "artist": "Alexandrovsky",
+                "ArtNowStatus": "Draft",
+                "artworkStatusColor": "#1265B5",
+                "artworkStatus": "Sale",
+                "meshokStatus": "Dfart",
+                "active": true,
+                "stickers": ""
             },
             {
-                "goodSpecification": [
-                    {
-                        "reserve": 0,
-                        "quantity": 70,
-                        "spec_name": "Размер  – 70 шт.",
-                        "id": "871d31a5-aa99-47b8-93d5-37c3ce2c29b3"
-                    }
-                ],
-                "name": "TEST 6 Cream WOW Face",
-                "photo": "https://api.directual.com/fileUploaded/brands247/web/d472af1f-8805-4dcb-b28f-8c9857192a27.jpeg",
-                "description": "Новый крем в линейке",
-                "price": 5999,
-                "brand": {
-                    "brandName": "TEST 2_MEARA BEAUTY",
-                    "owner_id": {
-                        "firstName": "Валерия ",
-                        "lastName": "Шабалина",
-                        "id": "lvoox@mail.ru"
-                    },
-                    "logo": "https://api.directual.com/fileUploaded/brands247/web/7b109ec2-ea8c-43ff-b4ca-6d32df8b9d4a.png",
-                    "id": "TEST_2_MEARA_BEAUTY_23"
+                "meshokStatusColor": "#0088AE",
+                "name": "Этюд #28",
+                "sku": {
+                    "paid": true,
+                    "id": "Chatinyan_s028",
+                    "warehouse": "Чатинян Москва"
                 },
-                "id": "TEST_6_Cream_WOW_Face_34",
-                "subcategoryBeauty": {
-                    "nameEng": "Care",
-                    "name": "Уход",
-                    "id": "care"
-                },
-                "moderation_status": "approved",
-                "category": {
-                    "nameEng": "Beauty",
-                    "name": "Бьюти",
-                    "id": "beauty"
-                },
-                "vendorCode": "5555",
-                "color": "",
-                "decline_reason": "",
-                "isDeleted": "",
-                "isNew": "",
-                "isSale": "",
-                "oldPrice": "",
-                "subcategoryInterior": "",
-                "subcategoryKids": "",
-                "subcategoryMen": "",
-                "subcategoryWomen": "",
-                "tags": ""
-            },
-            {
-                "goodSpecification": [
-                    {
-                        "spec_name": "Размер  – 6 шт.",
-                        "quantity": 6,
-                        "reserve": 0,
-                        "id": "82330e20-7e21-43b3-b6f6-40aac4327b0f"
-                    }
-                ],
-                "name": "TEST 6 Соль Флекс",
-                "photo": "https://api.directual.com/fileUploaded/brands247/web/d334e6b1-611b-4d75-8db6-0bc03456b7a5.jpeg",
-                "description": "Для ванны",
-                "price": 1990,
-                "brand": {
-                    "brandName": "TEST 2_MEARA BEAUTY",
-                    "owner_id": {
-                        "firstName": "Валерия ",
-                        "lastName": "Шабалина",
-                        "id": "lvoox@mail.ru"
-                    },
-                    "logo": "https://api.directual.com/fileUploaded/brands247/web/7b109ec2-ea8c-43ff-b4ca-6d32df8b9d4a.png",
-                    "id": "TEST_2_MEARA_BEAUTY_23"
-                },
-                "id": "TEST_6_Sol'_Fleks_35",
-                "subcategoryBeauty": {
-                    "nameEng": "Hygiene",
-                    "name": "Гигиена",
-                    "id": "hygiene"
-                },
-                "moderation_status": "approved",
-                "category": {
-                    "nameEng": "Beauty",
-                    "name": "Бьюти",
-                    "id": "beauty"
-                },
-                "vendorCode": "66666",
-                "color": "",
-                "decline_reason": "",
-                "isDeleted": "",
-                "isNew": "",
-                "isSale": "",
-                "oldPrice": "",
-                "subcategoryInterior": "",
-                "subcategoryKids": "",
-                "subcategoryMen": "",
-                "subcategoryWomen": "",
-                "tags": ""
+                "meshokLongevity": 1,
+                "short_description": "Бумага / Масло, 30x21 см",
+                "meshokFree": false,
+                "ArtNowPrice": 16000,
+                "ArtNowStatusColor": "#0088AE",
+                "meshokDescription": "Настоящая картина \"Этюд #28\", выполнена известным армянским художником Мгером Чатиняном масляными красками на бумаге. Жанр произведения - Натюрморт. Выполнено в стиле Реализм.\nРазмер - 30х21 см.\n\nЭтюд известного армянского художника-живописца Мгера Чатиняна. Создан с натуры, масляными красками.\n\n﻿﻿﻿Мгер Чатинян родился в Армении в 1989 году. Окончив среднюю школу в 2006 году, увлёкся живописью и рисованием. Первым его учителем и вдохновителем стал отец - преподаватель живописи и истории искусств.\nВ 2010 году окончил Ванадзорский государственный педагогический институт, где обучался на факультете живописи и графики. С 2012 года - член Всемирного союза армянских художников. С 2019 года - член Союза художников Армении.",
+                "pictures": "https://artegogallery.ru/image/catalog/Chatinyan_s028.jpg,,",
+                "meshokSaleType": true,
+                "id": "Chatinyan_s028",
+                "artist": "Chatinyan",
+                "ArtNowStatus": "Draft",
+                "meshokTitle": "КАРТИНА \"Этюд #28\" Художник Мгер ЧАТИНЯН Бумага / Масло, 30x21 см",
+                "meshokRecommended": false,
+                "artworkStatusColor": "#1265B5",
+                "artworkStatus": "Sale",
+                "meshokBold": false,
+                "meshokStatus": "Dfart",
+                "meshokPrice": 16000,
+                "active": true,
+                "stickers": ""
             }
         ],
-        "totalPages": 1,
+        "totalPages": 109,
         "pageNumber": 0,
         "error": null,
         "fieldScheme": [
             [
-                "brand.brandName",
-                1426040
+                "ArtNowArtwork_id",
+                1371848
             ],
             [
-                "brand.id",
-                1426040
+                "ArtNowDiscountOn",
+                1371848
             ],
             [
-                "brand.logo",
-                1426040
+                "ArtNowDiscount_id",
+                1371848
             ],
             [
-                "brand.owner_id.firstName",
-                1396851
+                "ArtNowPrice",
+                1371848
             ],
             [
-                "brand.owner_id.id",
-                1396851
+                "ArtNowPublishTime",
+                1371848
             ],
             [
-                "brand.owner_id.lastName",
-                1396851
+                "ArtNowResponse",
+                1371848
             ],
             [
-                "category.id",
-                1397568
+                "ArtNowStatus",
+                1371848
             ],
             [
-                "category.name",
-                1397568
+                "ArtNowStatusColor",
+                1371848
             ],
             [
-                "category.nameEng",
-                1397568
+                "ArtNow_url",
+                1371848
             ],
             [
-                "color.color",
-                1418517
+                "active",
+                1371848
             ],
             [
-                "color.colorEng",
-                1418517
+                "artfinderStatusColor",
+                1371848
             ],
             [
-                "color.id",
-                1418517
+                "artfinder_url",
+                1371848
             ],
             [
-                "decline_reason",
-                1397569
+                "artist",
+                1371848
             ],
             [
-                "description",
-                1397569
+                "artmajeurStatusColor",
+                1371848
             ],
             [
-                "goodSpecification.id",
-                1418516
+                "artmajeur_url",
+                1371848
             ],
             [
-                "goodSpecification.quantity",
-                1418516
+                "artworkStatus",
+                1371848
             ],
             [
-                "goodSpecification.reserve",
-                1418516
+                "artworkStatusColor",
+                1371848
             ],
             [
-                "goodSpecification.size",
-                1418516
+                "ebayItem_id",
+                1371848
             ],
             [
-                "goodSpecification.spec_name",
-                1418516
+                "ebayStatus",
+                1371848
+            ],
+            [
+                "ebayStatusColor",
+                1371848
+            ],
+            [
+                "ebay_account",
+                1371848
+            ],
+            [
+                "ebay_url",
+                1371848
+            ],
+            [
+                "ebayauctionStatusColor",
+                1371848
+            ],
+            [
+                "ebayauction_url",
+                1371848
+            ],
+            [
+                "etsyStatusColor",
+                1371848
+            ],
+            [
+                "etsy_url",
+                1371848
             ],
             [
                 "id",
-                1397569
+                1371848
             ],
             [
-                "isDeleted",
-                1397569
+                "listingLog.api_response",
+                99017356
             ],
             [
-                "isNew",
-                1397569
+                "listingLog.date",
+                99017356
             ],
             [
-                "isSale",
-                1397569
+                "listingLog.event",
+                99017356
             ],
             [
-                "moderation_status",
-                1397569
+                "listingLog.id",
+                99017356
+            ],
+            [
+                "listingLog.places",
+                99017356
+            ],
+            [
+                "listingLog.status",
+                99017356
+            ],
+            [
+                "listingLog.value",
+                99017356
+            ],
+            [
+                "meshokBold",
+                1371848
+            ],
+            [
+                "meshokDescription",
+                1371848
+            ],
+            [
+                "meshokFree",
+                1371848
+            ],
+            [
+                "meshokItem_id",
+                1371848
+            ],
+            [
+                "meshokLongevity",
+                1371848
+            ],
+            [
+                "meshokPrice",
+                1371848
+            ],
+            [
+                "meshokPublishTime",
+                1371848
+            ],
+            [
+                "meshokRecommended",
+                1371848
+            ],
+            [
+                "meshokRespond",
+                1371848
+            ],
+            [
+                "meshokSaleType",
+                1371848
+            ],
+            [
+                "meshokStartPrice",
+                1371848
+            ],
+            [
+                "meshokStatus",
+                1371848
+            ],
+            [
+                "meshokStatusColor",
+                1371848
+            ],
+            [
+                "meshokTitle",
+                1371848
+            ],
+            [
+                "meshok_url",
+                1371848
             ],
             [
                 "name",
-                1397569
+                1371848
             ],
             [
-                "oldPrice",
-                1397569
+                "ozonStatusColor",
+                1371848
             ],
             [
-                "photo",
-                1397569
+                "ozon_url",
+                1371848
             ],
             [
-                "price",
-                1397569
+                "pictures",
+                1371848
             ],
             [
-                "subcategoryBeauty.id",
-                1398625
+                "short_description",
+                1371848
             ],
             [
-                "subcategoryBeauty.name",
-                1398625
+                "sku.cost",
+                1371826
             ],
             [
-                "subcategoryBeauty.nameEng",
-                1398625
+                "sku.id",
+                1371826
             ],
             [
-                "subcategoryBeauty.type",
-                1398625
+                "sku.paid",
+                1371826
             ],
             [
-                "subcategoryInterior.id",
-                1398626
+                "sku.warehouse",
+                1371826
             ],
             [
-                "subcategoryInterior.name",
-                1398626
+                "stickerColor",
+                1371848
             ],
             [
-                "subcategoryInterior.nameEng",
-                1398626
+                "stickers.id",
+                99075200
             ],
             [
-                "subcategoryInterior.type",
-                1398626
+                "stickers.sticker",
+                99075200
             ],
             [
-                "subcategoryKids.id",
-                1398624
-            ],
-            [
-                "subcategoryKids.name",
-                1398624
-            ],
-            [
-                "subcategoryKids.nameEng",
-                1398624
-            ],
-            [
-                "subcategoryKids.type",
-                1398624
-            ],
-            [
-                "subcategoryMen.id",
-                1398622
-            ],
-            [
-                "subcategoryMen.name",
-                1398622
-            ],
-            [
-                "subcategoryMen.nameEng",
-                1398622
-            ],
-            [
-                "subcategoryMen.type",
-                1398622
-            ],
-            [
-                "subcategoryWomen.id",
-                1398623
-            ],
-            [
-                "subcategoryWomen.name",
-                1398623
-            ],
-            [
-                "subcategoryWomen.nameEng",
-                1398623
-            ],
-            [
-                "subcategoryWomen.type",
-                1398623
-            ],
-            [
-                "tags",
-                1397569
-            ],
-            [
-                "vendorCode",
-                1397569
+                "thumbnail",
+                1371848
             ]
         ],
         "writeFields": [
-            "brand",
-            "category",
-            "color",
-            "decline_reason",
-            "description",
-            "goodSpecification",
             "id",
-            "isDeleted",
-            "isNew",
-            "isSale",
-            "moderation_status",
-            "name",
-            "oldPrice",
-            "photo",
-            "price",
-            "subcategoryBeauty",
-            "subcategoryInterior",
-            "subcategoryKids",
-            "subcategoryMen",
-            "subcategoryWomen",
-            "tags",
-            "vendorCode"
+            "stickers"
         ],
         "structures": {
-            "1396851": {
-                "networkID": 7332,
-                "sysName": "WebUser",
-                "name": "App users",
-                "id": 1396851,
-                "dateCreated": "2021-06-18T12:42:59Z",
+            "1371826": {
+                "networkID": 4203,
+                "sysName": "artworks",
+                "name": "Картины",
+                "id": 1371826,
+                "dateCreated": "2021-04-01T19:57:23Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"dateLastActivity\",\"dataType\":\"string\",\"name\":\"dateLastActivity\",\"id\":\"8\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"dateCreated\",\"dataType\":\"string\",\"name\":\"dateCreated\",\"id\":\"11\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"isAuthorization\",\"dataType\":\"boolean\",\"name\":\"isAuthorization\",\"id\":\"7\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"telegram\",\"dataType\":\"link\",\"name\":\"Telegram\",\"id\":\"34101638346264849\",\"link\":\"TChat\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"TG_connected\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"76901639083519806\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"phone\",\"dataType\":\"string\",\"name\":\"Phone\",\"id\":\"10\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"email\",\"dataType\":\"string\",\"name\":\"Email\",\"id\":\"9\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"userpic\",\"dataType\":\"file\",\"name\":\"User pic\",\"id\":\"1\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"Username (login)\",\"id\":\"13\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"role\",\"dataType\":\"string\",\"name\":\"Roles\",\"id\":\"6\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"password\",\"dataType\":\"string\",\"name\":\"Password (hash)\",\"id\":\"12\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"firstName\",\"dataType\":\"string\",\"name\":\"First name\",\"id\":\"5\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"lastName\",\"dataType\":\"string\",\"name\":\"Last name\",\"id\":\"4\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"thirdName\",\"dataType\":\"string\",\"name\":\"Отчество\",\"id\":\"79761628701234488\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"Gender\",\"id\":\"3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"isBlocked\",\"dataType\":\"boolean\",\"name\":\"Block user\",\"id\":\"2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"whoAdd\",\"dataType\":\"link\",\"name\":\"Who add\",\"id\":\"35501625913518138\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"Notifications\",\"dataType\":\"boolean\",\"name\":\"Высылать оповещения по email\",\"id\":\"90201634984689703\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Высылать\",\"Не высылать\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"Notifications_TG\",\"dataType\":\"boolean\",\"name\":\"Высылать оповещения в Телеграм\",\"id\":\"12361637829859232\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Высылать\",\"Не высылать\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"Favorites\",\"dataType\":\"link\",\"name\":\"Избранные\",\"id\":\"28321627692145465\",\"link\":\"favorites\",\"group\":\"1625430271500\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"cart\",\"dataType\":\"arrayLink\",\"name\":\"Корзина (товары в корзине)\",\"id\":\"44311627692203902\",\"link\":\"itemsInCart\",\"group\":\"1625430271500\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"orders\",\"dataType\":\"arrayLink\",\"name\":\"Заказы\",\"id\":\"70671633934172528\",\"link\":\"orders\",\"group\":\"1625430271500\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"country\",\"dataType\":\"string\",\"name\":\"Страна\",\"id\":\"33321628701430394\",\"link\":\"\",\"group\":\"1625430271500\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"city\",\"dataType\":\"string\",\"name\":\"Город\",\"id\":\"39491628701450498\",\"link\":\"\",\"group\":\"1625430271500\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"index\",\"dataType\":\"string\",\"name\":\"Индекс\",\"id\":\"55461628701457851\",\"link\":\"\",\"group\":\"1625430271500\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"street\",\"dataType\":\"string\",\"name\":\"Улица\",\"id\":\"99241628701478061\",\"link\":\"\",\"group\":\"1625430271500\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"house\",\"dataType\":\"string\",\"name\":\"Дом\",\"id\":\"60171628701483573\",\"link\":\"\",\"group\":\"1625430271500\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"apart\",\"dataType\":\"string\",\"name\":\"Квартира\",\"id\":\"64671628701490630\",\"link\":\"\",\"group\":\"1625430271500\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"commentAdress\",\"dataType\":\"string\",\"name\":\"Комментарий\",\"id\":\"52021628701504080\",\"link\":\"\",\"group\":\"1625430271500\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"cartId\",\"dataType\":\"link\",\"name\":\"корзина (ID)\",\"id\":\"60651640850420503\",\"link\":\"cart\",\"group\":\"1625430271500\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"entity\",\"dataType\":\"string\",\"name\":\"Юр.лицо\",\"id\":\"50681625927701368\",\"link\":null,\"group\":\"1625430301390\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ogrn\",\"dataType\":\"string\",\"name\":\"ОГРН\",\"id\":\"32001625927766678\",\"link\":null,\"group\":\"1625430301390\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"adress\",\"dataType\":\"string\",\"name\":\"Адрес\",\"id\":\"58321625927789978\",\"link\":null,\"group\":\"1625430301390\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"paymentAccount\",\"dataType\":\"string\",\"name\":\"Р/с\",\"id\":\"38741625927806465\",\"link\":null,\"group\":\"1625430301390\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"correspondentAccount\",\"dataType\":\"string\",\"name\":\"К/с\",\"id\":\"88821625927871201\",\"link\":null,\"group\":\"1625430301390\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"bank\",\"dataType\":\"string\",\"name\":\"Банк\",\"id\":\"62951625927910972\",\"link\":null,\"group\":\"1625430301390\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"bik\",\"dataType\":\"string\",\"name\":\"БИК\",\"id\":\"23521625927939680\",\"link\":null,\"group\":\"1625430301390\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"kindOfActivity\",\"dataType\":\"string\",\"name\":\"Основной вид деятельности\",\"id\":\"37161625927949139\",\"link\":null,\"group\":\"1625430301390\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"brand_ids\",\"dataType\":\"arrayLink\",\"name\":\" Бренды\",\"id\":\"85401628591982213\",\"link\":\"Brands\",\"group\":\"1628591974821\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"goods\",\"dataType\":\"arrayLink\",\"name\":\"Товары\",\"id\":\"59641628237696484\",\"link\":\"goods\",\"group\":\"1628591974821\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"delivery_id\",\"dataType\":\"link\",\"name\":\"Тип доставки\",\"id\":\"34011634891894609\",\"link\":\"delivery\",\"group\":\"1634891875475\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"sdecAdress\",\"dataType\":\"string\",\"name\":\"СДЭК адрес пункта выдачи\",\"id\":\"59361634891942420\",\"link\":\"\",\"group\":\"1634891875475\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"worldAdress\",\"dataType\":\"string\",\"name\":\"Адрес доставки по миру\",\"id\":\"28311634892118302\",\"link\":\"\",\"group\":\"1634891875475\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"commentSdecAdress\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"55911637166997264\",\"link\":null,\"group\":\"1634891875475\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"commentWorldAdress\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"21851637167104805\",\"link\":null,\"group\":\"1634891875475\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false}]",
-                "jsonGroupSettings": "[{\"name\":\"Delivery fields\",\"id\":1634891875475,\"order\":5},{\"name\":\"System fields\",\"id\":-1776115286,\"order\":1},{\"name\":\"Entity fields\",\"id\":1625430301390,\"order\":4},{\"name\":\"Brand\",\"id\":1628591974821,\"order\":3},{\"name\":\"Customer fiedls\",\"id\":1625430271500,\"order\":2},{\"name\":\"Contacts\",\"id\":-502807437,\"order\":0}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"},{\"sysName\":\"email\"},{\"sysName\":\"phone\"}]",
-                "jsonSettings": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"SKU\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Название\",\"id\":\"15471617307220262\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"artist\",\"dataType\":\"link\",\"name\":\"Автор\",\"id\":\"48311617307253557\",\"link\":\"artists\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[\"artist_places.id\",\"artist_places\",\"last_name_eng\",\"artnow_id\",\"name\",\"last_name\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"image\",\"dataType\":\"file\",\"name\":\"Изображение\",\"id\":\"52871617307301637\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"height_cm\",\"dataType\":\"decimal\",\"name\":\"Высота, см\",\"id\":\"49751617397302610\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"width_cm\",\"dataType\":\"decimal\",\"name\":\"Ширина, см\",\"id\":\"39071617397374760\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"price\",\"dataType\":\"decimal\",\"name\":\"Цена, руб.\",\"id\":\"57021617307315332\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"created_date\",\"dataType\":\"date\",\"name\":\"Дата добавления\",\"id\":\"79321625229183027\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"thumbnail\",\"dataType\":\"file\",\"name\":\"Миниатюра\",\"id\":\"33951632853665205\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"image_1\",\"dataType\":\"file\",\"name\":\"Фото не обрезанное\",\"id\":\"96831617364187782\",\"link\":\"\",\"group\":\"1617364168856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"image_2\",\"dataType\":\"file\",\"name\":\"Фото с оборота\",\"id\":\"39051617364208409\",\"link\":\"\",\"group\":\"1617364168856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"image_big\",\"dataType\":\"file\",\"name\":\"Большое фото\",\"id\":\"80751617364221701\",\"link\":\"\",\"group\":\"1617364168856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"video\",\"dataType\":\"file\",\"name\":\"Видео\",\"id\":\"37591617725458333\",\"link\":\"\",\"group\":\"1617364168856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"imageGoogleDriveID\",\"dataType\":\"string\",\"name\":\"GoogleDrive: Фото\",\"id\":\"37691632084520844\",\"link\":\"\",\"group\":\"1617364168856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"image1GoogleDriveID\",\"dataType\":\"string\",\"name\":\"GoogleDrive: Фото не обрезанное\",\"id\":\"63391632084538838\",\"link\":\"\",\"group\":\"1617364168856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"image2GoogleDriveID\",\"dataType\":\"string\",\"name\":\"GoogleDrive: Фото с оборота\",\"id\":\"85071632084540640\",\"link\":\"\",\"group\":\"1617364168856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"imageBigGoogleDriveID\",\"dataType\":\"string\",\"name\":\"GoogleDrive: Большое фото\",\"id\":\"33761632084541556\",\"link\":\"\",\"group\":\"1617364168856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"images\",\"dataType\":\"file\",\"name\":\"Изображения\",\"id\":\"64821633297002923\",\"link\":\"\",\"group\":\"1617364168856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"COA\",\"dataType\":\"string\",\"name\":\"Сертификат Аутентичности\",\"id\":\"62081637875819783\",\"link\":\"\",\"group\":\"1617364168856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"phash\",\"dataType\":\"string\",\"name\":\"Прецептивный хэш\",\"id\":\"40781643560061999\",\"link\":\"\",\"group\":\"1617364168856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"colors\",\"dataType\":\"array\",\"name\":\"Основные цвета\",\"id\":\"73351643566399575\",\"link\":\"\",\"group\":\"1617364168856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":true},{\"sysName\":\"color_1\",\"dataType\":\"string\",\"name\":\"Основной цвет №1\",\"id\":\"79811643567276685\",\"link\":\"\",\"group\":\"1617364168856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"color_2\",\"dataType\":\"string\",\"name\":\"Основной цвет №2\",\"id\":\"55951643567286285\",\"link\":\"\",\"group\":\"1617364168856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"coudinary_public_id\",\"dataType\":\"string\",\"name\":\"Public ID на Cloudinary\",\"id\":\"92111643623155384\",\"link\":\"\",\"group\":\"1617364168856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"name_eng\",\"dataType\":\"string\",\"name\":\"Name\",\"id\":\"63251617307229759\",\"link\":null,\"group\":\"1617387470618\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"description_eng\",\"dataType\":\"string\",\"name\":\"Description\",\"id\":\"37001617387678775\",\"link\":\"\",\"group\":\"1617387470618\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"html\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"short_description_eng\",\"dataType\":\"string\",\"name\":\"Short description\",\"id\":\"39671617387882672\",\"link\":null,\"group\":\"1617387470618\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"tags_eng\",\"dataType\":\"array\",\"name\":\"Tags\",\"id\":\"72951617387940324\",\"link\":\"\",\"group\":\"1617387470618\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":true},{\"sysName\":\"height_inches\",\"dataType\":\"decimal\",\"name\":\"Height, inches\",\"id\":\"14921617397473651\",\"link\":\"\",\"group\":\"1617387470618\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"width_inches\",\"dataType\":\"decimal\",\"name\":\"Width, inches\",\"id\":\"33911617397508148\",\"link\":\"\",\"group\":\"1617387470618\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"price_usd\",\"dataType\":\"decimal\",\"name\":\"Price, USD\",\"id\":\"29191617401736641\",\"link\":\"\",\"group\":\"1617387470618\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"status\",\"dataType\":\"link\",\"name\":\"Статус\",\"id\":\"29011617350244787\",\"link\":\"Status\",\"group\":\"1617387532865\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"booleanOptions\":[\"True\",\"False\"],\"customOption\":false,\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"multipleChoice\":[{\"value\":\"draft\",\"label\":\"Черновик\"},{\"value\":\"active\",\"label\":\"Продается\"},{\"value\":\"to_order\",\"label\":\"Нет в наличии, возможен заказ\"},{\"value\":\"sold\",\"label\":\"Продано\"},{\"value\":\"not_for_sale\",\"label\":\"Не продается\"}]},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"listings_id\",\"dataType\":\"arrayLink\",\"name\":\"Список размещений\",\"id\":\"42601619298844812\",\"link\":\"listings\",\"group\":\"1617387532865\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"places\",\"dataType\":\"arrayLink\",\"name\":\"Площадки\",\"id\":\"21191617307369281\",\"link\":\"places\",\"group\":\"1617387532865\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"places_blocked\",\"dataType\":\"arrayLink\",\"name\":\"Заблокированные площадки\",\"id\":\"13051618302602071\",\"link\":\"places\",\"group\":\"1617387532865\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"weight\",\"dataType\":\"decimal\",\"name\":\"Вес, кг\",\"id\":\"81601617397267397\",\"link\":\"\",\"group\":\"1617387532865\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"warehouse\",\"dataType\":\"link\",\"name\":\"Склад\",\"id\":\"54591617397295556\",\"link\":\"Warehouse\",\"group\":\"1617387532865\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"cost\",\"dataType\":\"decimal\",\"name\":\"Закупочная стоимость\",\"id\":\"81471617398432102\",\"link\":\"\",\"group\":\"1617387532865\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"paid\",\"dataType\":\"boolean\",\"name\":\"Оплачено\",\"id\":\"60961617398495249\",\"link\":\"\",\"group\":\"1617387532865\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"booleanOptions\":[\"Yes\",\"No\"],\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\"},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"priority\",\"dataType\":\"json\",\"name\":\"Приоритет\",\"id\":\"58851618326587148\",\"link\":\"\",\"group\":\"1617387532865\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"slider\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"unitName\":\"🔥\",\"booleanOptions\":[\"True\",\"False\"],\"customOptionPlaceholder\":\"Describe your option\",\"range\":{\"min\":1,\"max\":10,\"step\":1},\"customOptionType\":\"textarea\"},\"groupName\":null,\"json\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"source\",\"dataType\":\"string\",\"name\":\"Источник добавления в БД\",\"id\":\"31811618415192130\",\"link\":\"\",\"group\":\"1617387532865\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"main\",\"label\":\"Основной\"},{\"value\":\"Arhive\",\"label\":\" Импорт из SubmiArt\"},{\"value\":\"sheets\",\"label\":\" Импорт из таблиц\"}]},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"Supplier\",\"dataType\":\"link\",\"name\":\"Поставщик\",\"id\":\"61421627642767764\",\"link\":\"ArtSupplier\",\"group\":\"1617387532865\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"source_url\",\"dataType\":\"string\",\"name\":\"Ссылка на источник\",\"id\":\"50141628596802984\",\"link\":\"\",\"group\":\"1617387532865\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"WebUser\",\"dataType\":\"link\",\"name\":\"Кто добавил\",\"id\":\"53341630513051640\",\"link\":\"WebUser\",\"group\":\"1617387532865\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"warehouseUSA_id\",\"dataType\":\"number\",\"name\":\"Номер на складе в США\",\"id\":\"39001634027238609\",\"link\":\"\",\"group\":\"1617387532865\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Описание\",\"id\":\"62521617387659649\",\"link\":\"\",\"group\":\"1617387648771\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"html\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"short_description\",\"dataType\":\"string\",\"name\":\"Краткое описание\",\"id\":\"84171617387818260\",\"link\":null,\"group\":\"1617387648771\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"tags\",\"dataType\":\"array\",\"name\":\"Ключевые слова\",\"id\":\"35061617388282940\",\"link\":\"\",\"group\":\"1617387648771\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":true},{\"sysName\":\"year\",\"dataType\":\"number\",\"name\":\"Год\",\"id\":\"98641617396969654\",\"link\":\"\",\"group\":\"1617387648771\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"orientation\",\"dataType\":\"string\",\"name\":\"Формат\",\"id\":\"77891617473123941\",\"link\":\"\",\"group\":\"1617387648771\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"material_id\",\"dataType\":\"link\",\"name\":\"Материал\",\"id\":\"12071617397013098\",\"link\":\"materials\",\"group\":\"1617396999819\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"medium_id\",\"dataType\":\"link\",\"name\":\"Техника\",\"id\":\"39361617397046676\",\"link\":\"medium\",\"group\":\"1617396999819\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"category_id\",\"dataType\":\"link\",\"name\":\"Раздел\",\"id\":\"55911617397139820\",\"link\":\"category\",\"group\":\"1617396999819\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"style_id\",\"dataType\":\"link\",\"name\":\"Направление\",\"id\":\"27611617397161029\",\"link\":\"style\",\"group\":\"1617396999819\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"subject_id\",\"dataType\":\"link\",\"name\":\"Жанр\",\"id\":\"18031617397182865\",\"link\":\"subject\",\"group\":\"1617396999819\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"buyer_id\",\"dataType\":\"link\",\"name\":\"Покупатель\",\"id\":\"35621617734554085\",\"link\":\"Buyers\",\"group\":\"1618302508063\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"sold_price\",\"dataType\":\"decimal\",\"name\":\"Цена продажи, руб\",\"id\":\"37861617725147530\",\"link\":\"\",\"group\":\"1618302508063\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"sold_price_usd\",\"dataType\":\"decimal\",\"name\":\"Цена продажи, USD\",\"id\":\"25311617725181649\",\"link\":\"\",\"group\":\"1618302508063\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"sold_fee\",\"dataType\":\"decimal\",\"name\":\"Комиссия, руб\",\"id\":\"45011617725219166\",\"link\":\"\",\"group\":\"1618302508063\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"sold_fee_usd\",\"dataType\":\"decimal\",\"name\":\"Комиссия, USD\",\"id\":\"33491617725243102\",\"link\":\"\",\"group\":\"1618302508063\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"sold_place\",\"dataType\":\"link\",\"name\":\"Канал продажи\",\"id\":\"78661617725307618\",\"link\":\"places\",\"group\":\"1618302508063\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"artwork_note\",\"dataType\":\"string\",\"name\":\"Примечание\",\"id\":\"97461624183106046\",\"link\":\"\",\"group\":\"1618302508063\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"sold_date\",\"dataType\":\"date\",\"name\":\"Дата продажи\",\"id\":\"22741624184781891\",\"link\":\"\",\"group\":\"1618302508063\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"order_id\",\"dataType\":\"link\",\"name\":\"Заказ\",\"id\":\"34391631311092290\",\"link\":\"orders\",\"group\":\"1618302508063\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"artworkPaymentStatus\",\"dataType\":\"link\",\"name\":\"Статус оплаты\",\"id\":\"16481631643517332\",\"link\":\"paymentstatus\",\"group\":\"1618302508063\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"artworkShippingStatus\",\"dataType\":\"link\",\"name\":\"Статус доставки\",\"id\":\"98571631646551685\",\"link\":\"shippingstatus\",\"group\":\"1618302508063\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"soldStatus\",\"dataType\":\"link\",\"name\":\"Статус проданной работы Sold/Order\",\"id\":\"34751631899392576\",\"link\":\"Status\",\"group\":\"1618302508063\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"meshokListing\",\"dataType\":\"link\",\"name\":\"Мешок\",\"id\":\"37551627574424844\",\"link\":\"meshok\",\"group\":\"1627574410412\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"meshok_url\",\"dataType\":\"string\",\"name\":\"Ссылка на Мешке\",\"id\":\"93841628508938752\",\"link\":\"\",\"group\":\"1627574410412\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"meshok_Free_url\",\"dataType\":\"string\",\"name\":\"Бесплатный лот на Мешке\",\"id\":\"44141630619345624\",\"link\":\"\",\"group\":\"1627574410412\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"artnowListing\",\"dataType\":\"link\",\"name\":\"Листинг на ArtNow\",\"id\":\"59641627920801644\",\"link\":\"artnow\",\"group\":\"1627574410412\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"artnow_url\",\"dataType\":\"string\",\"name\":\"Ссылка на ArtNow\",\"id\":\"73381628509013517\",\"link\":\"\",\"group\":\"1627574410412\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"artnowDelete\",\"dataType\":\"boolean\",\"name\":\"Удалить с ArtNow\",\"id\":\"37511631142041528\",\"link\":\"\",\"group\":\"1627574410412\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"artmajeurListing\",\"dataType\":\"link\",\"name\":\"Листинг на Artmajeur\",\"id\":\"25911627979789440\",\"link\":\"artmajeur\",\"group\":\"1627574410412\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"artmajeur_url\",\"dataType\":\"string\",\"name\":\"Ссылка на Artmajeur\",\"id\":\"45261628509066773\",\"link\":\"\",\"group\":\"1627574410412\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"artfinderListing\",\"dataType\":\"link\",\"name\":\"Листинг на Artfinder\",\"id\":\"10101628032557039\",\"link\":\"artfinder\",\"group\":\"1627574410412\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"artfinder_url\",\"dataType\":\"string\",\"name\":\"Ссылка на Artfinder\",\"id\":\"23561628509069585\",\"link\":\"\",\"group\":\"1627574410412\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"ebay_artegogallery_id\",\"dataType\":\"link\",\"name\":\"Листинг на eBay\",\"id\":\"93351630710200316\",\"link\":\"eBay\",\"group\":\"1627574410412\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"ebay_artegogallery_url\",\"dataType\":\"string\",\"name\":\"Ссылка на eBay\",\"id\":\"83121630710219753\",\"link\":\"\",\"group\":\"1627574410412\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"ebay_ebaev_id\",\"dataType\":\"link\",\"name\":\"Листинг на eBay_UK\",\"id\":\"49931630710288645\",\"link\":\"eBay\",\"group\":\"1627574410412\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"ebay_ebaev_url\",\"dataType\":\"string\",\"name\":\"Ссылка на eBay_UK\",\"id\":\"82851630710311289\",\"link\":\"\",\"group\":\"1627574410412\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"artworkLog\",\"dataType\":\"arrayLink\",\"name\":\"Лог картины\",\"id\":\"84031631728071793\",\"link\":\"artworkLog\",\"group\":\"1627574410412\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"artworkLogText\",\"dataType\":\"string\",\"name\":\"Лог картины текст\",\"id\":\"61441631728743690\",\"link\":\"\",\"group\":\"1627574410412\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"artworkLogTextAdd\",\"dataType\":\"string\",\"name\":\"Добавить в лог (произвольный текст)\",\"id\":\"77491632502928980\",\"link\":null,\"group\":\"1627574410412\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"endedAllPlaces\",\"dataType\":\"boolean\",\"name\":\"Снято со всех площадок\",\"id\":\"20101631742075290\",\"link\":\"\",\"group\":\"1627574410412\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Снято\",\"Нужно снять\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"addEverywhere\",\"dataType\":\"json\",\"name\":\"Добавить сразу везде\",\"id\":\"17931635620679145\",\"link\":\"\",\"group\":\"1627574410412\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"true\",\"label\":\"Добавить везде\"}]},\"groupName\":null,\"json\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"places_for_add\",\"dataType\":\"arrayLink\",\"name\":\"Площадки для добавления\",\"id\":\"97461620078153044\",\"link\":\"places\",\"group\":\"1627574410412\",\"tags\":null,\"indexing\":true,\"ordering\":true,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"planfix_id\",\"dataType\":\"string\",\"name\":\"ID в Планфиксе\",\"id\":\"59771639947765312\",\"link\":\"\",\"group\":\"1627574410412\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"listing_id\",\"dataType\":\"link\",\"name\":\"Листинг\",\"id\":\"46601644179929008\",\"link\":\"listings\",\"group\":\"1627574410412\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"priority_places\",\"dataType\":\"arrayLink\",\"name\":\"Первоочередное размещение\",\"id\":\"24691619972012677\",\"link\":\"places\",\"group\":\"1628508972688\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"places_for_change\",\"dataType\":\"arrayLink\",\"name\":\"Снять с продажи\",\"id\":\"39931619991679883\",\"link\":\"listings\",\"group\":\"1628508972688\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[\"id\",\"sku\",\"place\",\"listing_url\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"meshok_id\",\"dataType\":\"string\",\"name\":\"ID на Мешке\",\"id\":\"26921624182122348\",\"link\":\"\",\"group\":\"1628508972688\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"google_label\",\"dataType\":\"string\",\"name\":\"Ключевые от Гугла\",\"id\":\"45121632781072402\",\"link\":null,\"group\":\"1628508972688\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"meshokListingID\",\"dataType\":\"link\",\"name\":\"Публикация на Мешке\",\"id\":\"54261627575389625\",\"link\":\"listings\",\"group\":\"1628508972688\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"json\",\"dataType\":\"json\",\"name\":\"json\",\"id\":\"95201632820697315\",\"link\":\"\",\"group\":\"1628508972688\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"price_usd_d\",\"dataType\":\"decimal\",\"name\":\"price_usd_d\",\"id\":\"52451633186847276\",\"link\":\"\",\"group\":\"1628508972688\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"price_rub\",\"dataType\":\"decimal\",\"name\":\"price_rub\",\"id\":\"13351633166246589\",\"link\":\"\",\"group\":\"1628508972688\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"sold_price_usd_d\",\"dataType\":\"decimal\",\"name\":\"sold_price_usd\",\"id\":\"51711633186982227\",\"link\":\"\",\"group\":\"1628508972688\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"sold_price_d\",\"dataType\":\"decimal\",\"name\":\"sold_price\",\"id\":\"18401633186986430\",\"link\":\"\",\"group\":\"1628508972688\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"sold_fee_usd_d\",\"dataType\":\"decimal\",\"name\":\"sold_fee_usd\",\"id\":\"24211633192747885\",\"link\":\"\",\"group\":\"1628508972688\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"sold_fee_d\",\"dataType\":\"decimal\",\"name\":\"sold_fee\",\"id\":\"38751633192749668\",\"link\":\"\",\"group\":\"1628508972688\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"cost_d\",\"dataType\":\"decimal\",\"name\":\"cost_d\",\"id\":\"36491633195486846\",\"link\":\"\",\"group\":\"1628508972688\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"copyOftrue\",\"dataType\":\"json\",\"name\":\"Копия\",\"id\":\"84381631124194791\",\"link\":\"\",\"group\":\"1631126236514\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"isCopy\",\"label\":\"Копия\"}]},\"groupName\":null,\"json\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"copyOf\",\"dataType\":\"arrayLink\",\"name\":\"Список копий\",\"id\":\"84621631122612143\",\"link\":\"artworks\",\"group\":\"1631126236514\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"copyID\",\"dataType\":\"link\",\"name\":\"Предыдущая копия\",\"id\":\"42281631126281061\",\"link\":\"artworks\",\"group\":\"1631126236514\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"copyImage\",\"dataType\":\"file\",\"name\":\"Копия: Новые изображения\",\"id\":\"70021631202755031\",\"link\":\"\",\"group\":\"1631126236514\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"copyImage_1\",\"dataType\":\"file\",\"name\":\"Копия: Необрезанное фото\",\"id\":\"31681631203141323\",\"link\":\"\",\"group\":\"1631126236514\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"copyImage_2\",\"dataType\":\"file\",\"name\":\"Копия: Фото оборота\",\"id\":\"28101631203146454\",\"link\":\"\",\"group\":\"1631126236514\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"copyImage_big\",\"dataType\":\"file\",\"name\":\"Копия: Большое фото\",\"id\":\"98951631203158037\",\"link\":\"\",\"group\":\"1631126236514\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"copyPrice\",\"dataType\":\"decimal\",\"name\":\"Копия: Новая цена\",\"id\":\"18071631203205990\",\"link\":\"\",\"group\":\"1631126236514\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"copyName\",\"dataType\":\"string\",\"name\":\"Копия: Новое название\",\"id\":\"70531631203259201\",\"link\":null,\"group\":\"1631126236514\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"copyArtnowPrice\",\"dataType\":\"decimal\",\"name\":\"Копия: Цена для ArtNow\",\"id\":\"27271631203400081\",\"link\":\"\",\"group\":\"1631126236514\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"newID\",\"dataType\":\"link\",\"name\":\"Копия: Новый артикул\",\"id\":\"54341631205142015\",\"link\":\"artworks\",\"group\":\"1631126236514\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"copyPublishNow\",\"dataType\":\"json\",\"name\":\"Копия: Опубликовать минуя черновики\",\"id\":\"84681631206977175\",\"link\":\"\",\"group\":\"1631126236514\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"now\",\"label\":\"true\"}]},\"groupName\":null,\"json\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"copyNo\",\"dataType\":\"number\",\"name\":\"Номер копии\",\"id\":\"65181631370777212\",\"link\":\"\",\"group\":\"1631126236514\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"copyBuyers\",\"dataType\":\"arrayLink\",\"name\":\"Покупатели копий\",\"id\":\"82371631392933566\",\"link\":\"Buyers\",\"group\":\"1631126236514\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"copyLastDate\",\"dataType\":\"date\",\"name\":\"Дата продажи последней копии\",\"id\":\"41191631395566626\",\"link\":\"\",\"group\":\"1631126236514\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"copyLastPlace\",\"dataType\":\"link\",\"name\":\"Место продажи последней копии\",\"id\":\"59441631395600284\",\"link\":\"places\",\"group\":\"1631126236514\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"forTemplate\",\"dataType\":\"boolean\",\"name\":\"Создать шаблон на основе этой картины\",\"id\":\"79101631901936521\",\"link\":\"\",\"group\":\"1631126236514\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"toDelete\",\"dataType\":\"boolean\",\"name\":\"Удалить черновик\",\"id\":\"14271632500552946\",\"link\":\"\",\"group\":\"1631126236514\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"fastwayField1\",\"dataType\":\"string\",\"name\":\"Размеры в-ш\",\"id\":\"74371635974335125\",\"link\":null,\"group\":\"1635974311504\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"fastwayField2\",\"dataType\":\"string\",\"name\":\"Материал-техника\",\"id\":\"65571635974410309\",\"link\":null,\"group\":\"1635974311504\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"fastwayField3\",\"dataType\":\"string\",\"name\":\"Жанр-стиль\",\"id\":\"75761635975181955\",\"link\":null,\"group\":\"1635974311504\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"fastwayFill\",\"dataType\":\"boolean\",\"name\":\"FastWay: Обработано\",\"id\":\"45641635976128197\",\"link\":\"\",\"group\":\"1635974311504\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"fastwayPrice\",\"dataType\":\"boolean\",\"name\":\"FastWay: Цены\",\"id\":\"49911635976771183\",\"link\":\"\",\"group\":\"1635974311504\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"fastwayResult\",\"dataType\":\"boolean\",\"name\":\"Результат заполнения формы\",\"id\":\"24441635977323711\",\"link\":\"\",\"group\":\"1635974311504\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"fastwayResultTitle\",\"dataType\":\"string\",\"name\":\"Result message title\",\"id\":\"92951635977333079\",\"link\":null,\"group\":\"1635974311504\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"fastwayResultText\",\"dataType\":\"string\",\"name\":\"Cсылка на сформированную карточку товара\",\"id\":\"59531635977334947\",\"link\":\"\",\"group\":\"1635974311504\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"fastwayNewID\",\"dataType\":\"string\",\"name\":\"Новый ID\",\"id\":\"30511636188118683\",\"link\":\"\",\"group\":\"1635974311504\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"sold_date_pf\",\"dataType\":\"string\",\"name\":\"Служебное ПФ можно удалить\",\"id\":\"49461640192067785\",\"link\":\"\",\"group\":\"1635974311504\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"tmp_cloudinary\",\"dataType\":\"boolean\",\"name\":\"Можно удалить\",\"id\":\"82151643648440990\",\"link\":\"\",\"group\":\"1635974311504\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"Площадки\",\"id\":1627574410412,\"order\":7},{\"name\":\"Запись о продаже\",\"id\":1618302508063,\"order\":6},{\"name\":\"Статус и наличие\",\"id\":1617387532865,\"order\":0},{\"name\":\"Английский язык\",\"id\":1617387470618,\"order\":2},{\"name\":\"Атрибуты\",\"id\":1617396999819,\"order\":4},{\"name\":\"К удалению\",\"id\":1628508972688,\"order\":8},{\"name\":\"Описания и ключевые\",\"id\":1617387648771,\"order\":3},{\"name\":\"Копия\",\"id\":1631126236514,\"order\":5},{\"name\":\"Удалить\",\"id\":1635974311504,\"order\":9},{\"name\":\"Дополнительные медиа\",\"id\":1617364168856,\"order\":1}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"},{\"sysName\":\"artist\"}]",
+                "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2022-01-14T14:31:30Z",
-                "createBy": 0,
-                "changedBy": 0,
+                "dateChanged": "2022-02-06T20:39:14Z",
+                "createBy": 4244,
+                "changedBy": 4244,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
+                    "name": "SKU",
                     "dataType": "id",
-                    "name": "Username (login)",
-                    "id": "13",
-                    "link": "",
-                    "group": "",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 1,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "json": false,
-                    "typeVariable": {},
-                    "linkType": false,
-                    "indexExists": false,
-                    "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "array": false
-                },
-                "folderId": null
-            },
-            "1397568": {
-                "networkID": 7332,
-                "sysName": "category",
-                "name": "Top Category",
-                "id": 1397568,
-                "dateCreated": "2021-06-21T20:12:42Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"arrayLink\":false,\"linkType\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"sub_interior\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"11481635071329470\",\"link\":\"subcategoryInterior\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"arrayLink\":true,\"linkType\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"showImage\",\"dataType\":\"boolean\",\"name\":\"Показывать картинку категории в меню?\",\"id\":\"14901636636209294\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"arrayLink\":false,\"linkType\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"sub_beauty\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"22421635071342763\",\"link\":\"subcategoryBeauty\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"arrayLink\":true,\"linkType\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"sub_kids\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"28271635071360045\",\"link\":\"subcategoryKids\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"arrayLink\":true,\"linkType\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"nameEng\",\"dataType\":\"string\",\"name\":\"Name\",\"id\":\"28761628325800606\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"arrayLink\":false,\"linkType\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"sub_men\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"51791635071394825\",\"link\":\"subcategoryMen\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"arrayLink\":true,\"linkType\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"isHidden\",\"dataType\":\"boolean\",\"name\":\"Скрыто\",\"id\":\"61181628583416297\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"arrayLink\":false,\"linkType\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"image\",\"dataType\":\"file\",\"name\":\"Картинка для категории\",\"id\":\"78071636636220389\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"arrayLink\":false,\"linkType\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Название\",\"id\":\"84661624306450098\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"arrayLink\":false,\"linkType\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"sub_women\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"86301635071373532\",\"link\":\"subcategoryWomen\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"arrayLink\":true,\"linkType\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"filterByCategoryType\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"89391635072389350\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"arrayLink\":false,\"linkType\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-11-11T13:18:41Z",
-                "createBy": 4400,
-                "changedBy": 1,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -7122,42 +12745,42 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "json": false,
-                    "typeVariable": {},
-                    "linkType": false,
-                    "indexExists": false,
                     "linkOrArrayLinkType": false,
+                    "linkType": false,
                     "arrayLink": false,
+                    "typeVariable": {},
+                    "json": false,
+                    "indexExists": false,
                     "array": false
                 },
-                "folderId": 33632409
+                "folderId": 33618304
             },
-            "1397569": {
-                "networkID": 7332,
-                "sysName": "goods",
-                "name": "Модель товара (номенклатура)",
-                "id": 1397569,
-                "dateCreated": "2021-06-21T21:22:23Z",
+            "1371848": {
+                "networkID": 4203,
+                "sysName": "listings",
+                "name": "Список всех размещений",
+                "id": 1371848,
+                "dateCreated": "2021-04-01T20:08:07Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"vendorCode\",\"name\":\"Артикул\",\"dataType\":\"string\",\"id\":\"51831627942104491\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"name\",\"name\":\"Название\",\"dataType\":\"string\",\"id\":\"90461624310568714\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"description\",\"name\":\"Описание\",\"dataType\":\"string\",\"id\":\"93171624310572841\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"color\",\"name\":\"Цвет\",\"dataType\":\"link\",\"id\":\"85091624310580305\",\"link\":\"colors\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"tags\",\"name\":\"Тэги\",\"dataType\":\"string\",\"id\":\"22641624310590765\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"photo\",\"name\":\"Фото\",\"dataType\":\"file\",\"id\":\"31701624310616441\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"brand\",\"name\":\"Бренд\",\"dataType\":\"link\",\"id\":\"67261624310684962\",\"link\":\"Brands\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[\"moderation_status\",\"brandName\",\"owner_id\",\"id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":true,\"array\":false},{\"sysName\":\"isNew\",\"name\":\"Новый товар\",\"dataType\":\"boolean\",\"id\":\"80961624316987394\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isSale\",\"name\":\"Распродажа\",\"dataType\":\"boolean\",\"id\":\"70721624317005679\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"price\",\"name\":\"Цена, ₽\",\"dataType\":\"number\",\"id\":\"74391627677598162\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"goodSpecification\",\"name\":\"Товарные позиции\",\"dataType\":\"arrayLink\",\"id\":\"16081627942155485\",\"link\":\"goodSpecification\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"typeVariable\":{},\"linkType\":false,\"indexExists\":true,\"array\":false},{\"sysName\":\"oldPrice\",\"name\":\"Старая цена\",\"dataType\":\"number\",\"id\":\"64811628534783413\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"category\",\"name\":\"Категория\",\"dataType\":\"link\",\"id\":\"99311624310596554\",\"link\":\"category\",\"group\":\"1624486873153\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"subcategoryMen\",\"name\":\"Мужское, подкатегория\",\"dataType\":\"link\",\"id\":\"63351624486661483\",\"link\":\"subcategoryMen\",\"group\":\"1624486873153\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"subcategoryWomen\",\"name\":\"Женское, подкатегория\",\"dataType\":\"link\",\"id\":\"54621624486680601\",\"link\":\"subcategoryWomen\",\"group\":\"1624486873153\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"subcategoryKids\",\"name\":\"Детское, подкатегория\",\"dataType\":\"link\",\"id\":\"35001624486729783\",\"link\":\"subcategoryKids\",\"group\":\"1624486873153\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"subcategoryBeauty\",\"name\":\"Бьюти, подкатегория\",\"dataType\":\"link\",\"id\":\"88001624486752931\",\"link\":\"subcategoryBeauty\",\"group\":\"1624486873153\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"subcategoryInterior\",\"name\":\"Интерьер, подкатегория\",\"dataType\":\"link\",\"id\":\"12011624486790587\",\"link\":\"subcategoryInterior\",\"group\":\"1624486873153\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"categoryType\",\"name\":\"Тип товара\",\"dataType\":\"link\",\"id\":\"32291628759887053\",\"link\":\"categoryType\",\"group\":\"1624486873153\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"gender\",\"name\":\"Пол\",\"dataType\":\"link\",\"id\":\"66261634401502556\",\"link\":\"gender\",\"group\":\"1624486873153\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"isDeleted\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"79241630009759326\",\"link\":\"\",\"group\":\"1630009990145\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"moderation_status\",\"name\":\"new,approved,declined\",\"dataType\":\"string\",\"id\":\"77881630010002681\",\"link\":null,\"group\":\"1630009990145\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"decline_reason\",\"name\":\"Причина отказа\",\"dataType\":\"string\",\"id\":\"82001630010018372\",\"link\":null,\"group\":\"1630009990145\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"moderation_status_text\",\"name\":\"Статус модерации\",\"dataType\":\"string\",\"id\":\"66871630010028924\",\"link\":null,\"group\":\"1630009990145\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"weight\",\"name\":\"Значимость для Главной страницы\",\"dataType\":\"number\",\"id\":\"54001633954678861\",\"link\":\"\",\"group\":\"1633954671381\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"seoTitle\",\"name\":\"seoTitle\",\"dataType\":\"string\",\"id\":\"30971639572889023\",\"link\":\"\",\"group\":\"1639572879608\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"seoDescription\",\"name\":\"seoDescription\",\"dataType\":\"string\",\"id\":\"59081639572904825\",\"link\":\"\",\"group\":\"1639572879608\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"seoKeywords\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"58371639572933399\",\"link\":\"\",\"group\":\"1639572879608\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"array\":false}]",
-                "jsonGroupSettings": "[{\"name\":\"Category\",\"id\":1624486873153,\"order\":0},{\"name\":\"Workflow\",\"id\":1630009990145,\"order\":1},{\"name\":\"Новости\",\"id\":1633954671381,\"order\":2},{\"name\":\"SEO\",\"id\":1639572879608,\"order\":3}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
-                "jsonSettings": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"stickerColor\",\"name\":\"Стикер (подсветка)\",\"dataType\":\"string\",\"id\":\"10391644399367241\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ebayStartTime\",\"name\":\"Дата размещения\",\"dataType\":\"date\",\"id\":\"10431644228795510\",\"link\":\"\",\"group\":\"1644166973166\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"meshokFree\",\"name\":\"Бесплатный лот\",\"dataType\":\"boolean\",\"id\":\"12211644169258476\",\"link\":\"\",\"group\":\"1644166961082\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Бесплатный лот\",\"Обычный лот\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ArtNowResponse\",\"name\":\"Ответ сервера\",\"dataType\":\"json\",\"id\":\"13251644167322915\",\"link\":\"\",\"group\":\"1644166943042\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"meshokSaleType\",\"name\":\"Тип продажи (Sale или Auction)\",\"dataType\":\"boolean\",\"id\":\"14951644168469793\",\"link\":\"\",\"group\":\"1644166961082\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Sale\",\"Auction\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"meshokTitle\",\"name\":\"Заголовок лота (max 100)\",\"dataType\":\"string\",\"id\":\"15441644168410613\",\"link\":\"\",\"group\":\"1644166961082\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ebayListingDuration\",\"name\":\"Продолжительность\",\"dataType\":\"string\",\"id\":\"15441644228846946\",\"link\":null,\"group\":\"1644166973166\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ebay_url\",\"name\":\"eBay\",\"dataType\":\"string\",\"id\":\"18211644169498004\",\"link\":\"\",\"group\":\"1644166973166\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ebayauctionStatus\",\"name\":\"Статус на сайте\",\"dataType\":\"link\",\"id\":\"18601644228682861\",\"link\":\"placesStatus\",\"group\":\"1644176327535\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"etsy_url\",\"name\":\"Etsy\",\"dataType\":\"string\",\"id\":\"19001644176435778\",\"link\":\"\",\"group\":\"1644176293721\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"meshokStatusColor\",\"name\":\"Статус (цвет)\",\"dataType\":\"string\",\"id\":\"19721644169001088\",\"link\":\"\",\"group\":\"1644166961082\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"meshokStatus\",\"name\":\"Статус на Мешке\",\"dataType\":\"link\",\"id\":\"20191644169008692\",\"link\":\"placesStatus\",\"group\":\"1644166961082\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"artist\",\"name\":\"Автор\",\"dataType\":\"link\",\"id\":\"21291644172744708\",\"link\":\"artists\",\"group\":\"1644166315031\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ebayStatus\",\"name\":\"Статус на сайте\",\"dataType\":\"link\",\"id\":\"22031644169505254\",\"link\":\"placesStatus\",\"group\":\"1644166973166\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ebayPrice\",\"name\":\"Цена на eBay, USD\",\"dataType\":\"decimal\",\"id\":\"23181644228321115\",\"link\":\"\",\"group\":\"1644166973166\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ArtNowPublishTime\",\"name\":\"Время публикации на ArtNow\",\"dataType\":\"date\",\"id\":\"24521644167207062\",\"link\":\"\",\"group\":\"1644166943042\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"place\",\"name\":\"Сайт\",\"dataType\":\"link\",\"id\":\"25241617307878901\",\"link\":\"places\",\"group\":\"1644166890366\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"stickers\",\"name\":\"Стикеры\",\"dataType\":\"arrayLink\",\"id\":\"26441644356516508\",\"link\":\"listingStickers\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"name\",\"name\":\"Название\",\"dataType\":\"string\",\"id\":\"27581644172742591\",\"link\":\"\",\"group\":\"1644166315031\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"listing_status\",\"name\":\"Статус на сайте\",\"dataType\":\"link\",\"id\":\"29211619996964238\",\"link\":\"Status\",\"group\":\"1644166890366\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ArtNowStatusColor\",\"name\":\"Цвет (статус)\",\"dataType\":\"string\",\"id\":\"32131644168115144\",\"link\":\"\",\"group\":\"1644166943042\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"meshokRecommended\",\"name\":\"Рекомендуемый (Y/N)\",\"dataType\":\"boolean\",\"id\":\"37131644168579706\",\"link\":\"\",\"group\":\"1644166961082\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Yes\",\"No\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"artfinderStatusColor\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"43181644176653644\",\"link\":\"\",\"group\":\"1644176344635\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"active\",\"name\":\"Активная карточка\",\"dataType\":\"boolean\",\"id\":\"43441644168198277\",\"link\":\"\",\"group\":\"1644166315031\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Активная\",\"Архивная\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"meshokPrice\",\"name\":\"Цена на Мешке (купить сейчас)\",\"dataType\":\"decimal\",\"id\":\"44791644168647442\",\"link\":\"\",\"group\":\"1644166961082\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ebayauctionStatusColor\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"44821644176644662\",\"link\":\"\",\"group\":\"1644176327535\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"meshok_url\",\"name\":\" Мешок\",\"dataType\":\"string\",\"id\":\"45671644168738640\",\"link\":\"\",\"group\":\"1644166961082\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"listingLog\",\"name\":\"Лог\",\"dataType\":\"arrayLink\",\"id\":\"46981644399878505\",\"link\":\"listingLog\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ebayauction_url\",\"name\":\"eBay Auction\",\"dataType\":\"string\",\"id\":\"48561644176507680\",\"link\":\"\",\"group\":\"1644176327535\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"artmajeur_url\",\"name\":\"Artmajeur\",\"dataType\":\"string\",\"id\":\"51941644176483110\",\"link\":\"\",\"group\":\"1644176364118\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"thumbnail\",\"name\":\"Миниатюра\",\"dataType\":\"file\",\"id\":\"52731644167254431\",\"link\":\"\",\"group\":\"1644166315031\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ebayItem_id\",\"name\":\"ID лота на eBay\",\"dataType\":\"string\",\"id\":\"55091644169488622\",\"link\":\"\",\"group\":\"1644166973166\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"short_description\",\"name\":\"Описание\",\"dataType\":\"string\",\"id\":\"55501644172744029\",\"link\":\"\",\"group\":\"1644166315031\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ebayTitle\",\"name\":\"Заголовок (max 80 знаков)\",\"dataType\":\"string\",\"id\":\"55741644228295017\",\"link\":null,\"group\":\"1644166973166\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ebayDescription\",\"name\":\"Описание (html)\",\"dataType\":\"string\",\"id\":\"59821644228312136\",\"link\":\"\",\"group\":\"1644166973166\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"html\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"meshokItem_id\",\"name\":\"ID лота на Мешке\",\"dataType\":\"number\",\"id\":\"62541644168737226\",\"link\":\"\",\"group\":\"1644166961082\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"meshokBold\",\"name\":\"Выделение жирным (Y/N)\",\"dataType\":\"boolean\",\"id\":\"63531644168581207\",\"link\":\"\",\"group\":\"1644166961082\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Yes\",\"No\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ebayauctionListingDuration\",\"name\":\"Продолжительность торгов\",\"dataType\":\"string\",\"id\":\"64481644228854564\",\"link\":null,\"group\":\"1644176327535\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"listing_result\",\"name\":\"Результат\",\"dataType\":\"json\",\"id\":\"64551619538625205\",\"link\":\"\",\"group\":\"1644166890366\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"radioOptions\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"booleanOptions\":[\"True\",\"False\"],\"customOption\":false,\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"multipleChoice\":[{\"value\":\"success\",\"label\":\"Размещено\"},{\"value\":\"error\",\"label\":\"Ошибка!\"}]},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"ArtNowDiscount_id\",\"name\":\"Скидка на ArtNow (ID и срок акции)\",\"dataType\":\"link\",\"id\":\"65311644167302182\",\"link\":\"artnow_discount\",\"group\":\"1644166943042\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"etsyStatusColor\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"65311644176642614\",\"link\":\"\",\"group\":\"1644176293721\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"meshokLongevity\",\"name\":\"Продолжительность торгов в днях\",\"dataType\":\"number\",\"id\":\"65491644168952791\",\"link\":\"\",\"group\":\"1644166961082\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ebayauctionCurrentPrice\",\"name\":\"Аукционная цена, USD\",\"dataType\":\"decimal\",\"id\":\"65641644228730547\",\"link\":\"\",\"group\":\"1644176327535\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ozon_url\",\"name\":\"Озон\",\"dataType\":\"string\",\"id\":\"66021644176417456\",\"link\":\"\",\"group\":\"1644176279964\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ArtNowPrice\",\"name\":\"Цена для ArtNow\",\"dataType\":\"decimal\",\"id\":\"67171644167110674\",\"link\":\"\",\"group\":\"1644166943042\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"artworkStatusColor\",\"name\":\"Статус картины (цвет)\",\"dataType\":\"string\",\"id\":\"67481644181000890\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ebay_account\",\"name\":\"Аккаунт eBay\",\"dataType\":\"string\",\"id\":\"73851644169464887\",\"link\":\"\",\"group\":\"1644166973166\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ArtNowArtwork_id\",\"name\":\"ID картины на ArtNow\",\"dataType\":\"number\",\"id\":\"73911644167167312\",\"link\":\"\",\"group\":\"1644166943042\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"sku\",\"name\":\"Артикул\",\"dataType\":\"link\",\"id\":\"74951617307790142\",\"link\":\"artworks\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[\"places_for_change.id\",\"places_for_change.place\",\"places_for_change\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":true,\"array\":false},{\"sysName\":\"ebayauctionStartTime\",\"name\":\"Дата начала торгов\",\"dataType\":\"date\",\"id\":\"76221644228807421\",\"link\":\"\",\"group\":\"1644176327535\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ozonStatusColor\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"76351644176628939\",\"link\":\"\",\"group\":\"1644176279964\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"artmajeurStatusColor\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"78831644176663231\",\"link\":\"\",\"group\":\"1644176364118\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"artworkStatus\",\"name\":\"Статус картины\",\"dataType\":\"link\",\"id\":\"84191644180986673\",\"link\":\"Status\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ArtNowDiscountOn\",\"name\":\"Скидка на ArtNow\",\"dataType\":\"boolean\",\"id\":\"86401644189698747\",\"link\":\"\",\"group\":\"1644166943042\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Скидка\",\"Обычная цена\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"meshokPublishTime\",\"name\":\"Время публикации на Мешке\",\"dataType\":\"date\",\"id\":\"86931644169370276\",\"link\":\"\",\"group\":\"1644166961082\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"meshokDescription\",\"name\":\"Описание лота\",\"dataType\":\"string\",\"id\":\"88341644168781274\",\"link\":\"\",\"group\":\"1644166961082\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"html\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"meshokStartPrice\",\"name\":\"Аукционная цена\",\"dataType\":\"decimal\",\"id\":\"89791644169142743\",\"link\":\"\",\"group\":\"1644166961082\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ArtNow_url\",\"name\":\"ArtNow\",\"dataType\":\"string\",\"id\":\"92671644167182314\",\"link\":\"\",\"group\":\"1644166943042\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"meshokSaleType_old\",\"name\":\"Статус на Мешке (устарело)\",\"dataType\":\"string\",\"id\":\"93571644185013930\",\"link\":\"\",\"group\":\"1644166890366\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"pictures\",\"name\":\"Изображения\",\"dataType\":\"file\",\"id\":\"94741644172959225\",\"link\":\"\",\"group\":\"1644166315031\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"meshokRespond\",\"name\":\"Ответ сервера\",\"dataType\":\"json\",\"id\":\"96721644168999188\",\"link\":\"\",\"group\":\"1644166961082\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"artfinder_url\",\"name\":\"ArtFinder\",\"dataType\":\"string\",\"id\":\"96881644176458295\",\"link\":\"\",\"group\":\"1644176344635\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ebayStatusColor\",\"name\":\"Статус на сайте (цвет)\",\"dataType\":\"string\",\"id\":\"97291644169514157\",\"link\":\"\",\"group\":\"1644166973166\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ArtNowStatus\",\"name\":\"Статус  на ArtNow\",\"dataType\":\"link\",\"id\":\"99041644168072624\",\"link\":\"placesStatus\",\"group\":\"1644166943042\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"eBay Fixprice\",\"id\":1644166973166,\"order\":3},{\"name\":\"ArtNow\",\"id\":1644166943042,\"order\":1},{\"name\":\"ArtFinder\",\"id\":1644176344635,\"order\":7},{\"name\":\"Базовая информация о предмете\",\"id\":1644166315031,\"order\":0},{\"name\":\"Мешок\",\"id\":1644166961082,\"order\":2},{\"name\":\"Legacy (удалить)\",\"id\":1644166890366,\"order\":9},{\"name\":\"etsy\",\"id\":1644176293721,\"order\":6},{\"name\":\"eBay Auction\",\"id\":1644176327535,\"order\":4},{\"name\":\"Artmajeur\",\"id\":1644176364118,\"order\":8},{\"name\":\"Озон\",\"id\":1644176279964,\"order\":5}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"sku\"}]",
+                "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-12-15T12:55:57Z",
-                "createBy": 4400,
-                "changedBy": 6452,
+                "dateChanged": "2022-02-09T10:17:36Z",
+                "createBy": 4244,
+                "changedBy": 4244,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
-                    "dataType": "id",
                     "name": "id",
+                    "dataType": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -7174,42 +12797,42 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "json": false,
-                    "typeVariable": {},
-                    "linkType": false,
-                    "indexExists": false,
                     "linkOrArrayLinkType": false,
+                    "linkType": false,
                     "arrayLink": false,
+                    "typeVariable": {},
+                    "json": false,
+                    "indexExists": false,
                     "array": false
                 },
-                "folderId": 33635177
+                "folderId": 33638953
             },
-            "1398622": {
-                "networkID": 7332,
-                "sysName": "subcategoryMen",
-                "name": "Subcategory Men",
-                "id": 1398622,
-                "dateCreated": "2021-06-23T21:03:25Z",
+            "99017356": {
+                "networkID": 4203,
+                "sysName": "listingLog",
+                "name": "Лог листингов",
+                "id": 99017356,
+                "dateCreated": "2021-08-31T10:45:14Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"nameEng\",\"name\":\"Name\",\"dataType\":\"string\",\"id\":\"11191624482230189\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"isHidden\",\"name\":\"Скрыто \",\"dataType\":\"boolean\",\"id\":\"11231628594842834\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"type\",\"name\":\"Type\",\"dataType\":\"link\",\"id\":\"53831628157424048\",\"link\":\"categoryType\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true},{\"sysName\":\"name\",\"name\":\"Название\",\"dataType\":\"string\",\"id\":\"98481624482221306\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"item\",\"name\":\"Объект\",\"dataType\":\"link\",\"id\":\"11971627733338715\",\"link\":\"artworks\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"api_response\",\"name\":\"Ответ сервера\",\"dataType\":\"json\",\"id\":\"17711644402128597\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"status\",\"name\":\"Статус\",\"dataType\":\"boolean\",\"id\":\"19281627733411173\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Успех\",\"Ошибка\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"event\",\"name\":\"Событие\",\"dataType\":\"string\",\"id\":\"75261627733451401\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"value\",\"name\":\"Передаваемое значение\",\"dataType\":\"string\",\"id\":\"82781644415104546\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date\",\"name\":\"Дата\",\"dataType\":\"date\",\"id\":\"91901627733221180\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/YY\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"places\",\"name\":\"Площадка\",\"dataType\":\"link\",\"id\":\"94931627733233111\",\"link\":\"places\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"listing_id\",\"name\":\"Листинг\",\"dataType\":\"link\",\"id\":\"97691644399978218\",\"link\":\"listings\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
                 "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"listing_id\"},{\"sysName\":\"places\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-08-11T13:55:38Z",
-                "createBy": 4400,
-                "changedBy": 4400,
+                "dateChanged": "2022-02-09T14:06:18Z",
+                "createBy": 4244,
+                "changedBy": 4244,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
-                    "dataType": "id",
                     "name": "id",
+                    "dataType": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -7226,302 +12849,42 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "json": false,
-                    "typeVariable": {},
-                    "linkType": false,
-                    "indexExists": false,
                     "linkOrArrayLinkType": false,
+                    "linkType": false,
                     "arrayLink": false,
+                    "typeVariable": {},
+                    "json": false,
+                    "indexExists": false,
                     "array": false
                 },
-                "folderId": 33632409
+                "folderId": 33638953
             },
-            "1398623": {
-                "networkID": 7332,
-                "sysName": "subcategoryWomen",
-                "name": "Subcategory Women",
-                "id": 1398623,
-                "dateCreated": "2021-06-23T21:53:00Z",
+            "99075200": {
+                "networkID": 4203,
+                "sysName": "listingStickers",
+                "name": "Стикеры для листингов",
+                "id": 99075200,
+                "dateCreated": "2022-02-08T21:50:40Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Название\",\"id\":\"61181628326441151\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"nameEng\",\"dataType\":\"string\",\"name\":\"Name\",\"id\":\"70391628326447294\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"type\",\"dataType\":\"link\",\"name\":\"Type\",\"id\":\"83741628326453457\",\"link\":\"categoryType\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"array\":false},{\"sysName\":\"isHidden\",\"dataType\":\"boolean\",\"name\":\"Скрыто\",\"id\":\"59901628585355496\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"array\":false}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"sticker\",\"dataType\":\"string\",\"name\":\"Стикер\",\"id\":\"45641644357047218\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"array\":false}]",
                 "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-08-11T13:55:06Z",
-                "createBy": 4400,
-                "changedBy": 4400,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "json": false,
-                    "typeVariable": {},
-                    "linkType": false,
-                    "indexExists": false,
-                    "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "array": false
-                },
-                "folderId": 33632409
-            },
-            "1398624": {
-                "networkID": 7332,
-                "sysName": "subcategoryKids",
-                "name": "Subcategory Kids",
-                "id": 1398624,
-                "dateCreated": "2021-06-23T21:53:31Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"isHidden\",\"name\":\"Скрыто\",\"dataType\":\"boolean\",\"id\":\"28731628594900052\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"type\",\"name\":\"Type\",\"dataType\":\"link\",\"id\":\"35611628326535928\",\"link\":\"categoryType\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true},{\"sysName\":\"nameEng\",\"name\":\"Name\",\"dataType\":\"string\",\"id\":\"45691628326523695\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"name\",\"name\":\"Название\",\"dataType\":\"string\",\"id\":\"98871628326510429\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-08-11T13:57:12Z",
-                "createBy": 4400,
-                "changedBy": 4400,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "json": false,
-                    "typeVariable": {},
-                    "linkType": false,
-                    "indexExists": false,
-                    "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "array": false
-                },
-                "folderId": 33632409
-            },
-            "1398625": {
-                "networkID": 7332,
-                "sysName": "subcategoryBeauty",
-                "name": "Subcategory Beauty",
-                "id": 1398625,
-                "dateCreated": "2021-06-23T21:54:33Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"nameEng\",\"name\":\"Name\",\"dataType\":\"string\",\"id\":\"63331628326588190\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"name\",\"name\":\"Название\",\"dataType\":\"string\",\"id\":\"79511628326574829\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"isHidden\",\"name\":\"Скрыто\",\"dataType\":\"boolean\",\"id\":\"85841628594953602\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"type\",\"name\":\"Type\",\"dataType\":\"link\",\"id\":\"96551628326601208\",\"link\":\"categoryType\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-08-11T13:59:38Z",
-                "createBy": 4400,
-                "changedBy": 4400,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "json": false,
-                    "typeVariable": {},
-                    "linkType": false,
-                    "indexExists": false,
-                    "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "array": false
-                },
-                "folderId": 33632409
-            },
-            "1398626": {
-                "networkID": 7332,
-                "sysName": "subcategoryInterior",
-                "name": "Subcategory Interior",
-                "id": 1398626,
-                "dateCreated": "2021-06-23T21:55:14Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"name\",\"name\":\"Название\",\"dataType\":\"string\",\"id\":\"10681628326640240\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"type\",\"name\":\"Type\",\"dataType\":\"link\",\"id\":\"19871628326652213\",\"link\":\"categoryType\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true},{\"sysName\":\"isHidden\",\"name\":\"Скрыто\",\"dataType\":\"boolean\",\"id\":\"36831628595010989\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"nameEng\",\"name\":\"Name\",\"dataType\":\"string\",\"id\":\"81531628326644227\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"arrayLink\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-08-11T14:03:37Z",
-                "createBy": 4400,
-                "changedBy": 4400,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "json": false,
-                    "typeVariable": {},
-                    "linkType": false,
-                    "indexExists": false,
-                    "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "array": false
-                },
-                "folderId": 33632409
-            },
-            "1418516": {
-                "networkID": 7332,
-                "sysName": "goodSpecification",
-                "name": "Товарная позиция (на складе)",
-                "id": 1418516,
-                "dateCreated": "2021-08-02T22:14:13Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"reserve\",\"name\":\"Резерв\",\"dataType\":\"number\",\"id\":\"29631627948136821\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"remains\",\"name\":\"Остаток\",\"dataType\":\"number\",\"id\":\"43641633940810054\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"spec_name\",\"name\":\"Описание позиции\",\"dataType\":\"string\",\"id\":\"45521629031108883\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"good\",\"name\":\"Товар\",\"dataType\":\"link\",\"id\":\"46811627942463440\",\"link\":\"goods\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"quantity\",\"name\":\"Количество\",\"dataType\":\"number\",\"id\":\"57751627948131838\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"size\",\"name\":\"Размер\",\"dataType\":\"link\",\"id\":\"98291627942532075\",\"link\":\"size\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"spec_name\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-11-24T22:38:19Z",
-                "createBy": 4400,
-                "changedBy": 1,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "json": false,
-                    "typeVariable": {},
-                    "linkType": false,
-                    "indexExists": false,
-                    "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "array": false
-                },
-                "folderId": 33635177
-            },
-            "1418517": {
-                "networkID": 7332,
-                "sysName": "colors",
-                "name": "Colors",
-                "id": 1418517,
-                "dateCreated": "2021-08-02T23:58:43Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"color\",\"name\":\"Цвет\",\"dataType\":\"string\",\"id\":\"34591627948731249\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"color\"}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"sticker\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": false,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-11-24T22:24:27Z",
-                "createBy": 4400,
-                "changedBy": 1,
+                "dateChanged": "2022-02-08T21:51:10Z",
+                "createBy": 4244,
+                "changedBy": 4244,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
-                    "dataType": "id",
                     "name": "id",
+                    "dataType": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -7538,67 +12901,15 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "json": false,
-                    "typeVariable": {},
-                    "linkType": false,
-                    "indexExists": false,
                     "linkOrArrayLinkType": false,
+                    "linkType": false,
                     "arrayLink": false,
+                    "typeVariable": {},
+                    "json": false,
+                    "indexExists": false,
                     "array": false
                 },
-                "folderId": 33632409
-            },
-            "1426040": {
-                "networkID": 7332,
-                "sysName": "Brands",
-                "name": "Brands",
-                "id": 1426040,
-                "dateCreated": "2021-08-10T10:38:26Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"descriptionHeader\",\"dataType\":\"string\",\"name\":\"Заголовок описания\",\"id\":\"10691634394430253\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"moderation_status_message\",\"dataType\":\"string\",\"name\":\"Статус\",\"id\":\"16321628685693721\",\"link\":null,\"group\":\"1628610366405\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"year\",\"dataType\":\"number\",\"name\":\"Год создания\",\"id\":\"17061628592689240\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"shopRules\",\"dataType\":\"string\",\"name\":\"Правила возврата продукции\",\"id\":\"17571628592771666\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"holidays\",\"dataType\":\"boolean\",\"name\":\"каникулы\",\"id\":\"20341639751041570\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"salesCity\",\"dataType\":\"string\",\"name\":\"Тариф (25% - СДЭК пункт / 27% - Курьер) \",\"id\":\"21471628592699059\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"companyName\",\"dataType\":\"string\",\"name\":\"Юридическое наименование  \",\"id\":\"22421640093084982\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"pending_goods_ids\",\"dataType\":\"arrayLink\",\"name\":\"Товары, ожидающие модерации\",\"id\":\"22601628703842456\",\"link\":\"goods\",\"group\":\"1628684864978\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"array\":false},{\"sysName\":\"accept_TOS\",\"dataType\":\"json\",\"name\":\"Правила площадки\",\"id\":\"23631634982276889\",\"link\":\"\",\"group\":\"1628610366405\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"accept\",\"label\":\"Принимаю правила использования площадки VitrinaBrands\"}]},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"good_ids\",\"dataType\":\"arrayLink\",\"name\":\"Товары (модели)\",\"id\":\"26571628684869720\",\"link\":\"goods\",\"group\":\"1628684864978\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"array\":false},{\"sysName\":\"brandName\",\"dataType\":\"string\",\"name\":\"Название бренда\",\"id\":\"34541628592680613\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"seoKeywords\",\"dataType\":\"string\",\"name\":\"seoKeywords\",\"id\":\"35051639573194166\",\"link\":\"\",\"group\":\"1639573183227\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"owner_id\",\"dataType\":\"link\",\"name\":\"Владелец\",\"id\":\"36491628592826659\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"array\":false},{\"sysName\":\"delivery\",\"dataType\":\"string\",\"name\":\"Адрес (пункта СДЭК / вашего офиса)\",\"id\":\"37351628592700811\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"INN\",\"dataType\":\"string\",\"name\":\"ИНН\",\"id\":\"45701640093071832\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Описание\",\"id\":\"47341628592699578\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"manager_alert\",\"dataType\":\"string\",\"name\":\"Внимание\",\"id\":\"47341637789593389\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"tax\",\"dataType\":\"link\",\"name\":\"НДС\",\"id\":\"47381640101252292\",\"link\":\"tax\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"array\":false},{\"sysName\":\"seoTitle\",\"dataType\":\"string\",\"name\":\"seoTitle\",\"id\":\"55861639573191684\",\"link\":\"\",\"group\":\"1639573183227\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"moderation_colour\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"63801628703966398\",\"link\":\"\",\"group\":\"1628610366405\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"logo\",\"dataType\":\"file\",\"name\":\"Логотип\",\"id\":\"72191628592688721\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"seoDescription\",\"dataType\":\"string\",\"name\":\"seoDescription\",\"id\":\"74241639573193321\",\"link\":\"\",\"group\":\"1639573183227\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"moderation_status\",\"dataType\":\"string\",\"name\":\"Статус модерации\",\"id\":\"74811628610372656\",\"link\":null,\"group\":\"1628610366405\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"isOnHolidays\",\"dataType\":\"boolean\",\"name\":\"каникулы\",\"id\":\"78701640093054576\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"city\",\"dataType\":\"string\",\"name\":\"Город\",\"id\":\"80531628592689780\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"internalMessages\",\"dataType\":\"arrayLink\",\"name\":\"Сообщения от администратора\",\"id\":\"82601641889792598\",\"link\":\"internalMessages\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"array\":false},{\"sysName\":\"phone\",\"dataType\":\"string\",\"name\":\"Телефон\",\"id\":\"86461640093085688\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"isHidden\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"88081628672775037\",\"link\":\"\",\"group\":\"1628610366405\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"image_hor\",\"dataType\":\"file\",\"name\":\"Иллюстрация (900x320)\",\"id\":\"91731634981558700\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"image_vert\",\"dataType\":\"file\",\"name\":\"Иллюстрация (300x460)\",\"id\":\"95951634981559396\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false}]",
-                "jsonGroupSettings": "[{\"name\":\"Tech fields\",\"id\":1628610366405,\"order\":0},{\"name\":\"Goods\",\"id\":1628684864978,\"order\":1},{\"name\":\"seo\",\"id\":1639573183227,\"order\":2}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"brandName\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2022-01-12T16:47:23Z",
-                "createBy": 21,
-                "changedBy": 6452,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "json": false,
-                    "typeVariable": {},
-                    "linkType": false,
-                    "indexExists": false,
-                    "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "array": false
-                },
-                "folderId": 33648500
+                "folderId": 33638953
             }
         },
         "isSuccessWrite": false,
@@ -7606,184 +12917,9 @@ const App = (props) => {
         "writeResponse": null,
         "fileds": [
             {
-                "sysName": "brand",
-                "dataType": "link",
-                "name": "Бренд",
-                "id": "67261624310684962",
-                "link": "Brands",
-                "group": "0",
-                "tags": "",
-                "indexing": true,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 7,
-                "linkIndexFieldSysName": [
-                    "moderation_status",
-                    "brandName",
-                    "owner_id",
-                    "id"
-                ],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": true,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "category",
-                "dataType": "link",
-                "name": "Категория",
-                "id": "99311624310596554",
-                "link": "category",
-                "group": "1624486873153",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "color",
-                "dataType": "link",
-                "name": "Цвет",
-                "id": "85091624310580305",
-                "link": "colors",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "decline_reason",
-                "dataType": "string",
-                "name": "Причина отказа",
-                "id": "82001630010018372",
-                "link": null,
-                "group": "1630009990145",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "description",
-                "dataType": "string",
-                "name": "Описание",
-                "id": "93171624310572841",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "goodSpecification",
-                "dataType": "arrayLink",
-                "name": "Товарные позиции",
-                "id": "16081627942155485",
-                "link": "goodSpecification",
-                "group": "0",
-                "tags": "",
-                "indexing": true,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 11,
-                "linkIndexFieldSysName": [
-                    "id"
-                ],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": true,
-                "linkOrArrayLinkType": true,
-                "arrayLink": true,
-                "array": false
-            },
-            {
                 "sysName": "id",
-                "dataType": "id",
                 "name": "id",
+                "dataType": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -7800,299 +12936,21 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
                 "linkOrArrayLinkType": false,
+                "linkType": false,
                 "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
                 "array": false
             },
             {
-                "sysName": "isDeleted",
-                "dataType": "boolean",
-                "name": "",
-                "id": "79241630009759326",
-                "link": "",
-                "group": "1630009990145",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "isNew",
-                "dataType": "boolean",
-                "name": "Новый товар",
-                "id": "80961624316987394",
-                "link": "",
+                "sysName": "stickers",
+                "name": "Стикеры",
+                "dataType": "arrayLink",
+                "id": "26441644356516508",
+                "link": "listingStickers",
                 "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 8,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "Да",
-                        "Нет"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false"
-                },
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "isSale",
-                "dataType": "boolean",
-                "name": "Распродажа",
-                "id": "70721624317005679",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 9,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "Да",
-                        "Нет"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false"
-                },
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "moderation_status",
-                "dataType": "string",
-                "name": "new,approved,declined",
-                "id": "77881630010002681",
-                "link": null,
-                "group": "1630009990145",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "name",
-                "dataType": "string",
-                "name": "Название",
-                "id": "90461624310568714",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "oldPrice",
-                "dataType": "number",
-                "name": "Старая цена",
-                "id": "64811628534783413",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 12,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "positiveNum",
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "photo",
-                "dataType": "file",
-                "name": "Фото",
-                "id": "31701624310616441",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 6,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "multipleImages",
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "price",
-                "dataType": "number",
-                "name": "Цена, ₽",
-                "id": "74391627677598162",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 10,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "subcategoryBeauty",
-                "dataType": "link",
-                "name": "Бьюти, подкатегория",
-                "id": "88001624486752931",
-                "link": "subcategoryBeauty",
-                "group": "1624486873153",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
@@ -8106,185 +12964,17 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": false,
                 "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "subcategoryInterior",
-                "dataType": "link",
-                "name": "Интерьер, подкатегория",
-                "id": "12011624486790587",
-                "link": "subcategoryInterior",
-                "group": "1624486873153",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "subcategoryKids",
-                "dataType": "link",
-                "name": "Детское, подкатегория",
-                "id": "35001624486729783",
-                "link": "subcategoryKids",
-                "group": "1624486873153",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "subcategoryMen",
-                "dataType": "link",
-                "name": "Мужское, подкатегория",
-                "id": "63351624486661483",
-                "link": "subcategoryMen",
-                "group": "1624486873153",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "subcategoryWomen",
-                "dataType": "link",
-                "name": "Женское, подкатегория",
-                "id": "54621624486680601",
-                "link": "subcategoryWomen",
-                "group": "1624486873153",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
-                "linkType": true,
-                "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "tags",
-                "dataType": "string",
-                "name": "Тэги",
-                "id": "22641624310590765",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
-                "typeVariable": {},
                 "linkType": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "vendorCode",
-                "dataType": "string",
-                "name": "Артикул",
-                "id": "51831627942104491",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "json": false,
+                "arrayLink": true,
                 "typeVariable": {},
-                "linkType": false,
+                "json": false,
                 "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
                 "array": false
             }
         ],
         "quickSearch": "true",
-        "httpParams": null
+        "httpParams": {}
     }
 
     let authExample = {
