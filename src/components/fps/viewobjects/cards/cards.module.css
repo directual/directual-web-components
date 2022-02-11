@@ -222,13 +222,12 @@
   z-index: 2;
 }
 .card .cardInnerWrapper .cardText .cardHeader {
-  white-space: nowrap;
   max-width: 100%;
   display: flex;
   align-items: center;
 }
 .card .cardInnerWrapper .cardText .cardHeader .txt {
-  overflow: auto;
+  overflow: hidden;
   text-overflow: ellipsis;
   flex-grow: 2;
 }

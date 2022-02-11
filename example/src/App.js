@@ -1088,7 +1088,7 @@ const App = (props) => {
                 "id": "a10d94e4-cd9f-4ff3-8f0d-ff534a132070",
                 "status_text": "The place is under moderation",
                 "date_added": 1642493625000,
-                "title": "Golden Gate Bridge",
+                "title": "Golden Gate Bridge Golden Gate Bridge Golden Gate Bridge Golden Gate Bridge Golden Gate Bridge Golden Gate Bridge",
                 "photos": "https://api.directual.com/fileUploaded/showcase-attractions/web/e44089e4-b1c7-4fbe-bb3f-cf5db80cfc48.jpeg,https://api.directual.com/fileUploaded/showcase-attractions/web/3e3a1ea9-a045-4d6f-bf08-6a2c8ac7564b.jpeg"
             },
             {
