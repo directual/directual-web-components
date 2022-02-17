@@ -362,8 +362,10 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
           {data.params.data.columnOrder.map(section =>
             data.params.data.columns[section].fieldIds
             && data.params.data.columns[section].fieldIds.length > 0
-            && checkSectionConditionals(data.params.data.columns[section].cond, data.params.data.columns[section].condOperator) &&
-            <div style={{ marginBottom: 38 }}>
+            &&
+            <div //style={{ marginBottom: 38 }} 
+              className={`${styles.marginBottom38} ${checkSectionConditionals(data.params.data.columns[section].cond, data.params.data.columns[section].condOperator) ?
+              '' : styles.hideSection}`}>
               {data.params.data.columnOrder.length > 1 && data.params.data.columns[section].display &&
                 <FormSection title=
                   {data.params.data.columns[section].title} />}
