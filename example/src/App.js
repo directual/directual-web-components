@@ -85,32 +85,68 @@ const App = (props) => {
     }
 
     let cardActions = {
-        "sl": "allPlaces",
+        "sl": "getPortfolio",
         "pageSize": "10",
         "headerField": null,
         "params": {
+            "cardListLayout": "grid",
+            "cardHeaderComment": "title",
+            "deleteField": "",
+            "cardBodyText": "pipeline_status",
+            "cardImage": false,
+            "cardImageField": "",
+            "cardImageType": "none",
+            "cardImageSize": 100,
+            "objectView": {},
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "city",
-                        "fetch": [],
-                        "sysName": "city",
-                        "name": "City",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "country",
+                        "fieldSysName": "Cause",
                         "fetch": [
                             {
-                                "fieldSysName": "area",
+                                "fieldSysName": "id",
                                 "condition": null,
                                 "fetch": []
                             },
                             {
-                                "fieldSysName": "country",
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "Cause",
+                        "name": "Cause",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "pipeline_cause"
+                    },
+                    {
+                        "fieldSysName": "Configuration",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "Configuration",
+                        "name": "Configuration",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "configuration"
+                    },
+                    {
+                        "fieldSysName": "GP",
+                        "fetch": [
+                            {
+                                "fieldSysName": "firstName",
                                 "condition": null,
                                 "fetch": []
                             },
@@ -120,77 +156,224 @@ const App = (props) => {
                                 "fetch": []
                             },
                             {
-                                "fieldSysName": "population",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "region",
+                                "fieldSysName": "lastName",
                                 "condition": null,
                                 "fetch": []
                             }
                         ],
-                        "sysName": "country",
-                        "name": "Country",
-                        "dataType": "link",
+                        "sysName": "GP",
+                        "name": "GP",
+                        "dataType": "string",
                         "format": "",
-                        "formatOptions": {},
-                        "link": "countries"
-                    },
-                    {
-                        "fieldSysName": "cover_photo",
-                        "fetch": [],
-                        "sysName": "cover_photo",
-                        "name": "",
-                        "dataType": "file",
-                        "format": "image",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "date_added",
+                        "fieldSysName": "Industry",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "Industry",
+                        "name": "Industry",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "industry"
+                    },
+                    {
+                        "fieldSysName": "RevenueGeoIds",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "RevenueGeoIds",
+                        "name": "Revenue GEO",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "revenueGeo"
+                    },
+                    {
+                        "fieldSysName": "Stage",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "Stage",
+                        "name": "Stage",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "stage"
+                    },
+                    {
+                        "fieldSysName": "admin",
                         "fetch": [],
-                        "sysName": "date_added",
-                        "name": "Date added",
+                        "sysName": "admin",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "analyst_ids",
+                        "fetch": [],
+                        "sysName": "analyst_ids",
+                        "name": "Analysts team",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "attached_files",
+                        "fetch": [],
+                        "sysName": "attached_files",
+                        "name": "Attached files",
+                        "dataType": "file",
+                        "format": "multipleFiles",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "attachments",
+                        "fetch": [],
+                        "sysName": "attachments",
+                        "name": "Attachments",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "attachments"
+                    },
+                    {
+                        "fieldSysName": "button_link",
+                        "fetch": [],
+                        "sysName": "button_link",
+                        "name": "More",
+                        "dataType": "string",
+                        "format": "html",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "currentDeadLineStage",
+                        "fetch": [],
+                        "sysName": "currentDeadLineStage",
+                        "name": "End date of the current stage",
                         "dataType": "date",
                         "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD MMM, Y",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "currentStartStage",
+                        "fetch": [],
+                        "sysName": "currentStartStage",
+                        "name": "Start date of the current stage",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
                         "link": ""
                     },
                     {
                         "fieldSysName": "description",
                         "fetch": [],
                         "sysName": "description",
-                        "name": "Description",
+                        "name": "Short description",
                         "dataType": "string",
                         "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "domains",
+                        "fetch": [],
+                        "sysName": "domains",
+                        "name": "List of domains",
+                        "dataType": "array",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "emails",
+                        "fetch": [],
+                        "sysName": "emails",
+                        "name": "Emails",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "parsed_emails"
+                    },
+                    {
+                        "fieldSysName": "event_ids",
+                        "fetch": [],
+                        "sysName": "event_ids",
+                        "name": "Events",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "projects_events"
+                    },
+                    {
+                        "fieldSysName": "founder_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "firstName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "lastName",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "founder_id",
+                        "name": "Founder",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "hex",
+                        "fetch": [],
+                        "sysName": "hex",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "color",
                         "formatOptions": {},
                         "link": ""
                     },
@@ -205,63 +388,146 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "location",
+                        "fieldSysName": "investor_ids",
                         "fetch": [],
-                        "sysName": "location",
-                        "name": "Location",
-                        "dataType": "json",
-                        "format": "geo",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "mapToken": "pk.eyJ1IjoiZGlyZWN0dWFsIiwiYSI6ImNreTV3c3JuZTBsOHYydnMxc3V2dTE4OGcifQ.nuD1tu1jrhNUSqjPxkgL7g",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "mapColour": "mapbox://styles/mapbox/satellite-streets-v11"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "photos",
-                        "fetch": [],
-                        "sysName": "photos",
-                        "name": "Photos",
-                        "dataType": "file",
-                        "format": "multipleImages",
+                        "sysName": "investor_ids",
+                        "name": "Investors",
+                        "dataType": "arrayLink",
+                        "format": "",
                         "formatOptions": {},
-                        "link": ""
+                        "link": "WebUser"
                     },
                     {
-                        "fieldSysName": "status_text",
+                        "fieldSysName": "language",
                         "fetch": [],
-                        "sysName": "status_text",
-                        "name": "Status",
+                        "sysName": "language",
+                        "name": "Language of communication",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
+                    },
+                    {
+                        "fieldSysName": "logo",
+                        "fetch": [],
+                        "sysName": "logo",
+                        "name": "Logo",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "partner_ids",
+                        "fetch": [],
+                        "sysName": "partner_ids",
+                        "name": "Partners",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "pipeline_status",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "pipeline_status",
+                        "name": "Status",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "pipeline_statuses"
+                    },
+                    {
+                        "fieldSysName": "pre_scoring_files",
+                        "fetch": [],
+                        "sysName": "pre_scoring_files",
+                        "name": "Pre-Scoring files",
+                        "dataType": "file",
+                        "format": "multipleFiles",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "pushDate",
+                        "fetch": [],
+                        "sysName": "pushDate",
+                        "name": "Push Date",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "rank",
+                        "fetch": [],
+                        "sysName": "rank",
+                        "name": "Rank",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "pipeline_ranks"
+                    },
+                    {
+                        "fieldSysName": "scoring_files",
+                        "fetch": [],
+                        "sysName": "scoring_files",
+                        "name": "Scoring files",
+                        "dataType": "file",
+                        "format": "multipleFiles",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "servise_provider_ids",
+                        "fetch": [],
+                        "sysName": "servise_provider_ids",
+                        "name": "Service provoders",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "ta_type",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "ta_type",
+                        "name": "TA type",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "business_model"
+                    },
+                    {
+                        "fieldSysName": "team",
+                        "fetch": [],
+                        "sysName": "team",
+                        "name": "Startup Team",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
                     },
                     {
                         "fieldSysName": "title",
@@ -271,24 +537,46 @@ const App = (props) => {
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "users_been_ids",
+                        "fieldSysName": "website",
                         "fetch": [],
-                        "sysName": "users_been_ids",
-                        "name": "Who've been to",
-                        "dataType": "arrayLink",
-                        "format": "",
+                        "sysName": "website",
+                        "name": "Web site",
+                        "dataType": "string",
+                        "format": "webLink",
                         "formatOptions": {},
-                        "link": "WebUser"
+                        "link": ""
                     }
                 ],
                 "writeFields": [],
                 "fields": {
-                    "city": {
-                        "id": "city",
-                        "content": "City",
+                    "Cause": {
+                        "id": "Cause",
+                        "content": "Cause",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "pipeline_cause",
+                        "actions": []
+                    },
+                    "Configuration": {
+                        "id": "Configuration",
+                        "content": "Configuration",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "configuration",
+                        "actions": []
+                    },
+                    "GP": {
+                        "id": "GP",
+                        "content": "GP",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
@@ -297,72 +585,177 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "country": {
-                        "id": "country",
-                        "content": "Country",
+                    "Industry": {
+                        "id": "Industry",
+                        "content": "Industry",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "industry",
+                        "actions": []
+                    },
+                    "RevenueGeoIds": {
+                        "id": "RevenueGeoIds",
+                        "content": "Revenue GEO",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "revenueGeo",
+                        "actions": []
+                    },
+                    "Stage": {
+                        "id": "Stage",
+                        "content": "Stage",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "countries",
+                        "link": "stage",
                         "actions": []
                     },
-                    "cover_photo": {
-                        "id": "cover_photo",
+                    "admin": {
+                        "id": "admin",
                         "content": "",
                         "type": "field",
-                        "dataType": "file",
-                        "format": "image",
+                        "dataType": "string",
+                        "format": "",
                         "formatOptions": {},
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "date_added": {
-                        "id": "date_added",
-                        "content": "Date added",
+                    "analyst_ids": {
+                        "id": "analyst_ids",
+                        "content": "Analysts team",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "WebUser",
+                        "actions": []
+                    },
+                    "attached_files": {
+                        "id": "attached_files",
+                        "content": "Attached files",
+                        "type": "field",
+                        "dataType": "file",
+                        "format": "multipleFiles",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "attachments": {
+                        "id": "attachments",
+                        "content": "Attachments",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "attachments",
+                        "actions": []
+                    },
+                    "button_link": {
+                        "id": "button_link",
+                        "content": "More",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "html",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "currentDeadLineStage": {
+                        "id": "currentDeadLineStage",
+                        "content": "End date of the current stage",
                         "type": "field",
                         "dataType": "date",
                         "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD MMM, Y",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "currentStartStage": {
+                        "id": "currentStartStage",
+                        "content": "Start date of the current stage",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
                         "read": true,
                         "link": "",
                         "actions": []
                     },
                     "description": {
                         "id": "description",
-                        "content": "Description",
+                        "content": "Short description",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "domains": {
+                        "id": "domains",
+                        "content": "List of domains",
+                        "type": "field",
+                        "dataType": "array",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "emails": {
+                        "id": "emails",
+                        "content": "Emails",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "parsed_emails",
+                        "actions": []
+                    },
+                    "event_ids": {
+                        "id": "event_ids",
+                        "content": "Events",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "projects_events",
+                        "actions": []
+                    },
+                    "founder_id": {
+                        "id": "founder_id",
+                        "content": "Founder",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "WebUser",
+                        "actions": []
+                    },
+                    "hex": {
+                        "id": "hex",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "color",
                         "formatOptions": {},
                         "read": true,
                         "link": "",
@@ -379,66 +772,136 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "location": {
-                        "id": "location",
-                        "content": "Location",
+                    "investor_ids": {
+                        "id": "investor_ids",
+                        "content": "Investors",
                         "type": "field",
-                        "dataType": "json",
-                        "format": "geo",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "mapToken": "pk.eyJ1IjoiZGlyZWN0dWFsIiwiYSI6ImNreTV3c3JuZTBsOHYydnMxc3V2dTE4OGcifQ.nuD1tu1jrhNUSqjPxkgL7g",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "mapColour": "mapbox://styles/mapbox/satellite-streets-v11"
-                        },
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "photos": {
-                        "id": "photos",
-                        "content": "Photos",
-                        "type": "field",
-                        "dataType": "file",
-                        "format": "multipleImages",
+                        "dataType": "arrayLink",
+                        "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "",
+                        "link": "WebUser",
                         "actions": []
                     },
-                    "status_text": {
-                        "id": "status_text",
-                        "content": "Status",
+                    "language": {
+                        "id": "language",
+                        "content": "Language of communication",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
                         "link": "",
+                        "actions": []
+                    },
+                    "logo": {
+                        "id": "logo",
+                        "content": "Logo",
+                        "type": "field",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "partner_ids": {
+                        "id": "partner_ids",
+                        "content": "Partners",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "WebUser",
+                        "actions": []
+                    },
+                    "pipeline_status": {
+                        "id": "pipeline_status",
+                        "content": "Status",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "pipeline_statuses",
+                        "actions": []
+                    },
+                    "pre_scoring_files": {
+                        "id": "pre_scoring_files",
+                        "content": "Pre-Scoring files",
+                        "type": "field",
+                        "dataType": "file",
+                        "format": "multipleFiles",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "pushDate": {
+                        "id": "pushDate",
+                        "content": "Push Date",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "rank": {
+                        "id": "rank",
+                        "content": "Rank",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "pipeline_ranks",
+                        "actions": []
+                    },
+                    "scoring_files": {
+                        "id": "scoring_files",
+                        "content": "Scoring files",
+                        "type": "field",
+                        "dataType": "file",
+                        "format": "multipleFiles",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "servise_provider_ids": {
+                        "id": "servise_provider_ids",
+                        "content": "Service provoders",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "WebUser",
+                        "actions": []
+                    },
+                    "ta_type": {
+                        "id": "ta_type",
+                        "content": "TA type",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "business_model",
+                        "actions": []
+                    },
+                    "team": {
+                        "id": "team",
+                        "content": "Startup Team",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "WebUser",
                         "actions": []
                     },
                     "title": {
@@ -449,24 +912,121 @@ const App = (props) => {
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": null,
+                        "link": "",
                         "actions": []
                     },
-                    "users_been_ids": {
-                        "id": "users_been_ids",
-                        "content": "Who've been to",
+                    "website": {
+                        "id": "website",
+                        "content": "Web site",
                         "type": "field",
-                        "dataType": "arrayLink",
-                        "format": "",
+                        "dataType": "string",
+                        "format": "webLink",
                         "formatOptions": {},
                         "read": true,
-                        "link": "WebUser",
+                        "link": "",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "country": {
+                    "Cause": {
                         "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "Configuration": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "GP": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "Industry": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "Stage": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "_TA_type": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "admin": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "analyst_ids": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "attached_files": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "attachments": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "button_link": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "currentDeadLineStage": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "currentStartStage": {
+                        "include": true,
+                        "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
@@ -474,6 +1034,47 @@ const App = (props) => {
                     },
                     "description": {
                         "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "domains": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "emails": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "event_ids": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "founder_id": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "hex": {
+                        "include": true,
+                        "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
@@ -481,13 +1082,95 @@ const App = (props) => {
                     },
                     "id": {
                         "include": false,
+                        "disableEditing": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "location": {
+                    "investor_ids": {
                         "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "language": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "logo": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "partner_ids": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "pipeline_status": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "pre_scoring_files": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "pushDate": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "rank": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "scoring_files": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "servise_provider_ids": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "team": {
+                        "include": true,
+                        "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
@@ -495,12 +1178,13 @@ const App = (props) => {
                     },
                     "title": {
                         "include": true,
+                        "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "city": {
+                    "website": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -508,7 +1192,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "date_added": {
+                    "RevenueGeoIds": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -516,31 +1200,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "photos": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "status_text": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "cover_photo": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "users_been_ids": {
+                    "ta_type": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -554,38 +1214,149 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "country",
-                            "description",
                             "id",
-                            "location",
                             "title",
-                            "city",
-                            "date_added",
-                            "photos",
-                            "status_text"
-                        ]
-                    },
-                    "30661642443343214": {
-                        "id": "30661642443343214",
-                        "title": "New section",
-                        "fieldIds": [
-                            "cover_photo",
-                            "users_been_ids"
+                            "Cause",
+                            "Configuration",
+                            "GP",
+                            "Industry",
+                            "RevenueGeoIds",
+                            "Stage",
+                            "admin",
+                            "analyst_ids",
+                            "attached_files",
+                            "attachments",
+                            "button_link",
+                            "currentDeadLineStage",
+                            "currentStartStage",
+                            "description",
+                            "domains",
+                            "emails",
+                            "event_ids",
+                            "founder_id",
+                            "hex",
+                            "investor_ids",
+                            "language",
+                            "logo",
+                            "partner_ids",
+                            "pipeline_status",
+                            "pre_scoring_files",
+                            "pushDate",
+                            "rank",
+                            "scoring_files",
+                            "servise_provider_ids",
+                            "ta_type",
+                            "team",
+                            "website"
                         ]
                     }
                 },
                 "columnOrder": [
-                    "tab-1",
-                    "30661642443343214"
+                    "tab-1"
                 ],
                 "actions": [],
-                "cardsOrPage": "page",
-                "additionalPath": "",
-                "anotherPage": "news/hot"
+                "cardsOrPage": "page"
             },
             "fields": {
-                "country": {
+                "Cause": {
                     "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "Configuration": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "GP": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "Industry": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "Stage": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "_TA_type": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "admin": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "analyst_ids": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "attached_files": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "attachments": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "button_link": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "currentDeadLineStage": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "currentStartStage": {
+                    "include": true,
+                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
@@ -593,6 +1364,47 @@ const App = (props) => {
                 },
                 "description": {
                     "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "domains": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "emails": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "event_ids": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "founder_id": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "hex": {
+                    "include": true,
+                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
@@ -600,13 +1412,95 @@ const App = (props) => {
                 },
                 "id": {
                     "include": false,
+                    "disableEditing": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "location": {
+                "investor_ids": {
                     "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "language": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "logo": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "partner_ids": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "pipeline_status": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "pre_scoring_files": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "pushDate": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "rank": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "scoring_files": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "servise_provider_ids": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "team": {
+                    "include": true,
+                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
@@ -614,12 +1508,13 @@ const App = (props) => {
                 },
                 "title": {
                     "include": true,
+                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "city": {
+                "website": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -627,7 +1522,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "date_added": {
+                "RevenueGeoIds": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -635,31 +1530,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "photos": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "status_text": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "cover_photo": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "users_been_ids": {
+                "ta_type": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -667,171 +1538,18 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 }
-            },
-            "cardHeaderComment": "country",
-            "cardImage": true,
-            "cardImageField": "photos",
-            "cardImageType": "left",
-            "cardImageSize": 150,
-            "cardImageSizeHeight": 150,
-            "cardBodyText": "description",
-            "cardCoverHeight": 180,
-            "cardColor": null,
-            "showCounter": false,
-            "counterField": null,
-            "counterText": null,
-            "cardBodyTextLength": 80,
-            "cardListLayout": "looseGrid"
+            }
         },
         "tableTitle": "",
         "actions": null,
         "headers": [
             {
-                "sysName": "city",
-                "name": "City",
-                "dataType": "string",
-                "id": "90041641825822801",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "country",
-                "name": "Country",
+                "sysName": "Cause",
                 "dataType": "link",
-                "id": "80991641653434894",
-                "link": "countries",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "cover_photo",
-                "name": "",
-                "dataType": "file",
-                "id": "60961642179138344",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 6,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "image",
-                "formatOptions": null,
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "date_added",
-                "name": "Date added",
-                "dataType": "date",
-                "id": "37941642152276364",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 10,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD MMM, Y",
-                    "timeFormat": "",
-                    "isUTC": "false"
-                },
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "description",
-                "name": "Description",
-                "dataType": "string",
-                "id": "26441641653412664",
-                "link": "",
-                "group": "0",
+                "name": "Cause",
+                "id": "71171646809828277",
+                "link": "pipeline_cause",
+                "group": "1639664898470",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
@@ -845,18 +1563,522 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "Configuration",
+                "dataType": "link",
+                "name": "Configuration",
+                "id": "79101646842516025",
+                "link": "configuration",
+                "group": "1646842398238",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "GP",
+                "dataType": "string",
+                "name": "GP",
+                "id": "42501646842429095",
+                "link": "",
+                "group": "1646842398238",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "json": false,
                 "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "Industry",
+                "dataType": "arrayLink",
+                "name": "Industry",
+                "id": "29061646842431248",
+                "link": "industry",
+                "group": "1646842398238",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
                 "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "RevenueGeoIds",
+                "dataType": "arrayLink",
+                "name": "Revenue GEO",
+                "id": "72501647011899565",
+                "link": "revenueGeo",
+                "group": "1646842398238",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "Stage",
+                "dataType": "link",
+                "name": "Stage",
+                "id": "73401646842432291",
+                "link": "stage",
+                "group": "1646842398238",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "admin",
+                "dataType": "string",
+                "name": "",
+                "id": "30561639664906663",
+                "link": "",
+                "group": "1639664898470",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "analyst_ids",
+                "dataType": "arrayLink",
+                "name": "Analysts team",
+                "id": "14231639663934567",
+                "link": "WebUser",
+                "group": "1639663912103",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "attached_files",
+                "dataType": "file",
+                "name": "Attached files",
+                "id": "63191639403918882",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "multipleFiles",
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "attachments",
+                "dataType": "arrayLink",
+                "name": "Attachments",
+                "id": "53061636920409833",
+                "link": "attachments",
+                "group": "1636918595238",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "button_link",
+                "dataType": "string",
+                "name": "More",
+                "id": "92511646627873752",
+                "link": "",
+                "group": "1646627864658",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "html",
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "currentDeadLineStage",
+                "dataType": "date",
+                "name": "End date of the current stage",
+                "id": "52721644836460819",
+                "link": "",
+                "group": "1644836450676",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "currentStartStage",
+                "dataType": "date",
+                "name": "Start date of the current stage",
+                "id": "98631644836509186",
+                "link": "",
+                "group": "1644836450676",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "description",
+                "dataType": "string",
+                "name": "Short description",
+                "id": "24521636920364485",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "domains",
+                "dataType": "array",
+                "name": "List of domains",
+                "id": "23651636918569823",
+                "link": "",
+                "group": "1636918595238",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "array": true
+            },
+            {
+                "sysName": "emails",
+                "dataType": "arrayLink",
+                "name": "Emails",
+                "id": "73331637165505301",
+                "link": "parsed_emails",
+                "group": "1636918595238",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "event_ids",
+                "dataType": "arrayLink",
+                "name": "Events",
+                "id": "34621639665365546",
+                "link": "projects_events",
+                "group": "1639663912103",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "founder_id",
+                "dataType": "link",
+                "name": "Founder",
+                "id": "59161646809799297",
+                "link": "WebUser",
+                "group": "1639663912103",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "hex",
+                "dataType": "string",
+                "name": "",
+                "id": "18861647001315351",
+                "link": "",
+                "group": "1644836450676",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "color",
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
                 "array": false
             },
             {
                 "sysName": "id",
-                "name": "id",
                 "dataType": "id",
+                "name": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -873,106 +2095,21 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "json": false,
                 "typeVariable": {},
-                "indexExists": false,
                 "array": false
             },
             {
-                "sysName": "location",
-                "name": "Location",
-                "dataType": "json",
-                "id": "52631641650922797",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "geo",
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "mapToken": "pk.eyJ1IjoiZGlyZWN0dWFsIiwiYSI6ImNreTV3c3JuZTBsOHYydnMxc3V2dTE4OGcifQ.nuD1tu1jrhNUSqjPxkgL7g",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false",
-                    "mapColour": "mapbox://styles/mapbox/satellite-streets-v11"
-                },
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "json": true,
-                "typeVariable": {},
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "photos",
-                "name": "Photos",
-                "dataType": "file",
-                "id": "79351641825831881",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "multipleImages",
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "json": false,
-                "typeVariable": {},
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "status_text",
-                "name": "Status",
-                "dataType": "string",
-                "id": "41721641826754571",
-                "link": "",
-                "group": "1641826735668",
+                "sysName": "investor_ids",
+                "dataType": "arrayLink",
+                "name": "Investors",
+                "id": "43731639663918598",
+                "link": "WebUser",
+                "group": "1639663912103",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
@@ -986,27 +2123,111 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "language",
+                "dataType": "string",
+                "name": "Language of communication",
+                "id": "24661647004200763",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 8,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "json": false,
                 "typeVariable": {},
-                "indexExists": false,
                 "array": false
             },
             {
-                "sysName": "title",
-                "name": "Title",
-                "dataType": "string",
-                "id": "23661641650882991",
-                "link": null,
+                "sysName": "logo",
+                "dataType": "file",
+                "name": "Logo",
+                "id": "25231639403856783",
+                "link": "",
                 "group": "0",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 0,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "image",
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "partner_ids",
+                "dataType": "arrayLink",
+                "name": "Partners",
+                "id": "75041639663942840",
+                "link": "WebUser",
+                "group": "1639663912103",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "pipeline_status",
+                "dataType": "link",
+                "name": "Status",
+                "id": "64161640539258747",
+                "link": "pipeline_statuses",
+                "group": "1639663912103",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
                 "linkIndexFieldSysName": [],
                 "defaultValue": null,
                 "constraints": null,
@@ -1014,20 +2235,20 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
                 "arrayLink": false,
                 "json": false,
                 "typeVariable": {},
-                "indexExists": false,
                 "array": false
             },
             {
-                "sysName": "users_been_ids",
-                "name": "Who've been to",
-                "dataType": "arrayLink",
-                "id": "95261641826785310",
-                "link": "WebUser",
+                "sysName": "pre_scoring_files",
+                "dataType": "file",
+                "name": "Pre-Scoring files",
+                "id": "91931647007992998",
+                "link": "",
                 "group": "0",
                 "tags": "",
                 "indexing": false,
@@ -1039,75 +2260,316 @@ const App = (props) => {
                 "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
+                "format": "multipleFiles",
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "pushDate",
+                "dataType": "date",
+                "name": "Push Date",
+                "id": "33841644836568369",
+                "link": "",
+                "group": "1644836450676",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "rank",
+                "dataType": "link",
+                "name": "Rank",
+                "id": "50401645526117450",
+                "link": "pipeline_ranks",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 7,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "scoring_files",
+                "dataType": "file",
+                "name": "Scoring files",
+                "id": "60861647008068274",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 10,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "multipleFiles",
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "servise_provider_ids",
+                "dataType": "arrayLink",
+                "name": "Service provoders",
+                "id": "77591639664137543",
+                "link": "WebUser",
+                "group": "1639663912103",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
                 "linkOrArrayLinkType": true,
                 "linkType": false,
                 "arrayLink": true,
                 "json": false,
                 "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "ta_type",
+                "dataType": "link",
+                "name": "TA type",
+                "id": "76171647010403515",
+                "link": "business_model",
+                "group": "1646842398238",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
                 "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "team",
+                "dataType": "arrayLink",
+                "name": "Startup Team",
+                "id": "39861639403965801",
+                "link": "WebUser",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "title",
+                "dataType": "string",
+                "name": "Title",
+                "id": "99321636920358355",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "array": false
+            },
+            {
+                "sysName": "website",
+                "dataType": "string",
+                "name": "Web site",
+                "id": "26451639403842222",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "webLink",
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
                 "array": false
             }
         ],
         "data": [
             {
-                "city": "Moscow",
-                "cover_photo": "https://api.directual.com/fileUploaded/showcase-attractions/web/68caa348-ec15-463a-9afe-ae2b106eba8a.jpeg",
-                "location": "{\"data\":[{\"id\":1642151991953,\"latitude\":55.75166273629019,\"longitude\":37.61742228272211,\"title\":\"New Marker\"}]}",
-                "description": "The Moscow Kremlin, or simply the Kremlin, is a fortified complex in the center of Moscow founded by Russian ruling dynasty of Rurikids. It is the best known of the kremlins (Russian citadels), and includes five palaces, four cathedrals, and the enclosing Kremlin Wall with Kremlin towers. In addition, within this complex is the Grand Kremlin Palace that was formerly the Tsar's Moscow residence. The complex now serves as the official residence of the President of the Russian Federation and as a museum with almost 3 million visitors in 2017. The Kremlin overlooks the Moskva River to the south, Saint Basil's Cathedral and Red Square to the east, and the Alexander Garden to the west.",
-                "users_been_ids": [
+                "RevenueGeoIds": [
+                    {
+                        "name": "Brazil",
+                        "id": "528bea6c-c805-41ae-807f-77b7cf96f592"
+                    },
+                    {
+                        "name": "Russia",
+                        "id": "dcb50228-5418-4610-87bd-aadf08542842"
+                    }
+                ],
+                "admin": "admin",
+                "website": "sdfdfs",
+                "pipeline_status": {
+                    "name": "Portfolio",
+                    "id": "portfolio"
+                },
+                "partner_ids": [
+                    "dkotov899@gmail.com"
+                ],
+                "ta_type": {
+                    "name": "B2C",
+                    "id": "ff88e742-8c3e-481e-a5c7-db02c34a10e6"
+                },
+                "description": "Test\r\n",
+                "rank": "rank_3",
+                "investor_ids": [
+                    "dkotov899@gmail.com"
+                ],
+                "domains": [
                     ""
                 ],
-                "country": {
-                    "area": 17075200,
-                    "population": 142893540,
-                    "country": "Russia ",
-                    "id": "e65e9589-cc84-4f17-8f8e-c004a0d38d0a",
-                    "region": "C.W. OF IND. STATES "
+                "Industry": [
+                    {
+                        "name": "Adtech",
+                        "id": "e1d3b08d-65fb-4176-8f03-fd3e3bd3e891"
+                    },
+                    {
+                        "name": "HR tech",
+                        "id": "760bce43-f18c-4b8e-a1bb-83c1ad0410d8"
+                    }
+                ],
+                "id": "288d7bfd-13ca-46a4-9ee4-e7ce0f17d4bb",
+                "language": "russian",
+                "team": [
+                    "dkotov899@gmail.com"
+                ],
+                "servise_provider_ids": [
+                    ""
+                ],
+                "analyst_ids": [
+                    ""
+                ],
+                "title": "(!) Word Test VP",
+                "emails": [
+                    ""
+                ],
+                "Stage": {
+                    "name": "Pre-seed",
+                    "id": "8e75bd08-504e-4989-a38e-d7ca19584df1"
                 },
-                "id": "2014b9d2-37ce-4cf4-a9cf-da7a5fb55be7",
-                "status_text": "The place is under moderation",
-                "date_added": 1642152490000,
-                "title": "Kremlin",
-                "photos": "https://api.directual.com/fileUploaded/showcase-attractions/web/68caa348-ec15-463a-9afe-ae2b106eba8a.jpeg,https://api.directual.com/fileUploaded/showcase-attractions/web/d9b47dd4-03ba-49d7-a8e6-1581b5fb9406.jpeg,https://api.directual.com/fileUploaded/showcase-attractions/web/04b4fba0-21f8-4d32-988f-ba2536d1a6a2.jpeg"
-            },
-            {
-                "city": "San Francisco",
-                "cover_photo": "https://api.directual.com/fileUploaded/showcase-attractions/web/e44089e4-b1c7-4fbe-bb3f-cf5db80cfc48.jpeg",
-                "location": "{\"data\":[{\"id\":1642493506487,\"latitude\":37.812910745215206,\"longitude\":-122.47533814453163,\"title\":\"Golden Gate Bridge\",\"image\":\"https://api.directual.com/fileUploaded/showcase-attractions/web/e44089e4-b1c7-4fbe-bb3f-cf5db80cfc48.jpeg\"}]}",
-                "description": "The Golden Gate Bridge is a suspension bridge spanning the Golden Gate, the one-mile-wide strait connecting San Francisco Bay and the Pacific Ocean.",
-                "country": {
-                    "area": 9631420,
-                    "population": 298444215,
-                    "country": "United States ",
-                    "id": "d9696e53-4195-4476-b786-55a1a97400e3",
-                    "region": "NORTHERN AMERICA                   "
-                },
-                "id": "a10d94e4-cd9f-4ff3-8f0d-ff534a132070",
-                "status_text": "The place is under moderation",
-                "date_added": 1642493625000,
-                "title": "Golden Gate Bridge Golden Gate Bridge Golden Gate Bridge Golden Gate Bridge Golden Gate Bridge Golden Gate Bridge",
-                "photos": "https://api.directual.com/fileUploaded/showcase-attractions/web/e44089e4-b1c7-4fbe-bb3f-cf5db80cfc48.jpeg,https://api.directual.com/fileUploaded/showcase-attractions/web/3e3a1ea9-a045-4d6f-bf08-6a2c8ac7564b.jpeg"
-            },
-            {
-                "city": "Agra",
-                "cover_photo": "https://api.directual.com/fileUploaded/showcase-attractions/web/6cc2fdab-dad5-4ae9-a9e7-f987dcd36e50.jpeg",
-                "location": "{\"data\":[{\"id\":1642493890105,\"latitude\":27.17479612600225,\"longitude\":78.04218476292756,\"title\":\"Taj Mahal\",\"image\":\"https://api.directual.com/fileUploaded/showcase-attractions/web/4c8ba692-b37c-4aaf-b754-555b852f11d8.jpeg\"}]}",
-                "description": "The Taj Mahal, is an ivory-white marble mausoleum on the right bank of the river Yamuna in the Indian city of Agra. It was commissioned in 1632 by the Mughal emperor Shah Jahan to house the tomb of his favourite wife, Mumtaz Mahal; it also houses the tomb of Shah Jahan himself.",
-                "country": {
-                    "area": 3287590,
-                    "population": 1095351995,
-                    "country": "India ",
-                    "id": "c4254be1-2c67-4114-9801-340ef8e5afeb",
-                    "region": "ASIA (EX. NEAR EAST)         "
-                },
-                "id": "febebefe-bbaf-4246-a291-e287a647481d",
-                "status_text": "The place is under moderation",
-                "date_added": 1642494017000,
-                "title": "Taj Mahal",
-                "photos": "https://api.directual.com/fileUploaded/showcase-attractions/web/6cc2fdab-dad5-4ae9-a9e7-f987dcd36e50.jpeg"
+                "attachments": [
+                    ""
+                ],
+                "button_link": "<a href=\"https://jj.directual.app/pipeline/60ef493d-b772-43b2-988e-87b1c50069dc\">\n\t<button style=\"padding:8px; border-radius: 8px;\">\n      More\n  \t</button>\n</a>",
+                "event_ids": [
+                    "eebc592d-6ffc-438c-af38-7a64fcf8482f",
+                    "5cce0732-e743-4d2b-8590-ab3ce1ed5cb8",
+                    "655535c9-7010-4581-b474-a992e5c6b136",
+                    "0285e84a-25d5-4425-beed-8de842849e31",
+                    "1eac014b-14d0-4d1d-bf7c-25c17349856e",
+                    "f5073d9e-127a-482f-b90a-ab7833296612"
+                ]
             }
         ],
         "totalPages": 1,
@@ -1115,93 +2577,253 @@ const App = (props) => {
         "error": null,
         "fieldScheme": [
             [
-                "city",
-                99062310
+                "Cause.id",
+                99085718
             ],
             [
-                "country.area",
-                99062311
+                "Cause.name",
+                99085718
             ],
             [
-                "country.country",
-                99062311
+                "Configuration.id",
+                99085970
             ],
             [
-                "country.id",
-                99062311
+                "Configuration.name",
+                99085970
             ],
             [
-                "country.population",
-                99062311
+                "Industry.id",
+                99085967
             ],
             [
-                "country.region",
-                99062311
+                "Industry.name",
+                99085967
             ],
             [
-                "cover_photo",
-                99062310
+                "RevenueGeoIds.id",
+                99086800
             ],
             [
-                "date_added",
-                99062310
+                "RevenueGeoIds.name",
+                99086800
+            ],
+            [
+                "Stage.id",
+                99085968
+            ],
+            [
+                "Stage.name",
+                99085968
+            ],
+            [
+                "admin",
+                99055454
+            ],
+            [
+                "analyst_ids",
+                99055454
+            ],
+            [
+                "attached_files",
+                99055454
+            ],
+            [
+                "attachments",
+                99055454
+            ],
+            [
+                "button_link",
+                99055454
+            ],
+            [
+                "currentDeadLineStage",
+                99055454
+            ],
+            [
+                "currentStartStage",
+                99055454
             ],
             [
                 "description",
-                99062310
+                99055454
+            ],
+            [
+                "domains",
+                99055454
+            ],
+            [
+                "emails",
+                99055454
+            ],
+            [
+                "event_ids",
+                99055454
+            ],
+            [
+                "founder_id.firstName",
+                99046526
+            ],
+            [
+                "founder_id.id",
+                99046526
+            ],
+            [
+                "founder_id.lastName",
+                99046526
+            ],
+            [
+                "hex",
+                99055454
             ],
             [
                 "id",
-                99062310
+                99055454
             ],
             [
-                "location",
-                99062310
+                "investor_ids",
+                99055454
             ],
             [
-                "photos",
-                99062310
+                "language",
+                99055454
             ],
             [
-                "status_text",
-                99062310
+                "logo",
+                99055454
+            ],
+            [
+                "partner_ids",
+                99055454
+            ],
+            [
+                "pipeline_status.id",
+                99058940
+            ],
+            [
+                "pipeline_status.name",
+                99058940
+            ],
+            [
+                "pre_scoring_files",
+                99055454
+            ],
+            [
+                "pushDate",
+                99055454
+            ],
+            [
+                "rank",
+                99055454
+            ],
+            [
+                "scoring_files",
+                99055454
+            ],
+            [
+                "servise_provider_ids",
+                99055454
+            ],
+            [
+                "ta_type.id",
+                99086799
+            ],
+            [
+                "ta_type.name",
+                99086799
+            ],
+            [
+                "team",
+                99055454
             ],
             [
                 "title",
-                99062310
+                99055454
             ],
             [
-                "users_been_ids",
-                99062310
+                "website",
+                99055454
             ]
         ],
         "writeFields": [],
         "structures": {
-            "99062310": {
-                "networkID": 11307,
-                "sysName": "places",
-                "name": "places",
-                "id": 99062310,
-                "dateCreated": "2022-01-08T14:03:51Z",
+            "99046526": {
+                "networkID": 10594,
+                "sysName": "WebUser",
+                "name": "App users",
+                "id": 99046526,
+                "dateCreated": "2021-11-13T20:03:09Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"user_added_id\",\"dataType\":\"link\",\"name\":\"Who added\",\"id\":\"18871641825848857\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[\"filter\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":true,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"Title\",\"id\":\"23661641650882991\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Description\",\"id\":\"26441641653412664\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"date_added\",\"dataType\":\"date\",\"name\":\"Date added\",\"id\":\"37941642152276364\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD MMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"status_text\",\"dataType\":\"string\",\"name\":\"Status\",\"id\":\"41721641826754571\",\"link\":\"\",\"group\":\"1641826735668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"comments\",\"dataType\":\"arrayLink\",\"name\":\"Comments\",\"id\":\"48571641825870889\",\"link\":\"comments\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"location\",\"dataType\":\"json\",\"name\":\"Location\",\"id\":\"52631641650922797\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"geo\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"mapToken\":\"pk.eyJ1IjoiZGlyZWN0dWFsIiwiYSI6ImNreTV3c3JuZTBsOHYydnMxc3V2dTE4OGcifQ.nuD1tu1jrhNUSqjPxkgL7g\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"mapColour\":\"mapbox://styles/mapbox/satellite-streets-v11\"},\"groupName\":null,\"json\":true,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"cover_photo\",\"dataType\":\"file\",\"name\":\"\",\"id\":\"60961642179138344\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"photos\",\"dataType\":\"file\",\"name\":\"Photos\",\"id\":\"79351641825831881\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"country\",\"dataType\":\"link\",\"name\":\"Country\",\"id\":\"80991641653434894\",\"link\":\"countries\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"city\",\"dataType\":\"string\",\"name\":\"City\",\"id\":\"90041641825822801\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"users_been_ids\",\"dataType\":\"arrayLink\",\"name\":\"Who've been to\",\"id\":\"95261641826785310\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"status_tech\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"98021641826741872\",\"link\":\"\",\"group\":\"1641826735668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false}]",
-                "jsonGroupSettings": "[{\"name\":\"Moderation\",\"id\":1641826735668,\"order\":0}]",
+                "jsonObject": "[{\"sysName\":\"userpic\",\"name\":\"User pic\",\"dataType\":\"file\",\"id\":\"1\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"phone\",\"name\":\"Phone\",\"dataType\":\"string\",\"id\":\"10\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"phone\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"project_related_ids\",\"name\":\"Startups I work with\",\"dataType\":\"arrayLink\",\"id\":\"10591639666580160\",\"link\":\"projects\",\"group\":\"1639404461476\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"dateCreated\",\"name\":\"dateCreated\",\"dataType\":\"string\",\"id\":\"11\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"password\",\"name\":\"Password (hash)\",\"dataType\":\"string\",\"id\":\"12\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"id\",\"name\":\"Email (your username)\",\"dataType\":\"id\",\"id\":\"13\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"TG_connected\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"14511639917675138\",\"link\":\"\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"teamId\",\"name\":\"My team\",\"dataType\":\"link\",\"id\":\"18461645530393248\",\"link\":\"team\",\"group\":\"1646630610035\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"isBlocked\",\"name\":\"Block user\",\"dataType\":\"boolean\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"⛔️ Block access to the platform\",\"💚No, grant access to the platform\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"sp_description\",\"name\":\"What service it provides\",\"dataType\":\"string\",\"id\":\"20711640545710396\",\"link\":null,\"group\":\"1640545234672\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"investor_description\",\"name\":\"Investor description\",\"dataType\":\"string\",\"id\":\"20761640545659727\",\"link\":null,\"group\":\"1640545217327\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"tags\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"27071645384274963\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"gender\",\"name\":\"Gender\",\"dataType\":\"string\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"partner_url\",\"name\":\"Web-site\",\"dataType\":\"string\",\"id\":\"35691640545684840\",\"link\":\"\",\"group\":\"1640545225304\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"displayedName\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"36841639666350964\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"lastName\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"isActive\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"41191640763328158\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"sp_name\",\"name\":\"Service Provider name\",\"dataType\":\"string\",\"id\":\"42411640545708896\",\"link\":null,\"group\":\"1640545234672\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"firstName\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"partner_name\",\"name\":\"Partner name\",\"dataType\":\"string\",\"id\":\"50731640545683109\",\"link\":null,\"group\":\"1640545225304\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"TChat\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"51251639915154028\",\"link\":\"TChat\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"LinkedIn\",\"name\":\"LinkedIn\",\"dataType\":\"string\",\"id\":\"54681645167119192\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"notif_TG\",\"name\":\"Notify me on Telegram\",\"dataType\":\"boolean\",\"id\":\"55581639915058553\",\"link\":\"\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Yes\",\"No\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"language\",\"name\":\" Language\",\"dataType\":\"string\",\"id\":\"56901645249741633\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"role\",\"name\":\"Roles\",\"dataType\":\"string\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"notif_Email\",\"name\":\"Notify me by Email\",\"dataType\":\"boolean\",\"id\":\"61231639915065277\",\"link\":\"\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Yes\",\"No\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"partner_description\",\"name\":\"Partner description\",\"dataType\":\"string\",\"id\":\"63771640545684282\",\"link\":null,\"group\":\"1640545225304\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"investor_url\",\"name\":\"Fund web-site or Linkedin\",\"dataType\":\"string\",\"id\":\"66071640545660807\",\"link\":\"\",\"group\":\"1640545217327\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"sp_url\",\"name\":\"Web-site\",\"dataType\":\"string\",\"id\":\"66271640545710955\",\"link\":\"\",\"group\":\"1640545234672\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"linkButton\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"69021644938670994\",\"link\":\"\",\"group\":\"1644938661525\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"html\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"isAuthorization\",\"name\":\"isAuthorization\",\"dataType\":\"boolean\",\"id\":\"7\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"dateLastActivity\",\"name\":\"dateLastActivity\",\"dataType\":\"string\",\"id\":\"8\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"position\",\"name\":\"Position\",\"dataType\":\"string\",\"id\":\"80781639404250182\",\"link\":null,\"group\":\"1640545084014\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"secret\",\"name\":\"secret\",\"dataType\":\"string\",\"id\":\"81131636839496227\",\"link\":\"\",\"group\":\"1636839487957\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"email\",\"name\":\"Email\",\"dataType\":\"string\",\"id\":\"9\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"email\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"investor_name\",\"name\":\"Fund name\",\"dataType\":\"string\",\"id\":\"92711640545660269\",\"link\":null,\"group\":\"1640545217327\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"invoice_Ids\",\"name\":\"Invoices\",\"dataType\":\"arrayLink\",\"id\":\"95981645168501728\",\"link\":\"invoices\",\"group\":\"1640545217327\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"project_startup_ids\",\"name\":\"Startups I founded\",\"dataType\":\"arrayLink\",\"id\":\"99101639666544049\",\"link\":\"projects\",\"group\":\"1640545084014\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
+                "jsonGroupSettings": "[{\"id\":1636839487957,\"name\":\"Password restoring\",\"order\":7},{\"id\":1646630610035,\"name\":\"Command if the user is an analyst\",\"order\":10},{\"id\":1640545084014,\"name\":\"Startuper fields\",\"order\":0},{\"id\":1640545234672,\"name\":\"Service Provider fields\",\"order\":4},{\"id\":1640545217327,\"name\":\"Investor fields\",\"order\":2},{\"id\":1644938661525,\"name\":\"Front\",\"order\":9},{\"id\":-1776115286,\"name\":\"System fields (LEGACY)\",\"order\":8},{\"id\":1640545225304,\"name\":\"Partner fields\",\"order\":3},{\"id\":1639915049523,\"name\":\"Notifications\",\"order\":6},{\"id\":-502807437,\"name\":\"Contacts\",\"order\":5},{\"id\":1639404461476,\"name\":\"My projects\",\"order\":1}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"},{\"sysName\":\"displayedName\"}]",
+                "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2022-03-07T05:24:11Z",
+                "createBy": 0,
+                "changedBy": 7868,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "Email (your username)",
+                    "id": "13",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "indexExists": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
+                    "json": false,
+                    "typeVariable": {},
+                    "array": false
+                },
+                "objectIDSysName": "id",
+                "folderId": null
+            },
+            "99055454": {
+                "networkID": 10594,
+                "sysName": "projects",
+                "name": "Projects (pipeline)",
+                "id": 99055454,
+                "dateCreated": "2021-11-14T19:35:37Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"Title\",\"id\":\"99321636920358355\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Short description\",\"id\":\"24521636920364485\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"logo\",\"dataType\":\"file\",\"name\":\"Logo\",\"id\":\"25231639403856783\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"website\",\"dataType\":\"string\",\"name\":\"Web site\",\"id\":\"26451639403842222\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"attached_files\",\"dataType\":\"file\",\"name\":\"Attached files\",\"id\":\"63191639403918882\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleFiles\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"team\",\"dataType\":\"arrayLink\",\"name\":\"Startup Team\",\"id\":\"39861639403965801\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"rank\",\"dataType\":\"link\",\"name\":\"Rank\",\"id\":\"50401645526117450\",\"link\":\"pipeline_ranks\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"language\",\"dataType\":\"string\",\"name\":\"Language of communication\",\"id\":\"24661647004200763\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"pre_scoring_files\",\"dataType\":\"file\",\"name\":\"Pre-Scoring files\",\"id\":\"91931647007992998\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"multipleFiles\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"scoring_files\",\"dataType\":\"file\",\"name\":\"Scoring files\",\"id\":\"60861647008068274\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"multipleFiles\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"domains\",\"dataType\":\"array\",\"name\":\"List of domains\",\"id\":\"23651636918569823\",\"link\":\"\",\"group\":\"1636918595238\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":true},{\"sysName\":\"attachments\",\"dataType\":\"arrayLink\",\"name\":\"Attachments\",\"id\":\"53061636920409833\",\"link\":\"attachments\",\"group\":\"1636918595238\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"emails\",\"dataType\":\"arrayLink\",\"name\":\"Emails\",\"id\":\"73331637165505301\",\"link\":\"parsed_emails\",\"group\":\"1636918595238\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"founder_id\",\"dataType\":\"link\",\"name\":\"Founder\",\"id\":\"59161646809799297\",\"link\":\"WebUser\",\"group\":\"1639663912103\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"investor_ids\",\"dataType\":\"arrayLink\",\"name\":\"Investors\",\"id\":\"43731639663918598\",\"link\":\"WebUser\",\"group\":\"1639663912103\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"analyst_ids\",\"dataType\":\"arrayLink\",\"name\":\"Analysts team\",\"id\":\"14231639663934567\",\"link\":\"WebUser\",\"group\":\"1639663912103\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"partner_ids\",\"dataType\":\"arrayLink\",\"name\":\"Partners\",\"id\":\"75041639663942840\",\"link\":\"WebUser\",\"group\":\"1639663912103\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"servise_provider_ids\",\"dataType\":\"arrayLink\",\"name\":\"Service provoders\",\"id\":\"77591639664137543\",\"link\":\"WebUser\",\"group\":\"1639663912103\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"event_ids\",\"dataType\":\"arrayLink\",\"name\":\"Events\",\"id\":\"34621639665365546\",\"link\":\"projects_events\",\"group\":\"1639663912103\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"pipeline_status\",\"dataType\":\"link\",\"name\":\"Status\",\"id\":\"64161640539258747\",\"link\":\"pipeline_statuses\",\"group\":\"1639663912103\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"admin\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"30561639664906663\",\"link\":\"\",\"group\":\"1639664898470\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"Cause\",\"dataType\":\"link\",\"name\":\"Cause\",\"id\":\"71171646809828277\",\"link\":\"pipeline_cause\",\"group\":\"1639664898470\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"currentDeadLineStage\",\"dataType\":\"date\",\"name\":\"End date of the current stage\",\"id\":\"52721644836460819\",\"link\":\"\",\"group\":\"1644836450676\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"currentStartStage\",\"dataType\":\"date\",\"name\":\"Start date of the current stage\",\"id\":\"98631644836509186\",\"link\":\"\",\"group\":\"1644836450676\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"pushDate\",\"dataType\":\"date\",\"name\":\"Push Date\",\"id\":\"33841644836568369\",\"link\":\"\",\"group\":\"1644836450676\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"hex\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"18861647001315351\",\"link\":\"\",\"group\":\"1644836450676\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"button_link\",\"dataType\":\"string\",\"name\":\"More\",\"id\":\"92511646627873752\",\"link\":\"\",\"group\":\"1646627864658\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"html\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"GP\",\"dataType\":\"string\",\"name\":\"GP\",\"id\":\"42501646842429095\",\"link\":\"\",\"group\":\"1646842398238\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"Industry\",\"dataType\":\"arrayLink\",\"name\":\"Industry\",\"id\":\"29061646842431248\",\"link\":\"industry\",\"group\":\"1646842398238\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"Stage\",\"dataType\":\"link\",\"name\":\"Stage\",\"id\":\"73401646842432291\",\"link\":\"stage\",\"group\":\"1646842398238\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"Configuration\",\"dataType\":\"link\",\"name\":\"Configuration\",\"id\":\"79101646842516025\",\"link\":\"configuration\",\"group\":\"1646842398238\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"ta_type\",\"dataType\":\"link\",\"name\":\"TA type\",\"id\":\"76171647010403515\",\"link\":\"business_model\",\"group\":\"1646842398238\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"RevenueGeoIds\",\"dataType\":\"arrayLink\",\"name\":\"Revenue GEO\",\"id\":\"72501647011899565\",\"link\":\"revenueGeo\",\"group\":\"1646842398238\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"accessByUser\",\"dataType\":\"arrayLink\",\"name\":\"access\",\"id\":\"31461647009232863\",\"link\":\"WebUser\",\"group\":\"1647009230375\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"New \",\"id\":1646842398238,\"order\":5},{\"name\":\"Technical group\",\"id\":1639664898470,\"order\":2},{\"name\":\"Buttons\",\"id\":1646627864658,\"order\":4},{\"name\":\"Dates\",\"id\":1644836450676,\"order\":3},{\"name\":\"Reports\",\"id\":1647015633485,\"order\":7},{\"name\":\"Workflow\",\"id\":1639663912103,\"order\":1},{\"name\":\"Emails parsing\",\"id\":1636918595238,\"order\":0},{\"name\":\"New Group 7\",\"id\":1647009230375,\"order\":6}]",
                 "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2022-01-20T07:23:32Z",
+                "dateChanged": "2022-03-11T16:54:17Z",
                 "createBy": 21,
-                "changedBy": 21,
+                "changedBy": 1,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "id",
                     "dataType": "id",
+                    "name": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -1218,42 +2840,42 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
+                    "indexExists": false,
                     "linkOrArrayLinkType": false,
                     "linkType": false,
                     "arrayLink": false,
                     "json": false,
                     "typeVariable": {},
-                    "indexExists": false,
                     "array": false
                 },
                 "objectIDSysName": "id",
-                "folderId": 33678698
+                "folderId": 33677059
             },
-            "99062311": {
-                "networkID": 11307,
-                "sysName": "countries",
-                "name": "countries",
-                "id": 99062311,
-                "dateCreated": "2022-01-08T14:04:01Z",
+            "99058940": {
+                "networkID": 10594,
+                "sysName": "pipeline_statuses",
+                "name": "Pipeline statuses",
+                "id": 99058940,
+                "dateCreated": "2021-12-26T17:23:16Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"country\",\"name\":\"Country\",\"dataType\":\"string\",\"id\":\"25971641653132473\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"region\",\"name\":\"Region\",\"dataType\":\"string\",\"id\":\"65461641653132949\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"population\",\"name\":\"Population\",\"dataType\":\"number\",\"id\":\"22771641653133504\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"area\",\"name\":\"Area, sq. mi.\",\"dataType\":\"number\",\"id\":\"71951641653134009\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"name\",\"name\":\"Status name\",\"dataType\":\"string\",\"id\":\"56181640539408201\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"countDayByDeadLine\",\"name\":\"\",\"dataType\":\"number\",\"id\":\"79531644836032127\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"recipient\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"22161644836055533\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
                 "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"country\"}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2022-01-08T14:46:25Z",
-                "createBy": 21,
-                "changedBy": 21,
+                "dateChanged": "2022-02-24T08:57:57Z",
+                "createBy": 1,
+                "changedBy": 7868,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "id",
                     "dataType": "id",
+                    "name": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -1270,26 +2892,336 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
+                    "indexExists": false,
                     "linkOrArrayLinkType": false,
                     "linkType": false,
                     "arrayLink": false,
                     "json": false,
                     "typeVariable": {},
-                    "indexExists": false,
                     "array": false
                 },
                 "objectIDSysName": "id",
-                "folderId": 33678698
+                "folderId": 33688956
+            },
+            "99085718": {
+                "networkID": 10594,
+                "sysName": "pipeline_cause",
+                "name": "Pipeline cause",
+                "id": 99085718,
+                "dateCreated": "2022-03-09T07:07:10Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Name\",\"id\":\"89891646809635706\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": false,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2022-03-09T07:07:25Z",
+                "createBy": 7868,
+                "changedBy": 7868,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "indexExists": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
+                    "json": false,
+                    "typeVariable": {},
+                    "array": false
+                },
+                "objectIDSysName": "id",
+                "folderId": 33688956
+            },
+            "99085967": {
+                "networkID": 10594,
+                "sysName": "industry",
+                "name": "Industry",
+                "id": 99085967,
+                "dateCreated": "2022-03-09T16:02:47Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Tag\",\"id\":\"12041647009887777\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2022-03-11T14:44:56Z",
+                "createBy": 11777,
+                "changedBy": 7868,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "indexExists": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
+                    "json": false,
+                    "typeVariable": {},
+                    "array": false
+                },
+                "objectIDSysName": "id",
+                "folderId": 33688956
+            },
+            "99085968": {
+                "networkID": 10594,
+                "sysName": "stage",
+                "name": "Stage",
+                "id": 99085968,
+                "dateCreated": "2022-03-09T16:03:11Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Name\",\"id\":\"59211647009152445\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"Name\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2022-03-11T14:32:43Z",
+                "createBy": 11777,
+                "changedBy": 7868,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "indexExists": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
+                    "json": false,
+                    "typeVariable": {},
+                    "array": false
+                },
+                "objectIDSysName": "id",
+                "folderId": 33688956
+            },
+            "99085970": {
+                "networkID": 10594,
+                "sysName": "configuration",
+                "name": "Configuration",
+                "id": 99085970,
+                "dateCreated": "2022-03-09T16:04:05Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Name\",\"id\":\"64911647009418094\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2022-03-11T14:37:06Z",
+                "createBy": 11777,
+                "changedBy": 7868,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "indexExists": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
+                    "json": false,
+                    "typeVariable": {},
+                    "array": false
+                },
+                "objectIDSysName": "id",
+                "folderId": 33688956
+            },
+            "99086799": {
+                "networkID": 10594,
+                "sysName": "business_model",
+                "name": "Business Model",
+                "id": 99086799,
+                "dateCreated": "2022-03-11T14:33:38Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Name\",\"id\":\"38171647009223728\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2022-03-11T14:33:49Z",
+                "createBy": 7868,
+                "changedBy": 7868,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "indexExists": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
+                    "json": false,
+                    "typeVariable": {},
+                    "array": false
+                },
+                "objectIDSysName": "id",
+                "folderId": 33688956
+            },
+            "99086800": {
+                "networkID": 10594,
+                "sysName": "revenueGeo",
+                "name": "Revenue GEO",
+                "id": 99086800,
+                "dateCreated": "2022-03-11T15:19:04Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"GEO\",\"id\":\"48211647011950527\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"bool\",\"dataType\":\"boolean\",\"name\":\"is Delete?\",\"id\":\"66821647011951477\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2022-03-11T15:39:06Z",
+                "createBy": 6452,
+                "changedBy": 6452,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "indexExists": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
+                    "json": false,
+                    "typeVariable": {},
+                    "array": false
+                },
+                "objectIDSysName": "id",
+                "folderId": 33688956
             }
         },
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
         "fileds": [],
-        "quickSearch": "false",
-        "httpParams": {
-            "status": "new"
-        }
+        "quickSearch": "true",
+        "httpParams": {}
     }
 
     let newCardActions = {

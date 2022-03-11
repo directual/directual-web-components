@@ -36,9 +36,19 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
     }
 
     const getInitialStructureParams = () => {
-        const randomField = tableHeaders.filter(field => (field.dataType != 'link' && field.dataType != 'arrayLink'))[0] && tableHeaders.filter(field => (field.dataType != 'link' && field.dataType != 'arrayLink'))[0].sysName
+
+        const randomFieldArray = tableHeaders.filter(field => (field.dataType != 'link' && field.dataType != 'arrayLink'))[0] && tableHeaders.filter(field => (field.dataType != 'link' && field.dataType != 'arrayLink')) || []
+        const randomNumber = Math.floor( (randomFieldArray.length - 1) * Math.random() )
+        const randomField = randomFieldArray.length ? randomFieldArray[randomNumber].sysName : null
         const id = (tableFieldScheme.filter(field => randomField == field[0])[0] && tableFieldScheme.filter(field => randomField == field[0])[0][1]) || null
         const name = id && tableStructures[id] && tableStructures[id].name
+        // console.log('randomField')
+        // console.log('tableFieldScheme')
+        // console.log(tableFieldScheme)
+        // console.log(randomField)
+        // console.log('id')
+        // console.log(id)
+        // console.log(tableStructures[id])
         const viewName = id && tableStructures[id] && (tableStructures[id].jsonViewIdSettings ? (Object.values(JSON.parse(tableStructures[id].jsonViewIdSettings || [])).map(i => i = i && i.sysName)) : [])
         return (
             {
@@ -173,15 +183,15 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                         // console.log(formatOptions)
                         // console.log(jsonParse(value))
 
-                        const progress = jsonParse(value) ? 
-                            100 * jsonParse(value).firstValue / (formatOptions.range.max - formatOptions.range.min) 
-                             : 0
+                        const progress = jsonParse(value) ?
+                            100 * jsonParse(value).firstValue / (formatOptions.range.max - formatOptions.range.min)
+                            : 0
                         // console.log(progress)
 
                         return <div className={styles.cardsSlider}>
                             <div className={styles.line}>
-                                <div className={styles.fill} 
-                                    style={{width:`${progress || '0'}%`}}
+                                <div className={styles.fill}
+                                    style={{ width: `${progress || '0'}%` }}
                                 />
                             </div>
                             <div className={styles.sliderValue}>{jsonParse(value).firstValue || '0'}{formatOptions.unitName}</div>
@@ -203,6 +213,9 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                             ).join(' ')
                             : '')
 
+                    console.log('cardHeader')
+                    console.log(getInitialStructureParams().viewName)
+
                     cardHeader = (cardHeader == ''
                         || cardHeader == ' '
                         || cardHeader == '  '
@@ -212,7 +225,7 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                         || cardHeader == '      ') ? (row.id || 'No visible name') :
                         cardHeader
 
-                    cardHeader = cardHeader ? (typeof cardHeader == 'object') ? (cardHeader.value || JSON.stringify(cardHeader)) : cardHeader: 'No visible name'
+                    cardHeader = cardHeader ? (typeof cardHeader == 'object') ? (cardHeader.value || JSON.stringify(cardHeader)) : cardHeader : 'No visible name'
 
                     const cardHeaderComment = row && (typeof row[tableParams.cardHeaderComment] == 'object' ?
                         !Array.isArray(row[tableParams.cardHeaderComment]) ?
@@ -241,8 +254,8 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                     )
                     // ==================================
 
-                    const cardColor = row[tableParams.cardColor] ? ((row[tableParams.cardColor][0] =='#' || row[tableParams.cardColor][0] =='r') ? row[tableParams.cardColor] 
-                        : '#' + row[tableParams.cardColor]): null
+                    const cardColor = row[tableParams.cardColor] ? ((row[tableParams.cardColor][0] == '#' || row[tableParams.cardColor][0] == 'r') ? row[tableParams.cardColor]
+                        : '#' + row[tableParams.cardColor]) : null
 
                     return (
                         <div key={i} className={`${styles.card} ${styles[currentBP]} ${styles[tableParams.cardListLayout || 'grid']}`}>
@@ -279,9 +292,9 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                                         style={{
                                             backgroundSize: tableParams.cardImageResize == 'contain' ? 'contain' : 'cover',
                                             backgroundImage: `url(${(row[tableParams.cardImageField] || '').split(",") ? (row[tableParams.cardImageField] || '').split(",")[0] : ''})`,
-                                            width: (tableParams.cardImageType == "left" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) ? parseInt(currentBP == 'mobile' ? Math.floor(tableParams.cardImageSize/1.5) : tableParams.cardImageSize) : 100 : 'auto',
-                                            height: (tableParams.cardImageType == "top" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) ? parseInt(currentBP == 'mobile' ? Math.floor(tableParams.cardImageSize/1.5) : tableParams.cardImageSize) : 100 : 'auto',
-                                            minHeight: (tableParams.cardImageType == "left" && tableParams.cardImageSizeHeight) ? parseInt(currentBP == 'mobile' ? Math.floor(tableParams.cardImageSize/1.5) : tableParams.cardImageSize) : 'none',
+                                            width: (tableParams.cardImageType == "left" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) ? parseInt(currentBP == 'mobile' ? Math.floor(tableParams.cardImageSize / 1.5) : tableParams.cardImageSize) : 100 : 'auto',
+                                            height: (tableParams.cardImageType == "top" || tableParams.cardImageType == "leftCircle") ? parseInt(tableParams.cardImageSize) ? parseInt(currentBP == 'mobile' ? Math.floor(tableParams.cardImageSize / 1.5) : tableParams.cardImageSize) : 100 : 'auto',
+                                            minHeight: (tableParams.cardImageType == "left" && tableParams.cardImageSizeHeight) ? parseInt(currentBP == 'mobile' ? Math.floor(tableParams.cardImageSize / 1.5) : tableParams.cardImageSize) : 'none',
                                         }}
                                     >
                                         {!row[tableParams.cardImageField] && <span className='icon icon-ban'>no&nbsp;picture</span>}
@@ -301,7 +314,7 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                                             <span className={`${styles.counter} ${(!quickActions || quickActions.length == 0) ? styles.moveCounter : ''}`} title={`${row[tableParams.counterField]} ${tableParams.counterText}`}>
                                                 {row[tableParams.counterField]}</span> : ''}
                                     </h3>
-                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginRight:-12 }}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginRight: -12 }}>
                                         {cardHeaderComment && (
                                             // если Array, то это у нас либо список labels, либо arrayLink
                                             // также чекаем на то, что это link/arrayLink, тогда добавляем классом linkText рамочку
@@ -321,7 +334,7 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                                         {cardBodyText && (
                                             // все также как у cardHeaderComment
                                             !Array.isArray(cardBodyText) ?
-                                                <ExpandedText 
+                                                <ExpandedText
                                                     textLength={tableParams.cardBodyTextLength == 0 ? 0 : tableParams.cardBodyTextLength || 300}
                                                     className={`${styles.cardBodyText} ${typeof row[tableParams.cardBodyText] == 'object' && styles.linkText}`}>
                                                     {/* {currentBP} */}
