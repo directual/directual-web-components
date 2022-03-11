@@ -38,9 +38,16 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
     const getInitialStructureParams = () => {
 
         const randomFieldArray = tableHeaders.filter(field => (field.dataType != 'link' && field.dataType != 'arrayLink'))[0] && tableHeaders.filter(field => (field.dataType != 'link' && field.dataType != 'arrayLink')) || []
-        const randomNumber = Math.floor( (randomFieldArray.length - 1) * Math.random() )
-        const randomField = randomFieldArray.length ? randomFieldArray[randomNumber].sysName : null
-        const id = (tableFieldScheme.filter(field => randomField == field[0])[0] && tableFieldScheme.filter(field => randomField == field[0])[0][1]) || null
+        let randomField = randomFieldArray[0].sysName
+        let id = (tableFieldScheme.filter(field => randomField == field[0])[0] && tableFieldScheme.filter(field => randomField == field[0])[0][1]) || null
+        if (!id) {
+            randomField = randomFieldArray[1].sysName
+            id = (tableFieldScheme.filter(field => randomField == field[0])[0] && tableFieldScheme.filter(field => randomField == field[0])[0][1]) || null
+        }
+        if (!id) {
+            randomField = randomFieldArray[2].sysName
+            id = (tableFieldScheme.filter(field => randomField == field[0])[0] && tableFieldScheme.filter(field => randomField == field[0])[0][1]) || null
+        }
         const name = id && tableStructures[id] && tableStructures[id].name
         // console.log('randomField')
         // console.log('tableFieldScheme')
