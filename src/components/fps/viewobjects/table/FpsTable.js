@@ -55,6 +55,10 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         console.log('submitting...')
         pageInfo = pageInfo || { page: currentPage }
         if (sl === "") { sl = undefined }
+        // костылек для даты
+        for (const prop in msg) {
+            if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) { msg[prop] = moment(msg[prop])}
+        }
         const message =
             { ...msg, _id: 'form_' + id, _sl_name: sl }
         console.log(message)
@@ -85,10 +89,10 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     const refresh = (skipLoading) => {
         !skipLoading && setLoading(true)
-        setCurrentDQL('')
-        setSearchValue('')
+        !skipLoading && setCurrentDQL('')
+        !skipLoading && setSearchValue('')
         onEvent({ dql: '', page: currentPage, _id: id })
-        removeUrlParam(id + '_dql')
+        !skipLoading && removeUrlParam(id + '_dql')
     }
 
     const setPage = page => {

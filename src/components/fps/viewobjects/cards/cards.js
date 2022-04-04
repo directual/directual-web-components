@@ -220,8 +220,8 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                             ).join(' ')
                             : '')
 
-                    console.log('cardHeader')
-                    console.log(getInitialStructureParams().viewName)
+                    // console.log('cardHeader')
+                    // console.log(getInitialStructureParams().viewName)
 
                     cardHeader = (cardHeader == ''
                         || cardHeader == ' '

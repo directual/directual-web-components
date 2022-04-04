@@ -149,6 +149,9 @@ export function ObjectCard(props) {
     function submitAction(actionParams) {
         let mapping = {}
         actionParams.formMapping && actionParams.formMapping.forEach(row => {
+            // console.log('row')
+            // console.log(row)
+            // console.log(mapping)
             if (row.type == 'user') { mapping[row.target] = props.auth ? props.auth.user : null }
             if (row.type == 'const') { mapping[row.target] = row.value }
             if (row.type == 'objectField') {
