@@ -8,7 +8,7 @@ import icon from "../../../icons/fps-cards.svg";
 import FpsCards from "../viewobjects/cards/FpsCards";
 import { dict } from '../locale'
 
-export function SignIn({ width, header, locale, facebookAuth, googleAuth, signUpheader, google, onSignIn, onSignUp, userNameFormat, allowSignUp }) {
+export function SignIn({ width, header, locale, facebookAuth, googleAuth, signUpheader, google, onSignIn, onSignUp, userNameFormat, allowSignUp, otherAuth }) {
     const submit = () => {
         onSignIn && onSignIn(loginDetails)
     }
@@ -34,6 +34,7 @@ export function SignIn({ width, header, locale, facebookAuth, googleAuth, signUp
             {header && <h1 style={{ marginBottom: 24 }}>{header || 'Sign In'}</h1>}
             {googleAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{googleAuth}</ActionPanel>}
             {facebookAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{facebookAuth}</ActionPanel>}
+            {otherAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{otherAuth}</ActionPanel>}
             {(googleAuth || facebookAuth) && <FormSection title={dict[lang].profile.or} />}
             <form >
                 <Input
