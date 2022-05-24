@@ -103,7 +103,7 @@ export default function StructureField(props) {
 
     // тут мы получаем данные для отображения текущего Value: имя поля и тип
     const getValueDetails = val => {
-        console.log(val)
+        //console.log(val)
         const objPath = val && val.split('.')
         let currentStruct = props.structSysName
         let counter = 0;
@@ -564,7 +564,7 @@ function StructListFields(props) {
 
     // key select
     const handleUserKeyPress = (e) => {
-        console.log(e.key)
+        //console.log(e.key)
         if (e.key == 'ArrowLeft') { goBack() }
         if ((e.key == 'ArrowDown' || e.key == 'ArrowUp') && isLast() && filteredFields) {
             // console.log(filteredFields)

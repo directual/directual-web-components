@@ -397,7 +397,7 @@ export function ObjectCard(props) {
             {props.refresh &&
                 <div title={dict[lang].card.refreshCard}
                     className={`${styles.refreshObject} icon icon-refresh`}
-                    onClick={refresh}
+                    onClick={() => refresh(true)}
                 />
             }
             <div className={styles.objectCardHeader}>
@@ -733,7 +733,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
     const struct = getStructure(linkedObj, transformTableFieldScheme(field.sysName, tableFieldScheme))
     //const enrichedObject = composeObject(linkedObj, struct)
 
-    
+
     // console.log(object[field.sysName])
     // console.log(linkedObj)
     // console.log(struct)
@@ -780,8 +780,9 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
             descending: 'desc'
         }
         const sort = sortDirection ? legacy[sortDirection] : 'asc'
+        if (!Array.isArray(array)) { array = [array] }
 
-        if (!Array.isArray(array) || !sortArrayLink || !sortByField) return array
+        if (!sortArrayLink || !sortByField) return array
         const sortedrray = _.orderBy(array, sortByField, sort)
         return sortedrray
     }
@@ -813,7 +814,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
 
     const processField = (f, fieldName, nospaces) => {
         // if (enrichedObject[fieldName].dataType == 'boolean') console.log(f ? _.get(enrichedObject[fieldName],'formatOptions.booleanOptions[0]') : _.get(enrichedObject[fieldName],'formatOptions.booleanOptions[1]'))
-        if (enrichedObject[fieldName].dataType == 'boolean') return f ? <div className='icon icon-done'>{_.get(enrichedObject[fieldName],'formatOptions.booleanOptions[0]') || 'true'}</div> : <div className='icon icon-ban'>{_.get(enrichedObject[fieldName],'formatOptions.booleanOptions[1]') || 'false'}</div>
+        if (enrichedObject[fieldName].dataType == 'boolean') return f ? <div className='icon icon-done'>{_.get(enrichedObject[fieldName], 'formatOptions.booleanOptions[0]') || 'true'}</div> : <div className='icon icon-ban'>{_.get(enrichedObject[fieldName], 'formatOptions.booleanOptions[1]') || 'false'}</div>
         if (!f) return null
         if (!enrichedObject[fieldName]) return typeof f == 'object' ? getLinkName(fieldName, f, transformTableFieldScheme(field.sysName, tableFieldScheme)) : f
         if (enrichedObject[fieldName].dataType == 'date') return formatDate(f, enrichedObject[fieldName].formatOptions)
@@ -855,6 +856,8 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
     if (field.veiwOption == 'cart') {
         if (!field.cartView) { return <div>{dict[lang].card.cart.notConfigured}</div> }
         const cart = field.cartView
+
+        const columns = (cart.image ? 1 : 0) + (cart.title ? 1 : 0) + (cart.status ? 1 : 0) + (cart.quantity ? 1 : 0) + (cart.price ? 1 : 0)
 
         return <React.Fragment>
             <span className={styles.label}>
@@ -923,7 +926,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                             /></td>}
                     </tr>)}
                     {cart.price && <tr className={styles.total}>
-                        <td className={styles.right} colSpan={5}>{dict[lang].card.cart.Total}:&nbsp;&nbsp;{cart.priceUnits == '$' ? cart.priceUnits : ''} <strong>{renderAL.length ?
+                        <td className={styles.right} colSpan={columns}>{dict[lang].card.cart.Total}:&nbsp;&nbsp;{cart.priceUnits == '$' ? cart.priceUnits : ''} <strong>{renderAL.length ?
                             numberWithSpaces(renderAL.map(item => parseFloat(processField(item[cart.priceField], cart.priceField, true) * (cart.quantity ? (processField(item[cart.quantityField], cart.quantityField, true) || 0) : 1))).reduce((total, amount) => total + amount).toFixed(2)).replace(/\.00$/, '')
                             : 0}</strong> {cart.priceUnits !== '$' ? cart.priceUnits : ''}</td>
                         {(field.write && editingOn && cart.deleteOn) && <td></td>}
@@ -940,7 +943,9 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
         if (!field.tableView) { return <div>Table is not configured</div> }
 
         const table = field.tableView || []
-        // console.log(table)
+        console.log('table')
+        console.log(table)
+        console.log(renderAL)
 
         return <React.Fragment>
             <span className={styles.label}>
@@ -1137,8 +1142,8 @@ function CardAction({ action, writeError, actionParams, debug, submitAction, onC
     const handleSubmitAction = () => {
 
         // это мы даем сценариям просраться и обновляем карточки/таблицу :)
-        setTimeout(() => refresh(true), 3000)
-        setTimeout(() => refresh(true), 5000)
+        // setTimeout(() => refresh(true), 3000)
+        // setTimeout(() => refresh(true), 5000)
 
         if (((!actionData.formMapping || actionData.formMapping.length == 0) && actionData.displayAs == 'button') ||
             ((!actionData.formData || actionData.formData.length == 0) && actionData.displayAs == 'form')) { noActionData() }
@@ -1212,8 +1217,8 @@ function CardAction({ action, writeError, actionParams, debug, submitAction, onC
                 } else {
                     cond.fieldValue = object[cond.field].id
                 }
-            } else { cond.fieldValue = object[cond.field] } 
-                
+            } else { cond.fieldValue = object[cond.field] }
+
             if (cond.value == 'false' && !cond.fieldValue) { cond.fieldValue = 'false' }
 
         }
