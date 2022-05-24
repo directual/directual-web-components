@@ -780,6 +780,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
             descending: 'desc'
         }
         const sort = sortDirection ? legacy[sortDirection] : 'asc'
+        if (!array) return array
         if (!Array.isArray(array)) { array = [array] }
 
         if (!sortArrayLink || !sortByField) return array
@@ -834,7 +835,8 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
         onChange(newValue)
     }
 
-    // console.log(renderAL)
+    console.log('renderAL')
+    console.log(renderAL)
 
     const summByColumn = fieldName => {
         if (!renderAL.length) return 0
