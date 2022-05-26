@@ -93,7 +93,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
           : data.params.fields[field].defaultValue
       }
       if (data.params.fields[field].defaultValueOn && data.params.fields[field].saveURL) {
-        if (window && window.location && window.location.href) {
+        if (typeof window !== 'undefined' && window.location.href) {
           defModel[field] = window.location.href
         }
       }
