@@ -320,7 +320,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
 
   // чекаем надо ли спрятать кнопку сабмита
   const wf = (_.get(data,'params.data.writeFields') || [])
-    .filter(f => _.get(data,`params.fields.${f.sysName}.include`) && !_.get(data,`params.fields.${f.sysName}.disableEditing`))
+    .filter(f => (_.get(data,`params.fields.${f.sysName}.include`) || _.get(data,`params.fields.${f.sysName}.defaultValueOn`) ) && !_.get(data,`params.fields.${f.sysName}.disableEditing`))
   let idInclude = false;
   _.get(data,'params.data.writeFields').forEach(f => { if (f.sysName == 'id') { idInclude = true} })
   const isEditable = (idInclude || !data.params.useEditing) && wf.length > 0
