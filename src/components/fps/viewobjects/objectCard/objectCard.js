@@ -181,7 +181,13 @@ export function ObjectCard(props) {
         })
         mapping = { ...mapping, ...actionParams.formData }
         const sl = actionParams.sysName
-        props.executeAction(mapping, sl)
+
+        //it is not clean block for rise web3 parameter to sendEvent fn's
+        let optionsAction = {}
+        if(actionParams.web3){
+          optionsAction.web3 = true
+        }
+        props.executeAction(mapping, sl, optionsAction)
     }
 
 
@@ -733,7 +739,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
     const struct = getStructure(linkedObj, transformTableFieldScheme(field.sysName, tableFieldScheme))
     //const enrichedObject = composeObject(linkedObj, struct)
 
-    
+
     // console.log(object[field.sysName])
     // console.log(linkedObj)
     // console.log(struct)
@@ -1141,7 +1147,14 @@ function CardAction({ action, writeError, actionParams, debug, submitAction, onC
         setTimeout(() => refresh(true), 5000)
 
         if (((!actionData.formMapping || actionData.formMapping.length == 0) && actionData.displayAs == 'button') ||
-            ((!actionData.formData || actionData.formData.length == 0) && actionData.displayAs == 'form')) { noActionData() }
+            ((!actionData.formData || actionData.formData.length == 0) && actionData.displayAs == 'form')) {
+          if(actionData.web3){
+            setIsSubmitted(true)
+            submitAction(actionData)
+          }else{
+            noActionData()
+          }
+        }
         else {
             setIsSubmitted(true)
             submitAction(actionData)
@@ -1212,8 +1225,8 @@ function CardAction({ action, writeError, actionParams, debug, submitAction, onC
                 } else {
                     cond.fieldValue = object[cond.field].id
                 }
-            } else { cond.fieldValue = object[cond.field] } 
-                
+            } else { cond.fieldValue = object[cond.field] }
+
             if (cond.value == 'false' && !cond.fieldValue) { cond.fieldValue = 'false' }
 
         }
