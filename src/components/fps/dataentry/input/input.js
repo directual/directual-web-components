@@ -35,14 +35,16 @@ export default function Input(props) {
     }
 
     const checkJsonValue = (e, v) => {
-        // console.log(v)
+        console.log('checkJsonValue')
+        console.log(v)
+        console.log(e)
         let parseJSON = {}
         const val = v || value
         if (val) {
             try {
                 parseJSON = JSON.parse(val)
-                setValue(JSON.stringify(parseJSON, 0, 3));
-                e && setLines(countLines(e.target || e, JSON.stringify(parseJSON, 0, 3)))
+                setValue(JSON.stringify(parseJSON, null, 3));
+                e && setLines(countLines(e.target || e, JSON.stringify(parseJSON, null, 3)))
                 setWarningMesg({ type: 'ok', msg: 'Valid JSON' })
                 props.isValid && props.isValid(true)
             } catch {
@@ -435,8 +437,8 @@ export default function Input(props) {
                 <div className={`${styles.field_wrapper} ${(props.addonAfter || props.addonBefore || props.preSelect || (props.type == 'color' || props.type == 'colour')) && styles.hor}`}>
                     {props.addonBefore &&
                         <div className={styles.addonBefore}>{props.addonBefore}</div>}
-                    {(props.type == 'color' || props.type == 'colour')  &&
-                        <div className={styles.addonBefore} style={{backgroundColor: value}}>&nbsp;</div>}
+                    {(props.type == 'color' || props.type == 'colour') &&
+                        <div className={styles.addonBefore} style={{ backgroundColor: value }}>&nbsp;</div>}
                     {props.preSelect &&
                         <div className={`${styles.addonBefore} ${styles.preSelect}`}>
                             <select value={props.preSelectDefaultValue} disabled={props.disabled} onChange={e => props.onChoosePreSelect && props.onChoosePreSelect(e.target.value)}>

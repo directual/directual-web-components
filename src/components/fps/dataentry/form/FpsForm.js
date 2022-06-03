@@ -92,6 +92,11 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
           JSON.stringify(data.params.fields[field].defaultValue)
           : data.params.fields[field].defaultValue
       }
+      if (data.params.fields[field].defaultValueOn && data.params.fields[field].saveURL) {
+        if (typeof window !== 'undefined' && window.location.href) {
+          defModel[field] = window.location.href
+        }
+      }
       if (data.params.fields[field].hidden) {
         hiddenFields[field] = true
       }
@@ -207,31 +212,32 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
   const getFieldValue = (sysName, dataType) => {
     if (!data.data) { return } else {
       let getFieldVal
-      getFieldVal = data.data[0] && data.data[0][sysName]
+      getFieldVal = (data.data[0] && data.data[0][sysName]) // || defaultModel()[sysName]
       if (dataType == 'boolean') {
         if (getFieldVal === true) { getFieldVal = 'true' }
         if (getFieldVal === false) { getFieldVal = 'false' }
       }
       if (typeof getFieldVal == 'object' && getFieldVal && Array.isArray(getFieldVal)) { getFieldVal = getFieldVal.map(i => { return i.id }) }
       if (typeof getFieldVal == 'object' && getFieldVal && !Array.isArray(getFieldVal)) { getFieldVal = getFieldVal.id }
-      if (dataType == 'date') {
+      if (dataType == 'date' && getFieldVal) {
         getFieldVal = moment(getFieldVal)
       }
       if (eidtID && getFieldVal && fetchedObjectFields[sysName] != getFieldVal) {
         fetchedObjectFields = { ...fetchedObjectFields, id: eidtID, [sysName]: getFieldVal }
       }
+      //if (getFieldVal && model[sysName] != getFieldVal) {setModel({...model, [sysName]: getFieldVal})}
       return getFieldVal
     }
   }
 
   useEffect(() => {
-    let modelCopy = { ...fetchedObjectFields, ...hiddenFieldsValues, ...hiddenAuth, ...model }; // model в конце! Иначе нахуй перетирается все что ввели
+    let modelCopy = { ...fetchedObjectFields, ...hiddenFieldsValues, ...hiddenAuth, ...defaultModel(), ...model }; // model в конце! Иначе нахуй перетирается все что ввели
     if (eidtID) { modelCopy.id = eidtID } // тут проебывался где-то или перетирался id, посему записываем в явном виде
     setModel(modelCopy)
   }, [data.data])
 
   const onChange = (field, value) => {
-    let modelCopy = { ...fetchedObjectFields, ...hiddenFieldsValues, ...hiddenAuth, ...model }; // model в конце! Иначе нахуй перетирается все что ввели
+    let modelCopy = { ...fetchedObjectFields, ...hiddenFieldsValues, ...hiddenAuth, ...defaultModel(), ...model }; // model в конце! Иначе нахуй перетирается все что ввели
     if (eidtID) { modelCopy.id = eidtID } // тут проебывался где-то или перетирался id, посему записываем в явном виде
     modelCopy[field] = value
     setModel(modelCopy)
@@ -314,7 +320,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
 
   // чекаем надо ли спрятать кнопку сабмита
   const wf = (_.get(data,'params.data.writeFields') || [])
-    .filter(f => _.get(data,`params.fields.${f.sysName}.include`) && !_.get(data,`params.fields.${f.sysName}.disableEditing`))
+    .filter(f => (_.get(data,`params.fields.${f.sysName}.include`) || _.get(data,`params.fields.${f.sysName}.defaultValueOn`) ) && !_.get(data,`params.fields.${f.sysName}.disableEditing`))
   let idInclude = false;
   _.get(data,'params.data.writeFields').forEach(f => { if (f.sysName == 'id') { idInclude = true} })
   const isEditable = (idInclude || !data.params.useEditing) && wf.length > 0

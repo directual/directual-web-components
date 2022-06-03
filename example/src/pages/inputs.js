@@ -393,7 +393,7 @@ type='structurefield' />`} />
                 debug
                 type='json'
                 label='JSON input'
-                disabled
+                //disabled
                 rows='auto'
                 onChange={v => { }}
             //isValid={v => { console.log(v) }}
