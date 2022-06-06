@@ -54,7 +54,14 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     }, [data])
 
 
-    const sendMsg = (msg, sl, pageInfo) => {
+  /**
+   *
+   * @param msg
+   * @param sl
+   * @param pageInfo
+   * @param options - additional parameteres for rise event to eventEngine
+   */
+    const sendMsg = (msg, sl, pageInfo, options) => {
         console.log('submitting...')
         pageInfo = pageInfo || { page: currentPage }
         if (sl === "") { sl = undefined }
@@ -63,7 +70,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
             if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) { msg[prop] = moment(msg[prop])}
         }
         const message =
-            { ...msg, _id: 'form_' + id, _sl_name: sl }
+            { ...msg, _id: 'form_' + id, _sl_name: sl, _options:options }
         console.log(message)
         console.log(pageInfo)
         setLoading(true)
@@ -124,9 +131,9 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         sendMsg(saveModel)
     }
 
-    const submitAction = (mapping, sl) => {
+    const submitAction = (mapping, sl, options) => {
         console.log('submitting action...')
-        sendMsg(mapping, sl)
+        sendMsg(mapping, sl, undefined, options)
     }
 
     //Check action conditionals

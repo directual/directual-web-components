@@ -181,7 +181,13 @@ export function ObjectCard(props) {
         })
         mapping = { ...mapping, ...actionParams.formData }
         const sl = actionParams.sysName
-        props.executeAction(mapping, sl)
+
+        //it is not clean block for rise web3 parameter to sendEvent fn's
+        let optionsAction = {}
+        if(actionParams.web3){
+          optionsAction.web3 = true
+        }
+        props.executeAction(mapping, sl, optionsAction)
     }
 
 
@@ -1148,7 +1154,14 @@ function CardAction({ action, writeError, actionParams, debug, submitAction, onC
         // setTimeout(() => refresh(true), 5000)
 
         if (((!actionData.formMapping || actionData.formMapping.length == 0) && actionData.displayAs == 'button') ||
-            ((!actionData.formData || actionData.formData.length == 0) && actionData.displayAs == 'form')) { noActionData() }
+            ((!actionData.formData || actionData.formData.length == 0) && actionData.displayAs == 'form')) {
+          if(actionData.web3){
+            setIsSubmitted(true)
+            submitAction(actionData)
+          }else{
+            noActionData()
+          }
+        }
         else {
             setIsSubmitted(true)
             submitAction(actionData)
