@@ -76,3 +76,15 @@
      display: block; 
      transform: scale(0.5)
 }
+
+.version {
+    display: flex;
+    align-items: flex-end;
+    
+}
+.version span {
+    padding-left: 8px;
+    opacity: .2;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+}
