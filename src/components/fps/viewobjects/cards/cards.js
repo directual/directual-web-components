@@ -410,10 +410,8 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
 }
 
 function FooterButtons({ footerButtons, performAction, loading }) {
-    console.log('footerButtons')
-    console.log(footerButtons)
-
-
+    // console.log('footerButtons')
+    // console.log(footerButtons)
 
     return <React.Fragment>
         {footerButtons && footerButtons.length && <div className={styles.cardsFooter}>
