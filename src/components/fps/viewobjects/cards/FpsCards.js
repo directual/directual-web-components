@@ -48,7 +48,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         }
         if (!data.isSuccessWrite && data.writeError) {
             console.log('data write error')
-            console.log(data.writeError)
+            console.log('error ==> ' + data.writeError)
         }
         setQSearch(data.quickSearch === "true")
     }, [data])
@@ -246,37 +246,6 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         return eConds
     }
 
-    // const edenrichConds = (conds, object) => {
-    //     let eConds = conds ? [...conds] : null
-    //     console.log('edenrichConds')
-    //     console.log(conds)
-    //     console.log(object)
-    //     // console.log(auth)
-    //     eConds && eConds.forEach(cond => {
-    //         // console.log(cond)
-    //         // console.log(object)
-    //         if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type == 'const') {
-    //             cond.checkValue = cond.value
-    //         }
-    //         if (cond.target == 'role') {
-    //             cond.checkValue = cond.value
-    //         }
-    //         if (cond.target == 'field') {
-    //             typeof object[cond.field] != 'object' ? cond.fieldValue = object[cond.field] :
-    //                 cond.fieldValue = object[cond.field].id || (typeof object[cond.value].value == 'object' ? object[cond.value].value.id : object[cond.value].value) || null
-    //             if (cond.value == 'false' && !cond.fieldValue) { cond.fieldValue = 'false' }
-    //             // console.log('cond.fieldValue')
-    //             // console.log(cond.fieldValue)
-
-    //         }
-    //         if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
-    //             typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
-    //                 cond.checkValue = (typeof object[cond.value].value == 'object' ? object[cond.value].value.id : object[cond.value].value) || null // раньше тут было .id, а не .value проверить!
-    //         }
-    //     })
-    //     return eConds
-    // }
-
     const handleCloseShowObject = () => {
         setShowObject(null);
         setTimeout(() => removeUrlParam(id + '_id'), 300)
@@ -308,10 +277,6 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     return (
         <ComponentWrapper currentBP={currentBP}>
-
-            {/* <Button onClick={() => updateURL([{ key: "objectID", value: "100500" } ])} icon='refresh'>updateURL</Button>
-            <Button onClick={() => clearURL()} icon='refresh'>clearURL</Button> */}
-            {/* <Button onClick={() => removeUrlParam(id + '_page')} icon='refresh'>refresh page</Button> */}
             {showObject &&
                 <React.Fragment>
                     <Backdrop onClick={handleCloseShowObject} hoverable />
@@ -339,7 +304,6 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                         /></div>
                 </React.Fragment>}
 
-            {/* {currentBP ? currentBP : 'no currentBP'} */}
             <TableTitle
                 currentBP={currentBP}
                 tableTitle={tableTitle}

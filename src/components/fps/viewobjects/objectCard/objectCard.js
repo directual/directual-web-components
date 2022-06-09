@@ -144,14 +144,16 @@ export function ObjectCard(props) {
         })
     }
 
-    // выполнить Action
+    // perform an Action
 
     function submitAction(actionParams) {
-        let mapping = {}
+        let mapping = {} // calling api-endpoint
+
         actionParams.formMapping && actionParams.formMapping.forEach(row => {
             // console.log('row')
             // console.log(row)
             // console.log(mapping)
+            // В отличие от вызова аналогичной функции из cards.js мы должны собирать значения с вложенных объектов!
             if (row.type == 'user') { mapping[row.target] = props.auth ? props.auth.user : null }
             if (row.type == 'const') { mapping[row.target] = row.value }
             if (row.type == 'objectField') {
@@ -182,12 +184,23 @@ export function ObjectCard(props) {
         mapping = { ...mapping, ...actionParams.formData }
         const sl = actionParams.sysName
 
-        //it is not clean block for rise web3 parameter to sendEvent fn's
-        let optionsAction = {}
-        if(actionParams.web3){
-          optionsAction.web3 = true
+        let options = {} // calling web3-api
+        if (actionParams.web3) {
+            options.web3 = true
         }
-        props.executeAction(mapping, sl, optionsAction)
+        actionParams.web3Mapping && actionParams.web3Mapping.length && actionParams.web3Mapping.forEach(row => {
+            if (row.type == 'user') { options[row.target] = auth ? auth.user : null }
+            if (row.type == 'const') { options[row.target] = row.value }
+            if (row.type == 'objectField') {
+                options[row.target] = typeof object[row.value] != 'object' ?
+                    object[row.value] :
+                    Array.isArray(object[row.value]) ?
+                        object[row.value].map(i => i.id).join(',') :
+                        object[row.value].id
+            }
+        })
+
+        props.executeAction(mapping, sl, options)
     }
 
 
@@ -1149,18 +1162,18 @@ function CardAction({ action, writeError, actionParams, debug, submitAction, onC
 
     const handleSubmitAction = () => {
 
-        // это мы даем сценариям просраться и обновляем карточки/таблицу :)
-        // setTimeout(() => refresh(true), 3000)
-        // setTimeout(() => refresh(true), 5000)
+        // refresh cards after action is taken
+        setTimeout(() => refresh(true), 3000) // one time
+        // setTimeout(() => refresh(true), 5000) // two times
 
         if (((!actionData.formMapping || actionData.formMapping.length == 0) && actionData.displayAs == 'button') ||
             ((!actionData.formData || actionData.formData.length == 0) && actionData.displayAs == 'form')) {
-          if(actionData.web3){
-            setIsSubmitted(true)
-            submitAction(actionData)
-          }else{
-            noActionData()
-          }
+            if (actionData.web3) {
+                setIsSubmitted(true)
+                submitAction(actionData)
+            } else {
+                noActionData()
+            }
         }
         else {
             setIsSubmitted(true)

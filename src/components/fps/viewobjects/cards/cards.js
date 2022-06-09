@@ -3,6 +3,8 @@ import styles from './cards.module.css'
 import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
 import ExpandedText from '../../expandedText/expandedText'
 import { Paging } from '../paging/paging'
+import Button from '../../button/button'
+import ActionPanel from '../../actionspanel/actionspanel'
 import moment from 'moment'
 import _ from 'lodash'
 
@@ -138,15 +140,29 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                         params.actions.filter(i => i.dropdown && i.displayAs == 'button'
                             && i.callFrom != 'linked'
                             && checkActionCond(i.conditionals, object)) : []
+
+                    // actions кнопок в футере карточки
+                    const footerButtons = params.actions ?
+                        params.actions.filter(i => i.footerButtons && i.displayAs == 'button'
+                            && i.callFrom != 'linked'
+                            && checkActionCond(i.conditionals, object)) : []
+
                     // выполнить Action
                     function performAction(actionParams) {
-                        //console.log(actionParams)
-                        let mapping = {}
-                        if (!actionParams.formMapping || actionParams.formMapping.length == 0) {
+                        console.log('actionParams')
+                        console.log(actionParams)
+                        let mapping = {} // calling api-endpoint
+                        let options = {} // calling web3-api
+                        if (actionParams.web3) {
+                            options.web3 = true
+                        }
+                        if ((!actionParams.formMapping || actionParams.formMapping.length == 0) && !actionParams.web3) {
                             console.log('action does nothing')
                             return null
                         }
-                        actionParams.formMapping && actionParams.formMapping.forEach(row => {
+
+                        // gathering mapping for endpoint call:
+                        actionParams.formMapping && actionParams.formMapping.length && actionParams.formMapping.forEach(row => {
                             if (row.type == 'user') { mapping[row.target] = auth ? auth.user : null }
                             if (row.type == 'const') { mapping[row.target] = row.value }
                             if (row.type == 'objectField') {
@@ -157,8 +173,21 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                                         object[row.value].id
                             }
                         })
+
+                        // gathering mapping for web3-api call:
+                        actionParams.web3Mapping && actionParams.web3Mapping.length && actionParams.web3Mapping.forEach(row => {
+                            if (row.type == 'user') { options[row.target] = auth ? auth.user : null }
+                            if (row.type == 'const') { options[row.target] = row.value }
+                            if (row.type == 'objectField') {
+                                options[row.target] = typeof object[row.value] != 'object' ?
+                                    object[row.value] :
+                                    Array.isArray(object[row.value]) ?
+                                        object[row.value].map(i => i.id).join(',') :
+                                        object[row.value].id
+                            }
+                        })
                         const sl = actionParams.sysName
-                        submitAction(mapping, sl)
+                        submitAction(mapping, sl, options)
                     }
 
                     // форматируем дату для карточки (если есть) в соответствии с formatOptions
@@ -181,7 +210,6 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                                 return def || {}
                             }
                         }
-
 
                         // Range слайдер пока не прикрутил, см условие на .secondValue
                         if (!formatOptions.range || jsonParse(value).secondValue) { return }
@@ -264,6 +292,7 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                     const cardColor = row[tableParams.cardColor] ? ((row[tableParams.cardColor][0] == '#' || row[tableParams.cardColor][0] == 'r') ? row[tableParams.cardColor]
                         : '#' + row[tableParams.cardColor]) : null
 
+                    // Render the card below:
                     return (
                         <div key={i} className={`${styles.card} ${styles[currentBP]} ${styles[tableParams.cardListLayout || 'grid']}`}>
                             {/* quick actions menu */}
@@ -356,6 +385,7 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                                         )}
                                     </div>
                                 </div>
+                                <FooterButtons loading={loading} footerButtons={footerButtons} performAction={performAction} />
                             </div>
                         </div>)
                 })}
@@ -376,6 +406,32 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
 
         </React.Fragment>
     )
+}
+
+function FooterButtons({ footerButtons, performAction, loading }) {
+
+    const [localLoading, setLocalLoading] = useState(false)
+    useEffect(() => { !loading && setLocalLoading(false) }, [loading])
+
+    return <React.Fragment>
+        {footerButtons && footerButtons.length && <div className={styles.cardsFooter}>
+            <ActionPanel margin={{ top: 0, left: 0 }}>
+                {footerButtons.map(button => <Button
+                    accent={button.buttonType == 'accent'}
+                    danger={button.buttonType == 'danger'}
+                    icon={button.buttonIcon}
+                    loading={localLoading}
+                    onClick={e => {
+                        e.stopPropagation()
+                        performAction(button)
+                        setLocalLoading(true)
+                    }}
+                >
+                    {button.buttonTitle || button.name}
+                </Button>)}
+            </ActionPanel>
+        </div>}
+    </React.Fragment>
 }
 
 function QuickActionsControl({ quickActions, performAction }) {

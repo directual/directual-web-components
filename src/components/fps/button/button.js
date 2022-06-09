@@ -8,7 +8,9 @@ export default function Button(props) {
         <React.Fragment>
             {!props.link ?
                 <button
-                    onClick={!props.disabled && props.onClick}
+                    onClick={e => { 
+                        e.stopPropagation()
+                        !props.disabled && props.onClick && props.onClick(e) }}
                     style={{
                         height: props.height || 48
                     }}
