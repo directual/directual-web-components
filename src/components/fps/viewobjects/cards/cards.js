@@ -4,6 +4,7 @@ import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
 import ExpandedText from '../../expandedText/expandedText'
 import { Paging } from '../paging/paging'
 import Button from '../../button/button'
+import Hint from '../../hint/hint'
 import ActionPanel from '../../actionspanel/actionspanel'
 import moment from 'moment'
 import _ from 'lodash'
@@ -409,26 +410,42 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
 }
 
 function FooterButtons({ footerButtons, performAction, loading }) {
+    console.log('footerButtons')
+    console.log(footerButtons)
 
-    const [localLoading, setLocalLoading] = useState(false)
-    useEffect(() => { !loading && setLocalLoading(false) }, [loading])
+
 
     return <React.Fragment>
         {footerButtons && footerButtons.length && <div className={styles.cardsFooter}>
             <ActionPanel margin={{ top: 0, left: 0 }}>
-                {footerButtons.map(button => <Button
-                    accent={button.buttonType == 'accent'}
-                    danger={button.buttonType == 'danger'}
-                    icon={button.buttonIcon}
-                    loading={localLoading}
-                    onClick={e => {
-                        e.stopPropagation()
-                        performAction(button)
-                        setLocalLoading(true)
-                    }}
-                >
-                    {button.buttonTitle || button.name}
-                </Button>)}
+                {footerButtons.map(button => {
+                    const [localLoading, setLocalLoading] = useState(false)
+                    const [submitted, isSubmitted] = useState(false)
+                    const [message, setMessage] = useState(false)
+                    useEffect(() => {
+                        !loading && setLocalLoading(false)
+                        button.showMessage && setMessage(true)
+                    }, [loading])
+
+                    if (!loading && message && submitted) return <Hint ok margin={{ top: 0, bottom: 3 }}>
+                        {button.resultMessage}
+                    </Hint>
+
+                    return <Button
+                        accent={button.buttonType == 'accent'}
+                        danger={button.buttonType == 'danger'}
+                        icon={button.buttonIcon}
+                        loading={localLoading}
+                        onClick={e => {
+                            e.stopPropagation()
+                            performAction(button)
+                            setLocalLoading(true)
+                            isSubmitted(true)
+                        }}
+                    >
+                        {button.buttonTitle || button.name}
+                    </Button>
+                })}
             </ActionPanel>
         </div>}
     </React.Fragment>
