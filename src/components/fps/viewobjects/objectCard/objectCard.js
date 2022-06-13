@@ -189,7 +189,8 @@ export function ObjectCard(props) {
             options.web3 = true
         }
         actionParams.web3Mapping && actionParams.web3Mapping.length && actionParams.web3Mapping.forEach(row => {
-            if (row.type == 'user') { options[row.target] = auth ? auth.user : null }
+            if (row.type == 'user') { options[row.target] = props.auth ? props.auth.user : null }
+            if (row.type == 'user') { options[row.target] = props.auth ? props.auth.user : null }
             if (row.type == 'const') { options[row.target] = row.value }
             if (row.type == 'objectField') {
                 options[row.target] = typeof object[row.value] != 'object' ?

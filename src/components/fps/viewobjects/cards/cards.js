@@ -132,7 +132,7 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
 
     return (
         <React.Fragment>
-            <div className={`${styles.cardsWrapper} 
+            <div className={`${styles.cardsWrapper}
                 ${(data.error || tableData.length === 0 || tableHeaders.length === 0) && styles.emptyTable} ${loading && styles.loading}`}>
                 {(tableData.length != 0 && tableHeaders.length != 0) && tableData.map((row, i) => {
                     const object = row
@@ -313,7 +313,7 @@ export function Cards({ data, onExpand, edenrichConds, loading, searchValue, aut
                                     }
                                 }
                                 onClick={() => {
-                                    //console.log(row) 
+                                    //console.log(row)
                                     !loading && onExpand(row)
                                 }}>
                                 {/* Разукрашиваем карточку */}
