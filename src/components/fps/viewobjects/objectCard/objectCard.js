@@ -201,7 +201,17 @@ export function ObjectCard(props) {
             }
         })
 
-        props.executeAction(mapping, sl, options)
+        let result = props.executeAction(mapping, sl, options)
+        if(result){
+          result
+            .then((ok) => {
+              console.log("ok async" + ok)
+            })
+            .catch((err) => {
+              console.log("err async")
+              console.log(err)
+            })
+        }
     }
 
 

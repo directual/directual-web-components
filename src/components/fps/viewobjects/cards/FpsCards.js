@@ -75,7 +75,13 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         console.log(pageInfo)
         setLoading(true)
         if (onEvent) {
-            onEvent(message, pageInfo)
+            let prom = onEvent(message, pageInfo)
+            if(prom && prom.finally){
+              prom.finally(()=>{
+                setLoading(false)
+              })
+            }
+            return prom
         }
     }
 
@@ -133,7 +139,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     const submitAction = (mapping, sl, options) => {
         console.log('submitting action...')
-        sendMsg(mapping, sl, undefined, options)
+        return sendMsg(mapping, sl, undefined, options)
     }
 
     //Check action conditionals
