@@ -146,6 +146,9 @@ export function ObjectCard(props) {
 
     // perform an Action
 
+    const [successWeb3, setSuccessWeb3] = useState(false)
+
+
     function submitAction(actionParams) {
         let mapping = {} // calling api-endpoint
 
@@ -202,16 +205,17 @@ export function ObjectCard(props) {
         })
 
         let result = props.executeAction(mapping, sl, options)
-        if(result){
-          result
-            .then((ok) => {
-              console.log("ok async" + ok)
-            })
-            .catch((err) => {
-              console.log("err async")
-              console.log(err)
-            })
-        }
+        if (result) {
+            result
+              .then((ok) => {
+                console.log("ok async" + ok)
+                setSuccessWeb3(true)
+              })
+              .catch((err) => {
+                console.log("err async")
+                console.log(err)
+              })
+          }
     }
 
 
@@ -316,6 +320,7 @@ export function ObjectCard(props) {
                                         action={action.id}
                                         writeError={data.writeError}
                                         aType='actionForm'
+                                        successWeb3={successWeb3}
                                         object={object}
                                         refresh={refresh}
                                         checkActionCond={cond => props.checkActionCond(cond, object)}
@@ -328,6 +333,7 @@ export function ObjectCard(props) {
                                     return <CardAction
                                         loading={props.loading}
                                         action={action.id}
+                                        successWeb3={successWeb3}
                                         refresh={refresh}
                                         writeError={data.writeError}
                                         aType='actionButton'
@@ -1163,7 +1169,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
     )
 }
 
-function CardAction({ action, writeError, actionParams, debug, submitAction, onClose, checkActionCond, object, aType, loading, refresh }) {
+function CardAction({ action, successWeb3, writeError, actionParams, debug, submitAction, onClose, checkActionCond, object, aType, loading, refresh }) {
 
     const [actionData, setActionData] = useState(actionParams)
     const [genericLoading, setGenericLoading] = useState(false)
@@ -1196,31 +1202,6 @@ function CardAction({ action, writeError, actionParams, debug, submitAction, onC
     // console.log(actionParams)
 
     let conds = actionParams ? (actionParams.conditionals ? [...actionParams.conditionals] : null) : null
-    // if (conds) {
-    //     conds.forEach(cond => {
-    //         if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type == 'const') {
-    //             cond.checkValue = cond.value
-    //         }
-    //         if (cond.target == 'role') {
-    //             cond.checkValue = cond.value
-    //         }
-    //         if (cond.target == 'linkedField') {
-    //             // console.log('ЕБАТЬ')
-    //             // console.log(conds)
-    //             // console.log(object)
-    //             typeof object[cond.field] != 'object' ? cond.fieldValue = object[cond.field] :
-    //                 cond.fieldValue = object[cond.field].id || object[cond.field].value || null
-    //         }
-    //         if (cond.target == 'field') {
-    //             typeof object[cond.field] != 'object' ? cond.fieldValue = object[cond.field] :
-    //                 cond.fieldValue = object[cond.field].id || object[cond.field].value || null
-    //         }
-    //         if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
-    //             typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
-    //                 cond.checkValue = object[cond.field].id || object[cond.value].value || null // раньше тут было .id, а не .value проверить!
-    //         }
-    //     })
-    // }
 
     const parseJson = json => {
         if (!json) return {}
@@ -1300,6 +1281,7 @@ function CardAction({ action, writeError, actionParams, debug, submitAction, onC
         isSubmitted
         && actionParams.showMessage
         && !loading
+        && (successWeb3 || !actionParams.web3)
     ) {
         return <div style={{ width: '100%' }}>
             {actionParams.displayAs == 'form' && <FormSection title={actionParams.name} />}

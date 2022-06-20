@@ -82,6 +82,7 @@ export function SignUp(props) {
             {props.header && <h1 style={{ marginBottom: 24 }}>{props.header || 'Sign Up'}</h1>}
             {props.googleAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{props.googleAuth}</ActionPanel>}
             {props.facebookAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{props.facebookAuth}</ActionPanel>}
+            {props.otherAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{props.otherAuth}</ActionPanel>}
             {(props.googleAuth || props.facebookAuth) && <FormSection title={dict[lang].profile.or} />}
             <form>
                 <InputGroup>

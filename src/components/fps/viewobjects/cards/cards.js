@@ -192,6 +192,8 @@ export function Cards({
       : linkName || displayID || obj.id || 'No visible name'
   }
 
+  const [successWeb3, setSuccessWeb3] = useState(false)
+
   return (
     <React.Fragment>
       <div
@@ -288,10 +290,12 @@ export function Cards({
                 })
               const sl = actionParams.sysName
               const result = submitAction(mapping, sl, options)
+              
               if (result) {
                 result
                   .then((ok) => {
                     console.log("ok async" + ok)
+                    setSuccessWeb3(true)
                   })
                   .catch((err) => {
                     console.log("err async")
@@ -712,6 +716,7 @@ export function Cards({
                   </div>
                   <FooterButtons
                     loading={loading}
+                    successWeb3={successWeb3}
                     footerButtons={footerButtons}
                     performAction={performAction}
                   />
@@ -738,7 +743,7 @@ export function Cards({
   )
 }
 
-function FooterButtons({ footerButtons, performAction, loading }) {
+function FooterButtons({ footerButtons, performAction, loading, successWeb3 }) {
   // console.log('footerButtons')
   // console.log(footerButtons)
 
@@ -756,7 +761,7 @@ function FooterButtons({ footerButtons, performAction, loading }) {
                 button.showMessage && setMessage(true)
               }, [loading])
 
-              if (!loading && message && submitted)
+              if (!loading && message && submitted && (successWeb3 || !button.web3))
                 return (
                   <Hint ok margin={{ top: 0, bottom: 3 }}>
                     {button.resultMessage}
