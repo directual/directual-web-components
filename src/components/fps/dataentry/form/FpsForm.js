@@ -24,6 +24,7 @@ export function FormSection(props) {
 }
 
 export default function FpsForm({ auth, data, onEvent, id, locale }) {
+  if (!data) { return <div /> }
   if (data.params.data) {
     return <FpsFormNew auth={auth || {}} data={data} locale={locale} onEvent={onEvent} id={id} />
   }

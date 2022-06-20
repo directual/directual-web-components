@@ -714,12 +714,12 @@ export function Cards({
                         ))}
                     </div>
                   </div>
-                  <FooterButtons
+                  {footerButtons && footerButtons.length > 0 && <FooterButtons
                     loading={loading}
                     successWeb3={successWeb3}
                     footerButtons={footerButtons}
                     performAction={performAction}
-                  />
+                  />}
                 </div>
               </div>
             )

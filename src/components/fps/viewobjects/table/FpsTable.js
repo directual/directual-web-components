@@ -266,10 +266,10 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         }
     }, [showObject])
 
+    const params = (data || {}).params || {}
 
-
-    const { hideExpandTD, autoRefresh, largeFont } = data.params
-    let autoRefreshPeriod = data.params.autoRefreshPeriod || 60 // минута по умолчанию
+    const { hideExpandTD, autoRefresh, largeFont } = params
+    let autoRefreshPeriod = params.autoRefreshPeriod || 60 // минута по умолчанию
     autoRefreshPeriod = autoRefreshPeriod * 1000
 
     useEffect(() => {
@@ -282,6 +282,8 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         }, autoRefreshPeriod);
         return () => clearInterval(interval);
     }, []);
+
+    if (!data || data == {} || !data.params)  { return <div /> }
 
 
     return (
@@ -305,7 +307,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                             checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
                             shareble
                             executeAction={submitAction}
-                            params={data.params}
+                            params={params}
                             loading={loading}
                             tableFieldScheme={tableFieldScheme}
                             tableStructures={tableStructures}
@@ -332,7 +334,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 lang={lang}
                 largeFont={largeFont}
                 hideExpandTD={hideExpandTD}
-                params={data.params}
+                params={params}
                 searchValue={searchValue}
                 checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
                 // onExpand={val => { _.get(data,'params.data.cardsOrPage') == 'page' ? handleRoute('./' + val.id)() : setShowObject(val) }}

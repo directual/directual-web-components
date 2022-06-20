@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styles from './tabpane.module.css'
 import Button from '../../button/button'
+import Loader from '../../loader/loader'
 import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
 
-export default function TabsPane({ tabs, currentTabKey, fpsTabs, fixedScroll, hideSingleTab, preloadTabs, saveTabToURL, style, onChangeTab }) {
+export default function TabsPane({ tabs, loading, currentTabKey, fpsTabs, fixedScroll, hideSingleTab, preloadTabs, saveTabToURL, style, onChangeTab }) {
 
     const [currentTab, setCurrentTab] = useState(currentTabKey || tabs[0].key || tabs[0].id || '')
 
@@ -14,7 +15,7 @@ export default function TabsPane({ tabs, currentTabKey, fpsTabs, fixedScroll, hi
 
     const chooseTab = tabClicked => {
         setCurrentTab(tabClicked)
-        onChangeTab(tabClicked)
+        onChangeTab && onChangeTab(tabClicked)
         saveTabToURL && addUrlParam({ key: 'tab', value: tabClicked })
     }
 
@@ -54,7 +55,7 @@ export default function TabsPane({ tabs, currentTabKey, fpsTabs, fixedScroll, hi
                 key={tab.key} tabContent={tab} currentTabKey={currentTab} isSingleTab={isSingleTab} />)}
 
             {!preloadTabs && tabs.map(tab => currentTab == tab.key &&
-                <Tab key={tab.key} tabContent={tab} currentTabKey={currentTab} isSingleTab={isSingleTab} />)}
+                <Tab loading={loading} key={tab.key} tabContent={tab} currentTabKey={currentTab} isSingleTab={isSingleTab} />)}
         </div>
     </div>
     )
@@ -81,7 +82,7 @@ function TabsMenu({ tabs, currentTabKey, onClick, fpsTabs }) {
     )
 }
 
-export function Tab({ tabContent, currentTabKey, isSingleTab }) {
+export function Tab({ tabContent, currentTabKey, isSingleTab, loading }) {
     const scrollDivRef = useRef(null)
     const [showBorder, setShowBorder] = useState(false)
 
@@ -90,6 +91,7 @@ export function Tab({ tabContent, currentTabKey, isSingleTab }) {
             setShowBorder(true) :
             setShowBorder(false)
     }
+
 
     return (
         <div
@@ -102,7 +104,7 @@ export function Tab({ tabContent, currentTabKey, isSingleTab }) {
                 ${currentTabKey == tabContent.key && styles.current}
                 ${showBorder && styles.bordered}
             `}>
-            {tabContent.content}
+            {loading ? <Loader /> : tabContent.content}
         </div>
     )
 }
