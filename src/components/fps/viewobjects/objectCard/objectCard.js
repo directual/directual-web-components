@@ -23,6 +23,7 @@ export function ObjectCard(props) {
     const [linkedObjectStruct, setLinkedObjectStruct] = useState()
     const [model, setModel] = useState(props.object)
     const [currentObject, setCurrentObject] = useState(props.object)
+    const [successWeb3, setSuccessWeb3] = useState(false)
 
     const { dict, lang } = props
 
@@ -146,7 +147,6 @@ export function ObjectCard(props) {
 
     // perform an Action
 
-    const [successWeb3, setSuccessWeb3] = useState(false)
 
 
     function submitAction(actionParams) {

@@ -7,7 +7,7 @@ import Article from './article/article'
 import Input from './dataentry/input/input'
 
 export default function FpsHtml({ data }) {
-  const html = data.html || ''
+  const html = (data || {}).html || ''
   return (
     <ComponentWrapper>
       <Article>

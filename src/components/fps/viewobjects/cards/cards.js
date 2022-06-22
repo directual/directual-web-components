@@ -93,8 +93,8 @@ export function Cards({
       tableStructures[id] &&
       (tableStructures[id].jsonViewIdSettings
         ? Object.values(
-            JSON.parse(tableStructures[id].jsonViewIdSettings || [])
-          ).map((i) => (i = i && i.sysName))
+          JSON.parse(tableStructures[id].jsonViewIdSettings || [])
+        ).map((i) => (i = i && i.sysName))
         : [])
     return {
       id,
@@ -125,8 +125,8 @@ export function Cards({
         tableStructures[structure.id] &&
         (tableStructures[structure.id].jsonViewIdSettings
           ? Object.values(
-              JSON.parse(tableStructures[structure.id].jsonViewIdSettings)
-            ).map((i) => (i = i.sysName))
+            JSON.parse(tableStructures[structure.id].jsonViewIdSettings)
+          ).map((i) => (i = i.sysName))
           : [])
       structure.fieldStructure = JSON.parse(
         tableStructures[structure.id].jsonObject
@@ -198,12 +198,11 @@ export function Cards({
     <React.Fragment>
       <div
         className={`${styles.cardsWrapper}
-                ${
-                  (data.error ||
-                    tableData.length === 0 ||
-                    tableHeaders.length === 0) &&
-                  styles.emptyTable
-                } ${loading && styles.loading}`}
+                ${(data.error ||
+            tableData.length === 0 ||
+            tableHeaders.length === 0) &&
+          styles.emptyTable
+          } ${loading && styles.loading}`}
       >
         {tableData.length != 0 &&
           tableHeaders.length != 0 &&
@@ -212,23 +211,23 @@ export function Cards({
             // actions для меню быстрого доступа
             const quickActions = params.actions
               ? params.actions.filter(
-                  (i) =>
-                    i.dropdown &&
-                    i.displayAs == 'button' &&
-                    i.callFrom != 'linked' &&
-                    checkActionCond(i.conditionals, object)
-                )
+                (i) =>
+                  i.dropdown &&
+                  i.displayAs == 'button' &&
+                  i.callFrom != 'linked' &&
+                  checkActionCond(i.conditionals, object)
+              )
               : []
 
             // actions кнопок в футере карточки
             const footerButtons = params.actions
               ? params.actions.filter(
-                  (i) =>
-                    i.footerButtons &&
-                    i.displayAs == 'button' &&
-                    i.callFrom != 'linked' &&
-                    checkActionCond(i.conditionals, object)
-                )
+                (i) =>
+                  i.footerButtons &&
+                  i.displayAs == 'button' &&
+                  i.callFrom != 'linked' &&
+                  checkActionCond(i.conditionals, object)
+              )
               : []
 
             // выполнить Action
@@ -264,8 +263,8 @@ export function Cards({
                       typeof object[row.value] !== 'object'
                         ? object[row.value]
                         : Array.isArray(object[row.value])
-                        ? object[row.value].map((i) => i.id).join(',')
-                        : object[row.value].id
+                          ? object[row.value].map((i) => i.id).join(',')
+                          : object[row.value].id
                   }
                 })
 
@@ -284,13 +283,13 @@ export function Cards({
                       typeof object[row.value] !== 'object'
                         ? object[row.value]
                         : Array.isArray(object[row.value])
-                        ? object[row.value].map((i) => i.id).join(',')
-                        : object[row.value].id
+                          ? object[row.value].map((i) => i.id).join(',')
+                          : object[row.value].id
                   }
                 })
               const sl = actionParams.sysName
               const result = submitAction(mapping, sl, options)
-              
+
               if (result) {
                 result
                   .then((ok) => {
@@ -313,18 +312,18 @@ export function Cards({
               const formattedDate =
                 formatOptions.isUTC == 'true'
                   ? moment
-                      .utc(value)
-                      .locale(formatOptions.dateLocale || 'ed-gb')
-                      .format(
-                        formatOptions.dateFormat + formatOptions.timeFormat ||
-                          'DD/MM/Y, HH:mm, Z'
-                      )
+                    .utc(value)
+                    .locale(formatOptions.dateLocale || 'ed-gb')
+                    .format(
+                      formatOptions.dateFormat + formatOptions.timeFormat ||
+                      'DD/MM/Y, HH:mm, Z'
+                    )
                   : moment(value)
-                      .locale(formatOptions.dateLocale || 'ed-gb')
-                      .format(
-                        formatOptions.dateFormat + formatOptions.timeFormat ||
-                          'DD/MM/Y, HH:mm, Z'
-                      )
+                    .locale(formatOptions.dateLocale || 'ed-gb')
+                    .format(
+                      formatOptions.dateFormat + formatOptions.timeFormat ||
+                      'DD/MM/Y, HH:mm, Z'
+                    )
               return formattedDate
             }
 
@@ -349,7 +348,7 @@ export function Cards({
 
               const progress = jsonParse(value)
                 ? (100 * jsonParse(value).firstValue) /
-                  (formatOptions.range.max - formatOptions.range.min)
+                (formatOptions.range.max - formatOptions.range.min)
                 : 0
               // console.log(progress)
 
@@ -375,23 +374,23 @@ export function Cards({
               getInitialStructureParams().viewName &&
               (getInitialStructureParams().viewName.length > 0
                 ? getInitialStructureParams()
-                    .viewName.map((i) =>
-                      typeof row[i] === 'object'
-                        ? !Array.isArray(row[i])
-                          ? getLinkName(i, row[i])
-                          : row[i].map((j) => getLinkName(i, j)).join(', ')
-                        : !tableHeaders.filter((h) => h.sysName == i)[0]
+                  .viewName.map((i) =>
+                    typeof row[i] === 'object'
+                      ? !Array.isArray(row[i])
+                        ? getLinkName(i, row[i])
+                        : row[i].map((j) => getLinkName(i, j)).join(', ')
+                      : !tableHeaders.filter((h) => h.sysName == i)[0]
                         ? ''
                         : tableHeaders.filter((h) => h.sysName == i)[0]
-                            .dataType != 'date'
-                        ? row[i]
-                        : formatDate(
+                          .dataType != 'date'
+                          ? row[i]
+                          : formatDate(
                             row[i],
                             tableHeaders.filter((h) => h.sysName == i)[0]
                               .formatOptions
                           )
-                    )
-                    .join(' ')
+                  )
+                  .join(' ')
                 : '')
 
             // console.log('cardHeader')
@@ -399,12 +398,12 @@ export function Cards({
 
             cardHeader =
               cardHeader == '' ||
-              cardHeader == ' ' ||
-              cardHeader == '  ' ||
-              cardHeader == '   ' ||
-              cardHeader == '    ' ||
-              cardHeader == '     ' ||
-              cardHeader == '      '
+                cardHeader == ' ' ||
+                cardHeader == '  ' ||
+                cardHeader == '   ' ||
+                cardHeader == '    ' ||
+                cardHeader == '     ' ||
+                cardHeader == '      '
                 ? row.id || 'No visible name'
                 : cardHeader
 
@@ -419,63 +418,63 @@ export function Cards({
               (typeof row[tableParams.cardHeaderComment] === 'object'
                 ? !Array.isArray(row[tableParams.cardHeaderComment])
                   ? getLinkName(
-                      tableParams.cardHeaderComment,
-                      row[tableParams.cardHeaderComment]
-                    )
+                    tableParams.cardHeaderComment,
+                    row[tableParams.cardHeaderComment]
+                  )
                   : row[tableParams.cardHeaderComment].map((i) =>
-                      getLinkName(tableParams.cardHeaderComment, i)
-                    )
+                    getLinkName(tableParams.cardHeaderComment, i)
+                  )
                 : tableHeaders.filter(
-                    (h) => h.sysName == tableParams.cardHeaderComment
-                  )[0] &&
+                  (h) => h.sysName == tableParams.cardHeaderComment
+                )[0] &&
                   tableHeaders.filter(
                     (h) => h.sysName == tableParams.cardHeaderComment
                   )[0].dataType == 'date'
-                ? // <pre>{JSON.stringify(tableHeaders.filter(h => h.sysName == tableParams.cardHeaderComment)[0],0,3)}</pre> :
+                  ? // <pre>{JSON.stringify(tableHeaders.filter(h => h.sysName == tableParams.cardHeaderComment)[0],0,3)}</pre> :
                   formatDate(
                     row[tableParams.cardHeaderComment],
                     tableHeaders.filter(
                       (h) => h.sysName == tableParams.cardHeaderComment
                     )[0].formatOptions
                   )
-                : row[tableParams.cardHeaderComment])
+                  : row[tableParams.cardHeaderComment])
 
             const cardBodyText =
               row &&
               (typeof row[tableParams.cardBodyText] === 'object'
                 ? !Array.isArray(row[tableParams.cardBodyText])
                   ? getLinkName(
-                      tableParams.cardBodyText,
-                      row[tableParams.cardBodyText]
-                    )
+                    tableParams.cardBodyText,
+                    row[tableParams.cardBodyText]
+                  )
                   : row[tableParams.cardBodyText].map((i) =>
-                      getLinkName(tableParams.cardBodyText, i)
-                    )
+                    getLinkName(tableParams.cardBodyText, i)
+                  )
                 : tableHeaders.filter(
-                    (h) => h.sysName == tableParams.cardBodyText
-                  )[0] &&
+                  (h) => h.sysName == tableParams.cardBodyText
+                )[0] &&
                   tableHeaders.filter(
                     (h) => h.sysName == tableParams.cardBodyText
                   )[0].dataType == 'date'
-                ? formatDate(
+                  ? formatDate(
                     row[tableParams.cardBodyText],
                     tableHeaders.filter(
                       (h) => h.sysName == tableParams.cardBodyText
                     )[0].formatOptions
                   )
-                : tableHeaders.filter(
+                  : tableHeaders.filter(
                     (h) => h.sysName == tableParams.cardBodyText
                   )[0] &&
-                  tableHeaders.filter(
-                    (h) => h.sysName == tableParams.cardBodyText
-                  )[0].dataType == 'json'
-                ? formatJson(
-                    row[tableParams.cardBodyText],
                     tableHeaders.filter(
                       (h) => h.sysName == tableParams.cardBodyText
-                    )[0].formatOptions
-                  )
-                : row[tableParams.cardBodyText])
+                    )[0].dataType == 'json'
+                    ? formatJson(
+                      row[tableParams.cardBodyText],
+                      tableHeaders.filter(
+                        (h) => h.sysName == tableParams.cardBodyText
+                      )[0].formatOptions
+                    )
+                    : row[tableParams.cardBodyText])
             // ==================================
 
             const cardColor = row[tableParams.cardColor]
@@ -489,9 +488,8 @@ export function Cards({
             return (
               <div
                 key={i}
-                className={`${styles.card} ${styles[currentBP]} ${
-                  styles[tableParams.cardListLayout || 'grid']
-                }`}
+                className={`${styles.card} ${styles[currentBP]} ${styles[tableParams.cardListLayout || 'grid']
+                  }`}
               >
                 {/* quick actions menu */}
                 <QuickActionsControl
@@ -500,37 +498,35 @@ export function Cards({
                 />
                 <div
                   className={`${styles.cardInnerWrapper}
-                                ${
-                                  tableParams.cardColor &&
-                                  tableParams.cardColorOption == 'border' &&
-                                  styles.borderColor
-                                }
+                                ${tableParams.cardColor &&
+                    tableParams.cardColorOption == 'border' &&
+                    styles.borderColor
+                    }
                                 ${styles[tableParams.cardImageType]}
-                                ${
-                                  tableParams.invertColors &&
-                                  styles.invertColors
-                                }
+                                ${tableParams.invertColors &&
+                    styles.invertColors
+                    }
                                 `}
                   style={
                     tableParams.cardColor &&
-                    tableParams.cardColorOption == 'border'
+                      tableParams.cardColorOption == 'border'
                       ? {
-                          borderColor: cardColor,
-                          minHeight:
-                            tableParams.cardImageType == 'cover'
+                        borderColor: cardColor,
+                        minHeight:
+                          tableParams.cardImageType == 'cover'
+                            ? tableParams.cardCoverHeight
                               ? tableParams.cardCoverHeight
-                                ? tableParams.cardCoverHeight
-                                : 'auto'
                               : 'auto'
-                        }
+                            : 'auto'
+                      }
                       : {
-                          minHeight:
-                            tableParams.cardImageType == 'cover'
+                        minHeight:
+                          tableParams.cardImageType == 'cover'
+                            ? tableParams.cardCoverHeight
                               ? tableParams.cardCoverHeight
-                                ? tableParams.cardCoverHeight
-                                : 'auto'
                               : 'auto'
-                        }
+                            : 'auto'
+                      }
                   }
                   onClick={() => {
                     // console.log(row)
@@ -544,9 +540,8 @@ export function Cards({
                         style={{
                           backgroundColor: cardColor
                         }}
-                        className={`${styles.color} ${
-                          styles[tableParams.cardColorOption]
-                        }`}
+                        className={`${styles.color} ${styles[tableParams.cardColorOption]
+                          }`}
                       />
                     )}
                   {/* Картинка карточки */}
@@ -558,47 +553,46 @@ export function Cards({
                           tableParams.cardImageResize == 'contain'
                             ? 'contain'
                             : 'cover',
-                        backgroundImage: `url(${
-                          (row[tableParams.cardImageField] || '').split(',')
+                        backgroundImage: `url(${(row[tableParams.cardImageField] || '').split(',')
                             ? (row[tableParams.cardImageField] || '').split(
-                                ','
-                              )[0]
+                              ','
+                            )[0]
                             : ''
-                        })`,
+                          })`,
                         width:
                           tableParams.cardImageType == 'left' ||
-                          tableParams.cardImageType == 'leftCircle'
+                            tableParams.cardImageType == 'leftCircle'
                             ? parseInt(tableParams.cardImageSize)
                               ? parseInt(
-                                  currentBP == 'mobile'
-                                    ? Math.floor(
-                                        tableParams.cardImageSize / 1.5
-                                      )
-                                    : tableParams.cardImageSize
-                                )
+                                currentBP == 'mobile'
+                                  ? Math.floor(
+                                    tableParams.cardImageSize / 1.5
+                                  )
+                                  : tableParams.cardImageSize
+                              )
                               : 100
                             : 'auto',
                         height:
                           tableParams.cardImageType == 'top' ||
-                          tableParams.cardImageType == 'leftCircle'
+                            tableParams.cardImageType == 'leftCircle'
                             ? parseInt(tableParams.cardImageSize)
                               ? parseInt(
-                                  currentBP == 'mobile'
-                                    ? Math.floor(
-                                        tableParams.cardImageSize / 1.5
-                                      )
-                                    : tableParams.cardImageSize
-                                )
+                                currentBP == 'mobile'
+                                  ? Math.floor(
+                                    tableParams.cardImageSize / 1.5
+                                  )
+                                  : tableParams.cardImageSize
+                              )
                               : 100
                             : 'auto',
                         minHeight:
                           tableParams.cardImageType == 'left' &&
-                          tableParams.cardImageSizeHeight
+                            tableParams.cardImageSizeHeight
                             ? parseInt(
-                                currentBP == 'mobile'
-                                  ? Math.floor(tableParams.cardImageSize / 1.5)
-                                  : tableParams.cardImageSize
-                              )
+                              currentBP == 'mobile'
+                                ? Math.floor(tableParams.cardImageSize / 1.5)
+                                : tableParams.cardImageSize
+                            )
                             : 'none'
                       }}
                     >
@@ -617,19 +611,17 @@ export function Cards({
 
                       {/* counter: */}
                       {tableParams.counterField &&
-                      row &&
-                      row[tableParams.counterField] &&
-                      row[tableParams.counterField] != 0 &&
-                      row[tableParams.counterField] != '0' ? (
+                        row &&
+                        row[tableParams.counterField] &&
+                        row[tableParams.counterField] != 0 &&
+                        row[tableParams.counterField] != '0' ? (
                         <span
-                          className={`${styles.counter} ${
-                            !quickActions || quickActions.length == 0
+                          className={`${styles.counter} ${!quickActions || quickActions.length == 0
                               ? styles.moveCounter
                               : ''
-                          }`}
-                          title={`${row[tableParams.counterField]} ${
-                            tableParams.counterText
-                          }`}
+                            }`}
+                          title={`${row[tableParams.counterField]} ${tableParams.counterText
+                            }`}
                         >
                           {row[tableParams.counterField]}
                         </span>
@@ -651,10 +643,9 @@ export function Cards({
                         // для labels рамочка добавляется классом labelText
                         (!Array.isArray(cardHeaderComment) ? (
                           <div
-                            className={`${styles.cardHeaderComment} ${
-                              typeof row[tableParams.cardHeaderComment] ===
-                                'object' && styles.linkText
-                            }`}
+                            className={`${styles.cardHeaderComment} ${typeof row[tableParams.cardHeaderComment] ===
+                              'object' && styles.linkText
+                              }`}
                           >
                             {cardHeaderComment}
                           </div>
@@ -664,13 +655,12 @@ export function Cards({
                           >
                             {cardHeaderComment.map((i) => (
                               <div
-                                className={`${
-                                  typeof row[
+                                className={`${typeof row[
                                     tableParams.cardHeaderComment
                                   ][0] === 'object'
                                     ? styles.linkText
                                     : styles.labelText
-                                }`}
+                                  }`}
                               >
                                 {i}
                               </div>
@@ -686,10 +676,9 @@ export function Cards({
                                 ? 0
                                 : tableParams.cardBodyTextLength || 300
                             }
-                            className={`${styles.cardBodyText} ${
-                              typeof row[tableParams.cardBodyText] ===
-                                'object' && styles.linkText
-                            }`}
+                            className={`${styles.cardBodyText} ${typeof row[tableParams.cardBodyText] ===
+                              'object' && styles.linkText
+                              }`}
                           >
                             {/* {currentBP} */}
                             {cardBodyText}
@@ -700,12 +689,11 @@ export function Cards({
                           >
                             {cardBodyText.map((i) => (
                               <div
-                                className={`${
-                                  typeof row[tableParams.cardBodyText][0] ===
-                                  'object'
+                                className={`${typeof row[tableParams.cardBodyText][0] ===
+                                    'object'
                                     ? styles.linkText
                                     : styles.labelText
-                                }`}
+                                  }`}
                               >
                                 {i}
                               </div>
@@ -731,11 +719,10 @@ export function Cards({
           !data.error && (
             <SomethingWentWrong
               icon='ban'
-              message={`${
-                searchValue
+              message={`${searchValue
                   ? `No object found for ${searchValue}`
                   : `No objects`
-              }`}
+                }`}
             />
           )}
       </div>
@@ -744,8 +731,8 @@ export function Cards({
 }
 
 function FooterButtons({ footerButtons, performAction, loading, successWeb3 }) {
-  // console.log('footerButtons')
-  // console.log(footerButtons)
+  console.log('footerButtons')
+  console.log(footerButtons)
 
   return (
     <React.Fragment>
@@ -753,23 +740,42 @@ function FooterButtons({ footerButtons, performAction, loading, successWeb3 }) {
         <div className={styles.cardsFooter}>
           <ActionPanel margin={{ top: 0, left: 0 }}>
             {footerButtons.map((button) => {
+
               const [localLoading, setLocalLoading] = useState(false)
               const [submitted, isSubmitted] = useState(false)
               const [message, setMessage] = useState(false)
+
+              // global loading to local loading:
               useEffect(() => {
-                !loading && setLocalLoading(false)
+                if (!loading) {
+                  setLocalLoading(false)
+                } else {
+                  !localLoading && isSubmitted(false)
+                }
                 button.showMessage && setMessage(true)
               }, [loading])
 
+              // if user clicks another card, we need to turn off the flag here:
+              useEffect(() => {
+                if (!localLoading && !successWeb3) {
+                  button.web3 && isSubmitted(false)
+                }
+              }, [localLoading])
+
+              // success (transaction confirmed):
               if (!loading && message && submitted && (successWeb3 || !button.web3))
-                return (
-                  <Hint ok margin={{ top: 0, bottom: 3 }}>
-                    {button.resultMessage}
+                return (<div style={{width:"100%"}}>
+                  <Hint key={button.id} ok margin={{ top: 0, bottom: 3 }}>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: button.resultMessage }}
+                    />
                   </Hint>
+                  </div>
                 )
 
               return (
                 <Button
+                  key={button.id}
                   accent={button.buttonType == 'accent'}
                   danger={button.buttonType == 'danger'}
                   icon={button.buttonIcon}
@@ -835,11 +841,10 @@ function QuickActionsControl({ quickActions, performAction }) {
                   performAction(action)
                   setShowQA(false)
                 }}
-                className={`${
-                  action.buttonIcon
+                className={`${action.buttonIcon
                     ? 'icon small icon-' + action.buttonIcon
                     : ''
-                }`}
+                  }`}
               >
                 <span>{action.buttonTitle || action.name}</span>
               </li>
