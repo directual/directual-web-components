@@ -50,8 +50,14 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         }
     }, [data])
 
-
-    const sendMsg = (msg, sl, pageInfo) => {
+    /**
+   *
+   * @param msg
+   * @param sl
+   * @param pageInfo
+   * @param options - additional parameteres for rise event to eventEngine
+   */
+     const sendMsg = (msg, sl, pageInfo, options) => {
         console.log('submitting...')
         pageInfo = pageInfo || { page: currentPage }
         if (sl === "") { sl = undefined }
@@ -60,14 +66,21 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
             if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) { msg[prop] = moment(msg[prop])}
         }
         const message =
-            { ...msg, _id: 'form_' + id, _sl_name: sl }
+            { ...msg, _id: 'form_' + id, _sl_name: sl, _options:options }
         console.log(message)
         console.log(pageInfo)
         setLoading(true)
         if (onEvent) {
-            onEvent(message, pageInfo)
+            let prom = onEvent(message, pageInfo)
+            if(prom && prom.finally){
+              prom.finally(()=>{
+                setLoading(false)
+              })
+            }
+            return prom
         }
     }
+
 
     const search = (value, page) => {
         if (value) {
@@ -100,8 +113,6 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         page !== 0 ? addUrlParam({ key: id + '_page', value: page }) : removeUrlParam(id + '_page')
     }
 
-    
-
     const submit = (model) => {
         const saveModel = { ...model }
         if (saveModel) {
@@ -123,9 +134,9 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         sendMsg(saveModel)
     }
 
-    const submitAction = (mapping, sl) => {
+    const submitAction = (mapping, sl, options) => {
         console.log('submitting action...')
-        sendMsg(mapping, sl)
+        return sendMsg(mapping, sl, undefined, options)
     }
 
     //Check action conditionals
@@ -205,8 +216,6 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         // console.log(object)
         // console.log(auth)
         eConds && eConds.forEach(cond => {
-            // console.log(cond)
-            // console.log(object)
             if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type == 'const') {
                 cond.checkValue = cond.value
             }
@@ -259,7 +268,6 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     useEffect(()=> {
         if (showObject && showObject.id) {
-            console.log(showObject)
             addUrlParam({ key: id + '_id', value: showObject.id })
         } else {
             //removeUrlParam(id + '_id')

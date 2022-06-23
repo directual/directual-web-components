@@ -19,7 +19,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     console.log('---data FpsCards---')
     console.log(data)
-    // console.log(id)
+
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
     const [loading, setLoading] = useState(false)
@@ -218,7 +218,6 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         // console.log(object)
         // console.log(auth)
         eConds && eConds.forEach(cond => {
-
             if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type == 'const') {
                 cond.checkValue = cond.value
             }
@@ -245,9 +244,6 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
                     object[cond.value] ? cond.checkValue = (object[cond.value].id || (typeof object[cond.value].value == 'object' && object[cond.value].value ? object[cond.value].value.id : object[cond.value].value) || null) : cond.checkValue = null // раньше тут было .id, а не .value проверить!
             }
-            // console.log('========')
-            // console.log(cond)
-            // console.log(object)
         })
         return eConds
     }
