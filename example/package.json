@@ -13,7 +13,7 @@
     "bcryptjs": "^2.4.3",
     "comlink": "^4.3.1",
     "directual-web-components": "file:..",
-    "moment": "^2.26.0",
+    "moment": "^2.29.4",
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
     "react-router-dom": "^5.2.0",
