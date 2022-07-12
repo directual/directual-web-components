@@ -276,6 +276,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         }
     }, [showObject])
 
+    // return <div>test</div>
 
     return (
         <ComponentWrapper currentBP={currentBP}>

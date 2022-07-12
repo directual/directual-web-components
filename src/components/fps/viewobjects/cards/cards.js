@@ -623,7 +623,9 @@ export function Cards({
                           title={`${row[tableParams.counterField]} ${tableParams.counterText
                             }`}
                         >
-                          {row[tableParams.counterField]}
+                          {(typeof row[tableParams.counterField] == 'object') ?  
+                            getLinkName(tableParams.counterField,row[tableParams.counterField]) :  
+                            row[tableParams.counterField]}
                         </span>
                       ) : (
                         ''
