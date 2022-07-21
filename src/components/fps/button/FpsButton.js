@@ -7,6 +7,8 @@ import { ComponentWrapper } from '../wrapper/wrapper'
 
 export default function FpsButton({ data, handleRoute }) {
 
+    data = data || {}
+
     const href = data.href || '/'
     const icon = data.icon || ''
     const buttonColor = data.buttonColor
