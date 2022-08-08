@@ -4481,6 +4481,669 @@ const App = (props) => {
         "quickSearch": "false"
     }
 
+    let kanbanData = {
+        "sl": "kanban",
+        "pageSize": "10",
+        "headerField": null,
+        "params": {
+            "cardHeaderComment": "col",
+            "cardBodyText": "text",
+            "cardImage": false,
+            "cardImageField": "",
+            "cardImageType": "none",
+            "cardImageSize": 100,
+            "objectView": {},
+            "data": {
+                "readFields": [
+                    {
+                        "fieldSysName": "col",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "col",
+                        "name": "Colmn",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "columns"
+                    },
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "image",
+                        "fetch": [],
+                        "sysName": "image",
+                        "name": "",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "name",
+                        "fetch": [],
+                        "sysName": "name",
+                        "name": "NAME",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "text",
+                        "fetch": [],
+                        "sysName": "text",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    }
+                ],
+                "writeFields": [
+                    {
+                        "fieldSysName": "col",
+                        "fetch": [],
+                        "sysName": "col",
+                        "name": "Colmn",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "columns"
+                    },
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    }
+                ],
+                "fields": {
+                    "col": {
+                        "id": "col",
+                        "content": "Colmn",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "columns",
+                        "actions": []
+                    },
+                    "id": {
+                        "id": "id",
+                        "content": "id",
+                        "type": "field",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "image": {
+                        "id": "image",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "name": {
+                        "id": "name",
+                        "content": "NAME",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "text": {
+                        "id": "text",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    }
+                },
+                "fieldParams": {
+                    "col": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "id": {
+                        "include": false,
+                        "disableEditing": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "image": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "name": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "text": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    }
+                },
+                "columns": {
+                    "tab-1": {
+                        "id": "tab-1",
+                        "title": "New section",
+                        "fieldIds": [
+                            "col",
+                            "id",
+                            "image",
+                            "name",
+                            "text"
+                        ]
+                    }
+                },
+                "columnOrder": [
+                    "tab-1"
+                ],
+                "actions": []
+            },
+            "fields": {
+                "col": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "id": {
+                    "include": false,
+                    "disableEditing": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "image": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "name": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "text": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                }
+            },
+            "kanbanParams": {
+                "columnField": "col",
+                "columnsStruct": "columns",
+                "columns": [
+                    {
+                        "id": "col-1",
+                        "name": "one "
+                    },
+                    {
+                        "id": "col-2",
+                        "name": "two "
+                    },
+                    {
+                        "id": "col-3",
+                        "name": "three "
+                    }
+                ],
+                "columnsVisibility": {
+                    "2": {
+                        "isHidden": true
+                    }
+                },
+                "dragndropOption": "same"
+            },
+            "showCounter": true,
+            "counterField": "id"
+        },
+        "tableTitle": "",
+        "actions": null,
+        "headers": [
+            {
+                "sysName": "col",
+                "name": "Colmn",
+                "dataType": "link",
+                "id": "98481659390930255",
+                "link": "columns",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkType": true,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "id",
+                "name": "id",
+                "dataType": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "image",
+                "name": "",
+                "dataType": "file",
+                "id": "75311659390953617",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "image",
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "name",
+                "name": "NAME",
+                "dataType": "string",
+                "id": "94231659390940732",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "text",
+                "name": "",
+                "dataType": "string",
+                "id": "51671659390951143",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "array": false
+            }
+        ],
+        "data": [
+            {
+                "name": "hey hey",
+                "text": "text text text",
+                "col": {
+                    "name": "one",
+                    "id": "col-1"
+                },
+                "id": "obj-1"
+            },
+            {
+                "text": "lorem ipsum",
+                "col": {
+                    "name": "one",
+                    "id": "col-1"
+                },
+                "name": "hoy hoy",
+                "id": "obj-2"
+            },
+            {
+                "name": "pam pam",
+                "text": "param",
+                "col": {
+                    "name": "two",
+                    "id": "col-2"
+                },
+                "id": "obj-3"
+            }
+        ],
+        "totalPages": 1,
+        "pageNumber": 0,
+        "error": null,
+        "fieldScheme": [
+            [
+                "col.id",
+                99123978
+            ],
+            [
+                "col.name",
+                99123978
+            ],
+            [
+                "id",
+                99123979
+            ],
+            [
+                "image",
+                99123979
+            ],
+            [
+                "name",
+                99123979
+            ],
+            [
+                "text",
+                99123979
+            ]
+        ],
+        "writeFields": [
+            "col",
+            "id"
+        ],
+        "structures": {
+            "99123978": {
+                "networkID": 13796,
+                "sysName": "columns",
+                "name": "columns",
+                "id": 99123978,
+                "dateCreated": "2022-08-01T21:54:31Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"second\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"28191659453539947\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"30861659390887062\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"},{\"sysName\":\"second\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": false,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2022-08-02T15:19:07Z",
+                "createBy": 3527,
+                "changedBy": 3527,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
+                "innerIDField": {
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "indexExists": false,
+                    "linkType": false,
+                    "typeVariable": {},
+                    "json": false,
+                    "linkOrArrayLinkType": false,
+                    "arrayLink": false,
+                    "array": false
+                },
+                "folderId": null
+            },
+            "99123979": {
+                "networkID": 13796,
+                "sysName": "objects",
+                "name": "objects",
+                "id": 99123979,
+                "dateCreated": "2022-08-01T21:55:21Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"text\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"51671659390951143\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"image\",\"dataType\":\"file\",\"name\":\"\",\"id\":\"75311659390953617\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"NAME\",\"id\":\"94231659390940732\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"col\",\"dataType\":\"link\",\"name\":\"Colmn\",\"id\":\"98481659390930255\",\"link\":\"columns\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2022-08-01T21:56:06Z",
+                "createBy": 3527,
+                "changedBy": 3527,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
+                "innerIDField": {
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "indexExists": false,
+                    "linkType": false,
+                    "typeVariable": {},
+                    "json": false,
+                    "linkOrArrayLinkType": false,
+                    "arrayLink": false,
+                    "array": false
+                },
+                "folderId": null
+            }
+        },
+        "isSuccessWrite": false,
+        "writeError": null,
+        "writeResponse": null,
+        "fileds": [
+            {
+                "sysName": "col",
+                "name": "Colmn",
+                "dataType": "link",
+                "id": "98481659390930255",
+                "link": "columns",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkType": true,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "id",
+                "name": "id",
+                "dataType": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "array": false
+            }
+        ],
+        "quickSearch": null,
+        "httpParams": {}
+    }
+
     let exampleTable = {
         "sl": "getGoods",
         "pageSize": "10",
@@ -5974,7 +6637,7 @@ const App = (props) => {
                             <FpsForm locale='ESP' data={exampleForm} auth={authExample} />
                         </Route>
                         <Route exact path="/kanban">
-                            <FpsKanban locale='ESP' data={exampleForm} auth={authExample} />
+                            <FpsKanban locale='ESP' data={kanbanData} auth={authExample} />
                         </Route>
                         <Route exact path="/profile">
                             <Profile

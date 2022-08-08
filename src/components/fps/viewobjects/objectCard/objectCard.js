@@ -745,8 +745,8 @@ function SaveCard({ model, currentObject, submit, setCurrentObject, setModel, lo
                         loading={loading}
                         icon='done'
                         onClick={() => {
-                            // console.log('Save changes')
-                            // console.log(model)
+                            console.log('Save changes')
+                            console.log(model)
                             setCurrentObject(model);
                             submit(model);
                         }}
@@ -1158,7 +1158,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                     type='string'
                     onChange={onChange}
                     defaultValue={
-                        field.dataType == 'link' ? renderAL.id :
+                        field.dataType == 'link' ? Array.isArray(renderAL) && renderAL.length == 1 ? renderAL[0].id : renderAL.id :
                             (renderAL && renderAL.length > 0
                                 && renderAL.map(i => i.id))
                     }

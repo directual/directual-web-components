@@ -52,6 +52,12 @@ export function Cards({
     return saveData
   }
 
+  data.error =
+    data.error && data.error == '403' ? 'You have no permissions' : data.error
+  data.error =
+    data.error && data.error == '511' ? 'Table is not configured' : data.error
+
+  
   const getInitialStructureParams = () => {
     const randomFieldArray =
       (tableHeaders.filter(
@@ -102,11 +108,6 @@ export function Cards({
       viewName
     }
   }
-
-  data.error =
-    data.error && data.error == '403' ? 'You have no permissions' : data.error
-  data.error =
-    data.error && data.error == '511' ? 'Table is not configured' : data.error
 
   // Gathers current structure info:
   const getStructure = (obj, tableFieldScheme, tableStructures) => {
@@ -206,514 +207,25 @@ export function Cards({
       >
         {tableData.length != 0 &&
           tableHeaders.length != 0 &&
-          tableData.map((row, i) => {
-            const object = row
-            // actions для меню быстрого доступа
-            const quickActions = params.actions
-              ? params.actions.filter(
-                (i) =>
-                  i.dropdown &&
-                  i.displayAs == 'button' &&
-                  i.callFrom != 'linked' &&
-                  checkActionCond(i.conditionals, object)
-              )
-              : []
-
-            // actions кнопок в футере карточки
-            const footerButtons = params.actions
-              ? params.actions.filter(
-                (i) =>
-                  i.footerButtons &&
-                  i.displayAs == 'button' &&
-                  i.callFrom != 'linked' &&
-                  checkActionCond(i.conditionals, object)
-              )
-              : []
-
-            // выполнить Action
-            function performAction(actionParams) {
-              console.log('actionParams')
-              console.log(actionParams)
-              const mapping = {} // calling api-endpoint
-              const options = {} // calling web3-api
-              if (actionParams.web3) {
-                options.web3 = true
-              }
-              if (
-                (!actionParams.formMapping ||
-                  actionParams.formMapping.length == 0) &&
-                !actionParams.web3
-              ) {
-                console.log('action does nothing')
-                return null
-              }
-
-              // gathering mapping for endpoint call:
-              actionParams.formMapping &&
-                actionParams.formMapping.length &&
-                actionParams.formMapping.forEach((row) => {
-                  if (row.type == 'user') {
-                    mapping[row.target] = auth ? auth.user : null
-                  }
-                  if (row.type == 'const') {
-                    mapping[row.target] = row.value
-                  }
-                  if (row.type == 'objectField') {
-                    mapping[row.target] =
-                      typeof object[row.value] !== 'object'
-                        ? object[row.value]
-                        : Array.isArray(object[row.value])
-                          ? object[row.value].map((i) => i.id).join(',')
-                          : object[row.value].id
-                  }
-                })
-
-              // gathering mapping for web3-api call:
-              actionParams.web3Mapping &&
-                actionParams.web3Mapping.length &&
-                actionParams.web3Mapping.forEach((row) => {
-                  if (row.type == 'user') {
-                    options[row.target] = auth ? auth.user : null
-                  }
-                  if (row.type == 'const') {
-                    options[row.target] = row.value
-                  }
-                  if (row.type == 'objectField') {
-                    options[row.target] =
-                      typeof object[row.value] !== 'object'
-                        ? object[row.value]
-                        : Array.isArray(object[row.value])
-                          ? object[row.value].map((i) => i.id).join(',')
-                          : object[row.value].id
-                  }
-                })
-              const sl = actionParams.sysName
-              const result = submitAction(mapping, sl, options)
-
-              if (result) {
-                result
-                  .then((ok) => {
-                    console.log("ok async" + ok)
-                    setSuccessWeb3(true)
-                  })
-                  .catch((err) => {
-                    console.log("err async")
-                    console.log(err)
-                  })
-              }
-            }
-
-            // форматируем дату для карточки (если есть) в соответствии с formatOptions
-            const formatDate = (value, formatOptions) => {
-              if (!value) {
-                return null
-              }
-              formatOptions = formatOptions || {}
-              const formattedDate =
-                formatOptions.isUTC == 'true'
-                  ? moment
-                    .utc(value)
-                    .locale(formatOptions.dateLocale || 'ed-gb')
-                    .format(
-                      formatOptions.dateFormat + formatOptions.timeFormat ||
-                      'DD/MM/Y, HH:mm, Z'
-                    )
-                  : moment(value)
-                    .locale(formatOptions.dateLocale || 'ed-gb')
-                    .format(
-                      formatOptions.dateFormat + formatOptions.timeFormat ||
-                      'DD/MM/Y, HH:mm, Z'
-                    )
-              return formattedDate
-            }
-
-            const formatJson = (value, formatOptions) => {
-              const jsonParse = (def) => {
-                try {
-                  return JSON.parse(def) || {}
-                } catch (e) {
-                  console.log(e)
-                  return def || {}
-                }
-              }
-
-              // Range слайдер пока не прикрутил, см условие на .secondValue
-              if (!formatOptions.range || jsonParse(value).secondValue) {
-                return
-              }
-              // console.log('SLIDER')
-              // console.log(value)
-              // console.log(formatOptions)
-              // console.log(jsonParse(value))
-
-              const progress = jsonParse(value)
-                ? (100 * jsonParse(value).firstValue) /
-                (formatOptions.range.max - formatOptions.range.min)
-                : 0
-              // console.log(progress)
-
-              return (
-                <div className={styles.cardsSlider}>
-                  <div className={styles.line}>
-                    <div
-                      className={styles.fill}
-                      style={{ width: `${progress || '0'}%` }}
-                    />
-                  </div>
-                  <div className={styles.sliderValue}>
-                    {jsonParse(value).firstValue || '0'}
-                    {formatOptions.unitName}
-                  </div>
-                </div>
-              )
-            }
-
-            // в этой хуете мы подтягиваем для Заголовка, Подзаголовка и Текста карточки visible name если поле типа link/arrayLink
-            let cardHeader =
-              getInitialStructureParams().viewName &&
-              getInitialStructureParams().viewName &&
-              (getInitialStructureParams().viewName.length > 0
-                ? getInitialStructureParams()
-                  .viewName.map((i) =>
-                    typeof row[i] === 'object'
-                      ? !Array.isArray(row[i])
-                        ? getLinkName(i, row[i])
-                        : row[i].map((j) => getLinkName(i, j)).join(', ')
-                      : !tableHeaders.filter((h) => h.sysName == i)[0]
-                        ? ''
-                        : tableHeaders.filter((h) => h.sysName == i)[0]
-                          .dataType != 'date'
-                          ? row[i]
-                          : formatDate(
-                            row[i],
-                            tableHeaders.filter((h) => h.sysName == i)[0]
-                              .formatOptions
-                          )
-                  )
-                  .join(' ')
-                : '')
-
-            // console.log('cardHeader')
-            // console.log(getInitialStructureParams().viewName)
-
-            cardHeader =
-              cardHeader == '' ||
-                cardHeader == ' ' ||
-                cardHeader == '  ' ||
-                cardHeader == '   ' ||
-                cardHeader == '    ' ||
-                cardHeader == '     ' ||
-                cardHeader == '      '
-                ? row.id || 'No visible name'
-                : cardHeader
-
-            cardHeader = cardHeader
-              ? typeof cardHeader === 'object'
-                ? cardHeader.value || JSON.stringify(cardHeader)
-                : cardHeader
-              : 'No visible name'
-
-            const cardHeaderComment =
-              row &&
-              (typeof row[tableParams.cardHeaderComment] === 'object'
-                ? !Array.isArray(row[tableParams.cardHeaderComment])
-                  ? getLinkName(
-                    tableParams.cardHeaderComment,
-                    row[tableParams.cardHeaderComment]
-                  )
-                  : row[tableParams.cardHeaderComment].map((i) =>
-                    getLinkName(tableParams.cardHeaderComment, i)
-                  )
-                : tableHeaders.filter(
-                  (h) => h.sysName == tableParams.cardHeaderComment
-                )[0] &&
-                  tableHeaders.filter(
-                    (h) => h.sysName == tableParams.cardHeaderComment
-                  )[0].dataType == 'date'
-                  ? // <pre>{JSON.stringify(tableHeaders.filter(h => h.sysName == tableParams.cardHeaderComment)[0],0,3)}</pre> :
-                  formatDate(
-                    row[tableParams.cardHeaderComment],
-                    tableHeaders.filter(
-                      (h) => h.sysName == tableParams.cardHeaderComment
-                    )[0].formatOptions
-                  )
-                  : row[tableParams.cardHeaderComment])
-
-            const cardBodyText =
-              row &&
-              (typeof row[tableParams.cardBodyText] === 'object'
-                ? !Array.isArray(row[tableParams.cardBodyText])
-                  ? getLinkName(
-                    tableParams.cardBodyText,
-                    row[tableParams.cardBodyText]
-                  )
-                  : row[tableParams.cardBodyText].map((i) =>
-                    getLinkName(tableParams.cardBodyText, i)
-                  )
-                : tableHeaders.filter(
-                  (h) => h.sysName == tableParams.cardBodyText
-                )[0] &&
-                  tableHeaders.filter(
-                    (h) => h.sysName == tableParams.cardBodyText
-                  )[0].dataType == 'date'
-                  ? formatDate(
-                    row[tableParams.cardBodyText],
-                    tableHeaders.filter(
-                      (h) => h.sysName == tableParams.cardBodyText
-                    )[0].formatOptions
-                  )
-                  : tableHeaders.filter(
-                    (h) => h.sysName == tableParams.cardBodyText
-                  )[0] &&
-                    tableHeaders.filter(
-                      (h) => h.sysName == tableParams.cardBodyText
-                    )[0].dataType == 'json'
-                    ? formatJson(
-                      row[tableParams.cardBodyText],
-                      tableHeaders.filter(
-                        (h) => h.sysName == tableParams.cardBodyText
-                      )[0].formatOptions
-                    )
-                    : row[tableParams.cardBodyText])
-            // ==================================
-
-            const cardColor = row[tableParams.cardColor]
-              ? row[tableParams.cardColor][0] == '#' ||
-                row[tableParams.cardColor][0] == 'r'
-                ? row[tableParams.cardColor]
-                : '#' + row[tableParams.cardColor]
-              : null
-
-            // Render the card below:
-            return (
-              <div
-                key={i}
-                className={`${styles.card} ${styles[currentBP]} ${styles[tableParams.cardListLayout || 'grid']
-                  }`}
-              >
-                {/* quick actions menu */}
-                <QuickActionsControl
-                  quickActions={quickActions}
-                  performAction={performAction}
-                />
-                <div
-                  className={`${styles.cardInnerWrapper}
-                                ${tableParams.cardColor &&
-                    tableParams.cardColorOption == 'border' &&
-                    styles.borderColor
-                    }
-                                ${styles[tableParams.cardImageType]}
-                                ${tableParams.invertColors &&
-                    styles.invertColors
-                    }
-                                `}
-                  style={
-                    tableParams.cardColor &&
-                      tableParams.cardColorOption == 'border'
-                      ? {
-                        borderColor: cardColor,
-                        minHeight:
-                          tableParams.cardImageType == 'cover'
-                            ? tableParams.cardCoverHeight
-                              ? tableParams.cardCoverHeight
-                              : 'auto'
-                            : 'auto'
-                      }
-                      : {
-                        minHeight:
-                          tableParams.cardImageType == 'cover'
-                            ? tableParams.cardCoverHeight
-                              ? tableParams.cardCoverHeight
-                              : 'auto'
-                            : 'auto'
-                      }
-                  }
-                  onClick={() => {
-                    // console.log(row)
-                    !loading && onExpand(row)
-                  }}
-                >
-                  {/* Разукрашиваем карточку */}
-                  {tableParams.cardColor &&
-                    tableParams.cardColorOption != 'none' && (
-                      <div
-                        style={{
-                          backgroundColor: cardColor
-                        }}
-                        className={`${styles.color} ${styles[tableParams.cardColorOption]
-                          }`}
-                      />
-                    )}
-                  {/* Картинка карточки */}
-                  {tableParams.cardImageField && (
-                    <div
-                      className={`${styles.cardImage}`}
-                      style={{
-                        backgroundSize:
-                          tableParams.cardImageResize == 'contain'
-                            ? 'contain'
-                            : 'cover',
-                        backgroundImage: `url(${(row[tableParams.cardImageField] || '').split(',')
-                            ? (row[tableParams.cardImageField] || '').split(
-                              ','
-                            )[0]
-                            : ''
-                          })`,
-                        width:
-                          tableParams.cardImageType == 'left' ||
-                            tableParams.cardImageType == 'leftCircle'
-                            ? parseInt(tableParams.cardImageSize)
-                              ? parseInt(
-                                currentBP == 'mobile'
-                                  ? Math.floor(
-                                    tableParams.cardImageSize / 1.5
-                                  )
-                                  : tableParams.cardImageSize
-                              )
-                              : 100
-                            : 'auto',
-                        height:
-                          tableParams.cardImageType == 'top' ||
-                            tableParams.cardImageType == 'leftCircle'
-                            ? parseInt(tableParams.cardImageSize)
-                              ? parseInt(
-                                currentBP == 'mobile'
-                                  ? Math.floor(
-                                    tableParams.cardImageSize / 1.5
-                                  )
-                                  : tableParams.cardImageSize
-                              )
-                              : 100
-                            : 'auto',
-                        minHeight:
-                          tableParams.cardImageType == 'left' &&
-                            tableParams.cardImageSizeHeight
-                            ? parseInt(
-                              currentBP == 'mobile'
-                                ? Math.floor(tableParams.cardImageSize / 1.5)
-                                : tableParams.cardImageSize
-                            )
-                            : 'none'
-                      }}
-                    >
-                      {!row[tableParams.cardImageField] && (
-                        <span className='icon icon-ban'>no&nbsp;picture</span>
-                      )}
-                    </div>
-                  )}
-
-                  {/* Текст карточки */}
-                  <div className={styles.cardText}>
-                    <h3 className={styles.cardHeader}>
-                      <span className={styles.txt}>
-                        {cardHeader.length > 0 ? cardHeader : 'No visible name'}
-                      </span>
-
-                      {/* counter: */}
-                      {tableParams.counterField &&
-                        row &&
-                        row[tableParams.counterField] &&
-                        row[tableParams.counterField] != 0 &&
-                        row[tableParams.counterField] != '0' ? (
-                        <span
-                          className={`${styles.counter} ${!quickActions || quickActions.length == 0
-                              ? styles.moveCounter
-                              : ''
-                            }`}
-                          title={`${row[tableParams.counterField]} ${tableParams.counterText
-                            }`}
-                        >
-                          {(typeof row[tableParams.counterField] == 'object') ?  
-                            getLinkName(tableParams.counterField,row[tableParams.counterField]) :  
-                            row[tableParams.counterField]}
-                        </span>
-                      ) : (
-                        ''
-                      )}
-                    </h3>
-                    <div
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'flex-start',
-                        marginRight: -12
-                      }}
-                    >
-                      {cardHeaderComment &&
-                        // если Array, то это у нас либо список labels, либо arrayLink
-                        // также чекаем на то, что это link/arrayLink, тогда добавляем классом linkText рамочку
-                        // для labels рамочка добавляется классом labelText
-                        (!Array.isArray(cardHeaderComment) ? (
-                          <div
-                            className={`${styles.cardHeaderComment} ${typeof row[tableParams.cardHeaderComment] ===
-                              'object' && styles.linkText
-                              }`}
-                          >
-                            {cardHeaderComment}
-                          </div>
-                        ) : (
-                          <div
-                            className={`${styles.headerArray} ${styles.cardHeaderComment}`}
-                          >
-                            {cardHeaderComment.map((i) => (
-                              <div
-                                className={`${typeof row[
-                                    tableParams.cardHeaderComment
-                                  ][0] === 'object'
-                                    ? styles.linkText
-                                    : styles.labelText
-                                  }`}
-                              >
-                                {i}
-                              </div>
-                            ))}
-                          </div>
-                        ))}
-                      {cardBodyText &&
-                        // все также как у cardHeaderComment
-                        (!Array.isArray(cardBodyText) ? (
-                          <ExpandedText
-                            textLength={
-                              tableParams.cardBodyTextLength == 0
-                                ? 0
-                                : tableParams.cardBodyTextLength || 300
-                            }
-                            className={`${styles.cardBodyText} ${typeof row[tableParams.cardBodyText] ===
-                              'object' && styles.linkText
-                              }`}
-                          >
-                            {/* {currentBP} */}
-                            {cardBodyText}
-                          </ExpandedText>
-                        ) : (
-                          <div
-                            className={`${styles.headerArray} ${styles.cardBodyText}`}
-                          >
-                            {cardBodyText.map((i) => (
-                              <div
-                                className={`${typeof row[tableParams.cardBodyText][0] ===
-                                    'object'
-                                    ? styles.linkText
-                                    : styles.labelText
-                                  }`}
-                              >
-                                {i}
-                              </div>
-                            ))}
-                          </div>
-                        ))}
-                    </div>
-                  </div>
-                  {footerButtons && footerButtons.length > 0 && <FooterButtons
-                    loading={loading}
-                    successWeb3={successWeb3}
-                    footerButtons={footerButtons}
-                    performAction={performAction}
-                  />}
-                </div>
-              </div>
-            )
-          })}
+          tableData.map((row, i) => <Card
+            params={params}
+            row={row}
+            i={i}
+            currentBP={currentBP}
+            tableParams={tableParams}
+            tableHeaders={tableHeaders}
+            loading={loading}
+            successWeb3={successWeb3}
+            edenrichConds={edenrichConds}
+            searchValue={searchValue}
+            auth={auth}
+            submitAction={submitAction}
+            checkActionCond={checkActionCond}
+            setSuccessWeb3={setSuccessWeb3}
+            onExpand={onExpand}
+            getLinkName={getLinkName}
+            getInitialStructureParams={getInitialStructureParams}
+          />)}
         {data.error && (
           <SomethingWentWrong icon='warning' message={data.error} />
         )}
@@ -722,13 +234,525 @@ export function Cards({
             <SomethingWentWrong
               icon='ban'
               message={`${searchValue
-                  ? `No object found for ${searchValue}`
-                  : `No objects`
+                ? `No object found for ${searchValue}`
+                : `No objects`
                 }`}
             />
           )}
       </div>
     </React.Fragment>
+  )
+}
+
+export function Card({ row, params, getInitialStructureParams, 
+  successWeb3, setSuccessWeb3, checkActionCond, submitAction, auth, searchValue, edenrichConds, 
+  tableHeaders, getLinkName, tableParams, i, currentBP, loading, onExpand, onEvent }) {
+  const object = row
+  // actions для меню быстрого доступа
+  const quickActions = params.actions
+    ? params.actions.filter(
+      (i) =>
+        i.dropdown &&
+        i.displayAs == 'button' &&
+        i.callFrom != 'linked' &&
+        checkActionCond(i.conditionals, object)
+    )
+    : []
+
+  // actions кнопок в футере карточки
+  const footerButtons = params.actions
+    ? params.actions.filter(
+      (i) =>
+        i.footerButtons &&
+        i.displayAs == 'button' &&
+        i.callFrom != 'linked' &&
+        checkActionCond(i.conditionals, object)
+    )
+    : []
+
+  // выполнить Action
+  function performAction(actionParams) {
+    console.log('actionParams')
+    console.log(actionParams)
+    const mapping = {} // calling api-endpoint
+    const options = {} // calling web3-api
+    if (actionParams.web3) {
+      options.web3 = true
+    }
+    if (
+      (!actionParams.formMapping ||
+        actionParams.formMapping.length == 0) &&
+      !actionParams.web3
+    ) {
+      console.log('action does nothing')
+      return null
+    }
+
+    // gathering mapping for endpoint call:
+    actionParams.formMapping &&
+      actionParams.formMapping.length &&
+      actionParams.formMapping.forEach((row) => {
+        if (row.type == 'user') {
+          mapping[row.target] = auth ? auth.user : null
+        }
+        if (row.type == 'const') {
+          mapping[row.target] = row.value
+        }
+        if (row.type == 'objectField') {
+          mapping[row.target] =
+            typeof object[row.value] !== 'object'
+              ? object[row.value]
+              : Array.isArray(object[row.value])
+                ? object[row.value].map((i) => i.id).join(',')
+                : object[row.value].id
+        }
+      })
+
+    // gathering mapping for web3-api call:
+    actionParams.web3Mapping &&
+      actionParams.web3Mapping.length &&
+      actionParams.web3Mapping.forEach((row) => {
+        if (row.type == 'user') {
+          options[row.target] = auth ? auth.user : null
+        }
+        if (row.type == 'const') {
+          options[row.target] = row.value
+        }
+        if (row.type == 'objectField') {
+          options[row.target] =
+            typeof object[row.value] !== 'object'
+              ? object[row.value]
+              : Array.isArray(object[row.value])
+                ? object[row.value].map((i) => i.id).join(',')
+                : object[row.value].id
+        }
+      })
+    const sl = actionParams.sysName
+    const result = submitAction(mapping, sl, options)
+
+    if (result) {
+      result
+        .then((ok) => {
+          console.log("ok async" + ok)
+          setSuccessWeb3(true)
+        })
+        .catch((err) => {
+          console.log("err async")
+          console.log(err)
+        })
+    }
+  }
+
+  // форматируем дату для карточки (если есть) в соответствии с formatOptions
+  const formatDate = (value, formatOptions) => {
+    if (!value) {
+      return null
+    }
+    formatOptions = formatOptions || {}
+    const formattedDate =
+      formatOptions.isUTC == 'true'
+        ? moment
+          .utc(value)
+          .locale(formatOptions.dateLocale || 'ed-gb')
+          .format(
+            formatOptions.dateFormat + formatOptions.timeFormat ||
+            'DD/MM/Y, HH:mm, Z'
+          )
+        : moment(value)
+          .locale(formatOptions.dateLocale || 'ed-gb')
+          .format(
+            formatOptions.dateFormat + formatOptions.timeFormat ||
+            'DD/MM/Y, HH:mm, Z'
+          )
+    return formattedDate
+  }
+
+  const formatJson = (value, formatOptions) => {
+    const jsonParse = (def) => {
+      try {
+        return JSON.parse(def) || {}
+      } catch (e) {
+        console.log(e)
+        return def || {}
+      }
+    }
+
+    // Range слайдер пока не прикрутил, см условие на .secondValue
+    if (!formatOptions.range || jsonParse(value).secondValue) {
+      return
+    }
+    // console.log('SLIDER')
+    // console.log(value)
+    // console.log(formatOptions)
+    // console.log(jsonParse(value))
+
+    const progress = jsonParse(value)
+      ? (100 * jsonParse(value).firstValue) /
+      (formatOptions.range.max - formatOptions.range.min)
+      : 0
+    // console.log(progress)
+
+    return (
+      <div className={styles.cardsSlider}>
+        <div className={styles.line}>
+          <div
+            className={styles.fill}
+            style={{ width: `${progress || '0'}%` }}
+          />
+        </div>
+        <div className={styles.sliderValue}>
+          {jsonParse(value).firstValue || '0'}
+          {formatOptions.unitName}
+        </div>
+      </div>
+    )
+  }
+
+  // в этой хуете мы подтягиваем для Заголовка, Подзаголовка и Текста карточки visible name если поле типа link/arrayLink
+  let cardHeader =
+    getInitialStructureParams().viewName &&
+    getInitialStructureParams().viewName &&
+    (getInitialStructureParams().viewName.length > 0
+      ? getInitialStructureParams()
+        .viewName.map((i) =>
+          typeof row[i] === 'object'
+            ? !Array.isArray(row[i])
+              ? getLinkName(i, row[i])
+              : row[i].map((j) => getLinkName(i, j)).join(', ')
+            : !tableHeaders.filter((h) => h.sysName == i)[0]
+              ? ''
+              : tableHeaders.filter((h) => h.sysName == i)[0]
+                .dataType != 'date'
+                ? row[i]
+                : formatDate(
+                  row[i],
+                  tableHeaders.filter((h) => h.sysName == i)[0]
+                    .formatOptions
+                )
+        )
+        .join(' ')
+      : '')
+
+  // console.log('cardHeader')
+  // console.log(getInitialStructureParams().viewName)
+
+  cardHeader =
+    cardHeader == '' ||
+      cardHeader == ' ' ||
+      cardHeader == '  ' ||
+      cardHeader == '   ' ||
+      cardHeader == '    ' ||
+      cardHeader == '     ' ||
+      cardHeader == '      '
+      ? row.id || 'No visible name'
+      : cardHeader
+
+  cardHeader = cardHeader
+    ? typeof cardHeader === 'object'
+      ? cardHeader.value || JSON.stringify(cardHeader)
+      : cardHeader
+    : 'No visible name'
+
+  const cardHeaderComment =
+    row &&
+    (typeof row[tableParams.cardHeaderComment] === 'object'
+      ? !Array.isArray(row[tableParams.cardHeaderComment])
+        ? getLinkName(
+          tableParams.cardHeaderComment,
+          row[tableParams.cardHeaderComment]
+        )
+        : row[tableParams.cardHeaderComment].map((i) =>
+          getLinkName(tableParams.cardHeaderComment, i)
+        )
+      : tableHeaders.filter(
+        (h) => h.sysName == tableParams.cardHeaderComment
+      )[0] &&
+        tableHeaders.filter(
+          (h) => h.sysName == tableParams.cardHeaderComment
+        )[0].dataType == 'date'
+        ? // <pre>{JSON.stringify(tableHeaders.filter(h => h.sysName == tableParams.cardHeaderComment)[0],0,3)}</pre> :
+        formatDate(
+          row[tableParams.cardHeaderComment],
+          tableHeaders.filter(
+            (h) => h.sysName == tableParams.cardHeaderComment
+          )[0].formatOptions
+        )
+        : row[tableParams.cardHeaderComment])
+
+  const cardBodyText =
+    row &&
+    (typeof row[tableParams.cardBodyText] === 'object'
+      ? !Array.isArray(row[tableParams.cardBodyText])
+        ? getLinkName(
+          tableParams.cardBodyText,
+          row[tableParams.cardBodyText]
+        )
+        : row[tableParams.cardBodyText].map((i) =>
+          getLinkName(tableParams.cardBodyText, i)
+        )
+      : tableHeaders.filter(
+        (h) => h.sysName == tableParams.cardBodyText
+      )[0] &&
+        tableHeaders.filter(
+          (h) => h.sysName == tableParams.cardBodyText
+        )[0].dataType == 'date'
+        ? formatDate(
+          row[tableParams.cardBodyText],
+          tableHeaders.filter(
+            (h) => h.sysName == tableParams.cardBodyText
+          )[0].formatOptions
+        )
+        : tableHeaders.filter(
+          (h) => h.sysName == tableParams.cardBodyText
+        )[0] &&
+          tableHeaders.filter(
+            (h) => h.sysName == tableParams.cardBodyText
+          )[0].dataType == 'json'
+          ? formatJson(
+            row[tableParams.cardBodyText],
+            tableHeaders.filter(
+              (h) => h.sysName == tableParams.cardBodyText
+            )[0].formatOptions
+          )
+          : row[tableParams.cardBodyText])
+  // ==================================
+
+  const cardColor = row[tableParams.cardColor]
+    ? row[tableParams.cardColor][0] == '#' ||
+      row[tableParams.cardColor][0] == 'r'
+      ? row[tableParams.cardColor]
+      : '#' + row[tableParams.cardColor]
+    : null
+
+  // Render the card below:
+  return (
+    <div
+      key={i}
+      className={`${styles.card} ${styles[currentBP]} ${styles[tableParams.cardListLayout || 'grid']
+        }`}
+    >
+
+      {/* quick actions menu */}
+      <QuickActionsControl
+        quickActions={quickActions}
+        performAction={performAction}
+      />
+      <div
+        className={`${styles.cardInnerWrapper}
+                                ${tableParams.cardColor &&
+          tableParams.cardColorOption == 'border' &&
+          styles.borderColor
+          }
+                                ${styles[tableParams.cardImageType]}
+                                ${tableParams.invertColors &&
+          styles.invertColors
+          }
+                                `}
+        style={
+          tableParams.cardColor &&
+            tableParams.cardColorOption == 'border'
+            ? {
+              borderColor: cardColor,
+              minHeight:
+                tableParams.cardImageType == 'cover'
+                  ? tableParams.cardCoverHeight
+                    ? tableParams.cardCoverHeight
+                    : 'auto'
+                  : 'auto'
+            }
+            : {
+              minHeight:
+                tableParams.cardImageType == 'cover'
+                  ? tableParams.cardCoverHeight
+                    ? tableParams.cardCoverHeight
+                    : 'auto'
+                  : 'auto'
+            }
+        }
+        onClick={() => {
+          // console.log(row)
+          !loading && onExpand(row)
+        }}
+      >
+        {/* Разукрашиваем карточку */}
+        {tableParams.cardColor &&
+          tableParams.cardColorOption != 'none' && (
+            <div
+              style={{
+                backgroundColor: cardColor
+              }}
+              className={`${styles.color} ${styles[tableParams.cardColorOption]
+                }`}
+            />
+          )}
+        {/* Картинка карточки */}
+        {tableParams.cardImageField && (
+          <div
+            className={`${styles.cardImage}`}
+            style={{
+              backgroundSize:
+                tableParams.cardImageResize == 'contain'
+                  ? 'contain'
+                  : 'cover',
+              backgroundImage: `url(${(row[tableParams.cardImageField] || '').split(',')
+                ? (row[tableParams.cardImageField] || '').split(
+                  ','
+                )[0]
+                : ''
+                })`,
+              width:
+                tableParams.cardImageType == 'left' ||
+                  tableParams.cardImageType == 'leftCircle'
+                  ? parseInt(tableParams.cardImageSize)
+                    ? parseInt(
+                      currentBP == 'mobile'
+                        ? Math.floor(
+                          tableParams.cardImageSize / 1.5
+                        )
+                        : tableParams.cardImageSize
+                    )
+                    : 100
+                  : 'auto',
+              height:
+                tableParams.cardImageType == 'top' ||
+                  tableParams.cardImageType == 'leftCircle'
+                  ? parseInt(tableParams.cardImageSize)
+                    ? parseInt(
+                      currentBP == 'mobile'
+                        ? Math.floor(
+                          tableParams.cardImageSize / 1.5
+                        )
+                        : tableParams.cardImageSize
+                    )
+                    : 100
+                  : 'auto',
+              minHeight:
+                tableParams.cardImageType == 'left' &&
+                  tableParams.cardImageSizeHeight
+                  ? parseInt(
+                    currentBP == 'mobile'
+                      ? Math.floor(tableParams.cardImageSize / 1.5)
+                      : tableParams.cardImageSize
+                  )
+                  : 'none'
+            }}
+          >
+            {!row[tableParams.cardImageField] && (
+              <span className='icon icon-ban'>no&nbsp;picture</span>
+            )}
+          </div>
+        )}
+
+        {/* Текст карточки */}
+        <div className={styles.cardText}>
+          <h3 className={styles.cardHeader}>
+            <span className={styles.txt}>
+              {cardHeader.length > 0 ? cardHeader : 'No visible name'}
+            </span>
+
+            {/* counter: */}
+            {tableParams.counterField &&
+              row &&
+              row[tableParams.counterField] &&
+              row[tableParams.counterField] != 0 &&
+              row[tableParams.counterField] != '0' ? (
+              <span
+                className={`${styles.counter} ${!quickActions || quickActions.length == 0
+                  ? styles.moveCounter
+                  : ''
+                  }`}
+                title={`${row[tableParams.counterField]} ${tableParams.counterText
+                  }`}
+              >
+                {(typeof row[tableParams.counterField] == 'object') ?
+                  getLinkName(tableParams.counterField, row[tableParams.counterField]) :
+                  row[tableParams.counterField]}
+              </span>
+            ) : (
+              ''
+            )}
+          </h3>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              marginRight: -12
+            }}
+          >
+            {cardHeaderComment &&
+              // если Array, то это у нас либо список labels, либо arrayLink
+              // также чекаем на то, что это link/arrayLink, тогда добавляем классом linkText рамочку
+              // для labels рамочка добавляется классом labelText
+              (!Array.isArray(cardHeaderComment) ? (
+                <div
+                  className={`${styles.cardHeaderComment} ${typeof row[tableParams.cardHeaderComment] ===
+                    'object' && styles.linkText
+                    }`}
+                >
+                  {cardHeaderComment}
+                </div>
+              ) : (
+                <div
+                  className={`${styles.headerArray} ${styles.cardHeaderComment}`}
+                >
+                  {cardHeaderComment.map((i) => (
+                    <div
+                      className={`${typeof row[
+                        tableParams.cardHeaderComment
+                      ][0] === 'object'
+                        ? styles.linkText
+                        : styles.labelText
+                        }`}
+                    >
+                      {i}
+                    </div>
+                  ))}
+                </div>
+              ))}
+            {cardBodyText &&
+              // все также как у cardHeaderComment
+              (!Array.isArray(cardBodyText) ? (
+                <ExpandedText
+                  textLength={
+                    tableParams.cardBodyTextLength == 0
+                      ? 0
+                      : tableParams.cardBodyTextLength || 300
+                  }
+                  className={`${styles.cardBodyText} ${typeof row[tableParams.cardBodyText] ===
+                    'object' && styles.linkText
+                    }`}
+                >
+                  {/* {currentBP} */}
+                  {cardBodyText}
+                </ExpandedText>
+              ) : (
+                <div
+                  className={`${styles.headerArray} ${styles.cardBodyText}`}
+                >
+                  {cardBodyText.map((i) => (
+                    <div
+                      className={`${typeof row[tableParams.cardBodyText][0] ===
+                        'object'
+                        ? styles.linkText
+                        : styles.labelText
+                        }`}
+                    >
+                      {i}
+                    </div>
+                  ))}
+                </div>
+              ))}
+          </div>
+        </div>
+        {footerButtons && footerButtons.length > 0 && <FooterButtons
+          loading={loading}
+          successWeb3={successWeb3}
+          footerButtons={footerButtons}
+          performAction={performAction}
+        />}
+      </div>
+    </div>
   )
 }
 
@@ -766,13 +790,13 @@ function FooterButtons({ footerButtons, performAction, loading, successWeb3 }) {
 
               // success (transaction confirmed):
               if (!loading && message && submitted && (successWeb3 || !button.web3))
-                return (<div style={{width:"100%"}}>
+                return (<div style={{ width: "100%" }}>
                   <Hint key={button.id} ok margin={{ top: 0, bottom: 3 }}>
                     <div
                       dangerouslySetInnerHTML={{ __html: button.resultMessage }}
                     />
                   </Hint>
-                  </div>
+                </div>
                 )
 
               return (
@@ -844,8 +868,8 @@ function QuickActionsControl({ quickActions, performAction }) {
                   setShowQA(false)
                 }}
                 className={`${action.buttonIcon
-                    ? 'icon small icon-' + action.buttonIcon
-                    : ''
+                  ? 'icon small icon-' + action.buttonIcon
+                  : ''
                   }`}
               >
                 <span>{action.buttonTitle || action.name}</span>

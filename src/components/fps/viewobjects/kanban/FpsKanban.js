@@ -16,13 +16,13 @@ import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
 function FpsKanban({ auth, data, onEvent, id, currentBP, locale }) {
     if (!data) { data = {} }
 
-    console.log('---data FpsCards---')
+    console.log('---data FpsKanban---')
     console.log(data)
-    // console.log(id)
+
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
-
     const [loading, setLoading] = useState(false)
+    const [qSearch, setQSearch] = useState(data.quickSearch === "true")
     const [searchValue, setSearchValue] = useState()
 
     const [currentDQL, setCurrentDQL] = useState('')
@@ -47,22 +47,40 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale }) {
         }
         if (!data.isSuccessWrite && data.writeError) {
             console.log('data write error')
-            console.log(data.writeError)
+            console.log('error ==> ' + data.writeError)
         }
+        setQSearch(data.quickSearch === "true")
     }, [data])
 
 
-    const sendMsg = (msg, sl, pageInfo) => {
+  /**
+   *
+   * @param msg
+   * @param sl
+   * @param pageInfo
+   * @param options - additional parameteres for rise event to eventEngine
+   */
+    const sendMsg = (msg, sl, pageInfo, options) => {
         console.log('submitting...')
         pageInfo = pageInfo || { page: currentPage }
         if (sl === "") { sl = undefined }
+        // костылек для даты
+        for (const prop in msg) {
+            if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) { msg[prop] = moment(msg[prop])}
+        }
         const message =
-            { ...msg, _id: 'form_' + id, _sl_name: sl }
+            { ...msg, _id: 'form_' + id, _sl_name: sl, _options:options }
         console.log(message)
         console.log(pageInfo)
         setLoading(true)
         if (onEvent) {
-            onEvent(message, pageInfo)
+            let prom = onEvent(message, pageInfo)
+            if(prom && prom.finally){
+              prom.finally(()=>{
+                setLoading(false)
+              })
+            }
+            return prom
         }
     }
 
@@ -84,16 +102,16 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale }) {
         }
     }
 
-    const refresh = () => {
-        setLoading(true)
-        setCurrentDQL('')
-        setSearchValue('')
+    const refresh = (skipLoading) => {
+        !skipLoading && setLoading(true)
+        !skipLoading && setCurrentDQL('')
+        !skipLoading && setSearchValue('')
         onEvent({ dql: '', page: currentPage, _id: id })
-        removeUrlParam(id + '_dql')
+        !skipLoading && removeUrlParam(id + '_dql')
     }
 
     const setPage = page => {
-        onEvent({ dql: currentDQL, _id: id},  { page: page }, {reqParam1: "true"} )
+        onEvent({ dql: currentDQL, _id: id }, { page: page }, { reqParam1: "true" })
         page !== 0 ? addUrlParam({ key: id + '_page', value: page }) : removeUrlParam(id + '_page')
     }
 
@@ -118,9 +136,9 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale }) {
         sendMsg(saveModel)
     }
 
-    const submitAction = (mapping, sl) => {
+    const submitAction = (mapping, sl, options) => {
         console.log('submitting action...')
-        sendMsg(mapping, sl)
+        return sendMsg(mapping, sl, undefined, options)
     }
 
     //Check action conditionals
@@ -151,16 +169,16 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale }) {
                 console.log(`user id ${auth && auth.user} is not in ${cond.checkValue}`)
                 match = false
             }
-            if (cond.target == 'id_not_in' && (!auth || !auth.user || compareRoleArrays(auth.user, cond.checkValue))) {
-                console.log(`user id ${auth && auth.user} is in ${cond.checkValue}`)
-                match = false
-            }
             if (cond.target == 'isAutn' && (!auth || !auth.user)) {
                 console.log(`user is not authorised!`)
                 match = false
             }
             if (cond.target == 'isNotAuth' && auth.user) {
                 console.log(`user is authorised!`)
+                match = false
+            }
+            if (cond.target == 'id_not_in' && (!auth || !auth.user || compareRoleArrays(auth.user, cond.checkValue))) {
+                console.log(`user id ${auth && auth.user} is in ${cond.checkValue}`)
                 match = false
             }
             if (cond.target == 'role' && (!auth || !auth.role || (!compareRoleArrays(auth.role, cond.checkValue)))) {
@@ -172,8 +190,7 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale }) {
                 console.log(cond.fieldValue + ' != ' + cond.value);
                 console.log(cond)
                 console.log('Field is wrong');
-                if (cond.value == 'false' && typeof cond.fieldValue == 'undefined') { match = true } else 
-                { match = false }
+                if (cond.value == 'false' && typeof cond.fieldValue == 'undefined') { match = true } else { match = false }
             }
         })
         return match
@@ -200,8 +217,6 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale }) {
         // console.log(object)
         // console.log(auth)
         eConds && eConds.forEach(cond => {
-            // console.log(cond)
-            // console.log(object)
             if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type == 'const') {
                 cond.checkValue = cond.value
             }
@@ -219,8 +234,8 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale }) {
                     } else {
                         cond.fieldValue = object[cond.field].id
                     }
-                } else { cond.fieldValue = object[cond.field] } 
-                    
+                } else { cond.fieldValue = object[cond.field] }
+
                 if (cond.value == 'false' && !cond.fieldValue) { cond.fieldValue = 'false' }
 
             }
@@ -232,40 +247,9 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale }) {
         return eConds
     }
 
-    // const edenrichConds = (conds, object) => {
-    //     let eConds = conds ? [...conds] : null
-    //     // console.log('edenrichConds')
-    //     // console.log(conds)
-    //     // console.log(object)
-    //     // console.log(auth)
-    //     eConds && eConds.forEach(cond => {
-    //         // console.log(cond)
-    //         // console.log(object)
-    //         if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type == 'const') {
-    //             cond.checkValue = cond.value
-    //         }
-    //         if (cond.target == 'role') {
-    //             cond.checkValue = cond.value
-    //         }
-    //         if (cond.target == 'field') {
-    //             typeof object[cond.field] != 'object' ? cond.fieldValue = object[cond.field] :
-    //                 cond.fieldValue = object[cond.field].id ||  (typeof object[cond.value].value == 'object' ? object[cond.value].value.id : object[cond.value].value) || null
-    //             if (cond.value == 'false' && !cond.fieldValue) { cond.fieldValue = 'false' }
-    //             // console.log('cond.fieldValue')
-    //             // console.log(cond.fieldValue)
-
-    //         }
-    //         if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
-    //             typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
-    //                 cond.checkValue = (typeof object[cond.value].value == 'object' ? object[cond.value].value.id : object[cond.value].value) || null // раньше тут было .id, а не .value проверить!
-    //         }
-    //     })
-    //     return eConds
-    // }
-
     const handleCloseShowObject = () => {
         setShowObject(null);
-        setTimeout(()=>removeUrlParam(id + '_id'),300)
+        setTimeout(() => removeUrlParam(id + '_id'), 300)
     }
 
     // get direct link ID
@@ -278,12 +262,12 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale }) {
         // if (urlDql && !currentDQL) {search(urlDql, urlPage || 0)}
         // if (!urlDql && urlPage && urlPage != currentPage) {setPage(urlPage)}
         if (currentID) {
-            const foundObject = data.data.filter(i=> i.id == currentID) ? data.data.filter(i=> i.id == currentID)[0] : null
-            if (foundObject) { setShowObject(foundObject)} else { console.log("no Object found")}
+            const foundObject = data.data.filter(i => i.id == currentID) ? data.data.filter(i => i.id == currentID)[0] : null
+            if (foundObject) { setShowObject(foundObject) } else { console.log("no Object found") }
         }
     }, [data]);
 
-    useEffect(()=> {
+    useEffect(() => {
         if (showObject && showObject.id) {
             addUrlParam({ key: id + '_id', value: showObject.id })
         } else {
@@ -323,8 +307,20 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale }) {
                         /></div>
                 </React.Fragment>}
 
-                <div>Component is under development</div>
-                {/* <Kanban /> */}
+                <Kanban 
+                    submit={submit}
+                    auth={auth}
+                    dict={dict}
+                    lang={lang}
+                    onExpand={val => {
+                        _.get(data, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(data, 'params.data.additionalPath') ? _.get(data, 'params.data.additionalPath') + '/' : ''}` + val.id)() :
+                        _.get(data, 'params.data.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(data, 'params.data.anotherPage')}/` + val.id)() :
+                        _.get(data, 'params.data.cardsOrPage') == 'disable' ? undefined :
+                        setShowObject(val) }}
+                    executeAction={submitAction}
+                    loading={loading}
+                    data={data}
+                />
             
         </ComponentWrapper>
     )
@@ -335,6 +331,9 @@ FpsKanban.settings = {
     sysName: 'FpsKanban',
     form: [
         { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
+        { name: 'Kanban title', sysName: 'tableTitle', type: 'input' },
+        // { name: 'Kanban parameters', sysName: 'params', type: 'kanban-params' },
+        { name: 'Max objects quantity', sysName: 'pageSize', type: 'number' },
         { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
     ]
 }
