@@ -4555,6 +4555,16 @@ const App = (props) => {
                         "format": "",
                         "formatOptions": {},
                         "link": ""
+                    },
+                    {
+                        "fieldSysName": "weight",
+                        "fetch": [],
+                        "sysName": "weight",
+                        "name": "",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
                     }
                 ],
                 "writeFields": [
@@ -4574,6 +4584,16 @@ const App = (props) => {
                         "sysName": "id",
                         "name": "id",
                         "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "weight",
+                        "fetch": [],
+                        "sysName": "weight",
+                        "name": "",
+                        "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
@@ -4636,6 +4656,18 @@ const App = (props) => {
                         "read": true,
                         "link": "",
                         "actions": []
+                    },
+                    "weight": {
+                        "id": "weight",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
                     }
                 },
                 "fieldParams": {
@@ -4678,6 +4710,14 @@ const App = (props) => {
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
+                    },
+                    "weight": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
                     }
                 },
                 "columns": {
@@ -4689,7 +4729,8 @@ const App = (props) => {
                             "id",
                             "image",
                             "name",
-                            "text"
+                            "text",
+                            "weight"
                         ]
                     }
                 },
@@ -4738,6 +4779,14 @@ const App = (props) => {
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
+                },
+                "weight": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
                 }
             },
             "kanbanParams": {
@@ -4745,16 +4794,16 @@ const App = (props) => {
                 "columnsStruct": "columns",
                 "columns": [
                     {
-                        "id": "col-2",
-                        "name": "two "
-                    },
-                    {
                         "id": "col-1",
                         "name": "one "
                     },
                     {
                         "id": "col-3",
                         "name": "three "
+                    },
+                    {
+                        "id": "col-2",
+                        "name": "two "
                     }
                 ],
                 "columnsVisibility": {
@@ -4762,18 +4811,19 @@ const App = (props) => {
                         "isHidden": true
                     }
                 },
-                "dragndropOption": "same"
+                "dragndropOption": "same",
+                "sortField": "weight"
             },
             "showCounter": true,
             "counterField": "id"
         },
-        "tableTitle": "",
+        "tableTitle": "КАНБАН ЕБАТЬ",
         "actions": null,
         "headers": [
             {
                 "sysName": "col",
-                "name": "Colmn",
                 "dataType": "link",
+                "name": "Colmn",
                 "id": "98481659390930255",
                 "link": "columns",
                 "group": "0",
@@ -4790,18 +4840,18 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "indexExists": false,
+                "array": false,
                 "linkType": true,
-                "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": true,
                 "arrayLink": false,
-                "array": false
+                "indexExists": false,
+                "typeVariable": {}
             },
             {
                 "sysName": "id",
-                "name": "id",
                 "dataType": "id",
+                "name": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -4818,18 +4868,18 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "indexExists": false,
+                "array": false,
                 "linkType": false,
-                "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
                 "arrayLink": false,
-                "array": false
+                "indexExists": false,
+                "typeVariable": {}
             },
             {
                 "sysName": "image",
-                "name": "",
                 "dataType": "file",
+                "name": "",
                 "id": "75311659390953617",
                 "link": "",
                 "group": "0",
@@ -4846,18 +4896,18 @@ const App = (props) => {
                 "format": "image",
                 "formatOptions": {},
                 "groupName": null,
-                "indexExists": false,
+                "array": false,
                 "linkType": false,
-                "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
                 "arrayLink": false,
-                "array": false
+                "indexExists": false,
+                "typeVariable": {}
             },
             {
                 "sysName": "name",
-                "name": "NAME",
                 "dataType": "string",
+                "name": "NAME",
                 "id": "94231659390940732",
                 "link": "",
                 "group": "0",
@@ -4874,18 +4924,18 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "indexExists": false,
+                "array": false,
                 "linkType": false,
-                "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
                 "arrayLink": false,
-                "array": false
+                "indexExists": false,
+                "typeVariable": {}
             },
             {
                 "sysName": "text",
-                "name": "",
                 "dataType": "string",
+                "name": "",
                 "id": "51671659390951143",
                 "link": "",
                 "group": "0",
@@ -4902,13 +4952,41 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "indexExists": false,
+                "array": false,
                 "linkType": false,
-                "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
                 "arrayLink": false,
-                "array": false
+                "indexExists": false,
+                "typeVariable": {}
+            },
+            {
+                "sysName": "weight",
+                "dataType": "decimal",
+                "name": "",
+                "id": "53081660230900734",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "linkType": false,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {}
             }
         ],
         "data": [
@@ -4916,26 +4994,27 @@ const App = (props) => {
                 "name": "hey hey",
                 "text": "text text text",
                 "col": {
-                    "name": "one",
-                    "id": "col-1"
+                    "name": "three",
+                    "id": "col-3"
                 },
                 "id": "obj-1"
             },
             {
-                "text": "lorem ipsum",
-                "col": {
-                    "name": "two",
-                    "id": "col-2"
-                },
+                "weight": 2.3,
                 "name": "hoy hoy",
-                "id": "obj-2"
+                "text": "lorem ipsum",
+                "id": "obj-2",
+                "col": {
+                    "name": "one",
+                    "id": "col-1"
+                }
             },
             {
                 "name": "pam pam",
                 "text": "param",
                 "col": {
-                    "name": "two",
-                    "id": "col-2"
+                    "name": "three",
+                    "id": "col-3"
                 },
                 "id": "obj-3"
             }
@@ -4967,22 +5046,27 @@ const App = (props) => {
             [
                 "text",
                 99123979
+            ],
+            [
+                "weight",
+                99123979
             ]
         ],
         "writeFields": [
             "col",
-            "id"
+            "id",
+            "weight"
         ],
         "structures": {
             "99123978": {
-                "networkID": 13796,
-                "sysName": "columns",
-                "name": "columns",
                 "id": 99123978,
                 "dateCreated": "2022-08-01T21:54:31Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"name\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"30861659390887062\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"second\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"28191659453539947\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"@who\",\"name\":\"who changed\",\"dataType\":\"string\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"@dateCreated\",\"name\":\"date created\",\"dataType\":\"date\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"@dateChanged\",\"name\":\"date changed\",\"dataType\":\"date\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false}]",
+                "networkID": 13796,
+                "name": "columns",
+                "sysName": "columns",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"30861659390887062\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"second\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"28191659453539947\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}}]",
                 "jsonGroupSettings": null,
                 "jsonViewIdSettings": "[{\"sysName\":\"name\"},{\"sysName\":\"second\"}]",
                 "jsonSettings": null,
@@ -4998,8 +5082,8 @@ const App = (props) => {
                 "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "id",
                     "dataType": "id",
+                    "name": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -5016,25 +5100,25 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "indexExists": false,
+                    "array": false,
                     "linkType": false,
-                    "typeVariable": {},
                     "json": false,
                     "linkOrArrayLinkType": false,
                     "arrayLink": false,
-                    "array": false
+                    "indexExists": false,
+                    "typeVariable": {}
                 },
                 "folderId": null
             },
             "99123979": {
-                "networkID": 13796,
-                "sysName": "objects",
-                "name": "objects",
                 "id": 99123979,
                 "dateCreated": "2022-08-01T21:55:21Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"col\",\"name\":\"Colmn\",\"dataType\":\"link\",\"id\":\"98481659390930255\",\"link\":\"columns\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"name\",\"name\":\"NAME\",\"dataType\":\"string\",\"id\":\"94231659390940732\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"text\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"51671659390951143\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"image\",\"name\":\"\",\"dataType\":\"file\",\"id\":\"75311659390953617\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"@who\",\"name\":\"who changed\",\"dataType\":\"string\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"@dateCreated\",\"name\":\"date created\",\"dataType\":\"date\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"@dateChanged\",\"name\":\"date changed\",\"dataType\":\"date\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false}]",
+                "networkID": 13796,
+                "name": "objects",
+                "sysName": "objects",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"text\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"51671659390951143\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"weight\",\"dataType\":\"decimal\",\"name\":\"\",\"id\":\"53081660230900734\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"image\",\"dataType\":\"file\",\"name\":\"\",\"id\":\"75311659390953617\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"NAME\",\"id\":\"94231659390940732\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkType\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}},{\"sysName\":\"col\",\"dataType\":\"link\",\"name\":\"Colmn\",\"id\":\"98481659390930255\",\"link\":\"columns\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkType\":true,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{}}]",
                 "jsonGroupSettings": null,
                 "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
                 "jsonSettings": null,
@@ -5042,16 +5126,16 @@ const App = (props) => {
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2022-08-01T21:56:06Z",
+                "dateChanged": "2022-08-11T15:15:08Z",
                 "createBy": 3527,
-                "changedBy": 3527,
+                "changedBy": 1,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "id",
                     "dataType": "id",
+                    "name": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -5068,13 +5152,13 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "indexExists": false,
+                    "array": false,
                     "linkType": false,
-                    "typeVariable": {},
                     "json": false,
                     "linkOrArrayLinkType": false,
                     "arrayLink": false,
-                    "array": false
+                    "indexExists": false,
+                    "typeVariable": {}
                 },
                 "folderId": null
             }
@@ -5085,8 +5169,8 @@ const App = (props) => {
         "fileds": [
             {
                 "sysName": "col",
-                "name": "Colmn",
                 "dataType": "link",
+                "name": "Colmn",
                 "id": "98481659390930255",
                 "link": "columns",
                 "group": "0",
@@ -5103,18 +5187,18 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "indexExists": false,
+                "array": false,
                 "linkType": true,
-                "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": true,
                 "arrayLink": false,
-                "array": false
+                "indexExists": false,
+                "typeVariable": {}
             },
             {
                 "sysName": "id",
-                "name": "id",
                 "dataType": "id",
+                "name": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -5131,13 +5215,41 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "indexExists": false,
+                "array": false,
                 "linkType": false,
-                "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
                 "arrayLink": false,
-                "array": false
+                "indexExists": false,
+                "typeVariable": {}
+            },
+            {
+                "sysName": "weight",
+                "dataType": "decimal",
+                "name": "",
+                "id": "53081660230900734",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "linkType": false,
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {}
             }
         ],
         "quickSearch": null,

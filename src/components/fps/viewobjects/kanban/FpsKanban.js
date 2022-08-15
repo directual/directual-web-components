@@ -13,7 +13,7 @@ import { dict } from '../../locale'
 import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
 
 
-function FpsKanban({ auth, data, onEvent, id, currentBP, locale }) {
+function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     if (!data) { data = {} }
 
     console.log('---data FpsKanban---')
@@ -53,32 +53,32 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale }) {
     }, [data])
 
 
-  /**
-   *
-   * @param msg
-   * @param sl
-   * @param pageInfo
-   * @param options - additional parameteres for rise event to eventEngine
-   */
+    /**
+     *
+     * @param msg
+     * @param sl
+     * @param pageInfo
+     * @param options - additional parameteres for rise event to eventEngine
+     */
     const sendMsg = (msg, sl, pageInfo, options) => {
         console.log('submitting...')
         pageInfo = pageInfo || { page: currentPage }
         if (sl === "") { sl = undefined }
         // костылек для даты
         for (const prop in msg) {
-            if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) { msg[prop] = moment(msg[prop])}
+            if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) { msg[prop] = moment(msg[prop]) }
         }
         const message =
-            { ...msg, _id: 'form_' + id, _sl_name: sl, _options:options }
+            { ...msg, _id: 'form_' + id, _sl_name: sl, _options: options }
         console.log(message)
         console.log(pageInfo)
         setLoading(true)
         if (onEvent) {
             let prom = onEvent(message, pageInfo)
-            if(prom && prom.finally){
-              prom.finally(()=>{
-                setLoading(false)
-              })
+            if (prom && prom.finally) {
+                prom.finally(() => {
+                    setLoading(false)
+                })
             }
             return prom
         }
@@ -307,21 +307,36 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale }) {
                         /></div>
                 </React.Fragment>}
 
-                <Kanban 
-                    submit={submit}
-                    auth={auth}
-                    dict={dict}
-                    lang={lang}
-                    onExpand={val => {
-                        _.get(data, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(data, 'params.data.additionalPath') ? _.get(data, 'params.data.additionalPath') + '/' : ''}` + val.id)() :
+            <TableTitle
+                currentBP={currentBP}
+                tableTitle={tableTitle}
+                dict={dict}
+                lang={lang}
+                //currentDQL={currentDQL}
+                searchValue={searchValue}
+                //tableQuickSearch={data.quickSearch == 'true'}
+                search={data.data && data.data.length > 0 ? true : false}
+                onSearch={value => search(value)}
+                loading={loading}
+                onFilter={() => { }}
+            />
+
+            <Kanban
+                submit={submit}
+                auth={auth}
+                dict={dict}
+                lang={lang}
+                onExpand={val => {
+                    _.get(data, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(data, 'params.data.additionalPath') ? _.get(data, 'params.data.additionalPath') + '/' : ''}` + val.id)() :
                         _.get(data, 'params.data.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(data, 'params.data.anotherPage')}/` + val.id)() :
-                        _.get(data, 'params.data.cardsOrPage') == 'disable' ? undefined :
-                        setShowObject(val) }}
-                    executeAction={submitAction}
-                    loading={loading}
-                    data={data}
-                />
-            
+                            _.get(data, 'params.data.cardsOrPage') == 'disable' ? undefined :
+                                setShowObject(val)
+                }}
+                executeAction={submitAction}
+                loading={loading}
+                data={data}
+            />
+
         </ComponentWrapper>
     )
 }
