@@ -191,31 +191,57 @@ export function ObjectCard(props) {
         if (actionParams.web3) {
             options.web3 = true
         }
-        actionParams.web3Mapping && actionParams.web3Mapping.length && actionParams.web3Mapping.forEach(row => {
-            if (row.type == 'user') { options[row.target] = props.auth ? props.auth.user : null }
-            if (row.type == 'user') { options[row.target] = props.auth ? props.auth.user : null }
-            if (row.type == 'const') { options[row.target] = row.value }
-            if (row.type == 'objectField') {
-                options[row.target] = typeof object[row.value] != 'object' ?
-                    object[row.value] :
-                    Array.isArray(object[row.value]) ?
-                        object[row.value].map(i => i.id).join(',') :
-                        object[row.value].id
-            }
-        })
+        const { auth } = props
+        // gathering mapping for web3-api call:
+        actionParams.web3Mapping &&
+            actionParams.web3Mapping.length &&
+            actionParams.web3Mapping.forEach((row) => {
+                if (row.type == 'user') {
+                    options[row.target] = auth ? auth.user : null
+                }
+                if (row.type == 'const') {
+                    options[row.target] = row.value
+                }
+                if (row.type == 'objectField') {
+                    console.log('web3Mapping')
+                    console.log(row)
+                    console.log(object)
+                    options[row.target] =
+                        typeof object[row.value] !== 'object'
+                            ? object[row.value]
+                            : Array.isArray(object[row.value])
+                                ? object[row.value].map((i) => i.id).join(',')
+                                : ( object[row.value].id || object[row.value].value )
+                }
+            })
+
+        // actionParams.web3Mapping && 
+        // actionParams.web3Mapping.length && 
+        // actionParams.web3Mapping.forEach(row => {
+        //     if (row.type == 'user') { options[row.target] = props.auth ? props.auth.user : null }
+        //     if (row.type == 'user') { options[row.target] = props.auth ? props.auth.user : null }
+        //     if (row.type == 'const') { options[row.target] = row.value }
+        //     if (row.type == 'objectField') {
+        //         options[row.target] = typeof object[row.value] != 'object' ?
+        //             object[row.value] :
+        //             Array.isArray(object[row.value]) ?
+        //                 object[row.value].map(i => i.id).join(',') :
+        //                 object[row.value].id
+        //     }
+        // })
 
         let result = props.executeAction(mapping, sl, options)
         if (result) {
             result
-              .then((ok) => {
-                console.log("ok async" + ok)
-                setSuccessWeb3(true)
-              })
-              .catch((err) => {
-                console.log("err async")
-                console.log(err)
-              })
-          }
+                .then((ok) => {
+                    console.log("ok async" + ok)
+                    setSuccessWeb3(true)
+                })
+                .catch((err) => {
+                    console.log("err async")
+                    console.log(err)
+                })
+        }
     }
 
 
@@ -1295,10 +1321,10 @@ function CardAction({ action, successWeb3, writeError, actionParams, debug, subm
     return (
         actionParams && checkActionCond && checkActionCond(conds) ?
             <div className={`${aType == 'actionButton' ? styles.actionButton : styles.actionForm}`}>
+                <pre className='dd-debug'>{JSON.stringify(actionData, 0, 3)}</pre>
                 {actionParams.displayAs == 'form' &&
                     <React.Fragment>
                         <FormSection title={actionParams.name} />
-                        {/* <pre className='dd-debug'>{JSON.stringify(actionData, 0, 3)}</pre> */}
                         {actionParams.formFields && actionParams.formFields.length > 0 &&
                             actionParams.formFields.map(field => (field.field && <InputForm
                                 field={{

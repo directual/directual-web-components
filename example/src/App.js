@@ -85,1420 +85,258 @@ const App = (props) => {
     }
 
     let cardActions = {
-        "sl": "all-tasks-backend",
-        "pageSize": "10",
-        "headerField": null,
-        "params": {
-            "cardListLayout": "grid",
-            "cardHeaderComment": "description",
-            "deleteField": "",
-            "cardBodyText": "includes",
-            "cardImage": false,
-            "cardImageField": "",
-            "cardImageType": "none",
-            "cardImageSize": 100,
-            "objectView": {},
-            "data": {
-                "readFields": [
-                    {
-                        "fieldSysName": "color",
-                        "fetch": [
-                            {
-                                "fieldSysName": "color",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "color",
-                        "name": "Цвет",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "status"
-                    },
-                    {
-                        "fieldSysName": "data_finish",
-                        "fetch": [],
-                        "sysName": "data_finish",
-                        "name": "Финиш",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "ru",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD.MM.Y",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "data_start",
-                        "fetch": [],
-                        "sysName": "data_start",
-                        "name": "Старт",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "ru",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD.MM.Y",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "description",
-                        "fetch": [],
-                        "sysName": "description",
-                        "name": "Описание",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "includes",
-                        "fetch": [
-                            {
-                                "fieldSysName": "check",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "comments",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "data_check",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "description",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "main_task",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "includes",
-                        "name": "Подзадачи",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "mini_tasks"
-                    },
-                    {
-                        "fieldSysName": "name",
-                        "fetch": [],
-                        "sysName": "name",
-                        "name": "Название задачи",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "name_line",
-                        "fetch": [],
-                        "sysName": "name_line",
-                        "name": "Принадлежность",
-                        "dataType": "json",
-                        "format": "radioOptions",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOption": false,
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "multipleChoice": [
+    "sl": "myCart",
+    "pageSize": "10",
+    "headerField": null,
+    "params": {
+        "cardListLayout": "grid",
+        "cardHeaderComment": "",
+        "deleteField": "",
+        "cardBodyText": "",
+        "cardImage": false,
+        "cardImageField": "",
+        "cardImageType": "none",
+        "cardImageSize": 100,
+        "objectView": {},
+        "data": {
+            "readFields": [
+                {
+                    "fieldSysName": "good_in_order_ids",
+                    "fetch": [
+                        {
+                            "fieldSysName": "good",
+                            "condition": null,
+                            "fetch": [
                                 {
-                                    "value": "frontend",
-                                    "label": "Frontend"
-                                },
-                                {
-                                    "value": "backend",
-                                    "label": "Backend"
+                                    "fieldSysName": "title",
+                                    "condition": null,
+                                    "fetch": []
                                 }
                             ]
                         },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "status",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "status",
-                        "name": "Статус",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "multipleChoice": [
-                                {
-                                    "value": "works",
-                                    "label": "В работе"
-                                },
-                                {
-                                    "value": "wait",
-                                    "label": "Ожидание"
-                                },
-                                {
-                                    "value": "pass",
-                                    "label": "Готово"
-                                }
-                            ]
+                        {
+                            "fieldSysName": "image",
+                            "condition": null,
+                            "fetch": []
                         },
-                        "link": "status"
-                    }
-                ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "color",
-                        "fetch": [],
-                        "sysName": "color",
-                        "name": "Цвет",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "status"
-                    },
-                    {
-                        "fieldSysName": "data_finish",
-                        "fetch": [],
-                        "sysName": "data_finish",
-                        "name": "Финиш",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "ru",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD.MM.Y",
-                            "timeFormat": "",
-                            "isUTC": "false"
+                        {
+                            "fieldSysName": "price",
+                            "condition": null,
+                            "fetch": []
                         },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "data_start",
-                        "fetch": [],
-                        "sysName": "data_start",
-                        "name": "Старт",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "ru",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD.MM.Y",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "description",
-                        "fetch": [],
-                        "sysName": "description",
-                        "name": "Описание",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "includes",
-                        "fetch": [],
-                        "sysName": "includes",
-                        "name": "Подзадачи",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "mini_tasks"
-                    },
-                    {
-                        "fieldSysName": "name",
-                        "fetch": [],
-                        "sysName": "name",
-                        "name": "Название задачи",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "name_line",
-                        "fetch": [],
-                        "sysName": "name_line",
-                        "name": "Принадлежность",
-                        "dataType": "json",
-                        "format": "radioOptions",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOption": false,
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "multipleChoice": [
-                                {
-                                    "value": "frontend",
-                                    "label": "Frontend"
-                                },
-                                {
-                                    "value": "backend",
-                                    "label": "Backend"
-                                }
-                            ]
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "status",
-                        "fetch": [],
-                        "sysName": "status",
-                        "name": "Статус",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "multipleChoice": [
-                                {
-                                    "value": "works",
-                                    "label": "В работе"
-                                },
-                                {
-                                    "value": "wait",
-                                    "label": "Ожидание"
-                                },
-                                {
-                                    "value": "pass",
-                                    "label": "Готово"
-                                }
-                            ]
-                        },
-                        "link": "status"
-                    }
-                ],
-                "fields": {
-                    "color": {
-                        "id": "color",
-                        "content": "Цвет",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "status",
-                        "actions": []
-                    },
-                    "data_finish": {
-                        "id": "data_finish",
-                        "content": "Финиш",
-                        "type": "field",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "ru",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD.MM.Y",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "data_start": {
-                        "id": "data_start",
-                        "content": "Старт",
-                        "type": "field",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "ru",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD.MM.Y",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "description": {
-                        "id": "description",
-                        "content": "Описание",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "id": {
-                        "id": "id",
-                        "content": "id",
-                        "type": "field",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "includes": {
-                        "id": "includes",
-                        "content": "Подзадачи",
-                        "type": "field",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "mini_tasks",
-                        "actions": []
-                    },
-                    "name": {
-                        "id": "name",
-                        "content": "Название задачи",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "name_line": {
-                        "id": "name_line",
-                        "content": "Принадлежность",
-                        "type": "field",
-                        "dataType": "json",
-                        "format": "radioOptions",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOption": false,
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "multipleChoice": [
-                                {
-                                    "value": "frontend",
-                                    "label": "Frontend"
-                                },
-                                {
-                                    "value": "backend",
-                                    "label": "Backend"
-                                }
-                            ]
-                        },
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "status": {
-                        "id": "status",
-                        "content": "Статус",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false",
-                            "multipleChoice": [
-                                {
-                                    "value": "works",
-                                    "label": "В работе"
-                                },
-                                {
-                                    "value": "wait",
-                                    "label": "Ожидание"
-                                },
-                                {
-                                    "value": "pass",
-                                    "label": "Готово"
-                                }
-                            ]
-                        },
-                        "write": true,
-                        "read": true,
-                        "link": "status",
-                        "actions": []
-                    },
-                    "action__66481657607879326": {
-                        "content": "Подзадачи",
-                        "id": "action__66481657607879326",
-                        "type": "action",
-                        "actions": []
-                    }
+                        {
+                            "fieldSysName": "quantity",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "good_in_order_ids",
+                    "name": "Goods",
+                    "dataType": "arrayLink",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "goodInTheOrder"
                 },
-                "fieldParams": {
-                    "@dateChanged": {
-                        "include": false,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "@dateCreated": {
-                        "include": false,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "@who": {
-                        "include": false,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "data_finish": {
-                        "include": false,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "data_start": {
-                        "include": false,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "description": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "id": {
-                        "include": false,
-                        "disableEditing": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "includes": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": true,
-                        "configureLinkedCard": {
-                            "fields": {
-                                "check": {
-                                    "id": "check",
-                                    "content": "Чек",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "boolean",
-                                    "format": null,
-                                    "formatOptions": {
-                                        "customOptionLabel": "My option",
-                                        "keyValue": {
-                                            "key": "key",
-                                            "value": "value",
-                                            "button": "One more"
-                                        },
-                                        "dateLocale": "en-gb",
-                                        "booleanOptions": [
-                                            "Выполнено",
-                                            "Не выполнено"
-                                        ],
-                                        "validWeekDays": {
-                                            "mon": true,
-                                            "thu": true,
-                                            "tue": true,
-                                            "sun": true,
-                                            "fri": true,
-                                            "sat": true,
-                                            "wed": true
-                                        },
-                                        "customOptionPlaceholder": "Describe your option",
-                                        "range": {},
-                                        "customOptionType": "textarea",
-                                        "dateFormat": "DD/MM/Y",
-                                        "timeFormat": " HH:mm",
-                                        "isUTC": "false",
-                                        "multipleChoice": [
-                                            {
-                                                "value": "check",
-                                                "label": "Выполнено"
-                                            }
-                                        ]
-                                    }
-                                },
-                                "comments": {
-                                    "id": "comments",
-                                    "content": "Комментарии",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "string",
-                                    "format": null,
-                                    "formatOptions": null
-                                },
-                                "id": {
-                                    "id": "id",
-                                    "content": "id",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "id",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "name": {
-                                    "id": "name",
-                                    "content": "Название подзадачи",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "string",
-                                    "format": null,
-                                    "formatOptions": null
-                                },
-                                "main_task": {
-                                    "id": "main_task",
-                                    "content": "Родительская задача",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "link",
-                                    "format": null,
-                                    "formatOptions": {}
-                                }
-                            },
-                            "fieldParams": {
-                                "check": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200,
-                                    "descriptionFlag": false
-                                },
-                                "comments": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200,
-                                    "displayAsHint": false,
-                                    "hintType": "ok"
-                                },
-                                "data_check": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "description": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "id": {
-                                    "include": false,
-                                    "disableEditing": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "name": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "main_task": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                }
-                            },
-                            "fieldOrder": [
-                                null,
-                                "name",
-                                "comments",
-                                "check",
-                                "id",
-                                "main_task"
-                            ]
-                        },
-                        "veiwOption": "table",
-                        "tableView": {
-                            "columns": [
-                                {
-                                    "id": "1657615763611",
-                                    "field": "name"
-                                },
-                                {
-                                    "id": "1657616707747",
-                                    "field": "check"
-                                },
-                                {
-                                    "id": "1657616714524",
-                                    "field": "comments"
-                                }
-                            ],
-                            "itogo": false,
-                            "deleteOn": false
-                        },
-                        "descriptionFlag": false,
-                        "subHeader": "123",
-                        "sortArrayLink": false
-                    },
-                    "name": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "name_line": {
-                        "include": false,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "status": {
-                        "include": false,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "check": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "comments": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "main_task": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "color": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    }
+                {
+                    "fieldSysName": "id",
+                    "fetch": [],
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
                 },
-                "columns": {
-                    "tab-1": {
-                        "id": "tab-1",
-                        "title": "New section",
-                        "fieldIds": [
-                            "name",
-                            "description",
-                            "includes",
-                            "id",
-                            "action__66481657607879326",
-                            "data_finish",
-                            "data_start",
-                            "name_line",
-                            "status",
-                            "color"
-                        ]
-                    }
+                {
+                    "fieldSysName": "price_displayed",
+                    "fetch": [],
+                    "sysName": "price_displayed",
+                    "name": "Total",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": null
                 },
-                "columnOrder": [
-                    "tab-1"
-                ],
-                "actions": [
-                    {
-                        "sysName": "mini-tasks",
-                        "id": "66481657607879326",
-                        "name": "Подзадачи",
-                        "displayAs": "form",
-                        "buttonIcon": "done",
-                        "buttonTitle": "Добавить",
-                        "SLtype": "other",
-                        "fields": {
-                            "readFields": [
-                                {
-                                    "fieldSysName": "@dateChanged",
-                                    "fetch": [],
-                                    "sysName": "@dateChanged",
-                                    "name": "date changed",
-                                    "dataType": "date",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": ""
-                                },
-                                {
-                                    "fieldSysName": "@dateCreated",
-                                    "fetch": [],
-                                    "sysName": "@dateCreated",
-                                    "name": "date created",
-                                    "dataType": "date",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": ""
-                                },
-                                {
-                                    "fieldSysName": "@who",
-                                    "fetch": [],
-                                    "sysName": "@who",
-                                    "name": "who changed",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": ""
-                                },
-                                {
-                                    "fieldSysName": "check",
-                                    "fetch": [],
-                                    "sysName": "check",
-                                    "name": "Чек",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": null
-                                },
-                                {
-                                    "fieldSysName": "comments",
-                                    "fetch": [],
-                                    "sysName": "comments",
-                                    "name": "Комментарии",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": null
-                                },
-                                {
-                                    "fieldSysName": "data_check",
-                                    "fetch": [],
-                                    "sysName": "data_check",
-                                    "name": "Дата",
-                                    "dataType": "date",
-                                    "format": "",
-                                    "formatOptions": {
-                                        "customOptionLabel": "My option",
-                                        "keyValue": {
-                                            "key": "key",
-                                            "value": "value",
-                                            "button": "One more"
-                                        },
-                                        "dateLocale": "ru",
-                                        "booleanOptions": [
-                                            "True",
-                                            "False"
-                                        ],
-                                        "validWeekDays": {
-                                            "mon": true,
-                                            "thu": true,
-                                            "tue": true,
-                                            "sun": true,
-                                            "fri": true,
-                                            "sat": true,
-                                            "wed": true
-                                        },
-                                        "customOptionPlaceholder": "Describe your option",
-                                        "range": {},
-                                        "customOptionType": "textarea",
-                                        "dateFormat": "DD.MM.Y",
-                                        "timeFormat": "",
-                                        "isUTC": "false"
-                                    },
-                                    "link": ""
-                                },
-                                {
-                                    "fieldSysName": "description",
-                                    "fetch": [],
-                                    "sysName": "description",
-                                    "name": "Описание",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": null
-                                },
-                                {
-                                    "fieldSysName": "id",
-                                    "fetch": [],
-                                    "sysName": "id",
-                                    "name": "id",
-                                    "dataType": "id",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": ""
-                                },
-                                {
-                                    "fieldSysName": "main_task",
-                                    "fetch": [],
-                                    "sysName": "main_task",
-                                    "name": "Родительская задача",
-                                    "dataType": "link",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": "tastks"
-                                },
-                                {
-                                    "fieldSysName": "name",
-                                    "fetch": [],
-                                    "sysName": "name",
-                                    "name": "Название подзадачи",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": null
-                                }
-                            ],
-                            "writeFields": [
-                                {
-                                    "fieldSysName": "check",
-                                    "fetch": [],
-                                    "sysName": "check",
-                                    "name": "Чек",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": null
-                                },
-                                {
-                                    "fieldSysName": "comments",
-                                    "fetch": [],
-                                    "sysName": "comments",
-                                    "name": "Комментарии",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": null
-                                },
-                                {
-                                    "fieldSysName": "data_check",
-                                    "fetch": [],
-                                    "sysName": "data_check",
-                                    "name": "Дата",
-                                    "dataType": "date",
-                                    "format": "",
-                                    "formatOptions": {
-                                        "customOptionLabel": "My option",
-                                        "keyValue": {
-                                            "key": "key",
-                                            "value": "value",
-                                            "button": "One more"
-                                        },
-                                        "dateLocale": "ru",
-                                        "booleanOptions": [
-                                            "True",
-                                            "False"
-                                        ],
-                                        "validWeekDays": {
-                                            "mon": true,
-                                            "thu": true,
-                                            "tue": true,
-                                            "sun": true,
-                                            "fri": true,
-                                            "sat": true,
-                                            "wed": true
-                                        },
-                                        "customOptionPlaceholder": "Describe your option",
-                                        "range": {},
-                                        "customOptionType": "textarea",
-                                        "dateFormat": "DD.MM.Y",
-                                        "timeFormat": "",
-                                        "isUTC": "false"
-                                    },
-                                    "link": ""
-                                },
-                                {
-                                    "fieldSysName": "description",
-                                    "fetch": [],
-                                    "sysName": "description",
-                                    "name": "Описание",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": null
-                                },
-                                {
-                                    "fieldSysName": "id",
-                                    "fetch": [],
-                                    "sysName": "id",
-                                    "name": "id",
-                                    "dataType": "id",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": ""
-                                },
-                                {
-                                    "fieldSysName": "main_task",
-                                    "fetch": [],
-                                    "sysName": "main_task",
-                                    "name": "Родительская задача",
-                                    "dataType": "link",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": "tastks"
-                                },
-                                {
-                                    "fieldSysName": "name",
-                                    "fetch": [],
-                                    "sysName": "name",
-                                    "name": "Название подзадачи",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": null
-                                }
-                            ]
-                        },
-                        "formFields": [
-                            {
-                                "id": "92041657607927204",
-                                "field": {
-                                    "fieldSysName": "name",
-                                    "fetch": [],
-                                    "sysName": "name",
-                                    "name": "Название подзадачи",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": null
-                                }
-                            },
-                            {
-                                "id": "40051657608016523",
-                                "field": {
-                                    "fieldSysName": "comments",
-                                    "fetch": [],
-                                    "sysName": "comments",
-                                    "name": "Комментарии",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": null
-                                }
-                            }
-                        ],
-                        "conditionals": [],
-                        "formMapping": [
-                            {
-                                "id": "17181657608034715",
-                                "target": "main_task",
-                                "type": "objectField",
-                                "value": "id"
-                            },
-                            {
-                                "id": "95231657617965851",
-                                "target": "check",
-                                "type": "const",
-                                "value": "false"
-                            }
-                        ],
-                        "callFrom": "main",
-                        "callFromField": "includes",
-                        "closePopup": false,
-                        "showMessage": true,
-                        "resultMessage": "Добавлено",
-                        "resultButton": "Добавить еще?"
-                    }
-                ],
-                "cardsOrPage": "page",
-                "additionalPath": "id"
-            },
+                {
+                    "fieldSysName": "sum",
+                    "fetch": [],
+                    "sysName": "sum",
+                    "name": "Total, US$",
+                    "dataType": "decimal",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                }
+            ],
+            "writeFields": [
+                {
+                    "fieldSysName": "good_in_order_ids",
+                    "fetch": [],
+                    "sysName": "good_in_order_ids",
+                    "name": "Goods",
+                    "dataType": "arrayLink",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "goodInTheOrder"
+                },
+                {
+                    "fieldSysName": "id",
+                    "fetch": [],
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                }
+            ],
             "fields": {
-                "@dateChanged": {
-                    "include": false,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
+                "good_in_order_ids": {
+                    "id": "good_in_order_ids",
+                    "content": "Goods",
+                    "type": "field",
+                    "dataType": "arrayLink",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": "goodInTheOrder",
+                    "actions": []
                 },
-                "@dateCreated": {
-                    "include": false,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
+                "id": {
+                    "id": "id",
+                    "content": "id",
+                    "type": "field",
+                    "dataType": "id",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": "",
+                    "actions": []
                 },
-                "@who": {
-                    "include": false,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
+                "price_displayed": {
+                    "id": "price_displayed",
+                    "content": "Total",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": null,
+                    "actions": []
                 },
-                "data_finish": {
-                    "include": false,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
+                "sum": {
+                    "id": "sum",
+                    "content": "Total, US$",
+                    "type": "field",
+                    "dataType": "decimal",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
                 },
-                "data_start": {
-                    "include": false,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "description": {
+                "action__91611660666717002": {
+                    "content": "Buy",
+                    "id": "action__91611660666717002",
+                    "type": "action",
+                    "actions": []
+                }
+            },
+            "fieldParams": {
+                "good_in_order_ids": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": false
+                    "clickable": true,
+                    "veiwOption": "cart",
+                    "cartView": {
+                        "title": true,
+                        "titleField": "good",
+                        "quantity": true,
+                        "price": true,
+                        "quantityField": "quantity",
+                        "priceField": "price",
+                        "priceUnits": "MATIC",
+                        "deleteOn": true,
+                        "image": true,
+                        "imageField": "image"
+                    },
+                    "configureLinkedCard": {
+                        "fields": {
+                            "good": {
+                                "id": "good",
+                                "content": "Good",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "price": {
+                                "id": "price",
+                                "content": "",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "decimal",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "quantity": {
+                                "id": "quantity",
+                                "content": "Quantity",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "number",
+                                "format": "positiveNum",
+                                "formatOptions": null
+                            },
+                            "image": {
+                                "id": "image",
+                                "content": "",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "file",
+                                "format": "multipleImages",
+                                "formatOptions": {}
+                            }
+                        },
+                        "fieldParams": {
+                            "good": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "price": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "quantity": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "image": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "image",
+                            "good",
+                            "price",
+                            "quantity"
+                        ]
+                    }
                 },
                 "id": {
                     "include": false,
@@ -1508,174 +346,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "includes": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": true,
-                    "configureLinkedCard": {
-                        "fields": {
-                            "check": {
-                                "id": "check",
-                                "content": "Чек",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "boolean",
-                                "format": null,
-                                "formatOptions": {
-                                    "customOptionLabel": "My option",
-                                    "keyValue": {
-                                        "key": "key",
-                                        "value": "value",
-                                        "button": "One more"
-                                    },
-                                    "dateLocale": "en-gb",
-                                    "booleanOptions": [
-                                        "Выполнено",
-                                        "Не выполнено"
-                                    ],
-                                    "validWeekDays": {
-                                        "mon": true,
-                                        "thu": true,
-                                        "tue": true,
-                                        "sun": true,
-                                        "fri": true,
-                                        "sat": true,
-                                        "wed": true
-                                    },
-                                    "customOptionPlaceholder": "Describe your option",
-                                    "range": {},
-                                    "customOptionType": "textarea",
-                                    "dateFormat": "DD/MM/Y",
-                                    "timeFormat": " HH:mm",
-                                    "isUTC": "false",
-                                    "multipleChoice": [
-                                        {
-                                            "value": "check",
-                                            "label": "Выполнено"
-                                        }
-                                    ]
-                                }
-                            },
-                            "comments": {
-                                "id": "comments",
-                                "content": "Комментарии",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "string",
-                                "format": null,
-                                "formatOptions": null
-                            },
-                            "id": {
-                                "id": "id",
-                                "content": "id",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "id",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "name": {
-                                "id": "name",
-                                "content": "Название подзадачи",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "string",
-                                "format": null,
-                                "formatOptions": null
-                            },
-                            "main_task": {
-                                "id": "main_task",
-                                "content": "Родительская задача",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "link",
-                                "format": null,
-                                "formatOptions": {}
-                            }
-                        },
-                        "fieldParams": {
-                            "check": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200,
-                                "descriptionFlag": false
-                            },
-                            "comments": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200,
-                                "displayAsHint": false,
-                                "hintType": "ok"
-                            },
-                            "data_check": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "description": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "id": {
-                                "include": false,
-                                "disableEditing": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "name": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "main_task": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            }
-                        },
-                        "fieldOrder": [
-                            null,
-                            "name",
-                            "comments",
-                            "check",
-                            "id",
-                            "main_task"
-                        ]
-                    },
-                    "veiwOption": "table",
-                    "tableView": {
-                        "columns": [
-                            {
-                                "id": "1657615763611",
-                                "field": "name"
-                            },
-                            {
-                                "id": "1657616707747",
-                                "field": "check"
-                            },
-                            {
-                                "id": "1657616714524",
-                                "field": "comments"
-                            }
-                        ],
-                        "itogo": false,
-                        "deleteOn": false
-                    },
-                    "descriptionFlag": false,
-                    "subHeader": "123",
-                    "sortArrayLink": false
-                },
-                "name": {
+                "sum": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -1683,23 +354,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "name_line": {
-                    "include": false,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "status": {
-                    "include": false,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "check": {
+                "price_displayed": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -1707,1187 +362,418 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "comments": {
+                "pay_action": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": false
-                },
-                "main_task": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "color": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
+                    "clickable": false,
+                    "displayAsButton": true,
+                    "button": {
+                        "icon": "done",
+                        "type": "accent",
+                        "title": "Place order"
+                    }
                 }
             },
-            "showCounter": true,
-            "counterField": "status",
+            "columns": {
+                "tab-1": {
+                    "id": "tab-1",
+                    "title": "New section",
+                    "fieldIds": [
+                        "good_in_order_ids",
+                        "id",
+                        "price_displayed",
+                        "action__91611660666717002",
+                        "sum"
+                    ]
+                }
+            },
+            "columnOrder": [
+                "tab-1"
+            ],
             "actions": [
                 {
-                    "sysName": "mini-tasks",
-                    "id": "66481657607879326",
-                    "name": "Подзадачи",
-                    "displayAs": "form",
-                    "buttonIcon": "done",
-                    "buttonTitle": "Добавить",
-                    "SLtype": "other",
-                    "fields": {
-                        "readFields": [
-                            {
-                                "fieldSysName": "@dateChanged",
-                                "fetch": [],
-                                "sysName": "@dateChanged",
-                                "name": "date changed",
-                                "dataType": "date",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "@dateCreated",
-                                "fetch": [],
-                                "sysName": "@dateCreated",
-                                "name": "date created",
-                                "dataType": "date",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "@who",
-                                "fetch": [],
-                                "sysName": "@who",
-                                "name": "who changed",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "check",
-                                "fetch": [],
-                                "sysName": "check",
-                                "name": "Чек",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": null
-                            },
-                            {
-                                "fieldSysName": "comments",
-                                "fetch": [],
-                                "sysName": "comments",
-                                "name": "Комментарии",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": null
-                            },
-                            {
-                                "fieldSysName": "data_check",
-                                "fetch": [],
-                                "sysName": "data_check",
-                                "name": "Дата",
-                                "dataType": "date",
-                                "format": "",
-                                "formatOptions": {
-                                    "customOptionLabel": "My option",
-                                    "keyValue": {
-                                        "key": "key",
-                                        "value": "value",
-                                        "button": "One more"
-                                    },
-                                    "dateLocale": "ru",
-                                    "booleanOptions": [
-                                        "True",
-                                        "False"
-                                    ],
-                                    "validWeekDays": {
-                                        "mon": true,
-                                        "thu": true,
-                                        "tue": true,
-                                        "sun": true,
-                                        "fri": true,
-                                        "sat": true,
-                                        "wed": true
-                                    },
-                                    "customOptionPlaceholder": "Describe your option",
-                                    "range": {},
-                                    "customOptionType": "textarea",
-                                    "dateFormat": "DD.MM.Y",
-                                    "timeFormat": "",
-                                    "isUTC": "false"
-                                },
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "description",
-                                "fetch": [],
-                                "sysName": "description",
-                                "name": "Описание",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": null
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "fetch": [],
-                                "sysName": "id",
-                                "name": "id",
-                                "dataType": "id",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "main_task",
-                                "fetch": [],
-                                "sysName": "main_task",
-                                "name": "Родительская задача",
-                                "dataType": "link",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": "tastks"
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "fetch": [],
-                                "sysName": "name",
-                                "name": "Название подзадачи",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": null
-                            }
-                        ],
-                        "writeFields": [
-                            {
-                                "fieldSysName": "check",
-                                "fetch": [],
-                                "sysName": "check",
-                                "name": "Чек",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": null
-                            },
-                            {
-                                "fieldSysName": "comments",
-                                "fetch": [],
-                                "sysName": "comments",
-                                "name": "Комментарии",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": null
-                            },
-                            {
-                                "fieldSysName": "data_check",
-                                "fetch": [],
-                                "sysName": "data_check",
-                                "name": "Дата",
-                                "dataType": "date",
-                                "format": "",
-                                "formatOptions": {
-                                    "customOptionLabel": "My option",
-                                    "keyValue": {
-                                        "key": "key",
-                                        "value": "value",
-                                        "button": "One more"
-                                    },
-                                    "dateLocale": "ru",
-                                    "booleanOptions": [
-                                        "True",
-                                        "False"
-                                    ],
-                                    "validWeekDays": {
-                                        "mon": true,
-                                        "thu": true,
-                                        "tue": true,
-                                        "sun": true,
-                                        "fri": true,
-                                        "sat": true,
-                                        "wed": true
-                                    },
-                                    "customOptionPlaceholder": "Describe your option",
-                                    "range": {},
-                                    "customOptionType": "textarea",
-                                    "dateFormat": "DD.MM.Y",
-                                    "timeFormat": "",
-                                    "isUTC": "false"
-                                },
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "description",
-                                "fetch": [],
-                                "sysName": "description",
-                                "name": "Описание",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": null
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "fetch": [],
-                                "sysName": "id",
-                                "name": "id",
-                                "dataType": "id",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "main_task",
-                                "fetch": [],
-                                "sysName": "main_task",
-                                "name": "Родительская задача",
-                                "dataType": "link",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": "tastks"
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "fetch": [],
-                                "sysName": "name",
-                                "name": "Название подзадачи",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": null
-                            }
-                        ]
-                    },
-                    "formFields": [
+                    "sysName": "",
+                    "id": "91611660666717002",
+                    "name": "Buy",
+                    "displayAs": "button",
+                    "buttonIcon": "money",
+                    "buttonType": "accent",
+                    "web3": true,
+                    "web3Mapping": [
                         {
-                            "id": "92041657607927204",
-                            "field": {
-                                "fieldSysName": "name",
-                                "fetch": [],
-                                "sysName": "name",
-                                "name": "Название подзадачи",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": null
-                            }
-                        },
-                        {
-                            "id": "40051657608016523",
-                            "field": {
-                                "fieldSysName": "comments",
-                                "fetch": [],
-                                "sysName": "comments",
-                                "name": "Комментарии",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": null
-                            }
-                        }
-                    ],
-                    "conditionals": [],
-                    "formMapping": [
-                        {
-                            "id": "17181657608034715",
-                            "target": "main_task",
+                            "id": "68271660666736684",
+                            "target": "amount",
                             "type": "objectField",
-                            "value": "id"
-                        },
-                        {
-                            "id": "95231657617965851",
-                            "target": "check",
-                            "type": "const",
-                            "value": "false"
+                            "value": null
                         }
-                    ],
-                    "callFrom": "main",
-                    "callFromField": "includes",
-                    "closePopup": false,
-                    "showMessage": true,
-                    "resultMessage": "Добавлено",
-                    "resultButton": "Добавить еще?"
+                    ]
                 }
-            ],
-            "counterText": null,
-            "cardColor": "color",
-            "cardColorOption": "left"
+            ]
         },
-        "tableTitle": "",
-        "actions": null,
-        "headers": [
-            {
-                "sysName": "color",
-                "dataType": "link",
-                "name": "Цвет",
-                "id": "59301657625467547",
-                "link": "status",
-                "group": "0",
-                "tags": "",
-                "indexing": true,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 8,
-                "linkIndexFieldSysName": [
-                    "color"
-                ],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": true,
-                "array": false
-            },
-            {
-                "sysName": "data_finish",
-                "dataType": "date",
-                "name": "Финиш",
-                "id": "88451657602292544",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "ru",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD.MM.Y",
-                    "timeFormat": "",
-                    "isUTC": "false"
+        "fields": {
+            "good_in_order_ids": {
+                "include": true,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": true,
+                "veiwOption": "cart",
+                "cartView": {
+                    "title": true,
+                    "titleField": "good",
+                    "quantity": true,
+                    "price": true,
+                    "quantityField": "quantity",
+                    "priceField": "price",
+                    "priceUnits": "MATIC",
+                    "deleteOn": true,
+                    "image": true,
+                    "imageField": "image"
                 },
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "data_start",
-                "dataType": "date",
-                "name": "Старт",
-                "id": "27851657602286408",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "ru",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD.MM.Y",
-                    "timeFormat": "",
-                    "isUTC": "false"
-                },
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "description",
-                "dataType": "string",
-                "name": "Описание",
-                "id": "56121657602254802",
-                "link": null,
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "id",
-                "dataType": "id",
-                "name": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "includes",
-                "dataType": "arrayLink",
-                "name": "Подзадачи",
-                "id": "35531657602272993",
-                "link": "mini_tasks",
-                "group": "0",
-                "tags": null,
-                "indexing": true,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [
-                    "name"
-                ],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": false,
-                "arrayLink": true,
-                "indexExists": true,
-                "array": false
-            },
-            {
-                "sysName": "name",
-                "dataType": "string",
-                "name": "Название задачи",
-                "id": "57651657602249001",
-                "link": null,
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "name_line",
-                "dataType": "json",
-                "name": "Принадлежность",
-                "id": "87101657605516085",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 7,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "radioOptions",
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOption": false,
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false",
-                    "multipleChoice": [
-                        {
-                            "value": "frontend",
-                            "label": "Frontend"
+                "configureLinkedCard": {
+                    "fields": {
+                        "good": {
+                            "id": "good",
+                            "content": "Good",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "link",
+                            "format": null,
+                            "formatOptions": null
                         },
-                        {
-                            "value": "backend",
-                            "label": "Backend"
+                        "price": {
+                            "id": "price",
+                            "content": "",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "decimal",
+                            "format": null,
+                            "formatOptions": null
+                        },
+                        "quantity": {
+                            "id": "quantity",
+                            "content": "Quantity",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "number",
+                            "format": "positiveNum",
+                            "formatOptions": null
+                        },
+                        "image": {
+                            "id": "image",
+                            "content": "",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "file",
+                            "format": "multipleImages",
+                            "formatOptions": {}
                         }
-                    ]
-                },
-                "groupName": null,
-                "typeVariable": {},
-                "json": true,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "status",
-                "dataType": "link",
-                "name": "Статус",
-                "id": "85971657602298752",
-                "link": "status",
-                "group": "0",
-                "tags": null,
-                "indexing": true,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 6,
-                "linkIndexFieldSysName": [
-                    "name"
-                ],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
                     },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false",
-                    "multipleChoice": [
-                        {
-                            "value": "works",
-                            "label": "В работе"
+                    "fieldParams": {
+                        "good": {
+                            "include": true,
+                            "disableEditing": false,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200
                         },
-                        {
-                            "value": "wait",
-                            "label": "Ожидание"
+                        "price": {
+                            "include": true,
+                            "disableEditing": false,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200
                         },
-                        {
-                            "value": "pass",
-                            "label": "Готово"
+                        "quantity": {
+                            "include": true,
+                            "disableEditing": false,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200
+                        },
+                        "image": {
+                            "include": true,
+                            "disableEditing": false,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200
                         }
+                    },
+                    "fieldOrder": [
+                        "image",
+                        "good",
+                        "price",
+                        "quantity"
                     ]
-                },
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": true,
-                "array": false
+                }
+            },
+            "id": {
+                "include": false,
+                "disableEditing": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "sum": {
+                "include": true,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "price_displayed": {
+                "include": true,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "pay_action": {
+                "include": true,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false,
+                "displayAsButton": true,
+                "button": {
+                    "icon": "done",
+                    "type": "accent",
+                    "title": "Place order"
+                }
             }
-        ],
-        "data": [
+        },
+        "actions": [
             {
-                "name": "Формирование архитектуры",
-                "name_line": "{\"value\":\"backend\"}",
-                "description": "Проработка таблиц и полей базы данных",
-                "color": {
-                    "color": "#CC3300",
-                    "id": "34811e5c-3486-4d24-a1ca-bd20b87b4104"
-                },
-                "id": "88a61987-dd72-4258-8966-6210a389b7c1",
-                "status": {
-                    "name": "Ожидание",
-                    "id": "34811e5c-3486-4d24-a1ca-bd20b87b4104"
-                },
-                "includes": [
+                "sysName": "",
+                "id": "91611660666717002",
+                "name": "Buy",
+                "displayAs": "button",
+                "buttonIcon": "money",
+                "buttonType": "accent",
+                "web3": true,
+                "web3Mapping": [
                     {
-                        "check": false,
-                        "main_task": "88a61987-dd72-4258-8966-6210a389b7c1",
-                        "name": "456536",
-                        "id": "538f4c44-607c-4b88-954a-49fdeed323d6"
+                        "id": "68271660666736684",
+                        "target": "amount",
+                        "type": "objectField",
+                        "value": "price_displayed"
                     },
                     {
-                        "check": false,
-                        "main_task": "88a61987-dd72-4258-8966-6210a389b7c1",
-                        "name": "324324",
-                        "id": "c0ff9e27-27e4-4330-a817-64e22c94e2bd"
+                        "id": "81401660736639691",
+                        "target": "user",
+                        "type": "user",
+                        "value": null
                     },
                     {
-                        "name": "12324",
-                        "main_task": "88a61987-dd72-4258-8966-6210a389b7c1",
-                        "id": "0d7f5506-fa7f-4e79-93b1-03af5186473b",
-                        "check": false,
-                        "comments": "21122"
+                        "id": "86541660736776195",
+                        "target": "hey",
+                        "type": "objectField",
+                        "value": "id"
                     }
                 ],
-                "data_start": 1657573200000,
-                "data_finish": ""
-            },
-            {
-                "name": "Создание API breakpoints",
-                "name_line": "{\"value\":\"backend\"}",
-                "id": "0395c584-da4b-4135-b15c-05ed9e57d17e",
-                "includes": [],
-                "data_start": 1657746000000,
-                "color": "",
-                "data_finish": "",
-                "description": "",
-                "status": ""
+                "footerButtons": true
             }
-        ],
-        "totalPages": 1,
-        "pageNumber": 0,
-        "error": null,
-        "fieldScheme": [
-            [
-                "color.color",
-                99117503
-            ],
-            [
-                "color.id",
-                99117503
-            ],
-            [
-                "data_finish",
-                99117306
-            ],
-            [
-                "data_start",
-                99117306
-            ],
-            [
-                "description",
-                99117306
-            ],
-            [
-                "id",
-                99117306
-            ],
-            [
-                "includes.check",
-                99117307
-            ],
-            [
-                "includes.comments",
-                99117307
-            ],
-            [
-                "includes.data_check",
-                99117307
-            ],
-            [
-                "includes.description",
-                99117307
-            ],
-            [
-                "includes.id",
-                99117307
-            ],
-            [
-                "includes.main_task",
-                99117307
-            ],
-            [
-                "includes.name",
-                99117307
-            ],
-            [
-                "name",
-                99117306
-            ],
-            [
-                "name_line",
-                99117306
-            ],
-            [
-                "status.id",
-                99117503
-            ],
-            [
-                "status.name",
-                99117503
-            ]
-        ],
-        "writeFields": [
-            "color",
-            "data_finish",
-            "data_start",
-            "description",
-            "id",
-            "includes",
-            "name",
-            "name_line",
-            "status"
-        ],
-        "structures": {
-            "99117306": {
-                "networkID": 13410,
-                "sysName": "tastks",
-                "name": "tastks",
-                "id": 99117306,
-                "dateCreated": "2022-07-12T05:04:03Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"data_start\",\"name\":\"Старт\",\"dataType\":\"date\",\"id\":\"27851657602286408\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"includes\",\"name\":\"Подзадачи\",\"dataType\":\"arrayLink\",\"id\":\"35531657602272993\",\"link\":\"mini_tasks\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[\"name\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"indexExists\":true,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"array\":false},{\"sysName\":\"description\",\"name\":\"Описание\",\"dataType\":\"string\",\"id\":\"56121657602254802\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"name\",\"name\":\"Название задачи\",\"dataType\":\"string\",\"id\":\"57651657602249001\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"color\",\"name\":\"Цвет\",\"dataType\":\"link\",\"id\":\"59301657625467547\",\"link\":\"status\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[\"color\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"indexExists\":true,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"status\",\"name\":\"Статус\",\"dataType\":\"link\",\"id\":\"85971657602298752\",\"link\":\"status\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[\"name\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"works\",\"label\":\"В работе\"},{\"value\":\"wait\",\"label\":\"Ожидание\"},{\"value\":\"pass\",\"label\":\"Готово\"}]},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"indexExists\":true,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"name_line\",\"name\":\"Принадлежность\",\"dataType\":\"json\",\"id\":\"87101657605516085\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"radioOptions\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOption\":false,\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"frontend\",\"label\":\"Frontend\"},{\"value\":\"backend\",\"label\":\"Backend\"}]},\"groupName\":null,\"json\":true,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"data_finish\",\"name\":\"Финиш\",\"dataType\":\"date\",\"id\":\"88451657602292544\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2022-07-12T12:11:45Z",
-                "createBy": 13299,
-                "changedBy": 13299,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "indexExists": false,
-                    "array": false
-                },
-                "objectIDSysName": "id",
-                "folderId": 33706337
-            },
-            "99117307": {
-                "networkID": 13410,
-                "sysName": "mini_tasks",
-                "name": "mini_tasks",
-                "id": 99117307,
-                "dateCreated": "2022-07-12T05:08:43Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"comments\",\"dataType\":\"string\",\"name\":\"Комментарии\",\"id\":\"12411657602601004\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"check\",\"dataType\":\"boolean\",\"name\":\"Чек\",\"id\":\"48581657602545933\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Выполнено\",\"Не выполнено\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"check\",\"label\":\"Выполнено\"}]},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"main_task\",\"dataType\":\"link\",\"name\":\"Родительская задача\",\"id\":\"69091657604762875\",\"link\":\"tastks\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[\"id\",\" name\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":true},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Название подзадачи\",\"id\":\"78171657602535541\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2022-07-12T09:29:07Z",
-                "createBy": 13299,
-                "changedBy": 13299,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "indexExists": false,
-                    "array": false
-                },
-                "objectIDSysName": "id",
-                "folderId": 33706337
-            },
-            "99117503": {
-                "networkID": 13410,
-                "sysName": "status",
-                "name": "status",
-                "id": 99117503,
-                "dateCreated": "2022-07-12T11:17:20Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"color\",\"dataType\":\"string\",\"name\":\"Цвет\",\"id\":\"15111657624647361\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Статус\",\"id\":\"98831657624644352\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"},{\"sysName\":\"color\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2022-07-12T12:10:51Z",
-                "createBy": 13299,
-                "changedBy": 13299,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "indexExists": false,
-                    "array": false
-                },
-                "objectIDSysName": "id",
-                "folderId": 33706337
-            }
+        ]
+    },
+    "tableTitle": "",
+    "actions": null,
+    "headers": [
+        {
+            "sysName": "good_in_order_ids",
+            "dataType": "arrayLink",
+            "name": "Goods",
+            "id": "69201653317565747",
+            "link": "goodInTheOrder",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "arrayLink": true,
+            "indexExists": false,
+            "linkType": false,
+            "array": false
         },
-        "isSuccessWrite": false,
-        "writeError": null,
-        "writeResponse": null,
-        "fileds": [
-            {
-                "sysName": "color",
-                "dataType": "link",
-                "name": "Цвет",
-                "id": "59301657625467547",
-                "link": "status",
-                "group": "0",
-                "tags": "",
-                "indexing": true,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 8,
-                "linkIndexFieldSysName": [
-                    "color"
-                ],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": true,
-                "array": false
-            },
-            {
-                "sysName": "data_finish",
-                "dataType": "date",
-                "name": "Финиш",
-                "id": "88451657602292544",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
+        {
+            "sysName": "id",
+            "dataType": "id",
+            "name": "id",
+            "id": "0",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "linkType": false,
+            "array": false
+        },
+        {
+            "sysName": "price_displayed",
+            "dataType": "string",
+            "name": "Total",
+            "id": "50091653393659371",
+            "link": null,
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "linkType": false,
+            "array": false
+        },
+        {
+            "sysName": "sum",
+            "dataType": "decimal",
+            "name": "Total, US$",
+            "id": "27441653319190990",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "linkType": false,
+            "array": false
+        }
+    ],
+    "data": [
+        {
+            "good_in_order_ids": [
+                {
+                    "quantity": 2,
+                    "image": "https://api.alfa.directual.com/fileUploaded/showcase-store/ba67ef96-9ccf-4a6c-a23a-3528a56efd6f.jpeg,https://api.alfa.directual.com/fileUploaded/showcase-store/a9f345ab-e1d5-4671-a94c-acd8bf10b421.jpeg",
+                    "good": {
+                        "title": "Mercedes 280SL"
                     },
-                    "dateLocale": "ru",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD.MM.Y",
-                    "timeFormat": "",
-                    "isUTC": "false"
-                },
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "data_start",
-                "dataType": "date",
-                "name": "Старт",
-                "id": "27851657602286408",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "ru",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD.MM.Y",
-                    "timeFormat": "",
-                    "isUTC": "false"
-                },
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "description",
-                "dataType": "string",
-                "name": "Описание",
-                "id": "56121657602254802",
-                "link": null,
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
+                    "price": 33000,
+                    "id": "262186552ccdd0f29c1ff53041cbc48f"
+                }
+            ],
+            "price_displayed": "66 000 MATIC",
+            "sum": 66000,
+            "id": "a5d570b8-d3b1-4e2c-b6be-06c7eae1010f"
+        }
+    ],
+    "totalPages": 1,
+    "pageNumber": 0,
+    "error": null,
+    "fieldScheme": [
+        [
+            "good_in_order_ids.good.title",
+            99127776
+        ],
+        [
+            "good_in_order_ids.image",
+            99127778
+        ],
+        [
+            "good_in_order_ids.price",
+            99127778
+        ],
+        [
+            "good_in_order_ids.quantity",
+            99127778
+        ],
+        [
+            "id",
+            99127777
+        ],
+        [
+            "price_displayed",
+            99127777
+        ],
+        [
+            "sum",
+            99127777
+        ]
+    ],
+    "writeFields": [
+        "good_in_order_ids",
+        "id"
+    ],
+    "structures": {
+        "99127776": {
+            "networkID": 13934,
+            "id": 99127776,
+            "dateCreated": "2022-05-23T14:49:52Z",
+            "hidden": false,
+            "dateHidden": null,
+            "name": "goods",
+            "sysName": "goods",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"Title\",\"id\":\"25651653317510996\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Description\",\"id\":\"10491653331482505\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"price\",\"dataType\":\"decimal\",\"name\":\"Price, MATIC\",\"id\":\"37111653317511499\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"price_displayed\",\"dataType\":\"string\",\"name\":\"Price\",\"id\":\"71751653332297116\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"image\",\"dataType\":\"file\",\"name\":\"Images\",\"id\":\"85971653317512108\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"merchant_id\",\"dataType\":\"link\",\"name\":\"Merchant\",\"id\":\"83931653331400591\",\"link\":\"merchants\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[\"user_id\",\"status\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":true,\"linkType\":true,\"array\":false},{\"sysName\":\"is_hidden\",\"dataType\":\"boolean\",\"name\":\"Hidden?\",\"id\":\"32521653331455301\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"is_approved\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"85631653579889829\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2022-08-16T16:02:00Z",
+            "createBy": 21,
+            "changedBy": 3527,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
+            "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
                 "name": "id",
@@ -2910,209 +796,181 @@ const App = (props) => {
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
                 "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "includes",
-                "dataType": "arrayLink",
-                "name": "Подзадачи",
-                "id": "35531657602272993",
-                "link": "mini_tasks",
-                "group": "0",
-                "tags": null,
-                "indexing": true,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [
-                    "name"
-                ],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
                 "linkType": false,
-                "arrayLink": true,
-                "indexExists": true,
                 "array": false
             },
-            {
-                "sysName": "name",
-                "dataType": "string",
-                "name": "Название задачи",
-                "id": "57651657602249001",
-                "link": null,
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "name_line",
-                "dataType": "json",
-                "name": "Принадлежность",
-                "id": "87101657605516085",
+            "folderId": 33711507
+        },
+        "99127777": {
+            "networkID": 13934,
+            "id": 99127777,
+            "dateCreated": "2022-05-23T14:50:14Z",
+            "hidden": false,
+            "dateHidden": null,
+            "name": "carts",
+            "sysName": "carts",
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"user_id\",\"name\":\"User\",\"dataType\":\"link\",\"id\":\"18851653317560163\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"indexExists\":false},{\"sysName\":\"sum\",\"name\":\"Total, US$\",\"dataType\":\"decimal\",\"id\":\"27441653319190990\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"pay_action\",\"name\":\"Place order\",\"dataType\":\"string\",\"id\":\"27481653396557905\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"price_displayed\",\"name\":\"Total\",\"dataType\":\"string\",\"id\":\"50091653393659371\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"good_in_order_ids\",\"name\":\"Goods\",\"dataType\":\"arrayLink\",\"id\":\"69201653317565747\",\"link\":\"goodInTheOrder\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"arrayLink\":true,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"indexExists\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"price_displayed\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2022-05-24T13:48:14Z",
+            "createBy": 21,
+            "changedBy": 21,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
                 "link": "",
                 "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 7,
+                "order": 0,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "radioOptions",
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOption": false,
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false",
-                    "multipleChoice": [
-                        {
-                            "value": "frontend",
-                            "label": "Frontend"
-                        },
-                        {
-                            "value": "backend",
-                            "label": "Backend"
-                        }
-                    ]
-                },
-                "groupName": null,
-                "typeVariable": {},
-                "json": true,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "status",
-                "dataType": "link",
-                "name": "Статус",
-                "id": "85971657602298752",
-                "link": "status",
-                "group": "0",
-                "tags": null,
-                "indexing": true,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 6,
-                "linkIndexFieldSysName": [
-                    "name"
-                ],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false",
-                    "multipleChoice": [
-                        {
-                            "value": "works",
-                            "label": "В работе"
-                        },
-                        {
-                            "value": "wait",
-                            "label": "Ожидание"
-                        },
-                        {
-                            "value": "pass",
-                            "label": "Готово"
-                        }
-                    ]
-                },
+                "formatOptions": {},
                 "groupName": null,
                 "typeVariable": {},
                 "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
+                "linkOrArrayLinkType": false,
                 "arrayLink": false,
-                "indexExists": true,
+                "indexExists": false,
+                "linkType": false,
                 "array": false
-            }
-        ],
-        "quickSearch": "false",
-        "httpParams": {}
+            },
+            "folderId": 33711507
+        },
+        "99127778": {
+            "networkID": 13934,
+            "id": 99127778,
+            "dateCreated": "2022-05-23T14:50:54Z",
+            "hidden": false,
+            "dateHidden": null,
+            "name": "good-in-the-order",
+            "sysName": "goodInTheOrder",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"good\",\"dataType\":\"link\",\"name\":\"Good\",\"id\":\"74701653319743249\",\"link\":\"goods\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"linkType\":true,\"array\":false},{\"sysName\":\"quantity\",\"dataType\":\"number\",\"name\":\"Quantity\",\"id\":\"86131653319772894\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"price\",\"dataType\":\"decimal\",\"name\":\"\",\"id\":\"70191653393641790\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"cart_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"30501653395336579\",\"link\":\"carts\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"linkType\":true,\"array\":false},{\"sysName\":\"image\",\"dataType\":\"file\",\"name\":\"\",\"id\":\"39831653575816734\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"linkType\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"good\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": false,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2022-05-26T14:37:07Z",
+            "createBy": 21,
+            "changedBy": 21,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "linkType": false,
+                "array": false
+            },
+            "folderId": 33711507
+        }
+    },
+    "isSuccessWrite": false,
+    "writeError": null,
+    "writeResponse": null,
+    "fileds": [
+        {
+            "sysName": "good_in_order_ids",
+            "dataType": "arrayLink",
+            "name": "Goods",
+            "id": "69201653317565747",
+            "link": "goodInTheOrder",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "arrayLink": true,
+            "indexExists": false,
+            "linkType": false,
+            "array": false
+        },
+        {
+            "sysName": "id",
+            "dataType": "id",
+            "name": "id",
+            "id": "0",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "linkType": false,
+            "array": false
+        }
+    ],
+    "quickSearch": "false",
+    "httpParams": {}
     }
 
     let newCardActions = {
