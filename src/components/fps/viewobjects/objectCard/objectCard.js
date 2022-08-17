@@ -203,9 +203,9 @@ export function ObjectCard(props) {
                     options[row.target] = row.value
                 }
                 if (row.type == 'objectField') {
-                    console.log('web3Mapping')
-                    console.log(row)
-                    console.log(object)
+                    // console.log('web3Mapping')
+                    // console.log(row)
+                    // console.log(object)
                     options[row.target] =
                         typeof object[row.value] !== 'object'
                             ? object[row.value]
@@ -1321,7 +1321,7 @@ function CardAction({ action, successWeb3, writeError, actionParams, debug, subm
     return (
         actionParams && checkActionCond && checkActionCond(conds) ?
             <div className={`${aType == 'actionButton' ? styles.actionButton : styles.actionForm}`}>
-                <pre className='dd-debug'>{JSON.stringify(actionData, 0, 3)}</pre>
+                {/* <pre className='dd-debug'>{JSON.stringify(actionData, 0, 3)}</pre> */}
                 {actionParams.displayAs == 'form' &&
                     <React.Fragment>
                         <FormSection title={actionParams.name} />
