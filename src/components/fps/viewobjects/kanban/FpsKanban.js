@@ -325,7 +325,7 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
                 submit={submit}
                 auth={auth}
                 checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
-                currentBP={currentBP}
+                //currentBP={currentBP}
                 dict={dict}
                 lang={lang}
                 onExpand={val => {
