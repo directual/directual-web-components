@@ -293,18 +293,9 @@ export function Kanban({ data, onExpand, edenrichConds, loading, searchValue, au
             console.log('reset kanban')
             setColumns(enrichColumns(kanbanParams.columns))
             setKostyl(true)
-            setTimeout(() => setKostyl(false), 300)
+            setTimeout(() => setKostyl(false), 100)
         }
-    },
-        [
-            kanbanParams
-        ])
-    // useEffect(() => {
-    //     console.log('initial reset kanban')
-    //     setColumns(enrichColumns(kanbanParams.columns))
-    //     setKostyl(true)
-    //     setTimeout(() => setKostyl(false), 300)
-    // })
+    }, [])
 
     return (<React.Fragment>
         {/* <Button small icon='refresh'
@@ -319,8 +310,8 @@ export function Kanban({ data, onExpand, edenrichConds, loading, searchValue, au
             }
         >Reload</Button> */}
         <div className={`${styles.kanban} ${loading ? styles.loading : ''}`}>
-            {(loading || kostyl) && <div className={styles.loadingCover}><Loader>Loading...</Loader></div>}
-            {false ? <Loader>Loading...</Loader> : <React.Fragment>
+            {(loading) && <div className={styles.loadingCover}><Loader>Loading...</Loader></div>}
+            {kostyl ? <Loader>Loading...</Loader> : <React.Fragment>
 
                 <DragDropContext
                     onDragEnd={result => onDragEnd(result, columns, setColumns)}
