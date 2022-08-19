@@ -212,7 +212,7 @@ export function Kanban({ data, onExpand, edenrichConds, loading, searchValue, au
 
     const enrichColumns = cols => {
         const newCols = {}
-        cols.forEach(i => {
+        Array.isArray(cols) && (cols || []).forEach(i => {
             const items = []
             kanbanData.forEach((obj, index) => {
                 if (obj.id && (obj[columnField] == i.id || _.get(obj, `[${columnField}].id`) == i.id)) {
@@ -288,21 +288,39 @@ export function Kanban({ data, onExpand, edenrichConds, loading, searchValue, au
         }
     };
 
+    useEffect(() => {
+        if (columns !== enrichColumns(kanbanParams.columns)) {
+            console.log('reset kanban')
+            setColumns(enrichColumns(kanbanParams.columns))
+            setKostyl(true)
+            setTimeout(() => setKostyl(false), 300)
+        }
+    },
+        [
+            kanbanParams
+        ])
+    // useEffect(() => {
+    //     console.log('initial reset kanban')
+    //     setColumns(enrichColumns(kanbanParams.columns))
+    //     setKostyl(true)
+    //     setTimeout(() => setKostyl(false), 300)
+    // })
+
     return (<React.Fragment>
-        <Button small icon='refresh'
+        {/* <Button small icon='refresh'
             height={38}
             onClick={() => {
                 console.log('columns')
                 console.log(columns)
                 setColumns(enrichColumns(kanbanParams.columns))
                 setKostyl(true)
-                setTimeout(() => setKostyl(false), 2000)
+                setTimeout(() => setKostyl(false), 300)
             }
             }
-        >Reload</Button>
+        >Reload</Button> */}
         <div className={`${styles.kanban} ${loading ? styles.loading : ''}`}>
-            {loading && <div className={styles.loadingCover}><Loader>Loading...</Loader></div>}
-            {kostyl ? <Loader /> : <React.Fragment>
+            {(loading || kostyl) && <div className={styles.loadingCover}><Loader>Loading...</Loader></div>}
+            {false ? <Loader>Loading...</Loader> : <React.Fragment>
 
                 <DragDropContext
                     onDragEnd={result => onDragEnd(result, columns, setColumns)}
