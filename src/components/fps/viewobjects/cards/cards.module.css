@@ -101,6 +101,8 @@
   overflow: hidden;
   cursor: pointer;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 .card .cardInnerWrapper.borderColor {
   padding: 0;
@@ -154,9 +156,12 @@
   color: #fff !important;
   opacity: 0.8;
 }
-.card .cardInnerWrapper.left {
+.card .cardInnerWrapper .cardInnerWrapperImage.left {
   display: flex;
   align-items: stretch;
+}
+.card .cardInnerWrapper .cardInnerWrapperImage.leftCircle {
+  display: flex;
 }
 .card .cardInnerWrapper.left .cardImage {
   background-color: var(--field-border-color);
@@ -167,9 +172,6 @@
 }
 .card .cardInnerWrapper.left .cardImage span {
   opacity: 0.5;
-  display: flex;
-}
-.card .cardInnerWrapper.leftCircle {
   display: flex;
 }
 .card .cardInnerWrapper.leftCircle .cardImage {
@@ -184,10 +186,6 @@
 .card .cardInnerWrapper.leftCircle .cardImage span {
   opacity: 0.5;
   display: flex;
-}
-.card .cardInnerWrapper.top {
-  display: flex;
-  flex-direction: column;
 }
 .card .cardInnerWrapper.top .cardImage {
   background-color: var(--field-border-color);

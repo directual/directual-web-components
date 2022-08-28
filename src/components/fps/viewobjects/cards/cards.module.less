@@ -160,9 +160,16 @@
         opacity: 0.8;
       }
     }
+    .cardInnerWrapperImage {
+        &.left {
+          display: flex;
+          align-items: stretch; }
+        &.leftCircle {
+          display: flex;
+        }
+    }
     &.left {
-      display: flex;
-      align-items: stretch;
+      //align-items: stretch;
       .cardImage {
         background-color: var(--field-border-color);
         display: flex;
@@ -176,7 +183,6 @@
       }
     }
     &.leftCircle {
-      display: flex;
       .cardImage {
         background-color: var(--field-border-color);
         display: flex;
@@ -191,9 +197,9 @@
         }
       }
     }
+    display: flex;
+    flex-direction: column;
     &.top {
-      display: flex;
-      flex-direction: column;
       .cardImage {
         background-color: var(--field-border-color);
         display: flex;

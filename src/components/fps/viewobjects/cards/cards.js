@@ -57,7 +57,7 @@ export function Cards({
   data.error =
     data.error && data.error == '511' ? 'Table is not configured' : data.error
 
-  
+
   const getInitialStructureParams = () => {
     const randomFieldArray =
       (tableHeaders.filter(
@@ -244,8 +244,8 @@ export function Cards({
   )
 }
 
-export function Card({ row, params, getInitialStructureParams, 
-  successWeb3, setSuccessWeb3, checkActionCond, submitAction, auth, searchValue, edenrichConds, 
+export function Card({ row, params, getInitialStructureParams,
+  successWeb3, setSuccessWeb3, checkActionCond, submitAction, auth, searchValue, edenrichConds,
   tableHeaders, getLinkName, tableParams, i, currentBP, loading, onExpand, onEvent }) {
   const object = row
   // actions для меню быстрого доступа
@@ -574,175 +574,178 @@ export function Card({ row, params, getInitialStructureParams,
           !loading && onExpand(row)
         }}
       >
-        {/* Разукрашиваем карточку */}
-        {tableParams.cardColor &&
-          tableParams.cardColorOption != 'none' && (
+        <div
+          className={`aaa ${styles.cardInnerWrapperImage} ${styles[tableParams.cardImageType]}`}>
+          {/* Разукрашиваем карточку */}
+          {tableParams.cardColor &&
+            tableParams.cardColorOption != 'none' && (
+              <div
+                style={{
+                  backgroundColor: cardColor
+                }}
+                className={`${styles.color} ${styles[tableParams.cardColorOption]
+                  }`}
+              />
+            )}
+          {/* Картинка карточки */}
+          {tableParams.cardImageField && (
+            <div
+              className={`${styles.cardImage}`}
+              style={{
+                backgroundSize:
+                  tableParams.cardImageResize == 'contain'
+                    ? 'contain'
+                    : 'cover',
+                backgroundImage: `url(${(row[tableParams.cardImageField] || '').split(',')
+                  ? (row[tableParams.cardImageField] || '').split(
+                    ','
+                  )[0]
+                  : ''
+                  })`,
+                width:
+                  tableParams.cardImageType == 'left' ||
+                    tableParams.cardImageType == 'leftCircle'
+                    ? parseInt(tableParams.cardImageSize)
+                      ? parseInt(
+                        currentBP == 'mobile'
+                          ? Math.floor(
+                            tableParams.cardImageSize / 1.5
+                          )
+                          : tableParams.cardImageSize
+                      )
+                      : 100
+                    : 'auto',
+                height:
+                  tableParams.cardImageType == 'top' ||
+                    tableParams.cardImageType == 'leftCircle'
+                    ? parseInt(tableParams.cardImageSize)
+                      ? parseInt(
+                        currentBP == 'mobile'
+                          ? Math.floor(
+                            tableParams.cardImageSize / 1.5
+                          )
+                          : tableParams.cardImageSize
+                      )
+                      : 100
+                    : 'auto',
+                minHeight:
+                  tableParams.cardImageType == 'left' &&
+                    tableParams.cardImageSizeHeight
+                    ? parseInt(
+                      currentBP == 'mobile'
+                        ? Math.floor(tableParams.cardImageSize / 1.5)
+                        : tableParams.cardImageSize
+                    )
+                    : 'none'
+              }}
+            >
+              {!row[tableParams.cardImageField] && (
+                <span className='icon icon-ban'>no&nbsp;picture</span>
+              )}
+            </div>
+          )}
+
+          {/* Текст карточки */}
+          <div className={styles.cardText}>
+            <h3 className={styles.cardHeader}>
+              <span className={styles.txt}>
+                {cardHeader.length > 0 ? cardHeader : 'No visible name'}
+              </span>
+
+              {/* counter: */}
+              {tableParams.counterField &&
+                row &&
+                row[tableParams.counterField] &&
+                row[tableParams.counterField] != 0 &&
+                row[tableParams.counterField] != '0' ? (
+                <span
+                  className={`${styles.counter} ${!quickActions || quickActions.length == 0
+                    ? styles.moveCounter
+                    : ''
+                    }`}
+                  title={`${row[tableParams.counterField]} ${tableParams.counterText
+                    }`}
+                >
+                  {(typeof row[tableParams.counterField] == 'object') ?
+                    getLinkName(tableParams.counterField, row[tableParams.counterField]) :
+                    row[tableParams.counterField]}
+                </span>
+              ) : (
+                ''
+              )}
+            </h3>
             <div
               style={{
-                backgroundColor: cardColor
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                marginRight: -12
               }}
-              className={`${styles.color} ${styles[tableParams.cardColorOption]
-                }`}
-            />
-          )}
-        {/* Картинка карточки */}
-        {tableParams.cardImageField && (
-          <div
-            className={`${styles.cardImage}`}
-            style={{
-              backgroundSize:
-                tableParams.cardImageResize == 'contain'
-                  ? 'contain'
-                  : 'cover',
-              backgroundImage: `url(${(row[tableParams.cardImageField] || '').split(',')
-                ? (row[tableParams.cardImageField] || '').split(
-                  ','
-                )[0]
-                : ''
-                })`,
-              width:
-                tableParams.cardImageType == 'left' ||
-                  tableParams.cardImageType == 'leftCircle'
-                  ? parseInt(tableParams.cardImageSize)
-                    ? parseInt(
-                      currentBP == 'mobile'
-                        ? Math.floor(
-                          tableParams.cardImageSize / 1.5
-                        )
-                        : tableParams.cardImageSize
-                    )
-                    : 100
-                  : 'auto',
-              height:
-                tableParams.cardImageType == 'top' ||
-                  tableParams.cardImageType == 'leftCircle'
-                  ? parseInt(tableParams.cardImageSize)
-                    ? parseInt(
-                      currentBP == 'mobile'
-                        ? Math.floor(
-                          tableParams.cardImageSize / 1.5
-                        )
-                        : tableParams.cardImageSize
-                    )
-                    : 100
-                  : 'auto',
-              minHeight:
-                tableParams.cardImageType == 'left' &&
-                  tableParams.cardImageSizeHeight
-                  ? parseInt(
-                    currentBP == 'mobile'
-                      ? Math.floor(tableParams.cardImageSize / 1.5)
-                      : tableParams.cardImageSize
-                  )
-                  : 'none'
-            }}
-          >
-            {!row[tableParams.cardImageField] && (
-              <span className='icon icon-ban'>no&nbsp;picture</span>
-            )}
-          </div>
-        )}
-
-        {/* Текст карточки */}
-        <div className={styles.cardText}>
-          <h3 className={styles.cardHeader}>
-            <span className={styles.txt}>
-              {cardHeader.length > 0 ? cardHeader : 'No visible name'}
-            </span>
-
-            {/* counter: */}
-            {tableParams.counterField &&
-              row &&
-              row[tableParams.counterField] &&
-              row[tableParams.counterField] != 0 &&
-              row[tableParams.counterField] != '0' ? (
-              <span
-                className={`${styles.counter} ${!quickActions || quickActions.length == 0
-                  ? styles.moveCounter
-                  : ''
-                  }`}
-                title={`${row[tableParams.counterField]} ${tableParams.counterText
-                  }`}
-              >
-                {(typeof row[tableParams.counterField] == 'object') ?
-                  getLinkName(tableParams.counterField, row[tableParams.counterField]) :
-                  row[tableParams.counterField]}
-              </span>
-            ) : (
-              ''
-            )}
-          </h3>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-start',
-              marginRight: -12
-            }}
-          >
-            {cardHeaderComment &&
-              // если Array, то это у нас либо список labels, либо arrayLink
-              // также чекаем на то, что это link/arrayLink, тогда добавляем классом linkText рамочку
-              // для labels рамочка добавляется классом labelText
-              (!Array.isArray(cardHeaderComment) ? (
-                <div
-                  className={`${styles.cardHeaderComment} ${typeof row[tableParams.cardHeaderComment] ===
-                    'object' && styles.linkText
-                    }`}
-                >
-                  {cardHeaderComment}
-                </div>
-              ) : (
-                <div
-                  className={`${styles.headerArray} ${styles.cardHeaderComment}`}
-                >
-                  {cardHeaderComment.map((i) => (
-                    <div
-                      className={`${typeof row[
-                        tableParams.cardHeaderComment
-                      ][0] === 'object'
-                        ? styles.linkText
-                        : styles.labelText
-                        }`}
-                    >
-                      {i}
-                    </div>
-                  ))}
-                </div>
-              ))}
-            {cardBodyText &&
-              // все также как у cardHeaderComment
-              (!Array.isArray(cardBodyText) ? (
-                <ExpandedText
-                  textLength={
-                    tableParams.cardBodyTextLength == 0
-                      ? 0
-                      : tableParams.cardBodyTextLength || 300
-                  }
-                  className={`${styles.cardBodyText} ${typeof row[tableParams.cardBodyText] ===
-                    'object' && styles.linkText
-                    }`}
-                >
-                  {/* {currentBP} */}
-                  {cardBodyText}
-                </ExpandedText>
-              ) : (
-                <div
-                  className={`${styles.headerArray} ${styles.cardBodyText}`}
-                >
-                  {cardBodyText.map((i) => (
-                    <div
-                      className={`${typeof row[tableParams.cardBodyText][0] ===
-                        'object'
-                        ? styles.linkText
-                        : styles.labelText
-                        }`}
-                    >
-                      {i}
-                    </div>
-                  ))}
-                </div>
-              ))}
+            >
+              {cardHeaderComment &&
+                // если Array, то это у нас либо список labels, либо arrayLink
+                // также чекаем на то, что это link/arrayLink, тогда добавляем классом linkText рамочку
+                // для labels рамочка добавляется классом labelText
+                (!Array.isArray(cardHeaderComment) ? (
+                  <div
+                    className={`${styles.cardHeaderComment} ${typeof row[tableParams.cardHeaderComment] ===
+                      'object' && styles.linkText
+                      }`}
+                  >
+                    {cardHeaderComment}
+                  </div>
+                ) : (
+                  <div
+                    className={`${styles.headerArray} ${styles.cardHeaderComment}`}
+                  >
+                    {cardHeaderComment.map((i) => (
+                      <div
+                        className={`${typeof row[
+                          tableParams.cardHeaderComment
+                        ][0] === 'object'
+                          ? styles.linkText
+                          : styles.labelText
+                          }`}
+                      >
+                        {i}
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              {cardBodyText &&
+                // все также как у cardHeaderComment
+                (!Array.isArray(cardBodyText) ? (
+                  <ExpandedText
+                    textLength={
+                      tableParams.cardBodyTextLength == 0
+                        ? 0
+                        : tableParams.cardBodyTextLength || 300
+                    }
+                    className={`${styles.cardBodyText} ${typeof row[tableParams.cardBodyText] ===
+                      'object' && styles.linkText
+                      }`}
+                  >
+                    {/* {currentBP} */}
+                    {cardBodyText}
+                  </ExpandedText>
+                ) : (
+                  <div
+                    className={`${styles.headerArray} ${styles.cardBodyText}`}
+                  >
+                    {cardBodyText.map((i) => (
+                      <div
+                        className={`${typeof row[tableParams.cardBodyText][0] ===
+                          'object'
+                          ? styles.linkText
+                          : styles.labelText
+                          }`}
+                      >
+                        {i}
+                      </div>
+                    ))}
+                  </div>
+                ))}
+            </div>
           </div>
         </div>
         {footerButtons && footerButtons.length > 0 && <FooterButtons
@@ -757,8 +760,6 @@ export function Card({ row, params, getInitialStructureParams,
 }
 
 function FooterButtons({ footerButtons, performAction, loading, successWeb3 }) {
-  console.log('footerButtons')
-  console.log(footerButtons)
 
   return (
     <React.Fragment>
