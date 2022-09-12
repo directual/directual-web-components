@@ -211,7 +211,7 @@ export function ObjectCard(props) {
                             ? object[row.value]
                             : Array.isArray(object[row.value])
                                 ? object[row.value].map((i) => i.id).join(',')
-                                : ( object[row.value].id || object[row.value].value )
+                                : (object[row.value].id || object[row.value].value)
                 }
             })
 
@@ -528,8 +528,8 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
         return found ? found[0] : ''
     }
 
-    // console.log(field.dataType)
-    // console.log(field)
+    console.log(field.dataType)
+    console.log(field)
     // console.log(object)
     field.formatOptions = object[field.sysName].formatOptions
 
@@ -606,7 +606,7 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                     <InputForm
                         field={field}
                         defaultValue={object[field.sysName].value}
-                        editingOn={field.write && editingOn}
+                        editingOn={field.write && editingOn && !field.disableEditing}
                         // to do:
                         isHint={field.displayAsHint}
                         hintType={field.hintType}
@@ -682,6 +682,17 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                 />
             }
 
+            {/* ID */}
+            {field.dataType == 'id' &&
+                <Input
+                    type='string'
+                    copy
+                    code
+                    description={field.descriptionFlag && field.description}
+                    label={field.name || field.sysName}
+                    defaultValue={model[field.sysName]}
+                />}
+
             {/* ВСЕ ОСТАЛЬНОЕ */}
             {field.dataType != 'string' &&
                 field.dataType != 'file' &&
@@ -690,8 +701,9 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                 field.dataType != 'link' &&
                 field.dataType != 'arrayLink' &&
                 field.dataType != 'json' &&
+                field.dataType != 'id' &&
                 <React.Fragment>
-                    {(field.write && editingOn) ?
+                    {(field.write && editingOn && !field.disableEditing) ?
                         <Input
                             type={field.dataType}
                             positive={field.format == 'positiveNum'}
@@ -703,6 +715,8 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                         /> :
                         <FieldReadOnly field={field} object={object} weblink={{}} />}
                 </React.Fragment>}
+
+
 
         </div>
     )

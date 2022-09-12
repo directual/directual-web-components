@@ -85,31 +85,21 @@ const App = (props) => {
     }
 
     let cardActions = {
-        "sl": "getGoods",
-        "pageSize": "10",
+        "sl": "manageCategories",
+        "pageSize": "20",
         "headerField": null,
         "params": {
             "cardListLayout": "grid",
-            "cardHeaderComment": "merchant_id",
+            "cardHeaderComment": "",
             "deleteField": "",
-            "cardBodyText": "price_displayed",
-            "cardImage": true,
-            "cardImageField": "image",
-            "cardImageType": "left",
-            "cardImageSize": 180,
+            "cardBodyText": "",
+            "cardImage": false,
+            "cardImageField": "",
+            "cardImageType": "none",
+            "cardImageSize": 100,
             "objectView": {},
             "data": {
                 "readFields": [
-                    {
-                        "fieldSysName": "description",
-                        "fetch": [],
-                        "sysName": "description",
-                        "name": "Description",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
                     {
                         "fieldSysName": "id",
                         "fetch": [],
@@ -121,75 +111,69 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "image",
+                        "fieldSysName": "isDelete",
                         "fetch": [],
-                        "sysName": "image",
-                        "name": "Images",
-                        "dataType": "file",
-                        "format": "multipleImages",
+                        "sysName": "isDelete",
+                        "name": "",
+                        "dataType": "boolean",
+                        "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "merchant_id",
-                        "fetch": [
-                            {
-                                "fieldSysName": "description",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "logo",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "title",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "merchant_id",
-                        "name": "Merchant",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "merchants"
-                    },
-                    {
-                        "fieldSysName": "price_displayed",
+                        "fieldSysName": "name",
                         "fetch": [],
-                        "sysName": "price_displayed",
-                        "name": "Price",
+                        "sysName": "name",
+                        "name": "Название категории",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "title",
+                        "fieldSysName": "participants",
                         "fetch": [],
-                        "sysName": "title",
-                        "name": "Title",
-                        "dataType": "string",
-                        "format": "",
+                        "sysName": "participants",
+                        "name": "Количество участников",
+                        "dataType": "number",
+                        "format": "positiveNum",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
                     }
                 ],
-                "writeFields": [],
-                "fields": {
-                    "description": {
-                        "id": "description",
-                        "content": "Description",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "markdown",
+                "writeFields": [
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
                         "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
+                        "link": ""
                     },
+                    {
+                        "fieldSysName": "isDelete",
+                        "fetch": [],
+                        "sysName": "isDelete",
+                        "name": "",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "name",
+                        "fetch": [],
+                        "sysName": "name",
+                        "name": "Название категории",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    }
+                ],
+                "fields": {
                     "id": {
                         "id": "id",
                         "content": "id",
@@ -197,201 +181,84 @@ const App = (props) => {
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "image": {
-                        "id": "image",
-                        "content": "Images",
+                    "isDelete": {
+                        "id": "isDelete",
+                        "content": "",
                         "type": "field",
-                        "dataType": "file",
-                        "format": "multipleImages",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "name": {
+                        "id": "name",
+                        "content": "Название категории",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "participants": {
+                        "id": "participants",
+                        "content": "Количество участников",
+                        "type": "field",
+                        "dataType": "number",
+                        "format": "positiveNum",
                         "formatOptions": {},
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "merchant_id": {
-                        "id": "merchant_id",
-                        "content": "Merchant",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "merchants",
-                        "actions": []
-                    },
-                    "price_displayed": {
-                        "id": "price_displayed",
-                        "content": "Price",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "title": {
-                        "id": "title",
-                        "content": "Title",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "action__67701653335833902": {
-                        "id": "action__67701653335833902",
-                        "content": "Request sign in",
+                    "action__80431632037015636": {
+                        "id": "action__80431632037015636",
+                        "content": "Закончили!",
                         "type": "action",
                         "actions": []
                     },
-                    "action__80061653336923637": {
-                        "id": "action__80061653336923637",
-                        "content": "Add to cart",
-                        "type": "action",
-                        "actions": []
-                    },
-                    "action__14421657225734565": {
-                        "id": "action__14421657225734565",
-                        "content": "Buy",
+                    "action__34821632037021738": {
+                        "id": "action__34821632037021738",
+                        "content": "Еще не закончили!",
                         "type": "action",
                         "actions": []
                     }
                 },
                 "fieldParams": {
                     "id": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "disableEditing": true
+                    },
+                    "isDelete": {
                         "include": false,
-                        "disableEditing": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "image": {
+                    "name": {
                         "include": true,
-                        "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "price": {
+                    "participants": {
                         "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "title": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "description": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "merchant_id": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": true,
-                        "configureLinkedCard": {
-                            "fields": {
-                                "description": {
-                                    "id": "description",
-                                    "content": "Description",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "string",
-                                    "format": "markdown",
-                                    "formatOptions": null
-                                },
-                                "logo": {
-                                    "id": "logo",
-                                    "content": "Logo",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "file",
-                                    "format": "image",
-                                    "formatOptions": null
-                                },
-                                "title": {
-                                    "id": "title",
-                                    "content": "Title",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "string",
-                                    "format": null,
-                                    "formatOptions": null
-                                }
-                            },
-                            "fieldParams": {
-                                "description": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "logo": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "title": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                }
-                            },
-                            "fieldOrder": [
-                                "logo",
-                                "title",
-                                "description"
-                            ]
-                        },
-                        "subHeader": "Merchant: ",
-                        "veiwOption": "table",
-                        "tableView": {
-                            "columns": [
-                                {
-                                    "id": "1653385369232",
-                                    "field": "logo"
-                                },
-                                {
-                                    "id": "1653385369868",
-                                    "field": "title"
-                                }
-                            ]
-                        },
-                        "cartView": {
-                            "image": true,
-                            "imageField": "logo",
-                            "title": true,
-                            "titleField": "title"
-                        }
-                    },
-                    "price_displayed": {
-                        "include": true,
-                        "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
@@ -401,155 +268,54 @@ const App = (props) => {
                 "columns": {
                     "tab-1": {
                         "id": "tab-1",
-                        "title": "New section",
+                        "title": "Общее инфо",
                         "fieldIds": [
+                            "name",
+                            "participants",
                             "id",
-                            "image",
-                            "title",
-                            "description",
-                            "merchant_id",
-                            "price_displayed",
-                            "action__67701653335833902",
-                            "action__80061653336923637",
-                            "action__14421657225734565"
+                            "isDelete"
+                        ]
+                    },
+                    "75291632037116471": {
+                        "id": "75291632037116471",
+                        "title": "Действия",
+                        "fieldIds": [
+                            "action__80431632037015636",
+                            "action__34821632037021738"
                         ]
                     }
                 },
                 "columnOrder": [
-                    "tab-1"
+                    "tab-1",
+                    "75291632037116471"
                 ],
-                "actions": [],
-                "cardsOrPage": "card",
-                "anotherPage": "catalogue"
+                "actions": []
             },
             "fields": {
                 "id": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "disableEditing": true
+                },
+                "isDelete": {
                     "include": false,
-                    "disableEditing": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "image": {
+                "name": {
                     "include": true,
-                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "price": {
+                "participants": {
                     "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "title": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "description": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "merchant_id": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": true,
-                    "configureLinkedCard": {
-                        "fields": {
-                            "description": {
-                                "id": "description",
-                                "content": "Description",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "string",
-                                "format": "markdown",
-                                "formatOptions": null
-                            },
-                            "logo": {
-                                "id": "logo",
-                                "content": "Logo",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "file",
-                                "format": "image",
-                                "formatOptions": null
-                            },
-                            "title": {
-                                "id": "title",
-                                "content": "Title",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "string",
-                                "format": null,
-                                "formatOptions": null
-                            }
-                        },
-                        "fieldParams": {
-                            "description": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "logo": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "title": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            }
-                        },
-                        "fieldOrder": [
-                            "logo",
-                            "title",
-                            "description"
-                        ]
-                    },
-                    "subHeader": "Merchant: ",
-                    "veiwOption": "table",
-                    "tableView": {
-                        "columns": [
-                            {
-                                "id": "1653385369232",
-                                "field": "logo"
-                            },
-                            {
-                                "id": "1653385369868",
-                                "field": "title"
-                            }
-                        ]
-                    },
-                    "cartView": {
-                        "image": true,
-                        "imageField": "logo",
-                        "title": true,
-                        "titleField": "title"
-                    }
-                },
-                "price_displayed": {
-                    "include": true,
-                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
@@ -558,37 +324,14 @@ const App = (props) => {
             },
             "actions": [
                 {
-                    "sysName": "",
-                    "id": "67701653335833902",
-                    "name": "Request sign in",
+                    "sysName": "catFinish",
+                    "id": "80431632037015636",
+                    "name": "Закончили!",
                     "displayAs": "button",
-                    "buttonIcon": "cart",
+                    "buttonIcon": "done",
                     "buttonType": "accent",
-                    "showMessage": true,
-                    "closePopup": false,
-                    "resultButton": "",
-                    "resultMessage": "You need to <a href=\"/signin\">authorise</a> first",
-                    "conditionals": [
-                        {
-                            "id": "12791653335897541",
-                            "target": "isNotAuth",
-                            "value": null
-                        }
-                    ],
-                    "buttonTitle": "Add to cart",
-                    "dropdown": false,
-                    "footerButtons": false
-                },
-                {
-                    "sysName": "postUserAcion",
-                    "id": "80061653336923637",
-                    "name": "Add to cart",
-                    "displayAs": "button",
-                    "buttonIcon": "cart",
-                    "buttonType": "accent",
-                    "showMessage": true,
-                    "closePopup": false,
-                    "resultMessage": "Added! <a href=\"/cart\">Go to cart<a/>",
+                    "closePopup": true,
+                    "showMessage": false,
                     "SLtype": "other",
                     "fields": {
                         "readFields": [
@@ -596,123 +339,116 @@ const App = (props) => {
                                 "fieldSysName": "id",
                                 "fetch": [],
                                 "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
                                 "format": "",
-                                "formatOptions": {}
+                                "formatOptions": {},
+                                "link": ""
                             }
                         ],
                         "writeFields": [
                             {
-                                "fieldSysName": "good_id",
+                                "fieldSysName": "action",
                                 "fetch": [],
-                                "sysName": "good_id",
+                                "sysName": "action",
+                                "name": "",
+                                "dataType": "string",
                                 "format": "",
-                                "formatOptions": {}
+                                "formatOptions": {},
+                                "link": ""
                             },
                             {
-                                "fieldSysName": "merchant_id",
+                                "fieldSysName": "category_id",
                                 "fetch": [],
-                                "sysName": "merchant_id",
+                                "sysName": "category_id",
+                                "name": "",
+                                "dataType": "link",
                                 "format": "",
-                                "formatOptions": {}
-                            },
-                            {
-                                "fieldSysName": "type",
-                                "fetch": [],
-                                "sysName": "type",
-                                "format": "",
-                                "formatOptions": {}
-                            },
-                            {
-                                "fieldSysName": "user_id",
-                                "fetch": [],
-                                "sysName": "user_id",
-                                "format": "",
-                                "formatOptions": {}
+                                "formatOptions": {},
+                                "link": "Categories"
                             }
                         ]
                     },
                     "formMapping": [
                         {
-                            "id": "16751653336968029",
-                            "target": "good_id",
+                            "id": "32181632037048348",
+                            "target": "category_id",
                             "type": "objectField",
                             "value": "id"
                         },
                         {
-                            "id": "28341653336973271",
-                            "target": "user_id",
-                            "type": "user",
-                            "value": null
-                        },
-                        {
-                            "id": "76941653336985854",
-                            "target": "type",
+                            "id": "36791632037056908",
+                            "target": "action",
                             "type": "const",
-                            "value": "add_to_cart"
+                            "value": "finish"
                         }
-                    ],
-                    "conditionals": [
-                        {
-                            "id": "96581653336969316",
-                            "target": "isAutn",
-                            "value": null
-                        }
-                    ],
-                    "dropdown": false,
-                    "footerButtons": false
+                    ]
                 },
                 {
-                    "sysName": "",
-                    "id": "14421657225734565",
-                    "name": "Buy",
+                    "sysName": "catFinish",
+                    "id": "34821632037021738",
+                    "name": "Еще не закончили!",
                     "displayAs": "button",
-                    "buttonIcon": "money",
-                    "buttonType": "accent",
-                    "footerButtons": true,
-                    "buttonTitle": "Purchase",
-                    "web3": true,
-                    "web3Mapping": [
+                    "buttonIcon": "clocks",
+                    "closePopup": true,
+                    "showMessage": false,
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "action",
+                                "fetch": [],
+                                "sysName": "action",
+                                "name": "",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "category_id",
+                                "fetch": [],
+                                "sysName": "category_id",
+                                "name": "",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "Categories"
+                            }
+                        ]
+                    },
+                    "formMapping": [
                         {
-                            "id": "41071657226141895",
-                            "target": "amount",
+                            "id": "18701632037080343",
+                            "target": "category_id",
+                            "type": "objectField",
+                            "value": "id"
+                        },
+                        {
+                            "id": "68741632037089800",
+                            "target": "action",
                             "type": "const",
-                            "value": "14"
+                            "value": "continue"
                         }
                     ]
                 }
             ]
         },
-        "tableTitle": "",
+        "tableTitle": "Категории",
         "actions": null,
         "headers": [
-            {
-                "sysName": "description",
-                "dataType": "string",
-                "name": "Description",
-                "id": "10491653331482505",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "array": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false
-            },
             {
                 "sysName": "id",
                 "dataType": "id",
@@ -733,200 +469,149 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "array": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
+                "indexExists": false,
                 "typeVariable": {},
                 "json": false,
-                "indexExists": false
+                "array": false
             },
             {
-                "sysName": "image",
-                "dataType": "file",
-                "name": "Images",
-                "id": "85971653317512108",
+                "sysName": "isDelete",
+                "dataType": "boolean",
+                "name": "",
+                "id": "23961630845476759",
                 "link": "",
                 "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 5,
+                "order": 3,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "multipleImages",
-                "formatOptions": null,
-                "groupName": null,
-                "array": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false
-            },
-            {
-                "sysName": "merchant_id",
-                "dataType": "link",
-                "name": "Merchant",
-                "id": "83931653331400591",
-                "link": "merchants",
-                "group": "0",
-                "tags": null,
-                "indexing": true,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 6,
-                "linkIndexFieldSysName": [
-                    "user_id",
-                    "status"
-                ],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
-                "array": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": true
-            },
-            {
-                "sysName": "price_displayed",
-                "dataType": "string",
-                "name": "Price",
-                "id": "71751653332297116",
-                "link": null,
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "array": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
+                "indexExists": false,
                 "typeVariable": {},
                 "json": false,
-                "indexExists": false
+                "array": false
             },
             {
-                "sysName": "title",
+                "sysName": "name",
                 "dataType": "string",
-                "name": "Title",
-                "id": "25651653317510996",
-                "link": null,
+                "name": "Название категории",
+                "id": "34241630845441302",
+                "link": "",
                 "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 1,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
-                "array": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
+                "indexExists": false,
                 "typeVariable": {},
                 "json": false,
-                "indexExists": false
+                "array": false
+            },
+            {
+                "sysName": "participants",
+                "dataType": "number",
+                "name": "Количество участников",
+                "id": "83591630845451672",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "positiveNum",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "array": false
             }
         ],
         "data": [
             {
-                "price_displayed": "14 000 MATIC",
-                "image": "https://api.directual.com/fileUploaded/showcase-store/web/c5e9701c-6019-4ab9-8bed-168d90c05234.jpeg,https://api.directual.com/fileUploaded/showcase-store/web/e43b3a79-1146-48bf-bdd5-feae82f3782c.jpeg,https://api.directual.com/fileUploaded/showcase-store/web/ff4f0210-6efb-4b5d-a4c6-8ceb754bc2af.jpeg",
-                "description": "A beautiful Mid-century head turner, this 1955 Ford Customline is the desired 2-door variant, lovingly named the Blue Angel. If you like getting thumbs up in real life, cruise this joy ride! Clean title, odometer shows approximately 67,364 miles.",
-                "id": "e93318e5-e587-4fe2-a146-873c288a9bdb",
-                "title": "1955 Ford Customline",
-                "merchant_id": {
-                    "logo": "https://api.directual.com/fileUploaded/showcase-store/web/8b2b5ee8-7912-4852-b0b6-cc384413aefb.png",
-                    "description": "Ford Motor Company is an American multinational automobile manufacturer headquartered in Dearborn, Michigan, United States. ",
-                    "title": "Ford"
-                }
+                "name": "Мужчины до 95 кг.",
+                "id": "e37be8bc-358b-4a6a-8b49-faf3a5f277da",
+                "isDelete": ""
             },
             {
-                "price_displayed": "25 000 MATIC",
-                "image": "https://api.alfa.directual.com/fileUploaded/showcase-store/2d72ecab-fc6f-4b09-b24c-14ac5a4a004e.jpeg,https://api.alfa.directual.com/fileUploaded/showcase-store/4fd6150c-418c-407e-a788-d251cd1ee2ad.jpeg",
-                "id": "44ababdf-957e-4e41-b95f-ff087bd0b11f",
-                "title": "Lotus Elite Type 14",
-                "merchant_id": {
-                    "logo": "https://api.alfa.directual.com/fileUploaded/showcase-store/06a6b30c-de1e-48c7-a316-ba2f0dd6fe37.jpeg",
-                    "description": "Lotus Cars Limited is a British automotive company headquartered in Norfolk, England.",
-                    "title": "Lotus Cars"
-                }
+                "name": "Мужчины до 66 кг.",
+                "id": "8e10f385-21a4-492e-ab4b-73684f6b74f3",
+                "isDelete": ""
             },
             {
-                "price_displayed": "34 000 MATIC",
-                "image": "https://api.directual.com/fileUploaded/showcase-store/web/6db101f0-5c57-41e7-b9b6-6b32be5253b1.jpeg,https://api.directual.com/fileUploaded/showcase-store/web/73f76cfe-a6a6-429a-91c1-b65d3fb64e7b.jpeg,https://api.directual.com/fileUploaded/showcase-store/web/9a559947-ef6b-4da8-8bc5-b250c2ea8c98.jpeg",
-                "description": "This Classic Ford Bronco is built with a 100% Brand  New Complete STEEL BODY.\nBrand New Ford Aluminator LIMITED SIGNED Edition  5.0 Coyote motor with warranty. Ceramic stainless steel headers \nCustom clock able racing Starter.",
-                "id": "53a44287-47ee-489b-bb06-06b948464bd2",
-                "title": "1968 Ford Bronco",
-                "merchant_id": {
-                    "logo": "https://api.directual.com/fileUploaded/showcase-store/web/8b2b5ee8-7912-4852-b0b6-cc384413aefb.png",
-                    "description": "Ford Motor Company is an American multinational automobile manufacturer headquartered in Dearborn, Michigan, United States. ",
-                    "title": "Ford"
-                }
+                "name": "Мужчины до 60 кг.",
+                "id": "02aa6579-e3b5-453b-9af5-61d63f52d6e5",
+                "isDelete": ""
             },
             {
-                "price_displayed": "18 000 US$",
-                "image": "https://api.directual.com/fileUploaded/showcase-store/web/19ff8104-2b8f-4fd4-99bc-0ce93b981b9a.jpeg,https://api.directual.com/fileUploaded/showcase-store/web/9317a486-82e3-4c1f-9d22-1fdd93e02ad7.jpeg",
-                "description": "Mustang fastback, 289, 4 speed, power front disc, A/M, AC, power steering. New glass and interior. Completely redone 2018.",
-                "id": "886ea34d-606f-4fdc-802e-0a41074ceda4",
-                "title": "1965 Ford Mustang",
-                "merchant_id": {
-                    "logo": "https://api.directual.com/fileUploaded/showcase-store/web/8b2b5ee8-7912-4852-b0b6-cc384413aefb.png",
-                    "description": "Ford Motor Company is an American multinational automobile manufacturer headquartered in Dearborn, Michigan, United States. ",
-                    "title": "Ford"
-                }
+                "name": "Девушки до 60 кг.",
+                "id": "64f57fe0-e8ac-46de-b18c-fcd5baf50c27",
+                "isDelete": ""
             },
             {
-                "price_displayed": "33 000 US$",
-                "image": "https://api.alfa.directual.com/fileUploaded/showcase-store/ba67ef96-9ccf-4a6c-a23a-3528a56efd6f.jpeg,https://api.alfa.directual.com/fileUploaded/showcase-store/a9f345ab-e1d5-4671-a94c-acd8bf10b421.jpeg",
-                "id": "866a80f6-2649-4fca-88df-80f5fa517fe3",
-                "title": "Mercedes 280SL",
-                "merchant_id": {
-                    "description": "Mercedes-Benz, commonly referred to as Mercedes, is a German luxury automotive brand. Both Mercedes-Benz and Mercedes-Benz AG are headquartered in Stuttgart, Baden-Württemberg, Germany.",
-                    "logo": "https://api.alfa.directual.com/fileUploaded/showcase-store/bf65084a-90d3-43ac-b5fc-d28d2f7a07db.jpeg",
-                    "title": "Mercedes Benz"
-                }
+                "name": "Мужчины до 71 кг.",
+                "id": "5a329117-5e42-4972-9d35-4b0ec505835b",
+                "isDelete": ""
             },
             {
-                "price_displayed": "42 000 US$",
-                "image": "https://api.directual.com/fileUploaded/showcase-store/web/ba205a6d-7c3a-4def-bd5a-358b3c22420c.jpeg,https://api.directual.com/fileUploaded/showcase-store/web/f58e6c71-e0e7-4694-a123-8528473ca247.jpeg",
-                "description": "Georgios 2007 Mercedes SL-550, only 62K miles, Desineo Edition. Low 62 K miles. In the world of premium and exotic roadsters, only a handful of vehicles offer the exclusivity, performance and overall reliability of the Mercedes-Benz SL.",
-                "id": "ddd84e89-9482-4b2c-87e4-df35c1e3bd87",
-                "title": "2007 Mercedes SL-550",
-                "merchant_id": {
-                    "description": "Mercedes-Benz, commonly referred to as Mercedes, is a German luxury automotive brand. Both Mercedes-Benz and Mercedes-Benz AG are headquartered in Stuttgart, Baden-Württemberg, Germany.",
-                    "logo": "https://api.alfa.directual.com/fileUploaded/showcase-store/bf65084a-90d3-43ac-b5fc-d28d2f7a07db.jpeg",
-                    "title": "Mercedes Benz"
-                }
+                "name": "Мужчины до 75 кг.",
+                "id": "4d04ce17-ce35-4ebb-ad28-abaed8ff6d62",
+                "isDelete": ""
+            },
+            {
+                "name": "Мужчины до 79 кг.",
+                "id": "1976f364-40ee-4ef2-a69f-b1cd1f3dbbac",
+                "isDelete": ""
+            },
+            {
+                "name": "Девушки до 70 кг.",
+                "id": "646b3091-1ad4-4528-97e3-899de618d7ee",
+                "isDelete": ""
+            },
+            {
+                "name": "Мужчины до 84 кг.",
+                "id": "ee8b73a9-3ee2-41e6-9255-bafdfe124654",
+                "isDelete": ""
+            },
+            {
+                "name": "Мужчины абс.",
+                "id": "9644d46b-26e2-4def-821f-eca8e50655cb",
+                "isDelete": ""
             }
         ],
         "totalPages": 1,
@@ -934,57 +619,45 @@ const App = (props) => {
         "error": null,
         "fieldScheme": [
             [
-                "description",
-                99108668
-            ],
-            [
                 "id",
-                99108668
+                99019611
             ],
             [
-                "image",
-                99108668
+                "isDelete",
+                99019611
             ],
             [
-                "merchant_id.description",
-                99108672
+                "name",
+                99019611
             ],
             [
-                "merchant_id.logo",
-                99108672
-            ],
-            [
-                "merchant_id.title",
-                99108672
-            ],
-            [
-                "price_displayed",
-                99108668
-            ],
-            [
-                "title",
-                99108668
+                "participants",
+                99019611
             ]
         ],
-        "writeFields": [],
+        "writeFields": [
+            "id",
+            "isDelete",
+            "name"
+        ],
         "structures": {
-            "99108668": {
-                "id": 99108668,
-                "dateCreated": "2022-05-23T14:49:52Z",
+            "99019611": {
+                "networkID": 9312,
+                "sysName": "Categories",
+                "name": "Категории",
+                "id": 99019611,
+                "dateCreated": "2021-09-05T12:37:13Z",
                 "hidden": false,
                 "dateHidden": null,
-                "networkID": 13236,
-                "name": "goods",
-                "sysName": "goods",
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"title\",\"name\":\"Title\",\"dataType\":\"string\",\"id\":\"25651653317510996\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"description\",\"name\":\"Description\",\"dataType\":\"string\",\"id\":\"10491653331482505\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"price\",\"name\":\"Price, US$\",\"dataType\":\"decimal\",\"id\":\"37111653317511499\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"price_displayed\",\"name\":\"Price\",\"dataType\":\"string\",\"id\":\"71751653332297116\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"image\",\"name\":\"Images\",\"dataType\":\"file\",\"id\":\"85971653317512108\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"merchant_id\",\"name\":\"Merchant\",\"dataType\":\"link\",\"id\":\"83931653331400591\",\"link\":\"merchants\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[\"user_id\",\"status\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"json\":false,\"typeVariable\":{},\"linkType\":true,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":true},{\"sysName\":\"is_hidden\",\"name\":\"Hidden?\",\"dataType\":\"boolean\",\"id\":\"32521653331455301\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"is_approved\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"85631653579889829\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"typeVariable\":{},\"linkType\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"json\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"isDelete\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"23961630845476759\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"json\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Название категории\",\"id\":\"34241630845441302\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"json\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"participants\",\"dataType\":\"number\",\"name\":\"Количество участников\",\"id\":\"83591630845451672\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"json\":false,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false}]",
                 "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2022-05-26T18:54:50Z",
+                "dateChanged": "2021-09-05T12:38:07Z",
                 "createBy": 21,
                 "changedBy": 21,
                 "_settings": null,
@@ -1009,74 +682,107 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "array": false,
                     "linkOrArrayLinkType": false,
                     "linkType": false,
                     "arrayLink": false,
+                    "indexExists": false,
                     "typeVariable": {},
                     "json": false,
-                    "indexExists": false
+                    "array": false
                 },
                 "objectIDSysName": "id",
-                "folderId": 33702036
-            },
-            "99108672": {
-                "id": 99108672,
-                "dateCreated": "2022-05-23T18:43:55Z",
-                "hidden": false,
-                "dateHidden": null,
-                "networkID": 13236,
-                "name": "merchants",
-                "sysName": "merchants",
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"Title\",\"id\":\"23361653331526962\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"logo\",\"dataType\":\"file\",\"name\":\"Logo\",\"id\":\"53661653331527465\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Description\",\"id\":\"69491653331531928\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"user_id\",\"dataType\":\"link\",\"name\":\"Owner\",\"id\":\"17271653331543139\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"good_ids\",\"dataType\":\"arrayLink\",\"name\":\"Goods\",\"id\":\"12551653331589988\",\"link\":\"goods\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Status\",\"id\":\"61681653585632822\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"color\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"98031653588039980\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"message\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"31721653588052113\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2022-05-26T18:00:57Z",
-                "createBy": 21,
-                "changedBy": 21,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "array": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "typeVariable": {},
-                    "json": false,
-                    "indexExists": false
-                },
-                "objectIDSysName": "id",
-                "folderId": 33702036
+                "folderId": 33657238
             }
         },
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
-        "fileds": [],
+        "fileds": [
+            {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "array": false
+            },
+            {
+                "sysName": "isDelete",
+                "dataType": "boolean",
+                "name": "",
+                "id": "23961630845476759",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "array": false
+            },
+            {
+                "sysName": "name",
+                "dataType": "string",
+                "name": "Название категории",
+                "id": "34241630845441302",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "array": false
+            }
+        ],
         "quickSearch": "false",
         "httpParams": {}
     }

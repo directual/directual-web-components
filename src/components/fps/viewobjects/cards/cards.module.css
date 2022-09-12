@@ -147,6 +147,12 @@
   bottom: 0;
   background-color: var(--field-border-color);
 }
+.card .cardInnerWrapper.cover h1,
+.card .cardInnerWrapper.cover h2,
+.card .cardInnerWrapper.cover h3,
+.card .cardInnerWrapper.cover h4 {
+  color: #fff !important;
+}
 .card .cardInnerWrapper.cover .cardText {
   background-color: rgba(0, 0, 0, 0.4);
   height: 100%;

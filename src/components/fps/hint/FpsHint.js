@@ -4,6 +4,7 @@ import icon from './../../../icons/fps-hint.svg'
 
 export default function FpsHint({ data }) {
 
+    data = data || {}
     const error = data.hintColour == 'error'
     const ok = data.hintColour == 'ok'
     const margins = data.margins || {}
