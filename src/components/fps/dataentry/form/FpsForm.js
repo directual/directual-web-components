@@ -232,13 +232,13 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
   }
 
   useEffect(() => {
-    let modelCopy = { ...fetchedObjectFields, ...hiddenFieldsValues, ...hiddenAuth, ...defaultModel(), ...model }; // model в конце! Иначе нахуй перетирается все что ввели
+    let modelCopy = { ...defaultModel(), ...fetchedObjectFields, ...hiddenFieldsValues, ...hiddenAuth, ...model }; // model в конце! Иначе нахуй перетирается все что ввели
     if (eidtID) { modelCopy.id = eidtID } // тут проебывался где-то или перетирался id, посему записываем в явном виде
     setModel(modelCopy)
   }, [data.data])
 
   const onChange = (field, value) => {
-    let modelCopy = { ...fetchedObjectFields, ...hiddenFieldsValues, ...hiddenAuth, ...defaultModel(), ...model }; // model в конце! Иначе нахуй перетирается все что ввели
+    let modelCopy = { ...defaultModel(), ...fetchedObjectFields, ...hiddenFieldsValues, ...hiddenAuth, ...model }; // model в конце! Иначе нахуй перетирается все что ввели
     if (eidtID) { modelCopy.id = eidtID } // тут проебывался где-то или перетирался id, посему записываем в явном виде
     modelCopy[field] = value
     setModel(modelCopy)
@@ -325,6 +325,11 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
   let idInclude = false;
   _.get(data,'params.data.writeFields').forEach(f => { if (f.sysName == 'id') { idInclude = true} })
   const isEditable = (idInclude || !data.params.useEditing) && wf.length > 0
+  // console.log('wf')
+  // console.log(wf.length > 0)
+  // console.log('isEditable')
+  // console.log(isEditable)
+  // console.log(idInclude || !data.params.useEditing)
 
   return (
     <ComponentWrapper>
