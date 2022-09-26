@@ -8,7 +8,7 @@ import icon from "../../../icons/fps-cards.svg";
 import FpsCards from "../viewobjects/cards/FpsCards";
 import { dict } from '../locale'
 
-export function SignIn({ width, header, locale, facebookAuth, googleAuth, signUpheader, google, onSignIn, onSignUp, userNameFormat, allowSignUp, otherAuth }) {
+export function SignIn({ width, header, locale, facebookAuth, googleAuth, signUpheader, google, onSignIn, onSignUp, userNameFormat, allowSignUp, otherAuth, showLoginFrom }) {
     const submit = () => {
         onSignIn && onSignIn(loginDetails)
     }
@@ -28,6 +28,7 @@ export function SignIn({ width, header, locale, facebookAuth, googleAuth, signUp
     const [loginDetails, setLoginDetails] = useState({ login: defaultLogin })
     const [isLoginValid, setIsLoginValid] = useState(true)
     const [signUp, setSignUp] = useState(false)
+    const loginFormEnabled = showLoginFrom !== false
 
     return (
         <div className={styles.signinform} style={{ maxWidth: width || 'auto' }}>
@@ -36,7 +37,7 @@ export function SignIn({ width, header, locale, facebookAuth, googleAuth, signUp
             {facebookAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{facebookAuth}</ActionPanel>}
             {otherAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{otherAuth}</ActionPanel>}
             {(googleAuth || facebookAuth) && <FormSection title={dict[lang].profile.or} />}
-            <form >
+            {loginFormEnabled && <form >
                 <Input
                     type={userNameFormat || 'string'}
                     //required
@@ -59,7 +60,7 @@ export function SignIn({ width, header, locale, facebookAuth, googleAuth, signUp
                         }
                         onClick={submit} accent icon='permission'>{header || 'Sign In'}</Button>
                 </ActionPanel>
-            </form>
+            </form> }
         </div>
     )
 
