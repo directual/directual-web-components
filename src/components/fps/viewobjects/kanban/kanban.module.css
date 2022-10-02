@@ -23,6 +23,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+.droppableColumn {
   height: 100%;
 }
 .kanbanHeader {

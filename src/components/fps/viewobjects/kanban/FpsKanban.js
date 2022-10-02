@@ -314,7 +314,7 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
                 lang={lang}
                 //currentDQL={currentDQL}
                 searchValue={searchValue}
-                //tableQuickSearch={data.quickSearch == 'true'}
+                tableQuickSearch={data.quickSearch == 'true'}
                 search={data.data && data.data.length > 0 ? true : false}
                 onSearch={value => search(value)}
                 loading={loading}
@@ -328,15 +328,18 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
                 //currentBP={currentBP}
                 dict={dict}
                 lang={lang}
+                searchValue={searchValue}
                 onExpand={val => {
                     _.get(data, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(data, 'params.data.additionalPath') ? _.get(data, 'params.data.additionalPath') + '/' : ''}` + val.id)() :
                         _.get(data, 'params.data.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(data, 'params.data.anotherPage')}/` + val.id)() :
                             _.get(data, 'params.data.cardsOrPage') == 'disable' ? undefined :
                                 setShowObject(val)
                 }}
-                executeAction={submitAction}
+                submitAction={submitAction}
                 loading={loading}
+                id={id}
                 data={data}
+                setLoading={value => setLoading(value)}
             />
 
         </ComponentWrapper>
@@ -351,6 +354,7 @@ FpsKanban.settings = {
         { name: 'Kanban title', sysName: 'tableTitle', type: 'input' },
         // { name: 'Kanban parameters', sysName: 'params', type: 'kanban-params' },
         { name: 'Max objects quantity', sysName: 'pageSize', type: 'number' },
+        { name: 'Quick search', sysName: 'quickSearch', type: 'turn_on_off' },
         { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
     ]
 }

@@ -53,7 +53,7 @@ const columnsFromBackend = {
 };
 
 
-export function Kanban({ data, onExpand, edenrichConds, loading, searchValue, auth, submit, submitAction, params, checkActionCond, currentBP }) {
+export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, searchValue, auth, submit, submitAction, params, checkActionCond, currentBP }) {
 
     const kanbanData = data.data || []
 
@@ -71,9 +71,11 @@ export function Kanban({ data, onExpand, edenrichConds, loading, searchValue, au
         columns: [],
         dragndropOption: 'none'
     }
+    const columnWidth = _.get(kanbanParams,'columnWidth') || 250
     const columnField = _.get(kanbanParams, 'columnField') || ''
     const dragndropOption = _.get(kanbanParams, 'dragndropOption') || ''
     const [successWeb3, setSuccessWeb3] = useState(false)
+    const [kostyl, setKostyl] = useState(false)
 
     const getInitialStructureParams = () => {
         const randomFieldArray =
@@ -221,12 +223,15 @@ export function Kanban({ data, onExpand, edenrichConds, loading, searchValue, au
                         content: <Card
                             params={tableParams}
                             row={obj}
+                            key={index}
+                            data={data}
                             i={index}
                             currentBP={currentBP}
                             tableParams={tableParams}
                             tableHeaders={tableHeaders}
-                            loading={loading}
+                            loading={loading || kostyl}
                             successWeb3={successWeb3}
+                            setLoading={setLoading}
                             setSuccessWeb3={setSuccessWeb3}
                             edenrichConds={edenrichConds}
                             searchValue={searchValue}
@@ -234,7 +239,6 @@ export function Kanban({ data, onExpand, edenrichConds, loading, searchValue, au
                             submitAction={submitAction}
                             checkActionCond={checkActionCond}
                             onExpand={onExpand}
-
                             getLinkName={getLinkName}
                             getInitialStructureParams={getInitialStructureParams}
                         />
@@ -248,7 +252,6 @@ export function Kanban({ data, onExpand, edenrichConds, loading, searchValue, au
 
     const [columns, setColumns] = useState(enrichColumns(kanbanParams.columns));
 
-    const [kostyl, setKostyl] = useState(false)
 
     const onDragEnd = (result, columns, setColumns) => {
         if (!result.destination) return;
@@ -292,8 +295,17 @@ export function Kanban({ data, onExpand, edenrichConds, loading, searchValue, au
         if (columns !== enrichColumns(kanbanParams.columns)) {
             console.log('reset kanban')
             setColumns(enrichColumns(kanbanParams.columns))
+        }
+    }, [kanbanParams.columns])
+
+    useEffect(() => {
+        if (columns !== enrichColumns(kanbanParams.columns)) {
+            console.log('reset kanban')
+            setColumns(enrichColumns(kanbanParams.columns))
             setKostyl(true)
-            setTimeout(() => setKostyl(false), 100)
+            setTimeout(() => {
+                setKostyl(false)
+            }, 300)
         }
     }, [])
 
@@ -301,11 +313,9 @@ export function Kanban({ data, onExpand, edenrichConds, loading, searchValue, au
         {/* <Button small icon='refresh'
             height={38}
             onClick={() => {
-                console.log('columns')
-                console.log(columns)
-                setColumns(enrichColumns(kanbanParams.columns))
-                setKostyl(true)
-                setTimeout(() => setKostyl(false), 300)
+                //setColumns(enrichColumns(kanbanParams.columns))
+                setLoading(true)
+                setTimeout(() => setLoading(false), 300)
             }
             }
         >Reload</Button> */}
@@ -330,12 +340,13 @@ export function Kanban({ data, onExpand, edenrichConds, loading, searchValue, au
                                                 <div
                                                     {...provided.droppableProps}
                                                     ref={provided.innerRef}
+                                                    className={styles.droppableColumn}
                                                     style={{
                                                         background: snapshot.isDraggingOver
                                                             ? "var(--button-dropdown-hover-bgr)"
                                                             : "var(--layout-bgr)",
-                                                        padding: 4,
-                                                        width: 250,
+                                                        //padding: 4,
+                                                        width: columnWidth,
                                                         minHeight: 500
                                                     }}
                                                 >

@@ -227,6 +227,7 @@
 }
 .card .cardInnerWrapper .cardText .cardHeader {
   max-width: 100%;
+  font-weight: bold;
   display: flex;
   align-items: center;
 }

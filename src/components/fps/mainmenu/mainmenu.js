@@ -99,6 +99,7 @@ export default function MainMenu(props) {
                         </div>
                 ))}
             </div>
+            {props.showUserButtons &&
             <div className={styles.horMenuProfile}>
                 {props.loggedIn ?
                     <ButtonDropDown rightSide icon='down' title={props.userName}>
@@ -123,7 +124,7 @@ export default function MainMenu(props) {
                         }}>
                         {props.logInButton.link}
                     </div>}
-            </div>
+            </div>}
         </div>
 
         <div className={`${styles.mainmenu} ${showMM && styles.show} ${isLeft ? styles.leftSide : ''} ${props.horizontal ? styles.hideHorizontal : ''}`}>

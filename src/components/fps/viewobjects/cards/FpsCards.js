@@ -322,9 +322,9 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
             />
             <Cards
                 currentBP={currentBP}
-                data={data}
                 dict={dict}
                 lang={lang}
+                data={data}
                 params={data.params}
                 searchValue={searchValue}
                 checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}

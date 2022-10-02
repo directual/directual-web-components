@@ -33,10 +33,10 @@ export function SignIn({ width, header, locale, facebookAuth, googleAuth, signUp
     return (
         <div className={styles.signinform} style={{ maxWidth: width || 'auto' }}>
             {header && <h1 style={{ marginBottom: 24 }}>{header || 'Sign In'}</h1>}
-            {googleAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{googleAuth}</ActionPanel>}
-            {facebookAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{facebookAuth}</ActionPanel>}
-            {otherAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{otherAuth}</ActionPanel>}
-            {(googleAuth || facebookAuth) && <FormSection title={dict[lang].profile.or} />}
+            {googleAuth && <ActionPanel column margin={{ top: 0, bottom: 0 }}>{googleAuth}</ActionPanel>}
+            {facebookAuth && <ActionPanel column margin={{ top: 0, bottom: 0 }}>{facebookAuth}</ActionPanel>}
+            {otherAuth && <ActionPanel column margin={{ top: 0, bottom: 0 }}>{otherAuth}</ActionPanel>}
+            {(googleAuth || facebookAuth || otherAuth) && loginFormEnabled && <FormSection title={dict[lang].profile.or} />}
             {loginFormEnabled && <form >
                 <Input
                     type={userNameFormat || 'string'}
@@ -76,16 +76,17 @@ export function SignUp(props) {
     const userNameLabel = props.userNameFormat == 'email' ? dict[lang].profile.email :
         props.userNameFormat == 'phone' ? dict[lang].profile.phone : dict[lang].profile.login
 
+    const loginFormEnabled = props.showLoginFrom !== false
 
     return (
         <div className={styles.signinform} style={{ maxWidth: props.width || 'auto' }}>
 
             {props.header && <h1 style={{ marginBottom: 24 }}>{props.header || 'Sign Up'}</h1>}
-            {props.googleAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{props.googleAuth}</ActionPanel>}
-            {props.facebookAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{props.facebookAuth}</ActionPanel>}
-            {props.otherAuth && <ActionPanel column margin={{ top: 0, bottom: 12 }}>{props.otherAuth}</ActionPanel>}
-            {(props.googleAuth || props.facebookAuth) && <FormSection title={dict[lang].profile.or} />}
-            <form>
+            {props.googleAuth && <ActionPanel column margin={{ top: 0, bottom: 0 }}>{props.googleAuth}</ActionPanel>}
+            {props.facebookAuth && <ActionPanel column margin={{ top: 0, bottom: 0 }}>{props.facebookAuth}</ActionPanel>}
+            {props.otherAuth && <ActionPanel column margin={{ top: 0, bottom: 6 }}>{props.otherAuth}</ActionPanel>}
+            {(props.googleAuth || props.facebookAuth || props.otherAuth) && loginFormEnabled && <FormSection title={dict[lang].profile.or} />}
+            {loginFormEnabled && <form>
                 <InputGroup>
                     <Input
                         label={dict[lang].profile.firstName}
@@ -136,7 +137,7 @@ export function SignUp(props) {
                         onClick={() => props.onSignUp(signUpDetails)}
                         accent icon='permission'>{props.header || 'Sign Up'}</Button>
                 </ActionPanel>
-            </form>
+            </form>}
         </div>
     )
 }
@@ -150,7 +151,7 @@ export function RestorePass(props) {
         props.userNameFormat == 'phone' ? dict[lang].profile.phone : dict[lang].profile.login
 
     return (
-        <div className={styles.signinform} style={{ maxWidth: props.width || 'auto' }}>
+        <div className={styles.form} style={{ maxWidth: props.width || 'auto' }}>
             <form>
                 {props.header && <h1 style={{ marginBottom: 24 }}>{props.header || 'Reset passwpord'}</h1>}
                 <Input
