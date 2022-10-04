@@ -11,6 +11,7 @@ import { Paging } from '../paging/paging'
 import Button from '../../button/button'
 import { dict } from '../../locale'
 import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
+import _ from "lodash";
 
 
 function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
@@ -68,8 +69,9 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
         for (const prop in msg) {
             if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) { msg[prop] = moment(msg[prop]) }
         }
+        let cloneData = _.isArray(msg) ? { _array_: [...msg] } : msg
         const message =
-            { ...msg, _id: 'form_' + id, _sl_name: sl, _options: options }
+            { ...cloneData, _id: 'form_' + id, _sl_name: sl, _options: options }
         console.log(message)
         console.log(pageInfo)
         setLoading(true)
@@ -117,7 +119,7 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
 
     const submit = (model, multiple) => {
 
-        if (multiple) { 
+        if (multiple) {
             sendMsg(model)
         } else {
             const saveModel = { ...model }
