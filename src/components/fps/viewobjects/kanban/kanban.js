@@ -71,8 +71,9 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, sea
         columns: [],
         dragndropOption: 'none'
     }
-    const columnWidth = _.get(kanbanParams,'columnWidth') || 250
+    const columnWidth = _.get(kanbanParams, 'columnWidth') || 250
     const columnField = _.get(kanbanParams, 'columnField') || ''
+    const sortField = _.get(kanbanParams, 'sortField') || ''
     const dragndropOption = _.get(kanbanParams, 'dragndropOption') || ''
     const [successWeb3, setSuccessWeb3] = useState(false)
     const [kostyl, setKostyl] = useState(false)
@@ -215,11 +216,12 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, sea
     const enrichColumns = cols => {
         const newCols = {}
         Array.isArray(cols) && (cols || []).forEach(i => {
-            const items = []
+            let items = []
             kanbanData.forEach((obj, index) => {
                 if (obj.id && (obj[columnField] == i.id || _.get(obj, `[${columnField}].id`) == i.id)) {
                     items.push({
                         id: obj.id,
+                        _itemsWeight: obj[sortField] || 0,
                         content: <Card
                             params={tableParams}
                             row={obj}
@@ -245,6 +247,7 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, sea
                     })
                 }
             })
+            items = _.orderBy(items, ['_itemsWeight'], ['asc'])
             if (!_.get(kanbanParams, `columnsVisibility[${i.id}].isHidden`)) { newCols[i.id] = { ...i, items: items } }
         })
         return newCols
@@ -256,6 +259,9 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, sea
     const onDragEnd = (result, columns, setColumns) => {
         if (!result.destination) return;
         const { source, destination } = result;
+
+        console.log('dnd result')
+        console.log(result)
 
         if (source.droppableId !== destination.droppableId) {
             const sourceColumn = columns[source.droppableId];
@@ -281,6 +287,10 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, sea
             const copiedItems = [...column.items];
             const [removed] = copiedItems.splice(source.index, 1);
             copiedItems.splice(destination.index, 0, removed);
+            const targetColumn = [...columns[source.droppableId].items]
+            targetColumn.forEach((item, index) => item[sortField] = index)
+            console.log('targetColumn')
+            console.log(targetColumn)
             setColumns({
                 ...columns,
                 [source.droppableId]: {
@@ -288,6 +298,7 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, sea
                     items: copiedItems
                 }
             });
+            submit(targetColumn.map(i => { return { id: i.id, [sortField]: i[sortField] } }), true)
         }
     };
 
@@ -308,6 +319,9 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, sea
             }, 300)
         }
     }, [])
+
+    console.log('columns')
+    console.log(columns)
 
     return (<React.Fragment>
         {/* <Button small icon='refresh'

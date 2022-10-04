@@ -527,6 +527,9 @@ export function Card({ row, params, getInitialStructureParams, data,
     : null
 
   // Render the card below:
+
+  const customCardHtml = object.id ? _.get(data, `cardCustomLayout[${object.id}]`) : "<code>Object ID is missed</code>"
+
   return (
     <div
       key={i}
@@ -578,7 +581,7 @@ export function Card({ row, params, getInitialStructureParams, data,
       >
         {params.cardLayoutType == 'html' ?
           <div
-            dangerouslySetInnerHTML={{ __html: params.cardCustomHtml }}
+            dangerouslySetInnerHTML={{ __html: customCardHtml }}
           />
           :
           <div

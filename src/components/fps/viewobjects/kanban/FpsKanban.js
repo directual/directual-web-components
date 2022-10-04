@@ -115,25 +115,30 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
         page !== 0 ? addUrlParam({ key: id + '_page', value: page }) : removeUrlParam(id + '_page')
     }
 
-    const submit = (model) => {
-        const saveModel = { ...model }
-        if (saveModel) {
-            for (const field in saveModel) {
-                console.log(field)
-                if (saveModel[field] && typeof saveModel[field] == 'object' && data.params.data.fields[field].dataType != 'date') {
-                    console.log('removing links')
-                    delete saveModel[field]
-                }  // removing links
-                if (writeFields.indexOf(field) == -1) {
-                    console.log(`removing ${field} as a field not for writing`)
-                    delete saveModel[field]
-                } // removing fields not for writing
-                if (data.params.data.fields[field] && data.params.data.fields[field].dataType == 'date' && typeof saveModel[field] == 'number') {
-                    saveModel[field] = moment(saveModel[field])
+    const submit = (model, multiple) => {
+
+        if (multiple) { 
+            sendMsg(model)
+        } else {
+            const saveModel = { ...model }
+            if (saveModel) {
+                for (const field in saveModel) {
+                    console.log(field)
+                    if (saveModel[field] && typeof saveModel[field] == 'object' && data.params.data.fields[field].dataType != 'date') {
+                        console.log('removing links')
+                        delete saveModel[field]
+                    }  // removing links
+                    if (writeFields.indexOf(field) == -1) {
+                        console.log(`removing ${field} as a field not for writing`)
+                        delete saveModel[field]
+                    } // removing fields not for writing
+                    if (data.params.data.fields[field] && data.params.data.fields[field].dataType == 'date' && typeof saveModel[field] == 'number') {
+                        saveModel[field] = moment(saveModel[field])
+                    }
                 }
             }
+            sendMsg(saveModel)
         }
-        sendMsg(saveModel)
     }
 
     const submitAction = (mapping, sl, options) => {
