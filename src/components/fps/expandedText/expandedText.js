@@ -4,7 +4,7 @@ import styles from './expandedText.module.css'
 export default function ExpandedText(props) {
     const [expanded, setExpanded] = useState(false)
     const maxTextLength = props.textLength || 300;
-    const fullTxt = props.children || ''
+    const fullTxt = props.children.toString() || ''
 
     return (
         <div className={`${styles.expandedText} ${props.className}`}>

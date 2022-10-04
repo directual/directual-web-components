@@ -269,7 +269,10 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, sea
             const sourceItems = [...sourceColumn.items];
             const destItems = [...destColumn.items];
             const [removed] = sourceItems.splice(source.index, 1);
+            removed
             destItems.splice(destination.index, 0, removed);
+            const targetColumn = [...destItems]
+            targetColumn.forEach((item, index) => item[sortField] = index)
             setColumns({
                 ...columns,
                 [source.droppableId]: {
@@ -281,16 +284,20 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, sea
                     items: destItems
                 }
             });
-            submit({ id: result.draggableId, [columnField]: result.destination.droppableId })
+            submit(targetColumn.map(i => {
+                if (i.id == removed.id) {
+                    return { id: i.id, [sortField]: i[sortField], [columnField]: result.destination.droppableId }
+                } else {
+                    return { id: i.id, [sortField]: i[sortField] }
+                }
+            }), true)
         } else {
             const column = columns[source.droppableId];
             const copiedItems = [...column.items];
             const [removed] = copiedItems.splice(source.index, 1);
             copiedItems.splice(destination.index, 0, removed);
-            const targetColumn = [...columns[source.droppableId].items]
+            const targetColumn = [...copiedItems]
             targetColumn.forEach((item, index) => item[sortField] = index)
-            console.log('targetColumn')
-            console.log(targetColumn)
             setColumns({
                 ...columns,
                 [source.droppableId]: {
