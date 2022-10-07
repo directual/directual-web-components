@@ -751,7 +751,7 @@ export function Card({ row, params, getInitialStructureParams, data,
                       ))}
                     </div>
                   ))}
-                {((cardBodyText || '').toString().length > 0) &&
+                {cardBodyText &&
                   // все также как у cardHeaderComment
                   (!Array.isArray(cardBodyText) ? (
                     <ExpandedText
