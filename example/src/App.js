@@ -3171,33 +3171,128 @@ const App = (props) => {
     }
 
     let exampleTable = {
-        "sl": "manageParticipationRequests",
-        "pageSize": "100",
+        "sl": "userToFront",
+        "pageSize": "10",
         "headerField": null,
         "params": {
-            "cardListLayout": "grid",
-            "cardHeaderComment": "",
-            "deleteField": "",
-            "cardBodyText": "",
-            "cardImage": false,
-            "cardImageField": "",
-            "cardImageType": "none",
-            "cardImageSize": 100,
-            "objectView": {},
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "Age",
+                        "fieldSysName": "Id",
                         "fetch": [],
-                        "sysName": "Age",
-                        "name": "Возраст",
+                        "sysName": "Id",
+                        "name": "Id",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "countDaysForDoingDiary",
+                        "fetch": [],
+                        "sysName": "countDaysForDoingDiary",
+                        "name": "Дней подряд",
                         "dataType": "number",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "cat_id",
+                        "fieldSysName": "dateLastEnter",
+                        "fetch": [],
+                        "sysName": "dateLastEnter",
+                        "name": "Дата последней активности",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "ru",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "deadLineSubscriptions",
+                        "fetch": [],
+                        "sysName": "deadLineSubscriptions",
+                        "name": "Срок подписки",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "ru",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "status",
+                        "fetch": [],
+                        "sysName": "status",
+                        "name": "Статус",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "tag",
                         "fetch": [
                             {
                                 "fieldSysName": "id",
@@ -3210,221 +3305,130 @@ const App = (props) => {
                                 "fetch": []
                             }
                         ],
-                        "sysName": "cat_id",
-                        "name": "Категория",
-                        "dataType": "link",
+                        "sysName": "tag",
+                        "name": "Тэги",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "link": "Categories"
+                        "link": "tagUser"
                     },
                     {
-                        "fieldSysName": "email",
+                        "fieldSysName": "timelastEnter",
                         "fetch": [],
-                        "sysName": "email",
-                        "name": " Электропочта",
-                        "dataType": "string",
-                        "format": "email",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "firstName",
-                        "fetch": [],
-                        "sysName": "firstName",
-                        "name": "Имя",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "lastName",
-                        "fetch": [],
-                        "sysName": "lastName",
-                        "name": "Фамилия",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "phone",
-                        "fetch": [],
-                        "sysName": "phone",
-                        "name": "Номер телефона",
-                        "dataType": "string",
-                        "format": "phone",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "school",
-                        "fetch": [],
-                        "sysName": "school",
-                        "name": "Школа",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "weight",
-                        "fetch": [],
-                        "sysName": "weight",
-                        "name": "Вес, кг.",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    }
-                ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "Age",
-                        "fetch": [],
-                        "sysName": "Age",
-                        "name": "Возраст",
+                        "sysName": "timelastEnter",
+                        "name": "",
                         "dataType": "number",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "cat_id",
+                        "fieldSysName": "userName",
                         "fetch": [],
-                        "sysName": "cat_id",
-                        "name": "Категория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "Categories"
-                    },
-                    {
-                        "fieldSysName": "email",
-                        "fetch": [],
-                        "sysName": "email",
-                        "name": " Электропочта",
+                        "sysName": "userName",
+                        "name": "userName",
                         "dataType": "string",
-                        "format": "email",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "firstName",
-                        "fetch": [],
-                        "sysName": "firstName",
-                        "name": "Имя",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "lastName",
-                        "fetch": [],
-                        "sysName": "lastName",
-                        "name": "Фамилия",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "phone",
-                        "fetch": [],
-                        "sysName": "phone",
-                        "name": "Номер телефона",
-                        "dataType": "string",
-                        "format": "phone",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "school",
-                        "fetch": [],
-                        "sysName": "school",
-                        "name": "Школа",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "weight",
-                        "fetch": [],
-                        "sysName": "weight",
-                        "name": "Вес, кг.",
-                        "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     }
                 ],
+                "writeFields": [],
                 "fields": {
-                    "Age": {
-                        "id": "Age",
-                        "content": "Возраст",
+                    "Id": {
+                        "id": "Id",
+                        "content": "Id",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "countDaysForDoingDiary": {
+                        "id": "countDaysForDoingDiary",
+                        "content": "Дней подряд",
                         "type": "field",
                         "dataType": "number",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "cat_id": {
-                        "id": "cat_id",
-                        "content": "Категория",
+                    "dateLastEnter": {
+                        "id": "dateLastEnter",
+                        "content": "Дата последней активности",
                         "type": "field",
-                        "dataType": "link",
+                        "dataType": "date",
                         "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "Categories",
-                        "actions": []
-                    },
-                    "email": {
-                        "id": "email",
-                        "content": " Электропочта",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "email",
-                        "formatOptions": {},
-                        "write": true,
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "ru",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "firstName": {
-                        "id": "firstName",
-                        "content": "Имя",
+                    "deadLineSubscriptions": {
+                        "id": "deadLineSubscriptions",
+                        "content": "Срок подписки",
                         "type": "field",
-                        "dataType": "string",
+                        "dataType": "date",
                         "format": "",
-                        "formatOptions": {},
-                        "write": true,
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "ru",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
                         "read": true,
                         "link": "",
                         "actions": []
@@ -3436,62 +3440,57 @@ const App = (props) => {
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "lastName": {
-                        "id": "lastName",
-                        "content": "Фамилия",
+                    "status": {
+                        "id": "status",
+                        "content": "Статус",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": "",
+                        "link": null,
                         "actions": []
                     },
-                    "phone": {
-                        "id": "phone",
-                        "content": "Номер телефона",
+                    "tag": {
+                        "id": "tag",
+                        "content": "Тэги",
                         "type": "field",
-                        "dataType": "string",
-                        "format": "phone",
+                        "dataType": "arrayLink",
+                        "format": "",
                         "formatOptions": {},
-                        "write": true,
+                        "read": true,
+                        "link": "tagUser",
+                        "actions": []
+                    },
+                    "timelastEnter": {
+                        "id": "timelastEnter",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "number",
+                        "format": "",
+                        "formatOptions": {},
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "school": {
-                        "id": "school",
-                        "content": "Школа",
+                    "userName": {
+                        "id": "userName",
+                        "content": "userName",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "weight": {
-                        "id": "weight",
-                        "content": "Вес, кг.",
-                        "type": "field",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "Age": {
+                    "countDaysForDoingDiary": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -3499,16 +3498,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "cat_id": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "quickSearchSL": "manageCategories"
-                    },
-                    "email": {
+                    "deadLineSubscriptions": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -3516,7 +3506,15 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "firstName": {
+                    "timelastEnter": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "userName": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -3532,7 +3530,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "lastName": {
+                    "linkToDocument": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -3540,7 +3538,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "phone": {
+                    "dateLastEnter": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -3548,7 +3546,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "school": {
+                    "status": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -3556,7 +3554,15 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "weight": {
+                    "tag": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "Id": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -3570,25 +3576,26 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "Age",
-                            "cat_id",
-                            "email",
-                            "firstName",
-                            "id",
-                            "lastName",
-                            "phone",
-                            "school",
-                            "weight"
+                            "countDaysForDoingDiary",
+                            "dateLastEnter",
+                            "deadLineSubscriptions",
+                            "status",
+                            "tag",
+                            "timelastEnter",
+                            "userName",
+                            "Id",
+                            "id"
                         ]
                     }
                 },
                 "columnOrder": [
                     "tab-1"
                 ],
-                "actions": []
+                "actions": [],
+                "cardsOrPage": "page"
             },
             "fields": {
-                "Age": {
+                "countDaysForDoingDiary": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -3596,46 +3603,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "cat_id": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "quickSearchSL": "manageCategories",
-                    "searchData": [
-                        {
-                            "key": "e092e123-df0e-469c-85eb-41cb138e404a",
-                            "value": "Мужчины до 62 кг."
-                        },
-                        {
-                            "key": "12e7af99-c307-41d7-b8e3-e22d911455f4",
-                            "value": "Мужчины до 70 кг."
-                        },
-                        {
-                            "key": "d139a7ec-a9d6-4ef2-9914-49d17790b90d",
-                            "value": "Мужчины до 85 кг."
-                        },
-                        {
-                            "key": "528bacd2-62eb-40a1-aec3-62c6a8dddbc4",
-                            "value": "Мужчины до 95 кг."
-                        },
-                        {
-                            "key": "246e702c-936c-49b0-893f-128ce4b0a17a",
-                            "value": "Мужчины абс."
-                        },
-                        {
-                            "key": "9e3703b6-3834-4d32-b5b3-c5bc570e49a5",
-                            "value": "Женщины до 60 кг."
-                        },
-                        {
-                            "key": "8cfd3eb8-8ec4-4408-b8e8-4c9bed0e11c8",
-                            "value": "Женщины абс."
-                        }
-                    ]
-                },
-                "email": {
+                "deadLineSubscriptions": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -3643,7 +3611,15 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "firstName": {
+                "timelastEnter": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "userName": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -3659,7 +3635,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "lastName": {
+                "linkToDocument": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -3667,7 +3643,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "phone": {
+                "dateLastEnter": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -3675,7 +3651,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "school": {
+                "status": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -3683,7 +3659,15 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "weight": {
+                "tag": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "Id": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -3695,17 +3679,121 @@ const App = (props) => {
             "tableParams": {
                 "readFields": [
                     {
-                        "fieldSysName": "Age",
+                        "fieldSysName": "Id",
                         "fetch": [],
-                        "sysName": "Age",
-                        "name": "Возраст",
+                        "sysName": "Id",
+                        "name": "Id",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "countDaysForDoingDiary",
+                        "fetch": [],
+                        "sysName": "countDaysForDoingDiary",
+                        "name": "Дней подряд",
                         "dataType": "number",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "cat_id",
+                        "fieldSysName": "dateLastEnter",
+                        "fetch": [],
+                        "sysName": "dateLastEnter",
+                        "name": "Дата последней активности",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "ru",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "deadLineSubscriptions",
+                        "fetch": [],
+                        "sysName": "deadLineSubscriptions",
+                        "name": "Срок подписки",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "ru",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "status",
+                        "fetch": [],
+                        "sysName": "status",
+                        "name": "Статус",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "tag",
                         "fetch": [
                             {
                                 "fieldSysName": "id",
@@ -3718,214 +3806,123 @@ const App = (props) => {
                                 "fetch": []
                             }
                         ],
-                        "sysName": "cat_id",
-                        "name": "Категория",
-                        "dataType": "link",
+                        "sysName": "tag",
+                        "name": "Тэги",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "link": "Categories"
+                        "link": "tagUser"
                     },
                     {
-                        "fieldSysName": "email",
+                        "fieldSysName": "timelastEnter",
                         "fetch": [],
-                        "sysName": "email",
-                        "name": " Электропочта",
-                        "dataType": "string",
-                        "format": "email",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "firstName",
-                        "fetch": [],
-                        "sysName": "firstName",
-                        "name": "Имя",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "lastName",
-                        "fetch": [],
-                        "sysName": "lastName",
-                        "name": "Фамилия",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "phone",
-                        "fetch": [],
-                        "sysName": "phone",
-                        "name": "Номер телефона",
-                        "dataType": "string",
-                        "format": "phone",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "school",
-                        "fetch": [],
-                        "sysName": "school",
-                        "name": "Школа",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "weight",
-                        "fetch": [],
-                        "sysName": "weight",
-                        "name": "Вес, кг.",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    }
-                ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "Age",
-                        "fetch": [],
-                        "sysName": "Age",
-                        "name": "Возраст",
+                        "sysName": "timelastEnter",
+                        "name": "",
                         "dataType": "number",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "cat_id",
+                        "fieldSysName": "userName",
                         "fetch": [],
-                        "sysName": "cat_id",
-                        "name": "Категория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "Categories"
-                    },
-                    {
-                        "fieldSysName": "email",
-                        "fetch": [],
-                        "sysName": "email",
-                        "name": " Электропочта",
+                        "sysName": "userName",
+                        "name": "userName",
                         "dataType": "string",
-                        "format": "email",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "firstName",
-                        "fetch": [],
-                        "sysName": "firstName",
-                        "name": "Имя",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "lastName",
-                        "fetch": [],
-                        "sysName": "lastName",
-                        "name": "Фамилия",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "phone",
-                        "fetch": [],
-                        "sysName": "phone",
-                        "name": "Номер телефона",
-                        "dataType": "string",
-                        "format": "phone",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "school",
-                        "fetch": [],
-                        "sysName": "school",
-                        "name": "Школа",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "weight",
-                        "fetch": [],
-                        "sysName": "weight",
-                        "name": "Вес, кг.",
-                        "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     }
                 ],
+                "writeFields": [],
                 "fields": {
-                    "Age": {
-                        "id": "Age",
-                        "content": "Возраст",
+                    "Id": {
+                        "id": "Id",
+                        "content": "Id",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "countDaysForDoingDiary": {
+                        "id": "countDaysForDoingDiary",
+                        "content": "Дней подряд",
                         "dataType": "number",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": ""
                     },
-                    "cat_id": {
-                        "id": "cat_id",
-                        "content": "Категория",
-                        "dataType": "link",
+                    "dateLastEnter": {
+                        "id": "dateLastEnter",
+                        "content": "Дата последней активности",
+                        "dataType": "date",
                         "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "Categories"
-                    },
-                    "email": {
-                        "id": "email",
-                        "content": " Электропочта",
-                        "dataType": "string",
-                        "format": "email",
-                        "formatOptions": {},
-                        "write": true,
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "ru",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
                         "read": true,
                         "link": ""
                     },
-                    "firstName": {
-                        "id": "firstName",
-                        "content": "Имя",
-                        "dataType": "string",
+                    "deadLineSubscriptions": {
+                        "id": "deadLineSubscriptions",
+                        "content": "Срок подписки",
+                        "dataType": "date",
                         "format": "",
-                        "formatOptions": {},
-                        "write": true,
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "ru",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
                         "read": true,
                         "link": ""
                     },
@@ -3935,61 +3932,48 @@ const App = (props) => {
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": ""
                     },
-                    "lastName": {
-                        "id": "lastName",
-                        "content": "Фамилия",
+                    "status": {
+                        "id": "status",
+                        "content": "Статус",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": ""
+                        "link": null
                     },
-                    "phone": {
-                        "id": "phone",
-                        "content": "Номер телефона",
-                        "dataType": "string",
-                        "format": "phone",
+                    "tag": {
+                        "id": "tag",
+                        "content": "Тэги",
+                        "dataType": "arrayLink",
+                        "format": "",
                         "formatOptions": {},
-                        "write": true,
+                        "read": true,
+                        "link": "tagUser"
+                    },
+                    "timelastEnter": {
+                        "id": "timelastEnter",
+                        "content": "",
+                        "dataType": "number",
+                        "format": "",
+                        "formatOptions": {},
                         "read": true,
                         "link": ""
                     },
-                    "school": {
-                        "id": "school",
-                        "content": "Школа",
+                    "userName": {
+                        "id": "userName",
+                        "content": "userName",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "weight": {
-                        "id": "weight",
-                        "content": "Вес, кг.",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": ""
                     }
                 },
                 "fieldParams": {
-                    "Age": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "cat_id": {
+                    "countDaysForDoingDiary": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -3997,7 +3981,15 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "email": {
+                    "deadLineSubscriptions": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "timelastEnter": {
                         "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -4005,8 +3997,40 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "firstName": {
+                    "userName": {
                         "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "dateLastEnter": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "status": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "tag": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "Id": {
+                        "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
                         "colorCode": false,
@@ -4020,50 +4044,18 @@ const App = (props) => {
                         "colorCode": false,
                         "colorFormat": "square",
                         "colorSize": 40
-                    },
-                    "lastName": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "phone": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "school": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "weight": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
                     }
                 },
                 "fieldOrder": [
-                    "lastName",
-                    "firstName",
-                    "cat_id",
-                    "weight",
-                    "school",
-                    "Age",
-                    "email",
-                    "id",
-                    "phone"
+                    "userName",
+                    "status",
+                    "deadLineSubscriptions",
+                    "countDaysForDoingDiary",
+                    "dateLastEnter",
+                    "tag",
+                    "timelastEnter",
+                    "Id",
+                    "id"
                 ]
             }
         },
@@ -4071,12 +4063,40 @@ const App = (props) => {
         "actions": null,
         "headers": [
             {
-                "sysName": "Age",
-                "name": "Возраст",
-                "dataType": "number",
-                "id": "67461662292221257",
+                "sysName": "Id",
+                "dataType": "string",
+                "name": "Id",
+                "id": "8",
                 "link": "",
-                "group": "0",
+                "group": "94544219",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": "Legacy fields (retained for backward compatibility)",
+                "array": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "countDaysForDoingDiary",
+                "dataType": "number",
+                "name": "Дней подряд",
+                "id": "40241660594588962",
+                "link": "",
+                "group": "94544219",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
@@ -4090,103 +4110,129 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "typeVariable": {},
-                "json": false,
+                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "indexExists": false,
-                "array": false
+                "typeVariable": {},
+                "json": false
             },
             {
-                "sysName": "cat_id",
-                "name": "Категория",
-                "dataType": "link",
-                "id": "88291663411323412",
-                "link": "Categories",
-                "group": "0",
+                "sysName": "dateLastEnter",
+                "dataType": "date",
+                "name": "Дата последней активности",
+                "id": "78481663168896784",
+                "link": "",
+                "group": "94544219",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 25,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "ru",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD/MM/Y",
+                    "timeFormat": " HH:mm",
+                    "isUTC": "false"
+                },
+                "groupName": null,
+                "array": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "deadLineSubscriptions",
+                "dataType": "date",
+                "name": "Срок подписки",
+                "id": "73201662130711053",
+                "link": "",
+                "group": "94544219",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 8,
+                "order": 16,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "ru",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD/MM/Y",
+                    "timeFormat": " HH:mm",
+                    "isUTC": "false"
+                },
                 "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
+                "array": false,
                 "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "email",
-                "name": " Электропочта",
-                "dataType": "string",
-                "id": "81671662292185465",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 7,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "email",
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "firstName",
-                "name": "Имя",
-                "dataType": "string",
-                "id": "83811662292152973",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
                 "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
+                "json": false
             },
             {
                 "sysName": "id",
-                "name": "id",
                 "dataType": "id",
-                "id": "0",
+                "name": "id",
+                "id": "9",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -4202,75 +4248,103 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "typeVariable": {},
-                "json": false,
+                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "indexExists": false,
-                "array": false
+                "typeVariable": {},
+                "json": false
             },
             {
-                "sysName": "lastName",
-                "name": "Фамилия",
+                "sysName": "status",
                 "dataType": "string",
-                "id": "33031662292146402",
-                "link": "",
-                "group": "0",
-                "tags": "",
+                "name": "Статус",
+                "id": "14351663168765897",
+                "link": null,
+                "group": "94544219",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 1,
+                "order": 24,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": null,
                 "groupName": null,
-                "typeVariable": {},
-                "json": false,
+                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "indexExists": false,
-                "array": false
+                "typeVariable": {},
+                "json": false
             },
             {
-                "sysName": "phone",
-                "name": "Номер телефона",
-                "dataType": "string",
-                "id": "39111662292175533",
-                "link": "",
-                "group": "0",
-                "tags": "",
+                "sysName": "tag",
+                "dataType": "arrayLink",
+                "name": "Тэги",
+                "id": "26921663168756688",
+                "link": "tagUser",
+                "group": "94544219",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 5,
+                "order": 23,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
-                "format": "phone",
-                "formatOptions": {},
+                "format": null,
+                "formatOptions": null,
                 "groupName": null,
+                "array": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
                 "typeVariable": {},
-                "json": false,
+                "json": false
+            },
+            {
+                "sysName": "timelastEnter",
+                "dataType": "number",
+                "name": "",
+                "id": "95811663159370958",
+                "link": "",
+                "group": "94544219",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 22,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "indexExists": false,
-                "array": false
+                "typeVariable": {},
+                "json": false
             },
             {
-                "sysName": "school",
-                "name": "Школа",
+                "sysName": "userName",
                 "dataType": "string",
-                "id": "78291662292194098",
+                "name": "userName",
+                "id": "3",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -4286,379 +4360,82 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "typeVariable": {},
-                "json": false,
+                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "weight",
-                "name": "Вес, кг.",
-                "dataType": "decimal",
-                "id": "84471662292164433",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
                 "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
+                "json": false
             }
         ],
         "data": [
             {
-                "school": "Cheng Long",
-                "weight": 135,
-                "email": "nikolaevnick@yandex.ru",
-                "cat_id": {
-                    "name": "Мужчины абс.",
-                    "id": "246e702c-936c-49b0-893f-128ce4b0a17a"
-                },
-                "lastName": "Николаев",
-                "firstName": "Николай",
-                "id": "6c0f009a-96be-411a-b5b2-85ca29dcbbbe",
-                "Age": 37,
-                "phone": "79036211282"
+                "Id": "1087968824",
+                "userName": "GroupAnonymousBot",
+                "id": "1087968824"
             },
             {
-                "school": "Ян",
-                "weight": 120,
-                "email": "79265299797@yandex.ru",
-                "cat_id": {
-                    "name": "Мужчины абс.",
-                    "id": "246e702c-936c-49b0-893f-128ce4b0a17a"
-                },
-                "lastName": "Лебедев",
-                "firstName": "Антон",
-                "id": "33efc974-3159-4eb8-a976-6cc73727e180",
-                "Age": 40,
-                "phone": "79265299797"
+                "Id": "1491084555",
+                "tag": [
+                    {
+                        "name": "true",
+                        "id": "231f2715-42d6-4511-9257-bfff684e0e5e"
+                    }
+                ],
+                "id": "1491084555",
+                "timelastEnter": 1663655100,
+                "dateLastEnter": 1663655100000,
+                "countDaysForDoingDiary": 1,
+                "userName": "dimitrynov"
             },
             {
-                "school": "Cheng Long",
-                "weight": 115,
-                "email": "Nikif87@yandex.ru",
-                "lastName": "Никифоров",
-                "firstName": "Денис",
-                "id": "8a9c70b1-124a-458f-8e4f-ac9284bc7f75",
-                "Age": 35,
-                "phone": "89268441109",
-                "cat_id": ""
+                "Id": "21847524",
+                "id": "21847524",
+                "timelastEnter": 1663168095,
+                "countDaysForDoingDiary": 1,
+                "userName": "Y3sW0r1d"
             },
             {
-                "school": "АКБИ",
-                "weight": 95,
-                "email": "igor20034@gmail.com",
-                "lastName": "Ковалев",
-                "firstName": "Игорь",
-                "id": "5c5ade11-0dd3-4b86-9d24-f74c1453182b",
-                "Age": 19,
-                "phone": "89851427251",
-                "cat_id": ""
+                "Id": "145320292",
+                "deadLineSubscriptions": 1665014400000,
+                "id": "145320292",
+                "timelastEnter": 1664732633,
+                "dateLastEnter": 1664732633000,
+                "countDaysForDoingDiary": 2,
+                "userName": "siliverstova"
             },
             {
-                "weight": 90,
-                "email": "Obzzzen@gmail.com",
-                "lastName": "Сирош",
-                "firstName": "Влад",
-                "id": "fedba457-5bfc-4799-8854-78ef8ad94859",
-                "Age": 29,
-                "phone": "89370930343",
-                "cat_id": "",
-                "school": ""
+                "Id": "548543973",
+                "id": "548543973",
+                "timelastEnter": 1663334797,
+                "countDaysForDoingDiary": 3,
+                "userName": "allaboutally"
             },
             {
-                "school": "Cheng Long",
-                "weight": 89,
-                "email": "Sidorov.taiji@gmailcom",
-                "lastName": "Сидоров",
-                "firstName": "Владимир",
-                "id": "5bfef3b4-bf7a-41ee-8647-4af96dbed377",
-                "Age": 45,
-                "phone": "79689260389",
-                "cat_id": ""
+                "Id": "750655600",
+                "timelastEnter": 1663167479,
+                "userName": "aantonostrovsky",
+                "id": "750655600"
             },
             {
-                "school": "Молодой дракон",
-                "weight": 87,
-                "email": "mihaillepeschkin@yandex.ru",
-                "lastName": "Лепёшкин",
-                "firstName": "Михаил",
-                "id": "5704a427-28e4-4566-ab02-07081a85fec3",
-                "Age": 16,
-                "phone": "89154836522",
-                "cat_id": ""
+                "Id": "190142864",
+                "tag": [],
+                "deadLineSubscriptions": 1667606400000,
+                "id": "190142864",
+                "timelastEnter": 1665050684,
+                "dateLastEnter": 1665050685000,
+                "countDaysForDoingDiary": 1,
+                "userName": "evge_neka"
             },
             {
-                "school": "Хануман ",
-                "weight": 85,
-                "email": "g.bespoyasniy@gmail.com ",
-                "lastName": "Беспоясный",
-                "firstName": "Глеб",
-                "id": "7a358b3b-0b28-4b60-94ae-bf4fcff66fff",
-                "Age": 24,
-                "phone": "79154486094",
-                "cat_id": ""
-            },
-            {
-                "school": "Cheng Long",
-                "weight": 85,
-                "email": "gt.taiji@gmail.com",
-                "lastName": "Тюляев",
-                "firstName": "Георгий",
-                "id": "307c8aae-01af-4154-86ac-9360e6b1c5ce",
-                "Age": 29,
-                "phone": "79262075652",
-                "cat_id": ""
-            },
-            {
-                "school": "Федерация УШУ г. Зеленодольска Республика Татарстан",
-                "weight": 84,
-                "email": "roman429916@mail.ru",
-                "lastName": "Курятков",
-                "firstName": "Роман",
-                "id": "783f31f0-2ca8-43d5-aec7-f4fb3942af2d",
-                "Age": 46,
-                "phone": "89033429916",
-                "cat_id": ""
-            },
-            {
-                "school": "Парящий дракон",
-                "weight": 82,
-                "email": "Bulat37@mail.ru",
-                "lastName": "Равилов",
-                "firstName": "Булат",
-                "id": "e4971275-cfbd-4e02-9ab2-e5096efdd52d",
-                "Age": 39,
-                "phone": "89269229827",
-                "cat_id": ""
-            },
-            {
-                "school": "Чен Лун",
-                "weight": 78,
-                "email": "a.yurlov@mail.ru",
-                "lastName": "Юрлов",
-                "firstName": "Александр",
-                "id": "1b4dc83d-5a5d-485b-9d8b-9b24ebb24188",
-                "Age": 44,
-                "phone": "89154496455",
-                "cat_id": ""
-            },
-            {
-                "school": "Cheng Long",
-                "weight": 74,
-                "email": "antonjarall@mail.ru",
-                "lastName": "Антонов",
-                "firstName": "Антон",
-                "id": "9b7497cb-2aaf-4530-b1a4-e4699e963f19",
-                "Age": 29,
-                "phone": "89775749918",
-                "cat_id": ""
-            },
-            {
-                "school": "Hanuman",
-                "weight": 69,
-                "lastName": "Чумаченко",
-                "firstName": "Дмитрий",
-                "id": "32b6836f-15e6-4a46-a0d3-e1b81e264570",
-                "Age": 34,
-                "phone": "89055227033",
-                "cat_id": "",
-                "email": ""
-            },
-            {
-                "school": "Cheng Long",
-                "weight": 69,
-                "email": "ver069@bk.ru",
-                "lastName": "Веретенников",
-                "firstName": "Роман",
-                "id": "bcafc238-7627-4636-90a4-fa4b8d0c6a19",
-                "Age": 39,
-                "phone": "89189105421",
-                "cat_id": ""
-            },
-            {
-                "school": "Содружество воинских духовных традиций",
-                "weight": 69,
-                "email": "voin9uha@gmail.com",
-                "lastName": "Терентьев",
-                "firstName": "Данил",
-                "id": "e1ee74c2-3b38-4452-952c-7e43a0951ba7",
-                "Age": 29,
-                "phone": "89852186796",
-                "cat_id": ""
-            },
-            {
-                "school": "Парящий дракон - Калининград",
-                "weight": 69,
-                "email": "Shenlungdao39@mail.ru",
-                "lastName": "Аскаров",
-                "firstName": "Андрей",
-                "id": "5242cf16-a4da-4d8a-bf60-a782defe6833",
-                "Age": 37,
-                "phone": "89097925098",
-                "cat_id": ""
-            },
-            {
-                "school": "клуб Кокон, школа Илицюань",
-                "weight": 67,
-                "email": "dumkaptaha@gmail.com",
-                "lastName": "Балицкая",
-                "firstName": "Екатерина",
-                "id": "2e0a839b-3a61-4b2c-9bb5-1c13f64d569f",
-                "Age": 37,
-                "phone": "89859724852",
-                "cat_id": ""
-            },
-            {
-                "school": "Cheng Long / АКБИ",
-                "weight": 67,
-                "email": "Wulava@gmail.com",
-                "lastName": "Лавлинский",
-                "firstName": "Вадим",
-                "id": "26611a73-db73-4940-ab34-fa27d36d3dbe",
-                "Age": 30,
-                "phone": "79175343717",
-                "cat_id": ""
-            },
-            {
-                "school": "Школа Ушу Максима Пулатова",
-                "weight": 66,
-                "email": "wushu_pulatov_school@mail.ru",
-                "lastName": "Пулатов",
-                "firstName": "Максим",
-                "id": "f227d23d-1b5d-4706-aa80-34242b443e51",
-                "Age": 31,
-                "phone": "79011915069",
-                "cat_id": ""
-            },
-            {
-                "school": " Fight Nights",
-                "weight": 65,
-                "email": "inhim33@yandex.ru",
-                "lastName": "Белозеров",
-                "firstName": "Олег",
-                "id": "c051c06c-f6ee-468d-82dd-27106209e3ec",
-                "Age": 24,
-                "phone": "79099089886",
-                "cat_id": ""
-            },
-            {
-                "school": "Молодой Дракон",
-                "weight": 64,
-                "email": "obench@yandex.ru",
-                "lastName": "Бенч",
-                "firstName": "Оксана",
-                "id": "522c5175-f89c-46bb-bd15-9878c54f0e03",
-                "Age": 43,
-                "phone": "74955422628",
-                "cat_id": ""
-            },
-            {
-                "school": "Брандер",
-                "weight": 61,
-                "email": "Midawad.go@gmail.com",
-                "lastName": "Фатин",
-                "firstName": "Вадим",
-                "id": "a2101270-5edd-48b6-86f4-35269c06f5ed",
-                "Age": 30,
-                "phone": "89099888353",
-                "cat_id": ""
-            },
-            {
-                "school": "Содружество Воинских духовных традиций ",
-                "weight": 60,
-                "email": "malax_ov@mail.ru",
-                "lastName": "Малахов",
-                "firstName": "Сергей",
-                "id": "91e9efec-d2fd-4558-92bf-42a62a570109",
-                "Age": 34,
-                "phone": "89998357619",
-                "cat_id": ""
-            },
-            {
-                "school": "АКБИ",
-                "weight": 58,
-                "lastName": "Бакотина",
-                "firstName": "Ксения",
-                "id": "ccc0a087-aac1-44f3-834c-5493b9818a13",
-                "Age": 15,
-                "phone": "89162186320",
-                "cat_id": "",
-                "email": ""
-            },
-            {
-                "school": "Сергиев Посад",
-                "weight": 56,
-                "email": "marinazayzay@gmail.com",
-                "lastName": "Никитина",
-                "firstName": "Марина",
-                "id": "94c4976c-91c5-4262-b9d0-332de551705f",
-                "Age": 31,
-                "phone": "89104032227",
-                "cat_id": ""
-            },
-            {
-                "school": "Школа традиционного ушу \"Лунфэн\"",
-                "weight": 56,
-                "email": "beygoshut@gmail.com",
-                "lastName": "Гаврилов",
-                "firstName": "Михаил",
-                "id": "ee640364-2b93-417b-91d9-60d8ee9f465d",
-                "Age": 18,
-                "phone": "89151295740",
-                "cat_id": ""
-            },
-            {
-                "school": "Cheng Long",
-                "weight": 55,
-                "email": "batyr_minkhanov@mail.ru",
-                "lastName": "Минханов",
-                "firstName": "Батыр",
-                "id": "5c587368-5d11-4483-bd7e-7a4ec2e4f9cc",
-                "Age": 31,
-                "phone": "89030010234",
-                "cat_id": ""
-            },
-            {
-                "school": "WeGym Синица (тайцзицюань)",
-                "weight": 51,
-                "email": "vadimponomarev.n@gmail.com",
-                "lastName": "Пономарёв ",
-                "firstName": "Вадим",
-                "id": "fbe4f602-2d46-46af-bed8-1755e6f92280",
-                "Age": 51,
-                "phone": "89263866731",
-                "cat_id": ""
-            },
-            {
-                "school": "Практика Чэнь",
-                "weight": 50,
-                "email": "Lashkovae@mail.ru",
-                "lastName": "Лашкова",
-                "firstName": "Екатерина",
-                "id": "9b1e0e8b-6e24-40c9-be73-f2f5bed1bbc0",
-                "Age": 48,
-                "phone": "79219179439",
-                "cat_id": ""
+                "Id": "347261120",
+                "deadLineSubscriptions": 1696982400000,
+                "id": "347261120",
+                "timelastEnter": 1665497296,
+                "dateLastEnter": 1665497296000,
+                "countDaysForDoingDiary": 1,
+                "userName": "psy_Timur"
             }
         ],
         "totalPages": 1,
@@ -4666,85 +4443,75 @@ const App = (props) => {
         "error": null,
         "fieldScheme": [
             [
-                "Age",
-                99132583
+                "Id",
+                99125791
             ],
             [
-                "cat_id.id",
-                99019611
+                "countDaysForDoingDiary",
+                99125791
             ],
             [
-                "cat_id.name",
-                99019611
+                "dateLastEnter",
+                99125791
             ],
             [
-                "email",
-                99132583
-            ],
-            [
-                "firstName",
-                99132583
+                "deadLineSubscriptions",
+                99125791
             ],
             [
                 "id",
-                99132583
+                99125791
             ],
             [
-                "lastName",
-                99132583
+                "status",
+                99125791
             ],
             [
-                "phone",
-                99132583
+                "tag.id",
+                99139623
             ],
             [
-                "school",
-                99132583
+                "tag.name",
+                99139623
             ],
             [
-                "weight",
-                99132583
+                "timelastEnter",
+                99125791
+            ],
+            [
+                "userName",
+                99125791
             ]
         ],
-        "writeFields": [
-            "Age",
-            "cat_id",
-            "email",
-            "firstName",
-            "id",
-            "lastName",
-            "phone",
-            "school",
-            "weight"
-        ],
+        "writeFields": [],
         "structures": {
-            "99019611": {
-                "networkID": 9312,
-                "sysName": "Categories",
-                "name": "Категории",
-                "id": 99019611,
-                "dateCreated": "2021-09-05T12:37:13Z",
+            "99125791": {
+                "networkID": 13864,
+                "sysName": "TUser",
+                "name": "Users Telegram",
+                "id": 99125791,
+                "dateCreated": "2022-08-08T13:13:17Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"isDelete\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"23961630845476759\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Название категории\",\"id\":\"34241630845441302\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"participants\",\"dataType\":\"number\",\"name\":\"Количество участников\",\"id\":\"83591630845451672\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"youtubeLiveStream\",\"dataType\":\"string\",\"name\":\"Live-видео\",\"id\":\"88621662968088719\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"youTube\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+                "jsonObject": "[{\"sysName\":\"lastMessageKey\",\"name\":\"lastMessageKey\",\"dataType\":\"link\",\"id\":\"1\",\"link\":\"TMessageIn\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"goupOfFood\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"10361660379143428\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"subscriptionsIDs\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"12171662130484927\",\"link\":\"subscription\",\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"status\",\"name\":\"Статус\",\"dataType\":\"string\",\"id\":\"14351663168765897\",\"link\":null,\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":24,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"diaryEntryId\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"18831660159778319\",\"link\":\"diaryEntry\",\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"statisticsId\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"19751660598343798\",\"link\":\"statistics\",\"group\":\"94544219\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"lastChatKey\",\"name\":\"lastChatKey\",\"dataType\":\"link\",\"id\":\"2\",\"link\":\"TChat\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"tag\",\"name\":\"Тэги\",\"dataType\":\"arrayLink\",\"id\":\"26921663168756688\",\"link\":\"tagUser\",\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":23,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"quetionaryId\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"28811660147262726\",\"link\":\"quetionary\",\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"paymentsIDs\",\"name\":\"Платежи\",\"dataType\":\"arrayLink\",\"id\":\"29061662128104754\",\"link\":\"payment\",\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"userName\",\"name\":\"userName\",\"dataType\":\"string\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"dateString\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"35461663177518453\",\"link\":null,\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":27,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"lastMessage\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"39871663157428983\",\"link\":\"TMessageIn\",\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"lastName\",\"name\":\"lastName\",\"dataType\":\"string\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"countDaysForDoingDiary\",\"name\":\"Дней подряд\",\"dataType\":\"number\",\"id\":\"40241660594588962\",\"link\":\"\",\"group\":\"94544219\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"lastEditEatMessage\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"47741663157153836\",\"link\":\"TMessageIn\",\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"callBackId\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"47951660743072010\",\"link\":\"TMessageIn\",\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"firstName\",\"name\":\"firstName\",\"dataType\":\"string\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"paymentMethodId\",\"name\":\"Сохраненный способ оплаты \",\"dataType\":\"string\",\"id\":\"52511662128137518\",\"link\":null,\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"botName\",\"name\":\"botName\",\"dataType\":\"string\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"deleteMessage\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"64131661501022869\",\"link\":\"\",\"group\":\"94544219\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"isAutoPayment\",\"name\":\"Автоплатеж \",\"dataType\":\"boolean\",\"id\":\"67271662128163964\",\"link\":\"\",\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"appUserIs\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"68821660139695833\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"botId\",\"name\":\"botId\",\"dataType\":\"string\",\"id\":\"7\",\"link\":\"\",\"group\":\"94544219\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Legacy fields (retained for backward compatibility)\",\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"deadLineSubscriptions\",\"name\":\"Срок подписки\",\"dataType\":\"date\",\"id\":\"73201662130711053\",\"link\":\"\",\"group\":\"94544219\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"feeling\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"75811660927125686\",\"link\":\"\",\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"dateLastEnter\",\"name\":\"Дата последней активности\",\"dataType\":\"date\",\"id\":\"78481663168896784\",\"link\":\"\",\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":25,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"countWithOutBehVIOR\",\"name\":\"\",\"dataType\":\"number\",\"id\":\"79631663172195424\",\"link\":\"\",\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":26,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"Id\",\"name\":\"Id\",\"dataType\":\"string\",\"id\":\"8\",\"link\":\"\",\"group\":\"94544219\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Legacy fields (retained for backward compatibility)\",\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"timeLUstEnterEat\",\"name\":\"\",\"dataType\":\"number\",\"id\":\"81251663158340714\",\"link\":\"\",\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"currentSubscriptions\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"83181662130587142\",\"link\":\"payment\",\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"6hours\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"85531663157182239\",\"link\":\"\",\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"ticketId\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"86101660933765567\",\"link\":\"ticket\",\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"oshushenia\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"86501661430532317\",\"link\":\"\",\"group\":\"94544219\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"countButtonBack\",\"name\":\"\",\"dataType\":\"number\",\"id\":\"89251664528005665\",\"link\":\"\",\"group\":\"94544219\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":28,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"9\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"show\",\"name\":\"Показывать нарушения\",\"dataType\":\"boolean\",\"id\":\"90741660589902601\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"24hours\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"92821663157195413\",\"link\":\"\",\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"timelastEnter\",\"name\":\"\",\"dataType\":\"number\",\"id\":\"95811663159370958\",\"link\":\"\",\"group\":\"94544219\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":22,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false}]",
+                "jsonGroupSettings": "[{\"id\":94544219,\"name\":\"Legacy fields (retained for backward compatibility)\",\"order\":null}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"userName\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2022-09-12T07:35:07Z",
-                "createBy": 21,
-                "changedBy": 21,
+                "dateChanged": "2022-10-11T14:14:29Z",
+                "createBy": 0,
+                "changedBy": 6452,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "id",
                     "dataType": "id",
-                    "id": "0",
+                    "name": "id",
+                    "id": "9",
                     "link": "",
                     "group": "0",
                     "tags": "",
@@ -4760,42 +4527,42 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "typeVariable": {},
-                    "json": false,
+                    "array": false,
+                    "indexExists": false,
                     "linkOrArrayLinkType": false,
                     "linkType": false,
                     "arrayLink": false,
-                    "indexExists": false,
-                    "array": false
+                    "typeVariable": {},
+                    "json": false
                 },
-                "folderId": 33657238
+                "folderId": 33710557
             },
-            "99132583": {
-                "networkID": 9312,
-                "sysName": "participation_requests",
-                "name": "Заявки на участие",
-                "id": 99132583,
-                "dateCreated": "2022-09-04T11:48:32Z",
+            "99139623": {
+                "networkID": 13864,
+                "sysName": "tagUser",
+                "name": "tagUser",
+                "id": 99139623,
+                "dateCreated": "2022-10-11T14:11:19Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"lastName\",\"dataType\":\"string\",\"name\":\"Фамилия\",\"id\":\"33031662292146402\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"phone\",\"dataType\":\"string\",\"name\":\"Номер телефона\",\"id\":\"39111662292175533\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"phone\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"Age\",\"dataType\":\"number\",\"name\":\"Возраст\",\"id\":\"67461662292221257\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"school\",\"dataType\":\"string\",\"name\":\"Школа\",\"id\":\"78291662292194098\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"email\",\"dataType\":\"string\",\"name\":\" Электропочта\",\"id\":\"81671662292185465\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"email\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"firstName\",\"dataType\":\"string\",\"name\":\"Имя\",\"id\":\"83811662292152973\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"weight\",\"dataType\":\"decimal\",\"name\":\"Вес, кг.\",\"id\":\"84471662292164433\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false},{\"sysName\":\"cat_id\",\"dataType\":\"link\",\"name\":\"Категория\",\"id\":\"88291663411323412\",\"link\":\"Categories\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"lastName\"},{\"sysName\":\"firstName\"}]",
-                "jsonSettings": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"isActive\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"76001659971806736\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"name\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"76941659971804337\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false}]",
+                "jsonGroupSettings": "[]",
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+                "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2022-09-17T10:42:18Z",
-                "createBy": 21,
-                "changedBy": 1,
+                "dateChanged": "2022-10-11T14:16:58Z",
+                "createBy": 6452,
+                "changedBy": 6452,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "id",
                     "dataType": "id",
+                    "name": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -4812,276 +4579,25 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "typeVariable": {},
-                    "json": false,
+                    "array": false,
+                    "indexExists": false,
                     "linkOrArrayLinkType": false,
                     "linkType": false,
                     "arrayLink": false,
-                    "indexExists": false,
-                    "array": false
+                    "typeVariable": {},
+                    "json": false
                 },
-                "folderId": 0
+                "folderId": 33710567
             }
         },
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
-        "fileds": [
-            {
-                "sysName": "Age",
-                "name": "Возраст",
-                "dataType": "number",
-                "id": "67461662292221257",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "cat_id",
-                "name": "Категория",
-                "dataType": "link",
-                "id": "88291663411323412",
-                "link": "Categories",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 8,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "email",
-                "name": " Электропочта",
-                "dataType": "string",
-                "id": "81671662292185465",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 7,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "email",
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "firstName",
-                "name": "Имя",
-                "dataType": "string",
-                "id": "83811662292152973",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "id",
-                "name": "id",
-                "dataType": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "lastName",
-                "name": "Фамилия",
-                "dataType": "string",
-                "id": "33031662292146402",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "phone",
-                "name": "Номер телефона",
-                "dataType": "string",
-                "id": "39111662292175533",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "phone",
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "school",
-                "name": "Школа",
-                "dataType": "string",
-                "id": "78291662292194098",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 6,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "weight",
-                "name": "Вес, кг.",
-                "dataType": "decimal",
-                "id": "84471662292164433",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            }
-        ],
+        "fileds": [],
         "quickSearch": "true",
-        "httpParams": {}
+        "httpParams": {},
+        "cardCustomHtml": null,
+        "cardCustomLayout": null
     }
 
     let authExample = {

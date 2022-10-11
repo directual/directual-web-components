@@ -1,10 +1,16 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Hint from './hint'
 import icon from './../../../icons/fps-hint.svg'
 
-export default function FpsHint({ data }) {
+export default function FpsHint(props) {
 
-    data = data || {}
+    const [data, setData] = useState(props.data || {})
+    useEffect(() => {
+        if (JSON.stringify(props.data) !== JSON.stringify(data)) {
+            setData(props.data)
+        }
+    })
+
     const error = data.hintColour == 'error'
     const ok = data.hintColour == 'ok'
     const margins = data.margins || {}

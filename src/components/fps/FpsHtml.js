@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 //import icon from './../../icons/fps-rich-text.svg'
 import iconHtml from './../../icons/fps-html.svg'
 import iconMkd from './../../icons/fps-markdown.svg'
@@ -6,8 +6,18 @@ import { ComponentWrapper } from './wrapper/wrapper'
 import Article from './article/article'
 import Input from './dataentry/input/input'
 
-export default function FpsHtml({ data }) {
+export default function FpsHtml(props) {
+
+  const [data,setData] = useState(props.data)
+  useEffect(()=> {
+    if (JSON.stringify(props.data) !== JSON.stringify(data))
+    {
+      setData(props.data)
+    }
+  })
+
   const html = (data || {}).html || ''
+
   return (
     <ComponentWrapper>
       <Article>
