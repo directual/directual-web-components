@@ -14,7 +14,7 @@ export default function FpsHtml(props) {
     {
       setData(props.data)
     }
-  })
+  }, [props])
 
   const html = (data || {}).html || ''
 

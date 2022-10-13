@@ -9,7 +9,7 @@ export default function FpsHint(props) {
         if (JSON.stringify(props.data) !== JSON.stringify(data)) {
             setData(props.data)
         }
-    })
+    }, [props])
 
     const error = data.hintColour == 'error'
     const ok = data.hintColour == 'ok'
