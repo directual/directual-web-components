@@ -85,41 +85,50 @@ const App = (props) => {
     }
 
     let cardActions = {
-        "sl": "kanban",
+        "sl": "manageBanners",
         "pageSize": "10",
         "headerField": null,
         "params": {
             "cardListLayout": "grid",
-            "cardHeaderComment": "id",
+            "cardHeaderComment": "",
             "deleteField": "",
             "cardBodyText": "",
-            "cardImage": false,
-            "cardImageField": "",
-            "cardImageType": "none",
+            "cardImage": true,
+            "cardImageField": "image",
+            "cardImageType": "top",
             "cardImageSize": 100,
             "objectView": {},
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "col",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "col",
-                        "name": "Colmn",
-                        "dataType": "link",
+                        "fieldSysName": "clicks",
+                        "fetch": [],
+                        "sysName": "clicks",
+                        "name": "Clicks",
+                        "dataType": "number",
                         "format": "",
                         "formatOptions": {},
-                        "link": "columns"
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "endShowDate",
+                        "fetch": [],
+                        "sysName": "endShowDate",
+                        "name": "End show date",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "hideForUser_ids",
+                        "fetch": [],
+                        "sysName": "hideForUser_ids",
+                        "name": "",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "Cloud_users"
                     },
                     {
                         "fieldSysName": "id",
@@ -135,53 +144,133 @@ const App = (props) => {
                         "fieldSysName": "image",
                         "fetch": [],
                         "sysName": "image",
-                        "name": "",
+                        "name": "Image",
                         "dataType": "file",
                         "format": "image",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "name",
+                        "fieldSysName": "isActiveColor",
                         "fetch": [],
-                        "sysName": "name",
-                        "name": "NAME",
+                        "sysName": "isActiveColor",
+                        "name": "",
                         "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "isHidden",
+                        "fetch": [],
+                        "sysName": "isHidden",
+                        "name": "",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "text",
+                        "fieldSysName": "isPersonal",
                         "fetch": [],
-                        "sysName": "text",
-                        "name": "",
-                        "dataType": "string",
+                        "sysName": "isPersonal",
+                        "name": "Is personal?",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "weight",
+                        "fieldSysName": "link",
                         "fetch": [],
-                        "sysName": "weight",
-                        "name": "",
-                        "dataType": "decimal",
+                        "sysName": "link",
+                        "name": "Link to",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "show_to_users",
+                        "fetch": [],
+                        "sysName": "show_to_users",
+                        "name": "Show to users",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "Cloud_users"
+                    },
+                    {
+                        "fieldSysName": "startShowDate",
+                        "fetch": [],
+                        "sysName": "startShowDate",
+                        "name": "Start show date",
+                        "dataType": "date",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
+                    },
+                    {
+                        "fieldSysName": "title",
+                        "fetch": [],
+                        "sysName": "title",
+                        "name": "Title",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "who_clicked_ids",
+                        "fetch": [],
+                        "sysName": "who_clicked_ids",
+                        "name": "Who clicked",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "Cloud_users"
                     }
                 ],
                 "writeFields": [
                     {
-                        "fieldSysName": "col",
+                        "fieldSysName": "clicks",
                         "fetch": [],
-                        "sysName": "col",
-                        "name": "Colmn",
-                        "dataType": "link",
+                        "sysName": "clicks",
+                        "name": "Clicks",
+                        "dataType": "number",
                         "format": "",
                         "formatOptions": {},
-                        "link": "columns"
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "delete",
+                        "fetch": [],
+                        "sysName": "delete",
+                        "name": "",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "endShowDate",
+                        "fetch": [],
+                        "sysName": "endShowDate",
+                        "name": "End show date",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "hideForUser_ids",
+                        "fetch": [],
+                        "sysName": "hideForUser_ids",
+                        "name": "",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "Cloud_users"
                     },
                     {
                         "fieldSysName": "id",
@@ -194,27 +283,121 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "weight",
+                        "fieldSysName": "image",
                         "fetch": [],
-                        "sysName": "weight",
+                        "sysName": "image",
+                        "name": "Image",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "isHidden",
+                        "fetch": [],
+                        "sysName": "isHidden",
                         "name": "",
-                        "dataType": "decimal",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
+                    },
+                    {
+                        "fieldSysName": "isPersonal",
+                        "fetch": [],
+                        "sysName": "isPersonal",
+                        "name": "Is personal?",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "link",
+                        "fetch": [],
+                        "sysName": "link",
+                        "name": "Link to",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "show_to_users",
+                        "fetch": [],
+                        "sysName": "show_to_users",
+                        "name": "Show to users",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "Cloud_users"
+                    },
+                    {
+                        "fieldSysName": "startShowDate",
+                        "fetch": [],
+                        "sysName": "startShowDate",
+                        "name": "Start show date",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "title",
+                        "fetch": [],
+                        "sysName": "title",
+                        "name": "Title",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "who_clicked_ids",
+                        "fetch": [],
+                        "sysName": "who_clicked_ids",
+                        "name": "Who clicked",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "Cloud_users"
                     }
                 ],
                 "fields": {
-                    "col": {
-                        "id": "col",
-                        "content": "Colmn",
+                    "clicks": {
+                        "id": "clicks",
+                        "content": "Clicks",
                         "type": "field",
-                        "dataType": "link",
+                        "dataType": "number",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
                         "read": true,
-                        "link": "columns",
+                        "link": "",
+                        "actions": []
+                    },
+                    "endShowDate": {
+                        "id": "endShowDate",
+                        "content": "End show date",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "hideForUser_ids": {
+                        "id": "hideForUser_ids",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "Cloud_users",
                         "actions": []
                     },
                     "id": {
@@ -231,42 +414,32 @@ const App = (props) => {
                     },
                     "image": {
                         "id": "image",
-                        "content": "",
+                        "content": "Image",
                         "type": "field",
                         "dataType": "file",
                         "format": "image",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "name": {
-                        "id": "name",
-                        "content": "NAME",
+                    "isActiveColor": {
+                        "id": "isActiveColor",
+                        "content": "",
                         "type": "field",
                         "dataType": "string",
-                        "format": "",
+                        "format": "color",
                         "formatOptions": {},
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "text": {
-                        "id": "text",
+                    "isHidden": {
+                        "id": "isHidden",
                         "content": "",
                         "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "weight": {
-                        "id": "weight",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "decimal",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
@@ -274,21 +447,126 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "action__82701664746920633": {
-                        "id": "action__82701664746920633",
-                        "content": "same action",
+                    "isPersonal": {
+                        "id": "isPersonal",
+                        "content": "Is personal?",
+                        "type": "field",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "link": {
+                        "id": "link",
+                        "content": "Link to",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "show_to_users": {
+                        "id": "show_to_users",
+                        "content": "Show to users",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "Cloud_users",
+                        "actions": []
+                    },
+                    "startShowDate": {
+                        "id": "startShowDate",
+                        "content": "Start show date",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "title": {
+                        "id": "title",
+                        "content": "Title",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": null,
+                        "actions": []
+                    },
+                    "who_clicked_ids": {
+                        "id": "who_clicked_ids",
+                        "content": "Who clicked",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "Cloud_users",
+                        "actions": []
+                    },
+                    "delete": {
+                        "id": "delete",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "action__33491665690595766": {
+                        "content": "Hide banner",
+                        "id": "action__33491665690595766",
                         "type": "action",
                         "actions": []
                     },
-                    "action__72001664746977849": {
-                        "id": "action__72001664746977849",
-                        "content": "nothing",
+                    "action__45961665690669918": {
+                        "content": "Show banner",
+                        "id": "action__45961665690669918",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__13561665698310265": {
+                        "id": "action__13561665698310265",
+                        "content": "Delete completely",
                         "type": "action",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "col": {
+                    "clicks": {
+                        "include": true,
+                        "disableEditing": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "endShowDate": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "hideForUser_ids": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -310,9 +588,19 @@ const App = (props) => {
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
+                        "clickable": false,
+                        "descriptionFlag": true,
+                        "description": "1200 x 300 px"
+                    },
+                    "isHidden": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
                         "clickable": false
                     },
-                    "name": {
+                    "isPersonal": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -320,7 +608,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "text": {
+                    "link": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -328,8 +616,48 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "weight": {
+                    "show_to_users": {
                         "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "startShowDate": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "title": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "who_clicked_ids": {
+                        "include": true,
+                        "disableEditing": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "isActiveColor": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "delete": {
+                        "include": false,
                         "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -340,27 +668,129 @@ const App = (props) => {
                 "columns": {
                     "tab-1": {
                         "id": "tab-1",
-                        "title": "New section",
+                        "title": "Banner info",
                         "fieldIds": [
-                            "col",
-                            "id",
                             "image",
-                            "name",
-                            "text",
-                            "weight",
-                            "action__82701664746920633",
-                            "action__72001664746977849"
+                            "title",
+                            "link",
+                            "startShowDate",
+                            "endShowDate",
+                            "id",
+                            "isPersonal",
+                            "show_to_users",
+                            "isHidden",
+                            "isActiveColor",
+                            "delete"
+                        ]
+                    },
+                    "22081665691340190": {
+                        "id": "22081665691340190",
+                        "title": "Stats",
+                        "fieldIds": [
+                            "who_clicked_ids",
+                            "clicks",
+                            "hideForUser_ids"
+                        ]
+                    },
+                    "35661665691389706": {
+                        "id": "35661665691389706",
+                        "title": "Actions",
+                        "fieldIds": [
+                            "action__33491665690595766",
+                            "action__13561665698310265",
+                            "action__45961665690669918"
                         ]
                     }
                 },
                 "columnOrder": [
-                    "tab-1"
+                    "tab-1",
+                    "22081665691340190",
+                    "35661665691389706"
                 ],
-                "actions": [],
-                "cardsOrPage": "card"
+                "actions": [
+                    {
+                        "sysName": "",
+                        "id": "33491665690595766",
+                        "name": "Hide banner",
+                        "displayAs": "button",
+                        "buttonIcon": "hide",
+                        "buttonType": "danger",
+                        "dropdown": true,
+                        "formMapping": [
+                            {
+                                "id": "95391665690613717",
+                                "target": "id",
+                                "type": "objectField",
+                                "value": "id"
+                            },
+                            {
+                                "id": "75981665690623525",
+                                "target": "isHidden",
+                                "type": "const",
+                                "value": "true"
+                            }
+                        ],
+                        "conditionals": [
+                            {
+                                "id": "95211665690631256",
+                                "target": "field",
+                                "value": "false",
+                                "field": "isHidden"
+                            }
+                        ]
+                    },
+                    {
+                        "sysName": "",
+                        "id": "45961665690669918",
+                        "name": "Show banner",
+                        "displayAs": "button",
+                        "buttonIcon": "view",
+                        "buttonType": "accent",
+                        "dropdown": true,
+                        "SLtype": "same",
+                        "formMapping": [
+                            {
+                                "id": "16831665690690530",
+                                "target": "id",
+                                "type": "objectField",
+                                "value": "id"
+                            },
+                            {
+                                "id": "48071665690697136",
+                                "target": "isHidden",
+                                "type": "const",
+                                "value": "false"
+                            }
+                        ],
+                        "conditionals": [
+                            {
+                                "id": "64911665690708811",
+                                "target": "field",
+                                "value": "true",
+                                "field": "isHidden"
+                            }
+                        ]
+                    }
+                ]
             },
             "fields": {
-                "col": {
+                "clicks": {
+                    "include": true,
+                    "disableEditing": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "endShowDate": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "hideForUser_ids": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -382,9 +812,19 @@ const App = (props) => {
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
+                    "clickable": false,
+                    "descriptionFlag": true,
+                    "description": "1200 x 300 px"
+                },
+                "isHidden": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
                     "clickable": false
                 },
-                "name": {
+                "isPersonal": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -392,7 +832,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "text": {
+                "link": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -400,8 +840,48 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "weight": {
+                "show_to_users": {
                     "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "startShowDate": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "title": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "who_clicked_ids": {
+                    "include": true,
+                    "disableEditing": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "isActiveColor": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "delete": {
+                    "include": false,
                     "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -409,117 +889,194 @@ const App = (props) => {
                     "clickable": false
                 }
             },
+            "showCounter": true,
+            "counterField": "clicks",
+            "cardImageResize": "cover",
+            "cardColor": "isActiveColor",
+            "cardColorOption": "border",
             "actions": [
                 {
-                    "sysName": "kanban2",
-                    "id": "82701664746920633",
-                    "name": "same action",
+                    "sysName": "",
+                    "id": "33491665690595766",
+                    "name": "Hide banner",
                     "displayAs": "button",
-                    "buttonIcon": "academy",
-                    "footerButtons": false,
-                    "SLtype": "other",
-                    "fields": {
-                        "readFields": [
-                            {
-                                "fieldSysName": "id",
-                                "fetch": [],
-                                "sysName": "id",
-                                "name": "id",
-                                "dataType": "id",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "link",
-                                "fetch": [],
-                                "sysName": "link",
-                                "name": "",
-                                "dataType": "link",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            }
-                        ],
-                        "writeFields": [
-                            {
-                                "fieldSysName": "id",
-                                "fetch": [],
-                                "sysName": "id",
-                                "name": "id",
-                                "dataType": "id",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "fetch": [],
-                                "sysName": "name",
-                                "name": "NAME",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            }
-                        ]
-                    },
+                    "buttonIcon": "hide",
+                    "buttonType": "danger",
+                    "dropdown": true,
                     "formMapping": [
                         {
-                            "id": "93131664747360397",
+                            "id": "95391665690613717",
                             "target": "id",
                             "type": "objectField",
                             "value": "id"
                         },
                         {
-                            "id": "87861664747365817",
-                            "target": "name",
+                            "id": "75981665690623525",
+                            "target": "isHidden",
                             "type": "const",
-                            "value": "cила в правде брат"
+                            "value": "true"
                         }
                     ],
-                    "dropdown": true
+                    "conditionals": [
+                        {
+                            "id": "95211665690631256",
+                            "target": "field",
+                            "value": "false",
+                            "field": "isHidden",
+                            "fieldValue": "false"
+                        }
+                    ]
                 },
                 {
                     "sysName": "",
-                    "id": "72001664746977849",
-                    "name": "nothing",
+                    "id": "45961665690669918",
+                    "name": "Show banner",
                     "displayAs": "button",
+                    "buttonIcon": "view",
                     "buttonType": "accent",
-                    "footerButtons": false,
-                    "dropdown": true
+                    "dropdown": true,
+                    "SLtype": "same",
+                    "formMapping": [
+                        {
+                            "id": "16831665690690530",
+                            "target": "id",
+                            "type": "objectField",
+                            "value": "id"
+                        },
+                        {
+                            "id": "48071665690697136",
+                            "target": "isHidden",
+                            "type": "const",
+                            "value": "false"
+                        }
+                    ],
+                    "conditionals": [
+                        {
+                            "id": "64911665690708811",
+                            "target": "field",
+                            "value": "true",
+                            "field": "isHidden",
+                            "fieldValue": ""
+                        }
+                    ]
+                },
+                {
+                    "sysName": "",
+                    "id": "13561665698310265",
+                    "name": "Delete completely",
+                    "displayAs": "button",
+                    "buttonIcon": "delete",
+                    "buttonType": "danger",
+                    "dropdown": true,
+                    "formMapping": [
+                        {
+                            "id": "92011665698328345",
+                            "target": "id",
+                            "type": "objectField",
+                            "value": "id"
+                        },
+                        {
+                            "id": "10421665698335938",
+                            "target": "delete",
+                            "type": "const",
+                            "value": "true"
+                        }
+                    ],
+                    "conditionals": [
+                        {
+                            "id": "83631665698342023",
+                            "target": "field",
+                            "value": "true",
+                            "field": "isHidden",
+                            "fieldValue": ""
+                        }
+                    ]
                 }
             ],
-            "cardHeaderStyle": "p",
-            "cardLayoutType": "html",
-            "cardCustomHtml": "<p>{{id}}</p>\n<h1 style=\"\n           color:#fff;\n           background: rgb(2,0,36);\n\t\t\tbackground: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(79,9,121,1) 35%, rgba(0,212,255,1) 100%);\">\n  Кастомный ХТМЛ нахой</h2>\n"
+            "cardCoverHeight": 150
         },
-        "tableTitle": "",
+        "tableTitle": "Banners",
         "actions": null,
         "headers": [
             {
-                "sysName": "col",
-                "dataType": "link",
-                "name": "Colmn",
-                "id": "98481659390930255",
-                "link": "columns",
+                "sysName": "clicks",
+                "dataType": "number",
+                "name": "Clicks",
+                "id": "33331665669430807",
+                "link": "",
                 "group": "0",
-                "tags": "",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 1,
+                "order": 8,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "endShowDate",
+                "dataType": "date",
+                "name": "End show date",
+                "id": "42661665669338460",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 7,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "hideForUser_ids",
+                "dataType": "arrayLink",
+                "name": "",
+                "id": "25931665669773310",
+                "link": "Cloud_users",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 11,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
                 "groupName": null,
                 "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
+                "linkType": false,
+                "arrayLink": true,
                 "typeVariable": {},
                 "json": false,
                 "indexExists": false,
@@ -556,22 +1113,22 @@ const App = (props) => {
             {
                 "sysName": "image",
                 "dataType": "file",
-                "name": "",
-                "id": "75311659390953617",
+                "name": "Image",
+                "id": "48151665669287722",
                 "link": "",
                 "group": "0",
-                "tags": "",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 4,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
                 "format": "image",
-                "formatOptions": {},
+                "formatOptions": null,
                 "groupName": null,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
@@ -582,24 +1139,80 @@ const App = (props) => {
                 "array": false
             },
             {
-                "sysName": "name",
+                "sysName": "isActiveColor",
                 "dataType": "string",
-                "name": "NAME",
-                "id": "94231659390940732",
+                "name": "",
+                "id": "39041665689785823",
                 "link": "",
                 "group": "0",
-                "tags": "",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 12,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "color",
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "isHidden",
+                "dataType": "boolean",
+                "name": "",
+                "id": "59831665669555691",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 10,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "isPersonal",
+                "dataType": "boolean",
+                "name": "Is personal?",
+                "id": "61551665669273258",
+                "link": "",
+                "group": "0",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 2,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": null,
                 "groupName": null,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
@@ -610,56 +1223,140 @@ const App = (props) => {
                 "array": false
             },
             {
-                "sysName": "text",
+                "sysName": "link",
                 "dataType": "string",
-                "name": "",
-                "id": "51671659390951143",
+                "name": "Link to",
+                "id": "71711665669300044",
                 "link": "",
                 "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "weight",
-                "dataType": "decimal",
-                "name": "",
-                "id": "53081660230900734",
-                "link": "",
-                "group": "0",
-                "tags": "",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 5,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
-                "format": null,
-                "formatOptions": {},
+                "format": "webLink",
+                "formatOptions": null,
                 "groupName": null,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "show_to_users",
+                "dataType": "arrayLink",
+                "name": "Show to users",
+                "id": "63161665670108683",
+                "link": "Cloud_users",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "startShowDate",
+                "dataType": "date",
+                "name": "Start show date",
+                "id": "82531665669323551",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "title",
+                "dataType": "string",
+                "name": "Title",
+                "id": "72561665669372937",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "who_clicked_ids",
+                "dataType": "arrayLink",
+                "name": "Who clicked",
+                "id": "85301665669443783",
+                "link": "Cloud_users",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
                 "typeVariable": {},
                 "json": false,
                 "indexExists": false,
@@ -668,37 +1365,70 @@ const App = (props) => {
         ],
         "data": [
             {
-                "name": "сила в правде",
-                "image": "https://api.alfa.directual.com/fileUploaded/temaplate-crm/d0729f6b-c432-4bee-a561-ba10123de7b7.jpeg",
-                "text": "Sweet and nice berry",
-                "id": "obj-1",
-                "col": {
-                    "name": "one",
-                    "id": "col-1"
-                },
-                "weight": ""
+                "endShowDate": 1666224000000,
+                "isActiveColor": "#62e03f",
+                "image": "https://api.directual.com/fileUploaded/directual-site/web/85eebcfa-74a3-4b40-a0ec-eb41d39f26b9.jpg",
+                "id": "banner2",
+                "link": "https://www.directual.com/blog",
+                "clicks": 12,
+                "title": "Котик",
+                "hideForUser_ids": [
+                    ""
+                ],
+                "show_to_users": [
+                    ""
+                ],
+                "startShowDate": 1665446400000,
+                "who_clicked_ids": [
+                    "pavel@ershov.org"
+                ],
+                "delete": "",
+                "isHidden": "",
+                "isPersonal": ""
             },
             {
-                "weight": 2.3,
-                "name": "cила в правде брат",
-                "image": "https://api.alfa.directual.com/fileUploaded/temaplate-crm/2b03e65d-d1b5-41ab-9291-d0a9fc687864.jpeg",
-                "text": "Another solid berry",
-                "id": "obj-2",
-                "col": {
-                    "name": "one",
-                    "id": "col-1"
-                }
+                "endShowDate": 1666224000000,
+                "isActiveColor": "#62e03f",
+                "image": "https://api.alfa.directual.com/fileUploaded/directual-site/6b1540fe-34b4-4c72-a316-c53eea191db3.png",
+                "id": "banner1",
+                "link": "https://www.directual.com/blog",
+                "clicks": 4,
+                "title": "Discord promo",
+                "hideForUser_ids": [
+                    "pavel@ershov.org"
+                ],
+                "show_to_users": [
+                    ""
+                ],
+                "startShowDate": 1665446400000,
+                "who_clicked_ids": [
+                    "pavel@ershov.org"
+                ],
+                "delete": "",
+                "isHidden": "",
+                "isPersonal": ""
             },
             {
-                "name": "сила в правде",
-                "image": "https://api.alfa.directual.com/fileUploaded/temaplate-crm/15697140-9cd6-4d73-9114-3161870b8d48.jpeg",
-                "text": "Love the juice!",
-                "id": "obj-3",
-                "col": {
-                    "name": "one",
-                    "id": "col-1"
-                },
-                "weight": ""
+                "endShowDate": 1665867600000,
+                "isActiveColor": "#62e03f",
+                "image": "https://api.directual.com/fileUploaded/directual-site/web/09dac198-c552-4092-a89d-46df873982e4.jpg",
+                "id": "3843a9cd-193c-4203-be8a-b33b0d9af3df",
+                "link": "https://www.directual.com",
+                "clicks": 1,
+                "title": "Hello",
+                "hideForUser_ids": [
+                    ""
+                ],
+                "show_to_users": [
+                    ""
+                ],
+                "startShowDate": 1665435600000,
+                "who_clicked_ids": [
+                    "pavel@ershov.org"
+                ],
+                "delete": "",
+                "isHidden": "",
+                "isPersonal": ""
             }
         ],
         "totalPages": 1,
@@ -706,114 +1436,95 @@ const App = (props) => {
         "error": null,
         "fieldScheme": [
             [
-                "col.id",
-                99123978
+                "clicks",
+                99140419
             ],
             [
-                "col.name",
-                99123978
+                "endShowDate",
+                99140419
+            ],
+            [
+                "hideForUser_ids",
+                99140419
             ],
             [
                 "id",
-                99123979
+                99140419
             ],
             [
                 "image",
-                99123979
+                99140419
             ],
             [
-                "name",
-                99123979
+                "isActiveColor",
+                99140419
             ],
             [
-                "text",
-                99123979
+                "isHidden",
+                99140419
             ],
             [
-                "weight",
-                99123979
+                "isPersonal",
+                99140419
+            ],
+            [
+                "link",
+                99140419
+            ],
+            [
+                "show_to_users",
+                99140419
+            ],
+            [
+                "startShowDate",
+                99140419
+            ],
+            [
+                "title",
+                99140419
+            ],
+            [
+                "who_clicked_ids",
+                99140419
             ]
         ],
         "writeFields": [
-            "col",
+            "clicks",
+            "delete",
+            "endShowDate",
+            "hideForUser_ids",
             "id",
-            "weight"
+            "image",
+            "isHidden",
+            "isPersonal",
+            "link",
+            "show_to_users",
+            "startShowDate",
+            "title",
+            "who_clicked_ids"
         ],
         "structures": {
-            "99123978": {
-                "networkID": 13796,
-                "sysName": "columns",
-                "name": "columns",
-                "id": 99123978,
-                "dateCreated": "2022-08-01T21:54:31Z",
+            "99140419": {
+                "networkID": 1822,
+                "sysName": "banners",
+                "name": "banners",
+                "id": 99140419,
+                "dateCreated": "2022-10-13T11:23:39Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"30861659390887062\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"second\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"28191659453539947\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"hideForUser_ids\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"25931665669773310\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"clicks\",\"dataType\":\"number\",\"name\":\"Clicks\",\"id\":\"33331665669430807\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"isActiveColor\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"39041665689785823\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"endShowDate\",\"dataType\":\"date\",\"name\":\"End show date\",\"id\":\"42661665669338460\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"image\",\"dataType\":\"file\",\"name\":\"Image\",\"id\":\"48151665669287722\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"isHidden\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"59831665669555691\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"isPersonal\",\"dataType\":\"boolean\",\"name\":\"Is personal?\",\"id\":\"61551665669273258\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"show_to_users\",\"dataType\":\"arrayLink\",\"name\":\"Show to users\",\"id\":\"63161665670108683\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"link\",\"dataType\":\"string\",\"name\":\"Link to\",\"id\":\"71711665669300044\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"Title\",\"id\":\"72561665669372937\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"delete\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"82271665698275602\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"startShowDate\",\"dataType\":\"date\",\"name\":\"Start show date\",\"id\":\"82531665669323551\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"who_clicked_ids\",\"dataType\":\"arrayLink\",\"name\":\"Who clicked\",\"id\":\"85301665669443783\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"array\":false}]",
                 "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"},{\"sysName\":\"second\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2022-08-02T15:19:07Z",
-                "createBy": 3527,
-                "changedBy": 3527,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "typeVariable": {},
-                    "json": false,
-                    "indexExists": false,
-                    "array": false
-                },
-                "folderId": null
-            },
-            "99123979": {
-                "networkID": 13796,
-                "sysName": "objects",
-                "name": "objects",
-                "id": 99123979,
-                "dateCreated": "2022-08-01T21:55:21Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"link\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"40491660901280670\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"text\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"51671659390951143\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"weight\",\"dataType\":\"decimal\",\"name\":\"\",\"id\":\"53081660230900734\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"image\",\"dataType\":\"file\",\"name\":\"\",\"id\":\"75311659390953617\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"NAME\",\"id\":\"94231659390940732\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"col\",\"dataType\":\"link\",\"name\":\"Colmn\",\"id\":\"98481659390930255\",\"link\":\"columns\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2022-08-29T14:27:46Z",
-                "createBy": 3527,
+                "dateChanged": "2022-10-13T21:58:02Z",
+                "createBy": 21,
                 "changedBy": 1,
                 "_settings": null,
                 "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
                     "dataType": "id",
@@ -842,26 +1553,63 @@ const App = (props) => {
                     "indexExists": false,
                     "array": false
                 },
-                "folderId": null
+                "objectIDSysName": "id",
+                "folderId": 33717727
             }
         },
-        "isSuccessWrite": false,
+        "isSuccessWrite": true,
         "writeError": null,
-        "writeResponse": null,
+        "writeResponse": [
+            {
+                "isActiveColor": "#e05c3f",
+                "isHidden": true,
+                "isPersonal": false,
+                "id": "aad36e10-ef95-4911-a28a-2c5d5b1b567f",
+                "title": "dsfsdf"
+            }
+        ],
         "fileds": [
             {
-                "sysName": "col",
-                "dataType": "link",
-                "name": "Colmn",
-                "id": "98481659390930255",
-                "link": "columns",
+                "sysName": "clicks",
+                "dataType": "number",
+                "name": "Clicks",
+                "id": "33331665669430807",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 8,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "delete",
+                "dataType": "boolean",
+                "name": "",
+                "id": "82271665698275602",
+                "link": "",
                 "group": "0",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 1,
+                "order": 13,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
@@ -869,9 +1617,65 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
                 "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "endShowDate",
+                "dataType": "date",
+                "name": "End show date",
+                "id": "42661665669338460",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 7,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "hideForUser_ids",
+                "dataType": "arrayLink",
+                "name": "",
+                "id": "25931665669773310",
+                "link": "Cloud_users",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 11,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
                 "typeVariable": {},
                 "json": false,
                 "indexExists": false,
@@ -906,28 +1710,224 @@ const App = (props) => {
                 "array": false
             },
             {
-                "sysName": "weight",
-                "dataType": "decimal",
-                "name": "",
-                "id": "53081660230900734",
+                "sysName": "image",
+                "dataType": "file",
+                "name": "Image",
+                "id": "48151665669287722",
                 "link": "",
                 "group": "0",
-                "tags": "",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "image",
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "isHidden",
+                "dataType": "boolean",
+                "name": "",
+                "id": "59831665669555691",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 10,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "isPersonal",
+                "dataType": "boolean",
+                "name": "Is personal?",
+                "id": "61551665669273258",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "link",
+                "dataType": "string",
+                "name": "Link to",
+                "id": "71711665669300044",
+                "link": "",
+                "group": "0",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 5,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
-                "format": null,
-                "formatOptions": {},
+                "format": "webLink",
+                "formatOptions": null,
                 "groupName": null,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "show_to_users",
+                "dataType": "arrayLink",
+                "name": "Show to users",
+                "id": "63161665670108683",
+                "link": "Cloud_users",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "startShowDate",
+                "dataType": "date",
+                "name": "Start show date",
+                "id": "82531665669323551",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "title",
+                "dataType": "string",
+                "name": "Title",
+                "id": "72561665669372937",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "who_clicked_ids",
+                "dataType": "arrayLink",
+                "name": "Who clicked",
+                "id": "85301665669443783",
+                "link": "Cloud_users",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
                 "typeVariable": {},
                 "json": false,
                 "indexExists": false,
@@ -937,11 +1937,7 @@ const App = (props) => {
         "quickSearch": "true",
         "httpParams": {},
         "cardCustomHtml": null,
-        "cardCustomLayout": {
-            "obj-1": "<p>obj-1</p>\n<h1 style=\"\n           color:#fff;\n           background: rgb(2,0,36);\n\t\t\tbackground: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(79,9,121,1) 35%, rgba(0,212,255,1) 100%);\">\n  Кастомный ХТМЛ нахой</h2>\n",
-            "obj-2": "<p>obj-2</p>\n<h1 style=\"\n           color:#fff;\n           background: rgb(2,0,36);\n\t\t\tbackground: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(79,9,121,1) 35%, rgba(0,212,255,1) 100%);\">\n  Кастомный ХТМЛ нахой</h2>\n",
-            "obj-3": "<p>obj-3</p>\n<h1 style=\"\n           color:#fff;\n           background: rgb(2,0,36);\n\t\t\tbackground: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(79,9,121,1) 35%, rgba(0,212,255,1) 100%);\">\n  Кастомный ХТМЛ нахой</h2>\n"
-        }
+        "cardCustomLayout": null
     }
 
     let newCardActions = {
