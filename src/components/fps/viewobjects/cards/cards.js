@@ -585,7 +585,7 @@ export function Card({ row, params, getInitialStructureParams, data,
           />
           :
           <div
-            className={`aaa ${styles.cardInnerWrapperImage} ${styles[tableParams.cardImageType]}`}>
+            className={`${styles.cardInnerWrapperImage} ${styles[tableParams.cardImageType]}`}>
             {/* Разукрашиваем карточку */}
             {tableParams.cardColor &&
               tableParams.cardColorOption != 'none' && (

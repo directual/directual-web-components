@@ -162,6 +162,9 @@
   color: #fff !important;
   opacity: 0.8;
 }
+.card .cardInnerWrapper .cardInnerWrapperImage {
+  min-height: 100%;
+}
 .card .cardInnerWrapper .cardInnerWrapperImage.left {
   display: flex;
   align-items: stretch;
