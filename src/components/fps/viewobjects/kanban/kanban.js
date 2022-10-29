@@ -225,13 +225,13 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, sea
                         content: <Card
                             params={tableParams}
                             row={obj}
-                            key={index}
+                            key={obj.id}
                             data={data}
                             i={index}
                             currentBP={currentBP}
                             tableParams={tableParams}
                             tableHeaders={tableHeaders}
-                            loading={loading || kostyl}
+                            //loading={loading || kostyl}
                             successWeb3={successWeb3}
                             setLoading={setLoading}
                             setSuccessWeb3={setSuccessWeb3}
@@ -240,7 +240,11 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, sea
                             auth={auth}
                             submitAction={submitAction}
                             checkActionCond={checkActionCond}
-                            onExpand={onExpand}
+                            onExpand={row=> {
+                                onExpand(row)
+                                console.log('onExpand')
+                                console.log(row)
+                            }}
                             getLinkName={getLinkName}
                             getInitialStructureParams={getInitialStructureParams}
                         />
@@ -384,6 +388,7 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, sea
                                                                             ref={provided.innerRef}
                                                                             {...provided.draggableProps}
                                                                             {...provided.dragHandleProps}
+                                                                            //onClick={()=>alert('click')}
                                                                             style={{
                                                                                 userSelect: "none",
                                                                                 // margin: "0 0 8px 0",

@@ -576,6 +576,8 @@ export function Card({ row, params, getInitialStructureParams, data,
         }
         onClick={() => {
           // console.log(row)
+          console.log('click')
+          console.log(loading)
           !loading && onExpand(row)
         }}
       >

@@ -1222,7 +1222,7 @@ function CardAction({ action, successWeb3, writeError, actionParams, debug, subm
     const handleSubmitAction = () => {
 
         // refresh cards after action is taken
-        setTimeout(() => refresh(true), 3000) // one time
+        // setTimeout(() => refresh(true), 3000) // one time
         // setTimeout(() => refresh(true), 5000) // two times
 
         if (((!actionData.formMapping || actionData.formMapping.length == 0) && actionData.displayAs == 'button') ||
@@ -1333,6 +1333,9 @@ function CardAction({ action, successWeb3, writeError, actionParams, debug, subm
             {actionParams.resultButton && <Button onClick={() => setIsSubmitted(false)} icon='refresh'>{actionParams.resultButton}</Button>}
         </div>
     }
+
+    console.log('actionParams')
+    console.log(actionParams)
 
     return (
         actionParams && checkActionCond && checkActionCond(conds) ?
