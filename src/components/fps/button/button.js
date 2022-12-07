@@ -8,14 +8,16 @@ export default function Button(props) {
         <React.Fragment>
             {!props.link ?
                 <button
-                    onClick={e => { 
+                    onClick={e => {
                         e.stopPropagation()
-                        !props.disabled && props.onClick && props.onClick(e) }}
+                        !props.disabled && props.onClick && props.onClick(e)
+                    }}
                     style={{
                         height: props.height || 48
                     }}
                     className={`${styles.button} 
                         ${props.small && styles.small}
+                        ${props.active && styles.active}
                         ${props.alighLeft && styles.alighLeft}
                         ${props.verySmall && styles.verySmall}
                         ${props.accent && styles.accent} 
@@ -73,7 +75,9 @@ export function ButtonDropDown(props) {
     function useOutsideAlerter(ref) {
         useEffect(() => {
             function handleClickOutside(event) {
-                if (ref.current && !ref.current.contains(event.target) && !dropButton.current.contains(event.target)) {
+                if (
+                    //!props.lockDD && 
+                    ref.current && !ref.current.contains(event.target) && !dropButton.current.contains(event.target)) {
                     setShow(false)
                 }
             }
@@ -84,14 +88,17 @@ export function ButtonDropDown(props) {
         }, [ref]);
     }
 
-    return <div className={`${styles.bdd} ${props.rightSide ? styles.rightSide : ''}`} ref={dropButton}>
-        <Button icon={props.icon} height={props.height} accent={props.accent} danger={props.danger}
+    return <div
+        className={`${styles.bdd} ${props.rightSide ? styles.rightSide : ''} ${props.overflowVisible ? styles.overflowVisible : ''}`}
+        ref={dropButton}>
+        <Button active={props.active} icon={props.icon} height={props.height} accent={props.accent} danger={props.danger}
             small={props.small} verySmall={props.verySmall}
             onClick={(e) => {
                 setShow(!show)
             }}
         >{props.title}</Button>
-        <div className={`${styles.dropdownMenu} ${show ? styles.show : ''}`} ref={dropMenu} onClick={() => setShow(false)}>
+        <div className={`${styles.dropdownMenu} ${show ? styles.show : ''}`} ref={dropMenu}
+            onClick={() => !props.lockDD ? setShow(false) : undefined}>
             {props.children}
         </div>
     </div>

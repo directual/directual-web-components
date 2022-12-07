@@ -46,7 +46,18 @@ export const dict = {
                 Status: 'Status',
                 Title: 'Title'
             }
-        }
+        },
+        moreThan: "greater than",
+        lessThan: "less than",
+        from: "from",
+        to: "to",
+        clear: "Clear",
+        sort: "Sort",
+        dropMany: "Drop files here, or click to select files",
+        dropOne: "Drop a file here, or click to select one",
+        uploading: "Uploading files...",
+        select: "Select the value",
+        numbersOnly: "numbers only"
     },
 
 
@@ -97,7 +108,19 @@ export const dict = {
                 Status: 'Status',
                 Title: 'Titel'
             }
-        }
+        },
+        moreThan: "mehr als",
+        lessThan: "weniger als",
+        from: "vom",
+        to: "bis",
+        clear: "Klar",
+        sort: "Sortieren",
+        drop: "Dateien hier ablegen",
+        dropMany: "Dateien hier ablegen oder klicken, um Dateien auszuwählen",
+        dropOne: "Legen Sie hier eine Datei ab oder klicken Sie, um eine auszuwählen",
+        uploading: "Dateien werden hochgeladen...",
+        select: "Wählen Sie den Wert aus",
+        numbersOnly: "nur Zahlen"
     },
 
 
@@ -148,7 +171,19 @@ export const dict = {
                 Status: 'Estado',
                 Title: 'Título'
             }
-        }
+        },
+        moreThan: "más que",
+        lessThan: "menos que",
+        from: "del",
+        to: "al",
+        clear: "Claro",
+        sort: "Ordenar",
+        drop: "soltar archivos aquí",
+        dropMany: "Suelte archivos aquí o haga clic para seleccionar archivos",
+        dropOne: "Suelte un archivo aquí, o haga clic para seleccionar uno",
+        uploading: "Subiendo archivos...",
+        select: "Seleccione el valor",
+        numbersOnly: "solo numeros"
     },
 
 
@@ -199,7 +234,19 @@ export const dict = {
                 Status: 'Statut',
                 Title: 'Titre'
             }
-        }
+        },
+        moreThan: "plus que",
+        lessThan: "moins que",
+        from: "du",
+        to: "er au",
+        clear: "Dégager",
+        sort: "Trier",
+        drop: "Déposez les fichiers ici",
+        dropMany: "Déposez des fichiers ici ou cliquez pour sélectionner des fichiers",
+        dropOne: "Déposez un fichier ici ou cliquez pour en sélectionner un",
+        uploading: "Téléchargement de fichiers...",
+        select: "Sélectionnez la valeur",
+        numbersOnly: "chiffres uniquement"
     },
 
 
@@ -250,7 +297,19 @@ export const dict = {
                 Status: 'Статус',
                 Title: 'Название'
             }
-        }
+        },
+        moreThan: "больше чем",
+        lessThan: "меньше чем",
+        from: "`От",
+        to: "До",
+        clear: "Очистить",
+        sort: "Сортировка",
+        drop: "перетащите файлы сюда",
+        dropMany: "Перетащите файлы сюда или кликтите, чтобы загрузить",
+        dropOne: "Перетащите файл сюда или кликтите, чтобы загрузить",
+        uploading: "Идет загрузка...",
+        select: "Выберите значение",
+        numbersOnly: "только цифры"
     },
 
     JPN: {
@@ -300,6 +359,18 @@ export const dict = {
                 Status: 'ステータス',
                 Title: 'タイトル'
             }
-        }
+        },
+        moreThan: "より多い",
+        lessThan: "未満",
+        from: "から",
+        to: "に",
+        clear: "クリア",
+        sort: "選別",
+        drop: "ここにファイルをドロップ",
+        dropMany: "ここにファイルをドロップするか、クリックしてファイルを選択します",
+        dropOne: "ここにファイルをドロップするか、クリックしてファイルを選択します",
+        uploading: "ファイルをアップロードしています...",
+        select: "値を選択",
+        numbersOnly: "数字のみ"
     }
 }

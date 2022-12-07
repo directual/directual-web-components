@@ -95,6 +95,12 @@ a.button:hover:not(.disabled):not(.transparent) {
   background: url('https://api.alfa.directual.com/fileUploaded/directual-site/d2381fee-b864-469a-835d-d8f5bba71f93.svg') center center no-repeat;
   background-size: contain;
 }
+.button.active {
+  border-color: var(--button-accent-border);
+  height: 48px;
+  padding: 0 17px !important;
+  border-width: 2px;
+}
 .button.accent {
   border-color: var(--button-accent-border);
   background-color: var(--button-accent-bgr);
@@ -183,6 +189,9 @@ a.button:hover:not(.disabled):not(.transparent) {
 }
 .bdd.rightSide .dropdownMenu {
   right: 0;
+}
+.bdd.overflowVisible .dropdownMenu {
+  overflow: visible;
 }
 .bdd .dropdownMenu {
   position: absolute;

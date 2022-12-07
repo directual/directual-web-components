@@ -34,8 +34,10 @@ export default function Checkbox(props) {
             <div className={`${styles.cb_wrap}`}>
                 <label
                     className={`${styles.checkbox} ${disabled && styles.disabled}`}
+                    style={{whiteSpace: props.nowrap ? 'nowrap' : 'normal'}}
                     onClick={e => {
                         if (!disabled) {
+                            e.stopPropagation()
                             e.preventDefault();
                             props.onChange && !customOption && props.onChange(!checked);
                             props.onChange && customOption && props.onChange(!checked, customOptionVal);

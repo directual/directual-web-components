@@ -392,6 +392,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
                 //if (!field.write) return null // на чтение!
                 if (field.hidden) return null
                 return <InputForm
+                  locale={locale}
                   field={field}
                   editingOn={field.write && !field.disableEditing && isEditable}
                   placeholder={data.placeholder}

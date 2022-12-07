@@ -35,10 +35,10 @@ FpsHint.settings = {
     form: [
         { name: "Hint colour", sysName: "hintColour", type: "hintColour" },
         { name: 'Title', sysName: 'title', type: 'string' },
-        { name: 'Text (HTML is allowed)', sysName: 'text', type: 'html-SLenriched' },
+        { name: 'Text (HTML is allowed)', sysName: 'text', type: 'html-SLenriched', withTemplate: true },
         { name: 'Margins', sysName: 'margins', type: 'margin-top-bottom' },
-        { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' },
         { name: 'Apply template engine', sysName: 'withTemplate', type: 'boolean' },
+        { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' },
     ]
 }
 

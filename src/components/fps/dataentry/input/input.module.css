@@ -296,3 +296,8 @@
 .checkbox_wrapper {
   padding: 4px 0;
 }
+a.checkbox_clearOption {
+  font-size: 10pt;
+  margin-bottom: 8px;
+  display: inline-block;
+}

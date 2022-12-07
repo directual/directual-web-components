@@ -4,6 +4,7 @@
   justify-content: flex-start;
   margin-top: 12px;
   margin-right: -18px;
+  align-items: flex-start;
 }
 .cardsWrapper.emptyTable {
   justify-content: center;

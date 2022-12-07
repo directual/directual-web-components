@@ -12,12 +12,16 @@ import Button from '../../button/button'
 import { dict } from '../../locale'
 import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
 import _ from 'lodash'
+import debounce from 'lodash.debounce';
 
 function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     if (!data) { data = {} }
 
     console.log('---data FpsTable---')
     console.log(data)
+
+    const cx = null
+    const dqlService = debounce(performFiltering, 800);
 
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
@@ -57,28 +61,39 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
    * @param pageInfo
    * @param options - additional parameteres for rise event to eventEngine
    */
-     const sendMsg = (msg, sl, pageInfo, options) => {
+    const sendMsg = (msg, sl, pageInfo, options) => {
         console.log('submitting...')
         pageInfo = pageInfo || { page: currentPage }
         if (sl === "") { sl = undefined }
         // костылек для даты
         for (const prop in msg) {
-            if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) { msg[prop] = moment(msg[prop])}
+            if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) { msg[prop] = moment(msg[prop]) }
         }
         const message =
-            { ...msg, _id: 'form_' + id, _sl_name: sl, _options:options }
+            { ...msg, _id: 'form_' + id, _sl_name: sl, _options: options }
         console.log(message)
         console.log(pageInfo)
         setLoading(true)
         if (onEvent) {
             let prom = onEvent(message, pageInfo)
-            if(prom && prom.finally){
-              prom.finally(()=>{
-                setLoading(false)
-              })
+            if (prom && prom.finally) {
+                prom.finally(() => {
+                    setLoading(false)
+                })
             }
             return prom
         }
+    }
+
+    function performFiltering(dql, sort) {
+        clearTimeout(cx);
+        console.log('=== F I L T E R I N G ! ===')
+        console.log(dql)
+        //setCurrentDQL(dql)
+        console.log('=== S O R T I N G ! ===')
+        console.log(sort)
+        //sendMsg({ dql, sort }, null, { page: currentPage })
+        sendMsg({ dql, sort }, null, { page: currentPage })
     }
 
 
@@ -188,8 +203,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 console.log(cond.fieldValue + ' != ' + cond.value);
                 console.log(cond)
                 console.log('Field is wrong');
-                if (cond.value == 'false' && typeof cond.fieldValue == 'undefined') { match = true } else 
-                { match = false }
+                if (cond.value == 'false' && typeof cond.fieldValue == 'undefined') { match = true } else { match = false }
             }
         })
         return match
@@ -233,8 +247,8 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                     } else {
                         cond.fieldValue = object[cond.field].id
                     }
-                } else { cond.fieldValue = object[cond.field] } 
-                    
+                } else { cond.fieldValue = object[cond.field] }
+
                 if (cond.value == 'false' && !cond.fieldValue) { cond.fieldValue = 'false' }
 
             }
@@ -248,7 +262,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     const handleCloseShowObject = () => {
         setShowObject(null);
-        setTimeout(()=>removeUrlParam(id + '_id'),300)
+        setTimeout(() => removeUrlParam(id + '_id'), 300)
     }
 
     // get direct link ID
@@ -261,12 +275,12 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         // if (urlDql && !currentDQL) {search(urlDql, urlPage || 0)}
         // if (!urlDql && urlPage && urlPage != currentPage) {setPage(urlPage)}
         if (currentID) {
-            const foundObject = data.data.filter(i=> i.id == currentID) ? data.data.filter(i=> i.id == currentID)[0] : null
-            if (foundObject) { setShowObject(foundObject) } else { console.log("no foundObject")}
+            const foundObject = data.data.filter(i => i.id == currentID) ? data.data.filter(i => i.id == currentID)[0] : null
+            if (foundObject) { setShowObject(foundObject) } else { console.log("no foundObject") }
         }
     }, [data]);
 
-    useEffect(()=> {
+    useEffect(() => {
         if (showObject && showObject.id) {
             addUrlParam({ key: id + '_id', value: showObject.id })
         } else {
@@ -291,7 +305,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         return () => clearInterval(interval);
     }, []);
 
-    if (!data || data == {} || !data.params)  { return <div /> }
+    if (!data || data == {} || !data.params) { return <div /> }
 
 
     return (
@@ -324,10 +338,15 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 </React.Fragment>}
 
             <TableTitle
+                tableFilters={_.get(params, 'filterParams') || {}}
+                displayFilters={true}
+                performFiltering={dqlService}
+                params={params}
+
                 currentBP={currentBP}
                 tableTitle={tableTitle}
                 searchValue={searchValue}
-                tableQuickSearch={data.quickSearch == 'true'}
+                //tableQuickSearch={data.quickSearch == 'true'}
                 search={data.data && data.data.length > 0 ? true : false}
                 onSearch={value => search(value)}
                 loading={loading}
@@ -346,11 +365,12 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 searchValue={searchValue}
                 checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
                 // onExpand={val => { _.get(data,'params.data.cardsOrPage') == 'page' ? handleRoute('./' + val.id)() : setShowObject(val) }}
-                onExpand={val => { 
-                    _.get(data, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(data, 'params.data.additionalPath') ? _.get(data, 'params.data.additionalPath') + '/' : ''}` + val.id)() : 
-                    _.get(data, 'params.data.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(data, 'params.data.anotherPage')}/` + val.id)() :
-                    _.get(data, 'params.data.cardsOrPage') == 'disable' ? undefined :
-                    setShowObject(val) }}
+                onExpand={val => {
+                    _.get(data, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(data, 'params.data.additionalPath') ? _.get(data, 'params.data.additionalPath') + '/' : ''}` + val.id)() :
+                        _.get(data, 'params.data.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(data, 'params.data.anotherPage')}/` + val.id)() :
+                            _.get(data, 'params.data.cardsOrPage') == 'disable' ? undefined :
+                                setShowObject(val)
+                }}
                 // onExpand={val => { setShowObject(val) }}
                 //setPage={page => { sendMsg(null, null, { page: page }) }}
                 auth={auth}

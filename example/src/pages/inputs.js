@@ -197,12 +197,14 @@ Some *emphasis* and <strong>strong</strong>!`;
             <DropFiles
                 label='drop files here'
                 multiple={false}
+                locale='ESP'
                 onDrop={value => console.log(value)}
             />
             <br />
             <FileUpload
                 label='Files'
                 //images
+                locale='ESP'
                 edit
                 allowUpload
                 defaultValue='https://api.alfa.directual.com/fileUploaded/testfiles/ee79ed98-5e00-4d51-948e-3ba2d5448ffc.jpeg,https://api.alfa.directual.com/fileUploaded/testfiles/ee79ed98-5e00-4d51-948e-3ba2d5448ffc.jpeg'
@@ -220,6 +222,7 @@ Some *emphasis* and <strong>strong</strong>!`;
             <br />
 
             <Input type='multiselect'
+            locale="FRA"
             defaultValue={['id','хуе-мое']}
             options ={[
                 {
@@ -352,7 +355,7 @@ type='structurefield' />`} />
                 nomargin
                 type='checkboxGroup' /> */}
 
-            <Input type='phone' label='phone' />
+            <Input type='phone' label='phone' locale="FRA"/>
             <Input type='email' label='email' />
             <Input type='password' label='password' />
 

@@ -94,6 +94,12 @@ a.button {
       background-size: contain;
     }
   }
+  &.active {
+    border-color: var(--button-accent-border);
+    height: 48px;
+    padding: 0 17px !important;
+    border-width: 2px;
+  }
   &.accent {
     border-color: var(--button-accent-border);
     background-color: var(--button-accent-bgr);
@@ -192,6 +198,11 @@ a.button {
   &.rightSide {
     .dropdownMenu {
       right: 0;
+    }
+  }
+  &.overflowVisible {
+    .dropdownMenu {
+      overflow: visible;
     }
   }
   .dropdownMenu {

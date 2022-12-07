@@ -316,7 +316,7 @@ export default function Select(props) {
                         )}
 
                         <li className={styles.multiplaceholder}>
-                            {!filter && <div>{props.placeholder ? props.placeholder : 'Select the value'}</div>}
+                            {!filter && <div>{props.placeholder ? props.placeholder : _.get(props.dict,'select') || 'Select the value'}</div>}
                             {focus &&
                                 <input
                                     disabled={props.disabled}
@@ -337,7 +337,7 @@ export default function Select(props) {
                     {!props.multi && <React.Fragment>
                         {!value && !filter &&
                             <div className={`${styles.placeholder}`}>
-                                {props.placeholder ? props.placeholder : 'Select the value'}</div>}
+                                {props.placeholder ? props.placeholder :  _.get(props.dict,'select') ||'Select the value'}</div>}
                         {value && !filter &&
                             <div className={styles.currentValue}>{value.value}
                                 <span className={styles.displayKey}>

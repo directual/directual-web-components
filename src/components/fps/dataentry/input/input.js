@@ -9,6 +9,8 @@ import StructureField from '../structurefield/structurefield'
 import { Markdown } from '../../article/mkd'
 import OptionsHandler, { AdvancedOptionsHandler } from '../optionsHandler/optionsHandler'
 import Map from '../map/map'
+import _ from 'lodash'
+import { dict } from '../../locale'
 
 
 export function InputGroup(props) {
@@ -26,6 +28,7 @@ export default function Input(props) {
     const [defVal, setDefVal] = useState(props.defaultValue || props.value)
     const inputEl = useRef(null);
     const [lines, setLines] = useState(1)
+    const lang = props.locale ? props.locale.length == 3 ? props.locale : 'ENG' : 'ENG'
 
     const checkValue = () => {
         // console.log('checking...');
@@ -463,6 +466,7 @@ export default function Input(props) {
                             ${props.code && styles.code} 
                             ${warningMsg.type && styles[warningMsg.type]}
                             ${props.disabled && styles.disabled}`}
+                            onClick={e => e.stopPropagation()}
                             type="text"
                             onKeyPress={e => { e.key == 'Enter' ? props.onPressEnter(value) : undefined }}
                             onChange={e => { !props.copy ? handleChange(e.target.value) : undefined; }}
@@ -543,6 +547,7 @@ export default function Input(props) {
             {props.type == 'decimal' &&
                 <div className={`${props.unitName && styles.fieldUnitsWrapper}`}>
                     <div className={styles.field_wrapper}>
+                        {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
                         <input
                             className={`${styles.field} ${props.icon && styles.icon} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                             ref={inputEl}
@@ -608,7 +613,9 @@ export default function Input(props) {
                             onChange={e => handleChange(e.target.value)}
                             value={value}
                             onBlur={checkValue}
-                            placeholder={`${props.placeholder ? props.placeholder : 'numbers only'}`}
+                            placeholder={`${props.placeholder ? props.placeholder : _.get(dict[lang],'numbersOnly') || 'numbers only'
+                        }`
+                        }
                         />
                         {value && !props.disabled && !props.copy &&
                             <div className={`${styles.clear} icon icon-close`}
@@ -774,6 +781,7 @@ export default function Input(props) {
                     placeholder={props.placeholder}
                     options={props.options}
                     icon={props.icon}
+                    dict={dict[lang]}
                     code={props.code}
                     height={props.height}
                     bottomSelect={props.bottomSelect}
@@ -793,6 +801,7 @@ export default function Input(props) {
                     placeholder={props.placeholder}
                     options={props.options}
                     bottomSelect={props.bottomSelect}
+                    dict={dict[lang]}
                     icon={props.icon}
                     height={props.height}
                     displayKeyShort={props.displayKeyShort}
@@ -810,6 +819,7 @@ export default function Input(props) {
                     placeholder={props.placeholder || 'Choose icon'}
                     options={icon_options}
                     bottomSelect={props.bottomSelect}
+                    dict={dict[lang]}
                     height={props.height}
                     icon={props.icon}
                     displayKey={props.displayKey}
@@ -895,13 +905,17 @@ export default function Input(props) {
             }
             {props.type == 'checkboxGroup' &&
                 <div style={props.horizontal ? { display: 'flex', flexWrap: 'wrap' } : {}}>
+                    {props.clearOption && value && JSON.stringify(value) !== "{}" &&
+                        <a className={styles.checkbox_clearOption} onClick={() => submit({})}>Clear</a>}
                     {props.options && props.options.map(option => {
                         return (
                             <div className={styles.checkbox_wrapper} style={props.horWidth ? { width: props.horWidth } : {}}>
                                 <Checkbox
                                     disabled={props.disabled}
                                     label={option.label}
-                                    defaultValue={typeof props.defaultValue == 'object' && props.defaultValue[option.value]}
+                                    nowrap={props.nowrap}
+                                    defaultValue={_.get(value, `[${option.value}]`)}
+                                    //defaultValue={_.get(props.defaultValue, `[${option.value}]`)}
                                     onChange={val => {
                                         const saveValue = { ...value }
                                         if (val) { saveValue[option.value] = val }

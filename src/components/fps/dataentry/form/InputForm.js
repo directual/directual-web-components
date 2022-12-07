@@ -55,7 +55,7 @@ export function InputForm(props) {
     }
 }
 
-function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue, link, hintType, isHint }) {
+function FieldText({ field, locale, onChange, placeholder, editingOn, code, defaultValue, link, hintType, isHint }) {
     const addHttp = link => {
         if (!link) return link
         if (link.substring(0, 4) != 'http') { link = 'http://' + link }
@@ -64,6 +64,7 @@ function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue
     if (field.format == 'youTube') return <Media
         onChange={onChange}
         disabled={!editingOn}
+        locale={locale}
         required={field.required}
         placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
         description={field.descriptionFlag && field.description}
@@ -103,6 +104,7 @@ function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue
         type={`${field.format == 'password' ? 'password' : 'textarea'}`}
         rows='auto'
         code={code}
+        locale={locale}
         onChange={onChange}
         disabled={!editingOn}
         required={field.required}
@@ -113,7 +115,7 @@ function FieldText({ field, onChange, placeholder, editingOn, code, defaultValue
     />
 }
 
-function FieldStandard({ field, onChange, placeholder, editingOn, defaultValue }) {
+function FieldStandard({ field, onChange, placeholder, editingOn, defaultValue, locale }) {
     // console.log('FieldStandard')
     // console.log(field)
     if (!editingOn) return <div className={styles.objFieldWrapper}>
@@ -129,6 +131,7 @@ function FieldStandard({ field, onChange, placeholder, editingOn, defaultValue }
         type={field.dataType != 'string' ? field.dataType : field.format} // для email, phone
         positive={field.format == 'positiveNum'}
         onChange={onChange}
+        locale={locale}
         edit={editingOn}
         disabled={!editingOn}
         required={field.required}
@@ -139,7 +142,7 @@ function FieldStandard({ field, onChange, placeholder, editingOn, defaultValue }
     />
 }
 
-function FieldFile({ field, onChange, placeholder, editingOn, defaultValue }) {
+function FieldFile({ field, onChange, locale, placeholder, editingOn, defaultValue }) {
     // console.log('FieldFile')
     // console.log(field)
 
@@ -147,7 +150,8 @@ function FieldFile({ field, onChange, placeholder, editingOn, defaultValue }) {
         onChange={onChange}
         allowUpload={field.fileUpload}
         edit={editingOn}
-        allowUpload
+        locale={locale}
+        //allowUpload
         multiple={field.format == 'multipleFiles' || field.format == 'multipleImages'}
         host='/api/upload'
         images={field.format == 'image' || field.format == 'multipleImages'}
@@ -158,7 +162,7 @@ function FieldFile({ field, onChange, placeholder, editingOn, defaultValue }) {
     />
 }
 
-function FieldBoolean({ field, onChange, placeholder, editingOn, defaultValue }) {
+function FieldBoolean({ field, onChange, locale, placeholder, editingOn, defaultValue }) {
     const getBooleanDefaultValue = defVal => {
         if (typeof defVal == 'string') { return defVal }
         if (typeof defVal == 'undefined') { return 'undefined' }
@@ -170,6 +174,7 @@ function FieldBoolean({ field, onChange, placeholder, editingOn, defaultValue })
             { value: 'false', label: !field.formatOptions ? 'false' : field.formatOptions.booleanOptions && field.formatOptions.booleanOptions[1] ? field.formatOptions.booleanOptions[1] : 'false' }
         ]}
         onChange={onChange}
+        locale={locale}
         disabled={!editingOn}
         label={field.content || field.id}
         description={field.descriptionFlag && field.description}
@@ -181,7 +186,7 @@ function FieldDate({ field, onChange, placeholder, editingOn, defaultValue }) {
     // console.log('DATE')
     // console.log(field)
     return <Input type='date'
-        defaultValue={field.defaultValueOn && field.defaultValue}
+        //defaultValue={field.defaultValueOn && field.defaultValue}
 
         timeConstraints={field.formatOptions && field.formatOptions.timeConstraints}
         dateFormat={field.formatOptions ? field.formatOptions.dateFormat : 'DD/MM/Y '}
@@ -199,12 +204,13 @@ function FieldDate({ field, onChange, placeholder, editingOn, defaultValue }) {
     />
 }
 
-function FieldMkd({ field, onChange, placeholder, editingOn, defaultValue }) {
+function FieldMkd({ field, locale, onChange, placeholder, editingOn, defaultValue }) {
     //console.log(field)
     return <React.Fragment>
         <Input
             type='markdown'
             onChange={onChange}
+            locale={locale}
             edit={editingOn}
             disabled={!editingOn}
             required={field.required}
@@ -216,13 +222,14 @@ function FieldMkd({ field, onChange, placeholder, editingOn, defaultValue }) {
     </React.Fragment>
 }
 
-function FieldHTML({ field, onChange, placeholder, editingOn, defaultValue }) {
+function FieldHTML({ field, locale, onChange, placeholder, editingOn, defaultValue }) {
     //console.log(field)
     if (editingOn) return <React.Fragment>
         <Input
             type='textarea'
             onChange={onChange}
             code
+            locale={locale}
             rows='auto'
             edit={editingOn}
             required={field.required}

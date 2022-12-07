@@ -6,10 +6,12 @@ import Input from '../input/input'
 import Backdrop from '../../backdrop/backdrop'
 import { relativeTimeRounding } from 'moment'
 import Hint from '../../hint/hint'
+import { dict } from '../../locale'
 
 export default function FileUpload(props) {
 
     const [uploading, setUploading] = useState(false)
+    const lang = props.locale ? props.locale.length == 3 ? props.locale : 'ENG' : 'ENG'
 
     function bytesToSize(bytes) {
         const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
@@ -111,13 +113,14 @@ export default function FileUpload(props) {
                                         <input {...getInputProps()} />
                                         <p className={`icon icon-upload`}>
                                             {props.uploadText ||
-                                                props.multiple ? "Drop files here, or click to select files" :
-                                                "Drop a file here, or click to select one"}
+                                                props.multiple ? _.get(dict[lang],'dropMany') || "Drop files here, or click to select files" :
+                                                _.get(dict[lang],'dropOne') || "Drop a file here, or click to select one"
+                                            }
                                         </p>
                                     </div>}
                                     {uploading &&
                                         <div className={styles.progress}>
-                                            <Loader>Uploading files...</Loader>
+                                            <Loader>{_.get(dict[lang],'uploading') || "Uploading files..."}</Loader>
                                         </div>}
 
                                     {/* {files && files.length && <ul className={styles.multipleUpload}>
@@ -167,6 +170,7 @@ function FileList({ fileList, images, onDelete, edit }) {
             <ShowImage
                 imageUrl={fileList[largeView]}
                 close={() => { setLargeView(null) }}
+                lang={lang}
                 swipable={fileList.length > 1}
                 swipe={i => {
                     let saveIndex = largeView + i
@@ -199,7 +203,7 @@ function FileList({ fileList, images, onDelete, edit }) {
     </React.Fragment>
 }
 
-function ShowImage({ imageUrl, swipe, swipable, close }) {
+function ShowImage({ imageUrl, swipe, swipable, close, lang }) {
     const leftButton = useRef(null);
     const rightButton = useRef(null);
     const image = useRef(null);

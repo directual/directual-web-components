@@ -8,6 +8,7 @@ import 'moment/locale/ru'
 import 'moment/locale/en-gb'
 import 'moment/locale/es'
 import 'moment/locale/fr'
+import { dict } from '../../locale'
 import 'moment/locale/de'
 
 export default function Datepicker(props) {
@@ -16,6 +17,7 @@ export default function Datepicker(props) {
     if (typeof props.timeFormat == 'string') { timeFormat = props.timeFormat }
     if (typeof props.timeFormat == 'undefined') { timeFormat = ' HH:mm' }
     //console.log(typeof props.timeFormat)
+    const lang = props.locale ? props.locale.length == 3 ? props.locale : 'ENG' : 'ENG'
 
     const [value, setValue] = useState(props.defaultValue && props.utc ? moment.utc(props.defaultValue) : moment(props.defaultValue))
 
@@ -63,10 +65,13 @@ export default function Datepicker(props) {
             props.onChange({ target: { value: '' } });
         }
         return (
-            <div onClick={openCalendar} className={styles.datePicker}>
+            <div onClick={e => {
+                e.stopPropagation()
+                openCalendar(e)
+            }} className={styles.datePicker}>
                 <div className={`${styles.icon} icon icon-calendar`} />
                 <div className={styles.value}>{props.value}</div>
-                {props.value && <div onClick={clear} className={`${styles.clear} icon icon-close`}/>}
+                {props.value && <div onClick={clear} className={`${styles.clear} icon icon-close`} />}
             </div>
         );
     }
@@ -93,7 +98,6 @@ export default function Datepicker(props) {
                 utc={props.utc}
                 onBlur={props.onBlur}
                 closeOnSelect={true}
-
                 inputProps={{
                     placeholder: props.placeholder,
                     disabled: props.disabled,
