@@ -11,6 +11,7 @@ import { Paging } from '../paging/paging'
 import Button from '../../button/button'
 import { dict } from '../../locale'
 import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
+import Hint from '../../hint/hint'
 import _ from "lodash";
 
 
@@ -285,6 +286,7 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
 
     return (
         <ComponentWrapper currentBP={currentBP}>
+            {data.writeError && <Hint title={dict[lang].form.error} error>{data.writeError}</Hint>}
             {/* <Button onClick={() => updateURL([{ key: "objectID", value: "100500" } ])} icon='refresh'>updateURL</Button>
             <Button onClick={() => clearURL()} icon='refresh'>clearURL</Button> */}
             {/* <Button onClick={() => removeUrlParam(id + '_page')} icon='refresh'>refresh page</Button> */}
@@ -361,7 +363,7 @@ FpsKanban.settings = {
         { name: 'Kanban title', sysName: 'tableTitle', type: 'input' },
         // { name: 'Kanban parameters', sysName: 'params', type: 'kanban-params' },
         { name: 'Max objects quantity', sysName: 'pageSize', type: 'number' },
-        { name: 'Quick search', sysName: 'quickSearch', type: 'turn_on_off' },
+        // { name: 'Quick search', sysName: 'quickSearch', type: 'turn_on_off' },
         { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
     ]
 }

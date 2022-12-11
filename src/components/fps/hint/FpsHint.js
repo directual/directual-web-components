@@ -38,7 +38,7 @@ FpsHint.settings = {
         { name: 'Text (HTML is allowed)', sysName: 'text', type: 'html-SLenriched', withTemplate: true },
         { name: 'Margins', sysName: 'margins', type: 'margin-top-bottom' },
         { name: 'Apply template engine', sysName: 'withTemplate', type: 'boolean' },
-        { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' },
+        { name: 'API-endpoint', sysName: 'sl', type: 'api-endpoint' },
     ]
 }
 

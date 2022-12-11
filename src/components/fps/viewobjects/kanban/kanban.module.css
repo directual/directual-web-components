@@ -29,4 +29,6 @@
 }
 .kanbanHeader {
   padding: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

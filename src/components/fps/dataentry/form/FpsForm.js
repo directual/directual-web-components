@@ -77,7 +77,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
     console.log(model)
     const modelCopy = {}
     for (const f in model) {
-      const isWritable = (_.get(data,'params.data.writeFields') || []).filter(w => w.sysName == f).length > 0
+      const isWritable = (_.get(data, 'params.data.writeFields') || []).filter(w => w.sysName == f).length > 0
       if (isWritable) {
         modelCopy[f] = model[f]
       }
@@ -320,10 +320,10 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
 
 
   // чекаем надо ли спрятать кнопку сабмита
-  const wf = (_.get(data,'params.data.writeFields') || [])
-    .filter(f => (_.get(data,`params.fields.${f.sysName}.include`) || _.get(data,`params.fields.${f.sysName}.defaultValueOn`) ) && !_.get(data,`params.fields.${f.sysName}.disableEditing`))
+  const wf = (_.get(data, 'params.data.writeFields') || [])
+    .filter(f => (_.get(data, `params.fields.${f.sysName}.include`) || _.get(data, `params.fields.${f.sysName}.defaultValueOn`)) && !_.get(data, `params.fields.${f.sysName}.disableEditing`))
   let idInclude = false;
-  _.get(data,'params.data.writeFields').forEach(f => { if (f.sysName == 'id') { idInclude = true} })
+  _.get(data, 'params.data.writeFields').forEach(f => { if (f.sysName == 'id') { idInclude = true } })
   const isEditable = (idInclude || !data.params.useEditing) && wf.length > 0
   // console.log('wf')
   // console.log(wf.length > 0)
@@ -341,6 +341,8 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
         )}</div>
 
       {loading && <Loader>{dict[lang].loading}</Loader>}
+
+      {data.writeError && <Hint title={dict[lang].form.error} error>{data.writeError}</Hint>}
 
       {data.error && !loading && data.error != 'dql is not allowed for write' &&  // dql это КОСТЫЛЬ — убрать когда пофиксим на API
         <Hint title={dict[lang].form.error} error>{data.error}</Hint>}
@@ -369,7 +371,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
         <Button icon='refresh' onClick={resubmit}>{resultButton}</Button>}
 
 
-      {showForm && !loading &&
+      {showForm && !data.error && !loading &&
         <form onSubmit={submit} style={{ maxWidth: formWidth }}>
           {data.params.data.columnOrder.map(section =>
             data.params.data.columns[section].fieldIds
@@ -377,7 +379,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
             &&
             <div //style={{ marginBottom: 38 }} 
               className={`${styles.marginBottom38} ${checkSectionConditionals(data.params.data.columns[section].cond, data.params.data.columns[section].condOperator) ?
-              '' : styles.hideSection}`}>
+                '' : styles.hideSection}`}>
               {data.params.data.columnOrder.length > 1 && data.params.data.columns[section].display &&
                 <FormSection title=
                   {data.params.data.columns[section].title} />}

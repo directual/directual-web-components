@@ -53,7 +53,8 @@ const columnsFromBackend = {
 };
 
 
-export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, searchValue, auth, submit, submitAction, params, checkActionCond, currentBP }) {
+export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, 
+    searchValue, auth, submit, submitAction, params, checkActionCond, currentBP }) {
 
     const kanbanData = data.data || []
 
@@ -259,13 +260,14 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, sea
 
     const [columns, setColumns] = useState(enrichColumns(kanbanParams.columns));
 
+    // console.log("auth")
+    // console.log(auth)
 
     const onDragEnd = (result, columns, setColumns) => {
         if (!result.destination) return;
         const { source, destination } = result;
-
-        console.log('dnd result')
-        console.log(result)
+        const userID = _.get(kanbanParams,'userIDfield') ? 
+            auth.isAuth ? { [_.get(kanbanParams,'userIDfield')] : auth.user } : {} : {}
 
         if (source.droppableId !== destination.droppableId) {
             const sourceColumn = columns[source.droppableId];
@@ -290,9 +292,9 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, sea
             });
             submit(targetColumn.map(i => {
                 if (i.id == removed.id) {
-                    return { id: i.id, [sortField]: i[sortField], [columnField]: result.destination.droppableId }
+                    return { id: i.id, [sortField]: i[sortField], [columnField]: result.destination.droppableId, ...userID }
                 } else {
-                    return { id: i.id, [sortField]: i[sortField] }
+                    return { id: i.id, [sortField]: i[sortField], ...userID }
                 }
             }), true)
         } else {
@@ -309,7 +311,7 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, sea
                     items: copiedItems
                 }
             });
-            submit(targetColumn.map(i => { return { id: i.id, [sortField]: i[sortField] } }), true)
+            submit(targetColumn.map(i => { return { id: i.id, [sortField]: i[sortField], ...userID } }), true)
         }
     };
 
@@ -357,7 +359,11 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, sea
                                 className={styles.column}
                                 key={columnId}
                             >
-                                <h3 className={styles.kanbanHeader}>{column.name}</h3>
+                                <h3 className={styles.kanbanHeader}
+                                    style={{
+                                        width: columnWidth - 16,
+                                    }}
+                                >{column.name}</h3>
                                 <div style={{ flexGrow: 2 }}>
                                     <Droppable droppableId={columnId} key={columnId}>
                                         {(provided, snapshot) => {
@@ -372,13 +378,14 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, sea
                                                             : "var(--layout-bgr)",
                                                         //padding: 4,
                                                         width: columnWidth,
-                                                        minHeight: 500
+                                                        //minHeight: 500
                                                     }}
                                                 >
                                                     {column.items.map((item, index) => {
                                                         return (
                                                             <Draggable
                                                                 key={item.id}
+                                                                isDragDisabled={kanbanParams.dragndropOption == 'none'}
                                                                 draggableId={item.id}
                                                                 index={index}
                                                             >

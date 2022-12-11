@@ -11,6 +11,7 @@ import { Paging } from '../paging/paging'
 import Button from '../../button/button'
 import { dict } from '../../locale'
 import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
+import Hint from '../../hint/hint'
 import _ from 'lodash'
 import debounce from 'lodash.debounce';
 
@@ -310,6 +311,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     return (
         <ComponentWrapper currentBP={currentBP}>
+            {data.writeError && <Hint title={dict[lang].form.error} error>{data.writeError}</Hint>}
             {/* <Button onClick={refresh} icon='refresh'>refresh</Button> */}
             {showObject &&
                 <React.Fragment>
@@ -404,7 +406,7 @@ FpsTable.settings = {
         { name: 'API-endpoint', sysName: 'sl', type: 'api-endpoint' },
         { name: 'Table title', sysName: 'tableTitle', type: 'input' },
         { name: 'Page size', sysName: 'pageSize', type: 'number' },
-        { name: 'Quick search', sysName: 'quickSearch', type: 'turn_on_off' },
+        // { name: 'Quick search', sysName: 'quickSearch', type: 'turn_on_off' },
         { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
     ]
 }

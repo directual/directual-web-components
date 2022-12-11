@@ -2451,38 +2451,40 @@ const App = (props) => {
 
     let kanbanData = {
         "sl": "kanban",
-        "pageSize": "50",
+        "pageSize": "10",
         "headerField": null,
         "params": {
-            "cardHeaderComment": "col",
-            "cardBodyText": "weight",
-            "cardImage": false,
-            "cardImageField": "",
-            "cardImageType": "none",
-            "cardImageSize": 100,
-            "objectView": {},
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "col",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "col",
-                        "name": "Colmn",
-                        "dataType": "link",
-                        "format": "",
+                        "fieldSysName": "Color",
+                        "fetch": [],
+                        "sysName": "Color",
+                        "name": "Color",
+                        "dataType": "string",
+                        "format": "color",
                         "formatOptions": {},
-                        "link": "columns"
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "Description",
+                        "fetch": [],
+                        "sysName": "Description",
+                        "name": "Description",
+                        "dataType": "string",
+                        "format": "markdown",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "icon",
+                        "fetch": [],
+                        "sysName": "icon",
+                        "name": "Icon",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "link": ""
                     },
                     {
                         "fieldSysName": "id",
@@ -2498,37 +2500,58 @@ const App = (props) => {
                         "fieldSysName": "image",
                         "fetch": [],
                         "sysName": "image",
-                        "name": "",
+                        "name": "Photo",
                         "dataType": "file",
                         "format": "image",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "name",
+                        "fieldSysName": "number",
                         "fetch": [],
-                        "sysName": "name",
-                        "name": "NAME",
+                        "sysName": "number",
+                        "name": "Number",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": ""
+                        "link": null
                     },
                     {
-                        "fieldSysName": "text",
+                        "fieldSysName": "stage_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "stage_id",
+                        "name": "Stage",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "columns"
+                    },
+                    {
+                        "fieldSysName": "title",
                         "fetch": [],
-                        "sysName": "text",
-                        "name": "",
+                        "sysName": "title",
+                        "name": "Title",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": ""
+                        "link": null
                     },
                     {
                         "fieldSysName": "weight",
                         "fetch": [],
                         "sysName": "weight",
-                        "name": "",
+                        "name": "Weight",
                         "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
@@ -2536,16 +2559,6 @@ const App = (props) => {
                     }
                 ],
                 "writeFields": [
-                    {
-                        "fieldSysName": "col",
-                        "fetch": [],
-                        "sysName": "col",
-                        "name": "Colmn",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "columns"
-                    },
                     {
                         "fieldSysName": "id",
                         "fetch": [],
@@ -2557,27 +2570,68 @@ const App = (props) => {
                         "link": ""
                     },
                     {
+                        "fieldSysName": "stage_id",
+                        "fetch": [],
+                        "sysName": "stage_id",
+                        "name": "Stage",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "columns"
+                    },
+                    {
                         "fieldSysName": "weight",
                         "fetch": [],
                         "sysName": "weight",
-                        "name": "",
+                        "name": "Weight",
                         "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
-                    }
-                ],
-                "fields": {
-                    "col": {
-                        "id": "col",
-                        "content": "Colmn",
-                        "type": "field",
+                    },
+                    {
+                        "fieldSysName": "who_changed",
+                        "fetch": [],
+                        "sysName": "who_changed",
+                        "name": "",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
+                        "link": "WebUser"
+                    }
+                ],
+                "fields": {
+                    "Color": {
+                        "id": "Color",
+                        "content": "Color",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
                         "read": true,
-                        "link": "columns",
+                        "link": "",
+                        "actions": []
+                    },
+                    "Description": {
+                        "id": "Description",
+                        "content": "Description",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "markdown",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "icon": {
+                        "id": "icon",
+                        "content": "Icon",
+                        "type": "field",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
                         "actions": []
                     },
                     "id": {
@@ -2594,7 +2648,7 @@ const App = (props) => {
                     },
                     "image": {
                         "id": "image",
-                        "content": "",
+                        "content": "Photo",
                         "type": "field",
                         "dataType": "file",
                         "format": "image",
@@ -2603,31 +2657,43 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "name": {
-                        "id": "name",
-                        "content": "NAME",
+                    "number": {
+                        "id": "number",
+                        "content": "Number",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "",
+                        "link": null,
                         "actions": []
                     },
-                    "text": {
-                        "id": "text",
-                        "content": "",
+                    "stage_id": {
+                        "id": "stage_id",
+                        "content": "Stage",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "columns",
+                        "actions": []
+                    },
+                    "title": {
+                        "id": "title",
+                        "content": "Title",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "",
+                        "link": null,
                         "actions": []
                     },
                     "weight": {
                         "id": "weight",
-                        "content": "",
+                        "content": "Weight",
                         "type": "field",
                         "dataType": "decimal",
                         "format": "",
@@ -2637,15 +2703,36 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "action__68981660905091745": {
-                        "id": "action__68981660905091745",
-                        "content": "New action",
-                        "type": "action",
+                    "who_changed": {
+                        "id": "who_changed",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": "WebUser",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "col": {
+                    "Color": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "Description": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "icon": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -2669,7 +2756,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "name": {
+                    "number": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -2677,7 +2764,15 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "text": {
+                    "stage_id": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "title": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -2692,6 +2787,14 @@ const App = (props) => {
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
+                    },
+                    "who_changed": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
                     }
                 },
                 "columns": {
@@ -2699,24 +2802,42 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "col",
+                            "Color",
+                            "Description",
+                            "icon",
                             "id",
                             "image",
-                            "name",
-                            "text",
+                            "number",
+                            "stage_id",
+                            "title",
                             "weight",
-                            "action__68981660905091745"
+                            "who_changed"
                         ]
                     }
                 },
                 "columnOrder": [
                     "tab-1"
                 ],
-                "actions": [],
-                "cardsOrPage": "page"
+                "actions": []
             },
             "fields": {
-                "col": {
+                "Color": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "Description": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "icon": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -2740,7 +2861,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "name": {
+                "number": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -2748,7 +2869,15 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "text": {
+                "stage_id": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "title": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -2763,139 +2892,125 @@ const App = (props) => {
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
+                },
+                "who_changed": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
                 }
             },
             "kanbanParams": {
-                "columnField": "col",
+                "columnField": "stage_id",
                 "columnsStruct": "columns",
+                "sortField": "weight",
                 "columns": [
                     {
-                        "id": "col-1",
-                        "name": "one "
+                        "id": "1",
+                        "name": "Backlog"
                     },
                     {
-                        "id": "col-3",
-                        "name": "three "
+                        "id": "2",
+                        "name": "InprogressInprogressInprogressInprogress"
                     },
                     {
-                        "id": "col-2",
-                        "name": "two "
+                        "id": "3",
+                        "name": "Done"
                     }
                 ],
-                "columnsVisibility": {
-                    "2": {
-                        "isHidden": true
-                    }
-                },
-                "dragndropOption": "same",
-                "sortField": "weight",
-                "columnWidth": 350
-            },
-            "showCounter": true,
-            "counterField": "id",
-            "actions": [
-                {
-                    "sysName": "kanban2",
-                    "id": "68981660905091745",
-                    "name": "New action",
-                    "displayAs": "button",
-                    "footerButtons": true,
-                    "buttonIcon": "actions",
-                    "buttonType": "accent",
-                    "SLtype": "other",
-                    "fields": {
-                        "readFields": [
-                            {
-                                "fieldSysName": "id",
-                                "fetch": [],
-                                "sysName": "id",
-                                "name": "id",
-                                "dataType": "id",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "link",
-                                "fetch": [],
-                                "sysName": "link",
-                                "name": "",
-                                "dataType": "link",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            }
-                        ],
-                        "writeFields": [
-                            {
-                                "fieldSysName": "id",
-                                "fetch": [],
-                                "sysName": "id",
-                                "name": "id",
-                                "dataType": "id",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "fetch": [],
-                                "sysName": "name",
-                                "name": "NAME",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            }
-                        ]
-                    },
-                    "formMapping": [
-                        {
-                            "id": "94081664743361671",
-                            "target": "id",
-                            "type": "objectField",
-                            "value": "id"
-                        },
-                        {
-                            "id": "69961664743367064",
-                            "target": "name",
-                            "type": "const",
-                            "value": "сила в правде"
-                        }
-                    ]
-                }
-            ],
-            "cardHeaderStyle": "p"
+                "columnsVisibility": {},
+                "columnWidth": 160,
+                "userIDfield": "who_changed",
+                "dragndropOption": "none"
+            }
         },
-        "tableTitle": "Trello1",
+        "tableTitle": "Change log",
         "actions": null,
         "headers": [
             {
-                "sysName": "col",
-                "dataType": "link",
-                "name": "Colmn",
-                "id": "98481659390930255",
-                "link": "columns",
+                "sysName": "Color",
+                "dataType": "string",
+                "name": "Color",
+                "id": "50991664975841558",
+                "link": "",
                 "group": "0",
-                "tags": "",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 1,
+                "order": 6,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
-                "format": null,
-                "formatOptions": {},
+                "format": "color",
+                "formatOptions": null,
                 "groupName": null,
                 "typeVariable": {},
                 "json": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
+                "linkType": false,
                 "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "Description",
+                "dataType": "string",
+                "name": "Description",
+                "id": "37061664975773913",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "markdown",
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkType": false,
+                "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "icon",
+                "dataType": "file",
+                "name": "Icon",
+                "id": "62751667394795379",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 7,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "image",
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkType": false,
+                "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
                 "array": false
             },
             {
@@ -2920,73 +3035,17 @@ const App = (props) => {
                 "groupName": null,
                 "typeVariable": {},
                 "json": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
                 "array": false
             },
             {
                 "sysName": "image",
                 "dataType": "file",
-                "name": "",
+                "name": "Photo",
                 "id": "75311659390953617",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "image",
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "name",
-                "dataType": "string",
-                "name": "NAME",
-                "id": "94231659390940732",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "text",
-                "dataType": "string",
-                "name": "",
-                "id": "51671659390951143",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -2999,21 +3058,105 @@ const App = (props) => {
                 "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
-                "format": null,
+                "format": "image",
                 "formatOptions": {},
                 "groupName": null,
                 "typeVariable": {},
                 "json": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "number",
+                "dataType": "string",
+                "name": "Number",
+                "id": "46001667395423699",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 8,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkType": false,
+                "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "stage_id",
+                "dataType": "link",
+                "name": "Stage",
+                "id": "73031664975807413",
+                "link": "columns",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkType": true,
+                "arrayLink": false,
+                "linkOrArrayLinkType": true,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "title",
+                "dataType": "string",
+                "name": "Title",
+                "id": "28051664975795913",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkType": false,
+                "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
                 "array": false
             },
             {
                 "sysName": "weight",
                 "dataType": "decimal",
-                "name": "",
+                "name": "Weight",
                 "id": "53081660230900734",
                 "link": "",
                 "group": "0",
@@ -3022,7 +3165,7 @@ const App = (props) => {
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 5,
+                "order": 4,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
@@ -3032,44 +3175,69 @@ const App = (props) => {
                 "groupName": null,
                 "typeVariable": {},
                 "json": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
                 "array": false
             }
         ],
         "data": [
             {
-                "name": "сила в правде",
+                "number": "01",
+                "weight": 0,
                 "image": "https://api.alfa.directual.com/fileUploaded/temaplate-crm/d0729f6b-c432-4bee-a561-ba10123de7b7.jpeg",
-                "text": "Sweet and nice berry",
-                "id": "obj-1",
-                "col": {
-                    "name": "one",
-                    "id": "col-1"
-                }
+                "icon": "https://api.directual.com/fileUploaded/kanban/2b3d9835-abe2-4d5c-8930-748c312eb59d.png",
+                "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "id": "1",
+                "stage_id": {
+                    "name": "Backlog",
+                    "id": "1"
+                },
+                "title": "Social media marketing",
+                "Color": "#fdafd8"
             },
             {
-                "weight": 2.3,
-                "name": "cила в правде брат",
-                "image": "https://api.alfa.directual.com/fileUploaded/temaplate-crm/2b03e65d-d1b5-41ab-9291-d0a9fc687864.jpeg",
-                "text": "Another solid berry",
-                "id": "obj-2",
-                "col": {
-                    "name": "one",
-                    "id": "col-1"
-                }
+                "number": "02",
+                "weight": 1,
+                "image": "https://api.alfa.directual.com/fileUploaded/temaplate-crm/f9a03ccf-0e77-4d35-ba77-cfbe258873a1.jpeg",
+                "icon": "https://api.directual.com/fileUploaded/kanban/82220161-5498-421c-b31f-8613068e22d4.png",
+                "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "id": "2",
+                "stage_id": {
+                    "name": "Done",
+                    "id": "3"
+                },
+                "title": "Product development",
+                "Color": "#c9ea3e"
             },
             {
-                "name": "сила в правде",
-                "image": "https://api.alfa.directual.com/fileUploaded/temaplate-crm/15697140-9cd6-4d73-9114-3161870b8d48.jpeg",
-                "text": "Love the juice!",
-                "id": "obj-3",
-                "col": {
-                    "name": "one",
-                    "id": "col-1"
-                }
+                "number": "03",
+                "weight": 0,
+                "image": "https://api.alfa.directual.com/fileUploaded/temaplate-crm/1f5b7995-ccf3-4443-8e24-347353b0aa6e.jpeg",
+                "icon": "https://api.directual.com/fileUploaded/kanban/4ceb4712-e66f-4805-882c-31351a182acd.png",
+                "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "id": "3",
+                "stage_id": {
+                    "name": "In progress",
+                    "id": "2"
+                },
+                "title": "Data analisys",
+                "Color": "#ffb900"
+            },
+            {
+                "number": "04",
+                "weight": 1,
+                "image": "https://api.alfa.directual.com/fileUploaded/temaplate-crm/b17815c5-2fbd-450e-a01c-5ca4a1c49bee.jpeg",
+                "icon": "https://api.directual.com/fileUploaded/kanban/e1568b00-3318-418f-bd33-db949ed51c32.png",
+                "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "id": "4",
+                "stage_id": {
+                    "name": "In progress",
+                    "id": "2"
+                },
+                "title": "Customer success",
+                "Color": "#ffffff"
             }
         ],
         "totalPages": 1,
@@ -3077,12 +3245,16 @@ const App = (props) => {
         "error": null,
         "fieldScheme": [
             [
-                "col.id",
-                99123978
+                "Color",
+                99123979
             ],
             [
-                "col.name",
-                99123978
+                "Description",
+                99123979
+            ],
+            [
+                "icon",
+                99123979
             ],
             [
                 "id",
@@ -3093,11 +3265,19 @@ const App = (props) => {
                 99123979
             ],
             [
-                "name",
+                "number",
                 99123979
             ],
             [
-                "text",
+                "stage_id.id",
+                99123978
+            ],
+            [
+                "stage_id.name",
+                99123978
+            ],
+            [
+                "title",
                 99123979
             ],
             [
@@ -3106,80 +3286,29 @@ const App = (props) => {
             ]
         ],
         "writeFields": [
-            "col",
             "id",
-            "weight"
+            "stage_id",
+            "weight",
+            "who_changed"
         ],
         "structures": {
             "99123978": {
+                "networkID": 13796,
+                "sysName": "columns",
+                "name": "columns",
                 "id": 99123978,
                 "dateCreated": "2022-08-01T21:54:31Z",
                 "hidden": false,
                 "dateHidden": null,
-                "networkID": 13796,
-                "name": "columns",
-                "sysName": "columns",
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"30861659390887062\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"second\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"28191659453539947\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkType\":false,\"arrayLink\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Stage\",\"id\":\"30861659390887062\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkType\":false,\"arrayLink\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"array\":false}]",
                 "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"},{\"sysName\":\"second\"}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": false,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2022-08-02T15:19:07Z",
-                "createBy": 3527,
-                "changedBy": 3527,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "typeVariable": {},
-                    "json": false,
-                    "indexExists": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "array": false
-                },
-                "objectIDSysName": "id",
-                "folderId": null
-            },
-            "99123979": {
-                "id": 99123979,
-                "dateCreated": "2022-08-01T21:55:21Z",
-                "hidden": false,
-                "dateHidden": null,
-                "networkID": 13796,
-                "name": "objects",
-                "sysName": "objects",
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"col\",\"dataType\":\"link\",\"name\":\"Colmn\",\"id\":\"98481659390930255\",\"link\":\"columns\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"NAME\",\"id\":\"94231659390940732\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"text\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"51671659390951143\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"image\",\"dataType\":\"file\",\"name\":\"\",\"id\":\"75311659390953617\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"weight\",\"dataType\":\"decimal\",\"name\":\"\",\"id\":\"53081660230900734\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"link\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"40491660901280670\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2022-08-29T14:27:46Z",
+                "dateChanged": "2022-11-03T11:33:37Z",
                 "createBy": 3527,
                 "changedBy": 1,
                 "_settings": null,
@@ -3206,48 +3335,72 @@ const App = (props) => {
                     "groupName": null,
                     "typeVariable": {},
                     "json": false,
-                    "indexExists": false,
-                    "linkOrArrayLinkType": false,
                     "linkType": false,
                     "arrayLink": false,
+                    "linkOrArrayLinkType": false,
+                    "indexExists": false,
                     "array": false
                 },
                 "objectIDSysName": "id",
-                "folderId": null
+                "folderId": 33720180
+            },
+            "99123979": {
+                "networkID": 13796,
+                "sysName": "objects",
+                "name": "objects",
+                "id": 99123979,
+                "dateCreated": "2022-08-01T21:55:21Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"Title\",\"id\":\"28051664975795913\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Description\",\"dataType\":\"string\",\"name\":\"Description\",\"id\":\"37061664975773913\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"number\",\"dataType\":\"string\",\"name\":\"Number\",\"id\":\"46001667395423699\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Color\",\"dataType\":\"string\",\"name\":\"Color\",\"id\":\"50991664975841558\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"weight\",\"dataType\":\"decimal\",\"name\":\"Weight\",\"id\":\"53081660230900734\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"who_changed\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"54591670772481038\",\"link\":\"WebUser\",\"group\":\"1670772445301\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"icon\",\"dataType\":\"file\",\"name\":\"Icon\",\"id\":\"62751667394795379\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"old_stage_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"71501670772443196\",\"link\":\"columns\",\"group\":\"1670772445301\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"stage_id\",\"dataType\":\"link\",\"name\":\"Stage\",\"id\":\"73031664975807413\",\"link\":\"columns\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"image\",\"dataType\":\"file\",\"name\":\"Photo\",\"id\":\"75311659390953617\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"old_weight\",\"dataType\":\"decimal\",\"name\":\"\",\"id\":\"82181670772473079\",\"link\":\"\",\"group\":\"1670772445301\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"Change log\",\"id\":1670772445301,\"order\":0}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2022-12-11T15:28:12Z",
+                "createBy": 3527,
+                "changedBy": 1,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "typeVariable": {},
+                    "json": false,
+                    "linkType": false,
+                    "arrayLink": false,
+                    "linkOrArrayLinkType": false,
+                    "indexExists": false,
+                    "array": false
+                },
+                "objectIDSysName": "id",
+                "folderId": 33720180
             }
         },
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
         "fileds": [
-            {
-                "sysName": "col",
-                "dataType": "link",
-                "name": "Colmn",
-                "id": "98481659390930255",
-                "link": "columns",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "array": false
-            },
             {
                 "sysName": "id",
                 "dataType": "id",
@@ -3270,16 +3423,44 @@ const App = (props) => {
                 "groupName": null,
                 "typeVariable": {},
                 "json": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "stage_id",
+                "dataType": "link",
+                "name": "Stage",
+                "id": "73031664975807413",
+                "link": "columns",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkType": true,
+                "arrayLink": false,
+                "linkOrArrayLinkType": true,
+                "indexExists": false,
                 "array": false
             },
             {
                 "sysName": "weight",
                 "dataType": "decimal",
-                "name": "",
+                "name": "Weight",
                 "id": "53081660230900734",
                 "link": "",
                 "group": "0",
@@ -3288,7 +3469,7 @@ const App = (props) => {
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 5,
+                "order": 4,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
@@ -3298,15 +3479,45 @@ const App = (props) => {
                 "groupName": null,
                 "typeVariable": {},
                 "json": false,
-                "indexExists": false,
-                "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "who_changed",
+                "dataType": "link",
+                "name": "",
+                "id": "54591670772481038",
+                "link": "WebUser",
+                "group": "1670772445301",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkType": true,
+                "arrayLink": false,
+                "linkOrArrayLinkType": true,
+                "indexExists": false,
                 "array": false
             }
         ],
         "quickSearch": null,
-        "httpParams": {}
+        "httpParams": {},
+        "cardCustomHtml": null,
+        "cardCustomLayout": null
     }
 
     let exampleTable = {
@@ -4713,10 +4924,10 @@ const App = (props) => {
     }
 
     let authExample = {
-        isAuth: false,
-        //role: "admin",
-        //token: "a256c0c6-6aa1-4706-afad-521d0d37e3f3",
-        //user: "manager"
+        isAuth: true,
+        role: "admin",
+        token: "a256c0c6-6aa1-4706-afad-521d0d37e3f3",
+        user: "manager"
     }
 
     let exampleForm = {
@@ -5063,10 +5274,10 @@ const App = (props) => {
                         </Route>
                         <Route exact path="/system-media">
                             <h1>Media</h1>
-                            {/* <h2>Youtube</h2>
-                            <CodeSnippet code="<Media type='video' source='https://www.youtube.com/watch?v=JAwEWLP-G_M' width='550' height='300'/>" />
-                            <Media type='video' source="https://www.youtube.com/watch?v=JAwEWLP-G_M" width='550' height='300' /> */}
-                            <Stopwatch timer min={60} direction='reverse' sec={0} />
+                            <h2>Youtube</h2>
+                            {/* <CodeSnippet code="<Media type='video' source='https://www.youtube.com/watch?v=JAwEWLP-G_M' width='550' height='300'/>" /> */}
+                            <Media type='video' source="https://www.youtube.com/watch?v=JAwEWLP-G_M" width='550' height='300' />
+                            {/* <Stopwatch timer min={60} direction='reverse' sec={0} /> */}
                         </Route>
 
                     </Switch>

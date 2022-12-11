@@ -5,6 +5,7 @@ import { TableTitle } from '../tableTitle/TableTitle'
 import icon from './../../../../icons/fps-cards.svg'
 import Backdrop from '../../backdrop/backdrop'
 import { Cards } from './cards'
+import Hint from '../../hint/hint'
 import { ComponentWrapper } from '../../wrapper/wrapper'
 import moment from 'moment'
 import { Paging } from '../paging/paging'
@@ -54,32 +55,32 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     }, [data])
 
 
-  /**
-   *
-   * @param msg
-   * @param sl
-   * @param pageInfo
-   * @param options - additional parameteres for rise event to eventEngine
-   */
+    /**
+     *
+     * @param msg
+     * @param sl
+     * @param pageInfo
+     * @param options - additional parameteres for rise event to eventEngine
+     */
     const sendMsg = (msg, sl, pageInfo, options) => {
         console.log('submitting...')
         pageInfo = pageInfo || { page: currentPage }
         if (sl === "") { sl = undefined }
         // костылек для даты
         for (const prop in msg) {
-            if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) { msg[prop] = moment(msg[prop])}
+            if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) { msg[prop] = moment(msg[prop]) }
         }
         const message =
-            { ...msg, _id: 'form_' + id, _sl_name: sl, _options:options }
+            { ...msg, _id: 'form_' + id, _sl_name: sl, _options: options }
         console.log(message)
         console.log(pageInfo)
         setLoading(true)
         if (onEvent) {
             let prom = onEvent(message, pageInfo)
-            if(prom && prom.finally){
-              prom.finally(()=>{
-                setLoading(false)
-              })
+            if (prom && prom.finally) {
+                prom.finally(() => {
+                    setLoading(false)
+                })
             }
             return prom
         }
@@ -280,6 +281,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     return (
         <ComponentWrapper currentBP={currentBP}>
+            {data.writeError && <Hint title={dict[lang].form.error} error>{data.writeError}</Hint>}
             {showObject &&
                 <React.Fragment>
                     <Backdrop onClick={handleCloseShowObject} hoverable />
@@ -330,9 +332,10 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
                 onExpand={val => {
                     _.get(data, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(data, 'params.data.additionalPath') ? _.get(data, 'params.data.additionalPath') + '/' : ''}` + val.id)() :
-                    _.get(data, 'params.data.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(data, 'params.data.anotherPage')}/` + val.id)() :
-                    _.get(data, 'params.data.cardsOrPage') == 'disable' ? undefined :
-                    setShowObject(val) }}
+                        _.get(data, 'params.data.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(data, 'params.data.anotherPage')}/` + val.id)() :
+                            _.get(data, 'params.data.cardsOrPage') == 'disable' ? undefined :
+                                setShowObject(val)
+                }}
                 setPage={page => { sendMsg(null, null, { page: page }) }}
                 auth={auth}
                 submitAction={submitAction}
@@ -365,7 +368,7 @@ FpsCards.settings = {
         { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
         { name: 'List title', sysName: 'tableTitle', type: 'input' },
         { name: 'Page size', sysName: 'pageSize', type: 'number' },
-        { name: 'Quick search', sysName: 'quickSearch', type: 'turn_on_off' },
+        // { name: 'Quick search', sysName: 'quickSearch', type: 'turn_on_off' },
         { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
     ]
 }
