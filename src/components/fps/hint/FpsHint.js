@@ -11,9 +11,14 @@ export default function FpsHint(props) {
         }
     }, [props])
 
-    const error = data.hintColour == 'error'
-    const ok = data.hintColour == 'ok'
+    console.log('HINT')
+    console.log(data)
+
+    const error = data.hintColour == 'false'
+    const ok = data.hintColour == 'true'
     const margins = data.margins || {}
+
+    if (data.isHidden == 'true') { return <div />}
 
     return <Hint
         title={data.title}
@@ -35,10 +40,11 @@ FpsHint.settings = {
     form: [
         { name: "Hint colour", sysName: "hintColour", type: "hintColour" },
         { name: 'Title', sysName: 'title', type: 'string' },
-        { name: 'Text (HTML is allowed)', sysName: 'text', type: 'html-SLenriched', withTemplate: true },
+        { name: 'Text (HTML is allowed)', sysName: 'text', type: 'html-SLenriched' },
         { name: 'Margins', sysName: 'margins', type: 'margin-top-bottom' },
         { name: 'Apply template engine', sysName: 'withTemplate', type: 'boolean' },
         { name: 'API-endpoint', sysName: 'sl', type: 'api-endpoint' },
+        { name: 'Hide component', sysName: 'isHidden', type: 'isHidden' },
     ]
 }
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styles from './select.module.css'
 import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
+import _ from 'lodash'
 
 function List(props) {
     const scrollDivRef = useRef(null)

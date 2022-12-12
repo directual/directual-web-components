@@ -8,15 +8,15 @@ import Input from './dataentry/input/input'
 
 export default function FpsHtml(props) {
 
-  const [data,setData] = useState(props.data)
-  useEffect(()=> {
-    if (JSON.stringify(props.data) !== JSON.stringify(data))
-    {
+  const [data, setData] = useState(props.data)
+  useEffect(() => {
+    if (JSON.stringify(props.data) !== JSON.stringify(data)) {
       setData(props.data)
     }
   }, [props])
 
   const html = (data || {}).html || ''
+  if (data && data.isHidden == 'true') { return <div /> }
 
   return (
     <ComponentWrapper>
@@ -35,18 +35,20 @@ FpsHtml.settings = {
   sysName: 'FpsHtml',
   form: [
     { name: "Enter your HTML-code", sysName: "html", type: "html-SLenriched" },
-    { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' },
     { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
     { name: 'Apply template engine', sysName: 'withTemplate', type: 'boolean' },
+    { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' },
+    { name: 'Hide component', sysName: 'isHidden', type: 'isHidden' },
   ]
 }
 
 export function FpsMarkdown(props) {
-// console.log(props)
+  // console.log(props)
   const text = (props && props.data && props.data.markdown) || ''
+  if (props && props.data && data.isHidden == 'true') { return <div /> }
   return <ComponentWrapper>
     <Article>
-      <Input type='markdown' defaultValue={text} nomargin/>
+      <Input type='markdown' defaultValue={text} nomargin />
     </Article>
   </ComponentWrapper>
 }
@@ -57,9 +59,10 @@ FpsMarkdown.settings = {
   sysName: 'FpsMarkdown',
   form: [
     { name: "Enter your text", sysName: "markdown", type: "markdown-SLenriched" },
-    { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' },
     { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
     { name: 'Apply template engine', sysName: 'withTemplate', type: 'boolean' },
+    { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' },
+    { name: 'Hide component', sysName: 'isHidden', type: 'isHidden' },
   ]
 }
 

@@ -15,6 +15,7 @@ export default function FpsButton({ data, handleRoute }) {
     const iconSize = data.size
     const height = data.height
     const align = data.align
+    if (data && data.isHidden == 'true') { return <div /> }
     return (
         <ComponentWrapper>
             <ActionPanel
@@ -50,8 +51,9 @@ FpsButton.settings = {
         { name: 'Icon size', sysName: 'size', type: 'iconSize' },
         { name: 'Height, px', sysName: 'height', type: 'number' },
         { name: 'Align', sysName: 'align', type: 'align' },
-        { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' },
         { name: 'Apply template engine', sysName: 'withTemplate', type: 'boolean' },
-    ]
+        { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' },
+        { name: 'Hide component', sysName: 'isHidden', type: 'isHidden' },
+]
 }
 
