@@ -38,9 +38,9 @@ export default function Input(props) {
     }
 
     const checkJsonValue = (e, v) => {
-        console.log('checkJsonValue')
-        console.log(v)
-        console.log(e)
+        // console.log('checkJsonValue')
+        // console.log(v)
+        // console.log(e)
         let parseJSON = {}
         const val = v || value
         if (val) {

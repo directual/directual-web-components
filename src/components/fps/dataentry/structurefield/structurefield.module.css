@@ -11,6 +11,9 @@
 .select_wrapper.inline.noSuchField .select_field {
   background-color: var(--hint-error);
 }
+.select_wrapper.inline.templatingTech .select_field {
+  background-color: #bc3f8b;
+}
 .select_wrapper.inline .select_field {
   background-color: var(--form-accent);
   height: 18px;

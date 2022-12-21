@@ -1012,7 +1012,7 @@ export default function PlatformPage() {
       <Input type='number'
         label='num'
         defaultValue={num}
-        debug
+        //debug
         onChange={value => {
           console.log('number')
           console.log(value)
@@ -1054,7 +1054,7 @@ export default function PlatformPage() {
           «Здорово <StructureField
           inline
           //autofocus
-          defaultValue='CV_filee'
+          defaultValue='#CV_filee'
           fields={testFields}
           hideSysFields
           structSysName='WebUser'

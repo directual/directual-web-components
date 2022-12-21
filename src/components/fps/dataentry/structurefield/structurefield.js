@@ -85,13 +85,6 @@ export default function StructureField(props) {
         focus && inputEl.current.focus();
         setFilter('');
         setKeyFocus(value)
-        // костылек для GlovalVar, ContextVar
-        // if (!focus && (value == 'GlobalVar' || value == 'ContextVar')) {
-        //     console.log('vars themeselves could not be a value')
-        //     setValue(null)
-        //     props.onChangeExtended(null)
-        //     props.onChange(null)
-        // }
     }, [focus, value])
 
     // этой функцией мы выдергиваем детали поля из структуры
@@ -140,14 +133,27 @@ export default function StructureField(props) {
         const typename = getValueDetails(value).dataType + (getValueDetails(value).dataSubType ? `_${getValueDetails(value).dataSubType}` : '')
         return dataTypesIcons[typename] || typename
     }
+    const isAltList = (_.head(filter) == "#" || (_.head(value) == "#" && !filter) ||
+        _.head(filter) == "/" || (_.head(value) == "/" && !filter))
+        && _.split(value, ".").length <= 1
 
-    // console.log('DEBUG')
+    console.log('DEBUG')
     // console.log(value)
+    // console.log(filter)
+    // console.log(isAltList)
+    // console.log("focus")
+    // console.log(focus)
+    // console.log(_.split(value,".").length)
     // console.log(value && getValueDetails(value).dataType === "unknown")
+
+
 
     if (props.inline) {
         return (
-            <div className={`${styles.inline} ${styles.select_wrapper} ${value && getValueDetails(value).dataType === "unknown" && styles.noSuchField}`}>
+            <div className={`${styles.inline} ${styles.select_wrapper} 
+                ${value && getValueDetails(value).dataType === "unknown" && !filter && !isAltList ? styles.noSuchField : ''}
+                ${isAltList ? styles.templatingTech : ''}
+                `}>
                 <div className=
                     {`${styles.select_field} 
                     ${props.warning == 'error' ? styles.error : ''} 
@@ -163,7 +169,7 @@ export default function StructureField(props) {
 
                         {value && !filter && <div className={`${styles.icon} icon icon-${getIconName(getValueDetails(value).dataType, getValueDetails(value).dataSubType)}`} />}
                         {value ?
-                            <div className={`${styles.currentInlineField} ${styles.withIcon} ${focus && styles.transparent}`}>
+                            <div className={`${styles.currentInlineField} ${getValueDetails(value).dataType !== "unknown" ? styles.withIcon : ''} ${focus && styles.transparent}`}>
                                 {!filter ? <span>{`{{`}{getValueDetails(value).sysName}{`}}`}</span> : <span>&nbsp;</span>}
                             </div> :
                             !filter ?
@@ -173,12 +179,6 @@ export default function StructureField(props) {
                                 <div className={`${styles.currentInlineField} ${styles.transparent}`}>&nbsp;
                                 </div>
                         }
-                        {/* {getValueDetails(value).name &&
-                                    <div className={styles.objectName}>
-                                        <strong>{getValueDetails(value).name}</strong> from {getValueDetails(value).struct}</div>}
-                                <div className={`${styles.objectDetails} ${getValueDetails(value).name && styles.small}`}>
-                                    <span>{`{{`}{getValueDetails(value).sysName}{`}}`}</span> {getValueDetails(value).dataType}</div>
-                            </div> */}
 
                         {focus &&
                             <input
@@ -201,6 +201,7 @@ export default function StructureField(props) {
                         fields={props.fields}
                         filter={filter}
                         focus={focus}
+                        isAltList
                         keyFocus={keyFocus}
                         showGlobalVars={props.showGlobalVars}
                         showContextVars={props.showContextVars}
@@ -374,6 +375,7 @@ function ListFields(props) {
                 fields={props.fields}
                 filter={props.filter}
                 firstLevel
+                isAltList={props.isAltList}
                 hideSysFields={props.hideSysFields}
                 hideId={props.hideId}
                 structSysName={props.structSysName}
@@ -482,13 +484,13 @@ function StructListFields(props) {
 
     // этой функцией мы выдергиваем детали поля из структуры
     const getFieldDetails = (fieldSysName, structSysName) => {
-        const struct = props.fields && props.fields.filter(i => i.structName == structSysName) && 
+        const struct = props.fields && props.fields.filter(i => i.structName == structSysName) &&
             props.fields.filter(i => i.structName == structSysName)[0] && props.fields.filter(i => i.structName == structSysName)[0].fields
 
         const fieldDetails = struct && struct.filter(i => i.sysName == fieldSysName) && struct.filter(i => i.sysName == fieldSysName)[0]
         return fieldDetails
     }
-    
+
     const fields = props && props.fields && props.structSysName &&
         props.fields.filter(i =>
             (i.structName == props.structSysName)
@@ -504,7 +506,12 @@ function StructListFields(props) {
     }, [props.keyFocus])
 
     function isLast() {
-        return !props.value || (props.value.split('.').length == 1 && getFieldDetails(props.value, props.structSysName) && getFieldDetails(props.value, props.structSysName).dataType != 'link')
+        return !props.value ||
+            (props.value.split('.').length == 1 &&
+                getFieldDetails(props.value, props.structSysName) &&
+                getFieldDetails(props.value, props.structSysName).dataType != 'link') ||
+            (props.value.split('.').length == 1 &&
+                !getFieldDetails(props.value, props.structSysName))
     }
 
     const selectKeyOption = (close) => {
@@ -564,7 +571,7 @@ function StructListFields(props) {
 
     // key select
     const handleUserKeyPress = (e) => {
-        //console.log(e.key)
+        // console.log(e.key)
         if (e.key == 'ArrowLeft') { goBack() }
         if ((e.key == 'ArrowDown' || e.key == 'ArrowUp') && isLast() && filteredFields) {
             // console.log(filteredFields)
@@ -621,6 +628,7 @@ function StructListFields(props) {
 
     //console.log(filteredFields)
 
+    const isAltList = props.isAltList
 
     return (
         <React.Fragment>
@@ -629,7 +637,12 @@ function StructListFields(props) {
                     {props.currentPath == props.fullPath && !props.firstLevel && <div className={`${styles.linkBack} icon icon-back`}
                         onClick={props.goBack}
                     ></div>}
-                    {props.structSysName}{(props.filter && isLast()) && ' (filtered)'}</div>
+                    {isAltList ?
+                        <span>Templating functions</span>
+                        :
+                        <span>{props.structSysName}{(props.filter && isLast()) && ' (filtered)'}</span>
+                    }
+                </div>
                 <ul ref={scrollDivRef}
                     onScroll={handleScroll}
                     className={`${showBorder && styles.bordered}`}
