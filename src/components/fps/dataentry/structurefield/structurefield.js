@@ -54,6 +54,11 @@ export default function StructureField(props) {
     useEffect(() => { setValue(props.defaultValue) }, [props.defaultValue])
     useEffect(() => { !focus && props.lostFocus && props.lostFocus(value) }, [focus])
 
+    const isAltList = (_.head(filter) == "#" || (_.head(value) == "#" && !filter) ||
+        _.head(filter) == "/" || (_.head(value) == "/" && !filter) ||
+        _.head(filter) == "^" || (_.head(value) == "^" && !filter))
+        && _.split(value, ".").length <= 1
+
     useOutsideAlerter(selectRef);
     function useOutsideAlerter(ref) {
         useEffect(() => {
@@ -73,6 +78,9 @@ export default function StructureField(props) {
     const handleUserKeyPress = (e) => {
         e.stopPropagation()
         e.key == 'Escape' && setFocus(false)
+        if (e.key == 'Backspace' && focus && isAltList && !filter) {
+            clearValue(e)
+        }
     }
     useEffect(() => {
         window.addEventListener('keydown', handleUserKeyPress);
@@ -86,6 +94,11 @@ export default function StructureField(props) {
         setFilter('');
         setKeyFocus(value)
     }, [focus, value])
+
+    // прокидываем наверх фильтр чтобы подгонять #-список
+    useEffect(() => {
+        props.handleFilter && props.handleFilter(filter, value)
+    }, [filter, value])
 
     // этой функцией мы выдергиваем детали поля из структуры
     const getFieldDetails = (fieldSysName, structSysName) => {
@@ -116,7 +129,8 @@ export default function StructureField(props) {
         return displayValue
     }
 
-    const clearValue = (e) => {
+    function clearValue(e) {
+        console.log('CLEAR')
         e && e.stopPropagation();
         setValue(null);
         props.onChange && props.onChange(null);
@@ -133,11 +147,9 @@ export default function StructureField(props) {
         const typename = getValueDetails(value).dataType + (getValueDetails(value).dataSubType ? `_${getValueDetails(value).dataSubType}` : '')
         return dataTypesIcons[typename] || typename
     }
-    const isAltList = (_.head(filter) == "#" || (_.head(value) == "#" && !filter) ||
-        _.head(filter) == "/" || (_.head(value) == "/" && !filter))
-        && _.split(value, ".").length <= 1
+    
 
-    console.log('DEBUG')
+    // console.log('DEBUG')
     // console.log(value)
     // console.log(filter)
     // console.log(isAltList)
@@ -169,7 +181,10 @@ export default function StructureField(props) {
 
                         {value && !filter && <div className={`${styles.icon} icon icon-${getIconName(getValueDetails(value).dataType, getValueDetails(value).dataSubType)}`} />}
                         {value ?
-                            <div className={`${styles.currentInlineField} ${getValueDetails(value).dataType !== "unknown" ? styles.withIcon : ''} ${focus && styles.transparent}`}>
+                            <div className={`${styles.currentInlineField} 
+                            ${getValueDetails(value).dataType !== "unknown" && getIconName(getValueDetails(value).dataType, getValueDetails(value).dataSubType) // && !isAltList 
+                            ? styles.withIcon : ''} 
+                            ${focus && styles.transparent}`}>
                                 {!filter ? <span>{`{{`}{getValueDetails(value).sysName}{`}}`}</span> : <span>&nbsp;</span>}
                             </div> :
                             !filter ?
@@ -201,7 +216,7 @@ export default function StructureField(props) {
                         fields={props.fields}
                         filter={filter}
                         focus={focus}
-                        isAltList
+                        isAltList={isAltList}
                         keyFocus={keyFocus}
                         showGlobalVars={props.showGlobalVars}
                         showContextVars={props.showContextVars}
@@ -530,11 +545,12 @@ function StructListFields(props) {
         //const allFields = [...fields, ...GlobalVars, ...ContextVars]
         if (allFields && (props.filter || props.filterFields) && isLast()) {
             const SaveFiltFields = allFields.filter(el => {
+                let filt = _.head(props.filter) == '^' ? "\\" + props.filter : props.filter 
                 if (el) {
                     try {
-                        return (String(el.sysName).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())) ||
-                            String(el.name).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())) ||
-                            String(el.dataType).toLowerCase().match(new RegExp(String(props.filter).toLowerCase())))
+                        return (String(el.sysName).toLowerCase().match(new RegExp(String(filt).toLowerCase())) ||
+                            String(el.name).toLowerCase().match(new RegExp(String(filt).toLowerCase())) ||
+                            String(el.dataType).toLowerCase().match(new RegExp(String(filt).toLowerCase())))
                             && (!props.filterFields || props.filterFields.indexOf(el.dataType) != -1 || el.sysName == 'ContextVar')
                             && (props.firstLevel || (!props.firstLevel && (el.sysName != 'GlobalVar' && el.sysName != 'ContextVar')))
                             && (!props.hideId || (props.hideId && el.dataType != 'id'))
@@ -626,7 +642,7 @@ function StructListFields(props) {
         }
     }, [currentKeyFocus])
 
-    //console.log(filteredFields)
+    //console.log(props.filter)
 
     const isAltList = props.isAltList
 
@@ -640,8 +656,12 @@ function StructListFields(props) {
                     {isAltList ?
                         <span>Templating functions</span>
                         :
-                        <span>{props.structSysName}{(props.filter && isLast()) && ' (filtered)'}</span>
+                        <span>
+                            {props.structSysName}{(props.filter && isLast()) && ' (filtered)'}
+                        </span>
                     }
+                    {props.firstLevel && !isAltList && <span className={styles.templatingHint}>Hint: Type <span className={styles.code}>#,^,/</span> for<br />templating functions</span>}
+                    {props.firstLevel && isAltList && props.value && <span className={styles.templatingHint}>Hint: Type <span className={styles.code}>←</span> for<br />choosing fields</span>}
                 </div>
                 <ul ref={scrollDivRef}
                     onScroll={handleScroll}

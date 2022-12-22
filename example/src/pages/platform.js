@@ -978,6 +978,65 @@ export default function PlatformPage() {
       ]
     }
   ]
+
+  const defaultFunctions = [
+    {
+        "structName": "_defaultTemplFunc",
+        "fields": [
+            {
+                "sysName": "#escape",
+                "name": "Escaping special characters (open tag)",
+                "dataType": "",
+                "link": "",
+                "dataSubType": ""
+            },
+            {
+                "sysName": "/escape",
+                "name": "Escaping special characters (close tag)",
+                "dataType": "",
+                "link": "",
+                "dataSubType": ""
+            },
+            {
+                "sysName": "#stripNewLine",
+                "name": "Removing line breaks (open tag)",
+                "dataType": "",
+                "link": "",
+                "dataSubType": ""
+            },
+            {
+                "sysName": "/stripNewLine",
+                "name": "Removing line breaks (close tag)",
+                "dataType": "",
+                "link": "",
+                "dataSubType": ""
+            },
+            {
+                "sysName": "#encodeURIComponent",
+                "name": "Encoding URI (open tag)",
+                "dataType": "",
+                "link": "",
+                "dataSubType": ""
+            },
+            {
+                "sysName": "^encodeURIComponent",
+                "name": "Encoding URI (close tag)",
+                "dataType": "",
+                "link": "",
+                "dataSubType": ""
+            },
+
+            // {
+            //     "sysName": "22_functions",
+            //     "name": "Функции для категории 22",
+            //     "dataType": "arrayLink",
+            //     "link": "functions22"
+            // },
+
+        ]
+    },
+]
+
   const weekDays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 
   // formatOptions:
@@ -1007,8 +1066,6 @@ export default function PlatformPage() {
   return (
     <div>
       <h1>Platform</h1>
-      num = {num}<br />
-      dec = {dec}<br />
       <Input type='number'
         label='num'
         defaultValue={num}
@@ -1054,10 +1111,10 @@ export default function PlatformPage() {
           «Здорово <StructureField
           inline
           //autofocus
-          defaultValue='#CV_filee'
-          fields={testFields}
+          defaultValue=''
+          fields={defaultFunctions}
           hideSysFields
-          structSysName='WebUser'
+          structSysName='_defaultTemplFunc'
           onChangeExtended={(value, struct, type) => { }}
           onChange={e => { }}
           placeholder='Select field'
