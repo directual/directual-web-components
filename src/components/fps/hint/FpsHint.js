@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Hint from './hint'
+import _ from 'lodash'
 import icon from './../../../icons/fps-hint.svg'
 
 export default function FpsHint(props) {
@@ -11,23 +12,23 @@ export default function FpsHint(props) {
         }
     }, [props])
 
-    console.log('HINT')
-    console.log(data)
+    // console.log('HINT')
+    // console.log(data)
 
-    const error = data.hintColour == 'false'
-    const ok = data.hintColour == 'true'
-    const margins = data.margins || {}
+    const error = _.get(data,'hintColour') == 'false'
+    const ok = _.get(data,'hintColour') == 'true'
+    const margins = _.get(data,'margins') || {}
 
-    if (data.isHidden == 'true') { return <div />}
+    if (_.get(data,'isHidden') == 'true') { return <div />}
 
     return <Hint
-        title={data.title}
+        title={_.get(data,'title')}
         ok={ok}
         error={error}
         margin={{ top: margins.marginTop, bottom: margins.marginBottom }}
     >
         <div
-            dangerouslySetInnerHTML={{ __html: data.text }}
+            dangerouslySetInnerHTML={{ __html: _.get(data,'text') }}
         />
     </Hint>
 

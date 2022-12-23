@@ -149,7 +149,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 3px;
 }
 .tableTitle .tableTitleWrapper {
   overflow: hidden;

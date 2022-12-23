@@ -4403,7 +4403,7 @@ const App = (props) => {
                 }
             }
         },
-        "tableTitle": "Financial Report",
+        "tableTitle": "",
         "actions": null,
         "headers": [
             {
@@ -4917,7 +4917,7 @@ const App = (props) => {
         "writeError": null,
         "writeResponse": null,
         "fileds": [],
-        "quickSearch": "false",
+        "quickSearch": "true",
         "httpParams": {},
         "cardCustomHtml": null,
         "cardCustomLayout": null

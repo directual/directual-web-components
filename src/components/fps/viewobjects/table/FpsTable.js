@@ -88,11 +88,11 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     function performFiltering(dql, sort) {
         clearTimeout(cx);
-        console.log('=== F I L T E R I N G ! ===')
-        console.log(dql)
-        //setCurrentDQL(dql)
-        console.log('=== S O R T I N G ! ===')
-        console.log(sort)
+        // console.log('=== F I L T E R I N G ! ===')
+        // console.log(dql)
+        // //setCurrentDQL(dql)
+        // console.log('=== S O R T I N G ! ===')
+        // console.log(sort)
         //sendMsg({ dql, sort }, null, { page: currentPage })
         sendMsg({ dql, sort }, null, { page: currentPage })
     }
@@ -341,14 +341,14 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
             <TableTitle
                 tableFilters={_.get(params, 'filterParams') || {}}
-                displayFilters={true}
+                displayFilters={_.get(params, 'filterParams.isFiltering') || _.get(params, 'filterParams.isSorting')}
                 performFiltering={dqlService}
                 params={params}
 
                 currentBP={currentBP}
                 tableTitle={tableTitle}
                 searchValue={searchValue}
-                //tableQuickSearch={data.quickSearch == 'true'}
+                tableQuickSearch={data.quickSearch == 'true'}
                 search={data.data && data.data.length > 0 ? true : false}
                 onSearch={value => search(value)}
                 loading={loading}

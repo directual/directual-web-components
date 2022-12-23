@@ -289,7 +289,7 @@ export default function Select(props) {
                             e.stopPropagation()
                         }}>
                         <Select
-                            onChange={e => { }}
+                            //onChange={e => { }}
                             options={props.subSelect.options}
                             placeholder={props.subSelect.placeholder || 'choose'}
                             thisIsSubSelect

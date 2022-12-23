@@ -72,6 +72,8 @@ export function ButtonDropDown(props) {
 
     useOutsideAlerter(dropMenu);
 
+    const { shiftDropdown, currentBP } = props
+
     function useOutsideAlerter(ref) {
         useEffect(() => {
             function handleClickOutside(event) {
@@ -97,7 +99,9 @@ export function ButtonDropDown(props) {
                 setShow(!show)
             }}
         >{props.title}</Button>
-        <div className={`${styles.dropdownMenu} ${show ? styles.show : ''}`} ref={dropMenu}
+        <div 
+            style={shiftDropdown ? {marginLeft: shiftDropdown} : null }
+            className={`${styles.dropdownMenu} ${show ? styles.show : ''}`} ref={dropMenu}
             onClick={() => !props.lockDD ? setShow(false) : undefined}>
             {props.children}
         </div>
