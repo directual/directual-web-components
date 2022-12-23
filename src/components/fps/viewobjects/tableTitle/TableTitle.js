@@ -232,8 +232,11 @@ function FilterField({ field, active, fieldOptions, filters, saveFilters, dict, 
     const shiftDropdown = currentBP == 'mobile' ? (-1 * (left - 6)) : 0
 
     return <div ref={filterWrapper}>
-        <ButtonDropDown key={_.get(field, 'id')} lockDD={true} currentBP={currentBP} rightSide={alignRight || (_.get(field, 'type') == 'sort' && currentBP !== 'mobile') } 
-            shiftDropdown={shiftDropdown} active={active}
+        <ButtonDropDown key={_.get(field, 'id')} lockDD={true} 
+            currentBP={currentBP} 
+            rightSide={alignRight || (_.get(field, 'type') == 'sort' && shiftDropdown > 300 && currentBP !== 'mobile') } 
+            shiftDropdown={shiftDropdown} 
+            active={active}
             title={renderFilterName(field)} overflowVisible>
             <div className={styles.filterWrapper}>
                 {(_.get(field, 'type') == 'link' || _.get(field, 'type') == 'arrayLink') &&

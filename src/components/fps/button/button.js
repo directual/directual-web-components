@@ -72,7 +72,7 @@ export function ButtonDropDown(props) {
 
     useOutsideAlerter(dropMenu);
 
-    const { shiftDropdown, currentBP } = props
+    const { shiftDropdown } = props
 
     function useOutsideAlerter(ref) {
         useEffect(() => {
