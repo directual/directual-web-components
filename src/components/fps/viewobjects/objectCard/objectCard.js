@@ -911,8 +911,8 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
         onChange(newValue)
     }
 
-    console.log('renderAL')
-    console.log(renderAL)
+    // console.log('renderAL')
+    // console.log(renderAL)
 
     const summByColumn = fieldName => {
         if (!renderAL.length) return 0

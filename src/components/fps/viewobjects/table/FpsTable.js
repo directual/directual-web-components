@@ -344,7 +344,6 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 displayFilters={_.get(params, 'filterParams.isFiltering') || _.get(params, 'filterParams.isSorting')}
                 performFiltering={dqlService}
                 params={params}
-
                 currentBP={currentBP}
                 tableTitle={tableTitle}
                 searchValue={searchValue}

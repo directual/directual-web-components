@@ -13,6 +13,7 @@ import { dict } from '../../locale'
 import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
 import Hint from '../../hint/hint'
 import _ from "lodash";
+import debounce from 'lodash.debounce';
 
 
 function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
@@ -20,6 +21,9 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
 
     console.log('---data FpsKanban---')
     console.log(data)
+
+    const cx = null
+    const dqlService = debounce(performFiltering, 800);
 
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
@@ -42,6 +46,17 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
     const pageSize = data.pageSize || 0
     const totalPages = data.totalPages || 0
     const currentPage = data.pageNumber || 0
+
+    function performFiltering(dql, sort) {
+        clearTimeout(cx);
+        // console.log('=== F I L T E R I N G ! ===')
+        // console.log(dql)
+        // //setCurrentDQL(dql)
+        // console.log('=== S O R T I N G ! ===')
+        // console.log(sort)
+        //sendMsg({ dql, sort }, null, { page: currentPage })
+        sendMsg({ dql, sort }, null, { page: currentPage })
+    }
 
     useEffect(() => {
         setLoading(false)
@@ -73,8 +88,8 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
         let cloneData = _.isArray(msg) ? { _array_: [...msg] } : msg
         const message =
             { ...cloneData, _id: 'form_' + id, _sl_name: sl, _options: options }
-        console.log(message)
-        console.log(pageInfo)
+        // console.log(message)
+        // console.log(pageInfo)
         setLoading(true)
         if (onEvent) {
             let prom = onEvent(message, pageInfo)
@@ -126,13 +141,13 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
             const saveModel = { ...model }
             if (saveModel) {
                 for (const field in saveModel) {
-                    console.log(field)
+                    // console.log(field)
                     if (saveModel[field] && typeof saveModel[field] == 'object' && data.params.data.fields[field].dataType != 'date') {
-                        console.log('removing links')
+                        // console.log('removing links')
                         delete saveModel[field]
                     }  // removing links
                     if (writeFields.indexOf(field) == -1) {
-                        console.log(`removing ${field} as a field not for writing`)
+                        // console.log(`removing ${field} as a field not for writing`)
                         delete saveModel[field]
                     } // removing fields not for writing
                     if (data.params.data.fields[field] && data.params.data.fields[field].dataType == 'date' && typeof saveModel[field] == 'number') {
@@ -169,35 +184,35 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
         actionCond.forEach(cond => {
             if (typeof cond.fieldValue == 'object' && cond.fieldValue) { cond.fieldValue = cond.fieldValue.id }
             if (cond.target == 'id' && (!auth || auth.user !== cond.checkValue)) {
-                console.log(auth.user + ' != ' + cond.checkValue)
-                console.log('ID does not match');
+                // console.log(auth.user + ' != ' + cond.checkValue)
+                // console.log('ID does not match');
                 match = false
             }
             if (cond.target == 'id_in' && (!auth || !auth.user || !compareRoleArrays(auth.user, cond.checkValue))) {
-                console.log(`user id ${auth && auth.user} is not in ${cond.checkValue}`)
+                // console.log(`user id ${auth && auth.user} is not in ${cond.checkValue}`)
                 match = false
             }
             if (cond.target == 'isAutn' && (!auth || !auth.user)) {
-                console.log(`user is not authorised!`)
+                // console.log(`user is not authorised!`)
                 match = false
             }
             if (cond.target == 'isNotAuth' && auth.user) {
-                console.log(`user is authorised!`)
+                // console.log(`user is authorised!`)
                 match = false
             }
             if (cond.target == 'id_not_in' && (!auth || !auth.user || compareRoleArrays(auth.user, cond.checkValue))) {
-                console.log(`user id ${auth && auth.user} is in ${cond.checkValue}`)
+                // console.log(`user id ${auth && auth.user} is in ${cond.checkValue}`)
                 match = false
             }
             if (cond.target == 'role' && (!auth || !auth.role || (!compareRoleArrays(auth.role, cond.checkValue)))) {
-                console.log('Role does not match');
+                // console.log('Role does not match');
                 match = false
             }
             if ((cond.target == 'field' || cond.target == 'linkedField') && (!cond.fieldValue ||
                 cond.fieldValue.toString().toLowerCase() != cond.value.toString().toLowerCase())) {
-                console.log(cond.fieldValue + ' != ' + cond.value);
-                console.log(cond)
-                console.log('Field is wrong');
+                // console.log(cond.fieldValue + ' != ' + cond.value);
+                // console.log(cond)
+                // console.log('Field is wrong');
                 if (cond.value == 'false' && typeof cond.fieldValue == 'undefined') { match = true } else { match = false }
             }
         })
@@ -317,16 +332,19 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
                 </React.Fragment>}
 
             <TableTitle
+                tableFilters={_.get(data.params, 'filterParams') || {}}
+                displayFilters={_.get(data.params, 'filterParams.isFiltering') || _.get(data.params, 'filterParams.isSorting')}
+                performFiltering={dqlService}
+                params={data.params}
                 currentBP={currentBP}
                 tableTitle={tableTitle}
-                dict={dict}
-                lang={lang}
-                //currentDQL={currentDQL}
                 searchValue={searchValue}
                 tableQuickSearch={data.quickSearch == 'true'}
                 search={data.data && data.data.length > 0 ? true : false}
                 onSearch={value => search(value)}
                 loading={loading}
+                dict={dict}
+                lang={lang}
                 onFilter={() => { }}
             />
 

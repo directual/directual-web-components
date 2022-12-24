@@ -26,69 +26,70 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
 
     return (
         <React.Fragment>
-            <div className={`${styles.tableTitle} ${styles[currentBP]}`}>
-                {tableTitle && <div className={styles.tableTitleWrapper}>
-                    <h2><span>{tableTitle}</span></h2>
-                </div>}
+            {(displayFilters || tableQuickSearch) &&
+                <div className={`${styles.tableTitle} ${styles[currentBP]}`}>
+                    {tableTitle && <div className={styles.tableTitleWrapper}>
+                        <h2><span>{tableTitle}</span></h2>
+                    </div>}
 
-                {loading && searchValue && <div className={styles.subtitle}><Loader> {_.get(dict[lang], 'loading') || "Loading..."}</Loader></div>}
-                {searchValue && !loading &&
-                    <div className={styles.titleSearch}>
-                        <span>{dict[lang].searching}: <strong>{searchValue}</strong></span>
-                    </div>
-                }
+                    {loading && searchValue && <div className={styles.subtitle}><Loader> {_.get(dict[lang], 'loading') || "Loading..."}</Loader></div>}
+                    {searchValue && !loading &&
+                        <div className={styles.titleSearch}>
+                            <span>{dict[lang].searching}: <strong>{searchValue}</strong></span>
+                        </div>
+                    }
 
-                {displayFilters && //!tableQuickSearch &&
-                    <NewFilters
-                        tableFilters={tableFilters}
-                        dict={dict[lang]}
-                        currentBP={currentBP}
-                        tableTitle={tableTitle}
-                        alignRight={currentBP != 'mobile' && tableTitle}
-                        performFiltering={performFiltering}
-                        loading={loading}
-                        fieldOptions={fieldOptions}
-                    />}
+                    {displayFilters && //!tableQuickSearch &&
+                        <NewFilters
+                            tableFilters={tableFilters}
+                            dict={dict[lang]}
+                            currentBP={currentBP}
+                            tableTitle={tableTitle}
+                            alignRight={currentBP != 'mobile' && tableTitle}
+                            performFiltering={performFiltering}
+                            loading={loading}
+                            fieldOptions={fieldOptions}
+                        />}
 
-                {/* ==== old filters ==== */}
-                {/* vv vv vv vvv vv vv vv */}
-                {tableQuickSearch && !displayFilters &&
-                    <div className={styles.tableActions}>
-                        {/* фильтры в 0.1 версии спрячем */}
-                        {/* <Button
+                    {/* ==== old filters ==== */}
+                    {/* vv vv vv vvv vv vv vv */}
+                    {tableQuickSearch && !displayFilters &&
+                        <div className={styles.tableActions}>
+                            {/* фильтры в 0.1 версии спрячем */}
+                            {/* <Button
                             icon={`${!showFilters ? 'filter' : 'filterFill'}`}
                             onClick={() => setShowFilters(!showFilters)}
                         >{`${!showFilters ? 'Show filters' : 'Hide filters'}`}</Button> */}
 
-                        {showSearch &&
-                            <div className={styles.tableQuickSearchField}>
-                                <Input
-                                    type='search'
-                                    searchOnEnter={true}
-                                    defaultValue={searchValue}
-                                    inputClassName={styles.quickSearchInput}
-                                    placeholder={`${dict[lang].search}...`}
-                                    //debug
-                                    //width={500}
-                                    onPressEnter={value => {
-                                        onSearch(value)
-                                    }}
-                                    onClear={() => {
-                                        onSearch('')
-                                        //setShowSearch(false)
-                                    }}
-                                    nomargin />
-                            </div>
-                            // :
-                            // <Button icon='search'
-                            //     onClick={() => setShowSearch(true)}></Button>
-                        }
-                    </div>}
-                {/* ^^ ^^ ^^ ^^^ ^^ ^^ ^^ */}
-                {/* ==== old filters ==== */}
+                            {showSearch &&
+                                <div className={styles.tableQuickSearchField}>
+                                    <Input
+                                        type='search'
+                                        searchOnEnter={true}
+                                        defaultValue={searchValue}
+                                        inputClassName={styles.quickSearchInput}
+                                        placeholder={`${dict[lang].search}...`}
+                                        //debug
+                                        //width={500}
+                                        onPressEnter={value => {
+                                            onSearch(value)
+                                        }}
+                                        onClear={() => {
+                                            onSearch('')
+                                            //setShowSearch(false)
+                                        }}
+                                        nomargin />
+                                </div>
+                                // :
+                                // <Button icon='search'
+                                //     onClick={() => setShowSearch(true)}></Button>
+                            }
+                        </div>}
+                    {/* ^^ ^^ ^^ ^^^ ^^ ^^ ^^ */}
+                    {/* ==== old filters ==== */}
 
-            </div>
-
+                </div>
+            }
         </React.Fragment>
     )
 }
@@ -158,7 +159,7 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
 
     return <div ref={filtersWrapper} className={styles.newFilters}>
         <ActionPanel alignRight={alignRight} margin={currentBP == 'mobile' && tableTitle ? { top: 8, bottom: 0 } : null}>
-            {tableFilters && tableFilters.filterFields && (Object.keys(tableFilters.filterFields) || [])
+            {tableFilters && tableFilters.isFiltering && tableFilters.filterFields && (Object.keys(tableFilters.filterFields) || [])
                 .map(filterField => <FilterField
                     active={_.get(filters, `filters[${filterField}].value`) ||
                         _.get(filters, `filters[${filterField}].valueFrom`) ||
@@ -172,6 +173,7 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
                         id: filterField,
                         name: tableFilters.filterFields[filterField].name,
                         type: tableFilters.filterFields[filterField].dataType,
+                        textsearch: tableFilters.filterFields[filterField].textsearch,
                         format: tableFilters.filterFields[filterField].format,
                         formatOptions: tableFilters.filterFields[filterField].formatOptions,
                         options: (_.get(tableFilters, `filterFields[${filterField}].linkDirectory`) || [])
@@ -202,9 +204,6 @@ function FilterField({ field, active, fieldOptions, filters, saveFilters, dict, 
 
     const filterWrapper = useRef(null);
 
-    const [right, setRight] = useState(null)
-    const [isToTheRight, setIsToTheRight] = useState(false)
-
     const [left, setLeft] = useState(0)
 
     useEffect(() => {
@@ -215,12 +214,13 @@ function FilterField({ field, active, fieldOptions, filters, saveFilters, dict, 
 
     const renderFilterName = (field) => {
 
-        if (_.get(field, 'type') == 'link' || _.get(field, 'type') == 'arrayLink') return <div className={styles.newFilterName}>
-            {_.get(field, 'name')}
-            {_.get(filters, `filters[${field.id}].value`) && <div className={styles.newFilterCounter}>
-                {Object.keys(_.get(filters, `filters[${field.id}].value`)).length}
-            </div>}
-        </div>
+        if ((_.get(field, 'type') == 'link' || _.get(field, 'type') == 'arrayLink')
+            && _.get(field, 'textsearch') !== 'fulltext') return <div className={styles.newFilterName}>
+                {_.get(field, 'name')}
+                {_.get(filters, `filters[${field.id}].value`) && <div className={styles.newFilterCounter}>
+                    {Object.keys(_.get(filters, `filters[${field.id}].value`)).length}
+                </div>}
+            </div>
 
         if (_.get(field, 'type') == 'sort') return <div className='icon icon-sort' style={{ marginLeft: -8 }}>
             {_.get(field, 'name')}
@@ -232,14 +232,15 @@ function FilterField({ field, active, fieldOptions, filters, saveFilters, dict, 
     const shiftDropdown = currentBP == 'mobile' ? (-1 * (left - 6)) : 0
 
     return <div ref={filterWrapper}>
-        <ButtonDropDown key={_.get(field, 'id')} lockDD={true} 
-            currentBP={currentBP} 
-            rightSide={alignRight || (_.get(field, 'type') == 'sort' && shiftDropdown > 300 && currentBP !== 'mobile') } 
-            shiftDropdown={shiftDropdown} 
+        <ButtonDropDown key={_.get(field, 'id')} lockDD={true}
+            currentBP={currentBP}
+            rightSide={alignRight || (_.get(field, 'type') == 'sort' && shiftDropdown > 300 && currentBP !== 'mobile')}
+            shiftDropdown={shiftDropdown}
             active={active}
             title={renderFilterName(field)} overflowVisible>
             <div className={styles.filterWrapper}>
                 {(_.get(field, 'type') == 'link' || _.get(field, 'type') == 'arrayLink') &&
+                    _.get(field, 'textsearch') !== 'fulltext' &&
                     <Input type="checkboxGroup"
                         nomargin
                         nowrap
@@ -261,7 +262,8 @@ function FilterField({ field, active, fieldOptions, filters, saveFilters, dict, 
                     />
                 }
 
-                {(_.get(field, 'type') == 'string' || _.get(field, 'type') == 'array' || _.get(field, 'type') == 'id') &&
+                {(_.get(field, 'type') == 'string' || _.get(field, 'type') == 'array' || _.get(field, 'type') == 'id' ||
+                    _.get(field, 'textsearch') == 'fulltext') &&
                     <Input type="string"
                         nomargin
                         placeholder='like'

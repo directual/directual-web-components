@@ -274,8 +274,8 @@ export function Card({ row, params, getInitialStructureParams, data,
 
   // выполнить Action
   function performAction(actionParams) {
-    console.log('actionParams')
-    console.log(actionParams)
+    // console.log('actionParams')
+    // console.log(actionParams)
     const mapping = {} // calling api-endpoint
     const options = {} // calling web3-api
     if (actionParams.web3) {

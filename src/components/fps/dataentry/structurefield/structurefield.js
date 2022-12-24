@@ -483,7 +483,7 @@ function StructListFields(props) {
     }
 
     const goBack = () => {
-        console.log('Go back')
+        // console.log('Go back')
         props.onChoosePath && props.onChoosePath(props.currentPath)
     }
 

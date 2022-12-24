@@ -59,8 +59,8 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
   console.log(data)
   // console.log('------------ auth: -------------')
   // console.log(auth)
-  console.log('------------ form model: -------------')
-  console.log(model)
+  // console.log('------------ form model: -------------')
+  // console.log(model)
 
   const sendMsg = (msg) => {
     const message = { ...msg, _id: 'form_' + id }
@@ -256,18 +256,18 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
       showSection = true
       conditionals.forEach(cond => {
         if (model[cond.field] != cond.value && cond.value != 'null' && cond.value != 'isNotNull') {
-          console.log("section can't be shown")
-          console.log(cond.field + ' = ' + model[cond.field] + ' != ' + cond.value)
+          // console.log("section can't be shown")
+          // console.log(cond.field + ' = ' + model[cond.field] + ' != ' + cond.value)
           showSection = false
         }
         if (model[cond.field] && cond.value == 'null') {
-          console.log("section can't be shown")
-          console.log(cond.field + ' = ' + model[cond.field] + ' is not empty ')
+          // console.log("section can't be shown")
+          // console.log(cond.field + ' = ' + model[cond.field] + ' is not empty ')
           showSection = false
         }
         if (!model[cond.field] && cond.value == 'isNotNull') {
-          console.log("section can't be shown")
-          console.log(cond.field + ' = ' + model[cond.field] + ' is empty ')
+          // console.log("section can't be shown")
+          // console.log(cond.field + ' = ' + model[cond.field] + ' is empty ')
           showSection = false
         }
       })
@@ -285,7 +285,9 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
           showSection = true
         }
       })
-      if (!showSection) { console.log("section can't be shown") }
+      if (!showSection) { 
+        // console.log("section can't be shown") 
+      }
     }
     return showSection
   }
@@ -557,8 +559,8 @@ function FpsFormOld({ auth, data, onEvent, id, locale }) {
     const message = { dql: "id = '" + objId + "'", _id: id }
     if (onEvent) {
       onEvent(message)
-      console.log('onEvent')
-      console.log(message)
+      // console.log('onEvent')
+      // console.log(message)
     }
   }
 

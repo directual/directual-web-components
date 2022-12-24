@@ -327,7 +327,6 @@ export default function Input(props) {
 
 
     useEffect(() => {
-        // console.log(props.autoFocus)
         props.autoFocus && inputEl.current.focus();
     }, [])
 

@@ -148,6 +148,7 @@
 .tableTitle {
   display: flex;
   align-items: center;
+  min-height: 54px;
   justify-content: space-between;
   margin-bottom: 3px;
 }
