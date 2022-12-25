@@ -326,10 +326,18 @@
     height: 52px;
     width: 187px;
   }
+  .rasporka {
+    flex-grow: 2;
+  }
+  .horLogoWrapper {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
   .horMenuItems {
     display: flex;
-    flex-grow: 2;
     align-items: flex-end;
+    flex-wrap: wrap;
     justify-content: flex-end;
     //overflow: auto;
   }
@@ -343,6 +351,7 @@
 .itemHor {
   border-bottom: solid 3px rgba(0, 0, 0, 0);
   color: var(--menu-item);
+  margin-top: 8px;
   margin-right: 26px;
   &:before {
     font-size: 36px !important;
@@ -435,6 +444,7 @@
   .itemHor {
     border: none !important;
     padding-left: 10px;
+    margin-top: 0;
     background-color: var(--button-bgr);
     color: var(--button-text);
     opacity: 0.6;

@@ -300,10 +300,18 @@
   height: 52px;
   width: 187px;
 }
+.horMainmenu .rasporka {
+  flex-grow: 2;
+}
+.horMainmenu .horLogoWrapper {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
 .horMainmenu .horMenuItems {
   display: flex;
-  flex-grow: 2;
   align-items: flex-end;
+  flex-wrap: wrap;
   justify-content: flex-end;
 }
 .horMainmenu .horMenuProfile {
@@ -314,6 +322,7 @@
 .itemHor {
   border-bottom: solid 3px rgba(0, 0, 0, 0);
   color: var(--menu-item);
+  margin-top: 8px;
   margin-right: 26px;
   cursor: pointer;
 }
@@ -401,6 +410,7 @@
 .ddMenu .itemHor {
   border: none !important;
   padding-left: 10px;
+  margin-top: 0;
   background-color: var(--button-bgr);
   color: var(--button-text);
   opacity: 0.6;

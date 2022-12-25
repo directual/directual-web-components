@@ -56,10 +56,13 @@ export default function MainMenu(props) {
             onClick={() => { setShowMM(true); setShowBackdrop(true) }}></div>
 
         <div className={`${styles.horMainmenu} ${showMM && styles.show} ${!props.horizontal ? styles.hideHorizontal : ''}`}>
+            <div className={styles.horLogoWrapper}>
             {props.logoUrl ?
                 <a href="/" className={styles.logo} style={{ backgroundImage: `url(${props.logoUrl})`, width: logoSize.width, height: logoSize.height }} /> :
                 <a href="/" style={{width: logoSize.width, height: logoSize.height}} className={styles.title}>{props.title}</a>
             }
+            </div>
+            <div className={styles.rasporka} />
             <div className={styles.horMenuItems}>
                 {horizontalMenu.map(item => (
                     !item.hidden && (item.subheader == 'true' || item.subheader == true) ?
