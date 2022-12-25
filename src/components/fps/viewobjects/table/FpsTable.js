@@ -88,9 +88,9 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     function performFiltering(dql, sort) {
         clearTimeout(cx);
-        // console.log('=== F I L T E R I N G ! ===')
-        // console.log(dql)
-        // //setCurrentDQL(dql)
+        console.log('=== F I L T E R I N G ! ===')
+        console.log(dql)
+        //setCurrentDQL(dql)
         // console.log('=== S O R T I N G ! ===')
         // console.log(sort)
         //sendMsg({ dql, sort }, null, { page: currentPage })

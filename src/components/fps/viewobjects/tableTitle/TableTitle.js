@@ -121,6 +121,7 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
         // console.log(filters)
         function composeExpression(exp, fieldName) {
             if (exp.type == "string") { return "('" + fieldName + "'" + ' like ' + "'" + exp.value + "')" }
+            if (exp.type == "boolean") { return "('" + fieldName + "'" + ' == ' + "'" + exp.value + "')" }
             if (exp.type == "date") {
                 if (exp.valueTo && exp.valueFrom) {
                     return "('" + fieldName + "'" + ' >= ' + "'" + exp.valueFrom.toISOString() + "' AND '"
@@ -295,7 +296,7 @@ function FilterField({ field, active, fieldOptions, filters, saveFilters, dict, 
                     onChange={value => {
                         const newFilters = { ...filters };
                         _.set(newFilters, `filters[${field.id}].value`, value);
-                        _.set(newFilters, `filters[${field.id}].type`, 'string');
+                        _.set(newFilters, `filters[${field.id}].type`, 'boolean');
                         saveFilters(newFilters);
                     }}
                     defaultValue={_.get(filters, `filters[${field.id}].value`)}
