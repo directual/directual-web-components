@@ -167,6 +167,7 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
                     filters={filters}
                     saveFilters={saveFilters}
                     currentBP={currentBP}
+                    alignRight={alignRight}
                     dict={dict}
                     key={filterField}
                     field={{
