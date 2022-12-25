@@ -7,7 +7,6 @@
 .logo,
 .title {
   margin: 32px 32px 12px 32px;
-  height: 50px;
   display: block;
 }
 .title {
@@ -297,9 +296,9 @@
 }
 .horMainmenu .logo,
 .horMainmenu .title {
-  margin: 18px 24px 18px 0;
-  height: 42px;
-  min-width: 200px;
+  margin: 12px 0;
+  height: 52px;
+  width: 187px;
 }
 .horMainmenu .horMenuItems {
   display: flex;

@@ -45,6 +45,8 @@ export default function MainMenu(props) {
         setShowMM(false)
     }
 
+    const logoSize = props.logoSize || {height: 52, width: 187}
+
     let horizontalMenu = (props.menu || []).filter(i => i.subheader || !i.group) || []
     const isLeft = props.mobileLeftSide
 
@@ -55,8 +57,8 @@ export default function MainMenu(props) {
 
         <div className={`${styles.horMainmenu} ${showMM && styles.show} ${!props.horizontal ? styles.hideHorizontal : ''}`}>
             {props.logoUrl ?
-                <a href="/" className={styles.logo} style={{ backgroundImage: `url(${props.logoUrl})` }} /> :
-                <a href="/" className={styles.title}>{props.title}</a>
+                <a href="/" className={styles.logo} style={{ backgroundImage: `url(${props.logoUrl})`, width: logoSize.width, height: logoSize.height }} /> :
+                <a href="/" style={{width: logoSize.width, height: logoSize.height}} className={styles.title}>{props.title}</a>
             }
             <div className={styles.horMenuItems}>
                 {horizontalMenu.map(item => (
@@ -131,8 +133,8 @@ export default function MainMenu(props) {
             <div className={styles.hide_mobile_menu}
                 onClick={hideMM}></div>
             {props.logoUrl ?
-                <a href="/" className={styles.logo} style={{ backgroundImage: `url(${props.logoUrl})` }} /> :
-                <a href="/" className={styles.title}>{props.title}</a>
+                <a href="/" className={styles.logo} style={{ backgroundImage: `url(${props.logoUrl})`, width: logoSize.width, height: logoSize.height }} /> :
+                <a href="/" style={{width: logoSize.width, height: logoSize.height}} className={styles.title}>{props.title}</a>
             }
             <ul className={styles.list}>
                 {props.menu.map(item => (

@@ -44,6 +44,10 @@ function MainMenuWrapper(props) {
             title='directual-design'
             showUserButtons={true}
             loggedIn={true}
+            logoSize={{
+                height:52,
+                width: 187
+            }}
             handleRoute={href => e => console.log(href)}
             horizontal={props.horizontal}
             logoutText='Выйти'
