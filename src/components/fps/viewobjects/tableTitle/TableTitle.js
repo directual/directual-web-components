@@ -230,13 +230,18 @@ function FilterField({ field, active, fieldOptions, filters, saveFilters, dict, 
         return <div>{_.get(field, 'name')}</div>
     }
 
-    const shiftDropdown = currentBP == 'mobile' ? (-1 * (left - 6)) : 0
+    const shiftDropdown = -1 * (left - 6)
+    // const width  = (window && window.innerWidth) || (document && document.documentElement.clientWidth) 
+    //     || (document && document.body.clientWidth) || 0
+    // console.log(width)
+    // const spaceRight = width + shiftDropdown
 
     return <div ref={filterWrapper}>
+        {/* {spaceRight} */}
         <ButtonDropDown key={_.get(field, 'id')} lockDD={true}
             currentBP={currentBP}
-            rightSide={alignRight || (_.get(field, 'type') == 'sort' && shiftDropdown > 300 && currentBP !== 'mobile')}
-            shiftDropdown={shiftDropdown}
+            rightSide={alignRight || (_.get(field, 'type') == 'sort' && shiftDropdown < -300 && currentBP !== 'mobile')}
+            shiftDropdown={currentBP == 'mobile' ? shiftDropdown : 0}
             active={active}
             title={renderFilterName(field)} overflowVisible>
             <div className={styles.filterWrapper}>
