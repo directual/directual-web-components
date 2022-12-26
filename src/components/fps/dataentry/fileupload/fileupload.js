@@ -7,6 +7,7 @@ import Backdrop from '../../backdrop/backdrop'
 import { relativeTimeRounding } from 'moment'
 import Hint from '../../hint/hint'
 import { dict } from '../../locale'
+import _ from "lodash"
 
 export default function FileUpload(props) {
 
