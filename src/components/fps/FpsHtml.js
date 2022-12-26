@@ -45,7 +45,7 @@ FpsHtml.settings = {
 export function FpsMarkdown(props) {
   // console.log(props)
   const text = (props && props.data && props.data.markdown) || ''
-  if (props && props.data && data.isHidden == 'true') { return <div /> }
+  if (props && props.data && props.data.isHidden == 'true') { return <div /> }
   return <ComponentWrapper>
     <Article>
       <Input type='markdown' defaultValue={text} nomargin />
