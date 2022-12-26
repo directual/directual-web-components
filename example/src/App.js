@@ -6985,12 +6985,12 @@ const App = (props) => {
     }
 
     let exampleForm = {
-        "sl": "putTagToUser",
-        "formName": "Добавление Тэга",
+        "sl": "vkform",
+        "formName": "",
         "formDesc": "",
         "formButton": "",
         "placeholder": "",
-        "maxWidth": "",
+        "maxWidth": "601",
         "formButtonResubmit": null,
         "params": {
             "result": {
@@ -6998,14 +6998,265 @@ const App = (props) => {
                 "resultMessageField": null,
                 "isSuccessField": null
             },
+            "auth": {
+                "isPerson": true,
+                "userIdField": "user"
+            },
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "Id",
+                        "fieldSysName": "@dateChanged",
                         "fetch": [],
-                        "sysName": "Id",
-                        "name": "Id",
+                        "sysName": "@dateChanged",
+                        "name": "date changed",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "@dateCreated",
+                        "fetch": [],
+                        "sysName": "@dateCreated",
+                        "name": "date created",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "@who",
+                        "fetch": [],
+                        "sysName": "@who",
+                        "name": "who changed",
                         "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "autor",
+                        "fetch": [],
+                        "sysName": "autor",
+                        "name": "Художник",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "date_start",
+                        "fetch": [],
+                        "sysName": "date_start",
+                        "name": "Старт торгов",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "ru",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD MMMM",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "description",
+                        "fetch": [],
+                        "sysName": "description",
+                        "name": "Дополнительная информация о картине (необязательно)",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "duration",
+                        "fetch": [],
+                        "sysName": "duration",
+                        "name": "Продолжительность торгов",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "duration"
+                    },
+                    {
+                        "fieldSysName": "height",
+                        "fetch": [],
+                        "sysName": "height",
+                        "name": "Высота, см",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "location",
+                        "fetch": [],
+                        "sysName": "location",
+                        "name": "Город в котором находится лот",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "material",
+                        "fetch": [],
+                        "sysName": "material",
+                        "name": "Материал",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "materials"
+                    },
+                    {
+                        "fieldSysName": "medium",
+                        "fetch": [],
+                        "sysName": "medium",
+                        "name": "Техника",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "mediums"
+                    },
+                    {
+                        "fieldSysName": "photo",
+                        "fetch": [],
+                        "sysName": "photo",
+                        "name": "Фото",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "photo2",
+                        "fetch": [],
+                        "sysName": "photo2",
+                        "name": "Дополнительное фото",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "photo3",
+                        "fetch": [],
+                        "sysName": "photo3",
+                        "name": "Дополнительное фото",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "shipping_cost",
+                        "fetch": [],
+                        "sysName": "shipping_cost",
+                        "name": "Стоимость доставки",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "shipping"
+                    },
+                    {
+                        "fieldSysName": "start",
+                        "fetch": [],
+                        "sysName": "start",
+                        "name": "Стартовая цена",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "startPrice",
+                        "fetch": [],
+                        "sysName": "startPrice",
+                        "name": "Стартовая цена",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "startprice"
+                    },
+                    {
+                        "fieldSysName": "step",
+                        "fetch": [],
+                        "sysName": "step",
+                        "name": "Шаг торгов",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "steps"
+                    },
+                    {
+                        "fieldSysName": "subject",
+                        "fetch": [],
+                        "sysName": "subject",
+                        "name": "Жанр",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "subjects"
+                    },
+                    {
+                        "fieldSysName": "title",
+                        "fetch": [],
+                        "sysName": "title",
+                        "name": "Название картины",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "user",
+                        "fetch": [],
+                        "sysName": "user",
+                        "name": "Пользователь",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "width",
+                        "fetch": [],
+                        "sysName": "width",
+                        "name": "Ширина, см",
+                        "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
@@ -7013,30 +7264,360 @@ const App = (props) => {
                 ],
                 "writeFields": [
                     {
-                        "fieldSysName": "Id",
+                        "fieldSysName": "autor",
                         "fetch": [],
-                        "sysName": "Id",
-                        "name": "Id",
+                        "sysName": "autor",
+                        "name": "Художник",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "date_start",
+                        "fetch": [],
+                        "sysName": "date_start",
+                        "name": "Старт торгов",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "ru",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD MMMM",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "description",
+                        "fetch": [],
+                        "sysName": "description",
+                        "name": "Дополнительная информация о картине (необязательно)",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "duration",
+                        "fetch": [],
+                        "sysName": "duration",
+                        "name": "Продолжительность торгов",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "duration"
+                    },
+                    {
+                        "fieldSysName": "height",
+                        "fetch": [],
+                        "sysName": "height",
+                        "name": "Высота, см",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "location",
+                        "fetch": [],
+                        "sysName": "location",
+                        "name": "Город в котором находится лот",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "tag",
+                        "fieldSysName": "material",
                         "fetch": [],
-                        "sysName": "tag",
-                        "name": "Тэги",
-                        "dataType": "array",
+                        "sysName": "material",
+                        "name": "Материал",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "materials"
+                    },
+                    {
+                        "fieldSysName": "medium",
+                        "fetch": [],
+                        "sysName": "medium",
+                        "name": "Техника",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "mediums"
+                    },
+                    {
+                        "fieldSysName": "photo",
+                        "fetch": [],
+                        "sysName": "photo",
+                        "name": "Фото",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "photo2",
+                        "fetch": [],
+                        "sysName": "photo2",
+                        "name": "Дополнительное фото",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "photo3",
+                        "fetch": [],
+                        "sysName": "photo3",
+                        "name": "Дополнительное фото",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "shipping_cost",
+                        "fetch": [],
+                        "sysName": "shipping_cost",
+                        "name": "Стоимость доставки",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "shipping"
+                    },
+                    {
+                        "fieldSysName": "start",
+                        "fetch": [],
+                        "sysName": "start",
+                        "name": "Стартовая цена",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "startPrice",
+                        "fetch": [],
+                        "sysName": "startPrice",
+                        "name": "Стартовая цена",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "startprice"
+                    },
+                    {
+                        "fieldSysName": "step",
+                        "fetch": [],
+                        "sysName": "step",
+                        "name": "Шаг торгов",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "steps"
+                    },
+                    {
+                        "fieldSysName": "subject",
+                        "fetch": [],
+                        "sysName": "subject",
+                        "name": "Жанр",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "subjects"
+                    },
+                    {
+                        "fieldSysName": "title",
+                        "fetch": [],
+                        "sysName": "title",
+                        "name": "Название картины",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "user",
+                        "fetch": [],
+                        "sysName": "user",
+                        "name": "Пользователь",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "width",
+                        "fetch": [],
+                        "sysName": "width",
+                        "name": "Ширина, см",
+                        "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     }
                 ],
                 "fields": {
-                    "Id": {
-                        "id": "Id",
-                        "content": "Id",
+                    "@dateChanged": {
+                        "id": "@dateChanged",
+                        "content": "date changed",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "@dateCreated": {
+                        "id": "@dateCreated",
+                        "content": "date created",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "@who": {
+                        "id": "@who",
+                        "content": "who changed",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "autor": {
+                        "id": "autor",
+                        "content": "Художник",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": null
+                    },
+                    "date_start": {
+                        "id": "date_start",
+                        "content": "Старт торгов",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "ru",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD MMMM",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "description": {
+                        "id": "description",
+                        "content": "Дополнительная информация о картине (необязательно)",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": null
+                    },
+                    "duration": {
+                        "id": "duration",
+                        "content": "Продолжительность торгов",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "duration"
+                    },
+                    "height": {
+                        "id": "height",
+                        "content": "Высота, см",
+                        "type": "field",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "id": {
+                        "id": "id",
+                        "content": "id",
+                        "type": "field",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "location": {
+                        "id": "location",
+                        "content": "Город в котором находится лот",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
@@ -7045,34 +7626,361 @@ const App = (props) => {
                         "read": true,
                         "link": ""
                     },
-                    "tag": {
-                        "id": "tag",
-                        "content": "Тэги",
+                    "material": {
+                        "id": "material",
+                        "content": "Материал",
                         "type": "field",
-                        "dataType": "array",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
+                        "read": true,
+                        "link": "materials"
+                    },
+                    "medium": {
+                        "id": "medium",
+                        "content": "Техника",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "mediums"
+                    },
+                    "photo": {
+                        "id": "photo",
+                        "content": "Фото",
+                        "type": "field",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "photo2": {
+                        "id": "photo2",
+                        "content": "Дополнительное фото",
+                        "type": "field",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "photo3": {
+                        "id": "photo3",
+                        "content": "Дополнительное фото",
+                        "type": "field",
+                        "dataType": "file",
+                        "format": "image",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "shipping_cost": {
+                        "id": "shipping_cost",
+                        "content": "Стоимость доставки",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "shipping"
+                    },
+                    "start": {
+                        "id": "start",
+                        "content": "Стартовая цена",
+                        "type": "field",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "startPrice": {
+                        "id": "startPrice",
+                        "content": "Стартовая цена",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "startprice"
+                    },
+                    "step": {
+                        "id": "step",
+                        "content": "Шаг торгов",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "steps"
+                    },
+                    "subject": {
+                        "id": "subject",
+                        "content": "Жанр",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "subjects"
+                    },
+                    "title": {
+                        "id": "title",
+                        "content": "Название картины",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": null
+                    },
+                    "user": {
+                        "id": "user",
+                        "content": "Пользователь",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "WebUser"
+                    },
+                    "width": {
+                        "id": "width",
+                        "content": "Ширина, см",
+                        "type": "field",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
                         "link": ""
                     }
                 },
                 "fieldParams": {
-                    "Id": {
+                    "autor": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "required": true
+                    },
+                    "date_start": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "defaultValueOn": true,
+                        "required": false,
+                        "defaultValue": ""
+                    },
+                    "description": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "tag": {
+                    "duration": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": true,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "defaultValueOn": true,
+                        "defaultValue": "1",
+                        "required": false,
+                        "disableEditing": true
+                    },
+                    "height": {
                         "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false,
+                        "required": true
+                    },
+                    "id": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "location": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "required": true
+                    },
+                    "material": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": true,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "required": true,
+                        "defaultValueOn": true,
+                        "defaultValue": "Paper"
+                    },
+                    "medium": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": true,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "required": true,
+                        "defaultValueOn": true,
+                        "defaultValue": "Oil"
+                    },
+                    "photo": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "required": true
+                    },
+                    "photo_add": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "seller": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "shipping_cost": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": true,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "required": true,
+                        "defaultValueOn": true,
+                        "defaultValue": "250"
+                    },
+                    "start": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
                         "defaultValueOn": false,
-                        "defaultValue": "test",
-                        "disableEditing": false
+                        "defaultValue": "1000",
+                        "required": false
+                    },
+                    "step": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": true,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "required": true,
+                        "defaultValueOn": true,
+                        "defaultValue": "300"
+                    },
+                    "subject": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": true,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "defaultValueOn": true,
+                        "defaultValue": "Landscape",
+                        "required": true
+                    },
+                    "title": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "required": true
+                    },
+                    "user": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "width": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "required": true
+                    },
+                    "@dateChanged": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "@dateCreated": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "@who": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "startPrice": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": true,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "defaultValueOn": true,
+                        "defaultValue": "900",
+                        "required": true
+                    },
+                    "photo2": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "descriptionFlag": true,
+                        "description": "(дополнительные фото добавлять необязательно)"
+                    },
+                    "photo3": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
                     }
                 },
                 "columns": {
@@ -7080,8 +7988,29 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "Id",
-                            "tag"
+                            "title",
+                            "autor",
+                            "photo",
+                            "height",
+                            "width",
+                            "material",
+                            "medium",
+                            "subject",
+                            "location",
+                            "shipping_cost",
+                            "startPrice",
+                            "step",
+                            "duration",
+                            "start",
+                            "date_start",
+                            "description",
+                            "photo2",
+                            "photo3",
+                            "id",
+                            "user",
+                            "@dateChanged",
+                            "@dateCreated",
+                            "@who"
                         ]
                     }
                 },
@@ -7090,69 +8019,496 @@ const App = (props) => {
                 ]
             },
             "fields": {
-                "Id": {
+                "autor": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": true
+                },
+                "date_start": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "defaultValueOn": true,
+                    "required": false,
+                    "defaultValue": ""
+                },
+                "description": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "tag": {
+                "duration": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "defaultValueOn": true,
+                    "defaultValue": "1",
+                    "required": false,
+                    "disableEditing": true,
+                    "searchData": [
+                        {
+                            "key": "1",
+                            "value": "1 день"
+                        },
+                        {
+                            "key": "3",
+                            "value": "3 дня"
+                        }
+                    ]
+                },
+                "height": {
                     "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false,
+                    "required": true
+                },
+                "id": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "location": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": true
+                },
+                "material": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": true,
+                    "defaultValueOn": true,
+                    "defaultValue": "Paper",
+                    "searchData": [
+                        {
+                            "key": "Canvas",
+                            "value": "Холст"
+                        },
+                        {
+                            "key": "Cardboard",
+                            "value": "Картон"
+                        },
+                        {
+                            "key": "Paper",
+                            "value": "Бумага"
+                        },
+                        {
+                            "key": "Canvas on cardboard",
+                            "value": "Холст на картоне"
+                        },
+                        {
+                            "key": "Canvas on hardboard",
+                            "value": "Холст на оргалите"
+                        },
+                        {
+                            "key": "Hardboard",
+                            "value": "Оргалит"
+                        },
+                        {
+                            "key": "Wood",
+                            "value": "Дерево"
+                        },
+                        {
+                            "key": "Canvas without stretcher",
+                            "value": "Холст без подрамника"
+                        }
+                    ]
+                },
+                "medium": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": true,
+                    "defaultValueOn": true,
+                    "defaultValue": "Oil",
+                    "searchData": [
+                        {
+                            "key": "Oil",
+                            "value": "Масло"
+                        },
+                        {
+                            "key": "Acrylic",
+                            "value": "Акрил"
+                        },
+                        {
+                            "key": " Watercolor",
+                            "value": "Акварель"
+                        },
+                        {
+                            "key": "Lithography",
+                            "value": "Литография"
+                        },
+                        {
+                            "key": "Etching",
+                            "value": "Офорт"
+                        },
+                        {
+                            "key": "Pastel",
+                            "value": "Пастель"
+                        },
+                        {
+                            "key": "Graphite",
+                            "value": "Карандаш"
+                        },
+                        {
+                            "key": "Ink",
+                            "value": "Чернила"
+                        },
+                        {
+                            "key": "Indian ink",
+                            "value": "Тушь"
+                        },
+                        {
+                            "key": "Tempera",
+                            "value": "Темпера"
+                        },
+                        {
+                            "key": "Watercolor",
+                            "value": "Акварель"
+                        },
+                        {
+                            "key": "Gouache",
+                            "value": "Гуашь"
+                        }
+                    ]
+                },
+                "photo": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": true
+                },
+                "photo_add": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "seller": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "shipping_cost": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": true,
+                    "defaultValueOn": true,
+                    "defaultValue": "250",
+                    "searchData": [
+                        {
+                            "key": "150",
+                            "value": "120-150 руб. (Заказная бандероль)"
+                        },
+                        {
+                            "key": "250",
+                            "value": "200-250 руб. (Заказная бандероль или ПВЗ СДЕК до склада)"
+                        },
+                        {
+                            "key": "350",
+                            "value": "300-350 руб. (Посылка 1-класса по РФ или СДЕК)"
+                        },
+                        {
+                            "key": "450",
+                            "value": "400-450 руб. (Ценная посылка по РФ или СДЕК)"
+                        },
+                        {
+                            "key": "0",
+                            "value": "Бесплатная доставка за счет продавца"
+                        }
+                    ]
+                },
+                "start": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
                     "defaultValueOn": false,
-                    "defaultValue": "test",
-                    "disableEditing": false
+                    "defaultValue": "1000",
+                    "required": false
+                },
+                "step": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": true,
+                    "defaultValueOn": true,
+                    "defaultValue": "300",
+                    "searchData": [
+                        {
+                            "key": "100",
+                            "value": "100"
+                        },
+                        {
+                            "key": "300",
+                            "value": "300"
+                        },
+                        {
+                            "key": "500",
+                            "value": "500"
+                        }
+                    ]
+                },
+                "subject": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "defaultValueOn": true,
+                    "defaultValue": "Landscape",
+                    "required": true,
+                    "searchData": [
+                        {
+                            "key": "Portrait",
+                            "value": "Портрет"
+                        },
+                        {
+                            "key": "Landscape",
+                            "value": "Пейзаж"
+                        },
+                        {
+                            "key": "Seascape",
+                            "value": "Морской пейзаж"
+                        },
+                        {
+                            "key": "Genre",
+                            "value": "Жанровая композиция"
+                        },
+                        {
+                            "key": "Cityscape",
+                            "value": "Городской пейзаж"
+                        },
+                        {
+                            "key": "Still Life",
+                            "value": "Натюрморт"
+                        },
+                        {
+                            "key": "Animals",
+                            "value": "Животные"
+                        },
+                        {
+                            "key": "Nu",
+                            "value": "Ню"
+                        }
+                    ]
+                },
+                "title": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": true
+                },
+                "user": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "width": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "required": true
+                },
+                "@dateChanged": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "@dateCreated": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "@who": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "startPrice": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "defaultValueOn": true,
+                    "defaultValue": "900",
+                    "required": true,
+                    "searchData": [
+                        {
+                            "key": "500",
+                            "value": "500"
+                        },
+                        {
+                            "key": "750",
+                            "value": "750"
+                        },
+                        {
+                            "key": "900",
+                            "value": "900"
+                        },
+                        {
+                            "key": "1000",
+                            "value": "1000"
+                        },
+                        {
+                            "key": "1100",
+                            "value": "1100"
+                        },
+                        {
+                            "key": "1200",
+                            "value": "1200"
+                        },
+                        {
+                            "key": "1300",
+                            "value": "1300"
+                        },
+                        {
+                            "key": "1400",
+                            "value": "1400"
+                        },
+                        {
+                            "key": "1500",
+                            "value": "1500"
+                        },
+                        {
+                            "key": "1600",
+                            "value": "1600"
+                        },
+                        {
+                            "key": "1700",
+                            "value": "1700"
+                        },
+                        {
+                            "key": "1800",
+                            "value": "1800"
+                        },
+                        {
+                            "key": "1900",
+                            "value": "1900"
+                        },
+                        {
+                            "key": "2000",
+                            "value": "2000"
+                        },
+                        {
+                            "key": "2100",
+                            "value": "2100"
+                        },
+                        {
+                            "key": "2200",
+                            "value": "2200"
+                        },
+                        {
+                            "key": "2300",
+                            "value": "2300"
+                        },
+                        {
+                            "key": "2400",
+                            "value": "2400"
+                        },
+                        {
+                            "key": "2500",
+                            "value": "2500"
+                        },
+                        {
+                            "key": "2600",
+                            "value": "2600"
+                        },
+                        {
+                            "key": "2700",
+                            "value": "2700"
+                        },
+                        {
+                            "key": "2800",
+                            "value": "2800"
+                        },
+                        {
+                            "key": "2900",
+                            "value": "2900"
+                        }
+                    ]
+                },
+                "photo2": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "descriptionFlag": true,
+                    "description": "(дополнительные фото добавлять необязательно)"
+                },
+                "photo3": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
                 }
             },
-            "useEditing": true,
-            "editObject": "url"
+            "resultScreen": {
+                "successMessageTitle": "Ваш лот сохранен в черновики!",
+                "successMessage": "<a href=\"/listings?\">Пожалуйста перейдите в раздел \"Мои лоты\", проверьте правильность заполнения и отправьте лот на публикацию.</a> ",
+                "disableResubmit": true
+            }
         },
         "fileds": [
             {
-                "sysName": "Id",
+                "sysName": "autor",
                 "dataType": "string",
-                "name": "Id",
-                "id": "8",
-                "link": "",
-                "group": "94544219",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": "Legacy fields (retained for backward compatibility)",
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "tag",
-                "dataType": "array",
-                "name": "Тэги",
-                "id": "26921663168756688",
-                "link": "",
-                "group": "94544219",
+                "name": "Художник",
+                "id": "52591668795241798",
+                "link": null,
+                "group": "0",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 23,
+                "order": 1,
                 "linkIndexFieldSysName": [],
                 "defaultValue": null,
                 "constraints": null,
@@ -7160,23 +8516,578 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
                 "indexExists": false,
-                "array": true
+                "array": false
+            },
+            {
+                "sysName": "date_start",
+                "dataType": "date",
+                "name": "Старт торгов",
+                "id": "84381668796707345",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 13,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "ru",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD MMMM",
+                    "timeFormat": " HH:mm",
+                    "isUTC": "false"
+                },
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "description",
+                "dataType": "string",
+                "name": "Дополнительная информация о картине (необязательно)",
+                "id": "86421668796557336",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "duration",
+                "dataType": "link",
+                "name": "Продолжительность торгов",
+                "id": "21691668796678338",
+                "link": "duration",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 12,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "linkType": true,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "height",
+                "dataType": "decimal",
+                "name": "Высота, см",
+                "id": "98081668795242578",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "location",
+                "dataType": "string",
+                "name": "Город в котором находится лот",
+                "id": "99121668796118659",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 7,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "material",
+                "dataType": "link",
+                "name": "Материал",
+                "id": "58521668795956666",
+                "link": "materials",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "linkType": true,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "medium",
+                "dataType": "link",
+                "name": "Техника",
+                "id": "51311668795971231",
+                "link": "mediums",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "linkType": true,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "photo",
+                "dataType": "file",
+                "name": "Фото",
+                "id": "66381668796783813",
+                "link": "",
+                "group": "1669241429795",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "image",
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "photo2",
+                "dataType": "file",
+                "name": "Дополнительное фото",
+                "id": "57081669241467909",
+                "link": "",
+                "group": "1669241429795",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "image",
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "photo3",
+                "dataType": "file",
+                "name": "Дополнительное фото",
+                "id": "25181669241486806",
+                "link": "",
+                "group": "1669241429795",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "image",
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "shipping_cost",
+                "dataType": "link",
+                "name": "Стоимость доставки",
+                "id": "58661668796147344",
+                "link": "shipping",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 8,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "linkType": true,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "start",
+                "dataType": "decimal",
+                "name": "Стартовая цена",
+                "id": "30761668796610717",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 10,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "startPrice",
+                "dataType": "link",
+                "name": "Стартовая цена",
+                "id": "39701669215129098",
+                "link": "startprice",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 21,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "linkType": true,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "step",
+                "dataType": "link",
+                "name": "Шаг торгов",
+                "id": "58641668796658942",
+                "link": "steps",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 11,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "linkType": true,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "subject",
+                "dataType": "link",
+                "name": "Жанр",
+                "id": "92331668796104981",
+                "link": "subjects",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "linkType": true,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "title",
+                "dataType": "string",
+                "name": "Название картины",
+                "id": "21991668795241053",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "user",
+                "dataType": "link",
+                "name": "Пользователь",
+                "id": "40431668797048438",
+                "link": "WebUser",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 14,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "arrayLink": false,
+                "linkType": true,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "width",
+                "dataType": "decimal",
+                "name": "Ширина, см",
+                "id": "93851668795891955",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
+                "array": false
             }
         ],
         "error": null,
         "isSuccessWrite": false,
         "response": null,
-        "data": [
-            {
-                "Id": "1491084555"
-            }
-        ],
+        "data": [],
         "httpParams": {}
     }
 
