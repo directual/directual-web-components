@@ -309,7 +309,7 @@ function FilterField({ field, active, fieldOptions, filters, saveFilters, dict, 
                             defaultValue={_.get(filters, 'sort.field')}
                             placeholder='Sort field'
                             width={220}
-                            displayKey
+                            //displayKey
                             options={fieldOptions}
                             icon='database'
                             onChange={value => {
