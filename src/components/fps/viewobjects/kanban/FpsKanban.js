@@ -301,7 +301,7 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
 
     return (
         <ComponentWrapper currentBP={currentBP}>
-            {data.writeError && <Hint title={dict[lang].form.error} error>{data.writeError}</Hint>}
+            {data.writeError && data.writeError != 'dql is not allowed for write' && <Hint title={dict[lang].form.error} error>{data.writeError}</Hint>}
             {/* <Button onClick={() => updateURL([{ key: "objectID", value: "100500" } ])} icon='refresh'>updateURL</Button>
             <Button onClick={() => clearURL()} icon='refresh'>clearURL</Button> */}
             {/* <Button onClick={() => removeUrlParam(id + '_page')} icon='refresh'>refresh page</Button> */}
