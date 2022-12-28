@@ -12,11 +12,11 @@ export default function FpsHint(props) {
         }
     }, [props])
 
-    // console.log('HINT')
-    // console.log(data)
+    console.log('HINT')
+    console.log(data)
 
-    const error = _.get(data,'hintColour') == 'false'
-    const ok = _.get(data,'hintColour') == 'true'
+    const error = _.get(data,'hintColour') == 'false' || _.get(data,'hintColour') == 'error'
+    const ok = _.get(data,'hintColour') == 'true' || _.get(data,'hintColour') == 'ok'
     const margins = _.get(data,'margins') || {}
 
     if (_.get(data,'isHidden') == 'true') { return <div />}
