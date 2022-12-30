@@ -344,7 +344,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
 
       {loading && <Loader>{dict[lang].loading}</Loader>}
 
-      {data.writeError && <Hint title={dict[lang].form.error} error>{data.writeError}</Hint>}
+      {data.writeError && data.writeError != 'dql is not allowed for write' && <Hint title={dict[lang].form.error} error>{data.writeError}</Hint>}
 
       {data.error && !loading && data.error != 'dql is not allowed for write' &&  // dql это КОСТЫЛЬ — убрать когда пофиксим на API
         <Hint title={dict[lang].form.error} error>{data.error}</Hint>}
