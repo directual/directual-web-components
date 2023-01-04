@@ -144,6 +144,7 @@ export default function FileUpload(props) {
                     fileList={files}
                     images={props.images}
                     edit={props.edit}
+                    lang={lang}
                     onDelete={index => {
                         console.log('deleting file: ' + index)
                         const saveNewFiles = [...files]
@@ -158,7 +159,7 @@ export default function FileUpload(props) {
     )
 }
 
-function FileList({ fileList, images, onDelete, edit }) {
+function FileList({ fileList, images, onDelete, edit, lang }) {
 
     fileList = fileList ? fileList : []
     const [largeView, setLargeView] = useState(null)

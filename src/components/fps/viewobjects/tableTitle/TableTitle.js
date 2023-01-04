@@ -26,7 +26,7 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
 
     return (
         <React.Fragment>
-            {(displayFilters || tableQuickSearch) &&
+            {(displayFilters || tableQuickSearch || tableTitle) &&
                 <div className={`${styles.tableTitle} ${styles[currentBP]}`}>
                     {tableTitle && <div className={styles.tableTitleWrapper}>
                         <h2><span>{tableTitle}</span></h2>
