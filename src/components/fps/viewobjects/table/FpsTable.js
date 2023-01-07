@@ -156,7 +156,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
             }
         }
         const dqlParams = { dql: currentDQL, sort: currentSort }
-        sendMsg({ ...saveModel, ...dqlParams }, null, { currentPage })
+        sendMsg({ ...saveModel, ...dqlParams }, null, { page: currentPage })
     }
 
     const submitAction = (mapping, sl, options) => {
