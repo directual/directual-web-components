@@ -103,6 +103,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
             }
             return prom
         }
+
     }
 
     function search(value, page) {
@@ -133,9 +134,15 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         !skipLoading && removeUrlParam(id + '_dql')
     }
 
-    const setPage = page => {
-        onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: page }, { reqParam1: "true" })
+    function setPage(page) {
+        // alert('set page')
+        let prom = onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: page }, { reqParam1: "true" })
         page !== 0 ? addUrlParam({ key: id + '_page', value: page }) : removeUrlParam(id + '_page')
+        if (prom && prom.finally) {
+            prom.finally(() => {
+                setLoading(false)
+            })
+        }
     }
 
     const submit = (model) => {
@@ -156,8 +163,13 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 }
             }
         }
-        const dqlParams= { dql: currentDQL, sort: currentSort }
-        sendMsg({ ...saveModel, ...dqlParams }, null, { page: currentPage })
+        const dqlParams = { dql: currentDQL, sort: currentSort }
+        sendMsg({ ...saveModel })
+        const isDelayedRefresh = currentDQL || _.get(currentSort,'field') || currentPage
+        isDelayedRefresh && setTimeout(()=> {
+            onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: currentPage }, { reqParam1: "true" })
+            removeUrlParam(id + '_id')
+        }, 2000)
     }
 
     const submitAction = (mapping, sl, options) => {
@@ -169,7 +181,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
             sendMsg(mapping, sl, undefined, options)
             setTimeout(()=> {
                 onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: currentPage }, { reqParam1: "true" })
-            }, 1000)
+            }, 2000)
         }
 
         return isDelayedRefresh ? submitDelayedAction() : sendMsg(mapping, sl, undefined, options)

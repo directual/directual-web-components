@@ -528,8 +528,8 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
         return found ? found[0] : ''
     }
 
-    console.log(field.dataType)
-    console.log(field)
+    // console.log(field.dataType)
+    // console.log(field)
     // console.log(object)
     field.formatOptions = object[field.sysName].formatOptions
 
@@ -1021,9 +1021,9 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
         if (!field.tableView) { return <div>Table is not configured</div> }
 
         const table = field.tableView || []
-        console.log('table')
-        console.log(table)
-        console.log(renderAL)
+        // console.log('table')
+        // console.log(table)
+        // console.log(renderAL)
 
         return <React.Fragment>
             <span className={styles.label}>
@@ -1334,8 +1334,8 @@ function CardAction({ action, successWeb3, writeError, actionParams, debug, subm
         </div>
     }
 
-    console.log('actionParams')
-    console.log(actionParams)
+    // console.log('actionParams')
+    // console.log(actionParams)
 
     return (
         actionParams && checkActionCond && checkActionCond(conds) ?
