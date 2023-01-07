@@ -23,7 +23,8 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
     console.log(data)
 
     const cx = null
-    const dqlService = debounce(performFiltering, 800);
+    const dqlService = debounce(performFiltering, 600);
+    const searchService = debounce(search, 600);
 
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
@@ -32,6 +33,7 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
     const [searchValue, setSearchValue] = useState()
 
     const [currentDQL, setCurrentDQL] = useState('')
+    const [currentSort, setCurrentSort] = useState({})
 
     const [showObject, setShowObject] = useState()
 
@@ -51,11 +53,12 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
         clearTimeout(cx);
         // console.log('=== F I L T E R I N G ! ===')
         // console.log(dql)
-        // //setCurrentDQL(dql)
+        setCurrentDQL(dql)
+        setCurrentSort(sort)
         // console.log('=== S O R T I N G ! ===')
         // console.log(sort)
-        //sendMsg({ dql, sort }, null, { page: currentPage })
-        sendMsg({ dql, sort }, null, { page: currentPage })
+        const page = 0 // dql || _.get(sort,'field') ? currentPage : 0
+        sendMsg({ dql, sort }, null, { page })
     }
 
     useEffect(() => {
@@ -77,6 +80,7 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
      * @param pageInfo
      * @param options - additional parameteres for rise event to eventEngine
      */
+
     const sendMsg = (msg, sl, pageInfo, options) => {
         console.log('submitting...')
         pageInfo = pageInfo || { page: currentPage }
@@ -85,11 +89,10 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
         for (const prop in msg) {
             if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) { msg[prop] = moment(msg[prop]) }
         }
-        let cloneData = _.isArray(msg) ? { _array_: [...msg] } : msg
         const message =
-            { ...cloneData, _id: 'form_' + id, _sl_name: sl, _options: options }
-        // console.log(message)
-        // console.log(pageInfo)
+            { ...msg, _id: 'form_' + id, _sl_name: sl, _options: options }
+        console.log(message)
+        console.log(pageInfo)
         setLoading(true)
         if (onEvent) {
             let prom = onEvent(message, pageInfo)
@@ -102,14 +105,15 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
         }
     }
 
-    const search = (value, page) => {
+    function search(value, page) {
+        clearTimeout(cx);
         if (value) {
             setSearchValue(value)
             !currentDQL && !page && removeUrlParam(id + '_page')
             const fieldsDQL = data.headers && data.headers.map(i => i.sysName);
             const requestDQL = fieldsDQL.map(i => "'" + i + "'" + ' like ' + "'" + value + "'").join(' OR ')
             setCurrentDQL(requestDQL)
-            addUrlParam({ key: id + '_dql', value: value })
+            //addUrlParam({ key: id + '_dql', value: value })
             sendMsg({ dql: requestDQL }, null, { page: page || 0 })
         } else {
             setSearchValue('')
@@ -123,45 +127,52 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
     const refresh = (skipLoading) => {
         !skipLoading && setLoading(true)
         !skipLoading && setCurrentDQL('')
+        !skipLoading && setCurrentSort({})
         !skipLoading && setSearchValue('')
         onEvent({ dql: '', page: currentPage, _id: id })
         !skipLoading && removeUrlParam(id + '_dql')
     }
 
     const setPage = page => {
-        onEvent({ dql: currentDQL, _id: id }, { page: page }, { reqParam1: "true" })
+        onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: page }, { reqParam1: "true" })
         page !== 0 ? addUrlParam({ key: id + '_page', value: page }) : removeUrlParam(id + '_page')
     }
 
-    const submit = (model, multiple) => {
-
-        if (multiple) {
-            sendMsg(model)
-        } else {
-            const saveModel = { ...model }
-            if (saveModel) {
-                for (const field in saveModel) {
-                    // console.log(field)
-                    if (saveModel[field] && typeof saveModel[field] == 'object' && data.params.data.fields[field].dataType != 'date') {
-                        // console.log('removing links')
-                        delete saveModel[field]
-                    }  // removing links
-                    if (writeFields.indexOf(field) == -1) {
-                        // console.log(`removing ${field} as a field not for writing`)
-                        delete saveModel[field]
-                    } // removing fields not for writing
-                    if (data.params.data.fields[field] && data.params.data.fields[field].dataType == 'date' && typeof saveModel[field] == 'number') {
-                        saveModel[field] = moment(saveModel[field])
-                    }
+    const submit = (model) => {
+        const dqlParams= { currentDQL, currentSort }
+        const saveModel = { ...model, ...dqlParams }
+        if (saveModel) {
+            for (const field in saveModel) {
+                console.log(field)
+                if (saveModel[field] && typeof saveModel[field] == 'object' && data.params.data.fields[field].dataType != 'date') {
+                    // console.log('removing links')
+                    delete saveModel[field]
+                }  // removing links
+                if (writeFields.indexOf(field) == -1) {
+                    // console.log(`removing ${field} as a field not for writing`)
+                    delete saveModel[field]
+                } // removing fields not for writing
+                if (data.params.data.fields[field] && data.params.data.fields[field].dataType == 'date' && typeof saveModel[field] == 'number') {
+                    saveModel[field] = moment(saveModel[field])
                 }
             }
-            sendMsg(saveModel)
         }
+        sendMsg(saveModel, null, { currentPage })
     }
 
     const submitAction = (mapping, sl, options) => {
         console.log('submitting action...')
-        return sendMsg(mapping, sl, undefined, options)
+
+        const isDelayedRefresh = currentDQL || _.get(currentSort,'field') || currentPage
+
+        function submitDelayedAction() {
+            sendMsg(mapping, sl, undefined, options)
+            setTimeout(()=> {
+                onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: currentPage }, { reqParam1: "true" })
+            }, 1000)
+        }
+
+        return isDelayedRefresh ? submitDelayedAction() : sendMsg(mapping, sl, undefined, options)
     }
 
     //Check action conditionals
@@ -341,7 +352,7 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
                 searchValue={searchValue}
                 tableQuickSearch={data.quickSearch == 'true'}
                 search={data.data && data.data.length > 0 ? true : false}
-                onSearch={value => search(value)}
+                onSearch={searchService}
                 loading={loading}
                 dict={dict}
                 lang={lang}

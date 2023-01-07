@@ -18,7 +18,7 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
     const fieldOptions = fields.map(i => {
         return {
             key: i.fieldSysName,
-            value: i.name
+            value: i.name && i.name != ' ' ? i.name : i.fieldSysName
         }
     })
 
@@ -32,12 +32,12 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
                         <h2><span>{tableTitle}</span></h2>
                     </div>}
 
-                    {loading && searchValue && <div className={styles.subtitle}><Loader> {_.get(dict[lang], 'loading') || "Loading..."}</Loader></div>}
-                    {searchValue && !loading &&
+                    {/* {loading && searchValue && <div className={styles.subtitle}><Loader> {_.get(dict[lang], 'loading') || "Loading..."}</Loader></div>} */}
+                    {/* {searchValue && !loading &&
                         <div className={styles.titleSearch}>
                             <span>{dict[lang].searching}: <strong>{searchValue}</strong></span>
                         </div>
-                    }
+                    } */}
 
                     {displayFilters && //!tableQuickSearch &&
                         <NewFilters
@@ -55,34 +55,21 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
                     {/* vv vv vv vvv vv vv vv */}
                     {tableQuickSearch && !displayFilters &&
                         <div className={styles.tableActions}>
-                            {/* фильтры в 0.1 версии спрячем */}
-                            {/* <Button
-                            icon={`${!showFilters ? 'filter' : 'filterFill'}`}
-                            onClick={() => setShowFilters(!showFilters)}
-                        >{`${!showFilters ? 'Show filters' : 'Hide filters'}`}</Button> */}
-
                             {showSearch &&
-                                <div className={styles.tableQuickSearchField}>
-                                    <Input
-                                        type='search'
-                                        searchOnEnter={true}
-                                        defaultValue={searchValue}
-                                        inputClassName={styles.quickSearchInput}
-                                        placeholder={`${dict[lang].search}...`}
-                                        //debug
-                                        //width={500}
-                                        onPressEnter={value => {
-                                            onSearch(value)
-                                        }}
-                                        onClear={() => {
-                                            onSearch('')
-                                            //setShowSearch(false)
-                                        }}
-                                        nomargin />
-                                </div>
-                                // :
-                                // <Button icon='search'
-                                //     onClick={() => setShowSearch(true)}></Button>
+                                <Input
+                                    type='string'
+                                    icon='search'
+                                    searchOnEnter={true}
+                                    defaultValue={searchValue}
+                                    inputClassName={styles.quickSearchInput}
+                                    placeholder={`${dict[lang].search}...`}
+                                    onChange={value => {
+                                        onSearch(value)
+                                    }}
+                                    onClear={() => {
+                                        onSearch('')
+                                    }}
+                                    nomargin />
                             }
                         </div>}
                     {/* ^^ ^^ ^^ ^^^ ^^ ^^ ^^ */}
@@ -232,13 +219,8 @@ function FilterField({ field, active, fieldOptions, filters, saveFilters, dict, 
     }
 
     const shiftDropdown = -1 * (left - 6)
-    // const width  = (window && window.innerWidth) || (document && document.documentElement.clientWidth) 
-    //     || (document && document.body.clientWidth) || 0
-    // console.log(width)
-    // const spaceRight = width + shiftDropdown
 
     return <div ref={filterWrapper}>
-        {/* {spaceRight} */}
         <ButtonDropDown key={_.get(field, 'id')} lockDD={true}
             currentBP={currentBP}
             rightSide={alignRight || (_.get(field, 'type') == 'sort' && shiftDropdown < -300 && currentBP !== 'mobile')}

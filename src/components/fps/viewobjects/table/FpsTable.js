@@ -22,7 +22,8 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     console.log(data)
 
     const cx = null
-    const dqlService = debounce(performFiltering, 800);
+    const dqlService = debounce(performFiltering, 600);
+    const searchService = debounce(search, 600);
 
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
@@ -30,6 +31,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     const [searchValue, setSearchValue] = useState()
 
     const [currentDQL, setCurrentDQL] = useState('')
+    const [currentSort, setCurrentSort] = useState({})
 
     const [showObject, setShowObject] = useState()
 
@@ -98,7 +100,9 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     }
 
 
-    const search = (value, page) => {
+    function search(value, page) {
+        clearTimeout(cx);
+
         if (value) {
             setSearchValue(value)
             !currentDQL && !page && removeUrlParam(id + '_page')
@@ -349,7 +353,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 searchValue={searchValue}
                 tableQuickSearch={data.quickSearch == 'true'}
                 search={data.data && data.data.length > 0 ? true : false}
-                onSearch={value => search(value)}
+                onSearch={searchService}
                 loading={loading}
                 dict={dict}
                 lang={lang}

@@ -178,7 +178,9 @@
   .tableActions {
     display: flex;
     .tableQuickSearchField {
-      margin-left: 6px;
+      //margin-left: 6px;
+      display: flex;
+      align-items: center;
     }
     .quickSearchInput {
       width: calc(100% - 82px);
@@ -230,6 +232,8 @@ div.tableTitle.mobile {
   .tableActions {
     .tableQuickSearchField {
       margin: 12px 0 0 0;
+      flex-direction: column;
+      align-items: stretch;
       width: 100%;
     }
     .quickSearchInput {
@@ -555,5 +559,25 @@ div.tableTitle.mobile {
         }
       }
     }
+}
+.tableWrapper {
+  position: relative;
+}
+.backGroundBlur {
+  filter: blur(3px);
+}
+.tableLoadingOverlay {
+  height: 100%;
+  border-radius: var(--border-radius);
+  width: 100%;
+  z-index: 2;
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: rgba(255,255,255,.2);
+  .tableLoader {
+    margin-top: 60px;
+  }
 }
 

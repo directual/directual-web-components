@@ -5,6 +5,7 @@ import { useTable } from 'react-table'
 import Checkbox from '../../dataentry/checkbox/checkbox'
 import Button from '../../button/button'
 import moment from 'moment'
+import Loader from '../../loader/loader'
 
 // Create an editable cell renderer
 const EditableCell = ({
@@ -175,7 +176,7 @@ const EditableCell = ({
         if (!value || value == "{}") return <div />
         const json = parseJson(value)
         if (json.value) return <div className={`${styles.notEditableValue}`}>
-            {fieldDetails[id].formatOptions.multipleChoice.filter(i => i.value == json.value)[0] ? 
+            {fieldDetails[id].formatOptions.multipleChoice.filter(i => i.value == json.value)[0] ?
                 fieldDetails[id].formatOptions.multipleChoice.filter(i => i.value == json.value)[0].label :
                 json.value}
         </div>
@@ -365,6 +366,8 @@ export function Table({
     loading,
     searchValue,
     auth,
+    dict,
+    lang,
     submitAction,
     largeFont,
     params,
@@ -540,16 +543,25 @@ export function Table({
         />
     }
 
-    return <ReactTable
-        columns={columns}
-        data={tableData}
-        hideExpandTD={hideExpandTD}
-        largeFont={largeFont}
-        getLinkName={getLinkName}
-        updateMyData={updateMyData}
-        fieldDetails={fieldDetails}
-        skipPageReset={skipPageReset}
-        onExpand={onExpand}
-        tableParams={tableParams.fieldParams}
-    />
+    return <div className={styles.tableWrapper}>
+        {loading && <div className={styles.tableLoadingOverlay}>
+            <div className={styles.tableLoader}>
+                <Loader> {_.get(dict[lang], 'loading') || "Loading..."}</Loader>
+            </div>
+        </div>}
+        <div className={loading ? styles.backGroundBlur : ''}>
+            <ReactTable
+                columns={columns}
+                data={tableData}
+                hideExpandTD={hideExpandTD}
+                largeFont={largeFont}
+                getLinkName={getLinkName}
+                updateMyData={updateMyData}
+                fieldDetails={fieldDetails}
+                skipPageReset={skipPageReset}
+                onExpand={onExpand}
+                tableParams={tableParams.fieldParams}
+            />
+        </div>
+    </div>
 }

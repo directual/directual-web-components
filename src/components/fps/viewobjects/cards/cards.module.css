@@ -1,3 +1,20 @@
+.cardsWrapperWrapper {
+  position: relative;
+}
+.cardsWrapperWrapper .tableLoadingOverlay {
+  height: 100%;
+  border-radius: var(--border-radius);
+  width: 100%;
+  z-index: 2;
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+}
+.cardsWrapperWrapper .tableLoadingOverlay .tableLoader {
+  margin-top: 60px;
+}
 .cardsWrapper {
   display: flex;
   flex-wrap: wrap;
@@ -15,7 +32,9 @@
   margin-right: 0;
 }
 .cardsWrapper.loading {
-  opacity: 0.4;
+  filter: blur(3px);
+  position: relative;
+  opacity: 0.9;
 }
 .cardsWrapper.loading .card .cardInnerWrapper {
   cursor: not-allowed;

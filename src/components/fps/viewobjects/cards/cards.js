@@ -8,6 +8,7 @@ import Hint from '../../hint/hint'
 import ActionPanel from '../../actionspanel/actionspanel'
 import moment from 'moment'
 import _ from 'lodash'
+import Loader from '../../loader/loader'
 
 export function Cards({
   data,
@@ -16,6 +17,8 @@ export function Cards({
   loading,
   searchValue,
   auth,
+  dict,
+  lang,
   submitAction,
   params,
   checkActionCond,
@@ -197,50 +200,60 @@ export function Cards({
 
   return (
     <React.Fragment>
-      <div
-        className={`${styles.cardsWrapper}
+      <div className={styles.cardsWrapperWrapper}>
+        {loading && <div className={styles.tableLoadingOverlay}>
+          <div className={styles.tableLoader}>
+            <Loader> {_.get(dict[lang], 'loading') || "Loading..."}</Loader>
+          </div>
+        </div>}
+
+        <div
+          className={`${styles.cardsWrapper}
                 ${(data.error ||
-            tableData.length === 0 ||
-            tableHeaders.length === 0) &&
-          styles.emptyTable
-          } ${loading && styles.loading}`}
-      >
-        {tableData.length != 0 &&
-          tableHeaders.length != 0 &&
-          tableData.map((row, i) => <Card
-            params={params}
-            row={row}
-            data={data}
-            i={i}
-            currentBP={currentBP}
-            tableParams={tableParams}
-            tableHeaders={tableHeaders}
-            loading={loading}
-            successWeb3={successWeb3}
-            edenrichConds={edenrichConds}
-            searchValue={searchValue}
-            auth={auth}
-            submitAction={submitAction}
-            checkActionCond={checkActionCond}
-            setSuccessWeb3={setSuccessWeb3}
-            onExpand={onExpand}
-            getLinkName={getLinkName}
-            getInitialStructureParams={getInitialStructureParams}
-          />)}
-        {data.error && (
-          <SomethingWentWrong icon='warning' message={data.error} />
-        )}
-        {(tableData.length === 0 || tableHeaders.length === 0) &&
-          !data.error && (
-            <SomethingWentWrong
-              icon='ban'
-              message={`${searchValue
-                ? `No object found for ${searchValue}`
-                : `No objects`
-                }`}
-            />
+              tableData.length === 0 ||
+              tableHeaders.length === 0) &&
+            styles.emptyTable
+            } ${loading && styles.loading}`}
+        >
+
+          {tableData.length != 0 &&
+            tableHeaders.length != 0 &&
+            tableData.map((row, i) => <Card
+              params={params}
+              row={row}
+              data={data}
+              i={i}
+              currentBP={currentBP}
+              tableParams={tableParams}
+              tableHeaders={tableHeaders}
+              loading={loading}
+              successWeb3={successWeb3}
+              edenrichConds={edenrichConds}
+              searchValue={searchValue}
+              auth={auth}
+              submitAction={submitAction}
+              checkActionCond={checkActionCond}
+              setSuccessWeb3={setSuccessWeb3}
+              onExpand={onExpand}
+              getLinkName={getLinkName}
+              getInitialStructureParams={getInitialStructureParams}
+            />)}
+          {data.error && (
+            <SomethingWentWrong icon='warning' message={data.error} />
           )}
+          {(tableData.length === 0 || tableHeaders.length === 0) &&
+            !data.error && (
+              <SomethingWentWrong
+                icon='ban'
+                message={`${searchValue
+                  ? `No object found for ${searchValue}`
+                  : `No objects`
+                  }`}
+              />
+            )}
+        </div>
       </div>
+
     </React.Fragment>
   )
 }
