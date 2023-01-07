@@ -139,8 +139,7 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
     }
 
     const submit = (model) => {
-        const dqlParams= { currentDQL, currentSort }
-        const saveModel = { ...model, ...dqlParams }
+        const saveModel = { ...model }
         if (saveModel) {
             for (const field in saveModel) {
                 console.log(field)
@@ -157,7 +156,8 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
                 }
             }
         }
-        sendMsg(saveModel, null, { currentPage })
+        const dqlParams = { dql: currentDQL, sort: currentSort }
+        sendMsg({ ...saveModel, ...dqlParams }, null, { currentPage })
     }
 
     const submitAction = (mapping, sl, options) => {

@@ -28,6 +28,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
     const [loading, setLoading] = useState(false)
+    const [qSearch, setQSearch] = useState(data.quickSearch === "true")
     const [searchValue, setSearchValue] = useState()
 
     const [currentDQL, setCurrentDQL] = useState('')
@@ -47,23 +48,38 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     const totalPages = data.totalPages || 0
     const currentPage = data.pageNumber || 0
 
+    function performFiltering(dql, sort) {
+        clearTimeout(cx);
+        // console.log('=== F I L T E R I N G ! ===')
+        // console.log(dql)
+        setCurrentDQL(dql)
+        setCurrentSort(sort)
+        // console.log('=== S O R T I N G ! ===')
+        // console.log(sort)
+        const page = 0 // dql || _.get(sort,'field') ? currentPage : 0
+        sendMsg({ dql, sort }, null, { page })
+    }
+
     useEffect(() => {
         setLoading(false)
         if (data.isSuccessWrite) {
         }
         if (!data.isSuccessWrite && data.writeError) {
             console.log('data write error')
-            console.log(data.writeError)
+            console.log('error ==> ' + data.writeError)
         }
+        setQSearch(data.quickSearch === "true")
     }, [data])
 
+
     /**
-   *
-   * @param msg
-   * @param sl
-   * @param pageInfo
-   * @param options - additional parameteres for rise event to eventEngine
-   */
+     *
+     * @param msg
+     * @param sl
+     * @param pageInfo
+     * @param options - additional parameteres for rise event to eventEngine
+     */
+
     const sendMsg = (msg, sl, pageInfo, options) => {
         console.log('submitting...')
         pageInfo = pageInfo || { page: currentPage }
@@ -88,28 +104,15 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         }
     }
 
-    function performFiltering(dql, sort) {
-        clearTimeout(cx);
-        console.log('=== F I L T E R I N G ! ===')
-        console.log(dql)
-        //setCurrentDQL(dql)
-        // console.log('=== S O R T I N G ! ===')
-        // console.log(sort)
-        //sendMsg({ dql, sort }, null, { page: currentPage })
-        sendMsg({ dql, sort }, null, { page: currentPage })
-    }
-
-
     function search(value, page) {
         clearTimeout(cx);
-
         if (value) {
             setSearchValue(value)
             !currentDQL && !page && removeUrlParam(id + '_page')
             const fieldsDQL = data.headers && data.headers.map(i => i.sysName);
             const requestDQL = fieldsDQL.map(i => "'" + i + "'" + ' like ' + "'" + value + "'").join(' OR ')
             setCurrentDQL(requestDQL)
-            addUrlParam({ key: id + '_dql', value: value })
+            //addUrlParam({ key: id + '_dql', value: value })
             sendMsg({ dql: requestDQL }, null, { page: page || 0 })
         } else {
             setSearchValue('')
@@ -123,13 +126,14 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     const refresh = (skipLoading) => {
         !skipLoading && setLoading(true)
         !skipLoading && setCurrentDQL('')
+        !skipLoading && setCurrentSort({})
         !skipLoading && setSearchValue('')
         onEvent({ dql: '', page: currentPage, _id: id })
         !skipLoading && removeUrlParam(id + '_dql')
     }
 
     const setPage = page => {
-        onEvent({ dql: currentDQL, page: page, _id: id })
+        onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: page }, { reqParam1: "true" })
         page !== 0 ? addUrlParam({ key: id + '_page', value: page }) : removeUrlParam(id + '_page')
     }
 
@@ -139,11 +143,11 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
             for (const field in saveModel) {
                 console.log(field)
                 if (saveModel[field] && typeof saveModel[field] == 'object' && data.params.data.fields[field].dataType != 'date') {
-                    console.log('removing links')
+                    // console.log('removing links')
                     delete saveModel[field]
                 }  // removing links
                 if (writeFields.indexOf(field) == -1) {
-                    console.log(`removing ${field} as a field not for writing`)
+                    // console.log(`removing ${field} as a field not for writing`)
                     delete saveModel[field]
                 } // removing fields not for writing
                 if (data.params.data.fields[field] && data.params.data.fields[field].dataType == 'date' && typeof saveModel[field] == 'number') {
@@ -151,12 +155,23 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 }
             }
         }
-        sendMsg(saveModel)
+        const dqlParams = { dql: currentDQL, sort: currentSort }
+        sendMsg({ ...saveModel, ...dqlParams }, null, { currentPage })
     }
 
     const submitAction = (mapping, sl, options) => {
         console.log('submitting action...')
-        return sendMsg(mapping, sl, undefined, options)
+
+        const isDelayedRefresh = currentDQL || _.get(currentSort,'field') || currentPage
+
+        function submitDelayedAction() {
+            sendMsg(mapping, sl, undefined, options)
+            setTimeout(()=> {
+                onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: currentPage }, { reqParam1: "true" })
+            }, 1000)
+        }
+
+        return isDelayedRefresh ? submitDelayedAction() : sendMsg(mapping, sl, undefined, options)
     }
 
     //Check action conditionals
@@ -179,35 +194,35 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         actionCond.forEach(cond => {
             if (typeof cond.fieldValue == 'object' && cond.fieldValue) { cond.fieldValue = cond.fieldValue.id }
             if (cond.target == 'id' && (!auth || auth.user !== cond.checkValue)) {
-                console.log(auth.user + ' != ' + cond.checkValue)
-                console.log('ID does not match');
+                // console.log(auth.user + ' != ' + cond.checkValue)
+                // console.log('ID does not match');
                 match = false
             }
             if (cond.target == 'id_in' && (!auth || !auth.user || !compareRoleArrays(auth.user, cond.checkValue))) {
-                console.log(`user id ${auth && auth.user} is not in ${cond.checkValue}`)
-                match = false
-            }
-            if (cond.target == 'id_not_in' && (!auth || !auth.user || compareRoleArrays(auth.user, cond.checkValue))) {
-                console.log(`user id ${auth && auth.user} is in ${cond.checkValue}`)
+                // console.log(`user id ${auth && auth.user} is not in ${cond.checkValue}`)
                 match = false
             }
             if (cond.target == 'isAutn' && (!auth || !auth.user)) {
-                console.log(`user is not authorised!`)
+                // console.log(`user is not authorised!`)
                 match = false
             }
             if (cond.target == 'isNotAuth' && auth.user) {
-                console.log(`user is authorised!`)
+                // console.log(`user is authorised!`)
+                match = false
+            }
+            if (cond.target == 'id_not_in' && (!auth || !auth.user || compareRoleArrays(auth.user, cond.checkValue))) {
+                // console.log(`user id ${auth && auth.user} is in ${cond.checkValue}`)
                 match = false
             }
             if (cond.target == 'role' && (!auth || !auth.role || (!compareRoleArrays(auth.role, cond.checkValue)))) {
-                console.log('Role does not match');
+                // console.log('Role does not match');
                 match = false
             }
             if ((cond.target == 'field' || cond.target == 'linkedField') && (!cond.fieldValue ||
                 cond.fieldValue.toString().toLowerCase() != cond.value.toString().toLowerCase())) {
-                console.log(cond.fieldValue + ' != ' + cond.value);
-                console.log(cond)
-                console.log('Field is wrong');
+                // console.log(cond.fieldValue + ' != ' + cond.value);
+                // console.log(cond)
+                // console.log('Field is wrong');
                 if (cond.value == 'false' && typeof cond.fieldValue == 'undefined') { match = true } else { match = false }
             }
         })
