@@ -89,8 +89,9 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
         for (const prop in msg) {
             if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) { msg[prop] = moment(msg[prop]) }
         }
+        let cloneData = _.isArray(msg) ? { _array_: [...msg] } : msg
         const message =
-            { ...msg, _id: 'form_' + id, _sl_name: sl, _options: options }
+            { ...cloneData, _id: 'form_' + id, _sl_name: sl, _options: options }
         console.log(message)
         console.log(pageInfo)
         setLoading(true)
@@ -145,41 +146,45 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
         }
     }
 
-    const submit = (model) => {
-        const saveModel = { ...model }
-        if (saveModel) {
-            for (const field in saveModel) {
-                console.log(field)
-                if (saveModel[field] && typeof saveModel[field] == 'object' && data.params.data.fields[field].dataType != 'date') {
-                    // console.log('removing links')
-                    delete saveModel[field]
-                }  // removing links
-                if (writeFields.indexOf(field) == -1) {
-                    // console.log(`removing ${field} as a field not for writing`)
-                    delete saveModel[field]
-                } // removing fields not for writing
-                if (data.params.data.fields[field] && data.params.data.fields[field].dataType == 'date' && typeof saveModel[field] == 'number') {
-                    saveModel[field] = moment(saveModel[field])
+    const submit = (model, multiple) => {
+        if (multiple) {
+            sendMsg(model)
+
+            const saveModel = { ...model }
+            if (saveModel) {
+                for (const field in saveModel) {
+                    console.log(field)
+                    if (saveModel[field] && typeof saveModel[field] == 'object' && data.params.data.fields[field].dataType != 'date') {
+                        // console.log('removing links')
+                        delete saveModel[field]
+                    }  // removing links
+                    if (writeFields.indexOf(field) == -1) {
+                        // console.log(`removing ${field} as a field not for writing`)
+                        delete saveModel[field]
+                    } // removing fields not for writing
+                    if (data.params.data.fields[field] && data.params.data.fields[field].dataType == 'date' && typeof saveModel[field] == 'number') {
+                        saveModel[field] = moment(saveModel[field])
+                    }
                 }
             }
+            const dqlParams = { dql: currentDQL, sort: currentSort }
+            sendMsg({ ...saveModel })
+            const isDelayedRefresh = currentDQL || _.get(currentSort, 'field') || currentPage
+            isDelayedRefresh && setTimeout(() => {
+                onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: currentPage }, { reqParam1: "true" })
+                removeUrlParam(id + '_id')
+            }, 2000)
         }
-        const dqlParams = { dql: currentDQL, sort: currentSort }
-        sendMsg({ ...saveModel })
-        const isDelayedRefresh = currentDQL || _.get(currentSort,'field') || currentPage
-        isDelayedRefresh && setTimeout(()=> {
-            onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: currentPage }, { reqParam1: "true" })
-            removeUrlParam(id + '_id')
-        }, 2000)
     }
 
     const submitAction = (mapping, sl, options) => {
         console.log('submitting action...')
 
-        const isDelayedRefresh = currentDQL || _.get(currentSort,'field') || currentPage
+        const isDelayedRefresh = currentDQL || _.get(currentSort, 'field') || currentPage
 
         function submitDelayedAction() {
             sendMsg(mapping, sl, undefined, options)
-            setTimeout(()=> {
+            setTimeout(() => {
                 onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: currentPage }, { reqParam1: "true" })
             }, 2000)
         }
