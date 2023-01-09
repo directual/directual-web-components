@@ -8,6 +8,10 @@ export const Fps500 = () => {
   return <h1>500</h1>
 }
 
+export const FpsBlocked = () => {
+  return <h1>Page is blocked</h1>
+}
+
 export const FpsIsEmpty = () => {
   return (
     <div className='wrap center message'>

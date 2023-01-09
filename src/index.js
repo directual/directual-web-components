@@ -1,6 +1,7 @@
 import {
   Fps404,
   Fps500,
+  FpsBlocked,
   FpsIsEmpty,
   PageIsEmpty
 } from './components/fps/FpsSystem'
@@ -54,6 +55,7 @@ export {
   Fps404,
   Fps400,
   Fps500,
+  FpsBlocked,
   FpsButton,
   FpsIsEmpty,
   ComponentWrapper,
