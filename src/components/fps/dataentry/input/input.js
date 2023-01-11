@@ -378,28 +378,43 @@ export default function Input(props) {
         return result;
     }
 
-    // if (typeof window !== undefined) {
-    //     window.addEventListener("wheel", function (event) {
-    //         if (document.activeElement.type === "number") {
-    //             document.activeElement.blur();
-    //         }
-    //     })
-    // }
+    function getTextWidth(text, font) {
+        // re-use canvas object for better performance
+        const lines = text.split("\n")
+        const canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+        const context = canvas.getContext("2d");
+        context.font = font;
+        const metrics = lines.map(line => context.measureText(line).width)
+        return _.max(metrics)
+    }
 
-    // useEffect(function onFirstMount() {
-    //     function onScroll() {
-    //         if (document.activeElement.type === "number" || document.activeElement.type === "decimal") {
-    //             document.activeElement.blur();
-    //         }
-    //     }
-    //     document.addEventListener("scroll", onScroll);
-    // }, []);
+    function getCssStyle(element, prop) {
+        return window ? window.getComputedStyle(element, null).getPropertyValue(prop) : null;
+    }
+
+    function getCanvasFont(el) {
+        if (!el) { return '' }
+        const fontWeight = getCssStyle(el, 'font-weight') || 'normal';
+        const fontSize = getCssStyle(el, 'font-size') || '16px';
+        const fontFamily = getCssStyle(el, 'font-family') || 'Times New Roman';
+        return `${fontWeight} ${fontSize} ${fontFamily}`;
+    }
+
+    function calcTextareaWidth() {
+        const min = props.minWidth || 0
+        const max = props.maxWidth || 100000
+        const textWidth = inputEl.current ? getTextWidth(value, getCanvasFont(inputEl.current)) + 67 : 0
+        let resultWidth = min
+        if (textWidth > min) {resultWidth = textWidth}
+        if (textWidth > max) {resultWidth = max}
+        return resultWidth
+    }
 
     return (
         <div className={`${styles.input_wrapper} ${props.className}`}
             style={
                 {
-                    width: props.width || 'auto',
+                    width: props.autoWidth ? calcTextareaWidth() : props.width || 'auto',
                     marginBottom: inputMargins.marginBottom,
                     marginTop: inputMargins.marginTop
                 }
@@ -413,6 +428,7 @@ export default function Input(props) {
                 <div className="dd-debug"> defVal: {JSON.stringify(defVal)}</div>
                 <div className="dd-debug"> lines: {lines}</div>
                 <div className="dd-debug"> countlLnes: {countLines(inputEl.current, value)}</div>
+                <div className='dd-debug'>auto width: {calcTextareaWidth()}</div>
             </div>}
 
             {props.type != 'email' &&
@@ -612,9 +628,9 @@ export default function Input(props) {
                             onChange={e => handleChange(e.target.value)}
                             value={value}
                             onBlur={checkValue}
-                            placeholder={`${props.placeholder ? props.placeholder : _.get(dict[lang],'numbersOnly') || 'numbers only'
-                        }`
-                        }
+                            placeholder={`${props.placeholder ? props.placeholder : _.get(dict[lang], 'numbersOnly') || 'numbers only'
+                                }`
+                            }
                         />
                         {value && !props.disabled && !props.copy &&
                             <div className={`${styles.clear} icon icon-close`}
