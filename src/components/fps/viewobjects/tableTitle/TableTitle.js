@@ -32,13 +32,6 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
                         <h2><span>{tableTitle}</span></h2>
                     </div>}
 
-                    {/* {loading && searchValue && <div className={styles.subtitle}><Loader> {_.get(dict[lang], 'loading') || "Loading..."}</Loader></div>} */}
-                    {/* {searchValue && !loading &&
-                        <div className={styles.titleSearch}>
-                            <span>{dict[lang].searching}: <strong>{searchValue}</strong></span>
-                        </div>
-                    } */}
-
                     {displayFilters && //!tableQuickSearch &&
                         <NewFilters
                             tableFilters={tableFilters}
@@ -99,6 +92,11 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
         setFilters(saveFilters)
     }
 
+    const saveAIFilters = (saveFilters) => {
+        performFiltering(">> " + saveFilters.filters, saveFilters.sort)
+        setFilters(saveFilters)
+    }
+
     const clearFilters = () => {
         saveFilters({ ...defaultFilters })
     }
@@ -108,7 +106,7 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
         // console.log(filters)
         function composeExpression(exp, fieldName) {
             if (exp.type == "string") { return "('" + fieldName + "'" + ' like ' + "'" + exp.value + "')" }
-            if (exp.type == "boolean") { return "('" + fieldName + "'" + ' == ' + "'" + exp.value + "')" }
+            if (exp.type == "boolean") { return "('" + fieldName + "'" + ' = ' + "'" + exp.value + "')" }
             if (exp.type == "date") {
                 if (exp.valueTo && exp.valueFrom) {
                     return "('" + fieldName + "'" + ' >= ' + "'" + exp.valueFrom.toISOString() + "' AND '"
@@ -147,28 +145,35 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
 
     return <div ref={filtersWrapper} className={styles.newFilters}>
         <ActionPanel alignRight={alignRight} margin={currentBP == 'mobile' && tableTitle ? { top: 8, bottom: 0 } : null}>
-            {tableFilters && tableFilters.isFiltering && tableFilters.filterFields && (Object.keys(tableFilters.filterFields) || [])
-                .map(filterField => <FilterField
-                    active={_.get(filters, `filters[${filterField}].value`) ||
-                        _.get(filters, `filters[${filterField}].valueFrom`) ||
-                        _.get(filters, `filters[${filterField}].valueTo`)}
-                    filters={filters}
-                    saveFilters={saveFilters}
-                    currentBP={currentBP}
-                    alignRight={alignRight}
-                    dict={dict}
-                    key={filterField}
-                    field={{
-                        id: filterField,
-                        name: tableFilters.filterFields[filterField].name,
-                        type: tableFilters.filterFields[filterField].dataType,
-                        textsearch: tableFilters.filterFields[filterField].textsearch,
-                        format: tableFilters.filterFields[filterField].format,
-                        formatOptions: tableFilters.filterFields[filterField].formatOptions,
-                        options: (_.get(tableFilters, `filterFields[${filterField}].linkDirectory`) || [])
-                            .map(i => { return { value: i.id, label: i.text } })
-                    }}
-                />)}
+            {_.get(tableFilters, "filteringType") == "openai" && <div>
+                <OpenAI 
+                    saveAIFilters = {saveAIFilters}
+                />
+            </div>}
+
+            {tableFilters && tableFilters.isFiltering && tableFilters.filterFields
+                && _.get(tableFilters, "filteringType") !== "openai" && (Object.keys(tableFilters.filterFields) || [])
+                    .map(filterField => <FilterField
+                        active={_.get(filters, `filters[${filterField}].value`) ||
+                            _.get(filters, `filters[${filterField}].valueFrom`) ||
+                            _.get(filters, `filters[${filterField}].valueTo`)}
+                        filters={filters}
+                        saveFilters={saveFilters}
+                        currentBP={currentBP}
+                        alignRight={alignRight}
+                        dict={dict}
+                        key={filterField}
+                        field={{
+                            id: filterField,
+                            name: tableFilters.filterFields[filterField].name,
+                            type: tableFilters.filterFields[filterField].dataType,
+                            textsearch: tableFilters.filterFields[filterField].textsearch,
+                            format: tableFilters.filterFields[filterField].format,
+                            formatOptions: tableFilters.filterFields[filterField].formatOptions,
+                            options: (_.get(tableFilters, `filterFields[${filterField}].linkDirectory`) || [])
+                                .map(i => { return { value: i.id, label: i.text } })
+                        }}
+                    />)}
 
             {tableFilters.isSorting &&
                 <FilterField
@@ -187,6 +192,25 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
             <Button icon='filterClear' disabled={JSON.stringify(filters) == JSON.stringify(defaultFilters)} onClick={clearFilters} />
         </ActionPanel>
     </div>
+}
+
+function OpenAI ({ saveAIFilters }) {
+
+    const [value,setValue] = useState('')
+
+    const saveValue = val => {
+        setValue(val)
+        saveAIFilters(val)
+    }
+
+    return <Input 
+        type='string'
+        defaultValue={value}
+        onChange={saveValue}
+        nomargin
+        autoWidth minWidth={300} maxWidth={600}
+        className={!value ? styles.openAI_input : null}
+        />
 }
 
 function FilterField({ field, active, fieldOptions, filters, saveFilters, dict, alignRight, currentBP }) {

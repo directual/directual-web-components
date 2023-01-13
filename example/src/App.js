@@ -6529,8 +6529,8 @@ const App = (props) => {
     }
 
     let exampleTable = {
-        "sl": "adminApps",
-        "pageSize": "25",
+        "sl": "adminGetTransactions",
+        "pageSize": "50",
         "headerField": null,
         "params": {
             "cardListLayout": "grid",
@@ -6545,81 +6545,108 @@ const App = (props) => {
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "color_get",
-                        "fetch": [],
-                        "sysName": "color_get",
+                        "fieldSysName": "affiliate_transaction_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "balance",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "comment",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "date",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "type",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "affiliate_transaction_id",
                         "name": "",
-                        "dataType": "string",
-                        "format": "color",
+                        "dataType": "link",
+                        "format": "",
                         "formatOptions": {},
-                        "link": ""
+                        "link": "appwallet"
                     },
                     {
-                        "fieldSysName": "color_http",
+                        "fieldSysName": "affiliate_user_id",
                         "fetch": [],
-                        "sysName": "color_http",
+                        "sysName": "affiliate_user_id",
                         "name": "",
-                        "dataType": "string",
-                        "format": "color",
+                        "dataType": "link",
+                        "format": "",
                         "formatOptions": {},
-                        "link": ""
+                        "link": "Cloud_users"
                     },
                     {
-                        "fieldSysName": "color_post",
-                        "fetch": [],
-                        "sysName": "color_post",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "color",
+                        "fieldSysName": "app_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "sysName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "team_id",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "app_id",
+                        "name": "app_id",
+                        "dataType": "link",
+                        "format": "",
                         "formatOptions": {},
-                        "link": ""
+                        "link": "Apps"
                     },
                     {
-                        "fieldSysName": "color_proc",
+                        "fieldSysName": "balance",
                         "fetch": [],
-                        "sysName": "color_proc",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "color_sync",
-                        "fetch": [],
-                        "sysName": "color_sync",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "color_users",
-                        "fetch": [],
-                        "sysName": "color_users",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "forecast_bill",
-                        "fetch": [],
-                        "sysName": "forecast_bill",
-                        "name": "Forecast bill, $",
+                        "sysName": "balance",
+                        "name": "balance",
                         "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "free_alert_counter",
+                        "fieldSysName": "comment",
                         "fetch": [],
-                        "sysName": "free_alert_counter",
-                        "name": "Free alert counter",
-                        "dataType": "number",
+                        "sysName": "comment",
+                        "name": "comment",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "date",
+                        "fetch": [],
+                        "sysName": "date",
+                        "name": "date",
+                        "dataType": "date",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
@@ -6628,72 +6655,92 @@ const App = (props) => {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
-                        "name": "App id",
+                        "name": "id",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "is_blocked",
-                        "fetch": [],
-                        "sysName": "is_blocked",
-                        "name": "is_blocked",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "is_excess",
-                        "fetch": [],
-                        "sysName": "is_excess",
-                        "name": "Excess plan",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "🔥 hit limits",
-                                " OK"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "is_sandbox",
-                        "fetch": [],
-                        "sysName": "is_sandbox",
-                        "name": "is_sandbox",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "owner_id",
+                        "fieldSysName": "parent_affiliate_trans_id",
                         "fetch": [
+                            {
+                                "fieldSysName": "balance",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "comment",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "date",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "type",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "parent_affiliate_trans_id",
+                        "name": "",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "appwallet"
+                    },
+                    {
+                        "fieldSysName": "receipt",
+                        "fetch": [],
+                        "sysName": "receipt",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "type",
+                        "fetch": [],
+                        "sysName": "type",
+                        "name": "Transaction type",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "transaction_types"
+                    },
+                    {
+                        "fieldSysName": "user_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "apps",
+                                "condition": null,
+                                "fetch": [
+                                    {
+                                        "fieldSysName": "id",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "sys_name",
+                                        "condition": null,
+                                        "fetch": []
+                                    }
+                                ]
+                            },
                             {
                                 "fieldSysName": "country",
                                 "condition": null,
@@ -6713,291 +6760,104 @@ const App = (props) => {
                                 "fieldSysName": "last_name",
                                 "condition": null,
                                 "fetch": []
+                            },
+                            {
+                                "fieldSysName": "survey_is_aborted",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "survey_step_1_raw",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "survey_step_2_raw",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "survey_step_3_raw",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "team_ids",
+                                "condition": null,
+                                "fetch": [
+                                    {
+                                        "fieldSysName": "current_seats",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "is_hidden",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "name",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "tariff_id",
+                                        "condition": null,
+                                        "fetch": []
+                                    }
+                                ]
+                            },
+                            {
+                                "fieldSysName": "wallet_balance",
+                                "condition": null,
+                                "fetch": []
                             }
                         ],
-                        "sysName": "owner_id",
-                        "name": "Owner",
+                        "sysName": "user_id",
+                        "name": "",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "link": "Cloud_users"
-                    },
+                    }
+                ],
+                "writeFields": [
                     {
-                        "fieldSysName": "paddle_subscription_id",
+                        "fieldSysName": "app_id",
                         "fetch": [],
-                        "sysName": "paddle_subscription_id",
-                        "name": "Paddle ID",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "plan_id",
-                        "fetch": [
-                            {
-                                "fieldSysName": "description",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "price",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "plan_id",
-                        "name": "Billing plan",
+                        "sysName": "app_id",
+                        "name": "app_id",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "Tariff"
+                        "link": "Apps"
                     },
                     {
-                        "fieldSysName": "stat_get",
+                        "fieldSysName": "id",
                         "fetch": [],
-                        "sysName": "stat_get",
-                        "name": "Stat | GET",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "stat_http",
-                        "fetch": [],
-                        "sysName": "stat_http",
-                        "name": "Stat | HTTP requests",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "stat_post",
-                        "fetch": [],
-                        "sysName": "stat_post",
-                        "name": "Stat | POST",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "stat_proc",
-                        "fetch": [],
-                        "sysName": "stat_proc",
-                        "name": "Stat | Proc exec",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "stat_sync",
-                        "fetch": [],
-                        "sysName": "stat_sync",
-                        "name": "Stat | SYNC Proc exec",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "stat_users",
-                        "fetch": [],
-                        "sysName": "stat_users",
-                        "name": "Stat | Users",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "sysName",
-                        "fetch": [],
-                        "sysName": "sysName",
-                        "name": "System name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    }
-                ],
-                "writeFields": [],
-                "fields": {
-                    "color_get": {
-                        "id": "color_get",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "color_http": {
-                        "id": "color_http",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "color_post": {
-                        "id": "color_post",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "color_proc": {
-                        "id": "color_proc",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "color_sync": {
-                        "id": "color_sync",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "color_users": {
-                        "id": "color_users",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "forecast_bill": {
-                        "id": "forecast_bill",
-                        "content": "Forecast bill, $",
-                        "type": "field",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "free_alert_counter": {
-                        "id": "free_alert_counter",
-                        "content": "Free alert counter",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "id": {
-                        "id": "id",
-                        "content": "App id",
-                        "type": "field",
+                        "sysName": "id",
+                        "name": "id",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "is_blocked": {
-                        "id": "is_blocked",
-                        "content": "is_blocked",
+                        "link": ""
+                    }
+                ],
+                "fields": {
+                    "affiliate_transaction_id": {
+                        "id": "affiliate_transaction_id",
+                        "content": "",
                         "type": "field",
-                        "dataType": "boolean",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "",
+                        "link": "appwallet",
                         "actions": []
                     },
-                    "is_excess": {
-                        "id": "is_excess",
-                        "content": "Excess plan",
-                        "type": "field",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "🔥 hit limits",
-                                " OK"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "is_sandbox": {
-                        "id": "is_sandbox",
-                        "content": "is_sandbox",
-                        "type": "field",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "owner_id": {
-                        "id": "owner_id",
-                        "content": "Owner",
+                    "affiliate_user_id": {
+                        "id": "affiliate_user_id",
+                        "content": "",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
@@ -7006,9 +6866,32 @@ const App = (props) => {
                         "link": "Cloud_users",
                         "actions": []
                     },
-                    "paddle_subscription_id": {
-                        "id": "paddle_subscription_id",
-                        "content": "Paddle ID",
+                    "app_id": {
+                        "id": "app_id",
+                        "content": "app_id",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "Apps",
+                        "actions": []
+                    },
+                    "balance": {
+                        "id": "balance",
+                        "content": "balance",
+                        "type": "field",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "comment": {
+                        "id": "comment",
+                        "content": "comment",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
@@ -7017,237 +6900,346 @@ const App = (props) => {
                         "link": null,
                         "actions": []
                     },
-                    "plan_id": {
-                        "id": "plan_id",
-                        "content": "Billing plan",
+                    "date": {
+                        "id": "date",
+                        "content": "date",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "id": {
+                        "id": "id",
+                        "content": "id",
+                        "type": "field",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "parent_affiliate_trans_id": {
+                        "id": "parent_affiliate_trans_id",
+                        "content": "",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "Tariff",
+                        "link": "appwallet",
                         "actions": []
                     },
-                    "stat_get": {
-                        "id": "stat_get",
-                        "content": "Stat | GET",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "stat_http": {
-                        "id": "stat_http",
-                        "content": "Stat | HTTP requests",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "stat_post": {
-                        "id": "stat_post",
-                        "content": "Stat | POST",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "stat_proc": {
-                        "id": "stat_proc",
-                        "content": "Stat | Proc exec",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "stat_sync": {
-                        "id": "stat_sync",
-                        "content": "Stat | SYNC Proc exec",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "stat_users": {
-                        "id": "stat_users",
-                        "content": "Stat | Users",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "sysName": {
-                        "id": "sysName",
-                        "content": "System name",
+                    "receipt": {
+                        "id": "receipt",
+                        "content": "",
                         "type": "field",
                         "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "type": {
+                        "id": "type",
+                        "content": "Transaction type",
+                        "type": "field",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": null,
+                        "link": "transaction_types",
+                        "actions": []
+                    },
+                    "user_id": {
+                        "id": "user_id",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "Cloud_users",
+                        "actions": []
+                    },
+                    "action__36731667248698355": {
+                        "content": "Affiliate it!",
+                        "id": "action__36731667248698355",
+                        "type": "action",
                         "actions": []
                     }
                 },
                 "fieldParams": {
+                    "affiliate_transaction_id": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": true,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "balance": {
+                                    "id": "balance",
+                                    "content": "balance",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "decimal",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "comment": {
+                                    "id": "comment",
+                                    "content": "comment",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "date": {
+                                    "id": "date",
+                                    "content": "date",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "date",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "id": {
+                                    "id": "id",
+                                    "content": "id",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "id",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "type": {
+                                    "id": "type",
+                                    "content": "Transaction type",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "user_id": {
+                                    "id": "user_id",
+                                    "content": "",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "link",
+                                    "format": null,
+                                    "formatOptions": null
+                                }
+                            },
+                            "fieldParams": {
+                                "balance": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "comment": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "date": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "id": {
+                                    "include": true,
+                                    "disableEditing": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "type": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "user_id": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "id",
+                                "user_id",
+                                "balance",
+                                "type",
+                                "comment",
+                                "date"
+                            ]
+                        }
+                    },
+                    "affiliate_user_id": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "balance": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "comment": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "date": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
                     "id": {
                         "include": true,
+                        "disableEditing": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "owner_id": {
+                    "parent_affiliate_trans_id": {
                         "include": true,
+                        "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
-                        "clickable": false
+                        "clickable": true,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "balance": {
+                                    "id": "balance",
+                                    "content": "balance",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "decimal",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "comment": {
+                                    "id": "comment",
+                                    "content": "comment",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "date": {
+                                    "id": "date",
+                                    "content": "date",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "date",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "id": {
+                                    "id": "id",
+                                    "content": "id",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "id",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "type": {
+                                    "id": "type",
+                                    "content": "Transaction type",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "user_id": {
+                                    "id": "user_id",
+                                    "content": "",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "link",
+                                    "format": null,
+                                    "formatOptions": null
+                                }
+                            },
+                            "fieldParams": {
+                                "balance": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "comment": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "date": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "id": {
+                                    "include": true,
+                                    "disableEditing": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "type": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "user_id": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "id",
+                                "user_id",
+                                "balance",
+                                "type",
+                                "comment",
+                                "date"
+                            ]
+                        }
                     },
-                    "plan_id": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "stat_get": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "stat_post": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "stat_proc": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "stat_sync": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "stat_users": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "sysName": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "color": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "is_excess": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "color_get": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "color_post": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "color_proc": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "color_sync": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "color_users": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "is_sandbox": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "paddle_subscription_id": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "is_blocked": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "forecast_bill": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "free_alert_counter": {
+                    "receipt": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -7255,7 +7247,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "color_http": {
+                    "type": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -7263,199 +7255,737 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "stat_http": {
+                    "user_id": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
-                        "clickable": false
+                        "clickable": true,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "apps": {
+                                    "id": "apps",
+                                    "content": "Apps",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "arrayLink",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "country": {
+                                    "id": "country",
+                                    "content": "Country",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "link",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "first_name": {
+                                    "id": "first_name",
+                                    "content": "First name",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "id": {
+                                    "id": "id",
+                                    "content": "id",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "id",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "last_name": {
+                                    "id": "last_name",
+                                    "content": "Last name",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "survey_is_aborted": {
+                                    "id": "survey_is_aborted",
+                                    "content": "",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "boolean",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "survey_step_1_raw": {
+                                    "id": "survey_step_1_raw",
+                                    "content": "Which describes you best",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "survey_step_2_raw": {
+                                    "id": "survey_step_2_raw",
+                                    "content": "Whom do you want to build apps for",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "survey_step_3_raw": {
+                                    "id": "survey_step_3_raw",
+                                    "content": "How did you know about Directual",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "team_ids": {
+                                    "id": "team_ids",
+                                    "content": "Teams",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "arrayLink",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "wallet_balance": {
+                                    "id": "wallet_balance",
+                                    "content": "",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "decimal",
+                                    "format": null,
+                                    "formatOptions": null
+                                }
+                            },
+                            "fieldParams": {
+                                "apps": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "country": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "first_name": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "id": {
+                                    "include": true,
+                                    "disableEditing": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "last_name": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "survey_is_aborted": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "survey_step_1_raw": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "survey_step_2_raw": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "survey_step_3_raw": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "team_ids": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "wallet_balance": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "id",
+                                "apps",
+                                "country",
+                                "first_name",
+                                "last_name",
+                                "survey_is_aborted",
+                                "survey_step_1_raw",
+                                "survey_step_2_raw",
+                                "survey_step_3_raw",
+                                "team_ids",
+                                "wallet_balance"
+                            ]
+                        }
+                    },
+                    "app_id": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": true,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "id": {
+                                    "id": "id",
+                                    "content": "App id",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "id",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "sysName": {
+                                    "id": "sysName",
+                                    "content": "System name",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "team_id": {
+                                    "id": "team_id",
+                                    "content": "Team",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "link",
+                                    "format": null,
+                                    "formatOptions": null
+                                }
+                            },
+                            "fieldParams": {
+                                "id": {
+                                    "include": true,
+                                    "disableEditing": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "sysName": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "team_id": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "id",
+                                "sysName",
+                                "team_id"
+                            ]
+                        }
                     }
                 },
                 "columns": {
                     "tab-1": {
                         "id": "tab-1",
-                        "title": "Info",
+                        "title": "New section",
                         "fieldIds": [
                             "id",
-                            "sysName",
-                            "owner_id",
-                            "is_excess",
-                            "color_get",
-                            "color_post",
-                            "color_proc",
-                            "color_sync",
-                            "color_users",
-                            "is_sandbox",
-                            "paddle_subscription_id",
-                            "is_blocked",
-                            "forecast_bill",
-                            "free_alert_counter",
-                            "color_http",
-                            "stat_http"
-                        ]
-                    },
-                    "96501623748530500": {
-                        "id": "96501623748530500",
-                        "title": "Billing",
-                        "fieldIds": [
-                            "plan_id",
-                            "stat_users",
-                            "stat_get",
-                            "stat_post",
-                            "stat_proc",
-                            "stat_sync"
+                            "balance",
+                            "user_id",
+                            "type",
+                            "comment",
+                            "date",
+                            "receipt",
+                            "app_id",
+                            "action__36731667248698355",
+                            "affiliate_user_id",
+                            "affiliate_transaction_id",
+                            "parent_affiliate_trans_id"
                         ]
                     }
                 },
                 "columnOrder": [
-                    "tab-1",
-                    "96501623748530500"
+                    "tab-1"
                 ],
-                "actions": []
+                "actions": [
+                    {
+                        "sysName": "adminChangeApp",
+                        "id": "36731667248698355",
+                        "name": "Affiliate it!",
+                        "displayAs": "button",
+                        "buttonIcon": "money",
+                        "buttonType": "accent",
+                        "showMessage": true,
+                        "closePopup": false,
+                        "resultMessage": "Affiliate has been calculated",
+                        "SLtype": "other",
+                        "fields": {
+                            "readFields": [
+                                {
+                                    "fieldSysName": "id",
+                                    "fetch": [],
+                                    "sysName": "id",
+                                    "name": "id",
+                                    "dataType": "id",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                }
+                            ],
+                            "writeFields": [
+                                {
+                                    "fieldSysName": "Billing_date",
+                                    "fetch": [],
+                                    "sysName": "Billing_date",
+                                    "name": "Billing date",
+                                    "dataType": "date",
+                                    "format": "",
+                                    "formatOptions": {
+                                        "customOptionLabel": "My option",
+                                        "keyValue": {
+                                            "key": "key",
+                                            "value": "value",
+                                            "button": "One more"
+                                        },
+                                        "dateLocale": "en-gb",
+                                        "booleanOptions": [
+                                            "True",
+                                            "False"
+                                        ],
+                                        "validWeekDays": {
+                                            "mon": true,
+                                            "thu": true,
+                                            "tue": true,
+                                            "sun": true,
+                                            "fri": true,
+                                            "sat": true,
+                                            "wed": true
+                                        },
+                                        "customOptionPlaceholder": "Describe your option",
+                                        "range": {},
+                                        "customOptionType": "textarea",
+                                        "dateFormat": "DD/MM/Y",
+                                        "timeFormat": " ",
+                                        "isUTC": "true"
+                                    },
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "Plan",
+                                    "fetch": [],
+                                    "sysName": "Plan",
+                                    "name": "Plan",
+                                    "dataType": "json",
+                                    "format": "radioOptions",
+                                    "formatOptions": {
+                                        "customOptionLabel": "My option",
+                                        "keyValue": {
+                                            "key": "key",
+                                            "value": "value",
+                                            "button": "One more"
+                                        },
+                                        "dateLocale": "en-gb",
+                                        "booleanOptions": [
+                                            "True",
+                                            "False"
+                                        ],
+                                        "validWeekDays": {
+                                            "mon": true,
+                                            "thu": true,
+                                            "tue": true,
+                                            "sun": true,
+                                            "fri": true,
+                                            "sat": true,
+                                            "wed": true
+                                        },
+                                        "customOptionPlaceholder": "Describe your option",
+                                        "range": {},
+                                        "customOptionType": "textarea",
+                                        "dateFormat": "DD/MM/Y",
+                                        "timeFormat": " HH:mm",
+                                        "isUTC": "false",
+                                        "multipleChoice": [
+                                            {
+                                                "value": "Startup-monthly",
+                                                "label": "Startup-monthly"
+                                            },
+                                            {
+                                                "value": "Startup-yearly",
+                                                "label": "Startup-yearly"
+                                            },
+                                            {
+                                                "value": "Pro-monthly",
+                                                "label": "Pro-monthly"
+                                            },
+                                            {
+                                                "value": "Pro-yearly",
+                                                "label": "Pro-yearly"
+                                            },
+                                            {
+                                                "value": "Business-monthly",
+                                                "label": "Business-monthly"
+                                            },
+                                            {
+                                                "value": "Business-yearly",
+                                                "label": "Business-yearly"
+                                            },
+                                            {
+                                                "value": "Business-DEV",
+                                                "label": "Business-DEV"
+                                            }
+                                        ]
+                                    },
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "action",
+                                    "fetch": [],
+                                    "sysName": "action",
+                                    "name": "",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": null
+                                },
+                                {
+                                    "fieldSysName": "app_id",
+                                    "fetch": [],
+                                    "sysName": "app_id",
+                                    "name": "App ID",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "Apps"
+                                },
+                                {
+                                    "fieldSysName": "wallet_trans",
+                                    "fetch": [],
+                                    "sysName": "wallet_trans",
+                                    "name": "",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "appwallet"
+                                }
+                            ]
+                        },
+                        "formMapping": [
+                            {
+                                "id": "92101667248742460",
+                                "target": "app_id",
+                                "type": "objectField",
+                                "value": "app_id"
+                            },
+                            {
+                                "id": "11931667248753653",
+                                "target": "action",
+                                "type": "const",
+                                "value": "calc_affiliate"
+                            },
+                            {
+                                "id": "46611667248947950",
+                                "target": "wallet_trans",
+                                "type": "objectField",
+                                "value": "id"
+                            }
+                        ]
+                    }
+                ]
             },
             "fields": {
+                "affiliate_transaction_id": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "balance": {
+                                "id": "balance",
+                                "content": "balance",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "decimal",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "comment": {
+                                "id": "comment",
+                                "content": "comment",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "date": {
+                                "id": "date",
+                                "content": "date",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "date",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "id": {
+                                "id": "id",
+                                "content": "id",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "id",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "type": {
+                                "id": "type",
+                                "content": "Transaction type",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "user_id": {
+                                "id": "user_id",
+                                "content": "",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": null
+                            }
+                        },
+                        "fieldParams": {
+                            "balance": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "comment": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "date": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "id": {
+                                "include": true,
+                                "disableEditing": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "type": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "user_id": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "id",
+                            "user_id",
+                            "balance",
+                            "type",
+                            "comment",
+                            "date"
+                        ]
+                    }
+                },
+                "affiliate_user_id": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "balance": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "comment": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "date": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
                 "id": {
                     "include": true,
+                    "disableEditing": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "owner_id": {
+                "parent_affiliate_trans_id": {
                     "include": true,
+                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": false
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "balance": {
+                                "id": "balance",
+                                "content": "balance",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "decimal",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "comment": {
+                                "id": "comment",
+                                "content": "comment",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "date": {
+                                "id": "date",
+                                "content": "date",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "date",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "id": {
+                                "id": "id",
+                                "content": "id",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "id",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "type": {
+                                "id": "type",
+                                "content": "Transaction type",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "user_id": {
+                                "id": "user_id",
+                                "content": "",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": null
+                            }
+                        },
+                        "fieldParams": {
+                            "balance": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "comment": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "date": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "id": {
+                                "include": true,
+                                "disableEditing": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "type": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "user_id": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "id",
+                            "user_id",
+                            "balance",
+                            "type",
+                            "comment",
+                            "date"
+                        ]
+                    }
                 },
-                "plan_id": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "stat_get": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "stat_post": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "stat_proc": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "stat_sync": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "stat_users": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "sysName": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "color": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "is_excess": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "color_get": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "color_post": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "color_proc": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "color_sync": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "color_users": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "is_sandbox": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "paddle_subscription_id": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "is_blocked": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "forecast_bill": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "free_alert_counter": {
+                "receipt": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -7463,7 +7993,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "color_http": {
+                "type": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -7471,93 +8001,368 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "stat_http": {
+                "user_id": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": false
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "apps": {
+                                "id": "apps",
+                                "content": "Apps",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "arrayLink",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "country": {
+                                "id": "country",
+                                "content": "Country",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "first_name": {
+                                "id": "first_name",
+                                "content": "First name",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "id": {
+                                "id": "id",
+                                "content": "id",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "id",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "last_name": {
+                                "id": "last_name",
+                                "content": "Last name",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "survey_is_aborted": {
+                                "id": "survey_is_aborted",
+                                "content": "",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "boolean",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "survey_step_1_raw": {
+                                "id": "survey_step_1_raw",
+                                "content": "Which describes you best",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "survey_step_2_raw": {
+                                "id": "survey_step_2_raw",
+                                "content": "Whom do you want to build apps for",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "survey_step_3_raw": {
+                                "id": "survey_step_3_raw",
+                                "content": "How did you know about Directual",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "team_ids": {
+                                "id": "team_ids",
+                                "content": "Teams",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "arrayLink",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "wallet_balance": {
+                                "id": "wallet_balance",
+                                "content": "",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "decimal",
+                                "format": null,
+                                "formatOptions": null
+                            }
+                        },
+                        "fieldParams": {
+                            "apps": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "country": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "first_name": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "id": {
+                                "include": true,
+                                "disableEditing": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "last_name": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "survey_is_aborted": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "survey_step_1_raw": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "survey_step_2_raw": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "survey_step_3_raw": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "team_ids": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "wallet_balance": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "id",
+                            "apps",
+                            "country",
+                            "first_name",
+                            "last_name",
+                            "survey_is_aborted",
+                            "survey_step_1_raw",
+                            "survey_step_2_raw",
+                            "survey_step_3_raw",
+                            "team_ids",
+                            "wallet_balance"
+                        ]
+                    }
+                },
+                "app_id": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "id": {
+                                "id": "id",
+                                "content": "App id",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "id",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "sysName": {
+                                "id": "sysName",
+                                "content": "System name",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "team_id": {
+                                "id": "team_id",
+                                "content": "Team",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": null
+                            }
+                        },
+                        "fieldParams": {
+                            "id": {
+                                "include": true,
+                                "disableEditing": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "sysName": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "team_id": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "id",
+                            "sysName",
+                            "team_id"
+                        ]
+                    }
                 }
             },
             "tableParams": {
                 "readFields": [
                     {
-                        "fieldSysName": "color_get",
-                        "fetch": [],
-                        "sysName": "color_get",
+                        "fieldSysName": "affiliate_transaction_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "balance",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "comment",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "date",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "type",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "affiliate_transaction_id",
                         "name": "",
-                        "dataType": "string",
-                        "format": "color",
+                        "dataType": "link",
+                        "format": "",
                         "formatOptions": {},
-                        "link": ""
+                        "link": "appwallet"
                     },
                     {
-                        "fieldSysName": "color_http",
+                        "fieldSysName": "affiliate_user_id",
                         "fetch": [],
-                        "sysName": "color_http",
+                        "sysName": "affiliate_user_id",
                         "name": "",
-                        "dataType": "string",
-                        "format": "color",
+                        "dataType": "link",
+                        "format": "",
                         "formatOptions": {},
-                        "link": ""
+                        "link": "Cloud_users"
                     },
                     {
-                        "fieldSysName": "color_post",
-                        "fetch": [],
-                        "sysName": "color_post",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "color",
+                        "fieldSysName": "app_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "sysName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "team_id",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "app_id",
+                        "name": "app_id",
+                        "dataType": "link",
+                        "format": "",
                         "formatOptions": {},
-                        "link": ""
+                        "link": "Apps"
                     },
                     {
-                        "fieldSysName": "color_proc",
+                        "fieldSysName": "balance",
                         "fetch": [],
-                        "sysName": "color_proc",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "color_sync",
-                        "fetch": [],
-                        "sysName": "color_sync",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "color_users",
-                        "fetch": [],
-                        "sysName": "color_users",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "forecast_bill",
-                        "fetch": [],
-                        "sysName": "forecast_bill",
-                        "name": "Forecast bill, $",
+                        "sysName": "balance",
+                        "name": "balance",
                         "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "free_alert_counter",
+                        "fieldSysName": "comment",
                         "fetch": [],
-                        "sysName": "free_alert_counter",
-                        "name": "Free alert counter",
-                        "dataType": "number",
+                        "sysName": "comment",
+                        "name": "comment",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "date",
+                        "fetch": [],
+                        "sysName": "date",
+                        "name": "date",
+                        "dataType": "date",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
@@ -7566,72 +8371,92 @@ const App = (props) => {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
-                        "name": "App id",
+                        "name": "id",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "is_blocked",
-                        "fetch": [],
-                        "sysName": "is_blocked",
-                        "name": "is_blocked",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "is_excess",
-                        "fetch": [],
-                        "sysName": "is_excess",
-                        "name": "Excess plan",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "🔥 hit limits",
-                                " OK"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "is_sandbox",
-                        "fetch": [],
-                        "sysName": "is_sandbox",
-                        "name": "is_sandbox",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "owner_id",
+                        "fieldSysName": "parent_affiliate_trans_id",
                         "fetch": [
+                            {
+                                "fieldSysName": "balance",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "comment",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "date",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "type",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "parent_affiliate_trans_id",
+                        "name": "",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "appwallet"
+                    },
+                    {
+                        "fieldSysName": "receipt",
+                        "fetch": [],
+                        "sysName": "receipt",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "webLink",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "type",
+                        "fetch": [],
+                        "sysName": "type",
+                        "name": "Transaction type",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "transaction_types"
+                    },
+                    {
+                        "fieldSysName": "user_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "apps",
+                                "condition": null,
+                                "fetch": [
+                                    {
+                                        "fieldSysName": "id",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "sys_name",
+                                        "condition": null,
+                                        "fetch": []
+                                    }
+                                ]
+                            },
                             {
                                 "fieldSysName": "country",
                                 "condition": null,
@@ -7651,196 +8476,140 @@ const App = (props) => {
                                 "fieldSysName": "last_name",
                                 "condition": null,
                                 "fetch": []
+                            },
+                            {
+                                "fieldSysName": "survey_is_aborted",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "survey_step_1_raw",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "survey_step_2_raw",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "survey_step_3_raw",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "team_ids",
+                                "condition": null,
+                                "fetch": [
+                                    {
+                                        "fieldSysName": "current_seats",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "is_hidden",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "name",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "tariff_id",
+                                        "condition": null,
+                                        "fetch": []
+                                    }
+                                ]
+                            },
+                            {
+                                "fieldSysName": "wallet_balance",
+                                "condition": null,
+                                "fetch": []
                             }
                         ],
-                        "sysName": "owner_id",
-                        "name": "Owner",
+                        "sysName": "user_id",
+                        "name": "",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "link": "Cloud_users"
-                    },
+                    }
+                ],
+                "writeFields": [
                     {
-                        "fieldSysName": "paddle_subscription_id",
+                        "fieldSysName": "app_id",
                         "fetch": [],
-                        "sysName": "paddle_subscription_id",
-                        "name": "Paddle ID",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "plan_id",
-                        "fetch": [
-                            {
-                                "fieldSysName": "description",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "price",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "plan_id",
-                        "name": "Billing plan",
+                        "sysName": "app_id",
+                        "name": "app_id",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "Tariff"
+                        "link": "Apps"
                     },
                     {
-                        "fieldSysName": "stat_get",
+                        "fieldSysName": "id",
                         "fetch": [],
-                        "sysName": "stat_get",
-                        "name": "Stat | GET",
-                        "dataType": "number",
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
-                    },
-                    {
-                        "fieldSysName": "stat_http",
-                        "fetch": [],
-                        "sysName": "stat_http",
-                        "name": "Stat | HTTP requests",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "stat_post",
-                        "fetch": [],
-                        "sysName": "stat_post",
-                        "name": "Stat | POST",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "stat_proc",
-                        "fetch": [],
-                        "sysName": "stat_proc",
-                        "name": "Stat | Proc exec",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "stat_sync",
-                        "fetch": [],
-                        "sysName": "stat_sync",
-                        "name": "Stat | SYNC Proc exec",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "stat_users",
-                        "fetch": [],
-                        "sysName": "stat_users",
-                        "name": "Stat | Users",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "sysName",
-                        "fetch": [],
-                        "sysName": "sysName",
-                        "name": "System name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
                     }
                 ],
-                "writeFields": [],
                 "fields": {
-                    "color_get": {
-                        "id": "color_get",
+                    "affiliate_transaction_id": {
+                        "id": "affiliate_transaction_id",
                         "content": "",
-                        "dataType": "string",
-                        "format": "color",
+                        "dataType": "link",
+                        "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": ""
+                        "link": "appwallet"
                     },
-                    "color_http": {
-                        "id": "color_http",
+                    "affiliate_user_id": {
+                        "id": "affiliate_user_id",
                         "content": "",
-                        "dataType": "string",
-                        "format": "color",
+                        "dataType": "link",
+                        "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": ""
+                        "link": "Cloud_users"
                     },
-                    "color_post": {
-                        "id": "color_post",
-                        "content": "",
-                        "dataType": "string",
-                        "format": "color",
+                    "app_id": {
+                        "id": "app_id",
+                        "content": "app_id",
+                        "dataType": "link",
+                        "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
-                        "link": ""
+                        "link": "Apps"
                     },
-                    "color_proc": {
-                        "id": "color_proc",
-                        "content": "",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "color_sync": {
-                        "id": "color_sync",
-                        "content": "",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "color_users": {
-                        "id": "color_users",
-                        "content": "",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "forecast_bill": {
-                        "id": "forecast_bill",
-                        "content": "Forecast bill, $",
+                    "balance": {
+                        "id": "balance",
+                        "content": "balance",
                         "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
                         "link": ""
                     },
-                    "free_alert_counter": {
-                        "id": "free_alert_counter",
-                        "content": "Free alert counter",
-                        "dataType": "number",
+                    "comment": {
+                        "id": "comment",
+                        "content": "comment",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null
+                    },
+                    "date": {
+                        "id": "date",
+                        "content": "date",
+                        "dataType": "date",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
@@ -7848,268 +8617,93 @@ const App = (props) => {
                     },
                     "id": {
                         "id": "id",
-                        "content": "App id",
+                        "content": "id",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
                         "link": ""
                     },
-                    "is_blocked": {
-                        "id": "is_blocked",
-                        "content": "is_blocked",
-                        "dataType": "boolean",
+                    "parent_affiliate_trans_id": {
+                        "id": "parent_affiliate_trans_id",
+                        "content": "",
+                        "dataType": "link",
                         "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "appwallet"
+                    },
+                    "receipt": {
+                        "id": "receipt",
+                        "content": "",
+                        "dataType": "string",
+                        "format": "webLink",
                         "formatOptions": {},
                         "read": true,
                         "link": ""
                     },
-                    "is_excess": {
-                        "id": "is_excess",
-                        "content": "Excess plan",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "🔥 hit limits",
-                                " OK"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "read": true,
-                        "link": ""
-                    },
-                    "is_sandbox": {
-                        "id": "is_sandbox",
-                        "content": "is_sandbox",
-                        "dataType": "boolean",
+                    "type": {
+                        "id": "type",
+                        "content": "Transaction type",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": ""
+                        "link": "transaction_types"
                     },
-                    "owner_id": {
-                        "id": "owner_id",
-                        "content": "Owner",
+                    "user_id": {
+                        "id": "user_id",
+                        "content": "",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
                         "link": "Cloud_users"
-                    },
-                    "paddle_subscription_id": {
-                        "id": "paddle_subscription_id",
-                        "content": "Paddle ID",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null
-                    },
-                    "plan_id": {
-                        "id": "plan_id",
-                        "content": "Billing plan",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "Tariff"
-                    },
-                    "stat_get": {
-                        "id": "stat_get",
-                        "content": "Stat | GET",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "stat_http": {
-                        "id": "stat_http",
-                        "content": "Stat | HTTP requests",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "stat_post": {
-                        "id": "stat_post",
-                        "content": "Stat | POST",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "stat_proc": {
-                        "id": "stat_proc",
-                        "content": "Stat | Proc exec",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "stat_sync": {
-                        "id": "stat_sync",
-                        "content": "Stat | SYNC Proc exec",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "stat_users": {
-                        "id": "stat_users",
-                        "content": "Stat | Users",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "sysName": {
-                        "id": "sysName",
-                        "content": "System name",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null
                     }
                 },
                 "fieldParams": {
+                    "affiliate_transaction_id": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "affiliate_user_id": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "balance": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "comment": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "date": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
                     "id": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "owner_id": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "plan_id": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "stat_get": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40,
-                        "colorCell": true,
-                        "colorCellType": "background",
-                        "colorCellSource": "field",
-                        "colorCellField": "color_get"
-                    },
-                    "stat_post": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40,
-                        "colorCell": true,
-                        "colorCellType": "background",
-                        "colorCellConst": "#f542e0",
-                        "colorCellSource": "field",
-                        "colorCellField": "color_post"
-                    },
-                    "stat_proc": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40,
-                        "colorCell": true,
-                        "colorCellSource": "field",
-                        "colorCellField": "color_proc"
-                    },
-                    "stat_sync": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40,
-                        "colorCell": true,
-                        "colorCellSource": "field",
-                        "colorCellField": "color_sync"
-                    },
-                    "stat_users": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40,
-                        "colorCell": true,
-                        "colorCellSource": "field",
-                        "colorCellField": "color_users"
-                    },
-                    "sysName": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "color": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40,
-                        "colorRow": true
-                    },
-                    "is_excess": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40,
-                        "colorCell": false
-                    },
-                    "color_get": {
                         "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -8117,7 +8711,7 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "color_post": {
+                    "parent_affiliate_trans_id": {
                         "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -8125,7 +8719,7 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "color_proc": {
+                    "receipt": {
                         "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -8133,39 +8727,7 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "color_sync": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "color_users": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "is_sandbox": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "paddle_subscription_id": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "is_blocked": {
+                    "type": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -8173,7 +8735,7 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "forecast_bill": {
+                    "user_id": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -8181,329 +8743,234 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "free_alert_counter": {
+                    "app_id": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
                         "colorCode": false,
                         "colorFormat": "square",
                         "colorSize": 40
-                    },
-                    "color_http": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40,
-                        "colorRow": false
-                    },
-                    "stat_http": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40,
-                        "colorCell": true,
-                        "colorCellSource": "field",
-                        "colorCellField": "color_http"
                     }
                 },
                 "fieldOrder": [
+                    "user_id",
+                    "type",
+                    "balance",
+                    "comment",
+                    "date",
+                    "affiliate_transaction_id",
+                    "affiliate_user_id",
                     "id",
-                    "sysName",
-                    "owner_id",
-                    "plan_id",
-                    "free_alert_counter",
-                    "is_blocked",
-                    "is_excess",
-                    "forecast_bill",
-                    "stat_get",
-                    "stat_post",
-                    "stat_proc",
-                    "stat_sync",
-                    "stat_users",
-                    "stat_http",
-                    "color_http",
-                    "color_get",
-                    "color_post",
-                    "color_proc",
-                    "color_sync",
-                    "color_users",
-                    "is_sandbox",
-                    "paddle_subscription_id"
+                    "parent_affiliate_trans_id",
+                    "receipt",
+                    "app_id"
                 ]
             },
-            "filterParams": {
-                "isSorting": true,
-                "isFiltering": true,
-                "filterFields": {
-                    "forecast_bill": {
-                        "active": true,
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "Forecast bill, $"
-                    },
-                    "is_blocked": {
-                        "active": true,
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "is_blocked"
-                    },
-                    "is_excess": {
-                        "active": true,
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
+            "actions": [
+                {
+                    "sysName": "adminChangeApp",
+                    "id": "36731667248698355",
+                    "name": "Affiliate it!",
+                    "displayAs": "button",
+                    "buttonIcon": "money",
+                    "buttonType": "accent",
+                    "showMessage": true,
+                    "closePopup": false,
+                    "resultMessage": "Affiliate has been calculated",
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "Billing_date",
+                                "fetch": [],
+                                "sysName": "Billing_date",
+                                "name": "Billing date",
+                                "dataType": "date",
+                                "format": "",
+                                "formatOptions": {
+                                    "customOptionLabel": "My option",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "dateLocale": "en-gb",
+                                    "booleanOptions": [
+                                        "True",
+                                        "False"
+                                    ],
+                                    "validWeekDays": {
+                                        "mon": true,
+                                        "thu": true,
+                                        "tue": true,
+                                        "sun": true,
+                                        "fri": true,
+                                        "sat": true,
+                                        "wed": true
+                                    },
+                                    "customOptionPlaceholder": "Describe your option",
+                                    "range": {},
+                                    "customOptionType": "textarea",
+                                    "dateFormat": "DD/MM/Y",
+                                    "timeFormat": " ",
+                                    "isUTC": "true"
+                                },
+                                "link": ""
                             },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "🔥 hit limits",
-                                " OK"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
+                            {
+                                "fieldSysName": "Plan",
+                                "fetch": [],
+                                "sysName": "Plan",
+                                "name": "Plan",
+                                "dataType": "json",
+                                "format": "radioOptions",
+                                "formatOptions": {
+                                    "customOptionLabel": "My option",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "dateLocale": "en-gb",
+                                    "booleanOptions": [
+                                        "True",
+                                        "False"
+                                    ],
+                                    "validWeekDays": {
+                                        "mon": true,
+                                        "thu": true,
+                                        "tue": true,
+                                        "sun": true,
+                                        "fri": true,
+                                        "sat": true,
+                                        "wed": true
+                                    },
+                                    "customOptionPlaceholder": "Describe your option",
+                                    "range": {},
+                                    "customOptionType": "textarea",
+                                    "dateFormat": "DD/MM/Y",
+                                    "timeFormat": " HH:mm",
+                                    "isUTC": "false",
+                                    "multipleChoice": [
+                                        {
+                                            "value": "Startup-monthly",
+                                            "label": "Startup-monthly"
+                                        },
+                                        {
+                                            "value": "Startup-yearly",
+                                            "label": "Startup-yearly"
+                                        },
+                                        {
+                                            "value": "Pro-monthly",
+                                            "label": "Pro-monthly"
+                                        },
+                                        {
+                                            "value": "Pro-yearly",
+                                            "label": "Pro-yearly"
+                                        },
+                                        {
+                                            "value": "Business-monthly",
+                                            "label": "Business-monthly"
+                                        },
+                                        {
+                                            "value": "Business-yearly",
+                                            "label": "Business-yearly"
+                                        },
+                                        {
+                                            "value": "Business-DEV",
+                                            "label": "Business-DEV"
+                                        }
+                                    ]
+                                },
+                                "link": ""
                             },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
+                            {
+                                "fieldSysName": "action",
+                                "fetch": [],
+                                "sysName": "action",
+                                "name": "",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": null
+                            },
+                            {
+                                "fieldSysName": "app_id",
+                                "fetch": [],
+                                "sysName": "app_id",
+                                "name": "App ID",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "Apps"
+                            },
+                            {
+                                "fieldSysName": "wallet_trans",
+                                "fetch": [],
+                                "sysName": "wallet_trans",
+                                "name": "",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "appwallet"
+                            }
+                        ]
+                    },
+                    "formMapping": [
+                        {
+                            "id": "92101667248742460",
+                            "target": "app_id",
+                            "type": "objectField",
+                            "value": "app_id"
                         },
-                        "name": "Excess plan"
-                    },
-                    "owner_id": {
-                        "active": true,
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "Owner",
-                        "textsearch": "fulltext"
-                    },
-                    "plan_id": {
-                        "active": true,
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "Billing plan",
-                        "textsearch": "fulltext"
-                    },
-                    "sysName": {
-                        "active": true,
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "System name"
-                    },
-                    "id": {
-                        "active": true,
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "App id"
-                    }
+                        {
+                            "id": "11931667248753653",
+                            "target": "action",
+                            "type": "const",
+                            "value": "calc_affiliate"
+                        },
+                        {
+                            "id": "46611667248947950",
+                            "target": "wallet_trans",
+                            "type": "objectField",
+                            "value": "id"
+                        }
+                    ]
                 }
+            ],
+            "filterParams": {
+                "isFiltering": true,
+                "filteringType": "openai"
             }
         },
-        "tableTitle": "",
+        "tableTitle": "All transactions",
         "actions": null,
         "headers": [
             {
-                "sysName": "color_get",
-                "dataType": "string",
+                "sysName": "affiliate_transaction_id",
                 "name": "",
-                "id": "26091623775679245",
-                "link": "",
-                "group": "1623707015468",
+                "dataType": "link",
+                "id": "93701664633122070",
+                "link": "appwallet",
+                "group": "0",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 12,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "color",
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "color_http",
-                "dataType": "string",
-                "name": "",
-                "id": "30261667244970378",
-                "link": "",
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 17,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "color",
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "color_post",
-                "dataType": "string",
-                "name": "",
-                "id": "89081623775692061",
-                "link": "",
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 13,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "color",
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "color_proc",
-                "dataType": "string",
-                "name": "",
-                "id": "92601623775698497",
-                "link": "",
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 14,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "color",
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "color_sync",
-                "dataType": "string",
-                "name": "",
-                "id": "45481623775706832",
-                "link": "",
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 15,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "color",
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "color_users",
-                "dataType": "string",
-                "name": "",
-                "id": "86811623775714205",
-                "link": "",
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 16,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "color",
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "forecast_bill",
-                "dataType": "decimal",
-                "name": "Forecast bill, $",
-                "id": "63341640954051997",
-                "link": "",
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 24,
+                "order": 10,
                 "linkIndexFieldSysName": [],
                 "defaultValue": null,
                 "constraints": null,
@@ -8511,46 +8978,158 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
+                "linkType": true,
                 "typeVariable": {},
                 "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
+                "linkOrArrayLinkType": true,
                 "indexExists": false,
+                "arrayLink": false,
                 "array": false
             },
             {
-                "sysName": "free_alert_counter",
-                "dataType": "number",
-                "name": "Free alert counter",
-                "id": "30071661159016438",
+                "sysName": "affiliate_user_id",
+                "name": "",
+                "dataType": "link",
+                "id": "57701664731840784",
+                "link": "Cloud_users",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 11,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkType": true,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "indexExists": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "app_id",
+                "name": "app_id",
+                "dataType": "link",
+                "id": "51971633354577141",
+                "link": "Apps",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkType": true,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "indexExists": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "balance",
+                "name": "balance",
+                "dataType": "decimal",
+                "id": "17881633354558295",
                 "link": "",
-                "group": "1633095201028",
-                "tags": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "comment",
+                "name": "comment",
+                "dataType": "string",
+                "id": "40211633354569149",
+                "link": null,
+                "group": "0",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 3,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": null,
                 "groupName": null,
+                "linkType": false,
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
                 "indexExists": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "date",
+                "name": "date",
+                "dataType": "date",
+                "id": "96991644174902603",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
+                "arrayLink": false,
                 "array": false
             },
             {
                 "sysName": "id",
+                "name": "id",
                 "dataType": "id",
-                "name": "App id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -8567,300 +9146,49 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "linkType": false,
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
                 "indexExists": false,
+                "arrayLink": false,
                 "array": false
             },
             {
-                "sysName": "is_blocked",
-                "dataType": "boolean",
-                "name": "is_blocked",
-                "id": "82901633095583058",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 10,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "is_excess",
-                "dataType": "boolean",
-                "name": "Excess plan",
-                "id": "40361623748858552",
-                "link": "",
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 10,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "🔥 hit limits",
-                        " OK"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false"
-                },
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "is_sandbox",
-                "dataType": "boolean",
-                "name": "is_sandbox",
-                "id": "47331625209998636",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 9,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "owner_id",
+                "sysName": "parent_affiliate_trans_id",
+                "name": "",
                 "dataType": "link",
-                "name": "Owner",
-                "id": "41841623707118206",
-                "link": "Cloud_users",
+                "id": "47871664733203199",
+                "link": "appwallet",
                 "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 4,
+                "order": 12,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
+                "linkType": true,
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "linkType": true,
                 "indexExists": false,
+                "arrayLink": false,
                 "array": false
             },
             {
-                "sysName": "paddle_subscription_id",
+                "sysName": "receipt",
+                "name": "",
                 "dataType": "string",
-                "name": "Paddle ID",
-                "id": "13631633089941494",
-                "link": null,
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 18,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "plan_id",
-                "dataType": "link",
-                "name": "Billing plan",
-                "id": "74161623707026653",
-                "link": "Tariff",
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "linkType": true,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "stat_get",
-                "dataType": "number",
-                "name": "Stat | GET",
-                "id": "94951623707229504",
+                "id": "22031644176668353",
                 "link": "",
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "stat_http",
-                "dataType": "number",
-                "name": "Stat | HTTP requests",
-                "id": "32051667244802942",
-                "link": "",
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 9,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "stat_post",
-                "dataType": "number",
-                "name": "Stat | POST",
-                "id": "37551623707296997",
-                "link": "",
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 6,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "stat_proc",
-                "dataType": "number",
-                "name": "Stat | Proc exec",
-                "id": "16611623707312286",
-                "link": "",
-                "group": "1623707015468",
+                "group": "0",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
@@ -8871,79 +9199,23 @@ const App = (props) => {
                 "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
-                "format": null,
+                "format": "webLink",
                 "formatOptions": null,
                 "groupName": null,
+                "linkType": false,
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
                 "indexExists": false,
+                "arrayLink": false,
                 "array": false
             },
             {
-                "sysName": "stat_sync",
-                "dataType": "number",
-                "name": "Stat | SYNC Proc exec",
-                "id": "87341623707329117",
-                "link": "",
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 8,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "stat_users",
-                "dataType": "number",
-                "name": "Stat | Users",
-                "id": "76861623707270662",
-                "link": "",
-                "group": "1623707015468",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "sysName",
-                "dataType": "string",
-                "name": "System name",
-                "id": "27541623706978377",
-                "link": null,
+                "sysName": "type",
+                "name": "Transaction type",
+                "dataType": "link",
+                "id": "34331644178252191",
+                "link": "transaction_types",
                 "group": "0",
                 "tags": null,
                 "indexing": false,
@@ -8958,846 +9230,4878 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
+                "linkType": true,
                 "typeVariable": {},
                 "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
+                "linkOrArrayLinkType": true,
                 "indexExists": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "user_id",
+                "name": "",
+                "dataType": "link",
+                "id": "24421633360151131",
+                "link": "Cloud_users",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkType": true,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "indexExists": false,
+                "arrayLink": false,
                 "array": false
             }
         ],
         "data": [
             {
-                "is_blocked": false,
-                "free_alert_counter": 0,
-                "owner_id": {
-                    "country": "Undefined",
-                    "last_name": "Ershov",
-                    "id": "pavel@directual.com",
-                    "first_name": "Pavel"
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Pavel",
+                    "team_ids": [
+                        {
+                            "name": "Noitatech",
+                            "tariff_id": "team_monthly",
+                            "id": "c9bab065-0518-4233-9650-9f2b4307be04",
+                            "is_hidden": true,
+                            "current_seats": 1
+                        }
+                    ],
+                    "survey_step_1_raw": "pro_nocoder",
+                    "wallet_balance": 11.9925,
+                    "country": "RU",
+                    "id": "pavel@ingros.ru",
+                    "survey_step_3_raw": "zerocoder",
+                    "last_name": "Goncharov",
+                    "survey_step_2_raw": "startup",
+                    "apps": [
+                        {
+                            "sys_name": "gamingbacklogru",
+                            "id": "13629"
+                        }
+                    ]
                 },
-                "forecast_bill": 1314.86,
-                "stat_sync": 2897,
-                "color_proc": "#fcc5c2",
-                "sysName": "directual-site",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Pro-sandbox",
-                    "description": "Sandbox for Team plan",
-                    "id": "Pro-sandbox"
+                "id": "53373194-2b24-4f67-b6c1-b030b59dfe1e",
+                "date": 1673427672000,
+                "comment": "App gamingbacklogru (13629), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "gamingbacklogru",
+                    "id": "13629"
                 },
-                "paddle_subscription_id": "7783322",
-                "id": "1822",
-                "stat_users": 0,
-                "stat_post": 1066,
-                "is_sandbox": true,
-                "is_excess": true,
-                "stat_get": 9289,
-                "stat_http": 2324,
-                "stat_proc": 15041696
+                "type": "app_payment"
             },
             {
-                "is_blocked": false,
-                "free_alert_counter": 0,
-                "owner_id": {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": true,
+                    "first_name": "Artem ",
+                    "wallet_balance": -106,
                     "country": "UA",
-                    "last_name": "Павел",
-                    "id": "donchenko.pavel@gmail.com",
-                    "first_name": "Донченко"
+                    "id": "kirsnvartem@gmail.com",
+                    "last_name": "Kirsanov",
+                    "apps": [
+                        {
+                            "sys_name": "sandboxxxx",
+                            "id": "14019"
+                        },
+                        {
+                            "sys_name": "feel",
+                            "id": "13876"
+                        }
+                    ]
                 },
-                "forecast_bill": 115.55,
-                "stat_sync": 12411,
-                "color_proc": "#fcc5c2",
-                "sysName": "lass",
-                "plan_id": {
-                    "price": 429,
-                    "name": "Business",
-                    "description": "Great for high loaded, business-critical, enterprise-grade apps",
-                    "id": "Business-monthly"
+                "id": "8695c880-eb65-4f08-bab4-4953a2fb1faa",
+                "date": 1673427672000,
+                "comment": "App feel (13876), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "feel",
+                    "id": "13876"
                 },
-                "paddle_subscription_id": "11019757",
-                "id": "8909",
-                "stat_users": 0,
-                "stat_post": 75067,
-                "is_sandbox": false,
-                "is_excess": true,
-                "stat_get": 55227,
-                "stat_http": 21871,
-                "stat_proc": 4892244
+                "type": "app_payment"
             },
             {
-                "is_blocked": false,
-                "free_alert_counter": 0,
-                "owner_id": {
-                    "country": "IE",
-                    "last_name": "Lykov",
-                    "id": "lykovmaxim@gmail.com",
-                    "first_name": "Maxim"
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "davin",
+                    "survey_step_1_raw": "beginner",
+                    "wallet_balance": -56,
+                    "country": "US",
+                    "id": "fntokens@gmail.com",
+                    "survey_step_3_raw": "producthunt",
+                    "last_name": "corbett",
+                    "survey_step_2_raw": "startup",
+                    "apps": [
+                        {
+                            "sys_name": "mv",
+                            "id": "14360"
+                        }
+                    ]
                 },
-                "forecast_bill": 62.51,
-                "stat_sync": 2972,
-                "sysName": "pomnimlubim",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Pro-sandbox-AppSumo",
-                    "description": "Special AppSumo plan",
-                    "id": "Pro-sandbox-AppSumo"
+                "id": "6af52d3a-fcc4-4699-8b6e-813d26fc9778",
+                "date": 1673427672000,
+                "comment": "App mv (14360), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "mv",
+                    "id": "14360"
                 },
-                "paddle_subscription_id": "5085019",
-                "id": "3842",
-                "color_post": "#fcc5c2",
-                "stat_users": 0,
-                "stat_post": 105350,
-                "is_sandbox": true,
-                "is_excess": true,
-                "stat_get": 559,
-                "stat_http": 1453,
-                "stat_proc": 208718
+                "type": "app_payment"
             },
             {
-                "free_alert_counter": 0,
-                "owner_id": {
-                    "id": "leonid.byakov@gmail.com",
-                    "first_name": "Leonid  Byakov"
-                },
-                "forecast_bill": 50.62,
-                "stat_sync": 10134,
-                "color_proc": "#fcc5c2",
-                "sysName": "hh_send_message",
-                "plan_id": {
-                    "price": 139,
-                    "name": "Pro",
-                    "description": "Includes advanced features for developing and scaling your app",
-                    "id": "Pro-monthly"
-                },
-                "paddle_subscription_id": "8277015",
-                "id": "2894",
-                "color_post": "#fcc5c2",
-                "stat_users": 0,
-                "stat_post": 93269,
-                "is_sandbox": false,
-                "is_excess": true,
-                "stat_get": 1698,
-                "stat_http": 17085,
-                "stat_proc": 642919
-            },
-            {
-                "is_blocked": false,
-                "free_alert_counter": 0,
-                "owner_id": {
-                    "country": "RU",
-                    "last_name": "Garifullin",
-                    "id": "m.garifullin.f@gmail.com",
-                    "first_name": "Marat"
-                },
-                "forecast_bill": 48.78,
-                "stat_sync": 58366,
-                "color_proc": "#fcc5c2",
-                "sysName": "connectiveconfiguratortcp",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Pro-sandbox",
-                    "description": "Sandbox for Team plan",
-                    "id": "Pro-sandbox"
-                },
-                "id": "12947",
-                "stat_users": 0,
-                "stat_post": 271,
-                "color_sync": "#fcc5c2",
-                "is_sandbox": true,
-                "is_excess": true,
-                "stat_get": 5253,
-                "stat_http": 0,
-                "stat_proc": 58336
-            },
-            {
-                "is_blocked": false,
-                "free_alert_counter": 0,
-                "color_get": "#fcc5c2",
-                "owner_id": {
-                    "country": "RU",
-                    "last_name": "ЕВИПДО",
-                    "id": "edueduedoo@gmail.com",
-                    "first_name": "Институт"
-                },
-                "forecast_bill": 47.62,
-                "stat_sync": 94897,
-                "color_proc": "#fcc5c2",
-                "sysName": "evidpo",
-                "plan_id": {
-                    "price": 139,
-                    "name": "Pro",
-                    "description": "Includes advanced features for developing and scaling your app",
-                    "id": "Pro-monthly"
-                },
-                "id": "13775",
-                "stat_users": 0,
-                "stat_post": 7018,
-                "color_sync": "#fcc5c2",
-                "is_sandbox": false,
-                "is_excess": true,
-                "stat_get": 514872,
-                "stat_http": 1027,
-                "stat_proc": 632775
-            },
-            {
-                "is_blocked": false,
-                "free_alert_counter": 0,
-                "color_get": "#fcc5c2",
-                "owner_id": {
-                    "country": "IL",
-                    "last_name": "Bagdasarian",
-                    "id": "bagdaer@gmail.com",
-                    "first_name": "Erik"
-                },
-                "forecast_bill": 43.02,
-                "stat_sync": 0,
-                "color_proc": "#fcc5c2",
-                "sysName": "dentalbase",
-                "plan_id": {
-                    "price": 39,
-                    "name": "Startup",
-                    "description": "Ideal for building an MVP or an internal app",
-                    "id": "Startup-monthly"
-                },
-                "id": "12200",
-                "stat_users": 0,
-                "stat_post": 2595,
-                "is_sandbox": false,
-                "is_excess": true,
-                "stat_get": 252445,
-                "stat_http": 1387,
-                "stat_proc": 112465
-            },
-            {
-                "is_blocked": false,
-                "free_alert_counter": 0,
-                "owner_id": {
-                    "country": "RU",
-                    "last_name": "UDALOV",
-                    "id": "u@modapogoda.ru",
-                    "first_name": "YURI"
-                },
-                "forecast_bill": 31.38,
-                "stat_sync": 0,
-                "color_proc": "#fcc5c2",
-                "sysName": "mp",
-                "color_http": "#fcc5c2",
-                "plan_id": {
-                    "price": 30,
-                    "name": "Startup (legacy)",
-                    "description": "Legacy plan. Startup, monthly payments",
-                    "id": "Startup"
-                },
-                "paddle_subscription_id": "6791951",
-                "id": "5283",
-                "stat_users": 0,
-                "stat_post": 184,
-                "is_sandbox": false,
-                "is_excess": true,
-                "stat_get": 1683,
-                "stat_http": 18520,
-                "stat_proc": 379967
-            },
-            {
-                "free_alert_counter": 0,
-                "color_get": "#fcc5c2",
-                "owner_id": {
-                    "country": "IL",
-                    "last_name": "Bagdasarian",
-                    "id": "bagdaer@gmail.com",
-                    "first_name": "Erik"
-                },
-                "forecast_bill": 22.24,
-                "stat_sync": 0,
-                "color_proc": "#fcc5c2",
-                "sysName": "dntl",
-                "plan_id": {
-                    "price": 39,
-                    "name": "Startup",
-                    "description": "Ideal for building an MVP or an internal app",
-                    "id": "Startup-monthly"
-                },
-                "id": "12422",
-                "stat_users": 0,
-                "stat_post": 102,
-                "is_sandbox": false,
-                "is_excess": true,
-                "stat_get": 45877,
-                "stat_http": 21,
-                "stat_proc": 165773
-            },
-            {
-                "free_alert_counter": 4,
-                "color_get": "#fcc5c2",
-                "owner_id": {
-                    "country": "RU",
-                    "last_name": "Ёмкость",
-                    "id": "yomkost.app@gmail.com",
-                    "first_name": "Команда сети"
-                },
-                "forecast_bill": 17.07,
-                "stat_sync": 29,
-                "color_proc": "#fcc5c2",
-                "sysName": "yomkost-adm",
-                "color_http": "#fcc5c2",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "13519",
-                "color_post": "#fcc5c2",
-                "stat_users": 0,
-                "stat_post": 14942,
-                "is_sandbox": false,
-                "is_excess": true,
-                "stat_get": 55020,
-                "stat_http": 526,
-                "stat_proc": 3158
-            },
-            {
-                "free_alert_counter": 0,
-                "owner_id": {
-                    "country": "NZ",
-                    "last_name": "Mile",
-                    "id": "techops_team@finalmile.io",
-                    "first_name": "Final"
-                },
-                "forecast_bill": 5.05,
-                "stat_sync": 0,
-                "sysName": "final-mile",
-                "plan_id": {
-                    "price": 39,
-                    "name": "Startup",
-                    "description": "Ideal for building an MVP or an internal app",
-                    "id": "Startup-monthly"
-                },
-                "paddle_subscription_id": "8864170",
-                "id": "6773",
-                "color_post": "#fcc5c2",
-                "stat_users": 0,
-                "stat_post": 6402,
-                "is_excess": true,
-                "stat_get": 342,
-                "stat_http": 0,
-                "stat_proc": 0
-            },
-            {
-                "is_blocked": false,
-                "free_alert_counter": 0,
-                "owner_id": {
-                    "country": "BR",
-                    "last_name": "Nin",
-                    "id": "othon.nin@1purecbd.com",
-                    "first_name": "Othon"
-                },
-                "forecast_bill": 4.12,
-                "stat_sync": 23614,
-                "sysName": "medicos",
-                "color_http": "#fcc5c2",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Pro-sandbox-AppSumo",
-                    "description": "Special AppSumo plan",
-                    "id": "Pro-sandbox-AppSumo"
-                },
-                "id": "12043",
-                "stat_users": 0,
-                "stat_post": 4975,
-                "is_sandbox": true,
-                "is_excess": true,
-                "stat_get": 0,
-                "stat_http": 9581,
-                "stat_proc": 47474
-            },
-            {
-                "is_blocked": false,
-                "free_alert_counter": 4,
-                "owner_id": {
-                    "country": "RU",
-                    "last_name": "word",
-                    "id": "novozhilov@code-word.ru",
-                    "first_name": "Code"
-                },
-                "forecast_bill": 4.1,
-                "stat_sync": 208,
-                "color_proc": "#fcc5c2",
-                "sysName": "dev-jj",
-                "color_http": "#fcc5c2",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "12824",
-                "stat_users": 0,
-                "stat_post": 104,
-                "is_sandbox": false,
-                "is_excess": true,
-                "stat_get": 0,
-                "stat_http": 1609,
-                "stat_proc": 37037
-            },
-            {
-                "is_blocked": false,
-                "free_alert_counter": 0,
-                "owner_id": {
-                    "country": "NL",
-                    "last_name": "development",
-                    "id": "alche.my.devmail@gmail.com",
-                    "first_name": "alchemy"
-                },
-                "forecast_bill": 3.37,
-                "stat_sync": 1664,
-                "color_proc": "#fcc5c2",
-                "sysName": "rvpnprod",
-                "color_http": "#fcc5c2",
-                "plan_id": {
-                    "price": 39,
-                    "name": "Startup",
-                    "description": "Ideal for building an MVP or an internal app",
-                    "id": "Startup-monthly"
-                },
-                "id": "13230",
-                "stat_users": 0,
-                "stat_post": 1742,
-                "is_sandbox": false,
-                "is_excess": true,
-                "stat_get": 0,
-                "stat_http": 3121,
-                "stat_proc": 53403
-            },
-            {
-                "is_blocked": false,
-                "free_alert_counter": 0,
-                "owner_id": {
+                "balance": -2,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Pavel",
+                    "team_ids": [
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "59b12d65-6aef-4cf4-bda7-b4fd1bd02a32",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "FTM Agency",
+                            "tariff_id": "team_monthly",
+                            "id": "4b5c3318-9e08-4477-8bfe-f1e8cee9cce1",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "af048204-2d93-402a-9d7d-c7bfb95bda4c",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "46727f47-2c56-4833-89dd-aa76464e8eab",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "d1d2847d-6a60-4c7d-90d0-6a8a076e20b6",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "[test] AppSumo Tier",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "5003b645-65f9-4def-90a2-40b6cfa5ee18",
+                            "is_hidden": true,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "24b74108-e19d-475d-8772-37f0b31df133",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "24fe18d6-a0bd-44bd-9179-f7437938bf36",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "3d3cbc47-6414-44e4-9333-b64ae6d7c10c",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "1682daa5-0861-433e-8d34-e27d4caf3780",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "6c54ec46-9d07-4fb0-a0c3-8e8c38a868fc",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Dream-team",
+                            "tariff_id": "team_monthly",
+                            "id": "bc73f23b-9daf-435f-bca5-6ddcaa74e185",
+                            "is_hidden": true,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "5555bcb0-e4bd-4682-aaa6-2cd31ac7298b",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Vlad Kovalsky Team",
+                            "tariff_id": "team_monthly",
+                            "id": "f7d4dbda-c62c-427a-b562-deaae9edf1ad",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "My new team",
+                            "tariff_id": "team_monthly",
+                            "id": "6f58ecfd-9e3e-4475-b63c-b7e82359f06c",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "AppSumo Tier 1",
+                            "tariff_id": "AppSumo_tier1",
+                            "id": "a1019838-c902-4e70-b6dc-d89ba014e6c8",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Code world team 2",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "2c3bbf42-797a-49ba-a67f-831072248805",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "d76eff40-d0f3-4dce-a645-7fab00cef671",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "dopamine.team",
+                            "tariff_id": "team_monthly",
+                            "id": "2a6c0ec3-3796-45cb-8d01-3ab274da2a9e",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "1f722fd8-cc1c-4b2e-b76a-0a3755c56043",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "dbfc6e11-b26c-40a6-8caa-da3f142675ed",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "3859abca-9c8c-4411-8978-f353cf0d6921",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Code world team",
+                            "tariff_id": "team_monthly",
+                            "id": "be38019c-2047-43aa-a9f8-8906a4ba0587",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "2c588515-3a41-4957-9fc8-6dea28f275fb",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "f6280a15-85d9-4424-9a0d-411dbf9cbc93",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Max Lykov team",
+                            "tariff_id": "team_monthly",
+                            "id": "c8105c7f-f1f4-4991-8d23-7584ba401c2c",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Alex Orlov team",
+                            "tariff_id": "team_yearly",
+                            "id": "c1ab7192-ae41-4f17-a571-38acf10602f7",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Lifetime deal",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "0f969867-941d-46ea-a0be-3d3db0a5e3dd",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "34f3e17a-e71e-4385-a6d6-011e50e2df52",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Nikita Dolgov team",
+                            "tariff_id": "team_monthly",
+                            "id": "370620d6-e18a-4bc6-8b3d-c432f7c391d5",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "fb07f7bf-7202-4e85-8221-0ae090d6975c",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Oleg team",
+                            "tariff_id": "team_monthly",
+                            "id": "0513db3f-2227-445c-b760-c789ddac6f79",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Anna's team",
+                            "tariff_id": "team_monthly",
+                            "id": "60063caf-9c5d-439f-b2b7-ca62a1804b3d",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "9906f648-bca3-489c-b5c9-fc8c629fd037",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Dream team",
+                            "tariff_id": "team_monthly",
+                            "id": "1aef6239-b432-4086-8bd6-05664eafd2b0",
+                            "is_hidden": false,
+                            "current_seats": 3
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "e82f9a6f-bf3a-4869-bd74-eba52a0756b5",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Zerocoder: Directual от 0 до PRO",
+                            "tariff_id": "Zerocoder-education",
+                            "id": "5eceb369-79f2-4d45-baf1-0a9b20225f1e",
+                            "is_hidden": true,
+                            "current_seats": 1
+                        }
+                    ],
+                    "survey_step_1_raw": "developer_new_to_nocode",
+                    "wallet_balance": 125.41,
                     "country": "Undefined",
-                    "last_name": "Baev",
-                    "id": "artosiris@gmail.com",
-                    "first_name": "Egor"
+                    "id": "pavel@directual.com",
+                    "survey_step_3_raw": "producthunt",
+                    "last_name": "Ershov",
+                    "survey_step_2_raw": "university",
+                    "apps": [
+                        {
+                            "sys_name": "test-app-0011",
+                            "id": "15231"
+                        },
+                        {
+                            "sys_name": "code-redemption",
+                            "id": "15029"
+                        },
+                        {
+                            "sys_name": "hey-hoy",
+                            "id": "15027"
+                        },
+                        {
+                            "sys_name": "nft",
+                            "id": "14644"
+                        },
+                        {
+                            "sys_name": "mentor",
+                            "id": "14637"
+                        },
+                        {
+                            "sys_name": "test-limit",
+                            "id": "14027"
+                        },
+                        {
+                            "sys_name": "showcase-store",
+                            "id": "13182"
+                        },
+                        {
+                            "sys_name": "fpsform-test",
+                            "id": "13181"
+                        },
+                        {
+                            "sys_name": "bot-snapshot",
+                            "id": "13174"
+                        },
+                        {
+                            "sys_name": "talkbank-test",
+                            "id": "13120"
+                        },
+                        {
+                            "sys_name": "my-team-app",
+                            "id": "12983"
+                        },
+                        {
+                            "sys_name": "mig",
+                            "id": "11537"
+                        },
+                        {
+                            "sys_name": "tg-demo",
+                            "id": "11488"
+                        },
+                        {
+                            "sys_name": "showcase-attractions",
+                            "id": "11307"
+                        },
+                        {
+                            "sys_name": "showcase-imdb",
+                            "id": "11306"
+                        },
+                        {
+                            "sys_name": "basic-template",
+                            "id": "11264"
+                        },
+                        {
+                            "sys_name": "password-reset",
+                            "id": "10996"
+                        },
+                        {
+                            "sys_name": "web-plugins",
+                            "id": "10926"
+                        },
+                        {
+                            "sys_name": "japanapp",
+                            "id": "10884"
+                        },
+                        {
+                            "sys_name": "masters",
+                            "id": "10818"
+                        },
+                        {
+                            "sys_name": "jj",
+                            "id": "10594"
+                        },
+                        {
+                            "sys_name": "bootcamp-marketplace",
+                            "id": "10547"
+                        },
+                        {
+                            "sys_name": "marketplace",
+                            "id": "10009"
+                        },
+                        {
+                            "sys_name": "draftbit",
+                            "id": "9988"
+                        },
+                        {
+                            "sys_name": "dashboard",
+                            "id": "9674"
+                        },
+                        {
+                            "sys_name": "bootcamps",
+                            "id": "9660"
+                        },
+                        {
+                            "sys_name": "tuishou-alfa",
+                            "id": "9544"
+                        },
+                        {
+                            "sys_name": "testfiles",
+                            "id": "9337"
+                        },
+                        {
+                            "sys_name": "tuishou",
+                            "id": "9312"
+                        },
+                        {
+                            "sys_name": "students",
+                            "id": "8750"
+                        },
+                        {
+                            "sys_name": "webhook-parsing",
+                            "id": "8084"
+                        },
+                        {
+                            "sys_name": "weather-app",
+                            "id": "7813"
+                        },
+                        {
+                            "sys_name": "my-sandbox",
+                            "id": "7767"
+                        },
+                        {
+                            "sys_name": "my-app-as",
+                            "id": "7510"
+                        },
+                        {
+                            "sys_name": "sessionid",
+                            "id": "7498"
+                        },
+                        {
+                            "sys_name": "dev-pipeline",
+                            "id": "6948"
+                        },
+                        {
+                            "sys_name": "import-v6",
+                            "id": "6912"
+                        },
+                        {
+                            "sys_name": "dev",
+                            "id": "6829"
+                        },
+                        {
+                            "sys_name": "directual-groupbot",
+                            "id": "6470"
+                        },
+                        {
+                            "sys_name": "airtable",
+                            "id": "6419"
+                        },
+                        {
+                            "sys_name": "final-fps-test",
+                            "id": "6238"
+                        },
+                        {
+                            "sys_name": "new-fps-layout",
+                            "id": "6166"
+                        },
+                        {
+                            "sys_name": "tanera",
+                            "id": "6082"
+                        },
+                        {
+                            "sys_name": "crm-demo",
+                            "id": "6033"
+                        },
+                        {
+                            "sys_name": "productstar",
+                            "id": "5925"
+                        },
+                        {
+                            "sys_name": "new-library",
+                            "id": "5420"
+                        },
+                        {
+                            "sys_name": "how-to-auth",
+                            "id": "5022"
+                        },
+                        {
+                            "sys_name": "approval-system",
+                            "id": "4575"
+                        },
+                        {
+                            "sys_name": "test-bot",
+                            "id": "4456"
+                        },
+                        {
+                            "sys_name": "hello-there",
+                            "id": "4337"
+                        },
+                        {
+                            "sys_name": "test-webuser",
+                            "id": "4284"
+                        },
+                        {
+                            "sys_name": "temaplate-crm",
+                            "id": "4083"
+                        },
+                        {
+                            "sys_name": "ZerocodeCRM",
+                            "id": "3973"
+                        },
+                        {
+                            "sys_name": "nocode",
+                            "id": "3799"
+                        },
+                        {
+                            "sys_name": "gdfvfbvsgdvb",
+                            "id": "3074"
+                        },
+                        {
+                            "sys_name": "React-boilerplate",
+                            "id": "2950"
+                        },
+                        {
+                            "sys_name": "telegram_ibot",
+                            "id": "2882"
+                        },
+                        {
+                            "sys_name": "0qode-workshop",
+                            "id": "2868"
+                        },
+                        {
+                            "sys_name": "Generate_data_Directual_academy",
+                            "id": "2595"
+                        },
+                        {
+                            "sys_name": "directual-site",
+                            "id": "1822"
+                        }
+                    ]
                 },
-                "forecast_bill": 2,
-                "stat_sync": 0,
-                "sysName": "artbot",
-                "plan_id": {
-                    "price": 39,
-                    "name": "Startup",
-                    "description": "Ideal for building an MVP or an internal app",
-                    "id": "Startup-monthly"
+                "id": "9ab6a75a-7944-447a-960c-919ac5a26f6c",
+                "date": 1673427650000,
+                "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                "app_id": {
+                    "sysName": "directual-site",
+                    "team_id": "1aef6239-b432-4086-8bd6-05664eafd2b0",
+                    "id": "1822"
                 },
-                "paddle_subscription_id": "6844185",
-                "id": "6155",
-                "color_post": "#fcc5c2",
-                "stat_users": 0,
-                "stat_post": 4550,
-                "is_sandbox": false,
-                "is_excess": true,
-                "stat_get": 5011,
-                "stat_http": 1553,
-                "stat_proc": 15793
+                "type": "app_payment"
             },
             {
-                "free_alert_counter": 0,
-                "owner_id": {
-                    "country": "BY",
-                    "last_name": "Platform",
-                    "id": "investraplatform@gmail.com",
-                    "first_name": "Investra"
-                },
-                "forecast_bill": 1.92,
-                "stat_sync": 0,
-                "sysName": "investra",
-                "color_http": "#fcc5c2",
-                "plan_id": {
-                    "price": 39,
-                    "name": "Startup",
-                    "description": "Ideal for building an MVP or an internal app",
-                    "id": "Startup-monthly"
-                },
-                "id": "14658",
-                "stat_post": 271,
-                "is_sandbox": false,
-                "is_excess": true,
-                "stat_get": 5979,
-                "stat_http": 4472,
-                "stat_proc": 12446
-            },
-            {
-                "free_alert_counter": 4,
-                "owner_id": {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Ольга",
+                    "survey_step_1_raw": "beginner",
+                    "wallet_balance": 81,
                     "country": "RU",
-                    "last_name": "Орлов",
-                    "id": "alexvorlo@gmail.com",
-                    "first_name": "Александр"
+                    "id": "olga9091nsuem@gmail.com",
+                    "survey_step_3_raw": "customOption: productstar",
+                    "last_name": "Гладкова",
+                    "survey_step_2_raw": "customOption: education",
+                    "apps": [
+                        {
+                            "sys_name": "productstar-olga",
+                            "id": "15302"
+                        }
+                    ]
                 },
-                "forecast_bill": 1.58,
-                "stat_sync": 0,
-                "color_proc": "#fcc5c2",
-                "sysName": "uplinestudio",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "paddle_subscription_id": "10711771",
-                "id": "11210",
-                "stat_users": 0,
-                "stat_post": 0,
-                "is_sandbox": false,
-                "is_excess": true,
-                "stat_get": 0,
-                "stat_http": 74,
-                "stat_proc": 21518
+                "id": "81a68d80-44b8-4727-9eb9-1039e4910b54",
+                "date": 1673364212000,
+                "comment": "Create app productstar-olga, plan Startup-monthly",
+                "type": "app_payment",
+                "app_id": ""
             },
             {
-                "free_alert_counter": 4,
-                "owner_id": {
-                    "last_name": "Mozer",
-                    "id": "a.mozer@directual.com",
-                    "first_name": "Anna"
-                },
-                "forecast_bill": 1.4,
-                "stat_sync": 0,
-                "color_proc": "#fcc5c2",
-                "sysName": "vitrina-clone-dev",
-                "color_http": "#fcc5c2",
-                "id": "6867",
-                "stat_users": 0,
-                "stat_post": 0,
-                "is_excess": true,
-                "stat_get": 0,
-                "stat_http": 1487,
-                "stat_proc": 9497
-            },
-            {
-                "is_blocked": false,
-                "free_alert_counter": 4,
-                "owner_id": {
-                    "country": "RU",
-                    "last_name": "word",
-                    "id": "novozhilov@code-word.ru",
-                    "first_name": "Code"
-                },
-                "forecast_bill": 1.23,
-                "stat_sync": 0,
-                "color_proc": "#fcc5c2",
-                "sysName": "dev-moda",
-                "color_http": "#fcc5c2",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "11433",
-                "stat_users": 0,
-                "stat_post": 2,
-                "is_sandbox": false,
-                "is_excess": true,
-                "stat_get": 0,
-                "stat_http": 560,
-                "stat_proc": 14730
-            },
-            {
-                "free_alert_counter": 0,
-                "owner_id": {
-                    "country": "RU",
-                    "last_name": "Parfenov",
-                    "id": "valery.v.parfenov@yandex.ru",
-                    "first_name": "Valery"
-                },
-                "forecast_bill": 0.98,
-                "stat_sync": 270,
-                "color_proc": "#fcc5c2",
-                "sysName": "tendercrm",
-                "plan_id": {
-                    "price": 39,
-                    "name": "Startup",
-                    "description": "Ideal for building an MVP or an internal app",
-                    "id": "Startup-monthly"
-                },
-                "paddle_subscription_id": "8756334",
-                "id": "9301",
-                "stat_users": 0,
-                "stat_post": 153,
-                "is_sandbox": false,
-                "is_excess": true,
-                "stat_get": 4441,
-                "stat_http": 1034,
-                "stat_proc": 36529
-            },
-            {
-                "free_alert_counter": 4,
-                "color_get": "#fcc5c2",
-                "owner_id": {
-                    "country": "RU",
-                    "last_name": "Smorodin",
-                    "id": "sa@iclect.ru",
-                    "first_name": "Andrey"
-                },
-                "forecast_bill": 0.92,
-                "stat_sync": 0,
-                "sysName": "hslon",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "13150",
-                "stat_users": 0,
-                "stat_post": 0,
-                "is_sandbox": false,
-                "is_excess": true,
-                "stat_get": 13404,
-                "stat_http": 0,
-                "stat_proc": 0
-            },
-            {
-                "is_blocked": false,
-                "free_alert_counter": 4,
-                "owner_id": {
-                    "country": "RU",
-                    "last_name": "Dims",
-                    "id": "dimscashback@gmail.com",
-                    "first_name": "Dims"
-                },
-                "forecast_bill": 0.68,
-                "stat_sync": 0,
-                "color_proc": "#fcc5c2",
-                "sysName": "cashback",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for learning the basics of Directual",
-                    "id": "FREE"
-                },
-                "id": "8868",
-                "stat_users": 0,
-                "stat_post": 0,
-                "is_sandbox": false,
-                "is_excess": true,
-                "stat_get": 0,
-                "stat_http": 0,
-                "stat_proc": 11055
-            },
-            {
-                "free_alert_counter": 0,
-                "owner_id": {
+                "balance": 120,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "azimjan",
+                    "survey_step_1_raw": "rookie",
+                    "wallet_balance": 120,
                     "country": "KG",
-                    "last_name": "kadyrov",
-                    "id": "cmo@traffic-retail.ru",
-                    "first_name": "adel"
+                    "id": "azimjon630202@gmail.com",
+                    "survey_step_3_raw": "friends",
+                    "last_name": "kabyljanov",
+                    "survey_step_2_raw": "personal_use"
                 },
-                "forecast_bill": 0.62,
-                "stat_sync": 0,
-                "sysName": "traffic-retail",
-                "color_http": "#fcc5c2",
-                "plan_id": {
-                    "price": 39,
-                    "name": "Startup",
-                    "description": "Ideal for building an MVP or an internal app",
-                    "id": "Startup-monthly"
-                },
-                "id": "13904",
-                "stat_users": 0,
-                "stat_post": 0,
-                "is_sandbox": false,
-                "is_excess": true,
-                "stat_get": 0,
-                "stat_http": 3532,
-                "stat_proc": 10739
+                "id": "13bc5fb8-793b-40f1-bca9-6178513ece5b",
+                "date": 1673342511000,
+                "comment": "Promo-code ZEROCODER",
+                "type": "promo",
+                "app_id": ""
             },
             {
-                "is_blocked": false,
-                "free_alert_counter": 4,
-                "owner_id": {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Petr",
+                    "survey_step_1_raw": "rookie",
+                    "wallet_balance": 3,
+                    "country": "RU",
+                    "id": "petr.slichnyi@gmail.com",
+                    "survey_step_3_raw": "nocodedevs",
+                    "last_name": "Slichnyi",
+                    "survey_step_2_raw": "personal_use",
+                    "apps": [
+                        {
+                            "sys_name": "directualhomework",
+                            "id": "14659"
+                        }
+                    ]
+                },
+                "id": "a64d021e-573e-4aa0-8eef-6bc479f9afc5",
+                "date": 1673341256000,
+                "comment": "App directualhomework (14659), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "directualhomework",
+                    "id": "14659"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -69.5,
+                "user_id": {
+                    "survey_is_aborted": true,
+                    "first_name": "Институт",
+                    "wallet_balance": -193.39,
+                    "country": "RU",
+                    "id": "edueduedoo@gmail.com",
+                    "last_name": "ЕВИПДО",
+                    "apps": [
+                        {
+                            "sys_name": "evidpo",
+                            "id": "13775"
+                        }
+                    ]
+                },
+                "id": "65c5b839-dfb1-4bd1-9174-8a096a4ff588",
+                "date": 1673341256000,
+                "comment": "App evidpo (13775), license payment, plan Pro",
+                "app_id": {
+                    "sysName": "evidpo",
+                    "id": "13775"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Investra",
+                    "survey_step_1_raw": "developer_familiar_with_nocode",
+                    "wallet_balance": -0.94,
+                    "country": "BY",
+                    "id": "investraplatform@gmail.com",
+                    "survey_step_3_raw": "friends",
+                    "last_name": "Platform",
+                    "survey_step_2_raw": "clients_agency",
+                    "apps": [
+                        {
+                            "sys_name": "investra",
+                            "id": "14658"
+                        }
+                    ]
+                },
+                "id": "f083c2c8-5517-4d2a-933d-d548c9005448",
+                "date": 1673341256000,
+                "comment": "App investra (14658), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "investra",
+                    "id": "14658"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -2,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Pavel",
+                    "team_ids": [
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "59b12d65-6aef-4cf4-bda7-b4fd1bd02a32",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "FTM Agency",
+                            "tariff_id": "team_monthly",
+                            "id": "4b5c3318-9e08-4477-8bfe-f1e8cee9cce1",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "af048204-2d93-402a-9d7d-c7bfb95bda4c",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "46727f47-2c56-4833-89dd-aa76464e8eab",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "d1d2847d-6a60-4c7d-90d0-6a8a076e20b6",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "[test] AppSumo Tier",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "5003b645-65f9-4def-90a2-40b6cfa5ee18",
+                            "is_hidden": true,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "24b74108-e19d-475d-8772-37f0b31df133",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "24fe18d6-a0bd-44bd-9179-f7437938bf36",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "3d3cbc47-6414-44e4-9333-b64ae6d7c10c",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "1682daa5-0861-433e-8d34-e27d4caf3780",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "6c54ec46-9d07-4fb0-a0c3-8e8c38a868fc",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Dream-team",
+                            "tariff_id": "team_monthly",
+                            "id": "bc73f23b-9daf-435f-bca5-6ddcaa74e185",
+                            "is_hidden": true,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "5555bcb0-e4bd-4682-aaa6-2cd31ac7298b",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Vlad Kovalsky Team",
+                            "tariff_id": "team_monthly",
+                            "id": "f7d4dbda-c62c-427a-b562-deaae9edf1ad",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "My new team",
+                            "tariff_id": "team_monthly",
+                            "id": "6f58ecfd-9e3e-4475-b63c-b7e82359f06c",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "AppSumo Tier 1",
+                            "tariff_id": "AppSumo_tier1",
+                            "id": "a1019838-c902-4e70-b6dc-d89ba014e6c8",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Code world team 2",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "2c3bbf42-797a-49ba-a67f-831072248805",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "d76eff40-d0f3-4dce-a645-7fab00cef671",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "dopamine.team",
+                            "tariff_id": "team_monthly",
+                            "id": "2a6c0ec3-3796-45cb-8d01-3ab274da2a9e",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "1f722fd8-cc1c-4b2e-b76a-0a3755c56043",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "dbfc6e11-b26c-40a6-8caa-da3f142675ed",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "3859abca-9c8c-4411-8978-f353cf0d6921",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Code world team",
+                            "tariff_id": "team_monthly",
+                            "id": "be38019c-2047-43aa-a9f8-8906a4ba0587",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "2c588515-3a41-4957-9fc8-6dea28f275fb",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "f6280a15-85d9-4424-9a0d-411dbf9cbc93",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Max Lykov team",
+                            "tariff_id": "team_monthly",
+                            "id": "c8105c7f-f1f4-4991-8d23-7584ba401c2c",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Alex Orlov team",
+                            "tariff_id": "team_yearly",
+                            "id": "c1ab7192-ae41-4f17-a571-38acf10602f7",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Lifetime deal",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "0f969867-941d-46ea-a0be-3d3db0a5e3dd",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "34f3e17a-e71e-4385-a6d6-011e50e2df52",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Nikita Dolgov team",
+                            "tariff_id": "team_monthly",
+                            "id": "370620d6-e18a-4bc6-8b3d-c432f7c391d5",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "fb07f7bf-7202-4e85-8221-0ae090d6975c",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Oleg team",
+                            "tariff_id": "team_monthly",
+                            "id": "0513db3f-2227-445c-b760-c789ddac6f79",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Anna's team",
+                            "tariff_id": "team_monthly",
+                            "id": "60063caf-9c5d-439f-b2b7-ca62a1804b3d",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "9906f648-bca3-489c-b5c9-fc8c629fd037",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Dream team",
+                            "tariff_id": "team_monthly",
+                            "id": "1aef6239-b432-4086-8bd6-05664eafd2b0",
+                            "is_hidden": false,
+                            "current_seats": 3
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "e82f9a6f-bf3a-4869-bd74-eba52a0756b5",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Zerocoder: Directual от 0 до PRO",
+                            "tariff_id": "Zerocoder-education",
+                            "id": "5eceb369-79f2-4d45-baf1-0a9b20225f1e",
+                            "is_hidden": true,
+                            "current_seats": 1
+                        }
+                    ],
+                    "survey_step_1_raw": "developer_new_to_nocode",
+                    "wallet_balance": 125.41,
                     "country": "Undefined",
-                    "last_name": "Baev",
-                    "id": "artosiris@gmail.com",
-                    "first_name": "Egor"
+                    "id": "pavel@directual.com",
+                    "survey_step_3_raw": "producthunt",
+                    "last_name": "Ershov",
+                    "survey_step_2_raw": "university",
+                    "apps": [
+                        {
+                            "sys_name": "test-app-0011",
+                            "id": "15231"
+                        },
+                        {
+                            "sys_name": "code-redemption",
+                            "id": "15029"
+                        },
+                        {
+                            "sys_name": "hey-hoy",
+                            "id": "15027"
+                        },
+                        {
+                            "sys_name": "nft",
+                            "id": "14644"
+                        },
+                        {
+                            "sys_name": "mentor",
+                            "id": "14637"
+                        },
+                        {
+                            "sys_name": "test-limit",
+                            "id": "14027"
+                        },
+                        {
+                            "sys_name": "showcase-store",
+                            "id": "13182"
+                        },
+                        {
+                            "sys_name": "fpsform-test",
+                            "id": "13181"
+                        },
+                        {
+                            "sys_name": "bot-snapshot",
+                            "id": "13174"
+                        },
+                        {
+                            "sys_name": "talkbank-test",
+                            "id": "13120"
+                        },
+                        {
+                            "sys_name": "my-team-app",
+                            "id": "12983"
+                        },
+                        {
+                            "sys_name": "mig",
+                            "id": "11537"
+                        },
+                        {
+                            "sys_name": "tg-demo",
+                            "id": "11488"
+                        },
+                        {
+                            "sys_name": "showcase-attractions",
+                            "id": "11307"
+                        },
+                        {
+                            "sys_name": "showcase-imdb",
+                            "id": "11306"
+                        },
+                        {
+                            "sys_name": "basic-template",
+                            "id": "11264"
+                        },
+                        {
+                            "sys_name": "password-reset",
+                            "id": "10996"
+                        },
+                        {
+                            "sys_name": "web-plugins",
+                            "id": "10926"
+                        },
+                        {
+                            "sys_name": "japanapp",
+                            "id": "10884"
+                        },
+                        {
+                            "sys_name": "masters",
+                            "id": "10818"
+                        },
+                        {
+                            "sys_name": "jj",
+                            "id": "10594"
+                        },
+                        {
+                            "sys_name": "bootcamp-marketplace",
+                            "id": "10547"
+                        },
+                        {
+                            "sys_name": "marketplace",
+                            "id": "10009"
+                        },
+                        {
+                            "sys_name": "draftbit",
+                            "id": "9988"
+                        },
+                        {
+                            "sys_name": "dashboard",
+                            "id": "9674"
+                        },
+                        {
+                            "sys_name": "bootcamps",
+                            "id": "9660"
+                        },
+                        {
+                            "sys_name": "tuishou-alfa",
+                            "id": "9544"
+                        },
+                        {
+                            "sys_name": "testfiles",
+                            "id": "9337"
+                        },
+                        {
+                            "sys_name": "tuishou",
+                            "id": "9312"
+                        },
+                        {
+                            "sys_name": "students",
+                            "id": "8750"
+                        },
+                        {
+                            "sys_name": "webhook-parsing",
+                            "id": "8084"
+                        },
+                        {
+                            "sys_name": "weather-app",
+                            "id": "7813"
+                        },
+                        {
+                            "sys_name": "my-sandbox",
+                            "id": "7767"
+                        },
+                        {
+                            "sys_name": "my-app-as",
+                            "id": "7510"
+                        },
+                        {
+                            "sys_name": "sessionid",
+                            "id": "7498"
+                        },
+                        {
+                            "sys_name": "dev-pipeline",
+                            "id": "6948"
+                        },
+                        {
+                            "sys_name": "import-v6",
+                            "id": "6912"
+                        },
+                        {
+                            "sys_name": "dev",
+                            "id": "6829"
+                        },
+                        {
+                            "sys_name": "directual-groupbot",
+                            "id": "6470"
+                        },
+                        {
+                            "sys_name": "airtable",
+                            "id": "6419"
+                        },
+                        {
+                            "sys_name": "final-fps-test",
+                            "id": "6238"
+                        },
+                        {
+                            "sys_name": "new-fps-layout",
+                            "id": "6166"
+                        },
+                        {
+                            "sys_name": "tanera",
+                            "id": "6082"
+                        },
+                        {
+                            "sys_name": "crm-demo",
+                            "id": "6033"
+                        },
+                        {
+                            "sys_name": "productstar",
+                            "id": "5925"
+                        },
+                        {
+                            "sys_name": "new-library",
+                            "id": "5420"
+                        },
+                        {
+                            "sys_name": "how-to-auth",
+                            "id": "5022"
+                        },
+                        {
+                            "sys_name": "approval-system",
+                            "id": "4575"
+                        },
+                        {
+                            "sys_name": "test-bot",
+                            "id": "4456"
+                        },
+                        {
+                            "sys_name": "hello-there",
+                            "id": "4337"
+                        },
+                        {
+                            "sys_name": "test-webuser",
+                            "id": "4284"
+                        },
+                        {
+                            "sys_name": "temaplate-crm",
+                            "id": "4083"
+                        },
+                        {
+                            "sys_name": "ZerocodeCRM",
+                            "id": "3973"
+                        },
+                        {
+                            "sys_name": "nocode",
+                            "id": "3799"
+                        },
+                        {
+                            "sys_name": "gdfvfbvsgdvb",
+                            "id": "3074"
+                        },
+                        {
+                            "sys_name": "React-boilerplate",
+                            "id": "2950"
+                        },
+                        {
+                            "sys_name": "telegram_ibot",
+                            "id": "2882"
+                        },
+                        {
+                            "sys_name": "0qode-workshop",
+                            "id": "2868"
+                        },
+                        {
+                            "sys_name": "Generate_data_Directual_academy",
+                            "id": "2595"
+                        },
+                        {
+                            "sys_name": "directual-site",
+                            "id": "1822"
+                        }
+                    ]
                 },
-                "forecast_bill": 0.52,
-                "stat_sync": 536,
-                "sysName": "art",
-                "plan_id": {
-                    "price": 0,
-                    "name": "Free",
-                    "description": "Perfect for learning the basics of Directual",
-                    "id": "FREE"
+                "id": "1b0445f9-aa47-48cb-bac7-f061c7339411",
+                "date": 1673341235000,
+                "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                "app_id": {
+                    "sysName": "directual-site",
+                    "team_id": "1aef6239-b432-4086-8bd6-05664eafd2b0",
+                    "id": "1822"
                 },
-                "paddle_subscription_id": "9915537",
-                "id": "4509",
-                "color_post": "#fcc5c2",
-                "stat_users": 0,
-                "stat_post": 662,
-                "color_sync": "#fcc5c2",
-                "is_sandbox": false,
-                "is_excess": true,
-                "stat_get": 195,
-                "stat_http": 134,
-                "stat_proc": 2584
+                "type": "app_payment"
             },
             {
-                "free_alert_counter": 0,
-                "owner_id": {
-                    "country": "BG",
-                    "last_name": "Brusentsev",
-                    "id": "directual@brusentsev.ru",
-                    "first_name": "Aleksandr"
+                "balance": 50,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Pavel",
+                    "team_ids": [
+                        {
+                            "name": "Noitatech",
+                            "tariff_id": "team_monthly",
+                            "id": "c9bab065-0518-4233-9650-9f2b4307be04",
+                            "is_hidden": true,
+                            "current_seats": 1
+                        }
+                    ],
+                    "survey_step_1_raw": "pro_nocoder",
+                    "wallet_balance": 11.9925,
+                    "country": "RU",
+                    "id": "pavel@ingros.ru",
+                    "survey_step_3_raw": "zerocoder",
+                    "last_name": "Goncharov",
+                    "survey_step_2_raw": "startup",
+                    "apps": [
+                        {
+                            "sys_name": "gamingbacklogru",
+                            "id": "13629"
+                        }
+                    ]
                 },
-                "forecast_bill": 0.39,
-                "stat_sync": 9,
-                "color_proc": "#fcc5c2",
-                "sysName": "archivarius",
-                "plan_id": {
-                    "price": 39,
-                    "name": "Startup",
-                    "description": "Ideal for building an MVP or an internal app",
-                    "id": "Startup-monthly"
+                "id": "de9b1419-dedc-4633-9036-c16357e8cb0f",
+                "date": 1673334090000,
+                "comment": "Promo-code HAPPYNEWYEAR",
+                "type": "promo",
+                "app_id": ""
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Dmitry",
+                    "survey_step_1_raw": "pro_nocoder",
+                    "wallet_balance": 0,
+                    "country": "RU",
+                    "id": "saibleonetwo@gmail.com",
+                    "survey_step_3_raw": "zerocoder",
+                    "last_name": "Saible",
+                    "survey_step_2_raw": "startup",
+                    "apps": [
+                        {
+                            "sys_name": "botprofi",
+                            "id": "15281"
+                        }
+                    ]
                 },
-                "id": "14830",
-                "stat_post": 349,
-                "is_sandbox": false,
-                "is_excess": true,
-                "stat_get": 7386,
-                "stat_http": 0,
-                "stat_proc": 34360
+                "id": "ae4bf7e8-9db0-459d-b6a3-ba833635e94b",
+                "date": 1673279507000,
+                "comment": "Update app botprofi, plan Startup-monthly (previous plan: Free)",
+                "type": "app_payment",
+                "app_id": ""
+            },
+            {
+                "balance": 39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Dmitry",
+                    "survey_step_1_raw": "pro_nocoder",
+                    "wallet_balance": 0,
+                    "country": "RU",
+                    "id": "saibleonetwo@gmail.com",
+                    "survey_step_3_raw": "zerocoder",
+                    "last_name": "Saible",
+                    "survey_step_2_raw": "startup",
+                    "apps": [
+                        {
+                            "sys_name": "botprofi",
+                            "id": "15281"
+                        }
+                    ]
+                },
+                "id": "9c34103d-1476-4478-b752-d9c1660fbc79",
+                "date": 1673279467000,
+                "comment": "Adding funds via Tinkoff 2652.0 ₽ → 39.0 D-coins",
+                "type": "tinkoff",
+                "app_id": ""
+            },
+            {
+                "balance": 50,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Alex",
+                    "survey_step_1_raw": "beginner",
+                    "wallet_balance": 50,
+                    "country": "KZ",
+                    "id": "alexkachurinit@gmail.com",
+                    "survey_step_3_raw": "social_networks",
+                    "last_name": "Kachurin",
+                    "survey_step_2_raw": "startup",
+                    "apps": [
+                        {
+                            "sys_name": "createuser",
+                            "id": "15287"
+                        },
+                        {
+                            "sys_name": "dm1",
+                            "id": "15064"
+                        },
+                        {
+                            "sys_name": "dm",
+                            "id": "15063"
+                        }
+                    ]
+                },
+                "id": "ac9ff0bf-e5d8-4c45-9745-b4281ece363d",
+                "date": 1673260298000,
+                "comment": "Promo-code welcome",
+                "type": "promo",
+                "app_id": ""
+            },
+            {
+                "balance": 50,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Alex",
+                    "survey_step_1_raw": "rookie",
+                    "wallet_balance": 50,
+                    "country": "RU",
+                    "id": "oparin_alexandr@mail.ru",
+                    "survey_step_3_raw": "youtube",
+                    "last_name": "Oparin",
+                    "survey_step_2_raw": "startup"
+                },
+                "id": "75c9781e-1dba-414a-8389-dcbd6f98ea4a",
+                "date": 1673256240000,
+                "comment": "Promo-code welcome",
+                "type": "promo",
+                "app_id": ""
+            },
+            {
+                "balance": 50,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Anton",
+                    "survey_step_1_raw": "beginner",
+                    "wallet_balance": 167,
+                    "country": "RU",
+                    "id": "ant.angst@yandex.ru",
+                    "survey_step_3_raw": "zerocoder",
+                    "last_name": "Lozhkin",
+                    "survey_step_2_raw": "startup",
+                    "apps": [
+                        {
+                            "sys_name": "upgradeplatform",
+                            "id": "13360"
+                        }
+                    ]
+                },
+                "id": "f1783640-cfc0-479b-b038-80b07b71ab8d",
+                "date": 1673255359000,
+                "comment": "Promo-code WELCOME",
+                "type": "promo",
+                "app_id": ""
+            },
+            {
+                "balance": 50,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Anton",
+                    "survey_step_1_raw": "beginner",
+                    "wallet_balance": 167,
+                    "country": "RU",
+                    "id": "ant.angst@yandex.ru",
+                    "survey_step_3_raw": "zerocoder",
+                    "last_name": "Lozhkin",
+                    "survey_step_2_raw": "startup",
+                    "apps": [
+                        {
+                            "sys_name": "upgradeplatform",
+                            "id": "13360"
+                        }
+                    ]
+                },
+                "id": "a38b45b8-2da1-4af3-ae6e-f3c2ec81700c",
+                "date": 1673255190000,
+                "comment": "Promo-code HAPPYNEWYEAR",
+                "type": "promo",
+                "app_id": ""
+            },
+            {
+                "balance": 429,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Jonathan",
+                    "team_ids": [
+                        {
+                            "name": "Code world team",
+                            "tariff_id": "team_monthly",
+                            "id": "be38019c-2047-43aa-a9f8-8906a4ba0587",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Code world team 2",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "2c3bbf42-797a-49ba-a67f-831072248805",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "migo Team",
+                            "tariff_id": "team_monthly",
+                            "id": "bb1d4ab8-f481-4995-98f0-da6e1baf192e",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        }
+                    ],
+                    "survey_step_1_raw": "rookie",
+                    "wallet_balance": 0,
+                    "country": "PR",
+                    "id": "jonkotthoff@migoiq.app",
+                    "survey_step_3_raw": "customOption: google",
+                    "last_name": "Kotthoff",
+                    "survey_step_2_raw": "enterprise",
+                    "apps": [
+                        {
+                            "sys_name": "devmigoplatform",
+                            "id": "15232"
+                        },
+                        {
+                            "sys_name": "testcrmmigo",
+                            "id": "8743"
+                        },
+                        {
+                            "sys_name": "migoplatform",
+                            "id": "8742"
+                        }
+                    ]
+                },
+                "id": "28e070cc-ce6d-4d07-b043-c5a1fd7ac1c7",
+                "date": 1673254856000,
+                "receipt": "https://my.paddle.com/receipt/44618456-66118443/189950244-chre0f9721a4af1-b2839de01d",
+                "comment": "Payment from Credit card or Paypal",
+                "type": "paddle_payment",
+                "app_id": ""
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Andrey",
+                    "survey_step_1_raw": "developer_familiar_with_nocode",
+                    "wallet_balance": 75,
+                    "country": "RU",
+                    "id": "behomes.b2b@gmail.com",
+                    "survey_step_3_raw": "zerocoder",
+                    "last_name": "Sviridenko",
+                    "survey_step_2_raw": "enterprise",
+                    "apps": [
+                        {
+                            "sys_name": "behomes",
+                            "id": "13590"
+                        }
+                    ]
+                },
+                "id": "dd2600e1-3f47-444e-8fcc-76392e16f7ec",
+                "date": 1673254851000,
+                "comment": "App behomes (13590), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "behomes",
+                    "id": "13590"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Igor",
+                    "survey_step_1_raw": "rookie",
+                    "wallet_balance": 15.77,
+                    "country": "RU",
+                    "id": "okda@mail.ru",
+                    "survey_step_3_raw": "customOption: Creatium",
+                    "last_name": "Travkin",
+                    "survey_step_2_raw": "NPO",
+                    "apps": [
+                        {
+                            "sys_name": "orel",
+                            "id": "12955"
+                        }
+                    ]
+                },
+                "id": "7f5f5ab0-b50c-4a1a-b377-b2eb53103a65",
+                "date": 1673254849000,
+                "comment": "App orel (12955), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "orel",
+                    "id": "12955"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Maksim",
+                    "survey_step_1_raw": "rookie",
+                    "wallet_balance": -28,
+                    "country": "RU",
+                    "id": "mxmup@mail.ru",
+                    "survey_step_3_raw": "customOption: Web search",
+                    "last_name": "Protsenko",
+                    "survey_step_2_raw": "startup",
+                    "apps": [
+                        {
+                            "sys_name": "budgetmonitoring",
+                            "id": "14232"
+                        },
+                        {
+                            "sys_name": "prohelper",
+                            "id": "13580"
+                        }
+                    ]
+                },
+                "id": "4cc719da-373d-4c50-b22a-3bcecd05dfe3",
+                "date": 1673254849000,
+                "comment": "App budgetmonitoring (14232), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "budgetmonitoring",
+                    "id": "14232"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Pavel",
+                    "team_ids": [
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "59b12d65-6aef-4cf4-bda7-b4fd1bd02a32",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "FTM Agency",
+                            "tariff_id": "team_monthly",
+                            "id": "4b5c3318-9e08-4477-8bfe-f1e8cee9cce1",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "af048204-2d93-402a-9d7d-c7bfb95bda4c",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "46727f47-2c56-4833-89dd-aa76464e8eab",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "d1d2847d-6a60-4c7d-90d0-6a8a076e20b6",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "[test] AppSumo Tier",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "5003b645-65f9-4def-90a2-40b6cfa5ee18",
+                            "is_hidden": true,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "24b74108-e19d-475d-8772-37f0b31df133",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "24fe18d6-a0bd-44bd-9179-f7437938bf36",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "3d3cbc47-6414-44e4-9333-b64ae6d7c10c",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "1682daa5-0861-433e-8d34-e27d4caf3780",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "6c54ec46-9d07-4fb0-a0c3-8e8c38a868fc",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Dream-team",
+                            "tariff_id": "team_monthly",
+                            "id": "bc73f23b-9daf-435f-bca5-6ddcaa74e185",
+                            "is_hidden": true,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "5555bcb0-e4bd-4682-aaa6-2cd31ac7298b",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Vlad Kovalsky Team",
+                            "tariff_id": "team_monthly",
+                            "id": "f7d4dbda-c62c-427a-b562-deaae9edf1ad",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "My new team",
+                            "tariff_id": "team_monthly",
+                            "id": "6f58ecfd-9e3e-4475-b63c-b7e82359f06c",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "AppSumo Tier 1",
+                            "tariff_id": "AppSumo_tier1",
+                            "id": "a1019838-c902-4e70-b6dc-d89ba014e6c8",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Code world team 2",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "2c3bbf42-797a-49ba-a67f-831072248805",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "d76eff40-d0f3-4dce-a645-7fab00cef671",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "dopamine.team",
+                            "tariff_id": "team_monthly",
+                            "id": "2a6c0ec3-3796-45cb-8d01-3ab274da2a9e",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "1f722fd8-cc1c-4b2e-b76a-0a3755c56043",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "dbfc6e11-b26c-40a6-8caa-da3f142675ed",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "3859abca-9c8c-4411-8978-f353cf0d6921",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Code world team",
+                            "tariff_id": "team_monthly",
+                            "id": "be38019c-2047-43aa-a9f8-8906a4ba0587",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "2c588515-3a41-4957-9fc8-6dea28f275fb",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "f6280a15-85d9-4424-9a0d-411dbf9cbc93",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Max Lykov team",
+                            "tariff_id": "team_monthly",
+                            "id": "c8105c7f-f1f4-4991-8d23-7584ba401c2c",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Alex Orlov team",
+                            "tariff_id": "team_yearly",
+                            "id": "c1ab7192-ae41-4f17-a571-38acf10602f7",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Lifetime deal",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "0f969867-941d-46ea-a0be-3d3db0a5e3dd",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "34f3e17a-e71e-4385-a6d6-011e50e2df52",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Nikita Dolgov team",
+                            "tariff_id": "team_monthly",
+                            "id": "370620d6-e18a-4bc6-8b3d-c432f7c391d5",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "fb07f7bf-7202-4e85-8221-0ae090d6975c",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Oleg team",
+                            "tariff_id": "team_monthly",
+                            "id": "0513db3f-2227-445c-b760-c789ddac6f79",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Anna's team",
+                            "tariff_id": "team_monthly",
+                            "id": "60063caf-9c5d-439f-b2b7-ca62a1804b3d",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "9906f648-bca3-489c-b5c9-fc8c629fd037",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Dream team",
+                            "tariff_id": "team_monthly",
+                            "id": "1aef6239-b432-4086-8bd6-05664eafd2b0",
+                            "is_hidden": false,
+                            "current_seats": 3
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "e82f9a6f-bf3a-4869-bd74-eba52a0756b5",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Zerocoder: Directual от 0 до PRO",
+                            "tariff_id": "Zerocoder-education",
+                            "id": "5eceb369-79f2-4d45-baf1-0a9b20225f1e",
+                            "is_hidden": true,
+                            "current_seats": 1
+                        }
+                    ],
+                    "survey_step_1_raw": "developer_new_to_nocode",
+                    "wallet_balance": 125.41,
+                    "country": "Undefined",
+                    "id": "pavel@directual.com",
+                    "survey_step_3_raw": "producthunt",
+                    "last_name": "Ershov",
+                    "survey_step_2_raw": "university",
+                    "apps": [
+                        {
+                            "sys_name": "test-app-0011",
+                            "id": "15231"
+                        },
+                        {
+                            "sys_name": "code-redemption",
+                            "id": "15029"
+                        },
+                        {
+                            "sys_name": "hey-hoy",
+                            "id": "15027"
+                        },
+                        {
+                            "sys_name": "nft",
+                            "id": "14644"
+                        },
+                        {
+                            "sys_name": "mentor",
+                            "id": "14637"
+                        },
+                        {
+                            "sys_name": "test-limit",
+                            "id": "14027"
+                        },
+                        {
+                            "sys_name": "showcase-store",
+                            "id": "13182"
+                        },
+                        {
+                            "sys_name": "fpsform-test",
+                            "id": "13181"
+                        },
+                        {
+                            "sys_name": "bot-snapshot",
+                            "id": "13174"
+                        },
+                        {
+                            "sys_name": "talkbank-test",
+                            "id": "13120"
+                        },
+                        {
+                            "sys_name": "my-team-app",
+                            "id": "12983"
+                        },
+                        {
+                            "sys_name": "mig",
+                            "id": "11537"
+                        },
+                        {
+                            "sys_name": "tg-demo",
+                            "id": "11488"
+                        },
+                        {
+                            "sys_name": "showcase-attractions",
+                            "id": "11307"
+                        },
+                        {
+                            "sys_name": "showcase-imdb",
+                            "id": "11306"
+                        },
+                        {
+                            "sys_name": "basic-template",
+                            "id": "11264"
+                        },
+                        {
+                            "sys_name": "password-reset",
+                            "id": "10996"
+                        },
+                        {
+                            "sys_name": "web-plugins",
+                            "id": "10926"
+                        },
+                        {
+                            "sys_name": "japanapp",
+                            "id": "10884"
+                        },
+                        {
+                            "sys_name": "masters",
+                            "id": "10818"
+                        },
+                        {
+                            "sys_name": "jj",
+                            "id": "10594"
+                        },
+                        {
+                            "sys_name": "bootcamp-marketplace",
+                            "id": "10547"
+                        },
+                        {
+                            "sys_name": "marketplace",
+                            "id": "10009"
+                        },
+                        {
+                            "sys_name": "draftbit",
+                            "id": "9988"
+                        },
+                        {
+                            "sys_name": "dashboard",
+                            "id": "9674"
+                        },
+                        {
+                            "sys_name": "bootcamps",
+                            "id": "9660"
+                        },
+                        {
+                            "sys_name": "tuishou-alfa",
+                            "id": "9544"
+                        },
+                        {
+                            "sys_name": "testfiles",
+                            "id": "9337"
+                        },
+                        {
+                            "sys_name": "tuishou",
+                            "id": "9312"
+                        },
+                        {
+                            "sys_name": "students",
+                            "id": "8750"
+                        },
+                        {
+                            "sys_name": "webhook-parsing",
+                            "id": "8084"
+                        },
+                        {
+                            "sys_name": "weather-app",
+                            "id": "7813"
+                        },
+                        {
+                            "sys_name": "my-sandbox",
+                            "id": "7767"
+                        },
+                        {
+                            "sys_name": "my-app-as",
+                            "id": "7510"
+                        },
+                        {
+                            "sys_name": "sessionid",
+                            "id": "7498"
+                        },
+                        {
+                            "sys_name": "dev-pipeline",
+                            "id": "6948"
+                        },
+                        {
+                            "sys_name": "import-v6",
+                            "id": "6912"
+                        },
+                        {
+                            "sys_name": "dev",
+                            "id": "6829"
+                        },
+                        {
+                            "sys_name": "directual-groupbot",
+                            "id": "6470"
+                        },
+                        {
+                            "sys_name": "airtable",
+                            "id": "6419"
+                        },
+                        {
+                            "sys_name": "final-fps-test",
+                            "id": "6238"
+                        },
+                        {
+                            "sys_name": "new-fps-layout",
+                            "id": "6166"
+                        },
+                        {
+                            "sys_name": "tanera",
+                            "id": "6082"
+                        },
+                        {
+                            "sys_name": "crm-demo",
+                            "id": "6033"
+                        },
+                        {
+                            "sys_name": "productstar",
+                            "id": "5925"
+                        },
+                        {
+                            "sys_name": "new-library",
+                            "id": "5420"
+                        },
+                        {
+                            "sys_name": "how-to-auth",
+                            "id": "5022"
+                        },
+                        {
+                            "sys_name": "approval-system",
+                            "id": "4575"
+                        },
+                        {
+                            "sys_name": "test-bot",
+                            "id": "4456"
+                        },
+                        {
+                            "sys_name": "hello-there",
+                            "id": "4337"
+                        },
+                        {
+                            "sys_name": "test-webuser",
+                            "id": "4284"
+                        },
+                        {
+                            "sys_name": "temaplate-crm",
+                            "id": "4083"
+                        },
+                        {
+                            "sys_name": "ZerocodeCRM",
+                            "id": "3973"
+                        },
+                        {
+                            "sys_name": "nocode",
+                            "id": "3799"
+                        },
+                        {
+                            "sys_name": "gdfvfbvsgdvb",
+                            "id": "3074"
+                        },
+                        {
+                            "sys_name": "React-boilerplate",
+                            "id": "2950"
+                        },
+                        {
+                            "sys_name": "telegram_ibot",
+                            "id": "2882"
+                        },
+                        {
+                            "sys_name": "0qode-workshop",
+                            "id": "2868"
+                        },
+                        {
+                            "sys_name": "Generate_data_Directual_academy",
+                            "id": "2595"
+                        },
+                        {
+                            "sys_name": "directual-site",
+                            "id": "1822"
+                        }
+                    ]
+                },
+                "id": "c010e6da-c0aa-4240-9a31-9647084f6bad",
+                "date": 1673254849000,
+                "comment": "App nft (14644), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "nft",
+                    "id": "14644"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Stephan",
+                    "survey_step_1_raw": "developer_familiar_with_nocode",
+                    "wallet_balance": 42,
+                    "country": "TR",
+                    "id": "89154252413@mail.ru",
+                    "survey_step_3_raw": "zerocoder",
+                    "last_name": "Kor",
+                    "survey_step_2_raw": "government",
+                    "apps": [
+                        {
+                            "sys_name": "dafa",
+                            "id": "15005"
+                        },
+                        {
+                            "sys_name": "check",
+                            "id": "15004"
+                        },
+                        {
+                            "sys_name": "sneakersmarketplace",
+                            "id": "14988"
+                        }
+                    ]
+                },
+                "id": "0207cc0f-316a-44c8-b391-560b26ba3828",
+                "date": 1673254849000,
+                "comment": "App sneakersmarketplace (14988), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "sneakersmarketplace",
+                    "id": "14988"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -429,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Jonathan",
+                    "team_ids": [
+                        {
+                            "name": "Code world team",
+                            "tariff_id": "team_monthly",
+                            "id": "be38019c-2047-43aa-a9f8-8906a4ba0587",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Code world team 2",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "2c3bbf42-797a-49ba-a67f-831072248805",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "migo Team",
+                            "tariff_id": "team_monthly",
+                            "id": "bb1d4ab8-f481-4995-98f0-da6e1baf192e",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        }
+                    ],
+                    "survey_step_1_raw": "rookie",
+                    "wallet_balance": 0,
+                    "country": "PR",
+                    "id": "jonkotthoff@migoiq.app",
+                    "survey_step_3_raw": "customOption: google",
+                    "last_name": "Kotthoff",
+                    "survey_step_2_raw": "enterprise",
+                    "apps": [
+                        {
+                            "sys_name": "devmigoplatform",
+                            "id": "15232"
+                        },
+                        {
+                            "sys_name": "testcrmmigo",
+                            "id": "8743"
+                        },
+                        {
+                            "sys_name": "migoplatform",
+                            "id": "8742"
+                        }
+                    ]
+                },
+                "id": "a758b712-971e-442f-89b3-b86a618d6e56",
+                "date": 1673254848000,
+                "comment": "App migoplatform (8742), license payment, plan Business",
+                "app_id": {
+                    "sysName": "migoplatform",
+                    "team_id": "bb1d4ab8-f481-4995-98f0-da6e1baf192e",
+                    "id": "8742"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -2,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Pavel",
+                    "team_ids": [
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "59b12d65-6aef-4cf4-bda7-b4fd1bd02a32",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "FTM Agency",
+                            "tariff_id": "team_monthly",
+                            "id": "4b5c3318-9e08-4477-8bfe-f1e8cee9cce1",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "af048204-2d93-402a-9d7d-c7bfb95bda4c",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "46727f47-2c56-4833-89dd-aa76464e8eab",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "d1d2847d-6a60-4c7d-90d0-6a8a076e20b6",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "[test] AppSumo Tier",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "5003b645-65f9-4def-90a2-40b6cfa5ee18",
+                            "is_hidden": true,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "24b74108-e19d-475d-8772-37f0b31df133",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "24fe18d6-a0bd-44bd-9179-f7437938bf36",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "3d3cbc47-6414-44e4-9333-b64ae6d7c10c",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "1682daa5-0861-433e-8d34-e27d4caf3780",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "6c54ec46-9d07-4fb0-a0c3-8e8c38a868fc",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Dream-team",
+                            "tariff_id": "team_monthly",
+                            "id": "bc73f23b-9daf-435f-bca5-6ddcaa74e185",
+                            "is_hidden": true,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "5555bcb0-e4bd-4682-aaa6-2cd31ac7298b",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Vlad Kovalsky Team",
+                            "tariff_id": "team_monthly",
+                            "id": "f7d4dbda-c62c-427a-b562-deaae9edf1ad",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "My new team",
+                            "tariff_id": "team_monthly",
+                            "id": "6f58ecfd-9e3e-4475-b63c-b7e82359f06c",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "AppSumo Tier 1",
+                            "tariff_id": "AppSumo_tier1",
+                            "id": "a1019838-c902-4e70-b6dc-d89ba014e6c8",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Code world team 2",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "2c3bbf42-797a-49ba-a67f-831072248805",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "d76eff40-d0f3-4dce-a645-7fab00cef671",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "dopamine.team",
+                            "tariff_id": "team_monthly",
+                            "id": "2a6c0ec3-3796-45cb-8d01-3ab274da2a9e",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "1f722fd8-cc1c-4b2e-b76a-0a3755c56043",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "dbfc6e11-b26c-40a6-8caa-da3f142675ed",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "3859abca-9c8c-4411-8978-f353cf0d6921",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Code world team",
+                            "tariff_id": "team_monthly",
+                            "id": "be38019c-2047-43aa-a9f8-8906a4ba0587",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "2c588515-3a41-4957-9fc8-6dea28f275fb",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "f6280a15-85d9-4424-9a0d-411dbf9cbc93",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Max Lykov team",
+                            "tariff_id": "team_monthly",
+                            "id": "c8105c7f-f1f4-4991-8d23-7584ba401c2c",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Alex Orlov team",
+                            "tariff_id": "team_yearly",
+                            "id": "c1ab7192-ae41-4f17-a571-38acf10602f7",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Lifetime deal",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "0f969867-941d-46ea-a0be-3d3db0a5e3dd",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "34f3e17a-e71e-4385-a6d6-011e50e2df52",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Nikita Dolgov team",
+                            "tariff_id": "team_monthly",
+                            "id": "370620d6-e18a-4bc6-8b3d-c432f7c391d5",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "fb07f7bf-7202-4e85-8221-0ae090d6975c",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Oleg team",
+                            "tariff_id": "team_monthly",
+                            "id": "0513db3f-2227-445c-b760-c789ddac6f79",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Anna's team",
+                            "tariff_id": "team_monthly",
+                            "id": "60063caf-9c5d-439f-b2b7-ca62a1804b3d",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "9906f648-bca3-489c-b5c9-fc8c629fd037",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Dream team",
+                            "tariff_id": "team_monthly",
+                            "id": "1aef6239-b432-4086-8bd6-05664eafd2b0",
+                            "is_hidden": false,
+                            "current_seats": 3
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "e82f9a6f-bf3a-4869-bd74-eba52a0756b5",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Zerocoder: Directual от 0 до PRO",
+                            "tariff_id": "Zerocoder-education",
+                            "id": "5eceb369-79f2-4d45-baf1-0a9b20225f1e",
+                            "is_hidden": true,
+                            "current_seats": 1
+                        }
+                    ],
+                    "survey_step_1_raw": "developer_new_to_nocode",
+                    "wallet_balance": 125.41,
+                    "country": "Undefined",
+                    "id": "pavel@directual.com",
+                    "survey_step_3_raw": "producthunt",
+                    "last_name": "Ershov",
+                    "survey_step_2_raw": "university",
+                    "apps": [
+                        {
+                            "sys_name": "test-app-0011",
+                            "id": "15231"
+                        },
+                        {
+                            "sys_name": "code-redemption",
+                            "id": "15029"
+                        },
+                        {
+                            "sys_name": "hey-hoy",
+                            "id": "15027"
+                        },
+                        {
+                            "sys_name": "nft",
+                            "id": "14644"
+                        },
+                        {
+                            "sys_name": "mentor",
+                            "id": "14637"
+                        },
+                        {
+                            "sys_name": "test-limit",
+                            "id": "14027"
+                        },
+                        {
+                            "sys_name": "showcase-store",
+                            "id": "13182"
+                        },
+                        {
+                            "sys_name": "fpsform-test",
+                            "id": "13181"
+                        },
+                        {
+                            "sys_name": "bot-snapshot",
+                            "id": "13174"
+                        },
+                        {
+                            "sys_name": "talkbank-test",
+                            "id": "13120"
+                        },
+                        {
+                            "sys_name": "my-team-app",
+                            "id": "12983"
+                        },
+                        {
+                            "sys_name": "mig",
+                            "id": "11537"
+                        },
+                        {
+                            "sys_name": "tg-demo",
+                            "id": "11488"
+                        },
+                        {
+                            "sys_name": "showcase-attractions",
+                            "id": "11307"
+                        },
+                        {
+                            "sys_name": "showcase-imdb",
+                            "id": "11306"
+                        },
+                        {
+                            "sys_name": "basic-template",
+                            "id": "11264"
+                        },
+                        {
+                            "sys_name": "password-reset",
+                            "id": "10996"
+                        },
+                        {
+                            "sys_name": "web-plugins",
+                            "id": "10926"
+                        },
+                        {
+                            "sys_name": "japanapp",
+                            "id": "10884"
+                        },
+                        {
+                            "sys_name": "masters",
+                            "id": "10818"
+                        },
+                        {
+                            "sys_name": "jj",
+                            "id": "10594"
+                        },
+                        {
+                            "sys_name": "bootcamp-marketplace",
+                            "id": "10547"
+                        },
+                        {
+                            "sys_name": "marketplace",
+                            "id": "10009"
+                        },
+                        {
+                            "sys_name": "draftbit",
+                            "id": "9988"
+                        },
+                        {
+                            "sys_name": "dashboard",
+                            "id": "9674"
+                        },
+                        {
+                            "sys_name": "bootcamps",
+                            "id": "9660"
+                        },
+                        {
+                            "sys_name": "tuishou-alfa",
+                            "id": "9544"
+                        },
+                        {
+                            "sys_name": "testfiles",
+                            "id": "9337"
+                        },
+                        {
+                            "sys_name": "tuishou",
+                            "id": "9312"
+                        },
+                        {
+                            "sys_name": "students",
+                            "id": "8750"
+                        },
+                        {
+                            "sys_name": "webhook-parsing",
+                            "id": "8084"
+                        },
+                        {
+                            "sys_name": "weather-app",
+                            "id": "7813"
+                        },
+                        {
+                            "sys_name": "my-sandbox",
+                            "id": "7767"
+                        },
+                        {
+                            "sys_name": "my-app-as",
+                            "id": "7510"
+                        },
+                        {
+                            "sys_name": "sessionid",
+                            "id": "7498"
+                        },
+                        {
+                            "sys_name": "dev-pipeline",
+                            "id": "6948"
+                        },
+                        {
+                            "sys_name": "import-v6",
+                            "id": "6912"
+                        },
+                        {
+                            "sys_name": "dev",
+                            "id": "6829"
+                        },
+                        {
+                            "sys_name": "directual-groupbot",
+                            "id": "6470"
+                        },
+                        {
+                            "sys_name": "airtable",
+                            "id": "6419"
+                        },
+                        {
+                            "sys_name": "final-fps-test",
+                            "id": "6238"
+                        },
+                        {
+                            "sys_name": "new-fps-layout",
+                            "id": "6166"
+                        },
+                        {
+                            "sys_name": "tanera",
+                            "id": "6082"
+                        },
+                        {
+                            "sys_name": "crm-demo",
+                            "id": "6033"
+                        },
+                        {
+                            "sys_name": "productstar",
+                            "id": "5925"
+                        },
+                        {
+                            "sys_name": "new-library",
+                            "id": "5420"
+                        },
+                        {
+                            "sys_name": "how-to-auth",
+                            "id": "5022"
+                        },
+                        {
+                            "sys_name": "approval-system",
+                            "id": "4575"
+                        },
+                        {
+                            "sys_name": "test-bot",
+                            "id": "4456"
+                        },
+                        {
+                            "sys_name": "hello-there",
+                            "id": "4337"
+                        },
+                        {
+                            "sys_name": "test-webuser",
+                            "id": "4284"
+                        },
+                        {
+                            "sys_name": "temaplate-crm",
+                            "id": "4083"
+                        },
+                        {
+                            "sys_name": "ZerocodeCRM",
+                            "id": "3973"
+                        },
+                        {
+                            "sys_name": "nocode",
+                            "id": "3799"
+                        },
+                        {
+                            "sys_name": "gdfvfbvsgdvb",
+                            "id": "3074"
+                        },
+                        {
+                            "sys_name": "React-boilerplate",
+                            "id": "2950"
+                        },
+                        {
+                            "sys_name": "telegram_ibot",
+                            "id": "2882"
+                        },
+                        {
+                            "sys_name": "0qode-workshop",
+                            "id": "2868"
+                        },
+                        {
+                            "sys_name": "Generate_data_Directual_academy",
+                            "id": "2595"
+                        },
+                        {
+                            "sys_name": "directual-site",
+                            "id": "1822"
+                        }
+                    ]
+                },
+                "id": "194302af-a0ab-4c07-9d55-fa68761d4daa",
+                "date": 1673254834000,
+                "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                "app_id": {
+                    "sysName": "directual-site",
+                    "team_id": "1aef6239-b432-4086-8bd6-05664eafd2b0",
+                    "id": "1822"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Артур",
+                    "survey_step_1_raw": "beginner",
+                    "wallet_balance": 3,
+                    "country": "RU",
+                    "id": "arturjarov89@gmail.com",
+                    "survey_step_3_raw": "customOption: Productstar",
+                    "last_name": "Ярославов",
+                    "survey_step_2_raw": "university",
+                    "apps": [
+                        {
+                            "sys_name": "tildademo",
+                            "id": "15295"
+                        },
+                        {
+                            "sys_name": "recrutssearch",
+                            "id": "15285"
+                        },
+                        {
+                            "sys_name": "crmnocode",
+                            "id": "15279"
+                        },
+                        {
+                            "sys_name": "fruitcrm2023",
+                            "id": "15270"
+                        },
+                        {
+                            "sys_name": "treker2023taxi",
+                            "id": "15253"
+                        }
+                    ]
+                },
+                "id": "f59b5111-5fcc-4883-9c03-e25e07b0c4ff",
+                "date": 1673253957000,
+                "comment": "Create app recrutssearch, plan Startup-monthly",
+                "type": "app_payment",
+                "app_id": ""
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Арсен",
+                    "survey_step_1_raw": "beginner",
+                    "wallet_balance": 61,
+                    "country": "RU",
+                    "id": "safarana0405@gmail.com",
+                    "survey_step_3_raw": "friends",
+                    "last_name": "Сафарян",
+                    "survey_step_2_raw": "personal_use",
+                    "apps": [
+                        {
+                            "sys_name": "5645",
+                            "id": "15283"
+                        },
+                        {
+                            "sys_name": "enclavezxc",
+                            "id": "14143"
+                        }
+                    ]
+                },
+                "id": "d57675f9-5b7d-4b0e-95d1-cd419a7bb132",
+                "date": 1673251279000,
+                "comment": "Create app 5645, plan Startup-monthly",
+                "type": "app_payment",
+                "app_id": ""
+            },
+            {
+                "balance": 100,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Арсен",
+                    "survey_step_1_raw": "beginner",
+                    "wallet_balance": 61,
+                    "country": "RU",
+                    "id": "safarana0405@gmail.com",
+                    "survey_step_3_raw": "friends",
+                    "last_name": "Сафарян",
+                    "survey_step_2_raw": "personal_use",
+                    "apps": [
+                        {
+                            "sys_name": "5645",
+                            "id": "15283"
+                        },
+                        {
+                            "sys_name": "enclavezxc",
+                            "id": "14143"
+                        }
+                    ]
+                },
+                "id": "a6cb5fd9-1c30-41f0-9897-4b4a244c0c7f",
+                "date": 1673251223000,
+                "comment": "Promo-code PRODUCTHUNT",
+                "type": "promo",
+                "app_id": ""
+            },
+            {
+                "balance": 140,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Adel",
+                    "survey_step_1_raw": "pro_nocoder",
+                    "wallet_balance": 0.02,
+                    "country": "KG",
+                    "id": "kadyrovadel.i@yandex.ru",
+                    "survey_step_3_raw": "zerocoder",
+                    "last_name": "Kadyrov",
+                    "survey_step_2_raw": "startup",
+                    "apps": [
+                        {
+                            "sys_name": "kale-care",
+                            "id": "11750"
+                        }
+                    ]
+                },
+                "id": "26ade22c-5a19-47ba-b161-2d69e7c4bc06",
+                "date": 1673222695000,
+                "comment": "Adding funds via Tinkoff 9520.0 ₽ → 140.0 D-coins",
+                "type": "tinkoff",
+                "app_id": ""
+            },
+            {
+                "balance": 50,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Данил",
+                    "survey_step_1_raw": "beginner",
+                    "wallet_balance": 50,
+                    "country": "DE",
+                    "id": "danil@mways.ru",
+                    "survey_step_3_raw": "friends",
+                    "last_name": "Попов",
+                    "survey_step_2_raw": "SMB",
+                    "apps": [
+                        {
+                            "sys_name": "zvuk",
+                            "id": "15044"
+                        }
+                    ]
+                },
+                "id": "780a9431-8346-4f6c-a4fc-45ab48db4bd9",
+                "date": 1673184252000,
+                "comment": "Promo-code HAPPYNEWYEAR",
+                "type": "promo",
+                "app_id": ""
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Артур",
+                    "survey_step_1_raw": "beginner",
+                    "wallet_balance": 3,
+                    "country": "RU",
+                    "id": "arturjarov89@gmail.com",
+                    "survey_step_3_raw": "customOption: Productstar",
+                    "last_name": "Ярославов",
+                    "survey_step_2_raw": "university",
+                    "apps": [
+                        {
+                            "sys_name": "tildademo",
+                            "id": "15295"
+                        },
+                        {
+                            "sys_name": "recrutssearch",
+                            "id": "15285"
+                        },
+                        {
+                            "sys_name": "crmnocode",
+                            "id": "15279"
+                        },
+                        {
+                            "sys_name": "fruitcrm2023",
+                            "id": "15270"
+                        },
+                        {
+                            "sys_name": "treker2023taxi",
+                            "id": "15253"
+                        }
+                    ]
+                },
+                "id": "18875566-91f4-4887-b06e-c55222227036",
+                "date": 1673180758000,
+                "comment": "Create app fruitcrm2023, plan Startup-monthly",
+                "type": "app_payment",
+                "app_id": ""
+            },
+            {
+                "balance": 39.18,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Sergey",
+                    "survey_step_1_raw": "beginner",
+                    "wallet_balance": 0,
+                    "country": "UZ",
+                    "id": "sergey.vv.andreev@gmail.com",
+                    "survey_step_3_raw": "friends",
+                    "last_name": "Andreev",
+                    "survey_step_2_raw": "personal_use",
+                    "apps": [
+                        {
+                            "sys_name": "eight",
+                            "id": "14599"
+                        }
+                    ]
+                },
+                "id": "3d20c710-12aa-4937-b208-8b275480b3be",
+                "date": 1673168438000,
+                "receipt": "https://my.paddle.com/receipt/43455809-66028238/184403924-chre8306cb8c108-5f2f71a74c",
+                "comment": "Payment from Credit card or Paypal",
+                "type": "paddle_payment",
+                "app_id": ""
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Денис",
+                    "survey_step_1_raw": "customOption: .",
+                    "wallet_balance": -36,
+                    "country": "RU",
+                    "id": "stratienko.dv@gmail.com",
+                    "survey_step_3_raw": "customOption: productstar",
+                    "last_name": "Стратиенко",
+                    "survey_step_2_raw": "personal_use",
+                    "apps": [
+                        {
+                            "sys_name": "product-star-csr",
+                            "id": "14956"
+                        },
+                        {
+                            "sys_name": "productstar-csr",
+                            "id": "14954"
+                        }
+                    ]
+                },
+                "id": "fb46259d-d395-4169-8ef7-9d9a73edbd0e",
+                "date": 1673168433000,
+                "comment": "App product-star-csr (14956), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "product-star-csr",
+                    "id": "14956"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": true,
+                    "first_name": "Nikita",
+                    "team_ids": [
+                        {
+                            "name": "Chicago bulls",
+                            "tariff_id": "team_monthly",
+                            "id": "b54c3a4c-0c72-4329-8894-e454faa36a9f",
+                            "is_hidden": true,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "Dream team",
+                            "tariff_id": "team_monthly",
+                            "id": "006886d0-f153-4fdf-962b-e38e85e64d69",
+                            "is_hidden": true,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "Max Lykov team",
+                            "tariff_id": "team_monthly",
+                            "id": "c8105c7f-f1f4-4991-8d23-7584ba401c2c",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Lifetime deal",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "0f969867-941d-46ea-a0be-3d3db0a5e3dd",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Dream team",
+                            "tariff_id": "team_monthly",
+                            "id": "1aef6239-b432-4086-8bd6-05664eafd2b0",
+                            "is_hidden": false,
+                            "current_seats": 3
+                        }
+                    ],
+                    "wallet_balance": -25.0509,
+                    "country": "DE",
+                    "id": "nikita@directual.com",
+                    "last_name": "Navalikhin",
+                    "apps": [
+                        {
+                            "sys_name": "testspeed1",
+                            "id": "14709"
+                        },
+                        {
+                            "sys_name": "nftairdrop",
+                            "id": "14635"
+                        },
+                        {
+                            "sys_name": "metashop",
+                            "id": "13231"
+                        },
+                        {
+                            "sys_name": "testbuglinksaving",
+                            "id": "13195"
+                        },
+                        {
+                            "sys_name": "web3test",
+                            "id": "13179"
+                        },
+                        {
+                            "sys_name": "rolostestapp",
+                            "id": "12579"
+                        },
+                        {
+                            "sys_name": "testapp1122",
+                            "id": "12577"
+                        },
+                        {
+                            "sys_name": "sdds",
+                            "id": "12499"
+                        },
+                        {
+                            "sys_name": "hash",
+                            "id": "12188"
+                        },
+                        {
+                            "sys_name": "eth",
+                            "id": "12187"
+                        },
+                        {
+                            "sys_name": "coinalerts",
+                            "id": "10724"
+                        },
+                        {
+                            "sys_name": "testteamplan",
+                            "id": "7856"
+                        },
+                        {
+                            "sys_name": "testuserpic",
+                            "id": "7793"
+                        },
+                        {
+                            "sys_name": "testsdsdsdds",
+                            "id": "7704"
+                        },
+                        {
+                            "sys_name": "testappsumo",
+                            "id": "7530"
+                        },
+                        {
+                            "sys_name": "testtariff",
+                            "id": "7516"
+                        },
+                        {
+                            "sys_name": "crmtest2",
+                            "id": "7413"
+                        },
+                        {
+                            "sys_name": "whoismyuser",
+                            "id": "7365"
+                        },
+                        {
+                            "sys_name": "smarthouse777",
+                            "id": "7067"
+                        },
+                        {
+                            "sys_name": "dev2",
+                            "id": "6886"
+                        },
+                        {
+                            "sys_name": "nikita",
+                            "id": "6550"
+                        }
+                    ]
+                },
+                "id": "bc8f0e7b-85a4-47ef-b957-d723b93d8d17",
+                "date": 1673168433000,
+                "comment": "App nftairdrop (14635), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "nftairdrop",
+                    "id": "14635"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Anastasia",
+                    "survey_step_1_raw": "rookie",
+                    "wallet_balance": 22,
+                    "country": "BY",
+                    "id": "ansumar19@gmail.com",
+                    "survey_step_3_raw": "friends",
+                    "last_name": "Blium",
+                    "survey_step_2_raw": "clients_agency",
+                    "apps": [
+                        {
+                            "sys_name": "bookiedookie",
+                            "id": "14975"
+                        }
+                    ]
+                },
+                "id": "d1fc2a0f-2165-4427-a7af-c65897be57e9",
+                "date": 1673168433000,
+                "comment": "App bookiedookie (14975), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "bookiedookie",
+                    "id": "14975"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Pavel",
+                    "team_ids": [
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "59b12d65-6aef-4cf4-bda7-b4fd1bd02a32",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "FTM Agency",
+                            "tariff_id": "team_monthly",
+                            "id": "4b5c3318-9e08-4477-8bfe-f1e8cee9cce1",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "af048204-2d93-402a-9d7d-c7bfb95bda4c",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "46727f47-2c56-4833-89dd-aa76464e8eab",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "d1d2847d-6a60-4c7d-90d0-6a8a076e20b6",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "[test] AppSumo Tier",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "5003b645-65f9-4def-90a2-40b6cfa5ee18",
+                            "is_hidden": true,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "24b74108-e19d-475d-8772-37f0b31df133",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "24fe18d6-a0bd-44bd-9179-f7437938bf36",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "3d3cbc47-6414-44e4-9333-b64ae6d7c10c",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "1682daa5-0861-433e-8d34-e27d4caf3780",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "6c54ec46-9d07-4fb0-a0c3-8e8c38a868fc",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Dream-team",
+                            "tariff_id": "team_monthly",
+                            "id": "bc73f23b-9daf-435f-bca5-6ddcaa74e185",
+                            "is_hidden": true,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "5555bcb0-e4bd-4682-aaa6-2cd31ac7298b",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Vlad Kovalsky Team",
+                            "tariff_id": "team_monthly",
+                            "id": "f7d4dbda-c62c-427a-b562-deaae9edf1ad",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "My new team",
+                            "tariff_id": "team_monthly",
+                            "id": "6f58ecfd-9e3e-4475-b63c-b7e82359f06c",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "AppSumo Tier 1",
+                            "tariff_id": "AppSumo_tier1",
+                            "id": "a1019838-c902-4e70-b6dc-d89ba014e6c8",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Code world team 2",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "2c3bbf42-797a-49ba-a67f-831072248805",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "d76eff40-d0f3-4dce-a645-7fab00cef671",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "dopamine.team",
+                            "tariff_id": "team_monthly",
+                            "id": "2a6c0ec3-3796-45cb-8d01-3ab274da2a9e",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "1f722fd8-cc1c-4b2e-b76a-0a3755c56043",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "dbfc6e11-b26c-40a6-8caa-da3f142675ed",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "3859abca-9c8c-4411-8978-f353cf0d6921",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Code world team",
+                            "tariff_id": "team_monthly",
+                            "id": "be38019c-2047-43aa-a9f8-8906a4ba0587",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "2c588515-3a41-4957-9fc8-6dea28f275fb",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "f6280a15-85d9-4424-9a0d-411dbf9cbc93",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Max Lykov team",
+                            "tariff_id": "team_monthly",
+                            "id": "c8105c7f-f1f4-4991-8d23-7584ba401c2c",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Alex Orlov team",
+                            "tariff_id": "team_yearly",
+                            "id": "c1ab7192-ae41-4f17-a571-38acf10602f7",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Lifetime deal",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "0f969867-941d-46ea-a0be-3d3db0a5e3dd",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "34f3e17a-e71e-4385-a6d6-011e50e2df52",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Nikita Dolgov team",
+                            "tariff_id": "team_monthly",
+                            "id": "370620d6-e18a-4bc6-8b3d-c432f7c391d5",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "fb07f7bf-7202-4e85-8221-0ae090d6975c",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Oleg team",
+                            "tariff_id": "team_monthly",
+                            "id": "0513db3f-2227-445c-b760-c789ddac6f79",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Anna's team",
+                            "tariff_id": "team_monthly",
+                            "id": "60063caf-9c5d-439f-b2b7-ca62a1804b3d",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "9906f648-bca3-489c-b5c9-fc8c629fd037",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Dream team",
+                            "tariff_id": "team_monthly",
+                            "id": "1aef6239-b432-4086-8bd6-05664eafd2b0",
+                            "is_hidden": false,
+                            "current_seats": 3
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "e82f9a6f-bf3a-4869-bd74-eba52a0756b5",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Zerocoder: Directual от 0 до PRO",
+                            "tariff_id": "Zerocoder-education",
+                            "id": "5eceb369-79f2-4d45-baf1-0a9b20225f1e",
+                            "is_hidden": true,
+                            "current_seats": 1
+                        }
+                    ],
+                    "survey_step_1_raw": "developer_new_to_nocode",
+                    "wallet_balance": 125.41,
+                    "country": "Undefined",
+                    "id": "pavel@directual.com",
+                    "survey_step_3_raw": "producthunt",
+                    "last_name": "Ershov",
+                    "survey_step_2_raw": "university",
+                    "apps": [
+                        {
+                            "sys_name": "test-app-0011",
+                            "id": "15231"
+                        },
+                        {
+                            "sys_name": "code-redemption",
+                            "id": "15029"
+                        },
+                        {
+                            "sys_name": "hey-hoy",
+                            "id": "15027"
+                        },
+                        {
+                            "sys_name": "nft",
+                            "id": "14644"
+                        },
+                        {
+                            "sys_name": "mentor",
+                            "id": "14637"
+                        },
+                        {
+                            "sys_name": "test-limit",
+                            "id": "14027"
+                        },
+                        {
+                            "sys_name": "showcase-store",
+                            "id": "13182"
+                        },
+                        {
+                            "sys_name": "fpsform-test",
+                            "id": "13181"
+                        },
+                        {
+                            "sys_name": "bot-snapshot",
+                            "id": "13174"
+                        },
+                        {
+                            "sys_name": "talkbank-test",
+                            "id": "13120"
+                        },
+                        {
+                            "sys_name": "my-team-app",
+                            "id": "12983"
+                        },
+                        {
+                            "sys_name": "mig",
+                            "id": "11537"
+                        },
+                        {
+                            "sys_name": "tg-demo",
+                            "id": "11488"
+                        },
+                        {
+                            "sys_name": "showcase-attractions",
+                            "id": "11307"
+                        },
+                        {
+                            "sys_name": "showcase-imdb",
+                            "id": "11306"
+                        },
+                        {
+                            "sys_name": "basic-template",
+                            "id": "11264"
+                        },
+                        {
+                            "sys_name": "password-reset",
+                            "id": "10996"
+                        },
+                        {
+                            "sys_name": "web-plugins",
+                            "id": "10926"
+                        },
+                        {
+                            "sys_name": "japanapp",
+                            "id": "10884"
+                        },
+                        {
+                            "sys_name": "masters",
+                            "id": "10818"
+                        },
+                        {
+                            "sys_name": "jj",
+                            "id": "10594"
+                        },
+                        {
+                            "sys_name": "bootcamp-marketplace",
+                            "id": "10547"
+                        },
+                        {
+                            "sys_name": "marketplace",
+                            "id": "10009"
+                        },
+                        {
+                            "sys_name": "draftbit",
+                            "id": "9988"
+                        },
+                        {
+                            "sys_name": "dashboard",
+                            "id": "9674"
+                        },
+                        {
+                            "sys_name": "bootcamps",
+                            "id": "9660"
+                        },
+                        {
+                            "sys_name": "tuishou-alfa",
+                            "id": "9544"
+                        },
+                        {
+                            "sys_name": "testfiles",
+                            "id": "9337"
+                        },
+                        {
+                            "sys_name": "tuishou",
+                            "id": "9312"
+                        },
+                        {
+                            "sys_name": "students",
+                            "id": "8750"
+                        },
+                        {
+                            "sys_name": "webhook-parsing",
+                            "id": "8084"
+                        },
+                        {
+                            "sys_name": "weather-app",
+                            "id": "7813"
+                        },
+                        {
+                            "sys_name": "my-sandbox",
+                            "id": "7767"
+                        },
+                        {
+                            "sys_name": "my-app-as",
+                            "id": "7510"
+                        },
+                        {
+                            "sys_name": "sessionid",
+                            "id": "7498"
+                        },
+                        {
+                            "sys_name": "dev-pipeline",
+                            "id": "6948"
+                        },
+                        {
+                            "sys_name": "import-v6",
+                            "id": "6912"
+                        },
+                        {
+                            "sys_name": "dev",
+                            "id": "6829"
+                        },
+                        {
+                            "sys_name": "directual-groupbot",
+                            "id": "6470"
+                        },
+                        {
+                            "sys_name": "airtable",
+                            "id": "6419"
+                        },
+                        {
+                            "sys_name": "final-fps-test",
+                            "id": "6238"
+                        },
+                        {
+                            "sys_name": "new-fps-layout",
+                            "id": "6166"
+                        },
+                        {
+                            "sys_name": "tanera",
+                            "id": "6082"
+                        },
+                        {
+                            "sys_name": "crm-demo",
+                            "id": "6033"
+                        },
+                        {
+                            "sys_name": "productstar",
+                            "id": "5925"
+                        },
+                        {
+                            "sys_name": "new-library",
+                            "id": "5420"
+                        },
+                        {
+                            "sys_name": "how-to-auth",
+                            "id": "5022"
+                        },
+                        {
+                            "sys_name": "approval-system",
+                            "id": "4575"
+                        },
+                        {
+                            "sys_name": "test-bot",
+                            "id": "4456"
+                        },
+                        {
+                            "sys_name": "hello-there",
+                            "id": "4337"
+                        },
+                        {
+                            "sys_name": "test-webuser",
+                            "id": "4284"
+                        },
+                        {
+                            "sys_name": "temaplate-crm",
+                            "id": "4083"
+                        },
+                        {
+                            "sys_name": "ZerocodeCRM",
+                            "id": "3973"
+                        },
+                        {
+                            "sys_name": "nocode",
+                            "id": "3799"
+                        },
+                        {
+                            "sys_name": "gdfvfbvsgdvb",
+                            "id": "3074"
+                        },
+                        {
+                            "sys_name": "React-boilerplate",
+                            "id": "2950"
+                        },
+                        {
+                            "sys_name": "telegram_ibot",
+                            "id": "2882"
+                        },
+                        {
+                            "sys_name": "0qode-workshop",
+                            "id": "2868"
+                        },
+                        {
+                            "sys_name": "Generate_data_Directual_academy",
+                            "id": "2595"
+                        },
+                        {
+                            "sys_name": "directual-site",
+                            "id": "1822"
+                        }
+                    ]
+                },
+                "id": "6962f0e0-da3b-4513-bad9-611e8bbad1ab",
+                "date": 1673168433000,
+                "comment": "App mentor (14637), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "mentor",
+                    "id": "14637"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Sergey",
+                    "survey_step_1_raw": "rookie",
+                    "wallet_balance": -153,
+                    "country": "RU",
+                    "id": "ksying.ggl@gmail.com",
+                    "survey_step_3_raw": "zerocoder",
+                    "last_name": "K",
+                    "survey_step_2_raw": "personal_use",
+                    "apps": [
+                        {
+                            "sys_name": "crm-test-v2",
+                            "id": "14626"
+                        },
+                        {
+                            "sys_name": "crmstudytest",
+                            "id": "14606"
+                        },
+                        {
+                            "sys_name": "ksytestubot",
+                            "id": "14580"
+                        },
+                        {
+                            "sys_name": "my-movies-1",
+                            "id": "14471"
+                        }
+                    ]
+                },
+                "id": "9bf41d2e-c98c-47a0-979a-b9e6315c0899",
+                "date": 1673168433000,
+                "comment": "App crmstudytest (14606), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "crmstudytest",
+                    "id": "14606"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Sergey",
+                    "survey_step_1_raw": "beginner",
+                    "wallet_balance": 0,
+                    "country": "UZ",
+                    "id": "sergey.vv.andreev@gmail.com",
+                    "survey_step_3_raw": "friends",
+                    "last_name": "Andreev",
+                    "survey_step_2_raw": "personal_use",
+                    "apps": [
+                        {
+                            "sys_name": "eight",
+                            "id": "14599"
+                        }
+                    ]
+                },
+                "id": "cd4f662b-7014-45ae-bea1-1b07f622d602",
+                "date": 1673168433000,
+                "comment": "App eight (14599), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "eight",
+                    "id": "14599"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Денис",
+                    "survey_step_1_raw": "customOption: .",
+                    "wallet_balance": -36,
+                    "country": "RU",
+                    "id": "stratienko.dv@gmail.com",
+                    "survey_step_3_raw": "customOption: productstar",
+                    "last_name": "Стратиенко",
+                    "survey_step_2_raw": "personal_use",
+                    "apps": [
+                        {
+                            "sys_name": "product-star-csr",
+                            "id": "14956"
+                        },
+                        {
+                            "sys_name": "productstar-csr",
+                            "id": "14954"
+                        }
+                    ]
+                },
+                "id": "ab184942-c4ae-4320-9112-058578584844",
+                "date": 1673168433000,
+                "comment": "App productstar-csr (14954), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "productstar-csr",
+                    "id": "14954"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Anton",
+                    "survey_step_1_raw": "rookie",
+                    "wallet_balance": 108,
+                    "country": "PL",
+                    "id": "eddress@yandex.ru",
+                    "survey_step_3_raw": "zerocoder",
+                    "last_name": "Romaniuk",
+                    "survey_step_2_raw": "personal_use",
+                    "apps": [
+                        {
+                            "sys_name": "attraction2",
+                            "id": "14295"
+                        },
+                        {
+                            "sys_name": "designgineer",
+                            "id": "14261"
+                        },
+                        {
+                            "sys_name": "deeprequests",
+                            "id": "14250"
+                        },
+                        {
+                            "sys_name": "dipayments",
+                            "id": "14167"
+                        },
+                        {
+                            "sys_name": "0911market",
+                            "id": "14164"
+                        },
+                        {
+                            "sys_name": "20220911road",
+                            "id": "14163"
+                        },
+                        {
+                            "sys_name": "folio",
+                            "id": "14162"
+                        },
+                        {
+                            "sys_name": "crm0720",
+                            "id": "13652"
+                        },
+                        {
+                            "sys_name": "crm0719",
+                            "id": "13639"
+                        },
+                        {
+                            "sys_name": "crmbasic20220710",
+                            "id": "13511"
+                        },
+                        {
+                            "sys_name": "lesson13",
+                            "id": "13493"
+                        },
+                        {
+                            "sys_name": "movies-anton",
+                            "id": "13405"
+                        }
+                    ]
+                },
+                "id": "5d660c4b-51f1-431d-84f0-92e0a69c9ae0",
+                "date": 1673168432000,
+                "comment": "App designgineer (14261), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "designgineer",
+                    "id": "14261"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -2,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Pavel",
+                    "team_ids": [
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "59b12d65-6aef-4cf4-bda7-b4fd1bd02a32",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "FTM Agency",
+                            "tariff_id": "team_monthly",
+                            "id": "4b5c3318-9e08-4477-8bfe-f1e8cee9cce1",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "af048204-2d93-402a-9d7d-c7bfb95bda4c",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "46727f47-2c56-4833-89dd-aa76464e8eab",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "d1d2847d-6a60-4c7d-90d0-6a8a076e20b6",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "[test] AppSumo Tier",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "5003b645-65f9-4def-90a2-40b6cfa5ee18",
+                            "is_hidden": true,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "24b74108-e19d-475d-8772-37f0b31df133",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "24fe18d6-a0bd-44bd-9179-f7437938bf36",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "3d3cbc47-6414-44e4-9333-b64ae6d7c10c",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "1682daa5-0861-433e-8d34-e27d4caf3780",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "6c54ec46-9d07-4fb0-a0c3-8e8c38a868fc",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Dream-team",
+                            "tariff_id": "team_monthly",
+                            "id": "bc73f23b-9daf-435f-bca5-6ddcaa74e185",
+                            "is_hidden": true,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "5555bcb0-e4bd-4682-aaa6-2cd31ac7298b",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Vlad Kovalsky Team",
+                            "tariff_id": "team_monthly",
+                            "id": "f7d4dbda-c62c-427a-b562-deaae9edf1ad",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "My new team",
+                            "tariff_id": "team_monthly",
+                            "id": "6f58ecfd-9e3e-4475-b63c-b7e82359f06c",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "AppSumo Tier 1",
+                            "tariff_id": "AppSumo_tier1",
+                            "id": "a1019838-c902-4e70-b6dc-d89ba014e6c8",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Code world team 2",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "2c3bbf42-797a-49ba-a67f-831072248805",
+                            "is_hidden": false,
+                            "current_seats": 2
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "d76eff40-d0f3-4dce-a645-7fab00cef671",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "dopamine.team",
+                            "tariff_id": "team_monthly",
+                            "id": "2a6c0ec3-3796-45cb-8d01-3ab274da2a9e",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "1f722fd8-cc1c-4b2e-b76a-0a3755c56043",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "dbfc6e11-b26c-40a6-8caa-da3f142675ed",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "3859abca-9c8c-4411-8978-f353cf0d6921",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Code world team",
+                            "tariff_id": "team_monthly",
+                            "id": "be38019c-2047-43aa-a9f8-8906a4ba0587",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "2c588515-3a41-4957-9fc8-6dea28f275fb",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "f6280a15-85d9-4424-9a0d-411dbf9cbc93",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Max Lykov team",
+                            "tariff_id": "team_monthly",
+                            "id": "c8105c7f-f1f4-4991-8d23-7584ba401c2c",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Alex Orlov team",
+                            "tariff_id": "team_yearly",
+                            "id": "c1ab7192-ae41-4f17-a571-38acf10602f7",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Lifetime deal",
+                            "tariff_id": "AppSumo_tier3",
+                            "id": "0f969867-941d-46ea-a0be-3d3db0a5e3dd",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "34f3e17a-e71e-4385-a6d6-011e50e2df52",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Nikita Dolgov team",
+                            "tariff_id": "team_monthly",
+                            "id": "370620d6-e18a-4bc6-8b3d-c432f7c391d5",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "fb07f7bf-7202-4e85-8221-0ae090d6975c",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Oleg team",
+                            "tariff_id": "team_monthly",
+                            "id": "0513db3f-2227-445c-b760-c789ddac6f79",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Anna's team",
+                            "tariff_id": "team_monthly",
+                            "id": "60063caf-9c5d-439f-b2b7-ca62a1804b3d",
+                            "is_hidden": false,
+                            "current_seats": 0
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "9906f648-bca3-489c-b5c9-fc8c629fd037",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Dream team",
+                            "tariff_id": "team_monthly",
+                            "id": "1aef6239-b432-4086-8bd6-05664eafd2b0",
+                            "is_hidden": false,
+                            "current_seats": 3
+                        },
+                        {
+                            "name": "Bootcamp",
+                            "tariff_id": "Bootcamp",
+                            "id": "e82f9a6f-bf3a-4869-bd74-eba52a0756b5",
+                            "is_hidden": false,
+                            "current_seats": 1
+                        },
+                        {
+                            "name": "Zerocoder: Directual от 0 до PRO",
+                            "tariff_id": "Zerocoder-education",
+                            "id": "5eceb369-79f2-4d45-baf1-0a9b20225f1e",
+                            "is_hidden": true,
+                            "current_seats": 1
+                        }
+                    ],
+                    "survey_step_1_raw": "developer_new_to_nocode",
+                    "wallet_balance": 125.41,
+                    "country": "Undefined",
+                    "id": "pavel@directual.com",
+                    "survey_step_3_raw": "producthunt",
+                    "last_name": "Ershov",
+                    "survey_step_2_raw": "university",
+                    "apps": [
+                        {
+                            "sys_name": "test-app-0011",
+                            "id": "15231"
+                        },
+                        {
+                            "sys_name": "code-redemption",
+                            "id": "15029"
+                        },
+                        {
+                            "sys_name": "hey-hoy",
+                            "id": "15027"
+                        },
+                        {
+                            "sys_name": "nft",
+                            "id": "14644"
+                        },
+                        {
+                            "sys_name": "mentor",
+                            "id": "14637"
+                        },
+                        {
+                            "sys_name": "test-limit",
+                            "id": "14027"
+                        },
+                        {
+                            "sys_name": "showcase-store",
+                            "id": "13182"
+                        },
+                        {
+                            "sys_name": "fpsform-test",
+                            "id": "13181"
+                        },
+                        {
+                            "sys_name": "bot-snapshot",
+                            "id": "13174"
+                        },
+                        {
+                            "sys_name": "talkbank-test",
+                            "id": "13120"
+                        },
+                        {
+                            "sys_name": "my-team-app",
+                            "id": "12983"
+                        },
+                        {
+                            "sys_name": "mig",
+                            "id": "11537"
+                        },
+                        {
+                            "sys_name": "tg-demo",
+                            "id": "11488"
+                        },
+                        {
+                            "sys_name": "showcase-attractions",
+                            "id": "11307"
+                        },
+                        {
+                            "sys_name": "showcase-imdb",
+                            "id": "11306"
+                        },
+                        {
+                            "sys_name": "basic-template",
+                            "id": "11264"
+                        },
+                        {
+                            "sys_name": "password-reset",
+                            "id": "10996"
+                        },
+                        {
+                            "sys_name": "web-plugins",
+                            "id": "10926"
+                        },
+                        {
+                            "sys_name": "japanapp",
+                            "id": "10884"
+                        },
+                        {
+                            "sys_name": "masters",
+                            "id": "10818"
+                        },
+                        {
+                            "sys_name": "jj",
+                            "id": "10594"
+                        },
+                        {
+                            "sys_name": "bootcamp-marketplace",
+                            "id": "10547"
+                        },
+                        {
+                            "sys_name": "marketplace",
+                            "id": "10009"
+                        },
+                        {
+                            "sys_name": "draftbit",
+                            "id": "9988"
+                        },
+                        {
+                            "sys_name": "dashboard",
+                            "id": "9674"
+                        },
+                        {
+                            "sys_name": "bootcamps",
+                            "id": "9660"
+                        },
+                        {
+                            "sys_name": "tuishou-alfa",
+                            "id": "9544"
+                        },
+                        {
+                            "sys_name": "testfiles",
+                            "id": "9337"
+                        },
+                        {
+                            "sys_name": "tuishou",
+                            "id": "9312"
+                        },
+                        {
+                            "sys_name": "students",
+                            "id": "8750"
+                        },
+                        {
+                            "sys_name": "webhook-parsing",
+                            "id": "8084"
+                        },
+                        {
+                            "sys_name": "weather-app",
+                            "id": "7813"
+                        },
+                        {
+                            "sys_name": "my-sandbox",
+                            "id": "7767"
+                        },
+                        {
+                            "sys_name": "my-app-as",
+                            "id": "7510"
+                        },
+                        {
+                            "sys_name": "sessionid",
+                            "id": "7498"
+                        },
+                        {
+                            "sys_name": "dev-pipeline",
+                            "id": "6948"
+                        },
+                        {
+                            "sys_name": "import-v6",
+                            "id": "6912"
+                        },
+                        {
+                            "sys_name": "dev",
+                            "id": "6829"
+                        },
+                        {
+                            "sys_name": "directual-groupbot",
+                            "id": "6470"
+                        },
+                        {
+                            "sys_name": "airtable",
+                            "id": "6419"
+                        },
+                        {
+                            "sys_name": "final-fps-test",
+                            "id": "6238"
+                        },
+                        {
+                            "sys_name": "new-fps-layout",
+                            "id": "6166"
+                        },
+                        {
+                            "sys_name": "tanera",
+                            "id": "6082"
+                        },
+                        {
+                            "sys_name": "crm-demo",
+                            "id": "6033"
+                        },
+                        {
+                            "sys_name": "productstar",
+                            "id": "5925"
+                        },
+                        {
+                            "sys_name": "new-library",
+                            "id": "5420"
+                        },
+                        {
+                            "sys_name": "how-to-auth",
+                            "id": "5022"
+                        },
+                        {
+                            "sys_name": "approval-system",
+                            "id": "4575"
+                        },
+                        {
+                            "sys_name": "test-bot",
+                            "id": "4456"
+                        },
+                        {
+                            "sys_name": "hello-there",
+                            "id": "4337"
+                        },
+                        {
+                            "sys_name": "test-webuser",
+                            "id": "4284"
+                        },
+                        {
+                            "sys_name": "temaplate-crm",
+                            "id": "4083"
+                        },
+                        {
+                            "sys_name": "ZerocodeCRM",
+                            "id": "3973"
+                        },
+                        {
+                            "sys_name": "nocode",
+                            "id": "3799"
+                        },
+                        {
+                            "sys_name": "gdfvfbvsgdvb",
+                            "id": "3074"
+                        },
+                        {
+                            "sys_name": "React-boilerplate",
+                            "id": "2950"
+                        },
+                        {
+                            "sys_name": "telegram_ibot",
+                            "id": "2882"
+                        },
+                        {
+                            "sys_name": "0qode-workshop",
+                            "id": "2868"
+                        },
+                        {
+                            "sys_name": "Generate_data_Directual_academy",
+                            "id": "2595"
+                        },
+                        {
+                            "sys_name": "directual-site",
+                            "id": "1822"
+                        }
+                    ]
+                },
+                "id": "8b2b4dee-a490-4f97-830c-413cd99843d6",
+                "date": 1673168419000,
+                "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                "app_id": {
+                    "sysName": "directual-site",
+                    "team_id": "1aef6239-b432-4086-8bd6-05664eafd2b0",
+                    "id": "1822"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": 30,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Igor",
+                    "survey_step_1_raw": "rookie",
+                    "wallet_balance": 15.77,
+                    "country": "RU",
+                    "id": "okda@mail.ru",
+                    "survey_step_3_raw": "customOption: Creatium",
+                    "last_name": "Travkin",
+                    "survey_step_2_raw": "NPO",
+                    "apps": [
+                        {
+                            "sys_name": "orel",
+                            "id": "12955"
+                        }
+                    ]
+                },
+                "id": "df608c72-32b7-4776-b164-8b24158ce341",
+                "date": 1673120224000,
+                "comment": "Adding funds via Tinkoff 1020.0 ₽ → 30.0 D-coins",
+                "type": "tinkoff",
+                "app_id": ""
+            },
+            {
+                "balance": 50,
+                "user_id": {
+                    "survey_is_aborted": true,
+                    "first_name": "Thomas",
+                    "wallet_balance": 150,
+                    "country": "RU",
+                    "id": "kolgtim@yandex.ru",
+                    "last_name": "K"
+                },
+                "id": "286509f7-10b6-4713-9300-c78310dc11a5",
+                "date": 1673099677000,
+                "comment": "Promo-code HAPPYNEWYEAR",
+                "type": "promo",
+                "app_id": ""
+            },
+            {
+                "balance": 100,
+                "user_id": {
+                    "survey_is_aborted": true,
+                    "first_name": "Thomas",
+                    "wallet_balance": 150,
+                    "country": "RU",
+                    "id": "kolgtim@yandex.ru",
+                    "last_name": "K"
+                },
+                "id": "74d18964-ef6a-4dd8-9d40-8614426a83bf",
+                "date": 1673099662000,
+                "comment": "Promo-code PRODUCTHUNT",
+                "type": "promo",
+                "app_id": ""
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Артур",
+                    "survey_step_1_raw": "beginner",
+                    "wallet_balance": 3,
+                    "country": "RU",
+                    "id": "arturjarov89@gmail.com",
+                    "survey_step_3_raw": "customOption: Productstar",
+                    "last_name": "Ярославов",
+                    "survey_step_2_raw": "university",
+                    "apps": [
+                        {
+                            "sys_name": "tildademo",
+                            "id": "15295"
+                        },
+                        {
+                            "sys_name": "recrutssearch",
+                            "id": "15285"
+                        },
+                        {
+                            "sys_name": "crmnocode",
+                            "id": "15279"
+                        },
+                        {
+                            "sys_name": "fruitcrm2023",
+                            "id": "15270"
+                        },
+                        {
+                            "sys_name": "treker2023taxi",
+                            "id": "15253"
+                        }
+                    ]
+                },
+                "id": "9bb2be04-c9c4-452a-b3d7-e5ea0dfbba66",
+                "date": 1673095041000,
+                "comment": "Update app treker2023taxi, plan Startup-monthly (previous plan: Free)",
+                "type": "app_payment",
+                "app_id": ""
+            },
+            {
+                "balance": 120,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Артур",
+                    "survey_step_1_raw": "beginner",
+                    "wallet_balance": 3,
+                    "country": "RU",
+                    "id": "arturjarov89@gmail.com",
+                    "survey_step_3_raw": "customOption: Productstar",
+                    "last_name": "Ярославов",
+                    "survey_step_2_raw": "university",
+                    "apps": [
+                        {
+                            "sys_name": "tildademo",
+                            "id": "15295"
+                        },
+                        {
+                            "sys_name": "recrutssearch",
+                            "id": "15285"
+                        },
+                        {
+                            "sys_name": "crmnocode",
+                            "id": "15279"
+                        },
+                        {
+                            "sys_name": "fruitcrm2023",
+                            "id": "15270"
+                        },
+                        {
+                            "sys_name": "treker2023taxi",
+                            "id": "15253"
+                        }
+                    ]
+                },
+                "id": "62f3fe94-1758-498f-bd8e-63045f28dd61",
+                "date": 1673094995000,
+                "comment": "Promo-code PRODUCTSTAR",
+                "type": "promo",
+                "app_id": ""
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Артур",
+                    "survey_step_1_raw": "rookie",
+                    "wallet_balance": 3,
+                    "country": "RU",
+                    "id": "azajfert5@gmail.com",
+                    "survey_step_3_raw": "zerocoder",
+                    "last_name": "Зайферт",
+                    "survey_step_2_raw": "university",
+                    "apps": [
+                        {
+                            "sys_name": "psmarket",
+                            "id": "15284"
+                        },
+                        {
+                            "sys_name": "hrservice2023",
+                            "id": "15252"
+                        },
+                        {
+                            "sys_name": "productstarmarket",
+                            "id": "14789"
+                        }
+                    ]
+                },
+                "id": "e995c2ec-9063-4345-bc2a-389b4c3b0096",
+                "date": 1673085201000,
+                "comment": "Create app hrservice2023, plan Startup-monthly",
+                "type": "app_payment",
+                "app_id": ""
+            },
+            {
+                "balance": -39,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Artha",
+                    "survey_step_1_raw": "beginner",
+                    "wallet_balance": -75,
+                    "country": "RU",
+                    "id": "arthabusiness@mail.ru",
+                    "survey_step_3_raw": "zerocoder",
+                    "last_name": "Business",
+                    "survey_step_2_raw": "SMB",
+                    "apps": [
+                        {
+                            "sys_name": "arthabusiness",
+                            "id": "14119"
+                        }
+                    ]
+                },
+                "id": "c9d2f064-ccfe-4e3b-8643-54a119ba78f5",
+                "date": 1673082048000,
+                "comment": "App arthabusiness (14119), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "arthabusiness",
+                    "id": "14119"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -139,
+                "user_id": {
+                    "survey_is_aborted": false,
+                    "first_name": "Dmitrii",
+                    "survey_step_1_raw": "rookie",
+                    "wallet_balance": -278,
+                    "country": "RU",
+                    "id": "advvokat@bk.ru",
+                    "survey_step_3_raw": "friends",
+                    "last_name": "Kuznetsov",
+                    "survey_step_2_raw": "startup",
+                    "apps": [
+                        {
+                            "sys_name": "hl",
+                            "id": "12640"
+                        }
+                    ]
+                },
+                "id": "3d135081-4108-4207-857d-bc19b47f3c04",
+                "date": 1673082048000,
+                "comment": "App hl (12640), license payment, plan Pro",
+                "app_id": {
+                    "sysName": "hl",
+                    "team_id": "2a6c0ec3-3796-45cb-8d01-3ab274da2a9e",
+                    "id": "12640"
+                },
+                "type": "app_payment"
+            },
+            {
+                "balance": -19.5,
+                "user_id": {
+                    "survey_is_aborted": true,
+                    "first_name": "Anastasia",
+                    "team_ids": [],
+                    "wallet_balance": -594.09,
+                    "country": "RU",
+                    "id": "a.yukhtmakher@upandout.ru",
+                    "last_name": "Yukhtmakher",
+                    "apps": [
+                        {
+                            "sys_name": "peers",
+                            "id": "14335"
+                        },
+                        {
+                            "sys_name": "upandoutedu",
+                            "id": "13604"
+                        },
+                        {
+                            "sys_name": "upandout",
+                            "id": "13112"
+                        },
+                        {
+                            "sys_name": "brands247",
+                            "id": "7332"
+                        },
+                        {
+                            "sys_name": "vitrina2252",
+                            "id": "4265"
+                        },
+                        {
+                            "sys_name": "uao",
+                            "id": "3571"
+                        }
+                    ]
+                },
+                "id": "a8119743-adfb-4d36-a3e6-5d71f276ef2f",
+                "date": 1673082048000,
+                "comment": "App peers (14335), license payment, plan Startup",
+                "app_id": {
+                    "sysName": "peers",
+                    "team_id": "2c3bbf42-797a-49ba-a67f-831072248805",
+                    "id": "14335"
+                },
+                "type": "app_payment"
             }
         ],
-        "totalPages": 518,
+        "totalPages": 43,
         "pageNumber": 0,
         "error": null,
         "fieldScheme": [
             [
-                "color_get",
+                "affiliate_transaction_id.balance",
+                99034345
+            ],
+            [
+                "affiliate_transaction_id.comment",
+                99034345
+            ],
+            [
+                "affiliate_transaction_id.date",
+                99034345
+            ],
+            [
+                "affiliate_transaction_id.id",
+                99034345
+            ],
+            [
+                "affiliate_transaction_id.type",
+                99034345
+            ],
+            [
+                "affiliate_transaction_id.user_id",
+                99034345
+            ],
+            [
+                "affiliate_user_id",
+                99034345
+            ],
+            [
+                "app_id.id",
                 1395053
             ],
             [
-                "color_http",
+                "app_id.sysName",
                 1395053
             ],
             [
-                "color_post",
+                "app_id.team_id",
                 1395053
             ],
             [
-                "color_proc",
-                1395053
+                "balance",
+                99034345
             ],
             [
-                "color_sync",
-                1395053
+                "comment",
+                99034345
             ],
             [
-                "color_users",
-                1395053
-            ],
-            [
-                "forecast_bill",
-                1395053
-            ],
-            [
-                "free_alert_counter",
-                1395053
+                "date",
+                99034345
             ],
             [
                 "id",
-                1395053
+                99034345
             ],
             [
-                "is_blocked",
-                1395053
+                "parent_affiliate_trans_id.balance",
+                99034345
             ],
             [
-                "is_excess",
-                1395053
+                "parent_affiliate_trans_id.comment",
+                99034345
             ],
             [
-                "is_sandbox",
-                1395053
+                "parent_affiliate_trans_id.date",
+                99034345
             ],
             [
-                "owner_id.country",
+                "parent_affiliate_trans_id.id",
+                99034345
+            ],
+            [
+                "parent_affiliate_trans_id.type",
+                99034345
+            ],
+            [
+                "parent_affiliate_trans_id.user_id",
+                99034345
+            ],
+            [
+                "receipt",
+                99034345
+            ],
+            [
+                "type",
+                99034345
+            ],
+            [
+                "user_id.apps.id",
+                1294703
+            ],
+            [
+                "user_id.apps.sys_name",
+                1294703
+            ],
+            [
+                "user_id.country",
                 1282551
             ],
             [
-                "owner_id.first_name",
+                "user_id.first_name",
                 1282551
             ],
             [
-                "owner_id.id",
+                "user_id.id",
                 1282551
             ],
             [
-                "owner_id.last_name",
+                "user_id.last_name",
                 1282551
             ],
             [
-                "paddle_subscription_id",
-                1395053
+                "user_id.survey_is_aborted",
+                1282551
             ],
             [
-                "plan_id.description",
-                1294700
+                "user_id.survey_step_1_raw",
+                1282551
             ],
             [
-                "plan_id.id",
-                1294700
+                "user_id.survey_step_2_raw",
+                1282551
             ],
             [
-                "plan_id.name",
-                1294700
+                "user_id.survey_step_3_raw",
+                1282551
             ],
             [
-                "plan_id.price",
-                1294700
+                "user_id.team_ids.current_seats",
+                1395054
             ],
             [
-                "stat_get",
-                1395053
+                "user_id.team_ids.is_hidden",
+                1395054
             ],
             [
-                "stat_http",
-                1395053
+                "user_id.team_ids.name",
+                1395054
             ],
             [
-                "stat_post",
-                1395053
+                "user_id.team_ids.tariff_id",
+                1395054
             ],
             [
-                "stat_proc",
-                1395053
-            ],
-            [
-                "stat_sync",
-                1395053
-            ],
-            [
-                "stat_users",
-                1395053
-            ],
-            [
-                "sysName",
-                1395053
+                "user_id.wallet_balance",
+                1282551
             ]
         ],
-        "writeFields": [],
+        "writeFields": [
+            "app_id",
+            "id"
+        ],
         "structures": {
             "1282551": {
-                "networkID": 1822,
-                "sysName": "Cloud_users",
-                "name": "👨🏻 Cloud users",
                 "id": 1282551,
                 "dateCreated": "2019-10-05T15:17:37Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":true,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"note\",\"dataType\":\"string\",\"name\":\"Note\",\"id\":\"34591570383079323\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"first_name\",\"dataType\":\"string\",\"name\":\"First name\",\"id\":\"23971570288647049\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"last_name\",\"dataType\":\"string\",\"name\":\"Last name\",\"id\":\"81941570288646826\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"locale\",\"dataType\":\"string\",\"name\":\"locale\",\"id\":\"47031570379144750\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"source\",\"dataType\":\"string\",\"name\":\"Source\",\"id\":\"92371570288676773\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"request_id\",\"dataType\":\"link\",\"name\":\"Request ID\",\"id\":\"23691571997337572\",\"link\":\"Requests\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[\"\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":true,\"array\":false},{\"sysName\":\"ip\",\"dataType\":\"string\",\"name\":\"ip\",\"id\":\"70561588673350213\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"country\",\"dataType\":\"link\",\"name\":\"Country\",\"id\":\"37101588673355053\",\"link\":\"CountriesISO\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"social_register\",\"dataType\":\"boolean\",\"name\":\"social_register\",\"id\":\"71461588678509868\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"register_date\",\"dataType\":\"date\",\"name\":\"Register date\",\"id\":\"36551588868841568\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"country_id\",\"dataType\":\"link\",\"name\":\"Country link (ISO)\",\"id\":\"31401588873548829\",\"link\":\"CountriesISO\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"raw_id\",\"dataType\":\"link\",\"name\":\"Raw ID\",\"id\":\"39691642000254942\",\"link\":\"cloud_users_ids\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"last_activity_date\",\"dataType\":\"date\",\"name\":\"Last activity date\",\"id\":\"96951570962621002\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"apps\",\"dataType\":\"arrayLink\",\"name\":\"Apps\",\"id\":\"80561587152006234\",\"link\":\"AppInfo\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"number_of_sl\",\"dataType\":\"number\",\"name\":\"Number of SLs\",\"id\":\"41141570962898360\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"number_of_structures\",\"dataType\":\"number\",\"name\":\"Number of structures\",\"id\":\"70371570962891170\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"number_of_scenarios\",\"dataType\":\"number\",\"name\":\"Number of scenarios\",\"id\":\"71201570962890259\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"logged_in\",\"dataType\":\"boolean\",\"name\":\"Have logged in\",\"id\":\"42361570962605801\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"number_of_apps\",\"dataType\":\"number\",\"name\":\"Number of apps\",\"id\":\"41911570383626553\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"today_stat_id\",\"dataType\":\"link\",\"name\":\"Today stat link\",\"id\":\"42431587908594891\",\"link\":\"Dashboard_data\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"team_ids\",\"dataType\":\"arrayLink\",\"name\":\"Teams\",\"id\":\"26441632905559721\",\"link\":\"Teams\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"current_team_plans\",\"dataType\":\"arrayLink\",\"name\":\"Current team plans\",\"id\":\"45021632906172898\",\"link\":\"TeamTariffs\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isLTD_user\",\"dataType\":\"boolean\",\"name\":\"LTD user\",\"id\":\"13531632918815271\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Paid_app_plan_user\",\"dataType\":\"boolean\",\"name\":\"Paid app plan user\",\"id\":\"22421632918830874\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"current_app_plans\",\"dataType\":\"arrayLink\",\"name\":\"Current app plans\",\"id\":\"54321632918865581\",\"link\":\"Tariff\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"creditCardIsLinked\",\"dataType\":\"boolean\",\"name\":\"CreditCardIsLinked?\",\"id\":\"42541642072780075\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"mailchimp_tags\",\"dataType\":\"string\",\"name\":\"Mailchimp labels\",\"id\":\"97421570379132976\",\"link\":null,\"group\":\"1570379125072\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"mailchimp_segments\",\"dataType\":\"array\",\"name\":\"Mailchimp Segments\",\"id\":\"84981587457354001\",\"link\":\"\",\"group\":\"1570379125072\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":true},{\"sysName\":\"is_country_synced\",\"dataType\":\"boolean\",\"name\":\"is_country_synced\",\"id\":\"31991605527320825\",\"link\":\"\",\"group\":\"1570379125072\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"app_description\",\"dataType\":\"string\",\"name\":\"App description\",\"id\":\"72461572603438535\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"customer_type\",\"dataType\":\"string\",\"name\":\"Customer type\",\"id\":\"93281572603437791\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"utm_source\",\"dataType\":\"string\",\"name\":\"utm_source\",\"id\":\"91131588673287122\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"utm_medium\",\"dataType\":\"string\",\"name\":\"utm_medium\",\"id\":\"27621588673319861\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"utm_campaign\",\"dataType\":\"string\",\"name\":\"utm_campaign\",\"id\":\"85671588673320381\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"survey_ids\",\"dataType\":\"arrayLink\",\"name\":\"Surveys\",\"id\":\"27581591180002769\",\"link\":\"Surveys\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ref\",\"dataType\":\"string\",\"name\":\"ref\",\"id\":\"68451626349155030\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"storage\",\"dataType\":\"json\",\"name\":\"Survey storage\",\"id\":\"86371627198748459\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"survey_step_1_raw\",\"dataType\":\"string\",\"name\":\"Which describes you best\",\"id\":\"24041632732046851\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"survey_step_2_raw\",\"dataType\":\"string\",\"name\":\"Whom do you want to build apps for\",\"id\":\"57151632732047604\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"survey_step_3_raw\",\"dataType\":\"string\",\"name\":\"How did you know about Directual\",\"id\":\"98341632732048278\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"survey_is_aborted\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"75331632901439193\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"notifications_account\",\"dataType\":\"boolean\",\"name\":\"Notify about Account\",\"id\":\"49381572378982097\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"notifications_academy\",\"dataType\":\"boolean\",\"name\":\"Notify about Academy\",\"id\":\"97951572378981844\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"notifications_blog\",\"dataType\":\"boolean\",\"name\":\"Notify about Blog\",\"id\":\"20211572378981407\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"unsubscribed\",\"dataType\":\"boolean\",\"name\":\"unsubscribed\",\"id\":\"20361600521081143\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"unsibscribed_reason\",\"dataType\":\"string\",\"name\":\"unsibscribed_reason\",\"id\":\"87491600521243757\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"admin_notification_text\",\"dataType\":\"string\",\"name\":\"admin_notification_text\",\"id\":\"21331602224278958\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"whom_to_alert\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"61381602224446180\",\"link\":\"TUser\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"MailerLite_id\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"73551663229204538\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"MailerLite_MAIN\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"28941663229219515\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"MailerLite_Onboarding\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"16811663229232291\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"email_hash\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"40581588875619696\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"gravatar\",\"dataType\":\"string\",\"name\":\"Gravatar\",\"id\":\"89411588875620336\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"gravatar_pic\",\"dataType\":\"file\",\"name\":\" \",\"id\":\"77261619116355317\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"is_suspended\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"97901644220993828\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"paddle_id\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"69331644221263888\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"paddle_status\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"99591644221269393\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"is_failed\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"10721644221276956\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"update_url\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"44161644221281677\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"basic_promo_code\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"62581644246255699\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"wallet_transactions\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"53431648999094908\",\"link\":\"appwallet\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"wallet_balance\",\"dataType\":\"decimal\",\"name\":\"\",\"id\":\"60951648999103921\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"paid_apps_ids\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"96621663160984409\",\"link\":\"Apps\",\"group\":\"1644221182856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false}]",
+                "networkID": 1822,
+                "name": "👨🏻 Cloud users",
+                "sysName": "Cloud_users",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":true,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"note\",\"name\":\"Note\",\"dataType\":\"string\",\"id\":\"34591570383079323\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"first_name\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"23971570288647049\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"last_name\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"81941570288646826\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"locale\",\"name\":\"locale\",\"dataType\":\"string\",\"id\":\"47031570379144750\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"source\",\"name\":\"Source\",\"dataType\":\"string\",\"id\":\"92371570288676773\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"request_id\",\"name\":\"Request ID\",\"dataType\":\"link\",\"id\":\"23691571997337572\",\"link\":\"Requests\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[\"\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ip\",\"name\":\"ip\",\"dataType\":\"string\",\"id\":\"70561588673350213\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"country\",\"name\":\"Country\",\"dataType\":\"link\",\"id\":\"37101588673355053\",\"link\":\"CountriesISO\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"social_register\",\"name\":\"social_register\",\"dataType\":\"boolean\",\"id\":\"71461588678509868\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"register_date\",\"name\":\"Register date\",\"dataType\":\"date\",\"id\":\"36551588868841568\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"country_id\",\"name\":\"Country link (ISO)\",\"dataType\":\"link\",\"id\":\"31401588873548829\",\"link\":\"CountriesISO\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"raw_id\",\"name\":\"Raw ID\",\"dataType\":\"link\",\"id\":\"39691642000254942\",\"link\":\"cloud_users_ids\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"last_activity_date\",\"name\":\"Last activity date\",\"dataType\":\"date\",\"id\":\"96951570962621002\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"apps\",\"name\":\"Apps\",\"dataType\":\"arrayLink\",\"id\":\"80561587152006234\",\"link\":\"AppInfo\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":true,\"array\":false},{\"sysName\":\"number_of_sl\",\"name\":\"Number of SLs\",\"dataType\":\"number\",\"id\":\"41141570962898360\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"number_of_structures\",\"name\":\"Number of structures\",\"dataType\":\"number\",\"id\":\"70371570962891170\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"number_of_scenarios\",\"name\":\"Number of scenarios\",\"dataType\":\"number\",\"id\":\"71201570962890259\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"logged_in\",\"name\":\"Have logged in\",\"dataType\":\"boolean\",\"id\":\"42361570962605801\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"number_of_apps\",\"name\":\"Number of apps\",\"dataType\":\"number\",\"id\":\"41911570383626553\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"today_stat_id\",\"name\":\"Today stat link\",\"dataType\":\"link\",\"id\":\"42431587908594891\",\"link\":\"Dashboard_data\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"team_ids\",\"name\":\"Teams\",\"dataType\":\"arrayLink\",\"id\":\"26441632905559721\",\"link\":\"Teams\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":true,\"array\":false},{\"sysName\":\"current_team_plans\",\"name\":\"Current team plans\",\"dataType\":\"arrayLink\",\"id\":\"45021632906172898\",\"link\":\"TeamTariffs\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":true,\"array\":false},{\"sysName\":\"isLTD_user\",\"name\":\"LTD user\",\"dataType\":\"boolean\",\"id\":\"13531632918815271\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"Paid_app_plan_user\",\"name\":\"Paid app plan user\",\"dataType\":\"boolean\",\"id\":\"22421632918830874\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"current_app_plans\",\"name\":\"Current app plans\",\"dataType\":\"arrayLink\",\"id\":\"54321632918865581\",\"link\":\"Tariff\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":true,\"array\":false},{\"sysName\":\"creditCardIsLinked\",\"name\":\"CreditCardIsLinked?\",\"dataType\":\"boolean\",\"id\":\"42541642072780075\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"mailchimp_tags\",\"name\":\"Mailchimp labels\",\"dataType\":\"string\",\"id\":\"97421570379132976\",\"link\":null,\"group\":\"1570379125072\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"mailchimp_segments\",\"name\":\"Mailchimp Segments\",\"dataType\":\"array\",\"id\":\"84981587457354001\",\"link\":\"\",\"group\":\"1570379125072\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":true},{\"sysName\":\"is_country_synced\",\"name\":\"is_country_synced\",\"dataType\":\"boolean\",\"id\":\"31991605527320825\",\"link\":\"\",\"group\":\"1570379125072\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"app_description\",\"name\":\"App description\",\"dataType\":\"string\",\"id\":\"72461572603438535\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"customer_type\",\"name\":\"Customer type\",\"dataType\":\"string\",\"id\":\"93281572603437791\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"utm_source\",\"name\":\"utm_source\",\"dataType\":\"string\",\"id\":\"91131588673287122\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"utm_medium\",\"name\":\"utm_medium\",\"dataType\":\"string\",\"id\":\"27621588673319861\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"utm_campaign\",\"name\":\"utm_campaign\",\"dataType\":\"string\",\"id\":\"85671588673320381\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"survey_ids\",\"name\":\"Surveys\",\"dataType\":\"arrayLink\",\"id\":\"27581591180002769\",\"link\":\"Surveys\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":true,\"array\":false},{\"sysName\":\"ref\",\"name\":\"ref\",\"dataType\":\"string\",\"id\":\"68451626349155030\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"storage\",\"name\":\"Survey storage\",\"dataType\":\"json\",\"id\":\"86371627198748459\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"survey_step_1_raw\",\"name\":\"Which describes you best\",\"dataType\":\"string\",\"id\":\"24041632732046851\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"survey_step_2_raw\",\"name\":\"Whom do you want to build apps for\",\"dataType\":\"string\",\"id\":\"57151632732047604\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"survey_step_3_raw\",\"name\":\"How did you know about Directual\",\"dataType\":\"string\",\"id\":\"98341632732048278\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"survey_is_aborted\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"75331632901439193\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"notifications_account\",\"name\":\"Notify about Account\",\"dataType\":\"boolean\",\"id\":\"49381572378982097\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"notifications_academy\",\"name\":\"Notify about Academy\",\"dataType\":\"boolean\",\"id\":\"97951572378981844\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"notifications_blog\",\"name\":\"Notify about Blog\",\"dataType\":\"boolean\",\"id\":\"20211572378981407\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"unsubscribed\",\"name\":\"unsubscribed\",\"dataType\":\"boolean\",\"id\":\"20361600521081143\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"unsibscribed_reason\",\"name\":\"unsibscribed_reason\",\"dataType\":\"string\",\"id\":\"87491600521243757\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"admin_notification_text\",\"name\":\"admin_notification_text\",\"dataType\":\"string\",\"id\":\"21331602224278958\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"whom_to_alert\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"61381602224446180\",\"link\":\"TUser\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":true,\"array\":false},{\"sysName\":\"MailerLite_id\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"73551663229204538\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"MailerLite_MAIN\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"28941663229219515\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"MailerLite_Onboarding\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"16811663229232291\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"email_hash\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"40581588875619696\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"gravatar\",\"name\":\"Gravatar\",\"dataType\":\"string\",\"id\":\"89411588875620336\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"gravatar_pic\",\"name\":\" \",\"dataType\":\"file\",\"id\":\"77261619116355317\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"is_suspended\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"97901644220993828\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"paddle_id\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"69331644221263888\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"paddle_status\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"99591644221269393\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"is_failed\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"10721644221276956\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"update_url\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"44161644221281677\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"basic_promo_code\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"62581644246255699\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"wallet_transactions\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"53431648999094908\",\"link\":\"appwallet\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":true,\"array\":false},{\"sysName\":\"wallet_balance\",\"name\":\"\",\"dataType\":\"decimal\",\"id\":\"60951648999103921\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"paid_apps_ids\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"96621663160984409\",\"link\":\"Apps\",\"group\":\"1644221182856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":true,\"array\":false}]",
                 "jsonGroupSettings": "[{\"id\":1570381436668,\"name\":\"CRM\",\"order\":2},{\"id\":1588875605532,\"name\":\"Gravatar\",\"order\":4},{\"id\":1570288674389,\"name\":\"Cloud usage\",\"order\":0},{\"id\":1572378880897,\"name\":\"Notifications settings\",\"order\":3},{\"id\":1570379125072,\"name\":\"Mailchimp\",\"order\":1},{\"id\":1644221182856,\"name\":\"Billing\",\"order\":5}]",
                 "jsonViewIdSettings": "[{\"sysName\":\"first_name\"},{\"sysName\":\"last_name\"},{\"sysName\":\"country\"}]",
                 "jsonSettings": null,
@@ -9812,8 +14116,8 @@ const App = (props) => {
                 "_nativeIndexSettings": null,
                 "innerIDField": {
                     "sysName": "id",
-                    "dataType": "id",
                     "name": "id",
+                    "dataType": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -9830,43 +14134,43 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": null,
                     "groupName": null,
+                    "linkType": false,
                     "typeVariable": {},
                     "json": false,
                     "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "linkType": false,
                     "indexExists": false,
+                    "arrayLink": false,
                     "array": false
                 },
                 "objectIDSysName": "id",
                 "folderId": 667556
             },
-            "1294700": {
-                "networkID": 1822,
-                "sysName": "Tariff",
-                "name": "💰 Tariffs",
-                "id": 1294700,
+            "1294703": {
+                "id": 1294703,
                 "dateCreated": "2020-02-27T12:54:30Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"7\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"price\",\"dataType\":\"decimal\",\"name\":\"price\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"visible\",\"dataType\":\"boolean\",\"name\":\"visible\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"settings\",\"dataType\":\"json\",\"name\":\"settings\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"description\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"name\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"is_default\",\"dataType\":\"boolean\",\"name\":\"is_default\",\"id\":\"1\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"paddle_id\",\"dataType\":\"string\",\"name\":\"paddle_id\",\"id\":\"77771590089291447\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"available_for_admin\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"97171633096560133\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+                "networkID": 1822,
+                "name": "raw_Applications",
+                "sysName": "AppInfo",
+                "jsonObject": "[{\"sysName\":\"number_of_users\",\"dataType\":\"string\",\"name\":\"number_of_users\",\"id\":\"1\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"number_of_active_scenarios\",\"dataType\":\"string\",\"name\":\"number_of_active_scenarios\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"alert_hit\",\"dataType\":\"date\",\"name\":\"Когда пинали о превышении тарифа\",\"id\":\"22121614804113546\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"fullName\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"27851646141877505\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"number_of_scenarios\",\"dataType\":\"string\",\"name\":\"number_of_scenarios\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"execution\",\"dataType\":\"number\",\"name\":\"Load_execution\",\"id\":\"32211587202484528\",\"link\":\"\",\"group\":\"1587202477104\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"AppSettings_id\",\"dataType\":\"link\",\"name\":\"AppSettings\",\"id\":\"34831592935814438\",\"link\":\"AppSetting\",\"group\":\"1587202477104\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"app_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"35571623745217854\",\"link\":\"Apps\",\"group\":\"1623745203139\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"getRequest\",\"dataType\":\"number\",\"name\":\"Load_getRequest\",\"id\":\"37261587202485664\",\"link\":\"\",\"group\":\"1587202477104\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"number_of_structures\",\"dataType\":\"string\",\"name\":\"number_of_structures\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"is_blocked\",\"dataType\":\"boolean\",\"name\":\"is_blocked\",\"id\":\"45741633095617725\",\"link\":\"\",\"group\":\"1587202477104\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"pluginRequest\",\"dataType\":\"number\",\"name\":\"pluginRequest\",\"id\":\"48361624022240081\",\"link\":\"\",\"group\":\"1587202477104\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"number_of_sl\",\"dataType\":\"string\",\"name\":\"number_of_sl\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"period\",\"dataType\":\"link\",\"name\":\"Billing_period\",\"id\":\"50391587206053532\",\"link\":\"UsageHistory\",\"group\":\"1587202477104\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"is_hidden\",\"dataType\":\"boolean\",\"name\":\"is_hidden\",\"id\":\"59141646142321554\",\"link\":\"\",\"group\":\"1587202477104\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"is_sandbox\",\"dataType\":\"string\",\"name\":\"is_sandbox\",\"id\":\"59151644829765708\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"user_id\",\"dataType\":\"link\",\"name\":\"user_id\",\"id\":\"6\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"team_id\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"65031644829771596\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"maxUsers\",\"dataType\":\"number\",\"name\":\"Load_maxUsers\",\"id\":\"66391587202485120\",\"link\":\"\",\"group\":\"1587202477104\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"creator_email\",\"dataType\":\"string\",\"name\":\"creator_email\",\"id\":\"7\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"postRequest\",\"dataType\":\"number\",\"name\":\"Load_postRequest\",\"id\":\"71631587202506976\",\"link\":\"\",\"group\":\"1587202477104\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"executionSync\",\"dataType\":\"number\",\"name\":\"executionSync\",\"id\":\"75661619421361645\",\"link\":\"\",\"group\":\"1587202477104\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"sys_name\",\"dataType\":\"string\",\"name\":\"sys_name\",\"id\":\"8\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"9\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"ignored_counter\",\"dataType\":\"number\",\"name\":\"Сколько раз проигнорировал письмо-алерт\",\"id\":\"96291614932806065\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false}]",
+                "jsonGroupSettings": "[{\"id\":1587202449588,\"name\":\"Global stats\",\"order\":0},{\"id\":1587202477104,\"name\":\"Usage for last period\",\"order\":1},{\"id\":1623745203139,\"name\":\"Чистовые данные\",\"order\":2}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"sys_name\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-10-04T15:06:16Z",
+                "dateChanged": "2022-03-01T13:57:44Z",
                 "createBy": 0,
-                "changedBy": 21,
+                "changedBy": 2853,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "innerIDField": {
                     "sysName": "id",
-                    "dataType": "id",
                     "name": "id",
-                    "id": "7",
+                    "dataType": "id",
+                    "id": "9",
                     "link": "",
                     "group": "0",
                     "tags": "",
@@ -9882,26 +14186,26 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": null,
                     "groupName": null,
+                    "linkType": false,
                     "typeVariable": {},
                     "json": false,
                     "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "linkType": false,
                     "indexExists": false,
+                    "arrayLink": false,
                     "array": false
                 },
                 "objectIDSysName": "id",
-                "folderId": 33664904
+                "folderId": 33631051
             },
             "1395053": {
-                "networkID": 1822,
-                "sysName": "Apps",
-                "name": "📱 Apps",
                 "id": 1395053,
                 "dateCreated": "2021-06-14T21:39:39Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"App id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"is_hidden\",\"name\":\"is_hidden\",\"dataType\":\"boolean\",\"id\":\"10251637661442776\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"raw_app_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"12131623746301658\",\"link\":\"AppInfo\",\"group\":\"1623746295898\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false},{\"sysName\":\"paddle_subscription_id\",\"name\":\"Paddle ID\",\"dataType\":\"string\",\"id\":\"13631633089941494\",\"link\":null,\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"name\",\"name\":\"App name\",\"dataType\":\"string\",\"id\":\"13661623706989350\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"stat_proc\",\"name\":\"Stat | Proc exec\",\"dataType\":\"number\",\"id\":\"16611623707312286\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"balance\",\"name\":\"Credits\",\"dataType\":\"decimal\",\"id\":\"20731633354617743\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":22,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"next_payment\",\"name\":\"\",\"dataType\":\"decimal\",\"id\":\"23671647335096237\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":28,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"isDowngraded\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"26051647940518677\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":30,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"color_get\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"26091623775679245\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"paddle_update_date\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"26191633364756662\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"sysName\",\"name\":\"System name\",\"dataType\":\"string\",\"id\":\"27541623706978377\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"free_alert_counter\",\"name\":\"Free alert counter\",\"dataType\":\"number\",\"id\":\"30071661159016438\",\"link\":\"\",\"group\":\"1633095201028\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"color_http\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"30261667244970378\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"isLegacy\",\"name\":\"Legacy app\",\"dataType\":\"boolean\",\"id\":\"30351623746607632\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"stat_http\",\"name\":\"Stat | HTTP requests\",\"dataType\":\"number\",\"id\":\"32051667244802942\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"stat_post\",\"name\":\"Stat | POST\",\"dataType\":\"number\",\"id\":\"37551623707296997\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"description\",\"name\":\"Description\",\"dataType\":\"string\",\"id\":\"38791623706999272\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"next_billing_date\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"39091647335092236\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":27,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"is_excess\",\"name\":\"Excess plan\",\"dataType\":\"boolean\",\"id\":\"40361623748858552\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"🔥 hit limits\",\" OK\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"owner_id\",\"name\":\"Owner\",\"dataType\":\"link\",\"id\":\"41841623707118206\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false},{\"sysName\":\"comments\",\"name\":\"Comments\",\"dataType\":\"arrayLink\",\"id\":\"44101633194013799\",\"link\":\"admin_comments\",\"group\":\"1633095201028\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true},{\"sysName\":\"color_sync\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"45481623775706832\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"merchant_event_ids\",\"name\":\"Paddle events\",\"dataType\":\"arrayLink\",\"id\":\"46441623707088217\",\"link\":\"MerchantEvent\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true},{\"sysName\":\"is_sandbox\",\"name\":\"is_sandbox\",\"dataType\":\"boolean\",\"id\":\"47331625209998636\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"next_ondemand_payment\",\"name\":\"\",\"dataType\":\"decimal\",\"id\":\"50071647334246527\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":26,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"previous_owner_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"50981666709963736\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false},{\"sysName\":\"developer_ids\",\"name\":\"Developers\",\"dataType\":\"arrayLink\",\"id\":\"54301623707131642\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true},{\"sysName\":\"next_ondemand_billing_date\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"54391647334223782\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":25,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"forecast_bill\",\"name\":\"Forecast bill, $\",\"dataType\":\"decimal\",\"id\":\"63341640954051997\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":24,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"events\",\"name\":\"App events\",\"dataType\":\"arrayLink\",\"id\":\"67551637607379984\",\"link\":\"appEvents\",\"group\":\"1633095201028\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true},{\"sysName\":\"legacy_billing\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"67651647899758711\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":29,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"isTeam\",\"name\":\"Team app\",\"dataType\":\"boolean\",\"id\":\"68981623707196589\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"reports\",\"name\":\"Billing reports\",\"dataType\":\"arrayLink\",\"id\":\"71551633353882284\",\"link\":\"UsageHistory\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true},{\"sysName\":\"plan_id\",\"name\":\"Billing plan\",\"dataType\":\"link\",\"id\":\"74161623707026653\",\"link\":\"Tariff\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false},{\"sysName\":\"new_billing\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"75171645533130519\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"previous_plan_id\",\"name\":\"Previous plan\",\"dataType\":\"link\",\"id\":\"75791641032667863\",\"link\":\"Tariff\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false},{\"sysName\":\"change_plan_request_ids\",\"name\":\"Plan change requests\",\"dataType\":\"arrayLink\",\"id\":\"76611623707045935\",\"link\":\"ChangeTariffRequests\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true},{\"sysName\":\"stat_users\",\"name\":\"Stat | Users\",\"dataType\":\"number\",\"id\":\"76861623707270662\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"color\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"79011623748876085\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"is_blocked\",\"name\":\"is_blocked\",\"dataType\":\"boolean\",\"id\":\"82901633095583058\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"admin_requests_ids\",\"name\":\"Admin actions\",\"dataType\":\"arrayLink\",\"id\":\"85821633095205778\",\"link\":\"admin_app_change_requests\",\"group\":\"1633095201028\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true},{\"sysName\":\"color_users\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"86811623775714205\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"stat_sync\",\"name\":\"Stat | SYNC Proc exec\",\"dataType\":\"number\",\"id\":\"87341623707329117\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"color_post\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"89081623775692061\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"new_billing_plan\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"91761645533150600\",\"link\":\"Tariff\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false},{\"sysName\":\"color_proc\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"92601623775698497\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"team_id\",\"name\":\"Team\",\"dataType\":\"link\",\"id\":\"94291623707210181\",\"link\":\"Teams\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false},{\"sysName\":\"stat_get\",\"name\":\"Stat | GET\",\"dataType\":\"number\",\"id\":\"94951623707229504\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"is_cancelled\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"95451637666256272\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":23,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false},{\"sysName\":\"raw_usage_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"96391623747858362\",\"link\":\"UsageHistory\",\"group\":\"1623746295898\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false},{\"sysName\":\"paddle_subscription_status\",\"name\":\"Paddle Status\",\"dataType\":\"string\",\"id\":\"99931633090832671\",\"link\":null,\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false}]",
+                "networkID": 1822,
+                "name": "📱 Apps",
+                "sysName": "Apps",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"App id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"sysName\",\"name\":\"System name\",\"dataType\":\"string\",\"id\":\"27541623706978377\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"name\",\"name\":\"App name\",\"dataType\":\"string\",\"id\":\"13661623706989350\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"description\",\"name\":\"Description\",\"dataType\":\"string\",\"id\":\"38791623706999272\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"owner_id\",\"name\":\"Owner\",\"dataType\":\"link\",\"id\":\"41841623707118206\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"developer_ids\",\"name\":\"Developers\",\"dataType\":\"arrayLink\",\"id\":\"54301623707131642\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":true,\"array\":false},{\"sysName\":\"isTeam\",\"name\":\"Team app\",\"dataType\":\"boolean\",\"id\":\"68981623707196589\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"team_id\",\"name\":\"Team\",\"dataType\":\"link\",\"id\":\"94291623707210181\",\"link\":\"Teams\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"isLegacy\",\"name\":\"Legacy app\",\"dataType\":\"boolean\",\"id\":\"30351623746607632\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"is_sandbox\",\"name\":\"is_sandbox\",\"dataType\":\"boolean\",\"id\":\"47331625209998636\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"is_blocked\",\"name\":\"is_blocked\",\"dataType\":\"boolean\",\"id\":\"82901633095583058\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"is_hidden\",\"name\":\"is_hidden\",\"dataType\":\"boolean\",\"id\":\"10251637661442776\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"new_billing\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"75171645533130519\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"new_billing_plan\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"91761645533150600\",\"link\":\"Tariff\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"previous_owner_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"50981666709963736\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"plan_id\",\"name\":\"Billing plan\",\"dataType\":\"link\",\"id\":\"74161623707026653\",\"link\":\"Tariff\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"previous_plan_id\",\"name\":\"Previous plan\",\"dataType\":\"link\",\"id\":\"75791641032667863\",\"link\":\"Tariff\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"change_plan_request_ids\",\"name\":\"Plan change requests\",\"dataType\":\"arrayLink\",\"id\":\"76611623707045935\",\"link\":\"ChangeTariffRequests\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":true,\"array\":false},{\"sysName\":\"merchant_event_ids\",\"name\":\"Paddle events\",\"dataType\":\"arrayLink\",\"id\":\"46441623707088217\",\"link\":\"MerchantEvent\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":true,\"array\":false},{\"sysName\":\"stat_get\",\"name\":\"Stat | GET\",\"dataType\":\"number\",\"id\":\"94951623707229504\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"stat_users\",\"name\":\"Stat | Users\",\"dataType\":\"number\",\"id\":\"76861623707270662\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"stat_post\",\"name\":\"Stat | POST\",\"dataType\":\"number\",\"id\":\"37551623707296997\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"stat_proc\",\"name\":\"Stat | Proc exec\",\"dataType\":\"number\",\"id\":\"16611623707312286\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"stat_sync\",\"name\":\"Stat | SYNC Proc exec\",\"dataType\":\"number\",\"id\":\"87341623707329117\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"stat_http\",\"name\":\"Stat | HTTP requests\",\"dataType\":\"number\",\"id\":\"32051667244802942\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"is_excess\",\"name\":\"Excess plan\",\"dataType\":\"boolean\",\"id\":\"40361623748858552\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"🔥 hit limits\",\" OK\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"color\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"79011623748876085\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"color_get\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"26091623775679245\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"color_post\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"89081623775692061\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"color_proc\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"92601623775698497\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"color_sync\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"45481623775706832\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"color_users\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"86811623775714205\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"color_http\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"30261667244970378\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"paddle_subscription_id\",\"name\":\"Paddle ID\",\"dataType\":\"string\",\"id\":\"13631633089941494\",\"link\":null,\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"paddle_subscription_status\",\"name\":\"Paddle Status\",\"dataType\":\"string\",\"id\":\"99931633090832671\",\"link\":null,\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"paddle_update_date\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"26191633364756662\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"reports\",\"name\":\"Billing reports\",\"dataType\":\"arrayLink\",\"id\":\"71551633353882284\",\"link\":\"UsageHistory\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":true,\"array\":false},{\"sysName\":\"balance\",\"name\":\"Credits\",\"dataType\":\"decimal\",\"id\":\"20731633354617743\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":22,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"is_cancelled\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"95451637666256272\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":23,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"forecast_bill\",\"name\":\"Forecast bill, $\",\"dataType\":\"decimal\",\"id\":\"63341640954051997\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":24,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"next_ondemand_billing_date\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"54391647334223782\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":25,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"next_ondemand_payment\",\"name\":\"\",\"dataType\":\"decimal\",\"id\":\"50071647334246527\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":26,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"next_billing_date\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"39091647335092236\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":27,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"next_payment\",\"name\":\"\",\"dataType\":\"decimal\",\"id\":\"23671647335096237\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":28,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"legacy_billing\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"67651647899758711\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":29,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"isDowngraded\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"26051647940518677\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":30,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"raw_app_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"12131623746301658\",\"link\":\"AppInfo\",\"group\":\"1623746295898\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"raw_usage_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"96391623747858362\",\"link\":\"UsageHistory\",\"group\":\"1623746295898\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"admin_requests_ids\",\"name\":\"Admin actions\",\"dataType\":\"arrayLink\",\"id\":\"85821633095205778\",\"link\":\"admin_app_change_requests\",\"group\":\"1633095201028\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":true,\"array\":false},{\"sysName\":\"comments\",\"name\":\"Comments\",\"dataType\":\"arrayLink\",\"id\":\"44101633194013799\",\"link\":\"admin_comments\",\"group\":\"1633095201028\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":true,\"array\":false},{\"sysName\":\"events\",\"name\":\"App events\",\"dataType\":\"arrayLink\",\"id\":\"67551637607379984\",\"link\":\"appEvents\",\"group\":\"1633095201028\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":true,\"array\":false},{\"sysName\":\"free_alert_counter\",\"name\":\"Free alert counter\",\"dataType\":\"number\",\"id\":\"30071661159016438\",\"link\":\"\",\"group\":\"1633095201028\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false}]",
                 "jsonGroupSettings": "[{\"name\":\"Billing\",\"id\":1623707015468,\"order\":0},{\"name\":\"RAW_data\",\"id\":1623746295898,\"order\":2},{\"name\":\"ADMIN\",\"id\":1633095201028,\"order\":1}]",
                 "jsonViewIdSettings": "[{\"sysName\":\"sysName\"},{\"sysName\":\"id\"},{\"sysName\":\"owner_id\"},{\"sysName\":\"plan_id\"}]",
                 "jsonSettings": null,
@@ -9916,8 +14220,8 @@ const App = (props) => {
                 "_nativeIndexSettings": null,
                 "innerIDField": {
                     "sysName": "id",
-                    "dataType": "id",
                     "name": "App id",
+                    "dataType": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -9934,22 +14238,183 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
+                    "linkType": false,
                     "typeVariable": {},
                     "json": false,
                     "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "linkType": false,
                     "indexExists": false,
+                    "arrayLink": false,
                     "array": false
                 },
                 "objectIDSysName": "id",
                 "folderId": 667556
+            },
+            "1395054": {
+                "id": 1395054,
+                "dateCreated": "2021-06-14T21:40:01Z",
+                "hidden": false,
+                "dateHidden": null,
+                "networkID": 1822,
+                "name": "👯‍♀️ Teams",
+                "sysName": "Teams",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Team name\",\"id\":\"49891623744256310\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Team description\",\"id\":\"21131623744262431\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"sandbox_apps\",\"dataType\":\"arrayLink\",\"name\":\"Sandboxes\",\"id\":\"16631623744100433\",\"link\":\"Apps\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"delivered_apps\",\"dataType\":\"arrayLink\",\"name\":\"Delivered apps\",\"id\":\"74141623744117071\",\"link\":\"Apps\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"team_members\",\"dataType\":\"arrayLink\",\"name\":\"Team members\",\"id\":\"95891623744134608\",\"link\":\"teamMembers\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[\"user_id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"indexExists\":true,\"array\":false},{\"sysName\":\"current_seats\",\"dataType\":\"number\",\"name\":\"Seats\",\"id\":\"47131623744230708\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"tariff_id\",\"dataType\":\"link\",\"name\":\"Tariff\",\"id\":\"68551624452382828\",\"link\":\"TeamTariffs\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"is_hidden\",\"dataType\":\"boolean\",\"name\":\"is_hidden\",\"id\":\"65821624887275053\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"owner_id\",\"dataType\":\"link\",\"name\":\"Owner\",\"id\":\"26901644253517429\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"next_billing_date\",\"dataType\":\"date\",\"name\":\"\",\"id\":\"84501644759078788\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"next_payment\",\"dataType\":\"decimal\",\"name\":\"\",\"id\":\"13691644759089872\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2022-02-23T20:24:02Z",
+                "createBy": 1,
+                "changedBy": 3527,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "linkType": false,
+                    "typeVariable": {},
+                    "json": false,
+                    "linkOrArrayLinkType": false,
+                    "indexExists": false,
+                    "arrayLink": false,
+                    "array": false
+                },
+                "objectIDSysName": "id",
+                "folderId": 667556
+            },
+            "99034345": {
+                "id": 99034345,
+                "dateCreated": "2021-10-04T13:35:54Z",
+                "hidden": false,
+                "dateHidden": null,
+                "networkID": 1822,
+                "name": "🪙 Wallet Transactions",
+                "sysName": "appwallet",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"type\",\"name\":\"Transaction type\",\"dataType\":\"link\",\"id\":\"34331644178252191\",\"link\":\"transaction_types\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"balance\",\"name\":\"balance\",\"dataType\":\"decimal\",\"id\":\"17881633354558295\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"comment\",\"name\":\"comment\",\"dataType\":\"string\",\"id\":\"40211633354569149\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"app_id\",\"name\":\"app_id\",\"dataType\":\"link\",\"id\":\"51971633354577141\",\"link\":\"Apps\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"user_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"24421633360151131\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date\",\"name\":\"date\",\"dataType\":\"date\",\"id\":\"96991644174902603\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"receipt\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"22031644176668353\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"promo\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"59651644249885512\",\"link\":\"promo_codes\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"merchant_event_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"91791644274810120\",\"link\":\"MerchantEvent\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"affiliate_transaction_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"93701664633122070\",\"link\":\"appwallet\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"affiliate_user_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"57701664731840784\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"parent_affiliate_trans_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"47871664733203199\",\"link\":\"appwallet\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"period\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"21831670405117574\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"type\"},{\"sysName\":\"balance\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2022-12-07T13:06:15Z",
+                "createBy": 2853,
+                "changedBy": 3527,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "linkType": false,
+                    "typeVariable": {},
+                    "json": false,
+                    "linkOrArrayLinkType": false,
+                    "indexExists": false,
+                    "arrayLink": false,
+                    "array": false
+                },
+                "objectIDSysName": "id",
+                "folderId": 33575450
             }
         },
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
-        "fileds": [],
+        "fileds": [
+            {
+                "sysName": "app_id",
+                "name": "app_id",
+                "dataType": "link",
+                "id": "51971633354577141",
+                "link": "Apps",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkType": true,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "indexExists": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "id",
+                "name": "id",
+                "dataType": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
+                "arrayLink": false,
+                "array": false
+            }
+        ],
         "quickSearch": "true",
         "httpParams": {},
         "cardCustomHtml": null,

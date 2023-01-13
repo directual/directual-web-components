@@ -510,3 +510,14 @@ div.tableTitle.mobile h2 {
 .tableLoadingOverlay .tableLoader {
   margin-top: 60px;
 }
+.openAI_input input {
+  background-image: url('https://api.alfa.directual.com/fileUploaded/directual-site/be8ec614-cf6a-41fe-8a33-8a390233df3a.svg');
+  background-size: 100px;
+  background-position: 100% center;
+  background-repeat: no-repeat;
+}
+.openAI_input input:hover,
+.openAI_input input:active,
+.openAI_input input:focus {
+  background-position: calc(100% + 1px) center;
+}

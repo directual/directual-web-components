@@ -491,7 +491,7 @@ export default function Input(props) {
                         />
                         {value && !props.disabled && !props.copy &&
                             <div className={`${styles.clear} icon icon-close`}
-                                onClick={clearValue}></div>}
+                            onClick={() => { clearValue(); props.onClear() }}></div>}
                         {value && props.copy &&
                             <div className={`${styles.clear} icon icon-copy`}
                                 onClick={value => copyValue(value)}></div>}
