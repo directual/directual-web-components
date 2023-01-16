@@ -86,15 +86,17 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
     }
 
     const [filters, setFilters] = useState(defaultFilters)
+    const [openAI,setOpenAI] = useState('')
 
     const saveFilters = (saveFilters) => {
-        performFiltering(composeDQL(saveFilters.filters), saveFilters.sort)
+        performFiltering(openAI ? openAI : composeDQL(saveFilters.filters), saveFilters.sort)
         setFilters(saveFilters)
     }
 
-    const saveAIFilters = (saveFilters) => {
-        performFiltering(">> " + saveFilters.filters, saveFilters.sort)
-        setFilters(saveFilters)
+    const saveAIFilters = (dql) => {
+        performFiltering(">> " + dql, filters.sort)
+        setOpenAI(">> " + dql)
+        //setFilters(saveFilters)
     }
 
     const clearFilters = () => {
@@ -177,7 +179,7 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
 
             {tableFilters.isSorting &&
                 <FilterField
-                    active={filters.sort.field}
+                    active={_.get(filters, "sort.field")}
                     filters={filters}
                     dict={dict}
                     currentBP={currentBP}
