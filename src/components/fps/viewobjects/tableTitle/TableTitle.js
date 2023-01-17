@@ -216,8 +216,10 @@ function OpenAI({ saveAIFilters, openAI, alignRight }) {
         <Input
             type='string'
             defaultValue={value}
-            onChange={saveValue}
+            onChange={setValue}
             onPressEnter={()=>saveAIFilters(value)}
+            onBlur={()=>saveAIFilters(value)}
+            onClear={()=>saveAIFilters('')}
             nomargin
             autoWidth minWidth={300} maxWidth={600}
             className={!value ? styles.openAI_input : null}
