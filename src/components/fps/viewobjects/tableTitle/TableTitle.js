@@ -86,7 +86,7 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
     }
 
     const [filters, setFilters] = useState(defaultFilters)
-    const [openAI,setOpenAI] = useState('')
+    const [openAI, setOpenAI] = useState('')
 
     const saveFilters = (saveFilters) => {
         performFiltering(openAI ? openAI : composeDQL(saveFilters.filters), saveFilters.sort)
@@ -94,13 +94,15 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
     }
 
     const saveAIFilters = (dql) => {
-        performFiltering(">> " + dql, filters.sort)
-        setOpenAI(">> " + dql)
+        setOpenAI(dql)
+        dql ? dql = ">> " + dql : ''
+        performFiltering(dql, filters.sort)
         //setFilters(saveFilters)
     }
 
     const clearFilters = () => {
         saveFilters({ ...defaultFilters })
+        saveAIFilters('')
     }
 
     function composeDQL(filters) {
@@ -148,8 +150,10 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
     return <div ref={filtersWrapper} className={styles.newFilters}>
         <ActionPanel alignRight={alignRight} margin={currentBP == 'mobile' && tableTitle ? { top: 8, bottom: 0 } : null}>
             {_.get(tableFilters, "filteringType") == "openai" && <div>
-                <OpenAI 
-                    saveAIFilters = {saveAIFilters}
+                <OpenAI
+                    saveAIFilters={saveAIFilters}
+                    openAI={openAI}
+                    alignRight={alignRight}
                 />
             </div>}
 
@@ -186,36 +190,42 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
                     alignRight={alignRight}
                     saveFilters={saveFilters}
                     fieldOptions={fieldOptions}
+                    openAI={openAI}
                     field={{
                         name: _.get(dict, 'sort') || 'Sort!',
                         type: 'sort',
                     }}
                 />}
-            <Button icon='filterClear' disabled={JSON.stringify(filters) == JSON.stringify(defaultFilters)} onClick={clearFilters} />
+            <Button icon='filterClear' disabled={JSON.stringify(filters) == JSON.stringify(defaultFilters) && !openAI} onClick={clearFilters} />
         </ActionPanel>
     </div>
 }
 
-function OpenAI ({ saveAIFilters }) {
+function OpenAI({ saveAIFilters, openAI, alignRight }) {
 
-    const [value,setValue] = useState('')
+    const [value, setValue] = useState(openAI)
+
+    useEffect(() => { value != openAI && setValue(openAI) }, [openAI])
 
     const saveValue = val => {
         setValue(val)
         saveAIFilters(val)
     }
 
-    return <Input 
-        type='string'
-        defaultValue={value}
-        onChange={saveValue}
-        nomargin
-        autoWidth minWidth={300} maxWidth={600}
-        className={!value ? styles.openAI_input : null}
+    return <div style={{ marginRight: alignRight ? 0 : 6 }}>
+        <Input
+            type='string'
+            defaultValue={value}
+            onChange={saveValue}
+            onPressEnter={()=>saveAIFilters(value)}
+            nomargin
+            autoWidth minWidth={300} maxWidth={600}
+            className={!value ? styles.openAI_input : null}
         />
+    </div>
 }
 
-function FilterField({ field, active, fieldOptions, filters, saveFilters, dict, alignRight, currentBP }) {
+function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters, dict, alignRight, currentBP }) {
 
     const filterWrapper = useRef(null);
 
