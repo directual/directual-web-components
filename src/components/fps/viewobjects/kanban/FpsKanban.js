@@ -147,9 +147,37 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
     }
 
     const submit = (model, multiple) => {
+        console.log('SUBMIT')
+        console.log(`multiple ${multiple ? 'multiple' : 'single'}`)
+        console.log()
         if (multiple) {
             sendMsg(model)
 
+            const saveModel = { ...model }
+            if (saveModel) {
+                for (const field in saveModel) {
+                    console.log(field)
+                    if (saveModel[field] && typeof saveModel[field] == 'object' && _.get(data, "params.data.fields[field].dataType") != 'date') {
+                        // console.log('removing links')
+                        delete saveModel[field]
+                    }  // removing links
+                    if (writeFields.indexOf(field) == -1) {
+                        // console.log(`removing ${field} as a field not for writing`)
+                        delete saveModel[field]
+                    } // removing fields not for writing
+                    if (data.params.data.fields[field] && _.get(data, "params.data.fields[field].dataType") == 'date' && typeof saveModel[field] == 'number') {
+                        saveModel[field] = moment(saveModel[field])
+                    }
+                }
+            }
+            const dqlParams = { dql: currentDQL, sort: currentSort }
+            sendMsg({ ...saveModel })
+            const isDelayedRefresh = currentDQL || _.get(currentSort, 'field') || currentPage
+            isDelayedRefresh && setTimeout(() => {
+                onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: currentPage }, { reqParam1: "true" })
+                removeUrlParam(id + '_id')
+            }, 2000)
+        } else {
             const saveModel = { ...model }
             if (saveModel) {
                 for (const field in saveModel) {

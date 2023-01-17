@@ -1,15 +1,28 @@
 import React from 'react'
+import Hint from './hint/hint'
 
 export const Fps404 = () => {
-  return <h1>404</h1>
+  return <div style={{ margin: 40, width: '100%' }}>
+  <Hint error title='App is not found (404)' margin={{ top: 0, bottom: 0 }}>
+    <p>Please, connect support@directual.com if you have any questions.</p>
+  </Hint>
+</div>
 }
 
 export const Fps500 = () => {
-  return <h1>500</h1>
+  return <div style={{ margin: 40, width: '100%' }}>
+  <Hint error title='Error (500)' margin={{ top: 0, bottom: 0 }}>
+    <p>Please, connect support@directual.com if you have any questions.</p>
+  </Hint>
+</div>
 }
 
 export const FpsBlocked = () => {
-  return <h1>Page is blocked</h1>
+  return <div style={{ margin: 40, width: '100%' }}>
+    <Hint error title='The app is blocked' margin={{ top: 0, bottom: 0 }}>
+      <p>Please, connect support@directual.com if you have any questions.</p>
+    </Hint>
+  </div>
 }
 
 export const FpsIsEmpty = () => {

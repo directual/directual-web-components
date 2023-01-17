@@ -706,6 +706,7 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                     {(field.write && editingOn && !field.disableEditing) ?
                         <Input
                             type={field.dataType}
+                            //tip='test'
                             positive={field.format == 'positiveNum'}
                             description={field.descriptionFlag && field.description}
                             label={field.name || field.sysName}

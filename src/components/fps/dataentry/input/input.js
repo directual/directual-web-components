@@ -576,11 +576,11 @@ export default function Input(props) {
                             onBlur={checkValue}
                             placeholder={`${props.placeholder ? props.placeholder : ''}`}
                         />
-                        {value && !props.disabled &&
+                        {value && !props.disabled ?
                             <div className={`${styles.clear} icon icon-close`}
-                                onClick={clearValue}></div>}
+                                onClick={clearValue}></div> : <div />}
                     </div>
-                    {props.unitName && <div className={styles.unitName}>{props.unitName}</div>}
+                    {props.unitName ? <div className={styles.unitName}>{props.unitName}</div> : <div />}
                 </div>}
 
             {props.type == 'number' &&
