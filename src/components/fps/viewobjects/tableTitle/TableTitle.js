@@ -146,6 +146,7 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
     const filtersWrapper = useRef(null);
 
     //currentBP = 'mobile'
+    const showFilters = (tableFilters && Object.keys(tableFilters.filterFields).filter(i => tableFilters.filterFields[i].active)) || []
 
     return <div ref={filtersWrapper} className={styles.newFilters}>
         <ActionPanel alignRight={alignRight} margin={currentBP == 'mobile' && tableTitle ? { top: 8, bottom: 0 } : null}>
@@ -158,8 +159,8 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
             </div>}
 
             {tableFilters && tableFilters.isFiltering && tableFilters.filterFields
-                && _.get(tableFilters, "filteringType") !== "openai" && (Object.keys(tableFilters.filterFields) || [])
-                    .map(filterField => <FilterField
+                && _.get(tableFilters, "filteringType") !== "openai" && 
+                    showFilters.map(filterField => <FilterField
                         active={_.get(filters, `filters[${filterField}].value`) ||
                             _.get(filters, `filters[${filterField}].valueFrom`) ||
                             _.get(filters, `filters[${filterField}].valueTo`)}
