@@ -94,6 +94,8 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
     }
 
     const saveAIFilters = (dql) => {
+        console.log("saveAIFilters")
+        console.log(dql)
         setOpenAI(dql)
         dql ? dql = ">> " + dql : ''
         performFiltering(dql, filters.sort)
@@ -218,8 +220,8 @@ function OpenAI({ saveAIFilters, openAI, alignRight }) {
             type='string'
             defaultValue={value}
             onChange={setValue}
-            onPressEnter={()=>saveAIFilters(value)}
-            onBlur={()=>saveAIFilters(value)}
+            onPressEnter={()=>value && saveAIFilters(value)}
+            onBlur={()=>value && saveAIFilters(value)}
             onClear={()=>saveAIFilters('')}
             nomargin
             autoWidth minWidth={300} maxWidth={600}
