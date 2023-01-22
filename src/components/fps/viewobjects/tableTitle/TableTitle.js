@@ -146,7 +146,7 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
     const filtersWrapper = useRef(null);
 
     //currentBP = 'mobile'
-    const showFilters = (tableFilters && Object.keys(tableFilters.filterFields).filter(i => tableFilters.filterFields[i].active)) || []
+    const showFilters = (tableFilters && tableFilters.filterFields && Object.keys(tableFilters.filterFields || {}).filter(i => tableFilters.filterFields[i].active)) || []
 
     return <div ref={filtersWrapper} className={styles.newFilters}>
         <ActionPanel alignRight={alignRight} margin={currentBP == 'mobile' && tableTitle ? { top: 8, bottom: 0 } : null}>
