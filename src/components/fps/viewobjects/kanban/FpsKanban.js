@@ -82,7 +82,13 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
      */
 
     const sendMsg = (msg, sl, pageInfo, options) => {
-        console.log('submitting...')
+        if (JSON.stringify(msg) == '{}') {
+            console.log('nothing to submit...')
+            return
+        }
+        console.log('---')
+        console.log(msg)
+        console.log('---')
         pageInfo = pageInfo || { page: currentPage }
         if (sl === "") { sl = undefined }
         // костылек для даты
@@ -92,6 +98,7 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
         let cloneData = _.isArray(msg) ? { _array_: [...msg] } : msg
         const message =
             { ...cloneData, _id: 'form_' + id, _sl_name: sl, _options: options }
+        console.log('vvv')
         console.log(message)
         console.log(pageInfo)
         setLoading(true)
