@@ -240,7 +240,7 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
         if (filterWrapper.current && filterWrapper.current.getBoundingClientRect().left != left) {
             setLeft(filterWrapper.current.getBoundingClientRect().left)
         }
-    }, [filterWrapper])
+    }, [filterWrapper, currentBP])
 
     const renderFilterName = (field) => {
 
