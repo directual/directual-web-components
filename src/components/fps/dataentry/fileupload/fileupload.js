@@ -25,7 +25,10 @@ export default function FileUpload(props) {
 
     const toArray = string => {
         if (!string) return []
-        return string.split(",")
+        if (typeof string == 'string ') { return string.split(",") }
+        else {
+            return string
+        }
     }
 
     const [files, setFiles] = useState(toArray(props.defaultValue))

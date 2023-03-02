@@ -543,6 +543,10 @@ export function Card({ row, params, getInitialStructureParams, data,
 
   const customCardHtml = object.id ? _.get(data, `cardCustomLayout[${object.id}]`) : "<code>Object ID is missed</code>"
 
+  console.log("row[tableParams.cardImageField]")
+  console.log(row[tableParams.cardImageField])
+  console.log(Array.isArray(row[tableParams.cardImageField]))
+
   return (
     <div
       key={i}
@@ -621,12 +625,11 @@ export function Card({ row, params, getInitialStructureParams, data,
                     tableParams.cardImageResize == 'contain'
                       ? 'contain'
                       : 'cover',
-                  backgroundImage: `url(${(row[tableParams.cardImageField] || '').split(',')
-                    ? (row[tableParams.cardImageField] || '').split(
-                      ','
-                    )[0]
+                  backgroundImage: row[tableParams.cardImageField] && typeof row[tableParams.cardImageField] == 'string' 
+                    ? `url(${row[tableParams.cardImageField].split(',')
+                    ? (row[tableParams.cardImageField] || '').split(',')[0]
                     : ''
-                    })`,
+                    })` : Array.isArray(row[tableParams.cardImageField]) ? `url(${row[tableParams.cardImageField][0]})` : '',
                   width:
                     tableParams.cardImageType == 'left' ||
                       tableParams.cardImageType == 'leftCircle'

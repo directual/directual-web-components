@@ -524,7 +524,7 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
 
     const getResolution = line => {
         const regex = /\....?.?.?$/g;
-        const found = line.match(regex);
+        const found = Array.isArray(line) ? line[0].match(regex) : line.match(regex);
         return found ? found[0] : ''
     }
 
@@ -897,7 +897,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
         if (!enrichedObject[fieldName]) return typeof f == 'object' ? getLinkName(fieldName, f, transformTableFieldScheme(field.sysName, tableFieldScheme)) : f
         if (enrichedObject[fieldName].dataType == 'date') return formatDate(f, enrichedObject[fieldName].formatOptions)
         if (enrichedObject[fieldName].dataType == 'file' && enrichedObject[fieldName].format == "image") return <img src={f} className={styles.cartImage} />
-        if (enrichedObject[fieldName].dataType == 'file' && enrichedObject[fieldName].format == "multipleImages") return <img src={f.split(',') ? f.split(',')[0] : null} className={styles.cartImage} />
+        if (enrichedObject[fieldName].dataType == 'file' && enrichedObject[fieldName].format == "multipleImages") return <img src={Array.isArray(f) ? f ? f[0] : null : f.split(',') ? f.split(',')[0] : null} className={styles.cartImage} />
         if (enrichedObject[fieldName].dataType == 'number') return nospaces ? f : numberWithSpaces(f)
         if (typeof f == 'object') return getLinkName(fieldName, f, transformTableFieldScheme(field.sysName, tableFieldScheme))
         return f

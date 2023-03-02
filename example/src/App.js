@@ -89,70 +89,174 @@ const App = (props) => {
     }
 
     let cardActions = {
-        "sl": "getIron",
+        "sl": "create-order-sale",
         "pageSize": "10",
         "headerField": null,
         "params": {
-            "cardListLayout": "looseGrid",
-            "cardHeaderComment": "equipment",
+            "cardListLayout": "list",
+            "cardHeaderComment": "product_sku",
             "deleteField": "",
-            "cardBodyText": "body_part",
+            "cardBodyText": "estimated_finish_date",
             "cardImage": true,
-            "cardImageField": "image",
-            "cardImageType": "cover",
-            "cardImageSize": 100,
+            "cardImageField": "order_pictures",
+            "cardImageType": "left",
+            "cardImageSize": 200,
             "objectView": {},
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "body_part",
+                        "fieldSysName": "@who",
                         "fetch": [],
-                        "sysName": "body_part",
-                        "name": "Body Part",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "body_part"
-                    },
-                    {
-                        "fieldSysName": "day",
-                        "fetch": [],
-                        "sysName": "day",
-                        "name": "Day",
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "description",
-                        "fetch": [],
-                        "sysName": "description",
-                        "name": "Description",
+                        "sysName": "@who",
+                        "name": "who changed",
                         "dataType": "string",
-                        "format": "html",
+                        "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "duration",
+                        "fieldSysName": "assigned_employee",
                         "fetch": [],
-                        "sysName": "duration",
-                        "name": "Duration",
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "equipment",
-                        "fetch": [],
-                        "sysName": "equipment",
-                        "name": "Equipment",
+                        "sysName": "assigned_employee",
+                        "name": "Người thực hiện",
                         "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "link": "equipment"
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "created_date",
+                        "fetch": [],
+                        "sysName": "created_date",
+                        "name": "Ngày tạo đơn",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "customer_address",
+                        "fetch": [],
+                        "sysName": "customer_address",
+                        "name": "Địa chỉ khách hàng",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "customer_email",
+                        "fetch": [],
+                        "sysName": "customer_email",
+                        "name": "Email của khách hàng",
+                        "dataType": "string",
+                        "format": "email",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "customer_first_name",
+                        "fetch": [],
+                        "sysName": "customer_first_name",
+                        "name": "Tên khách hàng",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "customer_last_name",
+                        "fetch": [],
+                        "sysName": "customer_last_name",
+                        "name": "Họ khách hàng",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "customer_phone_number",
+                        "fetch": [],
+                        "sysName": "customer_phone_number",
+                        "name": "Số điện thoại khách hàng",
+                        "dataType": "string",
+                        "format": "phone",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "estimated_finish_date",
+                        "fetch": [],
+                        "sysName": "estimated_finish_date",
+                        "name": "Ngày hẹn giao",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "haravan_order_id",
+                        "fetch": [],
+                        "sysName": "haravan_order_id",
+                        "name": "Mã đơn Haravan",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
                     },
                     {
                         "fieldSysName": "id",
@@ -165,122 +269,434 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "image",
+                        "fieldSysName": "order_note",
                         "fetch": [],
-                        "sysName": "image",
-                        "name": "Image",
-                        "dataType": "file",
-                        "format": "image",
+                        "sysName": "order_note",
+                        "name": "Ghi chú đơn hàng",
+                        "dataType": "string",
+                        "format": "markdown",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "name",
+                        "fieldSysName": "order_pictures",
                         "fetch": [],
-                        "sysName": "name",
-                        "name": "Name",
-                        "dataType": "string",
-                        "format": "",
+                        "sysName": "order_pictures",
+                        "name": "Hình ảnh đơn hàng",
+                        "dataType": "file",
+                        "format": "multipleImages",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "plan",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "title",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "plan",
-                        "name": "Plan",
+                        "fieldSysName": "order_status",
+                        "fetch": [],
+                        "sysName": "order_status",
+                        "name": "Tình trạng đơn hàng",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "plans"
+                        "link": "order_status_types"
                     },
                     {
-                        "fieldSysName": "type",
+                        "fieldSysName": "product_sku",
                         "fetch": [],
-                        "sysName": "type",
-                        "name": "Type",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "type"
-                    },
-                    {
-                        "fieldSysName": "video",
-                        "fetch": [],
-                        "sysName": "video",
-                        "name": "Video",
+                        "sysName": "product_sku",
+                        "name": "Mã sản phẩm SKU",
                         "dataType": "string",
-                        "format": "youTube",
+                        "format": "",
                         "formatOptions": {},
                         "link": ""
+                    },
+                    {
+                        "fieldSysName": "user_id",
+                        "fetch": [],
+                        "sysName": "user_id",
+                        "name": "Người tạo đơn",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
                     }
                 ],
-                "writeFields": [],
-                "fields": {
-                    "body_part": {
-                        "id": "body_part",
-                        "content": "Body Part",
-                        "type": "field",
+                "writeFields": [
+                    {
+                        "fieldSysName": "assigned_employee",
+                        "fetch": [],
+                        "sysName": "assigned_employee",
+                        "name": "Người thực hiện",
                         "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "read": true,
-                        "link": "body_part",
-                        "actions": []
+                        "link": "WebUser"
                     },
-                    "day": {
-                        "id": "day",
-                        "content": "Day",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "positiveNum",
+                    {
+                        "fieldSysName": "created_date",
+                        "fetch": [],
+                        "sysName": "created_date",
+                        "name": "Ngày tạo đơn",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "customer_address",
+                        "fetch": [],
+                        "sysName": "customer_address",
+                        "name": "Địa chỉ khách hàng",
+                        "dataType": "string",
+                        "format": "",
                         "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
+                        "link": ""
                     },
-                    "description": {
-                        "id": "description",
-                        "content": "Description",
+                    {
+                        "fieldSysName": "customer_email",
+                        "fetch": [],
+                        "sysName": "customer_email",
+                        "name": "Email của khách hàng",
+                        "dataType": "string",
+                        "format": "email",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "customer_first_name",
+                        "fetch": [],
+                        "sysName": "customer_first_name",
+                        "name": "Tên khách hàng",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "customer_last_name",
+                        "fetch": [],
+                        "sysName": "customer_last_name",
+                        "name": "Họ khách hàng",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "customer_phone_number",
+                        "fetch": [],
+                        "sysName": "customer_phone_number",
+                        "name": "Số điện thoại khách hàng",
+                        "dataType": "string",
+                        "format": "phone",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "estimated_finish_date",
+                        "fetch": [],
+                        "sysName": "estimated_finish_date",
+                        "name": "Ngày hẹn giao",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "haravan_order_id",
+                        "fetch": [],
+                        "sysName": "haravan_order_id",
+                        "name": "Mã đơn Haravan",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "order_note",
+                        "fetch": [],
+                        "sysName": "order_note",
+                        "name": "Ghi chú đơn hàng",
+                        "dataType": "string",
+                        "format": "markdown",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "order_pictures",
+                        "fetch": [],
+                        "sysName": "order_pictures",
+                        "name": "Hình ảnh đơn hàng",
+                        "dataType": "file",
+                        "format": "multipleImages",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "order_status",
+                        "fetch": [],
+                        "sysName": "order_status",
+                        "name": "Tình trạng đơn hàng",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "order_status_types"
+                    },
+                    {
+                        "fieldSysName": "product_sku",
+                        "fetch": [],
+                        "sysName": "product_sku",
+                        "name": "Mã sản phẩm SKU",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "user_id",
+                        "fetch": [],
+                        "sysName": "user_id",
+                        "name": "Người tạo đơn",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    }
+                ],
+                "fields": {
+                    "@who": {
+                        "id": "@who",
+                        "content": "who changed",
                         "type": "field",
                         "dataType": "string",
-                        "format": "html",
+                        "format": "",
                         "formatOptions": {},
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "duration": {
-                        "id": "duration",
-                        "content": "Duration",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "equipment": {
-                        "id": "equipment",
-                        "content": "Equipment",
+                    "assigned_employee": {
+                        "id": "assigned_employee",
+                        "content": "Người thực hiện",
                         "type": "field",
                         "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
-                        "link": "equipment",
+                        "link": "WebUser",
+                        "actions": []
+                    },
+                    "created_date": {
+                        "id": "created_date",
+                        "content": "Ngày tạo đơn",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "customer_address": {
+                        "id": "customer_address",
+                        "content": "Địa chỉ khách hàng",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "customer_email": {
+                        "id": "customer_email",
+                        "content": "Email của khách hàng",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "email",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "customer_first_name": {
+                        "id": "customer_first_name",
+                        "content": "Tên khách hàng",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "customer_last_name": {
+                        "id": "customer_last_name",
+                        "content": "Họ khách hàng",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "customer_phone_number": {
+                        "id": "customer_phone_number",
+                        "content": "Số điện thoại khách hàng",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "phone",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "estimated_finish_date": {
+                        "id": "estimated_finish_date",
+                        "content": "Ngày hẹn giao",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "haravan_order_id": {
+                        "id": "haravan_order_id",
+                        "content": "Mã đơn Haravan",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
                         "actions": []
                     },
                     "id": {
@@ -290,68 +706,74 @@ const App = (props) => {
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "image": {
-                        "id": "image",
-                        "content": "Image",
-                        "type": "field",
-                        "dataType": "file",
-                        "format": "image",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "name": {
-                        "id": "name",
-                        "content": "Name",
+                    "order_note": {
+                        "id": "order_note",
+                        "content": "Ghi chú đơn hàng",
                         "type": "field",
                         "dataType": "string",
-                        "format": "",
+                        "format": "markdown",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
-                        "link": null,
+                        "link": "",
                         "actions": []
                     },
-                    "plan": {
-                        "id": "plan",
-                        "content": "Plan",
+                    "order_pictures": {
+                        "id": "order_pictures",
+                        "content": "Hình ảnh đơn hàng",
+                        "type": "field",
+                        "dataType": "file",
+                        "format": "multipleImages",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "order_status": {
+                        "id": "order_status",
+                        "content": "Tình trạng đơn hàng",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
-                        "link": "plans",
+                        "link": "order_status_types",
                         "actions": []
                     },
-                    "type": {
-                        "id": "type",
-                        "content": "Type",
-                        "type": "field",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "type",
-                        "actions": []
-                    },
-                    "video": {
-                        "id": "video",
-                        "content": "Video",
+                    "product_sku": {
+                        "id": "product_sku",
+                        "content": "Mã sản phẩm SKU",
                         "type": "field",
                         "dataType": "string",
-                        "format": "youTube",
+                        "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
                         "link": "",
+                        "actions": []
+                    },
+                    "user_id": {
+                        "id": "user_id",
+                        "content": "Người tạo đơn",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "WebUser",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "body_part": {
+                    "@who": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -359,7 +781,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "day": {
+                    "created_date": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -367,7 +789,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "description": {
+                    "customer_address": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -375,7 +797,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "duration": {
+                    "customer_email": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -383,7 +805,39 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "equipment": {
+                    "customer_first_name": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "customer_last_name": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "customer_phone_number": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "estimated_finish_date": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "haravan_order_id": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -399,7 +853,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "image": {
+                    "order_note": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -407,7 +861,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "name": {
+                    "order_pictures": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -415,7 +869,15 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "type": {
+                    "order_status": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": true,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "product_sku": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -423,7 +885,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "video": {
+                    "user_id": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -431,43 +893,11 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "date": {
+                    "assigned_employee": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "note_field": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "note_image": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "note_title": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "plan": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
+                        "quickSearch": true,
                         "fileImageSize": 200,
                         "clickable": false
                     }
@@ -477,29 +907,32 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
+                            "@who",
+                            "created_date",
+                            "customer_address",
+                            "customer_email",
+                            "customer_first_name",
+                            "customer_last_name",
+                            "customer_phone_number",
+                            "estimated_finish_date",
+                            "haravan_order_id",
                             "id",
-                            "body_part",
-                            "day",
-                            "description",
-                            "duration",
-                            "equipment",
-                            "image",
-                            "name",
-                            "type",
-                            "video",
-                            "plan"
+                            "order_note",
+                            "order_pictures",
+                            "order_status",
+                            "product_sku",
+                            "user_id",
+                            "assigned_employee"
                         ]
                     }
                 },
                 "columnOrder": [
                     "tab-1"
                 ],
-                "actions": [],
-                "cardsOrPage": "anotherPage",
-                "anotherPage": "workouts"
+                "actions": []
             },
             "fields": {
-                "body_part": {
+                "@who": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -507,7 +940,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "day": {
+                "created_date": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -515,7 +948,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "description": {
+                "customer_address": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -523,7 +956,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "duration": {
+                "customer_email": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -531,7 +964,39 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "equipment": {
+                "customer_first_name": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "customer_last_name": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "customer_phone_number": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "estimated_finish_date": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "haravan_order_id": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -547,7 +1012,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "image": {
+                "order_note": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -555,7 +1020,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "name": {
+                "order_pictures": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -563,7 +1028,45 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "type": {
+                "order_status": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "searchData": [
+                        {
+                            "key": "Đang thiết kế",
+                            "value": "Đang thiết kế"
+                        },
+                        {
+                            "key": "Đã đặt hàng",
+                            "value": "Đã đặt hàng"
+                        },
+                        {
+                            "key": "Đang may",
+                            "value": "Đang may"
+                        },
+                        {
+                            "key": "Đã thiết kế xong",
+                            "value": "Đã thiết kế xong"
+                        },
+                        {
+                            "key": "Đã may xong",
+                            "value": "Đã may xong"
+                        },
+                        {
+                            "key": "Đã giao hàng cho VC",
+                            "value": "Đã giao hàng cho VC"
+                        },
+                        {
+                            "key": "Đã chuyển thiết kế",
+                            "value": "Đã chuyển thiết kế"
+                        }
+                    ]
+                },
+                "product_sku": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -571,7 +1074,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "video": {
+                "user_id": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -579,279 +1082,404 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "date": {
+                "assigned_employee": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
-                    "quickSearch": false,
+                    "quickSearch": true,
                     "fileImageSize": 200,
-                    "clickable": false
-                },
-                "note_field": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "note_image": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "note_title": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "plan": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
+                    "clickable": false,
+                    "searchData": [
+                        {
+                            "key": "thedangs7@gmail.com",
+                            "value": "thedangs7@gmail.com"
+                        },
+                        {
+                            "key": "sale@miaselena.vn",
+                            "value": "sale@miaselena.vn"
+                        },
+                        {
+                            "key": "nhu",
+                            "value": "nhu"
+                        },
+                        {
+                            "key": "hien",
+                            "value": "hien"
+                        },
+                        {
+                            "key": "thuy",
+                            "value": "thuy"
+                        },
+                        {
+                            "key": "phuong",
+                            "value": "phuong"
+                        },
+                        {
+                            "key": "phuong_thietke",
+                            "value": "phuong_thietke"
+                        },
+                        {
+                            "key": "bachuxinhdep",
+                            "value": "bachuxinhdep"
+                        },
+                        {
+                            "key": "directual_test",
+                            "value": "directual_test"
+                        },
+                        {
+                            "key": "trinh",
+                            "value": "trinh"
+                        },
+                        {
+                            "key": "phuong_nho",
+                            "value": "phuong_nho"
+                        },
+                        {
+                            "key": "directual_support",
+                            "value": "directual_support"
+                        }
+                    ]
                 }
             },
-            "cardCoverHeight": 250,
-            "showCounter": true,
-            "counterField": "day",
-            "cardColor": null,
-            "filterParams": {
-                "isSorting": false,
-                "isFiltering": true,
-                "filteringType": "regular",
-                "filterFields": {
-                    "id": {
-                        "active": false,
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "id"
-                    },
-                    "plan": {
-                        "active": false,
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "Plan"
-                    },
-                    "body_part": {
-                        "active": true,
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "Body Part"
-                    },
-                    "description": {
-                        "active": false,
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "Description"
-                    },
-                    "duration": {
-                        "active": true,
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "name": "Duration"
-                    },
-                    "equipment": {
-                        "active": true,
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "Equipment"
-                    },
-                    "type": {
-                        "active": true,
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "Type",
-                        "linkDirectory": [
-                            {
-                                "id": "Cardio",
-                                "text": "Cardio"
-                            },
-                            {
-                                "id": "Bodyweight",
-                                "text": "Bodyweight"
-                            },
-                            {
-                                "id": "Weights",
-                                "text": "Weights"
-                            }
-                        ]
-                    },
-                    "name": {
-                        "active": true,
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "Name"
-                    },
-                    "day": {
-                        "active": true,
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "name": "Day"
-                    }
-                }
-            },
-            "actions": []
+            "cardImageResize": "cover",
+            "cardImageSizeHeight": 300
         },
-        "tableTitle": "Iron Workouts",
+        "tableTitle": "",
         "actions": null,
         "headers": [
             {
-                "sysName": "body_part",
-                "dataType": "arrayLink",
-                "name": "Body Part",
-                "id": "75961674372275362",
-                "link": "body_part",
-                "group": "0",
-                "tags": null,
+                "sysName": "@who",
+                "dataType": "string",
+                "name": "@who",
+                "id": "",
+                "link": "",
+                "group": "",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 7,
+                "order": null,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
-                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "assigned_employee",
+                "dataType": "arrayLink",
+                "name": "Người thực hiện",
+                "id": "56071658840218551",
+                "link": "WebUser",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 14,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
                 "linkOrArrayLinkType": true,
+                "linkType": false,
                 "arrayLink": true,
-                "linkType": false,
-                "indexExists": false
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
             },
             {
-                "sysName": "day",
-                "dataType": "number",
-                "name": "Day",
-                "id": "10961674372488787",
+                "sysName": "created_date",
+                "dataType": "date",
+                "name": "Ngày tạo đơn",
+                "id": "78841658781163499",
                 "link": "",
                 "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 2,
+                "order": 1,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
-                "format": "positiveNum",
-                "formatOptions": null,
+                "format": null,
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD/MM/Y",
+                    "timeFormat": " HH:mm",
+                    "isUTC": "false"
+                },
                 "groupName": null,
-                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false
+                "indexExists": false,
+                "array": false
             },
             {
-                "sysName": "description",
+                "sysName": "customer_address",
                 "dataType": "string",
-                "name": "Description",
-                "id": "70871674372313992",
+                "name": "Địa chỉ khách hàng",
+                "id": "81891658781292132",
                 "link": "",
                 "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "html",
-                "formatOptions": null,
-                "groupName": null,
-                "array": false,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false
-            },
-            {
-                "sysName": "duration",
-                "dataType": "number",
-                "name": "Duration",
-                "id": "84921674372194544",
-                "link": "",
-                "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 5,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
-                "format": "positiveNum",
-                "formatOptions": null,
+                "format": null,
+                "formatOptions": {},
                 "groupName": null,
-                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false
+                "indexExists": false,
+                "array": false
             },
             {
-                "sysName": "equipment",
-                "dataType": "arrayLink",
-                "name": "Equipment",
-                "id": "46831674372243535",
-                "link": "equipment",
+                "sysName": "customer_email",
+                "dataType": "string",
+                "name": "Email của khách hàng",
+                "id": "52621658781375218",
+                "link": "",
                 "group": "0",
-                "tags": null,
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 7,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "email",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "customer_first_name",
+                "dataType": "string",
+                "name": "Tên khách hàng",
+                "id": "12881658781277457",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "customer_last_name",
+                "dataType": "string",
+                "name": "Họ khách hàng",
+                "id": "48111658781254126",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "customer_phone_number",
+                "dataType": "string",
+                "name": "Số điện thoại khách hàng",
+                "id": "91471658781317901",
+                "link": "",
+                "group": "0",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 6,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "phone",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "estimated_finish_date",
+                "dataType": "date",
+                "name": "Ngày hẹn giao",
+                "id": "70591658781209098",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD/MM/Y",
+                    "timeFormat": " HH:mm",
+                    "isUTC": "false"
+                },
                 "groupName": null,
-                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": true,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "haravan_order_id",
+                "dataType": "string",
+                "name": "Mã đơn Haravan",
+                "id": "96401658781419963",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
                 "linkType": false,
-                "indexExists": false
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
             },
             {
                 "sysName": "id",
@@ -873,76 +1501,20 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false
+                "indexExists": false,
+                "array": false
             },
             {
-                "sysName": "image",
-                "dataType": "file",
-                "name": "Image",
-                "id": "71611674372883831",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 9,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "image",
-                "formatOptions": null,
-                "groupName": null,
-                "array": false,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false
-            },
-            {
-                "sysName": "name",
+                "sysName": "order_note",
                 "dataType": "string",
-                "name": "Name",
-                "id": "32111674372623290",
-                "link": null,
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "array": false,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false
-            },
-            {
-                "sysName": "plan",
-                "dataType": "link",
-                "name": "Plan",
-                "id": "13571674381369289",
-                "link": "plans",
+                "name": "Ghi chú đơn hàng",
+                "id": "98791658781461707",
+                "link": "",
                 "group": "0",
                 "tags": "",
                 "indexing": false,
@@ -954,50 +1526,22 @@ const App = (props) => {
                 "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
-                "format": null,
+                "format": "markdown",
                 "formatOptions": {},
                 "groupName": null,
-                "array": false,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "linkType": true,
-                "indexExists": false
-            },
-            {
-                "sysName": "type",
-                "dataType": "arrayLink",
-                "name": "Type",
-                "id": "31251674372090893",
-                "link": "type",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "array": false,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": true,
+                "linkOrArrayLinkType": false,
                 "linkType": false,
-                "indexExists": false
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
             },
             {
-                "sysName": "video",
-                "dataType": "string",
-                "name": "Video",
-                "id": "78041674372367096",
+                "sysName": "order_pictures",
+                "dataType": "file",
+                "name": "Hình ảnh đơn hàng",
+                "id": "48941658782262048",
                 "link": "",
                 "group": "0",
                 "tags": null,
@@ -1005,326 +1549,326 @@ const App = (props) => {
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 8,
+                "order": 12,
                 "linkIndexFieldSysName": [],
                 "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
-                "format": "youTube",
+                "format": "multipleImages",
                 "formatOptions": null,
                 "groupName": null,
-                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
-                "linkOrArrayLinkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "order_status",
+                "dataType": "link",
+                "name": "Tình trạng đơn hàng",
+                "id": "94411658782122221",
+                "link": "order_status_types",
+                "group": "0",
+                "tags": null,
+                "indexing": true,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 11,
+                "linkIndexFieldSysName": [
+                    "id"
+                ],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
                 "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": true,
+                "array": false
+            },
+            {
+                "sysName": "product_sku",
+                "dataType": "string",
+                "name": "Mã sản phẩm SKU",
+                "id": "40971658781391814",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 8,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
                 "linkType": false,
-                "indexExists": false
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "user_id",
+                "dataType": "link",
+                "name": "Người tạo đơn",
+                "id": "93851658782694353",
+                "link": "WebUser",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 13,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
             }
         ],
         "data": [
             {
-                "duration": 30,
-                "name": "Dumbbell Leg Day",
-                "image": "https://api.directual.com/fileUploaded/caroline-girvan/75145607-d664-4673-b212-39a6dc829b5a.jpg",
-                "description": "<p>Day 1 in The IRON Series and we begin with a complete leg day workout involving some of the main dumbbell movements to recruit as much muscle as possible within each rep.</p>\n\n<p>Being able to perform a movement through its full range of movement with control should be the aim. Of course we all have slightly different ways of performing the same movement including depth, foot position or range of movement available so it is important to always tweak to suit you such as toes pointed out slightly during squat if better or lower to knees and not beyond during RDLs.</p>\n\n<p>Even during this workout, you could consider it as &lsquo;dynamic stretching&rsquo; as you are moving the joint through the range available.</p>\n\n<p>And use it as practice! Every workout I do is a practice session! I am forever thinking during each rep&#8230; rather than moving the weight from A to B, think about lifting &lsquo;with&rsquo; the muscle too. Mind muscle connection can be powerful and hopefully we will see more research coming in future relating to the potential benefits of this in hypertrophy.<br>\nIf you think about a bent over row&#8230; rather than allowing yourself to draw elbows up to move the weight, actually think about the muscles in your back contracting to lift the weight. This can be applied to nearly all movement patterns. Overtime, you become even more susceptible to this coming more naturally when you lift.</p>\n\n<p>Every workout I share is unedited. One take and it&rsquo;s my entire workout so you will see me struggle for sure! And hopefully be able to see also the focus.</p>\n\n<p>I am constantly thinking as I lift and sometimes I may be thinking about one aspect when I then notice my foot isn&rsquo;t perfectly inline with thigh or I could improve my neck being inline with my spine&#8230;I am saying this to remind you the importance of focus, especially when lifting. And that we all are improving continuously!</p>\n\n<p>Have fun lifting and use the next 6 weeks to improve even more!</p>\n\n<p>The dumbbells I am using for your reference are 15kg each!</p>\n\n<p>The timer will be on for 60 seconds per exercise with 30 seconds rest inbetween!</p>\n\n<p>SUITCASE SQUAT<br>\nSUITCASE SQUAT</p>\n\n<p>STATIC LUNGE<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!</p>\n\n<p>RDL<br>\nRDL<br>\nRDL</p>\n\n<p>REAR STEP LUNGE<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!</p>\n\n<p>PAUSE AT BOTTOM GOBLET SQUAT<br>\nPAUSE AT BOTTOM GOBLET SQUAT</p>\n\n<p>LATERAL LUNGE<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!</p>\n\n<p>FINISHER:</p>\n\n<p>30/30/30/60</p>\n\n<p>1/2 REP GOBLET SQUAT<br>\nFULL RANGE!<br>\n1/2 REP!<br>\nBODYWEIGHT FULL RANGE!</p>\n\n<p>Let&rsquo;s lift, let&rsquo;s go!</p>\n\n<p>Cx</p>",
-                "id": "iron-dumbbell-leg-day-1",
-                "video": "https://www.youtube.com/embed/SCxNnWW2zB8",
-                "equipment": [
-                    "dumbbell"
+                "created_date": 1675530000000,
+                "haravan_order_id": "mia selena",
+                "customer_last_name": "mia ",
+                "user_id": "sale@miaselena.vn",
+                "order_pictures": [
+                    "https://api.directual.com/fileUploaded/ms112/web/3cac3952-d572-41dc-8797-c2271c53f235.jpg"
                 ],
-                "body_part": [
-                    "legs"
+                "id": "d3b71d3b-1fca-4e03-a496-bcacebbab880",
+                "order_status": "Đang may",
+                "estimated_finish_date": 1676221200000,
+                "order_note": "may 5c",
+                "assigned_employee": [
+                    "phuong_thietke",
+                    "phuong"
                 ],
-                "type": [
-                    "weights"
-                ],
-                "day": 1,
-                "plan": {
-                    "id": "iron",
-                    "title": "Iron"
-                }
+                "customer_address": "",
+                "customer_email": "",
+                "customer_first_name": "",
+                "customer_phone_number": "",
+                "product_sku": ""
             },
             {
-                "duration": 30,
-                "name": "Upper Body Workout",
-                "image": "https://api.directual.com/fileUploaded/caroline-girvan/65c0a5cb-f819-47a0-9dbd-58b24ccfc01f.jpg",
-                "description": "<p>Ready for some heavy lifting? Every part of your upper body will be under tension and load with a series of exercises to promote the growth of muscle.</p>\n\n<p>This entire workout involves dumbbells&#8230; all you will need aside from dumbbells is a mat!</p>\n\n<p>The timer will be on for 60 seconds per exercise with 30 seconds rest inbetween!</p>\n\n<p>The dumbbells I am using for your reference are 2 x 17.5kg, 2 x 10kg and 2 x 4kg. Below are the specific weights I am using for each exercise!</p>\n\n<p>17.5kg<br>\nCHEST PRESS<br>\nCHEST PRESS<br>\nCHEST PRESS</p>\n\n<p>10kg<br>\nFLYES<br>\nFLYES<br>\nFLYES</p>\n\n<p>17.5kg<br>\nRENEGADE ROW<br>\nRENEGADE ROW<br>\nRENEGADE ROW</p>\n\n<p>17.5kg<br>\nPULLOVER<br>\nPULLOVER<br>\nPULLOVER</p>\n\n<p>10kg<br>\nSHOULDER PRESS<br>\nSHOULDER PRESS<br>\nSHOULDER PRESS</p>\n\n<p>4kg<br>\nREAR DELT FLY <br>\nLATERAL RAISE<br>\nREAR DELT FLY<br>\nLATERAL RAISE</p>\n\n<p>Finisher:</p>\n\n<p>10kg<br>\nALTERNATING FRONTAL RAISE<br>\nFRONTAL RAISE X1 dumbbell</p>\n\n<p>These workouts will highlight to many of us that we can infact consider increasing the weight we have previously used.</p>\n\n<p>It is not often I increase my weight, and infact sometimes I will use lighter weights than I could do such as 15kg for lunges in day 1 or 10kg for the shoulder press whereas I could do heavier if seated etc but I find it helps if I provide what weights I am using in relation to each workout as the timer varies, therefore the rest. Other aspects that affect the weight include when in the workout do I do a certain exercise, what came before it and how many sets.</p>\n\n<p>Though I do think many of you might end up considering upping your weight particularly in lower body workouts as we progress!</p>\n\n<p>We will be hitting the arms specifically on day 5 even though the biceps and triceps were involved in this workout and also within day 3!</p>\n\n<p>You should notice just how much demand is on the triceps on particular during the chest press and also shoulder press!</p>\n\n<p>Day 2 Upper Body! Let&rsquo;s hit it!</p>\n\n<p>Cx</p>",
-                "id": "iron-upper-body-workout-2",
-                "video": "https://www.youtube.com/embed/tczVC2rRO7U",
-                "equipment": [
-                    "dumbbell"
+                "created_date": 1675530000000,
+                "haravan_order_id": "mia",
+                "customer_last_name": "MIA SELENA",
+                "user_id": "sale@miaselena.vn",
+                "order_pictures": [
+                    "https://api.directual.com/fileUploaded/ms112/web/7f88e280-b180-4458-9525-be91a8ae5667.jpg"
                 ],
-                "body_part": [
-                    "upper-body"
+                "id": "ae3afc33-16d6-4c2d-8b09-0f040e61aae0",
+                "order_status": "Đang may",
+                "estimated_finish_date": 1676739600000,
+                "order_note": "CẮT 5CAI M, 3 L",
+                "assigned_employee": [
+                    "phuong_thietke",
+                    "hien"
                 ],
-                "type": [
-                    "weights"
-                ],
-                "day": 2,
-                "plan": {
-                    "id": "iron",
-                    "title": "Iron"
-                }
+                "customer_address": "",
+                "customer_email": "",
+                "customer_first_name": "",
+                "customer_phone_number": "",
+                "product_sku": ""
             },
             {
-                "duration": 30,
-                "name": "Dumbbell Lower Body",
-                "image": "https://api.directual.com/fileUploaded/caroline-girvan/1c6d0a18-5444-4b8b-839e-c88c2ea029a7.jpg",
-                "description": "<p>The glutes stabilise our hips and pelvis and are required to provide the correct alignment to the pelvis. Even balancing on one leg&#8230; and running which is always alternating single leg movements.</p>\n\n<p>Providing support to the lower back, reducing knee and lower back pain plus the many benefits to training overall promote longevity in day to day activities and training.</p>\n\n<p>\nStrengthening your glutes will have a lasting impact on reducing risk of injury whether you are running, walking or lifting.</p>\n\n<p>\nIn this 30 minute workout we will isolate, activate and engage the glute muscles focusing on hip extension and abduction.</p>\n\n<p>\nFor this workout, you will need some dumbbells, a barbell or even a kettlebell!</p>\n\n<p>\nAside from the weight, you will need a mat and a glute band.</p>\n\n<p>\nI will also be using a small sofa that is quite rigid for hip thrusts and Bulgarian lunges. If you prefer, you can perform bridges on the mat and regular lunges with a forward leaning tilt!</p>\n\n<p>\nThe dumbbells I am using for your reference are 1 x 30kg primarily and 1x 15kg for the Bulgarian lunges!</p>\n\n<p>\nThe timer will be on for 60 seconds per exercise with 30 seconds rest inbetween!</p>\n\n<p>\nACTIVATION (60/30/60)<br>\nABDUCTION - BRIDGE - UPRIGHT ABDUCTION</p>\n\n<p>\n30kg<br>\nBANDED HIP THRUST (PAUSE AT TOP)<br>\nBANDED HIP THRUST (PAUSE AT TOP)</p>\n\n<p>\n30kg<br>\nHIP THRUST (PAUSE AT TOP)<br>\nHIP THRUST (PAUSE AT TOP)</p>\n\n<p>\n30kg<br>\nSTAGGERED HIP THRUST<br>\nSWITCH SIDE!</p>\n\n<p>\n30kg<br>\nSUMO DEADLIFT SQUAT (pause at bottom)<br>\nSUMO DEADLIFT SQUAT (pause at bottom)</p>\n\n<p>\n15kg<br>\nBULGARIAN LUNGE<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!</p>\n\n<p>\nBODYWEIGHT X1 LEG HIP THRUST<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!</p>\n\n<p>\nFINISHER!</p>\n\n<p>\nB/W BANDED HIP THRUST BURN OUT!<br>\n30/30/30&#8230;</p>\n\n<p>\nFULL RANGE!<br>\n1/2 REPS!<br>\nFULL RANGE!<br>\nPULSES!<br>\nFULL RANGE!<br>\nHOLD!<br>\nFULL RANGE!</p>\n\n<p>\nYou will notice I am less focused on just lifting the weight.. I am thinking constantly about how I am contracting my glutes in order to move.</p>\n\n<p>\nThe glute band should be utilised as best as you can&#8230; there is a lot of resistance so use it! At the top&#8230; bottom.. and during lifting and lowering! Constant tension when hip thrusting to get the most out of each rep!</p>\n\n<p>\nGlutes definitely were isolated, activated and engaged throughout!</p>\n\n<p>\n👊🏼🤩</p>\n\n<p>\nCx<br>\n</p>",
-                "id": "iron-dumbbell-lower-body-3",
-                "video": "https://www.youtube.com/embed/2Qd-LJNJYWA",
-                "equipment": [
-                    "dumbbell"
+                "created_date": 1677258000000,
+                "haravan_order_id": "mia selena",
+                "customer_last_name": "Mia selena",
+                "user_id": "sale@miaselena.vn",
+                "order_pictures": [
+                    "https://api.directual.com/fileUploaded/ms112/web/a17382d6-2c58-4575-91c7-b5c726ea3c0b.jpg"
                 ],
-                "body_part": [
-                    "legs",
-                    "glutes"
+                "id": "3f96b189-0df7-49dd-9284-3ed2bd5acd6e",
+                "order_status": "Đã chuyển thiết kế",
+                "estimated_finish_date": 1677517200000,
+                "order_note": "may 5c",
+                "assigned_employee": [
+                    "nhu"
                 ],
-                "type": [
-                    "weights"
-                ],
-                "day": 3,
-                "plan": {
-                    "id": "iron",
-                    "title": "Iron"
-                }
+                "customer_address": "",
+                "customer_email": "",
+                "customer_first_name": "",
+                "customer_phone_number": "",
+                "product_sku": ""
             },
             {
-                "duration": 30,
-                "name": "Dumbbell Circuits",
-                "image": "https://api.directual.com/fileUploaded/caroline-girvan/1f3a1110-8ee5-4685-93ce-bb62ae9e35b5.jpg",
-                "description": "<p>A full body workout involving a circuit format&#8230;but not as many reps as possible. This circuit will focus on how we perform each rep from the controlling of the dumbbell whilst lowering in particular, ensuring as best range of motion is performed and aiming for quality reps over the quantity. A slow pace workout that will promote muscle growth and actually really get that heart rate elevated too!</p>\n\n<p>The timer will be on throughout for 40 seconds of work per exercise, with 20 seconds rest inbetween!</p>\n\n<p>The dumbbells I am using for the first 5 exercises within the circuit are 2 x 17.5kg. For the final 4 exercises, I am using 2 x 10kg each.</p>\n\n<p>The circuit is simply performed for 3 rounds!</p>\n\n<p>BENT OVER ROW</p>\n\n<p>STATIC LUNGE</p>\n\n<p>SWITCH SIDE!</p>\n\n<p>RDL</p>\n\n<p>CHEST PRESS</p>\n\n<p>PUSH PRESS</p>\n\n<p>HEEL ELEVATED SQUAT</p>\n\n<p>REAR STEP LUNGE (one side)</p>\n\n<p>SWITCH SIDE!</p>\n\n<p>FINISHER!</p>\n\n<p>40/20/40/20</p>\n\n<p>MAKER!<br>\nALTERNATING REAR LUNGE<br>\nMAKER!<br>\nALTERNATING REAR LUNGE</p>\n\n<p>Oh yesss!! This workout was absolute fire!</p>\n\n<p>A solid full body workout that will leave us ready for the weekend!</p>\n\n<p>Cx</p>",
-                "id": "iron-dumbbell-circuits-4",
-                "video": "https://www.youtube.com/embed/xVj2Q2_2EJY",
-                "equipment": [
-                    "dumbbell"
+                "created_date": 1677258000000,
+                "haravan_order_id": "mia selena",
+                "customer_last_name": "mia selena",
+                "user_id": "sale@miaselena.vn",
+                "order_pictures": [
+                    "https://api.directual.com/fileUploaded/ms112/web/5ecd6f34-f52d-4834-96b9-c33ad88a8e5b.jpg"
                 ],
-                "body_part": [
-                    "full-body"
+                "id": "0aed6838-3095-4a85-969a-b49c27e81b6a",
+                "order_status": "Đã chuyển thiết kế",
+                "estimated_finish_date": 1677517200000,
+                "order_note": "may 5c",
+                "assigned_employee": [
+                    "nhu"
                 ],
-                "type": [
-                    "weights"
-                ],
-                "day": 4,
-                "plan": {
-                    "id": "iron",
-                    "title": "Iron"
-                }
+                "customer_address": "",
+                "customer_email": "",
+                "customer_first_name": "",
+                "customer_phone_number": "",
+                "product_sku": ""
             },
             {
-                "duration": 30,
-                "name": "Biceps, Triceps",
-                "image": "https://api.directual.com/fileUploaded/caroline-girvan/259402a0-e7b4-468f-9bb8-baca0208eb3c.jpg",
-                "description": "<p>Rows, presses and push ups&#8230; all help build the muscle in the biceps and triceps but we all love an arm specific workout! An ab &amp; core segment to make this a challenging yet very enjoyable muscle building session!</p>\n\n<p>Try to think about each exercise as time to practice! Lifting with intent, the very best you can, will help ensure to maximise those gains!</p>\n\n<p>2 sets per exercise for biceps then onto those triceps! We will be switching between the biceps and triceps for a majority of this workout as these muscles can tire quickly and we want to maximise the quality of each rep!</p>\n\n<p>Please ensure you warm up your entire body prior to beginning, including the shoulders!</p>\n\n<p>The dumbbells I am using for your reference are 2 x 12.5 kg for the triceps and 2 x 8 kg (mainly for the bicep curls).</p>\n\n<p>The timer will be on for 60 seconds per exercise with 30 seconds rest in between!</p>\n\n<p>8KG<br>\nPALMS UP CURL<br>\nPALMS UP CURL</p>\n\n<p>12.5KG<br>\nDIAMOND PRESS<br>\nDIAMOND PRESS</p>\n\n<p>DIPS (chair or bars)<br>\nDIPS</p>\n\n<p>8KG<br>\nWIDE CURLS<br>\nWIDE CURLS</p>\n\n<p>12.5KG<br>\nTRICEP PRESS<br>\nTRICEP PRESS</p>\n\n<p>12.5KG<br>\nSKULLCRUSHERS (X1 or 2 dumbbells)<br>\nSKULLCRUSHERS (X1 or 2 dumbbells)</p>\n\n<p>8KG<br>\nHAMMER CURLS<br>\nHAMMER CURLS</p>\n\n<p>ABS (60/30/60/30&#8230;)</p>\n\n<p>STRAIGHT LEG REVERSE CRUNCH<br>\nBENT LEG REVERSE CRUNCH<br>\nLARGE ARC CRUNCH<br>\nCRUNCH<br>\nSMALL TUCK TO TOE TAP<br>\nSMALL TUCK<br>\nALTERNATING TOE REACH<br>\nHEEL REACHES<br>\nALTERNATING LEG LOWER<br>\nLEG LOWERS<br>\nPLANK SAW</p>\n\n<p>FINISHER!</p>\n\n<p>60/60</p>\n\n<p>TRICEP PUSH UPS<br>\n8KG ALTERNATING ROTATIONAL CURL!</p>\n\n<p>This was in place of a weekly HIIT workout that I share however I will be still completing a HIIT or moderate intensity cardio workout at least once per week. There are many benefits to elevating the heart rate such as in a HIIT workout however performing such a workout only once a week allows me to mentally give it 100% , but also it does cause stress on body therefore I personally prefer once per week typically.</p>\n\n<p>This week I completed the 500 rep cardio challenge that I will &lsquo;suggest&rsquo; as an add on. This is exactly that&#8230; a suggestion.</p>\n\n<p>As with most of the add-ons I share post workout uploaded, I complete these when I feel like a burn out, or some bodyweight practise post a dumbbell workout. However I don&rsquo;t always complete the suggested add ons either due to time restraints or energy levels but still are selected as an add-on relative to the initial workout!</p>\n\n<p>I hope you all enjoy this arm and abs workout as much as I did! The biceps are still feeling the pump!</p>\n\n<p>Cx</p>",
-                "id": "iron-biceps-triceps-5",
-                "video": "https://www.youtube.com/embed/U-OYrmX2-k0",
-                "equipment": [
-                    "dumbbell"
+                "created_date": 1677430800000,
+                "haravan_order_id": "115038",
+                "customer_last_name": "C PHƯỢNG",
+                "user_id": "sale@miaselena.vn",
+                "order_pictures": [
+                    "https://api.directual.com/fileUploaded/ms112/web/7ceb76af-809c-48b6-9c18-3d7a749db836.jpg",
+                    "https://api.directual.com/fileUploaded/ms112/web/fb5502d5-fc5f-4785-8089-c977fd80db86.jpg",
+                    "https://api.directual.com/fileUploaded/ms112/web/890f6682-72c1-4e32-8188-cc366a7cbe81.jpg"
                 ],
-                "body_part": [
-                    "arms",
-                    "abs"
+                "id": "9fa17ecd-1e94-4eb9-9ca7-0d97e86f7164",
+                "order_status": "Đã chuyển thiết kế",
+                "estimated_finish_date": 1677690000000,
+                "order_note": "vai 36 - ngực 82- eo 68 - bụng 75- mông 96 - đùi 52   bắp tay 28 -  vòng nách 38 MAY TAY NGẮN MÀU XANH",
+                "assigned_employee": [
+                    "nhu"
                 ],
-                "type": [
-                    "weights"
-                ],
-                "day": 5,
-                "plan": {
-                    "id": "iron",
-                    "title": "Iron"
-                }
-            },
-            {
-                "duration": 30,
-                "name": "Dumbbell Leg Day",
-                "image": "https://api.directual.com/fileUploaded/caroline-girvan/3839ddfe-c7bc-4c1e-91b7-83f2a9d915db.jpg",
-                "description": "<p>This workout will combine many of those key movements that will, when performed safely and under appropriate and relative load &amp; tension will help promote the building of muscle in the lower body, primarily focusing towards the quads!</p>\n\n<p>For this lower body workout, you will need some dumbbells, a chair of Bulgarian lunges and something to elevate the heels!</p>\n\n<p>The dumbbells I am using for your reference are 2 x 20kg for the static closer stance lunges &amp; goblet squat and 2 x 12.5kg for the Bulgarian lunges and heel elevated squats.</p>\n\n<p>The timer will be on for 60 seconds per exercise with 30 seconds rest inbetween!</p>\n\n<p>CLOSER STANCE LUNGE<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!</p>\n\n<p>HEEL ELEVATED SQUAT<br>\nHEEL ELEVATED SQUAT<br>\nHEEL ELEVATED SQUAT SLOW ECCENTRIC<br>\nHEEL ELEVATED SQUAT SLOW ECCENTRIC</p>\n\n<p>BULGARIAN LUNGE<br>\nSWITCH SIDE!<br>\nSLOW LOWER BULGARIAN LUNGE (switch)<br>\nSWITCH SIDE!</p>\n\n<p>CLOSE STANCE BULGARIAN LUNGE<br>\nSWITCH SIDE!<br>\nBODYWEIGHT (SWITCH SIDE)<br>\nSWITCH SIDE!</p>\n\n<p>GOBLET SQUAT<br>\nGOBLET SQUAT</p>\n\n<p>FINISHER!</p>\n\n<p>BODYWEIGHT HEEL ELEVATED SQUATS</p>\n\n<p>FULL RANGE!<br>\nHOLD!<br>\nFULL RANGE!</p>\n\n<p>As with every movement, you can tweak and perform as you prefer. This applies to the depth to which you lower during squats or lunges for example.</p>\n\n<p>Also where you hold the dumbbells either high rack or down by your sides. Or on your back if using barbells!</p>\n\n<p>You may prefer toes slightly facing outwards more or less than me also. And of course depth. It is important always to lower into the squat or lunge with care. Your potential full range of depth at that moment maybe different from someone else. Be aware of this and don&rsquo;t overreach.</p>\n\n<p>Have a great workout&#8230; I think you&rsquo;ll Iove this one!🤩 </p>\n\n<p>Cx</p>",
-                "id": "iron-dumbbell-leg-day-6",
-                "video": "https://www.youtube.com/embed/UBlcDuodQXM",
-                "equipment": [
-                    "dumbbell"
-                ],
-                "body_part": [
-                    "legs"
-                ],
-                "type": [
-                    "weights"
-                ],
-                "day": 6,
-                "plan": {
-                    "id": "iron",
-                    "title": "Iron"
-                }
-            },
-            {
-                "duration": 30,
-                "name": "Dumbbells",
-                "image": "https://api.directual.com/fileUploaded/caroline-girvan/433401f4-7cbc-4e53-a1a2-be0ce09f0e4f.jpg",
-                "description": "<p>Fundamental movements to provide stimuli for muscular hypertrophy, this workout will target the entire shoulder and triceps!</p>\n\n<p>A well rounded workout to include tension, muscular damage and metabolic stress so rest is very important. It is important to allow these muscle groups time to recover in order to grow.</p>\n\n<p>Quality over quantity is as always the focus which lends itself to a moderate pace with time available to lift with proper intent and control.</p>\n\n<p>All you will need for this workout are dumbbells and your mat!</p>\n\n<p>The dumbbells I am using for your reference is 2 x 12.5kg each and 8kg each.</p>\n\n<p>I am using a chair just for the presses at the beginning but it&rsquo;s not necessary as you can simply stand!</p>\n\n<p>The timer will be on for 60 seconds per exercise with 30 seconds rest inbetween each set!</p>\n\n<p>SHOULDER PRESS</p>\n\n<p>ARNOLD PRESS</p>\n\n<p>FACEPULLS</p>\n\n<p>ALTERNATING LATERAL RAISES</p>\n\n<p>UPRIGHT ROWS</p>\n\n<p>TATE PRESS</p>\n\n<p>SKULLCRUSHERS</p>\n\n<p>SHOULDER CRUSHERS</p>\n\n<p>OVERHEAD EXTENSION</p>\n\n<p>FINISHER:</p>\n\n<p>60/60</p>\n\n<p>LATERAL RAISE<br>\nPARTIALS!</p>\n\n<p>Many benefits come from hypertrophy training including performance and physiological however when we love the process, embrace the challenge and get excited when we celebrate those small wins, the psychological benefits are what are paramount for consistency! This type of training brings me so much contentment and fun so thank you for joining me!</p>\n\n<p>Cx</p>",
-                "id": "iron-dumbbells-7",
-                "video": "https://www.youtube.com/embed/0i5RILMI1Mk",
-                "equipment": [
-                    "dumbbell"
-                ],
-                "body_part": [
-                    "arms",
-                    "shoulders"
-                ],
-                "type": [
-                    "weights"
-                ],
-                "day": 7,
-                "plan": {
-                    "id": "iron",
-                    "title": "Iron"
-                }
-            },
-            {
-                "duration": 30,
-                "name": "Hip Thrusts / RDL",
-                "image": "https://api.directual.com/fileUploaded/caroline-girvan/e64b0fe0-88ef-456d-8b03-fd93ca57ee61.jpg",
-                "description": "<p>30 minutes involving resistance to specifically the glute and hamstring muscles through hip extension and hip hinge movement patterns.</p>\n\n<p>The abductors, core and quads will all be working alongside the glutes and hamstrings to move through the pattern with control and aiming for that mind to the muscle connection.</p>\n\n<p>Think about how you are doing the movement throughout&#8230;can you improve the next rep even more?</p>\n\n<p>During RDLs, can you &lsquo;exaggerate&rsquo; the chest even more?</p>\n\n<p>Hips up and back more?</p>\n\n<p>Dumbbells even closer to body?</p>\n\n<p>Do you feel like pausing slightly longer at bottom allows you to feel this in the hamstrings more?</p>\n\n<p>With hip thrusts and whilst wearing a band, our minds can wonder but try to bring it back to focus on that glute band&#8230; pushing against it every second of the hip thrust!</p>\n\n<p>For this workout, you will need some dumbbells, a barbell or even a kettlebell!</p>\n\n<p>Aside from the weight, you will need your mat and a glute band.</p>\n\n<p>I will also be using a small sofa that is quite rigid for hip thrusts. If you prefer, you can perform bridges on the mat.</p>\n\n<p>The dumbbells I am using for your reference are 1 x 30kg and 2 x 17.5kg ok each.</p>\n\n<p>The timer will be on for a majority of the workout 60 seconds of work with 30 seconds rest however towards the end some unilateral movements will involve no specific rest, rather switching to opposite side!</p>\n\n<p>RDL<br>\nRDL</p>\n\n<p>BANDED HIP THRUST - SLOW<br>\nPAUSED AT TOP HIP THRUSTS<br>\n1 1/2 REP HIP THRUSTS</p>\n\n<p>HAMSTRING HIP THRUST<br>\nHAMSTRING HIP THRUST</p>\n\n<p>STAGGERED RDL<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!</p>\n\n<p>LUNGE TO STAGGERED RDL<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!</p>\n\n<p>SINGLE LEG HAMSTRING LIFT<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!</p>\n\n<p>FINISHER!</p>\n\n<p>WEIGHTED HAMSTRING THRUST!</p>\n\n<p>I hope you have as much of an awesome session as I did! My hamstrings were very fatigued after this!!</p>\n\n<p>Cx</p>",
-                "id": "iron-hip-thrust-8",
-                "video": "https://www.youtube.com/embed/CFF4vI0oGPg",
-                "equipment": [
-                    "dumbbell",
-                    "resistance-band"
-                ],
-                "body_part": [
-                    "glutes",
-                    "legs"
-                ],
-                "type": [
-                    "weights"
-                ],
-                "day": 8,
-                "plan": {
-                    "id": "iron",
-                    "title": "Iron"
-                }
-            },
-            {
-                "duration": 30,
-                "name": "Dumbbell Cardio Workout",
-                "image": "https://api.directual.com/fileUploaded/caroline-girvan/511c015d-ddba-44e9-ac99-57ca5936d5c0.jpg",
-                "description": "<p>Ready to combine muscle building movements with cardio elements to really make you work hard for 30 minutes!</p>\n\n<p>For this workout you will simply need some dumbbells and your mat!</p>\n\n<p>The dumbbells I am using for your reference are 2 x 15kg each and 2 x 10kg each.</p>\n\n<p>The timer will be on for a majority of the workout 45 seconds of work with 15 seconds rest. However the staple, when it appears is for 30 seconds only, followed by 30 seconds rest!</p>\n\n<p>There is a staple of squat to press and every time this appears I will be using my lighter dumbbells of 2 x 10kg.</p>\n\n<p>15kg<br>\nBENT OVER ROW<br>\nBENT OVER ROW<br>\nSTAPLE: SQUAT TO PRESS</p>\n\n<p>15kg<br>\nHIGH SQUATS<br>\nHIGH SQUATS<br>\nSTAPLE: SQUAT TO PRESS</p>\n\n<p>15kg<br>\nCHEST PRESS<br>\nCHEST PRESS<br>\nSTAPLE: SQUAT TO PRESS</p>\n\n<p>15kg<br>\nSTATIC LUNGE<br>\nSWITCH SIDE!<br>\nSTAPLE: SQUAT TO PRESS</p>\n\n<p>15kg<br>\nSTATIC LUNGE<br>\nSWITCH SIDE!<br>\nSTAPLE: SQUAT TO PRESS</p>\n\n<p>10kg<br>\nSINGLE ARM SHOULDER PRESS<br>\nSWITCH SIDE!<br>\nSTAPLE: SQUAT TO PRESS</p>\n\n<p>10kg<br>\nSINGLE ARM SHOULDER PRESS<br>\nSWITCH SIDE!<br>\nSTAPLE: SQUAT TO PRESS</p>\n\n<p>15kg<br>\nLATERAL LUNGE<br>\nSWITCH SIDE!<br>\nSTAPLE: SQUAT TO PRESS</p>\n\n<p>15kg<br>\nLATERAL LUNGE<br>\nSWITCH SIDE!<br>\nSTAPLE: SQUAT TO PRESS</p>\n\n<p>FINISHER!<br>\n(30/30/30)</p>\n\n<p>10kg</p>\n\n<p>1/2 REP SQUATS<br>\nPUSH PRESS<br>\nSQUAT TO PRESS</p>\n\n<p>The staple of SQUAT TO PRESS will put demand on every muscle in the body as well as your cardiovascular system!</p>\n\n<p>Have fun and take a moment at the end to appreciate what you just did!</p>\n\n<p>Cx</p>",
-                "id": "iron-dumbbell-cardio-workout-9",
-                "video": "https://www.youtube.com/embed/BAtaHTTyfPI",
-                "equipment": [
-                    "dumbbell"
-                ],
-                "body_part": [
-                    "full-body"
-                ],
-                "type": [
-                    "cardio",
-                    "weights"
-                ],
-                "day": 9,
-                "plan": {
-                    "id": "iron",
-                    "title": "Iron"
-                }
-            },
-            {
-                "duration": 30,
-                "name": "Rows, Curls",
-                "image": "https://api.directual.com/fileUploaded/caroline-girvan/2cb876ef-ee44-4f04-a38e-654a6e239981.jpg",
-                "description": "<p>Pull day let&rsquo;s do it!</p>\n\n<p>Packed with rows and curls to put load on the back and biceps! Slow, precise and controlled is the objective!</p>\n\n<p>The timer will be on for 60 seconds per exercise with 30 seconds rest inbetween!</p>\n\n<p>The dumbbells I am using for your reference are 1 x 20kg for the back movements then 2 x 8kg for the biceps!</p>\n\n<p>SINGLE ARM ROW<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!</p>\n\n<p>PULLOVERS<br>\nPULLOVERS</p>\n\n<p>SINGLE ARM SUPINE ROW<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!<br>\nSWITCH SIDE!</p>\n\n<p>PULLOVERS<br>\nPULLOVERS</p>\n\n<p>HAMMER CURL FULL - HOLD - FULL<br>\nFULL RANGE HAMMER CURL</p>\n\n<p>X BODY CURL FULL - HOLD - FULL<br>\nFULL RANGE X BODY CURL</p>\n\n<p>WIDE CURL FULL - HOLD - FULL<br>\nFULL RANGE WIDE CURL</p>\n\n<p>FINISHER!</p>\n\n<p>60 seconds <br>\nSUPINE ROW (8kg dumbbells)</p>\n\n<p>21s PALM UP CURLS</p>\n\n<p>Tweak the movements to suit you in regards to angle of tilt forward in rows to what feels most comfortable for you.</p>\n\n<p>We all will perform movements slightly different and it is important that you are comfortable and not straining in order to be able to lift safely.</p>\n\n<p>This is an intense back and bicep session!! You&rsquo;ll love it!</p>\n\n<p>Cx</p>",
-                "id": "iron-rows-curls-10",
-                "video": "https://www.youtube.com/embed/xPxCcwG56Po",
-                "equipment": [
-                    "dumbbell"
-                ],
-                "body_part": [
-                    "back",
-                    "arms"
-                ],
-                "type": [
-                    "weights"
-                ],
-                "day": 10,
-                "plan": {
-                    "id": "iron",
-                    "title": "Iron"
-                }
+                "customer_address": "",
+                "customer_email": "",
+                "customer_first_name": "",
+                "customer_phone_number": "",
+                "product_sku": ""
             }
         ],
-        "totalPages": 3,
+        "totalPages": 1,
         "pageNumber": 0,
         "error": null,
         "fieldScheme": [
             [
-                "body_part",
-                99167331
+                "@who",
+                99121752
             ],
             [
-                "day",
-                99167331
+                "assigned_employee",
+                99121752
             ],
             [
-                "description",
-                99167331
+                "created_date",
+                99121752
             ],
             [
-                "duration",
-                99167331
+                "customer_address",
+                99121752
             ],
             [
-                "equipment",
-                99167331
+                "customer_email",
+                99121752
+            ],
+            [
+                "customer_first_name",
+                99121752
+            ],
+            [
+                "customer_last_name",
+                99121752
+            ],
+            [
+                "customer_phone_number",
+                99121752
+            ],
+            [
+                "estimated_finish_date",
+                99121752
+            ],
+            [
+                "haravan_order_id",
+                99121752
             ],
             [
                 "id",
-                99167331
+                99121752
             ],
             [
-                "image",
-                99167331
+                "order_note",
+                99121752
             ],
             [
-                "name",
-                99167331
+                "order_pictures",
+                99121752
             ],
             [
-                "plan.id",
-                99167332
+                "order_status",
+                99121752
             ],
             [
-                "plan.title",
-                99167332
+                "product_sku",
+                99121752
             ],
             [
-                "type",
-                99167331
-            ],
-            [
-                "video",
-                99167331
+                "user_id",
+                99121752
             ]
         ],
-        "writeFields": [],
+        "writeFields": [
+            "assigned_employee",
+            "created_date",
+            "customer_address",
+            "customer_email",
+            "customer_first_name",
+            "customer_last_name",
+            "customer_phone_number",
+            "estimated_finish_date",
+            "haravan_order_id",
+            "id",
+            "order_note",
+            "order_pictures",
+            "order_status",
+            "product_sku",
+            "user_id"
+        ],
         "structures": {
-            "99167331": {
-                "networkID": 15361,
-                "sysName": "workouts",
-                "name": "Workouts",
-                "id": 99167331,
-                "dateCreated": "2023-01-22T09:50:01Z",
+            "99121752": {
+                "networkID": 13714,
+                "id": 99121752,
+                "dateCreated": "2022-07-25T20:32:00Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"day\",\"name\":\"Day\",\"dataType\":\"number\",\"id\":\"10961674372488787\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"plan\",\"name\":\"Plan\",\"dataType\":\"link\",\"id\":\"13571674381369289\",\"link\":\"plans\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false},{\"sysName\":\"type\",\"name\":\"Type\",\"dataType\":\"arrayLink\",\"id\":\"31251674372090893\",\"link\":\"type\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"name\",\"name\":\"Name\",\"dataType\":\"string\",\"id\":\"32111674372623290\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"equipment\",\"name\":\"Equipment\",\"dataType\":\"arrayLink\",\"id\":\"46831674372243535\",\"link\":\"equipment\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"description\",\"name\":\"Description\",\"dataType\":\"string\",\"id\":\"70871674372313992\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"html\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"image\",\"name\":\"Image\",\"dataType\":\"file\",\"id\":\"71611674372883831\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"body_part\",\"name\":\"Body Part\",\"dataType\":\"arrayLink\",\"id\":\"75961674372275362\",\"link\":\"body_part\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"video\",\"name\":\"Video\",\"dataType\":\"string\",\"id\":\"78041674372367096\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"youTube\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"duration\",\"name\":\"Duration\",\"dataType\":\"number\",\"id\":\"84921674372194544\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false}]",
-                "jsonGroupSettings": "[]",
-                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
-                "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
+                "name": "Orders",
+                "sysName": "orders",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"customer_first_name\",\"dataType\":\"string\",\"name\":\"Tên khách hàng\",\"id\":\"12881658781277457\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"product_sku\",\"dataType\":\"string\",\"name\":\"Mã sản phẩm SKU\",\"id\":\"40971658781391814\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"customer_last_name\",\"dataType\":\"string\",\"name\":\"Họ khách hàng\",\"id\":\"48111658781254126\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"order_pictures\",\"dataType\":\"file\",\"name\":\"Hình ảnh đơn hàng\",\"id\":\"48941658782262048\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"customer_email\",\"dataType\":\"string\",\"name\":\"Email của khách hàng\",\"id\":\"52621658781375218\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"email\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"assigned_employee\",\"dataType\":\"arrayLink\",\"name\":\"Người thực hiện\",\"id\":\"56071658840218551\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"chatlog\",\"dataType\":\"link\",\"name\":\"Chat log\",\"id\":\"67211661566896475\",\"link\":\"order_chat_logs\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"estimated_finish_date\",\"dataType\":\"date\",\"name\":\"Ngày hẹn giao\",\"id\":\"70591658781209098\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"order_report\",\"dataType\":\"arrayLink\",\"name\":\"Order report\",\"id\":\"78511660150125436\",\"link\":\"orderreport\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"created_date\",\"dataType\":\"date\",\"name\":\"Ngày tạo đơn\",\"id\":\"78841658781163499\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"customer_address\",\"dataType\":\"string\",\"name\":\"Địa chỉ khách hàng\",\"id\":\"81891658781292132\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"customer_phone_number\",\"dataType\":\"string\",\"name\":\"Số điện thoại khách hàng\",\"id\":\"91471658781317901\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"phone\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"user_id\",\"dataType\":\"link\",\"name\":\"Người tạo đơn\",\"id\":\"93851658782694353\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"order_status\",\"dataType\":\"link\",\"name\":\"Tình trạng đơn hàng\",\"id\":\"94411658782122221\",\"link\":\"order_status_types\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":true,\"array\":false},{\"sysName\":\"haravan_order_id\",\"dataType\":\"string\",\"name\":\"Mã đơn Haravan\",\"id\":\"96401658781419963\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"order_note\",\"dataType\":\"string\",\"name\":\"Ghi chú đơn hàng\",\"id\":\"98791658781461707\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"haravan_order_id\"}]",
+                "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2023-01-22T11:44:12Z",
-                "createBy": 8272,
-                "changedBy": 8272,
+                "dateChanged": "2022-08-27T02:30:03Z",
+                "createBy": 8758,
+                "changedBy": 8758,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "innerIDField": {
@@ -1347,75 +1891,500 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "array": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
                     "typeVariable": {},
                     "json": false,
-                    "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "linkType": false,
-                    "indexExists": false
+                    "indexExists": false,
+                    "array": false
                 },
                 "objectIDSysName": "id",
-                "folderId": null
-            },
-            "99167332": {
-                "networkID": 15361,
-                "sysName": "plans",
-                "name": "Plans",
-                "id": 99167332,
-                "dateCreated": "2023-01-22T09:55:46Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"title\",\"name\":\"Title\",\"dataType\":\"string\",\"id\":\"81261674630853329\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false}]",
-                "jsonGroupSettings": "[]",
-                "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
-                "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":false,\"lowPriority\":false}",
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2023-01-25T07:15:10Z",
-                "createBy": 8272,
-                "changedBy": 8272,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "array": false,
-                    "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "linkType": false,
-                    "indexExists": false
-                },
-                "objectIDSysName": "id",
-                "folderId": null
+                "folderId": 33708567
             }
         },
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
-        "fileds": [],
-        "quickSearch": "false",
+        "fileds": [
+            {
+                "sysName": "assigned_employee",
+                "dataType": "arrayLink",
+                "name": "Người thực hiện",
+                "id": "56071658840218551",
+                "link": "WebUser",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 14,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "created_date",
+                "dataType": "date",
+                "name": "Ngày tạo đơn",
+                "id": "78841658781163499",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD/MM/Y",
+                    "timeFormat": " HH:mm",
+                    "isUTC": "false"
+                },
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "customer_address",
+                "dataType": "string",
+                "name": "Địa chỉ khách hàng",
+                "id": "81891658781292132",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "customer_email",
+                "dataType": "string",
+                "name": "Email của khách hàng",
+                "id": "52621658781375218",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 7,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "email",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "customer_first_name",
+                "dataType": "string",
+                "name": "Tên khách hàng",
+                "id": "12881658781277457",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "customer_last_name",
+                "dataType": "string",
+                "name": "Họ khách hàng",
+                "id": "48111658781254126",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "customer_phone_number",
+                "dataType": "string",
+                "name": "Số điện thoại khách hàng",
+                "id": "91471658781317901",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "phone",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "estimated_finish_date",
+                "dataType": "date",
+                "name": "Ngày hẹn giao",
+                "id": "70591658781209098",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD/MM/Y",
+                    "timeFormat": " HH:mm",
+                    "isUTC": "false"
+                },
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "haravan_order_id",
+                "dataType": "string",
+                "name": "Mã đơn Haravan",
+                "id": "96401658781419963",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "order_note",
+                "dataType": "string",
+                "name": "Ghi chú đơn hàng",
+                "id": "98791658781461707",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 10,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "markdown",
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "order_pictures",
+                "dataType": "file",
+                "name": "Hình ảnh đơn hàng",
+                "id": "48941658782262048",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 12,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "multipleImages",
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "order_status",
+                "dataType": "link",
+                "name": "Tình trạng đơn hàng",
+                "id": "94411658782122221",
+                "link": "order_status_types",
+                "group": "0",
+                "tags": null,
+                "indexing": true,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 11,
+                "linkIndexFieldSysName": [
+                    "id"
+                ],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": true,
+                "array": false
+            },
+            {
+                "sysName": "product_sku",
+                "dataType": "string",
+                "name": "Mã sản phẩm SKU",
+                "id": "40971658781391814",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 8,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "user_id",
+                "dataType": "link",
+                "name": "Người tạo đơn",
+                "id": "93851658782694353",
+                "link": "WebUser",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 13,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            }
+        ],
+        "quickSearch": "true",
         "httpParams": {},
         "cardCustomHtml": null,
         "cardCustomLayout": null
