@@ -59,8 +59,8 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
   console.log(data)
   // console.log('------------ auth: -------------')
   // console.log(auth)
-  // console.log('------------ form model: -------------')
-  // console.log(model)
+  console.log('------------ form model: -------------')
+  console.log(model)
 
   const sendMsg = (msg) => {
     const message = { ...msg, _id: 'form_' + id }

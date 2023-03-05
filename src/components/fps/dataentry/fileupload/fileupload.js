@@ -37,9 +37,10 @@ export default function FileUpload(props) {
     useEffect(() => setFiles(toArray(props.defaultValue)), [props.defaultValue])
 
     const updateFiles = newFiles => {
+        if (newFiles.length = 0) { props.onChange && props.onChange(resultFileString) }
         const resultFileString = Array.isArray(newFiles) ? newFiles.join(",") : newFiles
         if (Array.isArray(newFiles)) { setFiles(newFiles) } else { setFiles(newFiles.split(',')) }
-        props.onChange && props.onChange(resultFileString)
+        props.onChange && props.onChange("")
     }
 
     const saveFiles = (newFiles) => {
@@ -93,9 +94,9 @@ export default function FileUpload(props) {
                                         method: 'POST',
                                         body,
                                     }).then(res => {
-                                        if (res.status != 200) { 
+                                        if (res.status != 200) {
                                             setUploading(false)
-                                            setError('Upload error: ' + res.status + ' ' + res.statusText) 
+                                            setError('Upload error: ' + res.status + ' ' + res.statusText)
                                         }
                                         console.log(res)
                                         res.json().then(result => {
@@ -117,14 +118,14 @@ export default function FileUpload(props) {
                                         <input {...getInputProps()} />
                                         <p className={`icon icon-upload`}>
                                             {props.uploadText ||
-                                                props.multiple ? _.get(dict[lang],'dropMany') || "Drop files here, or click to select files" :
-                                                _.get(dict[lang],'dropOne') || "Drop a file here, or click to select one"
+                                                props.multiple ? _.get(dict[lang], 'dropMany') || "Drop files here, or click to select files" :
+                                                _.get(dict[lang], 'dropOne') || "Drop a file here, or click to select one"
                                             }
                                         </p>
                                     </div>}
                                     {uploading &&
                                         <div className={styles.progress}>
-                                            <Loader>{_.get(dict[lang],'uploading') || "Uploading files..."}</Loader>
+                                            <Loader>{_.get(dict[lang], 'uploading') || "Uploading files..."}</Loader>
                                         </div>}
 
                                     {/* {files && files.length && <ul className={styles.multipleUpload}>
@@ -164,7 +165,11 @@ export default function FileUpload(props) {
 
 function FileList({ fileList, images, onDelete, edit, lang }) {
 
-    fileList = fileList ? fileList : []
+    fileList = fileList ?
+        fileList
+        : []
+    fileList = Array.isArray(fileList) ? fileList : fileList.split(',')
+    
     const [largeView, setLargeView] = useState(null)
 
     if (fileList.length == 0) return <div />
@@ -188,19 +193,32 @@ function FileList({ fileList, images, onDelete, edit, lang }) {
         </React.Fragment>}
 
         {images ? <div className={styles.imageList}>
-            {fileList.length > 0 && fileList.map((image, i) => <ImagePreview
+            {fileList.length > 0 && Array.isArray(fileList) ? fileList.map((image, i) => <ImagePreview
                 key={i}
                 edit={edit}
                 imageUrl={image}
                 openImage={() => setLargeView(i)}
                 onDelete={() => onDelete(i)}
-            />)}
+            />) : fileList && fileList.split(",").map((image, i) => <ImagePreview
+                key={i}
+                edit={edit}
+                imageUrl={image}
+                openImage={() => setLargeView(i)}
+                onDelete={() => onDelete(i)}
+            />)
+            }
         </div> :
             <div className={styles.fileList}>
-                {fileList.length > 0 && fileList.map((file, i) => <FilePreview
+                {fileList.length > 0 && Array.isArray(fileList) ? fileList.map((file, i) => <FilePreview
                     key={i}
                     edit={edit}
                     fileUrl={file}
+                    onDelete={() => onDelete(i)}
+                />) : fileList && fileList.split(",").map((image, i) => <ImagePreview
+                    key={i}
+                    edit={edit}
+                    imageUrl={image}
+                    openImage={() => setLargeView(i)}
                     onDelete={() => onDelete(i)}
                 />)}
             </div>}
@@ -234,10 +252,9 @@ function ShowImage({ imageUrl, swipe, swipable, close, lang }) {
             function handleClickOutside(event) {
                 if (!leftButton.current.contains(event.target) &&
                     !rightButton.current.contains(event.target) &&
-                    !ref.current.contains(event.target) 
+                    !ref.current.contains(event.target)
                     //&& !imageName.current.contains(event.target)
-                    ) 
-                    {
+                ) {
                     close()
                 }
             }
