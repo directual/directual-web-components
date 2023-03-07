@@ -37,10 +37,17 @@ export default function FileUpload(props) {
     useEffect(() => setFiles(toArray(props.defaultValue)), [props.defaultValue])
 
     const updateFiles = newFiles => {
-        if (newFiles.length = 0) { props.onChange && props.onChange(resultFileString) }
+
+        // console.log("updateFiles")
+        // console.log(newFiles)
+        // console.log(Array.isArray(newFiles))
+        
         const resultFileString = Array.isArray(newFiles) ? newFiles.join(",") : newFiles
+
+        if (newFiles.length == 0) { props.onChange && props.onChange("") }
         if (Array.isArray(newFiles)) { setFiles(newFiles) } else { setFiles(newFiles.split(',')) }
-        props.onChange && props.onChange("")
+        console.log(resultFileString)
+        props.onChange && props.onChange(resultFileString)
     }
 
     const saveFiles = (newFiles) => {
@@ -165,11 +172,17 @@ export default function FileUpload(props) {
 
 function FileList({ fileList, images, onDelete, edit, lang }) {
 
+    // console.log("fileList1")
+    // console.log(fileList)
+
     fileList = fileList ?
         fileList
         : []
     fileList = Array.isArray(fileList) ? fileList : fileList.split(',')
     
+    // console.log("fileList2")
+    // console.log(fileList)
+
     const [largeView, setLargeView] = useState(null)
 
     if (fileList.length == 0) return <div />

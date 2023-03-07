@@ -214,6 +214,11 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
     if (!data.data) { return } else {
       let getFieldVal
       getFieldVal = (data.data[0] && data.data[0][sysName]) // || defaultModel()[sysName]
+
+      if (dataType == "file" && Array.isArray(getFieldVal)) {
+        return getFieldVal.join(",")
+      }
+
       if (dataType == 'boolean') {
         if (getFieldVal === true) { getFieldVal = 'true' }
         if (getFieldVal === false) { getFieldVal = 'false' }
@@ -285,7 +290,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
           showSection = true
         }
       })
-      if (!showSection) { 
+      if (!showSection) {
         // console.log("section can't be shown") 
       }
     }

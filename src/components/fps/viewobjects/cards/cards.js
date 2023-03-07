@@ -543,9 +543,9 @@ export function Card({ row, params, getInitialStructureParams, data,
 
   const customCardHtml = object.id ? _.get(data, `cardCustomLayout[${object.id}]`) : "<code>Object ID is missed</code>"
 
-  console.log("row[tableParams.cardImageField]")
-  console.log(row[tableParams.cardImageField])
-  console.log(Array.isArray(row[tableParams.cardImageField]))
+  // console.log("row[tableParams.cardImageField]")
+  // console.log(row[tableParams.cardImageField])
+  // console.log(Array.isArray(row[tableParams.cardImageField]))
 
   return (
     <div

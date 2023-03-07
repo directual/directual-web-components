@@ -148,7 +148,7 @@ function FieldFile({ field, onChange, locale, placeholder, editingOn, defaultVal
 
     return <FileUpload
         onChange={onChange}
-        allowUpload={field.fileUpload}
+        //allowUpload={field.fileUpload}
         edit={editingOn}
         locale={locale}
         allowUpload
