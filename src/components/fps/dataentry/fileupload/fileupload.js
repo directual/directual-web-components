@@ -92,7 +92,7 @@ export default function FileUpload(props) {
                             accept={props.images ? 'image/*' : null}
                             onDrop={(acceptedFiles, rej, event) => {
                                 setUploading(true)
-                                let counter = 0
+                                let counter = 0 
                                 let uploadedFiles = []
                                 acceptedFiles.forEach(file => {
                                     const body = new FormData
