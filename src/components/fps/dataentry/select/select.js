@@ -275,9 +275,9 @@ export default function Select(props) {
 
     return (
         <div className={styles.select_wrapper} style={{ maxWidth: props.width || 'auto' }}>
-            <div className="debug">
+            {/* <div className="debug">
             select value: {JSON.stringify(value)}<br />
-            </div>
+            </div> */}
             <div
                 id='selectElement'
                 className=
