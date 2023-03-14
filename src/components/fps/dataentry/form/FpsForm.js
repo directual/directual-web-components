@@ -219,6 +219,11 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
         return getFieldVal.join(",")
       }
 
+      // костылек для масивов ссылок:
+      if (Array.isArray(getFieldVal) && typeof getFieldVal[0] == 'string' ) {
+        return getFieldVal.join(",")
+      }
+
       if (dataType == 'boolean') {
         if (getFieldVal === true) { getFieldVal = 'true' }
         if (getFieldVal === false) { getFieldVal = 'false' }

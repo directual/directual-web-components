@@ -84,6 +84,15 @@ function List(props) {
                         //ref={refs[option.key]}
                         key={option.key}
                         onClick={() => {
+                            
+                            // console.log("onClick")
+                            // console.log("props.current")
+                            // console.log(props.current)
+                            // console.log("option")
+                            // console.log(option)
+                            // console.log("props.current")
+                            // console.log(props.current)
+
                             !props.multi && props.chooseOption(option)
                             props.current && props.current.length >= 0 && props.current.filter(i => i.key == option.key).length == 0 ?
                                 props.chooseOption(option) :
@@ -249,7 +258,7 @@ export default function Select(props) {
     const chooseOption = (option) => {
         !props.multi && submit(option)
         if (props.multi) {
-            let arr = value ? [...value] : []
+            let arr = _.get(value,'[0].key') ? [...value] : []
             arr.indexOf(option) == -1 && arr.push(option)
             submit(arr)
         }
@@ -257,7 +266,7 @@ export default function Select(props) {
 
     const removeOption = (option) => {
         if (props.multi) {
-            let array = value ? [...value] : []
+            let array = _.get(value,'[0].key') ? [...value] : []
             let index = array.indexOf(option)
             array.splice(index, 1)
             array.length >= 1 ? submit(array) : submit([]);
@@ -266,9 +275,9 @@ export default function Select(props) {
 
     return (
         <div className={styles.select_wrapper} style={{ maxWidth: props.width || 'auto' }}>
-            {/* <div className="debug">
+            <div className="debug">
             select value: {JSON.stringify(value)}<br />
-            </div> */}
+            </div>
             <div
                 id='selectElement'
                 className=
@@ -365,7 +374,7 @@ export default function Select(props) {
                 <List
                     chooseOption={option => chooseOption(option)}
                     removeOption={option => removeOption(option)}
-                    current={value}
+                    current={_.get(value,'[0].key') ? value : []}
                     bottomSelect={props.bottomSelect}
                     onClick={() => { setFocus(false) }}
                     options={filteredOptions}
