@@ -38,10 +38,10 @@ export default function FileUpload(props) {
 
     const updateFiles = newFiles => {
 
-        // console.log("updateFiles")
-        // console.log(newFiles)
+        console.log("updateFiles")
+        console.log(newFiles)
         // console.log(Array.isArray(newFiles))
-        
+
         const resultFileString = Array.isArray(newFiles) ? newFiles.join(",") : newFiles
 
         if (newFiles.length == 0) { props.onChange && props.onChange("") }
@@ -158,6 +158,10 @@ export default function FileUpload(props) {
                     lang={lang}
                     onDelete={index => {
                         console.log('deleting file: ' + index)
+                        if (typeof files == 'string') {
+                            updateFiles([])
+                            return
+                        }
                         const saveNewFiles = [...files]
                         saveNewFiles.splice(index, 1)
                         updateFiles(saveNewFiles)
