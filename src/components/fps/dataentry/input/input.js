@@ -298,6 +298,10 @@ export default function Input(props) {
             { key: 'image', value: 'image', icon: 'image' },
             { key: 'map', value: 'map', icon: 'map' },
             { key: 'kanban', value: 'kanban', icon: 'kanban' },
+            { key: 'discord', value: 'discord', icon: 'discord' },
+            { key: 'facebook', value: 'facebook', icon: 'facebook' },
+            { key: 'marketplace', value: 'marketplace', icon: 'marketplace' },
+            { key: 'twitter', value: 'twitter', icon: 'twitter' },
 
             { key: 'money', value: 'money', icon: 'money' },
             { key: 'idea', value: 'idea', icon: 'idea' },

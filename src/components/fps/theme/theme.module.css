@@ -148,28 +148,28 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/rubik/v21/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-WYi1UA.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/rubik/v26/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-WYi1UA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Rubik';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/rubik/v21/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-B4i1UA.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/rubik/v26/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-B4i1UA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Rubik';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/rubik/v21/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-4I-1UA.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/rubik/v26/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-4I-1UA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Rubik';
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/rubik/v21/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-ro-1UA.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/rubik/v26/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-ro-1UA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Ubuntu';
@@ -197,21 +197,21 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/cuprum/v20/dg45_pLmvrkcOkBnKsOzXyGWTBcmg-X6Zjw.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/cuprum/v24/dg45_pLmvrkcOkBnKsOzXyGWTBcmg-X6Zjw.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Cuprum';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/cuprum/v20/dg45_pLmvrkcOkBnKsOzXyGWTBcmg9f6Zjw.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/cuprum/v24/dg45_pLmvrkcOkBnKsOzXyGWTBcmg9f6Zjw.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Cuprum';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/cuprum/v20/dg45_pLmvrkcOkBnKsOzXyGWTBcmgwL9Zjw.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/cuprum/v24/dg45_pLmvrkcOkBnKsOzXyGWTBcmgwL9Zjw.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Nunito';
@@ -288,28 +288,28 @@
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/bitter/v28/raxhHiqOu8IVPmnRc6SY1KXhnF_Y8fbeCL8.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/bitter/v32/raxhHiqOu8IVPmnRc6SY1KXhnF_Y8fbeCL8.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Bitter';
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/bitter/v28/raxhHiqOu8IVPmnRc6SY1KXhnF_Y8ajfCL8.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/bitter/v32/raxhHiqOu8IVPmnRc6SY1KXhnF_Y8ajfCL8.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Bitter';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/bitter/v28/raxhHiqOu8IVPmnRc6SY1KXhnF_Y8cTfCL8.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/bitter/v32/raxhHiqOu8IVPmnRc6SY1KXhnF_Y8cTfCL8.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Bitter';
   font-style: normal;
   font-weight: 800;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/bitter/v28/raxhHiqOu8IVPmnRc6SY1KXhnF_Y8XbYCL8.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/bitter/v32/raxhHiqOu8IVPmnRc6SY1KXhnF_Y8XbYCL8.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Fira Sans';
@@ -559,8 +559,8 @@
 }
 @font-face {
   font-family: 'directual-icons';
-  src: url('https://api.directual.com/fileUploaded/directual-site/11be0035-54b1-4cd6-8840-cf356ec4f487.eot');
-  src: url('https://api.directual.com/fileUploaded/directual-site/11be0035-54b1-4cd6-8840-cf356ec4f487.eot') format('embedded-opentype'), url('https://api.directual.com/fileUploaded/directual-site/8432400d-0b09-40c7-8c5a-526d8b7aa558.woff') format('woff'), url('https://api.directual.com/fileUploaded/directual-site/de4256da-a983-4b2f-b0fd-a28bbd0e5772.ttf') format('truetype'), url('https://api.directual.com/fileUploaded/directual-site/60065a20-0361-4bd0-9efb-b84975d6cf2a.svg') format('svg');
+  src: url('https://api.directual.com/fileUploaded/directual-site/f5030777-b3c1-4c84-b664-1294170e334b.eot');
+  src: url('https://api.directual.com/fileUploaded/directual-site/f5030777-b3c1-4c84-b664-1294170e334b.eot') format('embedded-opentype'), url('https://api.directual.com/fileUploaded/directual-site/a917c625-d77a-42d0-b0af-596de4c6db6d.woff') format('woff'), url('https://api.directual.com/fileUploaded/directual-site/ad3c3bcc-7a2a-4c39-bad1-4b360d7ad7c6.ttf') format('truetype'), url('https://api.directual.com/fileUploaded/directual-site/7ca257a2-759c-4c8c-b5bb-519199390268.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -985,6 +985,12 @@
 }
 :global .icon-discord:before {
   content: '\e987';
+}
+:global .icon-twitter:before {
+  content: '\e98a';
+}
+:global .icon-marketplace:before {
+  content: '\e989';
 }
 /*-- VARIABLES --*/
 :root {
