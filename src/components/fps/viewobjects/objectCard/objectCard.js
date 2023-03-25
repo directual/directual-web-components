@@ -1109,7 +1109,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                 <span className={styles.description}>
                     {field.description}</span>}
 
-            {field.dataType == 'link' && field.read && renderAL && !edit &&
+            {field.dataType == 'link' && field.read && renderAL && !edit && renderAL.length !== 0 &&
                 <div className={`${styles.linkFieldWrapper} ${!field.clickable && styles.notClickable}`}>
                     <a
                         onClick={() => {
@@ -1185,8 +1185,9 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                             onChange(value) :
                             (value && Array.isArray(value)) ? onChange(value.join(',')) : onChange(value)
                     }}
+                    debug
                     defaultValue={
-                        field.dataType == 'link' ? (renderAL.id || renderAL) :
+                        field.dataType == 'link' ? (Array.isArray(renderAL) ? renderAL[0].id : renderAL.id || renderAL) :
                             (renderAL && renderAL.length > 0
                                 && renderAL.map(i => i.id || i))
                     }
