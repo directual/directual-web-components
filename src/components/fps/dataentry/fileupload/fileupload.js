@@ -158,11 +158,12 @@ export default function FileUpload(props) {
                     lang={lang}
                     onDelete={index => {
                         console.log('deleting file: ' + index)
-                        if (typeof files == 'string') {
+                        console.log(files)
+                        if (typeof files == 'string' && (!files || files.split(",").length <= 1)) {
                             updateFiles([])
                             return
                         }
-                        const saveNewFiles = [...files]
+                        const saveNewFiles = typeof files == 'string' ? [...files.split(",")]: [...files]
                         saveNewFiles.splice(index, 1)
                         updateFiles(saveNewFiles)
                     }}

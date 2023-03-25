@@ -29044,7 +29044,7 @@ const App = (props) => {
     }
 
     let exampleForm = {
-        "sl": "mentor_editProfArea",
+        "sl": "test",
         "formName": "",
         "formDesc": "",
         "formButton": "",
@@ -29057,27 +29057,28 @@ const App = (props) => {
                 "resultMessageField": null,
                 "isSuccessField": null
             },
+            "useEditing": true,
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "_action",
+                        "fieldSysName": "file",
                         "fetch": [],
-                        "sysName": "_action",
+                        "sysName": "file",
                         "name": "",
-                        "dataType": "string",
-                        "format": "",
+                        "dataType": "file",
+                        "format": "multipleFiles",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "_mentor__profAreaIds",
+                        "fieldSysName": "files",
                         "fetch": [],
-                        "sysName": "_mentor__profAreaIds",
+                        "sysName": "files",
                         "name": "",
-                        "dataType": "arrayLink",
+                        "dataType": "file",
                         "format": "",
                         "formatOptions": {},
-                        "link": "professional_areas"
+                        "link": ""
                     },
                     {
                         "fieldSysName": "id",
@@ -29088,48 +29089,28 @@ const App = (props) => {
                         "format": "",
                         "formatOptions": {},
                         "link": ""
-                    },
-                    {
-                        "fieldSysName": "mentor__profAreaIds",
-                        "fetch": [],
-                        "sysName": "mentor__profAreaIds",
-                        "name": "",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "professional_areas"
-                    },
-                    {
-                        "fieldSysName": "userId",
-                        "fetch": [],
-                        "sysName": "userId",
-                        "name": "",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "WebUser"
                     }
                 ],
                 "writeFields": [
                     {
-                        "fieldSysName": "_action",
+                        "fieldSysName": "file",
                         "fetch": [],
-                        "sysName": "_action",
+                        "sysName": "file",
                         "name": "",
-                        "dataType": "string",
-                        "format": "",
+                        "dataType": "file",
+                        "format": "multipleFiles",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "_mentor__profAreaIds",
+                        "fieldSysName": "files",
                         "fetch": [],
-                        "sysName": "_mentor__profAreaIds",
+                        "sysName": "files",
                         "name": "",
-                        "dataType": "arrayLink",
+                        "dataType": "file",
                         "format": "",
                         "formatOptions": {},
-                        "link": "professional_areas"
+                        "link": ""
                     },
                     {
                         "fieldSysName": "id",
@@ -29140,50 +29121,30 @@ const App = (props) => {
                         "format": "",
                         "formatOptions": {},
                         "link": ""
-                    },
-                    {
-                        "fieldSysName": "mentor__profAreaIds",
-                        "fetch": [],
-                        "sysName": "mentor__profAreaIds",
-                        "name": "",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "professional_areas"
-                    },
-                    {
-                        "fieldSysName": "userId",
-                        "fetch": [],
-                        "sysName": "userId",
-                        "name": "",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "WebUser"
                     }
                 ],
                 "fields": {
-                    "_action": {
-                        "id": "_action",
+                    "file": {
+                        "id": "file",
                         "content": "",
                         "type": "field",
-                        "dataType": "string",
-                        "format": "",
+                        "dataType": "file",
+                        "format": "multipleFiles",
                         "formatOptions": {},
                         "write": true,
                         "read": true,
                         "link": ""
                     },
-                    "_mentor__profAreaIds": {
-                        "id": "_mentor__profAreaIds",
+                    "files": {
+                        "id": "files",
                         "content": "",
                         "type": "field",
-                        "dataType": "arrayLink",
+                        "dataType": "file",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
                         "read": true,
-                        "link": "professional_areas"
+                        "link": ""
                     },
                     "id": {
                         "id": "id",
@@ -29195,64 +29156,27 @@ const App = (props) => {
                         "write": true,
                         "read": true,
                         "link": ""
-                    },
-                    "mentor__profAreaIds": {
-                        "id": "mentor__profAreaIds",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "professional_areas"
-                    },
-                    "userId": {
-                        "id": "userId",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "WebUser"
                     }
                 },
                 "fieldParams": {
-                    "_mentor__profAreaIds": {
+                    "file": {
                         "include": true,
                         "fileImageFormat": "square",
-                        "quickSearch": true,
+                        "quickSearch": false,
                         "fileImageSize": 200,
-                        "clickable": false,
-                        "quickSearchSL": "profAreasByWorkSpace"
+                        "clickable": false
+                    },
+                    "files": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
                     },
                     "id": {
                         "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "userId": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "_action": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "mentor__profAreaIds": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
                         "fileImageSize": 200,
                         "clickable": false
                     }
@@ -29262,11 +29186,9 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "id",
-                            "userId",
-                            "_mentor__profAreaIds",
-                            "_action",
-                            "mentor__profAreaIds"
+                            "files",
+                            "file",
+                            "id"
                         ]
                     }
                 },
@@ -29275,23 +29197,19 @@ const App = (props) => {
                 ]
             },
             "fields": {
-                "_mentor__profAreaIds": {
+                "file": {
                     "include": true,
                     "fileImageFormat": "square",
-                    "quickSearch": true,
+                    "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": false,
-                    "quickSearchSL": "profAreasByWorkSpace",
-                    "searchData": [
-                        {
-                            "key": "02d43611-f925-49ea-a972-c4de8720f02d",
-                            "value": "1"
-                        },
-                        {
-                            "key": "48af3bd7-6c85-4c6e-84ed-ff11f7b6b21a",
-                            "value": "800"
-                        }
-                    ]
+                    "clickable": false
+                },
+                "files": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
                 },
                 "id": {
                     "include": false,
@@ -29299,104 +29217,65 @@ const App = (props) => {
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
-                },
-                "userId": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "_action": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "mentor__profAreaIds": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "searchData": [
-                        {
-                            "key": "02d43611-f925-49ea-a972-c4de8720f02d",
-                            "value": "1"
-                        },
-                        {
-                            "key": "48af3bd7-6c85-4c6e-84ed-ff11f7b6b21a",
-                            "value": "800"
-                        },
-                        {
-                            "key": "79353f41-7973-42e0-beb4-1245d43dff35",
-                            "value": "23"
-                        }
-                    ]
                 }
-            },
-            "useEditing": true,
-            "editObject": "url"
+            }
         },
         "fileds": [
             {
-                "sysName": "_action",
+                "sysName": "file",
                 "name": "",
-                "dataType": "string",
-                "id": "20971678714001731",
+                "dataType": "file",
+                "id": "79471679736193693",
                 "link": "",
-                "group": "1678713327230",
-                "tags": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "multipleFiles",
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "files",
+                "name": "",
+                "dataType": "file",
+                "id": "29051679736194177",
+                "link": "",
+                "group": "0",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 2,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": null,
                 "groupName": null,
-                "array": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
-                "indexExists": false
-            },
-            {
-                "sysName": "_mentor__profAreaIds",
-                "name": "",
-                "dataType": "arrayLink",
-                "id": "38001678713328795",
-                "link": "professional_areas",
-                "group": "1678713327230",
-                "tags": "",
-                "indexing": true,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [
-                    ""
-                ],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "array": false,
-                "linkOrArrayLinkType": true,
-                "linkType": false,
-                "arrayLink": true,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": true
+                "indexExists": false,
+                "array": false
             },
             {
                 "sysName": "id",
@@ -29418,69 +29297,13 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "array": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
-                "indexExists": false
-            },
-            {
-                "sysName": "mentor__profAreaIds",
-                "name": "",
-                "dataType": "arrayLink",
-                "id": "72311678713266493",
-                "link": "professional_areas",
-                "group": "1678713263610",
-                "tags": "",
-                "indexing": true,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "array": false,
-                "linkOrArrayLinkType": true,
-                "linkType": false,
-                "arrayLink": true,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": true
-            },
-            {
-                "sysName": "userId",
-                "name": "",
-                "dataType": "link",
-                "id": "28991678713221926",
-                "link": "WebUser",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "array": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false
+                "indexExists": false,
+                "array": false
             }
         ],
         "error": null,
@@ -29488,16 +29311,9 @@ const App = (props) => {
         "response": null,
         "data": [
             {
-                "_mentor__profAreaIds": [
-                    "02d43611-f925-49ea-a972-c4de8720f02d",
-                    "48af3bd7-6c85-4c6e-84ed-ff11f7b6b21a"
-                ],
-                "id": "4eb487268df5b161b900db70f7ce13f6",
-                "mentor__profAreaIds": [
-                    "null"
-                ],
-                "userId": "test@test.test",
-                "_action": "чвм"
+                "files": "https://api.directual.com/fileUploaded/check-file-upload/5b39c7bf-1d2b-43ea-a80c-488f1e8e5fe5.png",
+                "file": "https://api.directual.com/fileUploaded/check-file-upload/90ad2abe-830f-4f3e-b48d-8cc72a4b8e15.png,https://api.directual.com/fileUploaded/check-file-upload/5b39c7bf-1d2b-43ea-a80c-488f1e8e5fe5.png",
+                "id": "1"
             }
         ],
         "httpParams": {}

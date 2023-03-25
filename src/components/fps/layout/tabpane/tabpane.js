@@ -27,8 +27,6 @@ export default function TabsPane({ tabs, loading, currentTabKey, fpsTabs, fixedS
     }, []);
 
     return (<div>
-        {/* urlTab = {urlTab}<br />
-        currentTab = {currentTab} */}
         {/* <Button
             onClick={() => addUrlParam({ key: 'param1', value: '123' })}
         >
