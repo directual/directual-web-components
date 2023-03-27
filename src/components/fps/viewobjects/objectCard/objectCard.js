@@ -1185,9 +1185,11 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                             onChange(value) :
                             (value && Array.isArray(value)) ? onChange(value.join(',')) : onChange(value)
                     }}
-                    debug
+                    //debug
                     defaultValue={
-                        field.dataType == 'link' ? (Array.isArray(renderAL) ? renderAL[0].id : renderAL.id || renderAL) :
+                        field.dataType == 'link' ? Array.isArray(renderAL) && renderAL.length == 1 
+                            ? renderAL[0] ? (renderAL[0].id || renderAL[0]) : null : renderAL ? renderAL.id : null
+                            :
                             (renderAL && renderAL.length > 0
                                 && renderAL.map(i => i.id || i))
                     }
@@ -1199,9 +1201,10 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                 <Input
                     type='string'
                     onChange={onChange}
+                    // description={JSON.stringify(renderAL)}
                     defaultValue={
                         field.dataType == 'link' ? Array.isArray(renderAL) && renderAL.length == 1 
-                            ? (renderAL[0].id || renderAL[0]) : renderAL.id 
+                            ? renderAL[0] ? (renderAL[0].id || renderAL[0]) : null : renderAL ? renderAL.id : null
                             :
                             (renderAL && renderAL.length > 0
                                 && renderAL.map(i => i.id || i))
