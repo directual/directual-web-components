@@ -24,6 +24,9 @@ export default function FileUpload(props) {
     }
 
     const toArray = string => {
+        // console.log('toArray')
+        // console.log(string)
+        // console.log(typeof string)
         if (!string) return []
         if (typeof string == 'string ') { return string.split(",") }
         else {
@@ -37,7 +40,6 @@ export default function FileUpload(props) {
     useEffect(() => setFiles(toArray(props.defaultValue)), [props.defaultValue])
 
     const updateFiles = newFiles => {
-
         console.log("updateFiles")
         console.log(newFiles)
         // console.log(Array.isArray(newFiles))
@@ -51,7 +53,12 @@ export default function FileUpload(props) {
     }
 
     const saveFiles = (newFiles) => {
-        let resultFileList = [...files]
+        console.log("files")
+        console.log(files)
+        console.log("newFiles")
+        console.log(newFiles)
+
+        let resultFileList = Array.isArray(files) ? [...files] : files.split(",").length  > 0 ? files.split(",") : [ files ]
 
         if (newFiles.length == 0) { props.onChange && props.onChange(null); return undefined }
 
@@ -60,6 +67,8 @@ export default function FileUpload(props) {
         })
         const resultFileString = resultFileList.join(",")
         setFiles(resultFileList)
+        console.log('=== resultFileList ===')
+        console.log(resultFileList)
         props.onChange && props.onChange(resultFileString)
     }
 
@@ -108,6 +117,8 @@ export default function FileUpload(props) {
                                         console.log(res)
                                         res.json().then(result => {
                                             counter = counter + 1
+                                            // console.log('uploadedFiles')
+                                            // console.log(uploadedFiles)
                                             uploadedFiles.push(result.result)
                                             if (counter == acceptedFiles.length) {
                                                 setUploading(false)
@@ -135,15 +146,6 @@ export default function FileUpload(props) {
                                             <Loader>{_.get(dict[lang], 'uploading') || "Uploading files..."}</Loader>
                                         </div>}
 
-                                    {/* {files && files.length && <ul className={styles.multipleUpload}>
-                            <li><strong>{files.length} file{files.length > 1 ? 's' : ''} being uploaded:</strong></li>
-                            {files.map(file => <li key={file.name}>
-                                <span>
-                                    {file.name}, {bytesToSize(file.size)}</span>
-                                <div className={`icon icon-delete ${styles.delete}`}></div>
-                            </li>)}
-
-                        </ul>} */}
                                 </section>
                             )
                             }
